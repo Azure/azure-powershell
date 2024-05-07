@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.3.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 2.3.0
 * Supported sandbox custom image
 * Supported database CMK

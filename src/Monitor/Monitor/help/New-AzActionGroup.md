@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzActionGroup
 
 ## SYNOPSIS
-Create a new action group or update an existing one.
+Create a new action group or Create an existing one.
 
 ## SYNTAX
 
@@ -20,7 +20,8 @@ New-AzActionGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <S
  [-EmailReceiver <IEmailReceiver[]>] [-Enabled] [-EventHubReceiver <IEventHubReceiver[]>]
  [-GroupShortName <String>] [-ItsmReceiver <IItsmReceiver[]>] [-LogicAppReceiver <ILogicAppReceiver[]>]
  [-SmsReceiver <ISmsReceiver[]>] [-Tag <Hashtable>] [-VoiceReceiver <IVoiceReceiver[]>]
- [-WebhookReceiver <IWebhookReceiver[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WebhookReceiver <IWebhookReceiver[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
@@ -43,11 +44,12 @@ New-AzActionGroup -InputObject <IActionGroupIdentity> -Location <String>
  [-EmailReceiver <IEmailReceiver[]>] [-Enabled] [-EventHubReceiver <IEventHubReceiver[]>]
  [-GroupShortName <String>] [-ItsmReceiver <IItsmReceiver[]>] [-LogicAppReceiver <ILogicAppReceiver[]>]
  [-SmsReceiver <ISmsReceiver[]>] [-Tag <Hashtable>] [-VoiceReceiver <IVoiceReceiver[]>]
- [-WebhookReceiver <IWebhookReceiver[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WebhookReceiver <IWebhookReceiver[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a new action group or update an existing one.
+Create a new action group or Create an existing one.
 
 ## EXAMPLES
 
@@ -129,7 +131,6 @@ This command creates an action group with no receiver.
 ### -ArmRoleReceiver
 The list of ARM role receivers that are part of this action group.
 Roles are Azure RBAC roles and only built-in roles are supported.
-To construct, see NOTES section for ARMROLERECEIVER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IArmRoleReceiver[]
@@ -145,7 +146,6 @@ Accept wildcard characters: False
 
 ### -AutomationRunbookReceiver
 The list of AutomationRunbook receivers that are part of this action group.
-To construct, see NOTES section for AUTOMATIONRUNBOOKRECEIVER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAutomationRunbookReceiver[]
@@ -161,7 +161,6 @@ Accept wildcard characters: False
 
 ### -AzureAppPushReceiver
 The list of AzureAppPush receivers that are part of this action group.
-To construct, see NOTES section for AZUREAPPPUSHRECEIVER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureAppPushReceiver[]
@@ -177,7 +176,6 @@ Accept wildcard characters: False
 
 ### -AzureFunctionReceiver
 The list of azure function receivers that are part of this action group.
-To construct, see NOTES section for AZUREFUNCTIONRECEIVER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureFunctionReceiver[]
@@ -209,7 +207,6 @@ Accept wildcard characters: False
 
 ### -EmailReceiver
 The list of email receivers that are part of this action group.
-To construct, see NOTES section for EMAILRECEIVER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IEmailReceiver[]
@@ -241,7 +238,6 @@ Accept wildcard characters: False
 
 ### -EventHubReceiver
 The list of event hub receivers that are part of this action group.
-To construct, see NOTES section for EVENTHUBRECEIVER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IEventHubReceiver[]
@@ -273,7 +269,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupIdentity
@@ -289,7 +284,6 @@ Accept wildcard characters: False
 
 ### -ItsmReceiver
 The list of ITSM receivers that are part of this action group.
-To construct, see NOTES section for ITSMRECEIVER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IItsmReceiver[]
@@ -350,7 +344,6 @@ Accept wildcard characters: False
 
 ### -LogicAppReceiver
 The list of logic app receivers that are part of this action group.
-To construct, see NOTES section for LOGICAPPRECEIVER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.ILogicAppReceiver[]
@@ -397,7 +390,6 @@ Accept wildcard characters: False
 
 ### -SmsReceiver
 The list of SMS receivers that are part of this action group.
-To construct, see NOTES section for SMSRECEIVER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.ISmsReceiver[]
@@ -443,7 +435,6 @@ Accept wildcard characters: False
 
 ### -VoiceReceiver
 The list of voice receivers that are part of this action group.
-To construct, see NOTES section for VOICERECEIVER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IVoiceReceiver[]
@@ -459,7 +450,6 @@ Accept wildcard characters: False
 
 ### -WebhookReceiver
 The list of webhook receivers that are part of this action group.
-To construct, see NOTES section for WEBHOOKRECEIVER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IWebhookReceiver[]

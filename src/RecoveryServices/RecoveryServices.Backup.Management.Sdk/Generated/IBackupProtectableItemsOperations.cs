@@ -14,12 +14,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public partial interface IBackupProtectableItemsOperations
     {
         /// <summary>
-        /// Provides a pageable list of protectable objects within your subscription according to the query filter and the
-        /// pagination parameters.
+        /// Provides a pageable list of protectable objects within your subscription
+        /// according to the query filter and the pagination parameters.
         /// </summary>
         /// <remarks>
-        /// Provides a pageable list of protectable objects within your subscription according to the query filter and the
-        /// pagination parameters.
+        /// Provides a pageable list of protectable objects within your subscription
+        /// according to the query filter and the pagination parameters.
         /// </remarks>
         /// <param name='odataQuery'>
         /// 
@@ -28,7 +28,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='skipToken'>
         /// skipToken Filter.
@@ -48,12 +49,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<WorkloadProtectableItemResource>>> ListWithHttpMessagesAsync(string vaultName, string resourceGroupName, Microsoft.Rest.Azure.OData.ODataQuery<BmspoQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<BmspoQueryObject>), string skipToken = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Provides a pageable list of protectable objects within your subscription according to the query filter and the
-        /// pagination parameters.
+        /// Provides a pageable list of protectable objects within your subscription
+        /// according to the query filter and the pagination parameters.
         /// </summary>
         /// <remarks>
-        /// Provides a pageable list of protectable objects within your subscription according to the query filter and the
-        /// pagination parameters.
+        /// Provides a pageable list of protectable objects within your subscription
+        /// according to the query filter and the pagination parameters.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

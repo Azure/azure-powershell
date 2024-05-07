@@ -15,19 +15,22 @@ Queries the resources managed by Azure Resource Manager.
 ### SubscriptionScopedQuery (Default)
 ```
 Search-AzGraph [-Query] <String> [-Subscription <String[]>] [-First <Int32>] [-Skip <Int32>]
- [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ManagementGroupScopedQuery
 ```
 Search-AzGraph [-Query] <String> -ManagementGroup <String[]> [-AllowPartialScope] [-First <Int32>]
- [-Skip <Int32>] [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Skip <Int32>] [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### TenantScopedQuery
 ```
 Search-AzGraph [-Query] <String> [-UseTenantScope] [-AllowPartialScope] [-First <Int32>] [-Skip <Int32>]
- [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

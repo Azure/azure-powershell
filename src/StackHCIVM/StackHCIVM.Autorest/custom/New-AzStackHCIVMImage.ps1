@@ -303,8 +303,52 @@ function New-AzStackHCIVMImage{
 
         if ($PSCmdlet.ParameterSetName -eq "Marketplace")
         {
-            return Az.StackHCIVM.internal\New-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
+            $PSBoundParameters['NoWait'] = $true
+            $PSBoundParameters['ErrorAction'] = 'Stop'
+            try {
+                Az.StackHCIVM.internal\New-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
+                Start-Sleep -Seconds 60
+                $PercentCompleted = 0 
+                Write-Progress -Activity "Download Percentage: " -Status "$PercentCompleted % Complete:" -PercentComplete $PercentCompleted
+                $null = $PSBoundParameters.Remove("Version")
+                $null = $PSBoundParameters.Remove("URN")
+                $null = $PSBoundParameters.Remove("Tag")
+                $null = $PSBoundParameters.Remove("StoragePathId")
+                $null = $PSBoundParameters.Remove("Sku")
+                $null = $PSBoundParameters.Remove("Publisher")
+                $null = $PSBoundParameters.Remove("Offer")
+                $null = $PSBoundParameters.Remove("OSType")
+                $null = $PSBoundParameters.Remove("ImagePath")
+                $null = $PSBoundParameters.Remove("CustomLocationId")
+                $null = $PSBoundParameters.Remove("CloudInitDataSource")
+                $null = $PSBoundParameters.Remove("Location")
+                $null = $PSBoundParameters.Remove("NoWait")
+                while ($PercentCompleted -ne 100 ) {                  
+                    $image = Az.StackHCIVM.internal\Get-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
+                    $PercentCompleted = $image.StatusProgressPercentage
+                    if ($PercentCompleted -eq $null){
+                        $PercentCompleted = 0
+                    } 
+                    Write-Progress -Activity "Download Percentage: " -Status "$PercentCompleted % Complete" -PercentComplete $PercentCompleted
+                    Start-Sleep -Seconds 5    
+                    if ($image.ProvisioningStatus -eq "Failed") {
+                        Break
+                    }           
+                }
+                if ($image.ProvisioningStatus -eq "Failed"){
+                    Write-Error $image.StatusErrorMessage -ErrorAction Stop
+                }
+               
+            } catch {
+                $e = $_
+                if ($e.FullyQualifiedErrorId -match "MissingAzureKubernetesMapping" ){
+                    Write-Error "An older version of the Arc VM cluster extension is installed on your cluster. Please downgrade the Az.StackHCIVm version to 1.0.1 to proceed." -ErrorAction Stop
+                } else {
+                    Write-Error $e.Exception.Message -ErrorAction Stop
+                }
+            }
 
+        
         } elseif ($PSCmdlet.ParameterSetName -eq "MarketplaceURN") {
             if ($URN -match $urnRegex){
                 $publisher = $Matches.publisher.ToLower()
@@ -320,15 +364,67 @@ function New-AzStackHCIVMImage{
             } else {
                 Write-Error "Invalid URN provided: $URN. Valid URN format is Publisher:Offer:Sku:Version ." -ErrorAction Stop
             }
+            
+            $PSBoundParameters['NoWait'] = $true
+            $PSBoundParameters['ErrorAction'] = 'Stop'
+            try {
+                Az.StackHCIVM.internal\New-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
+                Start-Sleep -Seconds 60
+                $PercentCompleted = 0 
+                Write-Progress -Activity "Download Percentage: " -Status "$PercentCompleted % Complete:" -PercentComplete $PercentCompleted
+                $null = $PSBoundParameters.Remove("Version")
+                $null = $PSBoundParameters.Remove("URN")
+                $null = $PSBoundParameters.Remove("Tag")
+                $null = $PSBoundParameters.Remove("StoragePathId")
+                $null = $PSBoundParameters.Remove("Sku")
+                $null = $PSBoundParameters.Remove("Publisher")
+                $null = $PSBoundParameters.Remove("Offer")
+                $null = $PSBoundParameters.Remove("OSType")
+                $null = $PSBoundParameters.Remove("ImagePath")
+                $null = $PSBoundParameters.Remove("CustomLocationId")
+                $null = $PSBoundParameters.Remove("CloudInitDataSource")
+                $null = $PSBoundParameters.Remove("Location")
+                $null = $PSBoundParameters.Remove("NoWait")
+                while ($PercentCompleted -ne 100 ) {                  
+                    $image = Az.StackHCIVM.internal\Get-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
+                    $PercentCompleted = $image.StatusProgressPercentage
+                    if ($PercentCompleted -eq $null){
+                        $PercentCompleted = 0
+                    } 
+                    Write-Progress -Activity "Download Percentage: " -Status "$PercentCompleted % Complete" -PercentComplete $PercentCompleted
+                    Start-Sleep -Seconds 5    
+                    if ($image.ProvisioningStatus -eq "Failed") {
+                        Break
+                    }           
+                }
+                if ($image.ProvisioningStatus -eq "Failed"){
+                    Write-Error $image.StatusErrorMessage -ErrorAction Stop
+                }
+               
+            } catch {
+                $e = $_
+                if ($e.FullyQualifiedErrorId -match "MissingAzureKubernetesMapping" ){
+                    Write-Error "An older version of the Arc VM cluster extension is installed on your cluster. Please downgrade the Az.StackHCIVm version to 1.0.1 to proceed." -ErrorAction Stop
+                } else {
+                    Write-Error $e.Exception.Message -ErrorAction Stop
+                }
+            }
 
-            return Az.StackHCIVM.internal\New-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
 
         }
 
         if ($PSCmdlet.ParameterSetName -eq "GalleryImage")
         {
-           
-            return Az.StackHCIVM.internal\New-AzStackHCIVMGalleryImage @PSBoundParameters
+            try{
+                Az.StackHCIVM.internal\New-AzStackHCIVMGalleryImage -ErrorAction Stop @PSBoundParameters 
+            } catch {
+                $e = $_
+                if ($e.FullyQualifiedErrorId -match "MissingAzureKubernetesMapping" ){
+                    Write-Error "An older version of the Arc VM cluster extension is installed on your cluster. Please downgrade the Az.StackHCIVm version to 1.0.1 to proceed." -ErrorAction Stop
+                } else {
+                    Write-Error $e.Exception.Message -ErrorAction Stop
+                }
+            }
         }
 
        

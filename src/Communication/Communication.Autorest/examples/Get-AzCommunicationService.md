@@ -2,7 +2,9 @@
 
 ```powershell
 Get-AzCommunicationService -SubscriptionId 73fc3592-3cef-4300-5e19-8d18b65ce0e8
+```
 
+```output
 Location Name             Type                                          AzureAsyncOperation
 -------- ----             ----                                          -------------------
 global   ContosoResource1   Microsoft.Communication/communicationServices
@@ -17,7 +19,9 @@ Returns a list of all ACS resources under that subscription.
 
 ```powershell
 Get-AzCommunicationService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
+```
 
+```output
 Location Name           Type                                          AzureAsyncOperation
 -------- ----           ----                                          -------------------
 Global   ContosoAcsResource1 Microsoft.Communication/communicationServices

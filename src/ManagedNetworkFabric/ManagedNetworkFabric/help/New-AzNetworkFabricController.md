@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkFabricController
 
 ## SYNOPSIS
-Creates a Network Fabric Controller.
+Create a Network Fabric Controller.
 
 ## SYNTAX
 
@@ -20,34 +20,31 @@ New-AzNetworkFabricController -Name <String> -ResourceGroupName <String> [-Subsc
  [-Ipv6AddressSpace <String>] [-IsWorkloadManagementNetworkEnabled <String>]
  [-ManagedResourceGroupConfigurationLocation <String>] [-ManagedResourceGroupConfigurationName <String>]
  [-NfcSku <String>] [-Tag <Hashtable>] [-WorkloadExpressRouteConnection <IExpressRouteConnectionInformation[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzNetworkFabricController -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzNetworkFabricController -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a Network Fabric Controller.
+Create a Network Fabric Controller.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Create the Network Fabric Controller Resource
+```powershell
 $infra = @(@{
     ExpressRouteCircuitId = "/subscriptions/b256be71-d296-4e0e-99a1-408d9edc8718/resourceGroups/example-rg/providers/Microsoft.Network/expressRouteCircuits/example-expressRouteCircuit"
     ExpressRouteAuthorizationKey = "b256be71-d296-4e0e-99a1-408d9edc8718"
@@ -56,9 +53,17 @@ $workLoad = @(@{
     ExpressRouteCircuitId = "/subscriptions/b256be71-d296-4e0e-99a1-408d9edc8718/resourceGroups/example-rg/providers/Microsoft.Network/expressRouteCircuits/example-expressRouteCircuit"
     ExpressRouteAuthorizationKey = "b256be71-d296-4e0e-99a1-408d9edc8718"
 })
-```
 
 New-AzNetworkFabricController -Name $name -ResourceGroupName $resourceGroupName -Location $location -Ipv4AddressSpace "30.0.0.0/19" -IsWorkloadManagementNetworkEnabled "True"  -NfcSku "Basic" -WorkloadExpressRouteConnection $workLoad -InfrastructureExpressRouteConnection $infra
+```
+
+```output
+Annotation Id
+---------- --
+           /subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFa…
+```
+
+This command creates the Network Fabric Controller resource.
 
 ## PARAMETERS
 
@@ -87,22 +92,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Break
-Wait for .NET debugger to attach
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -123,41 +113,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HttpPipelineAppend
-SendAsync Pipeline Steps to be appended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelinePrepend
-SendAsync Pipeline Steps to be prepended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InfrastructureExpressRouteConnection
 As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC.
 This Express route is dedicated for Infrastructure services.
 (This is a Mandatory attribute)
-To construct, see NOTES section for INFRASTRUCTUREEXPRESSROUTECONNECTION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation[]
@@ -332,52 +291,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Proxy
-The URI for the proxy server to use
-
-```yaml
-Type: System.Uri
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyCredential
-Credentials for a proxy server to use for the remote call
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyUseDefaultCredentials
-Use the default credentials for the proxy
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -409,7 +323,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -433,7 +347,6 @@ Accept wildcard characters: False
 As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC.
 This Express route is dedicated for Workload services.
 (This is a Mandatory attribute).
-To construct, see NOTES section for WORKLOADEXPRESSROUTECONNECTION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExpressRouteConnectionInformation[]
@@ -486,29 +399,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabricController
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INFRASTRUCTUREEXPRESSROUTECONNECTION \<IExpressRouteConnectionInformation\[\]\>: As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC.
-This Express route is dedicated for Infrastructure services.
-(This is a Mandatory attribute)
-  ExpressRouteAuthorizationKey \<String\>: Authorization key for the circuit, must be of type Microsoft.Network/expressRouteCircuits/authorizations.
-The Auth Key is a mandatory attribute.
-  ExpressRouteCircuitId \<String\>: The express route circuit Azure resource ID, must be of type Microsoft.Network/expressRouteCircuits/circuitName.
-The ExpressRoute Circuit is a mandatory attribute.
-
-WORKLOADEXPRESSROUTECONNECTION \<IExpressRouteConnectionInformation\[\]\>: As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC.
-This Express route is dedicated for Workload services.
-(This is a Mandatory attribute).
-  ExpressRouteAuthorizationKey \<String\>: Authorization key for the circuit, must be of type Microsoft.Network/expressRouteCircuits/authorizations.
-The Auth Key is a mandatory attribute.
-  ExpressRouteCircuitId \<String\>: The express route circuit Azure resource ID, must be of type Microsoft.Network/expressRouteCircuits/circuitName.
-The ExpressRoute Circuit is a mandatory attribute.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.managednetworkfabric/new-aznetworkfabriccontroller](https://learn.microsoft.com/powershell/module/az.managednetworkfabric/new-aznetworkfabriccontroller)
-

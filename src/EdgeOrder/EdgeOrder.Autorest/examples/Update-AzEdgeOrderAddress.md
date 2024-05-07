@@ -13,8 +13,11 @@ $DebugPreference = "Continue"
 #     "Target": null
 #   }
 # } 
-$updatedContactInAddress = Update-AzEdgeOrderAddress -Name "TestPwAddress" -ResourceGroupName "resourceGroupName" -SubscriptionId SubscriptionId -ContactDetail $contactDetail -ShippingAddres $ShippingDetails
+$updatedContactInAddress = Update-AzEdgeOrderAddress -Name "TestPwAddress" -ResourceGroupName "resourceGroupName" -SubscriptionId SubscriptionId -ContactDetail $contactDetail -ShippingAddress $ShippingDetails
 $updatedContactInAddress.ContactDetail.ContactName
+```
+
+```output
 ContactName2
 ```
 Update address details.

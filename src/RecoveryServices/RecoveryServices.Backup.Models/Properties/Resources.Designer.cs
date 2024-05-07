@@ -2371,7 +2371,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        /// Looks up a localized string similar to Invalid parameter Token: Stop protection with retain backup data is not MUA protected
+        /// Looks up a localized string similar to Invalid parameter Token: Stop protection with retain backup data as per policy is not MUA protected
         /// </summary>
         public static string DisableWithRetainBackupNotCrititcal{
             get
@@ -2707,6 +2707,50 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
             get
             {
                 return ResourceManager.GetString("StdToEnhPolicyMigrationWarning", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to SnapshotConsistencyType parameter can only be used for enhanced AzureVM policy.
+        /// </summary>
+        public static string SnapshotConsistencyTypeCantBeSetForStandardPolicy
+        {
+            get
+            {
+                return ResourceManager.GetString("SnapshotConsistencyTypeCantBeSetForStandardPolicy", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to SnapshotConsistencyType parameter can only be used for WorkloadType AzureVM.
+        /// </summary>
+        public static string InvalidParameterSnapshotConsistencyType
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidParameterSnapshotConsistencyType", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured while fetching AAD properties, this property is needed to get CRR access token.
+        /// </summary>
+        public static string AADPropertiesCouldNotBeFetchedException
+        {
+            get
+            {
+                return ResourceManager.GetString("AADPropertiesCouldNotBeFetchedException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to fetch CRR access token. Please retry the operation or contact Microsoft support if issue persists.
+        /// </summary>
+        public static string CRRAccessTokenCouldNotBeFetchedException
+        {
+            get
+            {
+                return ResourceManager.GetString("CRRAccessTokenCouldNotBeFetchedException", resourceCulture);
             }
         }
     }

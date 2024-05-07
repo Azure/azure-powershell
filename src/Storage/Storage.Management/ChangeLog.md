@@ -18,11 +18,37 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.2.0
+* Introduced secrets detection feature to safeguard sensitive data.
+* Fixed object replication policy time format parsing issue [#24434]
+* Updated download offset and content length calculation logic for downloading files 
+    - `Get-AzStorageFileContent`
+ 
+## Version 6.1.3
+* Introduced secrets detection feature to safeguard sensitive data.
+* Upgraded Azure.Core to 1.37.0.
+* Fixed upload file with OAuth authentication issue [#24289] 
+    - `Set-AzStorageFileContent`
+
+## Version 6.1.2
+* Fixed parser logic when downloading blob from managed disk account with Sas Uri and bearer token on Linux and MacOS
+    - `Get-AzStorageBlobContent`
+* Added warning messages for upcoming breaking changes in Queue cmdlets for removing references to "Microsoft.Azure.Storage.Queue"
+    - `New-AzStorageQueue`
+    - `Get-AzStorageQueue`
+    - `New-AzStorageQueueSASToken`
+* Added warning messages for an upcoming breaking change when uploading a file using SAS token without read permission 
+    - `Set-AzStorageFileContent`
+* Added warning messages for an upcoming breaking change when upgrading a Storage account to StorageV2
+    - `Set-AzStorageAccount`
+
+## Version 6.1.1
 * Removed some code branches referencing Microsoft.Azure.Storage.Blob
     - `Get-AzStorageBlob`
 * Updated the prompt message when deleting a share snapshot and the output format when listing 
     - `Remove-AzStorageShare`
-    - `Remove-AzRmStorageSahre`
+    - `Remove-AzRmStorageShare`
     - `Get-AzRmStorageShare`
 
 ## Version 6.1.0

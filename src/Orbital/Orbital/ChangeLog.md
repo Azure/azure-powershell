@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 0.1.1
 * Upgraded API version to 2022-11-01
 * Removed 'Name' and 'InputObject' syntax from the 'Get-AzOrbitalAvailableGroundStation' cmdlet

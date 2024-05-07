@@ -15,8 +15,8 @@ Creates an in-memory certificate administrator details object.
 
 ```
 New-AzKeyVaultCertificateAdministratorDetail [-FirstName <String>] [-LastName <String>]
- [-EmailAddress <String>] [-PhoneNumber <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-EmailAddress <String>] [-PhoneNumber <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -162,4 +162,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [New-AzKeyVaultCertificateOrganizationDetail](./New-AzKeyVaultCertificateOrganizationDetail.md)
-

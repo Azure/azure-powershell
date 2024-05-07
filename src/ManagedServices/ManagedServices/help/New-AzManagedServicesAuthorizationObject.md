@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.ManagedServices-help.xml
 Module Name: Az.ManagedServices
-online version: https://learn.microsoft.com/powershell/module/az.ManagedServices/new-AzManagedServicesAuthorizationObject
+online version: https://learn.microsoft.com/powershell/module/Az.ManagedServices/new-AzManagedServicesAuthorizationObject
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Create an in-memory object for Authorization.
 
 ```
 New-AzManagedServicesAuthorizationObject -PrincipalId <String> -RoleDefinitionId <String>
- [-DelegatedRoleDefinitionId <String[]>] [-PrincipalIdDisplayName <String>] [<CommonParameters>]
+ [-DelegatedRoleDefinitionId <String[]>] [-PrincipalIdDisplayName <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrincipalId
-The identifier of the Microsoft Entra principal.
+The identifier of the Azure Active Directory principal.
 
 ```yaml
 Type: System.String
@@ -82,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrincipalIdDisplayName
-The display name of the Microsoft Entra principal.
+The display name of the Azure Active Directory principal.
 
 ```yaml
 Type: System.String
@@ -97,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -RoleDefinitionId
-The identifier of the Azure built-in role that defines the permissions that the Microsoft Entra principal will have on the projected scope.
+The identifier of the Azure built-in role that defines the permissions that the Azure Active Directory principal will have on the projected scope.
 
 ```yaml
 Type: System.String
@@ -121,7 +122,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.Authorization
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

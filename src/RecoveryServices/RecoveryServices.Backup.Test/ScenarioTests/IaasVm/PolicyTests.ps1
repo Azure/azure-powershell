@@ -26,6 +26,53 @@ $oldResourceGroupName = "sambit_rg"
 $oldVaultName = "sambit"
 $oldPolicyName = "iaasvmretentioncheck"
 
+function Test-AzureVMCrashconsistentPolicy
+{
+	$location = "centraluseuap"
+	$resourceGroupName = "hiagarg"
+	$vaultName = "hiagaVault"
+	$newPolicyName = "PScrashConsistentPolicy"
+	
+	try
+	{
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+				
+		# get weekly default schedule
+		$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM -BackupManagementType AzureVM -PolicySubType Enhanced -ScheduleRunFrequency Weekly
+		Assert-NotNull $schedulePolicy
+
+		# get default weekly retention schedule 
+		$retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureVM -BackupManagementType AzureVM -ScheduleRunFrequency Weekly
+		Assert-NotNull $retentionPolicy
+
+		# create crash consistent policy
+		$policy = New-AzRecoveryServicesBackupProtectionPolicy -Name $newPolicyName -WorkloadType AzureVM -BackupManagementType AzureVM -RetentionPolicy $retentionPolicy -SchedulePolicy $schedulePolicy -VaultId $vault.ID -SnapshotConsistencyType OnlyCrashConsistent
+
+		# validate crash consistent
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name $newPolicyName
+		Assert-NotNull $policy
+		Assert-AreEqual $policy.Name $newPolicyName
+		Assert-AreEqual $policy.SnapshotConsistencyType "OnlyCrashConsistent"
+
+        # update consistency type to default
+		$policy = Set-AzRecoveryServicesBackupProtectionPolicy -Policy $policy -SnapshotConsistencyType Default -VaultId $vault.ID
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name $newPolicyName
+		Assert-AreEqual $policy.SnapshotConsistencyType $null	
+		
+		# update consistency type to OnlyCrashConsistent
+		$policy = Set-AzRecoveryServicesBackupProtectionPolicy -Policy $policy -SnapshotConsistencyType OnlyCrashConsistent -VaultId $vault.ID
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name $newPolicyName
+		Assert-AreEqual $policy.SnapshotConsistencyType "OnlyCrashConsistent"
+	}
+	finally
+	{
+		# Cleanup		
+		# Delete policy
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name $newPolicyName
+		Remove-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $policy -Force
+	}
+}
+
 function Test-AzureVMNonUTCPolicy
 {
 	$resourceGroupName = "hiagarg"
@@ -219,12 +266,12 @@ function Test-AzureVMEnhancedPolicy
 function Test-AzureVMPolicy
 {
 	$location = "centraluseuap" # "eastasia"
-	$resourceGroupName = Create-ResourceGroup $location
+	$resourceGroupName = Create-ResourceGroup $location 26
 
 	try
 	{
 		# Setup
-		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		$vault = Create-RecoveryServicesVault $resourceGroupName $location 27
 		
 		# Get default policy objects
 		$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM

@@ -19,6 +19,15 @@
 -->
 ## Upcoming Release
 
+## Version 0.6.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 0.6.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 0.6.0
+* Updated api version to `2023-03-01`
+
 ## Version 0.5.0
 * Added cmdlet:
     - `Get-AzVMwareDatastore`

@@ -20,7 +20,7 @@ Sets an EventHub Namespace Network Rule Set
 #>
 
 function Set-AzEventHubNetworkRuleSet{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.INetworkRuleSet])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkRuleSet])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
 		[Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of EventHub namespace")]
@@ -52,7 +52,7 @@ function Set-AzEventHubNetworkRuleSet{
 
         [Parameter(HelpMessage = "This determines if traffic is allowed over public network. By default it is enabled. If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules. ")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.PublicNetworkAccess]
+        [System.String]
         #This determines if traffic is allowed over public network. By default it is enabled. If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules. 
         ${PublicNetworkAccess},
 
@@ -64,19 +64,19 @@ function Set-AzEventHubNetworkRuleSet{
 
         [Parameter(HelpMessage = "Default Action for Network Rule Set")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.DefaultAction]
+        [System.String]
         #Default Action for Network Rule Set
         ${DefaultAction},
 
         [Parameter(HelpMessage = "List of IpRules")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.INwRuleSetIPRules[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INwRuleSetIPRules[]]
         # List of IpRules
         ${IPRule},
 
         [Parameter(HelpMessage = "List of VirtualNetwork Rules")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.INwRuleSetVirtualNetworkRules[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INwRuleSetVirtualNetworkRules[]]
         # List of VirtualNetwork Rules
         ${VirtualNetworkRule},
 

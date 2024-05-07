@@ -1983,7 +1983,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to Create a license profile.</summary>
+        /// <summary>The operation to Update a license profile.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="machineName">The name of the hybrid machine.</param>
@@ -2035,7 +2035,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to Create a license profile.</summary>
+        /// <summary>The operation to Update a license profile.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to the Create or Update license profile operation.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2097,7 +2097,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to Create a license profile.</summary>
+        /// <summary>The operation to Update a license profile.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to the Create or Update license profile operation.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2157,7 +2157,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to Create a license profile.</summary>
+        /// <summary>The operation to Update a license profile.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="machineName">The name of the hybrid machine.</param>
@@ -2208,7 +2208,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to Create a license profile.</summary>
+        /// <summary>The operation to Update a license profile.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="machineName">The name of the hybrid machine.</param>
@@ -2257,7 +2257,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to Create a license profile.</summary>
+        /// <summary>The operation to Update a license profile.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="machineName">The name of the hybrid machine.</param>
@@ -3562,7 +3562,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to update a license profile.</summary>
+        /// <summary>The operation to Update a license profile.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="machineName">The name of the hybrid machine.</param>
@@ -3614,7 +3614,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to update a license profile.</summary>
+        /// <summary>The operation to Update a license profile.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to the Update license profile operation.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3676,7 +3676,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to update a license profile.</summary>
+        /// <summary>The operation to Update a license profile.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to the Update license profile operation.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3736,7 +3736,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to update a license profile.</summary>
+        /// <summary>The operation to Update a license profile.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="machineName">The name of the hybrid machine.</param>
@@ -3787,7 +3787,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to update a license profile.</summary>
+        /// <summary>The operation to Update a license profile.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="machineName">The name of the hybrid machine.</param>
@@ -3836,7 +3836,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to update a license profile.</summary>
+        /// <summary>The operation to Update a license profile.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="machineName">The name of the hybrid machine.</param>
@@ -4206,7 +4206,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to Create a license.</summary>
+        /// <summary>The operation to Update a license.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="licenseName">The name of the license.</param>
@@ -4255,7 +4255,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to Create a license.</summary>
+        /// <summary>The operation to Update a license.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to the Create license operation.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -4314,7 +4314,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to Create a license.</summary>
+        /// <summary>The operation to Update a license.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to the Create license operation.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4371,7 +4371,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to Create a license.</summary>
+        /// <summary>The operation to Update a license.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="licenseName">The name of the license.</param>
@@ -4419,7 +4419,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to Create a license.</summary>
+        /// <summary>The operation to Update a license.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="licenseName">The name of the license.</param>
@@ -4465,7 +4465,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to Create a license.</summary>
+        /// <summary>The operation to Update a license.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="licenseName">The name of the license.</param>
@@ -6039,7 +6039,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to update a license.</summary>
+        /// <summary>The operation to Update a license.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="licenseName">The name of the license.</param>
@@ -6088,7 +6088,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to update a license.</summary>
+        /// <summary>The operation to Update a license.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to the Update license operation.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -6147,7 +6147,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to update a license.</summary>
+        /// <summary>The operation to Update a license.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to the Update license operation.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -6204,7 +6204,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to update a license.</summary>
+        /// <summary>The operation to Update a license.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="licenseName">The name of the license.</param>
@@ -6252,7 +6252,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to update a license.</summary>
+        /// <summary>The operation to Update a license.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="licenseName">The name of the license.</param>
@@ -6298,7 +6298,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to update a license.</summary>
+        /// <summary>The operation to Update a license.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="licenseName">The name of the license.</param>
@@ -7256,7 +7256,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to Create the extension.</summary>
+        /// <summary>The operation to Update the extension.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="machineName">The name of the machine where the extension should be created or updated.</param>
@@ -7308,7 +7308,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to Create the extension.</summary>
+        /// <summary>The operation to Update the extension.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to the Create Machine Extension operation.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -7370,7 +7370,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to Create the extension.</summary>
+        /// <summary>The operation to Update the extension.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to the Create Machine Extension operation.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -7430,7 +7430,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to Create the extension.</summary>
+        /// <summary>The operation to Update the extension.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="machineName">The name of the machine where the extension should be created or updated.</param>
@@ -7481,7 +7481,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to Create the extension.</summary>
+        /// <summary>The operation to Update the extension.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="machineName">The name of the machine where the extension should be created or updated.</param>
@@ -7530,7 +7530,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to Create the extension.</summary>
+        /// <summary>The operation to Update the extension.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="machineName">The name of the machine where the extension should be created or updated.</param>
@@ -9518,7 +9518,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to Create a run command.</summary>
+        /// <summary>The operation to Update a run command.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="machineName">The name of the hybrid machine.</param>
@@ -9570,7 +9570,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to Create a run command.</summary>
+        /// <summary>The operation to Update a run command.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to the Create Run Command.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -9632,7 +9632,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to Create a run command.</summary>
+        /// <summary>The operation to Update a run command.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to the Create Run Command.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -9692,7 +9692,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to Create a run command.</summary>
+        /// <summary>The operation to Update a run command.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="machineName">The name of the hybrid machine.</param>
@@ -9743,7 +9743,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to Create a run command.</summary>
+        /// <summary>The operation to Update a run command.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="machineName">The name of the hybrid machine.</param>
@@ -9792,7 +9792,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to Create a run command.</summary>
+        /// <summary>The operation to Update a run command.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="machineName">The name of the hybrid machine.</param>
@@ -13424,7 +13424,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to update a hybrid machine.</summary>
+        /// <summary>The operation to Update a hybrid machine.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="machineName">The name of the hybrid machine.</param>
@@ -13473,7 +13473,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to update a hybrid machine.</summary>
+        /// <summary>The operation to Update a hybrid machine.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to the Update hybrid machine operation.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -13532,7 +13532,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to update a hybrid machine.</summary>
+        /// <summary>The operation to Update a hybrid machine.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to the Update hybrid machine operation.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -13589,7 +13589,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to update a hybrid machine.</summary>
+        /// <summary>The operation to Update a hybrid machine.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="machineName">The name of the hybrid machine.</param>
@@ -13637,7 +13637,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to update a hybrid machine.</summary>
+        /// <summary>The operation to Update a hybrid machine.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="machineName">The name of the hybrid machine.</param>
@@ -13683,7 +13683,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>The operation to update a hybrid machine.</summary>
+        /// <summary>The operation to Update a hybrid machine.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="machineName">The name of the hybrid machine.</param>
@@ -13870,7 +13870,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>Create the NetworkConfiguration of the target resource.</summary>
+        /// <summary>Update the NetworkConfiguration of the target resource.</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the resource to be connected.</param>
         /// <param name="body">Network Configuration details</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -13915,7 +13915,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>Create the NetworkConfiguration of the target resource.</summary>
+        /// <summary>Update the NetworkConfiguration of the target resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Network Configuration details</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -13970,7 +13970,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>Create the NetworkConfiguration of the target resource.</summary>
+        /// <summary>Update the NetworkConfiguration of the target resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Network Configuration details</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -14022,7 +14022,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>Create the NetworkConfiguration of the target resource.</summary>
+        /// <summary>Update the NetworkConfiguration of the target resource.</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the resource to be connected.</param>
         /// <param name="jsonString">Json string supplied to the NetworkConfigurationsCreateOrUpdate operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -14066,7 +14066,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>Create the NetworkConfiguration of the target resource.</summary>
+        /// <summary>Update the NetworkConfiguration of the target resource.</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the resource to be connected.</param>
         /// <param name="jsonString">Json string supplied to the NetworkConfigurationsCreateOrUpdate operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -14107,7 +14107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
             }
         }
 
-        /// <summary>Create the NetworkConfiguration of the target resource.</summary>
+        /// <summary>Update the NetworkConfiguration of the target resource.</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the resource to be connected.</param>
         /// <param name="body">Network Configuration details</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -18160,7 +18160,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
         }
 
         /// <summary>
-        /// Gets the private link resources that need to be created for a Azure Monitor PrivateLinkScope.
+        /// Gets the private link resources that need to be Getd for a Azure Monitor PrivateLinkScope.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -18208,7 +18208,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
         }
 
         /// <summary>
-        /// Gets the private link resources that need to be created for a Azure Monitor PrivateLinkScope.
+        /// Gets the private link resources that need to be Getd for a Azure Monitor PrivateLinkScope.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -18266,7 +18266,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
         }
 
         /// <summary>
-        /// Gets the private link resources that need to be created for a Azure Monitor PrivateLinkScope.
+        /// Gets the private link resources that need to be Getd for a Azure Monitor PrivateLinkScope.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -18322,7 +18322,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
         }
 
         /// <summary>
-        /// Gets the private link resources that need to be created for a Azure Monitor PrivateLinkScope.
+        /// Gets the private link resources that need to be Getd for a Azure Monitor PrivateLinkScope.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -18505,7 +18505,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
         }
 
         /// <summary>
-        /// Gets the private link resources that need to be created for a Azure Monitor PrivateLinkScope.
+        /// Gets the private link resources that need to be Listd for a Azure Monitor PrivateLinkScope.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -18551,7 +18551,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
         }
 
         /// <summary>
-        /// Gets the private link resources that need to be created for a Azure Monitor PrivateLinkScope.
+        /// Gets the private link resources that need to be Listd for a Azure Monitor PrivateLinkScope.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -18607,7 +18607,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
         }
 
         /// <summary>
-        /// Gets the private link resources that need to be created for a Azure Monitor PrivateLinkScope.
+        /// Gets the private link resources that need to be Listd for a Azure Monitor PrivateLinkScope.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -18661,7 +18661,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
         }
 
         /// <summary>
-        /// Gets the private link resources that need to be created for a Azure Monitor PrivateLinkScope.
+        /// Gets the private link resources that need to be Listd for a Azure Monitor PrivateLinkScope.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -18844,7 +18844,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
         }
 
         /// <summary>
-        /// Creates (or updates) a Azure Arc PrivateLinkScope. Note: You cannot specify a different value for InstrumentationKey nor
+        /// Update (or Update) a Azure Arc PrivateLinkScope. Note: You cannot specify a different value for InstrumentationKey nor
         /// AppId in the Put operation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -18897,7 +18897,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
         }
 
         /// <summary>
-        /// Creates (or updates) a Azure Arc PrivateLinkScope. Note: You cannot specify a different value for InstrumentationKey nor
+        /// Update (or Update) a Azure Arc PrivateLinkScope. Note: You cannot specify a different value for InstrumentationKey nor
         /// AppId in the Put operation.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -18960,7 +18960,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
         }
 
         /// <summary>
-        /// Creates (or updates) a Azure Arc PrivateLinkScope. Note: You cannot specify a different value for InstrumentationKey nor
+        /// Update (or Update) a Azure Arc PrivateLinkScope. Note: You cannot specify a different value for InstrumentationKey nor
         /// AppId in the Put operation.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -19020,7 +19020,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
         }
 
         /// <summary>
-        /// Creates (or updates) a Azure Arc PrivateLinkScope. Note: You cannot specify a different value for InstrumentationKey nor
+        /// Update (or Update) a Azure Arc PrivateLinkScope. Note: You cannot specify a different value for InstrumentationKey nor
         /// AppId in the Put operation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -19072,7 +19072,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
         }
 
         /// <summary>
-        /// Creates (or updates) a Azure Arc PrivateLinkScope. Note: You cannot specify a different value for InstrumentationKey nor
+        /// Update (or Update) a Azure Arc PrivateLinkScope. Note: You cannot specify a different value for InstrumentationKey nor
         /// AppId in the Put operation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -19121,7 +19121,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
         }
 
         /// <summary>
-        /// Creates (or updates) a Azure Arc PrivateLinkScope. Note: You cannot specify a different value for InstrumentationKey nor
+        /// Update (or Update) a Azure Arc PrivateLinkScope. Note: You cannot specify a different value for InstrumentationKey nor
         /// AppId in the Put operation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -21187,7 +21187,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
         }
 
         /// <summary>
-        /// Updates an existing PrivateLinkScope's tags. To update other fields use the CreateOrUpdate method.
+        /// Update an existing PrivateLinkScope's tags. To Update other fields use the UpdateOrUpdate method.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -21238,7 +21238,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
         }
 
         /// <summary>
-        /// Updates an existing PrivateLinkScope's tags. To update other fields use the CreateOrUpdate method.
+        /// Update an existing PrivateLinkScope's tags. To Update other fields use the UpdateOrUpdate method.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Updated tag information to set into the PrivateLinkScope instance.</param>
@@ -21299,7 +21299,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
         }
 
         /// <summary>
-        /// Updates an existing PrivateLinkScope's tags. To update other fields use the CreateOrUpdate method.
+        /// Update an existing PrivateLinkScope's tags. To Update other fields use the UpdateOrUpdate method.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Updated tag information to set into the PrivateLinkScope instance.</param>
@@ -21358,7 +21358,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
         }
 
         /// <summary>
-        /// Updates an existing PrivateLinkScope's tags. To update other fields use the CreateOrUpdate method.
+        /// Update an existing PrivateLinkScope's tags. To Update other fields use the UpdateOrUpdate method.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -21408,7 +21408,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
         }
 
         /// <summary>
-        /// Updates an existing PrivateLinkScope's tags. To update other fields use the CreateOrUpdate method.
+        /// Update an existing PrivateLinkScope's tags. To Update other fields use the UpdateOrUpdate method.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -21456,7 +21456,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
         }
 
         /// <summary>
-        /// Updates an existing PrivateLinkScope's tags. To update other fields use the CreateOrUpdate method.
+        /// Update an existing PrivateLinkScope's tags. To Update other fields use the UpdateOrUpdate method.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>

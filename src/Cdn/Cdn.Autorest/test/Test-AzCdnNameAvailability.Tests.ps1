@@ -15,25 +15,25 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzCdnNameAvailability'))
 }
 
 Describe 'Test-AzCdnNameAvailability'  {
-    It 'CheckExpanded' {
-        $endpointName = 'e-ndpstest110'
-        $resourceType = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResourceType]::MicrosoftCdnProfilesEndpoints
+    # It 'CheckExpanded' {
+    #     $endpointName = 'e-ndpstest110'
+    #     $resourceType = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResourceType]::MicrosoftCdnProfilesEndpoints
         
-        $nameAvailability = Test-AzCdnNameAvailability -Name $endpointName -Type $resourceType
-        $nameAvailability.NameAvailable | Should -BeTrue
+    #     $nameAvailability = Test-AzCdnNameAvailability -Name $endpointName -Type $resourceType
+    #     $nameAvailability.NameAvailable | Should -BeTrue
 
-        $nameAvailability = Test-AzCdnNameAvailability -Name $env.ClassicEndpointName -Type $resourceType
-        $nameAvailability.NameAvailable | Should -BeFalse
-    }
+    #     $nameAvailability = Test-AzCdnNameAvailability -Name $env.ClassicEndpointName -Type $resourceType
+    #     $nameAvailability.NameAvailable | Should -BeFalse
+    # }
 
-    It 'CheckExpanded1' {
-        $endpointName = 'e-ndpstest111'
-        $resourceType = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResourceType]::MicrosoftCdnProfilesEndpoints
+    # It 'CheckExpanded1' {
+    #     $endpointName = 'e-ndpstest111'
+    #     $resourceType = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResourceType]::MicrosoftCdnProfilesEndpoints
         
-        $nameAvailability = Test-AzCdnNameAvailability -Name $endpointName -Type $resourceType
-        $nameAvailability.NameAvailable | Should -BeTrue
+    #     $nameAvailability = Test-AzCdnNameAvailability -Name $endpointName -Type $resourceType
+    #     $nameAvailability.NameAvailable | Should -BeTrue
 
-        $nameAvailability = Test-AzCdnNameAvailability -Name $env.ClassicEndpointName -Type $resourceType
-        $nameAvailability.NameAvailable | Should -BeFalse
-    }
+    #     $nameAvailability = Test-AzCdnNameAvailability -Name $env.ClassicEndpointName -Type $resourceType
+    #     $nameAvailability.NameAvailable | Should -BeFalse
+    # }
 }

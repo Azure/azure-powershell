@@ -293,6 +293,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             managedInstance.ZoneRedundant = resp.ZoneRedundant;
             managedInstance.DatabaseFormat = resp.DatabaseFormat;
             managedInstance.PricingModel = resp.PricingModel;
+            managedInstance.ExternalGovernanceStatus = resp.ExternalGovernanceStatus;
 
             return managedInstance;
         }
@@ -447,7 +448,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 userList = MicrosoftGraphClient.FilterUsers(filter).Where(gr => string.Equals(gr.UserPrincipalName, displayName, StringComparison.OrdinalIgnoreCase));
             }
 
-            // No user was found. Check if the display name is a guest user. 
+            // No user was found. Check if the display name is a guest user.
             if (userList == null || userList.Count() == 0)
             {
                 // Check if the display name is the UPN

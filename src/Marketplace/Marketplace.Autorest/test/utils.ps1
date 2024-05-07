@@ -45,8 +45,11 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
-	Connect-AzAccount -UseDeviceAuthentication -SubscriptionId 1052ff5a-aa43-4ca1-bd18-010399494ce5
-	New-AzMarketplacePrivateStoreCollection -CollectionName test1 -CollectionId 8c7a91db-cd41-43b6-af47-2e869654126d -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -SubscriptionsList 1052ff5a-aa43-4ca1-bd18-010399494ce5
+	#Connect-AzAccount -UseDeviceAuthentication -Tenant a260d38c-96cf-492d-a340-404d0c4b3ad6
+    #ApproveAllItemsCollection
+    New-AzMarketplacePrivateStoreCollection -CollectionName AllItemsPWRTest1 -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa0188 -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -SubscriptionsList 1052ff5a-aa43-4ca1-bd18-010399494ce5
+    #CopyOfferCollection
+	New-AzMarketplacePrivateStoreCollection -CollectionName CopyPWRTest1 -CollectionId 8c7a91db-cd41-43b6-af47-2e869654126d -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -SubscriptionsList 1052ff5a-aa43-4ca1-bd18-010399494ce5
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }
@@ -54,8 +57,8 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-	Remove-AzMarketplacePrivateStoreCollection -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa01f1
- 	Remove-AzMarketplacePrivateStoreCollection -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -CollectionId 7f5402e4-e8f4-46bd-9bd1-8d27866a6065
+	#Remove-AzMarketplacePrivateStoreCollection -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa01f1
+ 	#Remove-AzMarketplacePrivateStoreCollection -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -CollectionId 7f5402e4-e8f4-46bd-9bd1-8d27866a6065
  	Remove-AzMarketplacePrivateStoreCollection -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa0188
 	Remove-AzMarketplacePrivateStoreCollection -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -CollectionId 8c7a91db-cd41-43b6-af47-2e869654126d
 }

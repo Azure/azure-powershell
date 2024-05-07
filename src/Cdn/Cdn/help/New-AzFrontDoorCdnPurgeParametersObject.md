@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnPurgeParametersObject
 schema: 2.0.0
@@ -13,7 +13,8 @@ Create an in-memory object for AfdPurgeParameters.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnPurgeParametersObject -ContentPath <String[]> [-Domain <String[]>] [<CommonParameters>]
+New-AzFrontDoorCdnPurgeParametersObject -ContentPath <String[]> [-Domain <String[]>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,11 +76,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdPurgeParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdPurgeParameters
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

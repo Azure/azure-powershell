@@ -19,11 +19,10 @@ using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
-using System.Collections.Generic;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-using System;
 using Microsoft.Azure.Management.NetApp.Models;
+using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
@@ -74,7 +73,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = true,
+            ParameterSetName = FieldsParameterSet,
             HelpMessage = "The name of the ANF volume")]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The name of the ANF volume",
+            ParameterSetName = ParentObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias("VolumeName")]
         [ResourceNameCompleter(
@@ -508,8 +512,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             }
             if (ShouldProcess(PoolName, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, Name)))
             {
-                var anfVolume = AzureNetAppFilesManagementClient.Volume_2022_11_01.CreateOrUpdate(ResourceGroupName, AccountName, PoolName, Name, volumeBody);
-                WriteObject(anfVolume.ToPsNetAppFilesVolume());
+                try
+                {
+                    var anfVolume = AzureNetAppFilesManagementClient.Volume_2022_11_01.CreateOrUpdate(ResourceGroupName, AccountName, PoolName, Name, volumeBody);
+                    WriteObject(anfVolume.ToPsNetAppFilesVolume());
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
         }
     }

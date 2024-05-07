@@ -2,7 +2,7 @@
 
 function Update-AzDataProtectionResourceGuard
 {   
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IResourceGuardResource')]
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IResourceGuardResource')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Updates a resource guard belonging to a resource group')]
 
@@ -31,7 +31,7 @@ function Update-AzDataProtectionResourceGuard
         [Hashtable]
         ${Tag},
 
-        [Parameter(ParameterSetName="UpdateResourceGuardOperations", Mandatory=$false, HelpMessage='List of critical operations which are not protected by this resourceGuard. Supported values are DeleteProtection, UpdateProtection, UpdatePolicy, GetSecurityPin, DeleteBackupInstance')]
+        [Parameter(ParameterSetName="UpdateResourceGuardOperations", Mandatory=$false, HelpMessage='List of critical operations which are not protected by this resourceGuard. Supported values are DeleteProtection, UpdateProtection, UpdatePolicy, GetSecurityPin, DeleteBackupInstance, RecoveryServicesDisableImmutability, DataProtectionDisableImmutability, RecoveryServicesModifyEncryptionSettings, DataProtectionModifyEncryptionSettings')]
         [System.String[]]
         ${CriticalOperationExclusionList},
         
@@ -87,7 +87,7 @@ function Update-AzDataProtectionResourceGuard
         }       
         
         # modify Critical operation exclusion list 
-        $CriticalOperationsMap = @{ DeleteProtection = "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/delete"; UpdateProtection = "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/write"; UpdatePolicy = "Microsoft.RecoveryServices/vaults/backupPolicies/write"; GetSecurityPin = "Microsoft.RecoveryServices/vaults/backupSecurityPIN/action"; DeleteBackupInstance = "Microsoft.DataProtection/backupVaults/backupInstances/delete" }
+        $CriticalOperationsMap = @{ DeleteProtection = "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/delete"; UpdateProtection = "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/write"; UpdatePolicy = "Microsoft.RecoveryServices/vaults/backupPolicies/write"; GetSecurityPin = "Microsoft.RecoveryServices/vaults/backupSecurityPIN/action"; DeleteBackupInstance = "Microsoft.DataProtection/backupVaults/backupInstances/delete"; RecoveryServicesDisableImmutability = "Microsoft.RecoveryServices/vaults/write#reduceImmutabilityState"; DataProtectionDisableImmutability = "Microsoft.DataProtection/backupVaults/write#reduceImmutabilityState"; RecoveryServicesModifyEncryptionSettings = "Microsoft.RecoveryServices/vaults/write#modifyEncryptionSettings"; DataProtectionModifyEncryptionSettings = "Microsoft.DataProtection/backupVaults/write#modifyEncryptionSettings"}
        
         $CriticalOperationExclusionListInternal = [System.Collections.ArrayList]@()
 

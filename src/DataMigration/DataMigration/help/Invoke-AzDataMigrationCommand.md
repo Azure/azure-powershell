@@ -14,8 +14,8 @@ Creates a new command to be executed on an existing DMS (classic) task.
 
 ```
 Invoke-AzDataMigrationCommand -CommandType <CommandTypeEnum> -ResourceGroupName <String> -ServiceName <String>
- -ProjectName <String> -TaskName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ProjectName <String> -TaskName <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

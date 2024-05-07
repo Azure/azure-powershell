@@ -13,8 +13,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public static partial class ProtectedItemsOperationsExtensions
     {
         /// <summary>
-        /// Provides the details of the backed up item. This is an asynchronous operation. To know the status of the operation,
-        /// call the GetItemOperationResult API.
+        /// Provides the details of the backed up item. This is an asynchronous
+        /// operation. To know the status of the operation, call the
+        /// GetItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -26,7 +27,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the backed up item.
@@ -43,8 +45,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// Provides the details of the backed up item. This is an asynchronous operation. To know the status of the operation,
-        /// call the GetItemOperationResult API.
+        /// Provides the details of the backed up item. This is an asynchronous
+        /// operation. To know the status of the operation, call the
+        /// GetItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -56,7 +59,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the backed up item.
@@ -78,8 +82,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             }
         }
         /// <summary>
-        /// Enables backup of an item or to modifies the backup policy information of an already backed up item. This is an
-        /// asynchronous operation. To know the status of the operation, call the GetItemOperationResult API.
+        /// Enables backup of an item or to modifies the backup policy information of
+        /// an already backed up item. This is an asynchronous operation. To know the
+        /// status of the operation, call the GetItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -88,7 +93,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the backup item.
@@ -99,14 +105,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='protectedItemName'>
         /// Item name to be backed up.
         /// </param>
-        public static ProtectedItemResource CreateOrUpdate(this IProtectedItemsOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, ProtectedItemResource parameters)
+        /// <param name='xMsAuthorizationAuxiliary'>
+        /// 
+        /// </param>
+        public static ProtectedItemResource CreateOrUpdate(this IProtectedItemsOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, ProtectedItemResource parameters, string xMsAuthorizationAuxiliary = default(string))
         {
-                return ((IProtectedItemsOperations)operations).CreateOrUpdateAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, parameters).GetAwaiter().GetResult();
+                return ((IProtectedItemsOperations)operations).CreateOrUpdateAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, parameters, xMsAuthorizationAuxiliary).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Enables backup of an item or to modifies the backup policy information of an already backed up item. This is an
-        /// asynchronous operation. To know the status of the operation, call the GetItemOperationResult API.
+        /// Enables backup of an item or to modifies the backup policy information of
+        /// an already backed up item. This is an asynchronous operation. To know the
+        /// status of the operation, call the GetItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -115,7 +125,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the backup item.
@@ -125,20 +136,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// </param>
         /// <param name='protectedItemName'>
         /// Item name to be backed up.
+        /// </param>
+        /// <param name='xMsAuthorizationAuxiliary'>
+        /// 
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ProtectedItemResource> CreateOrUpdateAsync(this IProtectedItemsOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, ProtectedItemResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ProtectedItemResource> CreateOrUpdateAsync(this IProtectedItemsOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, ProtectedItemResource parameters, string xMsAuthorizationAuxiliary = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, parameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, parameters, xMsAuthorizationAuxiliary, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Used to disable backup of an item within a container. This is an asynchronous operation. To know the status of the
-        /// request, call the GetItemOperationResult API.
+        /// Used to disable backup of an item within a container. This is an
+        /// asynchronous operation. To know the status of the request, call the
+        /// GetItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -147,7 +162,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the backed up item.
@@ -164,8 +180,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// Used to disable backup of an item within a container. This is an asynchronous operation. To know the status of the
-        /// request, call the GetItemOperationResult API.
+        /// Used to disable backup of an item within a container. This is an
+        /// asynchronous operation. To know the status of the request, call the
+        /// GetItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -174,7 +191,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the backed up item.

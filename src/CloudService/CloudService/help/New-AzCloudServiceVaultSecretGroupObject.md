@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.CloudService-help.xml
 Module Name: Az.CloudService
 online version: https://learn.microsoft.com/powershell/module/az.cloudservice/new-azcloudservicevaultsecretgroupobject
 schema: 2.0.0
@@ -13,7 +13,8 @@ Create a in-memory object for Vault Secret Group
 ## SYNTAX
 
 ```
-New-AzCloudServiceVaultSecretGroupObject [-CertificateUrl <String[]>] [-Id <String>] [<CommonParameters>]
+New-AzCloudServiceVaultSecretGroupObject [-Id <String>] [-CertificateUrl <String[]>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,7 +75,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

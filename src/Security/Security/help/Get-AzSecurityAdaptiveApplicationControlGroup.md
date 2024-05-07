@@ -14,7 +14,8 @@ Gets an application control VM/server group.
 
 ```
 Get-AzSecurityAdaptiveApplicationControlGroup -GroupName <String> -AscLocation <String>
- [-SubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

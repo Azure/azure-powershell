@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the ConnectedKubernetes service.
 
 ---
-## Status
-[![Az.ConnectedKubernetes](https://img.shields.io/powershellgallery/v/Az.ConnectedKubernetes.svg?style=flat-square&label=Az.ConnectedKubernetes "Az.ConnectedKubernetes")](https://www.powershellgallery.com/packages/Az.ConnectedKubernetes/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

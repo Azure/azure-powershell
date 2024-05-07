@@ -19,7 +19,33 @@
 -->
 
 ## Upcoming Release
+* Added null check to the permissions object in the ToPSRoleDefinition method to return if the whole permissions object array is null.
+
+## Version 6.16.2
+* Introduced secrets detection feature to safeguard sensitive data.
+* Migrated SDK generation from autorest csharp to autorest powershell.
+* Fixed deployment and deployment stack New/Set cmdlets to fail if template/parameter uri fails to downloads.
+
+## Version 6.16.1
+* Added null check to the permissions object in the ToPSRoleDefinition method.
+* Added dynamic parameters to stack New/Set cmdlets.
+* Used correct JSON serializer settings for all templates-related deserialization.
+
+## Version 6.16.0
+* Added breaking change warnings for Azure Policy cmdlets.
+* Added `AuxTenant` parameter in `New-AzResourceGroupDeployment`to support cross-tenant deployment.
+* Fixed bug with custom types and deployments whatif. [#13245]
+* Fixed bug with nullable array parameters & outputs.
+* Fixed bug with TemplateParameterUri not downloading parameters correctly.
+
+## Version 6.15.1
+* Fixed deadlock in Bicep CLI execution. [#24133]
+
+## Version 6.15.0
+* Supported `-SkipClientSideScopeValidation` in RoleAssignment and RoleDefinition related commands. [#22473]
 * Updated Bicep build logic to use --stdout flag instead of creating a temporary file on disk.
+* Fixed exception when `-ApiVersion` is specified for `Get-AzResource`, affected by some resource types.
+* Refactored deployment base cmdlet.
 
 ## Version 6.14.0
 * Fixed ABAC condition not included in role definition payload. Get-AzRoleDefinition will now contain ABAC Condition and ConditionVersion info when applicable.

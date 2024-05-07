@@ -137,5 +137,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzStorageTable](./New-AzStorageTable.md)
 
 [Remove-AzStorageTable](./Remove-AzStorageTable.md)
-
-

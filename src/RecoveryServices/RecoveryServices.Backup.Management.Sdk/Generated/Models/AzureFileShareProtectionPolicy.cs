@@ -32,10 +32,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="workLoadType">Type of workload for the backup management
-        /// Possible values include: 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb',
-        /// 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState', 'Client',
-        /// 'GenericDataSource', 'SQLDataBase', 'AzureFileShare', 'SAPHanaDatabase',
-        /// 'SAPAseDatabase', 'SAPHanaDBInstance'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;VM&#39;, &#39;FileFolder&#39;, &#39;AzureSqlDb&#39;,
+        /// &#39;SQLDB&#39;, &#39;Exchange&#39;, &#39;Sharepoint&#39;, &#39;VMwareVM&#39;, &#39;SystemState&#39;, &#39;Client&#39;,
+        /// &#39;GenericDataSource&#39;, &#39;SQLDataBase&#39;, &#39;AzureFileShare&#39;, &#39;SAPHanaDatabase&#39;,
+        /// &#39;SAPAseDatabase&#39;, &#39;SAPHanaDBInstance&#39;</param>
 
         /// <param name="schedulePolicy">Backup schedule specified as part of backup policy.
         /// </param>
@@ -43,16 +43,20 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="retentionPolicy">Retention policy with the details on backup copy retention ranges.
         /// </param>
 
+        /// <param name="vaultRetentionPolicy">Retention policy with the details on hardened backup copy retention ranges.
+        /// </param>
+
         /// <param name="timeZone">TimeZone optional input as string. For example: TimeZone = &#34;Pacific
         /// Standard Time&#34;.
         /// </param>
-        public AzureFileShareProtectionPolicy(int? protectedItemsCount = default(int?), System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), string workLoadType = default(string), SchedulePolicy schedulePolicy = default(SchedulePolicy), RetentionPolicy retentionPolicy = default(RetentionPolicy), string timeZone = default(string))
+        public AzureFileShareProtectionPolicy(int? protectedItemsCount = default(int?), System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), string workLoadType = default(string), SchedulePolicy schedulePolicy = default(SchedulePolicy), RetentionPolicy retentionPolicy = default(RetentionPolicy), VaultRetentionPolicy vaultRetentionPolicy = default(VaultRetentionPolicy), string timeZone = default(string))
 
         : base(protectedItemsCount, resourceGuardOperationRequests)
         {
             this.WorkLoadType = workLoadType;
             this.SchedulePolicy = schedulePolicy;
             this.RetentionPolicy = retentionPolicy;
+            this.VaultRetentionPolicy = vaultRetentionPolicy;
             this.TimeZone = timeZone;
             CustomInit();
         }
@@ -83,10 +87,34 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public RetentionPolicy RetentionPolicy {get; set; }
 
         /// <summary>
+        /// Gets or sets retention policy with the details on hardened backup copy
+        /// retention ranges.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "vaultRetentionPolicy")]
+        public VaultRetentionPolicy VaultRetentionPolicy {get; set; }
+
+        /// <summary>
         /// Gets or sets timeZone optional input as string. For example: TimeZone =
         /// &#34;Pacific Standard Time&#34;.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "timeZone")]
         public string TimeZone {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+
+            if (this.VaultRetentionPolicy != null)
+            {
+                this.VaultRetentionPolicy.Validate();
+            }
+
+        }
     }
 }

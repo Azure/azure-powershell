@@ -14,7 +14,8 @@ Get an action group.
 
 ### List (Default)
 ```
-Get-AzActionGroup [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzActionGroup [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -31,7 +32,8 @@ Get-AzActionGroup -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Def
 
 ### GetViaIdentity
 ```
-Get-AzActionGroup -InputObject <IActionGroupIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzActionGroup -InputObject <IActionGroupIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,7 +105,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupIdentity

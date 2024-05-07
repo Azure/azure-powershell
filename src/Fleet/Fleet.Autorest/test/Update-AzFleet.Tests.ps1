@@ -15,11 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFleet'))
 }
 
 Describe 'Update-AzFleet' {
-    It 'UpdateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaJsonFilePath' -skip {
+    It 'UpdateViaIdentityExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

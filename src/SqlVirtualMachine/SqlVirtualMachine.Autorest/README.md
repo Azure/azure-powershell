@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the SqlVirtualMachine service.
 
 ---
-## Status
-[![Az.SqlVirtualMachine](https://img.shields.io/powershellgallery/v/Az.SqlVirtualMachine.svg?style=flat-square&label=Az.SqlVirtualMachine "Az.SqlVirtualMachine")](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

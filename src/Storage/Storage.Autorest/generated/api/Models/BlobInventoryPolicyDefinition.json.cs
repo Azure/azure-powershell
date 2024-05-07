@@ -65,11 +65,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_filter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("filters"), out var __jsonFilters) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.BlobInventoryPolicyFilter.FromJson(__jsonFilters) : Filter;}
-            {_format = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("format"), out var __jsonFormat) ? (string)__jsonFormat : (string)Format;}
-            {_schedule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("schedule"), out var __jsonSchedule) ? (string)__jsonSchedule : (string)Schedule;}
-            {_objectType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("objectType"), out var __jsonObjectType) ? (string)__jsonObjectType : (string)ObjectType;}
-            {_schemaField = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("schemaFields"), out var __jsonSchemaFields) ? If( __jsonSchemaFields as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : SchemaField;}
+            {_filter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("filters"), out var __jsonFilters) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.BlobInventoryPolicyFilter.FromJson(__jsonFilters) : _filter;}
+            {_format = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("format"), out var __jsonFormat) ? (string)__jsonFormat : (string)_format;}
+            {_schedule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("schedule"), out var __jsonSchedule) ? (string)__jsonSchedule : (string)_schedule;}
+            {_objectType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("objectType"), out var __jsonObjectType) ? (string)__jsonObjectType : (string)_objectType;}
+            {_schemaField = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("schemaFields"), out var __jsonSchemaFields) ? If( __jsonSchemaFields as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _schemaField;}
             AfterFromJson(json);
         }
 

@@ -17,9 +17,9 @@ Creates a pool in the Batch service.
 ```
 New-AzBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <String>] [-ResizeTimeout <TimeSpan>]
  [-TargetDedicatedComputeNodes <Int32>] [-TargetLowPriorityComputeNodes <Int32>] [-TaskSlotsPerNode <Int32>]
- [-TaskSchedulingPolicy <PSTaskSchedulingPolicy>] [-Metadata <IDictionary>]
- [-InterComputeNodeCommunicationEnabled] [-StartTask <PSStartTask>]
- [-CertificateReferences <PSCertificateReference[]>]
+ [-UpgradePolicy <PSUpgradePolicy>] [-TaskSchedulingPolicy <PSTaskSchedulingPolicy>]
+ [-ResourceTag <IDictionary>] [-Metadata <IDictionary>] [-InterComputeNodeCommunicationEnabled]
+ [-StartTask <PSStartTask>] [-CertificateReferences <PSCertificateReference[]>]
  [-ApplicationPackageReferences <PSApplicationPackageReference[]>]
  [-ApplicationLicenses <System.Collections.Generic.List`1[System.String]>]
  [-CloudServiceConfiguration <PSCloudServiceConfiguration>] [-NetworkConfiguration <PSNetworkConfiguration>]
@@ -33,9 +33,9 @@ New-AzBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <Strin
 ```
 New-AzBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <String>] [-ResizeTimeout <TimeSpan>]
  [-TargetDedicatedComputeNodes <Int32>] [-TargetLowPriorityComputeNodes <Int32>] [-TaskSlotsPerNode <Int32>]
- [-TaskSchedulingPolicy <PSTaskSchedulingPolicy>] [-Metadata <IDictionary>]
- [-InterComputeNodeCommunicationEnabled] [-StartTask <PSStartTask>]
- [-CertificateReferences <PSCertificateReference[]>]
+ [-UpgradePolicy <PSUpgradePolicy>] [-TaskSchedulingPolicy <PSTaskSchedulingPolicy>]
+ [-ResourceTag <IDictionary>] [-Metadata <IDictionary>] [-InterComputeNodeCommunicationEnabled]
+ [-StartTask <PSStartTask>] [-CertificateReferences <PSCertificateReference[]>]
  [-ApplicationPackageReferences <PSApplicationPackageReference[]>]
  [-ApplicationLicenses <System.Collections.Generic.List`1[System.String]>]
  [-VirtualMachineConfiguration <PSVirtualMachineConfiguration>]
@@ -49,9 +49,9 @@ New-AzBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <Strin
 ```
 New-AzBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <String>]
  [-AutoScaleEvaluationInterval <TimeSpan>] [-AutoScaleFormula <String>] [-TaskSlotsPerNode <Int32>]
- [-TaskSchedulingPolicy <PSTaskSchedulingPolicy>] [-Metadata <IDictionary>]
- [-InterComputeNodeCommunicationEnabled] [-StartTask <PSStartTask>]
- [-CertificateReferences <PSCertificateReference[]>]
+ [-UpgradePolicy <PSUpgradePolicy>] [-TaskSchedulingPolicy <PSTaskSchedulingPolicy>]
+ [-ResourceTag <IDictionary>] [-Metadata <IDictionary>] [-InterComputeNodeCommunicationEnabled]
+ [-StartTask <PSStartTask>] [-CertificateReferences <PSCertificateReference[]>]
  [-ApplicationPackageReferences <PSApplicationPackageReference[]>]
  [-ApplicationLicenses <System.Collections.Generic.List`1[System.String]>]
  [-CloudServiceConfiguration <PSCloudServiceConfiguration>] [-NetworkConfiguration <PSNetworkConfiguration>]
@@ -65,9 +65,9 @@ New-AzBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <Strin
 ```
 New-AzBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <String>]
  [-AutoScaleEvaluationInterval <TimeSpan>] [-AutoScaleFormula <String>] [-TaskSlotsPerNode <Int32>]
- [-TaskSchedulingPolicy <PSTaskSchedulingPolicy>] [-Metadata <IDictionary>]
- [-InterComputeNodeCommunicationEnabled] [-StartTask <PSStartTask>]
- [-CertificateReferences <PSCertificateReference[]>]
+ [-UpgradePolicy <PSUpgradePolicy>] [-TaskSchedulingPolicy <PSTaskSchedulingPolicy>]
+ [-ResourceTag <IDictionary>] [-Metadata <IDictionary>] [-InterComputeNodeCommunicationEnabled]
+ [-StartTask <PSStartTask>] [-CertificateReferences <PSCertificateReference[]>]
  [-ApplicationPackageReferences <PSApplicationPackageReference[]>]
  [-ApplicationLicenses <System.Collections.Generic.List`1[System.String]>]
  [-VirtualMachineConfiguration <PSVirtualMachineConfiguration>]
@@ -374,6 +374,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceTag
+The user  defined tags to be associated with the Azure Batch Pool.When specified, these tags are propagated to the backing Azure resources associated with the pool.This property can only be specified when the Batch account was created with the poolAllocationMode property set to 'UserSubscription'.
+
+```yaml
+Type: System.Collections.IDictionary
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -StartTask
 Specifies the start task specification for the pool.
 The start task is run when a compute node joins the pool, or when the compute node is rebooted or reimaged.
@@ -459,6 +474,21 @@ The default value is 1. The maximum value is the smaller of 4 times the number o
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases: MaxTasksPerComputeNode
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UpgradePolicy
+The upgrade policy for the pool in NewBatchPoolCommand.cs .
+
+```yaml
+Type: Microsoft.Azure.Commands.Batch.Models.PSUpgradePolicy
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

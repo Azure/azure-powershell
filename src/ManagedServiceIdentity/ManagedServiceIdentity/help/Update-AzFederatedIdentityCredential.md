@@ -22,7 +22,8 @@ Update-AzFederatedIdentityCredential -IdentityName <String> -Name <String> -Reso
 ### UpdateViaIdentityExpanded
 ```
 Update-AzFederatedIdentityCredential -InputObject <IManagedServiceIdentity> [-Audience <String[]>]
- [-Issuer <String>] [-Subject <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Issuer <String>] [-Subject <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,17 +31,33 @@ Create or update a federated identity credential under the specified user assign
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Update federated identity credential under the specified user assigned identity
+```powershell
 Update-AzFederatedIdentityCredential -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 `
     -Name fic-pwsh01 -Issuer "https://kubernetes-oauth-upd.azure.com" -Subject "system:serviceaccount-upd:ns:svcaccount"
 ```
 
-### EXAMPLE 2
+```output
+Name       Issuer                                 Subject                                 Audience
+----       ------                                 -------                                 --------
+fic-pwsh01 https://kubernetes-oauth-upd.azure.com system:serviceaccount-upd:ns:svcaccount {api://AzureADTokenExchange}
 ```
+
+This command updates a federated identity credential under the specified user assigned identity.
+
+### Example 2: Update federated identity credential under the specified user assigned identity by pipeline
+```powershell
 Get-AzFederatedIdentityCredential -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 -Name fic-pwsh01 `
     | Update-AzFederatedIdentityCredential -Issuer "https://kubernetes-oauth-upd.azure.com" -Subject "system:serviceaccount-upd:ns:svcaccount"
 ```
+
+```output
+Name       Issuer                                 Subject                                 Audience
+----       ------                                 -------                                 --------
+fic-pwsh01 https://kubernetes-oauth-upd.azure.com system:serviceaccount-upd:ns:svcaccount {api://AzureADTokenExchange}
+```
+
+This command updates a federated identity credential under the specified user assigned identity by pipeline.
 
 ## PARAMETERS
 
@@ -48,13 +65,13 @@ Get-AzFederatedIdentityCredential -ResourceGroupName azure-rg-test -IdentityName
 The list of audiences that can appear in the issued token.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: @("api://AzureADTokenExchange")
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -64,7 +81,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -79,7 +96,7 @@ Accept wildcard characters: False
 The name of the identity resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -95,7 +112,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: IManagedServiceIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IManagedServiceIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -110,7 +127,7 @@ Accept wildcard characters: False
 The URL of the issuer to be trusted.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -125,7 +142,7 @@ Accept wildcard characters: False
 The name of the federated identity credential resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -141,7 +158,7 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -156,7 +173,7 @@ Accept wildcard characters: False
 The identifier of the external identity.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -171,13 +188,13 @@ Accept wildcard characters: False
 The Id of the Subscription to which the identity belongs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -186,7 +203,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -202,7 +219,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -219,25 +236,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IManagedServiceIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.IFederatedIdentityCredential
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
 
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
+ALIASES
 
-INPUTOBJECT \<IManagedServiceIdentity\>: Identity Parameter
-  \[FederatedIdentityCredentialResourceName \<String\>\]: The name of the federated identity credential resource.
-  \[Id \<String\>\]: Resource identity path
-  \[ResourceGroupName \<String\>\]: The name of the Resource Group to which the identity belongs.
-  \[ResourceName \<String\>\]: The name of the identity resource.
-  \[Scope \<String\>\]: The resource provider scope of the resource.
-Parent resource being extended by Managed Identities.
-  \[SubscriptionId \<String\>\]: The Id of the Subscription to which the identity belongs.
+Update-AzFederatedIdentityCredentials
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.managedserviceidentity/update-azfederatedidentitycredential](https://learn.microsoft.com/powershell/module/az.managedserviceidentity/update-azfederatedidentitycredential)
-

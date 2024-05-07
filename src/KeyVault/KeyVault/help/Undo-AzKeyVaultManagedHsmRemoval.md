@@ -15,15 +15,15 @@ Recover a managed HSM.
 ### Default (Default)
 ```
 Undo-AzKeyVaultManagedHsmRemoval [-Name] <String> [-ResourceGroupName] <String> [-Location] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Undo-AzKeyVaultManagedHsmRemoval [-InputObject] <PSDeletedManagedHsm>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -211,4 +211,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzKeyVaultManagedHsm](./Remove-AzKeyVaultManagedHsm.md)
 
 [Update-AzKeyVaultManagedHsm](./Update-AzKeyVaultManagedHsm.md)
-

@@ -1,7 +1,7 @@
 ---
 external help file: Az.Quota-help.xml
 Module Name: Az.Quota
-online version: https://learn.microsoft.com/powershell/module/az.Quota/New-AzQuotaLimitObject
+online version: https://learn.microsoft.com/powershell/module/Az.Quota/new-azquotalimitobject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,8 @@ Create an in-memory object for LimitObject.
 ## SYNTAX
 
 ```
-New-AzQuotaLimitObject -Value <Int32> [-LimitType <String>] [<CommonParameters>]
+New-AzQuotaLimitObject -Value <Int32> [-LimitType <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,10 +74,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.LimitObject
+### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.LimitObject
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

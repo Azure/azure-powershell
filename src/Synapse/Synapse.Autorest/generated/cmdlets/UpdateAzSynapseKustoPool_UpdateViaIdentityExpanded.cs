@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Synapse.Description(@"Update a Kusto Kusto Pool.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Synapse.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Synapse.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}", ApiVersion = "2021-06-01-preview")]
     public partial class UpdateAzSynapseKustoPool_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.IEventListener
     {
@@ -33,6 +34,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>Class representing an update to a Kusto kusto pool.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolUpdate _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.KustoPoolUpdate();
+
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Synapse.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Synapse.ParameterCategory.Runtime)]
@@ -47,9 +51,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Synapse.Synapse Client => Microsoft.Azure.PowerShell.Cmdlets.Synapse.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Synapse.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Synapse.ParameterCategory.Azure)]
@@ -64,7 +69,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Cmdlets
         Description = @"A boolean value that indicates if the purge operations are enabled.",
         SerializedName = @"enablePurge",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter EnablePurge { get => ParametersBody.EnablePurge ?? default(global::System.Management.Automation.SwitchParameter); set => ParametersBody.EnablePurge = value; }
+        public global::System.Management.Automation.SwitchParameter EnablePurge { get => _parametersBody.EnablePurge ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.EnablePurge = value; }
 
         /// <summary>A boolean value that indicates if the streaming ingest is enabled.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A boolean value that indicates if the streaming ingest is enabled.")]
@@ -75,7 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Cmdlets
         Description = @"A boolean value that indicates if the streaming ingest is enabled.",
         SerializedName = @"enableStreamingIngest",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter EnableStreamingIngest { get => ParametersBody.EnableStreamingIngest ?? default(global::System.Management.Automation.SwitchParameter); set => ParametersBody.EnableStreamingIngest = value; }
+        public global::System.Management.Automation.SwitchParameter EnableStreamingIngest { get => _parametersBody.EnableStreamingIngest ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.EnableStreamingIngest = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -118,11 +123,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Cmdlets
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>
@@ -144,7 +149,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Cmdlets
         Description = @"A boolean value that indicate if the optimized autoscale feature is enabled or not.",
         SerializedName = @"isEnabled",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter OptimizedAutoscaleIsEnabled { get => ParametersBody.OptimizedAutoscaleIsEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => ParametersBody.OptimizedAutoscaleIsEnabled = value; }
+        public global::System.Management.Automation.SwitchParameter OptimizedAutoscaleIsEnabled { get => _parametersBody.OptimizedAutoscaleIsEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.OptimizedAutoscaleIsEnabled = value; }
 
         /// <summary>Maximum allowed instances count.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Maximum allowed instances count.")]
@@ -155,7 +160,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Cmdlets
         Description = @"Maximum allowed instances count.",
         SerializedName = @"maximum",
         PossibleTypes = new [] { typeof(int) })]
-        public int OptimizedAutoscaleMaximum { get => ParametersBody.OptimizedAutoscaleMaximum ?? default(int); set => ParametersBody.OptimizedAutoscaleMaximum = value; }
+        public int OptimizedAutoscaleMaximum { get => _parametersBody.OptimizedAutoscaleMaximum ?? default(int); set => _parametersBody.OptimizedAutoscaleMaximum = value; }
 
         /// <summary>Minimum allowed instances count.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Minimum allowed instances count.")]
@@ -166,7 +171,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Cmdlets
         Description = @"Minimum allowed instances count.",
         SerializedName = @"minimum",
         PossibleTypes = new [] { typeof(int) })]
-        public int OptimizedAutoscaleMinimum { get => ParametersBody.OptimizedAutoscaleMinimum ?? default(int); set => ParametersBody.OptimizedAutoscaleMinimum = value; }
+        public int OptimizedAutoscaleMinimum { get => _parametersBody.OptimizedAutoscaleMinimum ?? default(int); set => _parametersBody.OptimizedAutoscaleMinimum = value; }
 
         /// <summary>The version of the template defined, for instance 1.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The version of the template defined, for instance 1.")]
@@ -177,13 +182,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Cmdlets
         Description = @"The version of the template defined, for instance 1.",
         SerializedName = @"version",
         PossibleTypes = new [] { typeof(int) })]
-        public int OptimizedAutoscaleVersion { get => ParametersBody.OptimizedAutoscaleVersion ?? default(int); set => ParametersBody.OptimizedAutoscaleVersion = value; }
-
-        /// <summary>Backing field for <see cref="ParametersBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolUpdate _parametersBody= new Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.KustoPoolUpdate();
-
-        /// <summary>Class representing an update to a Kusto kusto pool.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolUpdate ParametersBody { get => this._parametersBody; set => this._parametersBody = value; }
+        public int OptimizedAutoscaleVersion { get => _parametersBody.OptimizedAutoscaleVersion ?? default(int); set => _parametersBody.OptimizedAutoscaleVersion = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.HttpPipeline" /> that the remote call will use.
@@ -215,7 +214,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Cmdlets
         Description = @"The number of instances of the cluster.",
         SerializedName = @"capacity",
         PossibleTypes = new [] { typeof(int) })]
-        public int SkuCapacity { get => ParametersBody.SkuCapacity ?? default(int); set => ParametersBody.SkuCapacity = value; }
+        public int SkuCapacity { get => _parametersBody.SkuCapacity ?? default(int); set => _parametersBody.SkuCapacity = value; }
 
         /// <summary>SKU name.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "SKU name.")]
@@ -227,7 +226,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Cmdlets
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.SkuName) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.SkuName))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.SkuName SkuName { get => ParametersBody.SkuName ?? ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.SkuName)""); set => ParametersBody.SkuName = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.SkuName SkuName { get => _parametersBody.SkuName ?? ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.SkuName)""); set => _parametersBody.SkuName = value; }
 
         /// <summary>SKU size.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "SKU size.")]
@@ -239,7 +238,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Cmdlets
         SerializedName = @"size",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.SkuSize) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.SkuSize))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.SkuSize SkuSize { get => ParametersBody.SkuSize ?? ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.SkuSize)""); set => ParametersBody.SkuSize = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.SkuSize SkuSize { get => _parametersBody.SkuSize ?? ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.SkuSize)""); set => _parametersBody.SkuSize = value; }
 
         /// <summary>Resource tags.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Synapse.ExportAs(typeof(global::System.Collections.Hashtable))]
@@ -251,7 +250,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Cmdlets
         Description = @"Resource tags.",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolUpdateTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolUpdateTags Tag { get => ParametersBody.Tag ?? null /* object */; set => ParametersBody.Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolUpdateTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
 
         /// <summary>The workspace unique identifier.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The workspace unique identifier.")]
@@ -262,15 +261,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Cmdlets
         Description = @"The workspace unique identifier.",
         SerializedName = @"workspaceUID",
         PossibleTypes = new [] { typeof(string) })]
-        public string WorkspaceUid { get => ParametersBody.WorkspaceUid ?? null; set => ParametersBody.WorkspaceUid = value; }
+        public string WorkspaceUid { get => _parametersBody.WorkspaceUid ?? null; set => _parametersBody.WorkspaceUid = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20.IErrorResponse</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
@@ -281,8 +280,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPool"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPool">Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPool</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
@@ -293,6 +292,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.Synapse.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -318,7 +322,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.ParametersBody = this.ParametersBody;
+            clone._parametersBody = this._parametersBody;
             clone.IfMatch = this.IfMatch;
             return clone;
         }
@@ -326,7 +330,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Synapse.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -459,7 +480,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Synapse.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -476,7 +496,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.KustoPoolsUpdateViaIdentity(InputObject.Id, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, ParametersBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.KustoPoolsUpdateViaIdentity(InputObject.Id, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, _parametersBody, onOk, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -497,13 +517,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.SubscriptionId"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.KustoPoolsUpdate(InputObject.WorkspaceName ?? null, InputObject.ResourceGroupName ?? null, InputObject.KustoPoolName ?? null, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, InputObject.SubscriptionId ?? null, ParametersBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.KustoPoolsUpdate(InputObject.WorkspaceName ?? null, InputObject.ResourceGroupName ?? null, InputObject.KustoPoolName ?? null, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, InputObject.SubscriptionId ?? null, _parametersBody, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null,body=ParametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null,body=_parametersBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -530,12 +550,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Cmdlets
 
         }
 
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Synapse.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Synapse.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
+        }
+
         /// <summary>
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20.IErrorResponse</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
@@ -557,14 +592,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, body=ParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, body=_parametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, body=ParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, body=_parametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -574,8 +609,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPool"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPool">Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPool</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>

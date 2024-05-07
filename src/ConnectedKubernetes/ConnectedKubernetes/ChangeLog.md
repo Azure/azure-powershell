@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.10.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 0.10.1
 * Fixed custom location enable flag issue.
 
 ## Version 0.10.0

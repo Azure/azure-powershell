@@ -21,12 +21,12 @@ Create an in-memory object for KeyVaultProperties.
 Create an in-memory object for KeyVaultProperties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.KeyVaultProperties
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.KeyVaultProperties
 .Link
-https://learn.microsoft.com/powershell/module/Az.ServiceBus/new-AzServiceBusKeyVaultPropertiesObject
+https://learn.microsoft.com/powershell/module/Az.ServiceBus/new-azservicebuskeyvaultpropertiesobject
 #>
 function New-AzServiceBusKeyVaultPropertiesObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.KeyVaultProperties')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.KeyVaultProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -45,7 +45,7 @@ function New-AzServiceBusKeyVaultPropertiesObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.KeyVaultProperties]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.KeyVaultProperties]::New()
 
         if ($PSBoundParameters.ContainsKey('KeyName')) {
             $Object.KeyName = $KeyName

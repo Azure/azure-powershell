@@ -15,13 +15,14 @@ Checks availability of a namespace name or disaster recovery alias.
 ### NamespaceAvailability (Default)
 ```
 Test-AzServiceBusName -NamespaceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### AliasAvailability
 ```
 Test-AzServiceBusName -NamespaceName <String> [-SubscriptionId <String>] -AliasName <String>
- -ResourceGroupName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
+ -ResourceGroupName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -132,6 +133,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource
 
@@ -169,10 +185,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ICheckNameAvailabilityResult
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ICheckNameAvailabilityResult
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

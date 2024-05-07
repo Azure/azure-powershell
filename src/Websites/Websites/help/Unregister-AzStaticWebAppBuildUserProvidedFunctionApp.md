@@ -22,7 +22,8 @@ Unregister-AzStaticWebAppBuildUserProvidedFunctionApp -EnvironmentName <String> 
 ### DetachViaIdentity
 ```
 Unregister-AzStaticWebAppBuildUserProvidedFunctionApp -InputObject <IWebsitesIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

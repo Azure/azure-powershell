@@ -16,7 +16,8 @@ Create an in-memory object for PrometheusRule.
 New-AzPrometheusRuleObject -Expression <String> [-Action <IPrometheusRuleGroupAction[]>] [-Alert <String>]
  [-Annotation <IPrometheusRuleAnnotations>] [-Enabled <Boolean>] [-For <TimeSpan>]
  [-Label <IPrometheusRuleLabels>] [-Record <String>] [-ResolveConfigurationAutoResolved <Boolean>]
- [-ResolveConfigurationTimeToResolve <TimeSpan>] [-Severity <Int32>] [<CommonParameters>]
+ [-ResolveConfigurationTimeToResolve <TimeSpan>] [-Severity <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -221,23 +222,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.PrometheusRule
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`ACTION <IPrometheusRuleGroupAction[]>`: Actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
-  - `[ActionGroupId <String>]`: The resource id of the action group to use.
-  - `[ActionProperty <IPrometheusRuleGroupActionProperties>]`: The properties of an action group object.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-`ANNOTATION <IPrometheusRuleAnnotations>`: The annotations clause specifies a set of informational labels that can be used to store longer additional information such as alert descriptions or runbook links. The annotation values can be templated.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-`LABEL <IPrometheusRuleLabels>`: Labels to add or overwrite before storing the result.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS

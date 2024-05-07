@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Cdn service.
 
 ---
-## Status
-[![Az.Cdn](https://img.shields.io/powershellgallery/v/Az.Cdn.svg?style=flat-square&label=Az.Cdn "Az.Cdn")](https://www.powershellgallery.com/packages/Az.Cdn/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -32,11 +29,11 @@ For information on how to develop for `Az.Cdn`, see [how-to.md](how-to.md).
 ``` yaml
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2023-05-01/afdx.json
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2023-05-01/cdn.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2024-02-01/afdx.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2024-02-01/cdn.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 
@@ -45,7 +42,7 @@ module-version: 0.1.0
 # Normally, title is the service name
 title: Cdn
 subject-prefix: $(service-name)
-branch: 61c04ab5495e259114bc427cdd77c3ab8ce8ec81
+commit: 186970d644b0d6249772290fedfb4a288f433cc3
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
@@ -53,6 +50,10 @@ identity-correction-for-post: true
 
 resourcegroup-append: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - from: swagger-document
@@ -106,7 +107,10 @@ directive:
     # CDN content
     - PurgeParameters
     - LoadParameters
-
+    
+    # AFDX profile LogScrubbing, need to rename the memory ojects, not sure how to rename a memory object currently.
+    # - ProfileLogScrubbing
+    # - ProfileScrubbingRules
     # Migration to AFDx
     # - MigrationParameters
     # - MigrationWebApplicationFirewallMapping

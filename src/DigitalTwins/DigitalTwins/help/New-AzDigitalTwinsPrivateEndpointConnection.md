@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DigitalTwins-help.xml
 Module Name: Az.DigitalTwins
 online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/new-azdigitaltwinsprivateendpointconnection
 schema: 2.0.0
@@ -18,7 +18,7 @@ New-AzDigitalTwinsPrivateEndpointConnection -Name <String> -ResourceGroupName <S
  [-SubscriptionId <String>] [-GroupId <String[]>] [-PrivateLinkServiceConnectionStateActionsRequired <String>]
  [-PrivateLinkServiceConnectionStateDescription <String>]
  [-PrivateLinkServiceConnectionStateStatus <PrivateLinkServiceConnectionStatus>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -27,7 +27,7 @@ New-AzDigitalTwinsPrivateEndpointConnection -InputObject <IDigitalTwinsIdentity>
  [-PrivateLinkServiceConnectionStateActionsRequired <String>]
  [-PrivateLinkServiceConnectionStateDescription <String>]
  [-PrivateLinkServiceConnectionStateStatus <PrivateLinkServiceConnectionStatus>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,7 +67,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -276,23 +277,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDigitalTwinsIdentity>`: Identity Parameter
-  - `[EndpointName <String>]`: Name of Endpoint Resource.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: Location of DigitalTwinsInstance.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
-  - `[ResourceGroupName <String>]`: The name of the resource group that contains the DigitalTwinsInstance.
-  - `[ResourceId <String>]`: The name of the private link resource.
-  - `[ResourceName <String>]`: The name of the DigitalTwinsInstance.
-  - `[SubscriptionId <String>]`: The subscription identifier.
-  - `[TimeSeriesDatabaseConnectionName <String>]`: Name of time series database connection.
-
 ## RELATED LINKS
-

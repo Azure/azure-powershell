@@ -6,16 +6,16 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e25f6d92-1ec9-4066-bfd3-d8a757135c2f"
+          "54edcc7a-7476-4812-8f79-5776d1c84169"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2523.51912",
+          "FxVersion/6.0.2824.12007",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.23612",
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/6.13.0"
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/6.16.0"
         ]
       },
       "RequestBody": "",
@@ -26,8 +26,11 @@
         "Pragma": [
           "no-cache"
         ],
+        "Set-Cookie": [
+          "x-ms-gateway-slice=Production; path=/; secure; samesite=none; httponly"
+        ],
         "x-ms-request-id": [
-          "5be5268c-0f3e-41dc-9f77-a6c5e6504c52"
+          "7aad9bea-fc83-4e9c-b6fd-e20693e07077"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -35,20 +38,23 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "Set-Cookie": [
-          "x-ms-gateway-slice=Production; path=/; secure; samesite=none; httponly"
-        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "62b497e1-3ba6-4cfb-b2b1-89b6ac272835"
+          "e85e037c-4214-4149-9047-87199c1e9aec"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20240109T031331Z:62b497e1-3ba6-4cfb-b2b1-89b6ac272835"
+          "WESTUS2:20240316T000000Z:e85e037c-4214-4149-9047-87199c1e9aec"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 928B55178CDF491A8E86F4616F65C32D Ref B: CO6AA3150220045 Ref C: 2024-03-16T00:00:00Z"
         ],
         "Date": [
-          "Tue, 09 Jan 2024 03:13:31 GMT"
+          "Fri, 15 Mar 2024 23:59:59 GMT"
         ],
         "Content-Length": [
           "627"

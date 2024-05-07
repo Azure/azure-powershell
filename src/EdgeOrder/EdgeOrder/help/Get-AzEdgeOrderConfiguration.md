@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.EdgeOrder-help.xml
 Module Name: Az.EdgeOrder
 online version: https://learn.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderconfiguration
 schema: 2.0.0
@@ -13,8 +13,8 @@ This method provides the list of configurations for the given product family, pr
 ## SYNTAX
 
 ```
-Get-AzEdgeOrderConfiguration -ConfigurationFilter <IConfigurationFilters[]> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzEdgeOrderConfiguration [-SubscriptionId <String[]>] -ConfigurationFilter <IConfigurationFilters[]>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,7 +79,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -150,29 +151,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-CONFIGURATIONFILTER <IConfigurationFilters[]>: Holds details about product hierarchy information and filterable property.
-  - `HierarchyInformation <IHierarchyInformation>`: Product hierarchy information
-    - `[ConfigurationName <String>]`: Represents configuration name that uniquely identifies configuration
-    - `[ProductFamilyName <String>]`: Represents product family name that uniquely identifies product family
-    - `[ProductLineName <String>]`: Represents product line name that uniquely identifies product line
-    - `[ProductName <String>]`: Represents product name that uniquely identifies product
-  - `[FilterableProperty <IFilterableProperty[]>]`: Filters specific to product
-    - `SupportedValue <String[]>`: Values to be filtered.
-    - `Type <SupportedFilterTypes>`: Type of product filter.
-
-CUSTOMERSUBSCRIPTIONDETAIL `<ICustomerSubscriptionDetails>`: Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details
-  - `QuotaId <String>`: Quota ID of a subscription
-  - `[LocationPlacementId <String>]`: Location placement Id of a subscription
-  - `[RegisteredFeature <ICustomerSubscriptionRegisteredFeatures[]>]`: List of registered feature flags for subscription
-    - `[Name <String>]`: Name of subscription registered feature
-    - `[State <String>]`: State of subscription registered feature
-
 ## RELATED LINKS
-

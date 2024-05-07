@@ -20,7 +20,7 @@ Sets an EventHub Cluster
 #>
 
 function Set-AzEventHubCluster{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ICluster])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICluster])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of the EventHub Dedicated Cluster")]
@@ -59,7 +59,7 @@ function Set-AzEventHubCluster{
 
         [Parameter(HelpMessage = "Resource tags.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api10.ITrackedResourceTags]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ITrackedResourceTags]
         # Resource tags.
         ${Tag},
 

@@ -15,18 +15,21 @@ Creates a new criteria object
 ### ScheduleCriteria (Default)
 ```
 New-AzDataProtectionPolicyTagCriteriaClientObject [-DaysOfWeek <DaysOfWeek[]>] [-WeeksOfMonth <WeeksOfMonth[]>]
- [-MonthsOfYear <MonthsOfYear[]>] [-ScheduleTimes <DateTime[]>] [<CommonParameters>]
+ [-MonthsOfYear <MonthsOfYear[]>] [-ScheduleTimes <DateTime[]>]
+ [<CommonParameters>]
 ```
 
 ### AbsoluteCriteria
 ```
-New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria <AbsoluteTagCriteria> [<CommonParameters>]
+New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria <AbsoluteTagCriteria>
+ [<CommonParameters>]
 ```
 
 ### MonthlyCriteria
 ```
 New-AzDataProtectionPolicyTagCriteriaClientObject [-MonthsOfYear <MonthsOfYear[]>]
- [-ScheduleTimes <DateTime[]>] -DaysOfMonth <String[]> [<CommonParameters>]
+ [-ScheduleTimes <DateTime[]>] -DaysOfMonth <String[]>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -164,10 +167,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IScheduleBasedBackupCriteria
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IScheduleBasedBackupCriteria
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

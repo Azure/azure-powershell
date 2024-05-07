@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ImageBuilder-help.xml
 Module Name: Az.ImageBuilder
 online version: https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatevalidatorobject
 schema: 2.0.0
@@ -14,15 +14,15 @@ Create an in-memory object for ImageTemplateValidator.
 
 ### PowerShellValidator (Default)
 ```
-New-AzImageBuilderTemplateValidatorObject -PowerShellValidator [-Inline <String[]>] [-Name <String>]
- [-RunAsSystem <Boolean>] [-RunElevated <Boolean>] [-ScriptUri <String>] [-Sha256Checksum <String>]
- [-ValidExitCode <Int32[]>] [<CommonParameters>]
+New-AzImageBuilderTemplateValidatorObject [-PowerShellValidator] [-Inline <String[]>] [-RunAsSystem <Boolean>]
+ [-RunElevated <Boolean>] [-ScriptUri <String>] [-Sha256Checksum <String>] [-ValidExitCode <Int32[]>]
+ [-Name <String>] [<CommonParameters>]
 ```
 
 ### ShellValidator
 ```
-New-AzImageBuilderTemplateValidatorObject -ShellValidator [-Inline <String[]>] [-Name <String>]
- [-ScriptUri <String>] [-Sha256Checksum <String>] [<CommonParameters>]
+New-AzImageBuilderTemplateValidatorObject [-Inline <String[]>] [-ScriptUri <String>] [-Sha256Checksum <String>]
+ [-Name <String>] [-ShellValidator] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -213,7 +213,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

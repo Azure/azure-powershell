@@ -15,7 +15,8 @@ Gets details of an Azure NetApp Files (ANF) subvolume.
 ### ByFieldsParameterSet (Default)
 ```
 Get-AzNetAppFilesSubvolume -ResourceGroupName <String> -AccountName <String> -PoolName <String>
- [-VolumeName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-VolumeName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet

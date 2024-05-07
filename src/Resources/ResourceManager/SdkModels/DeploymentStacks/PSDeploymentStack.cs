@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -171,9 +172,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             // Continue deserialize if the type of Value in DeploymentVariable is array.
             mappedDeploymentVariables?.Values.ForEach(dv =>
             { 
-                if ("Array".Equals(dv?.Type))
+                if ("Array".Equals(dv?.Type) && dv?.Value != null)
                 {
-                    dv.Value = JsonConvert.DeserializeObject<object[]>(dv.Value.ToString());
+                    dv.Value = dv.Value.ToString().FromJson<object[]>();
                 }
             });
 
@@ -183,7 +184,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         internal static DeploymentVariable ExtractDeploymentVariable(JObject jObject)
         {
             // Attempt to desialize the DeploymentVariable.
-            DeploymentVariable dVar = JsonConvert.DeserializeObject<DeploymentVariable>(jObject.ToString());
+            var dVar = jObject.ToString().FromJson<DeploymentVariable>();
 
             // If the type is null, attempt to infer the type.
             if (dVar.Type is null)

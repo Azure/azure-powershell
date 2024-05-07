@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.RedisCache
         public RedisManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Lists all of the available REST API operations of the Microsoft.Cache provider.
+        /// Lists all of the available REST API operations of the Microsoft.Cache
+        /// provider.
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -221,7 +222,8 @@ namespace Microsoft.Azure.Management.RedisCache
 
         }
         /// <summary>
-        /// Lists all of the available REST API operations of the Microsoft.Cache provider.
+        /// Lists all of the available REST API operations of the Microsoft.Cache
+        /// provider.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

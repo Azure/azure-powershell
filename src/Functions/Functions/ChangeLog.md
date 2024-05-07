@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 4.0.8
+* Updated logic to populate tab completers and cache in the New-AzFunctionApp cmdlet
+
 ## Version 4.0.7
 * Used ARM API to get Stacks information for Functions [#14682]
 * Removed support to create v3 function apps (Functions v3 has reached EOL) [#20838]

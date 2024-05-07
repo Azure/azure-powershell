@@ -19,7 +19,7 @@ Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzService
 Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzServiceBusNetworkRuleSet
 #>
 function New-AzServiceBusIPRuleConfig{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.INwRuleSetIPRules])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INwRuleSetIPRules])]
 	[CmdletBinding(PositionalBinding = $false, ConfirmImpact = 'Medium')]
 	param(
 		[Parameter(Mandatory, HelpMessage = "IP Mask")]
@@ -28,14 +28,14 @@ function New-AzServiceBusIPRuleConfig{
         ${IPMask},
 
 		[Parameter(HelpMessage = "The IP Filter Action")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.NetworkRuleIPAction]
+        [System.String]
 		# The IP Filter Action
-        ${Action}
+		${Action}
 	)
 
 	process{
 		try{
-			$ipRule = [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.INwRuleSetIPRules]@{
+			$ipRule = [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INwRuleSetIPRules]@{
 				IPMask = $IPMask
 				Action = $Action
 			}

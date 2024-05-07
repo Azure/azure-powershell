@@ -25,13 +25,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="count">Count of duration types. Retention duration is obtained by the counting the
-        /// duration type Count times.
-        /// For example, when Count = 3 and DurationType = Weeks, retention duration
-        /// will be three weeks.
+        /// duration type Count times. For example, when Count = 3 and DurationType =
+        /// Weeks, retention duration will be three weeks.
         /// </param>
 
         /// <param name="durationType">Retention duration type of retention policy.
-        /// Possible values include: 'Invalid', 'Days', 'Weeks', 'Months', 'Years'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Days&#39;, &#39;Weeks&#39;, &#39;Months&#39;, &#39;Years&#39;</param>
         public RetentionDuration(int? count = default(int?), string durationType = default(string))
 
         {
@@ -48,9 +47,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <summary>
         /// Gets or sets count of duration types. Retention duration is obtained by the
-        /// counting the duration type Count times.
-        /// For example, when Count = 3 and DurationType = Weeks, retention duration
-        /// will be three weeks.
+        /// counting the duration type Count times. For example, when Count = 3 and
+        /// DurationType = Weeks, retention duration will be three weeks.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "count")]
         public int? Count {get; set; }

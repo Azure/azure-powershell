@@ -390,13 +390,22 @@
   <data name="HelpMessageOfDisplayRegionIdentified" xml:space="preserve">
     <value>When enabled, Azure PowerShell displays recommendations on regions which may reduce your costs.</value>
   </data>
-  <data name="HelpMessageOfDisableErrorRecordsPersistence" xml:space="preserve">
-    <value>When disabled, error records will not be written to ~/.Azure/ErrorRecords. This config will be replaced by "EnableErrorRecordsPersistence" as opt-in in the next major release of Az around November 2023.</value>
-  </data>
   <data name="HelpMessageOfEnableErrorRecordsPersistence" xml:space="preserve">
     <value>When enabled, error records will be written to ~/.Azure/ErrorRecords.</value>
   </data>
   <data name="HelpMessageOfCheckForUpgrade" xml:space="preserve">
     <value>When enabled, Azure PowerShell will check for updates automatically and display a hint message when an update is available. The default value is true.</value>
+  </data>
+  <data name="FailedToMigrateMsalCacheWithLegayName" xml:space="preserve">
+    <value>INITIALIZATION: Failed to migrate MSAL token cache of the legacy name with error : {0}</value>
+  </data>
+  <data name="HelpMessageOfDisplaySecretsWarning" xml:space="preserve">
+    <value>When enabled, a warning message will be displayed when the cmdlet output contains secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844</value>
+  </data>
+  <data name="DisableInstanceDiscoveryWarning" xml:space="preserve">
+    <value>Set it to true to disable both instance discovery and authority validation. This functionality is intended for use in scenarios where the metadata endpoint cannot be reached, such as in private clouds or Azure Stack. It is crucial to ensure that the configured authority host is valid and trustworthy.</value>
+  </data>
+  <data name="HelpMessageOfDisableInstanceDiscovery" xml:space="preserve">
+    <value>Set it to true to disable both instance discovery and authority validation. This functionality is intended for use in scenarios where the metadata endpoint cannot be reached, such as in private clouds or Azure Stack. The process of instance discovery entails retrieving authority metadata from https://login.microsoft.com/ to validate the authority. By setting this to true, the validation of the authority is disabled. As a result, it is crucial to ensure that the configured authority host is valid and trustworthy.</value>
   </data>
 </root>

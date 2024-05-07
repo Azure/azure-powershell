@@ -1,966 +1,968 @@
 {
-  "Entries": [
-    {
-      "RequestUri": "/subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzP2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "c0af6af3-abd8-48bf-9fe1-8b730a8cb5d3-2016-11-15 13:53:21Z-P"
-        ],
-        "x-ms-version": [
-          "2015-01-01"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesManagementClient/3.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"westus\",\r\n      \"name\": \"sqlpaasrn\",\r\n      \"etag\": \"W/\\\"datetime'2016-11-11T12%3A05%3A23.1413253Z'\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"id\": \"/subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "377"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "eea5372a-6ec8-4117-9d31-601fba1a447d"
-        ],
-        "x-ms-client-request-id": [
-          "c0af6af3-abd8-48bf-9fe1-8b730a8cb5d3-2016-11-15 13:53:21Z-P"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14937"
-        ],
-        "x-ms-correlation-request-id": [
-          "eea5372a-6ec8-4117-9d31-601fba1a447d"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20161115T135322Z:eea5372a-6ec8-4117-9d31-601fba1a447d"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 15 Nov 2016 13:53:21 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybj9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "86d3cf5b-8a6c-4257-9401-edd3da3ccff4-2016-11-15 13:53:22Z-P"
-        ],
-        "x-ms-version": [
-          "2015-01-01"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesManagementClient/3.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"location\": \"westus\",\r\n  \"name\": \"sqlpaasrn\",\r\n  \"etag\": \"W/\\\"datetime'2016-11-11T12%3A05%3A23.1413253Z'\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "365"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "23b164ff-81c4-497a-9c87-191ff5035abd"
-        ],
-        "x-ms-client-request-id": [
-          "86d3cf5b-8a6c-4257-9401-edd3da3ccff4-2016-11-15 13:53:22Z-P"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14936"
-        ],
-        "x-ms-correlation-request-id": [
-          "23b164ff-81c4-497a-9c87-191ff5035abd"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20161115T135323Z:23b164ff-81c4-497a-9c87-191ff5035abd"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 15 Nov 2016 13:53:22 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1?api-version=2016-12-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQb2xpY2llcy9zd2F0aXBvbDE/YXBpLXZlcnNpb249MjAxNi0xMi0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "2c87f310-87fb-48e3-8cc3-f795f7d24505"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
-        ]
-      },
-      "ResponseBody": "{}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "2"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "4867a734-4fbd-42ef-8518-27109121c021"
-        ],
-        "x-ms-client-request-id": [
-          "2c87f310-87fb-48e3-8cc3-f795f7d24505",
-          "2c87f310-87fb-48e3-8cc3-f795f7d24505"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14946"
-        ],
-        "x-ms-correlation-request-id": [
-          "4867a734-4fbd-42ef-8518-27109121c021"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20161115T135325Z:4867a734-4fbd-42ef-8518-27109121c021"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 15 Nov 2016 13:53:25 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1?api-version=2016-12-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQb2xpY2llcy9zd2F0aXBvbDE/YXBpLXZlcnNpb249MjAxNi0xMi0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "0950385e-0d8d-47b9-83e7-e88a7890b43c"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1\",\r\n  \"name\": \"swatipol1\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureSql\",\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n      \"retentionDuration\": {\r\n        \"count\": 10,\r\n        \"durationType\": \"Months\"\r\n      }\r\n    },\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "437"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "bcd3c71c-8c85-4448-942d-201a45c9abe1"
-        ],
-        "x-ms-client-request-id": [
-          "0950385e-0d8d-47b9-83e7-e88a7890b43c",
-          "0950385e-0d8d-47b9-83e7-e88a7890b43c"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14945"
-        ],
-        "x-ms-correlation-request-id": [
-          "bcd3c71c-8c85-4448-942d-201a45c9abe1"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20161115T135329Z:bcd3c71c-8c85-4448-942d-201a45c9abe1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 15 Nov 2016 13:53:28 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1?api-version=2016-12-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQb2xpY2llcy9zd2F0aXBvbDE/YXBpLXZlcnNpb249MjAxNi0xMi0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "25e65276-7121-43d1-adf6-885b620da6b3"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1\",\r\n  \"name\": \"swatipol1\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureSql\",\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n      \"retentionDuration\": {\r\n        \"count\": 10,\r\n        \"durationType\": \"Months\"\r\n      }\r\n    },\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "437"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "7a596fe2-f51b-46c7-be4c-c008c7d1c317"
-        ],
-        "x-ms-client-request-id": [
-          "25e65276-7121-43d1-adf6-885b620da6b3",
-          "25e65276-7121-43d1-adf6-885b620da6b3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14944"
-        ],
-        "x-ms-correlation-request-id": [
-          "7a596fe2-f51b-46c7-be4c-c008c7d1c317"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20161115T135330Z:7a596fe2-f51b-46c7-be4c-c008c7d1c317"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 15 Nov 2016 13:53:30 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1?api-version=2016-12-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQb2xpY2llcy9zd2F0aXBvbDE/YXBpLXZlcnNpb249MjAxNi0xMi0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "f4442db7-1b75-4c83-82e0-399bde416f51"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1\",\r\n  \"name\": \"swatipol1\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureSql\",\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n      \"retentionDuration\": {\r\n        \"count\": 10,\r\n        \"durationType\": \"Months\"\r\n      }\r\n    },\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "437"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "677ce527-29c0-4311-8cb0-c5a7818cbf18"
-        ],
-        "x-ms-client-request-id": [
-          "f4442db7-1b75-4c83-82e0-399bde416f51",
-          "f4442db7-1b75-4c83-82e0-399bde416f51"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14943"
-        ],
-        "x-ms-correlation-request-id": [
-          "677ce527-29c0-4311-8cb0-c5a7818cbf18"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20161115T135331Z:677ce527-29c0-4311-8cb0-c5a7818cbf18"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 15 Nov 2016 13:53:30 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1?api-version=2016-12-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQb2xpY2llcy9zd2F0aXBvbDE/YXBpLXZlcnNpb249MjAxNi0xMi0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "24caedd2-cd39-48b4-9b0b-bc910cb69f2b"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1\",\r\n  \"name\": \"swatipol1\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureSql\",\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n      \"retentionDuration\": {\r\n        \"count\": 2,\r\n        \"durationType\": \"Weeks\"\r\n      }\r\n    },\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "435"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "f1b1cad2-3303-41b3-a326-21c82213ed7d"
-        ],
-        "x-ms-client-request-id": [
-          "24caedd2-cd39-48b4-9b0b-bc910cb69f2b",
-          "24caedd2-cd39-48b4-9b0b-bc910cb69f2b"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14942"
-        ],
-        "x-ms-correlation-request-id": [
-          "f1b1cad2-3303-41b3-a326-21c82213ed7d"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20161115T135334Z:f1b1cad2-3303-41b3-a326-21c82213ed7d"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 15 Nov 2016 13:53:33 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1?api-version=2016-12-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQb2xpY2llcy9zd2F0aXBvbDE/YXBpLXZlcnNpb249MjAxNi0xMi0wMQ==",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureSql\",\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n      \"retentionDuration\": {\r\n        \"count\": 10,\r\n        \"durationType\": \"Months\"\r\n      }\r\n    }\r\n  }\r\n}",
-      "RequestHeaders": {
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "252"
-        ],
-        "x-ms-client-request-id": [
-          "8c442020-6d86-4944-940b-d114b0f296d6"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1\",\r\n  \"name\": \"swatipol1\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureSql\",\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n      \"retentionDuration\": {\r\n        \"count\": 10,\r\n        \"durationType\": \"Months\"\r\n      }\r\n    },\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "437"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "5054e6ed-33be-4a25-a757-a8a7ec3f0cb0"
-        ],
-        "x-ms-client-request-id": [
-          "8c442020-6d86-4944-940b-d114b0f296d6",
-          "8c442020-6d86-4944-940b-d114b0f296d6"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
-        ],
-        "x-ms-correlation-request-id": [
-          "5054e6ed-33be-4a25-a757-a8a7ec3f0cb0"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20161115T135328Z:5054e6ed-33be-4a25-a757-a8a7ec3f0cb0"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 15 Nov 2016 13:53:28 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1?api-version=2016-12-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQb2xpY2llcy9zd2F0aXBvbDE/YXBpLXZlcnNpb249MjAxNi0xMi0wMQ==",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureSql\",\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n      \"retentionDuration\": {\r\n        \"count\": 2,\r\n        \"durationType\": \"Weeks\"\r\n      }\r\n    }\r\n  }\r\n}",
-      "RequestHeaders": {
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "250"
-        ],
-        "x-ms-client-request-id": [
-          "dd638f83-5b9a-49fd-a6b1-b3a2da79e140"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1\",\r\n  \"name\": \"swatipol1\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureSql\",\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n      \"retentionDuration\": {\r\n        \"count\": 2,\r\n        \"durationType\": \"Weeks\"\r\n      }\r\n    },\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "435"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "46a2896d-84e4-4edd-b1f2-e4149e8c81bd"
-        ],
-        "x-ms-client-request-id": [
-          "dd638f83-5b9a-49fd-a6b1-b3a2da79e140",
-          "dd638f83-5b9a-49fd-a6b1-b3a2da79e140"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
-        ],
-        "x-ms-correlation-request-id": [
-          "46a2896d-84e4-4edd-b1f2-e4149e8c81bd"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20161115T135333Z:46a2896d-84e4-4edd-b1f2-e4149e8c81bd"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 15 Nov 2016 13:53:32 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol2?api-version=2016-12-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQb2xpY2llcy9zd2F0aXBvbDI/YXBpLXZlcnNpb249MjAxNi0xMi0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "f463641d-9f0a-4b8d-97ac-5a802d25848c"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
-        ]
-      },
-      "ResponseBody": "{}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "2"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "70c88d6e-7beb-48f7-b271-49c9b906ff98"
-        ],
-        "x-ms-client-request-id": [
-          "f463641d-9f0a-4b8d-97ac-5a802d25848c",
-          "f463641d-9f0a-4b8d-97ac-5a802d25848c"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14941"
-        ],
-        "x-ms-correlation-request-id": [
-          "70c88d6e-7beb-48f7-b271-49c9b906ff98"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20161115T135335Z:70c88d6e-7beb-48f7-b271-49c9b906ff98"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 15 Nov 2016 13:53:34 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol2?api-version=2016-12-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQb2xpY2llcy9zd2F0aXBvbDI/YXBpLXZlcnNpb249MjAxNi0xMi0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "1c21b966-e205-4766-9a04-3aed147d6175"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol2\",\r\n  \"name\": \"swatipol2\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureSql\",\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n      \"retentionDuration\": {\r\n        \"count\": 2,\r\n        \"durationType\": \"Weeks\"\r\n      }\r\n    },\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "435"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "c5977578-42d4-40ce-a0df-2897386e0a58"
-        ],
-        "x-ms-client-request-id": [
-          "1c21b966-e205-4766-9a04-3aed147d6175",
-          "1c21b966-e205-4766-9a04-3aed147d6175"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14940"
-        ],
-        "x-ms-correlation-request-id": [
-          "c5977578-42d4-40ce-a0df-2897386e0a58"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20161115T135337Z:c5977578-42d4-40ce-a0df-2897386e0a58"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 15 Nov 2016 13:53:36 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol2?api-version=2016-12-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQb2xpY2llcy9zd2F0aXBvbDI/YXBpLXZlcnNpb249MjAxNi0xMi0wMQ==",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureSql\",\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n      \"retentionDuration\": {\r\n        \"count\": 2,\r\n        \"durationType\": \"Weeks\"\r\n      }\r\n    }\r\n  }\r\n}",
-      "RequestHeaders": {
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "250"
-        ],
-        "x-ms-client-request-id": [
-          "4e1fb5c6-9f45-456f-8437-b2ad221d1cc2"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol2\",\r\n  \"name\": \"swatipol2\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureSql\",\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n      \"retentionDuration\": {\r\n        \"count\": 2,\r\n        \"durationType\": \"Weeks\"\r\n      }\r\n    },\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "435"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "e784cd17-3c23-4533-9942-3d6868896776"
-        ],
-        "x-ms-client-request-id": [
-          "4e1fb5c6-9f45-456f-8437-b2ad221d1cc2",
-          "4e1fb5c6-9f45-456f-8437-b2ad221d1cc2"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
-        ],
-        "x-ms-correlation-request-id": [
-          "e784cd17-3c23-4533-9942-3d6868896776"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20161115T135336Z:e784cd17-3c23-4533-9942-3d6868896776"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 15 Nov 2016 13:53:35 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies?$filter=backupManagementType%20eq%20'AzureSql'&api-version=2017-07-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQb2xpY2llcz8kZmlsdGVyPWJhY2t1cE1hbmFnZW1lbnRUeXBlJTIwZXElMjAnQXp1cmVTcWwnJmFwaS12ZXJzaW9uPTIwMTctMDctMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "ecdbf8c9-84b7-4bdf-9635-d94b4621054a"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1\",\r\n      \"name\": \"swatipol1\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureSql\",\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 2,\r\n            \"durationType\": \"Weeks\"\r\n          }\r\n        },\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol2\",\r\n      \"name\": \"swatipol2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureSql\",\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 2,\r\n            \"durationType\": \"Weeks\"\r\n          }\r\n        },\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/sqlpaaspolicy\",\r\n      \"name\": \"sqlpaaspolicy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureSql\",\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 3,\r\n            \"durationType\": \"Months\"\r\n          }\r\n        },\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "1328"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "7317fdda-1b0e-4835-82f6-944dd93018b1"
-        ],
-        "x-ms-client-request-id": [
-          "ecdbf8c9-84b7-4bdf-9635-d94b4621054a",
-          "ecdbf8c9-84b7-4bdf-9635-d94b4621054a"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14939"
-        ],
-        "x-ms-correlation-request-id": [
-          "7317fdda-1b0e-4835-82f6-944dd93018b1"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20161115T135338Z:7317fdda-1b0e-4835-82f6-944dd93018b1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 15 Nov 2016 13:53:37 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1?api-version=2016-12-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQb2xpY2llcy9zd2F0aXBvbDE/YXBpLXZlcnNpb249MjAxNi0xMi0wMQ==",
-      "RequestMethod": "DELETE",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "d473689e-6b3e-4b15-98aa-3292ea96bae1"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
-        ]
-      },
-      "ResponseBody": "",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "0"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "06fc581e-c359-49c0-b442-983fa8493134"
-        ],
-        "x-ms-client-request-id": [
-          "d473689e-6b3e-4b15-98aa-3292ea96bae1",
-          "d473689e-6b3e-4b15-98aa-3292ea96bae1"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
-        ],
-        "x-ms-correlation-request-id": [
-          "06fc581e-c359-49c0-b442-983fa8493134"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20161115T135339Z:06fc581e-c359-49c0-b442-983fa8493134"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 15 Nov 2016 13:53:38 GMT"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol2?api-version=2016-12-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQb2xpY2llcy9zd2F0aXBvbDI/YXBpLXZlcnNpb249MjAxNi0xMi0wMQ==",
-      "RequestMethod": "DELETE",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "99acd7e1-0617-4397-a094-118fac4c3a92"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
-        ]
-      },
-      "ResponseBody": "",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "0"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "afce0aa0-0ab6-418d-9437-0d49b12b0b1e"
-        ],
-        "x-ms-client-request-id": [
-          "99acd7e1-0617-4397-a094-118fac4c3a92",
-          "99acd7e1-0617-4397-a094-118fac4c3a92"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1195"
-        ],
-        "x-ms-correlation-request-id": [
-          "afce0aa0-0ab6-418d-9437-0d49b12b0b1e"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20161115T135340Z:afce0aa0-0ab6-418d-9437-0d49b12b0b1e"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 15 Nov 2016 13:53:40 GMT"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 200
-    }
-  ],
-  "Names": {},
-  "Variables": {
-    "SubscriptionId": "f7424430-103b-4ba3-bd9e-b6f0986f848a"
-  }
+    "Entries":  [
+                    {
+                        "RequestUri":  "/subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults?api-version=2016-06-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzP2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "c0af6af3-abd8-48bf-9fe1-8b730a8cb5d3-2016-11-15 13:53:21Z-P"
+                                                                          ],
+                                               "x-ms-version":  [
+                                                                    "2015-01-01"
+                                                                ],
+                                               "User-Agent":  [
+                                                                  "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesManagementClient/3.0.0.0"
+                                                              ]
+                                           },
+                        "ResponseBody":  "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"westus\",\r\n      \"name\": \"sqlpaasrn\",\r\n      \"etag\": \"W/\\\"datetime\u00272016-11-11T12%3A05%3A23.1413253Z\u0027\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"id\": \"/subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
+                        "ResponseHeaders":  {
+                                                "Content-Length":  [
+                                                                       "377"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "eea5372a-6ec8-4117-9d31-601fba1a447d"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "c0af6af3-abd8-48bf-9fe1-8b730a8cb5d3-2016-11-15 13:53:21Z-P"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "x-ms-ratelimit-remaining-subscription-reads":  [
+                                                                                                    "14937"
+                                                                                                ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "eea5372a-6ec8-4117-9d31-601fba1a447d"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20161115T135322Z:eea5372a-6ec8-4117-9d31-601fba1a447d"
+                                                                            ],
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:39:03 GMT"
+                                                         ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/8.0"
+                                                           ]
+                                            },
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn?api-version=2016-06-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybj9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "86d3cf5b-8a6c-4257-9401-edd3da3ccff4-2016-11-15 13:53:22Z-P"
+                                                                          ],
+                                               "x-ms-version":  [
+                                                                    "2015-01-01"
+                                                                ],
+                                               "User-Agent":  [
+                                                                  "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesManagementClient/3.0.0.0"
+                                                              ]
+                                           },
+                        "ResponseBody":  "{\r\n  \"location\": \"westus\",\r\n  \"name\": \"sqlpaasrn\",\r\n  \"etag\": \"W/\\\"datetime\u00272016-11-11T12%3A05%3A23.1413253Z\u0027\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+                        "ResponseHeaders":  {
+                                                "Content-Length":  [
+                                                                       "365"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "23b164ff-81c4-497a-9c87-191ff5035abd"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "86d3cf5b-8a6c-4257-9401-edd3da3ccff4-2016-11-15 13:53:22Z-P"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "x-ms-ratelimit-remaining-subscription-reads":  [
+                                                                                                    "14936"
+                                                                                                ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "23b164ff-81c4-497a-9c87-191ff5035abd"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20161115T135323Z:23b164ff-81c4-497a-9c87-191ff5035abd"
+                                                                            ],
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:39:03 GMT"
+                                                         ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/8.0"
+                                                           ]
+                                            },
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1?api-version=2016-12-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQb2xpY2llcy9zd2F0aXBvbDE/YXBpLXZlcnNpb249MjAxNi0xMi0wMQ==",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "2c87f310-87fb-48e3-8cc3-f795f7d24505"
+                                                                          ],
+                                               "accept-language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
+                                                              ]
+                                           },
+                        "ResponseBody":  "{}",
+                        "ResponseHeaders":  {
+                                                "Content-Length":  [
+                                                                       "2"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "4867a734-4fbd-42ef-8518-27109121c021"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "2c87f310-87fb-48e3-8cc3-f795f7d24505",
+                                                                               "2c87f310-87fb-48e3-8cc3-f795f7d24505"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "x-ms-ratelimit-remaining-subscription-reads":  [
+                                                                                                    "14946"
+                                                                                                ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "4867a734-4fbd-42ef-8518-27109121c021"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20161115T135325Z:4867a734-4fbd-42ef-8518-27109121c021"
+                                                                            ],
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:39:03 GMT"
+                                                         ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/8.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ]
+                                            },
+                        "StatusCode":  404
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1?api-version=2016-12-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQb2xpY2llcy9zd2F0aXBvbDE/YXBpLXZlcnNpb249MjAxNi0xMi0wMQ==",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "0950385e-0d8d-47b9-83e7-e88a7890b43c"
+                                                                          ],
+                                               "accept-language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
+                                                              ]
+                                           },
+                        "ResponseBody":  "{\r\n  \"id\": \"/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1\",\r\n  \"name\": \"swatipol1\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureSql\",\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n      \"retentionDuration\": {\r\n        \"count\": 10,\r\n        \"durationType\": \"Months\"\r\n      }\r\n    },\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+                        "ResponseHeaders":  {
+                                                "Content-Length":  [
+                                                                       "437"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "bcd3c71c-8c85-4448-942d-201a45c9abe1"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "0950385e-0d8d-47b9-83e7-e88a7890b43c",
+                                                                               "0950385e-0d8d-47b9-83e7-e88a7890b43c"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "x-ms-ratelimit-remaining-subscription-reads":  [
+                                                                                                    "14945"
+                                                                                                ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "bcd3c71c-8c85-4448-942d-201a45c9abe1"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20161115T135329Z:bcd3c71c-8c85-4448-942d-201a45c9abe1"
+                                                                            ],
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:39:03 GMT"
+                                                         ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/8.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ]
+                                            },
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1?api-version=2016-12-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQb2xpY2llcy9zd2F0aXBvbDE/YXBpLXZlcnNpb249MjAxNi0xMi0wMQ==",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "25e65276-7121-43d1-adf6-885b620da6b3"
+                                                                          ],
+                                               "accept-language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
+                                                              ]
+                                           },
+                        "ResponseBody":  "{\r\n  \"id\": \"/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1\",\r\n  \"name\": \"swatipol1\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureSql\",\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n      \"retentionDuration\": {\r\n        \"count\": 10,\r\n        \"durationType\": \"Months\"\r\n      }\r\n    },\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+                        "ResponseHeaders":  {
+                                                "Content-Length":  [
+                                                                       "437"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "7a596fe2-f51b-46c7-be4c-c008c7d1c317"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "25e65276-7121-43d1-adf6-885b620da6b3",
+                                                                               "25e65276-7121-43d1-adf6-885b620da6b3"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "x-ms-ratelimit-remaining-subscription-reads":  [
+                                                                                                    "14944"
+                                                                                                ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "7a596fe2-f51b-46c7-be4c-c008c7d1c317"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20161115T135330Z:7a596fe2-f51b-46c7-be4c-c008c7d1c317"
+                                                                            ],
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:39:03 GMT"
+                                                         ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/8.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ]
+                                            },
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1?api-version=2016-12-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQb2xpY2llcy9zd2F0aXBvbDE/YXBpLXZlcnNpb249MjAxNi0xMi0wMQ==",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "f4442db7-1b75-4c83-82e0-399bde416f51"
+                                                                          ],
+                                               "accept-language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
+                                                              ]
+                                           },
+                        "ResponseBody":  "{\r\n  \"id\": \"/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1\",\r\n  \"name\": \"swatipol1\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureSql\",\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n      \"retentionDuration\": {\r\n        \"count\": 10,\r\n        \"durationType\": \"Months\"\r\n      }\r\n    },\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+                        "ResponseHeaders":  {
+                                                "Content-Length":  [
+                                                                       "437"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "677ce527-29c0-4311-8cb0-c5a7818cbf18"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "f4442db7-1b75-4c83-82e0-399bde416f51",
+                                                                               "f4442db7-1b75-4c83-82e0-399bde416f51"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "x-ms-ratelimit-remaining-subscription-reads":  [
+                                                                                                    "14943"
+                                                                                                ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "677ce527-29c0-4311-8cb0-c5a7818cbf18"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20161115T135331Z:677ce527-29c0-4311-8cb0-c5a7818cbf18"
+                                                                            ],
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:39:03 GMT"
+                                                         ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/8.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ]
+                                            },
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1?api-version=2016-12-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQb2xpY2llcy9zd2F0aXBvbDE/YXBpLXZlcnNpb249MjAxNi0xMi0wMQ==",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "24caedd2-cd39-48b4-9b0b-bc910cb69f2b"
+                                                                          ],
+                                               "accept-language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
+                                                              ]
+                                           },
+                        "ResponseBody":  "{\r\n  \"id\": \"/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1\",\r\n  \"name\": \"swatipol1\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureSql\",\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n      \"retentionDuration\": {\r\n        \"count\": 2,\r\n        \"durationType\": \"Weeks\"\r\n      }\r\n    },\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+                        "ResponseHeaders":  {
+                                                "Content-Length":  [
+                                                                       "435"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "f1b1cad2-3303-41b3-a326-21c82213ed7d"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "24caedd2-cd39-48b4-9b0b-bc910cb69f2b",
+                                                                               "24caedd2-cd39-48b4-9b0b-bc910cb69f2b"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "x-ms-ratelimit-remaining-subscription-reads":  [
+                                                                                                    "14942"
+                                                                                                ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "f1b1cad2-3303-41b3-a326-21c82213ed7d"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20161115T135334Z:f1b1cad2-3303-41b3-a326-21c82213ed7d"
+                                                                            ],
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:39:03 GMT"
+                                                         ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/8.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ]
+                                            },
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1?api-version=2016-12-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQb2xpY2llcy9zd2F0aXBvbDE/YXBpLXZlcnNpb249MjAxNi0xMi0wMQ==",
+                        "RequestMethod":  "PUT",
+                        "RequestBody":  "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureSql\",\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n      \"retentionDuration\": {\r\n        \"count\": 10,\r\n        \"durationType\": \"Months\"\r\n      }\r\n    }\r\n  }\r\n}",
+                        "RequestHeaders":  {
+                                               "Content-Type":  [
+                                                                    "application/json; charset=utf-8"
+                                                                ],
+                                               "Content-Length":  [
+                                                                      "252"
+                                                                  ],
+                                               "x-ms-client-request-id":  [
+                                                                              "8c442020-6d86-4944-940b-d114b0f296d6"
+                                                                          ],
+                                               "accept-language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
+                                                              ]
+                                           },
+                        "ResponseBody":  "{\r\n  \"id\": \"/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1\",\r\n  \"name\": \"swatipol1\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureSql\",\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n      \"retentionDuration\": {\r\n        \"count\": 10,\r\n        \"durationType\": \"Months\"\r\n      }\r\n    },\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+                        "ResponseHeaders":  {
+                                                "Content-Length":  [
+                                                                       "437"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "5054e6ed-33be-4a25-a757-a8a7ec3f0cb0"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "8c442020-6d86-4944-940b-d114b0f296d6",
+                                                                               "8c442020-6d86-4944-940b-d114b0f296d6"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "x-ms-ratelimit-remaining-subscription-writes":  [
+                                                                                                     "1199"
+                                                                                                 ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "5054e6ed-33be-4a25-a757-a8a7ec3f0cb0"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20161115T135328Z:5054e6ed-33be-4a25-a757-a8a7ec3f0cb0"
+                                                                            ],
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:39:03 GMT"
+                                                         ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/8.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ]
+                                            },
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1?api-version=2016-12-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQb2xpY2llcy9zd2F0aXBvbDE/YXBpLXZlcnNpb249MjAxNi0xMi0wMQ==",
+                        "RequestMethod":  "PUT",
+                        "RequestBody":  "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureSql\",\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n      \"retentionDuration\": {\r\n        \"count\": 2,\r\n        \"durationType\": \"Weeks\"\r\n      }\r\n    }\r\n  }\r\n}",
+                        "RequestHeaders":  {
+                                               "Content-Type":  [
+                                                                    "application/json; charset=utf-8"
+                                                                ],
+                                               "Content-Length":  [
+                                                                      "250"
+                                                                  ],
+                                               "x-ms-client-request-id":  [
+                                                                              "dd638f83-5b9a-49fd-a6b1-b3a2da79e140"
+                                                                          ],
+                                               "accept-language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
+                                                              ]
+                                           },
+                        "ResponseBody":  "{\r\n  \"id\": \"/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1\",\r\n  \"name\": \"swatipol1\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureSql\",\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n      \"retentionDuration\": {\r\n        \"count\": 2,\r\n        \"durationType\": \"Weeks\"\r\n      }\r\n    },\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+                        "ResponseHeaders":  {
+                                                "Content-Length":  [
+                                                                       "435"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "46a2896d-84e4-4edd-b1f2-e4149e8c81bd"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "dd638f83-5b9a-49fd-a6b1-b3a2da79e140",
+                                                                               "dd638f83-5b9a-49fd-a6b1-b3a2da79e140"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "x-ms-ratelimit-remaining-subscription-writes":  [
+                                                                                                     "1198"
+                                                                                                 ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "46a2896d-84e4-4edd-b1f2-e4149e8c81bd"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20161115T135333Z:46a2896d-84e4-4edd-b1f2-e4149e8c81bd"
+                                                                            ],
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:39:03 GMT"
+                                                         ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/8.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ]
+                                            },
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol2?api-version=2016-12-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQb2xpY2llcy9zd2F0aXBvbDI/YXBpLXZlcnNpb249MjAxNi0xMi0wMQ==",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "f463641d-9f0a-4b8d-97ac-5a802d25848c"
+                                                                          ],
+                                               "accept-language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
+                                                              ]
+                                           },
+                        "ResponseBody":  "{}",
+                        "ResponseHeaders":  {
+                                                "Content-Length":  [
+                                                                       "2"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "70c88d6e-7beb-48f7-b271-49c9b906ff98"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "f463641d-9f0a-4b8d-97ac-5a802d25848c",
+                                                                               "f463641d-9f0a-4b8d-97ac-5a802d25848c"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "x-ms-ratelimit-remaining-subscription-reads":  [
+                                                                                                    "14941"
+                                                                                                ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "70c88d6e-7beb-48f7-b271-49c9b906ff98"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20161115T135335Z:70c88d6e-7beb-48f7-b271-49c9b906ff98"
+                                                                            ],
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:39:03 GMT"
+                                                         ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/8.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ]
+                                            },
+                        "StatusCode":  404
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol2?api-version=2016-12-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQb2xpY2llcy9zd2F0aXBvbDI/YXBpLXZlcnNpb249MjAxNi0xMi0wMQ==",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "1c21b966-e205-4766-9a04-3aed147d6175"
+                                                                          ],
+                                               "accept-language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
+                                                              ]
+                                           },
+                        "ResponseBody":  "{\r\n  \"id\": \"/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol2\",\r\n  \"name\": \"swatipol2\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureSql\",\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n      \"retentionDuration\": {\r\n        \"count\": 2,\r\n        \"durationType\": \"Weeks\"\r\n      }\r\n    },\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+                        "ResponseHeaders":  {
+                                                "Content-Length":  [
+                                                                       "435"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "c5977578-42d4-40ce-a0df-2897386e0a58"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "1c21b966-e205-4766-9a04-3aed147d6175",
+                                                                               "1c21b966-e205-4766-9a04-3aed147d6175"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "x-ms-ratelimit-remaining-subscription-reads":  [
+                                                                                                    "14940"
+                                                                                                ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "c5977578-42d4-40ce-a0df-2897386e0a58"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20161115T135337Z:c5977578-42d4-40ce-a0df-2897386e0a58"
+                                                                            ],
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:39:03 GMT"
+                                                         ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/8.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ]
+                                            },
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol2?api-version=2016-12-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQb2xpY2llcy9zd2F0aXBvbDI/YXBpLXZlcnNpb249MjAxNi0xMi0wMQ==",
+                        "RequestMethod":  "PUT",
+                        "RequestBody":  "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureSql\",\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n      \"retentionDuration\": {\r\n        \"count\": 2,\r\n        \"durationType\": \"Weeks\"\r\n      }\r\n    }\r\n  }\r\n}",
+                        "RequestHeaders":  {
+                                               "Content-Type":  [
+                                                                    "application/json; charset=utf-8"
+                                                                ],
+                                               "Content-Length":  [
+                                                                      "250"
+                                                                  ],
+                                               "x-ms-client-request-id":  [
+                                                                              "4e1fb5c6-9f45-456f-8437-b2ad221d1cc2"
+                                                                          ],
+                                               "accept-language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
+                                                              ]
+                                           },
+                        "ResponseBody":  "{\r\n  \"id\": \"/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol2\",\r\n  \"name\": \"swatipol2\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureSql\",\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n      \"retentionDuration\": {\r\n        \"count\": 2,\r\n        \"durationType\": \"Weeks\"\r\n      }\r\n    },\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+                        "ResponseHeaders":  {
+                                                "Content-Length":  [
+                                                                       "435"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "e784cd17-3c23-4533-9942-3d6868896776"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "4e1fb5c6-9f45-456f-8437-b2ad221d1cc2",
+                                                                               "4e1fb5c6-9f45-456f-8437-b2ad221d1cc2"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "x-ms-ratelimit-remaining-subscription-writes":  [
+                                                                                                     "1197"
+                                                                                                 ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "e784cd17-3c23-4533-9942-3d6868896776"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20161115T135336Z:e784cd17-3c23-4533-9942-3d6868896776"
+                                                                            ],
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:39:03 GMT"
+                                                         ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/8.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ]
+                                            },
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies?$filter=backupManagementType%20eq%20\u0027AzureSql\u0027\u0026api-version=2017-07-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQb2xpY2llcz8kZmlsdGVyPWJhY2t1cE1hbmFnZW1lbnRUeXBlJTIwZXElMjAnQXp1cmVTcWwnJmFwaS12ZXJzaW9uPTIwMTctMDctMDE=",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "ecdbf8c9-84b7-4bdf-9635-d94b4621054a"
+                                                                          ],
+                                               "accept-language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
+                                                              ]
+                                           },
+                        "ResponseBody":  "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1\",\r\n      \"name\": \"swatipol1\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureSql\",\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 2,\r\n            \"durationType\": \"Weeks\"\r\n          }\r\n        },\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol2\",\r\n      \"name\": \"swatipol2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureSql\",\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 2,\r\n            \"durationType\": \"Weeks\"\r\n          }\r\n        },\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/sqlpaaspolicy\",\r\n      \"name\": \"sqlpaaspolicy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureSql\",\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 3,\r\n            \"durationType\": \"Months\"\r\n          }\r\n        },\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
+                        "ResponseHeaders":  {
+                                                "Content-Length":  [
+                                                                       "1328"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "7317fdda-1b0e-4835-82f6-944dd93018b1"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "ecdbf8c9-84b7-4bdf-9635-d94b4621054a",
+                                                                               "ecdbf8c9-84b7-4bdf-9635-d94b4621054a"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "x-ms-ratelimit-remaining-subscription-reads":  [
+                                                                                                    "14939"
+                                                                                                ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "7317fdda-1b0e-4835-82f6-944dd93018b1"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20161115T135338Z:7317fdda-1b0e-4835-82f6-944dd93018b1"
+                                                                            ],
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:39:03 GMT"
+                                                         ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/8.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ]
+                                            },
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol1?api-version=2016-12-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQb2xpY2llcy9zd2F0aXBvbDE/YXBpLXZlcnNpb249MjAxNi0xMi0wMQ==",
+                        "RequestMethod":  "DELETE",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "d473689e-6b3e-4b15-98aa-3292ea96bae1"
+                                                                          ],
+                                               "accept-language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
+                                                              ]
+                                           },
+                        "ResponseBody":  "",
+                        "ResponseHeaders":  {
+                                                "Content-Length":  [
+                                                                       "0"
+                                                                   ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "06fc581e-c359-49c0-b442-983fa8493134"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "d473689e-6b3e-4b15-98aa-3292ea96bae1",
+                                                                               "d473689e-6b3e-4b15-98aa-3292ea96bae1"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "x-ms-ratelimit-remaining-subscription-writes":  [
+                                                                                                     "1196"
+                                                                                                 ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "06fc581e-c359-49c0-b442-983fa8493134"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20161115T135339Z:06fc581e-c359-49c0-b442-983fa8493134"
+                                                                            ],
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:39:03 GMT"
+                                                         ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ]
+                                            },
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupPolicies/swatipol2?api-version=2016-12-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQb2xpY2llcy9zd2F0aXBvbDI/YXBpLXZlcnNpb249MjAxNi0xMi0wMQ==",
+                        "RequestMethod":  "DELETE",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "99acd7e1-0617-4397-a094-118fac4c3a92"
+                                                                          ],
+                                               "accept-language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
+                                                              ]
+                                           },
+                        "ResponseBody":  "",
+                        "ResponseHeaders":  {
+                                                "Content-Length":  [
+                                                                       "0"
+                                                                   ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "afce0aa0-0ab6-418d-9437-0d49b12b0b1e"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "99acd7e1-0617-4397-a094-118fac4c3a92",
+                                                                               "99acd7e1-0617-4397-a094-118fac4c3a92"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "x-ms-ratelimit-remaining-subscription-writes":  [
+                                                                                                     "1195"
+                                                                                                 ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "afce0aa0-0ab6-418d-9437-0d49b12b0b1e"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20161115T135340Z:afce0aa0-0ab6-418d-9437-0d49b12b0b1e"
+                                                                            ],
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:39:03 GMT"
+                                                         ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ]
+                                            },
+                        "StatusCode":  200
+                    }
+                ],
+    "Names":  {
+
+              },
+    "Variables":  {
+                      "SubscriptionId":  "f7424430-103b-4ba3-bd9e-b6f0986f848a"
+                  }
 }

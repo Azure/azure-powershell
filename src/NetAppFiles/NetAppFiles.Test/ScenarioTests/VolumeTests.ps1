@@ -707,7 +707,7 @@ function Test-GetGroupIdListForLDAPUser
 .SYNOPSIS
 Test Volume Update-AzNetAppFilesVolume to set snapshotPolicy
 #>
-function Update-AzNetAppFilesVolumeSnapshotPolicy
+function TestUpdate-SnapshotPolicyId
 {
     $currentSub = (Get-AzureRmContext).Subscription
     $subsid = $currentSub.SubscriptionId
@@ -747,6 +747,28 @@ function Update-AzNetAppFilesVolumeSnapshotPolicy
 		)
 	}
 
+    $hourlySchedule = @{        
+        Minute = 2
+        SnapshotsToKeep = 6
+    }
+    $dailySchedule = @{
+        Hour = 1
+        Minute = 2
+        SnapshotsToKeep = 6
+    }
+    $weeklySchedule = @{
+        Minute = 2    
+        Hour = 1		        
+        Day = "Sunday,Monday"
+        SnapshotsToKeep = 6
+    }
+    $monthlySchedule = @{
+        Minute = 2    
+        Hour = 1        
+        DaysOfMonth = "2,11,21"
+        SnapshotsToKeep = 6
+    }
+
     # create the list of protocol types
     $protocolTypes = New-Object string[] 1
     $protocolTypes[0] = "NFSv3"
@@ -785,25 +807,35 @@ function Update-AzNetAppFilesVolumeSnapshotPolicy
         $retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1
         Assert-AreEqual "$accName/$poolName/$volName1" $retrievedVolume.Name
 
-        # create and check SnapshotPolicy
-        $retrievedSnapshotPolicy = New-AzNetAppFilesSnapshotPolicy -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 -Name $snapshotPolicyName1 -Enabled -HourlySchedule $hourlySchedule -DailySchedule $dailySchedule -WeeklySchedule $weeklySchedule -MonthlySchedule $monthlySchedule
-        Assert-AreEqual "$accName1/$snapshotPolicyName1" $retrievedSnapshotPolicy.Name
+        # create and check SnapshotPolicy        
+        $retrievedSnapshotPolicy = New-AzNetAppFilesSnapshotPolicy -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -Name $snapshotPolicyName1 -Enabled -HourlySchedule $hourlySchedule -DailySchedule $dailySchedule -WeeklySchedule $weeklySchedule -MonthlySchedule $monthlySchedule
+        Assert-AreEqual "$accName/$snapshotPolicyName1" $retrievedSnapshotPolicy.Name        
         Assert-NotNull $retrievedSnapshotPolicy.Id
 
 
         # get and check a SnapshotPolicy by name and check again
-        $getRetrievedSnapshotPolicy = Get-AzNetAppFilesSnapshotPolicy -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $snapshotPolicyName1
-        Assert-AreEqual "$accName1/$snapshotPolicyName1" $retrievedSnapshotPolicy.Name
+        $getRetrievedSnapshotPolicy = Get-AzNetAppFilesSnapshotPolicy -ResourceGroupName $resourceGroup -AccountName $accName -Name $snapshotPolicyName1
+        Assert-AreEqual "$accName/$snapshotPolicyName1" $retrievedSnapshotPolicy.Name
 
         # Assign snapshotpolicy to volume
         $updateRetrievedVolume = Update-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -SnapshotPolicyId $retrievedSnapshotPolicy.Id
-        Assert-AreEqual $retrievedSnapshotPolicy.Id $updateRetrievedVolume.SnapshotPolicyId
+        
+        # check GET
+        $getRetrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1
+        Assert-AreEqual "$accName/$poolName/$volName1" $getRetrievedVolume.Name
+        Assert-AreEqual $serviceLevelStandard $getRetrievedVolume.ServiceLevel
+        Assert-AreEqual $retrievedSnapshotPolicy.Id $getRetrievedVolume.DataProtection.Snapshot.SnapshotPolicyId
+        
+        # Remove snapshotpolicy to volume
+        $updateRetrievedVolume = Update-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -SnapshotPolicyId ""
+        Assert-AreEqual "" $updateRetrievedVolume.DataProtection.Snapshot.SnapshotPolicyId
 
         # check GET
-        $getRetrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName2 -VolumeName $volName1
-        Assert-AreEqual "$accName/$poolName2/$volName1" $getRetrievedVolume.Name
+        $getRetrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1
+        Assert-AreEqual "$accName/$poolName/$volName1" $getRetrievedVolume.Name
         Assert-AreEqual $serviceLevelStandard $getRetrievedVolume.ServiceLevel
-        Assert-AreEqual $retrievedSnapshotPolicy.Id $getRetrievedVolume.SnapshotPolicyId
+        Assert-AreEqual "" $getRetrievedVolume.DataProtection.Snapshot.SnapshotPolicyId
+
 
     }
     finally

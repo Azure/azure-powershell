@@ -50,6 +50,7 @@ function Test-AccountActiveDirectory
         New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation -Tags @{$groupTagName = $groupTagValue}
 
         # check multiple ADs are captured
+        Write-log "Create Accoount multiple AD:"
         # currently this is not permitted and throws a message
         try
         {
@@ -59,7 +60,7 @@ function Test-AccountActiveDirectory
             $newTagName = "tag1"
             $newTagValue = "tagValue1"
             #$retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -ActiveDirector $activeDirectories
-
+            #New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -ActiveDirectory $activeDirectories
             Assert-ThrowsContains{  New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -ActiveDirectory $activeDirectories} 'Only one active directory allowed';
             #Assert-True { $false }
         }
@@ -76,6 +77,7 @@ function Test-AccountActiveDirectory
         $activedirectories = @( $activeDirectory1 )
 
         # create and check account 1
+        
         $newTagName = "tag1"
         $newTagValue = "tagValue1"
         $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -ActiveDirectory $activeDirectories

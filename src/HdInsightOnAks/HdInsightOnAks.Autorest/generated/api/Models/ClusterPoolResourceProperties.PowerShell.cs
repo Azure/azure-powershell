@@ -120,6 +120,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)this).AkClusterProfileAksVersion = (string) content.GetValueForProperty("AkClusterProfileAksVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)this).AkClusterProfileAksVersion, global::System.Convert.ToString);
             }
+            if (content.Contains("NetworkProfileOutboundType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)this).NetworkProfileOutboundType = (string) content.GetValueForProperty("NetworkProfileOutboundType",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)this).NetworkProfileOutboundType, global::System.Convert.ToString);
+            }
             if (content.Contains("ClusterPoolProfileClusterPoolVersion"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)this).ClusterPoolProfileClusterPoolVersion = (string) content.GetValueForProperty("ClusterPoolProfileClusterPoolVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)this).ClusterPoolProfileClusterPoolVersion, global::System.Convert.ToString);
@@ -143,6 +147,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("NetworkProfileSubnetId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)this).NetworkProfileSubnetId = (string) content.GetValueForProperty("NetworkProfileSubnetId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)this).NetworkProfileSubnetId, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetworkProfileEnablePrivateApiServer"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)this).NetworkProfileEnablePrivateApiServer = (bool?) content.GetValueForProperty("NetworkProfileEnablePrivateApiServer",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)this).NetworkProfileEnablePrivateApiServer, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("NetworkProfileApiServerAuthorizedIPRange"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)this).NetworkProfileApiServerAuthorizedIPRange = (System.Collections.Generic.List<string>) content.GetValueForProperty("NetworkProfileApiServerAuthorizedIPRange",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)this).NetworkProfileApiServerAuthorizedIPRange, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("LogAnalyticProfileEnabled"))
             {
@@ -225,6 +237,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)this).AkClusterProfileAksVersion = (string) content.GetValueForProperty("AkClusterProfileAksVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)this).AkClusterProfileAksVersion, global::System.Convert.ToString);
             }
+            if (content.Contains("NetworkProfileOutboundType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)this).NetworkProfileOutboundType = (string) content.GetValueForProperty("NetworkProfileOutboundType",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)this).NetworkProfileOutboundType, global::System.Convert.ToString);
+            }
             if (content.Contains("ClusterPoolProfileClusterPoolVersion"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)this).ClusterPoolProfileClusterPoolVersion = (string) content.GetValueForProperty("ClusterPoolProfileClusterPoolVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)this).ClusterPoolProfileClusterPoolVersion, global::System.Convert.ToString);
@@ -248,6 +264,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("NetworkProfileSubnetId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)this).NetworkProfileSubnetId = (string) content.GetValueForProperty("NetworkProfileSubnetId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)this).NetworkProfileSubnetId, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetworkProfileEnablePrivateApiServer"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)this).NetworkProfileEnablePrivateApiServer = (bool?) content.GetValueForProperty("NetworkProfileEnablePrivateApiServer",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)this).NetworkProfileEnablePrivateApiServer, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("NetworkProfileApiServerAuthorizedIPRange"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)this).NetworkProfileApiServerAuthorizedIPRange = (System.Collections.Generic.List<string>) content.GetValueForProperty("NetworkProfileApiServerAuthorizedIPRange",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolResourcePropertiesInternal)this).NetworkProfileApiServerAuthorizedIPRange, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("LogAnalyticProfileEnabled"))
             {

@@ -18,7 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.15.2
+* Upgraded Azure.Core to 1.37.0.
+
+## Version 0.15.1
 * Fixed some minor issues
+
+## Version 0.15.0
+* Fixed some minor issues
+* Updated to api-version 2023-07-01
 
 ## Version 0.14.0
 * Fixed some minor issues

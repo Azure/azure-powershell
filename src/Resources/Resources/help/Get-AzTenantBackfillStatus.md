@@ -13,7 +13,8 @@ Get the current Tenant Backfill Subscription Status
 ## SYNTAX
 
 ```
-Get-AzTenantBackfillStatus [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzTenantBackfillStatus [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

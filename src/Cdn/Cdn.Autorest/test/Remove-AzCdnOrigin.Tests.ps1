@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzCdnOrigin'))
 Describe 'Remove-AzCdnOrigin'  {
     BeforeAll {
         $subId = $env.SubscriptionId
-        $endpointName = 'e-ndpstest080'
+        $endpointName = 'e-clipstest080'
         Write-Host -ForegroundColor Green "Create endpointName : $($endpointName)"
         
         $origin = @{
@@ -41,7 +41,7 @@ Describe 'Remove-AzCdnOrigin'  {
             -Origin $origin -OriginGroup $originGroup -DefaultOriginGroupId $defaultOriginGroup
         New-AzCdnOrigin -Name "origin2" -HostName "host2.hello.com" -EndpointName $endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
 
-        $endpointName2 = 'e-ndpstest081'
+        $endpointName2 = 'e-clipstest081'
         Write-Host -ForegroundColor Green "Create endpointName : $($endpointName2)"
         
         $originId2 = "/subscriptions/$subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$endpointName2/origins/$($origin.Name)"

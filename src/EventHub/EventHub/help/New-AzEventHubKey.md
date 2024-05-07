@@ -15,15 +15,15 @@ Regenerates an EventHub SAS key
 ### NewExpandedNamespace (Default)
 ```
 New-AzEventHubKey -Name <String> -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-KeyType <KeyType>] [-KeyValue <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-KeyType <String>] [-KeyValue <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NewExpandedEntity
 ```
 New-AzEventHubKey -Name <String> -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -EventHubName <String> [-KeyType <KeyType>] [-KeyValue <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -EventHubName <String> [-KeyType <String>] [-KeyValue <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 The access key to regenerate.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.KeyType
+Type: System.String
 Parameter Sets: (All)
 Aliases: RegenerateKey
 
@@ -175,6 +175,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -252,7 +267,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAccessKeys
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAccessKeys
 
 ## NOTES
 

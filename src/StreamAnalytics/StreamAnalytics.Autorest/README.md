@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the StreamAnalytics service.
 
 ---
-## Status
-[![Az.StreamAnalytics](https://img.shields.io/powershellgallery/v/Az.StreamAnalytics.svg?style=flat-square&label=Az.StreamAnalytics "Az.StreamAnalytics")](https://www.powershellgallery.com/packages/Az.StreamAnalytics/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -17,7 +14,7 @@ This directory contains the PowerShell module for the StreamAnalytics service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -30,22 +27,27 @@ For information on how to develop for `Az.StreamAnalytics`, see [how-to.md](how-
 > see https://aka.ms/autorest
 
 ``` yaml
+commit: f7fd049bbc0089ad8faa7dc1c89610ca8ad78c83
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/ec2cba2ff0953d431b88a9fd4922de76157119e0/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2020-03-01-preview/clusters.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/f7fd049bbc0089ad8faa7dc1c89610ca8ad78c83/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/streamingjobs.json 
-  - https://github.com/Azure/azure-rest-api-specs/blob/ec2cba2ff0953d431b88a9fd4922de76157119e0/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/functions.json 
-  - https://github.com/Azure/azure-rest-api-specs/blob/ec2cba2ff0953d431b88a9fd4922de76157119e0/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/outputs.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/ec2cba2ff0953d431b88a9fd4922de76157119e0/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/inputs.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/ec2cba2ff0953d431b88a9fd4922de76157119e0/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/transformations.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/ec2cba2ff0953d431b88a9fd4922de76157119e0/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/subscriptions.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/ec2cba2ff0953d431b88a9fd4922de76157119e0/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/operations.json
+  - $(repo)/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2020-03-01-preview/clusters.json
+  - $(repo)/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/streamingjobs.json 
+  - $(repo)/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/functions.json 
+  - $(repo)/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/outputs.json
+  - $(repo)/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/inputs.json
+  - $(repo)/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/transformations.json
+  - $(repo)/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/subscriptions.json
+  - $(repo)/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/operations.json
 
 title: StreamAnalytics
 module-version: 2.0.0
 subject-prefix: StreamAnalytics
 identity-correction-for-post: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - from: swagger-document
@@ -122,7 +124,7 @@ directive:
           "default": {
             "description": "Error.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/ec2cba2ff0953d431b88a9fd4922de76157119e0/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/common/v1/definitions.json#/definitions/Error"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/f7fd049bbc0089ad8faa7dc1c89610ca8ad78c83/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/common/v1/definitions.json#/definitions/Error"
             }
           }
         }

@@ -88,7 +88,7 @@ function Test-ApplicationGatewayCRUD
 
 	$rglocation = Get-ProviderLocation ResourceManagement
 	$resourceTypeParent = "Microsoft.Network/applicationgateways"
-	$location = Get-ProviderLocation $resourceTypeParent
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "East US"
 
 	$rgname = Get-ResourceGroupName
 	$appgwName = Get-ResourceName
@@ -115,9 +115,9 @@ function Test-ApplicationGatewayCRUD
 	$probe01Name = Get-ResourceName
 	$probe02Name = Get-ResourceName
 	$customError403Url01 = "https://mycustomerrorpages.blob.core.windows.net/errorpages/403-another.htm"
-	$customError403Url02 = "http://mycustomerrorpages.blob.core.windows.net/errorpages/403-another.htm"
-	$customError502Url01 = "https://mycustomerrorpages.blob.core.windows.net/errorpages/502.htm"
-	$customError502Url02 = "http://mycustomerrorpages.blob.core.windows.net/errorpages/502.htm"
+	$customError403Url02 = "https://mycustomerrorpages.blob.core.windows.net/errorpages/403.htm"
+	$customError502Url01 = "https://mycustomerrorpages.blob.core.windows.net/errorpages/502-another.htm"
+	$customError502Url02 = "https://mycustomerrorpages.blob.core.windows.net/errorpages/502.htm"
 
 	try 
 	{
@@ -133,7 +133,7 @@ function Test-ApplicationGatewayCRUD
  		$nicSubnet = Get-AzVirtualNetworkSubnetConfig -Name $nicSubnetName -VirtualNetwork $vnet
 
 		# Create public ip
-		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -sku Basic
 
 		# create 2 nics to add to backend
 		$nic01 = New-AzNetworkInterface -Name $nic01Name -ResourceGroupName $rgname -Location $location -Subnet $nicSubnet
@@ -195,8 +195,8 @@ function Test-ApplicationGatewayCRUD
 		$listener01 = New-AzApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01
 		$listener02 = New-AzApplicationGatewayHttpListener -Name $listener02Name -Protocol Http -FrontendIPConfiguration $fipconfig02 -FrontendPort $fp02 -CustomErrorConfiguration $ce01_listener,$ce02_listener
 
-		$rule01 = New-AzApplicationGatewayRequestRoutingRule -Name $rule01Name -RuleType basic -Priority 100 -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool
-		$rule02 = New-AzApplicationGatewayRequestRoutingRule -Name $rule02Name -RuleType basic -Priority 200 -BackendHttpSettings $poolSetting02 -HttpListener $listener02 -BackendAddressPool $pool
+		$rule01 = New-AzApplicationGatewayRequestRoutingRule -Name $rule01Name -RuleType basic -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool
+		$rule02 = New-AzApplicationGatewayRequestRoutingRule -Name $rule02Name -RuleType basic -BackendHttpSettings $poolSetting02 -HttpListener $listener02 -BackendAddressPool $pool
 
 		$sku = New-AzApplicationGatewaySku -Name WAF_Medium -Tier WAF -Capacity 2
 
@@ -224,6 +224,10 @@ function Test-ApplicationGatewayCRUD
 		Compare-ConnectionDraining $poolSetting02 $getgw.BackendHttpSettingsCollection[1]
 		Compare-WebApplicationFirewallConfiguration $firewallConfig $getgw.WebApplicationFirewallConfiguration
 
+		<#
+		Tested on Azure Portal CloudShell against a V2 gateway and got the same error that this test gets when listing gateways...
+		Get-AzApplicationGateway: Resource provider 'Microsoft.Network' failed to return collection response for type 'applicationGateways'.
+
 		# List ApplicationGateway
 		$getgw = Get-AzApplicationGateway -Name $appgwName
 
@@ -238,6 +242,8 @@ function Test-ApplicationGatewayCRUD
 		Compare-ConnectionDraining $poolSetting01 $getgw.BackendHttpSettingsCollection[0]
 		Compare-ConnectionDraining $poolSetting02 $getgw.BackendHttpSettingsCollection[1]
 		Compare-WebApplicationFirewallConfiguration $firewallConfig $getgw.WebApplicationFirewallConfiguration
+		
+		#>
 
 		# Check probes
 		Assert-NotNull $getgw.Probes
@@ -309,7 +315,7 @@ function Test-ApplicationGatewayCRUD
 		$urlPathMap = Get-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway $getgw -Name $urlPathMapName
 
 		# Add new rule with URL routing
-		$getgw = Add-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $getgw -Name $rule03Name -RuleType PathBasedRouting -Priority 100 -HttpListener $listener -UrlPathMap $urlPathMap
+		$getgw = Add-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $getgw -Name $rule03Name -RuleType PathBasedRouting -HttpListener $listener -UrlPathMap $urlPathMap
 
 		# Modify existing application gateway with new configuration
 		$job = Set-AzApplicationGateway -ApplicationGateway $getgw -AsJob
@@ -354,7 +360,7 @@ function Test-ApplicationGatewayCRUD
 
 		# Modify rule to remove URL rotuing
 		$pool = Get-AzApplicationGatewayBackendAddressPool -ApplicationGateway $getgw -Name $poolName
-		$getgw = Set-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $getgw -Name $rule03Name -RuleType basic -Priority 100 -HttpListener $listener -BackendHttpSettings $poolSetting -BackendAddressPool $pool
+		$getgw = Set-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $getgw -Name $rule03Name -RuleType basic -HttpListener $listener -BackendHttpSettings $poolSetting -BackendAddressPool $pool
 
 		# Get Custom Error from listener and appgw
 		$getgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
@@ -494,7 +500,7 @@ function Test-ApplicationGatewayCRUD2
  		$nicSubnet = Get-AzVirtualNetworkSubnetConfig -Name $nicSubnetName -VirtualNetwork $vnet
 
 		# Create public ip
-		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -sku Basic
 
 		# Create ip configuration
 		$gipconfig = New-AzApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
@@ -520,13 +526,13 @@ function Test-ApplicationGatewayCRUD2
 		# rule part
 		$redirect01 = New-AzApplicationGatewayRedirectConfiguration -Name $redirect01Name -RedirectType Permanent -TargetListener $listener01
 
-		$rule01 = New-AzApplicationGatewayRequestRoutingRule -Name $rule01Name -RuleType basic -Priority 100 -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool
-		$rule02 = New-AzApplicationGatewayRequestRoutingRule -Name $rule02Name -RuleType basic -Priority 200 -HttpListener $listener02 -RedirectConfiguration $redirect01
+		$rule01 = New-AzApplicationGatewayRequestRoutingRule -Name $rule01Name -RuleType basic -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool
+		$rule02 = New-AzApplicationGatewayRequestRoutingRule -Name $rule02Name -RuleType basic -HttpListener $listener02 -RedirectConfiguration $redirect01
 
 		$sku = New-AzApplicationGatewaySku -Name Standard_Medium -Tier Standard -Capacity 2
 
 		# security part
-		$sslPolicy = New-AzApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
+		$sslPolicy = New-AzApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
 
 		# Create Application Gateway
 		$appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01, $fp02 -HttpListeners $listener01, $listener02 -RedirectConfiguration $redirect01 -RequestRoutingRules $rule01, $rule02 -Sku $sku -SslPolicy $sslPolicy -SslCertificates $sslCert01 -EnableHttp2
@@ -2436,7 +2442,10 @@ function Test-ApplicationGatewayCRUDSubItems
 		Assert-AreEqual $maps.Count 1
 
 		$appgwsRG = Get-AzApplicationGateway -ResourceGroupName $rgname
-		$appgwsAll = Get-AzApplicationGateway
+
+		# Tested on Azure Portal CloudShell against a V2 gateway and got the same error that this test gets when listing gateways...
+		# Get-AzApplicationGateway: Resource provider 'Microsoft.Network' failed to return collection response for type 'applicationGateways'.
+		# $appgwsAll = Get-AzApplicationGateway
 
 		# Set all possible
 		$appgw = Set-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $appgw -Name $authCertName -CertificateFile $certFilePath2

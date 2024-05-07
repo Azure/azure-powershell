@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the AdDomainServices service.
 
 ---
-## Status
-[![Az.ADDomainServices](https://img.shields.io/powershellgallery/v/Az.ADDomainServices.svg?style=flat-square&label=Az.ADDomainServices "Az.ADDomainServices")](https://www.powershellgallery.com/packages/Az.ADDomainServices/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -30,10 +27,10 @@ For information on how to develop for `Az.ADDomainServices`, see [how-to.md](how
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 394ab556cb4aed1196918856a24be9b02609cc93
+commit: 394ab556cb4aed1196918856a24be9b02609cc93
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
   - $(repo)/specification/domainservices/resource-manager/Microsoft.AAD/stable/2020-01-01/domainservices.json
@@ -51,6 +48,10 @@ subject-prefix: ADDomainService
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
 resourcegroup-append: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - from: swagger-document

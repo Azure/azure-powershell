@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the ServiceLinker service.
 
 ---
-## Status
-[![Az.ServiceLinker](https://img.shields.io/powershellgallery/v/Az.ServiceLinker.svg?style=flat-square&label=Az.ServiceLinker "Az.ServiceLinker")](https://www.powershellgallery.com/packages/Az.ServiceLinker/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -30,10 +27,10 @@ For information on how to develop for `Az.ServiceLinker`, see [how-to.md](how-to
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: e7bf3adfa2d5e5cdbb804eec35279501794f461c
+commit: e7bf3adfa2d5e5cdbb804eec35279501794f461c
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
   - $(repo)/specification/servicelinker/resource-manager/Microsoft.ServiceLinker/preview/2022-11-01-preview/servicelinker.json
@@ -49,6 +46,10 @@ title: ServiceLinker
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs
