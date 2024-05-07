@@ -118,13 +118,14 @@ try {
                 {
                     Write-Host "Specific generation for Resources.Management.Sdk"
                     rm -r Generated/*
-                    npx autorest --use:@autorest/powershell@4.x --tag=package-privatelinks-2020-05
-                    npx autorest --use:@autorest/powershell@4.x --tag=package-subscriptions-2021-01
-                    npx autorest --use:@autorest/powershell@4.x --tag=package-features-2021-07
-                    npx autorest --use:@autorest/powershell@4.x --tag=package-deploymentscripts-2020-10
-                    npx autorest --use:@autorest/powershell@4.x --tag=package-resources-2021-04
-                    npx autorest --use:@autorest/powershell@4.x --tag=package-deploymentstacks-2022-08-preview
-                    npx autorest --use:@autorest/powershell@4.x --tag=package-templatespecs-2021-05
+                    autorest --reset
+                    autorest --use:@autorest/powershell@4.x --tag=package-privatelinks-2020-05
+                    autorest --use:@autorest/powershell@4.x --tag=package-subscriptions-2021-01
+                    autorest --use:@autorest/powershell@4.x --tag=package-features-2021-07
+                    autorest --use:@autorest/powershell@4.x --tag=package-deploymentscripts-2020-10
+                    autorest --use:@autorest/powershell@4.x --tag=package-resources-2021-04
+                    autorest --use:@autorest/powershell@4.x --tag=package-deploymentstacks-2024-03
+                    autorest --use:@autorest/powershell@4.x --tag=package-templatespecs-2021-05
                 }
                 else
                 {
