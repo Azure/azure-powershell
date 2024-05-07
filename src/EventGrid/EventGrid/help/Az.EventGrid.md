@@ -1,6 +1,6 @@
 ---
 Module Name: Az.EventGrid
-Module Guid: 53BF7132-5BB4-46EB-AC05-61A49A6CD5EB
+Module Guid: 48f66541-3567-48c3-ab35-ba5c8d7b4106
 Download Help Link: https://learn.microsoft.com/powershell/module/az.eventgrid
 Help Version: 1.0.0.0
 Locale: en-US
@@ -8,7 +8,7 @@ Locale: en-US
 
 # Az.EventGrid Module
 ## Description
-{{ Fill in the Description }}
+Microsoft Azure PowerShell: EventGrid cmdlets
 
 ## Az.EventGrid Cmdlets
 ### [Disable-AzEventGridPartnerTopic](Disable-AzEventGridPartnerTopic.md)
