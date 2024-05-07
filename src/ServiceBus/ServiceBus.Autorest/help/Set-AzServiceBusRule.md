@@ -17,20 +17,20 @@ Updates a ServiceBus Rule
 Set-AzServiceBusRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  -SubscriptionName <String> -TopicName <String> [-SubscriptionId <String>] [-ActionRequiresPreprocessing]
  [-ActionSqlExpression <String>] [-ContentType <String>] [-CorrelationFilterProperty <Hashtable>]
- [-CorrelationFilterRequiresPreprocessing] [-CorrelationId <String>] [-FilterType <FilterType>]
- [-Label <String>] [-MessageId <String>] [-ReplyTo <String>] [-ReplyToSessionId <String>]
- [-SessionId <String>] [-SqlExpression <String>] [-SqlFilterRequiresPreprocessing] [-To <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-CorrelationFilterRequiresPreprocessing] [-CorrelationId <String>] [-FilterType <String>] [-Label <String>]
+ [-MessageId <String>] [-ReplyTo <String>] [-ReplyToSessionId <String>] [-SessionId <String>]
+ [-SqlExpression <String>] [-SqlFilterRequiresPreprocessing] [-To <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
 ```
 Set-AzServiceBusRule -InputObject <IServiceBusIdentity> [-ActionRequiresPreprocessing]
  [-ActionSqlExpression <String>] [-ContentType <String>] [-CorrelationFilterProperty <Hashtable>]
- [-CorrelationFilterRequiresPreprocessing] [-CorrelationId <String>] [-FilterType <FilterType>]
- [-Label <String>] [-MessageId <String>] [-ReplyTo <String>] [-ReplyToSessionId <String>]
- [-SessionId <String>] [-SqlExpression <String>] [-SqlFilterRequiresPreprocessing] [-To <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-CorrelationFilterRequiresPreprocessing] [-CorrelationId <String>] [-FilterType <String>] [-Label <String>]
+ [-MessageId <String>] [-ReplyTo <String>] [-ReplyToSessionId <String>] [-SessionId <String>]
+ [-SqlExpression <String>] [-SqlFilterRequiresPreprocessing] [-To <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -230,7 +230,7 @@ Accept wildcard characters: False
 Filter type that is evaluated against a BrokeredMessage.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.FilterType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -525,7 +525,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IRule
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule
 
 ## NOTES
 

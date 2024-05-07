@@ -19,8 +19,8 @@ Set-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName 
  [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
  [-EnableBatchedOperations] [-EnableExpress] [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>]
  [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-MaxMessageSizeInKilobytes <Int64>]
- [-MaxSizeInMegabytes <Int32>] [-Status <EntityStatus>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-MaxSizeInMegabytes <Int32>] [-Status <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
@@ -30,8 +30,7 @@ Set-AzServiceBusQueue -InputObject <IServiceBusIdentity> [-AutoDeleteOnIdle <Tim
  [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperations] [-EnableExpress]
  [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>] [-LockDuration <TimeSpan>]
  [-MaxDeliveryCount <Int32>] [-MaxMessageSizeInKilobytes <Int64>] [-MaxSizeInMegabytes <Int32>]
- [-Status <EntityStatus>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Status <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -420,11 +419,10 @@ Accept wildcard characters: False
 ```
 
 ### -Status
-Maximum size (in KB) of the message payload that can be accepted by the queue.
-This property is only used in Premium today and default is 1024.
+Enumerates the possible values for the status of a messaging entity.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.EntityStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -490,7 +488,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbQueue
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueue
 
 ## NOTES
 

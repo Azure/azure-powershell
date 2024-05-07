@@ -15,23 +15,23 @@ Regenerates the SASKey of a ServiceBus namespace, queue or topic.
 ### NewExpandedNamespace (Default)
 ```
 New-AzServiceBusKey -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -KeyType <KeyType> [-KeyValue <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] -KeyType <String> [-KeyValue <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NewExpandedTopic
 ```
 New-AzServiceBusKey -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -TopicName <String> -KeyType <KeyType> [-KeyValue <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-SubscriptionId <String>] -TopicName <String> -KeyType <String> [-KeyValue <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### NewExpandedQueue
 ```
 New-AzServiceBusKey -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -QueueName <String> -KeyType <KeyType> [-KeyValue <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-SubscriptionId <String>] -QueueName <String> -KeyType <String> [-KeyValue <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 The access key to regenerate.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.KeyType
+Type: System.String
 Parameter Sets: (All)
 Aliases: RegenerateKey
 
@@ -184,6 +184,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -291,7 +306,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IAccessKeys
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys
 
 ## NOTES
 

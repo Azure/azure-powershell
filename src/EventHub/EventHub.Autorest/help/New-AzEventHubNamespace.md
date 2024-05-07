@@ -15,9 +15,9 @@ Creates an EventHub Namespace
 ```
 New-AzEventHubNamespace -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-AlternateName <String>] [-ClusterArmId <String>] [-DisableLocalAuth]
- [-EnableAutoInflate] [-IdentityType <ManagedServiceIdentityType>] [-KeyVaultProperty <IKeyVaultProperties[]>]
- [-MaximumThroughputUnit <Int64>] [-MinimumTlsVersion <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
- [-RequireInfrastructureEncryption] [-SkuCapacity <Int64>] [-SkuName <SkuName>] [-Tag <Hashtable>]
+ [-EnableAutoInflate] [-IdentityType <String>] [-KeyVaultProperty <IKeyVaultProperties[]>]
+ [-MaximumThroughputUnit <Int64>] [-MinimumTlsVersion <String>] [-PublicNetworkAccess <String>]
+ [-RequireInfrastructureEncryption] [-SkuCapacity <Int64>] [-SkuName <String>] [-Tag <Hashtable>]
  [-UserAssignedIdentityId <String[]>] [-ZoneRedundant] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -276,7 +276,7 @@ Accept wildcard characters: False
 Type of managed service identity.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -289,10 +289,9 @@ Accept wildcard characters: False
 
 ### -KeyVaultProperty
 Properties to configure Encryption
-To construct, see NOTES section for KEYVAULTPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IKeyVaultProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IKeyVaultProperties[]
 Parameter Sets: (All)
 Aliases:
 
@@ -370,7 +369,7 @@ This determines if traffic is allowed over public network.
 By default it is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.PublicNetworkAccess
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -433,7 +432,7 @@ The minimum TLS version for the cluster to support, e.g.
 '1.2'
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SkuName
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -542,7 +541,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespace
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespace
 
 ## NOTES
 
