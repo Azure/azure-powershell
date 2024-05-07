@@ -35,6 +35,13 @@ Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse |
     if (-not (Test-Path $generatedModuleRootPath)) {
         New-Item -Path $generatedModuleRootPath -ItemType Directory -Force
     }
+
+    $generateInfoPath = Join-Path $sourceSubModulePath 'generate-info.json'
+    if (Test-Path $generateInfoPath) {
+        Remove-Item $generateInfoPath -Force
+    }
+    New-GenerateInfoJson -GeneratedDirectory $sourceSubModulePath
+    
     # Move files from src to generated
     $fileToMove = @('generated', 'generate-info.json', "Az.$subModuleNameTrimmed.psd1", "Az.$subModuleNameTrimmed.psm1", "Az.$subModuleNameTrimmed.format.ps1xml", 'exports', 'internal', "Az.$subModuleNameTrimmed.csproj", 'test-module.ps1', 'check-dependencies.ps1')
     $fileToMove | Foreach-Object {
@@ -56,12 +63,6 @@ Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse |
             dotnet sln $slnPath add $toPath
         }
     }
-
-    $generateInfoPath = Join-Path $sourceSubModulePath 'generate-info.json'
-    if (Test-Path $generateInfoPath) {
-        Remove-Item $generateInfoPath -Force
-    }
-    New-GenerateInfoJson -GeneratedDirectory $sourceSubModulePath
 }
 
 # <#
