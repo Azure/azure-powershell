@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+* Updated the reference of Azure PowerShell Common to 1.3.94-preview.
+* [Breaking Change] Removed config `DisableErrorRecordsPersistence` to disable writing error records, error recording is now opt-in
+* Added config `EnableErrorRecordsPersistence` to enable writing error records to file system
+
+## Version 2.19.0
 > [!IMPORTANT]
 > Preannouncement: The default interactive login experience will change from browser based to `Web Account Manager` (WAM) based on supported platforms, [learn more](https://learn.microsoft.com/en-us/entra/msal/dotnet/acquiring-tokens/desktop-mobile/wam). Only interactive login flow is influeced by WAM. This will take effect from the release of **May 21st**.
 * Fixed secrets detection issues.

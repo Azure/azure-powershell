@@ -15,16 +15,17 @@ Clears the values of configs that are set by the user.
 ### ClearAll (Default)
 ```
 Clear-AzConfig [-Force] [-PassThru] [-AppliesTo <String>] [-Scope <ConfigScope>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ClearByKey
 ```
 Clear-AzConfig [-PassThru] [-AppliesTo <String>] [-Scope <ConfigScope>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-CheckForUpgrade]
- [-DefaultSubscriptionForLogin] [-DisableErrorRecordsPersistence] [-DisableInstanceDiscovery]
- [-DisplayBreakingChangeWarning] [-DisplayRegionIdentified] [-DisplaySurveyMessage] [-EnableDataCollection]
- [-EnableLoginByWam] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-CheckForUpgrade] [-DefaultSubscriptionForLogin] [-DisableInstanceDiscovery] [-DisplayBreakingChangeWarning]
+ [-DisplayRegionIdentified] [-DisplaySecretsWarning] [-DisplaySurveyMessage] [-EnableDataCollection]
+ [-EnableErrorRecordsPersistence] [-EnableLoginByWam] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,21 +104,6 @@ Accept wildcard characters: False
 ### -DefaultSubscriptionForLogin
 Subscription name or GUID.
 Sets the default context for Azure PowerShell when logging in without specifying a subscription.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ClearByKey
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisableErrorRecordsPersistence
-When disabled, error records will not be written to ~/.Azure/ErrorRecords. This config will be replaced by "EnableErrorRecordsPersistence" as opt-in in the next major release of Az around November 2023.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -222,6 +208,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableErrorRecordsPersistence
+When enabled, error records will be written to ~/.Azure/ErrorRecords.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ClearByKey
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableLoginByWam
 \[Preview\] When enabled, Web Account Manager (WAM) will be the default interactive login experience.
 It will fall back to using the browser if the platform does not support WAM.
@@ -262,6 +263,21 @@ Returns true if cmdlet executes correctly.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

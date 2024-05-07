@@ -19,8 +19,8 @@ Set-AzServiceBusRule -Name <String> -TopicName <String> -SubscriptionName <Strin
  [-SqlFilterRequiresPreprocessing] [-ContentType <String>] [-CorrelationId <String>] [-Label <String>]
  [-MessageId <String>] [-CorrelationFilterProperty <Hashtable>] [-ReplyTo <String>]
  [-ReplyToSessionId <String>] [-CorrelationFilterRequiresPreprocessing] [-SessionId <String>] [-To <String>]
- [-FilterType <FilterType>] [-ActionRequiresPreprocessing] [-ActionSqlExpression <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-FilterType <String>] [-ActionRequiresPreprocessing] [-ActionSqlExpression <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -30,8 +30,8 @@ Set-AzServiceBusRule -InputObject <IServiceBusIdentity> [-SqlExpression <String>
  [-SqlFilterRequiresPreprocessing] [-ContentType <String>] [-CorrelationId <String>] [-Label <String>]
  [-MessageId <String>] [-CorrelationFilterProperty <Hashtable>] [-ReplyTo <String>]
  [-ReplyToSessionId <String>] [-CorrelationFilterRequiresPreprocessing] [-SessionId <String>] [-To <String>]
- [-FilterType <FilterType>] [-ActionRequiresPreprocessing] [-ActionSqlExpression <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-FilterType <String>] [-ActionRequiresPreprocessing] [-ActionSqlExpression <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -232,7 +232,7 @@ Accept wildcard characters: False
 Filter type that is evaluated against a BrokeredMessage.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.FilterType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -326,6 +326,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -527,7 +542,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IRule
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule
 
 ## NOTES
 
