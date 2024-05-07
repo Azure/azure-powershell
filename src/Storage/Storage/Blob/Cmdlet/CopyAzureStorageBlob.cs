@@ -64,7 +64,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private string BlobName = String.Empty;
 
         [Alias("SourceContainer")]
-        [Parameter(HelpMessage = "Source Container name", Mandatory = true, ParameterSetName = ContainerNameParameterSet)]
+        [Parameter(HelpMessage = "Source Container name_", Mandatory = true, ParameterSetName = ContainerNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string SrcContainer
         {
