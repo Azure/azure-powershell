@@ -12,7 +12,7 @@ namespace Tools.Common.Loaders
         private const string NetCoreApp21 = "netcoreapp2.1";
         private const string NetCoreApp31 = "netcoreapp3.1";
         private const string NetStandard20 = "netstandard2.0";
-        private static readonly IEnumerable<string> Frameworks = new string[] { NetCoreApp21, NetCoreApp31, NetStandard20 };
+        private static readonly IEnumerable<string> Frameworks = new string[] {NetCoreApp21, NetCoreApp31, NetStandard20 };
         public static HashSet<string> ProcessedFolderSet = new HashSet<string>();
 
         public static void Load(string directory)
@@ -53,7 +53,7 @@ namespace Tools.Common.Loaders
                 }
                 else
                 {
-                    Console.WriteLine($"PreloadSharedAssemblies: Could not find directory {libFolder}.");
+                    Console.WriteLine($"PreloadSharedAssemblies: Could not find directory {sharedAssemblyFolder}.");
                 }
             }
         }

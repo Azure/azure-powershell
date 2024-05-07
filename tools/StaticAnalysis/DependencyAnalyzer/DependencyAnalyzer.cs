@@ -53,6 +53,7 @@ namespace StaticAnalysis.DependencyAnalyzer
             "netstandard",
             "Microsoft.Win32.Primitives",
             "System.AppContext",
+            "System.ClientModel",
             "System.Collections",
             "System.Collections.Immutable",
             "System.Collections.Concurrent",
