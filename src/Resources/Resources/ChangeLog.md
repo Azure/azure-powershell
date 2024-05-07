@@ -21,12 +21,12 @@
 ## Upcoming Release
 * [Breaking Change] Redesigned CRUD cmdlets for `PolicyAssignment`, `PolicyDefinition`, `PolicyExemption`, `PolicySetDefinition`. Please see Az 12 migration guide https://learn.microsoft.com/en-us/powershell/azure/migrate-az-12.0.0 for more detail.
 * Added null check to the permissions object in the ToPSRoleDefinition method to return if the whole permissions object array is null.
+* Adjusted Depoyment Stacks cmdlets to prepare for GA.
 
 ## Version 6.16.2
 * Introduced secrets detection feature to safeguard sensitive data.
 * Migrated SDK generation from autorest csharp to autorest powershell.
 * Fixed deployment and deployment stack New/Set cmdlets to fail if template/parameter uri fails to downloads.
-* Adjusted Depoyment Stacks cmdlets to prepare for GA.
 
 ## Version 6.16.1
 * Added null check to the permissions object in the ToPSRoleDefinition method.
@@ -39,7 +39,6 @@
 * Fixed bug with custom types and deployments whatif. [#13245]
 * Fixed bug with nullable array parameters & outputs.
 * Fixed bug with TemplateParameterUri not downloading parameters correctly.
-* Add dynmaic parameters to stack New/Set cmdlets.
 
 ## Version 6.15.1
 * Fixed deadlock in Bicep CLI execution. [#24133]
