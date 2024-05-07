@@ -22,6 +22,8 @@
     - `Get-AzStorageQueue`
     - `New-AzStorageQueue`
     - `New-AzStorageQueueSASToken`
+* When uploading an Azure File with write only SAS token, take the parameter -Path as destination file path, instead of destination directory path previously.
+    - `Set-AzStorageFileContent`
 
 ## Version 6.2.0
 * Introduced secrets detection feature to safeguard sensitive data.
