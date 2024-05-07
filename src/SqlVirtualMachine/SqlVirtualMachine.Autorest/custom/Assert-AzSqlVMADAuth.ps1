@@ -147,7 +147,7 @@ process {
 	try {
         $hasInputObject = $PSBoundParameters.Remove('InputObject')
 
-		$hasAzureAdAuthenticationSettingClientId = $PSBoundParameters.Remove('AzureAdAuthenticationSettingClientId')
+        $hasAzureAdAuthenticationSettingClientId = $PSBoundParameters.Remove('AzureAdAuthenticationSettingClientId')
         
         $hasAsJob = $PSBoundParameters.Remove('AsJob')
         $null = $PSBoundParameters.Remove('WhatIf')
@@ -169,7 +169,8 @@ process {
 		
         if ($PSCmdlet.ShouldProcess("SQL virtual machine $($sqlvm.Name)", "Assert")) {
            Assert-All -VmName $sqlvm.Name -ResourceGroup $sqlvm.ResourceGroupName -MsiClientId $AzureAdAuthenticationSettingClientId
-		   return $true
+    	   Write-Output $true
+           return
         }
     } catch {
         throw
