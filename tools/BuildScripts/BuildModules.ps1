@@ -112,21 +112,10 @@ switch ($PSCmdlet.ParameterSetName) {
 $csprojFiles = Get-CsprojFromModule -BuildModuleList $TargetModule -TestModuleList $testModules -RepoRoot $RepoRoot -Configuration $Configuration
 
 # Prepare autorest based modules
-$succeeded = $true
-$jobs = @()
-$prepareScriptPath = Join-Path $toolDirectory "PrepareAutorestModule.ps1"
+$prepareScriptPath = Join-Path $PSScriptRoot "PrepareAutorestModule.ps1"
 foreach ($moduleRootName in $TargetModule) {
-    $jobs += (. $prepareScriptPath -ModuleRootName $moduleRootName -RepoRoot $RepoRoot -ForceRegenerate:$ForceRegenerate &)
-}
-$jobs | Foreach-Object -Parallel {
-    if (-not ($_ | Wait-Job | Receive-Job)) {
-        $succeeded = $false
-    }
-    $_ | Remove-Job
-}
-if (-not $succeeded) {
-    Write-Error "----------Parepare autorest modules failed, exit----------"
-    Exit 1
+    Write-Host "Preparing $moduleRootName ..." -ForegroundColor DarkGreen
+    . $prepareScriptPath -ModuleRootName $moduleRootName -RepoRoot $RepoRoot -ForceRegenerate:$ForceRegenerate
 }
 
 & dotnet --version
