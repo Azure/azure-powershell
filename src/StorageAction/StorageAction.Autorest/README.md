@@ -28,7 +28,7 @@ For information on how to develop for `Az.StorageAction`, see [how-to.md](how-to
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 13f09225c7d1cf42c55536e41c090bb8438cebd7
+commit: c156dc16f347511c702f815af35b3ae4cc9372e0
 tag: package-2023-01-01
 require:
 # readme.azure.noprofile.md is the common configuration file
@@ -52,9 +52,6 @@ title: StorageAction
 subject-prefix: $(service-name)
 
 directive:
-  - from: swagger-document
-    where: $.definitions.StorageTask
-    transform: $['required'] = ['identity','properties']
 #   # Following are common directives which are normally required in all the RPs
 #   # 1. Remove the unexpanded parameter set
 #   # 2. For New-* cmdlets, ViaIdentity is not required

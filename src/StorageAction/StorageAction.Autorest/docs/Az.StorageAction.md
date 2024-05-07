@@ -15,7 +15,7 @@ Microsoft Azure PowerShell: StorageAction cmdlets
 Get the storage task properties
 
 ### [Get-AzStorageActionTaskAssignment](Get-AzStorageActionTaskAssignment.md)
-Lists all the storage tasks available under the given resource group.
+Lists Resource IDs of the Storage Task Assignments associated with this Storage Task.
 
 ### [Get-AzStorageActionTasksReport](Get-AzStorageActionTasksReport.md)
 Fetch the storage tasks run report summary for each assignment.

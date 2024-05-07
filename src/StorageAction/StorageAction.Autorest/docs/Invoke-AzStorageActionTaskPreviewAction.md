@@ -228,7 +228,7 @@ Accept wildcard characters: False
 ```
 
 ### -Blob
-Preview action container properties to be tested for a match with the provided condition.
+Properties of some sample blobs in the container to test for matches with the preview action.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewBlobProperties[]
@@ -258,7 +258,7 @@ Accept wildcard characters: False
 ```
 
 ### -ContainerName
-property for the container name.
+Name of test container
 
 ```yaml
 Type: System.String

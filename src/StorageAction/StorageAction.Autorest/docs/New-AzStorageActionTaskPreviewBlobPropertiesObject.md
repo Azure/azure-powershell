@@ -68,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-property for the container name.
+Name of test blob.
 
 ```yaml
 Type: System.String

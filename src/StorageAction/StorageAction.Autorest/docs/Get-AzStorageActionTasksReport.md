@@ -115,7 +115,7 @@ Accept wildcard characters: False
 ```
 
 ### -Maxpagesize
-Optional, specifies the maximum number of storage task assignment Ids to be included in the list response.
+Optional, specifies the maximum number of Storage Task Assignment Resource IDs to be included in the list response.
 
 ```yaml
 Type: System.String

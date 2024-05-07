@@ -274,7 +274,8 @@ Accept wildcard characters: False
 ```
 
 ### -IfCondition
-The condition predicate which is composed of object properties, eg: blob and container properties.
+Condition predicate to evaluate each object.
+See https://aka.ms/storagetaskconditions for valid properties and operators.
 
 ```yaml
 Type: System.String

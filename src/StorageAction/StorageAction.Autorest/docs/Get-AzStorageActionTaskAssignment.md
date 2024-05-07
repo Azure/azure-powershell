@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzStorageActionTaskAssignment
 
 ## SYNOPSIS
-Lists all the storage tasks available under the given resource group.
+Lists Resource IDs of the Storage Task Assignments associated with this Storage Task.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzStorageActionTaskAssignment -ResourceGroupName <String> -StorageTaskName <
 ```
 
 ## DESCRIPTION
-Lists all the storage tasks available under the given resource group.
+Lists Resource IDs of the Storage Task Assignments associated with this Storage Task.
 
 ## EXAMPLES
 
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -Maxpagesize
-Optional, specifies the maximum number of storage task assignment Ids to be included in the list response.
+Optional, specifies the maximum number of Storage Task Assignment Resource IDs to be included in the list response.
 
 ```yaml
 Type: System.String
