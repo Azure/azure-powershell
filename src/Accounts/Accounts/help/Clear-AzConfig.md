@@ -15,24 +15,17 @@ Clears the values of configs that are set by the user.
 ### ClearAll (Default)
 ```
 Clear-AzConfig [-Force] [-PassThru] [-AppliesTo <String>] [-Scope <ConfigScope>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ClearByKey
 ```
 Clear-AzConfig [-PassThru] [-AppliesTo <String>] [-Scope <ConfigScope>]
-<<<<<<< HEAD
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [-CheckForUpgrade] [-DefaultSubscriptionForLogin] [-DisableInstanceDiscovery] [-DisplayBreakingChangeWarning]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-CheckForUpgrade]
+ [-DefaultSubscriptionForLogin] [-DisableInstanceDiscovery] [-DisplayBreakingChangeWarning]
  [-DisplayRegionIdentified] [-DisplaySecretsWarning] [-DisplaySurveyMessage] [-EnableDataCollection]
- [-EnableErrorRecordsPersistence] [-EnableLoginByWam] [<CommonParameters>]
-=======
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-CheckForUpgrade] [-ContextSelectionMode]
- [-DefaultSubscriptionForLogin] [-DisableErrorRecordsPersistence] [-DisableInstanceDiscovery]
- [-DisplayBreakingChangeWarning] [-DisplayRegionIdentified] [-DisplaySecretsWarning] [-DisplaySurveyMessage]
- [-EnableDataCollection] [-EnableLoginByWam] [-EnableTestCoverage] [-TestCoverageLocation] [<CommonParameters>]
->>>>>>> ec9baf0d968 (add config to switch back context selection)
+ [-EnableErrorRecordsPersistence] [-EnableLoginByWam] [-EnableTestCoverage] [-LoginExperienceV2]
+ [-TestCoverageLocation] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,21 +73,6 @@ Accept wildcard characters: False
 
 ### -CheckForUpgrade
 When enabled, Azure PowerShell will check for updates automatically and display a hint message when an update is available. The default value is true.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ClearByKey
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ContextSelectionMode
-Specify the way to select a context from available tenants and their subscriptions. Valid values are 'Manual' (default value) and 'Auto'. 'Manual' requires user's input to decide context. 'Auto' uses the first tenant and subscription returned by API.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -293,12 +271,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true if cmdlet executes correctly.
+### -LoginExperienceV2
+Specify the way to select a context from available tenants and their subscriptions. Possible values are 'On' (default value) and 'Off'. 'On' requires user's input to decide context. 'Off' uses the first tenant and subscription returned by API.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: ClearByKey
 Aliases:
 
 Required: False
@@ -308,13 +286,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
+### -PassThru
+Returns true if cmdlet executes correctly.
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: proga
+Aliases:
 
 Required: False
 Position: Named

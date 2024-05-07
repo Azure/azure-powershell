@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             string authScope = null,
             Prompt prompt = null,
             bool isInteractiveAuthenticationFlow = false,
-            string contextSelectionMode = "")
+            string loginExperienceStatus = "")
         {
             if(isInteractiveAuthenticationFlow) WriteInformationMessage($"{PSStyle.ForegroundColor.BrightYellow}{Resources.PleaseSelectAccount}{PSStyle.Reset}{System.Environment.NewLine}");
 
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             string tenantDomainName = null;
             
             var lastUsedSubscription = isInteractiveAuthenticationFlow && string.IsNullOrEmpty(subscriptionId) && string.IsNullOrEmpty(subscriptionName) ? _profile?.DefaultContext?.Subscription : null;
-            bool isManualSelectionMode = string.IsNullOrEmpty(contextSelectionMode) || !contextSelectionMode.Equals("Auto", StringComparison.OrdinalIgnoreCase);
+            bool isManualSelectionMode = string.IsNullOrEmpty(loginExperienceStatus) || !loginExperienceStatus.Equals("Off", StringComparison.OrdinalIgnoreCase);
             bool shouldWriteSubscriptionSelectionTable = isInteractiveAuthenticationFlow && isManualSelectionMode;
 
             string promptBehavior =

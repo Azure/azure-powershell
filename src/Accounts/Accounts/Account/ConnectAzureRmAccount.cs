@@ -543,7 +543,7 @@ namespace Microsoft.Azure.Commands.Profile
                         resourceId,
                         Prompt,
                         isInteractiveAuthenticationFlow,
-                        GetContextSelectionMode()));
+                        GetLoginExperienceStatus()));
                     task.Start();
                     while (!task.IsCompleted)
                     {
@@ -590,9 +590,9 @@ namespace Microsoft.Azure.Commands.Profile
             }
         }
 
-        private string GetContextSelectionMode()
+        private string GetLoginExperienceStatus()
         {
-            return AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out IConfigManager configManager) ? configManager.GetConfigValue<string>(ConfigKeys.ContextSelectionMode) : string.Empty;
+            return AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out IConfigManager configManager) ? configManager.GetConfigValue<string>(ConfigKeys.LoginExperienceV2) : "On";
         }
 
         private bool IsInteractiveAuthenticationFlow()

@@ -209,10 +209,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                 ConfigKeys.EnvCheckForUpgrade,
                 new[] { AppliesTo.Az }));
             configManager.RegisterConfig(new SimpleTypedConfig<string>(
-                ConfigKeys.ContextSelectionMode,
-                Resources.HelpMessageOfContextSelectionMode,
-                "Manual",
-                string.Format("AzPS{0}", ConfigKeys.ContextSelectionMode),
+                ConfigKeys.LoginExperienceV2,
+                Resources.HelpMessageOfLoginExperienceV2,
+                "On",
+                string.Format("AzPS{0}", ConfigKeys.LoginExperienceV2),
                 new[] { AppliesTo.Az }));
 #if DEBUG || TESTCOVERAGE
             configManager.RegisterConfig(new SimpleTypedConfig<bool>(

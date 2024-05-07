@@ -304,15 +304,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Specify the way to select a context from available tenants and their subscriptions. Valid values are &apos;Manual&apos; (default value) and &apos;Auto&apos;. &apos;Manual&apos; requires user&apos;s input to decide context. &apos;Auto&apos; uses the first tenant and subscription returned by API..
-        /// </summary>
-        public static string HelpMessageOfContextSelectionMode {
-            get {
-                return ResourceManager.GetString("HelpMessageOfContextSelectionMode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Subscription name or GUID. Sets the default context for Azure PowerShell when logging in without specifying a subscription..
         /// </summary>
         public static string HelpMessageOfDefaultSubscriptionForLogin {
@@ -390,6 +381,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         public static string HelpMessageOfEnableWamLogin {
             get {
                 return ResourceManager.GetString("HelpMessageOfEnableWamLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specify the way to select a context from available tenants and their subscriptions. Possible values are &apos;On&apos; (default value) and &apos;Off&apos;. &apos;On&apos; requires user&apos;s input to decide context. &apos;Off&apos; uses the first tenant and subscription returned by API..
+        /// </summary>
+        public static string HelpMessageOfLoginExperienceV2 {
+            get {
+                return ResourceManager.GetString("HelpMessageOfLoginExperienceV2", resourceCulture);
             }
         }
         
