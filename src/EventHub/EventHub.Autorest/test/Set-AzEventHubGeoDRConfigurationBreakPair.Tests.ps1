@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzEventHubGeoDRConfigurat
 }
 
 Describe 'Set-AzEventHubGeoDRConfigurationBreakPair' {
-    It 'Break' {
+    It 'Break' -skip:$($env.secondaryLocation -eq '') {
         Set-AzEventHubGeoDRConfigurationBreakPair -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -Name $env.alias
         
         while($drConfig.ProvisioningState -ne "Succeeded"){
@@ -31,7 +31,7 @@ Describe 'Set-AzEventHubGeoDRConfigurationBreakPair' {
         $drConfig.Role | Should -Be "PrimaryNotReplicating"
 
         $drConfig = New-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -PartnerNamespace $env.secondaryNamespaceResourceId
-        
+
         while($drConfig.ProvisioningState -ne "Succeeded"){
             $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
             if ($TestMode -ne 'playback') {
@@ -40,7 +40,7 @@ Describe 'Set-AzEventHubGeoDRConfigurationBreakPair' {
         }
     }
 
-    It 'BreakViaIdentity' {
+    It 'BreakViaIdentity' -skip:$($env.secondaryLocation -eq '') {
         $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
 
         Set-AzEventHubGeoDRConfigurationBreakPair -InputObject $drConfig

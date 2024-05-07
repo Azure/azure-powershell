@@ -1,0 +1,105 @@
+{
+  "resourceType": "profiles/afdEndpoints/routes",
+  "apiVersion": "2024-02-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.cdn"
+  },
+  "commands": [
+    {
+      "name": "Get-AzFrontDoorCdnRoute",
+      "description": "Gets an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes/{routeName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnroute"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EndpointName <String>",
+              "-Name <String>",
+              "-ProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.",
+          "parameters": [
+            {
+              "name": "-EndpointName",
+              "value": "[Path.endpointName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.routeName]"
+            },
+            {
+              "name": "-ProfileName",
+              "value": "[Path.profileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzFrontDoorCdnRoute",
+      "description": "Deletes an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes/{routeName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cdn/remove-azfrontdoorcdnroute"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EndpointName <String>",
+              "-Name <String>",
+              "-ProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.",
+          "parameters": [
+            {
+              "name": "-EndpointName",
+              "value": "[Path.endpointName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.routeName]"
+            },
+            {
+              "name": "-ProfileName",
+              "value": "[Path.profileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

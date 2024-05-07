@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.MariaDb",
-  "ModuleVersion": "0.2.1",
+  "ModuleVersion": "0.2.2",
   "Cmdlets": [
     {
       "VerbName": "Get",

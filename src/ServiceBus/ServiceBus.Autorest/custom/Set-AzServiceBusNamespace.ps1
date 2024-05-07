@@ -21,7 +21,7 @@ Updates a ServiceBus namespace
 
 function Set-AzServiceBusNamespace{
     [Alias("Set-AzServiceBusNamespaceV2")]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of ServiceBusNamespace")]
@@ -60,7 +60,7 @@ function Set-AzServiceBusNamespace{
 		
         [Parameter(HelpMessage = "Properties of KeyVault")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IKeyVaultProperties[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IKeyVaultProperties[]]
         ${KeyVaultProperty},
 
         [Parameter(HelpMessage = "Enable Infrastructure Encryption (Double Encryption)")]
@@ -70,8 +70,7 @@ function Set-AzServiceBusNamespace{
 
         [Parameter(HelpMessage = "Type of managed service identity.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.ManagedServiceIdentityType]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ParameterBreakingChangeAttribute("IdentityType","12.0.0", "4.0.0","2024-05-21" )]
+        [System.String]
         ${IdentityType},
 
         [Parameter(HelpMessage = "Properties for User Assigned Identities")]
@@ -81,20 +80,17 @@ function Set-AzServiceBusNamespace{
 
         [Parameter(HelpMessage = "The minimum TLS version for the cluster to support, e.g. '1.2'")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        #[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.TlsVersion]
         [System.String]
         ${MinimumTlsVersion},
 
         [Parameter(HelpMessage = "This determines if traffic is allowed over public network. By default it is enabled.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.PublicNetworkAccess]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ParameterBreakingChangeAttribute("PublicNetworkAccess","12.0.0", "4.0.0","2024-05-21" )]
+        [System.String]
         ${PublicNetworkAccess},
 
         [Parameter(HelpMessage = "Name of this SKU.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.SkuName]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ParameterBreakingChangeAttribute("SkuName","12.0.0", "4.0.0","2024-05-21" )]
+        [System.String]
         ${SkuName},
 
         [Parameter(HelpMessage = "The specified messaging units for the tier. For Premium tier, capacity are 1,2 and 4.")]
@@ -210,7 +206,7 @@ function Set-AzServiceBusNamespace{
                     $identityHashTable = @{}
 	            
 		    foreach ($resourceID in $UserAssignedIdentityId){
-		        $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.UserAssignedIdentity]::new())
+		        $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.UserAssignedIdentity]::new())
 	            }
                     
 		    $serviceBusNamespace.UserAssignedIdentity = $identityHashTable

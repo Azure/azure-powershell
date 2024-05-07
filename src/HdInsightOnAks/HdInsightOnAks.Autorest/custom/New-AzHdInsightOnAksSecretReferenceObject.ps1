@@ -30,7 +30,7 @@ https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightO
 #>
 function New-AzHdInsightOnAksSecretReferenceObject {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReference])]
-    [CmdletBinding(DefaultParameterSetName = 'Create', PositionalBinding = $false, SupportsShouldProcess)]
+    [CmdletBinding(DefaultParameterSetName = 'Create', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'Create', Mandatory)]
         [System.String]

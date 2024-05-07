@@ -1,4 +1,8 @@
 {
-    "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-    "SubscriptionId": "e37510d7-33b6-4676-886f-ee75bcc01871"
-  }
+  "SubscriptionId": "be23ca13-8eb4-4d0e-be10-b00451817956",
+  "Location": "EastUS",
+  "rgname": "testpwshellcompute",
+  "ResourceGroupName": "RGComputeTestbztprklq",
+  "RandomString": "bztprklq",
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+}

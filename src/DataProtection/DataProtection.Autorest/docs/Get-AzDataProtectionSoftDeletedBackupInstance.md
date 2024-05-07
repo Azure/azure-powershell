@@ -153,7 +153,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IDeletedBackupInstanceResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IDeletedBackupInstanceResource
 
 ## NOTES
 
