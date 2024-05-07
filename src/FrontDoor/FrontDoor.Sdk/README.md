@@ -15,9 +15,9 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)//specification/frontdoor/resource-manager/Microsoft.Network/stable/2021-06-01/frontdoor.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)//specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-11-01/networkexperiment.json
 
-csharp: true
-# isSdkGenerator: true
-# powershell: true
+# csharp: true
+isSdkGenerator: true
+powershell: true
 clear-output-folder: true
 openapi-type: arm
 azure-arm: true
@@ -29,7 +29,10 @@ directive:
   - from: swagger-document
     where: $.definitions.RouteUpdatePropertiesParameters.properties.supportedProtocols
     transform: delete $.default
-
   - from: swagger-document
     where: $.definitions.PolicySettings.properties.logScrubbing
     transform: $['x-ms-client-flatten'] = false;
+  - where:
+      model-name: FrontDoor
+    set:
+      model-name: FrontDoorModel

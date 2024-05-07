@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.FrontDoor;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
@@ -112,6 +113,17 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [PSArgumentCompleter("Enabled", "Disabled")]
         public string RequestBodyCheck { get; set; }
 
+        /// Defines rules that scrub sensitive fields in the Web Application Firewall
+        [Parameter(Mandatory = true, HelpMessage = "Defines rules that scrub sensitive fields in the Web Application Firewall.")]
+        public PSAzFrontDoorWafLogScrubbingSetting LogScrubbingSetting { get; set; }
+
+        /// Defines the JavaScript challenge cookie validity lifetime in minutes. This
+        /// setting is only applicable to Premium_AzureFrontDoor. Value must be an
+        /// integer between 5 and 1440 with the default value being 30.
+        [Parameter(Mandatory = true, HelpMessage = "setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.")]
+        [ValidateRange(5, 1440)]
+        public int JavascriptChallengeExpirationInMinutes { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ObjectParameterSet)
@@ -196,7 +208,34 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 updateParameters.PolicySettings.RequestBodyCheck = RequestBodyCheck;
             }
 
-            if (ShouldProcess(Resources.WebApplicationFirewallPolicyTarget, string.Format(Resources.WebApplicationFirewallPolicyChangeWarning, Name)))
+            if (this.IsParameterBound(c => c.JavascriptChallengeExpirationInMinutes))
+            {
+                updateParameters.PolicySettings.JavascriptChallengeExpirationInMinutes = JavascriptChallengeExpirationInMinutes;
+            }
+
+            if (this.IsParameterBound(c => c.LogScrubbingSetting))
+            {
+                var scrubbingRule = new List<Management.FrontDoor.Models.WebApplicationFirewallScrubbingRules>();
+
+                if (LogScrubbingSetting.ScrubbingRules.Count() > 0)
+                {
+                    foreach (var item in LogScrubbingSetting.ScrubbingRules)
+                    {
+                        scrubbingRule.Add(new Management.FrontDoor.Models.WebApplicationFirewallScrubbingRules(
+                            matchVariable: item.MatchVariable,
+                            selectorMatchOperator: item.SelectorMatchOperator,
+                            selector: item.Selector,
+                            state: item.State));
+                    }
+                }
+                updateParameters.PolicySettings.LogScrubbing = new Management.FrontDoor.Models.PolicySettingsLogScrubbing
+                {
+                    ScrubbingRules = scrubbingRule,
+                    State = LogScrubbingSetting.State,
+                };
+            }
+
+                if (ShouldProcess(Resources.WebApplicationFirewallPolicyTarget, string.Format(Resources.WebApplicationFirewallPolicyChangeWarning, Name)))
             {
                 try
                 {
