@@ -586,12 +586,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 string shouldContinueMessage = null;
                 if (this.UpgradeToStorageV2.IsPresent)
                 {
-                    if(this.OriginStorageAccountProperties.Kind == Kind.Storage)
+                    if(!this.force && this.OriginStorageAccountProperties.Kind == Kind.Storage)
                     {
                         shouldContinueMessage = "Upgrading a General Purpose v1 storage account to a general-purpose v2 account is free. You may specify the desired account tier during the upgrade process. If an account tier is not specified on upgrade, the default account tier of the upgraded account will be Hot. " + 
                             "However, changing the storage access tier after the upgrade may result in changes to your bill so it is recommended to specify the new account tier during upgrade. See (http://go.microsoft.com/fwlink/?LinkId=786482) to learn more.";
                     }
-                    else if (this.OriginStorageAccountProperties.Kind == Kind.BlobStorage)
+                    else if (!this.force && this.OriginStorageAccountProperties.Kind == Kind.BlobStorage)
                     {
                         shouldContinueMessage = "Upgrading a BlobStorage account to a general-purpose v2 account is free as long as the upgraded account's tier remains unchanged. If an account tier is not specified on upgrade, the default account tier of the upgraded account will be Hot. " +
                             "If there are account access tier changes as part of the upgrade, there will be charges associated with moving blobs as part of the account access tier change. See (http://go.microsoft.com/fwlink/?LinkId=786482) to learn more.";
