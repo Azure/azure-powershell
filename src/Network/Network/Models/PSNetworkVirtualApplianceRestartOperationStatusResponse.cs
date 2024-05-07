@@ -7,9 +7,11 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSNetworkVirtualApplianceRestartOperationStatusResponse
     {
         public string Name { get; set; }
-        public string[] InstancesRestarted { get; set; }
+        public IList<string> InstancesRestarted { get; set; }
         public string Status { get; set; }
         public string OperationId { get; set; }
+        public DateTime? StartTime { get; set; }
+        public DateTime? EndTime { get; set; }
         public ApiError Error { get; set; }
 
         public PSNetworkVirtualApplianceRestartOperationStatusResponse()

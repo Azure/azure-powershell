@@ -68,37 +68,47 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            base.Execute();
-            if (ParameterSetName.Equals(ResourceIdParameterSet))
+            if (this.ShouldProcess(this.Name, VerbsLifecycle.Restart))
             {
-                this.ResourceGroupName = GetResourceGroup(this.ResourceId);
-                this.Name = GetResourceName(this.ResourceId, "Microsoft.Network/networkVirtualAppliances");
+                base.Execute();
+                if (ParameterSetName.Equals(ResourceIdParameterSet))
+                {
+                    this.ResourceGroupName = GetResourceGroup(this.ResourceId);
+                    this.Name = GetResourceName(this.ResourceId, "Microsoft.Network/networkVirtualAppliances");
+                }
+
+                if (!this.IsNetworkVirtualAppliancePresent(this.ResourceGroupName, this.Name))
+                {
+                    throw new ArgumentException(Properties.Resources.ResourceNotFound);
+                }
+
+                string resourceGroupName = this.ResourceGroupName;
+                string nvaName = this.Name;
+                IList<string> instanceIds = this.InstanceId;
+
+                PSNetworkVirtualApplianceRestartOperationStatusResponse output = new PSNetworkVirtualApplianceRestartOperationStatusResponse()
+                {
+                    Name = nvaName,
+                    InstancesRestarted = instanceIds,
+                    StartTime = DateTime.Now
+                };
+
+                NetworkVirtualApplianceInstanceIds instanceIdObj = new NetworkVirtualApplianceInstanceIds()
+                {
+                    InstanceIds = instanceIds
+                };
+
+                var result = this.NetworkVirtualAppliancesClient.RestartWithHttpMessagesAsync(resourceGroupName: this.ResourceGroupName, networkVirtualApplianceName: this.Name, networkVirtualApplianceInstanceIds: instanceIdObj).GetAwaiter().GetResult();
+
+                output.EndTime = DateTime.Now;
+
+                if (result != null && result.Request != null && result.Request.RequestUri != null)
+                {
+                    output.OperationId = GetOperationIdFromUrlString(result.Request.RequestUri.ToString());
+                }
+
+                WriteObject(output);
             }
-
-            if (!this.IsNetworkVirtualAppliancePresent(this.ResourceGroupName, this.Name))
-            {
-                throw new ArgumentException(Properties.Resources.ResourceNotFound);
-            }
-
-            PSNetworkVirtualApplianceRestartOperationStatusResponse output = new PSNetworkVirtualApplianceRestartOperationStatusResponse()
-            {
-                Name = this.Name,
-                InstancesRestarted = this.InstanceId
-            };
-
-            NetworkVirtualApplianceInstanceIds instanceIds = new NetworkVirtualApplianceInstanceIds()
-            {
-                InstanceIds = this.InstanceId
-            };
-
-            var result = this.NetworkVirtualAppliancesClient.RestartWithHttpMessagesAsync(resourceGroupName: this.ResourceGroupName, networkVirtualApplianceName: this.Name, networkVirtualApplianceInstanceIds: instanceIds).GetAwaiter().GetResult();
-
-            if(result != null && result.Request != null && result.Request.RequestUri != null)
-            {
-                output.OperationId = GetOperationIdFromUrlString(result.Request.RequestUri.ToString());
-            }
-
-            WriteObject(output);
         }
     }
 }
