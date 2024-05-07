@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed references to "Microsoft.Azure.Storage.Queue" in Queue cmdlets 
+    - `Get-AzStorageQueue`
+    - `New-AzStorageQueue`
+    - `New-AzStorageQueueSASToken`
 
 ## Version 6.2.0
 * Introduced secrets detection feature to safeguard sensitive data.
