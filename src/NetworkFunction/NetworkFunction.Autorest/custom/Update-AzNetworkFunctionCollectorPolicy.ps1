@@ -173,7 +173,6 @@ process {
       $null = $PSBoundParameters.Remove('WhatIf')
       $null = $PSBoundParameters.Remove('Confirm')
       $null = $PSBoundParameters.Remove('Location')
-      $rg = $PSBoundParameters.ResourceGroupName
 
       # 2. Ensure exr circuit bandwidth 1G or more
       if ($hasIngestionPolicyIngestionSource) {
@@ -182,8 +181,12 @@ process {
         $ResourceIdSplit = $IngestionPolicyIngestionSource.ResourceId.Split(' ')
         foreach ($ResourceId in $ResourceIdSplit)
         {
-          $cktname = ParseCircuitName $ResourceId
-          $exrCircuit = Get-AzExpressRouteCircuit -Name $cktname -ResourceGroupName $rg
+          $Splits = $ResourceId -split "/"
+          $cktsub = $Splits[2]
+          $cktrg = $Splits[4]
+          $cktname = $Splits[8]
+          Set-AzContext $cktsub -ErrorVariable notPresent -ErrorAction SilentlyContinue
+          $exrCircuit = Get-AzExpressRouteCircuit -Name $cktname -ResourceGroupName $cktrg
           $bandwidthInGbps = $exrCircuit.BandwidthInGbps
           $bandwidthInMbps = $exrCircuit.ServiceProviderProperties.BandwidthInMbps
 
@@ -196,7 +199,7 @@ process {
           }
         }
       }
-      
+      Set-AzContext $SubscriptionId -ErrorVariable notPresent -ErrorAction SilentlyContinue
       $cp = Get-AzNetworkFunctionCollectorPolicy @PSBoundParameters
       
       # 3. PUT
@@ -226,13 +229,4 @@ process {
         throw
     }
 }
-}
-
-function ParseCircuitName($Rid){
-    $Splits = $Rid -split "/"
-    $ParsedResults = @{}
-    if ($Splits.length -gt 1){
-        $ParsedResults["cktName"] = $Splits[8]
-    }
-    return $ParsedResults["cktName"]
 }
