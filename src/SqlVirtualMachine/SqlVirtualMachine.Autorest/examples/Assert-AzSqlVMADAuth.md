@@ -1,6 +1,6 @@
 ### Example 1:
 ```powershell
-Assert-AzSqlVMADAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AzureAdAuthenticationSettingEnable -AzureAdAuthenticationSettingClientId ''
+Assert-AzSqlVMADAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AzureAdAuthenticationSettingClientId ''
 ```
 
 ```output
@@ -11,7 +11,7 @@ Validates system assigned managed identity for enabling Entra authentication on 
 
 ### Example 2:
 ```powershell
-Assert-AzSqlVMADAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AzureAdAuthenticationSettingEnable -AzureAdAuthenticationSettingClientId '11111111-2222-3333-4444-555555555555'
+Assert-AzSqlVMADAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AzureAdAuthenticationSettingClientId '11111111-2222-3333-4444-555555555555'
 ```
 
 ```output
@@ -23,7 +23,7 @@ validates user assigned managed identity for enabling Entra authentication on Sq
 ### Example 3:
 ```powershell
 $sqlVM = Get-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1'
-$sqlVM | Assert-AzSqlVMADAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AzureAdAuthenticationSettingEnable -AzureAdAuthenticationSettingClientId ''
+$sqlVM | Assert-AzSqlVMADAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AzureAdAuthenticationSettingClientId ''
 ```
 
 ```output
@@ -35,7 +35,7 @@ Validates system assigned managed identity for enabling Entra authentication on 
 ### Example 4:
 ```powershell
 $sqlVM = Get-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1'
-$sqlVM | Assert-AzSqlVMADAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AzureAdAuthenticationSettingEnable -AzureAdAuthenticationSettingClientId '11111111-2222-3333-4444-555555555555'
+$sqlVM | Assert-AzSqlVMADAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AzureAdAuthenticationSettingClientId '11111111-2222-3333-4444-555555555555'
 ```
 
 ```output

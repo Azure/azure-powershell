@@ -45,8 +45,8 @@ INPUTOBJECT <ISqlVirtualMachineIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/Assert-AzSqlVMADAuth
 #>
 function Assert-AzSqlVMADAuth {
-[OutputType([bool])]
 [CmdletBinding(DefaultParameterSetName='AssertExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([bool])]
 param(
     [Parameter(ParameterSetName='AssertExpanded', Mandatory)]
     [Alias('SqlVirtualMachineName', 'SqlVMName')]
@@ -245,7 +245,7 @@ function Assert-AzureADAuthenticationSupportedOnSqlVM {
 		elseif ($accountmodule -eq $null) 
 		{ 
 			Install-Module -Name Az.Accounts -Scope CurrentUser -AllowClobber -Force 
-			Import-Module Az.Accounts -MinimumVersion 2.19.0 -Scope Global 
+			Import-Module Az.Accounts -MinimumVersion 2.19.0
 		}
 
 		$computemodule = Get-Module Az.Compute
