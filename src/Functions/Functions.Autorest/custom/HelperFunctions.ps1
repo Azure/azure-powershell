@@ -40,8 +40,7 @@ $constants["ReservedFunctionAppSettingNames"] = @(
 )
 $constants["SetDefaultValueParameterWarningMessage"] = "This default value is subject to change over time. Please set this value explicitly to ensure the behavior is not accidentally impacted by future changes."
 $constants["DEBUG_PREFIX"] = '[Stacks API] - '
-
-$constants["DefaultCentauriImage"] = 'mcr.microsoft.com/azure-functions/dotnet7-quickstart-demo:1.0'
+$constants["DefaultCentauriImage"] = 'mcr.microsoft.com/azure-functions/dotnet8-quickstart-demo:1.0'
 
 foreach ($variableName in $constants.Keys)
 {
@@ -2279,7 +2278,7 @@ function ValidateCpuAndMemory
     {
         $errorMessage = "ResourceMemory must be specified when ResourceCpu is specified."
         $exception = [System.InvalidOperationException]::New($errorMessage)
-        ThrowTerminatingError -ErrorId "MemoryNotSpecified" `
+        ThrowTerminatingError -ErrorId "ResourceMemoryNotSpecified" `
                               -ErrorMessage $errorMessage `
                               -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
                               -Exception $exception
@@ -2289,7 +2288,7 @@ function ValidateCpuAndMemory
     {
         $errorMessage = "ResourceCpu must be specified when ResourceMemory is specified."
         $exception = [System.InvalidOperationException]::New($errorMessage)
-        ThrowTerminatingError -ErrorId "CpuNotSpecified" `
+        ThrowTerminatingError -ErrorId "ResourceCpuNotSpecified" `
                               -ErrorMessage $errorMessage `
                               -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
                               -Exception $exception
@@ -2377,8 +2376,12 @@ function GetManagedEnvironment
     $azAppModuleName = "Az.App"
     if (-not (Get-Module -ListAvailable -Name $azAppModuleName))
     {
-        Write-Warning "Starting the install $azAppModuleName module."
-        Install-Module -Name $azAppModuleName -ErrorAction Stop
+        $errorMessage = "The '$azAppModuleName' module is required when creating Function Apps ACA. Please install the module and try again."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "RequiredModuleNotAvailable" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
     }
 
     Import-Module -Name $azAppModuleName -Force -ErrorAction Stop
@@ -2391,7 +2394,7 @@ function GetManagedEnvironment
     if (-not $managedEnv)
     {
         $errorMessage = "Failed to get the managed environment '$Environment' in resource group name '$ResourceGroupName'."
-        $errorMessage += [System.Environment]::NewLine + " Please make sure the managed environment is valid."
+        $errorMessage += " Please make sure the managed environment is valid."
         $exception = [System.InvalidOperationException]::New($errorMessage)
         ThrowTerminatingError -ErrorId "FailedToGetEnvironment" `
                               -ErrorMessage $errorMessage `
