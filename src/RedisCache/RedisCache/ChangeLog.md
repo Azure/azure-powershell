@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-## Version 1.9.1
 * Fixed pattern for access policy resource names
 
 ## Version 1.9.0
