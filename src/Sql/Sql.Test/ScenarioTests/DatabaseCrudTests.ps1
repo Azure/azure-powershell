@@ -883,6 +883,65 @@ function Test-UpdateServerlessDatabase()
 		Remove-ResourceGroupForTest $rg
 	}
 }
+
+<#
+	.SYNOPSIS
+	Tests updating a database from Sterling to Hyperscale with Manual Cutover {Azure SQL Forward Migration V2} 
+#>
+function Test-UpdateDatabaseFromSterlingToHyperscaleWithManualCutover ()
+{
+	# Setup
+	$location = "eastus2euap"
+	$targetEdition = "Hyperscale"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+	$databaseName = Get-DatabaseName
+	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+		-VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen5 -MaxSizeBytes 250GB -ComputeModel Serverless
+	Assert-AreEqual $db.DatabaseName $databaseName
+
+	try
+	{
+		# Update Sterling database to Hyperscale with manual cutover
+		$job = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-Edition $targetEdition -RequestedServiceObjectiveName "HS_Gen5_8" -ManualCutover -AsJob
+
+		$startTime = Get-Date
+		$timeout = New-TimeSpan -Minutes 20
+
+		do 
+		{  
+			# list database operation to check if the db is ready for cutover
+			$dbactivity = Get-AzSqlDatabaseActivity -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName
+			Write-Output $dbactivity
+	    
+			if($dbactivity.Length -gt 0)
+			{
+					Assert-AreEqual $dbactivity[0].DatabaseName $databaseName
+					Assert-AreEqual $dbactivity[0].Operation "UpdateLogicalDatabase"
+					if($dbactivity[0].OperationPhaseDetails.Phase -eq "WaitingForCutover")
+					{						
+						break
+					}
+			}
+
+			if ((Get-Date) - $startTime -ge $timeout) {  
+					break
+			}
+		}while ($true) 
+		
+		
+		$db1 = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+				-PerformCutover
+		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
+		Assert-AreEqual $db1.CurrentServiceObjectiveName HS_Gen5_8
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
 <#
 	.SYNOPSIS
 	Tests updating a database with zone redundancy not specified

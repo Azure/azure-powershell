@@ -581,7 +581,8 @@ namespace Microsoft.Azure.Management.Sql
         }
 
         /// <summary>
-        /// Fails over from the current primary server to this server. This operation might result in data loss.
+        /// Fails over from the current primary server to this server. This operation
+        /// might result in data loss.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
@@ -607,7 +608,8 @@ namespace Microsoft.Azure.Management.Sql
         }
 
         /// <summary>
-        /// Fails over from the current primary server to this server. This operation tries planned before forced failover but might still result in data loss.
+        /// Fails over from the current primary server to this server. This operation
+        /// tries planned before forced failover but might still result in data loss.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain

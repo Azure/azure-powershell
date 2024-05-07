@@ -403,6 +403,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             EncryptionProtectorAutoRotation = database.EncryptionProtectorAutoRotation;
             UseFreeLimit = database.UseFreeLimit;
             FreeLimitExhaustionBehavior = database.FreeLimitExhaustionBehavior;
+            ManualCutover = database.ManualCutover;
+            PerformCutover = database.PerformCutover;
         }
 
         /// <summary>
