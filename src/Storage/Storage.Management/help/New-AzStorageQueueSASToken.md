@@ -15,17 +15,16 @@ Generates a shared access signature token for an Azure storage queue.
 
 ### SasPolicy
 ```
-New-AzStorageQueueSASToken [-Name] <String> -Policy <String> [-Protocol <String>]
- [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+New-AzStorageQueueSASToken [-Name] <String> -Policy <String> [-Protocol <String>] [-IPAddressOrRange <String>]
+ [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### SasPermission
 ```
 New-AzStorageQueueSASToken [-Name] <String> [-Permission <String>] [-Protocol <String>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -160,6 +159,21 @@ Parameter Sets: SasPolicy
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Operation to Update an existing Domains resource.</summary>
+    /// <summary>Operation to update an existing Domains resource.</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzEmailServiceDomain_UpdateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.Description(@"Operation to Update an existing Domains resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.Description(@"Operation to update an existing Domains resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}", ApiVersion = "2023-06-01-preview")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.NotSuggestDefaultParameterSet]
