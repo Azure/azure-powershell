@@ -98,7 +98,7 @@ function Invoke-SubModuleGeneration {
     )
     Write-Host "----------Start code generation for $GeneratedDirectory----------" -ForegroundColor DarkGreen
     Set-Location -Path $GeneratedDirectory
-    autorest --use:C:\workspace\autorest.powershell --max-memory-size=8192 >> $GenerateLog
+    autorest --max-memory-size=8192 >> $GenerateLog
     if ($lastexitcode -ne 0) {
         return $false
     } else {
