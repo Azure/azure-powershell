@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Definitions
     /// </summary>
     internal class EnableLoginByWamConfig : TypedConfig<bool>
     {
-        public override object DefaultValue => false; // Opt-in. Will change to opt-out.
+        public override object DefaultValue => true;
 
         public override string Key => ConfigKeys.EnableLoginByWam;
 
