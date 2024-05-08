@@ -104,6 +104,10 @@ These settings apply only when `--tag=package-deploymentstacks-2024-03` is speci
 ``` yaml $(tag) == 'package-deploymentstacks-2024-03'
 input-file:
 - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Resources/stable/2024-03-01/deploymentStacks.json
-```
 
-### - C:\Users\danted\kyle-rest-api\specification\resources\resource-manager\Microsoft.Resources\stable\2024-03-01\deploymentStacks.json
+# Temporary override to make subscription id GUID a string.
+directive:
+  - from: deploymentStacks.json
+    where: $
+    transform: $ = $.replace(/common-types\/resource-management\/v5\/types.json#\/parameters\/SubscriptionIdParameter/g, 'common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter');
+```

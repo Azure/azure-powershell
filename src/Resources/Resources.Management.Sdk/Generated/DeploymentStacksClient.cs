@@ -39,9 +39,9 @@ namespace Microsoft.Azure.Management.Resources
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// The ID of the target subscription. The value must be an UUID.
+        /// The ID of the target subscription.
         /// </summary>
-        public System.Guid SubscriptionId { get; set;}
+        public string SubscriptionId { get; set;}
 
         /// <summary>
         /// The preferred language for the response.
