@@ -101,11 +101,10 @@ function Invoke-SubModuleGeneration {
     autorest --max-memory-size=8192 >> $GenerateLog
     if ($lastexitcode -ne 0) {
         return $false
-    } else {
-        ./build-module.ps1 -DisableAfterBuildTasks
-        Write-Host "----------End code generation for $GeneratedDirectory----------" -ForegroundColor DarkGreen
-        return $true
     }
+    ./build-module.ps1 -DisableAfterBuildTasks
+    Write-Host "----------End code generation for $GeneratedDirectory----------" -ForegroundColor DarkGreen
+    return $true
 
 }
 
