@@ -206,7 +206,7 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
             var subscriptionId = typeof(T).GetProperty("SubscriptionId");
             if (subscriptionId != null && currentEnvironment.SubscriptionId != null)
             {
-                subscriptionId.SetValue(client, currentEnvironment.SubscriptionId);   
+                subscriptionId.SetValue(client, currentEnvironment.SubscriptionId);
             }
 
             var tenantId = typeof(T).GetProperty("TenantId");

@@ -68,7 +68,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             if (subscriptionId != null && context.Subscription != null)
             {
                 subscriptionId.SetValue(client, context.Subscription.Id.ToString());
-                
             }
 
             return client;
