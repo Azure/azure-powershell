@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+* Added `Etag` property to PSVirtualMachine and PSVirtualMachineScaleSet objects.   
+* Added parameters `-IfMatch` and `-IfNoneMatch` to `Update-AzVM`, `Update-AzVmss`, `New-AzVm`, `New-AzVmss`, `New-AzVmConfig`, and `New-AzVmssConfig` cmdlets.
 
 ## Version 7.3.0
 * Added cmdlet `Invoke-AzSpotPlacementRecommender`.
