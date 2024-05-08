@@ -277,21 +277,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -EnableTestCoverage
-When enabled, the test framework will generate data during test run as a preliminary for the test coverage calculation
-
-```yaml
-Type: System.Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -LoginExperienceV2
 Specify the way to select a context from available tenants and their subscriptions. Possible values are 'On' (default value) and 'Off'. 'On' requires user's input to decide context. 'Off' uses the first tenant and subscription returned by API.
 

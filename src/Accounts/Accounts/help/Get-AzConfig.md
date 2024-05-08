@@ -16,8 +16,7 @@ Gets the configs of Azure PowerShell.
 Get-AzConfig [-AppliesTo <String>] [-Scope <ConfigScope>] [-DefaultProfile <IAzureContextContainer>]
  [-CheckForUpgrade] [-DefaultSubscriptionForLogin] [-DisableInstanceDiscovery] [-DisplayBreakingChangeWarning]
  [-DisplayRegionIdentified] [-DisplaySecretsWarning] [-DisplaySurveyMessage] [-EnableDataCollection]
- [-EnableErrorRecordsPersistence] [-EnableLoginByWam] [-EnableTestCoverage] [-LoginExperienceV2]
- [<CommonParameters>]
+ [-EnableErrorRecordsPersistence] [-EnableLoginByWam] [-LoginExperienceV2] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -239,21 +238,6 @@ Accept wildcard characters: False
 It will fall back to using the browser if the platform does not support WAM.
 Note that this feature is under preview. Microsoft Account (MSA) is currently not supported.
 Feel free to reach out to Azure PowerShell team if you have any feedbacks: https://aka.ms/azpsissue
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableTestCoverage
-When enabled, the test framework will generate data during test run as a preliminary for the test coverage calculation
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
