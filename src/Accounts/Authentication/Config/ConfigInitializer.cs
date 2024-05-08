@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Config.Definitions;
 using Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Interfaces;
+using Microsoft.Azure.Commands.Common.Authentication.Config.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Shared.Config;
 using Microsoft.Azure.PowerShell.Common.Config;
@@ -208,10 +209,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                 true,
                 ConfigKeys.EnvCheckForUpgrade,
                 new[] { AppliesTo.Az }));
-            configManager.RegisterConfig(new SimpleTypedConfig<string>(
+            configManager.RegisterConfig(new SimpleTypedConfig<LoginExperienceConfig>(
                 ConfigKeys.LoginExperienceV2,
                 Resources.HelpMessageOfLoginExperienceV2,
-                "On",
+                LoginExperienceConfig.On,
                 string.Format("AzPS{0}", ConfigKeys.LoginExperienceV2),
                 new[] { AppliesTo.Az }));
 #if DEBUG || TESTCOVERAGE

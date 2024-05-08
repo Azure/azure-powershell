@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Specify the way to select a context from available tenants and their subscriptions. Possible values are &apos;On&apos; (default value) and &apos;Off&apos;. &apos;On&apos; requires user&apos;s input to decide context. &apos;Off&apos; uses the first tenant and subscription returned by API..
+        ///   Looks up a localized string similar to Only active when authenticating interactively, allows the user to choose the subscription and tenant used in subsequent commands. Possible values ad &apos;On&apos; (Default) and &apos;Off&apos;. &apos;On&apos; requires user&apos;s input. &apos;Off&apos; will use the first tenant and subscription returned by Azure, can change without notice and lead to command execution in an unwanted context (not recommended)..
         /// </summary>
         public static string HelpMessageOfLoginExperienceV2 {
             get {

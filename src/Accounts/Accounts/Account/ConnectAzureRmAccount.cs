@@ -17,11 +17,13 @@ using Azure.Identity;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Authentication.Config.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Sanitizer;
 using Microsoft.Azure.Commands.Profile.Common;
+using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Models.Core;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.Profile.Utilities;
@@ -327,7 +329,6 @@ namespace Microsoft.Azure.Commands.Profile
             Guid subscriptionIdGuid;
             string subscriptionName = null;
             string subscriptionId = null;
-            bool isInteractiveAuthenticationFlow = IsInteractiveAuthenticationFlow();
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Subscription)))
             {
                 if (Guid.TryParse(Subscription, out subscriptionIdGuid))
@@ -506,7 +507,7 @@ namespace Microsoft.Azure.Commands.Profile
                     commonUtilities = new CommonUtilities();
                     AzureSession.Instance.RegisterComponent(nameof(CommonUtilities), () => commonUtilities);
                 }
-                if (!commonUtilities.IsDesktopSession() && IsBrowserPopUpInteractiveAuthentication())
+                if (!commonUtilities.IsDesktopSession() && IsPopUpInteractiveAuthenticationFlow())
                 {
                     WriteWarning(Resources.InteractiveAuthNotSupported);
                     return;
@@ -542,8 +543,8 @@ namespace Microsoft.Azure.Commands.Profile
                         MaxContextPopulation,
                         resourceId,
                         Prompt,
-                        isInteractiveAuthenticationFlow,
-                        GetLoginExperienceStatus()));
+                        IsInteractiveAuthenticationFlow(),
+                        IsLoginExperienceV2Enabled()));
                     task.Start();
                     while (!task.IsCompleted)
                     {
@@ -574,7 +575,7 @@ namespace Microsoft.Azure.Commands.Profile
                         }
                         else
                         {
-                            if (IsBrowserPopUpInteractiveAuthentication())
+                            if (IsPopUpInteractiveAuthenticationFlow())
                             {
                                 //Display only if user is using Interactive auth
                                 WriteWarning(Resources.SuggestToUseDeviceCodeAuth);
@@ -590,14 +591,19 @@ namespace Microsoft.Azure.Commands.Profile
             }
         }
 
-        private string GetLoginExperienceStatus()
+        private bool IsLoginExperienceV2Enabled()
         {
-            return AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out IConfigManager configManager) ? configManager.GetConfigValue<string>(ConfigKeys.LoginExperienceV2) : "On";
+            return AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out IConfigManager configManager) ? !configManager.GetConfigValue<LoginExperienceConfig>(ConfigKeys.LoginExperienceV2).Equals(LoginExperienceConfig.Off) : true;
         }
 
         private bool IsInteractiveAuthenticationFlow()
         {
             return ParameterSetName.Equals(UserParameterSet);
+        }
+
+        private bool IsPopUpInteractiveAuthenticationFlow()
+        {
+            return ParameterSetName.Equals(UserParameterSet) && UseDeviceAuthentication.IsPresent == false;
         }
 
         private void ValidateActionRequiredMessageCanBePresented()
@@ -624,11 +630,6 @@ namespace Microsoft.Azure.Commands.Profile
                 WriteDebug($"Map AuthScope from {AuthScope} to {mappedScope}.");
             }
             return mappedScope;
-        }
-
-        private bool IsBrowserPopUpInteractiveAuthentication()
-        {
-            return ParameterSetName.Equals(UserParameterSet) && UseDeviceAuthentication.IsPresent == false;
         }
 
         private bool IsUnableToOpenWebPageError(AuthenticationFailedException exception)

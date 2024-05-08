@@ -18,7 +18,6 @@ Update-AzConfig [-AppliesTo <String>] [-Scope <ConfigScope>] [-DefaultProfile <I
  [-DisableInstanceDiscovery <Boolean>] [-DisplayBreakingChangeWarning <Boolean>]
  [-DisplayRegionIdentified <Boolean>] [-DisplaySecretsWarning <Boolean>] [-DisplaySurveyMessage <Boolean>]
  [-EnableDataCollection <Boolean>] [-EnableErrorRecordsPersistence <Boolean>] [-EnableLoginByWam <Boolean>]
- [-EnableTestCoverage <Boolean>] [-LoginExperienceV2 <String>] [-TestCoverageLocation <String>]
  [<CommonParameters>]
 ```
 
@@ -297,9 +296,10 @@ Accept wildcard characters: False
 Specify the way to select a context from available tenants and their subscriptions. Possible values are 'On' (default value) and 'Off'. 'On' requires user's input to decide context. 'Off' uses the first tenant and subscription returned by API.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.Commands.Common.Authentication.Config.Models.LoginExperienceConfig
 Parameter Sets: (All)
 Aliases:
+Accepted values: On, Off
 
 Required: False
 Position: Named
@@ -322,21 +322,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TestCoverageLocation
-Only takes effect when EnableTestCoverage equals to TRUE. Use this config to redirect the test coverage data location.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
