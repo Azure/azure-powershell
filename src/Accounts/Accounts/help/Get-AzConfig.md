@@ -252,7 +252,7 @@ Accept wildcard characters: False
 ```
 
 ### -LoginExperienceV2
-Specify the way to select a context from available tenants and their subscriptions. Possible values are 'On' (default value) and 'Off'. 'On' requires user's input to decide context. 'Off' uses the first tenant and subscription returned by API.
+Only active when authenticating interactively, allows the user to choose the subscription and tenant used in subsequent commands. Possible values ad 'On' (Default) and 'Off'. 'On' requires user's input. 'Off' will use the first tenant and subscription returned by Azure, can change without notice and lead to command execution in an unwanted context (not recommended).
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
