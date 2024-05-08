@@ -16,21 +16,20 @@ Updates an EventHub Namespace
 ```
 Set-AzEventHubNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AlternateName <String>] [-DisableLocalAuth] [-KeyVaultProperty <IKeyVaultProperties[]>]
- [-RequireInfrastructureEncryption] [-IdentityType <ManagedServiceIdentityType>]
- [-UserAssignedIdentityId <String[]>] [-EnableAutoInflate] [-MaximumThroughputUnit <Int32>]
- [-MinimumTlsVersion <String>] [-PublicNetworkAccess <PublicNetworkAccess>] [-SkuCapacity <Int32>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-RequireInfrastructureEncryption] [-IdentityType <String>] [-UserAssignedIdentityId <String[]>]
+ [-EnableAutoInflate] [-MaximumThroughputUnit <Int32>] [-MinimumTlsVersion <String>]
+ [-PublicNetworkAccess <String>] [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
 ```
 Set-AzEventHubNamespace -InputObject <IEventHubIdentity> [-AlternateName <String>] [-DisableLocalAuth]
- [-KeyVaultProperty <IKeyVaultProperties[]>] [-RequireInfrastructureEncryption]
- [-IdentityType <ManagedServiceIdentityType>] [-UserAssignedIdentityId <String[]>] [-EnableAutoInflate]
- [-MaximumThroughputUnit <Int32>] [-MinimumTlsVersion <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
- [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-KeyVaultProperty <IKeyVaultProperties[]>] [-RequireInfrastructureEncryption] [-IdentityType <String>]
+ [-UserAssignedIdentityId <String[]>] [-EnableAutoInflate] [-MaximumThroughputUnit <Int32>]
+ [-MinimumTlsVersion <String>] [-PublicNetworkAccess <String>] [-SkuCapacity <Int32>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -454,7 +453,7 @@ Accept wildcard characters: False
 Type of managed service identity.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -483,10 +482,9 @@ Accept wildcard characters: False
 
 ### -KeyVaultProperty
 Properties to configure Encryption
-To construct, see NOTES section for KEYVAULTPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IKeyVaultProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IKeyVaultProperties[]
 Parameter Sets: (All)
 Aliases:
 
@@ -544,12 +542,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicNetworkAccess
 This determines if traffic is allowed over public network.
 By default it is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.PublicNetworkAccess
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -692,7 +705,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespace
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespace
 
 ## NOTES
 

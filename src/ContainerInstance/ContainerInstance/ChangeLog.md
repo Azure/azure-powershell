@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 4.0.1
 * Introduced secrets detection feature to safeguard sensitive data.
 
 ## Version 4.0.0

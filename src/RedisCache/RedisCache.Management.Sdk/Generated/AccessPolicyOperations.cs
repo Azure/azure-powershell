@@ -171,9 +171,9 @@ namespace Microsoft.Azure.Management.RedisCache
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "accessPolicyName", 3);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(accessPolicyName, "^([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]|[a-zA-Z0-9])$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accessPolicyName, "^([a-zA-Z0-9][a-zA-Z0-9- ]*[a-zA-Z0-9]|[a-zA-Z0-9])$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accessPolicyName", "^([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]|[a-zA-Z0-9])$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accessPolicyName", "^([a-zA-Z0-9][a-zA-Z0-9- ]*[a-zA-Z0-9]|[a-zA-Z0-9])$");
                 }
             }
             if (this.Client.ApiVersion == null)
@@ -659,9 +659,9 @@ namespace Microsoft.Azure.Management.RedisCache
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "accessPolicyName", 3);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(accessPolicyName, "^([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]|[a-zA-Z0-9])$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accessPolicyName, "^([a-zA-Z0-9][a-zA-Z0-9- ]*[a-zA-Z0-9]|[a-zA-Z0-9])$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accessPolicyName", "^([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]|[a-zA-Z0-9])$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accessPolicyName", "^([a-zA-Z0-9][a-zA-Z0-9- ]*[a-zA-Z0-9]|[a-zA-Z0-9])$");
                 }
             }
             if (this.Client.ApiVersion == null)
@@ -940,9 +940,9 @@ namespace Microsoft.Azure.Management.RedisCache
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "accessPolicyName", 3);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(accessPolicyName, "^([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]|[a-zA-Z0-9])$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accessPolicyName, "^([a-zA-Z0-9][a-zA-Z0-9- ]*[a-zA-Z0-9]|[a-zA-Z0-9])$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accessPolicyName", "^([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]|[a-zA-Z0-9])$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accessPolicyName", "^([a-zA-Z0-9][a-zA-Z0-9- ]*[a-zA-Z0-9]|[a-zA-Z0-9])$");
                 }
             }
             if (this.Client.ApiVersion == null)

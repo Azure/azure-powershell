@@ -196,12 +196,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                 true,
                 null,
                 new[] { AppliesTo.Az }));
-            //Use DisableErrorRecordsPersistence as opt-out for now, will replace it with EnableErrorRecordsPersistence as opt-in at next major release (November 2023)
             configManager.RegisterConfig(new SimpleTypedConfig<bool>(
-                ConfigKeys.DisableErrorRecordsPersistence,
-                Resources.HelpMessageOfDisableErrorRecordsPersistence,
+                ConfigKeys.EnableErrorRecordsPersistence,
+                Resources.HelpMessageOfEnableErrorRecordsPersistence,
                 false,
-                string.Format("AzPS{0}", ConfigKeys.DisableErrorRecordsPersistence),
+                string.Format("AzPS{0}", ConfigKeys.EnableErrorRecordsPersistence),
                 new[] { AppliesTo.Az }));
             configManager.RegisterConfig(new SimpleTypedConfig<bool>(
                 ConfigKeys.CheckForUpgrade,

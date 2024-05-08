@@ -71,6 +71,7 @@ Function Move-Generation2Master {
             $Psd1Metadata = Import-LocalizedData -BaseDirectory "$DestPath/$ModuleName$Psd1FolderPostfix" -FileName "Az.$ModuleName.psd1"
         }
         else {
+            Copy-Template -SourceName Module.psd1 -DestPath $DestPath\$ModuleName -DestName "Az.$ModuleName.psd1" -ModuleName $ModuleName
             $Psd1Metadata = Import-LocalizedData -BaseDirectory "$PSScriptRoot/Templates" -FileName "Module.psd1"
         }
         foreach ($submoduleDir in $submoduleDirs) {
@@ -91,7 +92,7 @@ Function Move-Generation2Master {
             $sourceHelpFolder = Join-Path -Path (Join-Path -Path $SourcePath -ChildPath $submoduleDir.Name) -ChildPath "docs"
             $destHelpHolder = Join-Path -Path (Join-Path -Path $DestPath -ChildPath $ModuleName) -ChildPath "help"
             Write-Host "Copying help files from $sourceHelpFolder to $destHelpHolder" -ForegroundColor Yellow
-            Get-ChildItem -Path $sourceHelpFolder -Filter *-*.md | Copy-Item -Destination $destHelpHolder
+            Get-ChildItem -Path $sourceHelpFolder -Filter *.md | Copy-Item -Destination $destHelpHolder
             #Region Clean Local Modules
             $LocalModulesPath = Join-Path -Path (Join-Path -Path (Join-Path -Path $DestPath -ChildPath $submoduleDir.Name) -ChildPath 'generated') -ChildPath 'modules'
             If (Test-Path $LocalModulesPath) {

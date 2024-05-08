@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-The operation to Create a virtual hard disk.
+The operation to create or update a virtual hard disk.
 Please note some properties can be set only during virtual hard disk creation.
 .Description
-The operation to Create a virtual hard disk.
+The operation to create or update a virtual hard disk.
 Please note some properties can be set only during virtual hard disk creation.
 .Example
 New-AzStackHCIVMVirtualHardDisk -Name "testVhd" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -Location "eastus" -SizeGb 2

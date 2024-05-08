@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the placeholder in psd1 file.
+
+## Version 0.2.0
 * Introduced secrets detection feature to safeguard sensitive data.
 * Upgraded managed identity parameters
 * Updated example for new managed identity
