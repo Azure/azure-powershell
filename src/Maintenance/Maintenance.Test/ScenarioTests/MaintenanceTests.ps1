@@ -14,6 +14,41 @@
 
 <#
 .SYNOPSIS
+Test Set-AzScheduledEvent
+#>
+function Test-AzScheduledEventAcknowledge
+{
+    $resourceGroupName = Get-RandomResourceGroupName
+    $location = "eastus2euap"
+    $resourceName = Get-RandomVirtualMachineName
+    $resourceType = "virtualMachines"
+    $scheduledEventId = "3F5E7B79-2DD3-4030-B645-94DC91DCC6B1"
+        
+    try
+    {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        Write-Host "Created RG $location"
+
+        Import-Module "Hyper-V"
+
+        New-AzVM -Name $resourceName -MemoryStartupBytes 512MB
+        Write-Host "Created $resourceName"
+
+        Assert-ThrowsContains { 
+         Set-AzScheduledEvent -ResourceGroupName $resourceGroupName -ResourceType $resourceType -ResourceName $resourceName -ScheduledEventId $scheduledEventId
+        } "Operation returned an invalid status code 'NotFound'" > $null
+
+        Write-Host "Assertion succeeded"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroupName
+    }
+}
+
+<#
+.SYNOPSIS
 Test New-AzMaintenanceConfiguration, Get-AzMaintenanceConfiguration, Remove-AzMaintenanceConfiguration
 #>
 function Test-AzMaintenanceConfiguration
