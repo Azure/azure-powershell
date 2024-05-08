@@ -930,7 +930,7 @@ function Test-UpdateDatabaseFromSterlingToHyperscaleWithManualCutover ()
 			}
 		}while ($true) 
 		
-		
+		# Trigger Perform Cutover on the db once the db is waitingforcutover and verify the target db name/slo
 		$db1 = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
 				-PerformCutover
 		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
