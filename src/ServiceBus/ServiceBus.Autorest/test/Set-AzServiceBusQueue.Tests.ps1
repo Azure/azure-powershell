@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzServiceBusQueue'))
 }
 
 function AssertQueueUpdates{
-    param([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbQueue]$expectedQueue,[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbQueue]$actualQueue)
+    param([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueue]$expectedQueue,[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueue]$actualQueue)
     $expectedQueue.Name | Should -Be $actualQueue.Name
     $expectedQueue.ResourceGroupName | Should -Be $actualQueue.ResourceGroupName
     $expectedQueue.MaxSizeInMegabytes | Should -Be $actualQueue.MaxSizeInMegabytes
@@ -119,6 +119,6 @@ Describe 'Set-AzServiceBusQueue' {
         AssertQueueUpdates $currentQueue $updatedQueue
         $currentQueue = $updatedQueue
 
-        { Set-AzServiceBusQueue -InputObject $currentQueue } | Should -Throw 'Please specify the property you want to update on the -InputObject'
+        { Set-AzServiceBusQueue -InputObject $currentQueue -ErrorAction Stop } | Should -Throw 'Please specify the property you want to update on the -InputObject'
     }
 }

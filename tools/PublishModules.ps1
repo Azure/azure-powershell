@@ -56,7 +56,10 @@ param(
     [string]$RepositoryLocation,
 
     [Parameter(Mandatory = $false, Position = 5)]
-    [string]$NugetExe
+    [string]$NugetExe, 
+
+    [Parameter(Mandatory = $false, Position = 6)]
+    [string]$TargetBuild
 )
 
 Import-Module "$PSScriptRoot\PublishModules.psm1"
@@ -106,7 +109,7 @@ if ($PublishLocal) {
 $null = New-Item -ItemType Directory -Force -Path $tempRepoPath
 $tempRepoName = ([System.Guid]::NewGuid()).ToString()
 $repo = Get-PSRepository | Where-Object { $_.SourceLocation -eq $tempRepoPath }
-if ($repo -ne $null) {
+if ($null -ne $repo) {
     $tempRepoName = $repo.Name
 } else {
     Register-PSRepository -Name $tempRepoName -SourceLocation $tempRepoPath -PublishLocation $tempRepoPath -InstallationPolicy Trusted -PackageManagementProvider NuGet
@@ -117,7 +120,7 @@ $env:PSModulePath = "$env:PSModulePath;$tempRepoPath"
 $Errors = $null
 
 try {
-    $modules = Get-AllModules -BuildConfig $BuildConfig -Scope $Scope -PublishLocal:$PublishLocal -IsNetCore:$IsNetCore
+    $modules = Get-AllModules -BuildConfig $BuildConfig -Scope $Scope -TargetBuild $TargetBuild -PublishLocal:$PublishLocal -IsNetCore:$IsNetCore
     Add-AllModules -ModulePaths $modules -TempRepo $tempRepoName -TempRepoPath $tempRepoPath -NugetExe $NugetExe
     Publish-AllModules -ModulePaths $modules -ApiKey $apiKey -TempRepoPath $tempRepoPath -RepoLocation $repositoryLocation -NugetExe $NugetExe -PublishLocal:$PublishLocal
 } catch {

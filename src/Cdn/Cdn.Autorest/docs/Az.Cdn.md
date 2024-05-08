@@ -241,6 +241,12 @@ Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profi
 ### [New-AzFrontDoorCdnProfileChangeSkuWafMappingObject](New-AzFrontDoorCdnProfileChangeSkuWafMappingObject.md)
 Create an in-memory object for ProfileChangeSkuWafMapping.
 
+### [New-AzFrontDoorCdnProfileLogScrubbingObject](New-AzFrontDoorCdnProfileLogScrubbingObject.md)
+Create an in-memory object for ProfileLogScrubbing.
+
+### [New-AzFrontDoorCdnProfileScrubbingRulesObject](New-AzFrontDoorCdnProfileScrubbingRulesObject.md)
+Create an in-memory object for ProfileScrubbingRules.
+
 ### [New-AzFrontDoorCdnProfileUpgradeParametersObject](New-AzFrontDoorCdnProfileUpgradeParametersObject.md)
 Create an in-memory object for ProfileUpgradeParameters.
 

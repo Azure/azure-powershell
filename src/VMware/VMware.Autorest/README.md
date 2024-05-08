@@ -47,26 +47,22 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 2e665b044670074d91e8a9e6d04f23fbe3c8a06e
+commit: 0baf811c3c76c87b3c127d098519bd97141222dd
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
-input-file: 
-  - $(repo)/specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json
+input-file:
+  - $(repo)/specification/vmware/resource-manager/Microsoft.AVS/stable/2023-03-01/vmware.json
 
 module-version: 0.4.0
 title: VMware
 subject-prefix: $(service-name)
+disable-transform-identity-type: true
+flatten-userassignedidentity: false
 
-identity-correction-for-post: true
-resourcegroup-append: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
+support-json-input: false
 
 directive:
-  - from: swagger-document 
+  - from: swagger-document
     where: $.definitions.AdminCredentials.properties.nsxtPassword
     transform: >-
       return {
@@ -76,7 +72,7 @@ directive:
           "x-ms-secret": true,
           "format": "password"
       }
-  - from: swagger-document 
+  - from: swagger-document
     where: $.definitions.AdminCredentials.properties.vcenterPassword
     transform: >-
       return {
@@ -87,7 +83,7 @@ directive:
           "format": "password"
       }
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?Expanded)
     remove: true
   - where:
       variant: ^Restrict$|^RestrictViaIdentity$
@@ -125,12 +121,47 @@ directive:
     remove: true
   - where:
       verb: Test
-      subject: ^LocationTrialAvailability$|^LocationQuotaAvailability$
+      subject: ^LocationQuotaAvailability$
       variant: ^CheckViaIdentity$
+    remove: true
+  # Remove v4 variant
+  - where:
+      verb: Test
+      subject: ^LocationTrialAvailability$
+      variant: ^Check$|CheckViaIdentity
+    remove: true
+  - where:
+      verb: New
+      subject: PrivateCloud
+      variant: CreateViaIdentityExpanded
+    remove: true
+  # custom set SKU Name optional
+  # - where:
+  #     verb: Test
+  #     subject: ^LocationTrialAvailability$
+  #   hide: true
+  # Remove the list variant as the workloadNetwork only have one enum value
+  - where:
+      verb: Get
+      subject: WorkloadNetwork
+  #   variant: List
+    hide: true
+  # Hide parent object variant to fix 'multiple types define RestrictMovement [string, IVirtualMachineRestrictMovement]'
+  - where:
+      verb: Lock
+      subject: VirtualMachineMovement
+      variant: ^RestrictViaIdentityCluster$|^RestrictViaIdentityPrivateCloud$
+    remove: true
+  # Hide HcxEnterpriseSite, ScriptExecution, Addon update
+  - where:
+      verb: Update
+      subject: HcxEnterpriseSite|ScriptExecution|Addon
     remove: true
   - no-inline:
       - AddonProperties
       - PlacementPolicyProperties
+  - model-cmdlet:
+    - model-name: IdentitySource
   # Re-name and custom it
   # - model-cmdlet:
   #     - VMPlacementPolicyProperties

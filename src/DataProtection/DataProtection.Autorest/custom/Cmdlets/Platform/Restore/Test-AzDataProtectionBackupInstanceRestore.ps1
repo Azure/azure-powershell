@@ -2,7 +2,7 @@
 
 function Test-AzDataProtectionBackupInstanceRestore
 {   
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IOperationJobExtendedInfo')]
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IOperationJobExtendedInfo')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Validates if Restore can be triggered for a DataSource')]
 
@@ -24,8 +24,12 @@ function Test-AzDataProtectionBackupInstanceRestore
         ${VaultName},
 
         [Parameter(ParameterSetName="ValidateRestore", Mandatory, HelpMessage='Restore request object for which to validate')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IAzureBackupRestoreRequest]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRestoreRequest]
         ${RestoreRequest},
+
+        [Parameter(Mandatory=$false, HelpMessage='Switch parameter to trigger restore to secondary region')]
+        [Switch]
+        ${RestoreToSecondaryRegion},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -80,12 +84,49 @@ function Test-AzDataProtectionBackupInstanceRestore
 
     process
     {
-        $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.ValidateRestoreRequestObject]::new()
-        $Parameter.RestoreRequestObject = $RestoreRequest
+        $hasRestoreToSecondaryRegion = $PSBoundParameters.Remove("RestoreToSecondaryRegion")
         $null = $PSBoundParameters.Remove("RestoreRequest")
+        if($hasRestoreToSecondaryRegion){
+            
+            # fetch vault from ARG            
+            $hasSubscriptionId = $PSBoundParameters.Remove("SubscriptionId")
+            $null = $PSBoundParameters.Remove("ResourceGroupName")
+            $null = $PSBoundParameters.Remove("VaultName")
+            $null = $PSBoundParameters.Remove("Name")
 
-        $null = $PSBoundParameters.Add("Parameter", $Parameter)
+            $PSBoundParameters.Add('ResourceGroup', $ResourceGroupName)
+            $PSBoundParameters.Add('Vault', $VaultName)
+            if($hasSubscriptionId) { $PSBoundParameters.Add('Subscription', $SubscriptionId) }
+            
+            $vault = Search-AzDataProtectionBackupVaultInAzGraph @PSBoundParameters
+
+            $null = $PSBoundParameters.Remove("Subscription")
+            $null = $PSBoundParameters.Remove("ResourceGroup")
+            $null = $PSBoundParameters.Remove("Vault")
+            $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
+            if($hasSubscriptionId) { $PSBoundParameters.Add('SubscriptionId', $SubscriptionId) }
+            
+            $backupInstanceId = "/subscriptions/" + $SubscriptionId + "/resourceGroups/" + $ResourceGroupName + "/providers/Microsoft.DataProtection/backupVaults/" + $VaultName + "/backupInstances/" + $Name
+            
+            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ValidateCrossRegionRestoreRequestObject]::new()
+            $Parameter.RestoreRequestObject = $RestoreRequest
+
+            $Parameter.CrossRegionRestoreDetail = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.CrossRegionRestoreDetails]::new()
+            $Parameter.CrossRegionRestoreDetail.SourceBackupInstanceId = $backupInstanceId
+            $Parameter.CrossRegionRestoreDetail.SourceRegion = $vault.Location
+
+            $PSBoundParameters.Add("Parameter", $Parameter)
+            $PSBoundParameters.Add('Location', $vault.ReplicatedRegion[0])
+
+            Az.DataProtection.Internal\Test-AzDataProtectionBackupInstanceCrossRegionRestore @PSBoundParameters
+        }
+        else{
+            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ValidateRestoreRequestObject]::new()
+            $Parameter.RestoreRequestObject = $RestoreRequest            
+
+            $null = $PSBoundParameters.Add("Parameter", $Parameter)
         
-        Az.DataProtection.Internal\Test-AzDataProtectionBackupInstanceRestore @PSBoundParameters
+            Az.DataProtection.Internal\Test-AzDataProtectionBackupInstanceRestore @PSBoundParameters
+        }        
     }
 }

@@ -17,9 +17,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzCdnEndpointCustomDomai
 Describe 'Test-AzCdnEndpointCustomDomain'  {
     It 'ValidateExpanded' {
         # Hard-coding host and endpoint names due to requirement for DNS CNAME
-        $endpointName = 'e-20220418-sec26q'
-        $customDomainHostName = 'e-20220418-sec26q.ps.cdne2e.azfdtest.xyz'
-        $customDomainInvalidHostName = 'e-20220418-sec26w.ps.cdne2e.azfdtest.xyz'
+        $endpointName = 'ps-20240402-domain050'
+        $customDomainHostName = 'ps-20240402-domain050.ps.cdne2e.azfdtest.xyz'
+        $customDomainInvalidHostName = 'ps-20240402-domain050e.ps.cdne2e.azfdtest.xyz'
         $origin = @{
             Name = "origin1"
             HostName = "host1.hello.com"
@@ -39,9 +39,9 @@ Describe 'Test-AzCdnEndpointCustomDomain'  {
 
     It 'ValidateViaIdentityExpanded' {  
         # Hard-coding host and endpoint names due to requirement for DNS CNAME
-        $endpointName = 'e-20220418-ems6vw'
-        $customDomainHostName = 'e-20220418-ems6vw.ps.cdne2e.azfdtest.xyz'
-        $customDomainInvalidHostName = 'e-20220418-ems5vw.ps.cdne2e.azfdtest.xyz'
+        $endpointName = 'ps-20240402-domain051'
+        $customDomainHostName = 'ps-20240402-domain051.ps.cdne2e.azfdtest.xyz'
+        $customDomainInvalidHostName = 'ps-20240402-domain051e.ps.cdne2e.azfdtest.xyz'
         $origin = @{
             Name = "origin1"
             HostName = "host1.hello.com"

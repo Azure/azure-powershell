@@ -16,7 +16,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMarketplacePrivateStore
 
 Describe 'New-AzMarketplacePrivateStoreCollection' {
     It 'CreateExpanded'  {
-        $res = New-AzMarketplacePrivateStoreCollection -CollectionName test187 -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa01f1 -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -SubscriptionsList 1052ff5a-aa43-4ca1-bd18-010399494ce5
-	$res.CollectionId | Should -Be "fdb889a1-cf3e-49f0-95b8-2bb012fa01f1"
+        $res = New-AzMarketplacePrivateStoreCollection -CollectionName pwshNewCollTest -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa01f1 -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -SubscriptionsList 1052ff5a-aa43-4ca1-bd18-010399494ce5 -Enabled
+	    $res.CollectionId | Should -Be "fdb889a1-cf3e-49f0-95b8-2bb012fa01f1"
+        $res.CollectionName | Should -Be "pwshNewCollTest"
+        $res.enabled | Should -Be "true"
     }
 }

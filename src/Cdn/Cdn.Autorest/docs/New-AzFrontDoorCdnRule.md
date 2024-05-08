@@ -57,7 +57,7 @@ A list of actions that are executed when all the conditions of a rule are satisf
 To construct, see NOTES section for ACTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IDeliveryRuleAction1[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRuleAction1[]
 Parameter Sets: (All)
 Aliases:
 
@@ -88,7 +88,7 @@ A list of conditions that must be matched for the actions to be executed
 To construct, see NOTES section for CONDITION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IDeliveryRuleCondition[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRuleCondition[]
 Parameter Sets: (All)
 Aliases:
 
@@ -278,22 +278,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRule
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRule
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`ACTION <IDeliveryRuleAction1[]>`: A list of actions that are executed when all the conditions of a rule are satisfied.
-  - `Name <DeliveryRuleAction>`: The name of the action for the delivery rule.
-
-`CONDITION <IDeliveryRuleCondition[]>`: A list of conditions that must be matched for the actions to be executed
-  - `Name <MatchVariable>`: The name of the condition for the delivery rule.
 
 ## RELATED LINKS
 

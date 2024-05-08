@@ -19,7 +19,7 @@ Constructs an IThrottlingPolicy object that can be fed as input to New-AzEventHu
 Constructs an IThrottlingPolicy object that can be fed as input to New-AzEventHubApplicationGroup or Set-AzEventHubApplicationGroup
 #>
 function New-AzEventHubThrottlingPolicyConfig{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IThrottlingPolicy])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IThrottlingPolicy])]
 	[CmdletBinding(PositionalBinding = $false, ConfirmImpact = 'Medium')]
 	param(
 		[Parameter(Mandatory, HelpMessage = "Name of Throttling Policy Config")]
@@ -33,14 +33,14 @@ function New-AzEventHubThrottlingPolicyConfig{
         ${RateLimitThreshold},
 
 		[Parameter(Mandatory, HelpMessage = "Metric Id on which the throttle limit should be set, MetricId can be discovered by hovering over Metric in the Metrics section of Event Hub Namespace inside Azure Portal")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.MetricId]
+        [System.String]
 		# Metric Id on which the throttle limit should be set, MetricId can be discovered by hovering over Metric in the Metrics section of Event Hub Namespace inside Azure Portal.
         ${MetricId}
 	)
 
 	process{
 		try{
-			$policy = [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IThrottlingPolicy]@{
+			$policy = [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IThrottlingPolicy]@{
 				Name = $Name
 				MetricId = $MetricId
 				RateLimitThreshold = $RateLimitThreshold

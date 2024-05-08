@@ -24,6 +24,18 @@ Set-AzMarketplaceBulkPrivateStoreCollectionAction -PrivateStoreId <String> -Payl
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### BulkViaJsonFilePath
+```
+Set-AzMarketplaceBulkPrivateStoreCollectionAction -PrivateStoreId <String> -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### BulkViaJsonString
+```
+Set-AzMarketplaceBulkPrivateStoreCollectionAction -PrivateStoreId <String> -JsonString <String>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Perform an action on bulk collections
 
@@ -75,7 +87,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -89,12 +102,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Bulk operation
+
+```yaml
+Type: System.String
+Parameter Sets: BulkViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Bulk operation
+
+```yaml
+Type: System.String
+Parameter Sets: BulkViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Payload
 Bulk collections action properties
 To construct, see NOTES section for PAYLOAD properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IBulkCollectionsPayload
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IBulkCollectionsPayload
 Parameter Sets: Bulk
 Aliases:
 
@@ -156,24 +199,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IBulkCollectionsPayload
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IBulkCollectionsPayload
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IBulkCollectionsResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IBulkCollectionsResponse
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-PAYLOAD <IBulkCollectionsPayload>: Bulk collections action properties
-  - `[Action <String>]`: Action to perform (For example: EnableCollections, DisableCollections)
-  - `[CollectionId <String[]>]`: collection ids list that the action is performed on
 
 ## RELATED LINKS
 
