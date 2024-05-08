@@ -45,21 +45,16 @@ $moduleRootGenerated = Join-Path $generatedDirectory $ModuleRootName
 Write-Host "Calculating outdated submodules for $ModuleRootName ..." -ForegroundColor DarkGreen
 $outdatedSubModule = Get-OutdatedSubModule -SourceDirectory $moduleRootSource -GeneratedDirectory $moduleRootGenerated -ForceRegenerate:$ForceRegenerate
 foreach ($subModuleName in $outdatedSubModule) {
-    $subModuleSourceDirectory = Join-Path $sourceDirectory $ModuleRootName $subModuleName
-    $generatedLog = Join-Path $AutorestOutputDir $ModuleRootName "$subModuleName.log"
-    if (-not (Test-Path $generatedLog)) {
-        New-Item -ItemType File -Force -Path $generatedLog
+    $generateLog = Join-Path $AutorestOutputDir $ModuleRootName "$subModuleName.log"
+    if (-not (Test-Path $generateLog)) {
+        New-Item -ItemType File -Force -Path $generateLog
     }
-    if (-not (Invoke-SubModuleGeneration -GenerateDirectory $subModuleSourceDirectory -GenerateLog $generatedLog)) {
+    if (-not (Update-GeneratedSubModule -ModuleRootName $ModuleRootName -SubModuleName $subModuleName -SourceDirectory $sourceDirectory -GeneratedDirectory $generatedDirectory -GenerateLog $generateLog)) {
         Write-Error "Failed to generate code for module: $ModuleRootName, $subModuleName"
         Write-Error "========= Start of error log for $ModuleRootName, $subModuleName ========="
-        Write-Error "log can be found at $generatedLog"
-        Get-Content $generatedLog | Foreach-Object { Write-Error $_ }
+        Write-Error "log can be found at $generateLog"
+        Get-Content $generateLog | Foreach-Object { Write-Error $_ }
         Write-Error "========= End of error log for $ModuleRootName, $subModuleName"
+        exit 1
     }
-    $subModuleGeneratedDirectory = Join-Path $generatedDirectory $ModuleRootName $subModuleName
-    if (-not (Test-Path $subModuleGeneratedDirectory)) {
-        New-Item -ItemType Directory -Force -Path $subModuleGeneratedDirectory
-    }
-    Update-GeneratedSubModule -ModuleRootName $ModuleRootName -SubModuleName $subModuleName -SourceDirectory $sourceDirectory -GeneratedDirectory $generatedDirectory
 }

@@ -92,17 +92,17 @@ function Get-OutdatedSubModule {
 
 function Invoke-SubModuleGeneration {
     param (
-        [string]$GenerateDirectory,
+        [string]$GeneratedDirectory,
         [string]$GenerateLog
     )
-    Write-Host "----------Start code generation for $GenerateDirectory----------" -ForegroundColor DarkGreen
-    Set-Location -Path $GenerateDirectory
-    autorest --max-memory-size=8192 >> $GenerateLog
+    Write-Host "----------Start code generation for $GeneratedDirectory----------" -ForegroundColor DarkGreen
+    Set-Location -Path $GeneratedDirectory
+    autorest --use:C:\workspace\autorest.powershell --max-memory-size=8192 >> $GenerateLog
     if ($lastexitcode -ne 0) {
         return $false
     } else {
         ./build-module.ps1 -DisableAfterBuildTasks
-        Write-Host "----------End code generation for $GenerateDirectory----------" -ForegroundColor DarkGreen
+        Write-Host "----------End code generation for $GeneratedDirectory----------" -ForegroundColor DarkGreen
         return $true
     }
 
@@ -113,20 +113,32 @@ function Update-GeneratedSubModule {
         [string]$ModuleRootName,
         [string]$SubModuleName,
         [string]$SourceDirectory,
-        [string]$GeneratedDirectory
+        [string]$GeneratedDirectory,
+        [string]$GenerateLog
     )
     $SourceDirectory = Join-Path $SourceDirectory $ModuleRootName $SubModuleName
     $GeneratedDirectory = Join-Path $GeneratedDirectory $ModuleRootName $SubModuleName
+    if (-not (Test-Path $GeneratedDirectory)) {
+        New-Item -ItemType Directory -Force -Path $GeneratedDirectory
+    }   
     #clean generated directory before update
     Write-Host "Cleaning directory: $GeneratedDirectory ..." -ForegroundColor DarkGreen
     Get-ChildItem $GeneratedDirectory | Foreach-Object { Remove-Item -Path $_.FullName -Recurse -Force }
+
+    Write-Host "Copying generate-info.json from $SourceDirectory to $GeneratedDirectory ..." -ForegroundColor DarkGreen
+    $generateInfoPath = Join-Path $SourceDirectory "generate-info.json"
+    Copy-Item -Path $generateInfoPath -Destination $GeneratedDirectory -Force
+
+    if (-not (Invoke-SubModuleGeneration -GeneratedDirectory $GeneratedDirectory -GenerateLog $GeneratedLog)) {
+        return false;
+    }
     # remove $sourceDirectory/generated/modules
     $localModulesPath = Join-Path $SourceDirectory 'generated' 'modules'
     if (Test-Path $localModulesPath) {
         Remove-Item -Path $localModulesPath -Recurse -Force
     }
     $subModuleNameTrimmed = $SubModuleName.split('.')[-2]
-    $fileToUpdate = @('generated', 'generate-info.json', "Az.$subModuleNameTrimmed.psd1", "Az.$subModuleNameTrimmed.psm1", "Az.$subModuleNameTrimmed.format.ps1xml", 'exports', 'internal', 'test-module.ps1', 'check-dependencies.ps1')
+    $fileToUpdate = @('generated', "Az.$subModuleNameTrimmed.psd1", "Az.$subModuleNameTrimmed.psm1", "Az.$subModuleNameTrimmed.format.ps1xml", 'exports', 'internal', 'test-module.ps1', 'check-dependencies.ps1')
     # Copy from src/ to generated/ 
     $fileToUpdate | Foreach-Object {
         $moveFrom = Join-Path $SourceDirectory $_
@@ -136,6 +148,8 @@ function Update-GeneratedSubModule {
     }
     # regenerate csproj
     New-GeneratedFileFromTemplate -TemplateName 'Az.ModuleName.csproj' -GeneratedFileName "Az.$subModuleNameTrimmed.csproj" -GeneratedDirectory $GeneratedDirectory -ModuleRootName $ModuleRootName -SubModuleName $subModuleNameTrimmed
+    
+    return true
 }
 
 function New-GeneratedFileFromTemplate {
