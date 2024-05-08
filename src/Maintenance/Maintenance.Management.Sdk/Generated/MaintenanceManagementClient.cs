@@ -77,6 +77,11 @@ namespace Microsoft.Azure.Management.Maintenance
         public bool? GenerateClientRequestId { get; set; }
 
         /// <summary>
+        /// Gets the IScheduledEventOperations.
+        /// </summary>
+        public virtual IScheduledEventOperations ScheduledEvent { get; private set; }
+
+        /// <summary>
         /// Gets the IPublicMaintenanceConfigurationsOperations.
         /// </summary>
         public virtual IPublicMaintenanceConfigurationsOperations PublicMaintenanceConfigurations { get; private set; }
@@ -372,6 +377,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// </summary>
         private void Initialize()
         {
+            ScheduledEvent = new ScheduledEventOperations(this);
             PublicMaintenanceConfigurations = new PublicMaintenanceConfigurationsOperations(this);
             ApplyUpdates = new ApplyUpdatesOperations(this);
             ConfigurationAssignments = new ConfigurationAssignmentsOperations(this);
@@ -384,7 +390,7 @@ namespace Microsoft.Azure.Management.Maintenance
             Operations = new Operations(this);
             Updates = new UpdatesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2023-09-01-preview";
+            ApiVersion = "2023-10-01-preview";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
