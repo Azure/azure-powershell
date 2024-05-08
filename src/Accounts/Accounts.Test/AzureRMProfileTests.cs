@@ -1298,7 +1298,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         }
 
 
-        [Fact]
+        [Fact(Skip = "Connect-AzAccount needs user's interactive input.")]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void CanRenewTokenLogin()
         {
