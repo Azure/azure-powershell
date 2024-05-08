@@ -93,18 +93,19 @@ function Get-OutdatedSubModule {
 
 function Invoke-SubModuleGeneration {
     param (
-        [string]$GeneratedDirectory,
+        [string]$GenerateDirectory,
         [string]$GenerateLog
     )
-    Write-Host "----------Start code generation for $GeneratedDirectory----------" -ForegroundColor DarkGreen
-    Set-Location -Path $GeneratedDirectory
+    Write-Host "----------Start code generation for $GenerateDirectory----------" -ForegroundColor DarkGreen
+    Set-Location -Path $GenerateDirectory
     autorest --max-memory-size=8192 >> $GenerateLog
     if ($lastexitcode -ne 0) {
         return $false
+    } else {
+        ./build-module.ps1 -DisableAfterBuildTasks
+        Write-Host "----------End code generation for $GenerateDirectory----------" -ForegroundColor DarkGreen
+        return $true
     }
-    ./build-module.ps1 -DisableAfterBuildTasks
-    Write-Host "----------End code generation for $GeneratedDirectory----------" -ForegroundColor DarkGreen
-    return $true
 
 }
 
@@ -129,8 +130,8 @@ function Update-GeneratedSubModule {
     $generateInfoPath = Join-Path $SourceDirectory "generate-info.json"
     Copy-Item -Path $generateInfoPath -Destination $GeneratedDirectory -Force
 
-    if (-not (Invoke-SubModuleGeneration -GeneratedDirectory $GeneratedDirectory -GenerateLog $GeneratedLog)) {
-        return false;
+    if (-not (Invoke-SubModuleGeneration -GenerateDirectory $SourceDirectory -GenerateLog $GenerateLog)) {
+        return $false;
     }
     # remove $sourceDirectory/generated/modules
     $localModulesPath = Join-Path $SourceDirectory 'generated' 'modules'
@@ -149,7 +150,11 @@ function Update-GeneratedSubModule {
     # regenerate csproj
     New-GeneratedFileFromTemplate -TemplateName 'Az.ModuleName.csproj' -GeneratedFileName "Az.$subModuleNameTrimmed.csproj" -GeneratedDirectory $GeneratedDirectory -ModuleRootName $ModuleRootName -SubModuleName $subModuleNameTrimmed
     
-    return true
+    Write-Host "Copying generate-info.json from $GeneratedDirectory to $SourceDirectory ..." -ForegroundColor DarkGreen
+    $generateInfoPath = Join-Path $GeneratedDirectory "generate-info.json"
+    Copy-Item -Path $generateInfoPath -Destination $SourceDirectory -Force
+
+    return $true
 }
 
 function New-GeneratedFileFromTemplate {

@@ -46,9 +46,10 @@ Write-Host "Calculating outdated submodules for $ModuleRootName ..." -Foreground
 $outdatedSubModule = Get-OutdatedSubModule -SourceDirectory $moduleRootSource -GeneratedDirectory $moduleRootGenerated -ForceRegenerate:$ForceRegenerate
 foreach ($subModuleName in $outdatedSubModule) {
     $generateLog = Join-Path $AutorestOutputDir $ModuleRootName "$subModuleName.log"
-    if (-not (Test-Path $generateLog)) {
-        New-Item -ItemType File -Force -Path $generateLog
+    if (Test-Path $generateLog) {
+        Remove-Item -Path $generateLog -Recurse -Force
     }
+    New-Item -ItemType File -Force -Path $generateLog
     if (-not (Update-GeneratedSubModule -ModuleRootName $ModuleRootName -SubModuleName $subModuleName -SourceDirectory $sourceDirectory -GeneratedDirectory $generatedDirectory -GenerateLog $generateLog)) {
         Write-Error "Failed to generate code for module: $ModuleRootName, $subModuleName"
         Write-Error "========= Start of error log for $ModuleRootName, $subModuleName ========="
