@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [Preview] When enabled, Web Account Manager (WAM) will be the default interactive login experience. It will fall back to using the browser if the platform does not support WAM. Note that this feature is under preview. Microsoft Account (MSA) is currently not supported. Feel free to reach out to Azure PowerShell team if you have any feedbacks: https://aka.ms/azpsissue.
+        ///   Looks up a localized string similar to When enabled, Web Account Manager (WAM) will be the default interactive login experience. It will fall back to using the browser if the platform does not support WAM. Feel free to reach out to Azure PowerShell team if you have any feedbacks: https://aka.ms/azpsissue.
         /// </summary>
         public static string HelpMessageOfEnableWamLogin {
             get {

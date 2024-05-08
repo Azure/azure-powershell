@@ -287,8 +287,6 @@ namespace StaticAnalysis.HelpAnalyzer
             {
                 if (!cmdletDict.ContainsKey(helpRecord))
                 {
-                    Console.WriteLine($"ModuleName = {moduleName}, Cmdlet Count = {cmdlets.Count}");
-                    Console.WriteLine($"Help record {helpRecord} has no cmdlet.");
                     Console.Error.WriteLine($"Help record {helpRecord} has no cmdlet.");
                 }
             }
