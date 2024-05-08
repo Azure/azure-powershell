@@ -84,8 +84,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 }
                                 // if securityType is Standard explicitly.
                                 else if (this.VirtualMachineScaleSet.VirtualMachineProfile?.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.StandardSecurityType
-                                    && this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference == null
-                                    && this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk == null)
+                                    && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.ImageReference == null
+                                    && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.OsDisk == null)
                                 {
                                     this.ImageName = ConstantValues.TrustedLaunchDefaultImageAlias;
                                     /*
