@@ -553,52 +553,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         }
                     }
                 }
-                // TL default for Simple Param Set, no config object
-                //reached this code too.
-                else if (!_cmdlet.IsParameterBound(c => c.SecurityType)
-                    && !_cmdlet.IsParameterBound(c => c.ImageName)
-                    && !_cmdlet.IsParameterBound(c => c.ImageReferenceId)
-                    && !_cmdlet.IsParameterBound(c => c.SharedGalleryImageId))
-                {
-                    _cmdlet.SecurityType = ConstantValues.TrustedLaunchSecurityType;
-                    if (!_cmdlet.IsParameterBound(c => c.ImageName) && !_cmdlet.IsParameterBound(c => c.ImageReferenceId) 
-                        && !_cmdlet.IsParameterBound(c => c.SharedGalleryImageId))
-                    {
-                        _cmdlet.ImageName = ConstantValues.TrustedLaunchDefaultImageAlias;
-                    }
-                    if (!_cmdlet.IsParameterBound(c => c.EnableSecureBoot))
-                    {
-                        _cmdlet.EnableSecureBoot = true;
-                    }
-                    if (!_cmdlet.IsParameterBound(c => c.EnableVtpm))
-                    {
-                        _cmdlet.EnableVtpm = true;
-                    }
-                }
-
-                // API does not currently support Standard securityType value, so need to null it out here. 
-                if (_cmdlet.IsParameterBound(c => c.SecurityType)
-                    && _cmdlet.SecurityType != null
-                    && _cmdlet.SecurityType.ToString().ToLower() == ConstantValues.StandardSecurityType)
-                {
-                    _cmdlet.SecurityType = null;
-                }
-
-                //TrustedLaunch value defaulting for UEFI values.
-                if (_cmdlet.IsParameterBound(c => c.SecurityType))
-                {
-                    if (_cmdlet.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || _cmdlet.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
-                    {
-                        _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
-                        _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
-                    }
-                }
-
-
-
-
-
-
 
                 _cmdlet.NatBackendPort = ImageAndOsType.UpdatePorts(_cmdlet.NatBackendPort);
 
@@ -697,10 +651,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
             // default Win2022AzureEdition img for explicitly set Standard.
             // handles when default img was set for ImageName parameter.
-            this.ImageReferenceId = this.ImageReferenceId;
-            this.SharedGalleryImageId = this.SharedGalleryImageId;
             if (this.IsParameterBound(c => c.SecurityType)
-                && this.SecurityType.ToLower() == ConstantValues.StandardSecurityType
+                && this.SecurityType?.ToLower() == ConstantValues.StandardSecurityType
                 && this.ImageName == ConstantValues.DefaultVMandVMSSImage
                 && !this.IsParameterBound(c => c.ImageReferenceId)
                 && !this.IsParameterBound(c => c.SharedGalleryImageId))
@@ -711,7 +663,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // API does not currently support Standard securityType value, so need to null it out here. 
             if (this.IsParameterBound(c => c.SecurityType)
                 && this.SecurityType != null
-                && this.SecurityType.ToString().ToLower() == ConstantValues.StandardSecurityType)
+                && this.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
             {
                 this.SecurityType = null;
             }
@@ -721,7 +673,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (this.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || this.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
                 {
-                    this.SecurityType = this.SecurityType;
                     this.EnableVtpm = this.EnableVtpm ?? true;
                     this.EnableSecureBoot = this.EnableSecureBoot ?? true;
                 }          
