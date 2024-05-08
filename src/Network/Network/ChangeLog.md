@@ -19,7 +19,7 @@
 --->
 
 ## Upcoming Release
-* Added support for ApplicationGatewaySkuFamily
+* Added support for ApplicationGatewaySkuFamily 
 * Updated cmdlet to add the property of JSChallengeCookieExpirationInMins
     - `New-AzApplicationGatewayFirewallPolicySetting`
 * Added optional property `HeaderValueMatcher` to `New-AzApplicationGatewayRewriteRuleHeaderConfiguration`
