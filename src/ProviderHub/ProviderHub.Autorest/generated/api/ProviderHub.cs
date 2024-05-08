@@ -79,7 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/checkinManifest'");
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/customRollouts/(?<rolloutName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/customRollouts/(?<rolloutName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}'");
@@ -429,7 +429,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/customRollouts/(?<rolloutName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/customRollouts/(?<rolloutName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}'");
@@ -594,7 +594,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/customRollouts$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/customRollouts$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts'");
@@ -765,7 +765,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/defaultRollouts/(?<rolloutName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/defaultRollouts/(?<rolloutName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}'");
@@ -918,6 +918,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
 
                         // make the final call
                         _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                         break;
                     }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
@@ -1036,7 +1037,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/defaultRollouts/(?<rolloutName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/defaultRollouts/(?<rolloutName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}'");
@@ -1210,7 +1211,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/defaultRollouts/(?<rolloutName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/defaultRollouts/(?<rolloutName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}'");
@@ -1375,7 +1376,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/defaultRollouts$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/defaultRollouts$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts'");
@@ -1541,7 +1542,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/defaultRollouts/(?<rolloutName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/defaultRollouts/(?<rolloutName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}/stop'");
@@ -1707,7 +1708,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/generateManifest'");
@@ -1876,7 +1877,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/notificationRegistrations/(?<notificationRegistrationName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/notificationRegistrations/(?<notificationRegistrationName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations/{notificationRegistrationName}'");
@@ -2054,7 +2055,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/notificationRegistrations/(?<notificationRegistrationName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/notificationRegistrations/(?<notificationRegistrationName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations/{notificationRegistrationName}'");
@@ -2228,7 +2229,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/notificationRegistrations/(?<notificationRegistrationName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/notificationRegistrations/(?<notificationRegistrationName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations/{notificationRegistrationName}'");
@@ -2393,7 +2394,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/notificationRegistrations$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/notificationRegistrations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations'");
@@ -2562,7 +2563,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/operations/default$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/operations/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/operations/default'");
@@ -2732,7 +2733,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/operations/default$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/operations/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/operations/default'");
@@ -2933,7 +2934,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/operations/default$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/operations/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/operations/default'");
@@ -3166,7 +3167,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}'");
@@ -3316,6 +3317,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
 
                         // make the final call
                         _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                         break;
                     }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
@@ -3429,7 +3431,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}'");
@@ -3596,7 +3598,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/generateOperations'");
@@ -3758,7 +3760,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}'");
@@ -3915,7 +3917,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations'");
@@ -4079,7 +4081,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}'");
@@ -4234,6 +4236,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
 
                         // make the final call
                         _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                         break;
                     }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
@@ -4352,7 +4355,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}'");
@@ -4526,7 +4529,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}'");
@@ -4691,7 +4694,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations'");
@@ -4919,7 +4922,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeFirst>[^/]+)/skus/(?<sku>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeFirst>[^/]+)/skus/(?<sku>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus/{sku}'");
@@ -5120,7 +5123,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeFirst>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeSecond>[^/]+)/skus/(?<sku>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeFirst>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeSecond>[^/]+)/skus/(?<sku>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus/{sku}'");
@@ -5329,7 +5332,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeFirst>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeSecond>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeThird>[^/]+)/skus/(?<sku>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeFirst>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeSecond>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeThird>[^/]+)/skus/(?<sku>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus/{sku}'");
@@ -5483,7 +5486,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/skus/(?<sku>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/skus/(?<sku>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus/{sku}'");
@@ -5717,7 +5720,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeFirst>[^/]+)/skus/(?<sku>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeFirst>[^/]+)/skus/(?<sku>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus/{sku}'");
@@ -5912,7 +5915,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeFirst>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeSecond>[^/]+)/skus/(?<sku>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeFirst>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeSecond>[^/]+)/skus/(?<sku>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus/{sku}'");
@@ -6115,7 +6118,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeFirst>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeSecond>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeThird>[^/]+)/skus/(?<sku>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeFirst>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeSecond>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeThird>[^/]+)/skus/(?<sku>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus/{sku}'");
@@ -6267,7 +6270,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/skus/(?<sku>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/skus/(?<sku>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus/{sku}'");
@@ -6498,7 +6501,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeFirst>[^/]+)/skus/(?<sku>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeFirst>[^/]+)/skus/(?<sku>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus/{sku}'");
@@ -6684,7 +6687,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeFirst>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeSecond>[^/]+)/skus/(?<sku>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeFirst>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeSecond>[^/]+)/skus/(?<sku>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus/{sku}'");
@@ -6878,7 +6881,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeFirst>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeSecond>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeThird>[^/]+)/skus/(?<sku>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeFirst>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeSecond>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeThird>[^/]+)/skus/(?<sku>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus/{sku}'");
@@ -7022,7 +7025,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/skus/(?<sku>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/skus/(?<sku>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus/{sku}'");
@@ -7242,7 +7245,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeFirst>[^/]+)/skus$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeFirst>[^/]+)/skus$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus'");
@@ -7424,7 +7427,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeFirst>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeSecond>[^/]+)/skus$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeFirst>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeSecond>[^/]+)/skus$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus'");
@@ -7614,7 +7617,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeFirst>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeSecond>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeThird>[^/]+)/skus$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeFirst>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeSecond>[^/]+)/resourcetypeRegistrations/(?<nestedResourceTypeThird>[^/]+)/skus$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus'");
@@ -7756,7 +7759,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/skus$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ProviderHub/providerRegistrations/(?<providerNamespace>[^/]+)/resourcetypeRegistrations/(?<resourceType>[^/]+)/skus$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus'");

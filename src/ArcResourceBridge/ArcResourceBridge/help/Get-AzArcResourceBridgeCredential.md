@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ArcResourceBridge-help.xml
 Module Name: Az.ArcResourceBridge
 online version: https://learn.microsoft.com/powershell/module/az.arcresourcebridge/get-azarcresourcebridgecredential
 schema: 2.0.0
@@ -14,7 +14,7 @@ Returns the cluster customer credentials for the dedicated appliance.
 
 ```
 Get-AzArcResourceBridgeCredential -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -141,7 +141,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

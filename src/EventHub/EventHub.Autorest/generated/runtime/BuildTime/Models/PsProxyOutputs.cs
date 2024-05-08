@@ -121,6 +121,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PowerShell
             : String.Empty;
     }
 
+    internal class PSArgumentCompleterOutput : ArgumentCompleterOutput
+    {
+        public PSArgumentCompleterInfo PSArgumentCompleterInfo { get; }
+
+        public PSArgumentCompleterOutput(PSArgumentCompleterInfo completerInfo) : base(completerInfo)
+        {
+            PSArgumentCompleterInfo = completerInfo;
+        }
+
+
+        public override string ToString() => PSArgumentCompleterInfo != null
+            ? $"{Indent}[{typeof(PSArgumentCompleterAttribute)}({(PSArgumentCompleterInfo.IsTypeCompleter ? $"[{PSArgumentCompleterInfo.Type.Unwrap().ToPsType()}]" : $"{PSArgumentCompleterInfo.ResourceTypes?.Select(r => $"\"{r}\"")?.JoinIgnoreEmpty(", ")}")})]{Environment.NewLine}"
+            : String.Empty;
+    }
+
     internal class DefaultInfoOutput
     {
         public bool HasDefaultInfo { get; }
@@ -173,6 +188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PowerShell
         public VariantGroup VariantGroup { get; }
 
         protected static readonly bool IsAzure = Convert.ToBoolean(@"true");
+
         public BaseOutput(VariantGroup variantGroup)
         {
             VariantGroup = variantGroup;
@@ -269,12 +285,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PowerShell
                 var variantListString = defaultInfo.ParameterGroup.VariantNames.ToPsList();
                 var parameterName = defaultInfo.ParameterGroup.ParameterName;
                 sb.AppendLine();
-                sb.AppendLine($"{Indent}{Indent}if (({variantListString}) -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('{parameterName}')) {{");
-                sb.AppendLine($"{Indent}{Indent}{Indent}$PSBoundParameters['{parameterName}'] = {defaultInfo.Script}");
-                sb.Append($"{Indent}{Indent}}}");
+                var setCondition = " ";
+                if (!String.IsNullOrEmpty(defaultInfo.SetCondition))
+                {
+                    setCondition = $" -and {defaultInfo.SetCondition}";
+                }
+                //Yabo: this is bad to hard code the subscription id, but autorest load input README.md reversely (entry readme -> required readme), there are no other way to 
+                //override default value set in required readme
+                if ("SubscriptionId".Equals(parameterName))
+                {
+                    sb.AppendLine($"{Indent}{Indent}if (({variantListString}) -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('{parameterName}'){setCondition}) {{");
+                    sb.AppendLine($"{Indent}{Indent}{Indent}$testPlayback = $false");
+                    sb.AppendLine($"{Indent}{Indent}{Indent}$PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object {{ if ($_) {{ $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }} }}");
+                    sb.AppendLine($"{Indent}{Indent}{Indent}if ($testPlayback) {{");
+                    sb.AppendLine($"{Indent}{Indent}{Indent}{Indent}$PSBoundParameters['{parameterName}'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')");
+                    sb.AppendLine($"{Indent}{Indent}{Indent}}} else {{");
+                    sb.AppendLine($"{Indent}{Indent}{Indent}{Indent}$PSBoundParameters['{parameterName}'] = {defaultInfo.Script}");
+                    sb.AppendLine($"{Indent}{Indent}{Indent}}}");
+                    sb.Append($"{Indent}{Indent}}}");
+                }
+                else
+                {
+                    sb.AppendLine($"{Indent}{Indent}if (({variantListString}) -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('{parameterName}'){setCondition}) {{");
+                    sb.AppendLine($"{Indent}{Indent}{Indent}$PSBoundParameters['{parameterName}'] = {defaultInfo.Script}");
+                    sb.Append($"{Indent}{Indent}}}");
+                }
+
             }
             return sb.ToString();
         }
+
     }
 
     internal class ProcessOutput : BaseOutput
@@ -364,6 +404,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PowerShell
             var notesText = !String.IsNullOrEmpty(notes) ? $"{Environment.NewLine}.Notes{Environment.NewLine}{ComplexParameterHeader}{notes}" : String.Empty;
             var relatedLinks = String.Join(Environment.NewLine, CommentInfo.RelatedLinks.Select(l => $".Link{Environment.NewLine}{l}"));
             var relatedLinksText = !String.IsNullOrEmpty(relatedLinks) ? $"{Environment.NewLine}{relatedLinks}" : String.Empty;
+            var externalUrls = String.Join(Environment.NewLine, CommentInfo.ExternalUrls.Select(l => $".Link{Environment.NewLine}{l}"));
+            var externalUrlsText = !String.IsNullOrEmpty(externalUrls) ? $"{Environment.NewLine}{externalUrls}" : String.Empty;
             var examples = "";
             foreach (var example in VariantGroup.HelpInfo.Examples)
             {
@@ -376,7 +418,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PowerShell
 {CommentInfo.Description.ToDescriptionFormat(false)}
 {examples}{inputsText}{outputsText}{notesText}
 .Link
-{CommentInfo.OnlineVersion}{relatedLinksText}
+{CommentInfo.OnlineVersion}{relatedLinksText}{externalUrlsText}
 #>
 ";
         }
@@ -570,7 +612,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PowerShell
 
         public static AllowEmptyArrayOutput ToAllowEmptyArray(this bool hasAllowEmptyArray) => new AllowEmptyArrayOutput(hasAllowEmptyArray);
 
-        public static ArgumentCompleterOutput ToArgumentCompleterOutput(this CompleterInfo completerInfo) => new ArgumentCompleterOutput(completerInfo);
+        public static ArgumentCompleterOutput ToArgumentCompleterOutput(this CompleterInfo completerInfo) => (completerInfo is PSArgumentCompleterInfo psArgumentCompleterInfo) ? psArgumentCompleterInfo.ToArgumentCompleterOutput() : new ArgumentCompleterOutput(completerInfo);
+
+        public static PSArgumentCompleterOutput ToArgumentCompleterOutput(this PSArgumentCompleterInfo completerInfo) => new PSArgumentCompleterOutput(completerInfo);
 
         public static DefaultInfoOutput ToDefaultInfoOutput(this ParameterGroup parameterGroup) => new DefaultInfoOutput(parameterGroup);
 

@@ -13,7 +13,8 @@ Create an in-memory object for IPRule.
 ## SYNTAX
 
 ```
-New-AzContainerRegistryIPRuleObject -IPAddressOrRange <String> [-Action <Action>] [<CommonParameters>]
+New-AzContainerRegistryIPRuleObject -IPAddressOrRange <String> [-Action <Action>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,7 +78,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPRule
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

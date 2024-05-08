@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Peering-help.xml
 Module Name: Az.Peering
 online version: https://learn.microsoft.com/powershell/module/az.peering/get-azpeeringregisteredprefix
 schema: 2.0.0
@@ -21,7 +21,8 @@ Get-AzPeeringRegisteredPrefix -PeeringName <String> -ResourceGroupName <String> 
 ### Get
 ```
 Get-AzPeeringRegisteredPrefix -Name <String> -PeeringName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -68,7 +69,8 @@ Get a specific registered prefix by name
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -118,7 +120,7 @@ The name of the peering.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -133,7 +135,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -148,7 +150,7 @@ The Azure subscription ID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -171,24 +173,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IPeeringIdentity>`: Identity Parameter
-  - `[ConnectionMonitorTestName <String>]`: The name of the connection monitor test
-  - `[Id <String>]`: Resource identity path
-  - `[PeerAsnName <String>]`: The peer ASN name.
-  - `[PeeringName <String>]`: The name of the peering.
-  - `[PeeringServiceName <String>]`: The name of the peering service.
-  - `[PrefixName <String>]`: The name of the prefix.
-  - `[RegisteredAsnName <String>]`: The name of the registered ASN.
-  - `[RegisteredPrefixName <String>]`: The name of the registered prefix.
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[SubscriptionId <String>]`: The Azure subscription ID.
-
 ## RELATED LINKS
-

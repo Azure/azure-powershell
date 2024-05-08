@@ -77,8 +77,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
             {
                 return;
             }
-            {_item = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonArray>("items"), out var __jsonItems) ? If( __jsonItems as Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKey>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKey) (Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.Key.FromJson(__u) )) ))() : null : Item;}
-            {_nextLink = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("@nextLink"), out var __jsonNextLink) ? (string)__jsonNextLink : (string)NextLink;}
+            {_item = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonArray>("items"), out var __jsonItems) ? If( __jsonItems as Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKey>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKey) (Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.Key.FromJson(__u) )) ))() : null : _item;}
+            {_nextLink = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("@nextLink"), out var __jsonNextLink) ? (string)__jsonNextLink : (string)_nextLink;}
             AfterFromJson(json);
         }
 

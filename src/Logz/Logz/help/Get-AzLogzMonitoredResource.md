@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Logz-help.xml
 Module Name: Az.Logz
 online version: https://learn.microsoft.com/powershell/module/az.logz/get-azlogzmonitoredresource
 schema: 2.0.0
@@ -20,8 +20,9 @@ Get-AzLogzMonitoredResource -MonitorName <String> -ResourceGroupName <String> [-
 
 ### ListBySubAccount
 ```
-Get-AzLogzMonitoredResource -MonitorName <String> -ResourceGroupName <String> -SubAccountName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzLogzMonitoredResource -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -SubAccountName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -148,7 +149,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

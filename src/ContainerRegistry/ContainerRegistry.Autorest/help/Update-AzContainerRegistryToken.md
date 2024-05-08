@@ -280,45 +280,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`CREDENTIALSCERTIFICATE <ITokenCertificate[]>`: .
-  - `[EncodedPemCertificate <String>]`: Base 64 encoded string of the public certificate1 in PEM format that will be used for authenticating the token.
-  - `[Expiry <DateTime?>]`: The expiry datetime of the certificate.
-  - `[Name <TokenCertificateName?>]`: 
-  - `[Thumbprint <String>]`: The thumbprint of the certificate.
-
-`CREDENTIALSPASSWORD <ITokenPassword[]>`: .
-  - `[CreationTime <DateTime?>]`: The creation datetime of the password.
-  - `[Expiry <DateTime?>]`: The expiry datetime of the password.
-  - `[Name <TokenPasswordName?>]`: The password name "password1" or "password2"
-
-`INPUTOBJECT <IContainerRegistryIdentity>`: Identity Parameter
-  - `[AgentPoolName <String>]`: The name of the agent pool.
-  - `[CacheRuleName <String>]`: The name of the cache rule.
-  - `[ConnectedRegistryName <String>]`: The name of the connected registry.
-  - `[CredentialSetName <String>]`: The name of the credential set.
-  - `[ExportPipelineName <String>]`: The name of the export pipeline.
-  - `[GroupName <String>]`: The name of the private link resource.
-  - `[Id <String>]`: Resource identity path
-  - `[ImportPipelineName <String>]`: The name of the import pipeline.
-  - `[PipelineRunName <String>]`: The name of the pipeline run.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
-  - `[RegistryName <String>]`: The name of the container registry.
-  - `[ReplicationName <String>]`: The name of the replication.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RunId <String>]`: The run ID.
-  - `[ScopeMapName <String>]`: The name of the scope map.
-  - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
-  - `[TaskName <String>]`: The name of the container registry task.
-  - `[TaskRunName <String>]`: The name of the task run.
-  - `[TokenName <String>]`: The name of the token.
-  - `[WebhookName <String>]`: The name of the webhook.
-
 ## RELATED LINKS
 

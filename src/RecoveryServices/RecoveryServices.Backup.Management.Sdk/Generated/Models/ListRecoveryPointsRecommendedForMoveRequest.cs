@@ -27,13 +27,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="objectType">Gets the class type.
         /// </param>
 
-        /// <param name="excludedRpList">List of Recovery Points excluded from Move
+        /// <param name="excludedRPList">List of Recovery Points excluded from Move
         /// </param>
-        public ListRecoveryPointsRecommendedForMoveRequest(string objectType = default(string), System.Collections.Generic.IList<string> excludedRpList = default(System.Collections.Generic.IList<string>))
+        public ListRecoveryPointsRecommendedForMoveRequest(string objectType = default(string), System.Collections.Generic.IList<string> excludedRPList = default(System.Collections.Generic.IList<string>))
 
         {
             this.ObjectType = objectType;
-            this.ExcludedRpList = excludedRpList;
+            this.ExcludedRPList = excludedRPList;
             CustomInit();
         }
 
@@ -53,6 +53,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// Gets or sets list of Recovery Points excluded from Move
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "excludedRPList")]
-        public System.Collections.Generic.IList<string> ExcludedRpList {get; set; }
+        public System.Collections.Generic.IList<string> ExcludedRPList {get; set; }
     }
 }

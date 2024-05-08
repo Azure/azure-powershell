@@ -14,7 +14,8 @@ Description for Gets the functions of a particular static site build.
 
 ```
 Get-AzStaticWebAppBuildFunction -EnvironmentName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -21,6 +21,9 @@
 
 ## Upcoming Release
 
+## Version 2.0.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 2.0.1
 * Fixed vulnerability https://github.com/advisories/GHSA-8g9c-28fc-mcx2
 

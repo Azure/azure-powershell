@@ -2115,9 +2115,9 @@ end {
 
 <#
 .Synopsis
-Creates a cluster.
+Create a cluster.
 .Description
-Creates a cluster.
+Create a cluster.
 .Example
 # Create Simple Trino Cluster
 $clusterPoolName="{your cluster pool name}";
@@ -4446,9 +4446,9 @@ end {
 
 <#
 .Synopsis
-Create a cluster pool.
+Update a cluster pool.
 .Description
-Create a cluster pool.
+Update a cluster pool.
 .Example
 # Cluster configuration info
 $location = "East US 2"
@@ -5283,9 +5283,9 @@ end {
 
 <#
 .Synopsis
-Updates an existing Cluster Pool Tags.
+Update an existing Cluster Pool Tags.
 .Description
-Updates an existing Cluster Pool Tags.
+Update an existing Cluster Pool Tags.
 .Example
 $clusterResourceGroupName = "Group"
 $clusterpoolName = "your-clusterpool"
@@ -5805,9 +5805,9 @@ end {
 
 <#
 .Synopsis
-Updates an existing Cluster.
+Update an existing Cluster.
 .Description
-Updates an existing Cluster.
+Update an existing Cluster.
 .Example
 $clusterResourceGroupName = "Group"
 $clusterpoolName = "ps-test-pool"

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVMwareAuthorization
 
 ## SYNOPSIS
-Create an ExpressRoute Circuit Authorization in a private cloud
+Update an ExpressRoute Circuit Authorization in a private cloud
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Update-AzVMwareAuthorization -Name <String> -PrivateCloudInputObject <IVMwareIde
 ```
 
 ## DESCRIPTION
-Create an ExpressRoute Circuit Authorization in a private cloud
+Update an ExpressRoute Circuit Authorization in a private cloud
 
 ## EXAMPLES
 

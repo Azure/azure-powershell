@@ -21,7 +21,8 @@ Stop-AzWebAppSlot [-ResourceGroupName] <String> [-Name] <String> [-Slot] <String
 
 ### S2
 ```
-Stop-AzWebAppSlot [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Stop-AzWebAppSlot [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

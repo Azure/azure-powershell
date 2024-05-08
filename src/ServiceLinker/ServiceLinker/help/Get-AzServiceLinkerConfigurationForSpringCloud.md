@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ServiceLinker-help.xml
 Module Name: Az.ServiceLinker
 online version: https://learn.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerconfigurationforspringcloud
 schema: 2.0.0
@@ -13,9 +13,10 @@ list source configurations for a linker in spring cloud.
 ## SYNTAX
 
 ```
-Get-AzServiceLinkerConfigurationForSpringCloud -LinkerName <String> -AppName <String>
- -ResourceGroupName <String> -ServiceName <String> [-ResourceUri <String>] [-DefaultProfile <PSObject>]
- [-DeploymentName <String>] [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzServiceLinkerConfigurationForSpringCloud -LinkerName <String> [-ResourceUri <String>]
+ [-DefaultProfile <PSObject>] -ServiceName <String> -AppName <String> -ResourceGroupName <String>
+ [-DeploymentName <String>] [-SubscriptionId <String>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,8 +32,7 @@ Get-AzServiceLinkerConfigurationForSpringCloud -ServiceName servicelinker-spring
 ```output
 Name  : AZURE_POSTGRESQL_POSTGRESQL_NOVNET_CONNECTIONSTRING
 Value : Server=test.postgres.database.azure.com;Database=testdb;Port=543 
-        2;Ssl Mode=Require;User Id=testuser@test;Password=password;   
-
+        2;Ssl Mode=Require;User Id=testuser@test;Password=password;
 ```
 
 Get Linker's configuration list
@@ -77,7 +77,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: "default"
 Accept pipeline input: False
@@ -202,7 +202,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -22,7 +22,7 @@ Describe 'Remove-AzEventHubApplicationGroup' {
         $SASKey = "NamespaceSASKeyName="+$b.Name
         New-AzEventHubApplicationGroup -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup -Name appGroup -ClientAppGroupIdentifier $SASKey -Policy $t2
         Remove-AzEventHubApplicationGroup -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup -Name appGroup
-        { Get-AzEventHubApplicationGroup -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup -Name appGroup } | Should -Throw
+        { Get-AzEventHubApplicationGroup -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup -Name appGroup -ErrorAction Stop } | Should -Throw
     }
 
     It 'DeleteViaIdentity'  {
@@ -30,6 +30,6 @@ Describe 'Remove-AzEventHubApplicationGroup' {
         $SASKey = "NamespaceSASKeyName="+$c.Name
         $appGroup = New-AzEventHubApplicationGroup -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup -Name appGroup -ClientAppGroupIdentifier $SASKey -Policy $t2
         Remove-AzEventHubApplicationGroup -InputObject $appGroup
-        { Get-AzEventHubApplicationGroup -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup -Name appGroup } | Should -Throw
+        { Get-AzEventHubApplicationGroup -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup -Name appGroup -ErrorAction Stop } | Should -Throw
     }
 }

@@ -15,7 +15,7 @@ Removes a Subscription scoped Deployment Stack.
 ### RemoveByName (Default)
 ```
 Remove-AzSubscriptionDeploymentStack [-Name] <String> [-DeleteAll] [-DeleteResources] [-DeleteResourceGroups]
- [-PassThru] [-Force] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-PassThru] [-Force] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -23,14 +23,14 @@ Remove-AzSubscriptionDeploymentStack [-Name] <String> [-DeleteAll] [-DeleteResou
 ```
 Remove-AzSubscriptionDeploymentStack -ResourceId <String> [-DeleteAll] [-DeleteResources]
  [-DeleteResourceGroups] [-PassThru] [-Force] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByStackObject
 ```
 Remove-AzSubscriptionDeploymentStack [-InputObjet] <PSDeploymentStack> [-DeleteAll] [-DeleteResources]
  [-DeleteResourceGroups] [-PassThru] [-Force] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -174,6 +174,21 @@ When set, indicates that the cmdlet should use pre-release API versions when aut
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

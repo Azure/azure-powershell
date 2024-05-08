@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DigitalTwins-help.xml
 Module Name: Az.DigitalTwins
 online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/get-azdigitaltwinsinstance
 schema: 2.0.0
@@ -14,7 +14,14 @@ Get DigitalTwinsInstances resource.
 
 ### List (Default)
 ```
-Get-AzDigitalTwinsInstance [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDigitalTwinsInstance [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzDigitalTwinsInstance -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -27,12 +34,6 @@ Get-AzDigitalTwinsInstance -ResourceGroupName <String> -ResourceName <String> [-
 ```
 Get-AzDigitalTwinsInstance -InputObject <IDigitalTwinsIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### List1
-```
-Get-AzDigitalTwinsInstance -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,7 +84,8 @@ Get DigitalTwinsInstances resource by Instance Name.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -118,7 +120,7 @@ The name of the resource group that contains the DigitalTwinsInstance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: List1, Get
 Aliases:
 
 Required: True
@@ -148,7 +150,7 @@ The subscription identifier.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List, List1, Get
 Aliases:
 
 Required: False
@@ -171,23 +173,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDigitalTwinsIdentity>`: Identity Parameter
-  - `[EndpointName <String>]`: Name of Endpoint Resource.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: Location of DigitalTwinsInstance.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
-  - `[ResourceGroupName <String>]`: The name of the resource group that contains the DigitalTwinsInstance.
-  - `[ResourceId <String>]`: The name of the private link resource.
-  - `[ResourceName <String>]`: The name of the DigitalTwinsInstance.
-  - `[SubscriptionId <String>]`: The subscription identifier.
-  - `[TimeSeriesDatabaseConnectionName <String>]`: Name of time series database connection.
-
 ## RELATED LINKS
-

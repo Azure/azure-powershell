@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzSelfHelpTroubleshooter
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Stop-AzSelfHelpTroubleshooter' -Tag 'LiveOnly' {
+Describe 'Stop-AzSelfHelpTroubleshooter' -Tag 'LiveOnly'{
     It 'End' {
         {   $resourceName = New-Guid
             $parameters = [ordered]@{

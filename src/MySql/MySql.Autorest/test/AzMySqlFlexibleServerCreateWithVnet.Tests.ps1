@@ -16,6 +16,9 @@ $DEFAULT_VNET_PREFIX = '10.0.0.0/16'
 $DEFAULT_SUBNET_PREFIX = '10.0.0.0/24'
 
 Describe 'AzMySqlFlexibleServerCreateWithVnet' {
+    function WaitServerDelete(){
+        Start-TestSleep -Seconds 450
+    }
     function ValidateSubnetVnet($Server, $VnetName, $SubnetName){
         $Vnet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $env.resourceGroup
         $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $Vnet
@@ -30,7 +33,7 @@ Describe 'AzMySqlFlexibleServerCreateWithVnet' {
         $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $Vnet
 
         Remove-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $ServerName
-        Start-TestSleep -Seconds 450
+        WaitServerDelete
         $Subnet = Remove-AzDelegation -Name $DELEGATION_SERVICE_NAME -Subnet $Subnet
         Set-AzVirtualNetwork -VirtualNetwork $Vnet
         Remove-AzVirtualNetwork -Name $Vnet.Name -ResourceGroupName $env.resourceGroup -Force
@@ -61,7 +64,7 @@ Describe 'AzMySqlFlexibleServerCreateWithVnet' {
                 $Delegation.ServiceName | Should -Be $DELEGATION_SERVICE_NAME
 
                 Remove-AzMySqlFlexibleServer -ResourceGroupName $ResourceGroupName -Name $Server.Name
-                Start-TestSleep -Seconds 450
+                WaitServerDelete
                 $Subnet = Remove-AzDelegation -Name $DELEGATION_SERVICE_NAME -Subnet $Subnet
                 Set-AzVirtualNetwork -VirtualNetwork $Vnet
                 Remove-AzVirtualNetwork -Name $Vnet.Name -ResourceGroupName $ResourceGroupName -Force
@@ -179,7 +182,7 @@ Describe 'AzMySqlFlexibleServerCreateWithVnet' {
                 $Delegation.ServiceName | Should -Be $DELEGATION_SERVICE_NAME
 
                 Remove-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName3
-                Start-TestSleep -Seconds 450
+                WaitServerDelete
                 $Subnet = Remove-AzDelegation -Name $DELEGATION_SERVICE_NAME -Subnet $Subnet
                 Set-AzVirtualNetwork -VirtualNetwork $Vnet
                 Remove-AzVirtualNetwork -Name $Vnet.Name -ResourceGroupName MySqlTest2 -Force

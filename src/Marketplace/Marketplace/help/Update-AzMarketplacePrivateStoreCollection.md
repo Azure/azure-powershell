@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzMarketplacePrivateStoreCollection
 
 ## SYNOPSIS
-Create private store collection
+Update private store collection
 
 ## SYNTAX
 
@@ -42,7 +42,7 @@ Update-AzMarketplacePrivateStoreCollection -InputObject <IMarketplaceIdentity> [
 ```
 
 ## DESCRIPTION
-Create private store collection
+Update private store collection
 
 ## EXAMPLES
 

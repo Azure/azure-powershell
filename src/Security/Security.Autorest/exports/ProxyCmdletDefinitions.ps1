@@ -3515,10 +3515,10 @@ end {
 <#
 .Synopsis
 Create a security connector.
-If a security connector is already created and a subsequent request is issued for the same security connector id, then it will be updated.
+If a security connector is already Created and a subsequent request is issued for the same security connector id, then it will be Created.
 .Description
 Create a security connector.
-If a security connector is already created and a subsequent request is issued for the same security connector id, then it will be updated.
+If a security connector is already Created and a subsequent request is issued for the same security connector id, then it will be Created.
 .Example
 $account = "891376984375"
 $arnPrefix = "arn:aws:iam::$($account):role"
@@ -4240,9 +4240,9 @@ end {
 
 <#
 .Synopsis
-Updates monitored Azure DevOps organization details.
+Update monitored Azure DevOps organization details.
 .Description
-Updates monitored Azure DevOps organization details.
+Update monitored Azure DevOps organization details.
 .Example
 $config = New-AzSecurityConnectorActionableRemediationObject -State Enabled -InheritFromParentState Disabled -CategoryConfiguration @( @{category="IaC"; minimumSeverityLevel="High"})
 Update-AzSecurityConnectorAzureDevOpsOrg -ResourceGroupName "securityConnectors-pwsh-tmp" -SecurityConnectorName "ado-sdk-pwsh-test03" -OrgName "org1" -ActionableRemediation $config
@@ -4475,9 +4475,9 @@ end {
 
 <#
 .Synopsis
-Updates a monitored Azure DevOps project resource.
+Update a monitored Azure DevOps project resource.
 .Description
-Updates a monitored Azure DevOps project resource.
+Update a monitored Azure DevOps project resource.
 .Example
 $config = New-AzSecurityConnectorActionableRemediationObject -State Disabled -InheritFromParentState Disabled -CategoryConfiguration @( @{category="IaC"; minimumSeverityLevel="Low"})
 Update-AzSecurityConnectorAzureDevOpsProject -ResourceGroupName "securityConnectors-pwsh-tmp" -SecurityConnectorName "ado-sdk-pwsh-test03" -OrgName "org1" -ProjectName "Build" -ActionableRemediation $config
@@ -4722,9 +4722,9 @@ end {
 
 <#
 .Synopsis
-Updates a monitored Azure DevOps repository resource.
+Update a monitored Azure DevOps repository resource.
 .Description
-Updates a monitored Azure DevOps repository resource.
+Update a monitored Azure DevOps repository resource.
 .Example
 $config = New-AzSecurityConnectorActionableRemediationObject -State Enabled -InheritFromParentState Disabled -CategoryConfiguration @( @{category="IaC"; minimumSeverityLevel="Low"} )
 Update-AzSecurityConnectorAzureDevOpsRepo -ResourceGroupName "securityConnectors-pwsh-tmp" -SecurityConnectorName "ado-sdk-pwsh-test03" -OrgName "org1" -ProjectName "Build" -RepoName "Build" -ActionableRemediation $config
@@ -4981,9 +4981,9 @@ end {
 
 <#
 .Synopsis
-Updates a DevOps Configuration.
+Update a DevOps Configuration.
 .Description
-Updates a DevOps Configuration.
+Update a DevOps Configuration.
 .Example
 Update-AzSecurityConnectorDevOpsConfiguration -ResourceGroupName "securityConnectors-pwsh-tmp" -SecurityConnectorName "ado-sdk-pwsh-test03" -AutoDiscovery Enabled
 
@@ -5214,9 +5214,9 @@ end {
 
 <#
 .Synopsis
-Updates a security connector
+Update a security connector
 .Description
-Updates a security connector
+Update a security connector
 .Example
 Update-AzSecurityConnector -ResourceGroupName "securityConnectors-pwsh-tmp" -Name "ado-sdk-pwsh-test03" -Tag @{myTag="v1"}
 

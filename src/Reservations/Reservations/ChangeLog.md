@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.13.0
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 0.12.0
 * Added cmdlet `Invoke-AzReservationReturn`
 * Removed parameters `RefreshSummary`, `Skiptoken`, `Take` from cmdlet `Get-AzReservation`

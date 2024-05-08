@@ -17,7 +17,8 @@ Invoke debug action in data flow debug session.
 Invoke-AzSynapseDataFlowDebugSessionCommand -WorkspaceName <String> -SessionId <String> -Command <String>
  -StreamName <String> [-RowLimit <Int32>] [-Expression <String>]
  [-Column <System.Collections.Generic.List`1[System.String]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InvokeByObject
@@ -25,7 +26,8 @@ Invoke-AzSynapseDataFlowDebugSessionCommand -WorkspaceName <String> -SessionId <
 Invoke-AzSynapseDataFlowDebugSessionCommand -WorkspaceObject <PSSynapseWorkspace> -SessionId <String>
  -Command <String> -StreamName <String> [-RowLimit <Int32>] [-Expression <String>]
  [-Column <System.Collections.Generic.List`1[System.String]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +42,8 @@ Stop-AzSynapseDataFlowDebugSession
 
 ### Example 1
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 $result = Invoke-AzSynapseDataFlowDebugSessionCommand -WorkspaceName ContosoWorkspace -Command executePreviewQuery -SessionId 3afb278e-ac5f-469f-a0b6-2f04c3ab59bc -StreamName source1 -RowLimit 100 -AsJob
 $result | Format-Table -wrap

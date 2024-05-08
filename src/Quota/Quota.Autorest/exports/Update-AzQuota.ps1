@@ -19,13 +19,13 @@
 Update the quota limit for a specific resource to the specified value:\n1.
 Use the Usages-GET and Quota-GET operations to determine the remaining quota for the specific resource and to calculate the new quota limit.
 These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).\n2.
-Use this PUT operation to update the quota limit.
+Use this PUT operation to Update the quota limit.
 Please check the URI in location header for the detailed status of the request.
 .Description
 Update the quota limit for a specific resource to the specified value:\n1.
 Use the Usages-GET and Quota-GET operations to determine the remaining quota for the specific resource and to calculate the new quota limit.
 These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).\n2.
-Use this PUT operation to update the quota limit.
+Use this PUT operation to Update the quota limit.
 Please check the URI in location header for the detailed status of the request.
 .Example
 $limit = New-AzQuotaLimitObject -Value 1001
@@ -82,7 +82,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Quota.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]

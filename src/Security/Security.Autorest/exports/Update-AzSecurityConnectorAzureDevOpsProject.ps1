@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Updates a monitored Azure DevOps project resource.
+Update a monitored Azure DevOps project resource.
 .Description
-Updates a monitored Azure DevOps project resource.
+Update a monitored Azure DevOps project resource.
 .Example
 $config = New-AzSecurityConnectorActionableRemediationObject -State Disabled -InheritFromParentState Disabled -CategoryConfiguration @( @{category="IaC"; minimumSeverityLevel="Low"})
 Update-AzSecurityConnectorAzureDevOpsProject -ResourceGroupName "securityConnectors-pwsh-tmp" -SecurityConnectorName "ado-sdk-pwsh-test03" -OrgName "org1" -ProjectName "Build" -ActionableRemediation $config
