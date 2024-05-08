@@ -385,6 +385,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Specify the way to select a context from available tenants and their subscriptions. Possible values are &apos;On&apos; (default value) and &apos;Off&apos;. &apos;On&apos; requires user&apos;s input to decide context. &apos;Off&apos; uses the first tenant and subscription returned by API..
+        /// </summary>
+        public static string HelpMessageOfLoginExperienceV2 {
+            get {
+                return ResourceManager.GetString("HelpMessageOfLoginExperienceV2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [HttpClientOperations]: Adding Header &apos;{0}&apos;.
         /// </summary>
         public static string HttpClientAddingHeader {

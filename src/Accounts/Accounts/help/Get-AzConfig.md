@@ -14,10 +14,10 @@ Gets the configs of Azure PowerShell.
 
 ```
 Get-AzConfig [-AppliesTo <String>] [-Scope <ConfigScope>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-CheckForUpgrade] [-DefaultSubscriptionForLogin]
- [-DisableInstanceDiscovery] [-DisplayBreakingChangeWarning] [-DisplayRegionIdentified]
- [-DisplaySecretsWarning] [-DisplaySurveyMessage] [-EnableDataCollection] [-EnableErrorRecordsPersistence]
- [-EnableLoginByWam] [<CommonParameters>]
+ [-CheckForUpgrade] [-DefaultSubscriptionForLogin] [-DisableInstanceDiscovery] [-DisplayBreakingChangeWarning]
+ [-DisplayRegionIdentified] [-DisplaySecretsWarning] [-DisplaySurveyMessage] [-EnableDataCollection]
+ [-EnableErrorRecordsPersistence] [-EnableLoginByWam] [-EnableTestCoverage] [-LoginExperienceV2]
+ [-TestCoverageLocation] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -252,13 +252,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
+### -EnableTestCoverage
+When enabled, the test framework will generate data during test run as a preliminary for the test coverage calculation
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: proga
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LoginExperienceV2
+Specify the way to select a context from available tenants and their subscriptions. Possible values are 'On' (default value) and 'Off'. 'On' requires user's input to decide context. 'Off' uses the first tenant and subscription returned by API.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -276,6 +291,21 @@ Type: Microsoft.Azure.PowerShell.Common.Config.ConfigScope
 Parameter Sets: (All)
 Aliases:
 Accepted values: CurrentUser, Process, Default, Environment
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TestCoverageLocation
+Only takes effect when EnableTestCoverage equals to TRUE. Use this config to redirect the test coverage data location.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

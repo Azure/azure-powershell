@@ -12,6 +12,32 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Identity;
+
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Sanitizer;
+using Microsoft.Azure.Commands.Profile.Common;
+using Microsoft.Azure.Commands.Profile.Models.Core;
+using Microsoft.Azure.Commands.Profile.Properties;
+using Microsoft.Azure.Commands.Profile.Utilities;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Shared.Config;
+using Microsoft.Azure.PowerShell.Authenticators;
+using Microsoft.Azure.PowerShell.Authenticators.Factories;
+using Microsoft.Azure.PowerShell.Common.Config;
+using Microsoft.Azure.PowerShell.Common.Share.Survey;
+using Microsoft.Identity.Client;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Sanitizer;
+using Microsoft.WindowsAzure.Commands.Common.Utilities;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
 using System;
 using System.Collections.Concurrent;
 using System.Linq;
@@ -21,33 +47,6 @@ using System.Security;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
-using Azure.Identity;
-
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
-using Microsoft.Azure.Commands.Common.Authentication.Factories;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Common;
-using Microsoft.Azure.Commands.Profile.Common;
-using Microsoft.Azure.Commands.Profile.Models.Core;
-using Microsoft.Azure.Commands.Profile.Properties;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.Shared.Config;
-using Microsoft.Azure.PowerShell.Authenticators;
-using Microsoft.Azure.PowerShell.Authenticators.Factories;
-using Microsoft.Azure.PowerShell.Common.Config;
-using Microsoft.Identity.Client;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Utilities;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.PowerShell.Common.Share.Survey;
-using Microsoft.Azure.Commands.Profile.Utilities;
-using System.Management.Automation.Runspaces;
-using Microsoft.WindowsAzure.Commands.Common.Sanitizer;
-using Microsoft.Azure.Commands.Common.Authentication.Sanitizer;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -328,6 +327,7 @@ namespace Microsoft.Azure.Commands.Profile
             Guid subscriptionIdGuid;
             string subscriptionName = null;
             string subscriptionId = null;
+            bool isInteractiveAuthenticationFlow = IsInteractiveAuthenticationFlow();
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Subscription)))
             {
                 if (Guid.TryParse(Subscription, out subscriptionIdGuid))
@@ -506,7 +506,7 @@ namespace Microsoft.Azure.Commands.Profile
                     commonUtilities = new CommonUtilities();
                     AzureSession.Instance.RegisterComponent(nameof(CommonUtilities), () => commonUtilities);
                 }
-                if (!commonUtilities.IsDesktopSession() && IsUsingInteractiveAuthentication())
+                if (!commonUtilities.IsDesktopSession() && IsBrowserPopUpInteractiveAuthentication())
                 {
                     WriteWarning(Resources.InteractiveAuthNotSupported);
                     return;
@@ -523,8 +523,10 @@ namespace Microsoft.Azure.Commands.Profile
                         shouldPopulateContextList = false;
                     }
 
-                    profileClient.WarningLog = (message) => _tasks.Enqueue(new Task(() => this.WriteWarning(message)));
+                    profileClient.WarningLog = (message) => _tasks.Enqueue(new Task(() => this.WriteWarning(message))); 
+                    profileClient.InformationLog = (message) => _tasks.Enqueue(new Task(() => this.WriteInformation(message, false)));
                     profileClient.DebugLog = (message) => _tasks.Enqueue(new Task(() => this.WriteDebugWithTimestamp(message)));
+
                     var task = new Task<AzureRmProfile>(() => profileClient.Login(
                         azureAccount,
                         _environment,
@@ -538,7 +540,10 @@ namespace Microsoft.Azure.Commands.Profile
                         name,
                         shouldPopulateContextList,
                         MaxContextPopulation,
-                        resourceId));
+                        resourceId,
+                        Prompt,
+                        isInteractiveAuthenticationFlow,
+                        GetLoginExperienceStatus()));
                     task.Start();
                     while (!task.IsCompleted)
                     {
@@ -569,7 +574,7 @@ namespace Microsoft.Azure.Commands.Profile
                         }
                         else
                         {
-                            if (IsUsingInteractiveAuthentication())
+                            if (IsBrowserPopUpInteractiveAuthentication())
                             {
                                 //Display only if user is using Interactive auth
                                 WriteWarning(Resources.SuggestToUseDeviceCodeAuth);
@@ -579,7 +584,20 @@ namespace Microsoft.Azure.Commands.Profile
                         }
                     }
                 });
+
+                WriteInformation($"[Announcements]{System.Environment.NewLine}Share your feedback regarding your experience with `Connect-AzAccount` at: https://aka.ms/azloginfeedback{System.Environment.NewLine}");
+                WriteInformation($"If you encounter any problem, please open an issue at: https://aka.ms/azpsissue{System.Environment.NewLine}");
             }
+        }
+
+        private string GetLoginExperienceStatus()
+        {
+            return AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out IConfigManager configManager) ? configManager.GetConfigValue<string>(ConfigKeys.LoginExperienceV2) : "On";
+        }
+
+        private bool IsInteractiveAuthenticationFlow()
+        {
+            return ParameterSetName.Equals(UserParameterSet);
         }
 
         private void ValidateActionRequiredMessageCanBePresented()
@@ -608,9 +626,9 @@ namespace Microsoft.Azure.Commands.Profile
             return mappedScope;
         }
 
-        private bool IsUsingInteractiveAuthentication()
+        private bool IsBrowserPopUpInteractiveAuthentication()
         {
-            return ParameterSetName == UserParameterSet && UseDeviceAuthentication == false;
+            return ParameterSetName.Equals(UserParameterSet) && UseDeviceAuthentication.IsPresent == false;
         }
 
         private bool IsUnableToOpenWebPageError(AuthenticationFailedException exception)
@@ -652,6 +670,20 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 writeWarningEvent(this, new StreamEventArgs() { Message = message });
             }
+        }
+
+        private void WriteInformationEvent(string message)
+        {
+            EventHandler<StreamEventArgs> writeInformationEvent;
+            if (AzureSession.Instance.TryGetComponent(WriteInformationKey, out writeInformationEvent))
+            {
+                writeInformationEvent(this, new StreamEventArgs() { Message = message });
+            }
+        }
+        private string Prompt(string message)
+        {
+            _tasks.Enqueue(new Task(() => this.WriteInformation(message, true)));
+            return this.Host.UI.ReadLine();
         }
 
         private static bool CheckForExistingContext(AzureRmProfile profile, string name)
