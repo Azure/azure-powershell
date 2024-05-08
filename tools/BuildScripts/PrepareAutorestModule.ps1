@@ -55,6 +55,6 @@ foreach ($subModuleName in $outdatedSubModule) {
         Write-Error "log can be found at $generateLog"
         Get-Content $generateLog | Foreach-Object { Write-Error $_ }
         Write-Error "========= End of error log for $ModuleRootName, $subModuleName"
-        exit 1
+        Exit 1
     }
 }

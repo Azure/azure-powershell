@@ -74,6 +74,7 @@ function Get-OutdatedSubModule {
         $generateInfoGenerated = Join-Path $GeneratedDirectory $subModule "generate-info.json"
         if (-not (Test-Path $generateInfoSource)) {
             Write-Error "$generateInfoSource was not found!"
+            Exit 1
         }
         if (Test-Path $generateInfoGenerated) {
             $generateIdSource = (Get-Content -Path $generateInfoSource | ConvertFrom-Json).generate_Id
