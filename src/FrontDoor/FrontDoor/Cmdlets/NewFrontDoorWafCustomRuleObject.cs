@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Gets or sets describes the list of variables to group the rate limit
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Gets or sets describes the list of variables to group the rate limit")]
-        public List<PSAzFrontDoorWafCustomRuleGroupByVariable> CustomRules  { get; set; }
+        public List<PSFrontDoorWafCustomRuleGroupByVariable> CustomRules  { get; set; }
 
         public override void ExecuteCmdlet()
         {

@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 
         /// Defines rules that scrub sensitive fields in the Web Application Firewall
         [Parameter(Mandatory = true, HelpMessage = "Defines rules that scrub sensitive fields in the Web Application Firewall.")]
-        public PSAzFrontDoorWafLogScrubbingSetting LogScrubbingSetting { get; set; }
+        public PSFrontDoorWafLogScrubbingSetting LogScrubbingSetting { get; set; }
 
         /// Defines the JavaScript challenge cookie validity lifetime in minutes. This
         /// setting is only applicable to Premium_AzureFrontDoor. Value must be an

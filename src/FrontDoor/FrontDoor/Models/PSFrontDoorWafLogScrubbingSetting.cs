@@ -13,16 +13,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.FrontDoor.Models
 {
-    public class PSAzFrontDoorWafCustomRuleGroupByVariable
+    public class PSFrontDoorWafLogScrubbingSetting
     {
-        public string VariableName { get; set; }
-    }
+        public List<PSFrontDoorWafLogScrubbingRule> ScrubbingRules { get; set; }
 
-    public enum PSAzFrontDoorWafCustomRuleGroupByVariableum
-    {
-        SocketAddr,
-        GeoLocation
+        public string State { get; set; }
     }
 }

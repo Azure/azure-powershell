@@ -23,10 +23,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
-    /// Defines the New-AzFrontDoorWafLogScrubbingRuleObject cmdlet.
+    /// Defines the New-FrontDoorWafLogScrubbingRuleObject cmdlet.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AzFrontDoorWafCustomRuleGroupByVariableObject"), OutputType(typeof(PSAzFrontDoorWafLogScrubbingRule))]
-    public class NewAzFrontDoorWafLogScrubbingRuleObject : AzureFrontDoorCmdletBase
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorWafCustomRuleGroupByVariableObject"), OutputType(typeof(PSFrontDoorWafLogScrubbingRule))]
+    public class NewFrontDoorWafLogScrubbingRuleObject : AzureFrontDoorCmdletBase
     {
 
         /// <summary>
@@ -61,14 +61,14 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            var PSAzFrontDoorWafLogScrubbingRule = new PSAzFrontDoorWafLogScrubbingRule
+            var PSFrontDoorWafLogScrubbingRule = new PSFrontDoorWafLogScrubbingRule
             {
                 MatchVariable = MatchVariable,
                 SelectorMatchOperator = SelectorMatchOperator,
                 State = State,
                 Selector = Selector
             };
-            WriteObject(PSAzFrontDoorWafLogScrubbingRule);
+            WriteObject(PSFrontDoorWafLogScrubbingRule);
         }
 
     }

@@ -16,31 +16,37 @@ using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
-    /// Defines the New-AzFrontDoorWafCustomRuleGroupByVariableObject cmdlet.
+    /// Defines the New-FrontDoorWafLogScrubbingSettingObject cmdlet.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AzFrontDoorWafCustomRuleGroupByVariableObject"), OutputType(typeof(PSAzFrontDoorWafCustomRuleGroupByVariable))]
-    public class NewAzFrontDoorWafCustomRuleGroupByVariableObject : AzureFrontDoorCmdletBase
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorWafCustomRuleGroupByVariableObject"), OutputType(typeof(PSFrontDoorWafLogScrubbingSetting))]
+    public class NewFrontDoorWafLogScrubbingSettingObject : AzureFrontDoorCmdletBase
     {
 
         /// <summary>
-        /// Describes the supported variable for group by
+        /// List of log scrubbing rules applied to the Web Application Firewall logs.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "Describes the supported variable for group by")]
-        [PSArgumentCompleter("SocketAddr", "GeoLocation")]
-        public string VariableName { get; set; }
+        [Parameter(Mandatory = true, HelpMessage = "List of log scrubbing rules applied to the Web Application Firewall logs.")]
+        public List<PSFrontDoorWafLogScrubbingRule> ScrubbingRules { get; set; }
+
+        /// State of the log scrubbing config. Default value is Enabled.
+        [Parameter(Mandatory = true, HelpMessage = "State of the log scrubbing config. Default value is Enabled.")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string State { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var AzFrontDoorWafCustomRuleGroupByVariable = new PSAzFrontDoorWafCustomRuleGroupByVariable
+            var FrontDoorWafLogScrubbingSettingObject = new PSFrontDoorWafLogScrubbingSetting
             {
-                VariableName = VariableName,
+                ScrubbingRules = ScrubbingRules,
+                State = State
             };
-            WriteObject(AzFrontDoorWafCustomRuleGroupByVariable);
+            WriteObject(FrontDoorWafLogScrubbingSettingObject);
         }
 
     }

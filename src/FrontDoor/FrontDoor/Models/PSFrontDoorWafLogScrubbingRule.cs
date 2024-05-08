@@ -15,7 +15,7 @@
 
 namespace Microsoft.Azure.Commands.FrontDoor.Models
 {
-    public class PSAzFrontDoorWafLogScrubbingRule
+    public class PSFrontDoorWafLogScrubbingRule
     {
         public string MatchVariable { get; set; }
 
