@@ -52,11 +52,6 @@ use-extension:
   "@autorest/powershell": "4.x"
 ```
 
-> After Build Tasks
-``` yaml
-after-build-tasks: '../../tools/PrepareAutorestModule.ps1'
-```
-
 > Directives
 ``` yaml
 directive:
@@ -86,4 +81,12 @@ directive:
     set:
       default:
         script: '(Get-AzContext).Subscription.Id'
+```
+
+> After Build Tasks
+``` yaml
+after-build-tasks-path: '../../../tools/BuildScripts/AdaptAutorestModule.ps1'
+after-build-tasks-args:
+  SubModuleName: $(service-name)
+  ModuleRootName: $(root-module-name)
 ```
