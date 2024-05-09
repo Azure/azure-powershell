@@ -653,7 +653,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // handles when default img was set for ImageName parameter.
             if (this.IsParameterBound(c => c.SecurityType)
                 && this.SecurityType?.ToLower() == ConstantValues.StandardSecurityType
-                && this.ImageName == ConstantValues.DefaultVMandVMSSImage
+                && !this.IsParameterBound(c => c.ImageName)
                 && !this.IsParameterBound(c => c.ImageReferenceId)
                 && !this.IsParameterBound(c => c.SharedGalleryImageId))
             {
@@ -662,7 +662,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // API does not currently support Standard securityType value, so need to null it out here. 
             if (this.IsParameterBound(c => c.SecurityType)
-                && this.SecurityType != null
                 && this.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
             {
                 this.SecurityType = null;

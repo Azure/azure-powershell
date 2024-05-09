@@ -88,15 +88,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                     && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.OsDisk == null)
                                 {
                                     this.ImageName = ConstantValues.TrustedLaunchDefaultImageAlias;
-                                    /*
-                                    this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference = new ImageReference
-                                    {
-                                        Publisher = "MicrosoftWindowsServer",
-                                        Offer = "WindowsServer",
-                                        Sku = "2022-Datacenter-Azure-Edition",
-                                        Version = "latest"
-                                    };
-                                    */
                                 }
 
                                 if (this.VirtualMachineScaleSet.VirtualMachineProfile?.SecurityProfile?.SecurityType == null

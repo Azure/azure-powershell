@@ -5275,8 +5275,9 @@ function Test-VirtualMachineScaleSetSecurityTypeAndFlexDefaults
 
 <#
 .SYNOPSIS
-Test Virtual Machine Scale Set securityType TrustedLaunch is default
-and also defaults in Vmss Flex.
+Test Virtual Machine Scale Set with explicit Standard securityType.
+Ensures the SecurityProfile is null, and with no other img info,
+defaults to Win2022AE image.
 #>
 function Test-VirtualMachineScaleSetDefaultImgWhenStandard
 {
@@ -5286,8 +5287,6 @@ function Test-VirtualMachineScaleSetDefaultImgWhenStandard
 
     try
     {
-        #$rgname = "adsandstnd2";
-        #$loc = "eastus";
         # Common
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
@@ -5303,10 +5302,7 @@ function Test-VirtualMachineScaleSetDefaultImgWhenStandard
 
         # Requirements for the TrustedLaunch default behavior.
         $vmss = New-AzVmss -ResourceGroupName $rgname -Credential $cred -VMScaleSetName $vmssName -SecurityType $securityTypeST -DomainNameLabel $domainNameLabel1;
-
-        #Assert-AreEqual $res.VirtualMachineProfile.SecurityProfile.SecurityType $securityTypeST;
-        #Assert-AreEqual $res.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $enable;
-        #Assert-AreEqual $res.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $enable;
+        
         Assert-AreEqual $vmss.OrchestrationMode "Flexible";
         Assert-Null $vmss.SecurityProfile;
         Assert-AreEqual $vmss.VirtualMachineProfile.StorageProfile.ImageReference.Sku "2022-datacenter-azure-edition";

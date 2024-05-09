@@ -7491,9 +7491,9 @@ function Test-CapacityReservationSharingProfile
 
 <#
 .SYNOPSIS
-Test Virtual Machines default to SecurityType = TrustedLaunch.
-Other necessary defaults also occur for TL support.
-EncryptionAtHost (a feature requiring a feature flag) must be null.
+Test Virtual Machines with explicit Standard securityType.
+Ensures the SecurityProfile is null, and with no other img info,
+defaults to Win2022AE image.
 #>
 function Test-VMDefaultsToTrustedLaunchImgWhenStnd
 {
@@ -7503,13 +7503,11 @@ function Test-VMDefaultsToTrustedLaunchImgWhenStnd
 
     try
     {
-        $rgname = "adsandstdvm1";
-        $loc = "eastus";
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
         # SimpleParameterSet, no config, scenario.
         # create credential 
-        $password = "Testing1234567";#Get-PasswordForVM;
-        $user = "usertest";#Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
+        $user = Get-ComputeTestResourceName;
         $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
