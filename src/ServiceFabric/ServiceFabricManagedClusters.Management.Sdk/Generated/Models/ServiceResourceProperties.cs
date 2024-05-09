@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </param>
 
         /// <param name="defaultMoveCost">Specifies the move cost for the service.
-        /// Possible values include: 'Zero', 'Low', 'Medium', 'High'</param>
+        /// Possible values include: &#39;Zero&#39;, &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;</param>
 
         /// <param name="scalingPolicies">Scaling policies for this service.
         /// </param>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </param>
 
         /// <param name="servicePackageActivationMode">The activation Mode of the service package
-        /// Possible values include: 'SharedProcess', 'ExclusiveProcess'</param>
+        /// Possible values include: &#39;SharedProcess&#39;, &#39;ExclusiveProcess&#39;</param>
 
         /// <param name="serviceDnsName">Dns name used for the service. If this is specified, then the DNS name can
         /// be used to return the IP addresses of service endpoints for application

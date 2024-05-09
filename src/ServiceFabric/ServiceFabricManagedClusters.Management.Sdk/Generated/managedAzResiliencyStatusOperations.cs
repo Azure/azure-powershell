@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         public ServiceFabricManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Action to get Az Resiliency Status of all the Base resources constituting Service Fabric Managed Clusters.
+        /// Action to get Az Resiliency Status of all the Base resources constituting
+        /// Service Fabric Managed Clusters.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

@@ -190,8 +190,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// <param name='clusterName'>
         /// The name of the cluster resource.
         /// </param>
-        /// <param name='targetVersion'>
-        /// The target code version.
+        /// <param name='versionsDescription'>
+        /// The upgrade path description with target version.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<UpgradableVersionPathResult>> ListUpgradableVersionsWithHttpMessagesAsync(string resourceGroupName, string clusterName, string targetVersion, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<UpgradableVersionPathResult>> ListUpgradableVersionsWithHttpMessagesAsync(string resourceGroupName, string clusterName, UpgradableVersionsDescription versionsDescription = default(UpgradableVersionsDescription), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create or update a Service Fabric cluster resource with the specified name.
