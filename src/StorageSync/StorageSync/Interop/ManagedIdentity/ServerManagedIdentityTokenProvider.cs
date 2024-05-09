@@ -1,6 +1,6 @@
-﻿using Hyak.Common.TransientFaultHandling;
-using Microsoft.Azure.Commands.StorageSync.Interop.Enums;
+﻿using Microsoft.Azure.Commands.StorageSync.Interop.Enums;
 using System;
+using System.Security.Cryptography;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -15,6 +15,9 @@ using System.Diagnostics.Tracing;
 using Microsoft.Azure.Commands.StorageSync.Interop.Exceptions;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Newtonsoft.Json;
+using Microsoft.Azure.Commands.StorageSync.Interop.Interfaces;
+using Microsoft.Rest.TransientFaultHandling;
+using Microsoft.Azure.Commands.StorageSync.Properties;
 
 namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
 {
@@ -27,6 +30,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
 
         public const string AzureTokenApiVersion = "2021-12-13";
         public const string HybridTokenApiVersion = "2020-06-01";
+        private readonly TimeSpan SemaphoreTimeoutTime = TimeSpan.FromSeconds(70);
 
         /// <summary>
         /// The directory where the Secret File for the Challenge request (used to acquire Hybrid MI token) is stored
@@ -41,7 +45,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
         /// <summary>
         /// We do not return a token that is expiring in the next 30 minutes
         /// In case it is expiring in the next 30 minutes, we will fetch a new one from Azure IMDS/HIMDS, even if we have one in our cache
-        /// Azure IMDS/HIMDS itself currently refreshes it's token when less than 90 minutes remain in the token expiry. 
+        /// Azure IMDS/HIMDS itself currently refreshes it's token when &lt; 90 minutes remain in the token expiry. 
         /// Our threshold of 30 minutes ensures we are not making multiple calls in a short time to Azure IMDS/HIMDS, which can lead to throttling
         /// </summary>
         private static readonly TimeSpan MaxTimeBeforeTokenExpires = TimeSpan.FromMinutes(30);
@@ -52,16 +56,20 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
         private readonly SemaphoreSlim semaphoreSlim = new SemaphoreSlim(1, 1);
 
         /// <summary>
-        /// The cache is for storing MI access tokens: (resource, TokenResponse).
+        /// The cache is for storing MI access tokens: resource => string expiryTime, byte[] protectedTokenResponse.
         /// </summary>
-        private readonly Dictionary<string, ServerManagedIdentityTokenResponse> serverMITokenCache;
+        private readonly Dictionary<string, Tuple<string, byte[]>> serverMITokenCache;
+
+        private readonly byte[] aesKey;
+
+        private readonly byte[] aesIv;
 
         /// <summary>
         /// The endpoint to be used for getting the Managed Identity Token (IMDS/HIMDS).
         /// </summary>
         private readonly string managedIdentityTokenEndpoint;
 
-        private readonly ServerType serverType;
+        private readonly LocalServerType serverType;
 
         private readonly HttpClient httpClient;
 
@@ -71,17 +79,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
         /// Provider class to generate the managed identity token from Azure IMDS/HIMDS endpoint
         /// </summary>
         public ServerManagedIdentityTokenProvider(
-            ServerType inputServerType,
+            LocalServerType inputServerType,
             HttpClient client = default,
             Action<string, EventLevel> traceLog = default)
         {
-            if (ServerType.Unknown == inputServerType)
-            {
-                throw new ArgumentException("Expecting Hybrid/Azure Server Type");
-            }
-
-            serverMITokenCache = new Dictionary<string, ServerManagedIdentityTokenResponse>();
+            serverMITokenCache = new Dictionary<string, Tuple<string, byte[]>>();
             serverType = inputServerType;
+
+            aesKey = GenerateRandomBytes(16);
+            aesIv = GenerateRandomBytes(16);
 
             if (client == default)
             {
@@ -92,11 +98,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
                 httpClient = client;
             }
 
-            if (serverType == ServerType.Hybrid)
+            if (serverType == LocalServerType.ArcEnabledHybridServer)
             {
                 managedIdentityTokenEndpoint = $"{HybridTokenUri}?api-version={HybridTokenApiVersion}";
             }
-            else if (serverType == ServerType.Azure)
+            else if (serverType == LocalServerType.AzureVirtualMachineServer)
             {
                 managedIdentityTokenEndpoint = $"{AzureTokenUri}?api-version={AzureTokenApiVersion}";
             }
@@ -121,7 +127,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
         /// <returns> Access Token </returns>
         public async Task<string> GetManagedIdentityAccessToken(string resource)
         {
-            ServerManagedIdentityTokenResponse tokenResponse = await GetManagedIdentityTokenResponse(resource).ConfigureAwait(false);
+           ServerManagedIdentityTokenResponse tokenResponse = await GetManagedIdentityTokenResponse(resource).ConfigureAwait(false);
             return tokenResponse.AccessToken;
         }
 
@@ -132,13 +138,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
         /// <returns> MI Token response object </returns>
         public async Task<ServerManagedIdentityTokenResponse> GetManagedIdentityTokenResponse(string resource)
         {
-            TraceLog($"Getting MI token for resource: {resource}", EventLevel.Verbose);
+            ServerManagedIdentityTokenResponse tokenResponse = null;
 
-            if (serverMITokenCache.TryGetValue(resource, out ServerManagedIdentityTokenResponse tokenResponse))
+            // Check if token is present in cache and not expiring before max cache duration
+            if (serverMITokenCache.TryGetValue(resource, out Tuple<string, byte[]> value))
             {
-                if (!IsTokenExpiringBeforeMaxTime(tokenResponse))
+                tokenResponse = GetTokenResponseFromCachedValue(value);
+
+                if (tokenResponse != null)
                 {
-                    TraceLog($"Token found in cache for resource: {resource}", EventLevel.Verbose);
                     return tokenResponse;
                 }
             }
@@ -147,15 +155,19 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
 
             try
             {
-                await semaphoreSlim.WaitAsync().ConfigureAwait(false);
+                await semaphoreSlim.WaitAsync(SemaphoreTimeoutTime).ConfigureAwait(false);
 
                 // Checking again if a new token with longer lifetime was updated in cache before generating it 
-                if (serverMITokenCache.TryGetValue(resource, out tokenResponse)
-                    && !IsTokenExpiringBeforeMaxTime(tokenResponse))
+                if (serverMITokenCache.TryGetValue(resource, out value))
                 {
-                    TraceLog($"Token was updated by another thread in cache for resource: {resource}. Ignoring re-generation of token.", EventLevel.Informational);
+                    tokenResponse = GetTokenResponseFromCachedValue(value);
 
-                    return tokenResponse;
+                    if (tokenResponse != null)
+                    {
+                        TraceLog($"Token was updated by another thread in cache for resource: {resource}. Ignoring re-generation of token.", EventLevel.Informational);
+
+                        return tokenResponse;
+                    }
                 }
 
                 tokenResponse = await GetManagedIdentityTokenResponseInternal(resource).ConfigureAwait(false);
@@ -164,18 +176,25 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
                 {
                     throw new ServerManagedIdentityTokenException(
                         ManagedIdentityErrorCodes.ServerManagedIdentityTokenGenerationFailed,
-                        "TODO:ServerManagedIdentityTokenGenerationFailed",
+                        StorageSyncResources.AgentMI_TokenResponseNullError,
                         null);
                 }
 
                 DateTimeOffset dateTimeOffsetTokenExpiresOn = FromUnixTimeSeconds(long.Parse(tokenResponse.ExpiresOn, NumberStyles.Number, CultureInfo.InvariantCulture));
                 TraceLog($"Populating the cache for resource: {resource} with Token with expiry: {dateTimeOffsetTokenExpiresOn}", EventLevel.Informational);
 
-                this.UpdateCache(resource, tokenResponse);
+                // Convert response to byte array and add PKCS7 padding
+                var byteArrayForCache = ConvertFromTokenResponseToPaddedByteArr(tokenResponse);
+
+                // Protect token response that gets stored in the cache
+                //TODO: Uncomment
+                // ProtectedMemory.Protect(byteArrayForCache, MemoryProtectionScope.SameProcess);
+
+                serverMITokenCache[resource] = new Tuple<string, byte[]>(tokenResponse.ExpiresOn, byteArrayForCache);
 
                 TraceLog($"Token updated in cache with expiration {dateTimeOffsetTokenExpiresOn}", EventLevel.Informational);
             }
-            catch (Exception ex) when (! (ex is ServerManagedIdentityTokenException))
+            catch (Exception ex)
             {
                 throw new ServerManagedIdentityTokenException(
                     ManagedIdentityErrorCodes.ServerManagedIdentityTokenGenerationFailed,
@@ -214,7 +233,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
             // Exponential retry policy as per MI team recommendation (Retry in 1, 2, 4, 8, 16 ... 60 secs) 
             // MinBackoff: 0s, MaxBackoff: 60s, DeltaBackoff: 2s
             // Retry guidance: https://learn.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#retry-guidance
-            var retryStrategy = new ExponentialBackoff(RequestRetryCount, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(60), TimeSpan.FromSeconds(2));
+            var retryStrategy = new ExponentialBackoffRetryStrategy(RequestRetryCount, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(60), TimeSpan.FromSeconds(2));
             var defaultRetryPolicy = new RetryPolicy<ServerManagedIdentityErrorDetectionStrategy>(retryStrategy);
             int retryCount = 0;
 
@@ -229,7 +248,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
                         //    https://learn.microsoft.com/en-us/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#security-and-authentication
                         requestMessage.Headers.Add(HeaderConstants.Metadata, "true");
 
-                        if (serverType == ServerType.Hybrid)
+                        if (serverType == LocalServerType.ArcEnabledHybridServer)
                         {
                             challengeToken = await GetChallengeToken(requestUri).ConfigureAwait(false);
 
@@ -237,7 +256,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
                             {
                                 throw new ServerManagedIdentityTokenException(
                                     ManagedIdentityErrorCodes.ServerManagedIdentityTokenGenerationFailed,
-                                    "TODO:AgentMI_ChallengeTokenNullError",
+                                    StorageSyncResources.AgentMI_ChallengeTokenNullError,
                                     null);
                             }
 
@@ -250,13 +269,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
                         {
                             using (var response = await httpClient.SendAsync(requestMessage, CancellationToken.None).ConfigureAwait(false))
                             {
-
                                 TraceLog($"Token response retrieved. Status code: {response?.StatusCode}", EventLevel.Informational);
 
                                 if (response.IsSuccessStatusCode)
                                 {
                                     var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                                     tokenResponse = JsonConvert.DeserializeObject<ServerManagedIdentityTokenResponse>(responseContent);
+ 
                                     TraceLog($"Token response retrieved. Num tries: {retryCount - 1} Type: {tokenResponse.TokenType} Resource: {tokenResponse.Resource} ExpiresOn: {tokenResponse.ExpiresOn}", EventLevel.Informational);
                                 }
                                 // We must check for 401 response with a specific error description for servers with multiple User Assigned Identities
@@ -265,7 +284,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
                                 {
                                     // all errors should have a response content with error and error_description fields
                                     var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+
                                     var errorResponse = JsonConvert.DeserializeObject<ServerManagedIdentityErrorResponse>(responseContent);
+
                                     TraceLog($@"Http error response received while getting token. Status code: {HttpStatusCode.Unauthorized} Error: {errorResponse.Error} ErrorDescription: {errorResponse.ErrorDescription}", EventLevel.Warning);
 
                                     // if the error is due to multiple user assigned identities, we need to throw a more specific error
@@ -273,20 +294,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
                                     {
                                         throw new ServerManagedIdentityTokenException(
                                             ManagedIdentityErrorCodes.ServerManagedIdentitySystemIdentityNotFound,
-                                            "TODO: AgentMI_MissingSystemIdentityWithMultipleUserAssignedError",
-                                            new NotSupportedException(errorResponse.ErrorDescription),
-                                            response.StatusCode);
+                                            StorageSyncResources.AgentMI_MissingSystemIdentityWithMultipleUserAssignedError,
+                                            new NotSupportedException(errorResponse.ErrorDescription));
                                     }
                                     else
                                     {
                                         var errorMessage = $"Request with uri: {requestUri} to IMDS/HIMDS endpoint returned status code: {response.StatusCode}";
                                         TraceLog(errorMessage, EventLevel.Error);
-
-                                        throw new ServerManagedIdentityTokenException(
-                                           ManagedIdentityErrorCodes.ServerManagedIdentityWebError,
-                                           errorMessage,
-                                           null,
-                                           response.StatusCode);
+                                        throw new HttpRequestWithStatusException($"Response failed with status code {response.StatusCode}");
                                     }
                                 }
                                 else
@@ -294,17 +309,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
                                     var errorMessage = $"Request with uri: {requestUri} to IMDS/HIMDS endpoint returned status code: {response.StatusCode}";
                                     TraceLog(errorMessage, EventLevel.Error);
 
-                                    throw new ServerManagedIdentityTokenException(
-                                           ManagedIdentityErrorCodes.ServerManagedIdentityWebError,
-                                           errorMessage,
-                                           null,
-                                           response.StatusCode);
+                                    response.EnsureSuccessStatusCode();
                                 }
                             }
                         }
                         catch (TaskCanceledException ex)
                         {
-                           var errorMessage = $"Request with uri: {requestUri} to IMDS/HIMDS endpoint failed due to a timeout. Message: {ex.Message}";
+                            var errorMessage = $"Request with uri: {requestUri} to IMDS/HIMDS endpoint failed due to a timeout. Message: {ex.Message}";
                             TraceLog(errorMessage, EventLevel.Error);
 
                             if (ex.InnerException != null)
@@ -318,12 +329,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
                                 errorMessage,
                                 ex);
                         }
-                        catch (Exception ex) when (!(ex is ServerManagedIdentityTokenException))
+                        catch (Exception ex)
                         {
                             var errorMessage = $"Request with uri: {requestUri} to IMDS/HIMDS endpoint failed with: {ex.Message}";
                             TraceLog(errorMessage, EventLevel.Error);
                             TraceLog(ex.ToString(), EventLevel.Error);
-
                             throw new ServerManagedIdentityTokenException(
                                 ManagedIdentityErrorCodes.ServerManagedIdentityTokenGenerationFailed,
                                 errorMessage,
@@ -351,7 +361,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
                 //    https://learn.microsoft.com/en-us/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#security-and-authentication
                 requestMessage.Headers.Add(HeaderConstants.Metadata, "true");
 
-                System.Net.Http.HttpResponseMessage response = null;
+                HttpResponseMessage response = null;
 
                 try
                 {
@@ -362,9 +372,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
                     {
                         throw new ServerManagedIdentityTokenException(
                             ManagedIdentityErrorCodes.ServerManagedIdentityTokenChallengeFailed,
-                            "TODO:AgentMI_UnexpectedArcChallengeResponseError",
-                            null,
-                            response.StatusCode);
+                            StorageSyncResources.AgentMI_UnexpectedArcChallengeResponseError,
+                            null);
                     }
 
                     // parse out the WWW-Authenticate Header from the response
@@ -373,9 +382,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
                     {
                         throw new ServerManagedIdentityTokenException(
                             ManagedIdentityErrorCodes.ServerManagedIdentityTokenChallengeFailed,
-                            "TODO:AgentMI_MissingWWWAuthenticateHeaderError",
-                            null,
-                            response.StatusCode);
+                            StorageSyncResources.AgentMI_MissingWWWAuthenticateHeaderError,
+                            null);
                     }
 
                     var headerValue = authenticateHeaderValues.FirstOrDefault();
@@ -384,15 +392,16 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
                     {
                         throw new ServerManagedIdentityTokenException(
                             ManagedIdentityErrorCodes.ServerManagedIdentityTokenChallengeFailed,
-                            "TODO:AgentMI_MissingWWWAuthenticateValueError",
-                            null,
-                            response.StatusCode);
+                            StorageSyncResources.AgentMI_MissingWWWAuthenticateValueError,
+                            null);
                     }
 
                     // Value in the header is: "Basic realm=<secret file path>"
                     var secretFilePath = headerValue.Split('=')[1];
 
-                    string expectedSecretFileLocation = expectedSecretFileLocation = Environment.GetEnvironmentVariable("ProgramData") + HybridSecretFileDirectory;
+                    string expectedSecretFileLocation;
+
+                        expectedSecretFileLocation = Environment.GetEnvironmentVariable("ProgramData") + HybridSecretFileDirectory;
 
                     // Validate the secret file path received is from the expected predefined directory and is of expected .key file extension.
                     // This ensures we are not redirected by some malicious process listening on localhost:40342 into a bad secret file.
@@ -402,9 +411,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
                     {
                         throw new ServerManagedIdentityTokenException(
                             ManagedIdentityErrorCodes.ServerManagedIdentityTokenChallengeFailed,
-                            "TODO:AgentMI_InvalidSecretFileError",
-                            null,
-                            response.StatusCode);
+                            StorageSyncResources.AgentMI_InvalidSecretFileError,
+                            null);
                     }
 
                     if (File.Exists(secretFilePath))
@@ -415,9 +423,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
                     {
                         throw new ServerManagedIdentityTokenException(
                             ManagedIdentityErrorCodes.ServerManagedIdentityTokenChallengeFailed,
-                            "TODO:AgentMI_MissingSecretFilePathOnServerError",
-                            null,
-                            response.StatusCode);
+                            StorageSyncResources.AgentMI_MissingSecretFilePathOnServerError,
+                            null);
                     }
                 }
                 finally
@@ -429,24 +436,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
             return challengeToken;
         }
 
-        private bool IsTokenExpiringBeforeMaxTime(ServerManagedIdentityTokenResponse tokenResponse)
+        private bool IsTokenExpiringBeforeMaxTime(string expiryTime)
         {
-            DateTimeOffset dateTimeOffsetTokenExpiresOn = FromUnixTimeSeconds(long.Parse(tokenResponse.ExpiresOn, NumberStyles.Number, CultureInfo.InvariantCulture));
+            DateTimeOffset dateTimeOffsetTokenExpiresOn = FromUnixTimeSeconds(long.Parse(expiryTime, NumberStyles.Number, CultureInfo.InvariantCulture));
             DateTimeOffset dateTimeOffsetMaxTokenExpiresOn = DateTimeOffset.UtcNow + MaxTimeBeforeTokenExpires;
 
             return dateTimeOffsetMaxTokenExpiresOn > dateTimeOffsetTokenExpiresOn;
-        }
-
-        private void UpdateCache(string resource, ServerManagedIdentityTokenResponse tokenResponse)
-        {
-            if (serverMITokenCache.ContainsKey(resource))
-            {
-                serverMITokenCache[resource] = tokenResponse;
-            }
-            else
-            {
-                serverMITokenCache.Add(resource, tokenResponse);
-            }
         }
 
         /// <summary>
@@ -462,5 +457,110 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
             return dateTimeOffset;
         }
 
+        /// <summary>
+        /// Helper method to get the ServerManagedIdentityTokenResponse from the cached tuple. Returns null if expired.
+        /// </summary>
+        /// <param name="value">Tuple from serverMITokenCache containing expiryTime, tokenReponseByteArr></param>
+        /// <returns>The ServerManagedIdentityTokenResponse converted from the cache</returns>
+        private ServerManagedIdentityTokenResponse GetTokenResponseFromCachedValue(Tuple<string, byte[]> value)
+        {
+            if (!IsTokenExpiringBeforeMaxTime(value.Item1))
+            {
+                var paddedByteArr = value.Item2;
+
+                // Deep copy array to avoid unprotecting the actual value in the cache
+                var deepCopyByteArr = new byte[paddedByteArr.Length];
+                Array.Copy(paddedByteArr, deepCopyByteArr, paddedByteArr.Length);
+
+                // Unprotect token response
+                // TODO: Uncomment
+                //ProtectedMemory.Unprotect(deepCopyByteArr, MemoryProtectionScope.SameProcess);
+
+                // Undo PKCS7 padding and convert to ServerManagedIdentityTokenResponse
+                return ConvertFromPaddedByteArrToTokenResponse(deepCopyByteArr);
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Helper method to take a byte array, with PKCS7 padding added, and convert it to ServerManagedIdentityTokenResponse
+        /// </summary>
+        /// <param name="paddedByteArr">the byte array that is PKCS7 padded to be converted</param>
+        /// <returns>ServerManagedIdentityTokenResponse object</returns>
+        private ServerManagedIdentityTokenResponse ConvertFromPaddedByteArrToTokenResponse(byte[] paddedByteArr)
+        {
+            byte[] unpaddedByteArr;
+
+            // Decrypt PKCS7 padding
+            using (var aesAlg = Aes.Create())
+            {
+                aesAlg.Key = aesKey;
+                aesAlg.IV = aesIv;
+                aesAlg.Padding = PaddingMode.PKCS7;
+
+                using (var ms = new MemoryStream())
+                {
+                    using (var decryptor = aesAlg.CreateDecryptor())
+                    {
+                        using (var cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Write))
+                        {
+                            cs.Write(paddedByteArr, 0, paddedByteArr.Length);
+                            cs.FlushFinalBlock();
+                        }
+                    }
+
+                    unpaddedByteArr = ms.ToArray();
+                }
+            }
+
+            // Deserialize as ServerManagedIdentityTokenResponse
+            var data = Encoding.UTF8.GetString(unpaddedByteArr);
+            return JsonConvert.DeserializeObject<ServerManagedIdentityTokenResponse>(data);
+        }
+
+        /// <summary>
+        /// Helper method to take a ServerManagedIdentityTokenResponse and convert it to a byte array, with PKCS7 padding added
+        /// </summary>
+        /// <param name="miTokenResponse">the ServerManagedIdentityTokenResponse to be converted</param>
+        /// <returns>PKCS7 padded byte array</returns>
+        private byte[] ConvertFromTokenResponseToPaddedByteArr(ServerManagedIdentityTokenResponse miTokenResponse)
+        {
+            // Serialize to bytes
+            var jsonString = JsonConvert.SerializeObject(miTokenResponse);
+            var data = Encoding.UTF8.GetBytes(jsonString);
+
+            // Encrypt with PKCS7 padding
+            using (var aesAlg = Aes.Create())
+            {
+                aesAlg.Key = aesKey;
+                aesAlg.IV = aesIv;
+                aesAlg.Padding = PaddingMode.PKCS7;
+
+                using (var ms = new MemoryStream())
+                {
+                    using (var encryptor = aesAlg.CreateEncryptor())
+                    {
+                        using (var cs = new CryptoStream(ms, encryptor, CryptoStreamMode.Write))
+                        {
+                            cs.Write(data, 0, data.Length);
+                            cs.FlushFinalBlock();
+                        }
+                    }
+
+                    return ms.ToArray();
+                }
+            }
+        }
+
+        private byte[] GenerateRandomBytes(int length)
+        {
+            using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
+            {
+                byte[] randomBytes = new byte[length];
+                rng.GetBytes(randomBytes);
+                return randomBytes;
+            }
+        }
     }
 }

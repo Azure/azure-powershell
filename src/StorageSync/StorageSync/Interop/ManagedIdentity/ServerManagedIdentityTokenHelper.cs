@@ -1,5 +1,6 @@
 ﻿using Microsoft.Azure.Commands.StorageSync.Interop.Enums;
 using Microsoft.Azure.Commands.StorageSync.Interop.Exceptions;
+using Microsoft.Azure.Commands.StorageSync.Properties;
 using Newtonsoft.Json;
 using System;
 using System.Text;
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
             {
                 throw new ServerManagedIdentityTokenException(
                     ManagedIdentityErrorCodes.ServerManagedIdentitySystemIdentityNotFound,
-                    "TODO:AgentMI_MissingSystemAssignedIdentityError",
+                    StorageSyncResources.AgentMI_MissingSystemAssignedIdentityError,
                     null);
             }
         }

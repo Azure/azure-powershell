@@ -25,5 +25,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
         /// Authentication scheme for NTLM challenge authentication framework
         /// </summary>
         public const string WWWAuthenticate = "WWW-Authenticate";
+
+        /// <summary>
+        /// Bearer token authentication scheme
+        /// </summary>
+        public const string BearerTokenAuthScheme = "Bearer"; 
     }
 }

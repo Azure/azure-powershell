@@ -32,43 +32,6 @@ namespace Microsoft.Azure.Commands.StorageSync.InternalObjects
     public sealed class ServerRegistrationInformation
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServerRegistrationInformation" /> class.
-        /// </summary>
-        /// <param name="subscriptionId">The subscription identifier.</param>
-        /// <param name="resourceGroupName">Name of the resource group.</param>
-        /// <param name="storageSyncServiceName">Name of the storage sync service.</param>
-        /// <param name="storageSyncServiceUid">The storage sync service uid.</param>
-        /// <param name="clusterName">Name of the cluster.</param>
-        /// <param name="clusterId">The cluster identifier.</param>
-        /// <param name="monitoringConfiguration">The monitoring configuration.</param>
-        /// <param name="serverCertificate">The server certificate.</param>
-        /// <param name="serviceEndpoint">The service endpoint.</param>
-        /// <param name="resourceLocation">The resource location.</param>
-        public ServerRegistrationInformation(
-            Guid subscriptionId,
-            string resourceGroupName,
-            string storageSyncServiceName,
-            Guid storageSyncServiceUid,
-            string clusterName,
-            Guid clusterId,
-            HybridMonitoringConfigurationResource monitoringConfiguration,
-            byte[] serverCertificate,
-            string serviceEndpoint,
-            string resourceLocation)
-        {
-            SubscriptionId = subscriptionId;
-            ResourceGroupName = resourceGroupName;
-            StorageSyncServiceName = storageSyncServiceName;
-            StorageSyncServiceUid = storageSyncServiceUid;
-            ClusterName = clusterName;
-            ClusterId = clusterId;
-            MonitoringConfiguration = monitoringConfiguration;
-            ServerCertificate = serverCertificate;
-            ServiceEndpoint = serviceEndpoint;
-            ResourceLocation = resourceLocation;
-        }
-
-        /// <summary>
         /// Gets or sets the resource location.
         /// </summary>
         /// <value>The resource location.</value>
@@ -162,6 +125,13 @@ namespace Microsoft.Azure.Commands.StorageSync.InternalObjects
         /// <value>The server certificate.</value>
         [JsonProperty(PropertyName = "serverCertificate", Required = Required.Default)]
         public byte[] ServerCertificate
+        {
+            get;
+            set;
+        }
+
+        [JsonProperty(PropertyName = "applicationId", Required = Required.Default)]
+        public Guid? ApplicationId
         {
             get;
             set;

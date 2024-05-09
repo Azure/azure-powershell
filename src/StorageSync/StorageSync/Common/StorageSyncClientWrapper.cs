@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
 using Microsoft.Azure.Commands.StorageSync.Interfaces;
+using Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity;
 using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Authorization.Models;
@@ -124,7 +125,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             }
             else
             {
-                StorageSyncResourceManager = new StorageSyncResourceManager();
+                StorageSyncResourceManager = new StorageSyncResourceManager(new ServerManagedIdentityProvider((m, e) => { VerboseLogger.Invoke($"[{e}] {m}"); }));
             }
         }
 

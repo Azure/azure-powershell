@@ -7,11 +7,11 @@
 
     public class ManagedIdentityConfigurationInfo
     {
-        public ServerType ServerType { get; private set; }
+        public LocalServerType ServerType { get; private set; }
 
         public RegisteredServerAuthType ServerAuthType { get; private set; }
 
-        public ManagedIdentityConfigurationInfo(ServerType serverType, RegisteredServerAuthType serverAuthtype)
+        public ManagedIdentityConfigurationInfo(LocalServerType serverType, RegisteredServerAuthType serverAuthtype)
         {
             this.ServerType = serverType;
             this.ServerAuthType = serverAuthtype;

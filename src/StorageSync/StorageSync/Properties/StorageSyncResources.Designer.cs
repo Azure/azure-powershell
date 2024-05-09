@@ -61,6 +61,96 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Secret file path content is empty. Expected to read challenge key..
+        /// </summary>
+        internal static string AgentMI_ChallengeTokenNullError {
+            get {
+                return ResourceManager.GetString("AgentMI_ChallengeTokenNullError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Secret file is invalid. It is either empty, not in the expected directory, or not of file type .key..
+        /// </summary>
+        internal static string AgentMI_InvalidSecretFileError {
+            get {
+                return ResourceManager.GetString("AgentMI_InvalidSecretFileError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Secret file path does not exist on the server..
+        /// </summary>
+        internal static string AgentMI_MissingSecretFilePathOnServerError {
+            get {
+                return ResourceManager.GetString("AgentMI_MissingSecretFilePathOnServerError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No system-assigned Managed Identity was found for this resource..
+        /// </summary>
+        internal static string AgentMI_MissingSystemAssignedIdentityError {
+            get {
+                return ResourceManager.GetString("AgentMI_MissingSystemAssignedIdentityError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There appears to be no system-assigned managed identity and multiple user-assigned identities for this resource..
+        /// </summary>
+        internal static string AgentMI_MissingSystemIdentityWithMultipleUserAssignedError {
+            get {
+                return ResourceManager.GetString("AgentMI_MissingSystemIdentityWithMultipleUserAssignedError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to parse JWT token for the requested claim..
+        /// </summary>
+        internal static string AgentMI_MissingTokenClaim {
+            get {
+                return ResourceManager.GetString("AgentMI_MissingTokenClaim", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to parse response for WWW-Authenticate header..
+        /// </summary>
+        internal static string AgentMI_MissingWWWAuthenticateHeaderError {
+            get {
+                return ResourceManager.GetString("AgentMI_MissingWWWAuthenticateHeaderError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value for WWW-Authenticate header is null or empty..
+        /// </summary>
+        internal static string AgentMI_MissingWWWAuthenticateValueError {
+            get {
+                return ResourceManager.GetString("AgentMI_MissingWWWAuthenticateValueError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unexpected return value: TokenResponse from GetServerManagedIdentityTokenResponseInternal is null.
+        /// </summary>
+        internal static string AgentMI_TokenResponseNullError {
+            get {
+                return ResourceManager.GetString("AgentMI_TokenResponseNullError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unexpected response while trying to retrieve challenge token from Hybrid IMDS. Expected Unauthorized Response..
+        /// </summary>
+        internal static string AgentMI_UnexpectedArcChallengeResponseError {
+            get {
+                return ResourceManager.GetString("AgentMI_UnexpectedArcChallengeResponseError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Certificate thumbprints not found. Check if server is registered..
         /// </summary>
         internal static string CertificateThumbprintNotFound {

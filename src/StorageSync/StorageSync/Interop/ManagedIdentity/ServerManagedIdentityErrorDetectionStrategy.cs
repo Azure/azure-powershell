@@ -1,8 +1,8 @@
 ﻿
 
 
-using Hyak.Common.TransientFaultHandling;
 using Microsoft.Azure.Commands.StorageSync.Interop.Exceptions;
+using Microsoft.Rest.TransientFaultHandling;
 using System;
 using System.Net;
 using System.Threading.Tasks;
