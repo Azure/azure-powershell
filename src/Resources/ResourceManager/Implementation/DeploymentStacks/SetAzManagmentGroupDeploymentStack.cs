@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
     [Cmdlet("Set", Common.AzureRMConstants.AzureRMPrefix + "ManagementGroupDeploymentStack",
         SupportsShouldProcess = true, DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(PSDeploymentStack))]
-    [CmdletPreview("The cmdlet is in preview and under development.")]
     public class SetAzManagementGroupDeploymentStack : DeploymentStacksCreateCmdletBase
     {
         #region Cmdlet Parameters

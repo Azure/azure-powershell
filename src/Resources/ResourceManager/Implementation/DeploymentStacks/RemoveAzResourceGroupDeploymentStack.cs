@@ -25,7 +25,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
     [Cmdlet("Remove", Common.AzureRMConstants.AzureRMPrefix + "ResourceGroupDeploymentStack",
         SupportsShouldProcess = true, DefaultParameterSetName = RemoveByNameAndResourceGroupNameParameterSetName), OutputType(typeof(bool))]
-    [CmdletPreview("The cmdlet is in preview and under development.")]
     public class RemoveAzResourceGroupDeploymentStack : DeploymentStacksCmdletBase
     {
         #region Cmdlet Parameters and Parameter Set Definitions
