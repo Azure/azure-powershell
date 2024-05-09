@@ -883,5 +883,9 @@
   {
     "module": "StandbyPool",
     "alias": "StandbyPool"
+  },
+  {
+    "module": "Chaos",
+    "alias": "Chaos"
   }
 ]

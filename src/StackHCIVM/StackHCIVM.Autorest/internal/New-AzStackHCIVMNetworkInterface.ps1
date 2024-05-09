@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-The operation to Create a network interface.
+The operation to create or update a network interface.
 Please note some properties can be set only during network interface creation.
 .Description
-The operation to Create a network interface.
+The operation to create or update a network interface.
 Please note some properties can be set only during network interface creation.
 .Example
 New-AzStackHCIVMNetworkInterface  -Name "testNic" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -Location "eastus" -SubnetName "testLnet" 

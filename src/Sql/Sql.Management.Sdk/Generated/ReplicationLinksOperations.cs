@@ -549,7 +549,8 @@ namespace Microsoft.Azure.Management.Sql
         }
 
         /// <summary>
-        /// Fails over from the current primary server to this server allowing data loss.
+        /// Fails over from the current primary server to this server allowing data
+        /// loss.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain

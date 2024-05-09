@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-The operation to Update a hybrid machine.
+The operation to update a hybrid machine.
 .Description
-The operation to Update a hybrid machine.
+The operation to update a hybrid machine.
 .Example
 {{ Add code here }}
 .Example
