@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         {
                             subscriptions.AddRange(tempSubscriptions);
                         }
-                        selectSubscriptionFromList = selectSubscriptionFromList && subscriptions?.Count > 1;
+                        selectSubscriptionFromList = selectSubscriptionFromList && null != subscriptions && subscriptions.Count > 1;
                         if (selectSubscriptionFromList)
                         {
                             InteractiveSubscriptionSelectionHelper.SelectSubscriptionFromList(
@@ -348,7 +348,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     defaultTenant = defaultTenant ??
                         (defaultSubscription != null ? new AzureTenant() { Id = defaultSubscription.GetTenant() } : tempTenant);
 
-                    selectSubscriptionFromList = selectSubscriptionFromList && subscriptions?.Count > 1;
+                    selectSubscriptionFromList = selectSubscriptionFromList && null != subscriptions && subscriptions.Count > 1;
                     if (selectSubscriptionFromList)
                     {
                         InteractiveSubscriptionSelectionHelper.SelectSubscriptionFromList(

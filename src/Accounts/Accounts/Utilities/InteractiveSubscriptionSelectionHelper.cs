@@ -36,10 +36,12 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             subscriptions = subscriptions?.OrderBy(s => GetDetailedTenantFromQueryHistory(queriedTenants, s.GetProperty(AzureSubscription.Property.Tenants)))?.ThenBy(s => s.Name)?.ToList();
 
             var markDefaultSubscription = lastUsedSubscription != null;
-            int columnNoWidth = 4, columnSubNameWidth = 36, columnSubIdWidth = 40, columnTenantWidth = 26, columnIdentsWidth = 4;
+
+            // to do: calculate column width dynamically based terminal width --bez
+            const int columnNoWidth = 4, columnSubNameWidth = 36, columnSubIdWidth = 40, columnTenantWidth = 26, columnIndentsWidth = 4;
 
             WriteSubscriptionSelectionTable(subscriptions, queriedTenants,
-                outputAction, columnNoWidth, columnSubNameWidth, columnSubIdWidth, columnTenantWidth, columnIdentsWidth,
+                outputAction, columnNoWidth, columnSubNameWidth, columnSubIdWidth, columnTenantWidth, columnIndentsWidth,
                 lastUsedSubscription?.Id, markDefaultSubscription, tenantName);
 
             if (markDefaultSubscription)
@@ -76,7 +78,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 }
                 WriteSelectedSubscriptionTable(defaultSubscription?.Name ?? defaultSubscription?.Id, 
                     defaultTenant?.GetProperty(AzureTenant.Property.DisplayName) ?? tenantName ?? defaultTenant?.Id,
-                    outputAction, columnSubNameWidth, columnTenantWidth, columnIdentsWidth);
+                    outputAction, columnSubNameWidth, columnTenantWidth, columnIndentsWidth);
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -90,21 +92,21 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
 
 
         private static void WriteSubscriptionSelectionTable(IEnumerable<IAzureSubscription> subscriptions, IEnumerable<IAzureTenant> tenants,
-            Action<string> outputAction, int columnNoWidth, int columnSubNameWidth, int columnSubIdWidth, int columnTenantWidth, int columnIdentsWidth,
+            Action<string> outputAction, int columnNoWidth, int columnSubNameWidth, int columnSubIdWidth, int columnTenantWidth, int columnIndentsWidth,
             string defaultSubscriptionId, bool markDefaultSubscription = false, string tenantIdOrName = "")
         {
-            WriteSubscriptionSelectionTableHeader(outputAction, columnNoWidth, columnSubNameWidth, columnSubIdWidth, columnTenantWidth, columnIdentsWidth);
+            WriteSubscriptionSelectionTableHeader(outputAction, columnNoWidth, columnSubNameWidth, columnSubIdWidth, columnTenantWidth, columnIndentsWidth);
             int subCount = 0;
             foreach (var subscription in subscriptions)
             {
                 WriteSubscriptionSelectionTableRow(++subCount, subscription,
                     tenants?.Where(t => t.Id.Equals(subscription?.GetTenant()))?.FirstOrDefault()?.GetProperty(AzureTenant.Property.DisplayName) ?? tenantIdOrName,
-                    outputAction, columnNoWidth, columnSubNameWidth, columnSubIdWidth, columnTenantWidth, columnIdentsWidth,
+                    outputAction, columnNoWidth, columnSubNameWidth, columnSubIdWidth, columnTenantWidth, columnIndentsWidth,
                     subscription.Id.Equals(defaultSubscriptionId), markDefaultSubscription);
             }
         }
 
-        private static void WriteSubscriptionSelectionTableHeader(Action<string> outputAction, int columnNoWidth, int columnSubNameWidth, int columnSubIdWidth, int columnTenantWidth, int columnIdentsWidth)
+        private static void WriteSubscriptionSelectionTableHeader(Action<string> outputAction, int columnNoWidth, int columnSubNameWidth, int columnSubIdWidth, int columnTenantWidth, int columnIndentsWidth)
         {
             string ColumnNoTab = "No", ColumnSubNameTab = "Subscription name", ColumnSubIdTab = "Subscription ID", ColumnTenantTab = "Tenant name";
             string separator = "-",
@@ -114,26 +116,26 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 ColumTenantSeparator = new StringBuilder().Insert(0, separator, columnTenantWidth).ToString();
 
             outputAction($"{Resources.TenantAndSubscriptionSelection}{Environment.NewLine}");
-            outputAction($"{String.Format($"{{0,-{columnNoWidth + columnIdentsWidth}}}", ColumnNoTab)}" +
-                $"{String.Format($"{{0,-{columnSubNameWidth + columnIdentsWidth}}}", ColumnSubNameTab)}" +
-                $"{String.Format($"{{0,-{columnSubIdWidth + columnIdentsWidth}}}", ColumnSubIdTab)}" +
-                $"{String.Format($"{{0,-{columnTenantWidth + columnIdentsWidth}}}", ColumnTenantTab)}");
-            outputAction($"{String.Format($"{{0,-{columnNoWidth + columnIdentsWidth}}}", ColumNoSeparator)}" +
-                $"{String.Format($"{{0,-{columnSubNameWidth + columnIdentsWidth}}}", ColumSubNameSeparator)}" +
-                $"{String.Format($"{{0,-{columnSubIdWidth + columnIdentsWidth}}}", ColumSubIdSeparator)}" +
+            outputAction($"{String.Format($"{{0,-{columnNoWidth + columnIndentsWidth}}}", ColumnNoTab)}" +
+                $"{String.Format($"{{0,-{columnSubNameWidth + columnIndentsWidth}}}", ColumnSubNameTab)}" +
+                $"{String.Format($"{{0,-{columnSubIdWidth + columnIndentsWidth}}}", ColumnSubIdTab)}" +
+                $"{String.Format($"{{0,-{columnTenantWidth + columnIndentsWidth}}}", ColumnTenantTab)}");
+            outputAction($"{String.Format($"{{0,-{columnNoWidth + columnIndentsWidth}}}", ColumNoSeparator)}" +
+                $"{String.Format($"{{0,-{columnSubNameWidth + columnIndentsWidth}}}", ColumSubNameSeparator)}" +
+                $"{String.Format($"{{0,-{columnSubIdWidth + columnIndentsWidth}}}", ColumSubIdSeparator)}" +
                 $"{String.Format($"{{0,-{columnTenantWidth}}}", ColumTenantSeparator)}");
         }
 
-        private static void WriteSubscriptionSelectionTableRow(int subIndex, IAzureSubscription subscription, string tenantName, Action<string> outputAction, int columnNoWidth, int columnSubNameWidth, int columnSubIdWidth, int columnTenantWidth, int columnIdentsWidth, bool isDefaultSubscription, bool needMarkDefaultSubscription = false)
+        private static void WriteSubscriptionSelectionTableRow(int subIndex, IAzureSubscription subscription, string tenantName, Action<string> outputAction, int columnNoWidth, int columnSubNameWidth, int columnSubIdWidth, int columnTenantWidth, int columnIndentsWidth, bool isDefaultSubscription, bool needMarkDefaultSubscription = false)
         {
             bool markDefaultSubscription = isDefaultSubscription && needMarkDefaultSubscription;
-            int markedIndexLength = markDefaultSubscription ? columnNoWidth + columnIdentsWidth - 1 + DefaultSubscriptionMark.Length : columnNoWidth + columnIdentsWidth;
+            int markedIndexLength = markDefaultSubscription ? columnNoWidth + columnIndentsWidth - 1 + DefaultSubscriptionMark.Length : columnNoWidth + columnIndentsWidth;
             string markedSubIndex = $"[{subIndex}]{(markDefaultSubscription ? $" {DefaultSubscriptionMark} ": "")}";
             string truncatedSubName = subscription.Name?.Length > columnSubNameWidth ? $"{subscription.Name.Substring(0, columnSubNameWidth - 3)}..." : subscription.Name;
             string truncatedTenantName = tenantName?.Length > columnTenantWidth ? $"{tenantName.Substring(0, columnTenantWidth - 3)}..." : tenantName;
             string subIndexRowValue = String.Format($"{{0,-{markedIndexLength}}}", markedSubIndex),
-                subNameRowValue = String.Format($"{{0,-{columnSubNameWidth + columnIdentsWidth}}}", truncatedSubName),
-                subIdRowValue = String.Format($"{{0,-{columnSubIdWidth + columnIdentsWidth}}}", subscription.Id),
+                subNameRowValue = String.Format($"{{0,-{columnSubNameWidth + columnIndentsWidth}}}", truncatedSubName),
+                subIdRowValue = String.Format($"{{0,-{columnSubIdWidth + columnIndentsWidth}}}", subscription.Id),
                 tenantNameRowValue = String.Format($"{{0,-{columnTenantWidth}}}", truncatedTenantName);
 
             if (markDefaultSubscription)
@@ -148,7 +150,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
         }
 
         private static void WriteSelectedSubscriptionTable(string subscription, string tenant,
-            Action<string> outputAction, int columnSubNameWidth, int columnTenantWidth, int columnIdentsWidth)
+            Action<string> outputAction, int columnSubNameWidth, int columnTenantWidth, int columnIndentsWidth)
         {
             string columnSubNameTab = "Subscription name", columnTenantTab = "Tenant name";
             string separator = "-",
@@ -156,20 +158,20 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 ColumTenantSeparator = new StringBuilder().Insert(0, separator, columnTenantWidth).ToString();
 
             outputAction("");
-            outputAction($"{String.Format($"{{0,-{columnSubNameWidth + columnIdentsWidth}}}", columnSubNameTab)}" +
-                $"{String.Format($"{{0,-{columnTenantWidth + columnIdentsWidth}}}", columnTenantTab)}");
-            outputAction($"{String.Format($"{{0,-{columnSubNameWidth + columnIdentsWidth}}}", ColumSubNameSeparator)}" +
+            outputAction($"{String.Format($"{{0,-{columnSubNameWidth + columnIndentsWidth}}}", columnSubNameTab)}" +
+                $"{String.Format($"{{0,-{columnTenantWidth + columnIndentsWidth}}}", columnTenantTab)}");
+            outputAction($"{String.Format($"{{0,-{columnSubNameWidth + columnIndentsWidth}}}", ColumSubNameSeparator)}" +
                 $"{String.Format($"{{0,-{columnTenantWidth}}}", ColumTenantSeparator)}");
             string truncatedSubName = subscription?.Length > columnSubNameWidth ? $"{subscription.Substring(0, columnSubNameWidth - 3)}..." : subscription;
             string truncatedTenantName = tenant?.Length > columnTenantWidth ? $"{tenant.Substring(0, columnTenantWidth - 3)}..." : tenant;
-            string subNameRowValue = String.Format($"{{0,-{columnSubNameWidth + columnIdentsWidth}}}", truncatedSubName),
+            string subNameRowValue = String.Format($"{{0,-{columnSubNameWidth + columnIndentsWidth}}}", truncatedSubName),
                 tenantDomainNameRowValue = String.Format($"{{0,-{columnTenantWidth}}}", truncatedTenantName);
             outputAction($"{subNameRowValue}{tenantDomainNameRowValue}");
         }
 
         public static IAzureTenant GetDetailedTenantFromQueryHistory(List<AzureTenant> queriedTenants, string tenantId)
         {
-            return queriedTenants?.Where(t => t.Id.Equals(tenantId))?.FirstOrDefault();
+            return queriedTenants?.Where(t => t.Id.Equals(tenantId, StringComparison.OrdinalIgnoreCase))?.FirstOrDefault();
         }
 
     }
