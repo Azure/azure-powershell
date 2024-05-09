@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Removed the outdated deps.json file.
 
 ## Version 0.2.0
 * Supported updating Service Configuration for Arc resources at runtime.

@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-The operation to Update a network interface.
+The operation to create or update a network interface.
 Please note some properties can be set only during network interface creation.
 .Description
-The operation to Update a network interface.
+The operation to create or update a network interface.
 Please note some properties can be set only during network interface creation.
 .Example
 {{ Add code here }}

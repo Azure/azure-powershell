@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* [Breaking Change] Redesigned CRUD cmdlets for `PolicyAssignment`, `PolicyDefinition`, `PolicyExemption`, `PolicySetDefinition`. Please see Az 12 migration guide https://learn.microsoft.com/en-us/powershell/azure/migrate-az-12.0.0 for more detail.
+* Added null check to the permissions object in the ToPSRoleDefinition method to return if the whole permissions object array is null.
 
 ## Version 6.16.2
 * Introduced secrets detection feature to safeguard sensitive data.
