@@ -51,6 +51,8 @@ $parentModulePath = Join-Path $moduleRootPath $parentModuleName
 $subModulePath = Join-Path $moduleRootPath $SubModuleName
 $slnPath = Join-Path $moduleRootPath "$ModuleRootName.sln"
 
+Write-Host "Adapting $SubModuleName to $ModuleRootName ..." -ForegroundColor DarkGreen
+
 <#
     create parent module for new module
 #>
@@ -90,11 +92,11 @@ if (Test-Path $parentModulePsd1Path) {
 } else {
     $parentModuleMetadata = Import-LocalizedData -BaseDirectory $TemplatePath -FileName 'Module.psd1'
 }
-$parentModuleMetadata.RequiredAssemblies = ($parentModuleMetadata.RequiredAssemblies + "$SubModuleName/bin/Az.$subModuleNameTrimmed.private.dll") | Select-Object -Unique
-$parentModuleMetadata.FormatsToProcess = ($parentModuleMetadata.FormatsToProcess + "$SubModuleName/Az.$subModuleNameTrimmed.format.ps1xml") | Select-Object -Unique
-$parentModuleMetadata.NestedModules = ($parentModuleMetadata.NestedModules + "$SubModuleName/Az.$subModuleNameTrimmed.psm1") | Select-Object -Unique
+$parentModuleMetadata.RequiredAssemblies = (@($parentModuleMetadata.RequiredAssemblies) + "$SubModuleName/bin/Az.$subModuleNameTrimmed.private.dll") | Select-Object -Unique
+$parentModuleMetadata.FormatsToProcess = (@($parentModuleMetadata.FormatsToProcess) + "$SubModuleName/Az.$subModuleNameTrimmed.format.ps1xml") | Select-Object -Unique
+$parentModuleMetadata.NestedModules = (@($parentModuleMetadata.NestedModules) + "$SubModuleName/Az.$subModuleNameTrimmed.psm1") | Select-Object -Unique
 # these below properties will be set in PrivateData.PSData during New-ModuleManifest
-if ($parentModuleMetadata.PrivateData -and $parentModuleMetadata.PSData) {
+if ($parentModuleMetadata.PrivateData -and $parentModuleMetadata.PrivateData.PSData) {
     $parentModuleMetadata.PrivateData.PSData.keys | ForEach-Object {
         $parentModuleMetadata.$_ = $parentModuleMetadata.PrivateData.PSData.$_
     }
@@ -130,16 +132,31 @@ if (-not (Test-Path $slnPath)) {
         5. generate help
         6. restore submodule csproj, delete temporary submodule csproj from src/moduleroot/sln
 #>
-$subModuleCsprojPath = Join-Path $subModulePath "Az.$subModuleNameTrimmed.csproj"
+# For existing submodule "Az.$subModuleNameTrimmed.csproj" is already in sln, remove it before add temporary csproj
+$csprojName = "Az.$subModuleNameTrimmed.csproj"
+$existingCsprojPath = dotnet sln $slnPath list | Where-Object {
+    $_ -match ".*$csprojName$"
+}
+if ($existingCsprojPath) {
+    $location = Get-Location
+    Set-Location $moduleRootPath
+    dotnet sln $slnPath remove $existingCsprojPath
+    Set-Location $location
+}
+
+$subModuleCsprojPath = Join-Path $subModulePath $csprojName
 $tempCsprojPath = Join-Path $subModulePath 'tmp'
-Move-Item $subModuleCsprojPath $tempCsprojPath
-New-GeneratedFileFromTemplate -TemplateName 'Az.ModuleName.csproj' -GeneratedFileName "Az.$subModuleNameTrimmed.csproj" -GeneratedDirectory $subModulePath -ModuleRootName $ModuleRootName -SubModuleName $subModuleNameTrimmed
+Move-Item $subModuleCsprojPath $tempCsprojPath -Force
+New-GeneratedFileFromTemplate -TemplateName 'Az.ModuleName.csproj' -GeneratedFileName $csprojName -GeneratedDirectory $subModulePath -ModuleRootName $ModuleRootName -SubModuleName $subModuleNameTrimmed
+
 dotnet sln $slnPath add $subModuleCsprojPath
 Write-Host "Building $slnPath ..." -ForegroundColor DarkGreen
 dotnet build $slnPath
 <#
     generate help markdown by platyPS
 #>
+
+Write-Host "Refreshing help markdown ..." -ForegroundColor DarkGreen
 $job = start-job {
     param(
         [string]$RepoRoot,
@@ -164,7 +181,7 @@ $job = start-job {
     $helpPath = Join-Path $parentModulePath 'help'
     $subModuleHelpPath = Join-Path $RepoRoot 'src' $ModuleRootName $SubModuleName 'docs'
 
-    Copy-Item -Path $subModuleHelpPath -Destination $helpPath -Filter *-*.md -Recurse
+    Get-ChildItem $subModuleHelpPath -Filter *-*.md | Copy-Item -Destination $helpPath -Force
     # Clean up the help folder and remove the help files which are not exported by the module.
     $moduleMetadata = Get-Module "Az.$ModuleRootName"
     $exportedCommands = $moduleMetadata.ExportedCommands.Values | Where-Object {$_.CommandType -ne 'Alias'} | ForEach-Object { $_.Name}
@@ -175,7 +192,7 @@ $job = start-job {
         if ($exportedCommands -notcontains $cmdeltName)
         {
             Write-Host "Redundant help markdown detected, removing $helpFile.FullName ..."
-            Remove-Item $helpFile.FullName
+            Remove-Item $helpFile.FullName -Force
         }
     }
     & $resolveScriptPath -ModuleName $ModuleRootName -ArtifactFolder $artifacts -Psd1Folder $parentModulePath
@@ -187,7 +204,7 @@ $job | Remove-Job
     merge actual sub module csproj to parent module sln
 #>
 dotnet sln $slnPath remove $subModuleCsprojPath
-Move-Item $tempCsprojPath $subModuleCsprojPath
+Move-Item $tempCsprojPath $subModuleCsprojPath -Force
 $subModuleCsprojPath = Join-Path $GeneratedDirectory $ModuleRootName $SubModuleName "Az.$subModuleNameTrimmed.csproj"
 dotnet sln $slnPath add $subModuleCsprojPath
 
