@@ -58,7 +58,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="logScrubbing">To scrub sensitive log fields
         /// </param>
-        public PolicySettings(string state = default(string), string mode = default(string), bool? requestBodyCheck = default(bool?), int? requestBodyInspectLimitInKb = default(int?), bool? requestBodyEnforcement = default(bool?), int? maxRequestBodySizeInKb = default(int?), bool? fileUploadEnforcement = default(bool?), int? fileUploadLimitInMb = default(int?), int? customBlockResponseStatusCode = default(int?), string customBlockResponseBody = default(string), PolicySettingsLogScrubbing logScrubbing = default(PolicySettingsLogScrubbing))
+
+        /// <param name="jsChallengeCookieExpirationInMins">Web Application Firewall JavaScript Challenge Cookie Expiration time in
+        /// minutes.
+        /// </param>
+        public PolicySettings(string state = default(string), string mode = default(string), bool? requestBodyCheck = default(bool?), int? requestBodyInspectLimitInKb = default(int?), bool? requestBodyEnforcement = default(bool?), int? maxRequestBodySizeInKb = default(int?), bool? fileUploadEnforcement = default(bool?), int? fileUploadLimitInMb = default(int?), int? customBlockResponseStatusCode = default(int?), string customBlockResponseBody = default(string), PolicySettingsLogScrubbing logScrubbing = default(PolicySettingsLogScrubbing), int? jsChallengeCookieExpirationInMins = default(int?))
 
         {
             this.State = state;
@@ -72,6 +76,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.CustomBlockResponseStatusCode = customBlockResponseStatusCode;
             this.CustomBlockResponseBody = customBlockResponseBody;
             this.LogScrubbing = logScrubbing;
+            this.JsChallengeCookieExpirationInMins = jsChallengeCookieExpirationInMins;
             CustomInit();
         }
 
@@ -149,6 +154,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "logScrubbing")]
         public PolicySettingsLogScrubbing LogScrubbing {get; set; }
+
+        /// <summary>
+        /// Gets or sets web Application Firewall JavaScript Challenge Cookie
+        /// Expiration time in minutes.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "jsChallengeCookieExpirationInMins")]
+        public int? JsChallengeCookieExpirationInMins {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -192,6 +204,17 @@ namespace Microsoft.Azure.Management.Network.Models
                 }
             }
 
+            if (this.JsChallengeCookieExpirationInMins != null)
+            {
+                if (this.JsChallengeCookieExpirationInMins > 1440)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "JsChallengeCookieExpirationInMins", 1440);
+                }
+                if (this.JsChallengeCookieExpirationInMins < 5)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "JsChallengeCookieExpirationInMins", 5);
+                }
+            }
         }
     }
 }

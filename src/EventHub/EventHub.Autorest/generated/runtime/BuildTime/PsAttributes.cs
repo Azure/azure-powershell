@@ -55,6 +55,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         public string ApiVersion { get; set; }
     }
 
+    [AttributeUsage(AttributeTargets.Class)]
+    public class NotSuggestDefaultParameterSetAttribute : Attribute
+    {
+    }
+
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
     public class CategoryAttribute : Attribute
     {
@@ -107,6 +112,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
         Inherited = 0,
         Owned,
         Inlined
+    }
+
+    [AttributeUsage(AttributeTargets.Property)]
+    public class ConstantAttribute : Attribute
+    {
     }
 
     [AttributeUsage(AttributeTargets.Property)]

@@ -15,8 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEventHubNamespaceV2'))
 }
 
 Describe 'Get-AzEventHubNamespaceV2' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $listOfNamespaces = Get-AzEventHubNamespaceV2
+        $listOfNamespaces.Count | Should -BeGreaterOrEqual 2
     }
 
     It 'Get' {
