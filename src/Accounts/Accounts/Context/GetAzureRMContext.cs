@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.Profile
         private PSAzureContext ToPSAzureContext(IAzureContext azureContext, string name)
         {
             var context = new PSAzureContext(azureContext);
-            if (string.IsNullOrEmpty(name) && null != context)
+            if (null != name && null != context)
             {
                 context.Name = name;
             }
