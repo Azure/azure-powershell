@@ -33,7 +33,6 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [GenericBreakingChangeWithVersionAttribute("Starting in May 2024 the \"New-AzGalleryImage\" cmdlet will deploy with the Trusted Launch configuration by default. To know more about Trusted Launch, please visit https://docs.microsoft.com/en-us/azure/virtual-machines/trusted-launch", "12.0.0", "8.0.0")]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "GalleryImageDefinition", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSGalleryImage))]
     public partial class NewAzureRmGalleryImage : ComputeAutomationBaseCmdlet
@@ -189,10 +188,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                     if (this.IsParameterBound(c => c.Feature))
                     {
-                        galleryImage.Features = this.Feature;
+                        galleryImage.Features = new List<GalleryImageFeature>();
+                        for (int i = 0; i < this.Feature.Length; i++)
+                        {
+                            galleryImage.Features.Add(this.Feature[i]);
+                        }
                     }
                     if (SecurityTypeNotFoundInFeatures(galleryImage.Features))// if SecurityType is not in Features, default to TrustedLaunch
                     {
+                        if (galleryImage.Features == null)
+                        {
+                            galleryImage.Features = new List<GalleryImageFeature>();
+                        }
                         galleryImage.Features.Add(new GalleryImageFeature("SecurityType", "TrustedLaunchSupported"));
                     }
 
@@ -358,7 +365,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
             foreach (var feature in features)
             {
-                if (feature.Name == "SecurityType")
+                if (feature.Name.ToLower() == "securitytype")
                 {
                     return false;
                 }
