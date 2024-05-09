@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
                 .WithNewRmModules(helper => new[]
                 {
                     helper.RMProfileModule,
+                    helper.RMResourceModule,
                     helper.GetRMModulePath("Az.Websites.psd1"),
                     helper.GetRMModulePath("Az.Network.psd1"),
                 })
