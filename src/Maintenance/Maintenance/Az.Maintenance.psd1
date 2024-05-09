@@ -82,6 +82,7 @@ CmdletsToExport = 'Get-AzApplyUpdate', 'Get-AzConfigurationAssignment',
                'New-AzMaintenanceConfiguration', 
                'Remove-AzConfigurationAssignment', 
                'Remove-AzMaintenanceConfiguration', 
+               'Set-AzScheduledEvent',
                'Update-AzMaintenanceConfiguration'
 
 # Variables to export from this module
