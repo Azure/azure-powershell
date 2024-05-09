@@ -1330,6 +1330,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [Tenant and subscription selection].
+        /// </summary>
+        internal static string TenantAndSubscriptionSelection {
+            get {
+                return ResourceManager.GetString("TenantAndSubscriptionSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in with Connect-AzAccount.
         /// </summary>
         internal static string TenantAuthFailed {

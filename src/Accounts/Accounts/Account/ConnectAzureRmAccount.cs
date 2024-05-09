@@ -527,6 +527,12 @@ namespace Microsoft.Azure.Commands.Profile
                     profileClient.WarningLog = (message) => _tasks.Enqueue(new Task(() => this.WriteWarning(message))); 
                     profileClient.InformationLog = (message) => _tasks.Enqueue(new Task(() => this.WriteInformation(message, false)));
                     profileClient.DebugLog = (message) => _tasks.Enqueue(new Task(() => this.WriteDebugWithTimestamp(message)));
+                    profileClient.PromptAndReadLine = (message) =>
+                    {
+                        var prompt = new Task<string>(() => Prompt(message));
+                        _tasks.Enqueue(prompt);
+                        return prompt.GetAwaiter().GetResult();
+                    };
 
                     var task = new Task<AzureRmProfile>(() => profileClient.Login(
                         azureAccount,
@@ -542,9 +548,8 @@ namespace Microsoft.Azure.Commands.Profile
                         shouldPopulateContextList,
                         MaxContextPopulation,
                         resourceId,
-                        Prompt,
                         IsInteractiveAuthenticationFlow(),
-                        IsLoginExperienceV2Enabled()));
+                        IsInteractiveContextSelectionEnabled()));
                     task.Start();
                     while (!task.IsCompleted)
                     {
@@ -591,9 +596,9 @@ namespace Microsoft.Azure.Commands.Profile
             }
         }
 
-        private bool IsLoginExperienceV2Enabled()
+        private bool IsInteractiveContextSelectionEnabled()
         {
-            return AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out IConfigManager configManager) ? !configManager.GetConfigValue<LoginExperienceConfig>(ConfigKeys.LoginExperienceV2).Equals(LoginExperienceConfig.Off) : true;
+            return AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out IConfigManager configManager) ? configManager.GetConfigValue<LoginExperienceConfig>(ConfigKeys.LoginExperienceV2).Equals(LoginExperienceConfig.On) : true;
         }
 
         private bool IsInteractiveAuthenticationFlow()
@@ -681,12 +686,16 @@ namespace Microsoft.Azure.Commands.Profile
                 writeInformationEvent(this, new StreamEventArgs() { Message = message });
             }
         }
+
+        /// <summary>
+        /// Prompt a message and read a line, may move to AzPsCmdlet if more cmdlets need to prompt
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         private string Prompt(string message)
         {
-            _tasks.Enqueue(new Task(() => this.WriteInformation(message, true)));
-            var readLine = new Task<string>(() => this.Host.UI.ReadLine());
-            _tasks.Enqueue(readLine);
-            return readLine.GetAwaiter().GetResult();
+            this.WriteInformation(message, true);
+            return this.Host.UI.ReadLine();
         }
 
         private static bool CheckForExistingContext(AzureRmProfile profile, string name)

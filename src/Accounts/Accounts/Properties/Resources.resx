@@ -616,6 +616,9 @@
   <data name="SelectTenantAndSubscriptionWithDefaultValue" xml:space="preserve">
     <value>Select a tenant and subscription (type a number or Enter to accept default): </value>
   </data>
+  <data name="TenantAndSubscriptionSelection" xml:space="preserve">
+    <value>[Tenant and subscription selection]</value>
+  </data>
   <data name="TypedSubscriptionNotNumber" xml:space="preserve">
     <value>Typed subscription is not a number.</value>
   </data>

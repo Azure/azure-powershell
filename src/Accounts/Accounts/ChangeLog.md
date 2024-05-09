@@ -21,7 +21,7 @@
 ## Upcoming Release
 * Supported interactive subscription selection for user login flow. See more details at [Announcing a new login experience with Azure PowerShell and Azure CLI
 ](https://techcommunity.microsoft.com/t5/azure-tools-blog/announcing-a-new-login-experience-with-azure-powershell-and/ba-p/4109357)
-* Added config `LoginExperienceV2` to allow customer to switch the default behavior of context selection back.
+* Added config `LoginExperienceV2` to allow customer to switch the default behavior of context selection back. Check the help document of `Update-AzConfig` for more details.
 * Updated the reference of Azure PowerShell Common to 1.3.94-preview.
 * [Breaking Change] Removed config `DisableErrorRecordsPersistence` to disable writing error records, error recording is now opt-in
 * Added config `EnableErrorRecordsPersistence` to enable writing error records to file system
