@@ -979,6 +979,7 @@ function Test-GalleryImageDefinitionDefaults
 
          # verify HyperVGeneration and TL default 
          Assert-AreNotEqual $definition2.features[0].Value "TrustedLaunchSupported";
+         Assert-AreEqual $definition2.features.count 1
 
 
     }
