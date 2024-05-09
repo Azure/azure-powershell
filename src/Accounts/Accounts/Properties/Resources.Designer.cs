@@ -826,6 +826,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please type a number to select a subscription..
+        /// </summary>
+        internal static string PleaseSelectSubscription {
+            get {
+                return ResourceManager.GetString("PleaseSelectSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This function is in preview. It may not be available in the selected subscription..
         /// </summary>
         internal static string PreviewFunctionMessage {
@@ -1087,6 +1096,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Selected subscription is out of range, please type a correct number..
+        /// </summary>
+        internal static string SelectedSubscriptionOutOfRange {
+            get {
+                return ResourceManager.GetString("SelectedSubscriptionOutOfRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Load modules with profile.
         /// </summary>
         internal static string SelectProfileAction {
@@ -1101,6 +1119,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string SelectProfileTarget {
             get {
                 return ResourceManager.GetString("SelectProfileTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a tenant and subscription: .
+        /// </summary>
+        internal static string SelectTenantAndSubscription {
+            get {
+                return ResourceManager.GetString("SelectTenantAndSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a tenant and subscription (type a number or Enter to accept default): .
+        /// </summary>
+        internal static string SelectTenantAndSubscriptionWithDefaultValue {
+            get {
+                return ResourceManager.GetString("SelectTenantAndSubscriptionWithDefaultValue", resourceCulture);
             }
         }
         
@@ -1362,6 +1398,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string TokenCachePersistenceCheckError {
             get {
                 return ResourceManager.GetString("TokenCachePersistenceCheckError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Typed subscription is not a number..
+        /// </summary>
+        internal static string TypedSubscriptionNotNumber {
+            get {
+                return ResourceManager.GetString("TypedSubscriptionNotNumber", resourceCulture);
             }
         }
         

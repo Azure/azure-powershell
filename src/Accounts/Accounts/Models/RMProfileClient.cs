@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     $"and subscription is '{lastUsedSubscription?.Name} ({lastUsedSubscription?.Id})'.");
             }
 
-            string input = markDefaultSubscription ? prompt($"{Environment.NewLine}Select a tenant and subscription (type a number or Enter to accept default): ") : prompt($"{Environment.NewLine}Select a tenant and subscription: ");
+            string input = markDefaultSubscription ? prompt($"{Environment.NewLine}{Resources.SelectTenantAndSubscriptionWithDefaultValue}") : prompt($"{Environment.NewLine}{Resources.SelectTenantAndSubscription}");
             int selectedSubIndex = -1;
             try
             {
@@ -471,7 +471,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     defaultSubscription = lastUsedSubscription;
                 }else if(selectedSubIndex == -1 && lastUsedSubscription == null)
                 {
-                    throw new AzPSException("Please type a number to select a subscription.", ErrorKind.UserError);
+                    throw new AzPSException(Resources.PleaseSelectSubscription, ErrorKind.UserError);
                 }
                 defaultTenant = GetDetailedTenantFromQueryHistory(defaultSubscription?.GetProperty(AzureSubscription.Property.Tenants)) ?? new AzureTenant { Id = tenantId };
                 if (!string.IsNullOrEmpty(tenantName))
@@ -482,11 +482,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
             catch (ArgumentOutOfRangeException)
             {
-                throw new AzPSException("Selected subscription and tenant is out of range, please type a correct number.", ErrorKind.UserError);
+                throw new AzPSException(Resources.SelectedSubscriptionOutOfRange, ErrorKind.UserError);
             }
             catch (FormatException)
             {
-                throw new AzPSException("Typed subscription and tenant is not a number.", ErrorKind.UserError);
+                throw new AzPSException(Resources.TypedSubscriptionNotNumber, ErrorKind.UserError);
             }
         }
 
