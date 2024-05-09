@@ -20,6 +20,8 @@
 
 
 ## Upcoming Release
+
+## Version 2.0.2
 * Introduced secrets detection feature to safeguard sensitive data.
 
 ## Version 2.0.1

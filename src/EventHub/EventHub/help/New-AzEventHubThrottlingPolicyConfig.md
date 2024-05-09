@@ -13,8 +13,8 @@ Constructs an IThrottlingPolicy object that can be fed as input to New-AzEventHu
 ## SYNTAX
 
 ```
-New-AzEventHubThrottlingPolicyConfig -Name <String> -RateLimitThreshold <Int64> -MetricId <MetricId>
- [<CommonParameters>]
+New-AzEventHubThrottlingPolicyConfig -Name <String> -RateLimitThreshold <Int64> -MetricId <String>
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +41,7 @@ Please refer examples for Set-AzEventHubApplicationGroup to know more.
 Metric Id on which the throttle limit should be set, MetricId can be discovered by hovering over Metric in the Metrics section of Event Hub Namespace inside Azure Portal
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.MetricId
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -61,6 +61,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -89,7 +104,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IThrottlingPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IThrottlingPolicy
 
 ## NOTES
 

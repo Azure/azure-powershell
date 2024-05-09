@@ -313,15 +313,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to When disabled, error records will not be written to ~/.Azure/ErrorRecords. This config will be replaced by &quot;EnableErrorRecordsPersistence&quot; as opt-in in the next major release of Az around November 2023..
-        /// </summary>
-        public static string HelpMessageOfDisableErrorRecordsPersistence {
-            get {
-                return ResourceManager.GetString("HelpMessageOfDisableErrorRecordsPersistence", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Set it to true to disable both instance discovery and authority validation. This functionality is intended for use in scenarios where the metadata endpoint cannot be reached, such as in private clouds or Azure Stack. The process of instance discovery entails retrieving authority metadata from https://login.microsoft.com/ to validate the authority. By setting this to true, the validation of the authority is disabled. As a result, it is crucial to ensure that the configured authority host is valid and trustwo [rest of string was truncated]&quot;;.
         /// </summary>
         public static string HelpMessageOfDisableInstanceDiscovery {

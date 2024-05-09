@@ -263,7 +263,8 @@ namespace Microsoft.Azure.Management.Sql
 
         }
         /// <summary>
-        /// Enables upload ledger digests to an Azure Storage account or an Azure Confidential Ledger instance.
+        /// Enables upload ledger digests to an Azure Storage account or an Azure
+        /// Confidential Ledger instance.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
@@ -513,7 +514,8 @@ namespace Microsoft.Azure.Management.Sql
 
         }
         /// <summary>
-        /// Disables uploading ledger digests to an Azure Storage account or an Azure Confidential Ledger instance.
+        /// Disables uploading ledger digests to an Azure Storage account or an Azure
+        /// Confidential Ledger instance.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain

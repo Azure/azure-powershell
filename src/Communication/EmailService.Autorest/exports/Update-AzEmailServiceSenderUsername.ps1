@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Add a new SenderUsername resource under the parent Domains resource or Update an existing SenderUsername resource.
+Add a new SenderUsername resource under the parent Domains resource or update an existing SenderUsername resource.
 .Description
-Add a new SenderUsername resource under the parent Domains resource or Update an existing SenderUsername resource.
+Add a new SenderUsername resource under the parent Domains resource or update an existing SenderUsername resource.
 .Example
 Update-AzEmailServiceSenderUsername -SenderUsername test -Username test -DisplayName testdisplayname -DomainName testcustomdomain2.net -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1							   
 .Example

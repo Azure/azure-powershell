@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed the outdated deps.json file.
 
 ## Version 1.1.4
 * Removed project reference to Authentication

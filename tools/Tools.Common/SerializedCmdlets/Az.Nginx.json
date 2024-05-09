@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.Nginx",
-  "ModuleVersion": "1.0.0",
+  "ModuleVersion": "1.0.1",
   "Cmdlets": [
     {
       "VerbName": "Get",

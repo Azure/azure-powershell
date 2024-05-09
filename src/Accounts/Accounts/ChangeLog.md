@@ -19,6 +19,12 @@
 -->
 
 ## Upcoming Release
+* Supported auto-discovery of the endpoint of OperationalInsights (azure-powershell-common/pull/414)
+* Updated the reference of Azure PowerShell Common to 1.3.94-preview.
+* [Breaking Change] Removed config `DisableErrorRecordsPersistence` to disable writing error records, error recording is now opt-in
+* Added config `EnableErrorRecordsPersistence` to enable writing error records to file system
+
+## Version 2.19.0
 > [!IMPORTANT]
 > Preannouncement: The default interactive login experience will change from browser based to `Web Account Manager` (WAM) based on supported platforms, [learn more](https://learn.microsoft.com/en-us/entra/msal/dotnet/acquiring-tokens/desktop-mobile/wam). Only interactive login flow is influeced by WAM. This will take effect from the release of **May 21st**.
 * Fixed secrets detection issues.
@@ -35,7 +41,7 @@
 * Redirected device code login messages from warning stream to information stream if use device authentication in `Connect-AzAccount`.
 
 ## Version 2.15.1
-* Adjusted output format to be more user-friendly for `Get-AzContext/Tenant/Subscription` and `Invoke-AzRestMethod`, including 
+* Adjusted output format to be more user-friendly for `Get-AzContext/Tenant/Subscription` and `Invoke-AzRestMethod`, including
     - ordering and grouping output items to make items easy to find.
     - re-prioritizing positions for output properties to highlight valuable properties.
 * Upgraded the reference of Azure PowerShell Common to 1.3.90-preview.

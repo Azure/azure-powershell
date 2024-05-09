@@ -73,5 +73,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         //     Gets specifies the time at which the Virtual Machine Scale Set resource was created.&lt;br&gt;&lt;br&gt;Minimum
         //     api-version: 2022-03-01.
         public DateTime? TimeCreated { get; private set; }
+        public string Etag { get; private set; }
     }
 }

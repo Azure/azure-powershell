@@ -8,18 +8,18 @@ schema: 2.0.0
 # New-AzEventHubCluster
 
 ## SYNOPSIS
-Creates or updates an instance of an Event Hubs Cluster.
+Create an instance of an Event Hubs Cluster.
 
 ## SYNTAX
 
 ```
 New-AzEventHubCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Capacity <Int32>]
  [-Location <String>] [-SupportsScaling] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates an instance of an Event Hubs Cluster.
+Create an instance of an Event Hubs Cluster.
 
 ## EXAMPLES
 
@@ -158,6 +158,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Name of the resource group within the azure subscription.
 
@@ -257,7 +272,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICluster
 
 ## NOTES
 
