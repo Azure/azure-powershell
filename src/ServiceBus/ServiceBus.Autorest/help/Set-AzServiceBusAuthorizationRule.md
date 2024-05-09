@@ -15,27 +15,27 @@ Updates the authorization rule of a ServiceBus namespace, queue or topic.
 ### SetExpandedNamespace (Default)
 ```
 Set-AzServiceBusAuthorizationRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- -Rights <AccessRights[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Rights <String[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetExpandedQueue
 ```
 Set-AzServiceBusAuthorizationRule -Name <String> -NamespaceName <String> -QueueName <String>
- -ResourceGroupName <String> -Rights <AccessRights[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ -ResourceGroupName <String> -Rights <String[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetExpandedTopic
 ```
 Set-AzServiceBusAuthorizationRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- -TopicName <String> -Rights <AccessRights[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ -TopicName <String> -Rights <String[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
 ```
-Set-AzServiceBusAuthorizationRule -InputObject <IServiceBusIdentity> -Rights <AccessRights[]>
+Set-AzServiceBusAuthorizationRule -InputObject <IServiceBusIdentity> -Rights <String[]>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -204,7 +204,7 @@ Accept wildcard characters: False
 The rights associated with the rule.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.AccessRights[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -285,7 +285,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule
 
 ## NOTES
 

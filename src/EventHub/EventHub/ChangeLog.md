@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Moved cmdlets to V4
+
+## Version 4.2.2
 * Introduced secrets detection feature to safeguard sensitive data.
 
 ## Version 4.2.1

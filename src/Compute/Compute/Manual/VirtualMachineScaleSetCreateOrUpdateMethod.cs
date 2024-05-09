@@ -465,7 +465,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     securityType: _cmdlet.SecurityType,
                     enableVtpm: _cmdlet.EnableVtpm,
                     enableSecureBoot: _cmdlet.EnableSecureBoot,
-                    enableAutomaticOSUpgradePolicy:  _cmdlet.EnableAutomaticOSUpgrade == true ? true : (bool?)null
+                    enableAutomaticOSUpgradePolicy:  _cmdlet.EnableAutomaticOSUpgrade == true ? true : (bool?)null,
+                    ifMatch: _cmdlet.IfMatch,
+                    ifNoneMatch: _cmdlet.IfNoneMatch
                     );
             }
 
@@ -566,6 +568,25 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 var hostGroup = resourceGroup.CreateDedicatedHostGroupSubResourceFunc(_cmdlet.HostGroupId);
 
+                Dictionary<string, List<string>> auxAuthHeader = null;
+                if (!string.IsNullOrEmpty(_cmdlet.ImageReferenceId))
+                {
+                    var resourceId = ResourceId.TryParse(_cmdlet.ImageReferenceId);
+
+                    if (string.Equals(ComputeStrategy.Namespace, resourceId?.ResourceType?.Namespace, StringComparison.OrdinalIgnoreCase)
+                     && string.Equals("galleries", resourceId?.ResourceType?.Provider, StringComparison.OrdinalIgnoreCase)
+                     && !string.Equals(_cmdlet.ComputeClient?.ComputeManagementClient?.SubscriptionId, resourceId?.SubscriptionId, StringComparison.OrdinalIgnoreCase))
+                    {
+                        List<string> resourceIds = new List<string>();
+                        resourceIds.Add(_cmdlet.ImageReferenceId);
+                        var auxHeaderDictionary = _cmdlet.GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
+                        if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+                        {
+                            auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
+                        }
+                    }
+                }
+
                 return resourceGroup.CreateVirtualMachineScaleSetConfigOrchestrationModeFlexible(
                     name: _cmdlet.VMScaleSetName,
                     subnet: subnet,
@@ -596,7 +617,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     securityType: _cmdlet.SecurityType,
                     enableVtpm: _cmdlet.EnableVtpm,
                     enableSecureBoot: _cmdlet.EnableSecureBoot,
-                    enableAutomaticOSUpgradePolicy: _cmdlet.EnableAutomaticOSUpgrade == true ? true : (bool?)null
+                    enableAutomaticOSUpgradePolicy: _cmdlet.EnableAutomaticOSUpgrade == true ? true : (bool?)null,
+                    auxAuthHeader: auxAuthHeader,
+                    ifMatch: _cmdlet.IfMatch,
+                    ifNoneMatch: _cmdlet.IfNoneMatch
                     );
             }
         }

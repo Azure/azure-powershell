@@ -20,7 +20,7 @@ Removes the Authorization Rule of a ServiceBus Namespace, Queue or Topic
 #>
 
 function Remove-AzServiceBusAuthorizationRule{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule])]
     [CmdletBinding(DefaultParameterSetName = 'RemoveExpandedNamespace', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(ParameterSetName = 'RemoveExpandedQueue', Mandatory, HelpMessage = "The name of the Authorization Rule")]

@@ -16,14 +16,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzEventHubNamespaceV2'
 
 Describe 'Remove-AzEventHubNamespaceV2' {
     It 'Delete' {
-        $eventhubnamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV2 -SkuName Standard -Location eastus    
+        $eventhubnamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV2 -SkuName Standard -Location $env.location
         Remove-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV2
-        { Get-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV2  } | Should -Throw
+        { Get-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV2  -ErrorAction Stop } | Should -Throw
     }
 
     It 'DeleteViaIdentity' { 
-        $eventhubnamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV2 -SkuName Standard -Location eastus
+        $eventhubnamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV2 -SkuName Standard -Location $env.location
         Remove-AzEventHubNamespaceV2 -InputObject $eventhubnamespace
-        { Get-AzEventHubNamespaceV2 -InputObject $eventhubnamespace } | Should -Throw
+        { Get-AzEventHubNamespaceV2 -InputObject $eventhubnamespace -ErrorAction Stop } | Should -Throw
     }
 }

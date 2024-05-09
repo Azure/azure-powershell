@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update the synopsis
+
+## Version 0.7.2
 * Introduced secrets detection feature to safeguard sensitive data.
 
 ## Version 0.7.1

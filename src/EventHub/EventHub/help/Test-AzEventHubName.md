@@ -15,14 +15,14 @@ Checks availability of a namespace name or disaster recovery alias.
 ### NamespaceAvailability (Default)
 ```
 Test-AzEventHubName -NamespaceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### AliasAvailability
 ```
 Test-AzEventHubName -NamespaceName <String> [-SubscriptionId <String>] -AliasName <String>
  -ResourceGroupName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -133,6 +133,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource
 
@@ -170,7 +185,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ICheckNameAvailabilityResult
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICheckNameAvailabilityResult
 
 ## NOTES
 
