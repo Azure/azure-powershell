@@ -684,7 +684,9 @@ namespace Microsoft.Azure.Commands.Profile
         private string Prompt(string message)
         {
             _tasks.Enqueue(new Task(() => this.WriteInformation(message, true)));
-            return this.Host.UI.ReadLine();
+            var readLine = new Task<string>(() => this.Host.UI.ReadLine());
+            _tasks.Enqueue(readLine);
+            return readLine.GetAwaiter().GetResult();
         }
 
         private static bool CheckForExistingContext(AzureRmProfile profile, string name)
