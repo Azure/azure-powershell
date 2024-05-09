@@ -5,6 +5,6 @@ steps:
 - task: PublishPipelineArtifact@0
   displayName: 'Save ${{ parameters.artifactName }}'
   inputs:
-    artifactName: ${{ parameters.artifactName }}-$(System.JobAttempt)
+    artifactName: ${{ parameters.artifactName }}
     targetPath: artifacts
   condition: always()
