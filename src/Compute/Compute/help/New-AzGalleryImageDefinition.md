@@ -45,7 +45,7 @@ $description = "My gallery"
 New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Specialized" -OsType "Linux" -Description $description
 ```
 
-Creates a gallery image definition to contain image versions for specialized linux images.
+Creates a gallery image definition to contain image versions for specialized linux images. This will default the Gallery Image to HyperVGeneration V2 and Trusted Launch as `-HyperVGeneration` and `-Feature SecurityType` is not set explicitly.
 
 ### Example 2: Create an image definition for generalized linux images
 
