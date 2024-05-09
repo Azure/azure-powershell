@@ -1035,10 +1035,11 @@ namespace Microsoft.Azure.Commands.Compute
                         WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
                     }
                 }
-                else if (this.VM.StorageProfile?.ImageReference?.Publisher != null
-                    && this.VM.StorageProfile?.ImageReference?.Offer != null
-                    && this.VM.StorageProfile?.ImageReference?.Sku != null
-                    && this.VM.StorageProfile?.ImageReference?.Version != null)
+                else
+                //if (this.VM.StorageProfile?.ImageReference?.Publisher != null
+                //    && this.VM.StorageProfile?.ImageReference?.Offer != null
+                //    && this.VM.StorageProfile?.ImageReference?.Sku != null
+                //    && this.VM.StorageProfile?.ImageReference?.Version != null)
                 {
                     // handle each field in image reference itself to then call it.
                     Microsoft.Rest.Azure.AzureOperationResponse<VirtualMachineImage> specificImageRespone = retrieveSpecificImageFromNotId();

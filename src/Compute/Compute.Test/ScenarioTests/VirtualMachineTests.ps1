@@ -7488,3 +7488,77 @@ function Test-CapacityReservationSharingProfile
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test Virtual Machines can be created with sharedgallery
+#>
+function Test-VMCreationWithSharedGallery
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        $rgname ="adsandgal2";
+        $loc = "eastus";
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        # SimpleParameterSet, no config, scenario.
+        # create credential 
+        $password = "Testing1234567";#Get-PasswordForVM;
+        $user = "usertest";#Get-ComputeTestResourceName;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # Add one VM from creation 
+        $vmname = 'vm' + $rgname;
+        $domainNameLabel = "d1" + $rgname;
+        $vmSize = "Standard_D2s_v5";
+        $vnetname = "vn" + $rgname;
+        $vnetAddress = "10.0.0.0/16";
+        $subnetname = "slb" + $rgname;
+        $subnetAddress = "10.0.2.0/24";
+        $OSDiskName = $vmname + "-osdisk";
+        $NICName = $vmname+ "-nic";
+        $NSGName = $vmname + "-NSG";
+        #$securityType_TL = "TrustedLaunch";
+        #$PublisherName = "MicrosoftWindowsServer";
+        #$Offer = "WindowsServer";
+        #$SKU = "2022-datacenter-azure-edition";
+        #$version = "latest";
+        #$disable = $false;
+        #$enable = $true;
+        $galUniqueName = "e37510d7-33b6-4676-886f-ee75bcc01871-adsandgal3";
+        $galdefname = "adsandvmdefstd";
+        $galver = "1.0.0";
+        $galImgVer = Get-AzGalleryImageVersion -GalleryUniqueName $galUniqueName -GalleryImageDefinitionName $galdefname -Location $loc;
+        #$sharedGalImgdId ="/SharedGalleries/" + $galUniqueName +  "/Images/" + $galdefname +  "/Versions/" + $galver;
+        $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
+
+        $vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
+         
+        $nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
+        $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $RGName -Location $loc -Name $NSGName  -SecurityRules $nsgRuleRDP;
+        $nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $RGName -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
+
+        $VmConfig = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SharedGalleryImageId $galImgVer.UniqueId;# -Location $loc;
+        Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName -Credential $cred;
+        #Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version $version ;
+        Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
+        $vm = New-AzVM -VM $vmconfig -resourceGroupName $rgname -Location $loc;
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
+
+        # Validate
+        Assert-AreEqual $vm.SecurityProfile.SecurityType $securityType_TL;
+        Assert-AreEqual $vm.SecurityProfile.UefiSettings.SecureBootEnabled $enable;
+        Assert-AreEqual $vm.SecurityProfile.UefiSettings.VTpmEnabled $enable;
+        Assert-AreEqual $vm.StorageProfile.ImageReference.Sku $SKU;
+        Assert-Null $vm.SecurityProfile.EncryptionAtHost;
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
