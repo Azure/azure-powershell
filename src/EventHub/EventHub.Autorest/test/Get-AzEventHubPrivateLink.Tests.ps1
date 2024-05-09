@@ -13,10 +13,11 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzEventHubPrivateLink' {
     It 'Get'  {
+        $namespace = Get-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespace
         $privateLink = Get-AzEventHubPrivateLink -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup
         $privateLink.Name | Should -Be "namespace"
         $privateLink.GroupId | Should -Be "namespace"
         $privateLink.RequiredMember[0] | Should -Be "namespace"
-        $privateLink.RequiredZoneName[0] | Should -Be "privatelink.servicebus.windows.net"
+        $privateLink.RequiredZoneName[0] | Should -Be $([System.Uri]$namespace.ServiceBusEndpoint).Host.ToLower().Replace($env.namespace.ToLower(), 'privatelink')
     }
 }

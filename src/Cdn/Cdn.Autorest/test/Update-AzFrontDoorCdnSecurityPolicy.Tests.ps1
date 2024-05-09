@@ -18,7 +18,7 @@ Describe 'Update-AzFrontDoorCdnSecurityPolicy'  {
     BeforeAll {
         $subId = $env.SubscriptionId
 
-        $endpointName = 'end-pstest110'
+        $endpointName = 'e-clipstest160'
         Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
         $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 
@@ -33,7 +33,7 @@ Describe 'Update-AzFrontDoorCdnSecurityPolicy'  {
     }
 
     It 'PatchExpanded' -Skip {
-        $endpointName2 = 'end-pstest111'
+        $endpointName2 = 'e-clipstest161'
         Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName2)"
         $endpoint2 = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName2 -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 
@@ -47,7 +47,7 @@ Describe 'Update-AzFrontDoorCdnSecurityPolicy'  {
     }
 
     It 'PatchViaIdentityExpanded' -Skip {
-        $endpointName2 = 'end-pstest112'
+        $endpointName2 = 'e-clipstest162'
         Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName2)"
         $endpoint2 = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName2 -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 

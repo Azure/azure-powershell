@@ -20,7 +20,7 @@ Denies an EventHub PrivateEndpointConnection
 #>
 
 function Deny-AzEventHubPrivateEndpointConnection{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IPrivateEndpointConnection])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(ParameterSetName = 'SetExpanded', HelpMessage = "The name of the Private Endpoint Connection")]

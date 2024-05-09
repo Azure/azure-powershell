@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the DiagnosticSetting service.
 
 ---
-## Status
-[![Az.DiagnosticSetting](https://img.shields.io/powershellgallery/v/Az.DiagnosticSetting.svg?style=flat-square&label=Az.DiagnosticSetting "Az.DiagnosticSetting")](https://www.powershellgallery.com/packages/Az.DiagnosticSetting/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
