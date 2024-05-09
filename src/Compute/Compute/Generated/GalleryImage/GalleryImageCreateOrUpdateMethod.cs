@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             galleryImage.Features.Add(this.Feature[i]);
                         }
                     }
-                    if (SecurityTypeNotFoundInFeatures(galleryImage.Features))// if SecurityType is not in Features, default to TrustedLaunch
+                    if (SecurityTypeNotFoundInFeatures(galleryImage.Features) && galleryImage.HyperVGeneration == "V2")// if SecurityType is not in Features, default to TrustedLaunch
                     {
                         if (galleryImage.Features == null)
                         {
