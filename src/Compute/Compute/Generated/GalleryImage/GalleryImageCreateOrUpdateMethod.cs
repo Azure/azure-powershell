@@ -69,6 +69,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         galleryImage.HyperVGeneration = this.HyperVGeneration;
                     }
+                    else //default HyperVGenration V2 if not specified
+                    {
+                        galleryImage.HyperVGeneration = "V2";
+                    }
 
                     if (this.IsParameterBound(c => c.PrivacyStatementUri))
                     {
@@ -186,6 +190,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     if (this.IsParameterBound(c => c.Feature))
                     {
                         galleryImage.Features = this.Feature;
+                    }
+                    if (SecurityTypeNotFoundInFeatures(galleryImage.Features))// if SecurityType is not in Features, default to TrustedLaunch
+                    {
+                        galleryImage.Features.Add(new GalleryImageFeature("SecurityType", "TrustedLaunchSupported"));
                     }
 
                     var result = GalleryImagesClient.CreateOrUpdate(resourceGroupName, galleryName, galleryImageName, galleryImage);
@@ -341,6 +349,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
              HelpMessage = "CPU architecture supported by an OS disk. Possible values are \"X64\" and \"Arm64\".")]
         [PSArgumentCompleter("X64", "Arm64")]
         public string Architecture { get; set; }
+
+        private bool SecurityTypeNotFoundInFeatures(IList<GalleryImageFeature> features)
+        {
+            if (features == null)
+            {
+                return true;
+            }
+            foreach (var feature in features)
+            {
+                if (feature.Name == "SecurityType")
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "GalleryImageDefinition", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
