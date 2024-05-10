@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="4" errors="0" failures="4" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2024-05-10" time="14:26:37">
+  <environment cwd="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest" user="anaarias" nunit-version="2.5.8.0" user-domain="REDMOND" machine-name="ANAARIAS" os-version="10.0.22631" platform="Microsoft Windows 11 Enterprise|C:\WINDOWS|\Device\Harddisk0\Partition3" clr-version="Unknown" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="9.8806" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareAddon.Tests.ps1" executed="True" result="Failure" success="False" time="3.8619" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareAddon.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="AzVMwareAddon" executed="True" result="Failure" success="False" time="3.5754" asserts="0" description="AzVMwareAddon">
+            <results>
+              <test-case description="List" name="AzVMwareAddon.List" time="2.3574" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected no exception to be thrown, but an exception "Expected literal (number, boolean, or null). Was '&lt;'." was thrown from C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\custom\New-AzVMwareAddon.ps1:136 char:13
+    +             Az.VMware.internal\New-AzVMwareAddon @PSBoundParameters
+    +             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareAddon.Tests.ps1: line 23
+23:         } | Should -Not -Throw</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="Get" name="AzVMwareAddon.Get" time="0.0912" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected no exception to be thrown, but an exception "Expected literal (number, boolean, or null). Was '&lt;'." was thrown from C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\custom\Get-AzVMwareAddon.ps1:170 char:9
+    +         Az.VMware.internal\Get-AzVMwareAddon @PSBoundParameters
+    +         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareAddon.Tests.ps1: line 30
+30:         } | Should -Not -Throw</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="CreateExpanded" name="AzVMwareAddon.CreateExpanded" time="0.0521" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected no exception to be thrown, but an exception "Expected literal (number, boolean, or null). Was '&lt;'." was thrown from C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\custom\New-AzVMwareAddon.ps1:136 char:13
+    +             Az.VMware.internal\New-AzVMwareAddon @PSBoundParameters
+    +             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareAddon.Tests.ps1: line 38
+38:         } | Should -Not -Throw</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="Delete" name="AzVMwareAddon.Delete" time="0.0929" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected no exception to be thrown, but an exception "Expected literal (number, boolean, or null). Was '&lt;'." was thrown from C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\custom\Remove-AzVMwareAddon.ps1:178 char:13
+    +             Az.VMware.internal\Remove-AzVMwareAddon @PSBoundParameter …
+    +             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareAddon.Tests.ps1: line 44
+44:         } | Should -Not -Throw</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareAddonSrmPropertiesObject.Tests.ps1" executed="True" result="Success" success="True" time="0.2777" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareAddonSrmPropertiesObject.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareAddonVrPropertiesObject.Tests.ps1" executed="True" result="Success" success="True" time="0.2016" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareAddonVrPropertiesObject.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareAuthorization.Tests.ps1" executed="True" result="Success" success="True" time="0.1909" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareAuthorization.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareCloudLink.Tests.ps1" executed="True" result="Success" success="True" time="0.2046" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareCloudLink.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareCluster.Tests.ps1" executed="True" result="Success" success="True" time="0.1856" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareCluster.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareDatastore.Tests.ps1" executed="True" result="Success" success="True" time="0.0341" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareDatastore.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareGlobalReachConnection.Tests.ps1" executed="True" result="Success" success="True" time="0.1951" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareGlobalReachConnection.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareLocationQuotaAvailability.Tests.ps1" executed="True" result="Success" success="True" time="0.2259" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareLocationQuotaAvailability.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareLocationTrialAvailability.Tests.ps1" executed="True" result="Success" success="True" time="0.2547" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareLocationTrialAvailability.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwarePlacementPolicy.Tests.ps1" executed="True" result="Success" success="True" time="0.2965" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwarePlacementPolicy.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwarePrivateCloud.Tests.ps1" executed="True" result="Success" success="True" time="0.2212" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwarePrivateCloud.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwarePrivateCloudAdminCredential.Tests.ps1" executed="True" result="Success" success="True" time="0.1794" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwarePrivateCloudAdminCredential.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwarePrivateCloudNsxtPassword.Tests.ps1" executed="True" result="Success" success="True" time="0.2177" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwarePrivateCloudNsxtPassword.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwarePrivateCloudVcenterPassword.Tests.ps1" executed="True" result="Success" success="True" time="0.2281" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwarePrivateCloudVcenterPassword.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwarePSCredentialExecutionParameterObject.Tests.ps1" executed="True" result="Success" success="True" time="0.2079" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwarePSCredentialExecutionParameterObject.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareScriptSecureStringExecutionParameterObject.Tests.ps1" executed="True" result="Success" success="True" time="0.2473" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareScriptSecureStringExecutionParameterObject.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareScriptStringExecutionParameterObject.Tests.ps1" executed="True" result="Success" success="True" time="0.3462" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareScriptStringExecutionParameterObject.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareVirtualMachine.Tests.ps1" executed="True" result="Success" success="True" time="0.2403" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareVirtualMachine.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareVmHostPlacementPolicyPropertiesObject.Tests.ps1" executed="True" result="Success" success="True" time="0.2402" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareVmHostPlacementPolicyPropertiesObject.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareVMPlacementPolicyPropertiesObject.Tests.ps1" executed="True" result="Success" success="True" time="0.2133" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\AzVMwareVMPlacementPolicyPropertiesObject.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Get-AzVMwareAddon.Tests.ps1" executed="True" result="Success" success="True" time="0.0217" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Get-AzVMwareAddon.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Get-AzVMwareAuthorization.Tests.ps1" executed="True" result="Success" success="True" time="0.0277" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Get-AzVMwareAuthorization.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Get-AzVMwareCloudLink.Tests.ps1" executed="True" result="Success" success="True" time="0.0299" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Get-AzVMwareCloudLink.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Get-AzVMwareCluster.Tests.ps1" executed="True" result="Success" success="True" time="0.0337" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Get-AzVMwareCluster.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Get-AzVMwareClusterZone.Tests.ps1" executed="True" result="Success" success="True" time="0.0292" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Get-AzVMwareClusterZone.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Get-AzVMwareDatastore.Tests.ps1" executed="True" result="Success" success="True" time="0.0295" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Get-AzVMwareDatastore.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Get-AzVMwareGlobalReachConnection.Tests.ps1" executed="True" result="Success" success="True" time="0.0224" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Get-AzVMwareGlobalReachConnection.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Get-AzVMwareIscsiPath.Tests.ps1" executed="True" result="Success" success="True" time="0.0302" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Get-AzVMwareIscsiPath.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Get-AzVMwarePlacementPolicy.Tests.ps1" executed="True" result="Success" success="True" time="0.046" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Get-AzVMwarePlacementPolicy.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Get-AzVMwarePrivateCloud.Tests.ps1" executed="True" result="Success" success="True" time="0.0371" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Get-AzVMwarePrivateCloud.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Get-AzVMwarePrivateCloudAdminCredential.Tests.ps1" executed="True" result="Success" success="True" time="0.052" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Get-AzVMwarePrivateCloudAdminCredential.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Get-AzVMwareVirtualMachine.Tests.ps1" executed="True" result="Success" success="True" time="0.0347" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Get-AzVMwareVirtualMachine.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Get-AzVMwareWorkloadNetwork.Tests.ps1" executed="True" result="Success" success="True" time="0.0424" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Get-AzVMwareWorkloadNetwork.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwareAddon.Tests.ps1" executed="True" result="Success" success="True" time="0.0302" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwareAddon.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwareAddonSrmPropertiesObject.Tests.ps1" executed="True" result="Success" success="True" time="0.0263" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwareAddonSrmPropertiesObject.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwareAddonVrPropertiesObject.Tests.ps1" executed="True" result="Success" success="True" time="0.0336" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwareAddonVrPropertiesObject.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwareAuthorization.Tests.ps1" executed="True" result="Success" success="True" time="0.0297" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwareAuthorization.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwareCloudLink.Tests.ps1" executed="True" result="Success" success="True" time="0.0265" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwareCloudLink.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwareCluster.Tests.ps1" executed="True" result="Success" success="True" time="0.0232" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwareCluster.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwareDatastore.Tests.ps1" executed="True" result="Success" success="True" time="0.0394" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwareDatastore.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwareGlobalReachConnection.Tests.ps1" executed="True" result="Success" success="True" time="0.0353" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwareGlobalReachConnection.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwareIdentitySourceObject.Tests.ps1" executed="True" result="Success" success="True" time="0.0353" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwareIdentitySourceObject.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwareIscsiPath.Tests.ps1" executed="True" result="Success" success="True" time="0.0328" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwareIscsiPath.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwarePlacementPolicy.Tests.ps1" executed="True" result="Success" success="True" time="0.0363" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwarePlacementPolicy.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwarePrivateCloud.Tests.ps1" executed="True" result="Success" success="True" time="0.0278" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwarePrivateCloud.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwarePrivateCloudNsxtPassword.Tests.ps1" executed="True" result="Success" success="True" time="0.0271" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwarePrivateCloudNsxtPassword.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwarePrivateCloudVcenterPassword.Tests.ps1" executed="True" result="Success" success="True" time="0.0304" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwarePrivateCloudVcenterPassword.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwarePSCredentialExecutionParameterObject.Tests.ps1" executed="True" result="Success" success="True" time="0.021" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwarePSCredentialExecutionParameterObject.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwareScriptSecureStringExecutionParameterObject.Tests.ps1" executed="True" result="Success" success="True" time="0.0266" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwareScriptSecureStringExecutionParameterObject.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwareScriptStringExecutionParameterObject.Tests.ps1" executed="True" result="Success" success="True" time="0.0271" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwareScriptStringExecutionParameterObject.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwareVmHostPlacementPolicyPropertiesObject.Tests.ps1" executed="True" result="Success" success="True" time="0.0273" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwareVmHostPlacementPolicyPropertiesObject.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwareVMPlacementPolicyPropertiesObject.Tests.ps1" executed="True" result="Success" success="True" time="0.0317" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\New-AzVMwareVMPlacementPolicyPropertiesObject.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Remove-AzVMwareAddon.Tests.ps1" executed="True" result="Success" success="True" time="0.0249" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Remove-AzVMwareAddon.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Remove-AzVMwareAuthorization.Tests.ps1" executed="True" result="Success" success="True" time="0.0242" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Remove-AzVMwareAuthorization.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Remove-AzVMwareCloudLink.Tests.ps1" executed="True" result="Success" success="True" time="0.0361" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Remove-AzVMwareCloudLink.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Remove-AzVMwareCluster.Tests.ps1" executed="True" result="Success" success="True" time="0.0294" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Remove-AzVMwareCluster.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Remove-AzVMwareDatastore.Tests.ps1" executed="True" result="Success" success="True" time="0.0386" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Remove-AzVMwareDatastore.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Remove-AzVMwareGlobalReachConnection.Tests.ps1" executed="True" result="Success" success="True" time="0.0327" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Remove-AzVMwareGlobalReachConnection.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Remove-AzVMwareIscsiPath.Tests.ps1" executed="True" result="Success" success="True" time="0.0315" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Remove-AzVMwareIscsiPath.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Remove-AzVMwarePlacementPolicy.Tests.ps1" executed="True" result="Success" success="True" time="0.0381" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Remove-AzVMwarePlacementPolicy.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Remove-AzVMwarePrivateCloud.Tests.ps1" executed="True" result="Success" success="True" time="0.0394" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Remove-AzVMwarePrivateCloud.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Test-AzVMwareLocationQuotaAvailability.Tests.ps1" executed="True" result="Success" success="True" time="0.0342" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Test-AzVMwareLocationQuotaAvailability.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Test-AzVMwareLocationTrialAvailability.Tests.ps1" executed="True" result="Success" success="True" time="0.0326" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Test-AzVMwareLocationTrialAvailability.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Update-AzVMwareAuthorization.Tests.ps1" executed="True" result="Success" success="True" time="0.0364" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Update-AzVMwareAuthorization.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Update-AzVMwareCloudLink.Tests.ps1" executed="True" result="Success" success="True" time="0.0326" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Update-AzVMwareCloudLink.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Update-AzVMwareCluster.Tests.ps1" executed="True" result="Success" success="True" time="0.0332" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Update-AzVMwareCluster.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Update-AzVMwareDatastore.Tests.ps1" executed="True" result="Success" success="True" time="0.0311" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Update-AzVMwareDatastore.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Update-AzVMwareGlobalReachConnection.Tests.ps1" executed="True" result="Success" success="True" time="0.024" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Update-AzVMwareGlobalReachConnection.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Update-AzVMwareIscsiPath.Tests.ps1" executed="True" result="Success" success="True" time="0.0272" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Update-AzVMwareIscsiPath.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Update-AzVMwarePlacementPolicy.Tests.ps1" executed="True" result="Success" success="True" time="0.0285" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Update-AzVMwarePlacementPolicy.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Update-AzVMwarePrivateCloud.Tests.ps1" executed="True" result="Success" success="True" time="0.0316" asserts="0" description="C:\Users\anaarias\azure-powershell\src\VMware\VMware.Autorest\test\Update-AzVMwarePrivateCloud.Tests.ps1">
+        <results />
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
