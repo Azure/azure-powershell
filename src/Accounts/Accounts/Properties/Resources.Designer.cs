@@ -106,8 +106,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [Announcements]
-        ///.
+        ///   Looks up a localized string similar to [Announcements].
         /// </summary>
         internal static string AnnouncementsHeader {
             get {

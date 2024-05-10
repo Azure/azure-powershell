@@ -623,8 +623,7 @@
     <value>Typed subscription is not a number.</value>
   </data>
   <data name="AnnouncementsHeader" xml:space="preserve">
-    <value>[Announcements]
-</value>
+    <value>[Announcements]</value>
   </data>
   <data name="AnnouncementsMessage" xml:space="preserve">
     <value>With the new Azure PowerShell login experience, you can select the subscription you want to use more easily. Learn more about it and its configuration at https://go.microsoft.com/fwlink/?linkid=2271236. Share your feedback regarding your experience with `Connect-AzAccount` at: https://aka.ms/azloginfeedback</value>
