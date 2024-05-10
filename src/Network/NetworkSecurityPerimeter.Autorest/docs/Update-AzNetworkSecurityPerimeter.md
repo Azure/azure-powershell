@@ -1,90 +1,79 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://learn.microsoft.com/powershell/module/az.network/new-aznetworksecurityperimeter
+online version: https://learn.microsoft.com/powershell/module/az.network/update-aznetworksecurityperimeter
 schema: 2.0.0
 ---
 
-# New-AzNetworkSecurityPerimeter
+# Update-AzNetworkSecurityPerimeter
 
 ## SYNOPSIS
-Create a Network Security Perimeter.
+Patch Tags for a Network Security Perimeter.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### PatchExpanded (Default)
 ```
-New-AzNetworkSecurityPerimeter -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Location <String>] [-SecurityPerimeterId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzNetworkSecurityPerimeter -Name <String> -ResourceGroupName <String>
- -Parameter <INetworkSecurityPerimeter> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzNetworkSecurityPerimeter -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded
+### Patch
 ```
-New-AzNetworkSecurityPerimeter -InputObject <INetworkSecurityPerimeterIdentity> [-Location <String>]
- [-SecurityPerimeterId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzNetworkSecurityPerimeter -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+Update-AzNetworkSecurityPerimeter -Name <String> -ResourceGroupName <String> -Parameter <IUpdateTagsRequest>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaJsonString
+### PatchViaIdentity
 ```
-New-AzNetworkSecurityPerimeter -Name <String> -ResourceGroupName <String> -JsonString <String>
+Update-AzNetworkSecurityPerimeter -InputObject <INetworkSecurityPerimeterIdentity>
+ -Parameter <IUpdateTagsRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### PatchViaIdentityExpanded
+```
+Update-AzNetworkSecurityPerimeter -InputObject <INetworkSecurityPerimeterIdentity> [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### PatchViaJsonFilePath
+```
+Update-AzNetworkSecurityPerimeter -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### PatchViaJsonString
+```
+Update-AzNetworkSecurityPerimeter -Name <String> -ResourceGroupName <String> -JsonString <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a Network Security Perimeter.
+Patch Tags for a Network Security Perimeter.
 
 ## EXAMPLES
 
-### Example 1: Creates a NetworkSecurityPerimeter
+### Example 1: {{ Add title here }}
 ```powershell
-
- New-AzNetworkSecurityPerimeter -ResourceGroupName ResourceGroup-1 -Name nsp1 -Location eastus2euap
-
+{{ Add code here }}
 ```
 
 ```output
-
-Location    Name
---------    ----
-eastus2euap nsp1
-
-
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Creates a NetworkSecurityPerimeter
+{{ Add description here }}
 
-### Example 2: Creates a NetworkSecurityPerimeter
+### Example 2: {{ Add title here }}
 ```powershell
-
- New-AzNetworkSecurityPerimeter -ResourceGroupName ResourceGroup-1 -Name nsp2 -Location eastus2euap
-
+{{ Add code here }}
 ```
 
 ```output
-
-Location    Name
---------    ----
-eastus2euap nsp2
-
-
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Creates a NetworkSecurityPerimeter
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -109,7 +98,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
-Parameter Sets: CreateViaIdentityExpanded
+Parameter Sets: PatchViaIdentity, PatchViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -120,11 +109,11 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-Path of Json file supplied to the Create operation
+Path of Json file supplied to the Patch operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Parameter Sets: PatchViaJsonFilePath
 Aliases:
 
 Required: True
@@ -135,29 +124,14 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-Json string supplied to the Create operation
+Json string supplied to the Patch operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonString
+Parameter Sets: PatchViaJsonString
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-Resource location.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -169,7 +143,7 @@ The name of the network security perimeter.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: Patch, PatchExpanded, PatchViaJsonFilePath, PatchViaJsonString
 Aliases: NetworkSecurityPerimeterName, SecurityPerimeterName, NSPName
 
 Required: True
@@ -180,11 +154,11 @@ Accept wildcard characters: False
 ```
 
 ### -Parameter
-The Network Security Perimeter resource
+Update tags request.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter
-Parameter Sets: Create
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IUpdateTagsRequest
+Parameter Sets: Patch, PatchViaIdentity
 Aliases:
 
 Required: True
@@ -199,25 +173,10 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: Patch, PatchExpanded, PatchViaJsonFilePath, PatchViaJsonString
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityPerimeterId
-Resource ID.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases: Id
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -230,7 +189,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: Patch, PatchExpanded, PatchViaJsonFilePath, PatchViaJsonString
 Aliases:
 
 Required: False
@@ -241,11 +200,11 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags.
+List of tags for Network Security Perimeter
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -291,9 +250,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter
-
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IUpdateTagsRequest
 
 ## OUTPUTS
 

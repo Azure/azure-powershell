@@ -182,7 +182,13 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubscriptionId[]]
         # Subscription ids
-        ${Subscription}
+        ${Subscription},
+
+        [Parameter(HelpMessage = "Service Tags")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
+        [System.String[]]
+        # Service Tags
+        ${ServiceTag}
 
         # Add only those paramters which can be updated
 
@@ -196,7 +202,7 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
             # 1. GET
 
             # body params and AsJob
-            $bodyParams = 'Tag', 'Location', 'AddressPrefix', 'FullyQualifiedDomainName', 'Direction', 'Subscription', 'EmailAddress', 'PhoneNumber',  'AsJob'
+            $bodyParams = 'Tag', 'Location', 'AddressPrefix', 'FullyQualifiedDomainName', 'Direction', 'Subscription', 'EmailAddress', 'PhoneNumber', 'ServiceTag', 'AsJob'
 
             $bodyParamsMap = @{}
 

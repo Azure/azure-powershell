@@ -1,8 +1,8 @@
 {
-  "Remove-AzNetworkSecurityPerimeterLink+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp8/links/t-linkD3?api-version=2023-07-01-preview+1": {
+  "Remove-AzNetworkSecurityPerimeterLink+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp8/links/t-linkD3?api-version=2023-08-01-preview+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp8/links/t-linkD3?api-version=2023-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp8/links/t-linkD3?api-version=2023-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -22,7 +22,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp8/links/t-linkD3/operationResults/f7d34b61-3932-4bb3-b87a-5578b8a38dea?api-version=2023-07-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp8/links/t-linkD3/operationResults/f7d34b61-3932-4bb3-b87a-5578b8a38dea?api-version=2023-08-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14993" ],
         "x-ms-request-id": [ "3912c7f1-2bbf-43e2-8345-17c9a6cada36" ],
@@ -39,10 +39,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNetworkSecurityPerimeterLink+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp8/links/t-linkD3/operationResults/f7d34b61-3932-4bb3-b87a-5578b8a38dea?api-version=2023-07-01-preview+2": {
+  "Remove-AzNetworkSecurityPerimeterLink+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp8/links/t-linkD3/operationResults/f7d34b61-3932-4bb3-b87a-5578b8a38dea?api-version=2023-08-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp8/links/t-linkD3/operationResults/f7d34b61-3932-4bb3-b87a-5578b8a38dea?api-version=2023-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp8/links/t-linkD3/operationResults/f7d34b61-3932-4bb3-b87a-5578b8a38dea?api-version=2023-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -77,10 +77,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNetworkSecurityPerimeterLink+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp8/links/t-linkD3/operationResults/f7d34b61-3932-4bb3-b87a-5578b8a38dea?api-version=2023-07-01-preview+3": {
+  "Remove-AzNetworkSecurityPerimeterLink+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp8/links/t-linkD3/operationResults/f7d34b61-3932-4bb3-b87a-5578b8a38dea?api-version=2023-08-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp8/links/t-linkD3/operationResults/f7d34b61-3932-4bb3-b87a-5578b8a38dea?api-version=2023-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp8/links/t-linkD3/operationResults/f7d34b61-3932-4bb3-b87a-5578b8a38dea?api-version=2023-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -115,10 +115,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNetworkSecurityPerimeterLink+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp10/links/t-linkD4?api-version=2023-07-01-preview+1": {
+  "Remove-AzNetworkSecurityPerimeterLink+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp10/links/t-linkD4?api-version=2023-08-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp10/links/t-linkD4?api-version=2023-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp10/links/t-linkD4?api-version=2023-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -155,10 +155,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNetworkSecurityPerimeterLink+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp10/links/t-linkD4?api-version=2023-07-01-preview+2": {
+  "Remove-AzNetworkSecurityPerimeterLink+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp10/links/t-linkD4?api-version=2023-08-01-preview+2": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp10/links/t-linkD4?api-version=2023-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp10/links/t-linkD4?api-version=2023-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -178,7 +178,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp10/links/t-linkD4/operationResults/2af7dfac-21f5-446a-b8b4-31bc9ccc6fc3?api-version=2023-07-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp10/links/t-linkD4/operationResults/2af7dfac-21f5-446a-b8b4-31bc9ccc6fc3?api-version=2023-08-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14992" ],
         "x-ms-request-id": [ "03bde1bb-af2d-41ae-a617-107f509ff966" ],
@@ -195,10 +195,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNetworkSecurityPerimeterLink+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp10/links/t-linkD4/operationResults/2af7dfac-21f5-446a-b8b4-31bc9ccc6fc3?api-version=2023-07-01-preview+3": {
+  "Remove-AzNetworkSecurityPerimeterLink+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp10/links/t-linkD4/operationResults/2af7dfac-21f5-446a-b8b4-31bc9ccc6fc3?api-version=2023-08-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp10/links/t-linkD4/operationResults/2af7dfac-21f5-446a-b8b4-31bc9ccc6fc3?api-version=2023-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp10/links/t-linkD4/operationResults/2af7dfac-21f5-446a-b8b4-31bc9ccc6fc3?api-version=2023-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -233,10 +233,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNetworkSecurityPerimeterLink+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp10/links/t-linkD4/operationResults/2af7dfac-21f5-446a-b8b4-31bc9ccc6fc3?api-version=2023-07-01-preview+4": {
+  "Remove-AzNetworkSecurityPerimeterLink+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp10/links/t-linkD4/operationResults/2af7dfac-21f5-446a-b8b4-31bc9ccc6fc3?api-version=2023-08-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp10/links/t-linkD4/operationResults/2af7dfac-21f5-446a-b8b4-31bc9ccc6fc3?api-version=2023-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tjbzr/providers/Microsoft.Network/networkSecurityPerimeters/tjbzrt-nsp10/links/t-linkD4/operationResults/2af7dfac-21f5-446a-b8b4-31bc9ccc6fc3?api-version=2023-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
