@@ -175,6 +175,44 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Restarts one or more VMs belonging to the specified Network Virtual
+        /// Appliance.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        public static void Restart(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceInstanceIds networkVirtualApplianceInstanceIds = default(NetworkVirtualApplianceInstanceIds))
+        {
+                ((INetworkVirtualAppliancesOperations)operations).RestartAsync(resourceGroupName, networkVirtualApplianceName, networkVirtualApplianceInstanceIds).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Restarts one or more VMs belonging to the specified Network Virtual
+        /// Appliance.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task RestartAsync(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, NetworkVirtualApplianceInstanceIds networkVirtualApplianceInstanceIds = default(NetworkVirtualApplianceInstanceIds), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.RestartWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, networkVirtualApplianceInstanceIds, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
         /// Lists all Network Virtual Appliances in a resource group.
         /// </summary>
         /// <param name='operations'>

@@ -15,17 +15,16 @@ Clears the values of configs that are set by the user.
 ### ClearAll (Default)
 ```
 Clear-AzConfig [-Force] [-PassThru] [-AppliesTo <String>] [-Scope <ConfigScope>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ClearByKey
 ```
 Clear-AzConfig [-PassThru] [-AppliesTo <String>] [-Scope <ConfigScope>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [-CheckForUpgrade] [-DefaultSubscriptionForLogin] [-DisableInstanceDiscovery] [-DisplayBreakingChangeWarning]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-CheckForUpgrade]
+ [-DefaultSubscriptionForLogin] [-DisableInstanceDiscovery] [-DisplayBreakingChangeWarning]
  [-DisplayRegionIdentified] [-DisplaySecretsWarning] [-DisplaySurveyMessage] [-EnableDataCollection]
- [-EnableErrorRecordsPersistence] [-EnableLoginByWam] [<CommonParameters>]
+ [-EnableErrorRecordsPersistence] [-EnableLoginByWam] [-LoginExperienceV2] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -256,12 +255,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true if cmdlet executes correctly.
+### -LoginExperienceV2
+Only active when authenticating interactively, allows the user to choose the subscription and tenant used in subsequent commands. Possible values ad 'On' (Default) and 'Off'. 'On' requires user's input. 'Off' will use the first tenant and subscription returned by Azure, can change without notice and lead to command execution in an unwanted context (not recommended).
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: ClearByKey
 Aliases:
 
 Required: False
@@ -271,13 +270,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
+### -PassThru
+Returns true if cmdlet executes correctly.
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: proga
+Aliases:
 
 Required: False
 Position: Named

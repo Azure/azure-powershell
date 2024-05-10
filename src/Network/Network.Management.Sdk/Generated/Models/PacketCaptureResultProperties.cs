@@ -51,11 +51,20 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="filters">A list of packet capture filters.
         /// </param>
 
+        /// <param name="continuousCapture">This continuous capture is a nullable boolean, which can hold &#39;null&#39;,
+        /// &#39;true&#39; or &#39;false&#39; value. If we do not pass this parameter, it would be
+        /// consider as &#39;null&#39;, default value is &#39;null&#39;.
+        /// </param>
+
+        /// <param name="captureSettings">The capture setting holds the &#39;FileCount&#39;, &#39;FileSizeInBytes&#39;,
+        /// &#39;SessionTimeLimitInSeconds&#39; values.
+        /// </param>
+
         /// <param name="provisioningState">The provisioning state of the packet capture session.
         /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
-        public PacketCaptureResultProperties(string target, PacketCaptureStorageLocation storageLocation, PacketCaptureMachineScope scope = default(PacketCaptureMachineScope), PacketCaptureTargetType? targetType = default(PacketCaptureTargetType?), long? bytesToCapturePerPacket = default(long?), long? totalBytesPerSession = default(long?), int? timeLimitInSeconds = default(int?), System.Collections.Generic.IList<PacketCaptureFilter> filters = default(System.Collections.Generic.IList<PacketCaptureFilter>), string provisioningState = default(string))
+        public PacketCaptureResultProperties(string target, PacketCaptureStorageLocation storageLocation, PacketCaptureMachineScope scope = default(PacketCaptureMachineScope), PacketCaptureTargetType? targetType = default(PacketCaptureTargetType?), long? bytesToCapturePerPacket = default(long?), long? totalBytesPerSession = default(long?), int? timeLimitInSeconds = default(int?), System.Collections.Generic.IList<PacketCaptureFilter> filters = default(System.Collections.Generic.IList<PacketCaptureFilter>), bool? continuousCapture = default(bool?), PacketCaptureSettings captureSettings = default(PacketCaptureSettings), string provisioningState = default(string))
 
-        : base(target, storageLocation, scope, targetType, bytesToCapturePerPacket, totalBytesPerSession, timeLimitInSeconds, filters)
+        : base(target, storageLocation, scope, targetType, bytesToCapturePerPacket, totalBytesPerSession, timeLimitInSeconds, filters, continuousCapture, captureSettings)
         {
             this.ProvisioningState = provisioningState;
             CustomInit();
