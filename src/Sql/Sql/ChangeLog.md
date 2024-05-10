@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Made 1.2 as default for MinimalTlsVersion when creating new Sql Server from Powershell
+* Added `IsGeneralPurposeV2` and `StorageIOps` parameters to `New-AzSqlInstance`, `Set-AzSqlInstance` to enable the creation of GPv2 instances
 
 ## Version 4.14.0
 * Added `DatabaseFormat` and `PricingModel` parameters to `New-AzSqlInstance`, `Set-AzSqlInstance`
