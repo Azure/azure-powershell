@@ -471,7 +471,8 @@ namespace Microsoft.Azure.Management.Sql
 
         }
         /// <summary>
-        /// Creates a distributed availability group between Sql On-Prem and Sql Managed Instance.
+        /// Creates a distributed availability group between Sql On-Prem and Sql
+        /// Managed Instance.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
@@ -500,7 +501,8 @@ namespace Microsoft.Azure.Management.Sql
         }
 
         /// <summary>
-        /// Drops a distributed availability group between Sql On-Prem and Sql Managed Instance.
+        /// Drops a distributed availability group between Sql On-Prem and Sql Managed
+        /// Instance.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
