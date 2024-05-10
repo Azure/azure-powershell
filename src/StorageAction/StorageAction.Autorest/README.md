@@ -28,7 +28,7 @@ For information on how to develop for `Az.StorageAction`, see [how-to.md](how-to
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: bdd7c051fa9867d79536281638c84cbc87a4014b
+commit: 8f196886782fc5b48b75322944dc60d1cafaf7fa
 tag: package-2023-01-01
 require:
 # readme.azure.noprofile.md is the common configuration file
