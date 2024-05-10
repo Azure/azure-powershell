@@ -194,7 +194,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             galleryImage.Features.Add(this.Feature[i]);
                         }
                     }
-                    if (SecurityTypeNotFoundInFeatures(galleryImage.Features) && galleryImage.HyperVGeneration == "V2")// if SecurityType is not in Features, default to TrustedLaunch
+
+                    if ((!this.IsParameterBound(c => c.Feature) || galleryImage.Features?.All(f => f.Name.ToLower() != "securitytype") == true) && galleryImage.HyperVGeneration == "V2")
                     {
                         if (galleryImage.Features == null)
                         {
@@ -356,23 +357,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
              HelpMessage = "CPU architecture supported by an OS disk. Possible values are \"X64\" and \"Arm64\".")]
         [PSArgumentCompleter("X64", "Arm64")]
         public string Architecture { get; set; }
-
-        private bool SecurityTypeNotFoundInFeatures(IList<GalleryImageFeature> features)
-        {
-            if (features == null)
-            {
-                return true;
-            }
-            foreach (var feature in features)
-            {
-                if (feature.Name.ToLower() == "securitytype")
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-    }
 
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "GalleryImageDefinition", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSGalleryImage))]
