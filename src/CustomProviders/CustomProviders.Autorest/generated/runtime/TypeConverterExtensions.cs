@@ -32,10 +32,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.PowerShell
                     System.Console.Error.WriteLine($"{E.GetType().Name}/{E.Message}/{E.StackTrace}");
                 }
 #else
-                catch 
+                catch
                 {
                     // silent conversion fail
-                }            
+                }
 #endif
                 return new T[0]; // empty result if couldn't convert.
             }
@@ -53,10 +53,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.PowerShell
                     System.Console.Error.WriteLine($"{E.GetType().Name}/{E.Message}/{E.StackTrace}");
                 }
 #else
-                catch 
+                catch
                 {
                     // silent conversion fail
-                }            
+                }
 #endif
             }
             return result.ToArray();
@@ -141,9 +141,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.PowerShell
                 System.Console.Error.WriteLine($"{E.GetType().Name}/{E.Message}/{E.StackTrace}");
             }
 #else
-            catch 
+            catch
             {
-            }            
+            }
 #endif
             return defaultValue;
         }
@@ -160,9 +160,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.PowerShell
                 System.Console.Error.WriteLine($"{E.GetType().Name}/{E.Message}/{E.StackTrace}");
             }
 #else
-            catch 
+            catch
             {
-            }            
+            }
 #endif
             return defaultValue;
         }
@@ -180,11 +180,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.PowerShell
                 System.Console.Error.WriteLine($"{E.GetType().Name}/{E.Message}/{E.StackTrace}");
             }
 #else
-            catch 
+            catch
             {
-            }            
+            }
 #endif
             return defaultValue;
+        }
+
+        internal static bool Contains(this System.Management.Automation.PSObject psObject, string propertyName)
+        {
+            bool result = false;
+            try
+            {
+                var property = System.Linq.Enumerable.FirstOrDefault(psObject.Properties, each => System.String.Equals(each.Name.ToString(), propertyName, System.StringComparison.CurrentCultureIgnoreCase));
+                result = property == null ? false : true;
+            }
+#if DEBUG
+            catch (System.Exception E)
+            {
+                System.Console.Error.WriteLine($"{E.GetType().Name}/{E.Message}/{E.StackTrace}");
+            }
+#else
+            catch
+            {
+            }
+#endif
+            return result;
         }
     }
 }

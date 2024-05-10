@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed the outdated deps.json file.
 
 ## Version 0.1.1
 * Fixed bug for `New-AzHpcCacheStorageTarget` and help text.

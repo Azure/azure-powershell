@@ -352,9 +352,9 @@ end {
 
 <#
 .Synopsis
-Updates a Custom Location with the specified Resource Name in the specified Resource Group and Subscription.
+Update a Custom Location with the specified Resource Name in the specified Resource Group and Subscription.
 .Description
-Updates a Custom Location with the specified Resource Name in the specified Resource Group and Subscription.
+Update a Custom Location with the specified Resource Name in the specified Resource Group and Subscription.
 .Example
 $HostResourceId = (Get-AzConnectedKubernetes -ClusterName azps-connect -ResourceGroupName azps_test_cluster).Id
 $ClusterExtensionId = (Get-AzKubernetesExtension -ClusterName azps-connect -ClusterType ConnectedClusters -ResourceGroupName azps_test_cluster -Name azps-extension).Id

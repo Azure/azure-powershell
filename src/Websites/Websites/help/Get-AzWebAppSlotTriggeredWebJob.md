@@ -15,13 +15,15 @@ Get or list triggered web for a deployment slot.
 ### List (Default)
 ```
 Get-AzWebAppSlotTriggeredWebJob -AppName <String> -ResourceGroupName <String> -SlotName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzWebAppSlotTriggeredWebJob -AppName <String> -Name <String> -ResourceGroupName <String> -SlotName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity

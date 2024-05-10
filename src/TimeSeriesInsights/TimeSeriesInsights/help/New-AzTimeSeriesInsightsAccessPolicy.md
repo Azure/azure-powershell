@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.TimeSeriesInsights-help.xml
 Module Name: Az.TimeSeriesInsights
 online version: https://learn.microsoft.com/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightsaccesspolicy
 schema: 2.0.0
@@ -15,7 +15,7 @@ Create or update an access policy in the specified environment.
 ```
 New-AzTimeSeriesInsightsAccessPolicy -EnvironmentName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Description <String>] [-PrincipalObjectId <String>] [-Role <AccessPolicyRole[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,6 +27,7 @@ Create or update an access policy in the specified environment.
 ```powershell
 New-AzTimeSeriesInsightsAccessPolicy -EnvironmentName tsitest001 -ResourceGroupName testgroup -PrincipalObjectId ce74a389-b5e8-4f16-89c7-787031ddd903 -Role Contributor -Name policy001
 ```
+
 ```output
 Name      Type
 ----      ----
@@ -38,7 +39,8 @@ This command creates an access policy for a specified environment.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -98,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrincipalObjectId
-The objectId of the principal in Microsoft Entra ID.
+The objectId of the principal in Azure Active Directory.
 
 ```yaml
 Type: System.String
@@ -198,7 +200,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IAccessPolicyResource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

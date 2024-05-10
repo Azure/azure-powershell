@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 2.0.0
 * Bumped API version to 2017-04-01-preview
 * Added StreamAnalytics Cluster support

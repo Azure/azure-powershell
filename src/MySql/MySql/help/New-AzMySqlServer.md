@@ -1,6 +1,6 @@
 ---
-external help file:
-Module Name: Az.MySql
+external help file: Az.MySql-help.xml
+Module Name: Az.Mysql
 online version: https://learn.microsoft.com/powershell/module/az.mysql/new-azmysqlserver
 schema: 2.0.0
 ---
@@ -13,12 +13,12 @@ Creates a new server.
 ## SYNTAX
 
 ```
-New-AzMySqlServer -Name <String> -ResourceGroupName <String> -AdministratorLoginPassword <SecureString>
- -AdministratorUserName <String> -Location <String> -Sku <String> [-SubscriptionId <String>]
- [-BackupRetentionDay <Int32>] [-GeoRedundantBackup <GeoRedundantBackup>]
- [-MinimalTlsVersion <MinimalTlsVersionEnum>] [-SslEnforcement <SslEnforcementEnum>]
- [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>] [-Tag <Hashtable>] [-Version <ServerVersion>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMySqlServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
+ -AdministratorUserName <String> -AdministratorLoginPassword <SecureString> -Sku <String>
+ [-SslEnforcement <SslEnforcementEnum>] [-MinimalTlsVersion <MinimalTlsVersionEnum>]
+ [-BackupRetentionDay <Int32>] [-GeoRedundantBackup <GeoRedundantBackup>] [-StorageAutogrow <StorageAutogrow>]
+ [-StorageInMb <Int32>] [-Tag <Hashtable>] [-Version <ServerVersion>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -359,7 +359,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

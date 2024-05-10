@@ -1,8 +1,8 @@
 {
     "Entries":  [
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults?api-version=2023-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzP2FwaS12ZXJzaW9uPTIwMjMtMDItMDE=",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTestRG/providers/Microsoft.RecoveryServices/vaults?api-version=2024-04-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3RSRy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzP2FwaS12ZXJzaW9uPTIwMjQtMDQtMDE=",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -51,7 +51,7 @@
                                                                                 "CENTRALUSEUAP:20210406T102317Z:da7b691e-25ee-4e27-a19a-0e215d8deadd"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:46 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:32 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "474"
@@ -121,7 +121,7 @@
                                                                                 "CENTRALUSEUAP:20210406T102318Z:660133e3-656a-4acc-96c2-c584067316dc"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:46 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:32 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "6343"
@@ -191,7 +191,7 @@
                                                                                 "CENTRALUSEUAP:20210406T102318Z:c61d778b-551f-4827-aa80-c03061093763"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:46 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:32 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "6263"
@@ -261,7 +261,7 @@
                                                                                 "CENTRALUSEUAP:20210406T102319Z:d654047b-6458-4888-a926-9bbf9ec70d9d"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:46 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:32 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "666"
@@ -331,7 +331,7 @@
                                                                                 "CENTRALUSEUAP:20210406T102319Z:4f14cd7a-a97c-42f9-b999-c1e6b75b2d79"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:46 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:32 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "638"
@@ -401,7 +401,7 @@
                                                                                 "CENTRALUSEUAP:20210406T102320Z:28ea898a-e195-4039-9ff3-2d557e162b22"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:46 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:32 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "2446"
@@ -471,7 +471,7 @@
                                                                                 "CENTRALUSEUAP:20210406T102320Z:a8384092-eb2a-479e-81e7-ddd8287d11a9"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:46 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:32 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "507"
@@ -541,7 +541,7 @@
                                                                                 "CENTRALUSEUAP:20210406T102320Z:99e8938f-e9a5-462a-aa04-5f23e4a6104f"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:46 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:32 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "525"
@@ -611,7 +611,7 @@
                                                                                 "CENTRALUSEUAP:20210406T102321Z:4847c3d7-4465-4768-b6a7-00a9112dcc2f"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:46 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:32 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "14008"
@@ -681,7 +681,7 @@
                                                                                 "CENTRALUSEUAP:20210406T102322Z:3d31d868-8104-4203-9a46-317de3ee1d9d"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:46 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:32 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "9698"
@@ -751,7 +751,7 @@
                                                                                 "CENTRALUSEUAP:20210406T102323Z:d396a1df-87f1-4f14-8d33-53f9cbfd9eb7"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:46 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:32 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "9698"
@@ -821,7 +821,7 @@
                                                                                 "CENTRALUSEUAP:20210406T102322Z:b68d4911-99af-4597-b224-b944e9c719e1"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:46 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:32 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1350"
@@ -891,7 +891,7 @@
                                                                                 "CENTRALUSEUAP:20210406T102323Z:357b8a79-dc01-4b7c-8086-b487f8c066b3"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:46 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:32 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "2120"
@@ -973,7 +973,7 @@
                                                                                 "CENTRALUSEUAP:20210406T102324Z:5c1ea121-117c-4b1f-846e-2899d018766d"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:46 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:32 GMT"
                                                          ],
                                                 "Expires":  [
                                                                 "-1"
@@ -1040,7 +1040,7 @@
                                                                                 "CENTRALUSEUAP:20210406T102325Z:9fc4d31e-54b4-47f1-8572-1c08c47848c0"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:46 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:32 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "4155"

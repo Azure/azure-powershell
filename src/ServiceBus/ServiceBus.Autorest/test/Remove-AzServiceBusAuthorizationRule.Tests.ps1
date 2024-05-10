@@ -25,21 +25,21 @@ Describe 'Remove-AzServiceBusAuthorizationRule' {
 
     It 'RemoveExpandedNamespace' {
         Remove-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name namespaceAuthRule3
-        { Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name namespaceAuthRule3 } | Should -Throw
+        { Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name namespaceAuthRule3 -ErrorAction Stop } | Should -Throw
         $namespaceAuthRules = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
         $namespaceAuthRules.Count | Should -Be 3
     }
 
     It 'RemoveExpandedTopic'  {
         Remove-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name topicAuthRule3
-        { Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name topicAuthRule3 } | Should -Throw
+        { Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name topicAuthRule3 -ErrorAction Stop } | Should -Throw
         $topicAuthRules = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 
         $topicAuthRules.Count | Should -Be 2
     }
 
     It 'RemoveExpandedQueue' {
         Remove-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -QueueName queue1 -Name queueAuthRule3
-        { Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -QueueName queue1 -Name queueAuthRule3 } | Should -Throw
+        { Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -QueueName queue1 -Name queueAuthRule3 -ErrorAction Stop } | Should -Throw
         $queueAuthRules = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -QueueName queue1 
         $queueAuthRules.Count | Should -Be 2
     }
@@ -47,19 +47,19 @@ Describe 'Remove-AzServiceBusAuthorizationRule' {
     It 'RemoveViaIdentityExpanded'   {
         $authRule = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name namespaceAuthRule2
         Remove-AzServiceBusAuthorizationRule -InputObject $authRule
-        { Get-AzServiceBusAuthorizationRule -InputObject $authRule } | Should -Throw
+        { Get-AzServiceBusAuthorizationRule -InputObject $authRule -ErrorAction Stop } | Should -Throw
         $namespaceAuthRules = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
         $namespaceAuthRules.Count | Should -Be 2
 
         $authRule = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -QueueName queue1 -Name queueAuthRule2
         Remove-AzServiceBusAuthorizationRule -InputObject $authRule
-        { Get-AzServiceBusAuthorizationRule -InputObject $authRule } | Should -Throw
+        { Get-AzServiceBusAuthorizationRule -InputObject $authRule -ErrorAction Stop } | Should -Throw
         $queueAuthRules = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -QueueName queue1
         $queueAuthRules.Count | Should -Be 1
 
         $authRule = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name topicAuthRule2
         Remove-AzServiceBusAuthorizationRule -InputObject $authRule
-        { Get-AzServiceBusAuthorizationRule -InputObject $authRule } | Should -Throw
+        { Get-AzServiceBusAuthorizationRule -InputObject $authRule -ErrorAction Stop } | Should -Throw
         $topicAuthRules = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1
         $topicAuthRules.Count | Should -Be 1
     }

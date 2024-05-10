@@ -14,7 +14,8 @@ Get a classification rule
 
 ### List (Default)
 ```
-Get-AzPurviewClassificationRule -Endpoint <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPurviewClassificationRule -Endpoint <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -109,7 +110,8 @@ Get all custom classification rules
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -164,7 +166,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

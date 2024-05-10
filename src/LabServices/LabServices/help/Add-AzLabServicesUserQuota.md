@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.LabServices-help.xml
 Module Name: Az.LabServices
 online version: https://learn.microsoft.com/powershell/module/az.labservices/add-azlabservicesuserquota
 schema: 2.0.0
@@ -14,15 +14,16 @@ API to add additional user quota.
 
 ### User (Default)
 ```
-Add-AzLabServicesUserQuota -UsageQuotaToAddToExisting <TimeSpan> -User <User> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzLabServicesUserQuota [-SubscriptionId <String>] -UsageQuotaToAddToExisting <TimeSpan> -User <User>
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Email
 ```
-Add-AzLabServicesUserQuota -Email <String> -LabName <String> -ResourceGroupName <String>
- -UsageQuotaToAddToExisting <TimeSpan> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzLabServicesUserQuota -ResourceGroupName <String> -LabName <String> -Email <String>
+ [-SubscriptionId <String>] -UsageQuotaToAddToExisting <TimeSpan> [-DefaultProfile <PSObject>] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +33,7 @@ API to add additional user quota.
 
 ### Example 1: Increase student usage quota.
 ```powershell
-Add-AzLabServicesUserQuota -ResourceGroupName "group name" -LabName "lab name" -Email 'student@contoso.com' -UsageQuotaToAddToExisting $(New-Timespan -Hours 4)
+Add-AzLabServicesUserQuota -ResourceGroupName "group name" -LabName "lab name" -Email 'student@contoso.com' -UsageQuotaToAddToExisting $(New-TimeSpan -Hours 4)
 ```
 
 ```output
@@ -46,7 +47,7 @@ This command increase the students quota by 4 hours.
 ### Example 2: Increase student usage quota with User object.
 ```powershell
 $user = Get-AzLabServicesUser -ResourceGroupName "group name" -LabName "lab name" -UserName 'ContosoUser12345'
-$user | Add-AzLabServicesUserQuota -UsageQuotaToAddToExisting $(New-Timespan -Hours 5)
+$user | Add-AzLabServicesUserQuota -UsageQuotaToAddToExisting $(New-TimeSpan -Hours 5)
 ```
 
 ```output
@@ -107,7 +108,6 @@ Accept wildcard characters: False
 
 ### -LabName
 
-
 ```yaml
 Type: System.String
 Parameter Sets: Email
@@ -121,7 +121,6 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-
 
 ```yaml
 Type: System.String
@@ -224,22 +223,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-USER `<User>`: 
-  - `Email <String>`: Email address of the user.
-  - `[AdditionalUsageQuota <TimeSpan?>]`: The amount of usage quota time the user gets in addition to the lab usage quota.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-
 ## RELATED LINKS
-

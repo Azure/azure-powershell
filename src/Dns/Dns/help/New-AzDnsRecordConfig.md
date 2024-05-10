@@ -15,17 +15,20 @@ Creates a new DNS record local object.
 
 ### A
 ```
-New-AzDnsRecordConfig -Ipv4Address <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzDnsRecordConfig -Ipv4Address <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Aaaa
 ```
-New-AzDnsRecordConfig -Ipv6Address <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzDnsRecordConfig -Ipv6Address <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Ns
 ```
-New-AzDnsRecordConfig -Nsdname <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzDnsRecordConfig -Nsdname <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Mx
@@ -36,12 +39,14 @@ New-AzDnsRecordConfig -Exchange <String> -Preference <UInt16> [-DefaultProfile <
 
 ### Ptr
 ```
-New-AzDnsRecordConfig -Ptrdname <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzDnsRecordConfig -Ptrdname <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Txt
 ```
-New-AzDnsRecordConfig -Value <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzDnsRecordConfig -Value <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Srv
@@ -52,7 +57,8 @@ New-AzDnsRecordConfig -Priority <UInt16> -Target <String> -Port <UInt16> -Weight
 
 ### CName
 ```
-New-AzDnsRecordConfig -Cname <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzDnsRecordConfig -Cname <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Caa
@@ -70,7 +76,8 @@ New-AzDnsRecordConfig -KeyTag <Int32> -Algorithm <Int32> -DigestType <Int32> -Di
 ### Tlsa
 ```
 New-AzDnsRecordConfig -Usage <Int32> -Selector <Int32> -MatchingType <Int32>
- -CertificateAssociationData <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -CertificateAssociationData <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

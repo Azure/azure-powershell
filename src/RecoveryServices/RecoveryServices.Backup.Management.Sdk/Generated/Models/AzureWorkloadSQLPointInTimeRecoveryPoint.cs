@@ -42,10 +42,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="extendedInfo">Extended Info that provides data directory details. Will be populated in
-        /// two cases:
-        /// When a specific recovery point is accessed using GetRecoveryPoint
-        /// Or when ListRecoveryPoints is called for Log RP only with ExtendedInfo
-        /// query filter
+        /// two cases: When a specific recovery point is accessed using
+        /// GetRecoveryPoint Or when ListRecoveryPoints is called for Log RP only with
+        /// ExtendedInfo query filter
         /// </param>
 
         /// <param name="timeRanges">List of log ranges

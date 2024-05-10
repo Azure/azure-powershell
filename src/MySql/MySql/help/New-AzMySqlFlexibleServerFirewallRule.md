@@ -1,6 +1,6 @@
 ---
-external help file:
-Module Name: Az.MySql
+external help file: Az.MySql-help.xml
+Module Name: Az.Mysql
 online version: https://learn.microsoft.com/powershell/module/az.mysql/new-azmysqlflexibleserverfirewallrule
 schema: 2.0.0
 ---
@@ -14,23 +14,23 @@ Creates a new firewall rule for MySQL flexible server
 
 ### CreateExpanded (Default)
 ```
-New-AzMySqlFlexibleServerFirewallRule -ResourceGroupName <String> -ServerName <String> -EndIPAddress <String>
- -StartIPAddress <String> [-Name <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### AllowAll
-```
-New-AzMySqlFlexibleServerFirewallRule -ResourceGroupName <String> -ServerName <String> -AllowAll
- [-Name <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzMySqlFlexibleServerFirewallRule -ResourceGroupName <String> -ServerName <String> [-Name <String>]
+ [-SubscriptionId <String>] -EndIPAddress <String> -StartIPAddress <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ClientIPAddress
 ```
-New-AzMySqlFlexibleServerFirewallRule -ResourceGroupName <String> -ServerName <String>
- -ClientIPAddress <String> [-Name <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMySqlFlexibleServerFirewallRule -ResourceGroupName <String> -ServerName <String> [-Name <String>]
+ [-SubscriptionId <String>] -ClientIPAddress <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AllowAll
+```
+New-AzMySqlFlexibleServerFirewallRule -ResourceGroupName <String> -ServerName <String> [-Name <String>]
+ [-SubscriptionId <String>] [-AllowAll] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -292,7 +292,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

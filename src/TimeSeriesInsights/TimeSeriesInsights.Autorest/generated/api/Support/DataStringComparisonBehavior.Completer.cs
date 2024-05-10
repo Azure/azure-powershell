@@ -6,7 +6,11 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
 {
 
-    /// <summary>Argument completer implementation for DataStringComparisonBehavior.</summary>
+    /// <summary>
+    /// The reference data set key comparison behavior can be set using this property. By default, the value is 'Ordinal' - which
+    /// means case sensitive key comparison will be performed while joining reference data with events or while adding new reference
+    /// data. When 'OrdinalIgnoreCase' is set, case insensitive comparison will be used.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.DataStringComparisonBehaviorTypeConverter))]
     public partial struct DataStringComparisonBehavior :
         System.Management.Automation.IArgumentCompleter
@@ -28,11 +32,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Ordinal".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Ordinal", "Ordinal", global::System.Management.Automation.CompletionResultType.ParameterValue, "Ordinal");
+                yield return new global::System.Management.Automation.CompletionResult("'Ordinal'", "Ordinal", global::System.Management.Automation.CompletionResultType.ParameterValue, "Ordinal");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "OrdinalIgnoreCase".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("OrdinalIgnoreCase", "OrdinalIgnoreCase", global::System.Management.Automation.CompletionResultType.ParameterValue, "OrdinalIgnoreCase");
+                yield return new global::System.Management.Automation.CompletionResult("'OrdinalIgnoreCase'", "OrdinalIgnoreCase", global::System.Management.Automation.CompletionResultType.ParameterValue, "OrdinalIgnoreCase");
             }
         }
     }

@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotSpecified".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotSpecified", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
+                yield return new global::System.Management.Automation.CompletionResult("'NotSpecified'", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "RegisteredSubscriptions".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("RegisteredSubscriptions", "RegisteredSubscriptions", global::System.Management.Automation.CompletionResultType.ParameterValue, "RegisteredSubscriptions");
+                yield return new global::System.Management.Automation.CompletionResult("'RegisteredSubscriptions'", "RegisteredSubscriptions", global::System.Management.Automation.CompletionResultType.ParameterValue, "RegisteredSubscriptions");
             }
         }
     }

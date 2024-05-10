@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEmailServiceSenderUsername
 
 ## SYNOPSIS
-Add a new SenderUsername resource under the parent Domains resource or update an existing SenderUsername resource.
+Add a new SenderUsername resource under the parent Domains resource or Update an existing SenderUsername resource.
 
 ## SYNTAX
 
@@ -53,7 +53,7 @@ Update-AzEmailServiceSenderUsername -InputObject <IEmailServiceIdentity> [-Displ
 ```
 
 ## DESCRIPTION
-Add a new SenderUsername resource under the parent Domains resource or update an existing SenderUsername resource.
+Add a new SenderUsername resource under the parent Domains resource or Update an existing SenderUsername resource.
 
 ## EXAMPLES
 

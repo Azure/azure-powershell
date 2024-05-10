@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 0.2.1
 * Fixed an issue that updating password did not work.
 

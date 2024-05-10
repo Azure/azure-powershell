@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated to use the 2023-06-01-preview API version.
 
 ## Version 1.6.1
 * Added breaking change messages due to structure update:

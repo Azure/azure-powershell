@@ -23,7 +23,7 @@ Create an in-memory object for ContactDetail.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ContactDetail
 .Link
-https://learn.microsoft.com/powershell/module/az.Peering/new-AzPeeringContactDetailObject
+https://learn.microsoft.com/powershell/module/Az.Peering/new-AzPeeringContactDetailObject
 #>
 function New-AzPeeringContactDetailObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ContactDetail')]

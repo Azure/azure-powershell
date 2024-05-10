@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzHdInsightOnAksCluster
 
 ## SYNOPSIS
-Creates a cluster.
+Create a cluster.
 
 ## SYNTAX
 
@@ -169,7 +169,7 @@ New-AzHdInsightOnAksCluster -InputObject <IHdInsightOnAksIdentity> -HdInsightOnA
 ```
 
 ## DESCRIPTION
-Creates a cluster.
+Create a cluster.
 
 ## EXAMPLES
 

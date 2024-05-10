@@ -26,10 +26,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
 
         /// <param name="immutabilitySettings">Immutability Settings of a vault
         /// </param>
-        public SecuritySettings(ImmutabilitySettings immutabilitySettings = default(ImmutabilitySettings))
+
+        /// <param name="softDeleteSettings">Soft delete Settings of a vault
+        /// </param>
+
+        /// <param name="multiUserAuthorization">MUA Settings of a vault
+        /// Possible values include: &#39;Invalid&#39;, &#39;Enabled&#39;, &#39;Disabled&#39;</param>
+        public SecuritySettings(ImmutabilitySettings immutabilitySettings = default(ImmutabilitySettings), SoftDeleteSettings softDeleteSettings = default(SoftDeleteSettings), string multiUserAuthorization = default(string))
 
         {
             this.ImmutabilitySettings = immutabilitySettings;
+            this.SoftDeleteSettings = softDeleteSettings;
+            this.MultiUserAuthorization = multiUserAuthorization;
             CustomInit();
         }
 
@@ -44,5 +52,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "immutabilitySettings")]
         public ImmutabilitySettings ImmutabilitySettings {get; set; }
+
+        /// <summary>
+        /// Gets or sets soft delete Settings of a vault
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "softDeleteSettings")]
+        public SoftDeleteSettings SoftDeleteSettings {get; set; }
+
+        /// <summary>
+        /// Gets mUA Settings of a vault Possible values include: &#39;Invalid&#39;, &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "multiUserAuthorization")]
+        public string MultiUserAuthorization {get; private set; }
     }
 }

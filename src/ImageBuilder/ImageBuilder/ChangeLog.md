@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.4.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 0.4.0
 *  Upgraded API verision from 2022-02-14 to 2022-07-01.
    - Added a cmdlet named `Get-AzImageBuilderTrigger`.

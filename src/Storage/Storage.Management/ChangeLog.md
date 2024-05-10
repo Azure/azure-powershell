@@ -18,6 +18,17 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added a prompt that needs confirmation when upgrading a storage account from StorageV1 or BlobStorage to StorageV2. Can be suppressed with -Force.
+    - `Set-AzStorageAccount`
+* Removed references to "Microsoft.Azure.Storage.Queue" in Queue cmdlets 
+    - `Get-AzStorageQueue`
+    - `New-AzStorageQueue`
+    - `New-AzStorageQueueSASToken`
+* When uploading an Azure File with write only SAS token, take the parameter -Path as destination file path, instead of destination directory path previously.
+    - `Set-AzStorageFileContent`
+
+## Version 6.2.0
+* Introduced secrets detection feature to safeguard sensitive data.
 * Fixed object replication policy time format parsing issue [#24434]
 * Updated download offset and content length calculation logic for downloading files 
     - `Get-AzStorageFileContent`

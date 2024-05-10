@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureMySqlDataSourceObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureMySqlDataSourceObject
 schema: 2.0.0
 ---
 
@@ -15,7 +15,8 @@ Create an in-memory object for AzureMySqlDataSource.
 ```
 New-AzPurviewAzureMySqlDataSourceObject -Kind <DataSourceType> [-CollectionReferenceName <String>]
  [-CollectionType <String>] [-Location <String>] [-Port <Int32>] [-ResourceGroup <String>]
- [-ResourceName <String>] [-ServerEndpoint <String>] [-SubscriptionId <String>] [<CommonParameters>]
+ [-ResourceName <String>] [-ServerEndpoint <String>] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -186,7 +187,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureMySqlDataSource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

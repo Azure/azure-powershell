@@ -25,11 +25,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// </summary>
 
         /// <param name="alertsForAllJobFailures">
-        /// Possible values include: 'Enabled', 'Disabled'</param>
-        public AzureMonitorAlertSettings(string alertsForAllJobFailures = default(string))
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
+
+        /// <param name="alertsForAllReplicationIssues">
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
+
+        /// <param name="alertsForAllFailoverIssues">
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
+        public AzureMonitorAlertSettings(string alertsForAllJobFailures = default(string), string alertsForAllReplicationIssues = default(string), string alertsForAllFailoverIssues = default(string))
 
         {
             this.AlertsForAllJobFailures = alertsForAllJobFailures;
+            this.AlertsForAllReplicationIssues = alertsForAllReplicationIssues;
+            this.AlertsForAllFailoverIssues = alertsForAllFailoverIssues;
             CustomInit();
         }
 
@@ -44,5 +52,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "alertsForAllJobFailures")]
         public string AlertsForAllJobFailures {get; set; }
+
+        /// <summary>
+        /// Gets or sets Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "alertsForAllReplicationIssues")]
+        public string AlertsForAllReplicationIssues {get; set; }
+
+        /// <summary>
+        /// Gets or sets Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "alertsForAllFailoverIssues")]
+        public string AlertsForAllFailoverIssues {get; set; }
     }
 }

@@ -21,7 +21,7 @@ List all the operations supported by the Microsoft.Quota resource provider.
 
 ## EXAMPLES
 
-### Example 1: List the quota operation
+### Example 1: List all the operations supported by the Microsoft.Quota resource provider.
 ```powershell
 Get-AzQuotaOperation
 ```
@@ -29,20 +29,21 @@ Get-AzQuotaOperation
 ```output
 Name                               Origin
 ----                               ------
-Microsoft.Quota/quotas/read              
-Microsoft.Quota/quotas/write             
-Microsoft.Quota/quotaRequests/read       
-Microsoft.Quota/usages/read              
-Microsoft.Quota/operations/read          
+Microsoft.Quota/quotas/read
+Microsoft.Quota/quotas/write
+Microsoft.Quota/quotaRequests/read
+Microsoft.Quota/usages/read
+Microsoft.Quota/operations/read
 Microsoft.Quota/register/action
 ```
 
-This command lists all the operations supported by the Microsoft.Quota resource provider.
+List all the operations supported by the Microsoft.Quota resource provider.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -63,10 +64,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.IOperationResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IOperationResponse
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

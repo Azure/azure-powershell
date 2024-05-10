@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
+using Microsoft.ApplicationInsights.Channel;
 using Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Services;
 using Microsoft.WindowsAzure.Commands.Common.Sanitizer;
 
@@ -44,7 +46,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
             return propertyPath;
         }
 
-        protected bool ExceedsMaxDepth(SanitizerProperty property)
+        protected bool ExceedsMaxDepth(SanitizerProperty property, SanitizerTelemetry telemetry)
         {
             if (property == null)
                 return false;
@@ -58,6 +60,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
 
                 currentProperty = currentProperty.ParentProperty;
             }
+
+            telemetry.HasErrorInDetection = true;
+            telemetry.DetectionError = new Exception($"Potential stack overflow exception may occurr on property: {property.PropertyName}!");
 
             return true;
         }

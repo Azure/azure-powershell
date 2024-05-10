@@ -21,7 +21,8 @@ Get-AzWebAppSlotConfigName [-ResourceGroupName] <String> [-Name] <String>
 
 ### S2
 ```
-Get-AzWebAppSlotConfigName [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzWebAppSlotConfigName [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

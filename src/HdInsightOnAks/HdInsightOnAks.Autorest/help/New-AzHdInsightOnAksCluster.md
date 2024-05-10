@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzHdInsightOnAksCluster
 
 ## SYNOPSIS
-Creates a cluster.
+Create a cluster.
 
 ## SYNTAX
 
@@ -170,7 +170,7 @@ New-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName
 ```
 
 ## DESCRIPTION
-Creates a cluster.
+Create a cluster.
 
 ## EXAMPLES
 

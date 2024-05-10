@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 0.1.1
 * Added a new cmdlet `New-AzGrafanaMonitorWorkspaceIntegrationObject` to help create Grafana.
 

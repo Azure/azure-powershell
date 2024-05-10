@@ -14,7 +14,8 @@ Create an in-memory object for PrometheusOSProviderInstanceProperties.
 
 ```
 New-AzWorkloadsProviderPrometheusOSInstanceObject [-PrometheusUrl <String>] [-SapSid <String>]
- [-SslCertificateUri <String>] [-SslPreference <SslPreference>] [<CommonParameters>]
+ [-SslCertificateUri <String>] [-SslPreference <SslPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,7 +108,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.PrometheusOSProviderInstanceProperties
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

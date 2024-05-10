@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Reservations-help.xml
 Module Name: Az.Reservations
 online version: https://learn.microsoft.com/powershell/module/az.reservations/merge-azreservation
 schema: 2.0.0
@@ -13,8 +13,8 @@ Merge two reservations into one reservation within the same reservation order.
 ## SYNTAX
 
 ```
-Merge-AzReservation -OrderId <String> -ReservationId <String[]> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Merge-AzReservation -OrderId <String> -ReservationId <String[]> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -129,7 +129,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

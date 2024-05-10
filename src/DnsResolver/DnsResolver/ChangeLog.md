@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* General availability for module Az.DnsResolver
+
+## Version 0.2.2
+* Introduced secrets detection feature to safeguard sensitive data.
 
 ## Version 0.2.1
 * Reformatted exception message for cmdlets

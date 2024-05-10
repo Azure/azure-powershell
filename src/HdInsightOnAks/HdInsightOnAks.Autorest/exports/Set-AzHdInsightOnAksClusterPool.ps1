@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a cluster pool.
+Update a cluster pool.
 .Description
-Create a cluster pool.
+Update a cluster pool.
 .Example
 # Cluster configuration info
 $location = "East US 2"
