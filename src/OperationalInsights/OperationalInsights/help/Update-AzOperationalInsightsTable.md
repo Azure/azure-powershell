@@ -170,7 +170,7 @@ Accept wildcard characters: False
 ```
 
 ### -TotalRetentionInDays
-The table total retention in days, between 4 and 2555.
+The table total retention in days. Allowed values are: [4-730], 1095, 1460, 1826, 2191, 2556, 2922, 3288, 3653, 4018, or 4383.
 Setting this property to -1 will default to table retention.
 
 ```yaml

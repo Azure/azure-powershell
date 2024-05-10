@@ -11,8 +11,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
     using System;
 
     /// <summary>
-    /// The operation to Update a virtual machine instance. Please note some properties can be set only during virtual machine
-    /// instance creation.
+    /// The operation to create or update a virtual machine instance. Please note some properties can be set only during virtual
+    /// machine instance creation.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default"
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzStackHCIVMVirtualMachine_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Description(@"The operation to Update a virtual machine instance. Please note some properties can be set only during virtual machine instance creation.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Description(@"The operation to create or update a virtual machine instance. Please note some properties can be set only during virtual machine instance creation.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Generated]
     public partial class UpdateAzStackHCIVMVirtualMachine_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener,

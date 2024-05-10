@@ -502,7 +502,8 @@ namespace Microsoft.Azure.Management.Sql
         }
 
         /// <summary>
-        /// Deletes a server trust certificate that was uploaded from box to Sql Managed Instance.
+        /// Deletes a server trust certificate that was uploaded from box to Sql
+        /// Managed Instance.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain

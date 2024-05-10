@@ -385,6 +385,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Only active when authenticating interactively, allows the user to choose the subscription and tenant used in subsequent commands. Possible values ad &apos;On&apos; (Default) and &apos;Off&apos;. &apos;On&apos; requires user&apos;s input. &apos;Off&apos; will use the first tenant and subscription returned by Azure, can change without notice and lead to command execution in an unwanted context (not recommended)..
+        /// </summary>
+        public static string HelpMessageOfLoginExperienceV2 {
+            get {
+                return ResourceManager.GetString("HelpMessageOfLoginExperienceV2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [HttpClientOperations]: Adding Header &apos;{0}&apos;.
         /// </summary>
         public static string HttpClientAddingHeader {

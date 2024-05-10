@@ -11,7 +11,7 @@ schema: 2.0.0
 Update the quota limit for a specific resource to the specified value:\n1.
 Use the Usages-GET and Quota-GET operations to determine the remaining quota for the specific resource and to calculate the new quota limit.
 These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).\n2.
-Use this PUT operation to Update the quota limit.
+Use this PUT operation to update the quota limit.
 Please check the URI in location header for the detailed status of the request.
 
 ## SYNTAX
@@ -19,26 +19,26 @@ Please check the URI in location header for the detailed status of the request.
 ### UpdateExpanded (Default)
 ```
 Update-AzQuota -ResourceName <String> -Scope <String> [-Limit <ILimitJsonObject>] [-Name <String>]
- [-ResourceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ResourceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzQuota -ResourceName <String> -Scope <String> -JsonString <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzQuota -ResourceName <String> -Scope <String> -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzQuota -InputObject <IQuotaIdentity> [-Limit <ILimitJsonObject>] [-Name <String>]
- [-ResourceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ResourceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -46,7 +46,7 @@ Update-AzQuota -InputObject <IQuotaIdentity> [-Limit <ILimitJsonObject>] [-Name 
 Update the quota limit for a specific resource to the specified value:\n1.
 Use the Usages-GET and Quota-GET operations to determine the remaining quota for the specific resource and to calculate the new quota limit.
 These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).\n2.
-Use this PUT operation to Update the quota limit.
+Use this PUT operation to update the quota limit.
 Please check the URI in location header for the detailed status of the request.
 
 ## EXAMPLES
@@ -194,6 +194,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

@@ -9,6 +9,8 @@ namespace Microsoft.Azure.Management.Compute.Models
     static class VirtualMachineScaleSetExtensions
     {
         private static IDictionary<VirtualMachineScaleSet, Dictionary<string, List<string>>> mapping = new ConcurrentDictionary<VirtualMachineScaleSet, Dictionary<string, List<string>>>();
+        private static string ifMatchProperty = null;
+        private static string ifNoneMatchProperty = null;
 
         public static void SetAuxAuthHeader(this VirtualMachineScaleSet vmss, Dictionary<string, List<string>> auxAuthHeader)
         {
@@ -25,6 +27,22 @@ namespace Microsoft.Azure.Management.Compute.Models
         public static void RemoveAuxAuthHeader(this VirtualMachineScaleSet vmss)
         {
             mapping.Remove(vmss);
+        }
+
+        public static void SetIfMatchIfNoneMatch(this VirtualMachineScaleSet vmss, string ifMatch, string ifNoneMatch)
+        {
+            ifMatchProperty = ifMatch;
+            ifNoneMatchProperty = ifNoneMatch;
+        }
+        public static Tuple<string, string> GetIfMatchIfNoneMatch(this VirtualMachineScaleSet vmss)
+        {
+            return Tuple.Create(ifMatchProperty, ifNoneMatchProperty);
+        }
+
+        public static void RemoveIfMatchIfNoneMatch(this VirtualMachineScaleSet vmss)
+        {
+            ifMatchProperty = null;
+            ifNoneMatchProperty = null;
         }
 
     }

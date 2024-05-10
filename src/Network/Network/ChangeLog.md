@@ -26,6 +26,7 @@
 * Added new cmdlet `New-AzApplicationGatewayHeaderValueMatcher` to support for the new property `HeaderValueMatcher`
 * Added cmdlet `New-AzVirtualApplianceNetworkProfile` to build network profile for network virtual appliance and pass as a parameter.
 * Added cmdlet `New-AzVirtualApplianceNetworkInterfaceConfiguration` and `New-AzVirtualApplianceIpConfiguration` to build `New-AzVirtualApplianceNetworkProfile`.
+* Updated PS SDK to older SDK removing identity field
 
 ## Version 7.5.0
 * Added cmdlet `Convert-AzNetworkWatcherClassicConnectionMonitor` for converting a classic connection monitor to V2 connection monitor.
