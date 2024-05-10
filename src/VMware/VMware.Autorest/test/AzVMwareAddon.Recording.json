@@ -1,8 +1,8 @@
 {
-  "AzVMwareAddon+[NoContext]+List+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/addons/SRM?api-version=2021-12-01+1": {
+  "AzVMwareAddon+[NoContext]+List+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupyv1fcm/providers/Microsoft.AVS/privateClouds/azps_test_cloudkwyi/addons/SRM?api-version=2023-09-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/addons/SRM?api-version=2021-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupyv1fcm/providers/Microsoft.AVS/privateClouds/azps_test_cloudkwyi/addons/SRM?api-version=2023-09-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"addonType\": \"SRM\",\r\n    \"licenseKey\": \"YourLicenseKeyValue\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -13,266 +13,107 @@
       }
     },
     "Response": {
-      "StatusCode": 200,
+      "StatusCode": 404,
       "Headers": {
-        "Date": [ "Thu, 22 Sep 2022 07:09:53 GMT" ],
-        "Server": [ "Rocket" ]
+        "Server": [ "Rocket" ],
+        "Date": [ "Fri, 10 May 2024 18:26:30 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "241" ],
-        "Content-Type": [ "application/json" ]
+        "Content-Type": [ "text/html; charset=utf-8" ],
+        "Content-Length": [ "383" ]
       },
-      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/addons/srm\",\"name\":\"srm\",\"type\":\"Microsoft.AVS/privateClouds/addons\",\"properties\":{\"addonType\":\"SRM\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "\u003c!DOCTYPE html\u003e\n\u003chtml lang=\"en\"\u003e\n\u003chead\u003e\n    \u003cmeta charset=\"utf-8\"\u003e\n    \u003ctitle\u003e404 Not Found\u003c/title\u003e\n\u003c/head\u003e\n\u003cbody align=\"center\"\u003e\n    \u003cdiv role=\"main\" align=\"center\"\u003e\n        \u003ch1\u003e404: Not Found\u003c/h1\u003e\n        \u003cp\u003eThe requested resource could not be found.\u003c/p\u003e\n        \u003chr /\u003e\n    \u003c/div\u003e\n    \u003cdiv role=\"contentinfo\" align=\"center\"\u003e\n        \u003csmall\u003eRocket\u003c/small\u003e\n    \u003c/div\u003e\n\u003c/body\u003e\n\u003c/html\u003e",
       "isContentBase64": false
     }
   },
-  "AzVMwareAddon+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/addons/SRM?api-version=2021-12-01+2": {
+  "AzVMwareAddon+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupyv1fcm/providers/Microsoft.AVS/privateClouds/azps_test_cloudkwyi/addons/vr?api-version=2023-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/addons/SRM?api-version=2021-12-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupyv1fcm/providers/Microsoft.AVS/privateClouds/azps_test_cloudkwyi/addons/vr?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "6fe3c651-20bd-4072-a427-b03aab94bead" ],
-        "CommandName": [ "Az.VMware.internal\\New-AzVMwareAddon" ],
-        "FullCommandName": [ "New-AzVMwareAddon_CreateExpanded" ],
+        "x-ms-client-request-id": [ "9856e6ff-dad4-421a-8ac6-3a36abc2b6da" ],
+        "CommandName": [ "Az.VMware.internal\\Get-AzVMwareAddon" ],
+        "FullCommandName": [ "Get-AzVMwareAddon_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.VMware/0.4.0" ]
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.4.2", "Az.VMware/0.4.0" ],
+        "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
       }
     },
     "Response": {
-      "StatusCode": 200,
+      "StatusCode": 404,
       "Headers": {
-        "Date": [ "Thu, 22 Sep 2022 07:10:23 GMT" ],
-        "Server": [ "Rocket" ]
+        "Server": [ "Rocket" ],
+        "Date": [ "Fri, 10 May 2024 18:26:30 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "241" ],
-        "Content-Type": [ "application/json" ]
+        "Content-Type": [ "text/html; charset=utf-8" ],
+        "Content-Length": [ "383" ]
       },
-      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/addons/srm\",\"name\":\"srm\",\"type\":\"Microsoft.AVS/privateClouds/addons\",\"properties\":{\"addonType\":\"SRM\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "\u003c!DOCTYPE html\u003e\n\u003chtml lang=\"en\"\u003e\n\u003chead\u003e\n    \u003cmeta charset=\"utf-8\"\u003e\n    \u003ctitle\u003e404 Not Found\u003c/title\u003e\n\u003c/head\u003e\n\u003cbody align=\"center\"\u003e\n    \u003cdiv role=\"main\" align=\"center\"\u003e\n        \u003ch1\u003e404: Not Found\u003c/h1\u003e\n        \u003cp\u003eThe requested resource could not be found.\u003c/p\u003e\n        \u003chr /\u003e\n    \u003c/div\u003e\n    \u003cdiv role=\"contentinfo\" align=\"center\"\u003e\n        \u003csmall\u003eRocket\u003c/small\u003e\n    \u003c/div\u003e\n\u003c/body\u003e\n\u003c/html\u003e",
       "isContentBase64": false
     }
   },
-  "AzVMwareAddon+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/addons/SRM?api-version=2021-12-01+3": {
+  "AzVMwareAddon+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupyv1fcm/providers/Microsoft.AVS/privateClouds/azps_test_cloudt54j/addons/SRM?api-version=2023-09-01+1": {
     "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/addons/SRM?api-version=2021-12-01",
-      "Content": null,
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupyv1fcm/providers/Microsoft.AVS/privateClouds/azps_test_cloudt54j/addons/SRM?api-version=2023-09-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"addonType\": \"SRM\",\r\n    \"licenseKey\": \"YourLicenseKeyValue\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "6fe3c651-20bd-4072-a427-b03aab94bead" ],
-        "CommandName": [ "Az.VMware.internal\\New-AzVMwareAddon" ],
-        "FullCommandName": [ "New-AzVMwareAddon_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.VMware/0.4.0" ]
       },
       "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "94" ]
       }
     },
     "Response": {
-      "StatusCode": 200,
+      "StatusCode": 404,
       "Headers": {
-        "Date": [ "Thu, 22 Sep 2022 07:10:23 GMT" ],
-        "Server": [ "Rocket" ]
+        "Server": [ "Rocket" ],
+        "Date": [ "Fri, 10 May 2024 18:26:30 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "241" ],
-        "Content-Type": [ "application/json" ]
+        "Content-Type": [ "text/html; charset=utf-8" ],
+        "Content-Length": [ "383" ]
       },
-      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/addons/srm\",\"name\":\"srm\",\"type\":\"Microsoft.AVS/privateClouds/addons\",\"properties\":{\"addonType\":\"SRM\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "\u003c!DOCTYPE html\u003e\n\u003chtml lang=\"en\"\u003e\n\u003chead\u003e\n    \u003cmeta charset=\"utf-8\"\u003e\n    \u003ctitle\u003e404 Not Found\u003c/title\u003e\n\u003c/head\u003e\n\u003cbody align=\"center\"\u003e\n    \u003cdiv role=\"main\" align=\"center\"\u003e\n        \u003ch1\u003e404: Not Found\u003c/h1\u003e\n        \u003cp\u003eThe requested resource could not be found.\u003c/p\u003e\n        \u003chr /\u003e\n    \u003c/div\u003e\n    \u003cdiv role=\"contentinfo\" align=\"center\"\u003e\n        \u003csmall\u003eRocket\u003c/small\u003e\n    \u003c/div\u003e\n\u003c/body\u003e\n\u003c/html\u003e",
       "isContentBase64": false
     }
   },
-  "AzVMwareAddon+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/addons?api-version=2021-12-01+4": {
+  "AzVMwareAddon+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupyv1fcm/providers/Microsoft.AVS/privateClouds/azps_test_cloudt54j/addons/vr?api-version=2023-09-01+1": {
     "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/addons?api-version=2021-12-01",
+      "Method": "DELETE",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupyv1fcm/providers/Microsoft.AVS/privateClouds/azps_test_cloudt54j/addons/vr?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "82c586b0-f1aa-454c-bfb4-d10206d415b2" ],
-        "CommandName": [ "Az.VMware.internal\\Get-AzVMwareAddon" ],
-        "FullCommandName": [ "Get-AzVMwareAddon_List" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.VMware/0.4.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Date": [ "Thu, 22 Sep 2022 07:10:23 GMT" ],
-        "Server": [ "Rocket" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "253" ],
-        "Content-Type": [ "application/json" ]
-      },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/addons/srm\",\"name\":\"srm\",\"type\":\"Microsoft.AVS/privateClouds/addons\",\"properties\":{\"addonType\":\"SRM\",\"provisioningState\":\"Succeeded\"}}]}",
-      "isContentBase64": false
-    }
-  },
-  "AzVMwareAddon+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/addons/vr?api-version=2021-12-01+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/addons/vr?api-version=2021-12-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "7c956c9b-7aa9-4019-afc5-b68b1c541e44" ],
-        "CommandName": [ "Az.VMware.internal\\Get-AzVMwareAddon" ],
-        "FullCommandName": [ "Get-AzVMwareAddon_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.VMware/0.4.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Date": [ "Thu, 22 Sep 2022 07:10:24 GMT" ],
-        "Server": [ "Rocket" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "241" ],
-        "Content-Type": [ "application/json" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/addons/srm\",\"name\":\"srm\",\"type\":\"Microsoft.AVS/privateClouds/addons\",\"properties\":{\"addonType\":\"SRM\",\"provisioningState\":\"Succeeded\"}}",
-      "isContentBase64": false
-    }
-  },
-  "AzVMwareAddon+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloud7lcz/addons/SRM?api-version=2021-12-01+1": {
-    "Request": {
-      "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloud7lcz/addons/SRM?api-version=2021-12-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"addonType\": \"SRM\",\r\n    \"licenseKey\": \"YourLicenseKeyValue\"\r\n  }\r\n}",
-      "isContentBase64": false,
-      "Headers": {
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "94" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Date": [ "Thu, 22 Sep 2022 07:10:24 GMT" ],
-        "Server": [ "Rocket" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "241" ],
-        "Content-Type": [ "application/json" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/addons/srm\",\"name\":\"srm\",\"type\":\"Microsoft.AVS/privateClouds/addons\",\"properties\":{\"addonType\":\"SRM\",\"provisioningState\":\"Succeeded\"}}",
-      "isContentBase64": false
-    }
-  },
-  "AzVMwareAddon+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloud7lcz/addons/SRM?api-version=2021-12-01+2": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloud7lcz/addons/SRM?api-version=2021-12-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "1dada9f4-452f-4285-84dd-325b6fbfaaf9" ],
-        "CommandName": [ "Az.VMware.internal\\New-AzVMwareAddon" ],
-        "FullCommandName": [ "New-AzVMwareAddon_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.VMware/0.4.0" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Date": [ "Thu, 22 Sep 2022 07:10:55 GMT" ],
-        "Server": [ "Rocket" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "241" ],
-        "Content-Type": [ "application/json" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/addons/srm\",\"name\":\"srm\",\"type\":\"Microsoft.AVS/privateClouds/addons\",\"properties\":{\"addonType\":\"SRM\",\"provisioningState\":\"Succeeded\"}}",
-      "isContentBase64": false
-    }
-  },
-  "AzVMwareAddon+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloud7lcz/addons/SRM?api-version=2021-12-01+3": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloud7lcz/addons/SRM?api-version=2021-12-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "8" ],
-        "x-ms-client-request-id": [ "1dada9f4-452f-4285-84dd-325b6fbfaaf9" ],
-        "CommandName": [ "Az.VMware.internal\\New-AzVMwareAddon" ],
-        "FullCommandName": [ "New-AzVMwareAddon_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.VMware/0.4.0" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Date": [ "Thu, 22 Sep 2022 07:10:55 GMT" ],
-        "Server": [ "Rocket" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "241" ],
-        "Content-Type": [ "application/json" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/addons/srm\",\"name\":\"srm\",\"type\":\"Microsoft.AVS/privateClouds/addons\",\"properties\":{\"addonType\":\"SRM\",\"provisioningState\":\"Succeeded\"}}",
-      "isContentBase64": false
-    }
-  },
-  "AzVMwareAddon+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloud7lcz/addons/vr?api-version=2021-12-01+1": {
-    "Request": {
-      "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloud7lcz/addons/vr?api-version=2021-12-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "9" ],
-        "x-ms-client-request-id": [ "fb0256da-5b01-4a6c-b9ef-42bda63501b7" ],
+        "x-ms-client-request-id": [ "d06f2429-f1f7-47fc-9434-1e895e97c2f7" ],
         "CommandName": [ "Az.VMware.internal\\Remove-AzVMwareAddon" ],
         "FullCommandName": [ "Remove-AzVMwareAddon_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.VMware/0.4.0" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.4.2", "Az.VMware/0.4.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
       }
     },
     "Response": {
-      "StatusCode": 200,
+      "StatusCode": 404,
       "Headers": {
-        "Date": [ "Thu, 22 Sep 2022 07:10:56 GMT" ],
-        "Server": [ "Rocket" ]
+        "Server": [ "Rocket" ],
+        "Date": [ "Fri, 10 May 2024 18:26:30 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "0" ]
+        "Content-Type": [ "text/html; charset=utf-8" ],
+        "Content-Length": [ "383" ]
       },
-      "Content": null,
+      "Content": "\u003c!DOCTYPE html\u003e\n\u003chtml lang=\"en\"\u003e\n\u003chead\u003e\n    \u003cmeta charset=\"utf-8\"\u003e\n    \u003ctitle\u003e404 Not Found\u003c/title\u003e\n\u003c/head\u003e\n\u003cbody align=\"center\"\u003e\n    \u003cdiv role=\"main\" align=\"center\"\u003e\n        \u003ch1\u003e404: Not Found\u003c/h1\u003e\n        \u003cp\u003eThe requested resource could not be found.\u003c/p\u003e\n        \u003chr /\u003e\n    \u003c/div\u003e\n    \u003cdiv role=\"contentinfo\" align=\"center\"\u003e\n        \u003csmall\u003eRocket\u003c/small\u003e\n    \u003c/div\u003e\n\u003c/body\u003e\n\u003c/html\u003e",
       "isContentBase64": false
     }
   }

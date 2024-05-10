@@ -8,34 +8,36 @@ schema: 2.0.0
 # Update-AzVMwarePrivateCloud
 
 ## SYNOPSIS
-Update a private cloud
+Update a PrivateCloud
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzVMwarePrivateCloud -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AvailabilitySecondaryZone <Int32>] [-AvailabilityStrategy <AvailabilityStrategy>]
- [-AvailabilityZone <Int32>] [-EncryptionStatus <EncryptionState>] [-IdentitySource <IIdentitySource[]>]
- [-IdentityType <ResourceIdentityType>] [-Internet <InternetEnum>] [-KeyVaultPropertyKeyName <String>]
- [-KeyVaultPropertyKeyVaultUrl <String>] [-KeyVaultPropertyKeyVersion <String>]
- [-ManagementClusterHost <String[]>] [-ManagementClusterSize <Int32>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DnsZoneType <String>] [-EncryptionStatus <String>] [-ExtendedNetworkBlock <String[]>]
+ [-IdentitySource <IIdentitySource[]>] [-IdentityType <String>] [-Internet <String>]
+ [-KeyVaultPropertyKeyName <String>] [-KeyVaultPropertyKeyVaultUrl <String>]
+ [-KeyVaultPropertyKeyVersion <String>] [-ManagementClusterHost <String[]>] [-ManagementClusterSize <Int32>]
+ [-ManagementClusterVsanDatastoreName <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
+ [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzVMwarePrivateCloud -InputObject <IVMwareIdentity> [-AvailabilitySecondaryZone <Int32>]
- [-AvailabilityStrategy <AvailabilityStrategy>] [-AvailabilityZone <Int32>]
- [-EncryptionStatus <EncryptionState>] [-IdentitySource <IIdentitySource[]>]
- [-IdentityType <ResourceIdentityType>] [-Internet <InternetEnum>] [-KeyVaultPropertyKeyName <String>]
+Update-AzVMwarePrivateCloud -InputObject <IVMwareIdentity> [-DnsZoneType <String>]
+ [-EncryptionStatus <String>] [-ExtendedNetworkBlock <String[]>] [-IdentitySource <IIdentitySource[]>]
+ [-IdentityType <String>] [-Internet <String>] [-KeyVaultPropertyKeyName <String>]
  [-KeyVaultPropertyKeyVaultUrl <String>] [-KeyVaultPropertyKeyVersion <String>]
- [-ManagementClusterHost <String[]>] [-ManagementClusterSize <Int32>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ManagementClusterHost <String[]>] [-ManagementClusterSize <Int32>]
+ [-ManagementClusterVsanDatastoreName <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
+ [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a private cloud
+Update a PrivateCloud
 
 ## EXAMPLES
 
@@ -82,53 +84,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AvailabilitySecondaryZone
-The secondary availability zone for the private cloud
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AvailabilityStrategy
-The availability strategy for the private cloud
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AvailabilityStrategy
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AvailabilityZone
-The primary availability zone for the private cloud
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -142,11 +100,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DnsZoneType
+The type of DNS zone to use.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EncryptionStatus
 Status of customer managed encryption key
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.EncryptionState
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExtendedNetworkBlock
+Array of additional networks noncontiguous with networkBlock.
+Networks must beunique and non-overlapping across VNet in your subscription, on-premise, andthis privateCloud networkBlock attribute.
+Make sure the CIDR format conforms to(A.B.C.D/X).
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -162,7 +152,7 @@ vCenter Single Sign On Identity Sources
 To construct, see NOTES section for IDENTITYSOURCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -174,12 +164,10 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-The type of identity used for the private cloud.
-The type 'SystemAssigned' refers to an implicitly created identity.
-The type 'None' will remove any identities from the Private Cloud.
+Type of managed service identity (either system assigned, or none).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ResourceIdentityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -210,7 +198,7 @@ Accept wildcard characters: False
 Connectivity to internet is enabled or disabled
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -296,6 +284,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ManagementClusterVsanDatastoreName
+Name of the vsan datastore associated with the cluster
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the private cloud
 
@@ -342,8 +345,89 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SkuCapacity
+If the SKU supports scale out/in then the capacity integer should be included.
+If scale out/in is not possible for the resource this may be omitted.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuFamily
+If the service has different generations of hardware, for the same SKU, then that can be captured here.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuName
+The name of the SKU.
+E.g.
+P3.
+It is typically a letter+number code
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuSize
+The SKU size.
+When the name field is the combination of tier and some other value, this would be the standalone code.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuTier
+This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -358,7 +442,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -412,55 +496,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`IDENTITYSOURCE <IIdentitySource[]>`: vCenter Single Sign On Identity Sources
-  - `[Alias <String>]`: The domain's NetBIOS name
-  - `[BaseGroupDn <String>]`: The base distinguished name for groups
-  - `[BaseUserDn <String>]`: The base distinguished name for users
-  - `[Domain <String>]`: The domain's dns name
-  - `[Name <String>]`: The name of the identity source
-  - `[Password <String>]`: The password of the Active Directory user with a minimum of read-only access to Base DN for users and groups.
-  - `[PrimaryServer <String>]`: Primary server URL
-  - `[SecondaryServer <String>]`: Secondary server URL
-  - `[Ssl <SslEnum?>]`: Protect LDAP communication using SSL certificate (LDAPS)
-  - `[Username <String>]`: The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group
-
-`INPUTOBJECT <IVMwareIdentity>`: Identity Parameter
-  - `[AddonName <String>]`: Name of the addon for the private cloud
-  - `[AuthorizationName <String>]`: Name of the ExpressRoute Circuit Authorization in the private cloud
-  - `[CloudLinkName <String>]`: Name of the cloud link resource
-  - `[ClusterName <String>]`: Name of the cluster in the private cloud
-  - `[DatastoreName <String>]`: Name of the datastore in the private cloud cluster
-  - `[DhcpId <String>]`: NSX DHCP identifier. Generally the same as the DHCP display name
-  - `[DnsServiceId <String>]`: NSX DNS Service identifier. Generally the same as the DNS Service's display name
-  - `[DnsZoneId <String>]`: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
-  - `[GatewayId <String>]`: NSX Gateway identifier. Generally the same as the Gateway's display name
-  - `[GlobalReachConnectionName <String>]`: Name of the global reach connection in the private cloud
-  - `[HcxEnterpriseSiteName <String>]`: Name of the HCX Enterprise Site in the private cloud
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: Azure region
-  - `[PlacementPolicyName <String>]`: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
-  - `[PortMirroringId <String>]`: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
-  - `[PrivateCloudName <String>]`: Name of the private cloud
-  - `[PublicIPId <String>]`: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ScriptCmdletName <String>]`: Name of the script cmdlet resource in the script package in the private cloud
-  - `[ScriptExecutionName <String>]`: Name of the user-invoked script execution resource
-  - `[ScriptPackageName <String>]`: Name of the script package in the private cloud
-  - `[SegmentId <String>]`: NSX Segment identifier. Generally the same as the Segment's display name
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VMGroupId <String>]`: NSX VM Group identifier. Generally the same as the VM Group's display name
-  - `[VirtualMachineId <String>]`: Virtual Machine identifier
 
 ## RELATED LINKS
 

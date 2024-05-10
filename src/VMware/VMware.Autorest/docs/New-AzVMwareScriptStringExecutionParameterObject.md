@@ -73,11 +73,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ScriptStringExecutionParameter
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ScriptStringExecutionParameter
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 
