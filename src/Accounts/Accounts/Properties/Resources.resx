@@ -598,4 +598,28 @@
   <data name="DoNotIgnoreInformationIfUserDeviceAuth" xml:space="preserve">
     <value>Please do not set InformationAction or $InformationPreference to Ignore if you want to use device code authentication.</value>
   </data>
+  <data name="PleaseSelectAccount" xml:space="preserve">
+    <value>Please select the account you want to login with.</value>
+  </data>
+  <data name="RetrievingSubscription" xml:space="preserve">
+    <value>Retrieving subscriptions for the selection...</value>
+  </data>
+  <data name="PleaseSelectSubscription" xml:space="preserve">
+    <value>Please type a number to select a subscription.</value>
+  </data>
+  <data name="SelectedSubscriptionOutOfRange" xml:space="preserve">
+    <value>Selected subscription is out of range, please type a correct number.</value>
+  </data>
+  <data name="SelectTenantAndSubscription" xml:space="preserve">
+    <value>Select a tenant and subscription: </value>
+  </data>
+  <data name="SelectTenantAndSubscriptionWithDefaultValue" xml:space="preserve">
+    <value>Select a tenant and subscription (type a number or Enter to accept default): </value>
+  </data>
+  <data name="TenantAndSubscriptionSelection" xml:space="preserve">
+    <value>[Tenant and subscription selection]</value>
+  </data>
+  <data name="TypedSubscriptionNotNumber" xml:space="preserve">
+    <value>Typed subscription is not a number.</value>
+  </data>
 </root>
