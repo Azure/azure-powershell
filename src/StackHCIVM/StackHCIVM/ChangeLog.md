@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Update the synopsis
+* Updated the synopsis.
 * Fixed the placeholder in psd1 file.
 
 ## Version 1.0.3
