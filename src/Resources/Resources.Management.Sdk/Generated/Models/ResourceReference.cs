@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Resources.Models
     using System.Linq;
 
     /// <summary>
-    /// The resource Id model.
+    /// The resourceId model.
     /// </summary>
     public partial class ResourceReference
     {

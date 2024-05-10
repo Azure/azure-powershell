@@ -14,8 +14,7 @@ Gets Subscription scoped Deployment Stacks.
 
 ### ListDeploymentStacks (Default)
 ```
-Get-AzSubscriptionDeploymentStack [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-AzSubscriptionDeploymentStack [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByName
