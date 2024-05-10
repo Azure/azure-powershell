@@ -15,35 +15,35 @@ Creates or updates a Custom Location in the specified Subscription and Resource 
 
 ### Example 2: Creates or updates a Custom Location that enable system assigned identity
 ```powershell
-$HostResourceId = (Get-AzConnectedKubernetes -ClusterName azps-connect -ResourceGroupName joyer-test).Id
-$ClusterExtensionId = (Get-AzKubernetesExtension -ClusterName azps-connect -ClusterType ConnectedClusters -ResourceGroupName joyer-test -Name azps-extension).Id
-New-AzCustomLocation -ResourceGroupName joyer-test -Name azps-customlocation -Location eastus -ClusterExtensionId $ClusterExtensionId -HostResourceId $HostResourceId -Namespace azps-namespace -EnableSystemAssignedIdentity
+$HostResourceId = (Get-AzConnectedKubernetes -ClusterName azps-connect -ResourceGroupName group01).Id
+$ClusterExtensionId = (Get-AzKubernetesExtension -ClusterName azps-connect -ClusterType ConnectedClusters -ResourceGroupName group01 -Name azps-extension).Id
+New-AzCustomLocation -ResourceGroupName group01 -Name azps-customlocation -Location eastus -ClusterExtensionId $ClusterExtensionId -HostResourceId $HostResourceId -Namespace azps-namespace -EnableSystemAssignedIdentity
 ```
 
 ```output
 AuthenticationType           : 
 AuthenticationValue          : 
-ClusterExtensionId           : {/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.Kubernetes/ConnectedClusters/azps- 
+ClusterExtensionId           : {/subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/group01/providers/Microsoft.Kubernetes/ConnectedClusters/azps- 
                                connect/providers/Microsoft.KubernetesConfiguration/extensions/azps-extension}
 DisplayName                  : 
-HostResourceId               : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.Kubernetes/connectedClusters/azps-c 
+HostResourceId               : /subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/group01/providers/Microsoft.Kubernetes/connectedClusters/azps-c 
                                onnect
 HostType                     : Kubernetes
-Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/joyer-test/providers/microsoft.extendedlocation/customlocations/az 
+Id                           : /subscriptions/11111111-2222-3333-4444-123456789101/resourcegroups/group01/providers/microsoft.extendedlocation/customlocations/az 
                                ps-customlocation
-IdentityPrincipalId          : 2c00f896-3cf8-42d2-b902-660cbcc51005
-IdentityTenantId             : 72f988bf-86f1-41af-91ab-2d7cd011db47
+IdentityPrincipalId          : 11111111-2222-3333-4444-123456789123
+IdentityTenantId             : 11111111-2222-3333-4444-123456789876
 IdentityType                 : SystemAssigned
 Location                     : eastus
 Name                         : azps-customlocation
 Namespace                    : azps-namespace
 ProvisioningState            : Succeeded
-ResourceGroupName            : joyer-test
+ResourceGroupName            : group01
 SystemDataCreatedAt          : 4/30/2024 7:57:50 AM
-SystemDataCreatedBy          : v-jiaji@microsoft.com
+SystemDataCreatedBy          : user@example.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 4/30/2024 7:57:50 AM
-SystemDataLastModifiedBy     : v-jiaji@microsoft.com
+SystemDataLastModifiedBy     : user@example.com
 SystemDataLastModifiedByType : User
 Tag                          : {
                                }

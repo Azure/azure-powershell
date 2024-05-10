@@ -29,19 +29,19 @@ Updates a Custom Location.
 
 ### Example 3: Updates a Custom Location with disable system assigned identity
 ```powershell
-Update-AzCustomLocation -Name azps-customlocation -ResourceGroupName joyer-test -EnableSystemAssignedIdentity 0 -Tag @{"aaa"= "111"}
+Update-AzCustomLocation -Name azps-customlocation -ResourceGroupName group01 -EnableSystemAssignedIdentity $false -Tag @{"aaa"= "111"}
 ```
 
 ```output
 AuthenticationType           : 
 AuthenticationValue          : 
-ClusterExtensionId           : {/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.Kubernetes/ConnectedClusters/azps- 
+ClusterExtensionId           : {/subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/group01/providers/Microsoft.Kubernetes/ConnectedClusters/azps- 
                                connect/providers/Microsoft.KubernetesConfiguration/extensions/azps-extension}
 DisplayName                  : 
-HostResourceId               : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.Kubernetes/connectedClusters/azps-c 
+HostResourceId               : /subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/group01/providers/Microsoft.Kubernetes/connectedClusters/azps-c 
                                onnect
 HostType                     : Kubernetes
-Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/joyer-test/providers/microsoft.extendedlocation/customlocations/az 
+Id                           : /subscriptions/11111111-2222-3333-4444-123456789101/resourcegroups/group01/providers/microsoft.extendedlocation/customlocations/az 
                                ps-customlocation
 IdentityPrincipalId          : 
 IdentityTenantId             : 
@@ -50,12 +50,12 @@ Location                     : eastus
 Name                         : azps-customlocation
 Namespace                    : azps-namespace
 ProvisioningState            : Succeeded
-ResourceGroupName            : joyer-test
+ResourceGroupName            : group01
 SystemDataCreatedAt          : 4/30/2024 7:57:50 AM
-SystemDataCreatedBy          : v-jiaji@microsoft.com
+SystemDataCreatedBy          : user@example.com
 SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 4/30/2024 8:08:55 AM
-SystemDataLastModifiedBy     : v-jiaji@microsoft.com
+SystemDataLastModifiedBy     : user@example.com
 SystemDataLastModifiedByType : User
 Tag                          : {
                                  "aaa": "111"
