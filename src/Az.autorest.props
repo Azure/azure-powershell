@@ -1,13 +1,9 @@
 <Project>
 
   <Import Project="$(MSBuildThisFileDirectory)..\Repo.props" />
+  <Import Project="$(RepoTools)Common.Netcore.Dependencies.targets" />
   <Import Project="$(MSBuildThisFileDirectory)Az.Shared.props" />
 
-  <!--Dependencies-->
-  <Import Project="$(RepoTools)Shared.Dependencies.targets" />
-  <ItemGroup>
-    <PackageReference Include="PowerShellStandard.Library" Version="5.1.0" PrivateAssets="All" />
-  </ItemGroup>
   <!-- Build -->
   <PropertyGroup Condition="'$(PsModuleFolder)'==''">
     <PsModuleFolder>$(PsModuleName).Autorest</PsModuleFolder>
