@@ -8,7 +8,8 @@ namespace Microsoft.Azure.Management.Resources.Models
     using System.Linq;
 
     /// <summary>
-    /// The resource Id extended model.
+    /// The resourceId extended model. This is used to document failed resources
+    /// with a resourceId and a corresponding error.
     /// </summary>
     public partial class ResourceReferenceExtended
     {
@@ -27,11 +28,9 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// <param name="id">The resourceId of a resource managed by the deployment stack.
         /// </param>
 
-        /// <param name="error">Common error response for all Azure Resource Manager APIs to return error
-        /// details for failed operations. (This also follows the OData error response
-        /// format.).
+        /// <param name="error">The error detail.
         /// </param>
-        public ResourceReferenceExtended(string id = default(string), ErrorResponse error = default(ErrorResponse))
+        public ResourceReferenceExtended(string id = default(string), ErrorDetail error = default(ErrorDetail))
 
         {
             this.Id = id;
@@ -52,11 +51,9 @@ namespace Microsoft.Azure.Management.Resources.Models
         public string Id {get; private set; }
 
         /// <summary>
-        /// Gets or sets common error response for all Azure Resource Manager APIs to
-        /// return error details for failed operations. (This also follows the OData
-        /// error response format.).
+        /// Gets or sets the error detail.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "error")]
-        public ErrorResponse Error {get; set; }
+        public ErrorDetail Error {get; set; }
     }
 }

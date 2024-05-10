@@ -30,24 +30,38 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="type">The endpoint type.
         /// Possible values include: &#39;AzureVM&#39;, &#39;AzureVNet&#39;, &#39;AzureSubnet&#39;,
         /// &#39;ExternalAddress&#39;, &#39;MMAWorkspaceMachine&#39;, &#39;MMAWorkspaceNetwork&#39;,
-        /// &#39;AzureArcVM&#39;, &#39;AzureVMSS&#39;</param>
+        /// &#39;AzureArcVM&#39;, &#39;AzureVMSS&#39;, &#39;AzureArcNetwork&#39;</param>
 
-        /// <param name="resourceId">Resource ID of the connection monitor endpoint.
+        /// <param name="resourceId">Resource ID of the connection monitor endpoint are supported for AzureVM,
+        /// AzureVMSS, AzureVNet, AzureSubnet, MMAWorkspaceMachine,
+        /// MMAWorkspaceNetwork, AzureArcVM endpoint type.
         /// </param>
 
-        /// <param name="address">Address of the connection monitor endpoint (IP or domain name).
+        /// <param name="address">Address of the connection monitor endpoint. Supported for AzureVM,
+        /// ExternalAddress, ArcMachine, MMAWorkspaceMachine endpoint type.
         /// </param>
 
-        /// <param name="filter">Filter for sub-items within the endpoint.
+        /// <param name="filter">Filter field is getting deprecated and should not be used. Instead use
+        /// Include/Exclude scope fields for it.
         /// </param>
 
-        /// <param name="scope">Endpoint scope.
+        /// <param name="scope">Endpoint scope defines which target resource to monitor in case of compound
+        /// resource endpoints like VMSS, AzureSubnet, AzureVNet, MMAWorkspaceNetwork,
+        /// AzureArcNetwork.
         /// </param>
 
         /// <param name="coverageLevel">Test coverage for the endpoint.
         /// Possible values include: &#39;Default&#39;, &#39;Low&#39;, &#39;BelowAverage&#39;, &#39;Average&#39;,
         /// &#39;AboveAverage&#39;, &#39;Full&#39;</param>
-        public ConnectionMonitorEndpoint(string name, string type = default(string), string resourceId = default(string), string address = default(string), ConnectionMonitorEndpointFilter filter = default(ConnectionMonitorEndpointFilter), ConnectionMonitorEndpointScope scope = default(ConnectionMonitorEndpointScope), string coverageLevel = default(string))
+
+        /// <param name="locationDetails">Location details is optional and only being used for &#39;AzureArcNetwork&#39; type
+        /// endpoints, which contains region details.
+        /// </param>
+
+        /// <param name="subscriptionId">Subscription ID for connection monitor endpoint. It&#39;s an optional parameter
+        /// which is being used for &#39;AzureArcNetwork&#39; type endpoint.
+        /// </param>
+        public ConnectionMonitorEndpoint(string name, string type = default(string), string resourceId = default(string), string address = default(string), ConnectionMonitorEndpointFilter filter = default(ConnectionMonitorEndpointFilter), ConnectionMonitorEndpointScope scope = default(ConnectionMonitorEndpointScope), string coverageLevel = default(string), ConnectionMonitorEndpointLocationDetails locationDetails = default(ConnectionMonitorEndpointLocationDetails), string subscriptionId = default(string))
 
         {
             this.Name = name;
@@ -57,6 +71,8 @@ namespace Microsoft.Azure.Management.Network.Models
             this.Filter = filter;
             this.Scope = scope;
             this.CoverageLevel = coverageLevel;
+            this.LocationDetails = locationDetails;
+            this.SubscriptionId = subscriptionId;
             CustomInit();
         }
 
@@ -73,32 +89,37 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Name {get; set; }
 
         /// <summary>
-        /// Gets or sets the endpoint type. Possible values include: &#39;AzureVM&#39;, &#39;AzureVNet&#39;, &#39;AzureSubnet&#39;, &#39;ExternalAddress&#39;, &#39;MMAWorkspaceMachine&#39;, &#39;MMAWorkspaceNetwork&#39;, &#39;AzureArcVM&#39;, &#39;AzureVMSS&#39;
+        /// Gets or sets the endpoint type. Possible values include: &#39;AzureVM&#39;, &#39;AzureVNet&#39;, &#39;AzureSubnet&#39;, &#39;ExternalAddress&#39;, &#39;MMAWorkspaceMachine&#39;, &#39;MMAWorkspaceNetwork&#39;, &#39;AzureArcVM&#39;, &#39;AzureVMSS&#39;, &#39;AzureArcNetwork&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
         public string Type {get; set; }
 
         /// <summary>
-        /// Gets or sets resource ID of the connection monitor endpoint.
+        /// Gets or sets resource ID of the connection monitor endpoint are supported
+        /// for AzureVM, AzureVMSS, AzureVNet, AzureSubnet, MMAWorkspaceMachine,
+        /// MMAWorkspaceNetwork, AzureArcVM endpoint type.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "resourceId")]
         public string ResourceId {get; set; }
 
         /// <summary>
-        /// Gets or sets address of the connection monitor endpoint (IP or domain
-        /// name).
+        /// Gets or sets address of the connection monitor endpoint. Supported for
+        /// AzureVM, ExternalAddress, ArcMachine, MMAWorkspaceMachine endpoint type.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "address")]
         public string Address {get; set; }
 
         /// <summary>
-        /// Gets or sets filter for sub-items within the endpoint.
+        /// Gets or sets filter field is getting deprecated and should not be used.
+        /// Instead use Include/Exclude scope fields for it.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "filter")]
         public ConnectionMonitorEndpointFilter Filter {get; set; }
 
         /// <summary>
-        /// Gets or sets endpoint scope.
+        /// Gets or sets endpoint scope defines which target resource to monitor in
+        /// case of compound resource endpoints like VMSS, AzureSubnet, AzureVNet,
+        /// MMAWorkspaceNetwork, AzureArcNetwork.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "scope")]
         public ConnectionMonitorEndpointScope Scope {get; set; }
@@ -108,6 +129,20 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "coverageLevel")]
         public string CoverageLevel {get; set; }
+
+        /// <summary>
+        /// Gets or sets location details is optional and only being used for
+        /// &#39;AzureArcNetwork&#39; type endpoints, which contains region details.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "locationDetails")]
+        public ConnectionMonitorEndpointLocationDetails LocationDetails {get; set; }
+
+        /// <summary>
+        /// Gets or sets subscription ID for connection monitor endpoint. It&#39;s an
+        /// optional parameter which is being used for &#39;AzureArcNetwork&#39; type endpoint.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "subscriptionId")]
+        public string SubscriptionId {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -120,6 +155,8 @@ namespace Microsoft.Azure.Management.Network.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Name");
             }
+
+
 
 
 
