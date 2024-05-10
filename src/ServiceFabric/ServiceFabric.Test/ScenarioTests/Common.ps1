@@ -52,7 +52,7 @@ function Get-ClusterName
 
 function Get-NodeTypeName
 {
-    return "nt1vm";
+    return "Type476";
 }
 
 function Get-KeyVaultName
@@ -68,7 +68,7 @@ function Get-NewCertName
 function Get-SecretUrl
 {
     # Thumbprint for this cert should be specified in TestServiceFabric.cs in ServiceFabricCmdletBase.TestThumbprint
-    return "https://gumakv1.vault.azure.net/secrets/gumacert/bc05af76fa894a38a0f9f47804bacc42"
+    return "https://pstestkv2.vault.azure.net/secrets/AzureRMSFTestCert3/77bec8f5e3e14363b0f2d3d353c35650"
 }
 
 function Get-InitialThumbprint
@@ -91,7 +91,7 @@ function Get-CertAppSecretUrl
 function Get-CertAppThumbprint
 {
     # Change the thumbprint in the TestServiceFabric.cs file as well in ServiceFabricCmdletBase.TestThumbprintAppCert
-    return "50EA76B5EC4B588CC25CB4C38CC13666A0CA0BB3"
+    return "1C1A149ABE9FB943BBACC452B0B8022FEA769B3C"
 }
 
 function Get-CACertCommonName
@@ -106,7 +106,7 @@ function Get-CACertIssuerThumbprint
 
 function Get-CACertSecretUrl
 {
-	return "https://gumakv1.vault.azure.net/secrets/pstestcert2/9f35b712392c4a9cacd50b76582ee017"
+	return "https://pstestkv2.vault.azure.net/secrets/AzureRMSFTestCert3/77bec8f5e3e14363b0f2d3d353c35650"
 }
 
 function Get-CertWUSecretUrl
