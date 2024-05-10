@@ -17,6 +17,9 @@ API to register a new machine and thereby create a tracked resource in ARM
 ### [Get-AzConnectedExtensionMetadata](Get-AzConnectedExtensionMetadata.md)
 Gets an Extension Metadata based on location, publisher, extensionType and version
 
+### [Get-AzConnectedLicense](Get-AzConnectedLicense.md)
+Retrieves information about the view of a license.
+
 ### [Get-AzConnectedMachine](Get-AzConnectedMachine.md)
 Retrieves information about the model view or the instance view of a hybrid machine.
 
@@ -29,11 +32,23 @@ Returns a Azure Arc PrivateLinkScope.
 ### [Get-AzConnectedMachineRunCommand](Get-AzConnectedMachineRunCommand.md)
 The operation to get a run command.
 
+### [Get-AzConnectedNetworkConfiguration](Get-AzConnectedNetworkConfiguration.md)
+Returns a NetworkConfiguration for the target resource.
+
+### [Get-AzConnectedNetworkSecurityPerimeterConfiguration](Get-AzConnectedNetworkSecurityPerimeterConfiguration.md)
+Gets the network security perimeter configuration for a private link scope.
+
 ### [Install-AzConnectedMachinePatch](Install-AzConnectedMachinePatch.md)
 The operation to install patches on a hybrid machine identity in Azure.
 
 ### [Invoke-AzConnectedAssessMachinePatch](Invoke-AzConnectedAssessMachinePatch.md)
 The operation to assess patches on a hybrid machine identity in Azure.
+
+### [Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration](Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration.md)
+Forces the network security perimeter configuration to refresh for a private link scope.
+
+### [New-AzConnectedLicense](New-AzConnectedLicense.md)
+The operation to Create a license.
 
 ### [New-AzConnectedMachineExtension](New-AzConnectedMachineExtension.md)
 The operation to Create the extension.
@@ -41,9 +56,15 @@ The operation to Create the extension.
 ### [New-AzConnectedMachineRunCommand](New-AzConnectedMachineRunCommand.md)
 The operation to Create a run command.
 
+### [New-AzConnectedNetworkConfiguration](New-AzConnectedNetworkConfiguration.md)
+Create the NetworkConfiguration of the target resource.
+
 ### [New-AzConnectedPrivateLinkScope](New-AzConnectedPrivateLinkScope.md)
 Creates (or updates) a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
+
+### [Remove-AzConnectedLicense](Remove-AzConnectedLicense.md)
+The operation to delete a license.
 
 ### [Remove-AzConnectedMachine](Remove-AzConnectedMachine.md)
 The operation to delete a hybrid machine.
@@ -57,15 +78,27 @@ The operation to delete a run command.
 ### [Remove-AzConnectedPrivateLinkScope](Remove-AzConnectedPrivateLinkScope.md)
 Deletes a Azure Arc PrivateLinkScope.
 
+### [Set-AzConnectedLicense](Set-AzConnectedLicense.md)
+The operation to Create a license.
+
 ### [Set-AzConnectedMachineExtension](Set-AzConnectedMachineExtension.md)
 The operation to Create the extension.
+
+### [Set-AzConnectedNetworkConfiguration](Set-AzConnectedNetworkConfiguration.md)
+Create the NetworkConfiguration of the target resource.
 
 ### [Set-AzConnectedPrivateLinkScope](Set-AzConnectedPrivateLinkScope.md)
 Creates (or updates) a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 
+### [Test-AzConnectedLicense](Test-AzConnectedLicense.md)
+The operation to validate a license.
+
 ### [Update-AzConnectedExtension](Update-AzConnectedExtension.md)
 The operation to Upgrade Machine Extensions.
+
+### [Update-AzConnectedLicense](Update-AzConnectedLicense.md)
+The operation to update a license.
 
 ### [Update-AzConnectedMachine](Update-AzConnectedMachine.md)
 The operation to update a hybrid machine.
@@ -75,6 +108,9 @@ The operation to Update the extension.
 
 ### [Update-AzConnectedMachineRunCommand](Update-AzConnectedMachineRunCommand.md)
 The operation to Create a run command.
+
+### [Update-AzConnectedNetworkConfiguration](Update-AzConnectedNetworkConfiguration.md)
+Update the endpoint to the target resource.
 
 ### [Update-AzConnectedPrivateLinkScopeTag](Update-AzConnectedPrivateLinkScopeTag.md)
 Updates an existing PrivateLinkScope's tags.
