@@ -87,5 +87,15 @@ namespace RecoveryServices.SiteRecovery.Test
                 "{\"NotBeforeTimestamp\":\"\\/Date(1524865429692)\\/\",\"NotAfterTimestamp\":\"\\/Date(1525470229692)\\/\",\"ClientRequestId\":\"e5ec3f71-75c6-4688-b557-6ef69d2e7514-2018-04-27 22:43:45Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"Uyz6emnjzNW/OCLM3Knqrlb1lO4ujjR5M/MXaxbb+QQ=\",\"Version\":\"1.2\",\"PropertyBag\":{}}",
                 cikToken);
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureMonitorAlertsForSiteRecovery()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-AzureMonitorAlertsForSiteRecovery"
+            );
+        }
     }
 }

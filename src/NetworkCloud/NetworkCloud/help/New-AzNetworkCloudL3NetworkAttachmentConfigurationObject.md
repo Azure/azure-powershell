@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
 online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudL3NetworkAttachmentConfigurationObject
 schema: 2.0.0
@@ -14,7 +14,8 @@ Create an in-memory object for L3NetworkAttachmentConfiguration.
 
 ```
 New-AzNetworkCloudL3NetworkAttachmentConfigurationObject -NetworkId <String>
- [-IpamEnabled <L3NetworkConfigurationIpamEnabled>] [-PluginType <KubernetesPluginType>] [<CommonParameters>]
+ [-IpamEnabled <L3NetworkConfigurationIpamEnabled>] [-PluginType <KubernetesPluginType>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,7 +94,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

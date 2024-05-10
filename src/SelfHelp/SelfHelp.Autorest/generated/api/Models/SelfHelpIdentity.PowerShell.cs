@@ -120,9 +120,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).SolutionResourceName = (string) content.GetValueForProperty("SolutionResourceName",((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).SolutionResourceName, global::System.Convert.ToString);
             }
+            if (content.Contains("SimplifiedSolutionsResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).SimplifiedSolutionsResourceName = (string) content.GetValueForProperty("SimplifiedSolutionsResourceName",((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).SimplifiedSolutionsResourceName, global::System.Convert.ToString);
+            }
             if (content.Contains("TroubleshooterName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).TroubleshooterName = (string) content.GetValueForProperty("TroubleshooterName",((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).TroubleshooterName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SolutionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).SolutionId = (string) content.GetValueForProperty("SolutionId",((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).SolutionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
@@ -157,9 +169,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).SolutionResourceName = (string) content.GetValueForProperty("SolutionResourceName",((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).SolutionResourceName, global::System.Convert.ToString);
             }
+            if (content.Contains("SimplifiedSolutionsResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).SimplifiedSolutionsResourceName = (string) content.GetValueForProperty("SimplifiedSolutionsResourceName",((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).SimplifiedSolutionsResourceName, global::System.Convert.ToString);
+            }
             if (content.Contains("TroubleshooterName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).TroubleshooterName = (string) content.GetValueForProperty("TroubleshooterName",((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).TroubleshooterName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SolutionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).SolutionId = (string) content.GetValueForProperty("SolutionId",((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).SolutionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

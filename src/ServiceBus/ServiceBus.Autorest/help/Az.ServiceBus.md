@@ -61,7 +61,7 @@ Returns a description for the specified topic.
 Creates a ServiceBus Namespace, Queue, Topic Authorization Rule
 
 ### [New-AzServiceBusGeoDRConfiguration](New-AzServiceBusGeoDRConfiguration.md)
-Creates or updates a new Alias(Disaster Recovery configuration)
+Create a new Alias(Disaster Recovery configuration)
 
 ### [New-AzServiceBusIPRuleConfig](New-AzServiceBusIPRuleConfig.md)
 Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzServiceBusNetworkRuleSet
@@ -76,17 +76,17 @@ Create an in-memory object for KeyVaultProperties.
 Creates a new ServiceBus namespace.
 
 ### [New-AzServiceBusQueue](New-AzServiceBusQueue.md)
-Creates or updates a Service Bus queue.
+Create a Service Bus queue.
 This operation is idempotent.
 
 ### [New-AzServiceBusRule](New-AzServiceBusRule.md)
-Creates a new rule and updates an existing rule
+Create a new rule and updates an existing rule
 
 ### [New-AzServiceBusSubscription](New-AzServiceBusSubscription.md)
-Creates a topic subscription.
+Create a topic subscription.
 
 ### [New-AzServiceBusTopic](New-AzServiceBusTopic.md)
-Creates a topic in the specified namespace.
+Create a topic in the specified namespace.
 
 ### [New-AzServiceBusVirtualNetworkRuleConfig](New-AzServiceBusVirtualNetworkRuleConfig.md)
 Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzServiceBusNetworkRuleSet
@@ -147,7 +147,7 @@ Updates a ServiceBus Subscription
 Updates a ServiceBus Topic
 
 ### [Start-AzServiceBusMigration](Start-AzServiceBusMigration.md)
-Creates Migration configuration and starts migration of entities from Standard to Premium namespace
+Create Migration configuration and starts migration of entities from Standard to Premium namespace
 
 ### [Stop-AzServiceBusMigration](Stop-AzServiceBusMigration.md)
 This operation reverts Migration

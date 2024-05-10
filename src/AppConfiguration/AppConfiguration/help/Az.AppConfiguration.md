@@ -51,7 +51,7 @@ Unlocks a key-value.
 Deletes a configuration store.
 
 ### [Set-AzAppConfigurationKeyValue](Set-AzAppConfigurationKeyValue.md)
-Creates a key-value.
+Put a key-value.
 
 ### [Set-AzAppConfigurationLock](Set-AzAppConfigurationLock.md)
 Locks a key-value.

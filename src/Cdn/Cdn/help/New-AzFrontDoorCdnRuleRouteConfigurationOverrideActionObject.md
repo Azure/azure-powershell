@@ -18,7 +18,7 @@ New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name <DeliveryRule
  [-CacheConfigurationIsCompressionEnabled <RuleIsCompressionEnabled>]
  [-CacheConfigurationQueryParameter <String>]
  [-CacheConfigurationQueryStringCachingBehavior <RuleQueryStringCachingBehavior>] [-OriginGroupId <String>]
- [-OriginGroupOverrideForwardingProtocol <ForwardingProtocol>] [-ProgressAction <ActionPreference>]
+ [-OriginGroupOverrideForwardingProtocol <ForwardingProtocol>]
  [<CommonParameters>]
 ```
 
@@ -159,21 +159,6 @@ Protocol this rule will use when forwarding traffic to backends.
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ForwardingProtocol
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

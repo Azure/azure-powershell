@@ -29,6 +29,12 @@ Get-AzServiceBusTopic -Name <String> -NamespaceName <String> -ResourceGroupName 
 Get-AzServiceBusTopic -InputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityNamespace
+```
+Get-AzServiceBusTopic -Name <String> -NamespaceInputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Returns a description for the specified topic.
 
@@ -90,7 +96,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
@@ -109,13 +114,28 @@ The topic name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityNamespace
 Aliases: TopicName
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NamespaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: GetViaIdentityNamespace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -205,9 +225,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbTopic
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopic
 
 ## NOTES
 
 ## RELATED LINKS
+
+[https://msdn.microsoft.com/en-us/library/azure/mt639399.aspx](https://msdn.microsoft.com/en-us/library/azure/mt639399.aspx)
+
+[https://msdn.microsoft.com/en-us/library/azure/mt639388.aspx](https://msdn.microsoft.com/en-us/library/azure/mt639388.aspx)
 

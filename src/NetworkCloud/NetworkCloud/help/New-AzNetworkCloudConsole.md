@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
 online version: https://learn.microsoft.com/powershell/module/az.networkcloud/new-aznetworkcloudconsole
 schema: 2.0.0
@@ -14,9 +14,10 @@ Create a new virtual machine console or update the properties of the existing vi
 
 ```
 New-AzNetworkCloudConsole -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
- -Enabled <ConsoleEnabled> -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String>
- -SshPublicKeyData <String> [-SubscriptionId <String>] [-Expiration <DateTime>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -Enabled <ConsoleEnabled> -ExtendedLocationName <String>
+ -ExtendedLocationType <String> -Location <String> -SshPublicKeyData <String> [-Expiration <DateTime>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -296,7 +297,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

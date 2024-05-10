@@ -1,8 +1,8 @@
 {
     "Entries":  [
                     {
-                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults?api-version=2023-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHM/YXBpLXZlcnNpb249MjAyMy0wMi0wMQ==",
+                        "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults?api-version=2024-04-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHM/YXBpLXZlcnNpb249MjAyNC0wNC0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -55,7 +55,7 @@
                                                                       "no-cache"
                                                                   ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ],
                                                 "Server":  [
                                                                "Microsoft-IIS/8.0"
@@ -131,7 +131,7 @@
                                                                                 "AUSTRALIAEAST:20170912T060545Z:e6bbb1d7-6e1a-4dcf-82ae-a2f308243859"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -204,7 +204,7 @@
                                                                                 "AUSTRALIAEAST:20170912T060546Z:8512427e-ec6d-4c85-b4dd-b171100506d5"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -277,7 +277,7 @@
                                                                                 "AUSTRALIAEAST:20170912T060547Z:e38ab27b-2136-4d5d-9361-425167796e40"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -350,7 +350,7 @@
                                                                                 "AUSTRALIAEAST:20170912T060548Z:44dd0999-e2b8-4f94-8af9-4a6b1c0a0aea"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -423,7 +423,7 @@
                                                                                 "AUSTRALIAEAST:20170912T060548Z:efcf458b-d3b4-4ee3-8928-224b8eb901b3"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -496,7 +496,7 @@
                                                                                 "AUSTRALIAEAST:20170912T060549Z:5146e152-1ffb-4403-be57-75f0ccce2e33"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -569,7 +569,7 @@
                                                                                 "AUSTRALIAEAST:20170912T060550Z:396b1744-8b41-451a-a074-e724044d535b"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -642,7 +642,7 @@
                                                                                 "AUSTRALIAEAST:20170912T060550Z:181f249c-eb80-41f4-a0ce-9a0baad084e6"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -715,7 +715,7 @@
                                                                                 "AUSTRALIAEAST:20170912T060551Z:68e7bd2f-3dc0-4b1b-a9e4-bd833dc8b51e"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -788,7 +788,7 @@
                                                                                 "AUSTRALIAEAST:20170912T060552Z:b05f8446-ab8d-4b7f-891c-d34b0bf8844c"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -861,7 +861,7 @@
                                                                                 "AUSTRALIAEAST:20170912T060553Z:483d73dd-fb8d-459b-a9c3-a2d8bb1d7754"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -934,7 +934,7 @@
                                                                       "no-cache"
                                                                   ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ],
                                                 "Location":  [
                                                                  "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationFabrics/9a72155b61d09325a02ba0311dea55df3a7135b65558b43c9ff540b9e7be084f/replicationProtectionContainers/cloud_a5441e09-275c-4f15-a1b9-450a22c89d7b/replicationProtectedItems/V2ATest-rpi-v2avm1/operationresults/bf1fc290-73a4-4dbb-96fd-ed0711dc9568?api-version=2018-07-10"
@@ -1013,7 +1013,7 @@
                                                                                 "AUSTRALIAEAST:20170912T060556Z:5cf5c88b-11ac-4491-a914-4e649794b3cb"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -1086,7 +1086,7 @@
                                                                                 "AUSTRALIAEAST:20170912T060556Z:8e60ed86-bda5-4e2a-844c-5bf5d56a930d"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -1159,7 +1159,7 @@
                                                                                 "AUSTRALIAEAST:20170912T060627Z:41cfaa61-bb3b-402c-8a78-eda5631ea192"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -1232,7 +1232,7 @@
                                                                                 "AUSTRALIAEAST:20170912T060657Z:7017228e-9d78-4f56-99fc-644b9160697c"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -1305,7 +1305,7 @@
                                                                                 "AUSTRALIAEAST:20170912T060729Z:2c2b5644-0ebb-46b3-9a7a-3d2302112ed4"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -1378,7 +1378,7 @@
                                                                                 "AUSTRALIAEAST:20170912T060759Z:f9fb71c0-249f-4840-a29e-4a223827e9e5"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -1451,7 +1451,7 @@
                                                                                 "AUSTRALIAEAST:20170912T060831Z:36d85232-a2ea-42a8-ba56-d3b28af3ba0f"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -1524,7 +1524,7 @@
                                                                       "no-cache"
                                                                   ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ],
                                                 "Location":  [
                                                                  "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationFabrics/9a72155b61d09325a02ba0311dea55df3a7135b65558b43c9ff540b9e7be084f/replicationProtectionContainers/cloud_a5441e09-275c-4f15-a1b9-450a22c89d7b/replicationProtectedItems/V2ATest-rpi-v2avm1/operationresults/a1f26c61-1964-4776-9068-f52372d36880?api-version=2018-07-10"
@@ -1603,7 +1603,7 @@
                                                                                 "AUSTRALIAEAST:20170912T060834Z:1525c169-f264-4b74-ad17-16adde18d0af"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -1676,7 +1676,7 @@
                                                                                 "AUSTRALIAEAST:20170912T060834Z:911a888c-1fde-4aec-93ac-6d2b244b2389"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -1749,7 +1749,7 @@
                                                                                 "AUSTRALIAEAST:20170912T060905Z:bee4d9c1-15cf-46c8-826e-cfb2f2dbc4df"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -1822,7 +1822,7 @@
                                                                                 "AUSTRALIAEAST:20170912T060935Z:417fe658-8a38-4f37-b5cf-8664bebd274a"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -1895,7 +1895,7 @@
                                                                       "no-cache"
                                                                   ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ],
                                                 "Location":  [
                                                                  "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationFabrics/9a72155b61d09325a02ba0311dea55df3a7135b65558b43c9ff540b9e7be084f/replicationProtectionContainers/cloud_a5441e09-275c-4f15-a1b9-450a22c89d7b/replicationProtectedItems/V2ATest-rpi-v2avm1/operationresults/f720fe17-8e17-492c-a09e-7cb22d03b144?api-version=2018-07-10"
@@ -1974,7 +1974,7 @@
                                                                                 "AUSTRALIAEAST:20170912T060937Z:f858ccee-6e1f-44de-b4f4-63086aa1c89a"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -2047,7 +2047,7 @@
                                                                                 "AUSTRALIAEAST:20170912T060938Z:ea63e846-3a1b-41f9-b1a0-1db7e70b4ea7"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -2120,7 +2120,7 @@
                                                                                 "AUSTRALIAEAST:20170912T061009Z:2c799459-acf9-484c-b010-d141aedf4452"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -2193,7 +2193,7 @@
                                                                                 "AUSTRALIAEAST:20170912T061039Z:3431287c-1a20-4c61-93b1-4c98bd88d20b"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -2266,7 +2266,7 @@
                                                                                 "AUSTRALIAEAST:20170912T061110Z:abdb79d4-3751-4732-8eeb-52eb268e8c9b"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -2339,7 +2339,7 @@
                                                                                 "AUSTRALIAEAST:20170912T061140Z:070eced1-34e7-46e4-b093-4be66c7cbff5"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -2412,7 +2412,7 @@
                                                                                 "AUSTRALIAEAST:20170912T061211Z:8e6bc852-6aea-4c2b-8101-17bd70c628b0"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -2479,7 +2479,7 @@
                                                                       "no-cache"
                                                                   ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ],
                                                 "Location":  [
                                                                  "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationFabrics/9a72155b61d09325a02ba0311dea55df3a7135b65558b43c9ff540b9e7be084f/replicationProtectionContainers/cloud_a5441e09-275c-4f15-a1b9-450a22c89d7b/replicationProtectedItems/V2ATest-rpi-v2avm1/operationresults/f1d8e44a-bf43-416b-9255-634c4deb894b?api-version=2018-07-10"
@@ -2558,7 +2558,7 @@
                                                                                 "AUSTRALIAEAST:20170912T061213Z:672fe535-06bd-4ba1-b244-fad30a446868"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200
@@ -2631,7 +2631,7 @@
                                                                                 "AUSTRALIAEAST:20170912T061213Z:c72d6530-9498-4cbb-9da5-fcd7d394c23f"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:44:45 GMT"
+                                                             "Mon, 22 Apr 2024 10:59:31 GMT"
                                                          ]
                                             },
                         "StatusCode":  200

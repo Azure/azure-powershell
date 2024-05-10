@@ -1,7 +1,9 @@
 ### Example 1: List availability zones for a location
 ```powershell
 Get-AzDiskPoolZone -Location eastus
+```
 
+```output
 SkuName  SkuTier  AvailabilityZone AdditionalCapability
 -------  -------  ---------------- --------------------
 Basic    Basic    {3, 1, 2}

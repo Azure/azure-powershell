@@ -25,7 +25,7 @@ Describe 'Get-AzServiceBusAuthorizationRule' {
         $namespaceAuthRule.Rights.Count | Should -Be 3
 
         $listOfAuthRules = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
-        $listOfAuthRules.Count | Should -Be 3
+        $listOfAuthRules.Count | Should -Be 4
     }
 
     It 'GetExpandedQueue' {
@@ -34,7 +34,7 @@ Describe 'Get-AzServiceBusAuthorizationRule' {
         $queueAuthRule.Rights.Count | Should -Be 3
 
         $listOfAuthRules = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -QueueName queue1 
-        $listOfAuthRules.Count | Should -Be 2
+        $listOfAuthRules.Count | Should -Be 3
     }
 
     It 'GetExpandedTopic' {
@@ -43,7 +43,7 @@ Describe 'Get-AzServiceBusAuthorizationRule' {
         $topicAuthRule.Rights.Count | Should -Be 3
 
         $listOfAuthRules = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 
-        $listOfAuthRules.Count | Should -Be 2
+        $listOfAuthRules.Count | Should -Be 3
     }
 
     It 'GetViaIdentityExpanded' {

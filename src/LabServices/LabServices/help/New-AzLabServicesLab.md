@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.LabServices-help.xml
 Module Name: Az.LabServices
 online version: https://learn.microsoft.com/powershell/module/az.labservices/new-azlabserviceslab
 schema: 2.0.0
@@ -13,7 +13,7 @@ Operation to create a lab resource.
 ## SYNTAX
 
 ```
-New-AzLabServicesLab -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+New-AzLabServicesLab -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  [-AdditionalCapabilityInstallGpuDriver <EnableState>] [-AdminUserPassword <SecureString>]
  [-AdminUserUsername <String>] [-AutoShutdownProfileDisconnectDelay <TimeSpan>]
  [-AutoShutdownProfileIdleDelay <TimeSpan>] [-AutoShutdownProfileNoConnectDelay <TimeSpan>]
@@ -32,7 +32,8 @@ New-AzLabServicesLab -Name <String> -ResourceGroupName <String> -Location <Strin
  [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-Tag <Hashtable>]
  [-Title <String>] [-VirtualMachineProfileCreateOption <CreateOption>]
  [-VirtualMachineProfileUsageQuota <TimeSpan>] [-VirtualMachineProfileUseSharedPassword <EnableState>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -853,7 +854,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ResourceMover-help.xml
 Module Name: Az.ResourceMover
 online version: https://learn.microsoft.com/powershell/module/az.resourcemover/invoke-azresourcemoverinitiatemove
 schema: 2.0.0
@@ -16,8 +16,9 @@ Moves the set of resources included in the request body.The move operation is tr
 
 ```
 Invoke-AzResourceMoverInitiateMove -MoveCollectionName <String> -ResourceGroupName <String>
- -MoveResource <String[]> [-SubscriptionId <String>] [-MoveResourceInputType <MoveResourceInputType>]
- [-ValidateOnly] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -MoveResource <String[]> [-MoveResourceInputType <MoveResourceInputType>]
+ [-ValidateOnly] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,7 +45,6 @@ Name           : 095f3d51-ebd1-4c5b-9a65-d78ebe3ac345
 Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
 StartTime      : 2/10/2021 9:39:37 AM
 Status         : Succeeded
-
 ```
 
 Validate the dependencies before Initiate Move for the resources.
@@ -52,7 +52,7 @@ The same command can be used for both 'RegionToRegion' and 'RegionToZone' type m
 
 ### Example 2: Initiate Move for the set of resources in the Move collection using "MoveResource Name" as input. (RegionToRegion)
 ```powershell
-Invoke-AzResourceMoverInitiateMove -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemorm-vnet') -MoveResourceInputType "MoveResourceId" 
+Invoke-AzResourceMoverInitiateMove -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemorm-vnet') -MoveResourceInputType "MoveResourceId"
 ```
 
 ```output
@@ -66,14 +66,13 @@ Name           : 290472e3-c8de-4c55-aba1-3a34a7a4ab38
 Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
 StartTime      : 2/10/2021 11:55:21 AM
 Status         : Succeeded
-
 ```
 
 Initiate Move for the set of resources in 'RegionToRegion' type Move collection using "MoveResource Name" as input.
 
 ### Example 3: Initiate Move for the set of resources in the Move collection using "MoveResource Name" as input. (RegionToZone)
 ```powershell
-Invoke-AzResourceMoverInitiateMove -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -MoveResource $('PSDemoVM-RegionToZone') -MoveResourceInputType "MoveResourceId" 
+Invoke-AzResourceMoverInitiateMove -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -MoveResource $('PSDemoVM-RegionToZone') -MoveResourceInputType "MoveResourceId"
 ```
 
 ```output
@@ -87,7 +86,6 @@ Name           : 26077f45-dd8a-4c55-aba1-3a34a7a4ab38
 Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
 StartTime      : 9/5/2023 11:50:21 AM
 Status         : Succeeded
-
 ```
 
 Initiate Move for the set of resources in 'RegionToZone' type Move collection using "MoveResource Name" as input.
@@ -109,7 +107,6 @@ Name           : 955fd43c-10b6-481e-888b-d26d6ec42aea
 Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
 StartTime      : 2/10/2021 12:00:21 PM
 Status         : Succeeded
-
 ```
 
 Initiate Move for the set of resources in 'RegionToRegion' type Move collection using "SourceARMID" as input.
@@ -130,7 +127,6 @@ Name           : 6078f452-10c6-441e-888b-d46d7ef42fed
 Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
 StartTime      : 9/5/2023 11:56:03 AM
 Status         : Succeeded
-
 ```
 
 Initiate Move for the set of resources in 'RegionToZone' type Move collection using "SourceARMID" as input.
@@ -315,7 +311,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

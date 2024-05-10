@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -84,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
         /// Creates a new instance of <see cref="ReadWriteDatabaseProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="ReadWriteDatabaseProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabaseProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -101,12 +103,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).Statistics = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDatabaseStatistics) content.GetValueForProperty("Statistics",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).Statistics, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.DatabaseStatisticsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).SoftDeletePeriod = (global::System.TimeSpan?) content.GetValueForProperty("SoftDeletePeriod",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).SoftDeletePeriod, (v) => v is global::System.TimeSpan _v ? _v : global::System.Xml.XmlConvert.ToTimeSpan( v.ToString() ));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).HotCachePeriod = (global::System.TimeSpan?) content.GetValueForProperty("HotCachePeriod",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).HotCachePeriod, (v) => v is global::System.TimeSpan _v ? _v : global::System.Xml.XmlConvert.ToTimeSpan( v.ToString() ));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).IsFollowed = (bool?) content.GetValueForProperty("IsFollowed",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).IsFollowed, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).StatisticsSize = (float?) content.GetValueForProperty("StatisticsSize",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).StatisticsSize, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+            if (content.Contains("Statistics"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).Statistics = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDatabaseStatistics) content.GetValueForProperty("Statistics",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).Statistics, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.DatabaseStatisticsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState.CreateFrom);
+            }
+            if (content.Contains("SoftDeletePeriod"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).SoftDeletePeriod = (global::System.TimeSpan?) content.GetValueForProperty("SoftDeletePeriod",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).SoftDeletePeriod, (v) => v is global::System.TimeSpan _v ? _v : global::System.Xml.XmlConvert.ToTimeSpan( v.ToString() ));
+            }
+            if (content.Contains("HotCachePeriod"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).HotCachePeriod = (global::System.TimeSpan?) content.GetValueForProperty("HotCachePeriod",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).HotCachePeriod, (v) => v is global::System.TimeSpan _v ? _v : global::System.Xml.XmlConvert.ToTimeSpan( v.ToString() ));
+            }
+            if (content.Contains("IsFollowed"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).IsFollowed = (bool?) content.GetValueForProperty("IsFollowed",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).IsFollowed, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("StatisticsSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).StatisticsSize = (float?) content.GetValueForProperty("StatisticsSize",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).StatisticsSize, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -124,12 +144,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).Statistics = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDatabaseStatistics) content.GetValueForProperty("Statistics",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).Statistics, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.DatabaseStatisticsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).SoftDeletePeriod = (global::System.TimeSpan?) content.GetValueForProperty("SoftDeletePeriod",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).SoftDeletePeriod, (v) => v is global::System.TimeSpan _v ? _v : global::System.Xml.XmlConvert.ToTimeSpan( v.ToString() ));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).HotCachePeriod = (global::System.TimeSpan?) content.GetValueForProperty("HotCachePeriod",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).HotCachePeriod, (v) => v is global::System.TimeSpan _v ? _v : global::System.Xml.XmlConvert.ToTimeSpan( v.ToString() ));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).IsFollowed = (bool?) content.GetValueForProperty("IsFollowed",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).IsFollowed, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).StatisticsSize = (float?) content.GetValueForProperty("StatisticsSize",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).StatisticsSize, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+            if (content.Contains("Statistics"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).Statistics = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDatabaseStatistics) content.GetValueForProperty("Statistics",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).Statistics, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.DatabaseStatisticsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState.CreateFrom);
+            }
+            if (content.Contains("SoftDeletePeriod"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).SoftDeletePeriod = (global::System.TimeSpan?) content.GetValueForProperty("SoftDeletePeriod",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).SoftDeletePeriod, (v) => v is global::System.TimeSpan _v ? _v : global::System.Xml.XmlConvert.ToTimeSpan( v.ToString() ));
+            }
+            if (content.Contains("HotCachePeriod"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).HotCachePeriod = (global::System.TimeSpan?) content.GetValueForProperty("HotCachePeriod",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).HotCachePeriod, (v) => v is global::System.TimeSpan _v ? _v : global::System.Xml.XmlConvert.ToTimeSpan( v.ToString() ));
+            }
+            if (content.Contains("IsFollowed"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).IsFollowed = (bool?) content.GetValueForProperty("IsFollowed",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).IsFollowed, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("StatisticsSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).StatisticsSize = (float?) content.GetValueForProperty("StatisticsSize",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IReadWriteDatabasePropertiesInternal)this).StatisticsSize, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Elastic-help.xml
 Module Name: Az.Elastic
 online version: https://learn.microsoft.com/powershell/module/az.Elastic/new-AzElasticFilteringTagObject
 schema: 2.0.0
@@ -13,7 +13,8 @@ Create a in-memory object for FilteringTag
 ## SYNTAX
 
 ```
-New-AzElasticFilteringTagObject [-Action <TagAction>] [-Name <String>] [-Value <String>] [<CommonParameters>]
+New-AzElasticFilteringTagObject [-Action <TagAction>] [-Name <String>] [-Value <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,7 +94,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

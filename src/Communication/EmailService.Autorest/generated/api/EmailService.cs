@@ -2937,7 +2937,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
             }
         }
 
-        /// <summary>Create a new EmailService or update an existing EmailService.</summary>
+        /// <summary>Update a new EmailService or update an existing EmailService.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="emailServiceName">The name of the EmailService resource.</param>
@@ -2986,7 +2986,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
             }
         }
 
-        /// <summary>Create a new EmailService or update an existing EmailService.</summary>
+        /// <summary>Update a new EmailService or update an existing EmailService.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters for the create or update operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3045,7 +3045,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
             }
         }
 
-        /// <summary>Create a new EmailService or update an existing EmailService.</summary>
+        /// <summary>Update a new EmailService or update an existing EmailService.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters for the create or update operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3102,7 +3102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
             }
         }
 
-        /// <summary>Create a new EmailService or update an existing EmailService.</summary>
+        /// <summary>Update a new EmailService or update an existing EmailService.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="emailServiceName">The name of the EmailService resource.</param>
@@ -3150,7 +3150,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
             }
         }
 
-        /// <summary>Create a new EmailService or update an existing EmailService.</summary>
+        /// <summary>Update a new EmailService or update an existing EmailService.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="emailServiceName">The name of the EmailService resource.</param>
@@ -3196,7 +3196,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService
             }
         }
 
-        /// <summary>Create a new EmailService or update an existing EmailService.</summary>
+        /// <summary>Update a new EmailService or update an existing EmailService.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="emailServiceName">The name of the EmailService resource.</param>

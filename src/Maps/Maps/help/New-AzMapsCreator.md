@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Maps-help.xml
 Module Name: Az.Maps
 online version: https://learn.microsoft.com/powershell/module/az.maps/new-azmapscreator
 schema: 2.0.0
@@ -15,9 +15,9 @@ It requires an account to exist before it can be created.
 ## SYNTAX
 
 ```
-New-AzMapsCreator -AccountName <String> -Name <String> -ResourceGroupName <String> -Location <String>
- -StorageUnit <Int32> [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzMapsCreator -AccountName <String> -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> -StorageUnit <Int32> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,7 +60,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -208,7 +209,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

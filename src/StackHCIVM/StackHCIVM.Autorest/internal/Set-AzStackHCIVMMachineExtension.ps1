@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-The operation to Create the extension.
+The operation to create or update the extension.
 .Description
-The operation to Create the extension.
+The operation to create or update the extension.
 .Example
 {{ Add code here }}
 .Example

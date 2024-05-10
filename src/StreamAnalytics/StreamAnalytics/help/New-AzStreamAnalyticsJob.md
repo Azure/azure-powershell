@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StreamAnalytics-help.xml
 Module Name: Az.StreamAnalytics
 online version: https://learn.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsjob
 schema: 2.0.0
@@ -13,12 +13,12 @@ Creates a streaming job or replaces an already existing streaming job.
 ## SYNTAX
 
 ```
-New-AzStreamAnalyticsJob -Name <String> -ResourceGroupName <String> -Location <String>
- -SkuName <StreamingJobSkuName> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
- [-ClusterId <String>] [-CompatibilityLevel <CompatibilityLevel>] [-DataLocale <String>]
- [-EventsLateArrivalMaxDelayInSecond <Int32>] [-EventsOutOfOrderMaxDelayInSecond <Int32>]
- [-EventsOutOfOrderPolicy <EventsOutOfOrderPolicy>] [-OutputErrorPolicy <OutputErrorPolicy>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzStreamAnalyticsJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] -Location <String> -SkuName <StreamingJobSkuName>
+ [-CompatibilityLevel <CompatibilityLevel>] [-DataLocale <String>] [-EventsLateArrivalMaxDelayInSecond <Int32>]
+ [-EventsOutOfOrderMaxDelayInSecond <Int32>] [-EventsOutOfOrderPolicy <EventsOutOfOrderPolicy>]
+ [-OutputErrorPolicy <OutputErrorPolicy>] [-ClusterId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +30,7 @@ Creates a streaming job or replaces an already existing streaming job.
 ```powershell
 New-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-02-pwsh -Location westcentralus -SkuName Standard
 ```
+
 ```output
 Location        Name          Type                                    ETag
 --------        ----          ----                                    ----
@@ -365,7 +366,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

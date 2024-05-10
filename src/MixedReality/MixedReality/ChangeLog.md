@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 0.2.0
 * Updated Apiversion 2021-03-01-preview
 * Added `Get\New\Remove\Update-AzMixedRealityObjectAnchorsAccount` cmdlets

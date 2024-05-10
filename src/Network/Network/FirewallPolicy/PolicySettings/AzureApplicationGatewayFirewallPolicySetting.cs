@@ -72,6 +72,11 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewayFirewallPolicyLogScrubbingConfiguration LogScrubbing { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Web Application Firewall JavaScript Challenge Cookie Expiration time in minutes.")]
+        [ValidateNotNullOrEmpty]
+        [ValidateRange(5,1440)]
+        public int? JSChallengeCookieExpirationInMins { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -124,7 +129,10 @@ namespace Microsoft.Azure.Commands.Network
                 this.CustomBlockResponseBody = null;
             }
 
-
+            if (!this.MyInvocation.BoundParameters.ContainsKey("JSChallengeCookieExpirationInMins"))
+            {
+                this.JSChallengeCookieExpirationInMins = (int?)null;
+            }
         }
 
         protected PSApplicationGatewayFirewallPolicySettings NewObject()
@@ -160,7 +168,8 @@ namespace Microsoft.Azure.Commands.Network
                 FileUploadLimitInMb = this.MaxFileUploadInMb,
                 CustomBlockResponseBody = this.CustomBlockResponseBody,
                 CustomBlockResponseStatusCode = this.CustomBlockResponseStatusCode,
-                LogScrubbing = this.LogScrubbing
+                LogScrubbing = this.LogScrubbing,
+                JSChallengeCookieExpirationInMins = this.JSChallengeCookieExpirationInMins
             };
         }
     }

@@ -59,14 +59,13 @@ subject-prefix: $(service-name)
 # uncomment following line to support viaIdentity for these post APIs
 resourcegroup-append: true
 nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
+keep-pec-and-plr: true
+disable-transform-identity-type: true
+flatten-userassignedidentity : false
 
 directive:
   - where:
-      variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^CreateViaJsonFilePath$|^CreateViaJsonString$
     remove: true
   - where:
       variant: ^CreateViaIdentity$
@@ -456,64 +455,5 @@ directive:
       suppress-format: true
 
   - model-cmdlet:
-    - KeyVaultProperties
-
-  - where:
-      parameter-name: IdentityType
-    set:
-      breaking-change:
-        old-parameter-type: CaptureIdentityType
-        new-parameter-type: String
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 12.0.0
-        change-effective-date: 2024/05/21
-  
-  - where:
-      parameter-name: CleanupPolicy
-    set:
-      breaking-change:
-        old-parameter-type: CleanupPolicyRetentionDescription
-        new-parameter-type: String
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 12.0.0
-        change-effective-date: 2024/05/21
-  
-  - where:
-      parameter-name: Status
-    set:
-      breaking-change:
-        old-parameter-type: EntityStatus
-        new-parameter-type: String
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 12.0.0
-        change-effective-date: 2024/05/21
-  
-  - where:
-      parameter-name: Encoding
-    set:
-      breaking-change:
-        old-parameter-type: EncodingCaptureDescription
-        new-parameter-type: String
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 12.0.0
-        change-effective-date: 2024/05/21
-
-  - where:
-      parameter-name: SchemaCompatibility
-    set:
-      breaking-change:
-        old-parameter-type: SchemaCompatibility
-        new-parameter-type: String
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 12.0.0
-        change-effective-date: 2024/05/21
-
-  - where:
-      parameter-name: SchemaType
-    set:
-      breaking-change:
-        old-parameter-type: SchemaType
-        new-parameter-type: String
-        deprecated-by-version: 5.0.0
-        deprecated-by-azversion: 12.0.0
-        change-effective-date: 2024/05/21
+    - model-name: KeyVaultProperties
+      cmdlet-name: New-AzEventHubKeyVaultPropertiesObject
