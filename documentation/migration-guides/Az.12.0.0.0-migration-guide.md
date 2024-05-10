@@ -1,4 +1,4 @@
-# Migration Guide for Az 12.0.0.0
+# Migration Guide for Az 12.0.0
 
 ## Az.Accounts
 
