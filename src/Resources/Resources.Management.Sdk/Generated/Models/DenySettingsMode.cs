@@ -19,8 +19,7 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// </summary>
         public const string DenyDelete = "denyDelete";
         /// <summary>
-        /// Authorized users can only read from a resource, but cannot modify or delete
-        /// it.
+        /// Authorized users can read from a resource, but cannot modify or delete it.
         /// </summary>
         public const string DenyWriteAndDelete = "denyWriteAndDelete";
         /// <summary>

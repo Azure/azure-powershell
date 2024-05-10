@@ -269,7 +269,11 @@ namespace Microsoft.Azure.Management.Resources
 
         }
         /// <summary>
-        /// The resources to be moved must be in the same source resource group in the source subscription being used. The target resource group may be in a different subscription. When moving resources, both the source group and the target group are locked for the duration of the operation. Write and delete operations are blocked on the groups until the move completes. 
+        /// The resources to be moved must be in the same source resource group in the
+        /// source subscription being used. The target resource group may be in a
+        /// different subscription. When moving resources, both the source group and
+        /// the target group are locked for the duration of the operation. Write and
+        /// delete operations are blocked on the groups until the move completes.
         /// </summary>
         /// <param name='sourceResourceGroupName'>
         /// The name of the resource group from the source subscription containing the
@@ -292,7 +296,13 @@ namespace Microsoft.Azure.Management.Resources
         }
 
         /// <summary>
-        /// This operation checks whether the specified resources can be moved to the target. The resources to be moved must be in the same source resource group in the source subscription being used. The target resource group may be in a different subscription. If validation succeeds, it returns HTTP response code 204 (no content). If validation fails, it returns HTTP response code 409 (Conflict) with an error message. Retrieve the URL in the Location header value to check the result of the long-running operation.
+        /// This operation checks whether the specified resources can be moved to the
+        /// target. The resources to be moved must be in the same source resource group
+        /// in the source subscription being used. The target resource group may be in
+        /// a different subscription. If validation succeeds, it returns HTTP response
+        /// code 204 (no content). If validation fails, it returns HTTP response code
+        /// 409 (Conflict) with an error message. Retrieve the URL in the Location
+        /// header value to check the result of the long-running operation.
         /// </summary>
         /// <param name='sourceResourceGroupName'>
         /// The name of the resource group from the source subscription containing the
