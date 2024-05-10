@@ -25,14 +25,18 @@ The New-AzVirtualApplianceNetworkInterfaceConfiguration command defines configur
 
 ### Example 1
 ```powershell
-PS C:\> $nicConfig1 = New-AzVirtualApplianceNetworkInterfaceConfiguration -NicType "PublicNic" -IpConfigurations $ipConfig1, $ipConfig2
+$ipConfig1 = New-AzVirtualApplianceIpConfiguration -Name "publicnicipconfig" -Primary $true
+$ipConfig2 = New-AzVirtualApplianceIpConfiguration -Name "publicnicipconfig-2" -Primary $false
+$nicConfig1 = New-AzVirtualApplianceNetworkInterfaceConfiguration -NicType "PublicNic" -IpConfigurations $ipConfig1, $ipConfig2
 ```
 
 Creating a new network interface configuration with nicType PublicNic and IP configurations $ipConfig1 and $ipConfig2.
 
 ### Example 2
 ```powershell
-PS C:\> $nicConfig2 = New-AzVirtualApplianceNetworkInterfaceConfiguration -NicType "PrivateNic" -IpConfigurations $ipConfig3, $ipConfig4
+$ipConfig3 = New-AzVirtualApplianceIpConfiguration -Name "privatenicipconfig" -Primary $true
+$ipConfig4 = New-AzVirtualApplianceIpConfiguration -Name "privatenicipconfig-2" -Primary $false
+$nicConfig2 = New-AzVirtualApplianceNetworkInterfaceConfiguration -NicType "PrivateNic" -IpConfigurations $ipConfig3, $ipConfig4
 ```
 
 Creating a new network interface configuration with nicType PrivateNic and IP configurations $ipConfig3 and $ipConfig4.

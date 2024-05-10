@@ -21,26 +21,37 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualApplianceNetworkProfile",
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualApplianceNetworkInterfaceConfiguration",
         SupportsShouldProcess = true),
-        OutputType(typeof(PSVirtualApplianceNetworkProfile))]
-    public class NewVirtualApplianceNetworkProfileCommand : VirtualApplianceNetworkProfileBaseCmdlet
+        OutputType(typeof(PSVirtualApplianceNetworkInterfaceConfiguration))]
+    public class NewVirtualApplianceNetworkInterfaceConfigurationCommand : VirtualApplianceNetworkProfileBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = false,
-            HelpMessage = "The network interface configurations of the network profile.")]
+            HelpMessage = "The type of the network interface e.g., PublicNic or PrivateNic")]
         [ValidateNotNullOrEmpty]
-        public PSVirtualApplianceNetworkInterfaceConfiguration[] NetworkInterfaceConfigurations { get; set; }
+        public string NicType { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "The IP configurations of the network interface configuration.")]
+        [ValidateNotNullOrEmpty]
+        public PSVirtualApplianceIpConfiguration[] IpConfigurations { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var networkProfile = new PSVirtualApplianceNetworkProfile
+            var networkInterfaceConfiguration = new PSVirtualApplianceNetworkInterfaceConfiguration
             {
-                NetworkInterfaceConfigurations = this.NetworkInterfaceConfigurations.ToList()
+                NicType = this.NicType,
+                Properties = new PSVirtualApplianceNetworkInterfaceConfigurationProperties
+                {
+                    IpConfigurations = this.IpConfigurations.ToList()
+                }
             };
 
-            WriteObject(networkProfile);
+            WriteObject(networkInterfaceConfiguration);
         }
     }
 }

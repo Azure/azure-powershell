@@ -25,7 +25,15 @@ The New-AzVirtualApplianceNetworkProfile command defines network profile of virt
 
 ### Example 1
 ```powershell
-PS C:\> $networkProfile = New-AzVirtualApplianceNetworkProfile -NetworkInterfaceConfigurations $nicConfig1, $nicConfig2
+$ipConfig1 = New-AzVirtualApplianceIpConfiguration -Name "publicnicipconfig" -Primary $true
+$ipConfig2 = New-AzVirtualApplianceIpConfiguration -Name "publicnicipconfig-2" -Primary $false
+$nicConfig1 = New-AzVirtualApplianceNetworkInterfaceConfiguration -NicType "PublicNic" -IpConfigurations $ipConfig1, $ipConfig2
+
+$ipConfig3 = New-AzVirtualApplianceIpConfiguration -Name "privatenicipconfig" -Primary $true
+$ipConfig4 = New-AzVirtualApplianceIpConfiguration -Name "privatenicipconfig-2" -Primary $false
+$nicConfig2 = New-AzVirtualApplianceNetworkInterfaceConfiguration -NicType "PrivateNic" -IpConfigurations $ipConfig3, $ipConfig4
+
+$networkProfile = New-AzVirtualApplianceNetworkProfile -NetworkInterfaceConfigurations $nicConfig1, $nicConfig2
 ```
 
 Creates a network profile object using two PSVirtualApplianceNetworkInterfaceConfiguration

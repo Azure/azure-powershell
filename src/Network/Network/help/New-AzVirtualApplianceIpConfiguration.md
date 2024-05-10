@@ -24,12 +24,12 @@ The New-AzVirtualApplianceIpConfiguration command defines an IP configuration fo
 
 ### Example 1
 ```powershell
-PS C:\> $ipConfig1 = New-AzVirtualApplianceIpConfiguration -Name "publicnicipconfig" -Primary $true
+$ipConfig1 = New-AzVirtualApplianceIpConfiguration -Name "publicnicipconfig" -Primary $true
 ```
 This command creates a new IP configuration with the name "publicnicipconfig" and sets it as the primary IP configuration.
 
 ```powershell
-PS C:\> $ipConfig2 = New-AzVirtualApplianceIpConfiguration -Name "publicnicipconfig" -Primary $false
+$ipConfig2 = New-AzVirtualApplianceIpConfiguration -Name "publicnicipconfig" -Primary $false
 ```
 This command creates a new IP configuration with the name "publicnicipconfig" and sets it as the secondary IP configuration.
 

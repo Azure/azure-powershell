@@ -21,26 +21,37 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualApplianceNetworkProfile",
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualApplianceIpConfiguration",
         SupportsShouldProcess = true),
-        OutputType(typeof(PSVirtualApplianceNetworkProfile))]
-    public class NewVirtualApplianceNetworkProfileCommand : VirtualApplianceNetworkProfileBaseCmdlet
+        OutputType(typeof(PSVirtualApplianceIpConfiguration))]
+    public class NewVirtualApplianceIpConfigurationCommand : VirtualApplianceNetworkProfileBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = false,
-            HelpMessage = "The network interface configurations of the network profile.")]
+            HelpMessage = "The name of the IP configuration.")]
         [ValidateNotNullOrEmpty]
-        public PSVirtualApplianceNetworkInterfaceConfiguration[] NetworkInterfaceConfigurations { get; set; }
+        public string Name { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "Indicates whether this IP configuration is the primary one.")]
+        [ValidateNotNullOrEmpty]
+        public bool Primary { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var networkProfile = new PSVirtualApplianceNetworkProfile
+            var ipConfiguration = new PSVirtualApplianceIpConfiguration
             {
-                NetworkInterfaceConfigurations = this.NetworkInterfaceConfigurations.ToList()
+                Name = this.Name,
+                Properties = new PSVirtualApplianceIpConfigurationProperties
+                {
+                    Primary = this.Primary
+                }
             };
 
-            WriteObject(networkProfile);
+            WriteObject(ipConfiguration);
         }
     }
 }
