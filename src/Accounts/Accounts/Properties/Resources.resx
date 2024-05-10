@@ -622,4 +622,14 @@
   <data name="TypedSubscriptionNotNumber" xml:space="preserve">
     <value>Typed subscription is not a number.</value>
   </data>
+  <data name="AnnouncementsHeader" xml:space="preserve">
+    <value>[Announcements]
+</value>
+  </data>
+  <data name="AnnouncementsMessage" xml:space="preserve">
+    <value>With the new Azure PowerShell login experience, you can select the subscription you want to use more easily. Learn more about it and its configuration at https://go.microsoft.com/fwlink/?linkid=2271236. Share your feedback regarding your experience with `Connect-AzAccount` at: https://aka.ms/azloginfeedback</value>
+  </data>
+  <data name="ReportIssue" xml:space="preserve">
+    <value>If you encounter any problem, please open an issue at: https://aka.ms/azpsissue</value>
+  </data>
 </root>

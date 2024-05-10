@@ -106,6 +106,25 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [Announcements]
+        ///.
+        /// </summary>
+        internal static string AnnouncementsHeader {
+            get {
+                return ResourceManager.GetString("AnnouncementsHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to With the new Azure PowerShell login experience, you can select the subscription you want to use more easily. Learn more about it and its configuration at https://go.microsoft.com/fwlink/?linkid=2271236. Share your feedback regarding your experience with `Connect-AzAccount` at: https://aka.ms/azloginfeedback.
+        /// </summary>
+        internal static string AnnouncementsMessage {
+            get {
+                return ResourceManager.GetString("AnnouncementsMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Turning Autosave off because an AzureRmContext was passed as a parameter..
         /// </summary>
         internal static string AutosaveDisabledForContextParameter {
@@ -1038,6 +1057,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string ReplaceContextQuery {
             get {
                 return ResourceManager.GetString("ReplaceContextQuery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you encounter any problem, please open an issue at: https://aka.ms/azpsissue.
+        /// </summary>
+        internal static string ReportIssue {
+            get {
+                return ResourceManager.GetString("ReportIssue", resourceCulture);
             }
         }
         
