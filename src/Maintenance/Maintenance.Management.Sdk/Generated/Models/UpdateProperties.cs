@@ -8,28 +8,28 @@ namespace Microsoft.Azure.Management.Maintenance.Models
     using System.Linq;
 
     /// <summary>
-    /// An error response received from the Azure Maintenance service.
+    /// Properties for update
     /// </summary>
-    public partial class MaintenanceError
+    public partial class UpdateProperties
     {
         /// <summary>
-        /// Initializes a new instance of the MaintenanceError class.
+        /// Initializes a new instance of the UpdateProperties class.
         /// </summary>
-        public MaintenanceError()
+        public UpdateProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the MaintenanceError class.
+        /// Initializes a new instance of the UpdateProperties class.
         /// </summary>
 
-        /// <param name="error">Details of the error
+        /// <param name="resourceId">The resourceId
         /// </param>
-        public MaintenanceError(ErrorDetails error = default(ErrorDetails))
+        public UpdateProperties(string resourceId = default(string))
 
         {
-            this.Error = error;
+            this.ResourceId = resourceId;
             CustomInit();
         }
 
@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Management.Maintenance.Models
 
 
         /// <summary>
-        /// Gets or sets details of the error
+        /// Gets or sets the resourceId
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "error")]
-        public ErrorDetails Error {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "resourceId")]
+        public string ResourceId {get; set; }
     }
 }
