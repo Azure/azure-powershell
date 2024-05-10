@@ -78,7 +78,7 @@ function setupEnv() {
     New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\storage-account\template.json -TemplateParameterFile .\test\deployment-templates\storage-account\parameters.json -ResourceGroupName $env.resourceGroup
     $staaccountName = 'staaccountjshubiu' # Value in template.json
     $env.storageAccountId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Storage/storageAccounts/$($staaccountName)"
-    Start-TestSleep -Seconds 60 # Waiting storage account create complete.
+    Start-Sleep -s 60 # Waiting storage account create complete.
     Write-Host -ForegroundColor Green "The storage account deployed successfully."
 
     Write-Host -ForegroundColor Green "Create cost management export for test..."

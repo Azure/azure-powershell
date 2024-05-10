@@ -16,11 +16,11 @@
 
 <#
 .Synopsis
-Creates or updates a namespace.
+Create a namespace.
 Once created, this namespace's resource manifest is immutable.
 This operation is idempotent.
 .Description
-Creates or updates a namespace.
+Create a namespace.
 Once created, this namespace's resource manifest is immutable.
 This operation is idempotent.
 .Example
@@ -34,11 +34,11 @@ New-AzEventHubNamespace -ResourceGroupName myResourceGroup -Name myNamespace -Sk
 New-AzEventHubNamespace -ResourceGroupName myResourceGroup -Name myNamespace -SkuCapacity 10 -MaximumThroughputUnit 18 -SkuName Standard -Location southcentralus -Tag @{k1='v1'; k2='v2'} -EnableAutoInflate -DisableLocalAuth
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespace
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespace
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespace
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespace
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -47,7 +47,7 @@ To create the parameters described below, construct a hash table containing the 
 GEODATAREPLICATIONLOCATION <INamespaceReplicaLocation[]>: A list of regions where replicas of the namespace are maintained.
   [ClusterArmId <String>]: Optional property that denotes the ARM ID of the Cluster. This is required, if a namespace replica should be placed in a Dedicated Event Hub Cluster
   [LocationName <String>]: Azure regions where a replica of the namespace is maintained
-  [RoleType <GeoDrRoleType?>]: GeoDR Role Types
+  [RoleType <String>]: GeoDR Role Types
 
 INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
@@ -78,63 +78,45 @@ PARAMETER <IEhNamespace>: Single Namespace item in List or Get Operation
   [ClusterArmId <String>]: Cluster ARM ID of the Namespace.
   [DisableLocalAuth <Boolean?>]: This property disables SAS authentication for the Event Hubs namespace.
   [EnableAutoInflate <Boolean?>]: Value that indicates whether AutoInflate is enabled for eventhub namespace.
-  [GeoDataReplicationLocation <INamespaceReplicaLocation[]>]: A list of regions where replicas of the namespace are maintained.
+  [GeoDataReplicationLocation <List<INamespaceReplicaLocation>>]: A list of regions where replicas of the namespace are maintained.
     [ClusterArmId <String>]: Optional property that denotes the ARM ID of the Cluster. This is required, if a namespace replica should be placed in a Dedicated Event Hub Cluster
     [LocationName <String>]: Azure regions where a replica of the namespace is maintained
-    [RoleType <GeoDrRoleType?>]: GeoDR Role Types
+    [RoleType <String>]: GeoDR Role Types
   [GeoDataReplicationMaxReplicationLagDurationInSecond <Int32?>]: The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.  When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0 and 5 minutes to 1 day.
-  [IdentityType <ManagedServiceIdentityType?>]: Type of managed service identity.
+  [IdentityType <String>]: Type of managed service identity.
   [KafkaEnabled <Boolean?>]: Value that indicates whether Kafka is enabled for eventhub namespace.
-  [KeySource <KeySource?>]: Enumerates the possible value of keySource for Encryption
-  [KeyVaultProperty <IKeyVaultProperties[]>]: Properties of KeyVault
+  [KeySource <String>]: Enumerates the possible value of keySource for Encryption
+  [KeyVaultProperty <List<IKeyVaultProperties>>]: Properties of KeyVault
     [KeyName <String>]: Name of the Key from KeyVault
     [KeyVaultUri <String>]: Uri of KeyVault
     [KeyVersion <String>]: Key Version
     [UserAssignedIdentity <String>]: ARM ID of user Identity selected for encryption
   [MaximumThroughputUnit <Int32?>]: Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units. ( '0' if AutoInflateEnabled = true)
-  [MinimumTlsVersion <TlsVersion?>]: The minimum TLS version for the cluster to support, e.g. '1.2'
-  [PrivateEndpointConnection <IPrivateEndpointConnection[]>]: List of private endpoint connections.
-    [ConnectionState <PrivateLinkConnectionStatus?>]: Status of the connection.
+  [MinimumTlsVersion <String>]: The minimum TLS version for the cluster to support, e.g. '1.2'
+  [PrivateEndpointConnection <List<IPrivateEndpointConnection>>]: List of private endpoint connections.
+    [ConnectionState <String>]: Status of the connection.
     [Description <String>]: Description of the connection state.
     [PrivateEndpointId <String>]: The ARM identifier for Private Endpoint.
-    [ProvisioningState <EndPointProvisioningState?>]: Provisioning state of the Private Endpoint Connection.
-    [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-    [SystemDataCreatedBy <String>]: The identity that created the resource.
-    [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-    [SystemDataLastModifiedAt <DateTime?>]: The type of identity that last modified the resource.
-    [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-    [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [PublicNetworkAccess <PublicNetworkAccess?>]: This determines if traffic is allowed over public network. By default it is enabled.
+    [ProvisioningState <String>]: Provisioning state of the Private Endpoint Connection.
+  [PublicNetworkAccess <String>]: This determines if traffic is allowed over public network. By default it is enabled.
   [RequireInfrastructureEncryption <Boolean?>]: Enable Infrastructure Encryption (Double Encryption)
   [SkuCapacity <Int32?>]: The Event Hubs throughput units for Basic or Standard tiers, where value should be 0 to 20 throughput units. The Event Hubs premium units for Premium tier, where value should be 0 to 10 premium units.
-  [SkuName <SkuName?>]: Name of this SKU.
-  [SkuTier <SkuTier?>]: The billing tier of this particular SKU.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The type of identity that last modified the resource.
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [SkuName <String>]: Name of this SKU.
+  [SkuTier <String>]: The billing tier of this particular SKU.
   [UserAssignedIdentity <IIdentityUserAssignedIdentities>]: Properties for User Assigned Identities
     [(Any) <IUserAssignedIdentity>]: This indicates any property can be added to this object.
   [ZoneRedundant <Boolean?>]: Enabling this property creates a Standard Event Hubs Namespace in regions supported availability zones.
 
 PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>: List of private endpoint connections.
-  [ConnectionState <PrivateLinkConnectionStatus?>]: Status of the connection.
+  [ConnectionState <String>]: Status of the connection.
   [Description <String>]: Description of the connection state.
   [PrivateEndpointId <String>]: The ARM identifier for Private Endpoint.
-  [ProvisioningState <EndPointProvisioningState?>]: Provisioning state of the Private Endpoint Connection.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The type of identity that last modified the resource.
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [ProvisioningState <String>]: Provisioning state of the Private Endpoint Connection.
 .Link
 https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubnamespace
 #>
 function New-AzEventHubNamespace {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespace])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespace])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -162,7 +144,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -192,9 +173,8 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.INamespaceReplicaLocation[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocation[]]
     # A list of regions where replicas of the namespace are maintained.
-    # To construct, see NOTES section for GEODATAREPLICATIONLOCATION properties and create a hash table.
     ${GeoDataReplicationLocation},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -206,9 +186,9 @@ param(
     ${GeoDataReplicationMaxReplicationLagDurationInSecond},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType]
+    [System.String]
     # Type of managed service identity.
     ${IdentityType},
 
@@ -219,18 +199,17 @@ param(
     ${KafkaEnabled},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.KeySource])]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("Microsoft.KeyVault")]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.KeySource]
+    [System.String]
     # Enumerates the possible value of keySource for Encryption
     ${KeySource},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IKeyVaultProperties[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IKeyVaultProperties[]]
     # Properties of KeyVault
-    # To construct, see NOTES section for KEYVAULTPROPERTY properties and create a hash table.
     ${KeyVaultProperty},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -247,9 +226,9 @@ param(
     ${MaximumThroughputUnit},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.TlsVersion])]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("1.0", "1.1", "1.2")]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.TlsVersion]
+    [System.String]
     # The minimum TLS version for the cluster to support, e.g.
     # '1.2'
     ${MinimumTlsVersion},
@@ -257,15 +236,14 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IPrivateEndpointConnection[]]
     # List of private endpoint connections.
-    # To construct, see NOTES section for PRIVATEENDPOINTCONNECTION properties and create a hash table.
     ${PrivateEndpointConnection},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.PublicNetworkAccess])]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("Enabled", "Disabled", "SecuredByPerimeter")]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.PublicNetworkAccess]
+    [System.String]
     # This determines if traffic is allowed over public network.
     # By default it is enabled.
     ${PublicNetworkAccess},
@@ -284,29 +262,29 @@ param(
     ${SkuCapacity},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SkuName])]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("Basic", "Standard", "Premium")]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SkuName]
+    [System.String]
     # Name of this SKU.
     ${SkuName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SkuTier])]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("Basic", "Standard", "Premium")]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SkuTier]
+    [System.String]
     # The billing tier of this particular SKU.
     ${SkuTier},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api10.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IIdentityUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IIdentityUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # Properties for User Assigned Identities
     ${UserAssignedIdentity},
@@ -319,9 +297,8 @@ param(
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespace]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespace]
     # Single Namespace item in List or Get Operation
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter()]
@@ -397,8 +374,14 @@ begin {
             CreateExpanded = 'Az.EventHub.private\New-AzEventHubNamespace_CreateExpanded';
             CreateViaIdentity = 'Az.EventHub.private\New-AzEventHubNamespace_CreateViaIdentity';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

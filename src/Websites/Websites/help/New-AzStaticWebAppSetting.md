@@ -15,8 +15,8 @@ Description for Creates or updates the app settings of a static site.
 ### CreateExpanded (Default)
 ```
 New-AzStaticWebAppSetting -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AppSetting <Hashtable>] [-Kind <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AppSetting <Hashtable>] [-Kind <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded

@@ -26,12 +26,12 @@ $ec1 = "/subscriptions/0000000000000/resourceGroups/myResourceGroup/providers/Mi
 New-AzServiceBusKeyVaultPropertiesObject -KeyName key4 -KeyVaultUri https://testkeyvault.vault.azure.net/ -UserAssignedIdentity $ec1
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.KeyVaultProperties
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.KeyVaultProperties
 .Link
-https://learn.microsoft.com/powershell/module/Az.ServiceBus/new-AzServiceBusKeyVaultPropertiesObject
+https://learn.microsoft.com/powershell/module/Az.ServiceBus/new-azservicebuskeyvaultpropertiesobject
 #>
 function New-AzServiceBusKeyVaultPropertiesObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.KeyVaultProperties])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.KeyVaultProperties])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]

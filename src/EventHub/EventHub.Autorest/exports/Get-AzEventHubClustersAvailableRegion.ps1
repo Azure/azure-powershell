@@ -23,12 +23,12 @@ List the quantity of available pre-provisioned Event Hubs Clusters, indexed by A
 Get-AzEventHubClustersAvailableRegion
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAvailableCluster
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAvailableClustersList
 .Link
 https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubclustersavailableregion
 #>
 function Get-AzEventHubClustersAvailableRegion {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAvailableCluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAvailableClustersList])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -116,8 +116,14 @@ begin {
         $mapping = @{
             List = 'Az.EventHub.private\Get-AzEventHubClustersAvailableRegion_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

@@ -15,13 +15,15 @@ Stops a managed dedicated integration runtime.
 ### StopByNameParameterSet (Default)
 ```
 Stop-AzSynapseIntegrationRuntime [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### StopByParentObjectParameterSet
 ```
 Stop-AzSynapseIntegrationRuntime -Name <String> -WorkspaceObject <PSSynapseWorkspace> [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### StopByResourceIdParameterSet
@@ -33,7 +35,8 @@ Stop-AzSynapseIntegrationRuntime -ResourceId <String> [-Force] [-DefaultProfile 
 ### StopByInputObjectParameterSet
 ```
 Stop-AzSynapseIntegrationRuntime -InputObject <PSIntegrationRuntime> [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

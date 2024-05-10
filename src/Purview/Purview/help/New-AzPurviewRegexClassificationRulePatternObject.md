@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewRegexClassificationRulePatternObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewRegexClassificationRulePatternObject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,8 @@ Create an in-memory object for RegexClassificationRulePattern.
 ## SYNTAX
 
 ```
-New-AzPurviewRegexClassificationRulePatternObject [-Pattern <String>] [<CommonParameters>]
+New-AzPurviewRegexClassificationRulePatternObject [-Pattern <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,7 +61,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.RegexClassificationRulePattern
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

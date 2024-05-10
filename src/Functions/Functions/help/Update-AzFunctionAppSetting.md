@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Functions-help.xml
 Module Name: Az.Functions
 online version: https://learn.microsoft.com/powershell/module/az.functions/update-azfunctionappsetting
 schema: 2.0.0
@@ -14,14 +14,15 @@ Adds or updates app settings in a function app.
 
 ### ByName (Default)
 ```
-Update-AzFunctionAppSetting -Name <String> -ResourceGroupName <String> -AppSetting <Hashtable>
- [-SubscriptionId <String>] [-Force] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzFunctionAppSetting -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -AppSetting <Hashtable> [-Force] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectInput
 ```
-Update-AzFunctionAppSetting -AppSetting <Hashtable> -InputObject <ISite> [-Force] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzFunctionAppSetting -AppSetting <Hashtable> [-Force] -InputObject <ISite> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,7 +56,6 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -189,4 +189,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

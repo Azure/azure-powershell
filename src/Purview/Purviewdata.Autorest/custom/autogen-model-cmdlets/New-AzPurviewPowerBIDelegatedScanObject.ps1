@@ -23,7 +23,7 @@ Create an in-memory object for PowerBIDelegatedScan.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.PowerBIDelegatedScan
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewPowerBIDelegatedScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewPowerBIDelegatedScanObject
 #>
 function New-AzPurviewPowerBIDelegatedScanObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.PowerBIDelegatedScan')]

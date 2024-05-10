@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Updates an existing Cluster.
+Update an existing Cluster.
 .Description
-Updates an existing Cluster.
+Update an existing Cluster.
 .Example
 $clusterResourceGroupName = "Group"
 $clusterpoolName = "ps-test-pool"

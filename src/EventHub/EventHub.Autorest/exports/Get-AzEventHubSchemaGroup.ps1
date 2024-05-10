@@ -27,7 +27,7 @@ Get-AzEventHubSchemaGroup -ResourceGroupName myResourceGroup -NamespaceName myNa
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ISchemaGroup
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISchemaGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -47,14 +47,30 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of the resource group within the azure subscription.
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+NAMESPACEINPUTOBJECT <IEventHubIdentity>: Identity Parameter
+  [Alias <String>]: The Disaster Recovery configuration name
+  [ApplicationGroupName <String>]: The Application Group name 
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [ClusterName <String>]: The name of the Event Hubs Cluster.
+  [ConsumerGroupName <String>]: The consumer group name
+  [EventHubName <String>]: The Event Hub name
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The Namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: Name of the resource group within the azure subscription.
+  [SchemaGroupName <String>]: The Schema Group name 
+  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
 https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubschemagroup
 #>
 function Get-AzEventHubSchemaGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ISchemaGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISchemaGroup])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityNamespace', Mandatory)]
     [Alias('SchemaGroupName')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
@@ -88,8 +104,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityNamespace', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity]
+    # Identity Parameter
+    ${NamespaceInputObject},
 
     [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Query')]
@@ -181,10 +202,17 @@ begin {
         $mapping = @{
             Get = 'Az.EventHub.private\Get-AzEventHubSchemaGroup_Get';
             GetViaIdentity = 'Az.EventHub.private\Get-AzEventHubSchemaGroup_GetViaIdentity';
+            GetViaIdentityNamespace = 'Az.EventHub.private\Get-AzEventHubSchemaGroup_GetViaIdentityNamespace';
             List = 'Az.EventHub.private\Get-AzEventHubSchemaGroup_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

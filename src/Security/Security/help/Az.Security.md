@@ -1,14 +1,14 @@
 ---
 Module Name: Az.Security
-Module Guid: 5e312bb4-9d3a-4c88-94c3-8e5bbb2e3da4
+Module Guid: 6f1c0dfd-dfcd-4e5b-b77c-a64a9d355ebf
 Download Help Link: https://learn.microsoft.com/powershell/module/az.security
-Help Version: 0.1.0
+Help Version: 1.0.0.0
 Locale: en-US
 ---
 
 # Az.Security Module
 ## Description
-Azure Security Center gives you control over the security of your Azure subscriptions and other machines that you connected to it outside of Azure.
+Microsoft Azure PowerShell: Security cmdlets
 
 ## Az.Security Cmdlets
 ### [Add-AzSecurityAdaptiveNetworkHardening](Add-AzSecurityAdaptiveNetworkHardening.md)
@@ -406,17 +406,17 @@ Invokes a temporary network access request.
 Update one or more of the following properties in IoT security solution: tags, recommendation configuration, user defined resources
 
 ### [Update-AzSecurityConnector](Update-AzSecurityConnector.md)
-Updates a security connector
+Update a security connector
 
 ### [Update-AzSecurityConnectorAzureDevOpsOrg](Update-AzSecurityConnectorAzureDevOpsOrg.md)
-Updates monitored Azure DevOps organization details.
+Update monitored Azure DevOps organization details.
 
 ### [Update-AzSecurityConnectorAzureDevOpsProject](Update-AzSecurityConnectorAzureDevOpsProject.md)
-Updates a monitored Azure DevOps project resource.
+Update a monitored Azure DevOps project resource.
 
 ### [Update-AzSecurityConnectorAzureDevOpsRepo](Update-AzSecurityConnectorAzureDevOpsRepo.md)
-Updates a monitored Azure DevOps repository resource.
+Update a monitored Azure DevOps repository resource.
 
 ### [Update-AzSecurityConnectorDevOpsConfiguration](Update-AzSecurityConnectorDevOpsConfiguration.md)
-Updates a DevOps Configuration.
+Update a DevOps Configuration.
 

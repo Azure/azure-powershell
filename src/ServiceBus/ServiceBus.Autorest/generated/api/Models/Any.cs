@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Extensions;
 
-    /// <summary>Any object</summary>
+    /// <summary>Anything</summary>
     public partial class Any :
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAny,
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAnyInternal
@@ -19,13 +19,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
 
         }
     }
-    /// Any object
+    /// Anything
     public partial interface IAny :
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IJsonSerializable
     {
 
     }
-    /// Any object
+    /// Anything
     internal partial interface IAnyInternal
 
     {

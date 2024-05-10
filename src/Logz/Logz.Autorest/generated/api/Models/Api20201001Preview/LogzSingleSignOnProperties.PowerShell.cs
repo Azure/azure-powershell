@@ -30,7 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -42,7 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -83,7 +85,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
         /// Creates a new instance of <see cref="LogzSingleSignOnProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="LogzSingleSignOnProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -100,10 +102,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).SingleSignOnState = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.SingleSignOnStates?) content.GetValueForProperty("SingleSignOnState",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).SingleSignOnState, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.SingleSignOnStates.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).EnterpriseAppId = (string) content.GetValueForProperty("EnterpriseAppId",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).EnterpriseAppId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).SingleSignOnUrl = (string) content.GetValueForProperty("SingleSignOnUrl",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).SingleSignOnUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ProvisioningState.CreateFrom);
+            if (content.Contains("SingleSignOnState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).SingleSignOnState = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.SingleSignOnStates?) content.GetValueForProperty("SingleSignOnState",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).SingleSignOnState, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.SingleSignOnStates.CreateFrom);
+            }
+            if (content.Contains("EnterpriseAppId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).EnterpriseAppId = (string) content.GetValueForProperty("EnterpriseAppId",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).EnterpriseAppId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SingleSignOnUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).SingleSignOnUrl = (string) content.GetValueForProperty("SingleSignOnUrl",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).SingleSignOnUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ProvisioningState.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -121,10 +135,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).SingleSignOnState = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.SingleSignOnStates?) content.GetValueForProperty("SingleSignOnState",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).SingleSignOnState, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.SingleSignOnStates.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).EnterpriseAppId = (string) content.GetValueForProperty("EnterpriseAppId",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).EnterpriseAppId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).SingleSignOnUrl = (string) content.GetValueForProperty("SingleSignOnUrl",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).SingleSignOnUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ProvisioningState.CreateFrom);
+            if (content.Contains("SingleSignOnState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).SingleSignOnState = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.SingleSignOnStates?) content.GetValueForProperty("SingleSignOnState",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).SingleSignOnState, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.SingleSignOnStates.CreateFrom);
+            }
+            if (content.Contains("EnterpriseAppId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).EnterpriseAppId = (string) content.GetValueForProperty("EnterpriseAppId",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).EnterpriseAppId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SingleSignOnUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).SingleSignOnUrl = (string) content.GetValueForProperty("SingleSignOnUrl",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).SingleSignOnUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnPropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ProvisioningState.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

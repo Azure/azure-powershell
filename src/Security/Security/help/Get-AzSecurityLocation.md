@@ -14,20 +14,20 @@ Gets the location where Azure Security Center will automatically save data for t
 
 ### SubscriptionScope (Default)
 ```
-Get-AzSecurityLocation [-DefaultProfile <IAzureContextContainer>]
+Get-AzSecurityLocation [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### SubscriptionLevelResource
 ```
 Get-AzSecurityLocation -Name <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
 Get-AzSecurityLocation -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,6 +75,21 @@ Parameter Sets: SubscriptionLevelResource
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

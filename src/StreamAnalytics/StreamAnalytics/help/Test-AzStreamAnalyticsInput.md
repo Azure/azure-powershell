@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StreamAnalytics-help.xml
 Module Name: Az.StreamAnalytics
 online version: https://learn.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsinput
 schema: 2.0.0
@@ -8,17 +8,18 @@ schema: 2.0.0
 # Test-AzStreamAnalyticsInput
 
 ## SYNOPSIS
-Tests whether an input’s datasource is reachable and usable by the Azure Stream Analytics service.
+Tests whether an input's datasource is reachable and usable by the Azure Stream Analytics service.
 
 ## SYNTAX
 
 ```
 Test-AzStreamAnalyticsInput -JobName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Tests whether an input’s datasource is reachable and usable by the Azure Stream Analytics service.
+Tests whether an input's datasource is reachable and usable by the Azure Stream Analytics service.
 
 ## EXAMPLES
 
@@ -26,6 +27,7 @@ Tests whether an input’s datasource is reachable and usable by the Azure Strea
 ```powershell
 Test-AzStreamAnalyticsInput -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name input-01
 ```
+
 ```output
 Status
 ------
@@ -173,7 +175,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

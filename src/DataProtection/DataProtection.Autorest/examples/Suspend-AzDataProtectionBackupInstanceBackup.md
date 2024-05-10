@@ -4,4 +4,3 @@ Suspend-AzDataProtectionBackupInstanceBackup -ResourceGroupName "rgName" -Subscr
 ```
 
 The above command can be used to stop backups of a backup instance, this will move the backup instance to a suspended state.
-

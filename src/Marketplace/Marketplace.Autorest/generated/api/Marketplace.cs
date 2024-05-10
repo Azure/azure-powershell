@@ -2136,7 +2136,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace
             }
         }
 
-        /// <summary>Create private store collection</summary>
+        /// <summary>Update private store collection</summary>
         /// <param name="privateStoreId">The store ID - must use the tenant ID</param>
         /// <param name="collectionId">The collection ID</param>
         /// <param name="body">The Collection data structure.</param>
@@ -2182,7 +2182,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace
             }
         }
 
-        /// <summary>Create private store collection</summary>
+        /// <summary>Update private store collection</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Collection data structure.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2238,7 +2238,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace
             }
         }
 
-        /// <summary>Create private store collection</summary>
+        /// <summary>Update private store collection</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Collection data structure.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2292,7 +2292,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace
             }
         }
 
-        /// <summary>Create private store collection</summary>
+        /// <summary>Update private store collection</summary>
         /// <param name="privateStoreId">The store ID - must use the tenant ID</param>
         /// <param name="collectionId">The collection ID</param>
         /// <param name="jsonString">Json string supplied to the PrivateStoreCollectionCreateOrUpdate operation</param>
@@ -2337,7 +2337,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace
             }
         }
 
-        /// <summary>Create private store collection</summary>
+        /// <summary>Update private store collection</summary>
         /// <param name="privateStoreId">The store ID - must use the tenant ID</param>
         /// <param name="collectionId">The collection ID</param>
         /// <param name="jsonString">Json string supplied to the PrivateStoreCollectionCreateOrUpdate operation</param>
@@ -2380,7 +2380,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace
             }
         }
 
-        /// <summary>Create private store collection</summary>
+        /// <summary>Update private store collection</summary>
         /// <param name="privateStoreId">The store ID - must use the tenant ID</param>
         /// <param name="collectionId">The collection ID</param>
         /// <param name="body">The Collection data structure.</param>
@@ -5380,7 +5380,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = null /* serializeToContent doesn't support 'application/json' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.684\node_modules\@autorest\powershell\dist\llcsharp\schema\string.js*/;
+                request.Content = null /* serializeToContent doesn't support 'application/json' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.695\node_modules\@autorest\powershell\dist\llcsharp\schema\string.js*/;
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
@@ -5439,7 +5439,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = null /* serializeToContent doesn't support 'application/json' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.684\node_modules\@autorest\powershell\dist\llcsharp\schema\string.js*/;
+                request.Content = null /* serializeToContent doesn't support 'application/json' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.695\node_modules\@autorest\powershell\dist\llcsharp\schema\string.js*/;
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
@@ -6056,7 +6056,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = null /* serializeToContent doesn't support 'application/json' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.684\node_modules\@autorest\powershell\dist\llcsharp\schema\string.js*/;
+                request.Content = null /* serializeToContent doesn't support 'application/json' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.695\node_modules\@autorest\powershell\dist\llcsharp\schema\string.js*/;
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
@@ -6112,7 +6112,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = null /* serializeToContent doesn't support 'application/json' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.684\node_modules\@autorest\powershell\dist\llcsharp\schema\string.js*/;
+                request.Content = null /* serializeToContent doesn't support 'application/json' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.695\node_modules\@autorest\powershell\dist\llcsharp\schema\string.js*/;
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call

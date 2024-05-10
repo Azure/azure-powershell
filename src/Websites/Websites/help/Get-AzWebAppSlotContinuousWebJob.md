@@ -15,13 +15,15 @@ Get or list continuous web for a deployment slot.
 ### List (Default)
 ```
 Get-AzWebAppSlotContinuousWebJob -AppName <String> -ResourceGroupName <String> -SlotName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzWebAppSlotContinuousWebJob -AppName <String> -Name <String> -ResourceGroupName <String>
- -SlotName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+ -SlotName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity

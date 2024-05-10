@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -100,12 +102,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ProvisioningStates) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ProvisioningStates.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).AvailabilityZone = (string[]) content.GetValueForProperty("AvailabilityZone",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).AvailabilityZone, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.OperationalStatus) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.OperationalStatus.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).Disk = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDisk[]) content.GetValueForProperty("Disk",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).Disk, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDisk>(__y, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.DiskTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).SubnetId = (string) content.GetValueForProperty("SubnetId",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).SubnetId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).AdditionalCapability = (string[]) content.GetValueForProperty("AdditionalCapability",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).AdditionalCapability, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ProvisioningStates) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ProvisioningStates.CreateFrom);
+            }
+            if (content.Contains("AvailabilityZone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).AvailabilityZone = (string[]) content.GetValueForProperty("AvailabilityZone",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).AvailabilityZone, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.OperationalStatus) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.OperationalStatus.CreateFrom);
+            }
+            if (content.Contains("Disk"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).Disk = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDisk[]) content.GetValueForProperty("Disk",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).Disk, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDisk>(__y, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.DiskTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("SubnetId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).SubnetId = (string) content.GetValueForProperty("SubnetId",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).SubnetId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AdditionalCapability"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).AdditionalCapability = (string[]) content.GetValueForProperty("AdditionalCapability",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).AdditionalCapability, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -123,12 +143,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ProvisioningStates) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ProvisioningStates.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).AvailabilityZone = (string[]) content.GetValueForProperty("AvailabilityZone",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).AvailabilityZone, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.OperationalStatus) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.OperationalStatus.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).Disk = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDisk[]) content.GetValueForProperty("Disk",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).Disk, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDisk>(__y, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.DiskTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).SubnetId = (string) content.GetValueForProperty("SubnetId",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).SubnetId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).AdditionalCapability = (string[]) content.GetValueForProperty("AdditionalCapability",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).AdditionalCapability, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ProvisioningStates) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ProvisioningStates.CreateFrom);
+            }
+            if (content.Contains("AvailabilityZone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).AvailabilityZone = (string[]) content.GetValueForProperty("AvailabilityZone",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).AvailabilityZone, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.OperationalStatus) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.OperationalStatus.CreateFrom);
+            }
+            if (content.Contains("Disk"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).Disk = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDisk[]) content.GetValueForProperty("Disk",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).Disk, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDisk>(__y, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.DiskTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("SubnetId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).SubnetId = (string) content.GetValueForProperty("SubnetId",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).SubnetId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AdditionalCapability"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).AdditionalCapability = (string[]) content.GetValueForProperty("AdditionalCapability",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolPropertiesInternal)this).AdditionalCapability, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -136,7 +174,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801
         /// Creates a new instance of <see cref="DiskPoolProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="DiskPoolProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://learn.microsoft.com/powershell/module/az.compute/new-azdiskencryptionset.md
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azdiskencryptionset
 schema: 2.0.0
 ---
 

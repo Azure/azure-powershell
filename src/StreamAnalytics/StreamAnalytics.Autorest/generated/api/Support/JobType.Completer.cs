@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Cloud".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Cloud", "Cloud", global::System.Management.Automation.CompletionResultType.ParameterValue, "Cloud");
+                yield return new global::System.Management.Automation.CompletionResult("'Cloud'", "Cloud", global::System.Management.Automation.CompletionResultType.ParameterValue, "Cloud");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Edge".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Edge", "Edge", global::System.Management.Automation.CompletionResultType.ParameterValue, "Edge");
+                yield return new global::System.Management.Automation.CompletionResult("'Edge'", "Edge", global::System.Management.Automation.CompletionResultType.ParameterValue, "Edge");
             }
         }
     }

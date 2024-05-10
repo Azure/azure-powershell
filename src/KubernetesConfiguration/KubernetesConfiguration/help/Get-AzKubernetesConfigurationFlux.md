@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.KubernetesConfiguration-help.xml
 Module Name: Az.KubernetesConfiguration
 online version: https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azkubernetesconfigurationflux
 schema: 2.0.0
@@ -15,13 +15,15 @@ Gets details of the Flux Configuration.
 ### List (Default)
 ```
 Get-AzKubernetesConfigurationFlux -ClusterName <String> -ClusterType <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzKubernetesConfigurationFlux -ClusterName <String> -ClusterType <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzKubernetesConfigurationFlux -ClusterName <String> -ClusterType <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] -Name <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -68,7 +70,7 @@ The name of the kubernetes cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -84,7 +86,7 @@ managedClusters, connectedClusters, provisionedClusters.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -147,7 +149,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -162,7 +164,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -189,22 +191,4 @@ ALIASES
 
 Get-AzK8sConfigurationFlux
 
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IKubernetesConfigurationIdentity>`: Identity Parameter
-  - `[ClusterName <String>]`: The name of the kubernetes cluster.
-  - `[ClusterResourceName <String>]`: The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
-  - `[ClusterRp <String>]`: The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
-  - `[ExtensionName <String>]`: Name of the Extension.
-  - `[FluxConfigurationName <String>]`: Name of the Flux Configuration.
-  - `[Id <String>]`: Resource identity path
-  - `[OperationId <String>]`: operation Id
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SourceControlConfigurationName <String>]`: Name of the Source Control Configuration.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
 ## RELATED LINKS
-

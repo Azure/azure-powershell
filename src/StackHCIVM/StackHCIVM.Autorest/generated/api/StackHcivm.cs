@@ -1309,7 +1309,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a gallery image. Please note some properties can be set only during gallery image creation.
+        /// The operation to create or update a gallery image. Please note some properties can be set only during gallery image creation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -1360,7 +1360,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a gallery image. Please note some properties can be set only during gallery image creation.
+        /// The operation to create or update a gallery image. Please note some properties can be set only during gallery image creation.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The gallery images resource definition.</param>
@@ -1421,7 +1421,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a gallery image. Please note some properties can be set only during gallery image creation.
+        /// The operation to create or update a gallery image. Please note some properties can be set only during gallery image creation.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The gallery images resource definition.</param>
@@ -1480,7 +1480,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a gallery image. Please note some properties can be set only during gallery image creation.
+        /// The operation to create or update a gallery image. Please note some properties can be set only during gallery image creation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -1530,7 +1530,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a gallery image. Please note some properties can be set only during gallery image creation.
+        /// The operation to create or update a gallery image. Please note some properties can be set only during gallery image creation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -1578,7 +1578,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a gallery image. Please note some properties can be set only during gallery image creation.
+        /// The operation to create or update a gallery image. Please note some properties can be set only during gallery image creation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -3794,7 +3794,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
             }
         }
 
-        /// <summary>Create GuestAgent.</summary>
+        /// <summary>Update GuestAgent.</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>
         /// <param name="body">Request payload.</param>
@@ -3839,7 +3839,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
             }
         }
 
-        /// <summary>Create GuestAgent.</summary>
+        /// <summary>Update GuestAgent.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3893,7 +3893,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
             }
         }
 
-        /// <summary>Create GuestAgent.</summary>
+        /// <summary>Update GuestAgent.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3945,7 +3945,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
             }
         }
 
-        /// <summary>Create GuestAgent.</summary>
+        /// <summary>Update GuestAgent.</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>
         /// <param name="jsonString">Json string supplied to the GuestAgentCreate operation</param>
@@ -3989,7 +3989,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
             }
         }
 
-        /// <summary>Create GuestAgent.</summary>
+        /// <summary>Update GuestAgent.</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>
         /// <param name="jsonString">Json string supplied to the GuestAgentCreate operation</param>
@@ -4031,7 +4031,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
             }
         }
 
-        /// <summary>Create GuestAgent.</summary>
+        /// <summary>Update GuestAgent.</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>
         /// <param name="body">Request payload.</param>
@@ -6500,7 +6500,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a logical network. Please note some properties can be set only during logical network creation.
+        /// The operation to create or update a logical network. Please note some properties can be set only during logical network
+        /// creation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -6551,7 +6552,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a logical network. Please note some properties can be set only during logical network creation.
+        /// The operation to create or update a logical network. Please note some properties can be set only during logical network
+        /// creation.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The logical network resource definition.</param>
@@ -6612,7 +6614,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a logical network. Please note some properties can be set only during logical network creation.
+        /// The operation to create or update a logical network. Please note some properties can be set only during logical network
+        /// creation.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The logical network resource definition.</param>
@@ -6671,7 +6674,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a logical network. Please note some properties can be set only during logical network creation.
+        /// The operation to create or update a logical network. Please note some properties can be set only during logical network
+        /// creation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -6721,7 +6725,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a logical network. Please note some properties can be set only during logical network creation.
+        /// The operation to create or update a logical network. Please note some properties can be set only during logical network
+        /// creation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -6769,7 +6774,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a logical network. Please note some properties can be set only during logical network creation.
+        /// The operation to create or update a logical network. Please note some properties can be set only during logical network
+        /// creation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -8985,7 +8991,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
             }
         }
 
-        /// <summary>The operation to Create the extension.</summary>
+        /// <summary>The operation to create or update the extension.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="machineName">The name of the machine where the extension should be created or updated.</param>
@@ -9037,7 +9043,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
             }
         }
 
-        /// <summary>The operation to Create the extension.</summary>
+        /// <summary>The operation to create or update the extension.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to the Create Machine Extension operation.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -9099,7 +9105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
             }
         }
 
-        /// <summary>The operation to Create the extension.</summary>
+        /// <summary>The operation to create or update the extension.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to the Create Machine Extension operation.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -9159,7 +9165,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
             }
         }
 
-        /// <summary>The operation to Create the extension.</summary>
+        /// <summary>The operation to create or update the extension.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="machineName">The name of the machine where the extension should be created or updated.</param>
@@ -9210,7 +9216,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
             }
         }
 
-        /// <summary>The operation to Create the extension.</summary>
+        /// <summary>The operation to create or update the extension.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="machineName">The name of the machine where the extension should be created or updated.</param>
@@ -9259,7 +9265,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
             }
         }
 
-        /// <summary>The operation to Create the extension.</summary>
+        /// <summary>The operation to create or update the extension.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="machineName">The name of the machine where the extension should be created or updated.</param>
@@ -10599,7 +10605,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
             }
         }
 
-        /// <summary>The operation to Update the extension.</summary>
+        /// <summary>The operation to create or update the extension.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="machineName">The name of the machine where the extension should be created or updated.</param>
@@ -10651,7 +10657,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
             }
         }
 
-        /// <summary>The operation to Update the extension.</summary>
+        /// <summary>The operation to create or update the extension.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to the Create Machine Extension operation.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -10713,7 +10719,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
             }
         }
 
-        /// <summary>The operation to Update the extension.</summary>
+        /// <summary>The operation to create or update the extension.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to the Create Machine Extension operation.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10773,7 +10779,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
             }
         }
 
-        /// <summary>The operation to Update the extension.</summary>
+        /// <summary>The operation to create or update the extension.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="machineName">The name of the machine where the extension should be created or updated.</param>
@@ -10824,7 +10830,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
             }
         }
 
-        /// <summary>The operation to Update the extension.</summary>
+        /// <summary>The operation to create or update the extension.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="machineName">The name of the machine where the extension should be created or updated.</param>
@@ -10873,7 +10879,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
             }
         }
 
-        /// <summary>The operation to Update the extension.</summary>
+        /// <summary>The operation to create or update the extension.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="machineName">The name of the machine where the extension should be created or updated.</param>
@@ -11248,7 +11254,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a hybrid machine. Please note some properties can be set only during machine creation.
+        /// The operation to create or update a hybrid machine. Please note some properties can be set only during machine creation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -11299,7 +11305,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a hybrid machine. Please note some properties can be set only during machine creation.
+        /// The operation to create or update a hybrid machine. Please note some properties can be set only during machine creation.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to the Create hybrid machine operation.</param>
@@ -11360,7 +11366,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a hybrid machine. Please note some properties can be set only during machine creation.
+        /// The operation to create or update a hybrid machine. Please note some properties can be set only during machine creation.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to the Create hybrid machine operation.</param>
@@ -11419,7 +11425,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a hybrid machine. Please note some properties can be set only during machine creation.
+        /// The operation to create or update a hybrid machine. Please note some properties can be set only during machine creation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -11469,7 +11475,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a hybrid machine. Please note some properties can be set only during machine creation.
+        /// The operation to create or update a hybrid machine. Please note some properties can be set only during machine creation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -11517,7 +11523,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a hybrid machine. Please note some properties can be set only during machine creation.
+        /// The operation to create or update a hybrid machine. Please note some properties can be set only during machine creation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -13317,8 +13323,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a marketplace gallery image. Please note some properties can be set only during marketplace gallery
-        /// image creation.
+        /// The operation to create or update a marketplace gallery image. Please note some properties can be set only during marketplace
+        /// gallery image creation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -13369,8 +13375,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a marketplace gallery image. Please note some properties can be set only during marketplace gallery
-        /// image creation.
+        /// The operation to create or update a marketplace gallery image. Please note some properties can be set only during marketplace
+        /// gallery image creation.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The marketplace gallery image resource definition.</param>
@@ -13431,8 +13437,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a marketplace gallery image. Please note some properties can be set only during marketplace gallery
-        /// image creation.
+        /// The operation to create or update a marketplace gallery image. Please note some properties can be set only during marketplace
+        /// gallery image creation.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The marketplace gallery image resource definition.</param>
@@ -13491,8 +13497,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a marketplace gallery image. Please note some properties can be set only during marketplace gallery
-        /// image creation.
+        /// The operation to create or update a marketplace gallery image. Please note some properties can be set only during marketplace
+        /// gallery image creation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -13542,8 +13548,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a marketplace gallery image. Please note some properties can be set only during marketplace gallery
-        /// image creation.
+        /// The operation to create or update a marketplace gallery image. Please note some properties can be set only during marketplace
+        /// gallery image creation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -13591,8 +13597,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a marketplace gallery image. Please note some properties can be set only during marketplace gallery
-        /// image creation.
+        /// The operation to create or update a marketplace gallery image. Please note some properties can be set only during marketplace
+        /// gallery image creation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -15819,7 +15825,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a network interface. Please note some properties can be set only during network interface creation.
+        /// The operation to create or update a network interface. Please note some properties can be set only during network interface
+        /// creation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -15870,7 +15877,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a network interface. Please note some properties can be set only during network interface creation.
+        /// The operation to create or update a network interface. Please note some properties can be set only during network interface
+        /// creation.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The network interface resource definition.</param>
@@ -15931,7 +15939,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a network interface. Please note some properties can be set only during network interface creation.
+        /// The operation to create or update a network interface. Please note some properties can be set only during network interface
+        /// creation.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The network interface resource definition.</param>
@@ -15990,7 +15999,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a network interface. Please note some properties can be set only during network interface creation.
+        /// The operation to create or update a network interface. Please note some properties can be set only during network interface
+        /// creation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -16040,7 +16050,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a network interface. Please note some properties can be set only during network interface creation.
+        /// The operation to create or update a network interface. Please note some properties can be set only during network interface
+        /// creation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -16088,7 +16099,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a network interface. Please note some properties can be set only during network interface creation.
+        /// The operation to create or update a network interface. Please note some properties can be set only during network interface
+        /// creation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -18916,7 +18928,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a storage container. Please note some properties can be set only during storage container creation.
+        /// The operation to create or update a storage container. Please note some properties can be set only during storage container
+        /// creation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -18967,7 +18980,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a storage container. Please note some properties can be set only during storage container creation.
+        /// The operation to create or update a storage container. Please note some properties can be set only during storage container
+        /// creation.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The storage container resource definition.</param>
@@ -19028,7 +19042,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a storage container. Please note some properties can be set only during storage container creation.
+        /// The operation to create or update a storage container. Please note some properties can be set only during storage container
+        /// creation.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The storage container resource definition.</param>
@@ -19087,7 +19102,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a storage container. Please note some properties can be set only during storage container creation.
+        /// The operation to create or update a storage container. Please note some properties can be set only during storage container
+        /// creation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -19137,7 +19153,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a storage container. Please note some properties can be set only during storage container creation.
+        /// The operation to create or update a storage container. Please note some properties can be set only during storage container
+        /// creation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -19185,7 +19202,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a storage container. Please note some properties can be set only during storage container creation.
+        /// The operation to create or update a storage container. Please note some properties can be set only during storage container
+        /// creation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -21733,7 +21751,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a virtual hard disk. Please note some properties can be set only during virtual hard disk creation.
+        /// The operation to create or update a virtual hard disk. Please note some properties can be set only during virtual hard
+        /// disk creation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -21784,7 +21803,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a virtual hard disk. Please note some properties can be set only during virtual hard disk creation.
+        /// The operation to create or update a virtual hard disk. Please note some properties can be set only during virtual hard
+        /// disk creation.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The virtual hard disk resource definition.</param>
@@ -21845,7 +21865,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a virtual hard disk. Please note some properties can be set only during virtual hard disk creation.
+        /// The operation to create or update a virtual hard disk. Please note some properties can be set only during virtual hard
+        /// disk creation.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The virtual hard disk resource definition.</param>
@@ -21904,7 +21925,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a virtual hard disk. Please note some properties can be set only during virtual hard disk creation.
+        /// The operation to create or update a virtual hard disk. Please note some properties can be set only during virtual hard
+        /// disk creation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -21954,7 +21976,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a virtual hard disk. Please note some properties can be set only during virtual hard disk creation.
+        /// The operation to create or update a virtual hard disk. Please note some properties can be set only during virtual hard
+        /// disk creation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -22002,7 +22025,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a virtual hard disk. Please note some properties can be set only during virtual hard disk creation.
+        /// The operation to create or update a virtual hard disk. Please note some properties can be set only during virtual hard
+        /// disk creation.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -24219,8 +24243,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a virtual machine instance. Please note some properties can be set only during virtual machine
-        /// instance creation.
+        /// The operation to create or update a virtual machine instance. Please note some properties can be set only during virtual
+        /// machine instance creation.
         /// </summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>
@@ -24267,8 +24291,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a virtual machine instance. Please note some properties can be set only during virtual machine
-        /// instance creation.
+        /// The operation to create or update a virtual machine instance. Please note some properties can be set only during virtual
+        /// machine instance creation.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The virtual machine instance resource definition.</param>
@@ -24324,8 +24348,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a virtual machine instance. Please note some properties can be set only during virtual machine
-        /// instance creation.
+        /// The operation to create or update a virtual machine instance. Please note some properties can be set only during virtual
+        /// machine instance creation.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The virtual machine instance resource definition.</param>
@@ -24379,8 +24403,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a virtual machine instance. Please note some properties can be set only during virtual machine
-        /// instance creation.
+        /// The operation to create or update a virtual machine instance. Please note some properties can be set only during virtual
+        /// machine instance creation.
         /// </summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>
@@ -24426,8 +24450,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a virtual machine instance. Please note some properties can be set only during virtual machine
-        /// instance creation.
+        /// The operation to create or update a virtual machine instance. Please note some properties can be set only during virtual
+        /// machine instance creation.
         /// </summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>
@@ -24471,8 +24495,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>
-        /// The operation to Create a virtual machine instance. Please note some properties can be set only during virtual machine
-        /// instance creation.
+        /// The operation to create or update a virtual machine instance. Please note some properties can be set only during virtual
+        /// machine instance creation.
         /// </summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>

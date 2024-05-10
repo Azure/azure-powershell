@@ -386,10 +386,12 @@ namespace Microsoft.Azure.Commands.Common
             {
                 if (qos?.SanitizerInfo?.DetectedProperties?.Count > 0)
                 {
+                    var showSecretsWarning = qos.SanitizerInfo.ShowSecretsWarning && qos.SanitizerInfo.SecretsDetected;
                     var sanitizedProperties = string.Join(", ", qos.SanitizerInfo.DetectedProperties);
                     var invocationName = qos.InvocationName;
                     telemetryInfo = new Dictionary<string, string>
                     {
+                        { "ShowSecretsWarning", showSecretsWarning.ToString().ToLower() },
                         { "SanitizedProperties", sanitizedProperties },
                         { "InvocationName", invocationName }
                     };

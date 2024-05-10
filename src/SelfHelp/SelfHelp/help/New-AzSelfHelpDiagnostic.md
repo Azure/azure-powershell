@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SelfHelp-help.xml
 Module Name: Az.SelfHelp
 online version: https://learn.microsoft.com/powershell/module/az.selfhelp/new-azselfhelpdiagnostic
 schema: 2.0.0
@@ -9,23 +9,19 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Creates a diagnostic for the specific resource using solutionId and requiredInputs* from discovery solutions.
-\<br/\>Diagnostics tells you precisely the root cause of the issue and the steps to address it.
-You can get diagnostics once you discover the relevant solution for your Azure issue.
-\<br/\>\<br/\> \<b\>Note: \</b\> requiredInputs’ from Discovery solutions response must be passed via ‘additionalParameters’ as an input to Diagnostics API.
+\<br/\>Diagnostics are powerful solutions that access product resources or other relevant data and provide the root cause of the issue and the steps to address the issue.\<br/\>\<br/\> \<b\>Note: \</b\> 'requiredInputs' from Discovery solutions response must be passed via 'additionalParameters' as an input to Diagnostics API.
 
 ## SYNTAX
 
 ```
-New-AzSelfHelpDiagnostic -Scope <String> -SResourceName <String> [-GlobalParameter <Hashtable>]
- [-Insight <IDiagnosticInvocation[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzSelfHelpDiagnostic -SResourceName <String> -Scope <String> [-GlobalParameter <Hashtable>]
+ [-Insight <IDiagnosticInvocation[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Creates a diagnostic for the specific resource using solutionId and requiredInputs* from discovery solutions.
-\<br/\>Diagnostics tells you precisely the root cause of the issue and the steps to address it.
-You can get diagnostics once you discover the relevant solution for your Azure issue.
-\<br/\>\<br/\> \<b\>Note: \</b\> requiredInputs’ from Discovery solutions response must be passed via ‘additionalParameters’ as an input to Diagnostics API.
+\<br/\>Diagnostics are powerful solutions that access product resources or other relevant data and provide the root cause of the issue and the steps to address the issue.\<br/\>\<br/\> \<b\>Note: \</b\> 'requiredInputs' from Discovery solutions response must be passed via 'additionalParameters' as an input to Diagnostics API.
 
 ## EXAMPLES
 
@@ -79,7 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -GlobalParameter
-Global parameters that can be passed to all solutionIds.
+Global parameters is an optional map which can be used to add key and value to request body to improve the diagnostics results
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -98,7 +94,7 @@ SolutionIds that are needed to be invoked.
 To construct, see NOTES section for INSIGHT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiagnosticInvocation[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiagnosticInvocation[]
 Parameter Sets: (All)
 Aliases:
 
@@ -125,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-This is an extension resource provider and only resource level extension is supported at the moment.
+scope = resourceUri of affected resource.\<br/\> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
 
 ```yaml
 Type: System.String
@@ -192,9 +188,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiagnosticResource
+### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiagnosticResource
 
 ## NOTES
 
 ## RELATED LINKS
-

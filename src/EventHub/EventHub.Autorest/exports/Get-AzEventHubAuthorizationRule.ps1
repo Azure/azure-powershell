@@ -27,13 +27,13 @@ Get-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceNam
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAuthorizationRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IEventHubIdentity>: Identity parameter.
+INPUTOBJECT <IEventHubIdentity>: Identity parameter. To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
   [Alias <String>]: The Disaster Recovery configuration name
   [ApplicationGroupName <String>]: The Application Group name 
   [AuthorizationRuleName <String>]: The authorization rule name.
@@ -51,7 +51,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity parameter.
 https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubauthorizationrule
 #>
 function Get-AzEventHubAuthorizationRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAuthorizationRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAuthorizationRule])]
 [CmdletBinding(DefaultParameterSetName='GetExpandedNamespace', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='GetExpandedNamespace', Mandatory)]
@@ -187,8 +187,14 @@ begin {
             GetExpandedEntity = 'Az.EventHub.custom\Get-AzEventHubAuthorizationRule';
             GetViaIdentityExpanded = 'Az.EventHub.custom\Get-AzEventHubAuthorizationRule';
         }
-        if (('GetExpandedNamespace', 'GetExpandedAlias', 'GetExpandedEntity') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('GetExpandedNamespace', 'GetExpandedAlias', 'GetExpandedEntity') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

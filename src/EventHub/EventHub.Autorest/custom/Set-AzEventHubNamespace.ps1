@@ -21,7 +21,7 @@ Updates an EventHub Namespace
 
 function Set-AzEventHubNamespace{
     [Alias("Set-AzEventHubNamespaceV2")]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespace])]    
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespace])]    
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
 
@@ -64,7 +64,7 @@ function Set-AzEventHubNamespace{
 
         [Parameter(HelpMessage = "Properties to configure Encryption")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IKeyVaultProperties[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IKeyVaultProperties[]]
         ${KeyVaultProperty},
 
         [Parameter(HelpMessage = "Enable Infrastructure Encryption (Double Encryption)")]
@@ -74,8 +74,7 @@ function Set-AzEventHubNamespace{
 
         [Parameter(HelpMessage = "Type of managed service identity.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChangeAttribute("IdentityType","12.0.0", "5.0.0","2024-05-21" )]
+        [System.String]
         ${IdentityType},
 
         [Parameter(HelpMessage = "Properties for User Assigned Identities")]
@@ -103,8 +102,7 @@ function Set-AzEventHubNamespace{
 
         [Parameter(HelpMessage = "This determines if traffic is allowed over public network. By default it is enabled.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.PublicNetworkAccess]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChangeAttribute("PublicNetworkAccess","12.0.0", "5.0.0","2024-05-21" )]
+        [System.String]
         ${PublicNetworkAccess},
 
         [Parameter(HelpMessage = "The Event Hubs throughput units for Basic or Standard tiers, where value should be 0 to 20 throughput units. The Event Hubs premium units for Premium tier, where value should be 0 to 10 premium units.")]
@@ -222,7 +220,7 @@ function Set-AzEventHubNamespace{
                 $identityHashTable = @{}
 
                 foreach ($resourceID in $UserAssignedIdentityId){
-                    $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.UserAssignedIdentity]::new())
+                    $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.UserAssignedIdentity]::new())
                 }
 
                 $eventHubNamespace.UserAssignedIdentity = $identityHashTable

@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
                         }
                         else
                         {
-                            if (!propValueType.IsValueType && !sanitizingStack.Contains(propValue))
+                            if (!propValueType.IsValueType && !sanitizingStack.Contains(propValue) && !ExceedsMaxDepth(prop, telemetry))
                             {
                                 provider.SanitizeValue(propValue, sanitizingStack, resolver, prop, telemetry);
                             }

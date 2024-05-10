@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-Creates or updates an AuthorizationRule for the specified Event Hub.
+Create an AuthorizationRule for the specified Event Hub.
 Creation/update of the AuthorizationRule will take a few seconds to take effect.
 .Description
-Creates or updates an AuthorizationRule for the specified Event Hub.
+Create an AuthorizationRule for the specified Event Hub.
 Creation/update of the AuthorizationRule will take a few seconds to take effect.
 .Example
 New-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myAuthRule -Rights @('Manage', 'Send', 'Listen')
@@ -27,15 +27,30 @@ New-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceNam
 New-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -EventHubName myEventHub -Name myAuthRule -Rights @('Manage', 'Send', 'Listen')
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAuthorizationRule
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAuthorizationRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+EVENTHUBINPUTOBJECT <IEventHubIdentity>: Identity Parameter
+  [Alias <String>]: The Disaster Recovery configuration name
+  [ApplicationGroupName <String>]: The Application Group name 
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [ClusterName <String>]: The name of the Event Hubs Cluster.
+  [ConsumerGroupName <String>]: The consumer group name
+  [EventHubName <String>]: The Event Hub name
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The Namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: Name of the resource group within the azure subscription.
+  [SchemaGroupName <String>]: The Schema Group name 
+  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
@@ -52,28 +67,43 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
+NAMESPACEINPUTOBJECT <IEventHubIdentity>: Identity Parameter
+  [Alias <String>]: The Disaster Recovery configuration name
+  [ApplicationGroupName <String>]: The Application Group name 
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [ClusterName <String>]: The name of the Event Hubs Cluster.
+  [ConsumerGroupName <String>]: The consumer group name
+  [EventHubName <String>]: The Event Hub name
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The Namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: Name of the resource group within the azure subscription.
+  [SchemaGroupName <String>]: The Schema Group name 
+  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
 PARAMETER <IAuthorizationRule>: Single item in a List or Get AuthorizationRule operation
-  [Rights <AccessRights[]>]: The rights associated with the rule.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The type of identity that last modified the resource.
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [Rights <List<String>>]: The rights associated with the rule.
 .Link
 https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubauthorizationrule
 #>
 function New-AzEventHubAuthorizationRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAuthorizationRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAuthorizationRule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespace', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The Event Hub name
     ${EventHubName},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityEventhub', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityEventhubExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespace', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The authorization rule name.
@@ -103,22 +133,38 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='CreateViaIdentityEventhub', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityEventhubExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity]
+    # Identity Parameter
+    ${EventhubInputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityNamespace', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity]
+    # Identity Parameter
+    ${NamespaceInputObject},
+
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityEventhubExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded')]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.AccessRights])]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("Manage", "Send", "Listen")]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.AccessRights[]]
+    [System.String[]]
     # The rights associated with the rule.
     ${Rights},
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityEventhub', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespace', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAuthorizationRule]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAuthorizationRule]
     # Single item in a List or Get AuthorizationRule operation
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter()]
@@ -181,9 +227,19 @@ begin {
         $mapping = @{
             CreateExpanded = 'Az.EventHub.private\New-AzEventHubAuthorizationRule_CreateExpanded';
             CreateViaIdentity = 'Az.EventHub.private\New-AzEventHubAuthorizationRule_CreateViaIdentity';
+            CreateViaIdentityEventhub = 'Az.EventHub.private\New-AzEventHubAuthorizationRule_CreateViaIdentityEventhub';
+            CreateViaIdentityEventhubExpanded = 'Az.EventHub.private\New-AzEventHubAuthorizationRule_CreateViaIdentityEventhubExpanded';
+            CreateViaIdentityNamespace = 'Az.EventHub.private\New-AzEventHubAuthorizationRule_CreateViaIdentityNamespace';
+            CreateViaIdentityNamespaceExpanded = 'Az.EventHub.private\New-AzEventHubAuthorizationRule_CreateViaIdentityNamespaceExpanded';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

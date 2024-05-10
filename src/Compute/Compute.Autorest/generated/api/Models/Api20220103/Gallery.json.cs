@@ -79,7 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
             {
                 return;
             }
-            __resource = new Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.Resource(json);
+            __resource = new Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.Resource(json);
             {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryProperties.FromJson(__jsonProperties) : Property;}
             AfterFromJson(json);
         }

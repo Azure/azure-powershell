@@ -1,0 +1,95 @@
+{
+  "resourceType": "namespaces/topics",
+  "apiVersion": "2023-06-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.eventgrid"
+  },
+  "commands": [
+    {
+      "name": "Get-AzEventGridNamespaceTopic",
+      "description": "Get properties of a namespace topic.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridnamespacetopic"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-NamespaceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-TopicName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get properties of a namespace topic.",
+          "parameters": [
+            {
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-TopicName",
+              "value": "[Path.topicName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzEventGridNamespaceTopic",
+      "description": "Delete existing namespace topic.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/remove-azeventgridnamespacetopic"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-NamespaceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]",
+              "-TopicName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete existing namespace topic.",
+          "parameters": [
+            {
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-TopicName",
+              "value": "[Path.topicName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

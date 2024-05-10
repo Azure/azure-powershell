@@ -15,20 +15,20 @@ Updates a ServiceBus namespace
 ### SetExpanded (Default)
 ```
 Set-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AlternateName <String>] [-DisableLocalAuth] [-IdentityType <ManagedServiceIdentityType>]
- [-KeyVaultProperty <IKeyVaultProperties[]>] [-MinimumTlsVersion <String>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>]
- [-SkuName <SkuName>] [-Tag <Hashtable>] [-UserAssignedIdentityId <String[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AlternateName <String>] [-DisableLocalAuth] [-IdentityType <String>]
+ [-KeyVaultProperty <IKeyVaultProperties[]>] [-MinimumTlsVersion <String>] [-PublicNetworkAccess <String>]
+ [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>] [-SkuName <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentityId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
 ```
 Set-AzServiceBusNamespace [-InputObject <IServiceBusIdentity>] [-AlternateName <String>] [-DisableLocalAuth]
- [-IdentityType <ManagedServiceIdentityType>] [-KeyVaultProperty <IKeyVaultProperties[]>]
- [-MinimumTlsVersion <String>] [-PublicNetworkAccess <PublicNetworkAccess>] [-RequireInfrastructureEncryption]
- [-SkuCapacity <Int32>] [-SkuName <SkuName>] [-Tag <Hashtable>] [-UserAssignedIdentityId <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IdentityType <String>] [-KeyVaultProperty <IKeyVaultProperties[]>] [-MinimumTlsVersion <String>]
+ [-PublicNetworkAccess <String>] [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>] [-SkuName <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentityId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -350,7 +350,7 @@ Accept wildcard characters: False
 Type of managed service identity.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.ManagedServiceIdentityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -379,10 +379,9 @@ Accept wildcard characters: False
 
 ### -KeyVaultProperty
 Properties of KeyVault
-To construct, see NOTES section for KEYVAULTPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IKeyVaultProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IKeyVaultProperties[]
 Parameter Sets: (All)
 Aliases:
 
@@ -444,7 +443,7 @@ This determines if traffic is allowed over public network.
 By default it is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.PublicNetworkAccess
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -505,7 +504,7 @@ Accept wildcard characters: False
 Name of this SKU.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.SkuName
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -599,7 +598,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace
 
 ## NOTES
 

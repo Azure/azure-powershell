@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Support
         /// <param name="value">the value to convert to an instance of <see cref="ResultKind" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ResultKind(System.Convert.ToString(value));
+            return new ResultKind(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ResultKind</summary>
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Support
             return this._value.GetHashCode();
         }
 
-        /// <summary>Creates an instance of the <see cref="ResultKind" Enum class./></summary>
+        /// <summary>Creates an instance of the <see cref="ResultKind"/> Enum class.</summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private ResultKind(string underlyingValue)
         {
@@ -76,8 +76,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Support
         }
 
         /// <summary>Overriding != operator for enum ResultKind</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Support.ResultKind e1, Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Support.ResultKind e2)
         {
@@ -85,8 +85,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Support
         }
 
         /// <summary>Overriding == operator for enum ResultKind</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Support.ResultKind e1, Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Support.ResultKind e2)
         {

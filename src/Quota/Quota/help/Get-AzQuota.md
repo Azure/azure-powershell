@@ -15,17 +15,20 @@ The response can be used to determine the remaining quota to calculate a new quo
 
 ### List (Default)
 ```
-Get-AzQuota -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzQuota -Scope <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzQuota -ResourceName <String> -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzQuota -ResourceName <String> -Scope <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzQuota -InputObject <IQuotaIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzQuota -InputObject <IQuotaIdentity> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,27 +43,26 @@ Get-AzQuota -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers
 ```
 
 ```output
-Name                                                ResourceGroupName Unit  ETag
-----                                                ----------------- ----  ----
-VirtualNetworks                                                       Count
-StaticPublicIPAddresses                                               Count
-NetworkSecurityGroups                                                 Count
-PublicIPAddresses                                                     Count
-CustomIpPrefixes                                                      Count
-PublicIpPrefixes                                                      Count
+Name              NameLocalizedValue  Unit  ETag
+----              ------------------  ----  ----
+VirtualNetworks   Virtual Networks    Count
+CustomIpPrefixes  Custom Ip Prefixes  Count
+PublicIpPrefixes  Public Ip Prefixes  Count
+PublicIPAddresses Public IP Addresses Count
+......
 ```
 
 This command lists the quota limits of a scope.
 
 ### Example 2: Get the quota limit of a resource
 ```powershell
-Get-AzQuota -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus" -ResourceName "MinPublicIpInterNetworkPrefixLength"
+Get-AzQuota -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus" -ResourceName VirtualNetworks
 ```
 
 ```output
-Name                                NameLocalizedValue        Unit  ETag
-----                                ------------------        ----  ----
-MinPublicIpInterNetworkPrefixLength Public IPv4 Prefix Length Count
+Name            NameLocalizedValue Unit  ETag
+----            ------------------ ----  ----
+VirtualNetworks Virtual Networks   Count
 ```
 
 This command gets the quota limit of a resource.
@@ -69,7 +71,8 @@ The response can be used to determine the remaining quota to calculate a new quo
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -85,7 +88,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentity
@@ -96,6 +98,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -145,21 +162,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentQuotaLimitBase
+### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentQuotaLimitBase
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IQuotaIdentity>`: Identity Parameter
-  - `[Id <String>]`: Quota request ID.
-  - `[Id1 <String>]`: Resource identity path
-  - `[ResourceName <String>]`: Resource name for a given resource provider. For example:         - SKU name for Microsoft.Compute         - SKU or TotalLowPriorityCores for Microsoft.MachineLearningServices          For Microsoft.Network PublicIPAddresses.
-  - `[Scope <String>]`: The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`. This is the target Azure resource URI for the List GET operation. If a `{resourceName}` is added after `/quotas`, then it's the target Azure resource URI in the GET operation for the specific resource.
 
 ## RELATED LINKS

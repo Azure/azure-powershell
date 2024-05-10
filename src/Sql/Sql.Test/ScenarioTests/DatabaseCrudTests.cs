@@ -132,6 +132,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseUpdateFromSterlingToHyperscaleWithManualCutover()
+        {
+            TestRunner.RunTestScript("Test-UpdateDatabaseFromSterlingToHyperscaleWithManualCutover");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseRename()
         {
             TestRunner.RunTestScript("Test-RenameDatabase");

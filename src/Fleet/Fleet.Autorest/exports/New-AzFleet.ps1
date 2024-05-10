@@ -21,6 +21,11 @@ Create a Fleet.
 Create a Fleet.
 .Example
 New-AzFleet -Name sss -ResourceGroupName ps1-test -Location eastus
+.Example
+New-AzFleet -Name testfleet02 -ResourceGroupName joyer-test -Location eastus -Tag @{"456"="asd"} -EnableSystemAssignedIdentity
+.Example
+$mi = Get-AzUserAssignedIdentity -Name testUserAssignedMI -ResourceGroupName joyer-test
+New-AzFleet -Name testfleet03 -ResourceGroupName joyer-test -Location eastus -Tag @{"789"="asd"} -UserAssignedIdentity $mi.Id
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity
@@ -100,11 +105,10 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned")]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Body')]
-    [System.String]
-    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-    ${IdentityType},
+    [System.Management.Automation.SwitchParameter]
+    # Decides if enable a system assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
@@ -116,12 +120,11 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The set of user assigned identities associated with the resource.
-    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    # The dictionary values can be empty objects ({}) in requests.
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
     ${UserAssignedIdentity},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]

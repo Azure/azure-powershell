@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "basic".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("basic", "basic", global::System.Management.Automation.CompletionResultType.ParameterValue, "basic");
+                yield return new global::System.Management.Automation.CompletionResult("'basic'", "basic", global::System.Management.Automation.CompletionResultType.ParameterValue, "basic");
             }
         }
     }
