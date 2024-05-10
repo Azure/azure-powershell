@@ -132,7 +132,7 @@ AdministratorLogin       : adminLogin1
 AdministratorPassword    :
 SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
 LicenseType              : LicenseIncluded
-VCores                   : 16
+VCores                   : 8
 StorageSizeInGB          : 1024
 StorageIOps              : 4000
 InstancePoolName         :

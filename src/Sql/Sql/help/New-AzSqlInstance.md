@@ -403,7 +403,7 @@ ResourceGroupName        : resourcegroup01
 ManagedInstanceName      : managedInstance1
 Tags                     :
 Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
-Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.
+Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
 IsGeneralPurposeV2       : false
 FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
 AdministratorLogin       : adminLogin1

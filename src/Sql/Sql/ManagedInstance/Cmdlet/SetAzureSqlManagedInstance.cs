@@ -387,11 +387,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             updateData[0].DatabaseFormat = this.DatabaseFormat?? updateData[0].DatabaseFormat;
             updateData[0].PricingModel = this.PricingModel ?? updateData[0].PricingModel;
             // If this parameter was not set by the user, we do not want to pick up its current value.
-            // This is due to the fact that this update might be have a target edition that does not use this parameter.
+            // This is due to the fact that this update might have a target edition that does not use this parameter.
             updateData[0].IsGeneralPurposeV2 = this.IsGeneralPurposeV2;
             // If this parameter was not set by the user, we do not want to pick up its current value.
-            // This is due to the fact that this update might be have a target edition that does not use this parameter.
-            // If the target edition uses the parameter, the current value will get picked up later in the process.
+            // This is due to the fact that this update might have a target edition that does not use this parameter.
+            // If the target edition uses the parameter, the current value will get picked up later in the update process.
             updateData[0].StorageIOps = this.StorageIOps;
 
             return updateData;
