@@ -42,7 +42,7 @@ Get the storage task properties
 
 ### Example 1: Get specific storage action task with specified resource group
 ```powershell
-Get-AzStorageActionTask -Name mytask1 -ResourceGroupName ps1-test
+Get-AzStorageActionTask -Name mytask1 -ResourceGroupName group001
 ```
 
 ```output
@@ -50,7 +50,7 @@ CreationTimeInUtc            : 1/23/2024 6:47:43 AM
 Description                  : my storage task
 ElseOperation                : 
 Enabled                      : True
-Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ps1-test/providers/Microsoft.StorageActions/storageTasks/mytask1
+Id                           : /subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/group001/providers/Microsoft.StorageActions/storageTasks/mytask1
 IdentityPrincipalId          : 
 IdentityTenantId             : 
 IdentityType                 : None
@@ -68,7 +68,7 @@ IfOperation                  : {{
 Location                     : eastus2euap
 Name                         : mytask1
 ProvisioningState            : Succeeded
-ResourceGroupName            : ps1-test
+ResourceGroupName            : group001
 SystemDataCreatedAt          : 
 SystemDataCreatedBy          : 
 SystemDataCreatedByType      : 

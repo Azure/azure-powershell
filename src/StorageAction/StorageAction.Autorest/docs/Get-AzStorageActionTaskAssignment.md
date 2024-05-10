@@ -24,13 +24,13 @@ Lists Resource IDs of the Storage Task Assignments associated with this Storage 
 
 ### Example 1: Lists all the storage tasks
 ```powershell
-Get-AzStorageActionTaskAssignment -ResourceGroupName joyer-test -StorageTaskName mytask1 | Format-List
+Get-AzStorageActionTaskAssignment -ResourceGroupName group001 -StorageTaskName mytask1 | Format-List
 ```
 
 ```output
-Id : subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/joyer-test/providers/microsoft.storage/storageaccounts/storagetasktest202402281/storagetaskassignments/testassign1
+Id : subscriptions/11111111-2222-3333-4444-123456789101/resourcegroups/group001/providers/microsoft.storage/storageaccounts/account001/storagetaskassignments/testassign1
 
-Id : subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/joyer-test/providers/microsoft.storage/storageaccounts/storagetasktest202402281/storagetaskassignments/testassign2
+Id : subscriptions/11111111-2222-3333-4444-123456789101/resourcegroups/group001/providers/microsoft.storage/storageaccounts/account001/storagetaskassignments/testassign2
 ```
 
 This command lists all the storage task assignments.
