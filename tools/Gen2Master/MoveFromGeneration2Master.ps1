@@ -111,8 +111,6 @@ Function Move-Generation2Master {
                 Copy-Item -Path $SourceItem -Destination (Join-Path -Path $DestPath -ChildPath $submoduleDir.Name)
             }
 
-            #copy generated docs to help folder
-
             # Update psd1
             $SubModulePsd1MetaData = Import-LocalizedData -BaseDirectory (Join-Path -Path $SourcePath -ChildPath $submoduleDir.Name) -FileName "Az.$submoduleName.psd1"
             
@@ -139,6 +137,15 @@ Function Move-Generation2Master {
             
             # Generate csproj file and add the dependency in the solution file
             Copy-Template -SourceName Az.ModuleName.csproj -DestPath (Join-Path $DestPath $submoduleDir.Name) -DestName "Az.$submoduleName.csproj" -RootModuleName $ModuleName -ModuleName $submoduleName -ModuleFolder $submoduleDir.Name
+
+            # Copy the assemblyinfo file
+            $assemblyInfoPath = Join-Path $DestPath $ModuleName 'Properties' 'AssemblyInfo.cs'
+            Copy-Template -SourceName AssemblyInfo.cs -DestPath "$DestPath\$ModuleName\Properties" -DestName AssemblyInfo.cs -ModuleName $submoduleName
+            $assemblyInfo = Get-Content -Path $assemblyInfoPath
+            If ($assemblyInfo -Match "0.1.0") {
+                $assemblyInfo = $assemblyInfo -replace '0.1.0', $moduleVersion
+            }
+            $assemblyInfo | Set-Content $assemblyInfoPath -force
         }
 
         $slnFilePath = "$DestPath\$ModuleName.sln"
@@ -166,15 +173,6 @@ Function Move-Generation2Master {
         $Psd1Metadata.NestedModules = Unique-PathList $Psd1Metadata.NestedModules
         
         New-ModuleManifest -Path $DestPsd1Path @Psd1Metadata
-
-        # Copy the assemblyinfo file
-        $assemblyInfoPath = Join-Path $DestPath $ModuleName 'Properties' 'AssemblyInfo.cs'
-        Copy-Template -SourceName AssemblyInfo.cs -DestPath "$DestPath\$ModuleName\Properties" -DestName AssemblyInfo.cs -ModuleName $submoduleName
-        $assemblyInfo = Get-Content -Path $assemblyInfoPath
-        If ($assemblyInfo -Match "0.1.0") {
-            $assemblyInfo = $assemblyInfo -replace '0.1.0', $moduleVersion
-        }
-        $assemblyInfo | Set-Content $assemblyInfoPath -force
 
         # update module page
         dotnet build $slnFilePath
