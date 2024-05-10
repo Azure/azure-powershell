@@ -74,6 +74,7 @@ Function Move-Generation2Master {
             Copy-Template -SourceName Module.psd1 -DestPath $DestPath\$ModuleName -DestName "Az.$ModuleName.psd1" -ModuleName $ModuleName
             $Psd1Metadata = Import-LocalizedData -BaseDirectory "$PSScriptRoot/Templates" -FileName "Module.psd1"
         }
+        $moduleVersion = $Psd1Metadata.ModuleVersion
         foreach ($submoduleDir in $submoduleDirs) {
             $psd1File = Get-ChildItem -Filter *.psd1 -File -Path $submoduleDir.FullName
             write-host ("psd1 file name {0}" -f $psd1File.Name)
@@ -165,6 +166,16 @@ Function Move-Generation2Master {
         $Psd1Metadata.NestedModules = Unique-PathList $Psd1Metadata.NestedModules
         
         New-ModuleManifest -Path $DestPsd1Path @Psd1Metadata
+
+        # Copy the assemblyinfo file
+        $assemblyInfoPath = Join-Path $DestPath $ModuleName 'Properties' 'AssemblyInfo.cs'
+        Copy-Template -SourceName AssemblyInfo.cs -DestPath "$DestPath\$ModuleName\Properties" -DestName AssemblyInfo.cs -ModuleName $submoduleName
+        $assemblyInfo = Get-Content -Path $assemblyInfoPath
+        If ($assemblyInfo -Match "0.1.0") {
+            $assemblyInfo = $assemblyInfo -replace '0.1.0', $moduleVersion
+        }
+        $assemblyInfo | Set-Content $assemblyInfoPath -force
+
         # update module page
         dotnet build $slnFilePath
         # start a job to update markdown help module, since we can not uninstall a module in the same process.
