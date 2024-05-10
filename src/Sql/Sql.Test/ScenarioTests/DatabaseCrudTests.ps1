@@ -18,14 +18,14 @@
 #>
 function Test-CreateDatabase
 {
-	Test-CreateDatabaseInternal "westeurope"
+	Test-CreateDatabaseInternal "eastus"
 }
 
 <#
 	.SYNOPSIS
 	Tests creating a database
 #>
-function Test-CreateDatabaseInternal ($location = "westeurope")
+function Test-CreateDatabaseInternal ($location = "eastus")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
@@ -112,7 +112,7 @@ function Test-CreateDatabaseInternal ($location = "westeurope")
 function Test-CreateVcoreDatabase
 {
 	# Setup
-	$location = "westeurope"
+	$location = "eastus2euap"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -157,7 +157,7 @@ function Test-CreateVcoreDatabase
 function Test-CreateVcoreDatabaseWithLicenseType
 {
 	# Setup
-	$location = "westeurope"
+	$location = "eastus"
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
 
@@ -196,7 +196,7 @@ function Test-CreateVcoreDatabaseWithLicenseType
 function Test-CreateServerlessDatabase
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "west europe"
+	$location = Get-Location "Microsoft.Sql" "operations" "East US"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -229,7 +229,7 @@ function Test-CreateServerlessDatabase
 function Test-CreateDatabaseWithSampleName
 {
 	# Setup
-	$location = "westeurope"
+	$location = "eastus"
 	$rg = Create-ResourceGroupForTest
 	try
 	{
@@ -263,7 +263,7 @@ function Test-CreateDatabaseWithSampleName
 function Test-CreateDatabaseWithZoneRedundancy
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+	$location = Get-Location "Microsoft.Sql" "operations" "East US"
 	$rg = Create-ResourceGroupForTest $location
 	try
 	{
@@ -313,7 +313,7 @@ function Test-CreateDatabaseWithMaintenanceConfigurationId
 {
 	# Setup
 	# Further actions required if you use Microsoft internal subscription. Please contact feature owners
-	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+	$location = Get-Location "Microsoft.Sql" "operations" "East US"
 	$rg = Create-ResourceGroupForTest $location
 
 	try
@@ -358,7 +358,7 @@ function Test-CreateDatabaseWithMaintenanceConfigurationId
 function Test-CreateDatabaseWithBackupStorageRedundancy
 {
 	# Setup
-	$location = "westeurope"
+	$location = "eastus"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -466,7 +466,7 @@ function Test-FreeLimitDatabaseCreate
 function Test-FreeLimitDatabaseUpdateFreeLimitExhaustionBehavior
 {
 	#Setup 
-	$location = "eastus2euap"
+	$location = "eastus"
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
 
@@ -497,14 +497,14 @@ function Test-FreeLimitDatabaseUpdateFreeLimitExhaustionBehavior
 #>
 function Test-UpdateDatabase
 {
-	Test-UpdateDatabaseInternal "westeurope"
+	Test-UpdateDatabaseInternal "eastus"
 }
 
 <#
 	.SYNOPSIS
 	Tests updating a database
 #>
-function Test-UpdateDatabaseInternal ($location = "westeurope")
+function Test-UpdateDatabaseInternal ($location = "eastus")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
@@ -576,7 +576,7 @@ function Test-UpdateDatabaseInternal ($location = "westeurope")
 function Test-UpdateVcoreDatabase()
 {
 	# Setup
-	$location = "westeurope"
+	$location = "eastus"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -656,7 +656,7 @@ function Test-UpdateVcoreDatabase()
 function Test-UpdateVcoreDatabaseLicenseType()
 {
 	# Setup
-	$location = "westeurope"
+	$location = "eastus"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -697,7 +697,7 @@ function Test-UpdateVcoreDatabaseLicenseType()
 function Test-UpdateDatabaseWithZoneRedundant ()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+	$location = Get-Location "Microsoft.Sql" "operations" "East US"
 	Write-Debug $location
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
@@ -746,7 +746,7 @@ function Test-UpdateDatabaseWithMaintenanceConfigurationId
 {
 	# Setup
 	# Further actions required if you use Microsoft internal subscription. Please contact feature owners
-	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+	$location = Get-Location "Microsoft.Sql" "operations" "East US"
 	$rg = Create-ResourceGroupForTest $location	
 
 	try
@@ -822,7 +822,7 @@ function Test-UpdateDatabaseWithPreferredEnclaveType()
 function Test-UpdateServerlessDatabase()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+	$location = Get-Location "Microsoft.Sql" "operations" "East US"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -883,6 +883,69 @@ function Test-UpdateServerlessDatabase()
 		Remove-ResourceGroupForTest $rg
 	}
 }
+
+<#
+	.SYNOPSIS
+	Tests updating a database from Sterling to Hyperscale with Manual Cutover {Azure SQL Forward Migration V2} 
+#>
+function Test-UpdateDatabaseFromSterlingToHyperscaleWithManualCutover ()
+{
+	# Setup
+	$location = "eastus2euap"
+	$targetEdition = "Hyperscale"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+	$databaseName = Get-DatabaseName
+	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+		-VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen5 -MaxSizeBytes 250GB -ComputeModel Serverless
+	Assert-AreEqual $db.DatabaseName $databaseName
+
+	try
+	{
+		# Update Sterling database to Hyperscale with manual cutover
+		$job = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-Edition $targetEdition -RequestedServiceObjectiveName "HS_Gen5_8" -ManualCutover -AsJob
+
+		$startTime = Get-Date
+		$timeout = New-TimeSpan -Minutes 20
+
+		do 
+		{  
+			# list database operation to check if the db is ready for cutover
+			$dbactivity = Get-AzSqlDatabaseActivity -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName
+			Write-Output $dbactivity
+	    
+			if($dbactivity.Length -gt 0)
+			{
+					Assert-AreEqual $dbactivity[0].DatabaseName $databaseName
+					Assert-AreEqual $dbactivity[0].Operation "UpdateLogicalDatabase"
+					if($dbactivity[0].OperationPhaseDetails.Phase -eq "WaitingForCutover")
+					{						
+						break
+					}
+			}
+
+			if ((Get-Date) - $startTime -ge $timeout) {  
+					break
+			}
+		}while ($true) 
+		
+		# Trigger Perform Cutover on the db once the db is waitingforcutover and verify the target db name/slo
+		$db1 = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+				-PerformCutover
+		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
+		Assert-AreEqual $db1.CurrentServiceObjectiveName HS_Gen5_8
+
+		$job | Wait-Job
+		$db2 = $job.Output
+		Assert-AreEqual $db2.DatabaseName $db.DatabaseName
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
 <#
 	.SYNOPSIS
 	Tests updating a database with zone redundancy not specified
@@ -890,7 +953,7 @@ function Test-UpdateServerlessDatabase()
 function Test-UpdateDatabaseWithZoneRedundantNotSpecified ()
 {
 	# Setup
-	$location = "westeurope"
+	$location = "eastus"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$databaseName = Get-DatabaseName
@@ -928,7 +991,7 @@ function Test-RenameDatabase
 
 	try
 	{
-		$location = "westeurope"
+		$location = "eastus"
 		$server = Create-ServerForTest $rg $location
 
 		# Create with default values
@@ -966,14 +1029,14 @@ function Test-RenameDatabase
 #>
 function Test-GetDatabase
 {
-	Test-GetDatabaseInternal "westeurope"
+	Test-GetDatabaseInternal "eastus"
 }
 
 <#
 	.SYNOPSIS
 	Tests Getting a database
 #>
-function Test-GetDatabaseInternal  ($location = "westeurope")
+function Test-GetDatabaseInternal  ($location = "eastus")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
@@ -1032,7 +1095,7 @@ function Test-GetDatabaseInternal  ($location = "westeurope")
 	.SYNOPSIS
 	Tests Getting a database
 #>
-function Test-GetDatabaseWithBackupStorageRedundancy ($location = "westeurope")
+function Test-GetDatabaseWithBackupStorageRedundancy ($location = "eastus")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
@@ -1055,7 +1118,7 @@ function Test-GetDatabaseWithBackupStorageRedundancy ($location = "westeurope")
 function Test-GetDatabaseWithZoneRedundancy
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+	$location = Get-Location "Microsoft.Sql" "operations" "East US"
 	$rg = Create-ResourceGroupForTest $location
 	try
 	{
@@ -1093,7 +1156,7 @@ function Test-GetDatabaseWithMaintenanceConfigurationId
 {
 	# Setup
 	# Further actions required if you use Microsoft internal subscription. Please contact feature owners
-	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+	$location = Get-Location "Microsoft.Sql" "operations" "East US"
 	$rg = Create-ResourceGroupForTest $location
 	try
 	{
@@ -1162,7 +1225,7 @@ function Test-GetDatabaseWithPreferredEnclaveType ($location = "eastus2euap")
 	.SYNOPSIS
 	Tests creating a database with ledger enabled
 #>
-function Test-DatabaseCreateWithLedgerEnabled ($location = "westeurope")
+function Test-DatabaseCreateWithLedgerEnabled ($location = "eastus")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
@@ -1187,14 +1250,14 @@ function Test-DatabaseCreateWithLedgerEnabled ($location = "westeurope")
 #>
 function Test-RemoveDatabase
 {
-	Test-RemoveDatabaseInternal "westeurope"
+	Test-RemoveDatabaseInternal "eastus"
 }
 
 <#
 	.SYNOPSIS
 	Tests Deleting a database
 #>
-function Test-RemoveDatabaseInternal  ($location = "westeurope")
+function Test-RemoveDatabaseInternal  ($location = "eastus")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
@@ -1254,7 +1317,7 @@ function Test-CancelDatabaseOperation
 function Test-CancelDatabaseOperationInternal
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "servers"  "west europe"
+	$location = Get-Location "Microsoft.Sql" "servers"  "East US"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
