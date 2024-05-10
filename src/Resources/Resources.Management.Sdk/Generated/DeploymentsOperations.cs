@@ -39,7 +39,15 @@ namespace Microsoft.Azure.Management.Resources
         public ResourceManagementClient Client { get; private set; }
 
         /// <summary>
-        /// A template deployment that is currently running cannot be deleted. Deleting a template deployment removes the associated deployment operations. This is an asynchronous operation that returns a status of 202 until the template deployment is successfully deleted. The Location response header contains the URI that is used to obtain the status of the process. While the process is running, a call to the URI in the Location header returns a status of 202. When the process finishes, the URI in the Location header returns a status of 204 on success. If the asynchronous request failed, the URI in the Location header returns an error-level status code.
+        /// A template deployment that is currently running cannot be deleted. Deleting
+        /// a template deployment removes the associated deployment operations. This is
+        /// an asynchronous operation that returns a status of 202 until the template
+        /// deployment is successfully deleted. The Location response header contains
+        /// the URI that is used to obtain the status of the process. While the process
+        /// is running, a call to the URI in the Location header returns a status of
+        /// 202. When the process finishes, the URI in the Location header returns a
+        /// status of 204 on success. If the asynchronous request failed, the URI in
+        /// the Location header returns an error-level status code.
         /// </summary>
         /// <param name='scope'>
         /// The resource scope.
@@ -261,7 +269,8 @@ namespace Microsoft.Azure.Management.Resources
 
         }
         /// <summary>
-        /// You can provide the template and parameters directly in the request or link to JSON files.
+        /// You can provide the template and parameters directly in the request or link
+        /// to JSON files.
         /// </summary>
         /// <param name='scope'>
         /// The resource scope.
@@ -710,7 +719,8 @@ namespace Microsoft.Azure.Management.Resources
 
         }
         /// <summary>
-        /// Validates whether the specified template is syntactically correct and will be accepted by Azure Resource Manager..
+        /// Validates whether the specified template is syntactically correct and will
+        /// be accepted by Azure Resource Manager..
         /// </summary>
         /// <param name='scope'>
         /// The resource scope.
@@ -1166,7 +1176,15 @@ namespace Microsoft.Azure.Management.Resources
 
         }
         /// <summary>
-        /// A template deployment that is currently running cannot be deleted. Deleting a template deployment removes the associated deployment operations. This is an asynchronous operation that returns a status of 202 until the template deployment is successfully deleted. The Location response header contains the URI that is used to obtain the status of the process. While the process is running, a call to the URI in the Location header returns a status of 202. When the process finishes, the URI in the Location header returns a status of 204 on success. If the asynchronous request failed, the URI in the Location header returns an error-level status code.
+        /// A template deployment that is currently running cannot be deleted. Deleting
+        /// a template deployment removes the associated deployment operations. This is
+        /// an asynchronous operation that returns a status of 202 until the template
+        /// deployment is successfully deleted. The Location response header contains
+        /// the URI that is used to obtain the status of the process. While the process
+        /// is running, a call to the URI in the Location header returns a status of
+        /// 202. When the process finishes, the URI in the Location header returns a
+        /// status of 204 on success. If the asynchronous request failed, the URI in
+        /// the Location header returns an error-level status code.
         /// </summary>
         /// <param name='deploymentName'>
         /// The name of the deployment.
@@ -1375,7 +1393,8 @@ namespace Microsoft.Azure.Management.Resources
 
         }
         /// <summary>
-        /// You can provide the template and parameters directly in the request or link to JSON files.
+        /// You can provide the template and parameters directly in the request or link
+        /// to JSON files.
         /// </summary>
         /// <param name='deploymentName'>
         /// The name of the deployment.
@@ -1801,7 +1820,8 @@ namespace Microsoft.Azure.Management.Resources
 
         }
         /// <summary>
-        /// Validates whether the specified template is syntactically correct and will be accepted by Azure Resource Manager..
+        /// Validates whether the specified template is syntactically correct and will
+        /// be accepted by Azure Resource Manager..
         /// </summary>
         /// <param name='deploymentName'>
         /// The name of the deployment.
@@ -1823,7 +1843,8 @@ namespace Microsoft.Azure.Management.Resources
         }
 
         /// <summary>
-        /// Returns changes that will be made by the deployment if executed at the scope of the tenant group.
+        /// Returns changes that will be made by the deployment if executed at the
+        /// scope of the tenant group.
         /// </summary>
         /// <param name='deploymentName'>
         /// The name of the deployment.
@@ -2256,7 +2277,15 @@ namespace Microsoft.Azure.Management.Resources
 
         }
         /// <summary>
-        /// A template deployment that is currently running cannot be deleted. Deleting a template deployment removes the associated deployment operations. This is an asynchronous operation that returns a status of 202 until the template deployment is successfully deleted. The Location response header contains the URI that is used to obtain the status of the process. While the process is running, a call to the URI in the Location header returns a status of 202. When the process finishes, the URI in the Location header returns a status of 204 on success. If the asynchronous request failed, the URI in the Location header returns an error-level status code.
+        /// A template deployment that is currently running cannot be deleted. Deleting
+        /// a template deployment removes the associated deployment operations. This is
+        /// an asynchronous operation that returns a status of 202 until the template
+        /// deployment is successfully deleted. The Location response header contains
+        /// the URI that is used to obtain the status of the process. While the process
+        /// is running, a call to the URI in the Location header returns a status of
+        /// 202. When the process finishes, the URI in the Location header returns a
+        /// status of 204 on success. If the asynchronous request failed, the URI in
+        /// the Location header returns an error-level status code.
         /// </summary>
         /// <param name='groupId'>
         /// The management group ID.
@@ -2488,7 +2517,8 @@ namespace Microsoft.Azure.Management.Resources
 
         }
         /// <summary>
-        /// You can provide the template and parameters directly in the request or link to JSON files.
+        /// You can provide the template and parameters directly in the request or link
+        /// to JSON files.
         /// </summary>
         /// <param name='groupId'>
         /// The management group ID.
@@ -2957,7 +2987,8 @@ namespace Microsoft.Azure.Management.Resources
 
         }
         /// <summary>
-        /// Validates whether the specified template is syntactically correct and will be accepted by Azure Resource Manager..
+        /// Validates whether the specified template is syntactically correct and will
+        /// be accepted by Azure Resource Manager..
         /// </summary>
         /// <param name='groupId'>
         /// The management group ID.
@@ -2982,7 +3013,8 @@ namespace Microsoft.Azure.Management.Resources
         }
 
         /// <summary>
-        /// Returns changes that will be made by the deployment if executed at the scope of the management group.
+        /// Returns changes that will be made by the deployment if executed at the
+        /// scope of the management group.
         /// </summary>
         /// <param name='groupId'>
         /// The management group ID.
@@ -3458,7 +3490,15 @@ namespace Microsoft.Azure.Management.Resources
 
         }
         /// <summary>
-        /// A template deployment that is currently running cannot be deleted. Deleting a template deployment removes the associated deployment operations. This is an asynchronous operation that returns a status of 202 until the template deployment is successfully deleted. The Location response header contains the URI that is used to obtain the status of the process. While the process is running, a call to the URI in the Location header returns a status of 202. When the process finishes, the URI in the Location header returns a status of 204 on success. If the asynchronous request failed, the URI in the Location header returns an error-level status code.
+        /// A template deployment that is currently running cannot be deleted. Deleting
+        /// a template deployment removes the associated deployment operations. This is
+        /// an asynchronous operation that returns a status of 202 until the template
+        /// deployment is successfully deleted. The Location response header contains
+        /// the URI that is used to obtain the status of the process. While the process
+        /// is running, a call to the URI in the Location header returns a status of
+        /// 202. When the process finishes, the URI in the Location header returns a
+        /// status of 204 on success. If the asynchronous request failed, the URI in
+        /// the Location header returns an error-level status code.
         /// </summary>
         /// <param name='deploymentName'>
         /// The name of the deployment.
@@ -3673,7 +3713,8 @@ namespace Microsoft.Azure.Management.Resources
 
         }
         /// <summary>
-        /// You can provide the template and parameters directly in the request or link to JSON files.
+        /// You can provide the template and parameters directly in the request or link
+        /// to JSON files.
         /// </summary>
         /// <param name='deploymentName'>
         /// The name of the deployment.
@@ -4111,7 +4152,8 @@ namespace Microsoft.Azure.Management.Resources
 
         }
         /// <summary>
-        /// Validates whether the specified template is syntactically correct and will be accepted by Azure Resource Manager..
+        /// Validates whether the specified template is syntactically correct and will
+        /// be accepted by Azure Resource Manager..
         /// </summary>
         /// <param name='deploymentName'>
         /// The name of the deployment.
@@ -4133,7 +4175,8 @@ namespace Microsoft.Azure.Management.Resources
         }
 
         /// <summary>
-        /// Returns changes that will be made by the deployment if executed at the scope of the subscription.
+        /// Returns changes that will be made by the deployment if executed at the
+        /// scope of the subscription.
         /// </summary>
         /// <param name='deploymentName'>
         /// The name of the deployment.
@@ -4578,7 +4621,16 @@ namespace Microsoft.Azure.Management.Resources
 
         }
         /// <summary>
-        /// A template deployment that is currently running cannot be deleted. Deleting a template deployment removes the associated deployment operations. Deleting a template deployment does not affect the state of the resource group. This is an asynchronous operation that returns a status of 202 until the template deployment is successfully deleted. The Location response header contains the URI that is used to obtain the status of the process. While the process is running, a call to the URI in the Location header returns a status of 202. When the process finishes, the URI in the Location header returns a status of 204 on success. If the asynchronous request failed, the URI in the Location header returns an error-level status code.
+        /// A template deployment that is currently running cannot be deleted. Deleting
+        /// a template deployment removes the associated deployment operations.
+        /// Deleting a template deployment does not affect the state of the resource
+        /// group. This is an asynchronous operation that returns a status of 202 until
+        /// the template deployment is successfully deleted. The Location response
+        /// header contains the URI that is used to obtain the status of the process.
+        /// While the process is running, a call to the URI in the Location header
+        /// returns a status of 202. When the process finishes, the URI in the Location
+        /// header returns a status of 204 on success. If the asynchronous request
+        /// failed, the URI in the Location header returns an error-level status code.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group with the deployment to delete. The name is
@@ -4822,7 +4874,8 @@ namespace Microsoft.Azure.Management.Resources
 
         }
         /// <summary>
-        /// You can provide the template and parameters directly in the request or link to JSON files.
+        /// You can provide the template and parameters directly in the request or link
+        /// to JSON files.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group to deploy the resources to. The name is case
@@ -5312,7 +5365,8 @@ namespace Microsoft.Azure.Management.Resources
 
         }
         /// <summary>
-        /// Validates whether the specified template is syntactically correct and will be accepted by Azure Resource Manager..
+        /// Validates whether the specified template is syntactically correct and will
+        /// be accepted by Azure Resource Manager..
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group the template will be deployed to. The name
@@ -5338,7 +5392,8 @@ namespace Microsoft.Azure.Management.Resources
         }
 
         /// <summary>
-        /// Returns changes that will be made by the deployment if executed at the scope of the resource group.
+        /// Returns changes that will be made by the deployment if executed at the
+        /// scope of the resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group the template will be deployed to. The name

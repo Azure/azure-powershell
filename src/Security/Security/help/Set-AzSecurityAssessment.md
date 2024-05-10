@@ -17,7 +17,7 @@ Create or update a security assessment result on a resource
 Set-AzSecurityAssessment -Name <String> -StatusCode <String> [-StatusCause <String>]
  [-StatusDescription <String>]
  [-AdditionalData <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Set-AzSecurityAssessment -Name <String> -StatusCode <String> [-StatusCause <Stri
 Set-AzSecurityAssessment -Name <String> -AssessedResourceId <String> -StatusCode <String>
  [-StatusCause <String>] [-StatusDescription <String>]
  [-AdditionalData <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -99,6 +99,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -173,23 +173,33 @@ process {
       $null = $PSBoundParameters.Remove('WhatIf')
       $null = $PSBoundParameters.Remove('Confirm')
       $null = $PSBoundParameters.Remove('Location')
-      $rg = $PSBoundParameters.ResourceGroupName
 
       # 2. Ensure exr circuit bandwidth 1G or more
-      $cktname = $IngestionPolicyIngestionSource.ResourceId | Where {$IngestionPolicyIngestionSource.ResourceId -match "/*subscriptions/(?<subid>.*)/resourceGroups/(?<rgname>.*)/providers/Microsoft.Network/expressRouteCircuits/(?<circuitname>.*)"} | Foreach {$Matches['circuitname']}
-      Import-Module Az.Network -Force
-      $exrCircuit = Get-AzExpressRouteCircuit -Name $cktname -ResourceGroupName $rg
-      $bandwidthInGbps = $exrCircuit.BandwidthInGbps
-      $bandwidthInMbps = $exrCircuit.ServiceProviderProperties.BandwidthInMbps
+      if ($hasIngestionPolicyIngestionSource) {
+        Import-Module Az.Network -Force
+        # Ensure exr circuit bandwidth 1G or more
+        $ResourceIdSplit = $IngestionPolicyIngestionSource.ResourceId.Split(' ')
+        foreach ($ResourceId in $ResourceIdSplit)
+        {
+          $Splits = $ResourceId -split "/"
+          $cktsub = $Splits[2]
+          $cktrg = $Splits[4]
+          $cktname = $Splits[8]
+          Set-AzContext $cktsub -ErrorVariable notPresent -ErrorAction SilentlyContinue
+          $exrCircuit = Get-AzExpressRouteCircuit -Name $cktname -ResourceGroupName $cktrg
+          $bandwidthInGbps = $exrCircuit.BandwidthInGbps
+          $bandwidthInMbps = $exrCircuit.ServiceProviderProperties.BandwidthInMbps
 
-      if ($bandwidthInGbps -and ($bandwidthInGbps -lt 1)) {
-        throw "CollectorPolicy can not be updated because circuit has bandwidth less than 1G. Circuit size with a bandwidth of 1G or more is supported."
+          if ($bandwidthInGbps -and ($bandwidthInGbps -lt 1)) {
+            throw "CollectorPolicy can not be updated because circuit has bandwidth less than 1G. Circuit size with a bandwidth of 1G or more is supported."
+          }
+
+          if ($bandwidthInMbps -and ($bandwidthInMbps -lt 1000)) {
+            throw "CollectorPolicy can not be updated because circuit has bandwidth less than 1G. Circuit size with a bandwidth of 1G or more is supported."
+          }
+        }
       }
-
-      if ($bandwidthInMbps -and ($bandwidthInMbps -lt 1000)) {
-        throw "CollectorPolicy can not be updated because circuit has bandwidth less than 1G. Circuit size with a bandwidth of 1G or more is supported."
-      }
-
+      Set-AzContext $SubscriptionId -ErrorVariable notPresent -ErrorAction SilentlyContinue
       $cp = Get-AzNetworkFunctionCollectorPolicy @PSBoundParameters
       
       # 3. PUT

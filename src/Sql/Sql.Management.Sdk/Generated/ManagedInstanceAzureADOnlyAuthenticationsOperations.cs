@@ -253,7 +253,8 @@ namespace Microsoft.Azure.Management.Sql
 
         }
         /// <summary>
-        /// Sets Server Active Directory only authentication property or updates an existing server Active Directory only authentication property.
+        /// Sets Server Active Directory only authentication property or updates an
+        /// existing server Active Directory only authentication property.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain

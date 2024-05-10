@@ -131,7 +131,7 @@ pac129,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac130,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Qumulo.0.1.1.nupkg;sourceType=sa]Az.Qumulo,0.1.1
 pac131,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Quota.0.1.2.nupkg;sourceType=sa]Az.Quota,0.1.2
 pac132,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RecoveryServices.6.9.0.nupkg;sourceType=sa]Az.RecoveryServices,6.9.0
-pac133,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RedisCache.1.9.0.nupkg;sourceType=sa]Az.RedisCache,1.9.0
+pac133,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RedisCache.1.9.1.nupkg;sourceType=sa]Az.RedisCache,1.9.1
 pac134,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RedisEnterpriseCache.1.2.1.nupkg;sourceType=sa]Az.RedisEnterpriseCache,1.2.1
 pac135,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Relay.2.0.1.nupkg;sourceType=sa]Az.Relay,2.0.1
 pac136,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Reservations.0.13.0.nupkg;sourceType=sa]Az.Reservations,0.13.0
