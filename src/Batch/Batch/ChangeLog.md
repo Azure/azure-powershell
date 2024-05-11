@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed the breaking change message.
 
 ## Version 3.6.0
 * Added new properties `ResourceTags`  and `UpgradePolicy` to `PSCloudPool` and `PSPoolSpecification`.
