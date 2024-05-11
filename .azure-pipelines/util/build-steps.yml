@@ -153,7 +153,7 @@ steps:
     script: |
       $buildScript = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'BuildModules.ps1'
       $forceRegenerate = $false
-      if ('true' -eq ${{ parameters.ForceRegenerate }}) {
+      if ('true' -eq '${{ parameters.ForceRegenerate }}') {
         $forceRegenerate = $true
       }
       if ('Manual' -eq "$(Build.Reason)") {
