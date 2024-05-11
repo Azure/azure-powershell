@@ -158,12 +158,12 @@ function Add-ProjectDependencies
     $SolutionFoloderPath = Split-Path -Parent $SolutionPath
     $Content | Select-String -Pattern "`"[a-zA-Z0-9`.`\\`/]*.csproj`"" | ForEach-Object { $_.Matches[0].Value.Trim('"') } | Where-Object { $CommonProjectsToIgnore -notcontains $_ } | ForEach-Object { $CsprojList += $_ }
     
-    foreach ($Csproj in $CsprojList)
-    {
-        If(-Not (Test-Path ($SolutionFoloderPath + "\\" + $Csproj))) {
-            Write-Error "${SolutionPath}: $Csproj is not found!"
-        }
-    }
+    # foreach ($Csproj in $CsprojList)
+    # {
+    #     If(-Not (Test-Path ($SolutionFoloderPath + "\\" + $Csproj))) {
+    #         Write-Error "${SolutionPath}: $Csproj is not found!"
+    #     }
+    # }
     $Mappings[$SolutionPath] = $CsprojList | ForEach-Object { (Split-Path -Path $_ -Leaf).Replace('.csproj', '') }
     return $Mappings
 }

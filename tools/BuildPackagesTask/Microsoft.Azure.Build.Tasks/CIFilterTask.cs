@@ -129,9 +129,24 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
         private string GetModuleNameFromCsprojPath(string csprojPath)
         {
-            return csprojPath.Replace('/', '\\')
+            string result = null;
+            if (csprojPath.Contains("src")) 
+            {
+                result =  csprojPath.Replace('/', '\\')
                 .Split(new string[] { "src\\" }, StringSplitOptions.None)[1]
                 .Split('\\')[0];
+            }
+            else if (csprojPath.Contains("generated")) 
+            {
+                result =  csprojPath.Replace('/', '\\')
+                .Split(new string[] { "generated\\" }, StringSplitOptions.None)[1]
+                .Split('\\')[0];
+            }
+            else
+            {
+                throw new ArgumentException(string.Format("Invalid csproj: {}", csprojPath));
+            }
+            return result;
         }
 
         private List<string> GetDependenceModuleList(string moduleName, Dictionary<string, string[]> csprojMap)
