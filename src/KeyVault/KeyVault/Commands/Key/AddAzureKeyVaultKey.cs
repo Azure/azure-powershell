@@ -634,7 +634,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             try
             {
                 var location = keyVaultManagementCmdletBase.ListVaults("", null)?.FirstOrDefault(r => r.VaultName.Equals(VaultName ?? HsmName, StringComparison.OrdinalIgnoreCase))?.Location;
-                if(null == location)
+                if (null == location)
                 {
                     throw new AzPSException(string.Format(Resources.NoVaultWithGivenNameFound, VaultName), ErrorKind.UserError);
                 }
@@ -643,7 +643,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                 ServiceClientCredentials creds = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(DefaultContext, endpoint);
                 var serviceClient = AzureSession.Instance.ClientFactory.CreateArmClient<AzureRestClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
                 string response = serviceClient.Operations.GetResourceWithFullResponse(defaultCVMPolicyUrl, MaaEnpointApiVersion)?.Body;
-                var regionalMaaEndpoint = JObject.Parse(response)["properties"]["attestUri"]?.ToString();
+                var regionalMaaEndpoint = JObject.Parse(response)?["properties"]?["attestUri"]?.ToString();
+                if (null == regionalMaaEndpoint)
+                {
+                    throw new AzPSException($"unable to get regional MAA endpoint from {defaultCVMPolicyUrl}.", ErrorKind.ServiceError);
+                }
                 using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(DefaultCVMPolicyTemplatePath))
                 using (var reader = new StreamReader(stream))
                 {
