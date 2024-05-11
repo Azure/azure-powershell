@@ -14,7 +14,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Cmdlets
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{resourceName}"
     /// </remarks>
-    [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzCustomLocation_CreateViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Description(@"Create a Custom Location in the specified Subscription and Resource Group")]
