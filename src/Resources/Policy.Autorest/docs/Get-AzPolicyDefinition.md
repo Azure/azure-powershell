@@ -35,6 +35,12 @@ Get-AzPolicyDefinition -Custom [-ManagementGroupName <String>] [-SubscriptionId 
 Get-AzPolicyDefinition -Id <String> [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### ListVersion
+```
+Get-AzPolicyDefinition -ListVersion [-Id <String>] [-Name <String>] [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### ManagementGroupName
 ```
 Get-AzPolicyDefinition -ManagementGroupName <String> [-Name <String>] [-BackwardCompatible]
@@ -50,6 +56,12 @@ Get-AzPolicyDefinition -Static [-ManagementGroupName <String>] [-SubscriptionId 
 ### SubscriptionId
 ```
 Get-AzPolicyDefinition -SubscriptionId <String> [-Name <String>] [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Version
+```
+Get-AzPolicyDefinition -Version <String> [-Id <String>] [-Name <String>] [-BackwardCompatible]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -178,8 +190,23 @@ The full Id of the policy definition to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: Id
+Parameter Sets: Id, ListVersion, Version
 Aliases: ResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ListVersion
+Causes cmdlet to return only custom policy definitions.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ListVersion
+Aliases:
 
 Required: True
 Position: Named
@@ -208,7 +235,7 @@ The name of the policy definition to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: ManagementGroupName, Name, SubscriptionId
+Parameter Sets: ListVersion, ManagementGroupName, Name, SubscriptionId, Version
 Aliases: PolicyDefinitionName
 
 Required: False
@@ -240,6 +267,21 @@ The ID of the target subscription.
 Type: System.String
 Parameter Sets: Builtin, Custom, Static, SubscriptionId
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Version
+The policy definition version in #.#.# format.
+
+```yaml
+Type: System.String
+Parameter Sets: Version
+Aliases: PolicyDefinitionVersion
 
 Required: True
 Position: Named
