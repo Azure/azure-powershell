@@ -152,8 +152,12 @@ steps:
     pwsh: true
     script: |
       $buildScript = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'BuildModules.ps1'
+      $forceRegenerate = $false
+      if ('true' -eq ${{ parameters.ForceRegenerate }}) {
+        $forceRegenerate = $true
+      }
       if ('Manual' -eq "$(Build.Reason)") {
-        . $buildScript -RepoRoot "$(Build.SourcesDirectory)" -Configuration ${{ parameters.configuration }} -CIPlan -ForceRegenerate:${{ parameters.ForceRegenerate }}
+        . $buildScript -RepoRoot "$(Build.SourcesDirectory)" -Configuration ${{ parameters.configuration }} -CIPlan -ForceRegenerate:$forceRegenerate
       } else {
         . $buildScript -RepoRoot "$(Build.SourcesDirectory)" -Configuration ${{ parameters.configuration }} -CIPlan
       }
