@@ -374,13 +374,7 @@ process {
     }
 
     # choose parameter set to call
-#    if ($InputObject) {
-#        $calledParameterSet = 'CreateViaIdentityExpanded1'
-#        $calledParameters = @{ InputObject = $calledParameters }
-#    }
-#    else {
-        $calledParameterSet = 'CreateExpanded'
-#    }
+    $calledParameterSet = 'CreateExpanded'
 
     if ($writeln) {
         Write-Host -ForegroundColor Blue -> $mapping[$calledParameterSet]'(' $calledParameters ')'
