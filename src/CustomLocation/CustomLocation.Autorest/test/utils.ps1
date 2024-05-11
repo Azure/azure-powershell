@@ -65,6 +65,7 @@ function setupEnv() {
     $env.Add("resourceSyncRuleName3", $resourceSyncRuleName3)
 
     $env.Add("location", "eastus")
+    $createKubernetesVersion = '1.27.7'
 
     # Create the test group
     $resourceGroup = "testgroup" + $env.clusterLocationName
@@ -72,9 +73,11 @@ function setupEnv() {
 
     write-host "1. start to create test group..."
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
-
+    
+    # az login
+    # az account set --name 'Azure SDK Powershell Test - Manual'
     write-host "2. az aks create..."
-    az aks create --name $env.k8sName --resource-group $env.resourceGroup --kubernetes-version 1.26.6 --vm-set-type AvailabilitySet
+    az aks create --name $env.k8sName --resource-group $env.resourceGroup --kubernetes-version $createKubernetesVersion --vm-set-type AvailabilitySet
 
     write-host "3. az aks get-credentials..."
     az aks get-credentials --resource-group $env.resourceGroup --name $env.k8sName
