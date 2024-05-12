@@ -224,8 +224,6 @@ namespace Microsoft.Azure.Commands.TestFx
                 .Build();
             var authResult = Task.Run(async () => await spn.AcquireTokenForClient(scopes).ExecuteAsync().ConfigureAwait(false));
             return authResult.Result.AccessToken;
-            //var tok = "";
-            //return tok;
         }
 
         public string GetServicePrincipalAccessToken(IEnumerable<string> scopes, Uri authorityUri)
