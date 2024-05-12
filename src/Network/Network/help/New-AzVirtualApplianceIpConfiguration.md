@@ -28,6 +28,7 @@ $ipConfig1 = New-AzVirtualApplianceIpConfiguration -Name "publicnicipconfig" -Pr
 ```
 This command creates a new IP configuration with the name "publicnicipconfig" and sets it as the primary IP configuration.
 
+### Example 2
 ```powershell
 $ipConfig2 = New-AzVirtualApplianceIpConfiguration -Name "publicnicipconfig" -Primary $false
 ```

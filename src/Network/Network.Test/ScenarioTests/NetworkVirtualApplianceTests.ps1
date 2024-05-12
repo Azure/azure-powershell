@@ -51,7 +51,17 @@ function Test-NetworkVirtualApplianceCRUD
 
         $wan = New-AzVirtualWan -ResourceGroupName $rgname -Name $wanname -Location $location
         $hub = New-AzVirtualHub -ResourceGroupName $rgname -Name $hubname -Location $location -VirtualWan $wan -AddressPrefix $prefix
-        $nva = New-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname -Location $location -VirtualApplianceAsn $asn -VirtualHubId $hub.Id -Sku $sku -CloudInitConfiguration "echo hi" 
+
+        $ipConfig1 = New-AzVirtualApplianceIpConfiguration -Name "publicnicipconfig" -Primary $true
+        $ipConfig2 = New-AzVirtualApplianceIpConfiguration -Name "publicnicipconfig-2" -Primary $false
+        $nicConfig1 = New-AzVirtualApplianceNetworkInterfaceConfiguration -NicType "PublicNic" -IpConfigurations $ipConfig1, $ipConfig2
+        $ipConfig3 = New-AzVirtualApplianceIpConfiguration -Name "privatenicipconfig" -Primary $true
+        $ipConfig4 = New-AzVirtualApplianceIpConfiguration -Name "privatenicipconfig-2" -Primary $false
+        $nicConfig2 = New-AzVirtualApplianceNetworkInterfaceConfiguration -NicType "PrivateNic" -IpConfigurations $ipConfig3, $ipConfig4
+        $networkProfile = New-AzVirtualApplianceNetworkProfile -NetworkInterfaceConfigurations $nicConfig1, $nicConfig2
+
+        $nva = New-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname -Location $location -VirtualApplianceAsn $asn -VirtualHubId $hub.Id -Sku $sku -CloudInitConfiguration "echo hi" -NetworkProfile $networkProfile
+
         Assert-NotNull $nva
         
         $getnva = Get-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname

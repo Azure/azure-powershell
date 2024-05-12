@@ -75,7 +75,7 @@ $nva=New-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -Location
 ```
 Creates a new Network Virtual Appliance resource in resource group: testrg with 2 Internet Ingress Public IPs attached to it.
 
-
+### Example 4
 ```powershell
 $sku = New-AzVirtualApplianceSkuProperty -VendorName "ciscosdwantest" -BundledScaleUnit 4 -MarketPlaceVersion '17.6.03'
 $hub = Get-AzVirtualHub -ResourceGroupName testrg -Name hub
