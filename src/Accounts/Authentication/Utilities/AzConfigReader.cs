@@ -16,12 +16,15 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Shared.Config;
 using Microsoft.Azure.PowerShell.Common.Config;
 
+using System.Collections.Generic;
+using System.Linq;
+
 namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
 {
     static public class AzConfigReader
     {
 
-        public static IAzureSession Session
+        private static IAzureSession Session
         {
             get
             {
@@ -29,20 +32,26 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
             }
         }
 
-        static public bool IsWamEnabled()
+        static public bool IsWamEnabled(string authority)
         {
             if (Session.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var config))
             {
-                try
+                var allowAuthorities = config.GetConfigValue<string>(ConfigKeys.WamAllowedAuthority)?.Split(',')?.ToList();
+                allowAuthorities = allowAuthorities.ConvertAll(x => x.TrimEnd('/'));
+                if (allowAuthorities != null)
                 {
-                    return config.GetConfigValue<bool>(ConfigKeys.EnableLoginByWam);
-                }
-                catch
-                {
+                    try
+                    {
+                        return config.GetConfigValue<bool>(ConfigKeys.EnableLoginByWam) && allowAuthorities.Contains(authority);
+                    }
+                    catch
+                    {
 
+                    }
+                    return true;
                 }
             }
-            return true;
+            return false;
         }
     }
 }

@@ -58,7 +58,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
         private static SharedTokenCacheCredentialOptions GetTokenCredentialOptions(SilentParameters silentParameters, string tenantId, string authority, PowerShellTokenCacheProvider tokenCacheProvider)
         {
-            SharedTokenCacheCredentialOptions options = AzConfigReader.IsWamEnabled()
+            SharedTokenCacheCredentialOptions options = AzConfigReader.IsWamEnabled(authority)
                 ? new SharedTokenCacheCredentialBrokerOptions(tokenCacheProvider.GetTokenCachePersistenceOptions())
                 : new SharedTokenCacheCredentialOptions(tokenCacheProvider.GetTokenCachePersistenceOptions());
             options.EnableGuestTenantAuthentication = true;
