@@ -282,6 +282,7 @@ namespace Microsoft.Azure.Test.HttpRecorder
         {
             HttpRecorderMode mode;
             string input = FileSystemUtilsObject?.GetEnvironmentVariable(ConnectionStringKeys.AZURE_TEST_MODE_ENVKEY);
+            input = "Record";
 
             if (string.IsNullOrEmpty(input))
             {

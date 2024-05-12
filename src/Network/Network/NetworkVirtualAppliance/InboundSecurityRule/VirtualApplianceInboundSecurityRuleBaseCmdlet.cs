@@ -18,11 +18,12 @@ using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public class InboundSecurityRuleBaseCmdlet : NetworkBaseCmdlet
+    public class VirtualApplianceInboundSecurityRuleBaseCmdlet : NetworkBaseCmdlet
     {
         public IInboundSecurityRuleOperations InboundSecurityRuleClient
         {
@@ -34,7 +35,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSInboundSecurityRule ToPsInboundSecurityRule(Management.Network.Models.InboundSecurityRule inboundSecurityRule)
         {
-            return NetworkResourceManagerProfile.Mapper.Map<PSInboundSecurityRule>(inboundSecurityRule);
+            return NetworkResourceManagerProfile.Mapper.Map<PSInboundSecurityRule>(inboundSecurityRule); ;
         }
         public PSInboundSecurityRule CreateOrUpdateInboundSecurityRule(string resourceGroupName, string nvaName, string ruleCollectionName, InboundSecurityRule parameters)
         {
