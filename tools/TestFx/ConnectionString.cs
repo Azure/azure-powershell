@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.TestFx
         private Dictionary<string, string> _keyValuePairs;
         private string _connString;
         private StringBuilder _parseErrorSb;
-        private string DEFAULT_TENANTID = "72f988bf-86f1-41af-91ab-2d7cd011db47";
 
         public Dictionary<string, string> KeyValuePairs
         {
@@ -75,46 +74,13 @@ namespace Microsoft.Azure.Commands.TestFx
         {
             _connString = connString;
             Parse(_connString); //Keyvalue pairs are normalized and is called from Parse(string) function
-            NormalizeKeyValuePairs();
-        }
-
-        private void NormalizeKeyValuePairs()
-        {
-            string clientId, spn, password, spnSecret, userId, aadTenantId;
-            KeyValuePairs.TryGetValue(ConnectionStringKeys.AADClientIdKey, out clientId);
-            KeyValuePairs.TryGetValue(ConnectionStringKeys.ServicePrincipalKey, out spn);
-
-            KeyValuePairs.TryGetValue(ConnectionStringKeys.UserIdKey, out userId);
-            KeyValuePairs.TryGetValue(ConnectionStringKeys.PasswordKey, out password);
-            KeyValuePairs.TryGetValue(ConnectionStringKeys.ServicePrincipalSecretKey, out spnSecret);
-            KeyValuePairs.TryGetValue(ConnectionStringKeys.TenantIdKey, out aadTenantId);
-
-            //ClientId was provided and servicePrincipal was empty, we want ServicePrincipal to be initialized
-            //At some point we will deprecate ClientId keyName
-            if (!string.IsNullOrEmpty(clientId) && (string.IsNullOrEmpty(spn)))
-            {
-                KeyValuePairs[ConnectionStringKeys.ServicePrincipalKey] = clientId;
-            }
-
-            //Set the value of PasswordKey to ServicePrincipalSecret ONLY if userId is empty
-            //If UserId is not empty, we are not sure if it's a password for inter active login or ServicePrincipal SecretKey
-            if (!string.IsNullOrEmpty(password) && (string.IsNullOrEmpty(spnSecret)) && (string.IsNullOrEmpty(userId)))
-            {
-                KeyValuePairs[ConnectionStringKeys.ServicePrincipalSecretKey] = password;
-            }
-
-            //Initialize default value for AADTenent
-            if (string.IsNullOrEmpty(aadTenantId))
-            {
-                KeyValuePairs[ConnectionStringKeys.TenantIdKey] = DEFAULT_TENANTID;
-            }
         }
 
         public void Parse(string connString)
         {
             string parseRegEx = @"(?<KeyName>[^=]+)=(?<KeyValue>.+)";
 
-            if (_parseErrorSb != null) _parseErrorSb.Clear();
+            _parseErrorSb?.Clear();
 
             if (string.IsNullOrEmpty(connString))
             {
@@ -161,10 +127,6 @@ namespace Microsoft.Azure.Commands.TestFx
                         ParseErrors = string.Format("Incorrect '{0}' keyValue pair format", pair);
                     }
                 }
-
-                //Adjust key-value pairs and normalize values across multiple keys
-                //We need to do this here because Connection string can be parsed multiple time within same instance
-                NormalizeKeyValuePairs();
             }
         }
 

@@ -17,7 +17,7 @@ $script:TestFxEnvExtraPropKeys = @(
 )
 
 function Set-TestFxEnvironment {
-    [CmdletBinding(DefaultParameterSetName = "NewServicePrincipal")]
+    [CmdletBinding(DefaultParameterSetName = "UserAccount")]
     param(
         [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
@@ -26,6 +26,10 @@ function Set-TestFxEnvironment {
         [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
         [guid] $TenantId,
+
+        [Parameter(Mandatory, ParameterSetName = "UserAccount")]
+        [ValidateNotNullOrEmpty()]
+        [guid] $UserId,
 
         [Parameter(Mandatory, ParameterSetName = "NewServicePrincipal")]
         [ValidateNotNullOrEmpty()]
@@ -108,11 +112,23 @@ function Set-TestFxEnvironment {
         }
     }
 
+    $testFxEnvProps = [PSCustomObject]@{
+        Environment            = $TargetEnvironment
+        SubscriptionId         = $SubscriptionId
+        TenantId               = $TenantId
+        HttpRecorderMode       = $RecorderMode
+    }
+
     switch ($PSCmdlet.ParameterSetName) {
+        "UserAccount" {
+            $testFxEnvProps | Add-Member -NotePropertyName UserId -NotePropertyValue $UserId
+        }
         "NewServicePrincipal" {
             $sp = New-TestFxServicePrincipal -SubscriptionId $SubscriptionId -ServicePrincipalDisplayName $ServicePrincipalDisplayName -Force:$Force
             $spAppId = $sp.AppId
             $spSecret = $sp.PasswordCredentials.SecretText
+            $testFxEnvProps | Add-Member -NotePropertyName ServicePrincipal -NotePropertyValue $spAppId
+            $testFxEnvProps | Add-Member -NotePropertyName ServicePrincipalSecret -NotePropertyValue $spSecret
         }
         "ExistingServicePrincipal" {
             $sp = Get-AzADServicePrincipal -ApplicationId $ServicePrincipalId
@@ -122,16 +138,9 @@ function Set-TestFxEnvironment {
 
             $spAppId = $ServicePrincipalId
             $spSecret = $ServicePrincipalSecret
+            $testFxEnvProps | Add-Member -NotePropertyName ServicePrincipal -NotePropertyValue $spAppId
+            $testFxEnvProps | Add-Member -NotePropertyName ServicePrincipalSecret -NotePropertyValue $spSecret
         }
-    }
-
-    $testFxEnvProps = [PSCustomObject]@{
-        Environment            = $TargetEnvironment
-        SubscriptionId         = $SubscriptionId
-        TenantId               = $TenantId
-        ServicePrincipal       = $spAppId
-        ServicePrincipalSecret = $spSecret
-        HttpRecorderMode       = $RecorderMode
     }
 
     $script:testFxEnvExtraPropKeys | ForEach-Object {

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Test.HttpRecorder
 
         public static string CallerIdentity { get; set; }
         public static string TestIdentity { get; set; }
-        public static HttpRecorderMode Mode { get; set; }
+        public static HttpRecorderMode Mode { get; internal set; }
         public static IRecordMatcher Matcher { get; set; }
         public static string RecordsDirectory { get; set; }
         public static Dictionary<string, string> Variables { get; private set; }

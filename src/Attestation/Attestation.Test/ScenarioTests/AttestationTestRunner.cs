@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
             // When recording, we should have a connection string passed into the code from the environment
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
-                accessToken = TestEnvironmentFactory.GetTestEnvironment().GetServicePrincipalAccessToken(new[] { "https://attest.azure.net/.default" });
+                accessToken = TestEnvironmentFactory.GetTestEnvironment().GetAccessToken(new[] { "https://attest.azure.net/.default" });
             }
 
             return new AttestationClient(new AttestationCredentials(accessToken), HttpMockServer.CreateInstance());

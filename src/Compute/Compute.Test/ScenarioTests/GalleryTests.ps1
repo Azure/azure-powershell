@@ -28,10 +28,10 @@ function Verify-Gallery
 function Verify-GalleryImageDefinition
 {
     param($imageDefinition, [string] $rgname, [string] $imageDefinitionName, [string] $loc, [string] $description,
-        [string] $eula, [string] $privacyStatementUri, [string] $releaseNoteUri,   
+        [string] $eula, [string] $privacyStatementUri, [string] $releaseNoteUri,
         [string] $osType, [string] $osState, $endOfLifeDate,
         [string] $publisherName, [string] $offerName, [string] $skuName,
-        [int] $minVCPU, [int] $maxVCPU, [int] $minMemory, [int] $maxMemory, 
+        [int] $minVCPU, [int] $maxVCPU, [int] $minMemory, [int] $maxMemory,
         [string] $disallowedDiskType,
         [string] $purchasePlanName, [string] $purchasePlanPublisher, [string] $purchasePlanProduct,
         [string] $hyperVGeneration)
@@ -136,13 +136,13 @@ function Test-Gallery
         # Common
         [string]$loc = Get-ComputeVMLocation;
         $loc = $loc.Replace(' ', '');
-        New-AzResourceGroup -Name $rgname -Location $loc -Force;        
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
         $description1 = "Original Description";
         $description2 = "Updated Description";
 
         # Gallery
         New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Description $description1 -Location $loc;
-        
+
         $wildcardRgQuery = ($rgname -replace ".$") + "*"
         $wildcardNameQuery = ($galleryName -replace ".$") + "*"
 
@@ -153,35 +153,35 @@ function Test-Gallery
         $galleryList = Get-AzGallery -ResourceGroupName $rgname;
         $gallery = $galleryList | ? {$_.Name -eq $galleryName};
         Verify-Gallery $gallery $rgname $galleryName $loc $description1;
-        
+
         $galleryList = Get-AzGallery -ResourceGroupName $wildcardRgQuery;
         $gallery = $galleryList | ? {$_.Name -eq $galleryName};
         Verify-Gallery $gallery $rgname $galleryName $loc $description1;
-        
+
         $gallery = Get-AzGallery -Name $galleryName;
         Verify-Gallery $gallery $rgname $galleryName $loc $description1;
         $output = $gallery | Out-String;
-        
+
         $gallery = Get-AzGallery -Name $wildcardNameQuery;
         Verify-Gallery $gallery $rgname $galleryName $loc $description1;
         $output = $gallery | Out-String;
-        
+
         $gallery = Get-AzGallery -ResourceGroupName $rgname -Name $wildcardNameQuery;
         Verify-Gallery $gallery $rgname $galleryName $loc $description1;
         $output = $gallery | Out-String;
-        
+
         $gallery = Get-AzGallery -ResourceGroupName $wildcardRgQuery -Name $wildcardNameQuery;
         Verify-Gallery $gallery $rgname $galleryName $loc $description1;
         $output = $gallery | Out-String;
-        
+
         $gallery = Get-AzGallery -ResourceGroupName $wildcardRgQuery -Name $galleryName;
         Verify-Gallery $gallery $rgname $galleryName $loc $description1;
         $output = $gallery | Out-String;
-        
+
         $gallery = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName;
         Verify-Gallery $gallery $rgname $galleryName $loc $description1;
         $output = $gallery | Out-String;
-        
+
         Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -Description $description2;
         $gallery = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName;
         Verify-Gallery $gallery $rgname $galleryName $loc $description2;
@@ -216,7 +216,7 @@ function Test-Gallery
                                           -PurchasePlanName $purchasePlanName `
                                           -PurchasePlanProduct $purchasePlanProduct `
                                           -PurchasePlanPublisher $purchasePlanPublisher;
-                                          
+
         $wildcardNameQuery = ($galleryImageName -replace ".$") + "*"
         $galleryImageDefinitionList = Get-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $wildcardNameQuery;
         $definition = $galleryImageDefinitionList | ? {$_.Name -eq $galleryImageName};
@@ -250,9 +250,9 @@ function Test-Gallery
                                       $disallowedDiskTypes `
                                       $purchasePlanName $purchasePlanPublisher $purchasePlanProduct;
 
-        # Gallery Image Version        
+        # Gallery Image Version
         $galleryImageVersionName = "1.0.0";
-        
+
         # Create a VM first
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
@@ -273,10 +273,10 @@ function Test-Gallery
         $nicId = $nic.Id;
 
         $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
-        
+
         # Adding the same Nic but not set it Primary
         $p = Add-AzVMNetworkInterface -VM $p -Id $nicId -Primary;
-        
+
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_LRS';
@@ -296,7 +296,7 @@ function Test-Gallery
         $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
         $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
         $p = Remove-AzVMDataDisk -VM $p -Name 'testDataDisk3';
-        
+
         # OS & Image
         $user = "Foo12";
         $password = $PLACEHOLDER;
@@ -338,7 +338,7 @@ function Test-Gallery
         $wildcardNameQuery = ($galleryImageVersionName -replace ".$") + "*"
         $galleryImageVersionList = Get-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
                                                   -GalleryImageDefinitionName $galleryImageName -Name $wildcardNameQuery;
-                                       
+
         $version = $galleryImageVersionList | ? {$_.Name -eq $galleryImageVersionName};
         Verify-GalleryImageVersion $version $rgname $galleryImageVersionName $loc `
                                    $image.Id 1 $endOfLifeDate $targetRegions;
@@ -454,7 +454,7 @@ function Test-GalleryImageVersion
 
         # Gallery
         New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Description $description1 -Location $loc;
-                
+
         $gallery = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName;
         Verify-Gallery $gallery $rgname $galleryName $loc $description1;
         $output = $gallery | Out-String;
@@ -502,7 +502,7 @@ function Test-GalleryImageVersion
 
         # Gallery Image Version
         $galleryImageVersionName = "1.0.0";
-        
+
         # Create a VM first
         $vmsize = 'Standard_A2_v2';
         $vmname = 'vm' + $rgname;
@@ -565,14 +565,14 @@ function Test-GalleryImageVersion
         $imageConfig = Add-AzImageDataDisk -Image $imageConfig -Lun 2 -BlobUri $dataDiskVhdUri2;
 
         $image = New-AzImage -Image $imageConfig -ImageName $imageName -ResourceGroupName $rgname
-        $targetRegions = @(@{Name='South Central US';ReplicaCount=1;StorageAccountType='Standard_LRS'},@{Name='East US';ReplicaCount=2},@{Name='Central US'});        
+        $targetRegions = @(@{Name='South Central US';ReplicaCount=1;StorageAccountType='Standard_LRS'},@{Name='East US';ReplicaCount=2},@{Name='Central US'});
         $tag = @{test1 = "testval1"; test2 = "testval2" };
 
         # Set TargetExtendedLocation
         $storageAccountType = "Standard_LRS"
         $extendedLocation = @{Name = 'microsoftlosangeles1';Type='EdgeZone'}
-        $edgezone_losangeles = @{Location = "westus";ExtendedLocation=$extendedLocation;ReplicaCount = 3;StorageAccountType = 'StandardSSD_LRS'}  
-        $targetExtendedLocations = @($edgezone_losangeles) 
+        $edgezone_losangeles = @{Location = "westus";ExtendedLocation=$extendedLocation;ReplicaCount = 3;StorageAccountType = 'StandardSSD_LRS'}
+        $targetExtendedLocations = @($edgezone_losangeles)
 
         New-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
                                        -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName `
@@ -597,7 +597,7 @@ function Test-GalleryImageVersion
                                                   -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName;
         Verify-GalleryImageVersion $version $rgname $galleryImageVersionName $loc `
                                    $image.Id 1 $endOfLifeDate $targetRegions
-        # check TargetExtendedLocation count 
+        # check TargetExtendedLocation count
         Assert-AreEqual $version.PublishingProfile.TargetExtendedLocations.count 0
 
         $version | Remove-AzGalleryImageVersion -Force;
@@ -697,7 +697,7 @@ function Test-GalleryImageVersionDiskImage
         $snapshotconfig = New-AzSnapshotConfig -Location $loc -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty -HyperVGeneration "V1";
         $snapshot3 = Update-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname3 -Snapshot $snapshotconfig
 
-        $targetRegions = @(@{Name='South Central US';ReplicaCount=1;StorageAccountType='Standard_LRS'},@{Name='East US';ReplicaCount=2},@{Name='Central US'});        
+        $targetRegions = @(@{Name='South Central US';ReplicaCount=1;StorageAccountType='Standard_LRS'},@{Name='East US';ReplicaCount=2},@{Name='Central US'});
         $tag = @{test1 = "testval1"; test2 = "testval2" };
 
         $osDiskImage = @{Source = @{Id="$($snapshot1.Id)"}}
@@ -742,7 +742,7 @@ function Test-GalleryDirectSharing
         $gal = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName -Expand 'SharingProfile/Groups'
         Assert-AreEqual $gal.sharingProfile.Permissions 'Groups'
 
-        # Add 2 subscriptions to share with 
+        # Add 2 subscriptions to share with
         $gal = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -Permission 'Groups' -Share -Subscription '88fd8cb2-8248-499e-9a2d-4929a4b0133c','54b875cc-a81a-4914-8bfd-1a36bc7ddf4d'
 
         # check
@@ -752,14 +752,14 @@ function Test-GalleryDirectSharing
         # remove 1
         $gal = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -Permission 'Groups' -Share -RemoveSubscription '88fd8cb2-8248-499e-9a2d-4929a4b0133c'
 
-        # check 
+        # check
         Assert-AreEqual $gal.SharingProfile.Groups[0].Type 'Subscriptions'
         Assert-AreEqual $gal.SharingProfile.Groups[0].Ids.count 1
 
         # Reset that gallery
         $gal = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -Share -Reset
 
-        # check 
+        # check
         Assert-AreEqual $gal.SharingProfile.Permissions 'Private'
     }
     finally
@@ -781,16 +781,16 @@ function Test-GalleryVersionWithSourceImageVMId
 
     try
     {
-    
+
         $location = $loc;
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
-        # create credential 
+        # create credential
         $password = Get-PasswordForVM;
-        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;
         $user = Get-ComputeTestResourceName;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
-        # Add one VM from creation 
+        # Add one VM from creation
         $vmname = 'vm' + $rgname;
         $domainNameLabel = "d1" + $rgname;
         $securityType_TL = "TrustedLaunch";
@@ -833,8 +833,8 @@ function Test-GalleryVersionWithSourceImageVMId
 
         # create new VM
         $vm = New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname -Credential $cred -SecurityType "Standard" -DomainNameLabel $domainNameLabel;
-        start-sleep -seconds 300
-        
+        Start-TestSleep -Seconds 300
+
         # Setup Image Gallery
         New-AzGallery -ResourceGroupName $rgname -Name $galleryName -location $location -ErrorAction 'Stop' | Out-Null;
 
@@ -852,9 +852,9 @@ function Test-GalleryVersionWithSourceImageVMId
             HyperVGeneration  = $hyperVGeneration
             ErrorAction       = 'Stop'
         }
-        
+
         New-AzGalleryImageDefinition @paramNewAzImageDef;
-        
+
         # Setup Image Version
         $imageVersionName = "1.0.0";
         $targetRegions = @(@{Name=$loc;ReplicaCount=1;});
@@ -870,8 +870,8 @@ function Test-GalleryVersionWithSourceImageVMId
             TargetRegion        = $targetRegions
         }
         $galversion = New-AzGalleryImageVersion @paramNewAzImageVer;
-        
-        # Assert VMId in version was set to the vm.Id value and was created. 
+
+        # Assert VMId in version was set to the vm.Id value and was created.
         Assert-AreEqual $galversion.StorageProfile.Source.VirtualMachineId $vm.Id;
         Assert-Null $galversion.PublishingProfile.TargetRegion ExcludeFromLatest;
 
@@ -887,7 +887,7 @@ function Test-GalleryVersionWithSourceImageVMId
         Assert-AreEqual $galversion.PublishingProfile.TargetRegions.ExcludeFromLatest $true;
 
     }
-    finally 
+    finally
     {
         # Cleanup
         Clean-ResourceGroup $rgname;

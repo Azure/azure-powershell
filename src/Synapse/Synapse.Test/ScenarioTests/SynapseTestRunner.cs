@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
             // When recording, we should have a connection string passed into the code from the environment
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
-                accessToken = TestEnvironmentFactory.GetTestEnvironment().GetServicePrincipalAccessToken(new[] { "https://dev.azuresynapse.net/.default" });
+                accessToken = TestEnvironmentFactory.GetTestEnvironment().GetAccessToken(new[] { "https://dev.azuresynapse.net/.default" });
             }
 
             return new SynapseClient(new TokenCredentials(accessToken), HttpMockServer.CreateInstance());

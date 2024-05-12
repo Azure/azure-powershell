@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
             // When recording, we should have a connection string passed into the code from the environment
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
-                accessToken = TestEnvironmentFactory.GetTestEnvironment().GetServicePrincipalAccessToken(new[] { "https://vault.azure.net/.default" });
+                accessToken = TestEnvironmentFactory.GetTestEnvironment().GetAccessToken(new[] { "https://vault.azure.net/.default" });
             }
 
             return new KeyVaultClient(new TokenCredentials(accessToken), HttpMockServer.CreateInstance());
