@@ -32,9 +32,6 @@ Returns a Azure Arc PrivateLinkScope.
 ### [Get-AzConnectedMachineRunCommand](Get-AzConnectedMachineRunCommand.md)
 The operation to get a run command.
 
-### [Get-AzConnectedNetworkSecurityPerimeterConfiguration](Get-AzConnectedNetworkSecurityPerimeterConfiguration.md)
-Gets the network security perimeter configuration for a private link scope.
-
 ### [Install-AzConnectedMachinePatch](Install-AzConnectedMachinePatch.md)
 The operation to install patches on a hybrid machine identity in Azure.
 
