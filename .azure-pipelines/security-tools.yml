@@ -73,10 +73,8 @@ jobs:
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-binskim.BinSkim@3
     displayName: Run BinSkim
     inputs:
-      InputType: 'Basic'
-      Function: 'analyze'
-      AnalyzeTarget: @'artifacts/MyFileList.rsp'
-      AnalyzeStatistics: true
+      InputType: 'CommandLine'
+      arguments: 'analyze @MyFileList.rsp --recurse'
 
   - task: PowerShell@2
     displayName: Cleanup Build
