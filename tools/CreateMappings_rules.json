@@ -887,5 +887,9 @@
   {
     "module": "Chaos",
     "alias": "Chaos"
+  },
+  {
+    "module": "StorageAction",
+    "alias": "StorageAction"
   }
 ]

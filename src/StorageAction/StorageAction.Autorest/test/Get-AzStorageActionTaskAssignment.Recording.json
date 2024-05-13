@@ -1,0 +1,45 @@
+{
+  "Get-AzStorageActionTaskAssignment+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.StorageActions/storageTasks/mytask1/storageTaskAssignments?api-version=2023-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.StorageActions/storageTasks/mytask1/storageTaskAssignments?api-version=2023-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "488f7a38-9c56-4287-8996-e233c589bb02" ],
+        "CommandName": [ "Get-AzStorageActionTaskAssignment" ],
+        "FullCommandName": [ "Get-AzStorageActionTaskAssignment_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.StorageAction/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "e77e5bde-e091-41f0-b461-f4ad671a0d91" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "f1283ae9-d1ab-4882-8d7c-238d2533758e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240506T083709Z:f1283ae9-d1ab-4882-8d7c-238d2533758e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F95C1331CA09450C86CBC1506889EE1F Ref B: MAA201060513051 Ref C: 2024-05-06T08:37:07Z" ],
+        "Date": [ "Mon, 06 May 2024 08:37:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "391" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/joyer-test/providers/microsoft.storage/storageaccounts/storagetasktest202402281/storagetaskassignments/testassign1\"},{\"id\":\"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/joyer-test/providers/microsoft.storage/storageaccounts/storagetasktest202402281/storagetaskassignments/testassign2\"}]}",
+      "isContentBase64": false
+    }
+  }
+}
