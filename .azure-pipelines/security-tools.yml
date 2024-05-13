@@ -61,7 +61,7 @@ jobs:
       script: ./src/lib/pdb/CopyPdbToArtifacts.ps1
       pwsh: true
 
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-binskim.BinSkim@3
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-binskim.BinSkim@4
     displayName: Run BinSkim
     inputs:
       InputType: 'CommandLine'
