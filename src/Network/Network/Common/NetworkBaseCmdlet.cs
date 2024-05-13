@@ -127,5 +127,12 @@ namespace Microsoft.Azure.Commands.Network
 
             return true;
         }
+
+        public static string GetOperationIdFromUrlString(string Url)
+        {
+            Regex r = new Regex(@"(.*?)operations/(?<id>[a-f0-9]{8}[-]([a-f0-9]{4}[-]){3}[a-f0-9]{12})", RegexOptions.IgnoreCase);
+            Match m = r.Match(Url);
+            return m.Success ? m.Groups["id"].Value : null;
+        }
     }
 }

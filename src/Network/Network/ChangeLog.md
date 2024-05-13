@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added cmdlet `Restart-AzNetworkVirtualAppliance` for allowing a restart of Network Virtual Appliance instances from the customer subscription.
 * Added support for ApplicationGatewaySkuFamily 
 * Updated cmdlet to add the property of JSChallengeCookieExpirationInMins
     - `New-AzApplicationGatewayFirewallPolicySetting`
