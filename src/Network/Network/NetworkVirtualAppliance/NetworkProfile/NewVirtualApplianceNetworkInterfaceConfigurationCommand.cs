@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = false,
             HelpMessage = "The IP configurations of the network interface configuration.")]
         [ValidateNotNullOrEmpty]
-        public PSVirtualApplianceIpConfiguration[] IpConfigurations { get; set; }
+        public PSVirtualApplianceIpConfiguration[] IpConfiguration { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Network
                 NicType = this.NicType,
                 Properties = new PSVirtualApplianceNetworkInterfaceConfigurationProperties
                 {
-                    IpConfigurations = this.IpConfigurations.ToList()
+                    IpConfigurations = this.IpConfiguration.ToList()
                 }
             };
 

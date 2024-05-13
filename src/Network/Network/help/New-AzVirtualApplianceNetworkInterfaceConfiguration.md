@@ -14,7 +14,7 @@ Defines a Interface Configuration for Network Profile of Virtual Appliance.
 
 ```
 New-AzVirtualApplianceNetworkInterfaceConfiguration -NicType <String>
- -IpConfigurations <PSVirtualApplianceIpConfiguration[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ -IpConfiguration <PSVirtualApplianceIpConfiguration[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ The New-AzVirtualApplianceNetworkInterfaceConfiguration command defines configur
 ```powershell
 $ipConfig1 = New-AzVirtualApplianceIpConfiguration -Name "publicnicipconfig" -Primary $true
 $ipConfig2 = New-AzVirtualApplianceIpConfiguration -Name "publicnicipconfig-2" -Primary $false
-$nicConfig1 = New-AzVirtualApplianceNetworkInterfaceConfiguration -NicType "PublicNic" -IpConfigurations $ipConfig1, $ipConfig2
+$nicConfig1 = New-AzVirtualApplianceNetworkInterfaceConfiguration -NicType "PublicNic" -IpConfiguration $ipConfig1, $ipConfig2
 ```
 
 Creating a new network interface configuration with nicType PublicNic and IP configurations $ipConfig1 and $ipConfig2.
@@ -36,7 +36,7 @@ Creating a new network interface configuration with nicType PublicNic and IP con
 ```powershell
 $ipConfig3 = New-AzVirtualApplianceIpConfiguration -Name "privatenicipconfig" -Primary $true
 $ipConfig4 = New-AzVirtualApplianceIpConfiguration -Name "privatenicipconfig-2" -Primary $false
-$nicConfig2 = New-AzVirtualApplianceNetworkInterfaceConfiguration -NicType "PrivateNic" -IpConfigurations $ipConfig3, $ipConfig4
+$nicConfig2 = New-AzVirtualApplianceNetworkInterfaceConfiguration -NicType "PrivateNic" -IpConfiguration $ipConfig3, $ipConfig4
 ```
 
 Creating a new network interface configuration with nicType PrivateNic and IP configurations $ipConfig3 and $ipConfig4.
@@ -58,7 +58,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IpConfigurations
+### -IpConfiguration
 The IP configurations of the network interface configuration.
 
 ```yaml

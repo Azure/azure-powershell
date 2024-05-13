@@ -31,13 +31,13 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = false,
             HelpMessage = "The network interface configurations of the network profile.")]
         [ValidateNotNullOrEmpty]
-        public PSVirtualApplianceNetworkInterfaceConfiguration[] NetworkInterfaceConfigurations { get; set; }
+        public PSVirtualApplianceNetworkInterfaceConfiguration[] NetworkInterfaceConfiguration { get; set; }
 
         public override void ExecuteCmdlet()
         {
             var networkProfile = new PSVirtualApplianceNetworkProfile
             {
-                NetworkInterfaceConfigurations = this.NetworkInterfaceConfigurations.ToList()
+                NetworkInterfaceConfigurations = this.NetworkInterfaceConfiguration.ToList()
             };
 
             WriteObject(networkProfile);
