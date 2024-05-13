@@ -74,7 +74,7 @@ jobs:
     displayName: Run BinSkim
     inputs:
       InputType: 'CommandLine'
-      arguments: 'analyze @$(Build.SourcesDirectory)/artifacts/MyFileList.rsp --config default --statistics'
+      arguments: 'analyze @$(Build.SourcesDirectory)/artifacts/MyFileList.rsp --config default --statistics --output $(Agent.BuildDirectory)\_sdt\logs\BinSkim\BinSkim.sarif'
       toolVersion: 'LatestPreRelease'
 
   - task: PowerShell@2
