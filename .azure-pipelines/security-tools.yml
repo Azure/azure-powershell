@@ -66,7 +66,7 @@ jobs:
     inputs:
       InputType: 'Basic'
       Function: 'analyze'
-      AnalyzeTargetGlob: '+:file|$(Build.SourcesDirectory)/artifacts/Debug/**.dll;$(Build.SourcesDirectory)/artifacts/**.exe;-:file|**/msalruntime.dll;**/msalruntime_arm64.dll;**/msalruntime_x86.dll --recurse --verbose'
+      AnalyzeTargetGlob: '+:file|$(Build.SourcesDirectory)/artifacts/Debug/**.dll;+:file|$(Build.SourcesDirectory)/artifacts/**.exe;-:file|**/msalruntime.dll;-:file|**/msalruntime_arm64.dll;-:file|**/msalruntime_x86.dll'
       AnalyzeStatistics: true
 
   - task: PowerShell@2
