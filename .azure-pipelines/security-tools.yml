@@ -75,7 +75,7 @@ jobs:
     inputs:
       InputType: 'Basic'
       Function: 'analyze'
-      AnalyzeTarget: '@$(Build.SourcesDirectory)/artifacts/MyFileList.rsp'
+      AnalyzeTarget: @'artifacts/MyFileList.rsp'
       AnalyzeStatistics: true
 
   - task: PowerShell@2
