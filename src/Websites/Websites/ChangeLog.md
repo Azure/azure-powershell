@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Allow clean and restart parameters to be toggled off for `Publish-AzWebApp``
 
 ## Version 3.2.1
 * Introduced secrets detection feature to safeguard sensitive data.
