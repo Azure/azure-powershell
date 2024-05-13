@@ -442,15 +442,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fetching default CVM policy from remote failed because {0}. Trying to fetch default CVM policy from local backup copy..
-        /// </summary>
-        internal static string FetchDefaultCVMPolicyFromLocal {
-            get {
-                return ResourceManager.GetString("FetchDefaultCVMPolicyFromLocal", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Can not find file &apos;{0}&apos;..
         /// </summary>
         internal static string FileNotFound {
@@ -852,6 +843,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string NoTenantInContext {
             get {
                 return ResourceManager.GetString("NoTenantInContext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vault &apos;{0}&apos; does not exist in current subscription.  If this vault exists in your tenant, please switch to the correct subscription..
+        /// </summary>
+        internal static string NoVaultWithGivenNameFound {
+            get {
+                return ResourceManager.GetString("NoVaultWithGivenNameFound", resourceCulture);
             }
         }
         

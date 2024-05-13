@@ -33,6 +33,8 @@ You can retrieve the results of the search from the Value property of the return
 Please check detail of general query limits here: 
 https://learn.microsoft.com/azure/azure-monitor/service-limits#log-queries-and-language.
 
+Note: try setting `-Wait` to a larger value if you experience the error 'The request was canceled due to the configured HttpClient.Timeout of 100 seconds elapsing'.
+
 ## EXAMPLES
 
 ### Example 1: Get search results using a query

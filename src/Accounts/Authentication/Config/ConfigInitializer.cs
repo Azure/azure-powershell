@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
             configManager.RegisterConfig(new SimpleTypedConfig<bool>(
                 ConfigKeys.DisplaySecretsWarning,
                 Resources.HelpMessageOfDisplaySecretsWarning,
-                false,
+                true,
                 "AZURE_CLIENTS_SHOW_SECRETS_WARNING",
                 new[] { AppliesTo.Az }));
             configManager.RegisterConfig(new DisableInstanceDiscoveryConfig());

@@ -118,7 +118,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models
         /// Contains the reference to the add-on that contains charts to deploy CRDs and operators.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models
         /// Connected Cluster or AKS Cluster. The Custom Locations RP will perform a checkAccess API for listAdminCredentials permissions.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models
         string HostType { get; set; }
         /// <summary>Kubernetes namespace that will be created on the specified cluster.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,

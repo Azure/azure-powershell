@@ -93,7 +93,7 @@ Function Move-Generation2Master {
             $sourceHelpFolder = Join-Path -Path (Join-Path -Path $SourcePath -ChildPath $submoduleDir.Name) -ChildPath "docs"
             $destHelpHolder = Join-Path -Path (Join-Path -Path $DestPath -ChildPath $ModuleName) -ChildPath "help"
             Write-Host "Copying help files from $sourceHelpFolder to $destHelpHolder" -ForegroundColor Yellow
-            Get-ChildItem -Path $sourceHelpFolder -Filter *.md | Copy-Item -Destination $destHelpHolder
+            Get-ChildItem -Path $sourceHelpFolder -Filter *-*.md | Copy-Item -Destination $destHelpHolder
             #Region Clean Local Modules
             $LocalModulesPath = Join-Path -Path (Join-Path -Path (Join-Path -Path $DestPath -ChildPath $submoduleDir.Name) -ChildPath 'generated') -ChildPath 'modules'
             If (Test-Path $LocalModulesPath) {
@@ -218,6 +218,14 @@ Function Move-Generation2Master {
                 Copy-Item -Path "$DestPath\$ModuleName.Autorest\help\Az.$ModuleName.md" -Destination $HelpFolder -Recurse
                 New-MarkdownHelp -UseFullTypeName -AlphabeticParamsOrder -Module "Az.$ModuleName" -OutputFolder $HelpFolder
             }
+            $moduleMarkdownPath = "$DestPath\$ModuleName$Psd1FolderPostfix\help\Az.$ModuleName.md"
+            $moduleMarkdownContent = Get-Content -Path $moduleMarkdownPath
+            $moduleMarkdownContent = $moduleMarkdownContent -replace '{{ Update Module Guid }}', (New-Guid).Guid
+            $moduleMarkdownContent = $moduleMarkdownContent -replace '{{ Update Download Link }}', "https://learn.microsoft.com/powershell/module/az.$($ModuleName.ToLower())"
+            $moduleMarkdownContent = $moduleMarkdownContent -replace '{{ Update Help Version }}', '1.0.0.0'
+            $moduleMarkdownContent = $moduleMarkdownContent -replace '{{ Update Locale }}', 'en-US'
+            $moduleMarkdownContent = $moduleMarkdownContent -replace '{{ Fill in the Description }}', "Microsoft Azure PowerShell: $ModuleName cmdlets"
+            $moduleMarkdownContent | Set-Content -Path $moduleMarkdownPath
         } -ArgumentList $PSScriptRoot, $ModuleName, $DestPath, $Psd1FolderPostfix
 
         $job | Wait-Job | Receive-Job
