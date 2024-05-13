@@ -63,7 +63,6 @@ Deletes the Resource Sync Rule with the specified Resource Sync Rule Name, Custo
 
 ### -CustomlocationInputObject
 Identity Parameter
-To construct, see NOTES section for CUSTOMLOCATIONINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
@@ -110,7 +109,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
