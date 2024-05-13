@@ -73,9 +73,9 @@ jobs:
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-binskim.BinSkim@3
     displayName: Run BinSkim
     inputs:
-      InputType: 'CommandLine'
-      arguments: 'analyze @$(Build.SourcesDirectory)/artifacts/MyFileList.rsp --config default --statistics --output $(Agent.BuildDirectory)\_sdt\logs\BinSkim\BinSkim.sarif'
-      toolVersion: 'LatestPreRelease'
+      InputType: 'Basic'
+      Function: 'analyze'
+      arguments: '@$(Build.SourcesDirectory)/artifacts/MyFileList.rsp'
 
   - task: PowerShell@2
     displayName: Cleanup Build
