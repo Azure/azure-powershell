@@ -92,6 +92,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
 
     public static class ConstantValues
     {
+        public const string DefaultVMandVMSSImage = "Win2016Datacenter";
         public const string StandardSecurityType = "standard";
         public const string TrustedLaunchSecurityType = "trustedlaunch";
         public const string ConfidentialVMSecurityType = "confidentialvm";
