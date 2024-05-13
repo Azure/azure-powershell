@@ -28,7 +28,7 @@ New-AzGalleryImageDefinition [-ResourceGroupName] <String> [-GalleryName] <Strin
 ## DESCRIPTION
 
 Create a gallery image definition. 
-The gallery image definition will default to HyperVGeneration: V2 and SecurityType: TrustedLaunchSupported if `-HyperVGeneration` and `-Feature SecurityType` is not set explicitly. Set Security Type to 'None' to opt out - See example 10. 
+The gallery image definition will default to 'HyperVGeneration: V2' and 'SecurityType: TrustedLaunchSupported' if `-HyperVGeneration` and `-Feature @{Name: SecurityType}` is not set explicitly. Set SecurityType to 'None' to opt out of this defaulting s(See Example 10). 
 
 ## EXAMPLES
 
