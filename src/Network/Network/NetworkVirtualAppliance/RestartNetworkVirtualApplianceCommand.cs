@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            if (this.ShouldProcess(this.Name, VerbsLifecycle.Restart))
+            if (this.ShouldProcess(VerbsLifecycle.Restart, "WARNING: Setting more than one instance ID at a time will restart all the set instances at the same time", String.Format($"Performing the Restart operation on NVA: {this.Name}")))
             {
                 base.Execute();
                 if (ParameterSetName.Equals(ResourceIdParameterSet))
