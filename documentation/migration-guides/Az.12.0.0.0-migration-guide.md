@@ -60,11 +60,13 @@ error record will be disabled by default. New parameter 'EnableErrorRecordsPersi
 
 #### Before
 ```powershell
-Get-AzVmss -ResourceGroupName "" returned empty list
+Get-AzVmss -ResourceGroupName ""
+# returned empty list
 ```
 #### After
 ```powershell
-Get-AzVmss -ResourceGroupName "" will return error for empty string validation in the parameter 
+Get-AzVmss -ResourceGroupName ""
+# will return error for empty string validation in the parameter 
 ```
 
 
@@ -76,11 +78,12 @@ Get-AzVmss -ResourceGroupName "" will return error for empty string validation i
 
 #### Before
 ```powershell
-New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Specialized" -OsType "Linux"                   defaulted to HyperVGeneration Gen1 and SecurityType Standard  in the service side 
+New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Specialized" -OsType "Linux"
+# defaulted to HyperVGeneration Gen1 and SecurityType Standard  in the service side 
 ```
 #### After
 ```powershell
-Will default to HyperVGeneration Gen2 and SecurityType TrustedLaunchSupported by code in service side 
+# Will default to HyperVGeneration Gen2 and SecurityType TrustedLaunchSupported by code in service side 
 ```
 
 
@@ -92,11 +95,13 @@ Will default to HyperVGeneration Gen2 and SecurityType TrustedLaunchSupported by
 
 #### Before
 ```powershell
-$vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -SecurityType "Standard" -DomainNameLabel $domainNameLabel; Creates a VM with the image Windows 2016 Datacenter. 
+$vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -SecurityType "Standard" -DomainNameLabel $domainNameLabel
+# Creates a VM with the image Windows 2016 Datacenter. 
 ```
 #### After
 ```powershell
-$vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -SecurityType $securityTypeST -DomainNameLabel $domainNameLabel; Now generates with the Windows 2022 Azure Edition image.
+$vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -SecurityType $securityTypeST -DomainNameLabel $domainNameLabel
+# Now generates with the Windows 2022 Azure Edition image.
 ```
 
 
@@ -108,11 +113,13 @@ $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -Secur
 
 #### Before
 ```powershell
-$vmss = New-AzVmss -ResourceGroupName $rgname -Credential $cred -VMScaleSetName $vmssName -SecurityType "Standard" -DomainNameLabel $domainNameLabel1; would create a VMSS with a Windows 2016 Datacenter image. 
+$vmss = New-AzVmss -ResourceGroupName $rgname -Credential $cred -VMScaleSetName $vmssName -SecurityType "Standard" -DomainNameLabel $domainNameLabel1
+# would create a VMSS with a Windows 2016 Datacenter image. 
 ```
 #### After
 ```powershell
-$vmss = New-AzVmss -ResourceGroupName $rgname -Credential $cred -VMScaleSetName $vmssName -SecurityType "Standard" -DomainNameLabel $domainNameLabel1; Now it will generate with a Windows 2022 Azure Edition image.
+$vmss = New-AzVmss -ResourceGroupName $rgname -Credential $cred -VMScaleSetName $vmssName -SecurityType "Standard" -DomainNameLabel $domainNameLabel1
+# Now it will generate with a Windows 2022 Azure Edition image.
 ```
 
 
