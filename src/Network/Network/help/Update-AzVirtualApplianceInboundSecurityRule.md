@@ -16,7 +16,7 @@ Update the Inbound Security Rule of a Network Virtual Appliance Resource
 ```
 Update-AzVirtualApplianceInboundSecurityRule -ResourceGroupName <String> -VirtualApplianceName <String>
  -Name <String> -RuleType <String>
- -Rules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundSecurityPropertyRules]>
+ -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundSecurityPropertyRules]>
  [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Update-AzVirtualApplianceInboundSecurityRule -ResourceGroupName <String> -Virtua
 ```
 Update-AzVirtualApplianceInboundSecurityRule -VirtualAppliance <PSNetworkVirtualAppliance> -Name <String>
  -RuleType <String>
- -Rules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundSecurityPropertyRules]>
+ -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundSecurityPropertyRules]>
  [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Update-AzVirtualApplianceInboundSecurityRule -VirtualAppliance <PSNetworkVirtual
 ```
 Update-AzVirtualApplianceInboundSecurityRule -VirtualApplianceResourceId <String> -Name <String>
  -RuleType <String>
- -Rules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundSecurityPropertyRules]>
+ -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundSecurityPropertyRules]>
  [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -43,14 +43,14 @@ The Update-AzVirtualApplianceInboundSecurityRule command updates/creates the Inb
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzVirtualApplianceInboundSecurityRule -ResourceGroupName InboundRuleRg -VirtualApplianceName nva1 -Name ruleCollection1 -RuleType Permanent -Rules $inbound
+Update-AzVirtualApplianceInboundSecurityRule -ResourceGroupName InboundRuleRg -VirtualApplianceName nva1 -Name ruleCollection1 -RuleType Permanent -Rule $inbound
 ```
 
 The above command creates or updates the Inbound Security rule with the given Rule collection name: ruleCollection1 on the NVA: nva1 with rule type permanent having rules as defined in the rules property. The Inbound Security Rule will created an NSG rule & a SLB LB rule.
 
 ### Example 2
 ```powershell
-PS C:\> Update-AzVirtualApplianceInboundSecurityRule -ResourceGroupName InboundRuleRg -VirtualApplianceName nva1 -Name ruleCollection2 -RuleType AutoExpire -Rules $inbound
+Update-AzVirtualApplianceInboundSecurityRule -ResourceGroupName InboundRuleRg -VirtualApplianceName nva1 -Name ruleCollection2 -RuleType AutoExpire -Rule $inbound
 ```
 
 The above command creates or updates the Inbound Security rule with the given Rule collection name: ruleCollection2 on the NVA: nva1 with rule type Auto Expire having rules as defined in the rules property. The Inbound Security Rule will created only an NSG rule.
@@ -118,8 +118,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Rules
-Individual rules of the Inbound Security
+### -Rule
+Individual rule of the Inbound Security
 
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundSecurityPropertyRules]

@@ -23,6 +23,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string RuleType { get; set; }
         public string ProvisioningState { get; set; }
         public string Type { get; set; }
-        public List<PSInboundSecurityPropertyRules> Rules { get; set; }
+        public List<PSInboundSecurityRulesProperty> Rules { get; set; }
     }
 }

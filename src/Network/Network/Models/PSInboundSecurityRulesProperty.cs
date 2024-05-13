@@ -18,7 +18,7 @@ using System.Reflection.Emit;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSInboundSecurityPropertyRules
+    public class PSInboundSecurityRulesProperty
     {
         public string Name { get; set; }
         public string Protocol { get; set; }

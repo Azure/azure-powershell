@@ -1,31 +1,31 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://learn.microsoft.com/powershell/module/az.network/new-azvirtualapplianceinboundsecuritypropertyrules
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azvirtualapplianceinboundsecurityrulesproperty
 schema: 2.0.0
 ---
 
-# New-AzVirtualApplianceInboundSecurityPropertyRules
+# New-AzVirtualApplianceInboundSecurityRulesProperty
 
 ## SYNOPSIS
-Define Inbound Security Rule property: Rules
+Define Inbound Security Rules Property
 
 ## SYNTAX
 
 ```
-New-AzVirtualApplianceInboundSecurityPropertyRules -Name <String> [-Protocol <String>]
- -SourceAddressPrefix <String> [-DestinationPortRange <Int32>] [-DestinationPortRanges <String[]>]
+New-AzVirtualApplianceInboundSecurityRulesProperty -Name <String> [-Protocol <String>]
+ -SourceAddressPrefix <String> [-DestinationPortRange <Int32>] [-DestinationPortRangeList <String[]>]
  -AppliesOn <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzVirtualApplianceInboundSecurityPropertyRules command defines a specific rule configuration for the the Inbound Security Rule on a Network Virtual Appliance resource.
+The New-AzVirtualApplianceInboundSecurityRulesProperty command defines a specific rule configuration for the the Inbound Security Rule on a Network Virtual Appliance resource.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzVirtualApplianceInboundSecurityPropertyRules -Name InboundRule1 -Protocol TCP -SourceAddressPrefix * -DestinationPortRanges "80-120","121-124" -AppliesOn "publicip1"
+New-AzVirtualApplianceInboundSecurityRulesProperty -Name InboundRule1 -Protocol TCP -SourceAddressPrefix * -DestinationPortRangeList "80-120","121-124" -AppliesOn "publicip1"
 ```
 
 The above command defines the rule configuration having values as below:
@@ -33,7 +33,7 @@ The above command defines the rule configuration having values as below:
 Name: InboundRule1
 Protocol: TCP
 Source Address Prefix: *
-Destination Port Ranges: "80-120" & "121-124"
+Destination Port Range List: "80-120" & "121-124"
 Applies on: publicip1
 
 The rule with above property will configure a corresponding NSG rule and a Load Balancing rule on the SLB attached to the NVA, the LB rule will have the Frontned IP as publicip1
@@ -85,7 +85,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DestinationPortRanges
+### -DestinationPortRangeList
 Destination Port Ranges of the rule
 
 ```yaml
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the Inbound Security property rule
+Name of the Inbound Security Rules Property
 
 ```yaml
 Type: System.String

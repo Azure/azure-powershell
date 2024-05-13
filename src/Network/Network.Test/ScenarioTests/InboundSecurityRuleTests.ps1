@@ -32,10 +32,10 @@ function Test-InboundSecurityRule
     $destinationportranges = "80-120","121-124"
     $ruletype = "Permanent"
     try{
-        $rule = New-AzVirtualApplianceInboundSecurityPropertyRules -Name $rulename1 -Protocol $protocol -SourceAddressPrefix $sourceaddressprefix -DestinationPortRanges $destinationportranges -AppliesOn $applieson
+        $rule = New-AzVirtualApplianceInboundSecurityRulesProperty -Name $rulename1 -Protocol $protocol -SourceAddressPrefix $sourceaddressprefix -DestinationPortRangeList $destinationportranges -AppliesOn $applieson
         Assert-NotNull $rule
 
-        $updateresult = Update-AzVirtualApplianceInboundSecurityRule -ResourceGroupName $rgname -VirtualApplianceName $nvaname -Name $rulecollectionname -RuleType $ruletype -Rules $rule
+        $updateresult = Update-AzVirtualApplianceInboundSecurityRule -ResourceGroupName $rgname -VirtualApplianceName $nvaname -Name $rulecollectionname -RuleType $ruletype -Rule $rule
         Assert-True { $updateresult }
    	}   
     finally{

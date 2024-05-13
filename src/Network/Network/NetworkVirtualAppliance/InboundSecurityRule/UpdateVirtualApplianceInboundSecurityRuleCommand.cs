@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network
         SupportsShouldProcess = true,
         DefaultParameterSetName = ResourceNameParameterSet),
         OutputType(typeof(PSInboundSecurityRule))]
-    public class UpdateVirtualApplianceInboundSecurityRule : VirtualApplianceInboundSecurityRuleBaseCmdlet
+    public class UpdateVirtualApplianceInboundSecurityRuleCommand : VirtualApplianceInboundSecurityRuleBaseCmdlet
     {
         private const string ResourceNameParameterSet = "ResourceNameParameterSet";
         private const string ResourceIdParameterSet = "ResourceIdParameterSet";
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = true,
            HelpMessage = "Individual rules of the Inbound Security")]
-        public List<PSInboundSecurityPropertyRules> Rules { get; set; }
+        public List<PSInboundSecurityRulesProperty> Rule { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Network
             inboundSecurityRuleParameters.RuleType = this.RuleType;
             inboundSecurityRuleParameters.Rules = new List<InboundSecurityRules>();
 
-            foreach(var rule in this.Rules)
+            foreach(var rule in this.Rule)
             {
                 inboundSecurityRuleParameters.Rules.Add(NetworkResourceManagerProfile.Mapper.Map<InboundSecurityRules>(rule));
             }
@@ -132,63 +132,5 @@ namespace Microsoft.Azure.Commands.Network
                 );
         }
 
-    }
-
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualApplianceInboundSecurityPropertyRules",
-        SupportsShouldProcess = true),
-        OutputType(typeof(PSInboundSecurityPropertyRules))]
-    public class NewVirtualApplianceInboundSecurityPropertyRules : VirtualApplianceInboundSecurityRuleBaseCmdlet
-    {
-        [Parameter(
-           Mandatory = false,
-           HelpMessage = "Name of the Inbound Security property rule")]
-        public string Name { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "Rule protocol")]
-        [ValidateSet(
-            SecurityRuleProtocol.Tcp,
-            SecurityRuleProtocol.Udp,
-            SecurityRuleProtocol.Asterisk,
-            IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
-        public string Protocol { get; set; }
-
-        [Parameter(
-           Mandatory = true,
-           HelpMessage = "The Source Address Prefix of the rule")]
-        public string SourceAddressPrefix { get; set; }
-
-        [Parameter(
-           Mandatory = false,
-           HelpMessage = "Destination Port Range of the rule")]
-        public int? DestinationPortRange { get; set; }
-
-        [Parameter(
-           Mandatory = false,
-           HelpMessage = "Destination Port Ranges of the rule")]
-        public string[] DestinationPortRanges { get; set; }
-
-        [Parameter(
-           Mandatory = true,
-           HelpMessage = "The Applies On value of the rule for the SLP IP/Interface")]
-        public string[] AppliesOn { get; set; }
-
-        public override void Execute()
-        {
-            base.Execute();
-
-            var rule = new PSInboundSecurityPropertyRules();
-            rule.Name = this.Name;
-            rule.Protocol = this.Protocol;
-            rule.SourceAddressPrefix = this.SourceAddressPrefix;
-            rule.DestinationPortRange = this.DestinationPortRange;
-            rule.DestinationPortRanges = this.DestinationPortRanges.ToList();
-            rule.AppliesOn = this.AppliesOn.ToList();
-
-            WriteObject(rule, true);
-
-        }
     }
 }
