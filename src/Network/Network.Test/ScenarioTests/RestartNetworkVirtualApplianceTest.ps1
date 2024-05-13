@@ -21,13 +21,13 @@ function Test-NetworkVirtualApplianceRestart
     $rgname = Get-ResourceGroupName
 
     # The commands are not supported in all regions yet.
-    $location = "eastus2euap"
+    $location = "eastus"
     $nvaname = Get-ResourceName
     $wanname = Get-ResourceName
     $hubname = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/networkVirtualAppliance"
     $vendor = "ciscosdwan"
-    $scaleunit = 2
+    $scaleunit = 20
     $version = 'latest'
     $asn = 65222
     $prefix = "10.0.0.0/16"
@@ -52,7 +52,7 @@ function Test-NetworkVirtualApplianceRestart
         Assert-NotNull $nva
 
         $restartnva = Restart-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname
-        Assert-NotNull $restartnva
+        Assert-AreEqual $restartnva.Status "Succeeded"
    	}   
     finally{
         # Clean up.
