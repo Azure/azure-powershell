@@ -69,12 +69,22 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
+            if (!this.DestinationPortRange.HasValue && (this.DestinationPortRangeList == null || this.DestinationPortRangeList.Length == 0))
+            {
+                throw new PSArgumentException("Both 'DestinationPortRange' and 'DestinationPortRangeList' cannot be null. Please make sure to input value for one of the parameters.");
+            }
+
+            if (this.DestinationPortRange.HasValue && this.DestinationPortRangeList != null && this.DestinationPortRangeList.Length >= 0)
+            {
+                throw new PSArgumentException("Both 'DestinationPortRange' and 'DestinationPortRangeList' cannot have values. Please make sure to input value for only one of the parameters.");
+            }
+
             var rule = new PSInboundSecurityRulesProperty();
             rule.Name = this.Name;
             rule.Protocol = this.Protocol;
             rule.SourceAddressPrefix = this.SourceAddressPrefix;
             rule.DestinationPortRange = this.DestinationPortRange;
-            rule.DestinationPortRanges = this.DestinationPortRangeList.ToList();
+            rule.DestinationPortRanges = this.DestinationPortRangeList !=null ? this.DestinationPortRangeList.ToList() : null;
             rule.AppliesOn = this.AppliesOn.ToList();
 
             WriteObject(rule, true);
