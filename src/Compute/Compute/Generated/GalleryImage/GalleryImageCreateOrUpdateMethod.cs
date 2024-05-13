@@ -357,6 +357,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
              HelpMessage = "CPU architecture supported by an OS disk. Possible values are \"X64\" and \"Arm64\".")]
         [PSArgumentCompleter("X64", "Arm64")]
         public string Architecture { get; set; }
+    }
 
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "GalleryImageDefinition", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSGalleryImage))]
