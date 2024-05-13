@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed issue that `New-AzKubernetesExtension` installing Flux fails with error "Failed to perform resource identity operation" [#22455]
 
 ## Version 0.7.1
 * Introduced secrets detection feature to safeguard sensitive data.
