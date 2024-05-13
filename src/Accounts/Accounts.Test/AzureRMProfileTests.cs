@@ -1298,8 +1298,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         }
 
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "It's a limitation of mocked command in test framework, which uses ICommandRuntime instead of ICommandRuntime2. Connect-AzAccount uses WriteInformation() while WriteInformation only is defined in ICommandRuntime2.")]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void CanRenewTokenLogin()
         {
             var tenants = new List<string> { DefaultTenant.ToString() };

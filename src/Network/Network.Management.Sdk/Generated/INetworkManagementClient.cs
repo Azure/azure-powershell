@@ -263,6 +263,21 @@ namespace Microsoft.Azure.Management.Network
         IFirewallPolicyIdpsSignaturesFilterValuesOperations FirewallPolicyIdpsSignaturesFilterValues { get; }
 
         /// <summary>
+        /// Gets the IFirewallPolicyDraftsOperations
+        /// </summary>
+        IFirewallPolicyDraftsOperations FirewallPolicyDrafts { get; }
+
+        /// <summary>
+        /// Gets the IFirewallPolicyDeploymentsOperations
+        /// </summary>
+        IFirewallPolicyDeploymentsOperations FirewallPolicyDeployments { get; }
+
+        /// <summary>
+        /// Gets the IFirewallPolicyRuleCollectionGroupDraftsOperations
+        /// </summary>
+        IFirewallPolicyRuleCollectionGroupDraftsOperations FirewallPolicyRuleCollectionGroupDrafts { get; }
+
+        /// <summary>
         /// Gets the IIPAllocationsOperations
         /// </summary>
         IIPAllocationsOperations IPAllocations { get; }
