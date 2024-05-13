@@ -65,7 +65,7 @@ jobs:
     displayName: Run BinSkim
     inputs:
       InputType: 'CommandLine'
-      arguments: 'Binskim analyze $(Build.SourcesDirectory)/artifacts/Debug/*.dll;$(Build.SourcesDirectory)/artifacts/*.exe'
+      arguments: 'analyze $(Build.SourcesDirectory)/artifacts/Debug/*.dll;$(Build.SourcesDirectory)/artifacts/*.exe'
       toolVersion: 'LatestPreRelease'
 
   - task: PowerShell@2
