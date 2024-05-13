@@ -47,49 +47,6 @@
           ]
         }
       ]
-    },
-    {
-      "name": "Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration",
-      "description": "Forces the network security perimeter configuration to refresh for a private link scope.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}/networkSecurityPerimeterConfigurations/{perimeterName}/reconcile",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.connectedmachine/invoke-azconnectedreconcilenetworksecurityperimeterconfiguration"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-PerimeterName <String>",
-              "-ResourceGroupName <String>",
-              "-ScopeName <String>",
-              "[-SubscriptionId <String>]"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Forces the network security perimeter configuration to refresh for a private link scope.",
-          "parameters": [
-            {
-              "name": "-PerimeterName",
-              "value": "[Path.perimeterName]"
-            },
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-ScopeName",
-              "value": "[Path.scopeName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            }
-          ]
-        }
-      ]
     }
   ]
 }

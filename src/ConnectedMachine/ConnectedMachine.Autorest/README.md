@@ -371,19 +371,24 @@ directive:
       subject: Setting
     remove: true
 
-  # verify if this is internal API
-  # - where:
-  #     subject: License
-  #     verb: Update
-  #   remove: true
-  # - where:
-  #     subject: License
-  #     verb: Set
-  #   remove: true
+  # We don't want user to send PATCH to the ESU license API
+  - where:
+      subject: License
+      verb: Update
+    remove: true
+  - where:
+      subject: License
+      verb: Validate
+    remove: true
 
   # We don't want user to talk directly to the network configuration API
   - where:
       subject: NetworkConfiguration
+    remove: true
+
+  # Add back when this API version is added to the operation controller code 
+  - where:
+      subject: ReconcileNetworkSecurityPerimeterConfiguration
     remove: true
  
   # Removing non-expand commands
