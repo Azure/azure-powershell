@@ -64,10 +64,9 @@ jobs:
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-binskim.BinSkim@3
     displayName: Run BinSkim
     inputs:
-      InputType: 'Basic'
-      Function: 'analyze'
-      AnalyzeTarget: '$(Build.SourcesDirectory)/artifacts/Debug/*.dll;$(Build.SourcesDirectory)/artifacts/*.exe'
-      AnalyzeStatistics: true
+      InputType: 'CommandLine'
+      arguments: 'Binskim analyze $(Build.SourcesDirectory)/artifacts/Debug/*.dll;$(Build.SourcesDirectory)/artifacts/*.exe'
+      toolVersion: 'LatestPreRelease'
 
   - task: PowerShell@2
     displayName: Cleanup Build
