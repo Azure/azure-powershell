@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,7 +30,6 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql FailoverGroup
     /// </summary>
-    [GenericBreakingChangeWithVersion("The default value of FailoverPolicy will change from Automatic to Manual", "12.0.0", "5.0.0")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseFailoverGroup"), OutputType(typeof(AzureSqlFailoverGroupModel))]
     public class NewAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {

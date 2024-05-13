@@ -17,20 +17,20 @@ Updates a ServiceBus Subscription
 Set-AzServiceBusSubscription -Name <String> -TopicName <String> -NamespaceName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-AutoDeleteOnIdle <TimeSpan>]
  [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
- [-LockDuration <TimeSpan>] [-EnableBatchedOperations] [-Status <EntityStatus>] [-ForwardTo <String>]
+ [-LockDuration <TimeSpan>] [-EnableBatchedOperations] [-Status <String>] [-ForwardTo <String>]
  [-ForwardDeadLetteredMessagesTo <String>] [-MaxDeliveryCount <Int32>]
  [-DeadLetteringOnFilterEvaluationException] [-DeadLetteringOnMessageExpiration] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
 ```
 Set-AzServiceBusSubscription -InputObject <IServiceBusIdentity> [-AutoDeleteOnIdle <TimeSpan>]
  [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
- [-LockDuration <TimeSpan>] [-EnableBatchedOperations] [-Status <EntityStatus>] [-ForwardTo <String>]
+ [-LockDuration <TimeSpan>] [-EnableBatchedOperations] [-Status <String>] [-ForwardTo <String>]
  [-ForwardDeadLetteredMessagesTo <String>] [-MaxDeliveryCount <Int32>]
  [-DeadLetteringOnFilterEvaluationException] [-DeadLetteringOnMessageExpiration] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -365,6 +365,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -385,7 +400,7 @@ Accept wildcard characters: False
 Enumerates the possible values for the status of a messaging entity.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.EntityStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -466,7 +481,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbSubscription
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription
 
 ## NOTES
 

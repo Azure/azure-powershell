@@ -74,5 +74,21 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "healthProbeLog")]
         public string HealthProbeLog {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+            if (this.IPConfiguration != null)
+            {
+                this.IPConfiguration.Validate();
+            }
+
+
+        }
     }
 }

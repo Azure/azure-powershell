@@ -18,12 +18,12 @@ Describe 'Remove-AzServiceBusSubscription' {
     It 'Delete' {
         New-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name subToRemove
         Remove-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name subToRemove
-        { Get-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name subToRemove } | Should -Throw
+        { Get-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name subToRemove -ErrorAction Stop } | Should -Throw
     }
 
     It 'DeleteViaIdentity' {
         $sub = New-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name subToRemove
         Remove-AzServiceBusSubscription -InputObject $sub
-        { Get-AzServiceBusSubscription -InputObject $sub } | Should -Throw
+        { Get-AzServiceBusSubscription -InputObject $sub -ErrorAction Stop } | Should -Throw
     }
 }

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-The operation to Update a gallery image.
+The operation to update a gallery image.
 .Description
-The operation to Update a gallery image.
+The operation to update a gallery image.
 .Example
 {{ Add code here }}
 .Example

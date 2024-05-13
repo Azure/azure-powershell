@@ -17,7 +17,7 @@ Create a Custom Location in the specified Subscription and Resource Group
 New-AzCustomLocation -Name <String> -ResourceGroupName <String> -ClusterExtensionId <String[]>
  -HostResourceId <String> -Location <String> -Namespace <String> [-SubscriptionId <String>]
  [-AuthenticationType <String>] [-AuthenticationValue <String>] [-DisplayName <String>]
- [-IdentityType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-EnableSystemAssignedIdentity] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -54,6 +54,45 @@ eastus   azps-customlocation azps-namespace azps_test_cluster
 ```
 
 Creates or updates a Custom Location in the specified Subscription and Resource Group.
+
+### Example 2: Creates or updates a Custom Location that enable system assigned identity
+```powershell
+$HostResourceId = (Get-AzConnectedKubernetes -ClusterName azps-connect -ResourceGroupName group01).Id
+$ClusterExtensionId = (Get-AzKubernetesExtension -ClusterName azps-connect -ClusterType ConnectedClusters -ResourceGroupName group01 -Name azps-extension).Id
+New-AzCustomLocation -ResourceGroupName group01 -Name azps-customlocation -Location eastus -ClusterExtensionId $ClusterExtensionId -HostResourceId $HostResourceId -Namespace azps-namespace -EnableSystemAssignedIdentity
+```
+
+```output
+AuthenticationType           : 
+AuthenticationValue          : 
+ClusterExtensionId           : {/subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/group01/providers/Microsoft.Kubernetes/ConnectedClusters/azps- 
+                               connect/providers/Microsoft.KubernetesConfiguration/extensions/azps-extension}
+DisplayName                  : 
+HostResourceId               : /subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/group01/providers/Microsoft.Kubernetes/connectedClusters/azps-c 
+                               onnect
+HostType                     : Kubernetes
+Id                           : /subscriptions/11111111-2222-3333-4444-123456789101/resourcegroups/group01/providers/microsoft.extendedlocation/customlocations/az 
+                               ps-customlocation
+IdentityPrincipalId          : 11111111-2222-3333-4444-123456789123
+IdentityTenantId             : 11111111-2222-3333-4444-123456789876
+IdentityType                 : SystemAssigned
+Location                     : eastus
+Name                         : azps-customlocation
+Namespace                    : azps-namespace
+ProvisioningState            : Succeeded
+ResourceGroupName            : group01
+SystemDataCreatedAt          : 4/30/2024 7:57:50 AM
+SystemDataCreatedBy          : user@example.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 4/30/2024 7:57:50 AM
+SystemDataLastModifiedBy     : user@example.com
+SystemDataLastModifiedByType : User
+Tag                          : {
+                               }
+Type                         : Microsoft.ExtendedLocation/customLocations
+```
+
+The third command creates or updates a Custom Location that enable system assigned identity.
 
 ## PARAMETERS
 
@@ -148,6 +187,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -HostResourceId
 Connected Cluster or AKS Cluster.
 The Custom Locations RP will perform a checkAccess API for listAdminCredentials permissions.
@@ -158,21 +212,6 @@ Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-The identity type.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -350,8 +389,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
 
 ## OUTPUTS
 

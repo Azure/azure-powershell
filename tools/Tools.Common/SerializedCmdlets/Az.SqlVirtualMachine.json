@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.SqlVirtualMachine",
-  "ModuleVersion": "2.2.0",
+  "ModuleVersion": "2.2.1",
   "Cmdlets": [
     {
       "VerbName": "Get",

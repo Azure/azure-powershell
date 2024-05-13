@@ -1,0 +1,40 @@
+{
+  "Invoke-AzStorageActionTaskPreviewAction+[NoContext]+PreviewExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.StorageActions/locations/eastus2euap/previewActions?api-version=2023-01-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.StorageActions/locations/eastus2euap/previewActions?api-version=2023-01-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"container\": {\r\n      \"name\": \"firstContainer\",\r\n      \"metadata\": [\r\n        {\r\n          \"key\": \"mContainerKey1\",\r\n          \"value\": \"mContainerValue1\"\r\n        }\r\n      ]\r\n    },\r\n    \"action\": {\r\n      \"if\": {\r\n        \"condition\": \"[[equals(AccessTier, \\u0027Hot\\u0027)]]\"\r\n      },\r\n      \"elseBlockExists\": true\r\n    },\r\n    \"blobs\": [\r\n      {\r\n        \"name\": \"folder1/file1.txt\",\r\n        \"properties\": [\r\n          {\r\n            \"key\": \"Creation-Time\",\r\n            \"value\": \"Wed, 07 Jun 2023 05:23:29 GMT\"\r\n          },\r\n          {\r\n            \"key\": \"Last-Modified\",\r\n            \"value\": \"Wed, 07 Jun 2023 05:23:29 GMT\"\r\n          },\r\n          {\r\n            \"key\": \"Etag\",\r\n            \"value\": \"0x8DB67175454D36D\"\r\n          },\r\n          {\r\n            \"key\": \"Content-Length\",\r\n            \"value\": \"38619\"\r\n          },\r\n          {\r\n            \"key\": \"Content-Type\",\r\n            \"value\": \"text/xml\"\r\n          },\r\n          {\r\n            \"key\": \"Content-Encoding\",\r\n            \"value\": \"\"\r\n          },\r\n          {\r\n            \"key\": \"Content-Language\",\r\n            \"value\": \"\"\r\n          },\r\n          {\r\n            \"key\": \"Content-CRC64\",\r\n            \"value\": \"\"\r\n          },\r\n          {\r\n            \"key\": \"Content-MD5\",\r\n            \"value\": \"njr6iDrmU9+FC89WMK22EA==\"\r\n          },\r\n          {\r\n            \"key\": \"Cache-Control\",\r\n            \"value\": \"\"\r\n          },\r\n          {\r\n            \"key\": \"Content-Disposition\",\r\n            \"value\": \"\"\r\n          },\r\n          {\r\n            \"key\": \"BlobType\",\r\n            \"value\": \"BlockBlob\"\r\n          },\r\n          {\r\n            \"key\": \"AccessTier\",\r\n            \"value\": \"Hot\"\r\n          },\r\n          {\r\n            \"key\": \"AccessTierInferred\",\r\n            \"value\": \"true\"\r\n          },\r\n          {\r\n            \"key\": \"LeaseStatus\",\r\n            \"value\": \"unlocked\"\r\n          },\r\n          {\r\n            \"key\": \"LeaseState\",\r\n            \"value\": \"available\"\r\n          },\r\n          {\r\n            \"key\": \"ServerEncrypted\",\r\n            \"value\": \"true\"\r\n          },\r\n          {\r\n            \"key\": \"TagCount\",\r\n            \"value\": \"1\"\r\n          }\r\n        ],\r\n        \"metadata\": [\r\n          {\r\n            \"key\": \"mKey1\",\r\n            \"value\": \"mValue1\"\r\n          }\r\n        ],\r\n        \"tags\": [\r\n          {\r\n            \"key\": \"tKey1\",\r\n            \"value\": \"tValue1\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"name\": \"folder2/file1.txt\",\r\n        \"properties\": [\r\n          {\r\n            \"key\": \"Creation-Time\",\r\n            \"value\": \"Wed, 06 Jun 2023 05:23:29 GMT\"\r\n          },\r\n          {\r\n            \"key\": \"Last-Modified\",\r\n            \"value\": \"Wed, 06 Jun 2023 05:23:29 GMT\"\r\n          },\r\n          {\r\n            \"key\": \"Etag\",\r\n            \"value\": \"0x6FB67175454D36D\"\r\n          }\r\n        ],\r\n        \"metadata\": [\r\n          {\r\n            \"key\": \"mKey2\",\r\n            \"value\": \"mValue2\"\r\n          }\r\n        ],\r\n        \"tags\": [\r\n          {\r\n            \"key\": \"tKey2\",\r\n            \"value\": \"tValue2\"\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "3122" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "a834f2c5-dca5-4aca-82e6-7cb8ca9064dd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "d9d440b9-6245-4f23-9de4-5f794dc04b47" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240506T083713Z:d9d440b9-6245-4f23-9de4-5f794dc04b47" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 82B2DA3FB4554A9E9CBA2960F9083FC6 Ref B: MAA201060513051 Ref C: 2024-05-06T08:37:12Z" ],
+        "Date": [ "Mon, 06 May 2024 08:37:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1492" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"container\":{\"name\":\"firstContainer\",\"metadata\":[{\"key\":\"mContainerKey1\",\"value\":\"mContainerValue1\"}]},\"blobs\":[{\"matchedBlock\":\"If\",\"properties\":[{\"key\":\"Creation-Time\",\"value\":\"Wed, 07 Jun 2023 05:23:29 GMT\"},{\"key\":\"Last-Modified\",\"value\":\"Wed, 07 Jun 2023 05:23:29 GMT\"},{\"key\":\"Etag\",\"value\":\"0x8DB67175454D36D\"},{\"key\":\"Content-Length\",\"value\":\"38619\"},{\"key\":\"Content-Type\",\"value\":\"text/xml\"},{\"key\":\"Content-Encoding\",\"value\":\"\"},{\"key\":\"Content-Language\",\"value\":\"\"},{\"key\":\"Content-CRC64\",\"value\":\"\"},{\"key\":\"Content-MD5\",\"value\":\"njr6iDrmU9+FC89WMK22EA==\"},{\"key\":\"Cache-Control\",\"value\":\"\"},{\"key\":\"Content-Disposition\",\"value\":\"\"},{\"key\":\"BlobType\",\"value\":\"BlockBlob\"},{\"key\":\"AccessTier\",\"value\":\"Hot\"},{\"key\":\"AccessTierInferred\",\"value\":\"true\"},{\"key\":\"LeaseStatus\",\"value\":\"unlocked\"},{\"key\":\"LeaseState\",\"value\":\"available\"},{\"key\":\"ServerEncrypted\",\"value\":\"true\"},{\"key\":\"TagCount\",\"value\":\"1\"}],\"tags\":[{\"key\":\"tKey1\",\"value\":\"tValue1\"}],\"name\":\"folder1/file1.txt\",\"metadata\":[{\"key\":\"mKey1\",\"value\":\"mValue1\"}]},{\"matchedBlock\":\"Else\",\"properties\":[{\"key\":\"Creation-Time\",\"value\":\"Wed, 06 Jun 2023 05:23:29 GMT\"},{\"key\":\"Last-Modified\",\"value\":\"Wed, 06 Jun 2023 05:23:29 GMT\"},{\"key\":\"Etag\",\"value\":\"0x6FB67175454D36D\"}],\"tags\":[{\"key\":\"tKey2\",\"value\":\"tValue2\"}],\"name\":\"folder2/file1.txt\",\"metadata\":[{\"key\":\"mKey2\",\"value\":\"mValue2\"}]}],\"action\":{\"if\":{\"condition\":\"[[equals(AccessTier, \u0027Hot\u0027)]]\"},\"elseBlockExists\":true}},\"isValid\":true,\"errors\":[]}",
+      "isContentBase64": false
+    }
+  }
+}

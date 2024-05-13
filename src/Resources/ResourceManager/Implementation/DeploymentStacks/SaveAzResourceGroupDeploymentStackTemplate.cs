@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
     [Cmdlet("Save", Common.AzureRMConstants.AzureRMPrefix + "ResourceGroupDeploymentStackTemplate",
         DefaultParameterSetName = SaveByNameAndResourceGroupNameParameterSetName), OutputType(typeof(PSDeploymentStackTemplateDefinition))]
-    [CmdletPreview("The cmdlet is in preview and under development.")]
     public class SaveAzResourceGroupDeploymentStackTemplate : DeploymentStacksCmdletBase
     {
         #region Cmdlet Parameters and Parameter Set Definitions

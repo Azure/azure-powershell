@@ -416,5 +416,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeNoVMProfile");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetDefaultImgWhenStandard()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetDefaultImgWhenStandard");
+        }
     }
 }

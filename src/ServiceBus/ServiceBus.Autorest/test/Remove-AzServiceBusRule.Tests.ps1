@@ -18,12 +18,12 @@ Describe 'Remove-AzServiceBusRule' {
     It 'Delete' {
         New-AzServiceBusRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -SubscriptionName subscription1 -Name sqlRuleToRemove
         Remove-AzServiceBusRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -SubscriptionName subscription1 -Name sqlRuleToRemove
-        { Get-AzServiceBusRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -SubscriptionName subscription1 -Name sqlRuleToRemove } | Should -Throw
+        { Get-AzServiceBusRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -SubscriptionName subscription1 -Name sqlRuleToRemove -ErrorAction Stop } | Should -Throw
     }
 
     It 'DeleteViaIdentity' {
         $rule = New-AzServiceBusRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -SubscriptionName subscription1 -Name sqlRuleToRemove
         Remove-AzServiceBusRule -InputObject $rule
-        { Get-AzServiceBusRule -InputObject $rule } | Should -Throw
+        { Get-AzServiceBusRule -InputObject $rule -ErrorAction Stop } | Should -Throw
     }
 }

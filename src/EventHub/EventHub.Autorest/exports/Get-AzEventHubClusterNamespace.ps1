@@ -23,12 +23,12 @@ List all Event Hubs Namespace IDs in an Event Hubs Dedicated Cluster.
 Get-AzEventHubClusterNamespace -ResourceGroupName myResourceGroup -ClusterName DefaultCluster-11
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespaceIdContainer
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceIdListResult
 .Link
 https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubclusternamespace
 #>
 function Get-AzEventHubClusterNamespace {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespaceIdContainer])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceIdListResult])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -128,7 +128,7 @@ begin {
         $mapping = @{
             List = 'Az.EventHub.private\Get-AzEventHubClusterNamespace_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {

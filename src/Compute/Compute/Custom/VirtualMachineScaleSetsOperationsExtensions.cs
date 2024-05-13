@@ -13,12 +13,16 @@ namespace Microsoft.Azure.Management.Compute
         public static async Task<VirtualMachineScaleSet> CreateOrUpdateWithCustomHeaderAsync(this IVirtualMachineScaleSetsOperations operations, string resourceGroupName, string vmssName, VirtualMachineScaleSet virtualMachineScaleSet, CancellationToken cancellationToken = default(CancellationToken))
         {
             var auxAuthHeader = virtualMachineScaleSet.GetAuxAuthHeader();
+            var ifMatchResult = virtualMachineScaleSet.GetIfMatchIfNoneMatch();
+            var ifMatch = ifMatchResult.Item1;
+            var ifNoneMatch = ifMatchResult.Item2;
             if (auxAuthHeader == null)
             {
-                return operations.CreateOrUpdate(resourceGroupName, vmssName, virtualMachineScaleSet);
+                return operations.CreateOrUpdate(resourceGroupName, vmssName, virtualMachineScaleSet, ifMatch, ifNoneMatch);
             }
             virtualMachineScaleSet.RemoveAuxAuthHeader();
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vmssName, virtualMachineScaleSet, null,null,auxAuthHeader, cancellationToken).ConfigureAwait(false))
+            virtualMachineScaleSet.RemoveIfMatchIfNoneMatch();
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vmssName, virtualMachineScaleSet, ifMatch ,ifNoneMatch,auxAuthHeader, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

@@ -313,15 +313,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to When disabled, error records will not be written to ~/.Azure/ErrorRecords. This config will be replaced by &quot;EnableErrorRecordsPersistence&quot; as opt-in in the next major release of Az around November 2023..
-        /// </summary>
-        public static string HelpMessageOfDisableErrorRecordsPersistence {
-            get {
-                return ResourceManager.GetString("HelpMessageOfDisableErrorRecordsPersistence", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Set it to true to disable both instance discovery and authority validation. This functionality is intended for use in scenarios where the metadata endpoint cannot be reached, such as in private clouds or Azure Stack. The process of instance discovery entails retrieving authority metadata from https://login.microsoft.com/ to validate the authority. By setting this to true, the validation of the authority is disabled. As a result, it is crucial to ensure that the configured authority host is valid and trustwo [rest of string was truncated]&quot;;.
         /// </summary>
         public static string HelpMessageOfDisableInstanceDiscovery {
@@ -390,6 +381,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         public static string HelpMessageOfEnableWamLogin {
             get {
                 return ResourceManager.GetString("HelpMessageOfEnableWamLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only active when authenticating interactively, allows the user to choose the subscription and tenant used in subsequent commands. Possible values ad &apos;On&apos; (Default) and &apos;Off&apos;. &apos;On&apos; requires user&apos;s input. &apos;Off&apos; will use the first tenant and subscription returned by Azure, can change without notice and lead to command execution in an unwanted context (not recommended)..
+        /// </summary>
+        public static string HelpMessageOfLoginExperienceV2 {
+            get {
+                return ResourceManager.GetString("HelpMessageOfLoginExperienceV2", resourceCulture);
             }
         }
         

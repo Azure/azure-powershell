@@ -104,8 +104,8 @@ namespace Microsoft.Azure.Commands.Profile
                 var profile = DefaultProfile as AzureRmProfile;
                 if (profile != null && profile.Contexts != null)
                 {
-                    WritePSAzureContext(profile.Contexts.Select(context => ToPSAzureContext(context.Value, context.Key)).
-                        OrderBy(context => context.Tenant.Id).ThenBy(context => context.Subscription.Name));
+                    WritePSAzureContext(profile.Contexts.Select(context => ToPSAzureContext(context.Value, context.Key))?.Where(context => null != context) // remove null contexts
+                        ?.OrderBy(context => context?.Tenant?.Id ?? "").ThenBy(context => context?.Subscription?.Name ?? ""));
                 }
 
             }
@@ -129,10 +129,17 @@ namespace Microsoft.Azure.Commands.Profile
             }
         }
 
+        /// <summary>
+        /// Convert AzureContext to PSAzureContext with given name
+        /// Notice that returned context may be null
+        /// </summary>
+        /// <param name="azureContext"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
         private PSAzureContext ToPSAzureContext(IAzureContext azureContext, string name)
         {
             var context = new PSAzureContext(azureContext);
-            if (name != null)
+            if (null != name && null != context)
             {
                 context.Name = name;
             }

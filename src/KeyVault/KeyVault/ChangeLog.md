@@ -18,10 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* [Breaking change] Removed the offline fallback policy if specify parameter `UseDefaultCVMPolicy` in `Add-AzKeyVaultKey`. Key creation will fail if unable to get regional default CVM SKR policy from MAA Service Discovery API.
 * [Breaking change] Removed parameter `Value` from `Invoke-AzKeyVaultKeyOperation`.
 * [Breaking change] Removed property `Result` from the output type `PSKeyOperationResult` of `Invoke-AzKeyVaultKeyOperation`.
 * [Breaking Change] Replaced parameter `EnableRbacAuthorization` by `DisableRbacAuthorization` in `New-AzKeyVault` and `Update-AzKeyVault`.
     - RBAC will be enabled by default during the process of key vault creation. 
+    
+## Version 5.3.0
 * Introduced secrets detection feature to safeguard sensitive data.
 * [Upcoming Breaking Change] Added breaking change warning message for parameter `UseDefaultCVMPolicy` of `Add-AzKeyVaultKey`.
     - The offline fallback policy will be removed. Key creation will fail if unable to get regional default CVM SKR policy from MAA Service Discovery API.

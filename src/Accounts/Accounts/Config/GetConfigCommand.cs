@@ -25,7 +25,6 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Config
 {
-    [GenericBreakingChangeWithVersion("Parameter `DisableErrorRecordsPersistence` will be deprecated, a new parameter `EnableErrorRecordsPersistence` will be added instead. Writing error records to file system will become opt-in instead of opt-out. This change will happen around May 2024", "12.0.0", "2.X")]
     [Cmdlet(VerbsCommon.Get, AzureRMConstants.AzureRMPrefix + "Config")]
     [OutputType(typeof(PSConfig))]
     public class GetConfigCommand : ConfigCommandBase, IDynamicParameters

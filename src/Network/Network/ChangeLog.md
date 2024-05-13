@@ -20,7 +20,25 @@
 
 ## Upcoming Release
 * Added cmdlet `Restart-AzNetworkVirtualAppliance` for allowing a restart of Network Virtual Appliance instances from the customer subscription.
-* Added support for ApplicationGatewaySkuFamily
+* Added support for ApplicationGatewaySkuFamily 
+* Updated cmdlet to add the property of JSChallengeCookieExpirationInMins
+    - `New-AzApplicationGatewayFirewallPolicySetting`
+* Added optional property `HeaderValueMatcher` to `New-AzApplicationGatewayRewriteRuleHeaderConfiguration`
+* Added new cmdlet `New-AzApplicationGatewayHeaderValueMatcher` to support for the new property `HeaderValueMatcher`
+* Added new cmdlet `Update-AzVirtualApplianceInboundSecurityRule` to support Inbound Security Rule for Network Virtual Appliance
+* Added new cmdlet `New-AzVirtualApplianceInboundSecurityRulesProperty` to support for the property 'rules' of Inbound Security Rules
+* Added AdminState parameter to Load Balancer Backend Address
+    - `New-AzLoadBalancerBackendAddressConfig`
+* Updated PS SDK to older SDK removing identity field
+
+## Version 7.5.0
+* Added cmdlet `Convert-AzNetworkWatcherClassicConnectionMonitor` for converting a classic connection monitor to V2 connection monitor.
+
+## Version 7.4.1
+* Fixed a bug caused by the introduction of the new property `GlobalConfiguration` in `PSApplicationGateway`
+* Added support for Bring Your Own Public IP feature for Hub Firewalls
+
+## Version 7.4.0
 * Fixed a few minor issues
 * Updated `New-AzApplicationGateway` to include `EnableRequestBuffering` and `EnableResponseBuffering` parameters
 * Changed the Default Rule Set from CRS3.0 to DRS2.1 in `NewAzureApplicationGatewayFirewallPolicy`
