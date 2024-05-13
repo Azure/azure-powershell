@@ -64,12 +64,6 @@ jobs:
   - task: PowerShell@2
     displayName: Generate a response text file with each file to be scanned for BinSkim
     inputs:
-      targetType: inline
-      script: ./src/lib/pdb/CopyPdbToArtifacts.ps1
-      pwsh: true
-  
-  - task: PowerShell@2
-    inputs:
       targetType: 'inline'
       script: |
         New-Item $(Build.SourcesDirectory)/artifacts/MyFileList.rsp -ItemType File -Force
