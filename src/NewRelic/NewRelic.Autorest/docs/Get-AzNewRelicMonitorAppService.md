@@ -12,10 +12,23 @@ List the app service resources currently being monitored by the NewRelic resourc
 
 ## SYNTAX
 
+### ListExpanded (Default)
 ```
 Get-AzNewRelicMonitorAppService -MonitorName <String> -ResourceGroupName <String> -UserEmail <String>
  [-SubscriptionId <String[]>] [-AzureResourceId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### ListViaJsonFilePath
+```
+Get-AzNewRelicMonitorAppService -MonitorName <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ListViaJsonString
+```
+Get-AzNewRelicMonitorAppService -MonitorName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +38,7 @@ List the app service resources currently being monitored by the NewRelic resourc
 
 ### Example 1: Get specific App Service
 ```powershell
-Get-AzNewRelicMonitorAppService -MonitorName test-02 -ResourceGroupName ps-test -UserEmail v-jiaji@outlook.com -AzureResourceId /SUBSCRIPTIONS/272C26CB-7026-4B37-B190-7CB7B2ABECB0/RESOURCEGROUPS/PS-TEST/PROVIDERS/MICROSOFT.WEB/SITES/JOYERTEST
+Get-AzNewRelicMonitorAppService -MonitorName test-02 -ResourceGroupName ps-test -UserEmail user1@outlook.com -AzureResourceId /SUBSCRIPTIONS/11111111-2222-3333-4444-123456789101/RESOURCEGROUPS/PS-TEST/PROVIDERS/MICROSOFT.WEB/SITES/GROUPTEST
 ```
 
 Get specified app service information currently being monitored by specified NewRelic resource.
@@ -37,7 +50,7 @@ Azure resource IDs
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: ListExpanded
 Aliases:
 
 Required: False
@@ -57,6 +70,36 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the List operation
+
+```yaml
+Type: System.String
+Parameter Sets: ListViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the List operation
+
+```yaml
+Type: System.String
+Parameter Sets: ListViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -114,7 +157,7 @@ User Email
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ListExpanded
 Aliases:
 
 Required: True
@@ -162,11 +205,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.IAppServiceInfo
+### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IAppServiceInfo
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

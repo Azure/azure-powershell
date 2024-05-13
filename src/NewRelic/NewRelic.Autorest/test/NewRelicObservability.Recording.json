@@ -1,8 +1,8 @@
 {
-  "NewRelicObservability+[NoContext]+MonitorCreateExpanded+$PUT+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01?api-version=2022-07-01+1": {
+  "NewRelicObservability+[NoContext]+MonitorCreateExpanded+$PUT+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01?api-version=2024-01-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01?api-version=2024-01-01",
       "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"userInfo\": {\r\n      \"firstName\": \"Joyer\",\r\n      \"lastName\": \"Jin\",\r\n      \"emailAddress\": \"v-jiaji@microsoft.com\"\r\n    },\r\n    \"planData\": {\r\n      \"usageType\": \"PAYG\",\r\n      \"billingCycle\": \"MONTHLY\",\r\n      \"planDetails\": \"newrelic-pay-as-you-go-free-live@TIDgmz7xq9ge3py@PUBIDnewrelicinc1635200720692.newrelic_liftr_payg\",\r\n      \"effectiveDate\": \"2023-07-04T10:39:27.0785029+08:00\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -18,14 +18,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"700038c4-0000-0100-0000-64a3866a0000\"" ],
-        "Location": [ "https://management.azure.com/providers/NewRelic.Observability/locations/EASTUS/operationStatuses/29fd2130-fab3-44a3-ac4e-3ed28586ad22*5B35BF236CB20EBB1F5715CFE9DACBBDE54DB30CA4D4003540E6DE9871D332EE?api-version=2022-07-01" ],
+        "Location": [ "https://management.azure.com/providers/NewRelic.Observability/locations/EASTUS/operationStatuses/29fd2130-fab3-44a3-ac4e-3ed28586ad22*5B35BF236CB20EBB1F5715CFE9DACBBDE54DB30CA4D4003540E6DE9871D332EE?api-version=2024-01-01" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:99558bd9-e2af-4edd-b8b9-dfc879de6669" ],
         "mise-correlation-id": [ "943fff10-7a03-4818-b8bd-136436a27260" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/NewRelic.Observability/locations/EASTUS/operationStatuses/29fd2130-fab3-44a3-ac4e-3ed28586ad22*5B35BF236CB20EBB1F5715CFE9DACBBDE54DB30CA4D4003540E6DE9871D332EE?api-version=2022-07-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/NewRelic.Observability/locations/EASTUS/operationStatuses/29fd2130-fab3-44a3-ac4e-3ed28586ad22*5B35BF236CB20EBB1F5715CFE9DACBBDE54DB30CA4D4003540E6DE9871D332EE?api-version=2024-01-01" ],
         "x-ms-request-id": [ "29fd2130-fab3-44a3-ac4e-3ed28586ad22" ],
         "x-ms-correlation-request-id": [ "d78a7005-af60-40ac-bda4-56ab95e4c37b" ],
         "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230704T023939Z:d78a7005-af60-40ac-bda4-56ab95e4c37b" ],
@@ -40,10 +40,10 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorCreateExpanded+$GET+https://management.azure.com/providers/NewRelic.Observability/locations/EASTUS/operationStatuses/29fd2130-fab3-44a3-ac4e-3ed28586ad22*5B35BF236CB20EBB1F5715CFE9DACBBDE54DB30CA4D4003540E6DE9871D332EE?api-version=2022-07-01+2": {
+  "NewRelicObservability+[NoContext]+MonitorCreateExpanded+$GET+https://management.azure.com/providers/NewRelic.Observability/locations/EASTUS/operationStatuses/29fd2130-fab3-44a3-ac4e-3ed28586ad22*5B35BF236CB20EBB1F5715CFE9DACBBDE54DB30CA4D4003540E6DE9871D332EE?api-version=2024-01-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/NewRelic.Observability/locations/EASTUS/operationStatuses/29fd2130-fab3-44a3-ac4e-3ed28586ad22*5B35BF236CB20EBB1F5715CFE9DACBBDE54DB30CA4D4003540E6DE9871D332EE?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/providers/NewRelic.Observability/locations/EASTUS/operationStatuses/29fd2130-fab3-44a3-ac4e-3ed28586ad22*5B35BF236CB20EBB1F5715CFE9DACBBDE54DB30CA4D4003540E6DE9871D332EE?api-version=2024-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -81,10 +81,10 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorCreateExpanded+$GET+https://management.azure.com/providers/NewRelic.Observability/locations/EASTUS/operationStatuses/29fd2130-fab3-44a3-ac4e-3ed28586ad22*5B35BF236CB20EBB1F5715CFE9DACBBDE54DB30CA4D4003540E6DE9871D332EE?api-version=2022-07-01+3": {
+  "NewRelicObservability+[NoContext]+MonitorCreateExpanded+$GET+https://management.azure.com/providers/NewRelic.Observability/locations/EASTUS/operationStatuses/29fd2130-fab3-44a3-ac4e-3ed28586ad22*5B35BF236CB20EBB1F5715CFE9DACBBDE54DB30CA4D4003540E6DE9871D332EE?api-version=2024-01-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/NewRelic.Observability/locations/EASTUS/operationStatuses/29fd2130-fab3-44a3-ac4e-3ed28586ad22*5B35BF236CB20EBB1F5715CFE9DACBBDE54DB30CA4D4003540E6DE9871D332EE?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/providers/NewRelic.Observability/locations/EASTUS/operationStatuses/29fd2130-fab3-44a3-ac4e-3ed28586ad22*5B35BF236CB20EBB1F5715CFE9DACBBDE54DB30CA4D4003540E6DE9871D332EE?api-version=2024-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -122,10 +122,10 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorCreateExpanded+$GET+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01?api-version=2022-07-01+4": {
+  "NewRelicObservability+[NoContext]+MonitorCreateExpanded+$GET+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01?api-version=2024-01-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01?api-version=2024-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -164,10 +164,10 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorTagRuleCreateExpanded+$PUT+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01/tagRules/default?api-version=2022-07-01+1": {
+  "NewRelicObservability+[NoContext]+MonitorTagRuleCreateExpanded+$PUT+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01/tagRules/default?api-version=2024-01-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01/tagRules/default?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01/tagRules/default?api-version=2024-01-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"logRules\": {\r\n      \"sendAadLogs\": \"Enabled\",\r\n      \"sendSubscriptionLogs\": \"Enabled\",\r\n      \"sendActivityLogs\": \"Enabled\"\r\n    },\r\n    \"metricRules\": {\r\n      \"sendMetrics\": \"Enabled\",\r\n      \"userEmail\": \"v-jiaji@microsoft.com\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -204,10 +204,10 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorTagRuleCreateExpanded+$GET+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01/tagRules/default?api-version=2022-07-01+2": {
+  "NewRelicObservability+[NoContext]+MonitorTagRuleCreateExpanded+$GET+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01/tagRules/default?api-version=2024-01-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01/tagRules/default?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01/tagRules/default?api-version=2024-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -246,10 +246,10 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorTagRuleCreateExpanded+$GET+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01/tagRules/default?api-version=2022-07-01+3": {
+  "NewRelicObservability+[NoContext]+MonitorTagRuleCreateExpanded+$GET+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01/tagRules/default?api-version=2024-01-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01/tagRules/default?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01/tagRules/default?api-version=2024-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -288,10 +288,10 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorTagRuleList+$GET+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01/tagRules?api-version=2022-07-01+1": {
+  "NewRelicObservability+[NoContext]+MonitorTagRuleList+$GET+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01/tagRules?api-version=2024-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01/tagRules?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01/tagRules?api-version=2024-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -329,10 +329,10 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorListSub+$GET+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/monitors?api-version=2022-07-01+1": {
+  "NewRelicObservability+[NoContext]+MonitorListSub+$GET+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/monitors?api-version=2024-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/monitors?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/monitors?api-version=2024-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -370,10 +370,10 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorListGp+$GET+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors?api-version=2022-07-01+1": {
+  "NewRelicObservability+[NoContext]+MonitorListGp+$GET+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors?api-version=2024-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors?api-version=2024-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -411,10 +411,10 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorGet+$GET+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01?api-version=2022-07-01+1": {
+  "NewRelicObservability+[NoContext]+MonitorGet+$GET+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01?api-version=2024-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01?api-version=2024-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -453,10 +453,10 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+AppServiceList+$POST+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-03/listAppServices?api-version=2022-07-01+1": {
+  "NewRelicObservability+[NoContext]+AppServiceList+$POST+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-03/listAppServices?api-version=2024-01-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-03/listAppServices?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-03/listAppServices?api-version=2024-01-01",
       "Content": "{\r\n  \"azureResourceIds\": [ \"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/Microsoft.Web/sites/joyertest\" ],\r\n  \"userEmail\": \"v-jiaji@microsoft.com\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -491,10 +491,10 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+HostList+$POST+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01/listHosts?api-version=2022-07-01+1": {
+  "NewRelicObservability+[NoContext]+HostList+$POST+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01/listHosts?api-version=2024-01-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01/listHosts?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01/listHosts?api-version=2024-01-01",
       "Content": "{\r\n  \"vmIds\": [ \"saurg-vm-01\" ],\r\n  \"userEmail\": \"v-jiaji@microsoft.com\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -529,10 +529,10 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MetricRuleList+$POST+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-03/getMetricRules?api-version=2022-07-01+1": {
+  "NewRelicObservability+[NoContext]+MetricRuleList+$POST+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-03/getMetricRules?api-version=2024-01-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-03/getMetricRules?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-03/getMetricRules?api-version=2024-01-01",
       "Content": "{\r\n  \"userEmail\": \"v-jiaji@microsoft.com\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -568,10 +568,10 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MetricStatusList+$POST+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-03/getMetricStatus?api-version=2022-07-01+1": {
+  "NewRelicObservability+[NoContext]+MetricStatusList+$POST+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-03/getMetricStatus?api-version=2024-01-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-03/getMetricStatus?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-03/getMetricStatus?api-version=2024-01-01",
       "Content": "{\r\n  \"azureResourceIds\": [ \"/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/Microsoft.Web/sites/joyertest\" ],\r\n  \"userEmail\": \"v-jiaji@microsoft.com\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -607,10 +607,10 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitoredResource+$POST+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-03/monitoredResources?api-version=2022-07-01+1": {
+  "NewRelicObservability+[NoContext]+MonitoredResource+$POST+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-03/monitoredResources?api-version=2024-01-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-03/monitoredResources?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-03/monitoredResources?api-version=2024-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -651,10 +651,10 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+AccountPlanList+$GET+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/accounts?api-version=2022-07-01\u0026userEmail=v-jiaji%40microsoft.com\u0026location=eastus+1": {
+  "NewRelicObservability+[NoContext]+AccountPlanList+$GET+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/accounts?api-version=2024-01-01\u0026userEmail=v-jiaji%40microsoft.com\u0026location=eastus+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/accounts?api-version=2022-07-01\u0026userEmail=v-jiaji%40microsoft.com\u0026location=eastus",
+      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/accounts?api-version=2024-01-01\u0026userEmail=v-jiaji%40microsoft.com\u0026location=eastus",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -695,10 +695,10 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+AccountPlanList+$GET+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/plans?api-version=2022-07-01\u0026organizationId=2ae82717-8d07-45e6-946f-6221e47687fb+2": {
+  "NewRelicObservability+[NoContext]+AccountPlanList+$GET+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/plans?api-version=2024-01-01\u0026organizationId=2ae82717-8d07-45e6-946f-6221e47687fb+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/plans?api-version=2022-07-01\u0026organizationId=2ae82717-8d07-45e6-946f-6221e47687fb",
+      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/plans?api-version=2024-01-01\u0026organizationId=2ae82717-8d07-45e6-946f-6221e47687fb",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -739,10 +739,10 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+OrganizationList+$GET+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/organizations?api-version=2022-07-01\u0026userEmail=v-jiaji%40microsoft.com\u0026location=eastus+1": {
+  "NewRelicObservability+[NoContext]+OrganizationList+$GET+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/organizations?api-version=2024-01-01\u0026userEmail=v-jiaji%40microsoft.com\u0026location=eastus+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/organizations?api-version=2022-07-01\u0026userEmail=v-jiaji%40microsoft.com\u0026location=eastus",
+      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/providers/NewRelic.Observability/organizations?api-version=2024-01-01\u0026userEmail=v-jiaji%40microsoft.com\u0026location=eastus",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -782,10 +782,10 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorTagRuleUpdateExpanded+$PATCH+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01/tagRules/default?api-version=2022-07-01+1": {
+  "NewRelicObservability+[NoContext]+MonitorTagRuleUpdateExpanded+$PATCH+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01/tagRules/default?api-version=2024-01-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01/tagRules/default?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01/tagRules/default?api-version=2024-01-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"logRules\": {\r\n      \"sendActivityLogs\": \"Disabled\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -819,10 +819,10 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorTagRuleDelete+$DELETE+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01/tagRules/default?api-version=2022-07-01+1": {
+  "NewRelicObservability+[NoContext]+MonitorTagRuleDelete+$DELETE+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01/tagRules/default?api-version=2024-01-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01/tagRules/default?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01/tagRules/default?api-version=2024-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -859,10 +859,10 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorDelete+$DELETE+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01?api-version=2022-07-01\u0026userEmail=v-jiaji%40microsoft.com+1": {
+  "NewRelicObservability+[NoContext]+MonitorDelete+$DELETE+https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01?api-version=2024-01-01\u0026userEmail=v-jiaji%40microsoft.com+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01?api-version=2022-07-01\u0026userEmail=v-jiaji%40microsoft.com",
+      "RequestUri": "https://management.azure.com/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/NewRelic.Observability/monitors/test-01?api-version=2024-01-01\u0026userEmail=v-jiaji%40microsoft.com",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -883,14 +883,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"70003bc4-0000-0100-0000-64a386e40000\"" ],
-        "Location": [ "https://management.azure.com/providers/NewRelic.Observability/locations/EASTUS/operationStatuses/be765926-3b7f-4f35-af4c-15e5ce70f4d1*5B35BF236CB20EBB1F5715CFE9DACBBDE54DB30CA4D4003540E6DE9871D332EE?api-version=2022-07-01" ],
+        "Location": [ "https://management.azure.com/providers/NewRelic.Observability/locations/EASTUS/operationStatuses/be765926-3b7f-4f35-af4c-15e5ce70f4d1*5B35BF236CB20EBB1F5715CFE9DACBBDE54DB30CA4D4003540E6DE9871D332EE?api-version=2024-01-01" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:99558bd9-e2af-4edd-b8b9-dfc879de6669" ],
         "mise-correlation-id": [ "7c01e7b3-5799-4504-a647-97ee7ef7fd6a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/NewRelic.Observability/locations/EASTUS/operationStatuses/be765926-3b7f-4f35-af4c-15e5ce70f4d1*5B35BF236CB20EBB1F5715CFE9DACBBDE54DB30CA4D4003540E6DE9871D332EE?api-version=2022-07-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/NewRelic.Observability/locations/EASTUS/operationStatuses/be765926-3b7f-4f35-af4c-15e5ce70f4d1*5B35BF236CB20EBB1F5715CFE9DACBBDE54DB30CA4D4003540E6DE9871D332EE?api-version=2024-01-01" ],
         "x-ms-request-id": [ "be765926-3b7f-4f35-af4c-15e5ce70f4d1" ],
         "x-ms-correlation-request-id": [ "629c23c4-877e-43b8-9455-c56a63e31573" ],
         "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230704T024140Z:629c23c4-877e-43b8-9455-c56a63e31573" ],
@@ -905,10 +905,10 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorDelete+$GET+https://management.azure.com/providers/NewRelic.Observability/locations/EASTUS/operationStatuses/be765926-3b7f-4f35-af4c-15e5ce70f4d1*5B35BF236CB20EBB1F5715CFE9DACBBDE54DB30CA4D4003540E6DE9871D332EE?api-version=2022-07-01+2": {
+  "NewRelicObservability+[NoContext]+MonitorDelete+$GET+https://management.azure.com/providers/NewRelic.Observability/locations/EASTUS/operationStatuses/be765926-3b7f-4f35-af4c-15e5ce70f4d1*5B35BF236CB20EBB1F5715CFE9DACBBDE54DB30CA4D4003540E6DE9871D332EE?api-version=2024-01-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/NewRelic.Observability/locations/EASTUS/operationStatuses/be765926-3b7f-4f35-af4c-15e5ce70f4d1*5B35BF236CB20EBB1F5715CFE9DACBBDE54DB30CA4D4003540E6DE9871D332EE?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/providers/NewRelic.Observability/locations/EASTUS/operationStatuses/be765926-3b7f-4f35-af4c-15e5ce70f4d1*5B35BF236CB20EBB1F5715CFE9DACBBDE54DB30CA4D4003540E6DE9871D332EE?api-version=2024-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -946,10 +946,10 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorDelete+$GET+https://management.azure.com/providers/NewRelic.Observability/locations/EASTUS/operationStatuses/be765926-3b7f-4f35-af4c-15e5ce70f4d1*5B35BF236CB20EBB1F5715CFE9DACBBDE54DB30CA4D4003540E6DE9871D332EE?api-version=2022-07-01+3": {
+  "NewRelicObservability+[NoContext]+MonitorDelete+$GET+https://management.azure.com/providers/NewRelic.Observability/locations/EASTUS/operationStatuses/be765926-3b7f-4f35-af4c-15e5ce70f4d1*5B35BF236CB20EBB1F5715CFE9DACBBDE54DB30CA4D4003540E6DE9871D332EE?api-version=2024-01-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/NewRelic.Observability/locations/EASTUS/operationStatuses/be765926-3b7f-4f35-af4c-15e5ce70f4d1*5B35BF236CB20EBB1F5715CFE9DACBBDE54DB30CA4D4003540E6DE9871D332EE?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/providers/NewRelic.Observability/locations/EASTUS/operationStatuses/be765926-3b7f-4f35-af4c-15e5ce70f4d1*5B35BF236CB20EBB1F5715CFE9DACBBDE54DB30CA4D4003540E6DE9871D332EE?api-version=2024-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -987,10 +987,10 @@
       "isContentBase64": false
     }
   },
-  "NewRelicObservability+[NoContext]+MonitorDelete+$GET+https://management.azure.com/providers/NewRelic.Observability/locations/EASTUS/operationStatuses/be765926-3b7f-4f35-af4c-15e5ce70f4d1*5B35BF236CB20EBB1F5715CFE9DACBBDE54DB30CA4D4003540E6DE9871D332EE?api-version=2022-07-01+4": {
+  "NewRelicObservability+[NoContext]+MonitorDelete+$GET+https://management.azure.com/providers/NewRelic.Observability/locations/EASTUS/operationStatuses/be765926-3b7f-4f35-af4c-15e5ce70f4d1*5B35BF236CB20EBB1F5715CFE9DACBBDE54DB30CA4D4003540E6DE9871D332EE?api-version=2024-01-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/NewRelic.Observability/locations/EASTUS/operationStatuses/be765926-3b7f-4f35-af4c-15e5ce70f4d1*5B35BF236CB20EBB1F5715CFE9DACBBDE54DB30CA4D4003540E6DE9871D332EE?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/providers/NewRelic.Observability/locations/EASTUS/operationStatuses/be765926-3b7f-4f35-af4c-15e5ce70f4d1*5B35BF236CB20EBB1F5715CFE9DACBBDE54DB30CA4D4003540E6DE9871D332EE?api-version=2024-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

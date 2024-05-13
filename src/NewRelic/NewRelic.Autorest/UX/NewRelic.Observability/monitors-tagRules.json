@@ -1,6 +1,6 @@
 {
   "resourceType": "monitors/tagRules",
-  "apiVersion": "2022-07-01",
+  "apiVersion": "2024-01-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.newrelic"
   },

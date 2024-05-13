@@ -12,10 +12,23 @@ List the compute vm resources currently being monitored by the NewRelic resource
 
 ## SYNTAX
 
+### ListExpanded (Default)
 ```
 Get-AzNewRelicMonitorHost -MonitorName <String> -ResourceGroupName <String> -UserEmail <String>
  [-SubscriptionId <String[]>] [-VMId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### ListViaJsonFilePath
+```
+Get-AzNewRelicMonitorHost -MonitorName <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ListViaJsonString
+```
+Get-AzNewRelicMonitorHost -MonitorName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +38,7 @@ List the compute vm resources currently being monitored by the NewRelic resource
 
 ### Example 1: Get specific virtual machines
 ```powershell
-Get-AzNewRelicMonitorHost -MonitorName test-03 -ResourceGroupName ps-test -VMId saurg-vm-01 -UserEmail v-jiaji@outlook.com
+Get-AzNewRelicMonitorHost -MonitorName test-03 -ResourceGroupName ps-test -VMId saurg-vm-01 -UserEmail user1@outlook.com
 ```
 
 Get specific compute virtual machine resources currently being monitored by specific NewRelic resource.
@@ -42,6 +55,36 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the List operation
+
+```yaml
+Type: System.String
+Parameter Sets: ListViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the List operation
+
+```yaml
+Type: System.String
+Parameter Sets: ListViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -99,7 +142,7 @@ User Email
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ListExpanded
 Aliases:
 
 Required: True
@@ -114,7 +157,7 @@ VM resource IDs
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: ListExpanded
 Aliases:
 
 Required: False
@@ -162,11 +205,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.IVMInfo
+### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IVMInfo
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

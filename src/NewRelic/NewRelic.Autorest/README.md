@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the NewRelic service.
 
 ---
-## Status
-[![Az.NewRelic](https://img.shields.io/powershellgallery/v/Az.NewRelic.svg?style=flat-square&label=Az.NewRelic "Az.NewRelic")](https://www.powershellgallery.com/packages/Az.NewRelic/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -31,8 +28,8 @@ For information on how to develop for `Az.NewRelic`, see [how-to.md](how-to.md).
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 6b992c049ed7d6a95465d5c0a2234fc54c87b9bf
-tag: package-2022-07-01
+commit: 559f989d2b38bc80db762cfd277614583dddc3bb
+tag: package-2024-01-01
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -49,19 +46,52 @@ module-version: 0.1.0
 title: NewRelic
 subject-prefix: $(service-name)
 
-# If there are post APIs for some kinds of actions in the RP, you may need to 
-# uncomment following line to support viaIdentity for these post APIs
+# The next three configurations are exclusive to v3, and in v4, they are activated by default. If you are still using v3, please uncomment them.
 # identity-correction-for-post: true
-resourcegroup-append: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
+# resourcegroup-append: true
+# nested-object-to-string: true
 
 directive:
+  # Rename operation
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/monitoredSubscriptions/{configurationName}"].put.operationId
+    transform: >-
+      return "MonitoredSubscriptions_CreateOrUpdate"
+  # Delete body/email
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/listConnectedPartnerResources"].post.parameters
+    transform: >-
+        return [
+          {
+            "$ref": "../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "monitorName",
+            "in": "path",
+            "required": true,
+            "description": "Name of the Monitors resource",
+            "pattern": "^.*$",
+            "type": "string"
+          }
+        ]
+  # Following are common directives which are normally required in all the RPs
+  # 1. Remove the unexpanded parameter set
+  # 2. For New-* cmdlets, ViaIdentity is not required
+  # Following two directives are v4 specific
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Switch$|^SwitchViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity.*$
+    remove: true 
+  - where:
+      variant: ^Switch$|^SwitchViaIdentity$
     remove: true
   - where:
       subject: AppService|Host
@@ -71,6 +101,11 @@ directive:
       subject: MetricRule|MetricStatus
       variant: ^Get$|^GetViaIdentity$
     remove: true
+  # Custom create Monitor
+  - where:
+      subject: Monitor
+      verb: New
+    hide: true
   # Remove the set-* cmdlet
   - where:
       verb: Set
@@ -80,15 +115,33 @@ directive:
       subject: Monitor
       verb: update
     remove: true
+  # create cmdlet
+  - model-cmdlet:
+    - model-name: MonitoredSubscription
+    - model-name: FilteringTag
   # rename parameters
   - where:
       subject: ^TagRule(.*)
     set:
       subject: MonitorTagRule
+  # customize the body property and parameter name
+  # - from: source-file-csharp
+  #   where: $
+  #   transform: $ = $.replace('request.Content = null','request.Content = new global::System.Net.Http.StringContent(body, global::System.Text.Encoding.UTF8);');
+  # - where:
+  #     verb: Get
+  #     subject: ConnectedPartnerResource
+  #     variant: List
+  #     parameter-name: body
+  #   set:
+  #     parameter-name: EmailAddress
+  # Reset description
   - where:
-      parameter-name: IdentityUserAssignedIdentity
+      verb: Remove
+      subject: MonitoredSubscription
     set:
-      parameter-name: UserAssignedIdentity
+      command-description: Deletes the subscriptions that are being monitored by the NewRelic monitor resource
+  # Format setting
   - where:
       model-name: AccountResource
     set:

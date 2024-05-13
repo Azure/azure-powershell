@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.NewRelic.private.dll'
   FormatsToProcess = './Az.NewRelic.format.ps1xml'
-  FunctionsToExport = 'Get-AzNewRelicAccount', 'Get-AzNewRelicMonitor', 'Get-AzNewRelicMonitorAppService', 'Get-AzNewRelicMonitorHost', 'Get-AzNewRelicMonitorMetricRule', 'Get-AzNewRelicMonitorMetricStatus', 'Get-AzNewRelicMonitorMonitoredResource', 'Get-AzNewRelicMonitorTagRule', 'Get-AzNewRelicOrganization', 'Get-AzNewRelicPlan', 'Invoke-AzNewRelicHostMonitor', 'New-AzNewRelicMonitor', 'New-AzNewRelicMonitorTagRule', 'Remove-AzNewRelicMonitor', 'Remove-AzNewRelicMonitorTagRule', 'Switch-AzNewRelicMonitorBilling', 'Update-AzNewRelicMonitorTagRule', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzNewRelicAccount', 'Get-AzNewRelicBillingInfo', 'Get-AzNewRelicConnectedPartnerResource', 'Get-AzNewRelicMonitor', 'Get-AzNewRelicMonitorAppService', 'Get-AzNewRelicMonitoredSubscription', 'Get-AzNewRelicMonitorHost', 'Get-AzNewRelicMonitorLinkedResource', 'Get-AzNewRelicMonitorMetricRule', 'Get-AzNewRelicMonitorMetricStatus', 'Get-AzNewRelicMonitorMonitoredResource', 'Get-AzNewRelicMonitorTagRule', 'Get-AzNewRelicOrganization', 'Get-AzNewRelicPlan', 'Invoke-AzNewRelicHostMonitor', 'New-AzNewRelicFilteringTagObject', 'New-AzNewRelicMonitor', 'New-AzNewRelicMonitoredSubscription', 'New-AzNewRelicMonitoredSubscriptionObject', 'New-AzNewRelicMonitorTagRule', 'Remove-AzNewRelicMonitor', 'Remove-AzNewRelicMonitoredSubscription', 'Remove-AzNewRelicMonitorTagRule', 'Switch-AzNewRelicMonitorBilling', 'Update-AzNewRelicMonitoredSubscription', 'Update-AzNewRelicMonitorTagRule'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'NewRelic'

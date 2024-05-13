@@ -63,6 +63,15 @@ function setupEnv() {
     $NewMonitorName = 'test-01'
     $env.Add('NewMonitorName', $NewMonitorName)
 
+    #create test group
+    Write-Host 'Start to create test resource group' $env.ResourceGroupName
+    try {
+        Get-AzResourceGroup -Name $env.ResourceGroupName -ErrorAction Stop
+        Write-Host 'Get created group'
+    } catch {
+        New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.region
+    }
+    Write-Host 'create app service'
     $testApp = '/subscriptions/272c26cb-7026-4b37-b190-7cb7b2abecb0/resourceGroups/ps-test/providers/Microsoft.Web/sites/joyertest'
     $env.Add('testApp', $testApp)
 
@@ -73,9 +82,6 @@ function setupEnv() {
     $env.Add('billingCycle', $billingCycle)
     $usageType = 'PAYG'
     $env.Add('usageType', $usageType)
-
-    #create test group
-    #create app service
 
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
