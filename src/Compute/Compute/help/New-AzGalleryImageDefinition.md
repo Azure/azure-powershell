@@ -198,8 +198,8 @@ $publisherName = "GreatPublisher"
 $offerName = "GreatOffer"
 $skuName = "GreatSku"
 
-@Feature1 = @{Name='SecurityType';Value='None'}
-@Features = @($Feature1)
+$Feature1 = @{Name='SecurityType';Value='None'}
+$Features = @($Feature1)
 
 New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Generalized" -OsType "Linux" -Feature $Features
 ```
