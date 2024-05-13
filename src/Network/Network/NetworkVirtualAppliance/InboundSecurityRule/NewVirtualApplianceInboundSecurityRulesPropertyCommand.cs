@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network
     public class NewVirtualApplianceInboundSecurityRulesPropertyCommand : VirtualApplianceInboundSecurityRuleBaseCmdlet
     {
         [Parameter(
-           Mandatory = false,
+           Mandatory = true,
            HelpMessage = "Name of the Inbound Security Rules Property")]
         public string Name { get; set; }
 
@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet(
             SecurityRuleProtocol.Tcp,
             SecurityRuleProtocol.Udp,
-            SecurityRuleProtocol.Asterisk,
             IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Protocol { get; set; }
