@@ -7488,3 +7488,48 @@ function Test-CapacityReservationSharingProfile
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test Virtual Machines with explicit Standard securityType.
+Ensures the SecurityProfile is null, and with no other img info,
+defaults to Win2022AE image.
+#>
+function Test-VMDefaultsToTrustedLaunchImgWhenStnd
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        # SimpleParameterSet, no config, scenario.
+        # create credential 
+        $password = Get-PasswordForVM;
+        $user = Get-ComputeTestResourceName;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # Add one VM from creation 
+        $vmname = 'vm' + $rgname;
+        $domainNameLabel = "d1" + $rgname;
+        $securityTypeST = "Standard";
+        $SKU = "2022-datacenter-azure-edition";
+        $disable = $false;
+        $enable = $true;
+
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -SecurityType $securityTypeST -DomainNameLabel $domainNameLabel; 
+
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
+
+        # Validate
+        Assert-AreEqual $vm.StorageProfile.ImageReference.Sku $SKU;
+        Assert-Null $vm.SecurityProfile;
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}

@@ -511,7 +511,8 @@ namespace Microsoft.Azure.Management.RedisCache
 
         }
         /// <summary>
-        /// Update the state of specified private endpoint connection associated with the redis cache.
+        /// Update the state of specified private endpoint connection associated with
+        /// the redis cache.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

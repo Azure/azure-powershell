@@ -13,6 +13,53 @@ namespace Microsoft.Azure.Management.Sql
     public static partial class DatabaseOperationsExtensions
     {
         /// <summary>
+        /// Gets a list of operations performed on the database.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<DatabaseOperation> ListByDatabase(this IDatabaseOperations operations, string resourceGroupName, string serverName, string databaseName)
+        {
+                return ((IDatabaseOperations)operations).ListByDatabaseAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets a list of operations performed on the database.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DatabaseOperation>> ListByDatabaseAsync(this IDatabaseOperations operations, string resourceGroupName, string serverName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByDatabaseWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Cancels the asynchronous operation on the database.
         /// </summary>
         /// <param name='operations'>
@@ -61,53 +108,6 @@ namespace Microsoft.Azure.Management.Sql
         public static async System.Threading.Tasks.Task CancelAsync(this IDatabaseOperations operations, string resourceGroupName, string serverName, string databaseName, System.Guid operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             (await operations.CancelWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, operationId, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Gets a list of operations performed on the database.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<DatabaseOperation> ListByDatabase(this IDatabaseOperations operations, string resourceGroupName, string serverName, string databaseName)
-        {
-                return ((IDatabaseOperations)operations).ListByDatabaseAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets a list of operations performed on the database.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DatabaseOperation>> ListByDatabaseAsync(this IDatabaseOperations operations, string resourceGroupName, string serverName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByDatabaseWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
         }
         /// <summary>
         /// Gets a list of operations performed on the database.

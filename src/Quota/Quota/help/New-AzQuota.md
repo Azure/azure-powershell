@@ -9,10 +9,10 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Create the quota limit for the specified resource with the requested value.
-To Create the quota, follow these steps:\n1.
+To update the quota, follow these steps:\n1.
 Use the GET operation for quotas and usages to determine how much quota remains for the specific resource and to calculate the new quota limit.
 These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).\n2.
-Use this PUT operation to Create the quota limit.
+Use this PUT operation to update the quota limit.
 Please check the URI in location header for the detailed status of the request.
 
 ## SYNTAX
@@ -20,35 +20,35 @@ Please check the URI in location header for the detailed status of the request.
 ### CreateExpanded (Default)
 ```
 New-AzQuota -ResourceName <String> -Scope <String> [-Limit <ILimitJsonObject>] [-Name <String>]
- [-ResourceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ResourceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzQuota -ResourceName <String> -Scope <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzQuota -ResourceName <String> -Scope <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzQuota -InputObject <IQuotaIdentity> [-Limit <ILimitJsonObject>] [-Name <String>] [-ResourceType <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Create the quota limit for the specified resource with the requested value.
-To Create the quota, follow these steps:\n1.
+To update the quota, follow these steps:\n1.
 Use the GET operation for quotas and usages to determine how much quota remains for the specific resource and to calculate the new quota limit.
 These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).\n2.
-Use this PUT operation to Create the quota limit.
+Use this PUT operation to update the quota limit.
 Please check the URI in location header for the detailed status of the request.
 
 ## EXAMPLES
@@ -183,6 +183,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

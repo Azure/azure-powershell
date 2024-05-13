@@ -16,7 +16,7 @@ Lists file handles of a file share, a file directory or a file.
 ```
 Get-AzStorageFileHandle [-ShareName] <String> [[-Path] <String>] [-Recursive] [-DisAllowTrailingDot]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
  [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Get-AzStorageFileHandle [-ShareName] <String> [[-Path] <String>] [-Recursive] [-
 ```
 Get-AzStorageFileHandle [-Share] <CloudFileShare> [-ShareClient <ShareClient>] [[-Path] <String>] [-Recursive]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
  [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ Get-AzStorageFileHandle [-Share] <CloudFileShare> [-ShareClient <ShareClient>] [
 Get-AzStorageFileHandle [-Directory] <CloudFileDirectory> [-ShareDirectoryClient <ShareDirectoryClient>]
  [[-Path] <String>] [-Recursive] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>]
+ [-ProgressAction <ActionPreference>] [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>]
  [<CommonParameters>]
 ```
 
@@ -41,7 +41,7 @@ Get-AzStorageFileHandle [-Directory] <CloudFileDirectory> [-ShareDirectoryClient
 ```
 Get-AzStorageFileHandle [-File] <CloudFile> [-ShareFileClient <ShareFileClient>] [-Recursive]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
  [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
@@ -216,6 +216,21 @@ Aliases:
 
 Required: False
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

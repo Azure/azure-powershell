@@ -13,14 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Management.Automation;
 using Azure.Core.Diagnostics;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.KeyVault.Track2Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -47,6 +50,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 this.dataServiceClient = value;
             }
         }
+        private IKeyVaultDataServiceClient dataServiceClient;
 
         internal IKeyVaultDataServiceClient Track2DataClient
         {
@@ -68,6 +72,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 _track2DataServiceClient = value;
             }
         }
+        private IKeyVaultDataServiceClient _track2DataServiceClient;
+
+        internal static readonly KeyVaultManagementCmdletBase keyVaultManagementCmdletBase = new KeyVaultManagementCmdletBase();
 
         protected string GetDefaultFileForOperation(string operationName, string vaultName, string entityName)
         {
@@ -77,9 +84,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             return filename;
         }
-
-        private IKeyVaultDataServiceClient dataServiceClient;
-        private IKeyVaultDataServiceClient _track2DataServiceClient;
 
         /// <summary>
         /// Utility function that will continually iterate over the updated KeyVaultObjectFilterOptions until the options
