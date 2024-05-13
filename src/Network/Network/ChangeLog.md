@@ -24,6 +24,8 @@
     - `New-AzApplicationGatewayFirewallPolicySetting`
 * Added optional property `HeaderValueMatcher` to `New-AzApplicationGatewayRewriteRuleHeaderConfiguration`
 * Added new cmdlet `New-AzApplicationGatewayHeaderValueMatcher` to support for the new property `HeaderValueMatcher`
+* Added new cmdlet `Update-AzVirtualApplianceInboundSecurityRule` to support Inbound Security Rule for Network Virtual Appliance
+* Added new cmdlet `New-AzVirtualApplianceInboundSecurityRulesProperty` to support for the property 'rules' of Inbound Security Rules
 * Added AdminState parameter to Load Balancer Backend Address
     - `New-AzLoadBalancerBackendAddressConfig`
 * Updated PS SDK to older SDK removing identity field
