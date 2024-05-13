@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Operation to Update an existing Domains resource.
+Operation to update an existing Domains resource.
 .Description
-Operation to Update an existing Domains resource.
+Operation to update an existing Domains resource.
 .Example
 Update-AzEmailServiceDomain -Name testcustomdomain2.net -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -Tag @{ExampleKey1="ExampleUpdatedValue"} -UserEngagementTracking 1
 .Example

@@ -24,11 +24,9 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// Initializes a new instance of the DeploymentStacksError class.
         /// </summary>
 
-        /// <param name="error">Common error response for all Azure Resource Manager APIs to return error
-        /// details for failed operations. (This also follows the OData error response
-        /// format.).
+        /// <param name="error">The error detail.
         /// </param>
-        public DeploymentStacksError(ErrorResponse error = default(ErrorResponse))
+        public DeploymentStacksError(ErrorDetail error = default(ErrorDetail))
 
         {
             this.Error = error;
@@ -42,11 +40,9 @@ namespace Microsoft.Azure.Management.Resources.Models
 
 
         /// <summary>
-        /// Gets or sets common error response for all Azure Resource Manager APIs to
-        /// return error details for failed operations. (This also follows the OData
-        /// error response format.).
+        /// Gets or sets the error detail.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "error")]
-        public ErrorResponse Error {get; set; }
+        public ErrorDetail Error {get; set; }
     }
 }

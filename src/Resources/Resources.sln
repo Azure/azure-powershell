@@ -59,6 +59,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization.Management.Sdk", "Authorization.Management.Sdk\Authorization.Management.Sdk.csproj", "{D3B4C59E-B382-4EE2-9A58-F69367A69741}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Policy", "Policy.Autorest\Az.Policy.csproj", "{C56D3800-624A-4301-9F7C-358C6BC0E85C}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Metricdata", "..\Monitor\MetricData.Autorest\Az.Metricdata.csproj", "{C8338D4A-8D88-4805-B7C6-AAF154AB67B9}"
 EndProject
 Global
@@ -172,6 +174,10 @@ Global
 		{D3B4C59E-B382-4EE2-9A58-F69367A69741}.Powershell|Any CPU.Build.0 = Debug|Any CPU
 		{D3B4C59E-B382-4EE2-9A58-F69367A69741}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3B4C59E-B382-4EE2-9A58-F69367A69741}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C56D3800-624A-4301-9F7C-358C6BC0E85C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C56D3800-624A-4301-9F7C-358C6BC0E85C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C56D3800-624A-4301-9F7C-358C6BC0E85C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C56D3800-624A-4301-9F7C-358C6BC0E85C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C8338D4A-8D88-4805-B7C6-AAF154AB67B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C8338D4A-8D88-4805-B7C6-AAF154AB67B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8338D4A-8D88-4805-B7C6-AAF154AB67B9}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -1,0 +1,37 @@
+{
+  "resourceType": "verifiedPartners",
+  "apiVersion": "2023-06-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.eventgrid"
+  },
+  "commands": [
+    {
+      "name": "Get-AzEventGridVerifiedPartner",
+      "description": "Get properties of a verified partner.",
+      "path": "/providers/Microsoft.EventGrid/verifiedPartners/{verifiedPartnerName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridverifiedpartner"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get properties of a verified partner.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.verifiedPartnerName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

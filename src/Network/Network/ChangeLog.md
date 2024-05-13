@@ -26,6 +26,9 @@
 * Added new cmdlet `New-AzApplicationGatewayHeaderValueMatcher` to support for the new property `HeaderValueMatcher`
 * Added new cmdlet `Update-AzVirtualApplianceInboundSecurityRule` to support Inbound Security Rule for Network Virtual Appliance
 * Added new cmdlet `New-AzVirtualApplianceInboundSecurityPropertyRules` to support for the property 'rules' of Inbound Security Rules
+* Added AdminState parameter to Load Balancer Backend Address
+    - `New-AzLoadBalancerBackendAddressConfig`
+* Updated PS SDK to older SDK removing identity field
 
 ## Version 7.5.0
 * Added cmdlet `Convert-AzNetworkWatcherClassicConnectionMonitor` for converting a classic connection monitor to V2 connection monitor.

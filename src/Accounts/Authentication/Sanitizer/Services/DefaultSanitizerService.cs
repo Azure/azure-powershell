@@ -35,8 +35,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Services
             { "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageFileShare", new[] { "ShareProperties" } },
             { "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageFileDirectory", new[] { "ShareDirectoryProperties" } },
 
-            // Skip infinite recursion properties
-            { "Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.InnerError", new[] { "EmbeddedInnerError" } },
+            // Skip infinite recursion properties that cause performance concern
+
+            // Storage
+            { "Microsoft.Azure.Storage.Blob.CloudBlobDirectory", new[] { "Parent" } },
+            { "Microsoft.Azure.Storage.File.CloudFileDirectory", new[] { "Parent" } },
         };
 
         private static readonly IEnumerable<string> SensitiveDataPatterns = new List<string>()
