@@ -380,10 +380,11 @@ directive:
   #     subject: License
   #     verb: Set
   #   remove: true
-  # - where:
-  #     subject: NetworkConfiguration
-  #     verb: Set
-  #   remove: true
+
+  # We don't want user to talk directly to the network configuration API
+  - where:
+      subject: NetworkConfiguration
+    remove: true
  
   # Removing non-expand commands
   - where:

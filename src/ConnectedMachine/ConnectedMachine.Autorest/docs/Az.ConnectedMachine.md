@@ -32,9 +32,6 @@ Returns a Azure Arc PrivateLinkScope.
 ### [Get-AzConnectedMachineRunCommand](Get-AzConnectedMachineRunCommand.md)
 The operation to get a run command.
 
-### [Get-AzConnectedNetworkConfiguration](Get-AzConnectedNetworkConfiguration.md)
-Returns a NetworkConfiguration for the target resource.
-
 ### [Get-AzConnectedNetworkSecurityPerimeterConfiguration](Get-AzConnectedNetworkSecurityPerimeterConfiguration.md)
 Gets the network security perimeter configuration for a private link scope.
 
@@ -55,9 +52,6 @@ The operation to Create the extension.
 
 ### [New-AzConnectedMachineRunCommand](New-AzConnectedMachineRunCommand.md)
 The operation to Create a run command.
-
-### [New-AzConnectedNetworkConfiguration](New-AzConnectedNetworkConfiguration.md)
-Create the NetworkConfiguration of the target resource.
 
 ### [New-AzConnectedPrivateLinkScope](New-AzConnectedPrivateLinkScope.md)
 Creates (or updates) a Azure Arc PrivateLinkScope.
@@ -84,9 +78,6 @@ The operation to Create a license.
 ### [Set-AzConnectedMachineExtension](Set-AzConnectedMachineExtension.md)
 The operation to Create the extension.
 
-### [Set-AzConnectedNetworkConfiguration](Set-AzConnectedNetworkConfiguration.md)
-Create the NetworkConfiguration of the target resource.
-
 ### [Set-AzConnectedPrivateLinkScope](Set-AzConnectedPrivateLinkScope.md)
 Creates (or updates) a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
@@ -108,9 +99,6 @@ The operation to Update the extension.
 
 ### [Update-AzConnectedMachineRunCommand](Update-AzConnectedMachineRunCommand.md)
 The operation to Create a run command.
-
-### [Update-AzConnectedNetworkConfiguration](Update-AzConnectedNetworkConfiguration.md)
-Update the endpoint to the target resource.
 
 ### [Update-AzConnectedPrivateLinkScopeTag](Update-AzConnectedPrivateLinkScopeTag.md)
 Updates an existing PrivateLinkScope's tags.
