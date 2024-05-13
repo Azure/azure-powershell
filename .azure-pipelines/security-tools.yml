@@ -74,7 +74,7 @@ jobs:
     displayName: Run BinSkim
     inputs:
       InputType: 'CommandLine'
-      arguments: 'analyze @MyFileList.rsp --recurse'
+      arguments: 'analyze @$(Build.SourcesDirectory)/artifacts/MyFileList.rsp --recurse'
 
   - task: PowerShell@2
     displayName: Cleanup Build
