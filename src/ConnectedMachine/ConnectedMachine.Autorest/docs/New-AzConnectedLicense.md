@@ -17,8 +17,9 @@ The operation to Create a license.
 New-AzConnectedLicense -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-LicenseDetailEdition <String>] [-LicenseDetailProcessor <Int32>]
  [-LicenseDetailState <String>] [-LicenseDetailTarget <String>] [-LicenseDetailType <String>]
- [-LicenseType <String>] [-Tag <Hashtable>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-LicenseDetailVolumeLicenseDetail <IVolumeLicenseDetails[]>] [-LicenseType <String>] [-Tag <Hashtable>]
+ [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Create
@@ -38,7 +39,8 @@ New-AzConnectedLicense -InputObject <IConnectedMachineIdentity> -Parameter <ILic
 ```
 New-AzConnectedLicense -InputObject <IConnectedMachineIdentity> -Location <String>
  [-LicenseDetailEdition <String>] [-LicenseDetailProcessor <Int32>] [-LicenseDetailState <String>]
- [-LicenseDetailTarget <String>] [-LicenseDetailType <String>] [-LicenseType <String>] [-Tag <Hashtable>]
+ [-LicenseDetailTarget <String>] [-LicenseDetailType <String>]
+ [-LicenseDetailVolumeLicenseDetail <IVolumeLicenseDetails[]>] [-LicenseType <String>] [-Tag <Hashtable>]
  [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -229,6 +231,22 @@ Describes the license core type (pCore or vCore).
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LicenseDetailVolumeLicenseDetail
+A list of volume license details.
+To construct, see NOTES section for LICENSEDETAILVOLUMELICENSEDETAIL properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IVolumeLicenseDetails[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 

@@ -41,12 +41,12 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
  
 ``` yaml
-commit: 2d044b8a317aff46d45080f5a797ac376955f648
+commit: 9c51b17f1c544eea0f6a67c01a6b763995521f52
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2023-10-03-preview/HybridCompute.json
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2023-10-03-preview/privateLinkScopes.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-03-31-preview/HybridCompute.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-03-31-preview/privateLinkScopes.json
  
 module-version: 0.5.0
 title: ConnectedMachine
@@ -220,6 +220,31 @@ directive:
         }
       }
 
+  # verify that validate license missing licence name parameter
+  # - from: swagger-document
+  #   where: $.paths["/subscriptions/{subscriptionId}/providers/Microsoft.HybridCompute/validateLicense"].post.parameters
+  #   transform: >-
+  #     return [
+  #         {
+  #           "$ref": "../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+  #         },
+  #         {
+  #           "$ref": "../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+  #         },
+  #         {
+  #           "$ref": "#/parameters/licenseNameParameter"
+  #         },
+  #         {
+  #           "name": "parameters",
+  #           "in": "body",
+  #           "required": true,
+  #           "schema": {
+  #             "$ref": "#/definitions/License"
+  #           },
+  #           "description": "Parameters supplied to the license validation operation."
+  #         }
+  #       ]
+
   # GetViaIdentity isn't useful until Azure PowerShell supports piping of different subjects
   - where:
       verb: Get
@@ -346,15 +371,18 @@ directive:
       subject: Setting
     remove: true
 
-  # add back when swagger change is checked in
+  # verify if this is internal API
   # - where:
   #     subject: License
+  #     verb: Update
+  #   remove: true
+  # - where:
+  #     subject: License
+  #     verb: Set
   #   remove: true
   # - where:
   #     subject: NetworkConfiguration
-  #   remove: true
-  # - where:
-  #     subject: NetworkSecurityPerimeterConfiguration$
+  #     verb: Set
   #   remove: true
  
   # Removing non-expand commands

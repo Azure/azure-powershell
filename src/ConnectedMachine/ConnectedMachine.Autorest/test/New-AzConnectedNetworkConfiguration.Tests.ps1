@@ -19,8 +19,9 @@ Describe 'New-AzConnectedNetworkConfiguration' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Create' -skip{
+        $all = @(New-AzConnectedNetworkConfiguration -Location 'eastus2euap' -ResourceUri $env.ResourceUri -NetworkConfigurationScopeResourceId $env.PrivateLinkScopeUri)
+        $all | Should -Not -BeNullOrEmpty
     }
 
     It 'CreateViaJsonFilePath' -skip {

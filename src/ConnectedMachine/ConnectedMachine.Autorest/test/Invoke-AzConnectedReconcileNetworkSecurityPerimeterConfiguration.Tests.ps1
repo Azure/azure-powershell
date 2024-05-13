@@ -16,7 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzConnectedReconcileNe
 
 Describe 'Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration' {
     It 'Reconcile' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $all = @(Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration -PerimeterName $env.PerimeterName -ResourceGroupName $env.ResourceGroupName -ScopeName $env.PrivateLinkScopeName -SubscriptionId $env.SubscriptionId)
+        $all | Should -Not -BeNullOrEmpty
     }
 
     It 'ReconcileViaIdentityPrivateLinkScope' -skip {

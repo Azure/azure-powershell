@@ -15,15 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzConnectedLicense'))
 }
 
 Describe 'Get-AzConnectedLicense' {
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $all = @(Get-AzConnectedLicense -ResourceGroupName $env.ResourceGroupName)
+        $all | Should -Not -BeNullOrEmpty
+    }
+    
+    It 'List2' {
+        $all = @(Get-AzConnectedLicense -SubscriptionId $env.SubscriptionId)
+        $all | Should -Not -BeNullOrEmpty
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $all = @(Get-AzConnectedLicense -Name $env.EsuLicenseName -ResourceGroupName $env.ResourceGroupName -SubscriptionId $env.SubscriptionId)
+        $all | Should -Not -BeNullOrEmpty
     }
 
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

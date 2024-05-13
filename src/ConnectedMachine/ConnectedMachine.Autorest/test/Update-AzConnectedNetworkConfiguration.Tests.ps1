@@ -20,7 +20,8 @@ Describe 'Update-AzConnectedNetworkConfiguration' {
     }
 
     It 'Update' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $all = @(Update-AzConnectedNetworkConfiguration -ResourceUri $env.ResourceUri -NetworkConfigurationScopeResourceId $env.PrivateLinkScopeUri)
+        $all | Should -Not -BeNullOrEmpty
     }
 
     It 'UpdateViaJsonFilePath' -skip {

@@ -16,10 +16,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzConnectedNetworkSecurit
 
 Describe 'Get-AzConnectedNetworkSecurityPerimeterConfiguration' {
     It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $all = @(Get-AzConnectedNetworkSecurityPerimeterConfiguration -ResourceGroupName $env.ResourceGroupName -ScopeName $env.PrivateLinkScopeName -SubscriptionId $env.SubscriptionId)
+        $all | Should -Not -BeNullOrEmpty
     }
 
     It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $all = @(Get-AzConnectedNetworkSecurityPerimeterConfiguration -PerimeterName $env.PerimeterName -ResourceGroupName $env.ResourceGroupName -ScopeName $env.PrivateLinkScopeName -SubscriptionId $env.SubscriptionId)
+        $all | Should -Not -BeNullOrEmpty
     }
 }

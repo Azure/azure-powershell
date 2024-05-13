@@ -15,8 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzConnectedLicense'))
 }
 
 Describe 'Remove-AzConnectedLicense' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        $all = @(Remove-AzConnectedLicense -Name $env.EsuLicenseName -ResourceGroupName $env.ResourceGroupName -SubscriptionId $env.SubscriptionId)
+        $all | Should -BeNullOrEmpty
     }
 
     It 'DeleteViaIdentity' -skip {

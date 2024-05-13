@@ -16,6 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzConnectedNetworkConfigu
 
 Describe 'Get-AzConnectedNetworkConfiguration' {
     It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $all = @(Get-AzConnectedNetworkConfiguration -ResourceUri $env.ResourceUri)
+        $all | Should -Not -BeNullOrEmpty
     }
 }

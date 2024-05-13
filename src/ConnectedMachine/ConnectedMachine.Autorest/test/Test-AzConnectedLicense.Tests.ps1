@@ -19,8 +19,9 @@ Describe 'Test-AzConnectedLicense' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Validate' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Validate' -skip{
+        $all = @(Test-AzConnectedLicense -Location 'eastus2euap' -LicenseType 'ESU' -LicenseDetailState 'Activated'  -LicenseDetailTarget 'Windows Server 2012' -LicenseDetailEdition 'Datacenter' -LicenseDetailType 'pCore' -LicenseDetailProcessor 16 -SubscriptionId $env.SubscriptionId)
+        $all | Should -Not -BeNullOrEmpty
     }
 
     It 'ValidateViaJsonFilePath' -skip {
