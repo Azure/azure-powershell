@@ -53,13 +53,6 @@ jobs:
       outputFormat: sarif
       scanFolder: SecurityTmp
       suppressionsFile: tools/SecurityTools/CredScanSuppressions.json
-
-  - task: PowerShell@2
-    displayName: Copy PDB for BinSkim
-    inputs:
-      targetType: inline
-      script: ./src/lib/pdb/CopyPdbToArtifacts.ps1
-      pwsh: true
   
   - task: PowerShell@2
     displayName: Generate a response text file for BinSkim
