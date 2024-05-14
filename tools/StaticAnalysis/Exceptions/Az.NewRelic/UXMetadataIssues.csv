@@ -1,0 +1,3 @@
+"Module","Severity","ResourceType","SubResourceType","Command","Description"
+"Az.NewRelic","1","NewRelic.Observability","monitors-monitoredSubscriptions","Get-AzNewRelicMonitoredSubscription","configurationName is defined in path but cannot find in example"
+"Az.NewRelic","1","NewRelic.Observability","monitors-monitoredSubscriptions","Remove-AzNewRelicMonitoredSubscription","configurationName is defined in path but cannot find in example"
