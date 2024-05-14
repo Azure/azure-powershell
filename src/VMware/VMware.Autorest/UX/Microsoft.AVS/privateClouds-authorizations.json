@@ -1,13 +1,13 @@
 {
   "resourceType": "privateClouds/authorizations",
-  "apiVersion": "2023-03-01",
+  "apiVersion": "2023-09-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.vmware"
   },
   "commands": [
     {
       "name": "Get-AzVMwareAuthorization",
-      "description": "Get an ExpressRoute Circuit Authorization by name in a private cloud",
+      "description": "Get a ExpressRouteAuthorization",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/authorizations/{authorizationName}",
       "help": {
         "learnMore": {
@@ -26,7 +26,7 @@
       },
       "examples": [
         {
-          "description": "Get an ExpressRoute Circuit Authorization by name in a private cloud",
+          "description": "Get a ExpressRouteAuthorization",
           "parameters": [
             {
               "name": "-Name",
@@ -50,7 +50,7 @@
     },
     {
       "name": "Remove-AzVMwareAuthorization",
-      "description": "Delete an ExpressRoute Circuit Authorization in a private cloud",
+      "description": "Delete a ExpressRouteAuthorization",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/authorizations/{authorizationName}",
       "help": {
         "learnMore": {
@@ -69,7 +69,7 @@
       },
       "examples": [
         {
-          "description": "Delete an ExpressRoute Circuit Authorization in a private cloud",
+          "description": "Delete a ExpressRouteAuthorization",
           "parameters": [
             {
               "name": "-Name",

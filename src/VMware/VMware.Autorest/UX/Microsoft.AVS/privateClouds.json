@@ -1,13 +1,51 @@
 {
   "resourceType": "privateClouds",
-  "apiVersion": "2023-03-01",
+  "apiVersion": "2023-09-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.vmware"
   },
   "commands": [
     {
+      "name": "Get-AzVMwareIscsiPath",
+      "description": "Get a IscsiPath",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/iscsiPaths/default",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareiscsipath"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-PrivateCloudName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a IscsiPath",
+          "parameters": [
+            {
+              "name": "-PrivateCloudName",
+              "value": "[Path.privateCloudName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Get-AzVMwarePrivateCloud",
-      "description": "Get a private cloud",
+      "description": "Get a PrivateCloud",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}",
       "help": {
         "learnMore": {
@@ -25,10 +63,48 @@
       },
       "examples": [
         {
-          "description": "Get a private cloud",
+          "description": "Get a PrivateCloud",
           "parameters": [
             {
               "name": "-Name",
+              "value": "[Path.privateCloudName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzVMwareIscsiPath",
+      "description": "Delete a IscsiPath",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/iscsiPaths/default",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareiscsipath"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-PrivateCloudName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a IscsiPath",
+          "parameters": [
+            {
+              "name": "-PrivateCloudName",
               "value": "[Path.privateCloudName]"
             },
             {

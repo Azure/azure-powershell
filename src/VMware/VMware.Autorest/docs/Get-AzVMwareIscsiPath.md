@@ -1,82 +1,60 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareprivatecloud
+online version: https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareiscsipath
 schema: 2.0.0
 ---
 
-# Get-AzVMwarePrivateCloud
+# Get-AzVMwareIscsiPath
 
 ## SYNOPSIS
-Get a PrivateCloud
+Get a IscsiPath
 
 ## SYNTAX
 
-### List (Default)
+### Get (Default)
 ```
-Get-AzVMwarePrivateCloud [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzVMwarePrivateCloud -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzVMwareIscsiPath -PrivateCloudName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzVMwarePrivateCloud -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzVMwareIscsiPath -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List1
+### List
 ```
-Get-AzVMwarePrivateCloud -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzVMwareIscsiPath -PrivateCloudName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get a PrivateCloud
+Get a IscsiPath
 
 ## EXAMPLES
 
-### Example 1: List private cloud under subscription
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzVMwarePrivateCloud
+{{ Add code here }}
 ```
 
 ```output
-Location      Name            Type
---------      ----            ----
-australiaeast azps_test_cloud Microsoft.AVS/privateClouds
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-List private cloud under subscription
+{{ Add description here }}
 
-### Example 2: List private cloud under resource group
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzVMwarePrivateCloud -ResourceGroupName azps_test_group
+{{ Add code here }}
 ```
 
 ```output
-Location      Name            Type                        ResourceGroupName
---------      ----            ----                        -----------------
-australiaeast azps_test_cloud Microsoft.AVS/privateClouds azps_test_group
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-List private cloud under resource group
-
-### Example 3: Get a private cloud by name
-```powershell
-Get-AzVMwarePrivateCloud -ResourceGroupName azps_test_group -Name azps_test_cloud
-```
-
-```output
-Location      Name            Type                        ResourceGroupName
---------      ----            ----                        -----------------
-australiaeast azps_test_cloud Microsoft.AVS/privateClouds azps_test_group
-```
-
-Get a private cloud by name
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -112,13 +90,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
+### -PrivateCloudName
 Name of the private cloud
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
-Aliases: PrivateCloudName
+Parameter Sets: Get, List
+Aliases:
 
 Required: True
 Position: Named
@@ -133,7 +111,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -149,7 +127,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -168,7 +146,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIscsiPath
 
 ## NOTES
 

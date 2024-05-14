@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwarePlacementPolicy
 
 ## SYNOPSIS
-Create a placement policy in a private cloud cluster
+Create a PlacementPolicy
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ New-AzVMwarePlacementPolicy -ClusterName <String> -Name <String> -PrivateCloudIn
 ```
 
 ## DESCRIPTION
-Create a placement policy in a private cloud cluster
+Create a PlacementPolicy
 
 ## EXAMPLES
 
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterName
-Name of the cluster in the private cloud
+Name of the cluster
 
 ```yaml
 Type: System.String
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+Name of the placement policy.
 
 ```yaml
 Type: System.String
@@ -214,7 +214,7 @@ Accept wildcard characters: False
 ```
 
 ### -Property
-placement policy properties
+The resource-specific properties for this resource.
 To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
@@ -247,6 +247,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

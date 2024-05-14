@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVMwarePlacementPolicy
 
 ## SYNOPSIS
-Update a placement policy in a private cloud cluster
+Update a PlacementPolicy
 
 ## SYNTAX
 
@@ -44,7 +44,7 @@ Update-AzVMwarePlacementPolicy -ClusterName <String> -Name <String> -PrivateClou
 ```
 
 ## DESCRIPTION
-Update a placement policy in a private cloud cluster
+Update a PlacementPolicy
 
 ## EXAMPLES
 
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterName
-Name of the cluster in the private cloud
+Name of the cluster
 
 ```yaml
 Type: System.String
@@ -200,7 +200,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+Name of the placement policy.
 
 ```yaml
 Type: System.String
@@ -293,6 +293,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

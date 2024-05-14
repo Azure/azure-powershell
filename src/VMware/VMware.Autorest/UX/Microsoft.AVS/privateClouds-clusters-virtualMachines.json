@@ -1,13 +1,13 @@
 {
   "resourceType": "privateClouds/clusters/virtualMachines",
-  "apiVersion": "2023-03-01",
+  "apiVersion": "2023-09-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.vmware"
   },
   "commands": [
     {
       "name": "Get-AzVMwareVirtualMachine",
-      "description": "Get a virtual machine by id in a private cloud cluster",
+      "description": "Get a VirtualMachine",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/virtualMachines/{virtualMachineId}",
       "help": {
         "learnMore": {
@@ -27,7 +27,7 @@
       },
       "examples": [
         {
-          "description": "Get a virtual machine by id in a private cloud cluster",
+          "description": "Get a VirtualMachine",
           "parameters": [
             {
               "name": "-ClusterName",

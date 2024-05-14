@@ -1,13 +1,13 @@
 {
   "resourceType": "privateClouds/clusters/placementPolicies",
-  "apiVersion": "2023-03-01",
+  "apiVersion": "2023-09-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.vmware"
   },
   "commands": [
     {
       "name": "Get-AzVMwarePlacementPolicy",
-      "description": "Get a placement policy by name in a private cloud cluster",
+      "description": "Get a PlacementPolicy",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/placementPolicies/{placementPolicyName}",
       "help": {
         "learnMore": {
@@ -27,7 +27,7 @@
       },
       "examples": [
         {
-          "description": "Get a placement policy by name in a private cloud cluster",
+          "description": "Get a PlacementPolicy",
           "parameters": [
             {
               "name": "-ClusterName",
@@ -55,7 +55,7 @@
     },
     {
       "name": "Remove-AzVMwarePlacementPolicy",
-      "description": "Delete a placement policy in a private cloud cluster",
+      "description": "Delete a PlacementPolicy",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/placementPolicies/{placementPolicyName}",
       "help": {
         "learnMore": {
@@ -75,7 +75,7 @@
       },
       "examples": [
         {
-          "description": "Delete a placement policy in a private cloud cluster",
+          "description": "Delete a PlacementPolicy",
           "parameters": [
             {
               "name": "-ClusterName",

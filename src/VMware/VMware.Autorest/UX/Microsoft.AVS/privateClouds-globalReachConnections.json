@@ -1,13 +1,13 @@
 {
   "resourceType": "privateClouds/globalReachConnections",
-  "apiVersion": "2023-03-01",
+  "apiVersion": "2023-09-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.vmware"
   },
   "commands": [
     {
       "name": "Get-AzVMwareGlobalReachConnection",
-      "description": "Get a global reach connection by name in a private cloud",
+      "description": "Get a GlobalReachConnection",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/globalReachConnections/{globalReachConnectionName}",
       "help": {
         "learnMore": {
@@ -26,7 +26,7 @@
       },
       "examples": [
         {
-          "description": "Get a global reach connection by name in a private cloud",
+          "description": "Get a GlobalReachConnection",
           "parameters": [
             {
               "name": "-Name",
@@ -50,7 +50,7 @@
     },
     {
       "name": "Remove-AzVMwareGlobalReachConnection",
-      "description": "Delete a global reach connection in a private cloud",
+      "description": "Delete a GlobalReachConnection",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/globalReachConnections/{globalReachConnectionName}",
       "help": {
         "learnMore": {
@@ -69,7 +69,7 @@
       },
       "examples": [
         {
-          "description": "Delete a global reach connection in a private cloud",
+          "description": "Delete a GlobalReachConnection",
           "parameters": [
             {
               "name": "-Name",

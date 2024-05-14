@@ -1,53 +1,56 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareauthorization
+online version: https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwareiscsipath
 schema: 2.0.0
 ---
 
-# New-AzVMwareAuthorization
+# Update-AzVMwareIscsiPath
 
 ## SYNOPSIS
-Create a ExpressRouteAuthorization
+Create a IscsiPath
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzVMwareAuthorization -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-ExpressRouteId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzVMwareAuthorization -InputObject <IVMwareIdentity> [-ExpressRouteId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzVMwareIscsiPath -PrivateCloudName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-NetworkBlock <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### CreateViaIdentityPrivateCloudExpanded
+### UpdateViaIdentityExpanded
 ```
-New-AzVMwareAuthorization -Name <String> -PrivateCloudInputObject <IVMwareIdentity> [-ExpressRouteId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzVMwareIscsiPath -InputObject <IVMwareIdentity> [-NetworkBlock <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a ExpressRouteAuthorization
+Create a IscsiPath
 
 ## EXAMPLES
 
-### Example 1: Create an Circuit Authorization in a private cloud
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzVMwareAuthorization -Name azps_test_authorization -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
+{{ Add code here }}
 ```
 
 ```output
-Name                    Type                                       ResourceGroupName
-----                    ----                                       -----------------
-azps_test_authorization Microsoft.AVS/privateClouds/authorizations azps_test_group
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an Circuit Authorization in a private cloud
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -82,28 +85,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExpressRouteId
-The ID of the ExpressRoute Circuit
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
-Parameter Sets: CreateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -113,15 +101,15 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the ExpressRoute Circuit Authorization
+### -NetworkBlock
+CIDR Block for iSCSI path.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityPrivateCloudExpanded
-Aliases: AuthorizationName
+Parameter Sets: (All)
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -143,28 +131,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PrivateCloudInputObject
-Identity Parameter
-To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
-Parameter Sets: CreateViaIdentityPrivateCloudExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -PrivateCloudName
 Name of the private cloud
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -180,7 +152,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -196,7 +168,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -246,7 +218,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IExpressRouteAuthorization
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIscsiPath
 
 ## NOTES
 

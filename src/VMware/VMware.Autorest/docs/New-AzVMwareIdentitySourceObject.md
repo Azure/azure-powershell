@@ -14,7 +14,7 @@ Create an in-memory object for IdentitySource.
 
 ```
 New-AzVMwareIdentitySourceObject [-Alias <String>] [-BaseGroupDn <String>] [-BaseUserDn <String>]
- [-Domain <String>] [-Name <String>] [-Password <String>] [-PrimaryServer <String>]
+ [-Domain <String>] [-Name <String>] [-Password <SecureString>] [-PrimaryServer <String>]
  [-SecondaryServer <String>] [-Ssl <String>] [-Username <String>] [<CommonParameters>]
 ```
 
@@ -121,10 +121,11 @@ Accept wildcard characters: False
 ```
 
 ### -Password
-The password of the Active Directory user with a minimum of read-only access to Base DN for users and groups.
+The password of the Active Directory user with a minimum of read-only access to
+        Base DN for users and groups.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -181,7 +182,8 @@ Accept wildcard characters: False
 ```
 
 ### -Username
-The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group.
+The ID of an Active Directory user with a minimum of read-only access to Base
+        DN for users and group.
 
 ```yaml
 Type: System.String

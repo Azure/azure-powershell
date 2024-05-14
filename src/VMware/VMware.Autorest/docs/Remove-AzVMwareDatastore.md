@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzVMwareDatastore
 
 ## SYNOPSIS
-Delete a datastore in a private cloud cluster
+Delete a Datastore
 
 ## SYNTAX
 
@@ -38,7 +38,7 @@ Remove-AzVMwareDatastore -ClusterName <String> -Name <String> -PrivateCloudInput
 ```
 
 ## DESCRIPTION
-Delete a datastore in a private cloud cluster
+Delete a Datastore
 
 ## EXAMPLES
 
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterName
-Name of the cluster in the private cloud
+Name of the cluster
 
 ```yaml
 Type: System.String
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the datastore in the private cloud cluster
+Name of the datastore
 
 ```yaml
 Type: System.String
@@ -230,6 +230,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

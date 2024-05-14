@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzVMwarePlacementPolicy
 
 ## SYNOPSIS
-Get a placement policy by name in a private cloud cluster
+Get a PlacementPolicy
 
 ## SYNTAX
 
@@ -42,7 +42,7 @@ Get-AzVMwarePlacementPolicy -ClusterName <String> -Name <String> -PrivateCloudIn
 ```
 
 ## DESCRIPTION
-Get a placement policy by name in a private cloud cluster
+Get a PlacementPolicy
 
 ## EXAMPLES
 
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterName
-Name of the cluster in the private cloud
+Name of the cluster
 
 ```yaml
 Type: System.String
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+Name of the placement policy.
 
 ```yaml
 Type: System.String
@@ -202,6 +202,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
