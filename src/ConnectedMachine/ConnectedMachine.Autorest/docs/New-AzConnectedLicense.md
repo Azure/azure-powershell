@@ -66,7 +66,7 @@ The operation to Create a license.
 
 ### Example 1: Add a new ESU license
 ```powershell
-New-AzConnectedLicense -Name 'myESULicense' -ResourceGroupName 'ytongtest' -Location 'eastus2euap' -LicenseType 'ESU' -LicenseDetailState 'Activated'  -LicenseDetailTarget 'Windows Server 2012' -LicenseDetailEdition 'Datacenter' -LicenseDetailType 'pCore' -LicenseDetailProcessor 16 -SubscriptionId 'b24cc8ee-df4f-48ac-94cf-46edf36b0fae')
+New-AzConnectedLicense -Name 'myESULicense' -ResourceGroupName 'ytongtest' -Location 'eastus2euap' -LicenseType 'ESU' -LicenseDetailState 'Activated'  -LicenseDetailTarget 'Windows Server 2012' -LicenseDetailEdition 'Datacenter' -LicenseDetailType 'pCore' -LicenseDetailProcessor 16 -SubscriptionId 'b24cc8ee-df4f-48ac-94cf-46edf36b0fae'
 ```
 
 ```output
