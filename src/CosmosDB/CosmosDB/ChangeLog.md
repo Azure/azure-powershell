@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Removed the out-of-date breaking change message for `Get-AzCosmosDBAccountKey`.
 
 ## Version 1.14.2
 * Upgraded Azure.Core to 1.37.0.

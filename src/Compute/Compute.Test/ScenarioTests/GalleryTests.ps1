@@ -893,3 +893,100 @@ function Test-GalleryVersionWithSourceImageVMId
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Tests New-AzGalleryImageDefinition to default to HyperVGen V2 and TL
+#>
+function Test-GalleryImageDefinitionDefaults
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+    
+        $location = $loc;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Gallery variables
+        $resourceGroup = $rgname
+        $galleryName = 'gl' + $rgname
+        $definitionName = 'def' + $rgname
+        $definitionName2 = $definitionName + '2'
+        $skuDetails = @{
+            Publisher = 'test'
+            Offer = 'test'
+            Sku = 'test'
+        }
+        $osType = 'Windows'
+        $osState = 'Specialized'
+        $storageAccountSku = 'Standard_LRS'
+        
+        # Setup Image Gallery
+        New-AzGallery -ResourceGroupName $rgname -Name $galleryName -location $location
+
+        # Setup Image Definition
+        $paramNewAzImageDef = @{
+            ResourceGroupName = $rgname
+            GalleryName       = $galleryName
+            Name              = $definitionName
+            Publisher         = $skuDetails.Publisher
+            Offer             = $skuDetails.Offer
+            Sku               = $skuDetails.Sku
+            Location          = $location
+            OSState           = $osState
+            OsType            = $osType
+            ErrorAction       = 'Stop'
+        }
+        
+        New-AzGalleryImageDefinition @paramNewAzImageDef;
+
+        $definition = Get-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $definitionName;
+
+        # verify HyperVGeneration and TL default 
+         Assert-AreEqual $definition.HyperVGeneration "V2";
+         Assert-AreEqual $definition.features[0].Name "SecurityType";
+         Assert-AreEqual $definition.features[0].Value "TrustedLaunchSupported";
+
+
+         # Testing by passing TL default by explictly setting securityType 
+
+        $skuDetails2 = @{
+            Publisher = 'test0'
+            Offer = 'test0'
+            Sku = 'test0'
+        }
+
+        $paramNewAzImageDef2 = @{
+            ResourceGroupName = $rgname
+            GalleryName       = $galleryName
+            Name              = $definitionName2
+            Publisher         = $skuDetails2.Publisher
+            Offer             = $skuDetails2.Offer
+            Sku               = $skuDetails2.Sku
+            Location          = $location
+            OSState           = $osState
+            OsType            = $osType
+            ErrorAction       = 'Stop'
+            Feature           = @{Name="SecurityType"; Value="ConfidentialVM"}
+        }
+
+
+         New-AzGalleryImageDefinition @paramNewAzImageDef2
+         $definition2 = Get-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $definitionName2;
+
+         # verify HyperVGeneration and TL default 
+         Assert-AreNotEqual $definition2.features[0].Value "TrustedLaunchSupported";
+         Assert-AreEqual $definition2.features.count 1
+
+
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+

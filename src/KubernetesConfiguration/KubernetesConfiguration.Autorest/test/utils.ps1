@@ -77,7 +77,7 @@ function setupEnv() {
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
 
     write-host "2. az aks create..."
-    az aks create --name $env.k8sName1 --resource-group $env.resourceGroup --kubernetes-version 1.25.5 --vm-set-type AvailabilitySet
+    az aks create --name $env.k8sName1 --resource-group $env.resourceGroup --kubernetes-version 1.29.2 --vm-set-type AvailabilitySet
 
     write-host "3. az aks get-credentials..."
     az aks get-credentials --name $env.k8sName1 --resource-group $env.resourceGroup

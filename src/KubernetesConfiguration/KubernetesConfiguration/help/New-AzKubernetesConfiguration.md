@@ -18,7 +18,7 @@ New-AzKubernetesConfiguration -ClusterName <String> -ClusterType <String> -Name 
  [-EnableHelmOperator] [-HelmOperatorChartValue <String>] [-HelmOperatorChartVersion <String>]
  [-OperatorInstanceName <String>] [-OperatorNamespace <String>] [-OperatorParam <String>]
  [-OperatorScope <OperatorScopeType>] [-OperatorType <OperatorType>] [-ClusterScoped] [-RepositoryUrl <String>]
- [-SshKnownHost <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-SshKnownHost <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -263,6 +263,21 @@ Type of the operator
 Type: Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorType
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
