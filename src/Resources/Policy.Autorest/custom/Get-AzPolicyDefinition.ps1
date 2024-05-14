@@ -16,7 +16,7 @@
 .Synopsis
 Gets policy set definitions.
 .Description
-The **Get-AzPolicySetDefinition** cmdlet gets a collection of policy set definitions or a specific policy set definition identified by name or ID.
+The **Get-AzPolicyDefinition** cmdlet gets a collection of policy set definitions or a specific policy set definition identified by name or ID.
 .Notes
 ## RELATED LINKS
 
@@ -35,6 +35,8 @@ param(
     [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Version', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ListVersion', ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
     [Alias('PolicyDefinitionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
@@ -43,6 +45,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Id', Mandatory, ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Version', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ListVersion', ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
     [Alias('ResourceId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
@@ -88,6 +92,20 @@ param(
     # Causes cmdlet to return only static policy definitions.
     ${Static},
 
+    [Parameter(ParameterSetName='Version', Mandatory, ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [ValidateNotNullOrEmpty()]
+    [Alias('PolicyDefinitionVersion')]
+    [System.String]
+    # The policy definition version in #.#.# format.
+    ${Version},
+
+    [Parameter(ParameterSetName='ListVersion', Mandatory, ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
+    [System.Management.Automation.SwitchParameter]
+    # Causes cmdlet to return only custom policy definitions.
+    ${ListVersion},
+
     [Parameter()]
     [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
     [System.Management.Automation.SwitchParameter]
@@ -105,13 +123,6 @@ param(
     # Possible policyType values are NotSpecified, Builtin, Custom, and Static.
     # If $filter='category -eq {value}' is provided, the returned list only includes all policy definitions whose category match the {value}.
     ${Filter},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -170,16 +181,32 @@ begin {
     }
 
     # mapping table of generated cmdlet parameter sets
-    $mapping = @{
-        Get='Az.Policy.private\Get-AzPolicyDefinition_Get';
-        Get1='Az.Policy.private\Get-AzPolicyDefinition_Get1';
-        GetViaIdentity = 'Az.Policy.private\Get-AzPolicyDefinition_GetViaIdentity';
-        GetViaIdentity1 = 'Az.Policy.private\Get-AzPolicyDefinition_GetViaIdentity1';
-        List='Az.Policy.private\Get-AzPolicyDefinition_List';
-        List1='Az.Policy.private\Get-AzPolicyDefinition_List1';
-        BuiltinId='Az.Policy.private\Get-AzPolicyDefinitionBuilt_GetViaIdentity';
-        BuiltinGet='Az.Policy.private\Get-AzPolicyDefinitionBuilt_Get';
-        BuiltinList='Az.Policy.private\Get-AzPolicyDefinitionBuilt_List';
+    if ($Version -or $ListVersion) {
+        $mapping = @{
+            NameSub = 'Az.Policy.private\Get-AzPolicyDefinitionVersion_Get';               # Name, SubscriptionId, Version
+            NameMG = 'Az.Policy.private\Get-AzPolicyDefinitionVersion_Get1';               # Name, ManagementGroupName, Version
+            MG = 'Az.Policy.private\Get-AzPolicyDefinitionVersion_List';                   # ManagementGroupName
+            Sub = 'Az.Policy.private\Get-AzPolicyDefinitionVersion_List1';                 # SubscriptionId
+            BuiltinId = 'Az.Policy.private\Get-AzPolicyDefinitionVersionBuilt_Get';        # Id
+            BuiltinGet = 'Az.Policy.private\Get-AzPolicyDefinitionVersionBuilt_Get';       # Name
+        }
+    }
+    else {
+        $mapping = @{
+            NameSub = 'Az.Policy.private\Get-AzPolicyDefinition_Get';                      # Name, SubscriptionId
+            NameMG = 'Az.Policy.private\Get-AzPolicyDefinition_Get1';                      # Name, ManagementGroupName
+            Sub = 'Az.Policy.private\Get-AzPolicyDefinition_List';                         # SubscriptionId
+            MG = 'Az.Policy.private\Get-AzPolicyDefinition_List1';                         # ManagementGroupName
+            BuiltinId = 'Az.Policy.private\Get-AzPolicyDefinitionBuilt_Get';               # Id
+            BuiltinGet = 'Az.Policy.private\Get-AzPolicyDefinitionBuilt_Get';              # Name
+        }
+    }
+
+    if ($ListVersion) {
+        $mapping['NameSub'] = 'Az.Policy.private\Get-AzPolicyDefinitionVersion_List2';            # Name, SubscriptionId
+        $mapping['NameMG'] = 'Az.Policy.private\Get-AzPolicyDefinitionVersion_List3';             # Name, ManagementGroup
+        $mapping['BuiltinId'] = 'Az.Policy.private\Get-AzPolicyDefinitionVersionBuilt_List';      # Id
+        $mapping['BuiltinGet'] = 'Az.Policy.private\Get-AzPolicyDefinitionVersionBuilt_List';     # Name
     }
 }
 
@@ -196,9 +223,17 @@ process {
         throw 'Only ManagementGroupName or SubscriptionId can be provided, not both.'
     }
 
+    if ($PSBoundParameters['Version'] -and !$PSBoundParameters['Name'] -and !$PSBoundParameters['Id']) {
+        throw 'Version is only allowed if Name or Id  are provided.'
+    }
+
+    if ($PSBoundParameters['ListVersion'] -and !$PSBoundParameters['Name'] -and !$PSBoundParameters['Id']) {
+        throw 'ListVersion is only allowed if Name or Id  are provided.'
+    }
+
     # handle specific parameter sets
     $parameterSet = $PSCmdlet.ParameterSetName
-    $calledParameterSet = 'List'
+    $calledParameterSet = 'Sub'
 
     switch ($parameterSet) {
         'Builtin' {
@@ -210,25 +245,27 @@ process {
         'Static' {
             $PSBoundParameters.Add('Filter', "policyType eq 'Static'")
         }
-        'Id' {
-            $parsed = ParsePolicyDefinitionId $Id   # function is imported from Helpers.psm1
-            switch ($parsed.ScopeType)
-            {
-                'subid' {
-                    $PSBoundParameters['SubscriptionId'] = $parsed['SubscriptionId']
-                    if ($parsed['Name']) {
-                        $calledParameterSet = 'Get';
-                        $PSBoundParameters['Name'] = $parsed['Name']
+        default {
+            if ($Id) {
+                $parsed = ParsePolicyDefinitionId $Id   # function is imported from Helpers.psm1
+                switch ($parsed.ScopeType)
+                {
+                    'subid' {
+                        $PSBoundParameters['SubscriptionId'] = $parsed['SubscriptionId']
+                        if ($parsed['Name']) {
+                            $calledParameterSet = 'NameSub';
+                            $PSBoundParameters['Name'] = $parsed['Name']
+                        }
                     }
-                }
-                'mgname' {
-                    $PSBoundParameters['ManagementGroupName'] = $parsed['ManagementGroupName']
-                    $PSBoundParameters['Name'] = $parsed['Name']
-                    $calledParameterSet = 'Get1';
-                }
-                'builtin' {
-                    $calledParameterSet = 'BuiltinId'
-                    $PSBoundParameters['InputObject'] = @{ 'Id' = $PSBoundParameters['Id'] }
+                    'mgname' {
+                        $PSBoundParameters['ManagementGroupName'] = $parsed['ManagementGroupName']
+                        $PSBoundParameters['Name'] = $parsed['Name']
+                        $calledParameterSet = 'NameMG';
+                    }
+                    'builtin' {
+                        $calledParameterSet = 'BuiltinId'
+                        $PSBoundParameters['PolicyDefinitionName'] = $parsed['Name']
+                    }
                 }
             }
         }
@@ -239,27 +276,37 @@ process {
         # determine parameter set for call to generated cmdlet
         if ($PSBoundParameters['SubscriptionId']) {
             if ($PSBoundParameters['Name']) {
-                $calledParameterSet = 'Get';
+                $calledParameterSet = 'NameSub';
             }
             else {
-                $calledParameterSet = 'List';
+                $calledParameterSet = 'Sub';
             }
         }
         elseif ($PSBoundParameters['ManagementGroupName']) {
             $PSBoundParameters['ManagementGroupId'] = $PSBoundParameters['ManagementGroupName']
             if ($PSBoundParameters['Name']) {
-                $calledParameterSet = 'Get1'
+                $calledParameterSet = 'NameMG'
             }
             else {
-                $calledParameterSet = 'List1'
+                $calledParameterSet = 'MG'
             }
         }
         elseif ($parameterSet -ne 'Id') {
             $PSBoundParameters['SubscriptionId'] = (Get-SubscriptionId)
             if ($PSBoundParameters['Name']) {
-                $calledParameterSet = 'Get'
+                $calledParameterSet = 'NameSub'
             }
         }
+    }
+
+    if ($PSBoundParameters['Name']) {
+        $PSBoundParameters['PolicyDefinitionName'] = $PSBoundParameters['Name']
+        $null = $PSBoundParameters.Remove('Name')
+    }
+
+    if ($PSBoundParameters['Version']) {
+        $PSBoundParameters['PolicyDefinitionVersion'] = $PSBoundParameters['Version']
+        $null = $PSBoundParameters.Remove('Version')
     }
 
     # remove parameters not used by generated cmdlets
@@ -269,6 +316,7 @@ process {
     $null = $PSBoundParameters.Remove('Builtin')
     $null = $PSBoundParameters.Remove('Custom')
     $null = $PSBoundParameters.Remove('Static')
+    $null = $PSBoundParameters.Remove('ListVersion')
 
     if ($writeln) {
         Write-Host -ForegroundColor Blue -> $mapping[$calledParameterSet]'(' $PSBoundParameters ')'
@@ -284,11 +332,9 @@ process {
         $output = Invoke-Command -ScriptBlock $scriptCmd
     }
     catch {
-        if (($_.Exception.Message -like '*PolicyDefinitionNotFound*') -and $PSBoundParameters.Name -and $PSBoundParameters.SubscriptionId) {
+        if (($_.Exception.Message -like '*PolicyDefinitionNotFound*') -and $PSBoundParameters.PolicyDefinitionName -and $PSBoundParameters.SubscriptionId) {
 
             # failed by name at subscription level, try builtins
-            $PSBoundParameters.PolicyDefinitionName = $PSBoundParameters.Name
-            $null = $PSBoundParameters.Remove('Name')
             $null = $PSBoundParameters.Remove('SubscriptionId')
             $cmdInfo = Get-Command -Name $mapping['BuiltinGet']
             [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $calledParameterSet, $PSCmdlet)

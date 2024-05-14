@@ -215,7 +215,8 @@ function Remove-ResourceGroup
             Write-Output $true
         }
         else {
-            throw ($response.Content | ConvertFrom-Json -Depth 100).error.message
+            $message = "Status: $($response.StatusCode): " + ($response.Content | ConvertFrom-Json -Depth 100).error.message
+            throw $message
         }
     }
 
@@ -328,6 +329,12 @@ function setupEnv() {
     $env['invalidPolicyDefinitionReference'] = 'InvalidPolicyDefinitionReference'
     $env['invalidPolicySetDefinitionRequest'] = "[InvalidCreatePolicySetDefinitionRequest] : The policy set definition 'someName' create request is invalid. At least one policy definition must be referenced."
     $env['multiplePolicyDefinitionParams'] = "Cannot bind parameter because parameter 'PolicyDefinition' is specified more than once"
+    $env['versionRequiresNameOrId'] = 'Version is only allowed if Name or Id  are provided.'
+    $env['listVersionsRequiresNameOrId'] = 'ListVersions is only allowed if Name or Id  are provided.'
+
+    # get some test objects
+    $env['customSubDefinition'] = Get-AzPolicyDefinition -Custom | ?{ $_.Id -like '/sub*' } | select -Last 1
+    $env['customSubSetDefinition'] = Get-AzPolicySetDefinition -SubscriptionId $env.subscriptionId -Custom | select -Last 1
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -335,7 +342,7 @@ function setupEnv() {
     }
 
     Write-Host -ForegroundColor Magenta Writing environment file $envFile with $env.Count entries
-    set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
+    set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env -Depth 100)
 }
 function cleanupEnv() {
     # Clean resources you create for testing
