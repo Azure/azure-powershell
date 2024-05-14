@@ -2222,6 +2222,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSInboundSecurityRulesProperty, MNM.InboundSecurityRules>();
                 cfg.CreateMap<CNM.PSNetworkVirtualApplianceConnection, MNM.NetworkVirtualApplianceConnection>();
                 cfg.CreateMap<CNM.PSVirtualApplianceInternetIngressIpsProperties, MNM.InternetIngressPublicIpsProperties>();
+                cfg.CreateMap<CNM.PSVirtualApplianceNetworkProfile, MNM.NetworkVirtualAppliancePropertiesFormatNetworkProfile>();
                 cfg.CreateMap<CNM.PSNetworkVirtualApplianceDelegationProperties, MNM.DelegationProperties>();
 
                 // MNM to CNM
@@ -2247,6 +2248,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.InboundSecurityRules, CNM.PSInboundSecurityRulesProperty>();
                 cfg.CreateMap<MNM.VirtualApplianceAdditionalNicProperties, CNM.PSVirtualApplianceAdditionalNicProperties>();
                 cfg.CreateMap<MNM.InternetIngressPublicIpsProperties, CNM.PSVirtualApplianceInternetIngressIpsProperties>();
+                cfg.CreateMap<MNM.NetworkVirtualAppliancePropertiesFormatNetworkProfile, CNM.PSVirtualApplianceNetworkProfile>();
                 cfg.CreateMap<MNM.NetworkVirtualApplianceConnection,CNM.PSNetworkVirtualApplianceConnection>();
                 cfg.CreateMap<MNM.DelegationProperties, CNM.PSNetworkVirtualApplianceDelegationProperties>();
 
