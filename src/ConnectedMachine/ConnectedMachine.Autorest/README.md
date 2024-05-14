@@ -380,6 +380,10 @@ directive:
       subject: License
       verb: Validate
     remove: true
+  - where:
+      subject: License
+      verb: Test
+    remove: true
 
   # We don't want user to talk directly to the network configuration API
   - where:

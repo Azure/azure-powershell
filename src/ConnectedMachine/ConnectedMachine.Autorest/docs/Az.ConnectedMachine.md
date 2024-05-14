@@ -76,9 +76,6 @@ The operation to Create the extension.
 Creates (or updates) a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 
-### [Test-AzConnectedLicense](Test-AzConnectedLicense.md)
-The operation to validate a license.
-
 ### [Update-AzConnectedExtension](Update-AzConnectedExtension.md)
 The operation to Upgrade Machine Extensions.
 

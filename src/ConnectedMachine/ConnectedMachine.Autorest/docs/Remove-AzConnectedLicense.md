@@ -29,27 +29,12 @@ The operation to delete a license.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove an ESU license
 ```powershell
-{{ Add code here }}
+Remove-AzConnectedLicense -Name 'myESULicense' -ResourceGroupName 'ytongtest' -SubscriptionId 'b24cc8ee-df4f-48ac-94cf-46edf36b0fae'
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Remove an ESU license
 
 ## PARAMETERS
 
