@@ -16,21 +16,21 @@ This API should be used to check the uniqueness of the name for adding a new com
 ### CheckExpanded (Default)
 ```
 Test-AzSupportCommunicationNameAvailability [-SubscriptionId <String>] -SupportTicketName <String>
- -Name <String> -Type <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ -Name <String> -Type <String> [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaJsonString
 ```
 Test-AzSupportCommunicationNameAvailability [-SubscriptionId <String>] -SupportTicketName <String>
- -JsonString <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CheckViaJsonFilePath
 ```
 Test-AzSupportCommunicationNameAvailability [-SubscriptionId <String>] -SupportTicketName <String>
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -38,20 +38,20 @@ Test-AzSupportCommunicationNameAvailability [-SubscriptionId <String>] -SupportT
 ```
 Test-AzSupportCommunicationNameAvailability [-SubscriptionId <String>] -SupportTicketName <String>
  -CheckNameAvailabilityInput <ICheckNameAvailabilityInput> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaIdentityExpanded
 ```
 Test-AzSupportCommunicationNameAvailability -InputObject <ISupportIdentity> -Name <String> -Type <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaIdentity
 ```
 Test-AzSupportCommunicationNameAvailability -InputObject <ISupportIdentity>
  -CheckNameAvailabilityInput <ICheckNameAvailabilityInput> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -161,21 +161,6 @@ Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

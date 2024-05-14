@@ -17,14 +17,14 @@ Update a permission binding with the specified parameters.
 Update-AzEventGridPermissionBinding -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-ClientGroupName <String>] [-Description <String>] [-Permission <String>]
  [-TopicSpaceName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityNamespaceExpanded
 ```
 Update-AzEventGridPermissionBinding -Name <String> -NamespaceInputObject <IEventGridIdentity>
  [-ClientGroupName <String>] [-Description <String>] [-Permission <String>] [-TopicSpaceName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Update-AzEventGridPermissionBinding -Name <String> -NamespaceInputObject <IEvent
 ```
 Update-AzEventGridPermissionBinding -InputObject <IEventGridIdentity> [-ClientGroupName <String>]
  [-Description <String>] [-Permission <String>] [-TopicSpaceName <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -226,21 +226,6 @@ The allowed permission.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

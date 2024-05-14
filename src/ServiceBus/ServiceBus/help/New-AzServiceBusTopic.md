@@ -19,7 +19,7 @@ New-AzServiceBusTopic -Name <String> -NamespaceName <String> -ResourceGroupName 
  [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperations] [-EnableExpress]
  [-EnablePartitioning] [-MaxMessageSizeInKilobytes <Int64>] [-MaxSizeInMegabytes <Int32>]
  [-RequiresDuplicateDetection] [-Status <String>] [-SupportOrdering] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNamespaceExpanded
@@ -28,13 +28,13 @@ New-AzServiceBusTopic -Name <String> -NamespaceInputObject <IServiceBusIdentity>
  [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
  [-EnableBatchedOperations] [-EnableExpress] [-EnablePartitioning] [-MaxMessageSizeInKilobytes <Int64>]
  [-MaxSizeInMegabytes <Int32>] [-RequiresDuplicateDetection] [-Status <String>] [-SupportOrdering]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNamespace
 ```
 New-AzServiceBusTopic -Name <String> -NamespaceInputObject <IServiceBusIdentity> -Parameter <ISbTopic>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -280,21 +280,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -RequiresDuplicateDetection
 Value indicating if this topic requires duplicate detection.
 
@@ -420,4 +405,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [https://msdn.microsoft.com/en-us/library/azure/mt639409.aspx](https://msdn.microsoft.com/en-us/library/azure/mt639409.aspx)
-

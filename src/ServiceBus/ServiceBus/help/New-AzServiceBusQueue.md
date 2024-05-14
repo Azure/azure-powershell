@@ -21,7 +21,7 @@ New-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName 
  [-EnableBatchedOperations] [-EnableExpress] [-EnablePartitioning] [-ForwardDeadLetteredMessagesTo <String>]
  [-ForwardTo <String>] [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>]
  [-MaxMessageSizeInKilobytes <Int64>] [-MaxSizeInMegabytes <Int32>] [-RequiresDuplicateDetection]
- [-RequiresSession] [-Status <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-RequiresSession] [-Status <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,13 +33,13 @@ New-AzServiceBusQueue -Name <String> -NamespaceInputObject <IServiceBusIdentity>
  [-EnablePartitioning] [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>]
  [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-MaxMessageSizeInKilobytes <Int64>]
  [-MaxSizeInMegabytes <Int32>] [-RequiresDuplicateDetection] [-RequiresSession] [-Status <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNamespace
 ```
 New-AzServiceBusQueue -Name <String> -NamespaceInputObject <IServiceBusIdentity> -Parameter <ISbQueue>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -369,21 +369,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -RequiresDuplicateDetection
 A value indicating if this queue requires duplicate detection.
 
@@ -509,4 +494,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [https://msdn.microsoft.com/en-us/library/azure/mt639395.aspx](https://msdn.microsoft.com/en-us/library/azure/mt639395.aspx)
-

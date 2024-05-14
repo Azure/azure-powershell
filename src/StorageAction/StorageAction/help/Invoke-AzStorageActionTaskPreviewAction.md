@@ -17,19 +17,19 @@ Runs the input conditions against input object metadata properties and designate
 Invoke-AzStorageActionTaskPreviewAction -Location <String> [-SubscriptionId <String>] [-ActionElseBlockExist]
  -Blob <IStorageTaskPreviewBlobProperties[]> [-ContainerMetadata <IStorageTaskPreviewKeyValueProperties[]>]
  [-ContainerName <String>] [-IfCondition <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PreviewViaJsonString
 ```
 Invoke-AzStorageActionTaskPreviewAction -Location <String> [-SubscriptionId <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PreviewViaJsonFilePath
 ```
 Invoke-AzStorageActionTaskPreviewAction -Location <String> [-SubscriptionId <String>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PreviewViaIdentityExpanded
@@ -37,7 +37,7 @@ Invoke-AzStorageActionTaskPreviewAction -Location <String> [-SubscriptionId <Str
 Invoke-AzStorageActionTaskPreviewAction -InputObject <IStorageActionIdentity> [-ActionElseBlockExist]
  -Blob <IStorageTaskPreviewBlobProperties[]> [-ContainerMetadata <IStorageTaskPreviewKeyValueProperties[]>]
  [-ContainerName <String>] [-IfCondition <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -357,21 +357,6 @@ Parameter Sets: PreviewExpanded, PreviewViaJsonString, PreviewViaJsonFilePath
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

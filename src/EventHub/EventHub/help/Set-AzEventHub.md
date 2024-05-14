@@ -19,7 +19,7 @@ Set-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String
  [-SkipEmptyArchive] [-RetentionTimeInHour <Int64>] [-TombstoneRetentionTimeInHour <Int32>] [-Status <String>]
  [-DestinationName <String>] [-IdentityType <String>] [-UserAssignedIdentityId <String>]
  [-PartitionCount <Int64>] [-StorageAccountResourceId <String>] [-ArchiveNameFormat <String>]
- [-BlobContainer <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-BlobContainer <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -30,7 +30,7 @@ Set-AzEventHub -InputObject <IEventHubIdentity> [-CaptureEnabled] [-Encoding <St
  [-TombstoneRetentionTimeInHour <Int32>] [-Status <String>] [-DestinationName <String>]
  [-IdentityType <String>] [-UserAssignedIdentityId <String>] [-PartitionCount <Int64>]
  [-StorageAccountResourceId <String>] [-ArchiveNameFormat <String>] [-BlobContainer <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -335,21 +335,6 @@ allowed values are from 1 to 32 partitions.
 Type: System.Int64
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

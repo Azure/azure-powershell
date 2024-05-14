@@ -16,27 +16,27 @@ Get a Capability resource that extends a Target resource.
 ```
 Get-AzChaosCapability -ParentProviderNamespace <String> -ParentResourceName <String>
  -ParentResourceType <String> -ResourceGroupName <String> [-SubscriptionId <String[]>] -TargetName <String>
- [-ContinuationToken <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-ContinuationToken <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentityTarget
 ```
 Get-AzChaosCapability -Name <String> -TargetInputObject <IChaosIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzChaosCapability -Name <String> -ParentProviderNamespace <String> -ParentResourceName <String>
  -ParentResourceType <String> -ResourceGroupName <String> [-SubscriptionId <String[]>] -TargetName <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzChaosCapability -InputObject <IChaosIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -186,21 +186,6 @@ Parameter Sets: List, Get
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

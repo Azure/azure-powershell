@@ -15,33 +15,33 @@ Get a Capability Type resource for given Target Type and location.
 ### List (Default)
 ```
 Get-AzChaosCapabilityType -LocationName <String> [-SubscriptionId <String[]>] -TargetTypeName <String>
- [-ContinuationToken <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-ContinuationToken <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzChaosCapabilityType -LocationName <String> -Name <String> [-SubscriptionId <String[]>]
- -TargetTypeName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ -TargetTypeName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentityTargetType
 ```
 Get-AzChaosCapabilityType -Name <String> -TargetTypeInputObject <IChaosIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentityLocation
 ```
 Get-AzChaosCapabilityType -Name <String> -TargetTypeName <String> -LocationInputObject <IChaosIdentity>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzChaosCapabilityType -InputObject <IChaosIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -182,21 +182,6 @@ Parameter Sets: Get, GetViaIdentityTargetType, GetViaIdentityLocation
 Aliases: CapabilityTypeName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

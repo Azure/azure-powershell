@@ -13,7 +13,7 @@ Create an in-memory object for LimitObject.
 ## SYNTAX
 
 ```
-New-AzQuotaLimitObject -Value <Int32> [-LimitType <String>] [-ProgressAction <ActionPreference>]
+New-AzQuotaLimitObject -Value <Int32> [-LimitType <String>]
  [<CommonParameters>]
 ```
 
@@ -44,21 +44,6 @@ The quota or usages limit types.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

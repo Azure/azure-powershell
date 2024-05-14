@@ -14,7 +14,7 @@ Create an in-memory object for StorageQueueEventSubscriptionDestination.
 
 ```
 New-AzEventGridStorageQueueEventSubscriptionDestinationObject [-QueueMessageTimeToLiveInSecond <Int64>]
- [-QueueName <String>] [-ResourceId <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-QueueName <String>] [-ResourceId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,21 +36,6 @@ StorageQueue
 Create an in-memory object for StorageQueueEventSubscriptionDestination.
 
 ## PARAMETERS
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -QueueMessageTimeToLiveInSecond
 Storage queue message time to live in seconds.

@@ -17,27 +17,27 @@ Unauthorize a single partner either by partner registration immutable Id or by p
 Revoke-AzEventGridPartnerConfiguration -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AuthorizationExpirationTimeInUtc <DateTime>] [-PartnerName <String>]
  [-PartnerRegistrationImmutableId <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Partner
 ```
 Revoke-AzEventGridPartnerConfiguration -ResourceGroupName <String> [-SubscriptionId <String>]
- -PartnerInfo <IPartner> [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>]
+ -PartnerInfo <IPartner> [-DefaultProfile <PSObject>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PartnerViaJsonFilePath
 ```
 Revoke-AzEventGridPartnerConfiguration -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### PartnerViaJsonString
 ```
 Revoke-AzEventGridPartnerConfiguration -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -177,21 +177,6 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

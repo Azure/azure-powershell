@@ -15,25 +15,25 @@ Returns communication details for a support ticket.
 ### List (Default)
 ```
 Get-AzSupportCommunication [-SubscriptionId <String[]>] -SupportTicketName <String> [-Filter <String>]
- [-Top <Int32>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentitySupportTicket
 ```
 Get-AzSupportCommunication -Name <String> -SupportTicketInputObject <ISupportIdentity>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzSupportCommunication -Name <String> [-SubscriptionId <String[]>] -SupportTicketName <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzSupportCommunication -InputObject <ISupportIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -399,21 +399,6 @@ Parameter Sets: GetViaIdentitySupportTicket, Get
 Aliases: CommunicationName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

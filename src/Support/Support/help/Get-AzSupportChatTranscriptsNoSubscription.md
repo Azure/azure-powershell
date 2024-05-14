@@ -15,26 +15,26 @@ Returns chatTranscript details for a no subscription support ticket.
 ### List (Default)
 ```
 Get-AzSupportChatTranscriptsNoSubscription -SupportTicketName <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentitySupportTicket
 ```
 Get-AzSupportChatTranscriptsNoSubscription -ChatTranscriptName <String>
- -SupportTicketInputObject <ISupportIdentity> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ -SupportTicketInputObject <ISupportIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzSupportChatTranscriptsNoSubscription -ChatTranscriptName <String> -SupportTicketName <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzSupportChatTranscriptsNoSubscription -InputObject <ISupportIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -149,21 +149,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
