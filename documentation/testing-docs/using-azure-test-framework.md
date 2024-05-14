@@ -7,7 +7,7 @@
     - [Run Command Set-TestFxEnvironment to Build Connection String](#run-command-set-testfxenvironment-to-build-connection-string)
       - [Use user account to record test cases (Recommended)](#use-user-account-to-record-test-cases-recommended)
       - [Create New Service Principal (Not Recommended)](#create-new-service-principal-not-recommended)
-      - [Use Existing Service Principal](#use-existing-service-principal)
+      - [Use Existing Service Principal (Not Recommended)](#use-existing-service-principal-not-recommended)
     - [Manually Set Environment Variables to Build Connection String](#manually-set-environment-variables-to-build-connection-string)
       - [Environment Variables](#environment-variables)
       - [Record Tests](#record-tests)
@@ -77,7 +77,7 @@ If the display name of the service principal already exists, you will be prompte
 
 Alternatively, if you prefer to create a service principal manually through the Azure portal, you can refer to [Azure AD guide to create a Application Service Principal](https://learn.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-active-directory-application).
 
-#### Use Existing Service Principal
+#### Use Existing Service Principal (Not Recommended)
 
 If you wish to utilize an existing service principal, execute the following command with the application ID and secret of the desired service principal:
 
