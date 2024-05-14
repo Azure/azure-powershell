@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Identity;
+
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Shared.Config;
 using Microsoft.Azure.PowerShell.Common.Config;
@@ -21,7 +23,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
     static public class AzConfigReader
     {
 
-        public static IAzureSession Session
+        private static IAzureSession Session
         {
             get
             {
@@ -29,20 +31,24 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
             }
         }
 
-        static public bool IsWamEnabled()
+        static public bool IsWamEnabled(string authority)
         {
-            if (Session.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var config))
+            if (!string.IsNullOrEmpty(authority) && Session.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var config))
             {
                 try
                 {
-                    return config.GetConfigValue<bool>(ConfigKeys.EnableLoginByWam);
+                    if (!authority.EndsWith("/"))
+                    {
+                        authority = authority + "/";
+                    }
+                    return config.GetConfigValue<bool>(ConfigKeys.EnableLoginByWam) && 0 == string.Compare(authority, AzureAuthorityHosts.AzurePublicCloud.OriginalString, System.StringComparison.OrdinalIgnoreCase);
                 }
                 catch
                 {
 
                 }
             }
-            return true;
+            return false;
         }
     }
 }

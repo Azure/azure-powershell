@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public virtual IPublicClientApplication CreatePublicClient(string authority = null)
         {
             var builder = PublicClientApplicationBuilder.Create(Constants.PowerShellClientId);
-            if (AzConfigReader.IsWamEnabled())
+            if (AzConfigReader.IsWamEnabled(authority))
             {
                 builder = builder.WithBroker(new BrokerOptions(BrokerOptions.OperatingSystems.Windows));
             }

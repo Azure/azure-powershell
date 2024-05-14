@@ -58,7 +58,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
         private static SharedTokenCacheCredentialOptions GetTokenCredentialOptions(SilentParameters silentParameters, string tenantId, string authority, PowerShellTokenCacheProvider tokenCacheProvider)
         {
-            SharedTokenCacheCredentialOptions options = AzConfigReader.IsWamEnabled()
+            SharedTokenCacheCredentialOptions options = AzConfigReader.IsWamEnabled(authority)
                 ? new SharedTokenCacheCredentialBrokerOptions(tokenCacheProvider.GetTokenCachePersistenceOptions())
                 : new SharedTokenCacheCredentialOptions(tokenCacheProvider.GetTokenCachePersistenceOptions());
             options.EnableGuestTenantAuthentication = true;
@@ -67,6 +67,11 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             options.AuthorityHost = new Uri(authority);
             options.TenantId = tenantId;
             options.DisableInstanceDiscovery = silentParameters.DisableInstanceDiscovery ?? options.DisableInstanceDiscovery;
+            if (options is SharedTokenCacheCredentialBrokerOptions optionsBroker)
+            {
+                optionsBroker.IsLegacyMsaPassthroughEnabled = true;
+                return optionsBroker;
+            }
             return options;
         }
 

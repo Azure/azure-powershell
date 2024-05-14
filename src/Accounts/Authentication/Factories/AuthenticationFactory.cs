@@ -616,7 +616,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         private static AuthenticationParameters GetInteractiveParameters(PowerShellTokenCacheProvider tokenCacheProvider, IAzureAccount account, IAzureEnvironment environment, string tenant, Action<string> promptAction, IAzureTokenCache tokenCache, string resourceId, string homeAccountId)
         {
-            return AzConfigReader.IsWamEnabled()
+            return AzConfigReader.IsWamEnabled(environment.ActiveDirectoryAuthority)
                 ? new InteractiveWamParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.GetProperty("LoginHint"), homeAccountId, promptAction) as AuthenticationParameters
                 : new InteractiveParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.GetProperty("LoginHint"), homeAccountId, promptAction);
         }
