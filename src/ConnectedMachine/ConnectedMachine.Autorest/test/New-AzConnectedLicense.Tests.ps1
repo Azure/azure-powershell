@@ -28,20 +28,6 @@ Describe 'New-AzConnectedLicense' {
     }
 
     It 'Create' {
-        # $parameters = [ordered]@{
-        #     Location = 'eastus2euap'
-        #     Properties = [ordered]@{
-        #         LicenseType = 'ESU'
-        #         LicenseDetails = [ordered]@{
-        #             State = 'Activated'
-        #             Target = 'Windows Server 2012'
-        #             Edition = 'Datacenter'
-        #             Type = 'pCore'
-        #             Processors = 6
-        #         }
-        #     }
-        # }
-        #$j = ConvertTo-Json $parameters
         $all = @(New-AzConnectedLicense -Name $env.EsuLicenseName -ResourceGroupName $env.ResourceGroupName -Location 'eastus2euap' -LicenseType 'ESU' -LicenseDetailState 'Activated'  -LicenseDetailTarget 'Windows Server 2012' -LicenseDetailEdition 'Datacenter' -LicenseDetailType 'pCore' -LicenseDetailProcessor 16 -SubscriptionId $env.SubscriptionId)
         $all | Should -Not -BeNullOrEmpty
 

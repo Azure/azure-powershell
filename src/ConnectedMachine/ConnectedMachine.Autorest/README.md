@@ -84,104 +84,95 @@ directive:
             "description": "The expand expression to apply on the operation.",
           }
         ]
- 
-  # - from: swagger-document
-  #   where: $.definitions.Machine.properties.properties
-  #   transform: >-
-  #     return {
-  #         "x-ms-client-flatten": true,
-  #         "$ref": "#/definitions/MachineProperties",
-  #         "description": "Hybrid Compute Machine properties"
-  #       }
- 
-  # - from: swagger-document
-  #   where: $.definitions.MachineExtensionUpdateProperties.properties
-  #   transform: >-
-  #     return {
-  #       "forceUpdateTag": {
-  #         "type": "string",
-  #         "description": "How the extension handler should be forced to update even if the extension configuration has not changed."
-  #       },
-  #       "publisher": {
-  #         "type": "string",
-  #         "description": "The name of the extension handler publisher."
-  #       },
-  #       "type": {
-  #         "type": "string",
-  #         "description": "Specifies the type of the extension; an example is \"CustomScriptExtension\"."
-  #       },
-  #       "typeHandlerVersion": {
-  #         "type": "string",
-  #         "description": "Specifies the version of the script handler."
-  #       },
-  #       "enableAutomaticUpgrade": {
-  #         "type": "boolean",
-  #         "description": "Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available."
-  #       },
-  #       "autoUpgradeMinorVersion": {
-  #         "type": "boolean",
-  #         "description": "Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true."
-  #       },
-  #       "settings": {
-  #         "type": "object",
-  #         "additionalProperties": true,
-  #         "description": "Json formatted public settings for the extension."
-  #       },
-  #       "protectedSettings": {
-  #         "type": "object",
-  #         "additionalProperties": true,
-  #         "description": "The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all."
-  #       }
-  #     }
 
-  # - from: swagger-document
-  #   where: $.definitions.MachineExtensionProperties.properties
-  #   transform: >-
-  #     return {
-  #       "forceUpdateTag": {
-  #         "type": "string",
-  #         "description": "How the extension handler should be forced to update even if the extension configuration has not changed."
-  #       },
-  #       "publisher": {
-  #         "type": "string",
-  #         "description": "The name of the extension handler publisher."
-  #       },
-  #       "type": {
-  #         "type": "string",
-  #         "description": "Specifies the type of the extension; an example is \"CustomScriptExtension\"."
-  #       },
-  #       "typeHandlerVersion": {
-  #         "type": "string",
-  #         "description": "Specifies the version of the script handler."
-  #       },
-  #       "enableAutomaticUpgrade": {
-  #         "type": "boolean",
-  #         "description": "Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available."
-  #       },
-  #       "autoUpgradeMinorVersion": {
-  #         "type": "boolean",
-  #         "description": "Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true."
-  #       },
-  #       "settings": {
-  #         "type": "object",
-  #         "additionalProperties": true,
-  #         "description": "Json formatted public settings for the extension."
-  #       },
-  #       "protectedSettings": {
-  #         "type": "object",
-  #         "additionalProperties": true,
-  #         "description": "The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all."
-  #       },
-  #       "provisioningState": {
-  #         "readOnly": true,
-  #         "type": "string",
-  #         "description": "The provisioning state, which only appears in the response."
-  #       },
-  #       "instanceView": {
-  #         "$ref": "#/definitions/MachineExtensionInstanceView",
-  #         "description": "The machine extension instance view."
-  #       }
-  #     }
+  - from: swagger-document
+    where: $.definitions.MachineExtensionUpdateProperties.properties
+    transform: >-
+      return {
+        "forceUpdateTag": {
+          "type": "string",
+          "description": "How the extension handler should be forced to update even if the extension configuration has not changed."
+        },
+        "publisher": {
+          "type": "string",
+          "description": "The name of the extension handler publisher."
+        },
+        "type": {
+          "type": "string",
+          "description": "Specifies the type of the extension; an example is \"CustomScriptExtension\"."
+        },
+        "typeHandlerVersion": {
+          "type": "string",
+          "description": "Specifies the version of the script handler."
+        },
+        "enableAutomaticUpgrade": {
+          "type": "boolean",
+          "description": "Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available."
+        },
+        "autoUpgradeMinorVersion": {
+          "type": "boolean",
+          "description": "Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true."
+        },
+        "settings": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Json formatted public settings for the extension."
+        },
+        "protectedSettings": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all."
+        }
+      }
+
+  - from: swagger-document
+    where: $.definitions.MachineExtensionProperties.properties
+    transform: >-
+      return {
+        "forceUpdateTag": {
+          "type": "string",
+          "description": "How the extension handler should be forced to update even if the extension configuration has not changed."
+        },
+        "publisher": {
+          "type": "string",
+          "description": "The name of the extension handler publisher."
+        },
+        "type": {
+          "type": "string",
+          "description": "Specifies the type of the extension; an example is \"CustomScriptExtension\"."
+        },
+        "typeHandlerVersion": {
+          "type": "string",
+          "description": "Specifies the version of the script handler."
+        },
+        "enableAutomaticUpgrade": {
+          "type": "boolean",
+          "description": "Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available."
+        },
+        "autoUpgradeMinorVersion": {
+          "type": "boolean",
+          "description": "Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true."
+        },
+        "settings": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Json formatted public settings for the extension."
+        },
+        "protectedSettings": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The provisioning state, which only appears in the response."
+        },
+        "instanceView": {
+          "$ref": "#/definitions/MachineExtensionInstanceView",
+          "description": "The machine extension instance view."
+        }
+      }
 
   # add 200 response to run-command delete 
   - from: swagger-document
@@ -219,31 +210,6 @@ directive:
           }
         }
       }
-
-  # verify that validate license missing licence name parameter
-  # - from: swagger-document
-  #   where: $.paths["/subscriptions/{subscriptionId}/providers/Microsoft.HybridCompute/validateLicense"].post.parameters
-  #   transform: >-
-  #     return [
-  #         {
-  #           "$ref": "../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
-  #         },
-  #         {
-  #           "$ref": "../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
-  #         },
-  #         {
-  #           "$ref": "#/parameters/licenseNameParameter"
-  #         },
-  #         {
-  #           "name": "parameters",
-  #           "in": "body",
-  #           "required": true,
-  #           "schema": {
-  #             "$ref": "#/definitions/License"
-  #           },
-  #           "description": "Parameters supplied to the license validation operation."
-  #         }
-  #       ]
 
   # GetViaIdentity isn't useful until Azure PowerShell supports piping of different subjects
   - where:
@@ -394,9 +360,6 @@ directive:
   - where:
       subject: NetworkSecurityPerimeterConfiguration$
     remove: true
-  # - where:
-  #     subject: NetworkSecurityPerimeterConfiguration
-  #   remove: true
  
   # Removing non-expand commands
   - where:
