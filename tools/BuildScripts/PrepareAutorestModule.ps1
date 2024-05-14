@@ -17,7 +17,8 @@ param (
     [string]$RepoRoot,
     [Parameter(ParameterSetName="ModuleNameSet", Mandatory=$true)]
     [string]$ModuleRootName,
-    [switch]$ForceRegenerate
+    [switch]$ForceRegenerate,
+    [switch]$Pipeline
 )
 <#
     for:
@@ -50,7 +51,7 @@ foreach ($subModuleName in $outdatedSubModule) {
         Remove-Item -Path $generateLog -Recurse -Force
     }
     New-Item -ItemType File -Force -Path $generateLog
-    if (-not (Update-GeneratedSubModule -ModuleRootName $ModuleRootName -SubModuleName $subModuleName -SourceDirectory $sourceDirectory -GeneratedDirectory $generatedDirectory -GenerateLog $generateLog)) {
+    if (-not (Update-GeneratedSubModule -ModuleRootName $ModuleRootName -SubModuleName $subModuleName -SourceDirectory $sourceDirectory -GeneratedDirectory $generatedDirectory -GenerateLog $generateLog -Pipeline:$Pipeline)) {
         Write-Error "Failed to generate code for module: $ModuleRootName, $subModuleName"
         Write-Error "========= Start of error log for $ModuleRootName, $subModuleName ========="
         Write-Error "log can be found at $generateLog"

@@ -94,11 +94,17 @@ function Get-OutdatedSubModule {
 function Invoke-SubModuleGeneration {
     param (
         [string]$GenerateDirectory,
-        [string]$GenerateLog
+        [string]$GenerateLog,
+        [switch]$Pipeline
     )
     Write-Host "----------Start code generation for $GenerateDirectory----------" -ForegroundColor DarkGreen
     Set-Location -Path $GenerateDirectory
-    autorest --max-memory-size=8192 >> $GenerateLog
+    if ($Pipeline) {
+        npx autorest --max-memory-size=8192 >> $GenerateLog
+    } else {
+        autorest --max-memory-size=8192 >> $GenerateLog
+    }
+    
     if ($lastexitcode -ne 0) {
         return $false
     } else {
@@ -115,7 +121,8 @@ function Update-GeneratedSubModule {
         [string]$SubModuleName,
         [string]$SourceDirectory,
         [string]$GeneratedDirectory,
-        [string]$GenerateLog
+        [string]$GenerateLog,
+        [switch]$Pipeline
     )
     $SourceDirectory = Join-Path $SourceDirectory $ModuleRootName $SubModuleName
     $GeneratedDirectory = Join-Path $GeneratedDirectory $ModuleRootName $SubModuleName
@@ -130,7 +137,7 @@ function Update-GeneratedSubModule {
     $generateInfoPath = Join-Path $SourceDirectory "generate-info.json"
     Copy-Item -Path $generateInfoPath -Destination $GeneratedDirectory -Force
 
-    if (-not (Invoke-SubModuleGeneration -GenerateDirectory $SourceDirectory -GenerateLog $GenerateLog)) {
+    if (-not (Invoke-SubModuleGeneration -GenerateDirectory $SourceDirectory -GenerateLog $GenerateLog -Pipeline:$Pipeline)) {
         return $false;
     }
     # remove $sourceDirectory/generated/modules

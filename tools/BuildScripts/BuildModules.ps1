@@ -29,9 +29,6 @@ param (
     [switch]$EnableTestCoverage
 
 )
-<#
-    TODO: add comments
-#>
 $BuildScriptsModulePath = Join-Path $PSScriptRoot "BuildScripts.psm1"
 Import-Module $BuildScriptsModulePath
 
@@ -48,6 +45,7 @@ $testModules = @()
 $toolDirectory = Join-Path $RepoRoot "tools"
 $sourceDirectory = Join-Path $RepoRoot "src"
 $generatedDirectory = Join-Path $RepoRoot "generated"
+$isPipeline = $false
 if (-not (Test-Path $sourceDirectory)) {
     Write-Warning "Cannot find source directory: $sourceDirectory"
 } elseif (-not (Test-Path $generatedDirectory)) {
@@ -76,10 +74,11 @@ switch ($PSCmdlet.ParameterSetName) {
     'CIPlanSet' {
         $CIPlanPath = Join-Path $RepoArtifacts "PipelineResult" "CIPlan.json"
         If (Test-Path $CIPlanPath) {
-            $CIPlan = Get-Content $CIPlanPath | ConvertFrom-Json
-            $TargetModule = $CIPlan.build
-            $testModules = $CIPlan.test
+            $CIPlanContent = Get-Content $CIPlanPath | ConvertFrom-Json
+            $TargetModule = $CIPlanContent.build
+            $testModules = $CIPlanContent.test
         }
+        $isPipeline = $true
         Write-Host "----------Start building modules from $CIPlanPath----------`r`n$($TargetModule | Join-String -Separator "`r`n")" -ForegroundColor DarkYellow
     }
     'ModifiedBuildSet' {
@@ -110,12 +109,12 @@ switch ($PSCmdlet.ParameterSetName) {
 }
 
 $csprojFiles = Get-CsprojFromModule -BuildModuleList $TargetModule -TestModuleList $testModules -RepoRoot $RepoRoot -Configuration $Configuration
-
 # Prepare autorest based modules
 $prepareScriptPath = Join-Path $PSScriptRoot "PrepareAutorestModule.ps1"
+
 foreach ($moduleRootName in $TargetModule) {
     Write-Host "Preparing $moduleRootName ..." -ForegroundColor DarkGreen
-    . $prepareScriptPath -ModuleRootName $moduleRootName -RepoRoot $RepoRoot -ForceRegenerate:$ForceRegenerate
+    . $prepareScriptPath -ModuleRootName $moduleRootName -RepoRoot $RepoRoot -ForceRegenerate:$ForceRegenerate -Pipeline:$isPipeline
 }
 
 & dotnet --version
@@ -143,9 +142,5 @@ if ($EnableTestCoverage -eq "true")
     $buildCmdResult += " -p:TestCoverage=TESTCOVERAGE"
 }
 Invoke-Expression -Command $buildCmdResult
-
-if ('CIPlanSet' -eq $PSCmdlet.ParameterSetName) {
-    . "$toolDirectory/ExecuteCIStep.ps1"
-}
 
 Remove-Item $sln -Force

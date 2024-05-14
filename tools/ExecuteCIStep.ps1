@@ -162,6 +162,7 @@ If ($Build)
 {
     If (Test-Path -Path "$RepoArtifacts/PipelineResult")
     {
+        $LogFile = Join-Path $RepoArtifacts Build.log
         $LogContent = Get-Content $LogFile
         $BuildResultArray = @()
         ForEach ($Line In $LogContent)

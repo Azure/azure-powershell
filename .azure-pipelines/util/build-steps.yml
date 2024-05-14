@@ -152,14 +152,10 @@ steps:
     pwsh: true
     script: |
       $buildScript = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'BuildModules.ps1'
-      $forceRegenerate = $false
-      if ('true' -eq '${{ parameters.ForceRegenerate }}') {
-        $forceRegenerate = $true
-      }
-      if ('Manual' -eq "$(Build.Reason)") {
-        . $buildScript -RepoRoot "$(Build.SourcesDirectory)" -Configuration ${{ parameters.configuration }} -CIPlan -ForceRegenerate:$forceRegenerate
+      if ('Manual' -eq "$(Build.Reason)" -and ('true' -eq '${{ parameters.ForceRegenerate }}')) {
+        . $buildScript -CIPlan -RepoRoot "$(Build.SourcesDirectory)" -Configuration ${{ parameters.configuration }} -ForceRegenerate
       } else {
-        . $buildScript -RepoRoot "$(Build.SourcesDirectory)" -Configuration ${{ parameters.configuration }} -CIPlan
+        . $buildScript -CIPlan -RepoRoot "$(Build.SourcesDirectory)" -Configuration ${{ parameters.configuration }}
       }
 - task: PowerShell@2
   displayName: 'Write pipeline result'
