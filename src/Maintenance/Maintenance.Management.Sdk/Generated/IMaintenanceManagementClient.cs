@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// <summary>
         /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        System.Guid SubscriptionId { get; set;}
+        string SubscriptionId { get; set;}
 
 
         /// <summary>

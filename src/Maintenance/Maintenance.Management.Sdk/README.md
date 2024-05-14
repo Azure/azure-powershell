@@ -32,4 +32,13 @@ input-file:
 output-folder: Generated
 
 namespace: Microsoft.Azure.Management.Maintenance
+
+directive:
+  - from: IMaintenanceManagementClient.cs
+    where: $
+    transform: return $.replace(/System.Guid SubscriptionId/g, 'string SubscriptionId')
+ 
+  - from: MaintenanceManagementClient.cs
+    where: $
+    transform: return $.replace(/System.Guid SubscriptionId/g, 'string SubscriptionId')
 ```
