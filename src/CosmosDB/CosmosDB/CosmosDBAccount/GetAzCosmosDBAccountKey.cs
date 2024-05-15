@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [GenericBreakingChangeWithVersionAttribute("Output type for -Type ConnectionStrings will be changed to List<DatabaseAccountConnectionString> in next major version.", Constants.DeprecateByAzVersion12, Constants.DeprecateByVersion2)]
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccountKey", DefaultParameterSetName = NameParameterSet), OutputType(typeof(Hashtable))]
     public class GetAzCosmosDBAccountKey : AzureCosmosDBCmdletBase
     {

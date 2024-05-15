@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Enabled secrets detection option by default.
+* Fixed a null reference issue during the process of `Get-AzContext -ListAvailable` [#24854].
 * Supported interactive subscription selection for user login flow. See more details at [Announcing a new login experience with Azure PowerShell and Azure CLI
 ](https://techcommunity.microsoft.com/t5/azure-tools-blog/announcing-a-new-login-experience-with-azure-powershell-and/ba-p/4109357)
 * Added config `LoginExperienceV2` to allow customer to switch the default behavior of context selection back. Check the help document of `Update-AzConfig` for more details.

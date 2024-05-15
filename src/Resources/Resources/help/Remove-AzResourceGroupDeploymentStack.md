@@ -14,24 +14,23 @@ Removes a Resource Group scoped Deployment Stack.
 
 ### RemoveByNameAndResourceGroupName (Default)
 ```
-Remove-AzResourceGroupDeploymentStack [-Name] <String> [-ResourceGroupName] <String> [-DeleteAll]
- [-DeleteResources] [-DeleteResourceGroups] [-PassThru] [-Force] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzResourceGroupDeploymentStack [-Name] <String> [-ResourceGroupName] <String>
+ -ActionOnUnmanage <PSActionOnUnmanage> [-PassThru] [-Force] [-BypassStackOutOfSyncError] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByResourceId
 ```
-Remove-AzResourceGroupDeploymentStack -ResourceId <String> [-DeleteAll] [-DeleteResources]
- [-DeleteResourceGroups] [-PassThru] [-Force] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzResourceGroupDeploymentStack -ResourceId <String> -ActionOnUnmanage <PSActionOnUnmanage> [-PassThru]
+ [-Force] [-BypassStackOutOfSyncError] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RemoveByStackObject
 ```
-Remove-AzResourceGroupDeploymentStack [-InputObjet] <PSDeploymentStack> [-DeleteAll] [-DeleteResources]
- [-DeleteResourceGroups] [-PassThru] [-Force] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzResourceGroupDeploymentStack [-InputObjet] <PSDeploymentStack> -ActionOnUnmanage <PSActionOnUnmanage>
+ [-PassThru] [-Force] [-BypassStackOutOfSyncError] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,6 +47,37 @@ Deletes a resource group scoped deployment stack named 'MyRGStack' in resource g
 
 ## PARAMETERS
 
+### -ActionOnUnmanage
+Action to take on resources that become unmanaged on deletion or update of the deployment stack. Possible values include: 'detachAll' (do not delete any unmanaged resources), 'deleteResources' (delete all unmanaged resources that are not RGs or MGs), and 'deleteAll' (delete every unmanaged resource).
+
+```yaml
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStacks.PSActionOnUnmanage
+Parameter Sets: (All)
+Aliases:
+Accepted values: DetachAll, DeleteResources, DeleteResourcesAndResourceGroups, DeleteAll
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BypassStackOutOfSyncError
+Bypass errors for the stack being out of sync when running the operation. If the stack is out of sync and this parameter is not set, the operation will fail. Only include this parameter if instructed to do so on a failed stack operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -55,51 +85,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DeleteAll
-Signal to delete both unmanaged Resources and ResourceGroups after updating stack.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DeleteResourceGroups
-Signal to delete unmanaged stack ResourceGroups after updating stack.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DeleteResources
-Signal to delete unmanaged stack Resources after updating stack.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -175,21 +160,6 @@ When set, indicates that the cmdlet should use pre-release API versions when aut
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

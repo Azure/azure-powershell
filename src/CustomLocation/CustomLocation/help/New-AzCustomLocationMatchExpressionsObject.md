@@ -14,7 +14,7 @@ Create an in-memory object for MatchExpressionsProperties.
 
 ```
 New-AzCustomLocationMatchExpressionsObject [-Key <String>] [-Operator <String>] [-Value <String[]>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,6 +60,21 @@ Valid operators are In, NotIn, Exists and DoesNotExist.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

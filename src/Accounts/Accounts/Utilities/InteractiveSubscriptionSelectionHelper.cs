@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
 
             if (markDefaultSubscription)
             {
-                outputAction($"{PSStyle.Bold}{subIndexRowValue}{PSStyle.BoldOff}{PSStyle.ForegroundColor.BrightCyan}{subNameRowValue}{subIdRowValue}{tenantNameRowValue}{PSStyle.Reset}");
+                outputAction($"{PSStyle.Bold}{PSStyle.ForegroundColor.BrightCyan}{subIndexRowValue}{PSStyle.BoldOff}{PSStyle.ForegroundColor.BrightCyan}{subNameRowValue}{subIdRowValue}{tenantNameRowValue}{PSStyle.Reset}");
             }
             else
             {

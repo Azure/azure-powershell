@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* General availability for module Az.ResourceGraph
 
 ## Version 0.13.1
 * Introduced secrets detection feature to safeguard sensitive data.

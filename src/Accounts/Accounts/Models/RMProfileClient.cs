@@ -148,8 +148,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             List<AzureSubscription> tempSubscriptions = null;
             string tenantName = null;
             
-            var lastUsedSubscription = isInteractiveAuthenticationFlow && string.IsNullOrEmpty(subscriptionId) && string.IsNullOrEmpty(subscriptionName) ? _profile?.DefaultContext?.Subscription : null;
-            bool selectSubscriptionFromList = isInteractiveAuthenticationFlow && IsInteractiveContextSelectionEnabled;
+            bool selectSubscriptionFromList = isInteractiveAuthenticationFlow && IsInteractiveContextSelectionEnabled && string.IsNullOrEmpty(subscriptionId) && string.IsNullOrEmpty(subscriptionName);
+            var lastUsedSubscription = selectSubscriptionFromList ? _profile?.DefaultContext?.Subscription : null;
 
             string promptBehavior =
                 (password == null &&
@@ -402,7 +402,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             if (shouldPopulateContextList && maxContextPopulation != 0)
             {
                 var defaultContext = _profile.DefaultContext;
-                var populatedSubscriptions = maxContextPopulation > 0 && !isInteractiveAuthenticationFlow ? ListSubscriptions(tenantIdOrName).Take(maxContextPopulation) : ListSubscriptions(tenantIdOrName);
+                var populatedSubscriptions = (maxContextPopulation < 0 || selectSubscriptionFromList) ? ListSubscriptions(tenantIdOrName) : ListSubscriptions(tenantIdOrName).Take(maxContextPopulation);
                 
                 foreach (var subscription in populatedSubscriptions)
                 {

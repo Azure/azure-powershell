@@ -591,8 +591,8 @@ namespace Microsoft.Azure.Commands.Profile
                     }
                 });
 
-                WriteInformation($"[Announcements]{System.Environment.NewLine}Share your feedback regarding your experience with `Connect-AzAccount` at: https://aka.ms/azloginfeedback{System.Environment.NewLine}");
-                WriteInformation($"If you encounter any problem, please open an issue at: https://aka.ms/azpsissue{System.Environment.NewLine}");
+                WriteInformation($"{Resources.AnnouncementsHeader}{System.Environment.NewLine}{Resources.AnnouncementsMessage}{System.Environment.NewLine}");
+                WriteInformation($"{Resources.ReportIssue}{System.Environment.NewLine}");
             }
         }
 
