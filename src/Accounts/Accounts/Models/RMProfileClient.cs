@@ -269,9 +269,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                                 subscriptions, _queriedTenants, tenantIdOrName, tenantName, lastUsedSubscription,
                                 Prompt, WriteInformationMessage,
                                 ref defaultSubscription, ref defaultTenant);
-                            var defaultContext = new AzureContext(defaultSubscription, account, environment, defaultTenant);
-                            _profile.TrySetDefaultContext(defaultContext);
-                            _profile.TryRemoveContext("Default");
                         }
                     }
                 }
@@ -355,14 +352,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                             subscriptions, _queriedTenants, tenantIdOrName, tenantName, lastUsedSubscription,
                             Prompt, WriteInformationMessage,
                             ref defaultSubscription, ref defaultTenant);
-                        var defaultContext = new AzureContext(defaultSubscription, account, environment, defaultTenant);
-                        _profile.TrySetDefaultContext(defaultContext);
-                        _profile.TryRemoveContext("Default");
                     }
                 }
             }
 
             shouldPopulateContextList &= _profile.DefaultContext?.Account == null;
+
             if (defaultSubscription == null)
             {
                 if (subscriptionId != null)
