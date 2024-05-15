@@ -57,7 +57,7 @@ function Get-NodeTypeName
 
 function Get-KeyVaultName
 {
-    return "pstestkv2";
+    return "pstestkv3";
 }
 
 function Get-NewCertName
@@ -96,17 +96,17 @@ function Get-CertAppThumbprint
 
 function Get-CACertCommonName
 {
-	return "pstestcert"
+	return "AzureRMSFTestCert3"
 }
 
 function Get-CACertIssuerThumbprint
 {
-	return "23EACB87421FB794AA9B68A31DB194BCDFEB34CF"
+	return "169B2A3BD4AF92BEDCE52AD1AA4CE2EB87A931CE"
 }
 
 function Get-CACertSecretUrl
 {
-	return "https://pstestkv2.vault.azure.net/secrets/AzureRMSFTestCert3/77bec8f5e3e14363b0f2d3d353c35650"
+	return "https://powsfmckv.vault.azure.net/secrets/AzureRMSFTestCert3/f312204e50074a02ba99e633070be7f7"
 }
 
 function Get-CertWUSecretUrl

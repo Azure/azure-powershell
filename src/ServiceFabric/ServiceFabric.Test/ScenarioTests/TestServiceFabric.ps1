@@ -91,8 +91,8 @@ function Test-NewAzureRmServiceFabricCluster
 
 function Test-NewAzureRmServiceFabricClusterCNCert
 {
-    $clusterName = "azurermsfcntest"
-    $resourceGroupName = "azurermsfrgCNTest"
+    $clusterName = "azurermsfcntest1"
+    $resourceGroupName = "azurermsfrg"
     $keyvaulturi = Get-CACertSecretUrl
     $vmPassword = Get-RandomPwd | ConvertTo-SecureString -Force -AsPlainText
     $commonName = Get-CACertCommonName
