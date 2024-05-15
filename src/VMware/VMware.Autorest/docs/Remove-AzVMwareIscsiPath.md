@@ -29,27 +29,16 @@ Delete a IscsiPath
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a IscsiPath in a private cloud
 ```powershell
-{{ Add code here }}
+Remove-AzVMwareIscsiPath -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
 ```
 
 ```output
 {{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Delete a IscsiPath in a private cloud
 
 ## PARAMETERS
 
