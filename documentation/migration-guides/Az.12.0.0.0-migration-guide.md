@@ -2152,7 +2152,7 @@ PS C:\WINDOWS\system32> $queue = Get-AzStorageQueue -Context $ctx-Name myqueue
 PS C:\WINDOWS\system32> $queue | fl
 
 QueueClient             : Azure.Storage.Queues.QueueClient
-Uri                     : https://mysorageaccount.queue.core.windows.net/myqueue
+Uri                     : https://mystorageaccount.queue.core.windows.net/myqueue
 ApproximateMessageCount : 0
 QueueProperties         : Azure.Storage.Queues.Models.QueueProperties
 Context                 : Microsoft.WindowsAzure.Commands.Storage.AzureStorageContext
