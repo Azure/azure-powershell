@@ -325,12 +325,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         }
 
                         if (token != null &&
-                            defaultTenant == null &&
+                            (defaultTenant == null || selectSubscriptionFromList) &&
                             TryGetTenantSubscription(token, account, environment, subscriptionId, subscriptionName, false, out tempSubscription, out tempTenant, out tempSubscriptions, isInteractiveAuthenticationFlow))
                         {
                             // If no subscription found for the given token/tenant，discard tempTenant value.
                             // Continue to look for matched subscripitons until one subscription retrived by its home tenant is found.
-                            if (tempSubscription != null)
+                            if (defaultTenant == null && tempSubscription != null)
                             {
                                 defaultSubscription = tempSubscription;
                                 if (tempSubscription.GetTenant() == tempSubscription.GetHomeTenant())
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
             else
             {
-                defaultTenant = InteractiveSubscriptionSelectionHelper.GetDetailedTenantFromQueryHistory(_queriedTenants, defaultTenant?.Id) ?? defaultTenant; ;
+                defaultTenant = InteractiveSubscriptionSelectionHelper.GetDetailedTenantFromQueryHistory(_queriedTenants, defaultTenant?.Id) ?? defaultTenant;
                 var defaultContext = new AzureContext(defaultSubscription, account, environment, defaultTenant);
                 if (!_profile.TrySetDefaultContext(name, defaultContext))
                 {
