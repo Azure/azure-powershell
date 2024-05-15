@@ -49,9 +49,9 @@ In this directory, run AutoRest:
 ``` yaml
 commit: e934daa5febe039d94794aa0ffc53a7f996db11f
 require:
-  - ../../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - ../../../../azure-rest-api-specs/specification/vmware/resource-manager/Microsoft.AVS/stable/2023-09-01/vmware.json
+  - $(repo)/specification/vmware/resource-manager/Microsoft.AVS/stable/2023-09-01/vmware.json
 
 module-version: 0.4.0
 title: VMware
