@@ -37,18 +37,19 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
-    $env.ResourceGroupName = 'az-sdk-test'
-    $env.Location = 'eastus2euap'
+    $env.ResourceGroupName = 'ytongtest'
+    $env.Location = 'centraluseuap'
     $env.MachineName = 'testmachine'
-    $env.PrivateLinkScopeName = 'scope-test'
+    $env.PrivateLinkScopeName = 'myScope'
     $env.RunCommandName = 'myRunCommand'
     $env.Script = 'Write-Host Hello World!'
     $env.EsuLicenseName = 'myEsuLicense'
     $env.ResourceUri = 'subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine'
     $env.PrivateLinkScopeUri = '/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/privateLinkScopes/myPrivateLinkScope'
     $env.PerimeterName = 'myPerimeter'
+    $env.ExtensionName = 'customScript'
 
-    New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location | Out-Null
+    #New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location | Out-Null
 
     if ($IsMacOS) {
         throw "Tests can't run on macOS because they require the azcmagent."

@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Set-AzConnectedPrivateLinkScope'))
+if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Set-AzConnectedPrivateLinkScope.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,22 +14,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzConnectedPrivateLinkSco
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Set-AzConnectedPrivateLinkScope' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Update' {
-        $tags = @{Tag1="tag1"; Tag2="tag2"}
-        $all = @(Set-AzConnectedPrivateLinkScope -ResourceGroupName $env.ResourceGroupName -ScopeName $env.PrivateLinkScopeName -PublicNetworkAccess "Disabled" -Tag $tags -Location $env.Location)
+Describe 'Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration' {
+    It 'Reconcile' -skip{ 
+        $all = @(Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration -PerimeterName $env.PerimeterName -ResourceGroupName $env.ResourceGroupName -ScopeName $env.PrivateLinkScopeName)
         $all.Count | Should -Not -BeNullOrEmpty
     }
 
-    It 'UpdateViaJsonFilePath' -skip {
+    It 'ReconcileViaIdentityPrivateLinkScope' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'UpdateViaJsonString' -skip {
+    It 'ReconcileViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

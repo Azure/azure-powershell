@@ -26,17 +26,23 @@ Retrieves information about the model view or the instance view of a hybrid mach
 ### [Get-AzConnectedMachineExtension](Get-AzConnectedMachineExtension.md)
 The operation to get the extension.
 
-### [Get-AzConnectedMachinePrivateLinkScope](Get-AzConnectedMachinePrivateLinkScope.md)
-Returns a Azure Arc PrivateLinkScope.
-
 ### [Get-AzConnectedMachineRunCommand](Get-AzConnectedMachineRunCommand.md)
 The operation to get a run command.
+
+### [Get-AzConnectedNetworkSecurityPerimeterConfiguration](Get-AzConnectedNetworkSecurityPerimeterConfiguration.md)
+Gets the network security perimeter configuration for a private link scope.
+
+### [Get-AzConnectedPrivateLinkScope](Get-AzConnectedPrivateLinkScope.md)
+Returns a Azure Arc PrivateLinkScope.
 
 ### [Install-AzConnectedMachinePatch](Install-AzConnectedMachinePatch.md)
 The operation to install patches on a hybrid machine identity in Azure.
 
 ### [Invoke-AzConnectedAssessMachinePatch](Invoke-AzConnectedAssessMachinePatch.md)
 The operation to assess patches on a hybrid machine identity in Azure.
+
+### [Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration](Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration.md)
+Forces the network security perimeter configuration to refresh for a private link scope.
 
 ### [New-AzConnectedLicense](New-AzConnectedLicense.md)
 The operation to Create a license.

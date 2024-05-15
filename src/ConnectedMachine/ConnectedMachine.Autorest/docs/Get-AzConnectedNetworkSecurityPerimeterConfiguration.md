@@ -1,67 +1,55 @@
 ---
 external help file:
 Module Name: Az.ConnectedMachine
-online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedmachineprivatelinkscope
+online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectednetworksecurityperimeterconfiguration
 schema: 2.0.0
 ---
 
-# Get-AzConnectedMachinePrivateLinkScope
+# Get-AzConnectedNetworkSecurityPerimeterConfiguration
 
 ## SYNOPSIS
-Returns a Azure Arc PrivateLinkScope.
+Gets the network security perimeter configuration for a private link scope.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzConnectedMachinePrivateLinkScope [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzConnectedNetworkSecurityPerimeterConfiguration -ResourceGroupName <String> -ScopeName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzConnectedMachinePrivateLinkScope -ResourceGroupName <String> -ScopeName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List1
-```
-Get-AzConnectedMachinePrivateLinkScope -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzConnectedNetworkSecurityPerimeterConfiguration -PerimeterName <String> -ResourceGroupName <String>
+ -ScopeName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns a Azure Arc PrivateLinkScope.
+Gets the network security perimeter configuration for a private link scope.
 
 ## EXAMPLES
 
-### Example 1: List all private link scopes in a resource group
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzConnectedMachinePrivateLinkScope -ResourceGroupName $resourceGroupName
+{{ Add code here }}
 ```
 
 ```output
-Name              Location    PublicNetworkAccess ProvisioningState
-----              --------    ------------------- ----------------- 
-name1             eastus2euap Enabled             Succeeded
-name2             eastus2euap Disabled            Succeeded
-name3             eastus2euap Enabled             Succeeded
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Lists all private link scopes in a specified resource group
+{{ Add description here }}
 
-### Example 2: Get a private link scope in a resource group by name
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzConnectedMachinePrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName
+{{ Add code here }}
 ```
 
 ```output
-Name         Location    PublicNetworkAccess ProvisioningState
-----         --------    ------------------- -----------------
-name1        eastus2euap Enabled             Succeeded
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Gets a private link scope in a specified resource group by name
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -81,13 +69,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PerimeterName
+The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -102,7 +105,7 @@ The name of the Azure Arc PrivateLinkScope resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -134,7 +137,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHybridComputePrivateLinkScope
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterConfiguration
 
 ## NOTES
 
