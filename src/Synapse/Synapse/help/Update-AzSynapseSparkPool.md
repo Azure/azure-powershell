@@ -553,7 +553,7 @@ Accept wildcard characters: False
 
 ### -SparkVersion
 Apache Spark version.
-Allowed values: 3.1,3.2,3.3
+Allowed values: 3.1,3.2,3.3,3.4
 
 ```yaml
 Type: System.String
