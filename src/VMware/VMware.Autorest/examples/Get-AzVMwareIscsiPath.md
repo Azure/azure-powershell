@@ -1,22 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get a IscsiPath
 ```powershell
-{{ Add code here }}
+Get-AzVMwareIscsiPath -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
 ```
 
 ```output
 {{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
+ Get a IscsiPath
 
-### Example 2: {{ Add title here }}
+### Example 2: List IscsiPath resources by PrivateCloud
 ```powershell
-{{ Add code here }}
+Get-AzVMwareIscsiPath -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
 ```
 
 ```output
 {{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
+List IscsiPath resources by PrivateCloud
 
