@@ -185,28 +185,23 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             {
                 if (exception is MsalUiRequiredException msalUiRequiredException)
                 {
-                    //There's no official error message for requiring MFA permission, so have to compare UGLY error message
-                    if (msalUiRequiredException.ErrorCode == "invalid_grant" &&
-                        msalUiRequiredException.Message.Contains("you must use multi-factor authentication to access"))
+                    string errorMessage;
+                    string desensitizedMessage;
+                    if (NeedTenantArmPermission(environment, tenantId, resourceId))
                     {
-                        string errorMessage;
-                        string desensitizedMessage;
-                        if (NeedTenantArmPermission(environment, tenantId, resourceId))
-                        {
-                            errorMessage = $"You must use multi-factor authentication to access tenant {tenantId}, please rerun 'Connect-AzAccount' with additional parameter '-TenantId {tenantId}'.";
-                            desensitizedMessage = "MFA is required to access tenant";
-                        }
-                        else
-                        {
-                            errorMessage = $"You must use multi-factor authentication to access resource {resourceId}, please rerun 'Connect-AzAccount' with additional parameter '-AuthScope {resourceId}'.";
-                            desensitizedMessage = "MFA is required to access resource";
-                        }
-                        return new AzPSAuthenticationFailedException(
-                            errorMessage,
-                            msalUiRequiredException.ErrorCode,
-                            originalException,
-                            desensitizedMessage: desensitizedMessage);
+                        errorMessage = $"You must use multi-factor authentication to access tenant {tenantId}, please rerun 'Connect-AzAccount' with additional parameter '-TenantId {tenantId}'.";
+                        desensitizedMessage = "MFA is required to access tenant";
                     }
+                    else
+                    {
+                        errorMessage = $"You must use multi-factor authentication to access resource {resourceId}, please rerun 'Connect-AzAccount' with additional parameter '-AuthScope {resourceId}'.";
+                        desensitizedMessage = "MFA is required to access resource";
+                    }
+                    return new AzPSAuthenticationFailedException(
+                        errorMessage,
+                        msalUiRequiredException.ErrorCode,
+                        originalException,
+                        desensitizedMessage: desensitizedMessage);
                 }
                 exception = exception.InnerException;
             }
