@@ -61,36 +61,37 @@ error record will be disabled by default. New parameter 'EnableErrorRecordsPersi
 #### Before
 ```powershell
 Get-AzVmss -ResourceGroupName ""
-# returned empty list
+# Returned an empty list.
 ```
 #### After
 ```powershell
 Get-AzVmss -ResourceGroupName ""
-# will return error for empty string validation in the parameter 
+# Will return an error from empty string validation in the parameter.
 ```
 
 
 ### `New-AzGalleryImageDefinition`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - Starting in May 2024 the "New-AzGalleryImage" cmdlet will deploy with the Trusted Launch configuration by default. To know more about Trusted Launch, please visit https://docs.microsoft.com/en-us/azure/virtual-machines/trusted-launch
+  - Starting in May 2024 the "New-AzGalleryImage" cmdlet will deploy with the Trusted Launch configuration and Gen2 Hyper V Generation by default. To know more about Trusted Launch, please visit [https://learn.microsoft.com/azure/virtual-machines/trusted-launch](/azure/virtual-machines/trusted-launch)
   - This change is expected to take effect from Az.Compute version: 8.0.0 and Az version: 12.0.0
 
 #### Before
 ```powershell
 New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Specialized" -OsType "Linux"
-# defaulted to HyperVGeneration Gen1 and SecurityType Standard  in the service side 
+# Defaulted to HyperVGeneration: Gen1 and SecurityType: Standard in the service side .
 ```
 #### After
 ```powershell
-# Will default to HyperVGeneration Gen2 and SecurityType TrustedLaunchSupported by code in service side 
+New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Specialized" -OsType "Linux"
+# Defaults to HyperVGeneration: Gen2 and SecurityType: TrustedLaunchSupported at the PowerShell level.
 ```
 
 
 ### `New-AzVM`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - Starting in May 2024 the "New-AzVM" cmdlet will deploy with the image 'Windows Server 2022 Azure Edition' by default. This will make migrating to Trusted Launch easier in the future. To know more about Trusted Launch, please visit https://docs.microsoft.com/en-us/azure/virtual-machines/trusted-launch
+  - Starting in May 2024 the "New-AzVM" cmdlet will deploy with the image 'Windows Server 2022 Azure Edition' by default. This will make migrating to Trusted Launch easier in the future. To know more about Trusted Launch, please visit [https://learn.microsoft.com/azure/virtual-machines/trusted-launch](/azure/virtual-machines/trusted-launch)
   - This change is expected to take effect from Az.Compute version: 8.0.0 and Az version: 12.0.0
 
 #### Before
@@ -100,7 +101,7 @@ $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -Secur
 ```
 #### After
 ```powershell
-$vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -SecurityType $securityTypeST -DomainNameLabel $domainNameLabel
+$vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -SecurityType "Standard" -DomainNameLabel $domainNameLabel
 # Now generates with the Windows 2022 Azure Edition image.
 ```
 
@@ -108,7 +109,7 @@ $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -Secur
 ### `New-AzVmss`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - Starting in May 2024 the "New-AzVmss" cmdlet will deploy with the image 'Windows Server 2022 Azure Edition' by default. This will make migrating to Trusted Launch easier in the future. To know more about Trusted Launch, please visit https://docs.microsoft.com/en-us/azure/virtual-machines/trusted-launch
+  - Starting in May 2024 the "New-AzVmss" cmdlet will deploy with the image 'Windows Server 2022 Azure Edition' by default. This will make migrating to Trusted Launch easier in the future. To know more about Trusted Launch, please visit [https://learn.microsoft.com/azure/virtual-machines/trusted-launch](/azure/virtual-machines/trusted-launch)
   - This change is expected to take effect from Az.Compute version: 8.0.0 and Az version: 12.0.0
 
 #### Before
@@ -523,7 +524,7 @@ New-AzEventGridPartnerNamespace -Name azps-partnernamespace -ResourceGroupName a
 ### `New-AzEventGridPartnerRegistration`
 
 - Cmdlet breaking-change will happen to all parameter sets
-  - Added new required parameter: Location <String>
+  - Added new required parameter: Location `<String>`
   - This change is expected to take effect from Az.EventGrid version: 2.0.0 and Az version: 12.0.0
 
 #### Before
