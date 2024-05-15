@@ -29,6 +29,9 @@
         "x-ms-failure-cause": [
           "gateway"
         ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
@@ -94,6 +97,9 @@
         ],
         "Pragma": [
           "no-cache"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
@@ -166,6 +172,9 @@
         ],
         "Pragma": [
           "no-cache"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
@@ -1092,7 +1101,7 @@
           "8d709ed1-fd1e-43e2-85c8-dcf105b36da7"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
           "16dc0fbd-b908-425b-a677-b72fbb62c040"
@@ -1592,6 +1601,9 @@
         "Pragma": [
           "no-cache"
         ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
@@ -1661,6 +1673,9 @@
         "Pragma": [
           "no-cache"
         ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
@@ -1689,7 +1704,7 @@
           "Fri, 07 Jun 2024 23:05:22 GMT"
         ],
         "Content-Length": [
-          "529"
+          "528"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1941,7 +1956,7 @@
           "84439090-1c98-47ff-817a-83112758b49d"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
           "a9357a1f-09c7-4e74-8391-dd54aa3b9763"
@@ -2486,6 +2501,9 @@
         "Retry-After": [
           "0"
         ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
           "14999"
         ],
@@ -2552,6 +2570,9 @@
         "Retry-After": [
           "0"
         ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
@@ -2617,6 +2638,9 @@
         ],
         "Retry-After": [
           "0"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11998"
@@ -2873,8 +2897,11 @@
         "Pragma": [
           "no-cache"
         ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11998"
         ],
         "x-ms-request-id": [
           "6ef46d6f-ee20-4496-bada-f3f931702c68"
@@ -2921,6 +2948,6 @@
     ]
   },
   "Variables": {
-    "SubscriptionId": "a1bfa635-f2bf-42f1-86b5-848c674fc321"
+    "SubscriptionId": "4ce8c9fe-cadc-47d6-9c76-335812fd59df"
   }
 }
