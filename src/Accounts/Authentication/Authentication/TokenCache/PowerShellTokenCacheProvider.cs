@@ -21,6 +21,7 @@ using Azure.Identity;
 using Hyak.Common;
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Utilities;
 using Microsoft.Azure.Commands.Shared.Config;
 using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.Internal.Subscriptions.Models;
@@ -170,8 +171,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public virtual IPublicClientApplication CreatePublicClient(string authority = null)
         {
             var builder = PublicClientApplicationBuilder.Create(Constants.PowerShellClientId);
-            if (AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var config)
-                && config.GetConfigValue<bool>(ConfigKeys.EnableLoginByWam))
+            if (AzConfigReader.IsWamEnabled(authority))
             {
                 builder = builder.WithBroker(new BrokerOptions(BrokerOptions.OperatingSystems.Windows));
             }
