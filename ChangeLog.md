@@ -1,3 +1,7 @@
+
+#### General
+* Fixed CVE-2024-29992.
+
 ## 11.6.0 - April 2024
 #### General
 * Introduced secrets detection feature to safeguard sensitive data.
