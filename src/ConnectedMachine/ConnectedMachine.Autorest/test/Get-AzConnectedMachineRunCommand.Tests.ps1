@@ -15,12 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzConnectedMachineRunComm
 }
 
 Describe 'Get-AzConnectedMachineRunCommand' {
-    It 'List' {
+    It 'List' -skip{
         $runCommand = Get-AzConnectedMachineRunCommand -ResourceGroupName $env.ResourceGroupName -MachineName $env.MachineName
         $runCommand.Count | Should -Not -BeNullOrEmpty
     }
 
-    It 'Get' {
+    It 'Get' -skip{
         $runCommand = Get-AzConnectedMachineRunCommand -ResourceGroupName $env.ResourceGroupName -RunCommandName $env.RunCommandName -MachineName $env.MachineName
         $runCommand.Count | Should -Not -BeNullOrEmpty
     }

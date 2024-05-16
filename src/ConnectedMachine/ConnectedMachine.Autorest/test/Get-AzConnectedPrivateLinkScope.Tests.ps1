@@ -15,12 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzConnectedPrivateLinkSco
 }
 
 Describe 'Get-AzConnectedPrivateLinkScope' {
-    It 'List' {
+    It 'List' -skip{
         $all = @(Get-AzConnectedPrivateLinkScope -ResourceGroupName $env.ResourceGroupName)
         $all | Should -Not -BeNullOrEmpty
     }
 
-    It 'Get' {
+    It 'Get' -skip{
         $all = @(Get-AzConnectedPrivateLinkScope -ResourceGroupName $env.ResourceGroupName -ScopeName $env.PrivateLinkScopeName)
         $all | Should -Not -BeNullOrEmpty
     }

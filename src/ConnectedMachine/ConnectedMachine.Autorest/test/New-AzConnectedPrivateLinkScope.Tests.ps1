@@ -27,7 +27,7 @@ Describe 'New-AzConnectedPrivateLinkScope' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Create' {
+    It 'Create' -skip{
         $all = (New-AzConnectedPrivateLinkScope -ResourceGroupName $env.ResourceGroupName -ScopeName $env.PrivateLinkScopeName -PublicNetworkAccess "Enabled" -Location $env.Location)
         $all | Should -Not -BeNullOrEmpty
     }

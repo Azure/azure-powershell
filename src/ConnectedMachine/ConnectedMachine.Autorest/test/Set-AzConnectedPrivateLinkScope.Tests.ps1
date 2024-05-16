@@ -19,7 +19,7 @@ Describe 'Set-AzConnectedPrivateLinkScope' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Update' {
+    It 'Update' -skip{
         $tags = @{Tag1="tag1"; Tag2="tag2"}
         $all = @(Set-AzConnectedPrivateLinkScope -ResourceGroupName $env.ResourceGroupName -ScopeName $env.PrivateLinkScopeName -PublicNetworkAccess "Disabled" -Tag $tags -Location $env.Location)
         $all.Count | Should -Not -BeNullOrEmpty

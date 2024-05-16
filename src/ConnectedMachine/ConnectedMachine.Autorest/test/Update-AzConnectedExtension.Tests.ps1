@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Update-AzConnectedPrivateLinkScopeTag'))
+if(($null -eq $TestName) -or ($TestName -contains 'Update-AzConnectedExtension'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzConnectedPrivateLinkScopeTag.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzConnectedExtension.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzConnectedPrivateLink
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzConnectedPrivateLinkScopeTag' {
+Describe 'Update-AzConnectedExtension' {
     It 'UpdateExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
@@ -28,9 +28,17 @@ Describe 'Update-AzConnectedPrivateLinkScopeTag' {
     }
 
     It 'Update' -skip{
-        $tags2 = @{hello="hello"; world="world"}
-        $all = @(Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName $env.ResourceGroupName -ScopeName $env.PrivateLinkScopeName -Tag $tags2)
-        $all | Should -Not -BeNullOrEmpty
+        $target = @{"Microsoft.Compute.CustomScriptExtension" = @{"targetVersion"="1.10.12"}}
+        $all = (Update-AzConnectedExtension -ResourceGroupName $env.ResourceGroupName -MachineName $env.MachineName -ExtensionTarget $target)
+        $all | Should -BeNullOrEmpty
+    }
+
+    It 'UpdateViaIdentityMachineExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaIdentityMachine' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
     It 'UpdateViaIdentityExpanded' -skip {

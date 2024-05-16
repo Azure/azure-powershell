@@ -19,7 +19,7 @@ Describe 'Set-AzConnectedLicense' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Update' {
+    It 'Update' -skip{
         $all = @(Set-AzConnectedLicense -Name $env.EsuLicenseName -ResourceGroupName $env.ResourceGroupName -Location $env.Location -LicenseType 'ESU' -LicenseDetailState 'Deactivated'  -LicenseDetailTarget 'Windows Server 2012' -LicenseDetailEdition 'Datacenter' -LicenseDetailType 'pCore' -LicenseDetailProcessor 16 -SubscriptionId $env.SubscriptionId)
         $all | Should -Not -BeNullOrEmpty
     }

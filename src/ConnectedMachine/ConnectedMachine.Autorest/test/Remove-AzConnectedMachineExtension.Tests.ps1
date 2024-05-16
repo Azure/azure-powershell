@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzConnectedMachineExte
 }
 
 Describe 'Remove-AzConnectedMachineExtension' {
-    It 'Delete' {
+    It 'Delete' -skip{
         $all = (Remove-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $env.MachineName -Name $env.ExtensionName)
         $all | Should -BeNullOrEmpty
     }

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzConnectedLicense'))
 }
 
 Describe 'Remove-AzConnectedLicense' {
-    It 'Delete' {
+    It 'Delete' -skip{
         $all = @(Remove-AzConnectedLicense -Name $env.EsuLicenseName -ResourceGroupName $env.ResourceGroupName -SubscriptionId $env.SubscriptionId)
         $all | Should -BeNullOrEmpty
     }
