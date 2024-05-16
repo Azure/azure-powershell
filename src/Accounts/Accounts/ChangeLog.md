@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.0.0
 * Web Account Manager (WAM) was set the default experience of interactive login. For more details please refer to https://go.microsoft.com/fwlink/?linkid=2272007
 * Enabled secrets detection option by default.
 * Fixed a null reference issue during the process of `Get-AzContext -ListAvailable` [#24854].

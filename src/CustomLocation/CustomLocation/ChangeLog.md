@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.2.0
 * Upgraded managed identity parameters.
 * Updated example for new managed identity.
 
