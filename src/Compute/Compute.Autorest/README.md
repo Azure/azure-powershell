@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Compute service.
 
 ---
-## Status
-[![Az.Compute](https://img.shields.io/powershellgallery/v/Az.Compute.svg?style=flat-square&label=Az.Compute "Az.Compute")](https://www.powershellgallery.com/packages/Az.Compute/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -29,7 +26,7 @@ For information on how to develop for `Az.Compute`, see [how-to.md](how-to.md).
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-commit: 1a925d1afe288a5f20d078bbc89214a36a0e4287
+commit: 77c47a7fba8d8b900595966b81d6bb92a0308370
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -38,6 +35,7 @@ input-file:
   - $(repo)/specification/compute/resource-manager/Microsoft.Compute/GalleryRP/stable/2022-01-03/gallery.json
   - $(repo)/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-07-01/runCommand.json
   - $(repo)/specification/compute/resource-manager/Microsoft.Compute/common-types/v1/common.json
+  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/DiagnosticRP/preview/2024-03-01-preview/diagnostic.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 module-version: 0.3.0
 # Normally, title is the service name
@@ -234,5 +232,34 @@ directive:
     where: 
       subject: VMRunCommand|VmssVMRunCommand
       verb: Get
+    remove: true
+  ### Remove All Diagnostic cmdlets aside from Invoke Spot Placement Recommender - generate ONLY SpotPlacementRecommender cmdlets
+  - where:
+      verb: Get
+      subject: Diagnostic
+    remove: true
+  - where:
+      verb: Get
+      subject: DiskInspection
+    remove: true
+  - where:
+      verb: New
+      subject: DiskInspection
+    remove: true
+  - where:
+      verb: Read
+      subject: DiagnosticOperation
+    remove: true
+  - where:
+      verb: Register
+      subject: DiskInspectionStorageConfiguration
+    remove: true
+  - where:
+      verb: Test
+      subject: DiskInspectionStorageConfiguration
+    remove: true
+  - where:
+      verb: Get
+      subject: SpotPlacementRecommender
     remove: true
 ```

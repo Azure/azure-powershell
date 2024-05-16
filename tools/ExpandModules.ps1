@@ -48,7 +48,7 @@ try {
     }
     foreach ($package in $AllPackages) {
         foreach ($module in $ModifiedModules) {
-            if ($package.Name -like "*$module*") { 
+            if (($package.Name -like "*$module*") -or ($package.Name -match '^Az(Preview)?\.\d+\.\d+\.\d+\.nupkg$')) { 
                 $module_name = $package.Name
                 $zip_artifact = $package.FullName -replace ".nupkg$",".zip"
                 Write-Output "Renaming $package to zip archive $zip_artifact"

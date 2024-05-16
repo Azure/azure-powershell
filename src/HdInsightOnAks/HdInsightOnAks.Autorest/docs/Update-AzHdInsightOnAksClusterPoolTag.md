@@ -133,7 +133,6 @@ Accept wildcard characters: False
 
 ### -ClusterPoolTag
 Tags object for patch operations.
-To construct, see NOTES section for CLUSTERPOOLTAG properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITagsObject
@@ -165,7 +164,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity

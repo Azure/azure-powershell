@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzServiceBusGeoDRConfigur
 }
 
 Describe 'Set-AzServiceBusGeoDRConfigurationBreakPair' {
-    It 'Break' {
+    It 'Break' -skip:$($env.secondaryLocation -eq '') {
         Set-AzServiceBusGeoDRConfigurationBreakPair -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -Name $env.alias
         
         while($drConfig.ProvisioningState -ne "Succeeded"){
@@ -40,7 +40,7 @@ Describe 'Set-AzServiceBusGeoDRConfigurationBreakPair' {
         }
     }
 
-    It 'BreakViaIdentity' {
+    It 'BreakViaIdentity' -skip:$($env.secondaryLocation -eq '') {
         $drConfig = Get-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
 
         Set-AzServiceBusGeoDRConfigurationBreakPair -InputObject $drConfig

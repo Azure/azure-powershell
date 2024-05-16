@@ -23,3 +23,4 @@ Describe 'Remove-AzConnectedMachine' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
+

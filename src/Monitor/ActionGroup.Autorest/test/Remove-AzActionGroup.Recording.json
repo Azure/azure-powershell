@@ -6,12 +6,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "13" ],
-        "x-ms-client-request-id": [ "f8125c07-6755-4efb-ab2b-5895e256a900" ],
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "24599428-6835-493d-b38e-4f0de16469c8" ],
         "CommandName": [ "Remove-AzActionGroup" ],
         "FullCommandName": [ "Remove-AzActionGroup_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.3.9", "Az.ActionGroup/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.3.11", "Az.ActionGroup/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,19 +22,20 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "X-ActivityId": [ "f8125c07-6755-4efb-ab2b-5895e256a900" ],
+        "X-ActivityId": [ "24599428-6835-493d-b38e-4f0de16469c8" ],
         "Access-Control-Expose-Headers": [ "x-activityid" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Frame-Options": [ "SAMEORIGIN" ],
-        "X-ServedBy": [ "CH1AZNS000005" ],
+        "X-ServedBy": [ "ch1azns000007" ],
         "api-supported-versions": [ "2016-09-01-preview, 2017-03-01-preview, 2017-04-01, 2018-03-01, 2018-09-01, 2019-03-01, 2019-06-01, 2021-09-01, 2022-04-01, 2022-06-01, 2023-01-01, 2023-03-01-preview, 2023-05-01-preview, 2023-05-01, 2023-08-01-preview, 2023-09-01-preview" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-request-id": [ "1ec8b42e-dab6-4740-8a6b-e3a285c4914d" ],
-        "x-ms-correlation-request-id": [ "1ec8b42e-dab6-4740-8a6b-e3a285c4914d" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20231108T053846Z:1ec8b42e-dab6-4740-8a6b-e3a285c4914d" ],
+        "x-ms-request-id": [ "a1e93846-051e-4b04-a3f8-92cc4bec0eeb" ],
+        "x-ms-correlation-request-id": [ "a1e93846-051e-4b04-a3f8-92cc4bec0eeb" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240204T084905Z:a1e93846-051e-4b04-a3f8-92cc4bec0eeb" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 08 Nov 2023 05:38:46 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A99178AE40344A06867F3577C8E379B0 Ref B: MAA201060514051 Ref C: 2024-02-04T08:49:02Z" ],
+        "Date": [ "Sun, 04 Feb 2024 08:49:05 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -51,12 +52,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "14" ],
-        "x-ms-client-request-id": [ "f8ee106f-90a9-4605-9d86-1824abebe883" ],
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "61723e49-6f4a-4751-9547-64922b525a83" ],
         "CommandName": [ "Get-AzActionGroup" ],
         "FullCommandName": [ "Get-AzActionGroup_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.3.9", "Az.ActionGroup/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.3.11", "Az.ActionGroup/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -67,19 +68,20 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "X-ActivityId": [ "f8ee106f-90a9-4605-9d86-1824abebe883" ],
+        "X-ActivityId": [ "61723e49-6f4a-4751-9547-64922b525a83" ],
         "Access-Control-Expose-Headers": [ "x-activityid" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Frame-Options": [ "SAMEORIGIN" ],
-        "X-ServedBy": [ "CH1AZNS000005" ],
+        "X-ServedBy": [ "CH1AZNS000006" ],
         "api-supported-versions": [ "2016-09-01-preview, 2017-03-01-preview, 2017-04-01, 2018-03-01, 2018-09-01, 2019-03-01, 2019-06-01, 2021-09-01, 2022-04-01, 2022-06-01, 2023-01-01, 2023-03-01-preview, 2023-05-01-preview, 2023-05-01, 2023-08-01-preview, 2023-09-01-preview" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "244" ],
-        "x-ms-request-id": [ "1becebbd-c1ba-4e48-b30b-405b235e3245" ],
-        "x-ms-correlation-request-id": [ "1becebbd-c1ba-4e48-b30b-405b235e3245" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20231108T053848Z:1becebbd-c1ba-4e48-b30b-405b235e3245" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-request-id": [ "fef59fee-ed67-4ce7-8124-e38424c679b7" ],
+        "x-ms-correlation-request-id": [ "fef59fee-ed67-4ce7-8124-e38424c679b7" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240204T084908Z:fef59fee-ed67-4ce7-8124-e38424c679b7" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 08 Nov 2023 05:38:47 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 79EFE615137D4B74953FC64DA9710421 Ref B: MAA201060514051 Ref C: 2024-02-04T08:49:05Z" ],
+        "Date": [ "Sun, 04 Feb 2024 08:49:07 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "573" ],
@@ -97,12 +99,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "15" ],
-        "x-ms-client-request-id": [ "addc63a2-41a6-4f39-a7fa-c04023ba0a9a" ],
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "a5b4d6f6-befc-4509-a62e-4ccef7d074b7" ],
         "CommandName": [ "Remove-AzActionGroup" ],
         "FullCommandName": [ "Remove-AzActionGroup_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.3.9", "Az.ActionGroup/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.3.11", "Az.ActionGroup/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -113,19 +115,20 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "X-ActivityId": [ "addc63a2-41a6-4f39-a7fa-c04023ba0a9a" ],
+        "X-ActivityId": [ "a5b4d6f6-befc-4509-a62e-4ccef7d074b7" ],
         "Access-Control-Expose-Headers": [ "x-activityid" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Frame-Options": [ "SAMEORIGIN" ],
-        "X-ServedBy": [ "CH1AZNS000005" ],
+        "X-ServedBy": [ "CH2AZNS000001" ],
         "api-supported-versions": [ "2016-09-01-preview, 2017-03-01-preview, 2017-04-01, 2018-03-01, 2018-09-01, 2019-03-01, 2019-06-01, 2021-09-01, 2022-04-01, 2022-06-01, 2023-01-01, 2023-03-01-preview, 2023-05-01-preview, 2023-05-01, 2023-08-01-preview, 2023-09-01-preview" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
-        "x-ms-request-id": [ "e2bc25df-b6aa-4990-92c2-8f7605d45f08" ],
-        "x-ms-correlation-request-id": [ "e2bc25df-b6aa-4990-92c2-8f7605d45f08" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20231108T053849Z:e2bc25df-b6aa-4990-92c2-8f7605d45f08" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-request-id": [ "e0636991-4580-4201-8055-9ec9a00c3067" ],
+        "x-ms-correlation-request-id": [ "e0636991-4580-4201-8055-9ec9a00c3067" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240204T084912Z:e0636991-4580-4201-8055-9ec9a00c3067" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 08 Nov 2023 05:38:49 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 67FC737267C844BAA1C76DB2135E96C3 Ref B: MAA201060514051 Ref C: 2024-02-04T08:49:08Z" ],
+        "Date": [ "Sun, 04 Feb 2024 08:49:12 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],

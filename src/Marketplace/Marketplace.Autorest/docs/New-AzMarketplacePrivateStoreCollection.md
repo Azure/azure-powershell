@@ -8,18 +8,44 @@ schema: 2.0.0
 # New-AzMarketplacePrivateStoreCollection
 
 ## SYNOPSIS
-Create or update private store collection
+Create private store collection
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzMarketplacePrivateStoreCollection -CollectionId <String> -PrivateStoreId <String> [-AllSubscription]
  [-Claim <String>] [-CollectionName <String>] [-Enabled] [-SubscriptionsList <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityPrivateStore
+```
+New-AzMarketplacePrivateStoreCollection -CollectionId <String> -PrivateStoreInputObject <IMarketplaceIdentity>
+ -Payload <ICollection> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityPrivateStoreExpanded
+```
+New-AzMarketplacePrivateStoreCollection -CollectionId <String> -PrivateStoreInputObject <IMarketplaceIdentity>
+ [-AllSubscription] [-Claim <String>] [-CollectionName <String>] [-Enabled] [-SubscriptionsList <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzMarketplacePrivateStoreCollection -CollectionId <String> -PrivateStoreId <String> -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzMarketplacePrivateStoreCollection -CollectionId <String> -PrivateStoreId <String> -JsonString <String>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create or update private store collection
+Create private store collection
 
 ## EXAMPLES
 
@@ -43,7 +69,7 @@ Indicating whether all subscriptions are selected (=true) or not (=false).
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityPrivateStoreExpanded
 Aliases:
 
 Required: False
@@ -58,7 +84,7 @@ Gets or sets the association with Commercial's Billing Account.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityPrivateStoreExpanded
 Aliases:
 
 Required: False
@@ -88,7 +114,7 @@ Gets or sets collection name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityPrivateStoreExpanded
 Aliases:
 
 Required: False
@@ -99,7 +125,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -118,7 +145,7 @@ Indicating whether the collection is enabled or disabled.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityPrivateStoreExpanded
 Aliases:
 
 Required: False
@@ -128,18 +155,80 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PrivateStoreId
-The store ID - must use the tenant ID
+### -JsonFilePath
+Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Payload
+The Collection data structure.
+To construct, see NOTES section for PAYLOAD properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollection
+Parameter Sets: CreateViaIdentityPrivateStore
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PrivateStoreId
+The store ID - must use the tenant ID
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateStoreInputObject
+Identity Parameter
+To construct, see NOTES section for PRIVATESTOREINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
+Parameter Sets: CreateViaIdentityPrivateStore, CreateViaIdentityPrivateStoreExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -150,7 +239,7 @@ On insert, null is considered as bad request
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityPrivateStoreExpanded
 Aliases:
 
 Required: False
@@ -196,13 +285,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollection
+
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollection
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollection
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

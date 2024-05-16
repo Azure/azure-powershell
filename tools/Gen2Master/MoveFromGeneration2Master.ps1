@@ -24,7 +24,12 @@ Function Move-Generation2Master {
 
     process {
         #Region Handle the module whoes folder is a subfolder of the module folder.
-        $ModuleName = $SourcePath.Replace('/', '\').Split('\src\')[1].Split('\')[0]
+        if (-not (Test-Path -Path $SourcePath)) {
+            Write-Error "The source path $SourcePath does not exist." -ForegroundColor Red
+            return
+        }
+        $SourceFolder = Get-Item -Path $SourcePath
+        $ModuleName = $SourceFolder.Name
 
         $DestParentPath = $DestPath
         While ("" -ne $DestParentPath) {
@@ -43,6 +48,7 @@ Function Move-Generation2Master {
             New-Item "$DestPath\$ModuleName\help" -ItemType Directory
             Update-MappingJson $ModuleName
         }
+        $DestPath = (Get-Item -Path $DestPath).FullName
         $Dir2Copy = @{
             'custom' = 'custom'
             'examples' = 'examples'
@@ -65,10 +71,12 @@ Function Move-Generation2Master {
             $Psd1Metadata = Import-LocalizedData -BaseDirectory "$DestPath/$ModuleName$Psd1FolderPostfix" -FileName "Az.$ModuleName.psd1"
         }
         else {
+            Copy-Template -SourceName Module.psd1 -DestPath $DestPath\$ModuleName -DestName "Az.$ModuleName.psd1" -ModuleName $ModuleName
             $Psd1Metadata = Import-LocalizedData -BaseDirectory "$PSScriptRoot/Templates" -FileName "Module.psd1"
         }
+        $moduleVersion = $Psd1Metadata.ModuleVersion
         foreach ($submoduleDir in $submoduleDirs) {
-            $psd1File = Get-ChildItem -Filter *.psd1 -File -Path $submoduleDir
+            $psd1File = Get-ChildItem -Filter *.psd1 -File -Path $submoduleDir.FullName
             write-host ("psd1 file name {0}" -f $psd1File.Name)
             $submoduleName = $psd1File.Name.Split('.')[-2]
             Foreach ($Dir in $Dir2Copy.GetEnumerator()) {
@@ -82,6 +90,10 @@ Function Move-Generation2Master {
                     Copy-Item -Recurse -Path $SourceItem -Destination $DestItem
                 }
             }
+            $sourceHelpFolder = Join-Path -Path (Join-Path -Path $SourcePath -ChildPath $submoduleDir.Name) -ChildPath "docs"
+            $destHelpHolder = Join-Path -Path (Join-Path -Path $DestPath -ChildPath $ModuleName) -ChildPath "help"
+            Write-Host "Copying help files from $sourceHelpFolder to $destHelpHolder" -ForegroundColor Yellow
+            Get-ChildItem -Path $sourceHelpFolder -Filter *-*.md | Copy-Item -Destination $destHelpHolder
             #Region Clean Local Modules
             $LocalModulesPath = Join-Path -Path (Join-Path -Path (Join-Path -Path $DestPath -ChildPath $submoduleDir.Name) -ChildPath 'generated') -ChildPath 'modules'
             If (Test-Path $LocalModulesPath) {
@@ -98,8 +110,6 @@ Function Move-Generation2Master {
                 Write-Host "Copying file: $SourceItem" -ForegroundColor Yellow
                 Copy-Item -Path $SourceItem -Destination (Join-Path -Path $DestPath -ChildPath $submoduleDir.Name)
             }
-
-            #copy generated docs to help folder
 
             # Update psd1
             $SubModulePsd1MetaData = Import-LocalizedData -BaseDirectory (Join-Path -Path $SourcePath -ChildPath $submoduleDir.Name) -FileName "Az.$submoduleName.psd1"
@@ -124,8 +134,18 @@ Function Move-Generation2Master {
                 }
                 $Psd1Metadata.Remove("PrivateData")
             }
+            
             # Generate csproj file and add the dependency in the solution file
             Copy-Template -SourceName Az.ModuleName.csproj -DestPath (Join-Path $DestPath $submoduleDir.Name) -DestName "Az.$submoduleName.csproj" -RootModuleName $ModuleName -ModuleName $submoduleName -ModuleFolder $submoduleDir.Name
+
+            # Copy the assemblyinfo file
+            $assemblyInfoPath = Join-Path $DestPath $ModuleName 'Properties' 'AssemblyInfo.cs'
+            Copy-Template -SourceName AssemblyInfo.cs -DestPath "$DestPath\$ModuleName\Properties" -DestName AssemblyInfo.cs -ModuleName $submoduleName
+            $assemblyInfo = Get-Content -Path $assemblyInfoPath
+            If ($assemblyInfo -Match "0.1.0") {
+                $assemblyInfo = $assemblyInfo -replace '0.1.0', $moduleVersion
+            }
+            $assemblyInfo | Set-Content $assemblyInfoPath -force
         }
 
         $slnFilePath = "$DestPath\$ModuleName.sln"
@@ -153,6 +173,7 @@ Function Move-Generation2Master {
         $Psd1Metadata.NestedModules = Unique-PathList $Psd1Metadata.NestedModules
         
         New-ModuleManifest -Path $DestPsd1Path @Psd1Metadata
+
         # update module page
         dotnet build $slnFilePath
         # start a job to update markdown help module, since we can not uninstall a module in the same process.
@@ -170,6 +191,7 @@ Function Move-Generation2Master {
                 $psd1Data.RequiredAssemblies = $psd1Data.RequiredAssemblies | Where-Object { $_ -ne $assemblyToRemove }
                 Update-ModuleManifest -Path $psd1Path -RequiredAssemblies $psd1Data.RequiredAssemblies
             }
+
             Import-Module $psd1Path
             Import-Module platyPS
             $HelpFolder = "$DestPath\$ModuleName$Psd1FolderPostfix\help"
@@ -189,7 +211,6 @@ Function Move-Generation2Master {
                         Remove-Item $ExposedHelpFile.FullName
                     }
                 }
-                Write-Host "$ScriptRoot/../ResolveTools/Resolve-Psd1.ps1"
                 & "$ScriptRoot/../ResolveTools/Resolve-Psd1.ps1" -ModuleName $ModuleName -ArtifactFolder "$DestPath\..\..\artifacts" -Psd1Folder "$DestPath/$ModuleName$Psd1FolderPostfix"
             }
             else
@@ -197,6 +218,14 @@ Function Move-Generation2Master {
                 Copy-Item -Path "$DestPath\$ModuleName.Autorest\help\Az.$ModuleName.md" -Destination $HelpFolder -Recurse
                 New-MarkdownHelp -UseFullTypeName -AlphabeticParamsOrder -Module "Az.$ModuleName" -OutputFolder $HelpFolder
             }
+            $moduleMarkdownPath = "$DestPath\$ModuleName$Psd1FolderPostfix\help\Az.$ModuleName.md"
+            $moduleMarkdownContent = Get-Content -Path $moduleMarkdownPath
+            $moduleMarkdownContent = $moduleMarkdownContent -replace '{{ Update Module Guid }}', (New-Guid).Guid
+            $moduleMarkdownContent = $moduleMarkdownContent -replace '{{ Update Download Link }}', "https://learn.microsoft.com/powershell/module/az.$($ModuleName.ToLower())"
+            $moduleMarkdownContent = $moduleMarkdownContent -replace '{{ Update Help Version }}', '1.0.0.0'
+            $moduleMarkdownContent = $moduleMarkdownContent -replace '{{ Update Locale }}', 'en-US'
+            $moduleMarkdownContent = $moduleMarkdownContent -replace '{{ Fill in the Description }}', "Microsoft Azure PowerShell: $ModuleName cmdlets"
+            $moduleMarkdownContent | Set-Content -Path $moduleMarkdownPath
         } -ArgumentList $PSScriptRoot, $ModuleName, $DestPath, $Psd1FolderPostfix
 
         $job | Wait-Job | Receive-Job

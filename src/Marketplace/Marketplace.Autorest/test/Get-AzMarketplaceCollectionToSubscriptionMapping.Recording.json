@@ -1,15 +1,15 @@
 {
-  "Get-AzMarketplaceCollectionToSubscriptionMapping+[NoContext]+CollectionsExpanded+$POST+https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collectionsToSubscriptionsMapping?api-version=2021-06-01+1": {
+  "Get-AzMarketplaceCollectionToSubscriptionMapping+[NoContext]+CollectionsExpanded+$POST+https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collectionsToSubscriptionsMapping?api-version=2023-01-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collectionsToSubscriptionsMapping?api-version=2021-06-01",
-      "Content": "{\n  \"properties\": {\n    \"subscriptionIds\": [ \"1052ff5a-aa43-4ca1-bd18-010399494ce5\" ]\n  }\n}",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collectionsToSubscriptionsMapping?api-version=2023-01-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"subscriptionIds\": [ \"1f58b5dd-313c-42ed-84fc-f1e351bba7fb\" ]\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "91" ]
+        "Content-Length": [ "95" ]
       }
     },
     "Response": {
@@ -17,27 +17,30 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
         "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=71c5ecfca949e38fa6d8b6899df69a8bc1065f71ea6211c776e43d3b7b216b7d;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=71c5ecfca949e38fa6d8b6899df69a8bc1065f71ea6211c776e43d3b7b216b7d;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1194" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-XSS-Protection": [ "1; mode=block" ],
-        "x-ms-version": [ "6.0.01832.0004-467b09b3" ],
-        "Set-Cookie": [ "ARRAffinity=d3888da00a6c22fd6922d241b1e1f8b74760295bc9888c172907d962f5a68055;Path=/;HttpOnly;Secure;Domain=marketplacerp.azure.com", "ARRAffinitySameSite=d3888da00a6c22fd6922d241b1e1f8b74760295bc9888c172907d962f5a68055;Path=/;HttpOnly;SameSite=None;Secure;Domain=marketplacerp.azure.com" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
+        "x-ms-version": [ "6.0.02586.90-5c77bed2" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-tenant-writes": [ "1197" ],
-        "x-ms-request-id": [ "ab14cf95-7090-4f5b-8cb5-0458bb065c89" ],
-        "x-ms-correlation-request-id": [ "ab14cf95-7090-4f5b-8cb5-0458bb065c89" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20220124T135831Z:ab14cf95-7090-4f5b-8cb5-0458bb065c89" ],
+        "x-azure-ref": [ "20240206T121441Z-e9fr18rg4936d7qwr39u9d2ats00000002x0000000007sae" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "0d64c3ec-bded-4ea2-8882-b1fe43d4eb49" ],
+        "x-ms-correlation-request-id": [ "0d64c3ec-bded-4ea2-8882-b1fe43d4eb49" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240206T121441Z:0d64c3ec-bded-4ea2-8882-b1fe43d4eb49" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Mon, 24 Jan 2022 13:58:30 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C93C658004844C64B2CC6605DA7AD7EC Ref B: MRS211050313051 Ref C: 2024-02-06T12:14:41Z" ],
+        "Date": [ "Tue, 06 Feb 2024 12:14:41 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "271" ],
+        "Content-Length": [ "2123" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"details\":{\"a260d38c-96cf-492d-a340-404d0c4b3ad6\":{\"collectionName\":\"DefaultCollection\",\"subscriptions\":[\"1052ff5a-aa43-4ca1-bd18-010399494ce5\"]},\"8c7a91db-cd41-43b6-af47-2e869654126d\":{\"collectionName\":\"test1\",\"subscriptions\":[\"1052ff5a-aa43-4ca1-bd18-010399494ce5\"]}}}",
+      "Content": "{\"details\":{\"a260d38c-96cf-492d-a340-404d0c4b3ad6\":{\"collectionName\":\"DefaultCollection\",\"subscriptions\":[\"1f58b5dd-313c-42ed-84fc-f1e351bba7fb\"]},\"d1bb102f-620f-460e-ba55-fdc3856c8fdd\":{\"collectionName\":\"BigCollection_DONT_DELETE\",\"subscriptions\":[\"1f58b5dd-313c-42ed-84fc-f1e351bba7fb\"]},\"0740a3e6-d5b5-4e22-99be-26887e484fa1\":{\"collectionName\":\"HyltonTest\",\"subscriptions\":[\"1f58b5dd-313c-42ed-84fc-f1e351bba7fb\"]},\"de165278-2dda-40aa-9ce4-15bf37311f49\":{\"collectionName\":\"SaviTest2\",\"subscriptions\":[\"1f58b5dd-313c-42ed-84fc-f1e351bba7fb\"]},\"b411c744-55fd-43b4-b269-faf05d4edae2\":{\"collectionName\":\"AllOffers\",\"subscriptions\":[\"1f58b5dd-313c-42ed-84fc-f1e351bba7fb\"]},\"dbf8cede-24ff-42c0-b443-3f73df6996f7\":{\"collectionName\":\"RulesCollection\",\"subscriptions\":[\"1f58b5dd-313c-42ed-84fc-f1e351bba7fb\"]},\"cf87e6eb-4ed1-44e5-b250-9eb5593b4c0e\":{\"collectionName\":\"TamarTest\",\"subscriptions\":[\"1f58b5dd-313c-42ed-84fc-f1e351bba7fb\"]},\"21ea54a6-df79-4dcb-babf-7860b8a82a9c\":{\"collectionName\":\"TestCanary\",\"subscriptions\":[\"1f58b5dd-313c-42ed-84fc-f1e351bba7fb\"]},\"ac13d584-7c4b-40a6-9d95-7dcf4b79db80\":{\"collectionName\":\"TestBubBash\",\"subscriptions\":null},\"73551ecc-d860-407f-9efa-049bab0468f5\":{\"collectionName\":\"PrivatePlans\",\"subscriptions\":[\"1f58b5dd-313c-42ed-84fc-f1e351bba7fb\"]},\"22dc7ebe-45b7-4aa6-8c96-a30091344cad\":{\"collectionName\":\"bugbashtest\",\"subscriptions\":[\"1f58b5dd-313c-42ed-84fc-f1e351bba7fb\"]},\"5b98b8be-7b7f-46fe-8e97-a15ea77dda14\":{\"collectionName\":\"CanaryTest\",\"subscriptions\":null},\"65159e59-86c8-4442-b768-2595be217a0f\":{\"collectionName\":\"LG\",\"subscriptions\":[\"1f58b5dd-313c-42ed-84fc-f1e351bba7fb\"]},\"d9b76d86-a3e7-4e9b-befb-3fe5a8d070a6\":{\"collectionName\":\"hamzza\",\"subscriptions\":null},\"0a4d89f3-8348-4961-9bec-a02780ab8144\":{\"collectionName\":\"Guy\",\"subscriptions\":[\"1f58b5dd-313c-42ed-84fc-f1e351bba7fb\"]},\"fdb889a1-cf3e-49f0-95b8-2bb012fa01f1\":{\"collectionName\":\"pwshNewCollTest\",\"subscriptions\":null},\"fdb889a1-cf3e-49f0-95b8-2bb012fa0188\":{\"collectionName\":\"AllItemsPWRTest1\",\"subscriptions\":null},\"8c7a91db-cd41-43b6-af47-2e869654126d\":{\"collectionName\":\"CopyPWRTest1\",\"subscriptions\":null}}}",
       "isContentBase64": false
     }
   }

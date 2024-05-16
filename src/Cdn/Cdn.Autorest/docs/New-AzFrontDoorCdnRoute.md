@@ -137,7 +137,7 @@ Domains referenced by this endpoint.
 To construct, see NOTES section for CUSTOMDOMAIN properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IActivatedResourceReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IActivatedResourceReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -352,7 +352,7 @@ rule sets referenced by this endpoint.
 To construct, see NOTES section for RULESET properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourceReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -431,22 +431,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRoute
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`CUSTOMDOMAIN <IActivatedResourceReference[]>`: Domains referenced by this endpoint.
-  - `[Id <String>]`: Resource ID.
-
-`RULESET <IResourceReference[]>`: rule sets referenced by this endpoint.
-  - `[Id <String>]`: Resource ID.
 
 ## RELATED LINKS
 

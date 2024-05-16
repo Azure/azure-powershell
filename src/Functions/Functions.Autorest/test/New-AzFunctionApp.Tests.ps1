@@ -16,6 +16,7 @@ Describe 'New-AzFunctionApp' {
     It 'CustomDockerImage' {
 
         $functionName = $env.functionNameContainer
+        $expectedLinuxFxVersion = "DOCKER|divyag2411/test:customcontainer"
 
         try
         {
@@ -28,6 +29,7 @@ Describe 'New-AzFunctionApp' {
             $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameLinuxPremium
             $functionApp.OSType | Should -Be "Linux"
             $functionApp.Runtime | Should -Be "Custom Image"
+            $functionApp.SiteConfig.LinuxFxVersion | Should -Be $expectedLinuxFxVersion
 
             # For a custom container image, the app setting `FUNCTIONS_EXTENSION_VERSION` should not be set.
             # TODO: Uncomment this line once https://msazure.visualstudio.com/Antares/_workitems/edit/6386493 has been fixed.

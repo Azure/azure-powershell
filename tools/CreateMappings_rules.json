@@ -863,5 +863,33 @@
   {
     "module": "ManagedNetworkFabric",
     "alias": "Managed Network Fabric"
+  },
+  {
+    "module": "CodeSigning",
+    "alias": "Code Signing"
+  },
+  {
+    "module": "FirmwareAnalysis",
+    "alias": "FirmwareAnalysis"
+  },
+  {
+    "module": "EdgeZones",
+    "alias": "EdgeZones"
+  },
+  {
+    "alias": "Sphere",
+    "module": "Sphere"
+  },
+  {
+    "module": "StandbyPool",
+    "alias": "StandbyPool"
+  },
+  {
+    "module": "Chaos",
+    "alias": "Chaos"
+  },
+  {
+    "module": "StorageAction",
+    "alias": "StorageAction"
   }
 ]

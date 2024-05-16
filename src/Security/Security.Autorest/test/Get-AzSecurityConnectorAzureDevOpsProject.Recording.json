@@ -1,0 +1,143 @@
+{
+  "Get-AzSecurityConnectorAzureDevOpsProject+[NoContext]+List+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects?api-version=2023-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects?api-version=2023-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "d653caa3-a460-401f-8e57-20c63e529982" ],
+        "CommandName": [ "Get-AzSecurityConnectorAzureDevOpsProject" ],
+        "FullCommandName": [ "Get-AzSecurityConnectorAzureDevOpsProject_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=b0d653e3d2c4fba6e75578139341b84b35dee63a8a317f007b2447d8196b79e5;Path=/;HttpOnly;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com", "ARRAffinitySameSite=b0d653e3d2c4fba6e75578139341b84b35dee63a8a317f007b2447d8196b79e5;Path=/;HttpOnly;SameSite=None;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Request-Context": [ "appId=cid-v1:b8e19897-bfe4-49ad-ad76-b9526fa18eea" ],
+        "mise-correlation-id": [ "7886f7b4-a957-4e94-9157-2c22153a727c" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "43a50eae-bebe-4910-aa0b-f7ba214d6711" ],
+        "x-ms-correlation-request-id": [ "43a50eae-bebe-4910-aa0b-f7ba214d6711" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T020833Z:43a50eae-bebe-4910-aa0b-f7ba214d6711" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DEA863CCD3F94022A81D4B84C67AB687 Ref B: CO6AA3150220037 Ref C: 2024-02-14T02:08:33Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:08:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1625" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"parentOrgName\":\"dfdsdktests\",\"projectId\":\"161fb6f6-f2fe-4616-a627-293b788ff583\",\"onboardingState\":\"Onboarded\",\"actionableRemediation\":{\"state\":\"Enabled\",\"categoryConfigurations\":[{\"minimumSeverityLevel\":\"High\",\"category\":\"IaC\"}],\"branchConfiguration\":{\"branchNames\":[],\"annotateDefaultBranch\":\"Enabled\"},\"inheritFromParentState\":\"Disabled\"},\"provisioningStatusMessage\":\"OK\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:34:19Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd\",\"name\":\"ContosoSDKDfd\",\"type\":\"Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs/projects\"},{\"properties\":{\"parentOrgName\":\"dfdsdktests\",\"projectId\":\"d68aef73-e155-400d-a60f-617fb8b54773\",\"onboardingState\":\"Onboarded\",\"actionableRemediation\":{\"state\":\"Enabled\",\"categoryConfigurations\":[{\"minimumSeverityLevel\":\"High\",\"category\":\"IaC\"}],\"branchConfiguration\":{\"branchNames\":[],\"annotateDefaultBranch\":\"Enabled\"},\"inheritFromParentState\":\"Disabled\"},\"provisioningStatusMessage\":\"OK\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:34:19Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoEnterprise\",\"name\":\"ContosoEnterprise\",\"type\":\"Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs/projects\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSecurityConnectorAzureDevOpsProject+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd?api-version=2023-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd?api-version=2023-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "2e0acc90-e3cd-4fa6-9eb9-fe94e884966d" ],
+        "CommandName": [ "Get-AzSecurityConnectorAzureDevOpsProject" ],
+        "FullCommandName": [ "Get-AzSecurityConnectorAzureDevOpsProject_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=1c6c7a0a18efcd0c1f62ff61ff05f8a61bfe22533cfce5122cfd179979045df0;Path=/;HttpOnly;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com", "ARRAffinitySameSite=1c6c7a0a18efcd0c1f62ff61ff05f8a61bfe22533cfce5122cfd179979045df0;Path=/;HttpOnly;SameSite=None;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Request-Context": [ "appId=cid-v1:b8e19897-bfe4-49ad-ad76-b9526fa18eea" ],
+        "mise-correlation-id": [ "4a2df027-c8c8-4361-a30d-01bc750319c8" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "ffc6b6b1-84d3-425e-947a-21d0e31c4213" ],
+        "x-ms-correlation-request-id": [ "ffc6b6b1-84d3-425e-947a-21d0e31c4213" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T020834Z:ffc6b6b1-84d3-425e-947a-21d0e31c4213" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9BCB9D0E5B8D4F2D9830533E9EE5B179 Ref B: CO6AA3150220037 Ref C: 2024-02-14T02:08:33Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:08:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "802" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"parentOrgName\":\"dfdsdktests\",\"projectId\":\"161fb6f6-f2fe-4616-a627-293b788ff583\",\"onboardingState\":\"Onboarded\",\"actionableRemediation\":{\"state\":\"Enabled\",\"categoryConfigurations\":[{\"minimumSeverityLevel\":\"High\",\"category\":\"IaC\"}],\"branchConfiguration\":{\"branchNames\":[],\"annotateDefaultBranch\":\"Enabled\"},\"inheritFromParentState\":\"Disabled\"},\"provisioningStatusMessage\":\"OK\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:34:19Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd\",\"name\":\"ContosoSDKDfd\",\"type\":\"Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs/projects\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSecurityConnectorAzureDevOpsProject+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd?api-version=2023-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd?api-version=2023-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "dbdb4e2f-346e-4337-9c8e-ed6334f425a4" ],
+        "CommandName": [ "Get-AzSecurityConnectorAzureDevOpsProject" ],
+        "FullCommandName": [ "Get-AzSecurityConnectorAzureDevOpsProject_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=14a5c7981ca45a6803ac375748e68dc9b495d4e56b3202b86256249c9784b400;Path=/;HttpOnly;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com", "ARRAffinitySameSite=14a5c7981ca45a6803ac375748e68dc9b495d4e56b3202b86256249c9784b400;Path=/;HttpOnly;SameSite=None;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Request-Context": [ "appId=cid-v1:b8e19897-bfe4-49ad-ad76-b9526fa18eea" ],
+        "mise-correlation-id": [ "288f672b-80bd-478b-a0e2-bedd810c1267" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "2fefbfc1-d34f-4cd7-9a01-9c2497222be9" ],
+        "x-ms-correlation-request-id": [ "2fefbfc1-d34f-4cd7-9a01-9c2497222be9" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T020835Z:2fefbfc1-d34f-4cd7-9a01-9c2497222be9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B8FCE940576D4A0BA74C0A2D0379D8E4 Ref B: CO6AA3150220037 Ref C: 2024-02-14T02:08:34Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:08:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "802" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"parentOrgName\":\"dfdsdktests\",\"projectId\":\"161fb6f6-f2fe-4616-a627-293b788ff583\",\"onboardingState\":\"Onboarded\",\"actionableRemediation\":{\"state\":\"Enabled\",\"categoryConfigurations\":[{\"minimumSeverityLevel\":\"High\",\"category\":\"IaC\"}],\"branchConfiguration\":{\"branchNames\":[],\"annotateDefaultBranch\":\"Enabled\"},\"inheritFromParentState\":\"Disabled\"},\"provisioningStatusMessage\":\"OK\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:34:19Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd\",\"name\":\"ContosoSDKDfd\",\"type\":\"Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs/projects\"}",
+      "isContentBase64": false
+    }
+  }
+}

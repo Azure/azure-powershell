@@ -1,0 +1,5 @@
+"Module","Severity","ResourceType","SubResourceType","Command","Description"
+"Az.Cdn","1","Microsoft.Cdn","profiles-afdEndpoints","Clear-AzFrontDoorCdnEndpointContent","Cannot find a matched parameter set for example of Clear-AzFrontDoorCdnEndpointContent"
+"Az.Cdn","1","Microsoft.Cdn","profiles-endpoints-customDomains","Enable-AzCdnCustomDomainCustomHttps","Cannot find a matched parameter set for example of Enable-AzCdnCustomDomainCustomHttps"
+"Az.Cdn","1","Microsoft.Cdn","profiles-endpoints","Clear-AzCdnEndpointContent","Cannot find a matched parameter set for example of Clear-AzCdnEndpointContent"
+"Az.Cdn","1","Microsoft.Cdn","profiles-endpoints","Import-AzCdnEndpointContent","Cannot find a matched parameter set for example of Import-AzCdnEndpointContent"

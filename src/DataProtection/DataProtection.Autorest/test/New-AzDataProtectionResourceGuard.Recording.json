@@ -1,9 +1,9 @@
 {
-  "New-AzDataProtectionResourceGuard+[NoContext]+PutExpanded+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/resourceGuards/pstest-resourceguard?api-version=2023-11-01+1": {
+  "New-AzDataProtectionResourceGuard+[NoContext]+PutExpanded+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/resourceGuards/pstest-resourceguard?api-version=2024-04-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/resourceGuards/pstest-resourceguard?api-version=2023-11-01",
-      "Content": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"tags\": {\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\",\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/resourceGuards/pstest-resourceguard?api-version=2024-04-01",
+      "Content": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"tags\": {\r\n    \"DeleteBy\": \"01-2099\",\r\n    \"Purpose\": \"testing\",\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -17,38 +17,39 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "x-ms-throttling-version": [ "v1" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "99" ],
-        "x-ms-correlation-request-id": [ "86a90be5-d7ea-4b33-828a-f5078a89c522" ],
-        "x-ms-routing-request-id": [ "JIOINDIAWEST:20231225T045541Z:86a90be5-d7ea-4b33-828a-f5078a89c522" ],
-        "Date": [ "Mon, 25 Dec 2023 04:55:41 GMT" ]
+        "x-ms-request-id": [ "fa1d3b9f-7d40-4c8b-9c30-6245449e888e" ],
+        "x-ms-correlation-request-id": [ "fa1d3b9f-7d40-4c8b-9c30-6245449e888e" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20240421T144619Z:fa1d3b9f-7d40-4c8b-9c30-6245449e888e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 30ACC74955D145DCB37DCD72EC99D88A Ref B: MAA201060513019 Ref C: 2024-04-21T14:46:14Z" ],
+        "Date": [ "Sun, 21 Apr 2024 14:46:18 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2005" ],
-        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "4018" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"centraluseuap\",\"tags\":{\"Purpose\":\"testing\",\"DeleteBy\":\"01-2099\",\"MABUsed\":\"Yes\",\"Owner\":\"hiaga\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"resourceGuardOperations\":[{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/delete\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/deleteProtectedItemRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/write\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/updateProtectedItemRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupPolicies/write\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/updateProtectionPolicyRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupResourceGuardProxies/delete\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/deleteResourceGuardProxyRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupSecurityPIN/action\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/getBackupSecurityPINRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupconfig/write\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/disableSoftDeleteRequests\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupInstances/delete\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupInstances/delete\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupResourceGuardProxies/delete\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupResourceGuardProxies/delete\"}],\"vaultCriticalOperationExclusionList\":[],\"allowAutoApprovals\":true},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/resourceGuards/pstest-resourceguard\",\"name\":\"pstest-resourceguard\",\"type\":\"Microsoft.DataProtection/resourceGuards\"}",
+      "Content": "{\"location\":\"centraluseuap\",\"tags\":{\"DeleteBy\":\"01-2099\",\"Purpose\":\"testing\",\"MABUsed\":\"Yes\",\"Owner\":\"hiaga\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"resourceGuardOperations\":[{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/delete\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/deleteProtectedItemRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/write\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/updateProtectedItemRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupPolicies/write\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/updateProtectionPolicyRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupResourceGuardProxies/delete\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/deleteResourceGuardProxyRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupSecurityPIN/action\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/getBackupSecurityPINRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupconfig/write\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/disableSoftDeleteRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/write#stopProtectionWithRetainData\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/stopProtectionWithRetainDataRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/write#reduceImmutabilityState\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/reduceImmutabilityStateRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/triggerRestoreRequests\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupInstances/delete\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupInstances/delete\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupResourceGuardProxies/delete\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupResourceGuardProxies/delete\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/write#reduceImmutabilityState\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/write#reduceImmutabilityState\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/write#reduceSoftDeleteSecurity\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/write#reduceSoftDeleteSecurity\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/write#modifyEncryptionSettings\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/write#modifyEncryptionSettings\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupInstances/stopProtection/action\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupInstances/stopProtection/action\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupInstances/suspendBackups/action\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupInstances/suspendBackups/action\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupInstances/write\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupInstances/write\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupInstances/restore/action\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupInstances/restore/action\"}],\"vaultCriticalOperationExclusionList\":[],\"allowAutoApprovals\":true},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/resourceGuards/pstest-resourceguard\",\"name\":\"pstest-resourceguard\",\"type\":\"Microsoft.DataProtection/resourceGuards\"}",
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionResourceGuard+[NoContext]+PutExpanded+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/resourceGuards/pstest-resourceguard?api-version=2023-11-01+2": {
+  "New-AzDataProtectionResourceGuard+[NoContext]+PutExpanded+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/resourceGuards/pstest-resourceguard?api-version=2024-04-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/resourceGuards/pstest-resourceguard?api-version=2023-11-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/resourceGuards/pstest-resourceguard?api-version=2024-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "217" ],
-        "x-ms-client-request-id": [ "b378af35-6330-41c7-8ad3-1905ecfa7a9b" ],
+        "x-ms-unique-id": [ "237" ],
+        "x-ms-client-request-id": [ "fb9a083c-ee01-4121-92ac-de78f2432079" ],
         "CommandName": [ "Get-AzDataProtectionResourceGuard" ],
         "FullCommandName": [ "Get-AzDataProtectionResourceGuard_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.0", "Az.DataProtection/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v11.3.1", "PSVersion/v7.4.2", "Az.DataProtection/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -59,38 +60,39 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "x-ms-throttling-version": [ "v1" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "999" ],
-        "x-ms-correlation-request-id": [ "0c3faceb-a8f2-44ed-bbe7-33896715186b" ],
-        "x-ms-routing-request-id": [ "JIOINDIAWEST:20231225T045542Z:0c3faceb-a8f2-44ed-bbe7-33896715186b" ],
-        "Date": [ "Mon, 25 Dec 2023 04:55:42 GMT" ]
+        "x-ms-request-id": [ "d54d0697-7eb8-4f22-bf36-ebac736e195b" ],
+        "x-ms-correlation-request-id": [ "d54d0697-7eb8-4f22-bf36-ebac736e195b" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20240421T144620Z:d54d0697-7eb8-4f22-bf36-ebac736e195b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 37F9B30712114DCAB59629FA045F5D18 Ref B: MAA201060513019 Ref C: 2024-04-21T14:46:19Z" ],
+        "Date": [ "Sun, 21 Apr 2024 14:46:19 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2005" ],
-        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "4018" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"centraluseuap\",\"tags\":{\"Purpose\":\"testing\",\"DeleteBy\":\"01-2099\",\"MABUsed\":\"Yes\",\"Owner\":\"hiaga\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"resourceGuardOperations\":[{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/delete\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/deleteProtectedItemRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/write\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/updateProtectedItemRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupPolicies/write\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/updateProtectionPolicyRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupResourceGuardProxies/delete\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/deleteResourceGuardProxyRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupSecurityPIN/action\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/getBackupSecurityPINRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupconfig/write\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/disableSoftDeleteRequests\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupInstances/delete\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupInstances/delete\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupResourceGuardProxies/delete\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupResourceGuardProxies/delete\"}],\"vaultCriticalOperationExclusionList\":[],\"allowAutoApprovals\":true},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/resourceGuards/pstest-resourceguard\",\"name\":\"pstest-resourceguard\",\"type\":\"Microsoft.DataProtection/resourceGuards\"}",
+      "Content": "{\"location\":\"centraluseuap\",\"tags\":{\"DeleteBy\":\"01-2099\",\"Purpose\":\"testing\",\"MABUsed\":\"Yes\",\"Owner\":\"hiaga\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"resourceGuardOperations\":[{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/delete\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/deleteProtectedItemRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/write\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/updateProtectedItemRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupPolicies/write\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/updateProtectionPolicyRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupResourceGuardProxies/delete\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/deleteResourceGuardProxyRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupSecurityPIN/action\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/getBackupSecurityPINRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupconfig/write\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/disableSoftDeleteRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/write#stopProtectionWithRetainData\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/stopProtectionWithRetainDataRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/write#reduceImmutabilityState\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/reduceImmutabilityStateRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/triggerRestoreRequests\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupInstances/delete\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupInstances/delete\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupResourceGuardProxies/delete\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupResourceGuardProxies/delete\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/write#reduceImmutabilityState\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/write#reduceImmutabilityState\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/write#reduceSoftDeleteSecurity\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/write#reduceSoftDeleteSecurity\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/write#modifyEncryptionSettings\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/write#modifyEncryptionSettings\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupInstances/stopProtection/action\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupInstances/stopProtection/action\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupInstances/suspendBackups/action\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupInstances/suspendBackups/action\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupInstances/write\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupInstances/write\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupInstances/restore/action\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupInstances/restore/action\"}],\"vaultCriticalOperationExclusionList\":[],\"allowAutoApprovals\":true},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/resourceGuards/pstest-resourceguard\",\"name\":\"pstest-resourceguard\",\"type\":\"Microsoft.DataProtection/resourceGuards\"}",
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionResourceGuard+[NoContext]+PutExpanded+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/resourceGuards/pstest-resourceguard?api-version=2023-11-01+3": {
+  "New-AzDataProtectionResourceGuard+[NoContext]+PutExpanded+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/resourceGuards/pstest-resourceguard?api-version=2024-04-01+3": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/resourceGuards/pstest-resourceguard?api-version=2023-11-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/resourceGuards/pstest-resourceguard?api-version=2024-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "218" ],
-        "x-ms-client-request-id": [ "b52e9fcc-d399-4f5b-9bef-dd5aa5cf1c82" ],
+        "x-ms-unique-id": [ "238" ],
+        "x-ms-client-request-id": [ "4cd99df8-bb22-423d-8a17-79a2a50ae8ae" ],
         "CommandName": [ "Remove-AzDataProtectionResourceGuard" ],
         "FullCommandName": [ "Remove-AzDataProtectionResourceGuard_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.0", "Az.DataProtection/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v11.3.1", "PSVersion/v7.4.2", "Az.DataProtection/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -102,13 +104,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "99" ],
-        "x-ms-correlation-request-id": [ "061be9f2-e83a-41d8-882e-042e40625d4d" ],
-        "x-ms-routing-request-id": [ "JIOINDIAWEST:20231225T045545Z:061be9f2-e83a-41d8-882e-042e40625d4d" ],
-        "Date": [ "Mon, 25 Dec 2023 04:55:45 GMT" ]
+        "x-ms-request-id": [ "af216d5c-7109-46e4-ac89-07137330d874" ],
+        "x-ms-correlation-request-id": [ "af216d5c-7109-46e4-ac89-07137330d874" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20240421T144625Z:af216d5c-7109-46e4-ac89-07137330d874" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DA17F548B605480AB6811DA243BB124B Ref B: MAA201060513019 Ref C: 2024-04-21T14:46:20Z" ],
+        "Date": [ "Sun, 21 Apr 2024 14:46:24 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -118,19 +122,19 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionResourceGuard+[NoContext]+PutExpanded+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/resourceGuards?api-version=2023-11-01+4": {
+  "New-AzDataProtectionResourceGuard+[NoContext]+PutExpanded+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/resourceGuards?api-version=2024-04-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/resourceGuards?api-version=2023-11-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/resourceGuards?api-version=2024-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "219" ],
-        "x-ms-client-request-id": [ "526ac077-0238-4ccd-9fab-02190559db71" ],
+        "x-ms-unique-id": [ "239" ],
+        "x-ms-client-request-id": [ "72de8780-56d1-411a-a056-3e95263e50c8" ],
         "CommandName": [ "Get-AzDataProtectionResourceGuard" ],
         "FullCommandName": [ "Get-AzDataProtectionResourceGuard_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.0", "Az.DataProtection/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v11.3.1", "PSVersion/v7.4.2", "Az.DataProtection/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -141,22 +145,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "x-ms-throttling-version": [ "v1" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "999" ],
+        "x-ms-request-id": [ "addeba6c-6719-4f35-9300-299d63ea0226" ],
+        "x-ms-correlation-request-id": [ "addeba6c-6719-4f35-9300-299d63ea0226" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240421T144626Z:addeba6c-6719-4f35-9300-299d63ea0226" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "998" ],
-        "x-ms-correlation-request-id": [ "474717de-a7e4-4e47-bda6-6c4d28fa8848" ],
-        "x-ms-routing-request-id": [ "JIOINDIAWEST:20231225T045547Z:474717de-a7e4-4e47-bda6-6c4d28fa8848" ],
-        "Date": [ "Mon, 25 Dec 2023 04:55:46 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 28C340FDCF1D46D69A26C9F4F4171201 Ref B: MAA201060513019 Ref C: 2024-04-21T14:46:25Z" ],
+        "Date": [ "Sun, 21 Apr 2024 14:46:25 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "3863" ],
-        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "7438" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"location\":\"centraluseuap\",\"properties\":{\"provisioningState\":\"Succeeded\",\"resourceGuardOperations\":[{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/delete\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/deleteProtectedItemRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/write\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/updateProtectedItemRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupPolicies/write\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/updateProtectionPolicyRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupResourceGuardProxies/delete\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/deleteResourceGuardProxyRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupSecurityPIN/action\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/getBackupSecurityPINRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupconfig/write\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/disableSoftDeleteRequests\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupInstances/delete\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupInstances/delete\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupResourceGuardProxies/delete\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupResourceGuardProxies/delete\"}],\"vaultCriticalOperationExclusionList\":[\"DisableMUA\"],\"allowAutoApprovals\":true},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/resourceGuards/dpp-pstest-resourceguard\",\"name\":\"dpp-pstest-resourceguard\",\"type\":\"Microsoft.DataProtection/resourceGuards\"},{\"location\":\"centraluseuap\",\"properties\":{\"provisioningState\":\"Succeeded\",\"resourceGuardOperations\":[{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/delete\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/deleteProtectedItemRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/write\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/updateProtectedItemRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupPolicies/write\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/updateProtectionPolicyRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupResourceGuardProxies/delete\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/deleteResourceGuardProxyRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupSecurityPIN/action\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/getBackupSecurityPINRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupconfig/write\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/disableSoftDeleteRequests\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupInstances/delete\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupInstances/delete\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupResourceGuardProxies/delete\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupResourceGuardProxies/delete\"}],\"vaultCriticalOperationExclusionList\":[],\"allowAutoApprovals\":true},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/resourceGuards/test1-rGuard\",\"name\":\"test1-rGuard\",\"type\":\"Microsoft.DataProtection/resourceGuards\"}]}",
+      "Content": "{\"value\":[{\"location\":\"centraluseuap\",\"properties\":{\"provisioningState\":\"Succeeded\",\"resourceGuardOperations\":[{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/delete\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/deleteProtectedItemRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/write\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/updateProtectedItemRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupPolicies/write\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/updateProtectionPolicyRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupResourceGuardProxies/delete\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/deleteResourceGuardProxyRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupSecurityPIN/action\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/getBackupSecurityPINRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupconfig/write\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/disableSoftDeleteRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/write#stopProtectionWithRetainData\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/stopProtectionWithRetainDataRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/write#reduceImmutabilityState\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/reduceImmutabilityStateRequests\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupInstances/delete\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupInstances/delete\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupResourceGuardProxies/delete\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupResourceGuardProxies/delete\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/write#reduceImmutabilityState\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/write#reduceImmutabilityState\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/write#reduceSoftDeleteSecurity\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/write#reduceSoftDeleteSecurity\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/write#modifyEncryptionSettings\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/write#modifyEncryptionSettings\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupInstances/stopProtection/action\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupInstances/stopProtection/action\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupInstances/suspendBackups/action\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupInstances/suspendBackups/action\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupInstances/restore/action\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupInstances/restore/action\"}],\"vaultCriticalOperationExclusionList\":[\"DisableMUA\",\"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action\",\"Microsoft.DataProtection/backupVaults/backupInstances/write\"],\"allowAutoApprovals\":true},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/resourceGuards/dpp-pstest-resourceguard\",\"name\":\"dpp-pstest-resourceguard\",\"type\":\"Microsoft.DataProtection/resourceGuards\"},{\"location\":\"centraluseuap\",\"properties\":{\"provisioningState\":\"Succeeded\",\"resourceGuardOperations\":[{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/delete\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/deleteProtectedItemRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/write\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/updateProtectedItemRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupPolicies/write\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/updateProtectionPolicyRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupResourceGuardProxies/delete\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/deleteResourceGuardProxyRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupSecurityPIN/action\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/getBackupSecurityPINRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupconfig/write\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/disableSoftDeleteRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/write#stopProtectionWithRetainData\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/stopProtectionWithRetainDataRequests\"},{\"vaultCriticalOperation\":\"Microsoft.RecoveryServices/vaults/write#reduceImmutabilityState\",\"requestResourceType\":\"Microsoft.DataProtection/resourceGuards/reduceImmutabilityStateRequests\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupInstances/delete\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupInstances/delete\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupResourceGuardProxies/delete\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupResourceGuardProxies/delete\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/write#reduceImmutabilityState\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/write#reduceImmutabilityState\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/write#reduceSoftDeleteSecurity\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/write#reduceSoftDeleteSecurity\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/write#modifyEncryptionSettings\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/write#modifyEncryptionSettings\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupInstances/stopProtection/action\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupInstances/stopProtection/action\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupInstances/suspendBackups/action\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupInstances/suspendBackups/action\"},{\"vaultCriticalOperation\":\"Microsoft.DataProtection/backupVaults/backupInstances/restore/action\",\"requestResourceType\":\"Microsoft.DataProtection/backupVaults/backupInstances/restore/action\"}],\"vaultCriticalOperationExclusionList\":[\"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action\",\"Microsoft.DataProtection/backupVaults/backupInstances/write\"],\"allowAutoApprovals\":true},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/resourceGuards/test1-rGuard\",\"name\":\"test1-rGuard\",\"type\":\"Microsoft.DataProtection/resourceGuards\"}]}",
       "isContentBase64": false
     }
   }

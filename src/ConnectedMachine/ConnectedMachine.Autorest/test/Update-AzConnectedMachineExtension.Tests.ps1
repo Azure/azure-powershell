@@ -36,7 +36,7 @@ Describe 'Update-AzConnectedMachineExtension' {
     It 'UpdateViaIdentityMachineExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
-
+    
     It 'UpdateViaIdentityMachine' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
@@ -48,4 +48,6 @@ Describe 'Update-AzConnectedMachineExtension' {
     It 'UpdateViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
+
 }
+

@@ -96,7 +96,7 @@ if ($PSCmdlet.ParameterSetName -eq 'AllSet') {
 }
 
 if ($PSCmdlet.ParameterSetName -eq 'ModifiedBuildSet' -or $PSCmdlet.ParameterSetName -eq 'TargetModuleSet') {
-    .$RepoRoot\tools\BuildScripts\CheckChangeLogs.ps1 -outputFile $RepoArtifacts/ModifiedModule.txt -rootPath $RepoRoot -TargetModuleList $TargetModule
+    .${RepoRoot}tools/BuildScripts/CheckChangeLogs.ps1 -outputFile $RepoArtifacts/ModifiedModule.txt -rootPath $RepoRoot -TargetModuleList $TargetModule
     $ModuleList = Get-Content $RepoArtifacts/ModifiedModule.txt
     foreach ($module in $ModuleList) {
         $csprojFiles += Add-Project -Path "$RepoRoot/src/$module" -Configuration $Configuration

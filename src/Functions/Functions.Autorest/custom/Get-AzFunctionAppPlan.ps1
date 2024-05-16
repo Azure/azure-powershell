@@ -81,6 +81,8 @@ function Get-AzFunctionAppPlan {
     
     process {
 
+        RegisterFunctionsTabCompleters
+
         $plans = $null
         $locationToUse = $null
         $parameterSetName = $PsCmdlet.ParameterSetName

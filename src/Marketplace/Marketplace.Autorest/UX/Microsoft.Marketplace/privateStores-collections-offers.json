@@ -1,6 +1,6 @@
 {
   "resourceType": "privateStores/collections/offers",
-  "apiVersion": "2021-06-01",
+  "apiVersion": "2023-01-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.marketplace"
   },

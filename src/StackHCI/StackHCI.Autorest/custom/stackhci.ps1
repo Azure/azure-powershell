@@ -4723,7 +4723,6 @@ param(
     $nodeSessionParams  = @{}
     $subscriptionId     = [string]::Empty
     $armResourceId      = [string]::Empty
-    $armResource        = $null
 
     $successMessage     = New-Object -TypeName System.Text.StringBuilder
 
@@ -4845,42 +4844,28 @@ param(
             $TenantId = Azure-Login @azureLoginParameters
         }
 
-        $armResource = Get-AzResource -ResourceId $armResourceId -ExpandProperties -ApiVersion $RPAPIVersion -ErrorAction Stop
-
         $properties = [PSCustomObject]@{
-            desiredProperties = $armResource.Properties.desiredProperties
-            aadClientId = $armResource.Properties.aadClientId
-            aadTenantId = $armResource.Properties.aadTenantId
-            aadServicePrincipalObjectId = $armResource.Properties.aadServicePrincipalObjectId
-            aadApplicationObjectId = $armResource.Properties.aadApplicationObjectId
-        }
-
-        if ($properties.desiredProperties -eq $null)
-        {
-            #
-            # Create desiredProperties object with default values
-            #
-            $desiredProperties = New-Object -TypeName PSObject
-            $desiredProperties | Add-Member -MemberType NoteProperty -Name 'windowsServerSubscription' -Value 'Disabled'
-            $desiredProperties | Add-Member -MemberType NoteProperty -Name 'diagnosticLevel' -Value 'Basic'
-
-            $properties | Add-Member -MemberType NoteProperty -Name 'desiredProperties' -Value $desiredProperties
+            desiredProperties = New-Object -TypeName PSObject
         }
 
         if ($PSBoundParameters.ContainsKey('EnableWSSubscription'))
         {
+            $windowsServerSubscriptionValue = $Null
+
             if ($EnableWSSubscription -eq $true)
             {
-                $properties.desiredProperties.windowsServerSubscription = 'Enabled';
+                $windowsServerSubscriptionValue = 'Enabled';
 
                 $successMessage.Append($SetAzResourceSuccessWSSE) | Out-Null;
             }
             else
             {
-                $properties.desiredProperties.windowsServerSubscription = 'Disabled';
+                $windowsServerSubscriptionValue = 'Disabled';
 
                 $successMessage.Append($SetAzResourceSuccessWSSD) | Out-Null;
             }
+
+            $properties.desiredProperties | Add-Member -MemberType NoteProperty -Name 'windowsServerSubscription' -Value $windowsServerSubscriptionValue
 
             $doSetResource      = $true
             $needShouldContinue = $true
@@ -4888,7 +4873,7 @@ param(
 
         if ($PSBoundParameters.ContainsKey('DiagnosticLevel'))
         {
-            $properties.desiredProperties.diagnosticLevel = $DiagnosticLevel.ToString()
+            $properties.desiredProperties | Add-Member -MemberType NoteProperty -Name 'diagnosticLevel' -Value $($DiagnosticLevel.ToString())
 
             if ($successMessage.Length -gt 0)
             {
@@ -4917,12 +4902,12 @@ param(
                 Write-Progress -Id $MainProgressBarId -Activity $SetProgressActivityName -Status $SetProgressStatusUpdatingProps -PercentComplete 60
 
                 $setAzResourceParameters = @{
-                                            'ResourceId'  = $armResource.Id;
+                                            'ResourceId'  = $armResourceId;
                                             'Properties'  = $properties;
                                             'ApiVersion'  = $RPAPIVersion
                                             }
 
-                $localResult = Set-AzResource @setAzResourceParameters -Confirm:$false -Force -ErrorAction Stop
+                $localResult = Set-AzResource @setAzResourceParameters -UsePatchSemantics -Confirm:$false -Force -ErrorAction Stop
 
                 if ($PSBoundParameters.ContainsKey('EnableWSSubscription') -and ($EnableWSSubscription -eq $false))
                 {
