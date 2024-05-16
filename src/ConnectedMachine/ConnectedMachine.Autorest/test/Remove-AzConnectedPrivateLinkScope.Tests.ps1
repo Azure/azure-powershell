@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzConnectedPrivateLink
 }
 
 Describe 'Remove-AzConnectedPrivateLinkScope' {
-    It 'Delete' -skip{
+    It 'Delete' {
         Remove-AzConnectedPrivateLinkScope -ResourceGroupName $env.ResourceGroupName -ScopeName $env.PrivateLinkScopeName
     }
 

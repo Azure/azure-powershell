@@ -19,7 +19,7 @@ Describe 'Update-AzConnectedMachineRunCommand' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Update' -skip{
+    It 'Update' {
         $tags = @{Tag1="tag1"; Tag2="tag2"}
         $runCommand = Update-AzConnectedMachineRunCommand -ResourceGroupName $env.ResourceGroupName -RunCommandName $env.RunCommandName -MachineName $env.MachineName -Subscription $env.SubscriptionId -Tag $tags
         $runCommand.Count | Should -Not -BeNullOrEmpty

@@ -27,7 +27,7 @@ Describe 'Update-AzConnectedMachineExtension' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Update' -skip{
+    It 'Update' {
         $target = @{"Microsoft.Compute.CustomScriptExtension" = @{"targetVersion"="1.10.12"}}
         $all = (Update-AzConnectedExtension -ResourceGroupName $env.ResourceGroupName -MachineName $env.MachineName -ExtensionTarget $target)
         $all | Should -Not -BeNullOrEmpty

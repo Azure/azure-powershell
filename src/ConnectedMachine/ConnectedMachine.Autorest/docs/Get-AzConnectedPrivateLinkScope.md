@@ -40,12 +40,12 @@ Get-AzConnectedPrivateLinkScope -ResourceGroupName 'ytongtest'
 ```
 
 ```output
-Id                           : /subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/M
+Id                           : /subscriptions/subcriptionid/resourceGroups/ytongtest/providers/M
                                icrosoft.HybridCompute/privateLinkScopes/myScope
 Location                     : centraluseuap
 Name                         : myScope
 PrivateEndpointConnection    : {}
-PrivateLinkScopeId           : b448b43c-82e3-4b30-9e7c-ceb83eee7b94
+PrivateLinkScopeId           : scopeId
 ProvisioningState            : Succeeded
 PublicNetworkAccess          : Enabled
 ResourceGroupName            : ytongtest

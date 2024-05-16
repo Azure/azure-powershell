@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzConnectedMachine'))
 
 Describe 'Update-AzConnectedMachine' {
     
-    It 'Update' -skip {
+    It 'Update'  {
         $updatedMachine = Update-AzConnectedMachine -Name $env.MachineName -ResourceGroupName $env.ResourceGroupName -PrivateLinkScopeResourceId $env.PrivateLinkScopeUri -WindowsConfigurationPatchSettingsAssessmentMode "AutomaticByOS"
         $updatedMachine | Should -Not -BeNullOrEmpty
     }

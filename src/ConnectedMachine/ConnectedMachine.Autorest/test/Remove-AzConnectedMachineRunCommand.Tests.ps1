@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzConnectedMachineRunC
 }
 
 Describe 'Remove-AzConnectedMachineRunCommand' {
-    It 'Delete' -skip{
+    It 'Delete' {
         Remove-AzConnectedMachineRunCommand -ResourceGroupName $env.ResourceGroupName -RunCommandName $env.RunCommandName -MachineName $env.MachineName
     }
 

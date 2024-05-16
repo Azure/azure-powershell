@@ -19,7 +19,7 @@ Describe 'Set-AzConnectedMachineExtension' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Update' -skip{
+    It 'Update' {
         $customSplat = @{
             MachineName = $env.MachineName
             ResourceGroupName = $env.ResourceGroupName

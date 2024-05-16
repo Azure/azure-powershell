@@ -27,7 +27,7 @@ Describe 'Update-AzConnectedPrivateLinkScopeTag' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Update' -skip{
+    It 'Update' {
         $tags2 = @{hello="hello"; world="world"}
         $all = @(Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName $env.ResourceGroupName -ScopeName $env.PrivateLinkScopeName -Tag $tags2)
         $all | Should -Not -BeNullOrEmpty

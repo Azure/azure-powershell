@@ -15,12 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzConnectedMachineExtensi
 }
 
 Describe 'Get-AzConnectedMachineExtension' {
-    It 'Get' -skip{
+    It 'Get' {
         $all = @(Get-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $env.MachineName -Name $env.ExtensionName)
         $all | Should -Not -BeNullOrEmpty
     }
 
-    It 'List' -skip{
+    It 'List' {
         $all = @(Get-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $env.MachineName)
         $all | Should -Not -BeNullOrEmpty
     }

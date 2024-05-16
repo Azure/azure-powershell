@@ -12,12 +12,12 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzConnectedExtensionMetadata' {
-    It 'List' -skip{
+    It 'List' {
         $all = @(Get-AzConnectedExtensionMetadata -ExtensionType 'CustomScriptExtension' -Publisher 'Microsoft.Compute' -Location 'centraluseuap')
         $all | Should -Not -BeNullOrEmpty
     }
 
-    It 'Get' -skip{
+    It 'Get' {
         $all = @(Get-AzConnectedExtensionMetadata -ExtensionType 'CustomScriptExtension' -Publisher 'Microsoft.Compute' -Location $env.Location -Version '1.10.10')
         $all | Should -Not -BeNullOrEmpty
     }

@@ -15,7 +15,7 @@ Import-Module "$PSScriptRoot/helper.psm1" -Force
 
 Describe 'New-AzConnectedMachineExtension' {
 
-    It 'Create' -skip{
+    It 'Create' {
         $customSplat = @{
             MachineName = $env.MachineName
             ResourceGroupName = $env.ResourceGroupName

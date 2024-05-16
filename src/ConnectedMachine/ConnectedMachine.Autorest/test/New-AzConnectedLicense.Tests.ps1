@@ -27,7 +27,7 @@ Describe 'New-AzConnectedLicense' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Create' -skip{
+    It 'Create' {
         $all = @(New-AzConnectedLicense -Name $env.EsuLicenseName -ResourceGroupName $env.ResourceGroupName -Location $env.Location -LicenseType 'ESU' -LicenseDetailState 'Activated'  -LicenseDetailTarget 'Windows Server 2012' -LicenseDetailEdition 'Datacenter' -LicenseDetailType 'pCore' -LicenseDetailProcessor 16 -SubscriptionId $env.SubscriptionId)
         $all | Should -Not -BeNullOrEmpty
 

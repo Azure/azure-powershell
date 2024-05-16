@@ -1,0 +1,88 @@
+{
+  "Get-AzConnectedNetworkSecurityPerimeterConfiguration+[NoContext]+List+$GET+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope/networkSecurityPerimeterConfigurations?api-version=2024-03-31-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope/networkSecurityPerimeterConfigurations?api-version=2024-03-31-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "ea19309f-f397-4614-b73b-4613941b8229" ],
+        "CommandName": [ "Get-AzConnectedNetworkSecurityPerimeterConfiguration" ],
+        "FullCommandName": [ "Get-AzConnectedNetworkSecurityPerimeterConfiguration_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.ConnectedMachine/0.5.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "ae922f9b-0c84-4c2b-aaa3-356fc3e988f4" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "2cdf604b-cccf-4412-853d-41aa7f292f1a" ],
+        "x-ms-routing-request-id": [ "EASTUS:20240516T204513Z:2cdf604b-cccf-4412-853d-41aa7f292f1a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D2CF8EF5F58A4EA28BF2D88F3289E5D4 Ref B: MNZ221060618031 Ref C: 2024-05-16T20:45:13Z" ],
+        "Date": [ "Thu, 16 May 2024 20:45:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "12" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzConnectedNetworkSecurityPerimeterConfiguration+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope/networkSecurityPerimeterConfigurations/myPerimeter?api-version=2024-03-31-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope/networkSecurityPerimeterConfigurations/myPerimeter?api-version=2024-03-31-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "2692923d-6b32-4824-8953-e98ab9fd8451" ],
+        "CommandName": [ "Get-AzConnectedNetworkSecurityPerimeterConfiguration" ],
+        "FullCommandName": [ "Get-AzConnectedNetworkSecurityPerimeterConfiguration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.ConnectedMachine/0.5.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "d5a18926-35e5-437a-856c-c9471e62b506" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "e19cff29-5bcd-418d-b646-46a9db95c826" ],
+        "x-ms-routing-request-id": [ "EASTUS:20240516T204514Z:e19cff29-5bcd-418d-b646-46a9db95c826" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FD2336EDE0EF4CB28DA329B13A415463 Ref B: MNZ221060618031 Ref C: 2024-05-16T20:45:14Z" ],
+        "Date": [ "Thu, 16 May 2024 20:45:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "156" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"HCRP404\",\"message\":\"The requested resource was not found.\",\"target\":\"b24cc8ee-df4f-48ac-94cf-46edf36b0fae/ytongtest/myScope/myPerimeter\"}}",
+      "isContentBase64": false
+    }
+  }
+}

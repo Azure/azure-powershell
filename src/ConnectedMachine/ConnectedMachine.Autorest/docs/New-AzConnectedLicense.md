@@ -66,19 +66,19 @@ The operation to Create a license.
 
 ### Example 1: Add a new ESU license
 ```powershell
-New-AzConnectedLicense -Name 'myESULicense' -ResourceGroupName 'ytongtest' -Location 'eastus2euap' -LicenseType 'ESU' -LicenseDetailState 'Activated'  -LicenseDetailTarget 'Windows Server 2012' -LicenseDetailEdition 'Datacenter' -LicenseDetailType 'pCore' -LicenseDetailProcessor 16 -SubscriptionId 'b24cc8ee-df4f-48ac-94cf-46edf36b0fae'
+New-AzConnectedLicense -Name 'myESULicense' -ResourceGroupName 'ytongtest' -Location 'eastus2euap' -LicenseType 'ESU' -LicenseDetailState 'Activated'  -LicenseDetailTarget 'Windows Server 2012' -LicenseDetailEdition 'Datacenter' -LicenseDetailType 'pCore' -LicenseDetailProcessor 16 -SubscriptionId $env.SubcriptionId
 ```
 
 ```output
 DetailAssignedLicense        : 8
 DetailEdition                : Datacenter
-DetailImmutableId            : 298dbcad-3dd6-493c-8d87-2238ee36ba26
+DetailImmutableId            : immutableId
 DetailProcessor              : 16
 DetailState                  : Activated
 DetailTarget                 : Windows Server 2012
 DetailType                   : pCore
 DetailVolumeLicenseDetail    :
-Id                           : /subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/M
+Id                           : /subscriptions/subcriptionid/resourceGroups/ytongtest/providers/M
                                icrosoft.HybridCompute/licenses/myESULicense
 LicenseType                  : ESU
 Location                     : eastus2euap
@@ -93,7 +93,7 @@ SystemDataLastModifiedBy     :
 SystemDataLastModifiedByType :
 Tag                          : {
                                }
-TenantId                     : 72f988bf-86f1-41af-91ab-2d7cd011db47
+TenantId                     : tenantId
 Type                         : Microsoft.HybridCompute/licenses
 ```
 
