@@ -29,6 +29,10 @@
         [System.DateTime]
         ${EndTime},
 
+        [Parameter(Mandatory=$false, HelpMessage='Switch parameter to fetch recovery points from secondary region')]
+        [Switch]
+        ${UseSecondaryRegion},
+
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -78,7 +82,6 @@
             $utcStartTime = $StartTime.ToUniversalTime()
             $startTimeFilter = $utcStartTime.ToString("yyyy-MM-ddTHH:mm:ss.0000000Z")
             $filter = "startDate eq '" + $startTimeFilter + "'"
-
         }
         if($PSBoundParameters.ContainsKey("EndTime"))
         {
@@ -102,7 +105,42 @@
             $null = $PSBoundParameters.Add("Filter", $filter)
         }
 
-        $rps = Az.DataProtection.internal\Get-AzDataProtectionRecoveryPoint @PSBoundParameters
+        $hasUseSecondaryRegion = $PSBoundParameters.Remove("UseSecondaryRegion")
+
+        $rps = $null
+        if($hasUseSecondaryRegion){
+
+            # fetch vault from ARG
+            $null = $PSBoundParameters.Remove("BackupInstanceName")
+            $hasFilter = $PSBoundParameters.Remove("Filter")            
+            $hasSubscriptionId = $PSBoundParameters.Remove("SubscriptionId")
+            $null = $PSBoundParameters.Remove("ResourceGroupName")
+            $null = $PSBoundParameters.Remove("VaultName")
+            $PSBoundParameters.Add('ResourceGroup', $ResourceGroupName)
+            $PSBoundParameters.Add('Vault', $VaultName)
+            if($hasSubscriptionId) { $PSBoundParameters.Add('Subscription', $SubscriptionId) }
+            
+            $vault = Search-AzDataProtectionBackupVaultInAzGraph @PSBoundParameters
+
+            $null = $PSBoundParameters.Remove("Subscription")
+            $null = $PSBoundParameters.Remove("ResourceGroup")
+            $null = $PSBoundParameters.Remove("Vault")
+            $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
+            if($hasSubscriptionId) { $PSBoundParameters.Add('SubscriptionId', $SubscriptionId) }
+            if($hasFilter) { $PSBoundParameters.Add('Filter', $Filter) }
+
+            $backupInstanceId = "/subscriptions/" + $SubscriptionId + "/resourceGroups/" + $ResourceGroupName + "/providers/Microsoft.DataProtection/backupVaults/" + $VaultName + "/backupInstances/" + $BackupInstanceName
+
+            $PSBoundParameters.Add('Location', $vault.ReplicatedRegion[0])
+            $PSBoundParameters.Add('SourceBackupInstanceId', $backupInstanceId)
+            $PSBoundParameters.Add('SourceRegion', $vault.Location)
+
+            $rps = Az.DataProtection.internal\Get-AzDataProtectionFetchSecondaryRecoveryPoint @PSBoundParameters
+        }
+        else{
+            $rps = Az.DataProtection.internal\Get-AzDataProtectionRecoveryPoint @PSBoundParameters
+        }
+        
         return $rps
     }
 }

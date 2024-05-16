@@ -18,12 +18,12 @@ Describe 'Remove-AzServiceBusPrivateEndpointConnection' {
     $listOfPrivateEndpoints = Get-AzServiceBusPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
     It 'Delete'  {
         Remove-AzServiceBusPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $listOfPrivateEndpoints[0].Name
-        { Get-AzServiceBusPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $listOfPrivateEndpoints[0].Name } | Should -Throw
+        { Get-AzServiceBusPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $listOfPrivateEndpoints[0].Name -ErrorAction Stop } | Should -Throw
     }
 
     It 'DeleteViaIdentity'  {
         $privateEndpoint = Get-AzServiceBusPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $listOfPrivateEndpoints[1].Name
         Remove-AzServiceBusPrivateEndpointConnection -InputObject $privateEndpoint
-        { Get-AzServiceBusPrivateEndpointConnection -InputObject $privateEndpoint } | Should -Throw
+        { Get-AzServiceBusPrivateEndpointConnection -InputObject $privateEndpoint -ErrorAction Stop } | Should -Throw
     }
 }

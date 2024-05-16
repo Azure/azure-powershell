@@ -1,0 +1,172 @@
+{
+    "common": {
+        "resourceGroupName": "nfa-tool-ts-powershell-rg092123",
+        "location": "eastus",
+        "subscriptionId": "9531faa8-8c39-4165-b033-48697fe943db"
+    },
+    "ACL": {
+        "name": "aclName",
+        "configurationType": "Inline",
+        "defaultAction": "Permit"
+    },
+    "controller": {
+        "resourceGroupName": "Fab2LabNFC-5-0",
+        "location":"eastus",
+        "subscriptionId": "89a70903-42a2-4ff6-b437-688a27893711",
+        "newNFCName": "nfcfab2-5-0",
+        "name": "controllerName",
+        "ipv4Address": "10.248.32.0/19",
+        "isWorkloadManagementNetworkEnabled": "True",
+        "nfcSku": "Basic"
+    },
+    "fabric": {
+        "name": "fabricNameTest",
+        "nfcId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/controller092123",
+        "nfSku": "fab1",
+        "serverCountPerRack": 5,
+        "rackCount": 2,
+        "ipv4Prefix": "10.1.0.0/19",
+        "ipv6Prefix": "3FFE:FFFF:0:CD40::/59",
+        "fabricASN": 65124
+    },
+    "networkRack": {
+        "name": "fabricName-aggrack"
+    },
+    "networkDevice": {
+        "name": "fabricNameTest-AggrRack-MgmtSwitch1",
+        "serialNumber": "13456-1234-1234-13354-1233"
+    },
+    "nni": {
+        "name": "nniName",
+        "nfName": "fabricNameTest",
+        "useOptionB": "True",
+        "ingressAclId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/accessControlLists/aclName",
+        "nniType": "CE",
+        "isManagementType": "True",
+        "exportIpv4RoutePolicyId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName",
+        "exportIpv6RoutePolicyId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName",
+        "importIpv4RoutePolicyId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName",
+        "importIpv6RoutePolicyId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName"
+    },
+    "npb": {
+        "name": "fabricname-npb"
+    },
+    "networkInterface": {
+        "name": "Ethernet1",
+        "deviceName": "fabricName-CompRack1-MgmtSwitch",
+        "enable": "Enable",
+        "disable": "Disable"
+    },
+    "IpPrefix": {
+        "name": "IpPrefixName",
+        "action": "Permit",
+        "sequenceNumber": "1234",
+        "networkPrefix": "1.1.1.0/24",
+        "condition": "EqualTo",
+        "subnetMaskLength": "24"
+    },
+    "IpExtendedCommunity": {
+        "name": "IpExtendedCommunityName",
+        "action": "Permit",
+        "sequenceNumber": 4321,
+        "routeTargets": ["1024:219","1001:200"]
+    },
+    "IpCommunity": {
+        "name": "IpCommunityName",
+        "action": "Permit",
+        "communityMembers": ["1:1"],
+        "sequenceNumber": 5463,
+        "wellKnownCommunities": ["Internet", "GShut"]
+    },
+    "routePolicy": {
+        "name": "RoutePolicyName",
+        "nfId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabrics/fabricName",
+        "addressFamilyType": "IPv4",
+        "defaultAction": "Permit",
+        "ipCommunityId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/ipCommunities/ipcommunityName",
+        "ipExtendedCommunityId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/ipextendedcommunityName",
+        "ipPrefixId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/ipPrefixes/ipprefixName"
+    },
+    "neighborGroup": {
+        "name": "NeighborGroupName"
+    },
+    "internetGatewayRule": {
+        "name": "InternetGatewayRuleName",
+        "rulePropertyAction": "Allow",
+        "rulePropertyAddressList": ["10.10.10.10"]
+    },
+    "internetgateway": {
+        "name": "controller092123-infra",
+        "gatewayRuleId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/InternetGatewayRules/controller092123-infra-system"
+    },
+    "l2domain": {
+        "name": "l2DomainName",
+        "nfId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabrics/fabricName",
+        "vlanId": 1234,
+        "mtu": 1501,
+        "enable": "Enable",
+        "disable": "Disable"
+    },
+    "l3domain": {
+        "name": "l3DomainName",
+        "nfId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabrics/fabricName",
+        "redistributeConnectedSubnets": "True",
+        "redistributeStaticRoutes": "True",
+        "exportIpv4RoutePolicyId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName",
+        "exportIpv6RoutePolicyId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName",
+        "enable": "Enable",
+        "disable": "Disable"
+    },
+    "internalnetwork": {
+        "name": "internalNetworkName",
+        "l3domainName": "l3DomainName",
+        "vlanId": 2602,
+        "mtu": 1500,
+        "egressAclId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/accessControlLists/aclName",
+        "ingressAclId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/accessControlLists/aclName",
+        "exportIpv4RoutePolicyId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName",
+        "exportIpv6RoutePolicyId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName",
+        "importIpv4RoutePolicyId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName",
+        "importIpv6RoutePolicyId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName",
+        "extension": "NPB",
+        "isMonitoringEnabled": "True",
+        "staticRouteConfigurationExtension": "NPB"
+    },
+    "externalnetwork": {
+        "name": "externalNetworkName",
+        "name1": "externalNetworkName1",
+        "l3domainName": "l3DomainName",
+        "peeringOption": "OptionB",
+        "peeringOption1": "OptionA",
+        "exportIpv4RoutePolicyId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName",
+        "exportIpv6RoutePolicyId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName",
+        "importIpv4RoutePolicyId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName",
+        "importIpv6RoutePolicyId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName",
+        "exportIpv4RouteTarget": ["65046:10039"],
+        "exportIpv6RouteTarget": ["65046:10039"],
+        "importIpv4RouteTarget": ["65046:10039"],
+        "importIpv6RouteTarget": ["65046:10039"],
+        "vlanId": 1234,
+        "egressAclId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/accessControlLists/aclName",
+        "ingressAclId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/accessControlLists/aclName",
+        "mtu": 1500,
+        "peerAsn": 65421,
+        "primaryIpv4Prefix": "172.31.0.0/30",
+        "secondaryIpv4Prefix": "172.31.0.0/30"
+    },
+    "networkTapRule": {
+        "name": "NetworkTapRuleName",
+        "name1": "NetworkTapRuleName1",
+        "configurationType": "Inline",
+        "configurationType1": "File"
+    },
+    "networkTap": {
+        "name": "networkTapName",
+        "npbId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/Fab1LabNF-4-1-oct7/providers/microsoft.managednetworkfabric/networkpacketbrokers/nffab1-4-1-gf-oct9-1-npb",
+        "pollingType": "Push",
+        "enableTapName": "aytl3-networktapIpv4VProbe",
+        "resourceGroupName":"Fab3LabNF-4-2-BF",
+        "enable": "Enable",
+        "disable": "Disable"
+    }
+}

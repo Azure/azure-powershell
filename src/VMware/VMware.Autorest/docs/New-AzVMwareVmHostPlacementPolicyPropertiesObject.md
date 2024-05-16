@@ -13,9 +13,8 @@ Create an in-memory object for VmHostPlacementPolicyProperties.
 ## SYNTAX
 
 ```
-New-AzVMwareVmHostPlacementPolicyPropertiesObject -AffinityType <AffinityType> -HostMember <String[]>
- -Type <PlacementPolicyType> -VMMember <String[]> [-DisplayName <String>] [-State <PlacementPolicyState>]
- [<CommonParameters>]
+New-AzVMwareVmHostPlacementPolicyPropertiesObject -AffinityType <String> -HostMember <String[]> -Type <String>
+ -VMMember <String[]> [-DisplayName <String>] [-State <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,13 +24,19 @@ Create an in-memory object for VmHostPlacementPolicyProperties.
 
 ### Example 1: Create an in-memory object for VmHostPlacementPolicyProperties.
 ```powershell
-New-AzVMwareVmHostPlacementPolicyPropertiesObject -AffinityType 'AntiAffinity' -HostMember @{"abc"="123"}  -Type 'VmHost' -VMMember @{"abc"="123"}
+New-AzVMwareVmHostPlacementPolicyPropertiesObject -AffinityType 'AntiAffinity' -HostMember @{"test"="test"}  -Type 'VmHost' -VMMember @{"test"="test"}
 ```
 
 ```output
-DisplayName ProvisioningState State AffinityType HostMember                     VMMember
------------ ----------------- ----- ------------ ----------                     --------
-                                    AntiAffinity {System.Collections.Hashtable} {System.Collections.Hashtable}
+AffinityStrength       : 
+AffinityType           : AntiAffinity
+AzureHybridBenefitType : 
+DisplayName            : 
+HostMember             : {System.Collections.Hashtable}
+ProvisioningState      : 
+State                  : 
+Type                   : VmHost
+VMMember               : {System.Collections.Hashtable}
 ```
 
 Create an in-memory object for VmHostPlacementPolicyProperties.
@@ -42,7 +47,7 @@ Create an in-memory object for VmHostPlacementPolicyProperties.
 placement policy affinity type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AffinityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -87,7 +92,7 @@ Accept wildcard characters: False
 Whether the placement policy is enabled or disabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PlacementPolicyState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -102,7 +107,7 @@ Accept wildcard characters: False
 placement policy type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PlacementPolicyType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -135,11 +140,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.VMHostPlacementPolicyProperties
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.VMHostPlacementPolicyProperties
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

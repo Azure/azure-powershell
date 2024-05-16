@@ -15,13 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzMarketplacePrivateStore
 }
 
 Describe 'Set-AzMarketplacePrivateStoreCollectionOffer' {
-    It 'UpdateExpanded'  {
-	New-AzMarketplacePrivateStoreCollection -CollectionName test134 -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa0188 -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -SubscriptionsList 1052ff5a-aa43-4ca1-bd18-010399494ce5
-	$acc = @{Accessibility = "azure_managedservices_professional"}
- 	New-AzMarketplacePrivateStoreCollectionOffer -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa0188 -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6  -OfferId aumatics.azure_managedservices -Plan $acc
+    It 'UpdateExpanded' {
+        New-AzMarketplacePrivateStoreCollection -CollectionName test134 -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa0188 -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -SubscriptionsList 1052ff5a-aa43-4ca1-bd18-010399494ce5
+        $acc = @{Accessibility = "azure_managedservices_professional"}
+        New-AzMarketplacePrivateStoreCollectionOffer -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa0188 -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6  -OfferId aumatics.azure_managedservices -Plan $acc
 
-       
-	$res = Get-AzMarketplacePrivateStoreCollectionOffer -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa0188 -OfferId aumatics.azure_managedservices 
-	$res.UniqueOfferId | Should -Be "aumatics.azure_managedservices"
+        
+        $res = Get-AzMarketplacePrivateStoreCollectionOffer -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa0188 -OfferId aumatics.azure_managedservices 
+        $res.UniqueOfferId | Should -Be "aumatics.azure_managedservices"
     }
 }

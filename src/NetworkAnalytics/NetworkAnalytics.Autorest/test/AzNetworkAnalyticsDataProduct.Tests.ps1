@@ -21,7 +21,7 @@ Describe 'New-AzNetworkAnalyticsDataProduct' {
             $CreateDataProductJob = New-AzNetworkAnalyticsDataProduct -Name $env.DataProductNameForMaxSet -Product $env.Product -MajorVersion $env.MajorVersion -Publisher $env.Publisher -Location $env.Location -ResourceGroupName $env.ResourceGroupName -PurviewAccount $env.PurviewAccount -CurrentMinorVersion $env.CurrentMinorVersion -NetworkaclAllowedQueryIPRangeList $env.NetworkaclAllowedQueryIPRangeList -PurviewCollection $env.PurviewCollection -CustomerEncryptionKeyName $env.CustomerEncryptionKeyName -NetworkaclDefaultAction $env.NetworkaclDefaultAction -Redundancy $env.Redundancy -CustomerEncryptionKeyVaultUri $env.CustomerEncryptionKeyVaultUri -NetworkaclIPRule @(@{ value = "1.1.1.1"; action = "Allow"}) -Tag @{ envType = "prod"; region = "us"} -CustomerEncryptionKeyVersion $env.CustomerEncryptionKeyVersion -NetworkaclVirtualNetworkRule @(@{ id = "/subscriptions/susbcription/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualNetworks/checkVnet/subnets/default"; state = "Provisioning"; action = "Allow"}) -CustomerManagedKeyEncryptionEnabled $env.CustomerManagedKeyEncryptionEnabled -Owner $env.Owner -IdentityType $env.IdentityType -PrivateLinksEnabled $env.PrivateLinksEnabled -PublicNetworkAccess $env.PublicNetworkAccess -IdentityUserAssignedIdentity @{"/subscriptions/susbcriptionId/resourcegroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aa1221aa1-id"=@{}} -AsJob
             Wait-Job $CreateDataProductJob
             $JobResult = Receive-Job $CreateDataProductJob
-            $JobResult.Name | Should -be $env.DataProductNameForMaxSet            
+            $JobResult.Name | Should -be $env.DataProductNameForMaxSet
             $JobResult.Product | should -be $env.Product
         } | Should -Not -Throw
     }
@@ -31,7 +31,7 @@ Describe 'New-AzNetworkAnalyticsDataProduct' {
             $CreateDataProductJob = New-AzNetworkAnalyticsDataProduct -Name $env.DataProductName -Product $env.Product -MajorVersion $env.MajorVersion -Publisher $env.Publisher -Location $env.Location -ResourceGroupName $env.ResourceGroupName -AsJob
             Wait-Job $CreateDataProductJob
             $JobResult = Receive-Job $CreateDataProductJob
-            $JobResult.Name | Should -be $env.DataProductName            
+            $JobResult.Name | Should -be $env.DataProductName
             $JobResult.Product | should -be $env.Product
         } | Should -Not -Throw
     }
@@ -55,7 +55,7 @@ Describe 'New-AzNetworkAnalyticsDataProduct' {
         $GetDataProductsPerRG.Count | Should -BeGreaterOrEqual 1
         $GetDataProductsPerRG.Name.Contains($env.DataProductName)| Should -Be $true
         $GetDataProductsPerRG.Name.Contains($env.DataProductNameForMaxSet)| Should -Be $true
-        $GetDataProductsPerRG.Location.Contains($env.Location)| Should -Be $true    
+        $GetDataProductsPerRG.Location.Contains($env.Location)| Should -Be $true
     }
 
     It 'Add Data Product User Role' {
@@ -74,9 +74,9 @@ Describe 'New-AzNetworkAnalyticsDataProduct' {
 
     It 'Remove Data Product User Role' {
         {
-            Remove-AzNetworkAnalyticsDataProductUserRole -ResourceGroupName $env.ResourceGroupName -DataProductName $env.DataProductName -Role $env.Role -PrincipalType $env.PrincipalType -RoleId $env.RoleId -PrincipalId $env.UserOnePrincipalId -DataTypeScope $env.DataTypeScope -RoleAssignmentId $env.RoleAssignmentId -UserName $env.UserOneName            
+            Remove-AzNetworkAnalyticsDataProductUserRole -ResourceGroupName $env.ResourceGroupName -DataProductName $env.DataProductName -Role $env.Role -PrincipalType $env.PrincipalType -RoleId $env.RoleId -PrincipalId $env.UserOnePrincipalId -DataTypeScope $env.DataTypeScope -RoleAssignmentId $env.RoleAssignmentId -UserName $env.UserOneName
             #Write-Host "Sleeping for 1 minutes"
-            #Start-Sleep -Seconds 60
+            #Start-TestSleep -Seconds 60
             $GetDataProductUserRole = Get-AzNetworkAnalyticsDataProductRoleAssignment -ResourceGroupName $env.ResourceGroupName -DataProductName $env.DataProductName
             $GetDataProductUserRole.RoleAssignmentResponse.PrincipalId.Contains($env.UserOnePrincipalId)| Should -Be $false
         } | Should -Not -Throw

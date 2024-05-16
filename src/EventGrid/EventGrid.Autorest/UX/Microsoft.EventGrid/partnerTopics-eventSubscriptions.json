@@ -1,0 +1,181 @@
+{
+  "resourceType": "partnerTopics/eventSubscriptions",
+  "apiVersion": "2023-06-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.eventgrid"
+  },
+  "commands": [
+    {
+      "name": "Get-AzEventGridFullUrlForPartnerTopicEventSubscription",
+      "description": "Get the full endpoint URL for an event subscription of a partner topic.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions/{eventSubscriptionName}/getFullUrl",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridfullurlforpartnertopiceventsubscription"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EventSubscriptionName <String>",
+              "-PartnerTopicName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the full endpoint URL for an event subscription of a partner topic.",
+          "parameters": [
+            {
+              "name": "-EventSubscriptionName",
+              "value": "[Path.eventSubscriptionName]"
+            },
+            {
+              "name": "-PartnerTopicName",
+              "value": "[Path.partnerTopicName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzEventGridPartnerTopicEventSubscriptionDeliveryAttribute",
+      "description": "Get all delivery attributes for an event subscription of a partner topic.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridpartnertopiceventsubscriptiondeliveryattribute"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EventSubscriptionName <String>",
+              "-PartnerTopicName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get all delivery attributes for an event subscription of a partner topic.",
+          "parameters": [
+            {
+              "name": "-EventSubscriptionName",
+              "value": "[Path.eventSubscriptionName]"
+            },
+            {
+              "name": "-PartnerTopicName",
+              "value": "[Path.partnerTopicName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzEventGridPartnerTopicEventSubscription",
+      "description": "Get properties of an event subscription of a partner topic.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions/{eventSubscriptionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridpartnertopiceventsubscription"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EventSubscriptionName <String>",
+              "-PartnerTopicName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get properties of an event subscription of a partner topic.",
+          "parameters": [
+            {
+              "name": "-EventSubscriptionName",
+              "value": "[Path.eventSubscriptionName]"
+            },
+            {
+              "name": "-PartnerTopicName",
+              "value": "[Path.partnerTopicName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzEventGridPartnerTopicEventSubscription",
+      "description": "Delete an existing event subscription of a partner topic.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions/{eventSubscriptionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/remove-azeventgridpartnertopiceventsubscription"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EventSubscriptionName <String>",
+              "-PartnerTopicName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete an existing event subscription of a partner topic.",
+          "parameters": [
+            {
+              "name": "-EventSubscriptionName",
+              "value": "[Path.eventSubscriptionName]"
+            },
+            {
+              "name": "-PartnerTopicName",
+              "value": "[Path.partnerTopicName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,3 @@
-
     # ----------------------------------------------------------------------------------
     #
     # Copyright Microsoft Corporation
@@ -20,12 +19,12 @@
     Create a in-memory object for AddonVrProperties
 
     .Outputs
-    Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.AddonVrProperties
+    Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.AddonVrProperties
     .Link
     https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareAddonVrPropertiesObject
     #>
     function New-AzVMwareAddonVrPropertiesObject {
-        [OutputType('Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.AddonVrProperties')]
+        [OutputType('Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.AddonVrProperties')]
         [CmdletBinding(PositionalBinding=$false)]
         Param(
     
@@ -35,7 +34,7 @@
         )
 
         process {
-            $Object = [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.AddonVrProperties]::New()
+            $Object = [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.AddonVrProperties]::New()
     
             $Object.VrsCount = $VrsCount
             $Object.AddonType = "VR"

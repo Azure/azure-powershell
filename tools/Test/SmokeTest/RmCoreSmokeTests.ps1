@@ -115,8 +115,6 @@ $resourceTestCommands = @(
     @{Name = "Az.DataLakeStore [MngmPlane]";  Command = {Get-AzDataLakeStoreAccount}},
     @{Name = "Az.DataLakeStore [DataPlane]";  Command = {Get-Command New-AzDataLakeStoreItem}},
     @{Name = "Az.DataShare";                  Command = {Get-AzDataShareAccount -ResourceGroupName $resourceGroupName}},
-    # Waiting for an issue fix: https://github.com/Azure/azure-powershell/issues/13522#issuecomment-728659457
-    # @{Name = "Az.DeploymentManager";          Command = {try {Get-AzDeploymentManagerArtifactSource -ResourceGroupName $resourceGroupName }catch {if ($_.ToString() -notlike "*not found*") {throw $_}}}},
     @{Name = "Az.DesktopVirtualization";      Command = {Get-AzWvdApplicationGroup -ResourceGroupName $resourceGroupName}},
     @{Name = "Az.Dns";                        Command = {Get-AzDnsZone}},
     @{Name = "Az.EventGrid";                  Command = {Get-AzEventGridTopic}},

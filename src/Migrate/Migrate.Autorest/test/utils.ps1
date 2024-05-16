@@ -100,6 +100,32 @@ function setupEnv() {
     $env.migRunAsAccountName = "f53e4f58-d091-536f-948e-51bc0745552e"
     $env.migApplianceName = "signoff2105app"
 
+    $env.hciSubscriptionId = "40b6d51e-c6c9-47c8-9203-52fdeaec6d1e"
+    $env.hciMigResourceGroup = "samlee3-rg4"
+    $env.hciMigResourceGroupId = "/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4"
+    $env.hciProjectName = "samlee3proj4"
+    $env.hciProjectId = "/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.Migrate/MigrateProjects/samlee3proj4"
+    $env.hciSourceApplianceName = "samlee3src4"
+    $env.hciTargetApplianceName = "samlee3t"
+    $env.hciSourceReplicationFabricName = "samlee3src48adfreplicationfabric"
+    $env.hciReplicationVaultName = "samlee3proj46422replicationvault"
+    $env.hciReplicationPolicyName = "samlee3proj46422replicationvaultHyperVToAzStackHCIpolicy"
+    $env.hciReplicationStorageAccountId = "/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.Storage/storageAccounts/samlee3proj4migratesa"
+    $env.hciTargetRGId = "/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg-tgt"
+    $env.hciTgtVirtualSwitchId = "/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/mayadahciclus3-rg/providers/Microsoft.AzureStackHCI/virtualnetworks/external"
+    $env.hciTgtStoragePathId = "/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/mayadahciclus3-rg/providers/Microsoft.AzureStackHCI/storagecontainers/bbcontainer4"
+    $env.hciSDSMachineId1 = "/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.OffAzure/HyperVSites/samlee3src41244site/machines/0560e6aa-9b2d-45e5-92cd-4ff618d09bec"
+    $env.hciTgtVMName1 =  "hciVm1"
+    $env.hciDiskId1 = "Microsoft:0560E6AA-9B2D-45E5-92CD-4FF618D09BEC\\83F8638B-8DCA-4152-9EDA-2CA8B33039B4\\0\\0\\L"
+    $env.hciProtectedItem1 = "/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.DataReplication/replicationVaults/samlee3proj46422replicationvault/protectedItems/0560e6aa-9b2d-45e5-92cd-4ff618d09bec"
+    $env.hciSDSMachineId2 = "/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.OffAzure/HyperVSites/samlee3src41244site/machines/a0247db0-ceca-4cb1-ae6c-1d4ac98ca82b"
+    $env.hciTgtVMName2 = "hciVm2"
+    $env.hciDiskId2 = "Microsoft:A0247DB0-CECA-4CB1-AE6C-1D4AC98CA82B\\83F8638B-8DCA-4152-9EDA-2CA8B33039B4\\0\\0\\L"
+    $env.hciProtectedItem2 = "/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.DataReplication/replicationVaults/samlee3proj46422replicationvault/protectedItems/a0247db0-ceca-4cb1-ae6c-1d4ac98ca82b"
+    $env.hciNicId2 = "Microsoft:A0247DB0-CECA-4CB1-AE6C-1D4AC98CA82B\\8A3C8701-4ACE-4F99-832E-294ACC0F51C3"
+    $env.hciJobName = "f8941ed0-5563-400b-b93c-24dcba833dbb"
+    $env.hciJobId = "/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.DataReplication/replicationVaults/samlee3proj46422replicationvault/jobs/f8941ed0-5563-400b-b93c-24dcba833dbb"
+    
     $envFile = 'localEnv.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'

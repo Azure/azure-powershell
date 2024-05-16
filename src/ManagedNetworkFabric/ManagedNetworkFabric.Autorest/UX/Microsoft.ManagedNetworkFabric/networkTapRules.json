@@ -1,0 +1,85 @@
+{
+  "resourceType": "networkTapRules",
+  "apiVersion": "2023-06-15",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric"
+  },
+  "commands": [
+    {
+      "name": "Get-AzNetworkFabricTapRule",
+      "description": "Get Network Tap Rule resource details.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric/get-aznetworkfabrictaprule"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get Network Tap Rule resource details.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.networkTapRuleName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzNetworkFabricTapRule",
+      "description": "Delete Network Tap Rule resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric/remove-aznetworkfabrictaprule"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete Network Tap Rule resource.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.networkTapRuleName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

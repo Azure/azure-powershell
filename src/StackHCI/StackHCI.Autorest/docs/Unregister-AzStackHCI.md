@@ -17,7 +17,8 @@ The registered information available on the cluster is used to unregister the cl
 Unregister-AzStackHCI [[-SubscriptionId] <String>] [[-ResourceName] <String>] [[-TenantId] <String>]
  [[-ResourceGroupName] <String>] [[-ArmAccessToken] <String>] [[-AccountId] <String>]
  [[-EnvironmentName] <String>] [[-Region] <String>] [[-ComputerName] <String>] [[-Credential] <PSCredential>]
- [-DisableOnlyAzureArcServer] [-Force] [-UseDeviceAuthentication] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DisableOnlyAzureArcServer] [-Force] [-IsWAC] [-UseDeviceAuthentication] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -169,6 +170,21 @@ Accept wildcard characters: False
 
 ### -Force
 Specifies that unregistration should continue even if we could not delete the Arc extensions on the nodes.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsWAC
+
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

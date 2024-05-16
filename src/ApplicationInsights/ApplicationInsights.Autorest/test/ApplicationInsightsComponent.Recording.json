@@ -17,24 +17,25 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "f4f32e10-8573-4ef3-b42b-d9c8528f9ca5" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Request-Context": [ "appId=cid-v1:920e14b1-13f3-461a-a4bb-b4fe6f1a4525" ],
+        "Request-Context": [ "appId=cid-v1:0dd6a9c3-b728-41ca-aa78-7e1962e22331" ],
         "Access-Control-Expose-Headers": [ "Request-Context" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
-        "x-ms-correlation-request-id": [ "f8130d8a-ef8f-4c94-9ba3-1b7a390198b8" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220516T155422Z:f8130d8a-ef8f-4c94-9ba3-1b7a390198b8" ],
-        "Date": [ "Mon, 16 May 2022 15:54:21 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "dfdd807f-3b7b-4451-b671-68599770565e" ],
+        "x-ms-correlation-request-id": [ "dfdd807f-3b7b-4451-b671-68599770565e" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240318T082526Z:dfdd807f-3b7b-4451-b671-68599770565e" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D40A9BE2D61A4D94836470341BDB474D Ref B: MAA201060514019 Ref C: 2024-03-18T08:25:22Z" ],
+        "Date": [ "Mon, 18 Mar 2024 08:25:25 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1082" ],
+        "Content-Length": [ "1247" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/components/componentjq87r0\",\"name\":\"componentjq87r0\",\"type\":\"microsoft.insights/components\",\"location\":\"westus2\",\"tags\":{},\"kind\":\"web\",\"etag\":\"\\\"8f01b4e6-0000-0600-0000-628273ac0000\\\"\",\"properties\":{\"ApplicationId\":\"componentjq87r0\",\"AppId\":\"5c4bf24b-70bb-4b47-8977-983e7d5ad657\",\"Application_Type\":\"web\",\"Flow_Type\":null,\"Request_Source\":null,\"InstrumentationKey\":\"c75c7968-7317-4a52-bda9-8ba6c76558c1\",\"ConnectionString\":\"InstrumentationKey=c75c7968-7317-4a52-bda9-8ba6c76558c1;IngestionEndpoint=https://westus2-1.in.applicationinsights.azure.com/;LiveEndpoint=https://westus2.livediagnostics.monitor.azure.com/\",\"Name\":\"componentjq87r0\",\"CreationDate\":\"2022-05-16T15:54:20.0201213+00:00\",\"TenantId\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"provisioningState\":\"Succeeded\",\"SamplingPercentage\":null,\"RetentionInDays\":90,\"IngestionMode\":\"ApplicationInsights\",\"publicNetworkAccessForIngestion\":\"Enabled\",\"publicNetworkAccessForQuery\":\"Enabled\",\"Ver\":\"v2\"}}",
+      "Content": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/components/componentjq87r0\",\r\n  \"name\": \"componentjq87r0\",\r\n  \"type\": \"microsoft.insights/components\",\r\n  \"location\": \"westus2\",\r\n  \"tags\": {},\r\n  \"kind\": \"web\",\r\n  \"etag\": \"\\\"eb00b29d-0000-0800-0000-65f7fa750000\\\"\",\r\n  \"properties\": {\r\n    \"ApplicationId\": \"componentjq87r0\",\r\n    \"AppId\": \"29218048-6852-4b3a-870d-662116a28e0e\",\r\n    \"Application_Type\": \"web\",\r\n    \"Flow_Type\": null,\r\n    \"Request_Source\": null,\r\n    \"InstrumentationKey\": \"865eca96-784f-4dbe-99b0-c75de4decfc8\",\r\n    \"ConnectionString\": \"InstrumentationKey=865eca96-784f-4dbe-99b0-c75de4decfc8;IngestionEndpoint=https://westus2-5.in.applicationinsights.azure.com/;LiveEndpoint=https://westus2.livediagnostics.monitor.azure.com/\",\r\n    \"Name\": \"componentjq87r0\",\r\n    \"CreationDate\": \"2024-03-18T08:25:25.5653141+00:00\",\r\n    \"TenantId\": \"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"SamplingPercentage\": null,\r\n    \"RetentionInDays\": 90,\r\n    \"IngestionMode\": \"ApplicationInsights\",\r\n    \"publicNetworkAccessForIngestion\": \"Enabled\",\r\n    \"publicNetworkAccessForQuery\": \"Enabled\",\r\n    \"Ver\": \"v2\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
@@ -45,12 +46,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "6900db86-59b6-4471-804c-fa7695259e7f" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "4a0c55a8-9b8e-4d88-a61a-ab178c127451" ],
         "CommandName": [ "." ],
         "FullCommandName": [ "Get-AzApplicationInsights_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ApplicationInsights/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.4.1", "Az.ApplicationInsights/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -61,24 +62,25 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "6900db86-59b6-4471-804c-fa7695259e7f" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Request-Context": [ "appId=cid-v1:920e14b1-13f3-461a-a4bb-b4fe6f1a4525" ],
+        "Request-Context": [ "appId=cid-v1:0dd6a9c3-b728-41ca-aa78-7e1962e22331" ],
         "Access-Control-Expose-Headers": [ "Request-Context" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-correlation-request-id": [ "f2d437bd-b871-48f5-bf5b-b249cf2bfe83" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220516T155423Z:f2d437bd-b871-48f5-bf5b-b249cf2bfe83" ],
-        "Date": [ "Mon, 16 May 2022 15:54:23 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "73d231b9-1849-4b83-9ecc-8d7f272ccd21" ],
+        "x-ms-correlation-request-id": [ "73d231b9-1849-4b83-9ecc-8d7f272ccd21" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240318T082528Z:73d231b9-1849-4b83-9ecc-8d7f272ccd21" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 46677AC99E864378B2D1BD0BC936F3B9 Ref B: MAA201060514019 Ref C: 2024-03-18T08:25:26Z" ],
+        "Date": [ "Mon, 18 Mar 2024 08:25:27 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1082" ],
+        "Content-Length": [ "1247" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/components/componentjq87r0\",\"name\":\"componentjq87r0\",\"type\":\"microsoft.insights/components\",\"location\":\"westus2\",\"tags\":{},\"kind\":\"web\",\"etag\":\"\\\"8f01b4e6-0000-0600-0000-628273ac0000\\\"\",\"properties\":{\"ApplicationId\":\"componentjq87r0\",\"AppId\":\"5c4bf24b-70bb-4b47-8977-983e7d5ad657\",\"Application_Type\":\"web\",\"Flow_Type\":null,\"Request_Source\":null,\"InstrumentationKey\":\"c75c7968-7317-4a52-bda9-8ba6c76558c1\",\"ConnectionString\":\"InstrumentationKey=c75c7968-7317-4a52-bda9-8ba6c76558c1;IngestionEndpoint=https://westus2-1.in.applicationinsights.azure.com/;LiveEndpoint=https://westus2.livediagnostics.monitor.azure.com/\",\"Name\":\"componentjq87r0\",\"CreationDate\":\"2022-05-16T15:54:20.0201213+00:00\",\"TenantId\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"provisioningState\":\"Succeeded\",\"SamplingPercentage\":null,\"RetentionInDays\":90,\"IngestionMode\":\"ApplicationInsights\",\"publicNetworkAccessForIngestion\":\"Enabled\",\"publicNetworkAccessForQuery\":\"Enabled\",\"Ver\":\"v2\"}}",
+      "Content": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/components/componentjq87r0\",\r\n  \"name\": \"componentjq87r0\",\r\n  \"type\": \"microsoft.insights/components\",\r\n  \"location\": \"westus2\",\r\n  \"tags\": {},\r\n  \"kind\": \"web\",\r\n  \"etag\": \"\\\"eb00b29d-0000-0800-0000-65f7fa750000\\\"\",\r\n  \"properties\": {\r\n    \"ApplicationId\": \"componentjq87r0\",\r\n    \"AppId\": \"29218048-6852-4b3a-870d-662116a28e0e\",\r\n    \"Application_Type\": \"web\",\r\n    \"Flow_Type\": null,\r\n    \"Request_Source\": null,\r\n    \"InstrumentationKey\": \"865eca96-784f-4dbe-99b0-c75de4decfc8\",\r\n    \"ConnectionString\": \"InstrumentationKey=865eca96-784f-4dbe-99b0-c75de4decfc8;IngestionEndpoint=https://westus2-5.in.applicationinsights.azure.com/;LiveEndpoint=https://westus2.livediagnostics.monitor.azure.com/\",\r\n    \"Name\": \"componentjq87r0\",\r\n    \"CreationDate\": \"2024-03-18T08:25:25.5653141+00:00\",\r\n    \"TenantId\": \"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"SamplingPercentage\": null,\r\n    \"RetentionInDays\": 90,\r\n    \"IngestionMode\": \"ApplicationInsights\",\r\n    \"publicNetworkAccessForIngestion\": \"Enabled\",\r\n    \"publicNetworkAccessForQuery\": \"Enabled\",\r\n    \"Ver\": \"v2\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
@@ -89,12 +91,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "a42872a2-d151-476e-af6e-f72e81af73a4" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "01368d01-f78b-400c-a83e-2697baf47044" ],
         "CommandName": [ "Remove-AzApplicationInsights" ],
         "FullCommandName": [ "Remove-AzApplicationInsights_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.ApplicationInsights/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.4.1", "Az.ApplicationInsights/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -105,17 +107,232 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "a42872a2-d151-476e-af6e-f72e81af73a4" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Request-Context": [ "appId=cid-v1:920e14b1-13f3-461a-a4bb-b4fe6f1a4525" ],
+        "Request-Context": [ "appId=cid-v1:0dd6a9c3-b728-41ca-aa78-7e1962e22331" ],
         "Access-Control-Expose-Headers": [ "Request-Context" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-correlation-request-id": [ "c983d465-24dc-40d1-8d9a-85c1d01b9bb2" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220516T155431Z:c983d465-24dc-40d1-8d9a-85c1d01b9bb2" ],
-        "Date": [ "Mon, 16 May 2022 15:54:30 GMT" ]
+        "x-ms-request-id": [ "3ca0ea7a-39e3-41d9-9aff-8652f3d9b995" ],
+        "x-ms-correlation-request-id": [ "3ca0ea7a-39e3-41d9-9aff-8652f3d9b995" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240318T082535Z:3ca0ea7a-39e3-41d9-9aff-8652f3d9b995" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 046FE8AD554E4E96A5890B4B54D37006 Ref B: MAA201060514019 Ref C: 2024-03-18T08:25:28Z" ],
+        "Date": [ "Mon, 18 Mar 2024 08:25:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "ApplicationInsightsComponent+[NoContext]+UpdateComponment+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/components/componentk7l0bt?api-version=2020-02-02+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/components/componentk7l0bt?api-version=2020-02-02",
+      "Content": "{\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"key\": \"val\"\r\n  },\r\n  \"properties\": {\r\n    \"Application_Type\": \"web\"\r\n  },\r\n  \"kind\": \"web\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "140" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:0dd6a9c3-b728-41ca-aa78-7e1962e22331" ],
+        "Access-Control-Expose-Headers": [ "Request-Context" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "28a1fd55-0b50-428f-9406-49319f79cf89" ],
+        "x-ms-correlation-request-id": [ "28a1fd55-0b50-428f-9406-49319f79cf89" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240318T082539Z:28a1fd55-0b50-428f-9406-49319f79cf89" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A8E2E5636AD24F5C82C3E66ED3771470 Ref B: MAA201060514019 Ref C: 2024-03-18T08:25:35Z" ],
+        "Date": [ "Mon, 18 Mar 2024 08:25:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1269" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/components/componentk7l0bt\",\r\n  \"name\": \"componentk7l0bt\",\r\n  \"type\": \"microsoft.insights/components\",\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"key\": \"val\"\r\n  },\r\n  \"kind\": \"web\",\r\n  \"etag\": \"\\\"eb00509e-0000-0800-0000-65f7fa820000\\\"\",\r\n  \"properties\": {\r\n    \"ApplicationId\": \"componentk7l0bt\",\r\n    \"AppId\": \"d9b5d5c5-ee07-4339-a3b8-e536aaed15c0\",\r\n    \"Application_Type\": \"web\",\r\n    \"Flow_Type\": null,\r\n    \"Request_Source\": null,\r\n    \"InstrumentationKey\": \"40d6e501-b98a-49ff-88c3-36b81c87aafc\",\r\n    \"ConnectionString\": \"InstrumentationKey=40d6e501-b98a-49ff-88c3-36b81c87aafc;IngestionEndpoint=https://westus2-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus2.livediagnostics.monitor.azure.com/\",\r\n    \"Name\": \"componentk7l0bt\",\r\n    \"CreationDate\": \"2024-03-18T08:25:38.0117299+00:00\",\r\n    \"TenantId\": \"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"SamplingPercentage\": null,\r\n    \"RetentionInDays\": 90,\r\n    \"IngestionMode\": \"ApplicationInsights\",\r\n    \"publicNetworkAccessForIngestion\": \"Enabled\",\r\n    \"publicNetworkAccessForQuery\": \"Enabled\",\r\n    \"Ver\": \"v2\"\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "ApplicationInsightsComponent+[NoContext]+UpdateComponment+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/components/componentk7l0bt?api-version=2020-02-02+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/components/componentk7l0bt?api-version=2020-02-02",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "08cd11b8-ebdf-4f2f-a348-a65f3c12e54a" ],
+        "CommandName": [ "." ],
+        "FullCommandName": [ "Get-AzApplicationInsights_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.4.1", "Az.ApplicationInsights/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:0dd6a9c3-b728-41ca-aa78-7e1962e22331" ],
+        "Access-Control-Expose-Headers": [ "Request-Context" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "69463ca5-0d1a-4856-80db-2a51c29ee002" ],
+        "x-ms-correlation-request-id": [ "69463ca5-0d1a-4856-80db-2a51c29ee002" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240318T082542Z:69463ca5-0d1a-4856-80db-2a51c29ee002" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 63AD69F0DD834E299E0938AE692F5AAA Ref B: MAA201060514019 Ref C: 2024-03-18T08:25:41Z" ],
+        "Date": [ "Mon, 18 Mar 2024 08:25:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1269" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/components/componentk7l0bt\",\r\n  \"name\": \"componentk7l0bt\",\r\n  \"type\": \"microsoft.insights/components\",\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"key\": \"val\"\r\n  },\r\n  \"kind\": \"web\",\r\n  \"etag\": \"\\\"eb00509e-0000-0800-0000-65f7fa820000\\\"\",\r\n  \"properties\": {\r\n    \"ApplicationId\": \"componentk7l0bt\",\r\n    \"AppId\": \"d9b5d5c5-ee07-4339-a3b8-e536aaed15c0\",\r\n    \"Application_Type\": \"web\",\r\n    \"Flow_Type\": null,\r\n    \"Request_Source\": null,\r\n    \"InstrumentationKey\": \"40d6e501-b98a-49ff-88c3-36b81c87aafc\",\r\n    \"ConnectionString\": \"InstrumentationKey=40d6e501-b98a-49ff-88c3-36b81c87aafc;IngestionEndpoint=https://westus2-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus2.livediagnostics.monitor.azure.com/\",\r\n    \"Name\": \"componentk7l0bt\",\r\n    \"CreationDate\": \"2024-03-18T08:25:38.0117299+00:00\",\r\n    \"TenantId\": \"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"SamplingPercentage\": null,\r\n    \"RetentionInDays\": 90,\r\n    \"IngestionMode\": \"ApplicationInsights\",\r\n    \"publicNetworkAccessForIngestion\": \"Enabled\",\r\n    \"publicNetworkAccessForQuery\": \"Enabled\",\r\n    \"Ver\": \"v2\"\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "ApplicationInsightsComponent+[NoContext]+UpdateComponment+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/components/componentk7l0bt?api-version=2020-02-02+3": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/components/componentk7l0bt?api-version=2020-02-02",
+      "Content": "{\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"key\": \"val\"\r\n  },\r\n  \"properties\": {\r\n    \"Application_Type\": \"web\",\r\n    \"RetentionInDays\": 90,\r\n    \"publicNetworkAccessForIngestion\": \"Disabled\",\r\n    \"publicNetworkAccessForQuery\": \"Disabled\",\r\n    \"IngestionMode\": \"ApplicationInsights\"\r\n  },\r\n  \"kind\": \"web\",\r\n  \"etag\": \"\\\"eb00509e-0000-0800-0000-65f7fa820000\\\"\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "368" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:0dd6a9c3-b728-41ca-aa78-7e1962e22331" ],
+        "Access-Control-Expose-Headers": [ "Request-Context" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "b13a6f8d-5f06-4522-8221-7503633f13fd" ],
+        "x-ms-correlation-request-id": [ "b13a6f8d-5f06-4522-8221-7503633f13fd" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240318T082549Z:b13a6f8d-5f06-4522-8221-7503633f13fd" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6AEABAA5C30F4E4C9437F385CE1E81B6 Ref B: MAA201060514019 Ref C: 2024-03-18T08:25:43Z" ],
+        "Date": [ "Mon, 18 Mar 2024 08:25:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1297" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/components/componentk7l0bt\",\r\n  \"name\": \"componentk7l0bt\",\r\n  \"type\": \"microsoft.insights/components\",\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"key\": \"val\"\r\n  },\r\n  \"kind\": \"web\",\r\n  \"etag\": \"\\\"eb00aa9e-0000-0800-0000-65f7fa880000\\\"\",\r\n  \"properties\": {\r\n    \"ApplicationId\": \"componentk7l0bt\",\r\n    \"AppId\": \"d9b5d5c5-ee07-4339-a3b8-e536aaed15c0\",\r\n    \"Application_Type\": \"web\",\r\n    \"Flow_Type\": null,\r\n    \"Request_Source\": null,\r\n    \"InstrumentationKey\": \"40d6e501-b98a-49ff-88c3-36b81c87aafc\",\r\n    \"ConnectionString\": \"InstrumentationKey=40d6e501-b98a-49ff-88c3-36b81c87aafc;IngestionEndpoint=https://westus2-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus2.livediagnostics.monitor.azure.com/\",\r\n    \"Name\": \"componentk7l0bt\",\r\n    \"CreationDate\": \"2024-03-18T08:25:38.0117299+00:00\",\r\n    \"TenantId\": \"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"SamplingPercentage\": null,\r\n    \"RetentionInDays\": 90,\r\n    \"Retention\": \"P90D\",\r\n    \"IngestionMode\": \"ApplicationInsights\",\r\n    \"publicNetworkAccessForIngestion\": \"Disabled\",\r\n    \"publicNetworkAccessForQuery\": \"Disabled\",\r\n    \"Ver\": \"v2\"\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "ApplicationInsightsComponent+[NoContext]+UpdateComponment+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/components/componentk7l0bt?api-version=2020-02-02+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/components/componentk7l0bt?api-version=2020-02-02",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "07509d87-5f5a-4373-9bea-30c81b5acf87" ],
+        "CommandName": [ "." ],
+        "FullCommandName": [ "Get-AzApplicationInsights_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.4.1", "Az.ApplicationInsights/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:0dd6a9c3-b728-41ca-aa78-7e1962e22331" ],
+        "Access-Control-Expose-Headers": [ "Request-Context" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-request-id": [ "d2f22d8a-f810-4de9-a0ca-75b03f422650" ],
+        "x-ms-correlation-request-id": [ "d2f22d8a-f810-4de9-a0ca-75b03f422650" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240318T082551Z:d2f22d8a-f810-4de9-a0ca-75b03f422650" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9FCECE306DD140E1958BFCA7F206642B Ref B: MAA201060514019 Ref C: 2024-03-18T08:25:49Z" ],
+        "Date": [ "Mon, 18 Mar 2024 08:25:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1297" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/components/componentk7l0bt\",\r\n  \"name\": \"componentk7l0bt\",\r\n  \"type\": \"microsoft.insights/components\",\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"key\": \"val\"\r\n  },\r\n  \"kind\": \"web\",\r\n  \"etag\": \"\\\"eb00aa9e-0000-0800-0000-65f7fa880000\\\"\",\r\n  \"properties\": {\r\n    \"ApplicationId\": \"componentk7l0bt\",\r\n    \"AppId\": \"d9b5d5c5-ee07-4339-a3b8-e536aaed15c0\",\r\n    \"Application_Type\": \"web\",\r\n    \"Flow_Type\": null,\r\n    \"Request_Source\": null,\r\n    \"InstrumentationKey\": \"40d6e501-b98a-49ff-88c3-36b81c87aafc\",\r\n    \"ConnectionString\": \"InstrumentationKey=40d6e501-b98a-49ff-88c3-36b81c87aafc;IngestionEndpoint=https://westus2-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus2.livediagnostics.monitor.azure.com/\",\r\n    \"Name\": \"componentk7l0bt\",\r\n    \"CreationDate\": \"2024-03-18T08:25:38.0117299+00:00\",\r\n    \"TenantId\": \"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"SamplingPercentage\": null,\r\n    \"RetentionInDays\": 90,\r\n    \"Retention\": \"P90D\",\r\n    \"IngestionMode\": \"ApplicationInsights\",\r\n    \"publicNetworkAccessForIngestion\": \"Disabled\",\r\n    \"publicNetworkAccessForQuery\": \"Disabled\",\r\n    \"Ver\": \"v2\"\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "ApplicationInsightsComponent+[NoContext]+UpdateComponment+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/components/componentk7l0bt?api-version=2020-02-02+5": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/components/componentk7l0bt?api-version=2020-02-02",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "62ae6c68-1330-4eff-a900-f232bb826038" ],
+        "CommandName": [ "Remove-AzApplicationInsights" ],
+        "FullCommandName": [ "Remove-AzApplicationInsights_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.4.1", "Az.ApplicationInsights/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:0dd6a9c3-b728-41ca-aa78-7e1962e22331" ],
+        "Access-Control-Expose-Headers": [ "Request-Context" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-request-id": [ "25637475-1a6a-4b4a-9d19-30f7686c93f7" ],
+        "x-ms-correlation-request-id": [ "25637475-1a6a-4b4a-9d19-30f7686c93f7" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240318T082558Z:25637475-1a6a-4b4a-9d19-30f7686c93f7" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2CB4BF8632604A87BA21704AE4C0D85E Ref B: MAA201060514019 Ref C: 2024-03-18T08:25:51Z" ],
+        "Date": [ "Mon, 18 Mar 2024 08:25:57 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],

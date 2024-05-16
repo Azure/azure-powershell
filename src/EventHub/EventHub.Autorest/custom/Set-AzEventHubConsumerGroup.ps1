@@ -20,7 +20,7 @@ Sets an EventHub Consumer Group
 #>
 
 function Set-AzEventHubConsumerGroup{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IConsumerGroup])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConsumerGroup])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of the Consumer Group.")]

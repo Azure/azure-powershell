@@ -55,6 +55,24 @@ Describe 'Update-AzFrontDoorCdnProfile' {
         $updatedProfile.IdentityType | Should -Be "SystemAssigned"
     }
 
+    It 'UpdateExpanded' {
+        Write-Host -ForegroundColor Green "Update AzFrontDoorCdnProfile: add profile logScrubbing"
+
+        $rule1 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -State Enabled 
+        $rule2 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable QueryStringArgNames -State Enabled
+        $rules = New-AzFrontDoorCdnProfileLogScrubbingObject -ScrubbingRule @($rule1, $rule2) -State Enabled
+
+        $profileObject = Update-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -LogScrubbingRule $rules.ScrubbingRule -LogScrubbingState Enabled
+
+        Write-Host -ForegroundColor Green "Get AzFrontDoorCdnProfile"
+        $updatedProfile = Get-AzFrontDoorCdnProfile -InputObject $profileObject
+
+        $updatedProfile.LogScrubbingState | Should -Be "Enabled"
+        $updatedProfile.LogScrubbingRule.Count | Should -Be 2
+        $updatedProfile.LogScrubbingRule[0].MatchVariable | Should -Be 'RequestIPAddress'
+        $updatedProfile.LogScrubbingRule[1].MatchVariable | Should -Be 'QueryStringArgNames'
+    }
+
     It 'UpdateViaIdentityExpanded' {
         $tags = @{
             Tag1 = 33

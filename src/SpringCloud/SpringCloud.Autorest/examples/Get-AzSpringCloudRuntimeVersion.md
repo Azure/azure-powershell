@@ -7,4 +7,3 @@ Get-AzSpringCloudRuntimeVersion
 ```
 
 Lists all of the available runtime versions supported by Microsoft.AppPlatform provider.
-

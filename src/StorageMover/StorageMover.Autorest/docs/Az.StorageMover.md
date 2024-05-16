@@ -32,6 +32,9 @@ Gets a Project resource.
 ### [New-AzStorageMover](New-AzStorageMover.md)
 Creates or updates a top-level Storage Mover resource.
 
+### [New-AzStorageMoverAzSmbFileShareEndpoint](New-AzStorageMoverAzSmbFileShareEndpoint.md)
+Creates a Smb file share endpoint resource, which represents a data transfer source or destination.
+
 ### [New-AzStorageMoverAzStorageContainerEndpoint](New-AzStorageMoverAzStorageContainerEndpoint.md)
 Creates an AzStorageContainer endpoint resource, which represents a data transfer source or destination.
 
@@ -46,9 +49,6 @@ Creates or updates a Project resource, which is a logical grouping of related jo
 
 ### [New-AzStorageMoverSmbEndpoint](New-AzStorageMoverSmbEndpoint.md)
 Creates an SMB endpoint resource, which represents a data transfer source or destination.
-
-### [New-AzStorageMoverSmbFileShareEndpoint](New-AzStorageMoverSmbFileShareEndpoint.md)
-Creates a Smb file share endpoint resource, which represents a data transfer source or destination.
 
 ### [Remove-AzStorageMover](Remove-AzStorageMover.md)
 Deletes a Storage Mover resource.
@@ -78,6 +78,10 @@ Properties not specified in the request body will be unchanged.
 ### [Update-AzStorageMoverAgent](Update-AzStorageMoverAgent.md)
 Creates or updates an Agent resource.
 
+### [Update-AzStorageMoverAzSmbFileShareEndpoint](Update-AzStorageMoverAzSmbFileShareEndpoint.md)
+Updates properties for a SMB file share endpoint resource.
+Properties not specified in the request body will be unchanged.
+
 ### [Update-AzStorageMoverAzStorageContainerEndpoint](Update-AzStorageMoverAzStorageContainerEndpoint.md)
 Updates properties for an AzStorageContainer endpoint resource.
 Properties not specified in the request body will be unchanged.
@@ -96,9 +100,5 @@ Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverSmbEndpoint](Update-AzStorageMoverSmbEndpoint.md)
 Updates properties for a SMB endpoint resource.
-Properties not specified in the request body will be unchanged.
-
-### [Update-AzStorageMoverSmbFileShareEndpoint](Update-AzStorageMoverSmbFileShareEndpoint.md)
-Updates properties for a SMB file share endpoint resource.
 Properties not specified in the request body will be unchanged.
 

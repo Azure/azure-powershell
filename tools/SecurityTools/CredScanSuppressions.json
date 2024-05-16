@@ -10,10 +10,6 @@
       "_justification": "Documentation with non-live passwords in sample connection strings"
     },
     {
-      "file": "src\\DeploymentManager\\DeploymentManager.Test\\SessionRecords\\Microsoft.Azure.Commands.DeploymentManager.Test.ScenarioTests.DeploymentManagerTests\\EndToEndFunctionalTests.json",
-      "_justification": "Expired test session storage SAS"
-    },
-    {
       "file": "src\\Compute\\Compute.Test\\Templates\\tstorgnztn-validator.pem",
       "_justification": "Legitimate test certificate file"
     },

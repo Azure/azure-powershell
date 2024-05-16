@@ -52,7 +52,7 @@ New-AzSqlVM -Name <String> -ResourceGroupName <String> -Location <String> [-Subs
  [-StorageConfigurationSettingDiskConfigurationType <DiskConfigurationType>]
  [-StorageConfigurationSettingSqlSystemDbOnDataDisk]
  [-StorageConfigurationSettingStorageWorkloadType <StorageWorkloadType>] [-Tag <Hashtable>]
- [-VirtualMachineResourceId <String>] [-WsfcDomainCredentialsClusterBootstrapAccountPassword <SecureString>]
+ [-WsfcDomainCredentialsClusterBootstrapAccountPassword <SecureString>]
  [-WsfcDomainCredentialsClusterOperatorAccountPassword <SecureString>]
  [-WsfcDomainCredentialsSqlServiceAccountPassword <SecureString>] [-WsfcStaticIP <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -1376,21 +1376,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VirtualMachineResourceId
-ARM Resource id of underlying virtual machine created from SQL marketplace image.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -WsfcDomainCredentialsClusterBootstrapAccountPassword
 Cluster bootstrap account password.
 
@@ -1492,8 +1477,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

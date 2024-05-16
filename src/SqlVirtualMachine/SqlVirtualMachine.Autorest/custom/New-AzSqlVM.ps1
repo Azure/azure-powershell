@@ -529,12 +529,6 @@ function New-AzSqlVM {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [System.String]
-        # ARM Resource id of underlying virtual machine created from SQL marketplace image.
-        ${VirtualMachineResourceId},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
         [System.Security.SecureString]
         # Cluster bootstrap account password.
         ${WsfcDomainCredentialsClusterBootstrapAccountPassword},

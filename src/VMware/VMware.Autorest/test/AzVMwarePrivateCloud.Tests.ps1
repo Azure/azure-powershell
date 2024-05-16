@@ -45,7 +45,7 @@ Describe 'AzVMwarePrivateCloud' {
 
     It 'UpdateExpanded' {
         {
-            $config = Update-AzVMwarePrivateCloud -Name $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1 -ManagementClusterSize 4
+            $config = Update-AzVMwarePrivateCloud -Name $env.rstr2 -ResourceGroupName $env.resourceGroup2 -ManagementClusterSize 4
             $config.ManagementClusterSize | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }

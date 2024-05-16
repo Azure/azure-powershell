@@ -27,9 +27,9 @@ New-AzVMwareAddonSrmPropertiesObject -LicenseKey "YourLicenseKeyValue"
 ```
 
 ```output
-AddonType ProvisioningState LicenseKey
---------- ----------------- ----------
-SRM                         YourLicenseKeyValue
+AddonType LicenseKey          ProvisioningState
+--------- ----------          -----------------
+SRM       YourLicenseKeyValue
 ```
 
 Create a local SRM object for the Addon Property parameter
@@ -58,11 +58,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.AddonSrmProperties
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.AddonSrmProperties
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

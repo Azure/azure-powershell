@@ -249,19 +249,6 @@ function New-AzKubernetesExtension {
                 Write-Error "Please select ClusterType from the following three values: 'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters'"
             }
 
-            if ($Name -ieq 'flux') {
-                if ($Name -ceq 'flux') {
-                    if ($IdentityType -cne 'SystemAssigned') {
-                        Write-Error "The value of the parameter -IdentityType must be 'SystemAssigned'."
-                        return
-                    }
-                }
-                else {
-                    Write-Error "The value of the parameter -Name must be 'flux'."
-                    return
-                }
-            }
-
             write-host "Azure Kubernetes Configuration Extension is being created, need to wait a few minutes..."
             Az.KubernetesConfiguration.internal\New-AzKubernetesExtension @PSBoundParameters
         }

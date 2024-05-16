@@ -1,11 +1,11 @@
 ### Example 1: Create a local Script String Execution object
 ```powershell
-New-AzVMwareScriptStringExecutionParameterObject -Name azps_test_stringvalue -Value "stringValue"
+New-AzVMwareScriptStringExecutionParameterObject -Name azps_test_value -Value "passwordValue"
 ```
 ```output
-Name                  Type   Value
-----                  ----   -----
-azps_test_stringvalue Value  stringValue
+Name                  Value
+----                  -----------
+azps_test_value passwordValue
 ```
 
 Create a local Script String Execution object

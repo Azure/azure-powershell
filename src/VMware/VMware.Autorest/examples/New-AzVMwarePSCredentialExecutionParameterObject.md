@@ -3,9 +3,9 @@
 New-AzVMwarePSCredentialExecutionParameterObject -Name azps_test_credentialvalue -Password "passwordValue" -Username "usernameValue"
 ```
 ```output
-Name                      Type       Password      Username
-----                      ----       --------      --------
-azps_test_credentialvalue Credential passwordValue usernameValue
+Name                      Password      Type       Username
+----                      --------      ----       --------
+azps_test_credentialvalue passwordValue Credential usernameValue
 ```
 
 Create a local PS Credential Execution object

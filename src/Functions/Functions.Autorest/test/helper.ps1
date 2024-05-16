@@ -21,7 +21,7 @@ function WaitForJobToComplete
     while ($true)
     {
         Write-Verbose "Wait time in seconds: $($tries*$WaitTimeInSeconds)" -Verbose
-        Start-Sleep -Seconds $WaitTimeInSeconds
+        Start-TestSleep -Seconds $WaitTimeInSeconds
         $result = Get-Job -Id $JobId
         Write-Verbose "JobState: $($result.State)" -Verbose
 

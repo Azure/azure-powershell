@@ -104,7 +104,7 @@ The properties of an addon resource
 To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -184,19 +184,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddon
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddon
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`PROPERTY <IAddonProperties>`: The properties of an addon resource
-  - `AddonType <AddonType>`: The type of private cloud addon
 
 ## RELATED LINKS
 

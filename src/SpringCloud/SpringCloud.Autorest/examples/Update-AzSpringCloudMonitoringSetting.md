@@ -23,4 +23,3 @@ default azurespringrg     Succeeded         True
 ```
 
 Update the Monitoring Setting by pipeline.
-

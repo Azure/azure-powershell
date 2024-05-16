@@ -1242,6 +1242,252 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
+  '/servicePrincipals/{servicePrincipal-id}/appRoleAssignments':
+    get:
+      tags:
+        - servicePrincipals.appRoleAssignment
+      summary: Get appRoleAssignments from servicePrincipals
+      operationId: servicePrincipals_ListAppRoleAssignments
+      parameters:
+        - name: servicePrincipal-id
+          in: path
+          description: 'key: id of servicePrincipal'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: servicePrincipal
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - id
+                - id desc
+                - deletedDateTime
+                - deletedDateTime desc
+                - appRoleId
+                - appRoleId desc
+                - createdDateTime
+                - createdDateTime desc
+                - principalDisplayName
+                - principalDisplayName desc
+                - principalId
+                - principalId desc
+                - principalType
+                - principalType desc
+                - resourceDisplayName
+                - resourceDisplayName desc
+                - resourceId
+                - resourceId desc
+              type: string
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - id
+                - deletedDateTime
+                - appRoleId
+                - createdDateTime
+                - principalDisplayName
+                - principalId
+                - principalType
+                - resourceDisplayName
+                - resourceId
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+              type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/microsoft.graph.appRoleAssignmentCollectionResponse'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-pageable:
+        nextLinkName: '@odata.nextLink'
+        operationName: listMore
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - servicePrincipals.appRoleAssignment
+      summary: Create new navigation property to appRoleAssignments for servicePrincipals
+      operationId: servicePrincipals_CreateAppRoleAssignments
+      parameters:
+        - name: servicePrincipal-id
+          in: path
+          description: 'key: id of servicePrincipal'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: servicePrincipal
+      requestBody:
+        description: New navigation property
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/microsoft.graph.appRoleAssignment'
+        required: true
+      responses:
+        '201':
+          description: Created navigation property.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/microsoft.graph.appRoleAssignment'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/servicePrincipals/{servicePrincipal-id}/appRoleAssignments/{appRoleAssignment-id}':
+    get:
+      tags:
+        - servicePrincipals.appRoleAssignment
+      summary: Get appRoleAssignments from servicePrincipals
+      operationId: servicePrincipals_GetAppRoleAssignments
+      parameters:
+        - name: servicePrincipal-id
+          in: path
+          description: 'key: id of servicePrincipal'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: servicePrincipal
+        - name: appRoleAssignment-id
+          in: path
+          description: 'key: id of appRoleAssignment'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: appRoleAssignment
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - id
+                - deletedDateTime
+                - appRoleId
+                - createdDateTime
+                - principalDisplayName
+                - principalId
+                - principalType
+                - resourceDisplayName
+                - resourceId
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+              type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/microsoft.graph.appRoleAssignment'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    patch:
+      tags:
+        - servicePrincipals.appRoleAssignment
+      summary: Update the navigation property appRoleAssignments in servicePrincipals
+      operationId: servicePrincipals_UpdateAppRoleAssignments
+      parameters:
+        - name: servicePrincipal-id
+          in: path
+          description: 'key: id of servicePrincipal'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: servicePrincipal
+        - name: appRoleAssignment-id
+          in: path
+          description: 'key: id of appRoleAssignment'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: appRoleAssignment
+      requestBody:
+        description: New navigation property values
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/microsoft.graph.appRoleAssignment'
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - servicePrincipals.appRoleAssignment
+      summary: Delete navigation property appRoleAssignments for servicePrincipals
+      operationId: servicePrincipals_DeleteAppRoleAssignments
+      parameters:
+        - name: servicePrincipal-id
+          in: path
+          description: 'key: id of servicePrincipal'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: servicePrincipal
+        - name: appRoleAssignment-id
+          in: path
+          description: 'key: id of appRoleAssignment'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: appRoleAssignment
+        - name: If-Match
+          in: header
+          description: ETag
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
   '/servicePrincipals/{servicePrincipal-id}/federatedIdentityCredentials':
     get:
       tags:
@@ -2460,6 +2706,18 @@ components:
           nullable: true
       additionalProperties:
         type: object
+    microsoft.graph.appRoleAssignmentCollectionResponse:
+      title: Collection of appRoleAssignment
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/microsoft.graph.appRoleAssignment'
+        '@odata.nextLink':
+          type: string
+      additionalProperties:
+        type: object
     microsoft.graph.informationalUrl:
       title: informationalUrl
       type: object
@@ -2830,6 +3088,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/microsoft.graph.federatedIdentityCredentialCollectionResponse'
+    microsoft.graph.appRoleAssignmentCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/microsoft.graph.appRoleAssignmentCollectionResponse'
   parameters:
     top:
       name: $top

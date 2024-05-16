@@ -28,7 +28,7 @@ Name Type                               ResourceGroupName
 vr   Microsoft.AVS/privateClouds/addons azps_test_group
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddon
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddon
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,7 +40,7 @@ PROPERTY <IAddonProperties>: The properties of an addon resource
 https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareaddon
 #>
 function New-AzVMwareAddon {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddon])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddon])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -65,7 +65,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonProperties]
     # The properties of an addon resource
     # To construct, see NOTES section for PROPERTY properties and create a hash table.
     ${Property},

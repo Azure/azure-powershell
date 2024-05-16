@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'AzVMwareLocationQuotaAvailability' {
     It 'Check' {
         {
-            $config = Test-AzVMwareLocationQuotaAvailability -Location $env.location1
+            $config = Test-AzVMwareLocationQuotaAvailability -Location $env.location2
             $config.Enabled | Should -Be "Enabled"
         } | Should -Not -Throw
     }

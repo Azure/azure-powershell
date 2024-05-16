@@ -11,7 +11,7 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'Get-AzDataProtectionJob' {
+Describe 'Get-AzDataProtectionJob' -Tag 'LiveOnly' {
     It 'List' -skip {
         $jobs = Get-AzDataProtectionJob -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupJob.ResourceGroupName -VaultName $env.TestBackupJob.VaultName
         $jobs.Length | Should -BeGreaterThan 0
@@ -22,6 +22,17 @@ Describe 'Get-AzDataProtectionJob' {
         $jobs.Length | Should -BeGreaterThan 0
         $job = Get-AzDataProtectionJob -Id $jobs[0].Id -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupJob.ResourceGroupName -VaultName $env.TestBackupJob.VaultName
         $job.Id | Should be $jobs[0].Id
+    }
+
+    It 'ListCRR' {
+        $resourceGroupName  = $env.TestCrossRegionRestoreScenario.ResourceGroupName
+        $vaultName = $env.TestCrossRegionRestoreScenario.VaultName
+        $subscriptionId = $env.TestCrossRegionRestoreScenario.SubscriptionId
+
+        $jobs = Get-AzDataProtectionJob -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName -UseSecondaryRegion
+        
+        $jobs.Length | Should -BeGreaterThan 0
+        ($jobs[0].OperationCategory -eq "CrossRegionRestore") | Should be $true
     }
 
     It 'GetViaIdentity' -skip {

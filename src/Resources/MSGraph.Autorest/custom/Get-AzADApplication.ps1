@@ -211,7 +211,7 @@ process {
         'OwnedApplicationParameterSet' {
             $null = $PSBoundParameters.Remove("OwnedApplication")
             [System.Array]$apps = . Az.MSGraph.internal\Get-AzADUserOwnedApplication @PSBoundParameters
-            $PSCmdlet.WriteObject($apps)
+            $PSCmdlet.WriteObject($apps, $true)
             return
         }
         default {

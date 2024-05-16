@@ -8,7 +8,7 @@ schema: 2.0.0
 # Start-AzServiceBusMigration
 
 ## SYNOPSIS
-Creates Migration configuration and starts migration of entities from Standard to Premium namespace
+Create Migration configuration and starts migration of entities from Standard to Premium namespace
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Start-AzServiceBusMigration -NamespaceName <String> -ResourceGroupName <String> 
 ```
 
 ## DESCRIPTION
-Creates Migration configuration and starts migration of entities from Standard to Premium namespace
+Create Migration configuration and starts migration of entities from Standard to Premium namespace
 
 ## EXAMPLES
 
@@ -212,11 +212,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IMigrationConfigProperties
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

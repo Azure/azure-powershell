@@ -21,18 +21,18 @@ Create an in-memory object for VmHostPlacementPolicyProperties.
 Create an in-memory object for VmHostPlacementPolicyProperties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.VmHostPlacementPolicyProperties
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.VmHostPlacementPolicyProperties
 .Link
 https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareVmHostPlacementPolicyPropertiesObject
 #>
 function New-AzVMwareVmHostPlacementPolicyPropertiesObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.VmHostPlacementPolicyProperties')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.VmHostPlacementPolicyProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(Mandatory, HelpMessage="placement policy affinity type.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AffinityType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AffinityType]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Affinity", "AntiAffinity")]
+        [string]
         $AffinityType,
         [Parameter(Mandatory, HelpMessage="Host members list.")]
         [string[]]
@@ -44,17 +44,17 @@ function New-AzVMwareVmHostPlacementPolicyPropertiesObject {
         [string]
         $DisplayName,
         [Parameter(HelpMessage="Whether the placement policy is enabled or disabled.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PlacementPolicyState])]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PlacementPolicyState]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        [string]
         $State,
         [Parameter(Mandatory, HelpMessage="placement policy type.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PlacementPolicyType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PlacementPolicyType]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("VmVm", "VmHost")]
+        [string]
         $Type
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.VmHostPlacementPolicyProperties]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.VmHostPlacementPolicyProperties]::New()
 
         if ($PSBoundParameters.ContainsKey('AffinityType')) {
             $Object.AffinityType = $AffinityType

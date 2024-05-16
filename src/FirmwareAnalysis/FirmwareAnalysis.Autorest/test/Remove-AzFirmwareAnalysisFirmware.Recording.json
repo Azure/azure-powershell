@@ -1,0 +1,44 @@
+{
+  "Remove-AzFirmwareAnalysisFirmware+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/4a6ec1c4-e0e2-4e4c-b532-fe37a0d9b3ab/resourceGroups/FirmwareAnalysisRG/providers/Microsoft.IoTFirmwareDefense/workspaces/default/firmwares/d46d4be7-12bc-4fb2-82ea-fa460c2c4c7e?api-version=2024-01-10+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/4a6ec1c4-e0e2-4e4c-b532-fe37a0d9b3ab/resourceGroups/FirmwareAnalysisRG/providers/Microsoft.IoTFirmwareDefense/workspaces/default/firmwares/d46d4be7-12bc-4fb2-82ea-fa460c2c4c7e?api-version=2024-01-10",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "ed78bd72-d71d-4ef5-8b3a-c78e1a378a2e" ],
+        "CommandName": [ "Remove-AzFirmwareAnalysisFirmware" ],
+        "FullCommandName": [ "Remove-AzFirmwareAnalysisFirmware_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.FirmwareAnalysis/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-correlation-request-id": [ "d304256f-95b0-4ca5-aac0-7c0b4f2771d6" ],
+        "x-ms-operation-identifier": [ "tenantId=ff3a6090-3ef9-4621-b02c-e0abfd9da371,objectId=32d56fca-9a4a-417e-8daf-c99d3d86423a/centralus/d23ff5c7-1513-4a50-811d-337b9e380bee" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20240216T193007Z:d304256f-95b0-4ca5-aac0-7c0b4f2771d6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D2D52A8CCA934A3CAB7D1EC519BAFB79 Ref B: CO6AA3150217023 Ref C: 2024-02-16T19:30:07Z" ],
+        "Date": [ "Fri, 16 Feb 2024 19:30:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

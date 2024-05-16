@@ -1,8 +1,8 @@
 {
-  "Get-AzVMwareDatastore+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/clusters/xdn238/datastores/datastore1?api-version=2021-12-01+1": {
+  "Get-AzVMwareDatastore+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/clusters/l3cm9t/datastores/datastore1?api-version=2023-03-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/clusters/xdn238/datastores/datastore1?api-version=2021-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/clusters/l3cm9t/datastores/datastore1?api-version=2023-03-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"netAppVolume\": {\r\n      \"id\": \"/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/ResourceGroup1/providers/Microsoft.NetApp/netAppAccounts/NetAppAccount1/capacityPools/CapacityPool1/volumes/NFSVol1\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -15,31 +15,31 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Thu, 22 Sep 2022 07:14:42 GMT" ],
-        "Server": [ "Rocket" ]
+        "Server": [ "Rocket" ],
+        "Date": [ "Fri, 12 Jan 2024 19:05:26 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "501" ],
-        "Content-Type": [ "application/json" ]
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "520" ]
       },
-      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/datastores/datastore1\",\"name\":\"datastore1\",\"type\":\"Microsoft.AVS/privateClouds/clusters/datastores\",\"properties\":{\"provisioningState\":\"Succeeded\",\"netAppVolume\":{\"id\":\"/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/ResourceGroup1/providers/Microsoft.NetApp/netAppAccounts/NetAppAccount1/capacityPools/CapacityPool1/volumes/NFSVol1\"},\"status\":\"Accessible\"}}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/datastores/datastore1\",\"name\":\"datastore1\",\"type\":\"Microsoft.AVS/privateClouds/clusters/datastores\",\"properties\":{\"provisioningState\":\"Succeeded\",\"netAppVolume\":{\"id\":\"/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/ResourceGroup1/providers/Microsoft.NetApp/netAppAccounts/NetAppAccount1/capacityPools/CapacityPool1/volumes/NFSVol1\"},\"status\":\"Accessible\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzVMwareDatastore+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/clusters/xdn238/datastores/datastore1?api-version=2021-12-01+2": {
+  "Get-AzVMwareDatastore+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/clusters/l3cm9t/datastores/datastore1?api-version=2023-03-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/clusters/xdn238/datastores/datastore1?api-version=2021-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/clusters/l3cm9t/datastores/datastore1?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "41" ],
-        "x-ms-client-request-id": [ "d1bd5a8f-feae-4688-940b-f6d102f96367" ],
+        "x-ms-client-request-id": [ "47b70b4f-cdd0-40c3-a601-ed1870277ffd" ],
         "CommandName": [ "New-AzVMwareDatastore" ],
         "FullCommandName": [ "New-AzVMwareDatastore_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.VMware/0.4.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.VMware/0.4.0" ]
       },
       "ContentHeaders": {
       }
@@ -47,31 +47,31 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Thu, 22 Sep 2022 07:15:12 GMT" ],
-        "Server": [ "Rocket" ]
+        "Server": [ "Rocket" ],
+        "Date": [ "Fri, 12 Jan 2024 19:05:57 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "501" ],
-        "Content-Type": [ "application/json" ]
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "520" ]
       },
-      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/datastores/datastore1\",\"name\":\"datastore1\",\"type\":\"Microsoft.AVS/privateClouds/clusters/datastores\",\"properties\":{\"provisioningState\":\"Succeeded\",\"netAppVolume\":{\"id\":\"/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/ResourceGroup1/providers/Microsoft.NetApp/netAppAccounts/NetAppAccount1/capacityPools/CapacityPool1/volumes/NFSVol1\"},\"status\":\"Accessible\"}}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/datastores/datastore1\",\"name\":\"datastore1\",\"type\":\"Microsoft.AVS/privateClouds/clusters/datastores\",\"properties\":{\"provisioningState\":\"Succeeded\",\"netAppVolume\":{\"id\":\"/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/ResourceGroup1/providers/Microsoft.NetApp/netAppAccounts/NetAppAccount1/capacityPools/CapacityPool1/volumes/NFSVol1\"},\"status\":\"Accessible\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzVMwareDatastore+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/clusters/xdn238/datastores/datastore1?api-version=2021-12-01+3": {
+  "Get-AzVMwareDatastore+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/clusters/l3cm9t/datastores/datastore1?api-version=2023-03-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/clusters/xdn238/datastores/datastore1?api-version=2021-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/clusters/l3cm9t/datastores/datastore1?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "42" ],
-        "x-ms-client-request-id": [ "d1bd5a8f-feae-4688-940b-f6d102f96367" ],
+        "x-ms-client-request-id": [ "47b70b4f-cdd0-40c3-a601-ed1870277ffd" ],
         "CommandName": [ "New-AzVMwareDatastore" ],
         "FullCommandName": [ "New-AzVMwareDatastore_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.VMware/0.4.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.VMware/0.4.0" ]
       },
       "ContentHeaders": {
       }
@@ -79,30 +79,30 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Thu, 22 Sep 2022 07:15:12 GMT" ],
-        "Server": [ "Rocket" ]
+        "Server": [ "Rocket" ],
+        "Date": [ "Fri, 12 Jan 2024 19:05:57 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "501" ],
-        "Content-Type": [ "application/json" ]
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "520" ]
       },
-      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/datastores/datastore1\",\"name\":\"datastore1\",\"type\":\"Microsoft.AVS/privateClouds/clusters/datastores\",\"properties\":{\"provisioningState\":\"Succeeded\",\"netAppVolume\":{\"id\":\"/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/ResourceGroup1/providers/Microsoft.NetApp/netAppAccounts/NetAppAccount1/capacityPools/CapacityPool1/volumes/NFSVol1\"},\"status\":\"Accessible\"}}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/datastores/datastore1\",\"name\":\"datastore1\",\"type\":\"Microsoft.AVS/privateClouds/clusters/datastores\",\"properties\":{\"provisioningState\":\"Succeeded\",\"netAppVolume\":{\"id\":\"/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/ResourceGroup1/providers/Microsoft.NetApp/netAppAccounts/NetAppAccount1/capacityPools/CapacityPool1/volumes/NFSVol1\"},\"status\":\"Accessible\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzVMwareDatastore+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/clusters/xdn238/datastores/datastore1?api-version=2021-12-01+1": {
+  "Get-AzVMwareDatastore+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/clusters/l3cm9t/datastores/datastore1?api-version=2023-03-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/clusters/xdn238/datastores/datastore1?api-version=2021-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/clusters/l3cm9t/datastores/datastore1?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "43" ],
-        "x-ms-client-request-id": [ "487a3f69-e4f2-4048-8807-4997ed2166fb" ],
+        "x-ms-client-request-id": [ "d73b6f0c-4798-4ad6-861b-dde572262a70" ],
         "CommandName": [ "Get-AzVMwareDatastore" ],
         "FullCommandName": [ "Get-AzVMwareDatastore_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.VMware/0.4.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.VMware/0.4.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -111,30 +111,30 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Thu, 22 Sep 2022 07:15:12 GMT" ],
-        "Server": [ "Rocket" ]
+        "Server": [ "Rocket" ],
+        "Date": [ "Fri, 12 Jan 2024 19:05:57 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "501" ],
-        "Content-Type": [ "application/json" ]
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "520" ]
       },
-      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/datastores/datastore1\",\"name\":\"datastore1\",\"type\":\"Microsoft.AVS/privateClouds/clusters/datastores\",\"properties\":{\"provisioningState\":\"Succeeded\",\"netAppVolume\":{\"id\":\"/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/ResourceGroup1/providers/Microsoft.NetApp/netAppAccounts/NetAppAccount1/capacityPools/CapacityPool1/volumes/NFSVol1\"},\"status\":\"Accessible\"}}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/datastores/datastore1\",\"name\":\"datastore1\",\"type\":\"Microsoft.AVS/privateClouds/clusters/datastores\",\"properties\":{\"provisioningState\":\"Succeeded\",\"netAppVolume\":{\"id\":\"/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/ResourceGroup1/providers/Microsoft.NetApp/netAppAccounts/NetAppAccount1/capacityPools/CapacityPool1/volumes/NFSVol1\"},\"status\":\"Accessible\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzVMwareDatastore+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/clusters/xdn238/datastores?api-version=2021-12-01+1": {
+  "Get-AzVMwareDatastore+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/clusters/l3cm9t/datastores?api-version=2023-03-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/clusters/xdn238/datastores?api-version=2021-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/clusters/l3cm9t/datastores?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "44" ],
-        "x-ms-client-request-id": [ "1af6405a-5510-4263-9261-2351d4c0a550" ],
+        "x-ms-client-request-id": [ "c751ca2a-0732-486a-9a3d-0c0d14ec7060" ],
         "CommandName": [ "Get-AzVMwareDatastore" ],
         "FullCommandName": [ "Get-AzVMwareDatastore_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.VMware/0.4.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.VMware/0.4.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -143,30 +143,30 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Thu, 22 Sep 2022 07:15:13 GMT" ],
-        "Server": [ "Rocket" ]
+        "Server": [ "Rocket" ],
+        "Date": [ "Fri, 12 Jan 2024 19:05:57 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1095" ],
-        "Content-Type": [ "application/json" ]
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1133" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/datastores/datastore1\",\"name\":\"datastore1\",\"type\":\"Microsoft.AVS/privateClouds/clusters/datastores\",\"properties\":{\"provisioningState\":\"Succeeded\",\"netAppVolume\":{\"id\":\"/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/ResourceGroup1/providers/Microsoft.NetApp/netAppAccounts/NetAppAccount1/capacityPools/CapacityPool1/volumes/NFSVol1\"},\"status\":\"Accessible\"}},{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/datastores/datastore2\",\"name\":\"datastore2\",\"type\":\"Microsoft.AVS/privateClouds/clusters/datastores\",\"properties\":{\"provisioningState\":\"Succeeded\",\"diskPoolVolume\":{\"targetId\":\"/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/ResourceGroup1/providers/Microsoft.StoragePool/diskPools/DiskPool1/targets/Target1\",\"lunName\":\"lun0\",\"mountOption\":\"MOUNT\",\"path\":\"/vmfs/devices/disks/naa.6001405f75f6bdf7f6f49db8b4b21723\"},\"status\":\"Accessible\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/datastores/datastore1\",\"name\":\"datastore1\",\"type\":\"Microsoft.AVS/privateClouds/clusters/datastores\",\"properties\":{\"provisioningState\":\"Succeeded\",\"netAppVolume\":{\"id\":\"/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/ResourceGroup1/providers/Microsoft.NetApp/netAppAccounts/NetAppAccount1/capacityPools/CapacityPool1/volumes/NFSVol1\"},\"status\":\"Accessible\"}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/datastores/datastore2\",\"name\":\"datastore2\",\"type\":\"Microsoft.AVS/privateClouds/clusters/datastores\",\"properties\":{\"provisioningState\":\"Succeeded\",\"diskPoolVolume\":{\"targetId\":\"/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/ResourceGroup1/providers/Microsoft.StoragePool/diskPools/DiskPool1/targets/Target1\",\"lunName\":\"lun0\",\"mountOption\":\"MOUNT\",\"path\":\"/vmfs/devices/disks/naa.6001405f75f6bdf7f6f49db8b4b21723\"},\"status\":\"Accessible\"}}]}",
       "isContentBase64": false
     }
   },
-  "Get-AzVMwareDatastore+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/clusters/xdn238/datastores/datastore1?api-version=2021-12-01+1": {
+  "Get-AzVMwareDatastore+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/clusters/l3cm9t/datastores/datastore1?api-version=2023-03-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/clusters/xdn238/datastores/datastore1?api-version=2021-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/clusters/l3cm9t/datastores/datastore1?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "45" ],
-        "x-ms-client-request-id": [ "19763250-f634-4ee8-9359-1a1849cb2648" ],
+        "x-ms-client-request-id": [ "2d474737-a0e9-48ed-ae6e-055808ea01f8" ],
         "CommandName": [ "Remove-AzVMwareDatastore" ],
         "FullCommandName": [ "Remove-AzVMwareDatastore_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.VMware/0.4.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.VMware/0.4.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -175,8 +175,8 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Thu, 22 Sep 2022 07:15:13 GMT" ],
-        "Server": [ "Rocket" ]
+        "Server": [ "Rocket" ],
+        "Date": [ "Fri, 12 Jan 2024 19:05:57 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "0" ]
@@ -185,19 +185,19 @@
       "isContentBase64": false
     }
   },
-  "Get-AzVMwareDatastore+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/clusters/xdn238/datastores/datastore1?api-version=2021-12-01+1": {
+  "Get-AzVMwareDatastore+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/clusters/l3cm9t/datastores/datastore1?api-version=2023-03-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/clusters/xdn238/datastores/datastore1?api-version=2021-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/clusters/l3cm9t/datastores/datastore1?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "46" ],
-        "x-ms-client-request-id": [ "225ba3a4-902b-4443-9479-ba1c14d237b2" ],
+        "x-ms-client-request-id": [ "bcb83b2f-bf3c-4e9d-9f9c-9bbe68a860b6" ],
         "CommandName": [ "Get-AzVMwareDatastore" ],
         "FullCommandName": [ "Get-AzVMwareDatastore_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.VMware/0.4.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.VMware/0.4.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -206,30 +206,30 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Thu, 22 Sep 2022 07:15:14 GMT" ],
-        "Server": [ "Rocket" ]
+        "Server": [ "Rocket" ],
+        "Date": [ "Fri, 12 Jan 2024 19:05:57 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "501" ],
-        "Content-Type": [ "application/json" ]
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "520" ]
       },
-      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/datastores/datastore1\",\"name\":\"datastore1\",\"type\":\"Microsoft.AVS/privateClouds/clusters/datastores\",\"properties\":{\"provisioningState\":\"Succeeded\",\"netAppVolume\":{\"id\":\"/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/ResourceGroup1/providers/Microsoft.NetApp/netAppAccounts/NetAppAccount1/capacityPools/CapacityPool1/volumes/NFSVol1\"},\"status\":\"Accessible\"}}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/datastores/datastore1\",\"name\":\"datastore1\",\"type\":\"Microsoft.AVS/privateClouds/clusters/datastores\",\"properties\":{\"provisioningState\":\"Succeeded\",\"netAppVolume\":{\"id\":\"/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/ResourceGroup1/providers/Microsoft.NetApp/netAppAccounts/NetAppAccount1/capacityPools/CapacityPool1/volumes/NFSVol1\"},\"status\":\"Accessible\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzVMwareDatastore+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/datastores/datastore1?api-version=2021-12-01+2": {
+  "Get-AzVMwareDatastore+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/datastores/datastore1?api-version=2023-03-01+2": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/%7Bsubscription-id%7D/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/datastores/datastore1?api-version=2021-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/datastores/datastore1?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "47" ],
-        "x-ms-client-request-id": [ "793c9c4d-29d3-45c5-a128-80ab3f813993" ],
+        "x-ms-client-request-id": [ "cfb4fbe3-47c1-4d05-9f59-1110ca2d0363" ],
         "CommandName": [ "Remove-AzVMwareDatastore" ],
         "FullCommandName": [ "Remove-AzVMwareDatastore_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.VMware/0.4.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.VMware/0.4.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -238,8 +238,8 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Thu, 22 Sep 2022 07:15:14 GMT" ],
-        "Server": [ "Rocket" ]
+        "Server": [ "Rocket" ],
+        "Date": [ "Fri, 12 Jan 2024 19:05:57 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "0" ]

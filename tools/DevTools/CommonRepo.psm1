@@ -36,16 +36,28 @@ function Connect-CommonRepo {
       if ($LASTEXITCODE -ne 0) {
         throw "Failed to add $csproj to Accounts.sln"
       }
+<#
+      known common project references:
+        Authentication.csproj -> Authentication.Abstractions, ResourceManager
+        Accounts.csproj -> Authentication.Abstractions, ResourceManager, Common
+        Accounts.Test.csproj -> Authentication.Abstractions, ResourceManager, Common
+        TestFx.csproj -> Graph.Rbac.csproj
+        AssemblyLoading.csproj -> Common
+#>
+      # add all common projects to Authentication.csproj because it will be referenced by most Az projects
       dotnet add ./Authentication/Authentication.csproj reference $csproj
       if ($LASTEXITCODE -ne 0) {
         throw "Failed to add $csproj to Authentication.csproj"
       }
     }
 
+    # AssemblyLoading.csproj references Common.csproj and does not reference Autehtication.csproj
     dotnet add ./AssemblyLoading/AssemblyLoading.csproj reference "$CommonRepoPath/src/Common/Common.csproj"
     if ($LASTEXITCODE -ne 0) {
       throw "Failed to add Common.csproj to AssemblyLoading.csproj"
     }
+
+    # add common project references below for csproj which does not reference Authentication.csproj
   }
   finally {
     Pop-Location
@@ -81,7 +93,6 @@ function Connect-CommonRepo {
 function Disconnect-CommonRepo {
   Write-Host  "Please run the following commands to undo Connect-CommonRepo. Double check those files do not have wanted changes.
   git checkout -- ./src/Accounts/Accounts.sln
-  git checkout -- ./src/Accounts/Accounts/Accounts.csproj
   git checkout -- ./src/Accounts/AssemblyLoading/AssemblyLoading.csproj
   git checkout -- ./src/Accounts/Authentication/Authentication.csproj
   git checkout -- ./tools/Common.Netcore.Dependencies.targets

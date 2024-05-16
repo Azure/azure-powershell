@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Autoscale service.
 
 ---
-## Status
-[![Az.Autoscale](https://img.shields.io/powershellgallery/v/Az.Autoscale.svg?style=flat-square&label=Az.Autoscale "Az.Autoscale")](https://www.powershellgallery.com/packages/Az.Autoscale/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

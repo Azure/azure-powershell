@@ -1,0 +1,132 @@
+{
+  "Remove-AzStorageActionTask+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.StorageActions/storageTasks/storageactiontest2?api-version=2023-01-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.StorageActions/storageTasks/storageactiontest2?api-version=2023-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "086e000d-94dc-42a0-8cb8-8459e311a43e" ],
+        "CommandName": [ "Remove-AzStorageActionTask" ],
+        "FullCommandName": [ "Remove-AzStorageActionTask_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.StorageAction/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.StorageActions/locations/eastus2euap/asyncoperations/82eb5c80-2a6d-4252-9db3-c4d76f2caa29?monitor=true\u0026api-version=2023-01-01" ],
+        "Retry-After": [ "17" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.StorageActions/locations/eastus2euap/asyncoperations/82eb5c80-2a6d-4252-9db3-c4d76f2caa29?monitor=true\u0026api-version=2023-01-01\u0026asynclink=true" ],
+        "x-ms-request-id": [ "82eb5c80-2a6d-4252-9db3-c4d76f2caa29" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-correlation-request-id": [ "baf6474e-9191-4143-b604-fc82112a938c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240506T083738Z:baf6474e-9191-4143-b604-fc82112a938c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4493867FEC0944D5980522F26A7DC10A Ref B: MAA201060513051 Ref C: 2024-05-06T08:37:36Z" ],
+        "Date": [ "Mon, 06 May 2024 08:37:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "text/plain; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzStorageActionTask+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.StorageActions/locations/eastus2euap/asyncoperations/82eb5c80-2a6d-4252-9db3-c4d76f2caa29?monitor=true\u0026api-version=2023-01-01\u0026asynclink=true+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.StorageActions/locations/eastus2euap/asyncoperations/82eb5c80-2a6d-4252-9db3-c4d76f2caa29?monitor=true\u0026api-version=2023-01-01\u0026asynclink=true",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "086e000d-94dc-42a0-8cb8-8459e311a43e" ],
+        "CommandName": [ "Remove-AzStorageActionTask" ],
+        "FullCommandName": [ "Remove-AzStorageActionTask_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.StorageAction/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "844b0711-a196-4553-bc35-d02ed7e152b1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "d7e8fec8-0d6b-4045-a466-cf1f281f7417" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240506T083756Z:d7e8fec8-0d6b-4045-a466-cf1f281f7417" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1B863240D5AA4CF48AB9A84181F0BF6C Ref B: MAA201060513051 Ref C: 2024-05-06T08:37:55Z" ],
+        "Date": [ "Mon, 06 May 2024 08:37:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzStorageActionTask+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.StorageActions/locations/eastus2euap/asyncoperations/82eb5c80-2a6d-4252-9db3-c4d76f2caa29?monitor=true\u0026api-version=2023-01-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.StorageActions/locations/eastus2euap/asyncoperations/82eb5c80-2a6d-4252-9db3-c4d76f2caa29?monitor=true\u0026api-version=2023-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "086e000d-94dc-42a0-8cb8-8459e311a43e" ],
+        "CommandName": [ "Remove-AzStorageActionTask" ],
+        "FullCommandName": [ "Remove-AzStorageActionTask_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.StorageAction/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "ef4377f8-7a7d-4564-b1c0-0b3a1abf320f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "2998bbdd-5ba3-4850-9488-4e0b66490e96" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240506T083757Z:2998bbdd-5ba3-4850-9488-4e0b66490e96" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FA9F8CB21909427D926523FB05CDB507 Ref B: MAA201060513051 Ref C: 2024-05-06T08:37:56Z" ],
+        "Date": [ "Mon, 06 May 2024 08:37:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "text/plain; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

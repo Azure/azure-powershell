@@ -37,4 +37,3 @@ tools 2022/6/28 8:33:27   *********@microsoft.com User                    2022/6
 ```
 
 Get an App and its properties by pipeline.
-

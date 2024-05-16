@@ -1,0 +1,161 @@
+{
+  "resourceType": "securityConnectors",
+  "apiVersion": "2023-09-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.security"
+  },
+  "commands": [
+    {
+      "name": "Get-AzSecurityConnectorDevOpsConfiguration",
+      "description": "Gets a DevOps Configuration.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName}/devops/default",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.security/get-azsecurityconnectordevopsconfiguration"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ResourceGroupName <String>",
+              "-SecurityConnectorName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a DevOps Configuration.",
+          "parameters": [
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SecurityConnectorName",
+              "value": "[Path.securityConnectorName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzSecurityConnector",
+      "description": "Retrieves details of a specific security connector",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.security/get-azsecurityconnector"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Retrieves details of a specific security connector",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.securityConnectorName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzSecurityConnectorDevOpsConfiguration",
+      "description": "Deletes a DevOps Connector.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName}/devops/default",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.security/remove-azsecurityconnectordevopsconfiguration"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ResourceGroupName <String>",
+              "-SecurityConnectorName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a DevOps Connector.",
+          "parameters": [
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SecurityConnectorName",
+              "value": "[Path.securityConnectorName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzSecurityConnector",
+      "description": "Deletes a security connector.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.security/remove-azsecurityconnector"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a security connector.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.securityConnectorName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

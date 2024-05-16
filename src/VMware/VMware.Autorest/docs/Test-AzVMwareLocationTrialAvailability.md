@@ -13,7 +13,7 @@ Return trial status for subscription by region
 ## SYNTAX
 
 ```
-Test-AzVMwareLocationTrialAvailability -Location <String> [-SubscriptionId <String>]
+Test-AzVMwareLocationTrialAvailability -Location <String> -Name <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Return trial status for subscription by region
 
 ### Example 1: Check trial availability
 ```powershell
-Test-AzVMwareLocationTrialAvailability -Location westcentralus
+Test-AzVMwareLocationTrialAvailability -Location westcentralus -Name av36
 ```
 
 ```output
@@ -38,7 +38,8 @@ Check trial availability
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -54,6 +55,21 @@ Accept wildcard characters: False
 
 ### -Location
 Azure region
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the SKU.
 
 ```yaml
 Type: System.String
@@ -120,11 +136,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ITrial
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrial
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

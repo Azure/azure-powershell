@@ -21,7 +21,7 @@ Creates a new ServiceBus namespace.
 
 function New-AzServiceBusNamespace{
     [Alias("New-AzServiceBusNamespaceV2")]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace])]
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(Mandatory, HelpMessage = "The name of ServiceBusNamespace")]
@@ -58,7 +58,7 @@ function New-AzServiceBusNamespace{
 		
         [Parameter(HelpMessage = "Properties of KeyVault")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IKeyVaultProperties[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IKeyVaultProperties[]]
         ${KeyVaultProperty},
 
         [Parameter(HelpMessage = "The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default value is 1 and possible values are 1, 2 and 4")]
@@ -73,7 +73,7 @@ function New-AzServiceBusNamespace{
 
         [Parameter(HelpMessage = "Type of managed service identity.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.ManagedServiceIdentityType]
+        [System.String]
         ${IdentityType},
 
         [Parameter(HelpMessage = "Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.")]
@@ -88,18 +88,17 @@ function New-AzServiceBusNamespace{
 
         [Parameter(HelpMessage = "The minimum TLS version for the cluster to support, e.g. '1.2'")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        #[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.TlsVersion]
         [System.String]
         ${MinimumTlsVersion},
 
         [Parameter(HelpMessage = "This determines if traffic is allowed over public network. By default it is enabled.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.PublicNetworkAccess]
+        [System.String]
         ${PublicNetworkAccess},
 
         [Parameter(HelpMessage = "Name of this SKU.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.SkuName]
+        [System.String]
         ${SkuName},
 
         [Parameter(HelpMessage = "The specified messaging units for the tier. For Premium tier, capacity are 1,2 and 4.")]
@@ -185,7 +184,7 @@ function New-AzServiceBusNamespace{
                     $identityHashTable = @{}
 
 		    foreach ($resourceID in $UserAssignedIdentityId){
-		        $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.UserAssignedIdentity]::new())
+		        $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.UserAssignedIdentity]::new())
 	            }
 
                     $PSBoundParameters.Add("UserAssignedIdentity", $identityHashTable)
