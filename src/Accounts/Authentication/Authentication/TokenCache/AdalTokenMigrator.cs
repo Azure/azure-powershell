@@ -100,7 +100,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.TokenCac
                         var tenantId = GetTenantId(account.Username);
                         if(!string.IsNullOrEmpty(tenantId))
                         {
-                            clientApplication.AcquireTokenSilent(scopes, account).WithAuthority(environment.ActiveDirectoryAuthority, tenantId).ExecuteAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+                            var uriBuilder = new UriBuilder(environment.ActiveDirectoryAuthority)
+                            {
+                                Path = tenantId
+                            };
+                            clientApplication.AcquireTokenSilent(scopes, account).WithTenantIdFromAuthority(uriBuilder.Uri).ExecuteAsync().ConfigureAwait(false).GetAwaiter().GetResult();
                         }
                     }
                     //TODO: Set HomeAccountId for migration

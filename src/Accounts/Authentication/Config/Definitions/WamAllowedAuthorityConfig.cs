@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Identity;
+
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -23,25 +25,25 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.Common.Authentication.Config.Definitions
 {
     /// <summary>
-    /// Definition of the config to control whether login by WAM (web account manager) or not.
+    /// Definition of the config to control Allowed Authority of WAM.
     /// </summary>
-    internal class EnableLoginByWamConfig : TypedConfig<bool>
+    internal class WamAllowedAuthorityConfig : TypedConfig<string>
     {
-        public override object DefaultValue => true;
+        public override object DefaultValue => AzureAuthorityHosts.AzurePublicCloud.OriginalString;
 
-        public override string Key => ConfigKeys.EnableLoginByWam;
+        public override string Key => ConfigKeys.WamAllowedAuthority;
 
-        public override string HelpMessage => Resources.HelpMessageOfEnableWamLogin;
+        public override string HelpMessage => "WamAllowedAuthorityConfig";
 
         public override IReadOnlyCollection<AppliesTo> CanApplyTo => new[] { AppliesTo.Az };
 
-        protected override void ApplyTyped(bool value)
+        protected override void ApplyTyped(string value)
         {
             base.ApplyTyped(value);
             EventHandler<StreamEventArgs> writeWarningEvent;
-            if (AzureSession.Instance.TryGetComponent(AzureRMCmdlet.WriteWarningKey, out writeWarningEvent))
+            if (AzureSession.Instance.TryGetComponent(AzureRMCmdlet.WriteWarningKey, out writeWarningEvent) && !string.IsNullOrEmpty(value))
             {
-                writeWarningEvent(this, new StreamEventArgs() { Message = string.Format(Resources.SwitchLoginMethodWarning, Key) });
+                writeWarningEvent(this, new StreamEventArgs() { Message = "WamAllowedAuthorityConfig" });
             }
         }
     }
