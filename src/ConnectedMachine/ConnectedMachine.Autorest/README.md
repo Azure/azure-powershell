@@ -258,6 +258,12 @@ directive:
       parameter-name: AgentUpgradeEnableAutomaticUpgrade
     set:
       parameter-name: AgentUpgradeEnableAutomatic
+    
+  # Rename Tag to Tags
+  - where:
+      property-name: Tag
+    set:
+      property-name: Tags
  
   # Formatting
   - where:

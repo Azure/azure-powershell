@@ -1,6 +1,6 @@
 {
   "resourceType": "privateStores",
-  "apiVersion": "2021-06-01",
+  "apiVersion": "2023-01-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.marketplace"
   },
@@ -34,12 +34,12 @@
       ]
     },
     {
-      "name": "Get-AzMarketplaceCollectionToSubscriptionMapping",
-      "description": "For a given subscriptions list, the API will return a map of collections and the related subscriptions from the supplied list.",
-      "path": "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collectionsToSubscriptionsMapping",
+      "name": "Get-AzMarketplacePrivateStoreAllSubscriptionInTenant",
+      "description": "Fetch all subscriptions in tenant, only for marketplace admin",
+      "path": "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/fetchAllSubscriptionsInTenant",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplacecollectiontosubscriptionmapping"
+          "url": "https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestoreallsubscriptionintenant"
         },
         "parameterSets": [
           {
@@ -51,7 +51,7 @@
       },
       "examples": [
         {
-          "description": "For a given subscriptions list, the API will return a map of collections and the related subscriptions from the supplied list.",
+          "description": "Fetch all subscriptions in tenant, only for marketplace admin",
           "parameters": [
             {
               "name": "-PrivateStoreId",
@@ -108,6 +108,34 @@
       "examples": [
         {
           "description": "List of offers, regardless the collections",
+          "parameters": [
+            {
+              "name": "-PrivateStoreId",
+              "value": "[Path.privateStoreId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Test-AzMarketplacePrivateStoreAnyExistingOffer",
+      "description": "Query whether exists any offer in the collections.",
+      "path": "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/anyExistingOffersInTheCollections",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.marketplace/test-azmarketplaceprivatestoreanyexistingoffer"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-PrivateStoreId <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Query whether exists any offer in the collections.",
           "parameters": [
             {
               "name": "-PrivateStoreId",

@@ -20,10 +20,14 @@ Update-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupN
  [-AutoscaleProfileAutoscaleType <String>] [-AutoscaleProfileEnabled]
  [-AutoscaleProfileGracefulDecommissionTimeout <Int32>]
  [-ClusterProfileScriptActionProfile <IScriptActionProfile[]>]
- [-ClusterProfileServiceConfigsProfile <IClusterServiceConfigsProfile[]>]
+ [-ClusterProfileServiceConfigsProfile <IClusterServiceConfigsProfile[]>] [-DatabaseHost <String>]
+ [-DatabaseName <String>] [-DatabasePasswordSecretRef <String>] [-DatabaseUsername <String>]
  [-LoadBasedConfigCooldownPeriod <Int32>] [-LoadBasedConfigMaxNode <Int32>] [-LoadBasedConfigMinNode <Int32>]
  [-LoadBasedConfigPollInterval <Int32>] [-LoadBasedConfigScalingRule <IScalingRule[]>]
  [-LogAnalyticProfileEnabled] [-LogAnalyticProfileMetricsEnabled] [-PrometheuProfileEnabled]
+ [-RangerAdmin <String[]>] [-RangerAuditStorageAccount <String>] [-RangerPluginProfileEnabled]
+ [-RangerUsersyncEnabled] [-RangerUsersyncGroup <String[]>] [-RangerUsersyncMode <String>]
+ [-RangerUsersyncUser <String[]>] [-RangerUsersyncUserMappingLocation <String>]
  [-ScheduleBasedConfigDefaultCount <Int32>] [-ScheduleBasedConfigSchedule <ISchedule[]>]
  [-ScheduleBasedConfigTimeZone <String>] [-SshProfileCount <Int32>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -56,10 +60,14 @@ Update-AzHdInsightOnAksCluster -ClusterpoolInputObject <IHdInsightOnAksIdentity>
  [-AuthorizationProfileUserId <String[]>] [-AutoscaleProfileAutoscaleType <String>] [-AutoscaleProfileEnabled]
  [-AutoscaleProfileGracefulDecommissionTimeout <Int32>]
  [-ClusterProfileScriptActionProfile <IScriptActionProfile[]>]
- [-ClusterProfileServiceConfigsProfile <IClusterServiceConfigsProfile[]>]
+ [-ClusterProfileServiceConfigsProfile <IClusterServiceConfigsProfile[]>] [-DatabaseHost <String>]
+ [-DatabaseName <String>] [-DatabasePasswordSecretRef <String>] [-DatabaseUsername <String>]
  [-LoadBasedConfigCooldownPeriod <Int32>] [-LoadBasedConfigMaxNode <Int32>] [-LoadBasedConfigMinNode <Int32>]
  [-LoadBasedConfigPollInterval <Int32>] [-LoadBasedConfigScalingRule <IScalingRule[]>]
  [-LogAnalyticProfileEnabled] [-LogAnalyticProfileMetricsEnabled] [-PrometheuProfileEnabled]
+ [-RangerAdmin <String[]>] [-RangerAuditStorageAccount <String>] [-RangerPluginProfileEnabled]
+ [-RangerUsersyncEnabled] [-RangerUsersyncGroup <String[]>] [-RangerUsersyncMode <String>]
+ [-RangerUsersyncUser <String[]>] [-RangerUsersyncUserMappingLocation <String>]
  [-ScheduleBasedConfigDefaultCount <Int32>] [-ScheduleBasedConfigSchedule <ISchedule[]>]
  [-ScheduleBasedConfigTimeZone <String>] [-SshProfileCount <Int32>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -72,10 +80,14 @@ Update-AzHdInsightOnAksCluster -InputObject <IHdInsightOnAksIdentity> [-Applicat
  [-AuthorizationProfileUserId <String[]>] [-AutoscaleProfileAutoscaleType <String>] [-AutoscaleProfileEnabled]
  [-AutoscaleProfileGracefulDecommissionTimeout <Int32>]
  [-ClusterProfileScriptActionProfile <IScriptActionProfile[]>]
- [-ClusterProfileServiceConfigsProfile <IClusterServiceConfigsProfile[]>]
+ [-ClusterProfileServiceConfigsProfile <IClusterServiceConfigsProfile[]>] [-DatabaseHost <String>]
+ [-DatabaseName <String>] [-DatabasePasswordSecretRef <String>] [-DatabaseUsername <String>]
  [-LoadBasedConfigCooldownPeriod <Int32>] [-LoadBasedConfigMaxNode <Int32>] [-LoadBasedConfigMinNode <Int32>]
  [-LoadBasedConfigPollInterval <Int32>] [-LoadBasedConfigScalingRule <IScalingRule[]>]
  [-LogAnalyticProfileEnabled] [-LogAnalyticProfileMetricsEnabled] [-PrometheuProfileEnabled]
+ [-RangerAdmin <String[]>] [-RangerAuditStorageAccount <String>] [-RangerPluginProfileEnabled]
+ [-RangerUsersyncEnabled] [-RangerUsersyncGroup <String[]>] [-RangerUsersyncMode <String>]
+ [-RangerUsersyncUser <String[]>] [-RangerUsersyncUserMappingLocation <String>]
  [-ScheduleBasedConfigDefaultCount <Int32>] [-ScheduleBasedConfigSchedule <ISchedule[]>]
  [-ScheduleBasedConfigTimeZone <String>] [-SshProfileCount <Int32>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -89,6 +101,60 @@ Update-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupN
 ```
 
 ### UpdateViaJsonString
+```
+Update-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### Upgrade
+```
+Update-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
+ -ClusterUpgradeRequest <IClusterUpgrade> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpgradeExpanded
+```
+Update-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
+ -UpgradeType <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpgradeViaIdentity
+```
+Update-AzHdInsightOnAksCluster -InputObject <IHdInsightOnAksIdentity> -ClusterUpgradeRequest <IClusterUpgrade>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpgradeViaIdentityClusterpool
+```
+Update-AzHdInsightOnAksCluster -ClusterpoolInputObject <IHdInsightOnAksIdentity> -Name <String>
+ -ClusterUpgradeRequest <IClusterUpgrade> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpgradeViaIdentityClusterpoolExpanded
+```
+Update-AzHdInsightOnAksCluster -ClusterpoolInputObject <IHdInsightOnAksIdentity> -Name <String>
+ -UpgradeType <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpgradeViaIdentityExpanded
+```
+Update-AzHdInsightOnAksCluster -InputObject <IHdInsightOnAksIdentity> -UpgradeType <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpgradeViaJsonFilePath
+```
+Update-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpgradeViaJsonString
 ```
 Update-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
  -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
@@ -128,6 +194,45 @@ CoordinatorDebugEnable                      :
 ```
 
 Add a key-value `"testvalue1"="111"` to the cluster config file `core-site.xml`.
+
+### Example 2: Upgrade a cluster.
+```powershell
+$clusterResourceGroupName = "Group"
+$clusterpoolName = "ps-test-pool"
+$clusterName = "flinkcluster"
+$hotfixObj = New-AzHdInsightOnAksClusterHotfixUpgradeObject -ComponentName Webssh -TargetBuildNumber 7 -TargetClusterVersion "1.1.1" -TargetOssVersion "0.4.2"
+Update-AzHdInsightOnAksCluster -ResourceGroupName $clusterResourceGroupName -ClusterName $clusterName -ClusterPoolName $clusterpoolName -ClusterUpgradeRequest $hotfixObj
+```
+
+```output
+AccessProfileEnableInternalIngress          : False
+AccessProfilePrivateLinkServiceId           : 
+ApplicationLogStdErrorEnabled               : 
+ApplicationLogStdOutEnabled                 : 
+AuthorizationProfileGroupId                 : 
+AuthorizationProfileUserId                  : 
+AutoscaleProfileAutoscaleType               : 
+AutoscaleProfileEnabled                     : False
+AutoscaleProfileGracefulDecommissionTimeout : 
+ClusterType                                 : 
+ComputeProfileNode                          : 
+ConnectivityEndpointBootstrapServerEndpoint : 
+ConnectivityEndpointBrokerEndpoint          : 
+ConnectivityProfileSsh                      : 
+CoordinatorDebugEnable                      : 
+CoordinatorDebugPort                        : 
+CoordinatorDebugSuspend                     : 
+CoordinatorHighAvailabilityEnabled          : 
+DatabaseHost                                : 
+DatabaseName                                : 
+DatabasePasswordSecretRef                   : 
+DatabaseUsername                            : 
+DeploymentId                                : 
+DiskStorageDataDiskSize                     : 0
+...
+```
+
+Upgrade a cluster with type HotFix.
 
 ## PARAMETERS
 
@@ -256,7 +361,6 @@ Accept wildcard characters: False
 
 ### -ClusterPatchRequest
 The patch for a cluster.
-To construct, see NOTES section for CLUSTERPATCHREQUEST properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatch
@@ -272,11 +376,10 @@ Accept wildcard characters: False
 
 ### -ClusterpoolInputObject
 Identity Parameter
-To construct, see NOTES section for CLUSTERPOOLINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
-Parameter Sets: UpdateViaIdentityClusterpool, UpdateViaIdentityClusterpoolExpanded
+Parameter Sets: UpdateViaIdentityClusterpool, UpdateViaIdentityClusterpoolExpanded, UpgradeViaIdentityClusterpool, UpgradeViaIdentityClusterpoolExpanded
 Aliases:
 
 Required: True
@@ -288,7 +391,6 @@ Accept wildcard characters: False
 
 ### -ClusterProfileScriptActionProfile
 The script action profile list.
-To construct, see NOTES section for CLUSTERPROFILESCRIPTACTIONPROFILE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScriptActionProfile[]
@@ -304,10 +406,84 @@ Accept wildcard characters: False
 
 ### -ClusterProfileServiceConfigsProfile
 The service configs profiles.
-To construct, see NOTES section for CLUSTERPROFILESERVICECONFIGSPROFILE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigsProfile[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityClusterpoolExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClusterUpgradeRequest
+Cluster Upgrade.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgrade
+Parameter Sets: Upgrade, UpgradeViaIdentity, UpgradeViaIdentityClusterpool
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DatabaseHost
+The database URL
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityClusterpoolExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DatabaseName
+The database name
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityClusterpoolExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DatabasePasswordSecretRef
+Reference for the database password
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityClusterpoolExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DatabaseUsername
+The name of the database user
+
+```yaml
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityClusterpoolExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -336,11 +512,10 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded, UpgradeViaIdentity, UpgradeViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -355,7 +530,7 @@ Path of Json file supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonFilePath
+Parameter Sets: UpdateViaJsonFilePath, UpgradeViaJsonFilePath
 Aliases:
 
 Required: True
@@ -370,7 +545,7 @@ Json string supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonString
+Parameter Sets: UpdateViaJsonString, UpgradeViaJsonString
 Aliases:
 
 Required: True
@@ -443,7 +618,6 @@ Accept wildcard characters: False
 
 ### -LoadBasedConfigScalingRule
 The scaling rules.
-To construct, see NOTES section for LOADBASEDCONFIGSCALINGRULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScalingRule[]
@@ -492,7 +666,7 @@ The name of the HDInsight cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityClusterpool, UpdateViaIdentityClusterpoolExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityClusterpool, UpdateViaIdentityClusterpoolExpanded, UpdateViaJsonFilePath, UpdateViaJsonString, Upgrade, UpgradeExpanded, UpgradeViaIdentityClusterpool, UpgradeViaIdentityClusterpoolExpanded, UpgradeViaJsonFilePath, UpgradeViaJsonString
 Aliases: ClusterName
 
 Required: True
@@ -522,7 +696,7 @@ The name of the cluster pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString, Upgrade, UpgradeExpanded, UpgradeViaJsonFilePath, UpgradeViaJsonString
 Aliases: ClusterPoolName
 
 Required: True
@@ -547,13 +721,137 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RangerAdmin
+List of usernames that should be marked as ranger admins.
+These usernames should match the user principal name (UPN) of the respective AAD users.
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityClusterpoolExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RangerAuditStorageAccount
+Azure storage location of the blobs.
+MSI should have read/write access to this Storage account.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityClusterpoolExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RangerPluginProfileEnabled
+Enable Ranger for cluster or not.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded, UpdateViaIdentityClusterpoolExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RangerUsersyncEnabled
+Denotes whether usersync service should be enabled
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded, UpdateViaIdentityClusterpoolExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RangerUsersyncGroup
+List of groups that should be synced.
+These group names should match the object id of the respective AAD groups.
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityClusterpoolExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RangerUsersyncMode
+User & groups can be synced automatically or via a static list that's refreshed.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityClusterpoolExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RangerUsersyncUser
+List of user names that should be synced.
+These usernames should match the User principal name of the respective AAD users.
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityClusterpoolExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RangerUsersyncUserMappingLocation
+Azure storage location of a mapping file that lists user & group associations.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityClusterpoolExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString, Upgrade, UpgradeExpanded, UpgradeViaJsonFilePath, UpgradeViaJsonString
 Aliases:
 
 Required: True
@@ -581,7 +879,6 @@ Accept wildcard characters: False
 
 ### -ScheduleBasedConfigSchedule
 This specifies the schedules where scheduled based Autoscale to be enabled, the user has a choice to set multiple rules within the schedule across days and times (start/end).
-To construct, see NOTES section for SCHEDULEBASEDCONFIGSCHEDULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISchedule[]
@@ -631,7 +928,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString, Upgrade, UpgradeExpanded, UpgradeViaJsonFilePath, UpgradeViaJsonString
 Aliases:
 
 Required: False
@@ -650,6 +947,21 @@ Parameter Sets: UpdateExpanded, UpdateViaIdentityClusterpoolExpanded, UpdateViaI
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UpgradeType
+Type of upgrade.
+
+```yaml
+Type: System.String
+Parameter Sets: UpgradeExpanded, UpgradeViaIdentityClusterpoolExpanded, UpgradeViaIdentityExpanded
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -693,6 +1005,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatch
+
+### Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgrade
 
 ### Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
 

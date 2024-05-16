@@ -16,12 +16,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzMarketplacePrivateStore
 
 Describe 'Set-AzMarketplacePrivateStoreCollection' {
     It 'UpdateExpanded'  {
-        New-AzMarketplacePrivateStoreCollection -CollectionName setColltest -CollectionId 7f5402e4-e8f4-46bd-9bd1-8d27866a6065 -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -SubscriptionsList 1052ff5a-aa43-4ca1-bd18-010399494ce5
+	    Set-AzMarketplacePrivateStoreCollection -CollectionId 8c7a91db-cd41-43b6-af47-2e869654126d -CollectionName PWSH_Test1 -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -Enabled 
 
-	Set-AzMarketplacePrivateStoreCollection -CollectionId 7f5402e4-e8f4-46bd-9bd1-8d27866a6065 -CollectionName setColltest1 -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -Enabled 
-
-	$res = Get-AzMarketplacePrivateStoreCollection -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -CollectionId 7f5402e4-e8f4-46bd-9bd1-8d27866a6065
-	$res.Enabled | Should -be $true
-
+	    $res = Get-AzMarketplacePrivateStoreCollection -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -CollectionId 8c7a91db-cd41-43b6-af47-2e869654126d
+        $res.Enabled | Should -Be $true
+	    $res.collectionName | Should -be PWSH_Test1
     }
 }

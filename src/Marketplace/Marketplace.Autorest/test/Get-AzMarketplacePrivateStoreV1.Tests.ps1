@@ -17,6 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMarketplacePrivateStore
 Describe 'Get-AzMarketplacePrivateStoreV1' {
     It 'List'  {
         $res = Get-AzMarketplacePrivateStoreV1
-	$res.Count | Should -Be 1
+	    $res.Count | Should -Be 1
+        $res[0].privateStoreId | Should -Be "a260d38c-96cf-492d-a340-404d0c4b3ad6"
     }
 }

@@ -112,17 +112,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`ANYOF <IAlertRuleLeafCondition[]>`: An Activity Log Alert rule condition that is met when at least one of its member leaf conditions are met.
-  - `[ContainsAny <String[]>]`: The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.
-  - `[Equal <String>]`: The value of the event's field will be compared to this value (case-insensitive) to determine if the condition is met.
-  - `[Field <String>]`: The name of the Activity Log event's field that this condition will examine.         The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties'.
-
 ## RELATED LINKS
 

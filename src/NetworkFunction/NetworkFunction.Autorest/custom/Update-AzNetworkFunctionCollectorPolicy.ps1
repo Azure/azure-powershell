@@ -174,9 +174,35 @@ process {
       $null = $PSBoundParameters.Remove('Confirm')
       $null = $PSBoundParameters.Remove('Location')
 
-      $cp = Get-AzNetworkFunctionCollectorPolicy @PSBoundParameters
+      # 2. Ensure exr circuit bandwidth 1G or more
+      if ($hasIngestionPolicyIngestionSource) {
+        Import-Module Az.Network -Force
+        # Ensure exr circuit bandwidth 1G or more
+        $ResourceIdSplit = $IngestionPolicyIngestionSource.ResourceId.Split(' ')
+        foreach ($ResourceId in $ResourceIdSplit)
+        {
+          $Splits = $ResourceId -split "/"
+          $cktsub = $Splits[2]
+          $cktrg = $Splits[4]
+          $cktname = $Splits[8]
+          Set-AzContext $cktsub -ErrorVariable notPresent -ErrorAction SilentlyContinue
+          $exrCircuit = Get-AzExpressRouteCircuit -Name $cktname -ResourceGroupName $cktrg
+          $bandwidthInGbps = $exrCircuit.BandwidthInGbps
+          $bandwidthInMbps = $exrCircuit.ServiceProviderProperties.BandwidthInMbps
 
-      # 2. PUT
+          if ($bandwidthInGbps -and ($bandwidthInGbps -lt 1)) {
+            throw "CollectorPolicy can not be updated because circuit has bandwidth less than 1G. Circuit size with a bandwidth of 1G or more is supported."
+          }
+
+          if ($bandwidthInMbps -and ($bandwidthInMbps -lt 1000)) {
+            throw "CollectorPolicy can not be updated because circuit has bandwidth less than 1G. Circuit size with a bandwidth of 1G or more is supported."
+          }
+        }
+      }
+      Set-AzContext $SubscriptionId -ErrorVariable notPresent -ErrorAction SilentlyContinue
+      $cp = Get-AzNetworkFunctionCollectorPolicy @PSBoundParameters
+      
+      # 3. PUT
       $null = $PSBoundParameters.Remove('AzureTrafficCollectorName')
       $null = $PSBoundParameters.Remove('ResourceGroupName')
       $null = $PSBoundParameters.Remove('Name')

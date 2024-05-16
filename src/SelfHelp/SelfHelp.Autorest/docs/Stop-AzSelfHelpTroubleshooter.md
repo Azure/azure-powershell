@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-This is an extension resource provider and only resource level extension is supported at the moment.
+scope = resourceUri of affected resource.\<br/\> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
 
 ```yaml
 Type: System.String
@@ -162,20 +162,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ISelfHelpIdentity>`: Identity Parameter
-  - `[DiagnosticsResourceName <String>]`: Unique resource name for insight resources
-  - `[Id <String>]`: Resource identity path
-  - `[Scope <String>]`: This is an extension resource provider and only resource level extension is supported at the moment.
-  - `[SolutionResourceName <String>]`: Solution resource Name.
-  - `[TroubleshooterName <String>]`: Troubleshooter resource Name.
 
 ## RELATED LINKS
 

@@ -76,6 +76,8 @@ function Get-AzFunctionAppSetting {
     )
     
     process {
+
+        RegisterFunctionsTabCompleters
         
         if ($PsCmdlet.ParameterSetName -eq "ByObjectInput")
         {            

@@ -25,7 +25,7 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Res
 ```
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -ItemLevelRecovery
  -RestoreLocation <String> -RestoreType <RestoreTargetType> -SourceDataStore <DataStoreType>
- -TargetResourceId <String> [-ContainersList <String[]>] [-RecoveryPoint <String>]
+ -TargetResourceId <String> [-ContainersList <String[]>] [-PrefixMatch <Hashtable>] [-RecoveryPoint <String>]
  [-RestoreConfiguration <KubernetesClusterRestoreCriteria>] [<CommonParameters>]
 ```
 
@@ -52,9 +52,9 @@ Initialize-AzDataProtectionRestoreRequest -BackupInstance <BackupInstanceResourc
 
 ### RestoreAsFiles
 ```
-Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -FileNamePrefix <String>
- -RestoreLocation <String> -RestoreType <RestoreTargetType> -SourceDataStore <DataStoreType>
- -TargetContainerURI <String> [-RecoveryPoint <String>] [-RehydrationDuration <String>]
+Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -RestoreLocation <String>
+ -RestoreType <RestoreTargetType> -SourceDataStore <DataStoreType> -TargetContainerURI <String>
+ [-FileNamePrefix <String>] [-RecoveryPoint <String>] [-RehydrationDuration <String>]
  [-RehydrationPriority <String>] [-SecretStoreType <SecretStoreTypes>] [-SecretStoreURI <String>]
  [-TargetResourceIdForRestoreAsFile <String>] [<CommonParameters>]
 ```
@@ -193,7 +193,7 @@ Backup Instance object to trigger original localtion restore.
 To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.BackupInstanceResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.BackupInstanceResource
 Parameter Sets: OriginalLocationFullRecovery, OriginalLocationILR
 Aliases:
 
@@ -242,7 +242,7 @@ Type: System.String
 Parameter Sets: RestoreAsFiles
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -250,7 +250,9 @@ Accept wildcard characters: False
 ```
 
 ### -FromPrefixPattern
-Minimum matching value for Item Level Recovery.
+Specify the blob restore start range for PITR.
+You can use this option to specify the starting range for a subset of blobs in each container to restore.
+use a forward slash (/) to separate the container name from the blob prefix pattern.
 
 ```yaml
 Type: System.String[]
@@ -285,6 +287,23 @@ Point In Time for restore.
 ```yaml
 Type: System.DateTime
 Parameter Sets: AlternateLocationFullRecovery, OriginalLocationFullRecovery, OriginalLocationILR
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrefixMatch
+Use this parameter to filter block blobs by prefix in a container for alternate location ILR.
+When you specify a prefix, only blobs matching that prefix in the container will be restored.
+Input for this parameter is a hashtable where each key is a container name and each value is an array of string prefixes for that container.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: AlternateLocationILR
 Aliases:
 
 Required: False
@@ -346,7 +365,7 @@ Use this parameter to restore with AzureKubernetesService.
 To construct, see NOTES section for RESTORECONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.KubernetesClusterRestoreCriteria
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.KubernetesClusterRestoreCriteria
 Parameter Sets: AlternateLocationFullRecovery, AlternateLocationILR, OriginalLocationFullRecovery, OriginalLocationILR
 Aliases:
 
@@ -467,7 +486,7 @@ Accept wildcard characters: False
 
 ### -TargetResourceIdForRestoreAsFile
 Target storage account container ARM Id to which backup data will be restored as files.
-This parameter is required for restoring as files to another subscription.
+This parameter is required for restoring as files when cross subscription restore is disabled on the backup vault.
 
 ```yaml
 Type: System.String
@@ -482,7 +501,9 @@ Accept wildcard characters: False
 ```
 
 ### -ToPrefixPattern
-Maximum matching value for Item Level Recovery.
+Specify the blob restore end range for PITR.
+You can use this option to specify the ending range for a subset of blobs in each container to restore.
+use a forward slash (/) to separate the container name from the blob prefix pattern.
 
 ```yaml
 Type: System.String[]
@@ -503,7 +524,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IAzureBackupRestoreRequest
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRestoreRequest
 
 ## NOTES
 

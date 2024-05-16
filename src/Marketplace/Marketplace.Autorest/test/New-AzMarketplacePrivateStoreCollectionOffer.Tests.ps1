@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMarketplacePrivateStore
 Describe 'New-AzMarketplacePrivateStoreCollectionOffer' {
     It 'CreateExpanded' {
         $acc = @{Accessibility = "azure_managedservices_professional"}
-	 $res = New-AzMarketplacePrivateStoreCollectionOffer -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa01f1 -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6  -OfferId aumatics.azure_managedservices -Plan $acc
-	$res.UniqueOfferId | Should -be "aumatics.azure_managedservices"
+	    $res = New-AzMarketplacePrivateStoreCollectionOffer -CollectionId a260d38c-96cf-492d-a340-404d0c4b3ad6 -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6  -OfferId aumatics.azure_managedservices -Plan $acc
+	    $res.UniqueOfferId | Should -be "aumatics.azure_managedservices"
     }
 }

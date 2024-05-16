@@ -4,4 +4,3 @@ Stop-AzDataProtectionBackupInstanceProtection -ResourceGroupName "rgName" -Subsc
 ```
 
 The above command can be used to stop protection of a backup instance
-

@@ -1,0 +1,41 @@
+{
+  "Invoke-AzSelfHelpDiscoverySolutionNlpSubscriptionScope+[NoContext]+PostExpanded+$POST+https://management.azure.com/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/providers/Microsoft.Help/discoverSolutions?api-version=2024-03-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/providers/Microsoft.Help/discoverSolutions?api-version=2024-03-01-preview",
+      "Content": "{\n  \"issueSummary\": \"Billing Issues\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "38" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "070af9ab-6964-4cf0-a3d8-99aa84e98143" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "070af9ab-6964-4cf0-a3d8-99aa84e98143" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20240405T204555Z:070af9ab-6964-4cf0-a3d8-99aa84e98143" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3608B16DBA924CABB22CA86498D08401 Ref B: BN1AA2051015017 Ref C: 2024-04-05T20:45:53Z" ],
+        "Date": [ "Fri, 05 Apr 2024 20:45:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "12" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[]}",
+      "isContentBase64": false
+    }
+  }
+}

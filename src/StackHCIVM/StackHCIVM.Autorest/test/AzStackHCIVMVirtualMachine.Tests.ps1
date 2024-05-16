@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzStackHCIVMVirtualMachine'))
 Describe 'AzStackHCIVMVirtualMachine' {
     It 'Create Virtual Machine  '  {
         
-        New-AzStackHciVMVirtualMachine -Name manualvmtest2 -OsType Linux  -ImageId "/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/mkclus0824-rg/providers/Microsoft.AzureStackHCI/galleryImages/testImage1127" -VmSize "Standard_K8S_v1"  -ComputerName "manualvmtest2" -ResourceGroupName "mkclus0824-rg" -CustomLocationId "/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/mkclus0824-rg/providers/Microsoft.ExtendedLocation/customLocations/myResourceBridge-cl"  -Location "eastus" -ProvisionVMAgent:$false -ProvisionVMConfigAgent:$false -SubscriptionId $env.subscriptionId | Select-Object -Property ProvisioningState  | Should -BeExactly "@{ProvisioningState=Succeeded}"
+        New-AzStackHciVMVirtualMachine -Name manualvmtest2 -OsType Linux  -ImageId "/subscriptions/37908b1f-2848-4c85-b8bf-a2cab2c3b0ba/resourceGroups/mkclus104-rg/providers/Microsoft.AzureStackHCI/galleryImages/testImagevm0226" -VmSize "Standard_K8S_v1"  -ComputerName "manualvmtest2" -ResourceGroupName "mkclus104-rg" -CustomLocationId "/subscriptions/37908b1f-2848-4c85-b8bf-a2cab2c3b0ba/resourceGroups/mkclus104-rg/providers/Microsoft.ExtendedLocation/customLocations/myResourceBridge-cl"  -Location "eastus" -ProvisionVMAgent:$false -ProvisionVMConfigAgent:$false -SubscriptionId $env.subscriptionId | Select-Object -Property ProvisioningState  | Should -BeExactly "@{ProvisioningState=Succeeded}"
     
     }
 

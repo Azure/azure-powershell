@@ -2,7 +2,7 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "namespace_name": {
+    "primary_namespace_name": {
       "defaultValue": "AutomatedPSTesting",
       "type": "String"
     },
@@ -12,15 +12,15 @@
     }
   },
   "variables": {
-    "authRuleResourceName": "[concat(parameters('namespace_name'), '/', 'authRule1')]",
-    "rootAuthRuleResourceName": "[concat(parameters('namespace_name'), '/RootManageSharedAccessKey')]"
+    "authRuleResourceName": "[concat(parameters('primary_namespace_name'), '/', 'authRule1')]",
+    "rootAuthRuleResourceName": "[concat(parameters('primary_namespace_name'), '/RootManageSharedAccessKey')]"
   },
   "resources": [
     {
       "type": "Microsoft.EventHub/namespaces",
       "apiVersion": "2022-01-01-preview",
-      "name": "[parameters('namespace_name')]",
-      "location": "eastus",
+      "name": "[parameters('primary_namespace_name')]",
+      "location": "[parameters('location')]",
       "sku": {
         "name": "Standard",
         "tier": "Standard",
@@ -40,10 +40,10 @@
       "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
       "apiVersion": "2022-01-01-preview",
       "name": "[variables('authRuleResourceName')]",
-      "location": "eastus",
+      "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]",
-        "[resourceId('Microsoft.EventHub/namespaces/AuthorizationRules', parameters('namespace_name'), 'RootManageSharedAccessKey')]"
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('primary_namespace_name'))]",
+        "[resourceId('Microsoft.EventHub/namespaces/AuthorizationRules', parameters('primary_namespace_name'), 'RootManageSharedAccessKey')]"
       ],
       "properties": {
         "rights": [
@@ -57,9 +57,9 @@
       "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
       "apiVersion": "2022-01-01-preview",
       "name": "[variables('rootAuthRuleResourceName')]",
-      "location": "eastus",
+      "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('primary_namespace_name'))]"
       ],
       "properties": {
         "rights": [
