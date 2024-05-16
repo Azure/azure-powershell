@@ -34,10 +34,6 @@ Deletes a Azure Arc PrivateLinkScope.
 Remove-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName
 ```
 
-```output
-<None>
-```
-
 Remove a private link scope in a subscription by name
 
 ## PARAMETERS

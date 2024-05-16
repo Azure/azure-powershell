@@ -34,27 +34,59 @@ Returns a Azure Arc PrivateLinkScope.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: get all private link scope of a resource group
 ```powershell
-{{ Add code here }}
+Get-AzConnectedPrivateLinkScope -ResourceGroupName 'ytongtest'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id                           : /subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/M
+                               icrosoft.HybridCompute/privateLinkScopes/myScope
+Location                     : centraluseuap
+Name                         : myScope
+PrivateEndpointConnection    : {}
+PrivateLinkScopeId           : b448b43c-82e3-4b30-9e7c-ceb83eee7b94
+ProvisioningState            : Succeeded
+PublicNetworkAccess          : Enabled
+ResourceGroupName            : ytongtest
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Tag                          : {
+                               }
+Type                         : Microsoft.HybridCompute/privateLinkScopes
 ```
 
-{{ Add description here }}
+get all private link scope of a resource group
 
-### Example 2: {{ Add title here }}
+### Example 2: get specific private link scope
 ```powershell
-{{ Add code here }}
+Get-AzConnectedPrivateLinkScope -ResourceGroupName 'ytongtest' -ScopeName 'myScope'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id                           : /subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope
+Location                     : centraluseuap
+Name                         : myScope
+PrivateEndpointConnection    : {}
+PrivateLinkScopeId           : b448b43c-82e3-4b30-9e7c-ceb83eee7b94
+ProvisioningState            : Succeeded
+PublicNetworkAccess          : Enabled
+ResourceGroupName            : ytongtest
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Tag                          : {
+                               }
+Type                         : Microsoft.HybridCompute/privateLinkScopes
 ```
-
-{{ Add description here }}
+get specific private link scope
 
 ## PARAMETERS
 

@@ -292,13 +292,6 @@ directive:
           - Location
           - PublicNetworkAccess
           - ProvisioningState
-  - where:
-      verb: Get
-      subject: PrivateLinkScope
-    set:
-      verb: Get
-      subject-prefix: ConnectedMachine
-      subject: PrivateLinkScope
  
   # Removing cmlets
   - where:
@@ -327,6 +320,10 @@ directive:
   # internal API
   - where:
       subject: LicenseProfile
+    remove: true
+  - where:
+      subject: Extension
+      variant: Upgrade
     remove: true
 
   # we will release gateway and setting commands in a seperate module
