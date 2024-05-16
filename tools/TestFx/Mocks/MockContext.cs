@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.TestFx;
 using Microsoft.Azure.Commands.TestFx.DelegatingHandlers;
 using Microsoft.Azure.Commands.TestFx.Recorder;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -65,6 +66,8 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
                 HttpMockServer.FileSystemUtilsObject = new FileSystemUtils();
             }
             HttpMockServer.Initialize(className, methodName);
+
+            TestMockSupport.RunningMocked = HttpMockServer.Mode == HttpRecorderMode.Playback;
 
             return context;
         }
