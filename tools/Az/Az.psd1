@@ -197,6 +197,9 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '12.0.0 - May 2024
+General
+* Fixed CVE-2024-29992.
+
 Az.Accounts
 * Web Account Manager (WAM) was set the default experience of interactive login. For more details please refer to https://go.microsoft.com/fwlink/?linkid=2272007
 * Enabled secrets detection option by default.
