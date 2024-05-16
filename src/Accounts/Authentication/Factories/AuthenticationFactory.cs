@@ -25,6 +25,7 @@ using Microsoft.Identity.Client;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Security;
 using System.Threading.Tasks;
@@ -189,12 +190,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     string desensitizedMessage;
                     if (NeedTenantArmPermission(environment, tenantId, resourceId))
                     {
-                        errorMessage = $"You must use multi-factor authentication to access tenant {tenantId}, please rerun 'Connect-AzAccount' with additional parameter '-TenantId {tenantId}'.";
+                        errorMessage = string.Format(Resources.ErrorMessageMsalInteractionRequiredWithTid, tenantId);
                         desensitizedMessage = "MFA is required to access tenant";
                     }
                     else
                     {
-                        errorMessage = $"You must use multi-factor authentication to access resource {resourceId}, please rerun 'Connect-AzAccount' with additional parameter '-AuthScope {resourceId}'.";
+                        errorMessage = string.Format(Resources.ErrorMsgMsalInteractionRequiredWithResourceID, resourceId);
                         desensitizedMessage = "MFA is required to access resource";
                     }
                     return new AzPSAuthenticationFailedException(

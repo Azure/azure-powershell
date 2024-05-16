@@ -259,6 +259,24 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Authentication failed against tenant {0}. User interaction is required. This may be due to the conditional access policy settings such as multi-factor authentication (MFA). If you need to access subscriptions in that tenant, please rerun &apos;Connect-AzAccount&apos; with additional parameter &apos;-TenantId {0}&apos;..
+        /// </summary>
+        public static string ErrorMessageMsalInteractionRequiredWithTid {
+            get {
+                return ResourceManager.GetString("ErrorMessageMsalInteractionRequiredWithTid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Authentication failed against resource {0}. User interaction is required. This may be due to the conditional access policy settings such as multi-factor authentication (MFA). Please rerun &apos;Connect-AzAccount&apos; with additional parameter &apos;-AuthScope {0}&apos;..
+        /// </summary>
+        public static string ErrorMsgMsalInteractionRequiredWithResourceID {
+            get {
+                return ResourceManager.GetString("ErrorMsgMsalInteractionRequiredWithResourceID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your Microsoft Azure credential in the Windows PowerShell session has expired. Please log in again. In PowerShell, execute Connect-AzAccount..
         /// </summary>
         public static string ExpiredRefreshToken {
@@ -376,7 +394,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to When enabled, Web Account Manager (WAM) will be the default interactive login experience. It will fall back to using the browser if the platform does not support WAM. Feel free to reach out to Azure PowerShell team if you have any feedbacks: https://aka.ms/azpsissue.
+        ///   Looks up a localized string similar to When enabled, Web Account Manager (WAM) will be the default interactive login experience. It will fall back to using the browser if the platform does not support WAM. For more details please refer to https://go.microsoft.com/fwlink/?linkid=2272007.
         /// </summary>
         public static string HelpMessageOfEnableWamLogin {
             get {
