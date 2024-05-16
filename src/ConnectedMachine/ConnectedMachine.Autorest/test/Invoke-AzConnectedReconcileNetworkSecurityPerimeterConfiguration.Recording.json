@@ -1,0 +1,46 @@
+{
+  "Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration+[NoContext]+Reconcile+$POST+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope/networkSecurityPerimeterConfigurations/myPerimeter/reconcile?api-version=2024-03-31-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope/networkSecurityPerimeterConfigurations/myPerimeter/reconcile?api-version=2024-03-31-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "fbc4471f-7da2-4229-accb-c2658325e52a" ],
+        "CommandName": [ "Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration" ],
+        "FullCommandName": [ "Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration_Reconcile" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.ConnectedMachine/0.5.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 500,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "b919593b-0ef2-4e58-b2e1-1206622e8c96", "b919593b-0ef2-4e58-b2e1-1206622e8c96" ],
+        "x-ms-failure-cause": [ "service" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "48f9d94b-a6f8-41b1-b010-ae46633876c5" ],
+        "x-ms-routing-request-id": [ "EASTUS:20240516T005359Z:48f9d94b-a6f8-41b1-b010-ae46633876c5" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E0D727A77B944F56A98816524F8F188E Ref B: MNZ221060610037 Ref C: 2024-05-16T00:53:59Z" ],
+        "Date": [ "Thu, 16 May 2024 00:53:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "96" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"HCRP500\",\"message\":\"Unexpected error occurred while processing the request.\"}}",
+      "isContentBase64": false
+    }
+  }
+}

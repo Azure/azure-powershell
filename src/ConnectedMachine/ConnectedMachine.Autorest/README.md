@@ -360,9 +360,9 @@ directive:
     remove: true
 
   # Add back when this API version is added to the operation controller code 
-  - where:
-      subject: NetworkSecurityPerimeterConfiguration$
-    remove: true
+  # - where:
+  #     subject: NetworkSecurityPerimeterConfiguration$
+  #   remove: true
  
   # Removing non-expand commands
   - where:
