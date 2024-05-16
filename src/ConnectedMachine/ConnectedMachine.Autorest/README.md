@@ -389,4 +389,8 @@ directive:
   # These APIs are used by the agent so they do not need to be in the cmdlets
   - remove-operation: Machines_CreateOrUpdate
   - remove-operation: MachineRunCommands_Update
+
+  # Create model cmdlet for complec object
+  - model-cmdlet:
+    - LicenseDetailsParameters
 ```
