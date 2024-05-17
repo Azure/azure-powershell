@@ -66,6 +66,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "ID of the VMs for which Bastion shareable links should be deleted")]
+        [ValidateNotNullOrEmpty]
         public List<string> TargetVmId { get; set; }
 
         [Parameter(
