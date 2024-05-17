@@ -176,10 +176,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
 
         public void ValidateScaleUnits(PSBastion bastion, int? scaleUnits = Constants.MinimumScaleUnits)
         {
-            if (!scaleUnits.HasValue)
-            {
-                return;
-            }
+            if (!scaleUnits.HasValue) return;
 
             if (PSBastionSku.TryGetSkuTier(bastion.Sku.Name, out string skuTierValue))
             {
