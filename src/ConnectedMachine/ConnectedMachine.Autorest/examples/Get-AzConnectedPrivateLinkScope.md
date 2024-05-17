@@ -1,22 +1,53 @@
-### Example 1: {{ Add title here }}
+### Example 1: get all private link scope of a resource group
 ```powershell
-{{ Add code here }}
+Get-AzConnectedPrivateLinkScope -ResourceGroupName 'ytongtest'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id                           : /subscriptions/subcriptionid/resourceGroups/ytongtest/providers/M
+                               icrosoft.HybridCompute/privateLinkScopes/myScope
+Location                     : centraluseuap
+Name                         : myScope
+PrivateEndpointConnection    : {}
+PrivateLinkScopeId           : scopeId
+ProvisioningState            : Succeeded
+PublicNetworkAccess          : Enabled
+ResourceGroupName            : ytongtest
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Tag                          : {
+                               }
+Type                         : Microsoft.HybridCompute/privateLinkScopes
 ```
 
-{{ Add description here }}
+get all private link scope of a resource group
 
-### Example 2: {{ Add title here }}
+### Example 2: get specific private link scope
 ```powershell
-{{ Add code here }}
+Get-AzConnectedPrivateLinkScope -ResourceGroupName 'ytongtest' -ScopeName 'myScope'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id                           : /subscriptions/********-****-****-****-**********/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope
+Location                     : centraluseuap
+Name                         : myScope
+PrivateEndpointConnection    : {}
+PrivateLinkScopeId           : ********-****-****-****-**********
+ProvisioningState            : Succeeded
+PublicNetworkAccess          : Enabled
+ResourceGroupName            : ytongtest
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Tag                          : {
+                               }
+Type                         : Microsoft.HybridCompute/privateLinkScopes
 ```
-
-{{ Add description here }}
-
+get specific private link scope
