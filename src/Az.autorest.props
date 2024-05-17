@@ -67,9 +67,13 @@
   <!-- Assets -->
 
   <ItemGroup>
-        <ModuleCustomFiles Include="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\$(PsRootModuleName)\$(PsModuleFolder)\custom\**\*.*"/>
-        <ModuleTestFiles Include="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\$(PsRootModuleName)\$(PsModuleFolder)\test\**\*.*"/>
-        <UtilsFiles Include="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\$(PsRootModuleName)\$(PsModuleFolder)\utils\**\*.*"/>
+    <Compile Include="$(RepoSrc)$(PsRootModuleName)\$(PsModuleFolder)\custom\**\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+        <ModuleCustomFiles Include="$(RepoSrc)$(PsRootModuleName)\$(PsModuleFolder)\custom\**\*.*"/>
+        <ModuleTestFiles Include="$(RepoSrc)\$(PsRootModuleName)\$(PsModuleFolder)\test\**\*.*"/>
+        <UtilsFiles Include="$(RepoSrc)\$(PsRootModuleName)\$(PsModuleFolder)\utils\**\*.*"/>
         <ModuleGeneratedFiles Include="generated\**\*.*"/>
   </ItemGroup>
 

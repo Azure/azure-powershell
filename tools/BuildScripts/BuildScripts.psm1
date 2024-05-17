@@ -187,8 +187,8 @@ function New-GeneratedFileFromTemplate {
     }
     $templateFile = $templateFile -replace '{ModuleNamePlaceHolder}', $SubModuleName
     $templateFile = $templateFile -replace '{LowCaseModuleNamePlaceHolder}', $SubModuleName.ToLower()
-    $templateFile = $templateFile -replace '{ModuleFolderPlaceHolder}', $SubModuleName
-    $templateFile -replace '{RootModuleNamePlaceHolder}', $ModuleRootName
+    $templateFile = $templateFile -replace '{ModuleFolderPlaceHolder}', "$SubModuleName.Autorest"
+    $templateFile = $templateFile -replace '{RootModuleNamePlaceHolder}', $ModuleRootName
     Write-Host "Copying template: $TemplateName." -ForegroundColor Yellow
     $templateFile | Set-Content $GeneratedFile -force
 }
