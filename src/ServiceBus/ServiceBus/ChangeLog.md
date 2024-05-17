@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.0.0
 * Moved cmdlets to V4.
 
 ## Version 3.1.1

@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.EdgeZones",
-  "ModuleVersion": "0.1.0",
+  "ModuleVersion": "0.1.1",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IExtendedZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IExtendedZone, Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IExtendedZone, Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DisplayName": "System.String",
               "Geography": "System.String",
@@ -64,7 +64,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IEdgeZonesIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IEdgeZonesIdentity, Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IEdgeZonesIdentity, Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ExtendedZoneName": "System.String",
               "Id": "System.String",
@@ -100,7 +100,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -110,7 +110,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -221,7 +221,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -237,7 +237,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -353,7 +353,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -369,7 +369,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -435,7 +435,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IEdgeZonesIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IEdgeZonesIdentity, Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IEdgeZonesIdentity, Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ExtendedZoneName": "System.String",
                     "Id": "System.String",
@@ -489,7 +489,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -505,7 +505,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -605,7 +605,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -621,7 +621,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -694,7 +694,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IExtendedZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IExtendedZone, Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IExtendedZone, Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DisplayName": "System.String",
               "Geography": "System.String",
@@ -741,7 +741,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IEdgeZonesIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IEdgeZonesIdentity, Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IEdgeZonesIdentity, Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ExtendedZoneName": "System.String",
               "Id": "System.String",
@@ -777,7 +777,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -787,7 +787,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -897,7 +897,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -913,7 +913,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -979,7 +979,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IEdgeZonesIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IEdgeZonesIdentity, Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IEdgeZonesIdentity, Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ExtendedZoneName": "System.String",
                     "Id": "System.String",
@@ -1033,7 +1033,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1049,7 +1049,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1149,7 +1149,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1165,7 +1165,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1238,7 +1238,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IExtendedZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IExtendedZone, Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IExtendedZone, Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DisplayName": "System.String",
               "Geography": "System.String",
@@ -1285,7 +1285,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IEdgeZonesIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IEdgeZonesIdentity, Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IEdgeZonesIdentity, Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ExtendedZoneName": "System.String",
               "Id": "System.String",
@@ -1321,7 +1321,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1331,7 +1331,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1441,7 +1441,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1457,7 +1457,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1523,7 +1523,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IEdgeZonesIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IEdgeZonesIdentity, Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IEdgeZonesIdentity, Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ExtendedZoneName": "System.String",
                     "Id": "System.String",
@@ -1577,7 +1577,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1593,7 +1593,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1693,7 +1693,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1709,7 +1709,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep[], Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1815,7 +1815,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep, Az.EdgeZones.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.SendAsyncStep, Az.EdgeZones.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"

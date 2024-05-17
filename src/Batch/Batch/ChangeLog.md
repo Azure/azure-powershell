@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.6.1
 * Removed the out-of-date breaking change message for `Get-AzBatchCertificate` and `New-AzBatchCertificate`.
 
 ## Version 3.6.0

@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             Func<string, string> prompt, Action<string> outputAction,
             ref IAzureSubscription defaultSubscription, ref IAzureTenant defaultTenant)
         {
-            subscriptions = subscriptions?.OrderBy(s => GetDetailedTenantFromQueryHistory(queriedTenants, s.GetProperty(AzureSubscription.Property.Tenants)))?.ThenBy(s => s.Name)?.ToList();
+            subscriptions = subscriptions?.OrderBy(s => GetDetailedTenantFromQueryHistory(queriedTenants, s.GetProperty(AzureSubscription.Property.Tenants))?.GetProperty(AzureTenant.Property.DisplayName))?.ThenBy(s => s.Name)?.ToList();
 
             var markDefaultSubscription = lastUsedSubscription != null;
 
