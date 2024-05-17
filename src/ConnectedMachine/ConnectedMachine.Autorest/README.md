@@ -359,7 +359,7 @@ directive:
       subject: NetworkConfiguration
     remove: true
 
-  # Add back when this API version is added to the operation controller code 
+  # Add back when this API is fixed
   - where:
       subject: NetworkSecurityPerimeterConfiguration$
     remove: true
@@ -393,5 +393,6 @@ directive:
   # Create model cmdlet for complex object
   - model-cmdlet:
     - model-name: LicenseDetails
-      cmdlet-name: AzConnectedLicense_Create
+      cmdlet-name: AzConnectedLicenseDetails
+
 ```

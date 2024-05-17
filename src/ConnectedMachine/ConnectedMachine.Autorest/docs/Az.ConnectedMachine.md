@@ -11,6 +11,9 @@ Locale: en-US
 Microsoft Azure PowerShell: ConnectedMachine cmdlets
 
 ## Az.ConnectedMachine Cmdlets
+### [AzConnectedLicenseDetails](AzConnectedLicenseDetails.md)
+Create an in-memory object for LicenseDetails.
+
 ### [Connect-AzConnectedMachine](Connect-AzConnectedMachine.md)
 API to register a new machine and thereby create a tracked resource in ARM
 

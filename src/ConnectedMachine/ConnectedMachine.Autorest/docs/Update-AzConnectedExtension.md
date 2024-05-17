@@ -62,6 +62,7 @@ Update-AzConnectedExtension -ResourceGroupName $env.ResourceGroupName -MachineNa
 ```
 
 Update an extension in a machine to a specific version
+
 ## PARAMETERS
 
 ### -AsJob

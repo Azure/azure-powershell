@@ -86,6 +86,7 @@ Tag                          : {
                                }
 Type                         : Microsoft.HybridCompute/privateLinkScopes
 ```
+
 get specific private link scope
 
 ## PARAMETERS

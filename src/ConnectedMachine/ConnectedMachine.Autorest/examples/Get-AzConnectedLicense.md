@@ -1,6 +1,6 @@
 ### Example 1: Get a list of ESU licenses
 ```powershell
-Get-AzConnectedLicense -SubscriptionId 'b24cc8ee-df4f-48ac-94cf-46edf36b0fae'
+Get-AzConnectedLicense -SubscriptionId ********-****-****-****-**********
 ```
 
 ```output
