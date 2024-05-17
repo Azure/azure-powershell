@@ -51,4 +51,13 @@ Describe 'New-AzNetworkSecurityPerimeterAccessRule' {
 
         } | Should -Not -Throw
     }
+
+    It 'CreateExpandedWithServiceTags' {
+        {
+            $servicetags = @("st1", "st2")
+
+            New-AzNetworkSecurityPerimeterAccessRule -Name $env.accessRule2 -ProfileName $env.tmpProfile2 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -ServiceTag $servicetags -Direction 'Inbound' -Location $env.location
+
+        } | Should -Not -Throw
+    }
 }

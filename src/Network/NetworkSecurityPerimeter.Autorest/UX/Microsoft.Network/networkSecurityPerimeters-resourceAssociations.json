@@ -1,6 +1,6 @@
 {
   "resourceType": "networkSecurityPerimeters/resourceAssociations",
-  "apiVersion": "2023-07-01-preview",
+  "apiVersion": "2023-08-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.network"
   },
@@ -39,6 +39,49 @@
             {
               "name": "-SecurityPerimeterName",
               "value": "[Path.networkSecurityPerimeterName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzNetworkSecurityPerimeterNspAssociationReconcile",
+      "description": "Reconcile NSP association",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/resourceAssociations/{associationName}/reconcile",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.network/invoke-aznetworksecurityperimeternspassociationreconcile"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AssociationName <String>",
+              "-NetworkSecurityPerimeterName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Reconcile NSP association",
+          "parameters": [
+            {
+              "name": "-AssociationName",
+              "value": "[Path.associationName]"
+            },
+            {
+              "name": "-NetworkSecurityPerimeterName",
+              "value": "[Path.networkSecurityPerimeterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
               "name": "-SubscriptionId",
