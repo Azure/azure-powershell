@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "ID of the VMs that require generation of Bastion shareable links")]
-        public List<string> TargetVmIds { get; set; }
+        public List<string> TargetVmId { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
                 throw new PropertyNotFoundException(Properties.Resources.ShareableLinkNotEnabled);
             }
 
-            var psBslRequest = new PSBastionShareableLinkRequest(this.TargetVmIds);
+            var psBslRequest = new PSBastionShareableLinkRequest(this.TargetVmId);
             this.NetworkClient.NetworkManagementClient.PutBastionShareableLink(this.ResourceGroupName, this.Name, psBslRequest.ToSdkObject());
 
             var getBslResultIter = this.NetworkClient.NetworkManagementClient.GetBastionShareableLink(this.ResourceGroupName, this.Name, psBslRequest.ToSdkObject());
