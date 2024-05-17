@@ -786,4 +786,13 @@
   <data name="ConfirmMessage" xml:space="preserve">
     <value>Confirm</value>
   </data>
+  <data name="ConfirmRemoveBastionShareableLink" xml:space="preserve">
+    <value>Are you sure you want to remove Bastion shareable link(s)?</value>
+  </data>
+  <data name="RemoveBastionShareableLink" xml:space="preserve">
+    <value>Removing Bastion shareable link(s)</value>
+  </data>
+  <data name="ShareableLinkNotEnabled" xml:space="preserve">
+    <value>Shareable link feature is not enabled</value>
+  </data>
 </root>

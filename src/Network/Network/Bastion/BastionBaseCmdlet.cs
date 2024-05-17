@@ -167,6 +167,8 @@ namespace Microsoft.Azure.Commands.Network.Bastion
 
         public void ValidateScaleUnits(PSBastion bastion, int? scaleUnits = 2)
         {
+            if (!scaleUnits.HasValue) return;
+
             if (PSBastionSku.TryGetSkuTier(bastion.Sku.Name, out string skuTierValue))
             {
                 switch (skuTierValue)
@@ -174,7 +176,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
                     case PSBastionSku.Basic:
                         if (scaleUnits != PSBastion.MinimumScaleUnits)
                         {
-                            throw new ArgumentException($"Bastion scalable host is available on Standard SKU");
+                            throw new ArgumentException($"Bastion scalable host is available on Standard SKU or higher");
                         }
                         break;
                     case PSBastionSku.Standard:
