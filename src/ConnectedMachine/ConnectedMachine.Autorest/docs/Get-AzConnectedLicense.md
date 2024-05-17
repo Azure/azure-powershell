@@ -61,7 +61,7 @@ Get-AzConnectedLicense -Name 'myESULicense' -ResourceGroupName 'ytongtest' -Subs
 ```output
 DetailAssignedLicense        : 8
 DetailEdition                : Datacenter
-DetailImmutableId            : 298dbcad-3dd6-493c-8d87-2238ee36ba26
+DetailImmutableId            : ********-****-****-****-**********
 DetailProcessor              : 16
 DetailState                  : Activated
 DetailTarget                 : Windows Server 2012
@@ -81,7 +81,7 @@ SystemDataLastModifiedBy     :
 SystemDataLastModifiedByType :
 Tag                          : {
                                }
-TenantId                     : 72f988bf-86f1-41af-91ab-2d7cd011db47
+TenantId                     : ********-****-****-****-**********
 Type                         : Microsoft.HybridCompute/licenses
 
 ```

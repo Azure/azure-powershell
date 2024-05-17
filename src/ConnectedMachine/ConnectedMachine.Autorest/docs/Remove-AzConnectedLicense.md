@@ -34,6 +34,10 @@ The operation to delete a license.
 Remove-AzConnectedLicense -Name 'myESULicense' -ResourceGroupName 'ytongtest' -SubscriptionId ********-****-****-****-**********
 ```
 
+```output
+<none>
+```
+
 Remove an ESU license
 
 ## PARAMETERS

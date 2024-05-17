@@ -6,7 +6,7 @@ New-AzConnectedLicense -Name 'myESULicense' -ResourceGroupName 'ytongtest' -Loca
 ```output
 DetailAssignedLicense        : 8
 DetailEdition                : Datacenter
-DetailImmutableId            : 298dbcad-3dd6-493c-8d87-2238ee36ba26
+DetailImmutableId            : ********-****-****-****-**********
 DetailProcessor              : 16
 DetailState                  : Activated
 DetailTarget                 : Windows Server 2012
