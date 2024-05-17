@@ -46,8 +46,8 @@ In this directory, run AutoRest:
 ### General settings
 > Values
 ``` yaml
-tag: package-preview-2023-11
-commit: 754d31188c080f20b8155acdf8b8fbd77dace467
+tag: package-2024-05
+commit: e356a785b4d3da1c32b126015408efed6be85998
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/hdinsight/resource-manager/Microsoft.HDInsight/HDInsightOnAks/readme.md
@@ -309,5 +309,10 @@ directive:
     set:
       parameter-name: FlinkHiveCatalogDbUserName
 # The below customize the output model   
-
+  - where:
+      verb: Update
+      subject: [Cluster|ClusterPool] 
+      variant: [Upgrade|UpgradeExpanded|UpgradeViaIdentity|UpgradeViaIdentityExpanded|UpgradeViaJsonFilePath|UpgradeViaJsonString]
+    set:
+      verb: Upgrade
 ```
