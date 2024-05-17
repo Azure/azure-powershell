@@ -89,6 +89,6 @@
     <Copy SourceFiles="exports\ProxyCmdletDefinitions.ps1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleFolder)\exports" />
     <Copy SourceFiles="internal\ProxyCmdletDefinitions.ps1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleFolder)\internal" Condition="Exists('internal\ProxyCmdletDefinitions.ps1')" />
     <Copy SourceFiles="internal\Az.$(PsModuleName).internal.psm1" DestinationFolder="$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleFolder)\internal" />
-    <Copy SourceFiles="@(UtilsFiles)" DestinationFiles="@(UtilsFiles->'$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleFolder)\utils\%(RecursiveDir)%(Filename)%(Extension)')" Condition="Exists('utils')"/>
+    <Copy SourceFiles="@(UtilsFiles)" DestinationFiles="@(UtilsFiles->'$(RepoArtifacts)$(Configuration)\Az.$(PsRootModuleName)\$(PsModuleFolder)\utils\%(RecursiveDir)%(Filename)%(Extension)')" Condition="Exists('$(RepoSrc)\$(PsRootModuleName)\$(PsModuleFolder)\utils')"/>
   </Target>
 </Project>
