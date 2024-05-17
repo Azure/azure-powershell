@@ -518,8 +518,8 @@ function Test-BastionShareableLink {
 
         # Receive error message
         $randomName = Get-ResourceName
-        Assert-Throws { New-AzBastionShareableLink -ResourceGroupName $rgname -Name $randomName -TargetVmIds $bastionName2 } "Resource '$randomName' not found"
-        Assert-Throws { New-AzBastionShareableLink -ResourceGroupName $rgname -Name $bastionName2 -TargetVmIds $bastionName2 } "Shareable link feature is not enabled"
+        Assert-Throws { New-AzBastionShareableLink -ResourceGroupName $rgname -Name $randomName -TargetVmId $bastionName2 } "Resource '$randomName' not found"
+        Assert-Throws { New-AzBastionShareableLink -ResourceGroupName $rgname -Name $bastionName2 -TargetVmId $bastionName2 } "Shareable link feature is not enabled"
 
         # Wait for create Bastion completion
         $createBastionJob | Wait-Job
@@ -534,7 +534,7 @@ function Test-BastionShareableLink {
         Assert-NotNull $vm.Id
 
         # Create BSL
-        New-AzBastionShareableLink -InputObject $bastion -TargetVmIds $vm.Id
+        New-AzBastionShareableLink -InputObject $bastion -TargetVmId $vm.Id
 
         # Get BSL
         $getBsl = Get-AzBastionShareableLink -InputObject $bastion
@@ -544,7 +544,7 @@ function Test-BastionShareableLink {
         Assert-NotNull $getBsl.CreatedAt
 
         # Delete BSL
-        Remove-AzBastionShareableLink -InputObject $bastion -TargetVmIds $vm.Id -Force
+        Remove-AzBastionShareableLink -InputObject $bastion -TargetVmId $vm.Id -Force
 
         # Get BSL
         $getBsl = Get-AzBastionShareableLink -InputObject $bastion
