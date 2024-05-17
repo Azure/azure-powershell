@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "ID of the VMs for which Bastion shareable links should be deleted")]
-        public List<string> TargetVmIds { get; set; }
+        public List<string> TargetVmId { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -113,11 +113,11 @@ namespace Microsoft.Azure.Commands.Network.Bastion
                     {
                         throw new PropertyNotFoundException(Properties.Resources.ShareableLinkNotEnabled);
                     }
-                    var psBslRequest = new PSBastionShareableLinkRequest(this.TargetVmIds);
+                    var psBslRequest = new PSBastionShareableLinkRequest(this.TargetVmId);
                     this.NetworkClient.NetworkManagementClient.DeleteBastionShareableLink(this.ResourceGroupName, this.Name, psBslRequest.ToSdkObject());
                     if (PassThru)
                     {
-                        WriteVerbose($"Deleted Bastion shareable links for {this.TargetVmIds.Count} VM IDs");
+                        WriteVerbose($"Deleted Bastion shareable links for {this.TargetVmId.Count} VM IDs");
                         WriteObject(true);
                     }
                 });
