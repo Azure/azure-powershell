@@ -117,9 +117,13 @@ foreach ($moduleRootName in $TargetModule) {
     . $prepareScriptPath -ModuleRootName $moduleRootName -RepoRoot $RepoRoot -ForceRegenerate:$ForceRegenerate -Pipeline:$isPipeline
 }
 
-& dotnet --version
-& dotnet new sln -n Azure.PowerShell -o $RepoArtifacts --force
 $sln = Join-Path $RepoArtifacts "Azure.PowerShell.sln"
+& dotnet --version
+if (Test-Path $sln) {
+    Remove-Item $sln -Force
+}
+& dotnet new sln -n Azure.PowerShell -o $RepoArtifacts --force
+
 foreach ($file in $csprojFiles) {
     & dotnet sln $sln add "$file"
 }
@@ -142,5 +146,3 @@ if ($EnableTestCoverage -eq "true")
     $buildCmdResult += " -p:TestCoverage=TESTCOVERAGE"
 }
 Invoke-Expression -Command $buildCmdResult
-
-Remove-Item $sln -Force
