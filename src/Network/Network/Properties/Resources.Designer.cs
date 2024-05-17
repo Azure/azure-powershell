@@ -430,6 +430,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Bastion shareable link(s)?.
+        /// </summary>
+        internal static string ConfirmRemoveBastionShareableLink {
+            get {
+                return ResourceManager.GetString("ConfirmRemoveBastionShareableLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Connection monitor test group contains duplicates in destination endpoint names. Destination endpoint names in testGroup must be unique..
         /// </summary>
         internal static string ConnectionMonitorDestinationEndpointNamesMustBeUnique {
@@ -1303,6 +1312,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing Bastion shareable link(s).
+        /// </summary>
+        internal static string RemoveBastionShareableLink {
+            get {
+                return ResourceManager.GetString("RemoveBastionShareableLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing resource ....
         /// </summary>
         internal static string RemoveResourceMessage {
@@ -1560,6 +1578,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string SettingResourceMessage {
             get {
                 return ResourceManager.GetString("SettingResourceMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shareable link feature is not enabled.
+        /// </summary>
+        internal static string ShareableLinkNotEnabled {
+            get {
+                return ResourceManager.GetString("ShareableLinkNotEnabled", resourceCulture);
             }
         }
         
