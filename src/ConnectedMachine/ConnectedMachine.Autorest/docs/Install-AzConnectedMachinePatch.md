@@ -51,7 +51,7 @@ ExcludedPatchCount FailedPatchCount InstallationActivityId               Install
                                                                                                                   owExc
                                                                                                                   eeded
 ------------------ ---------------- ----------------------               ------------------- -------------------- -----
-0                  0                activityId 0                   7/28/2023 7:55:08 AM  False
+0                  0                ********-****-****-****-**********1 0                   7/28/2023 7:55:08 AM  False
 ```
 
 Install machine patches.

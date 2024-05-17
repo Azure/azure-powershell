@@ -31,7 +31,7 @@ The operation to delete a license.
 
 ### Example 1: Remove an ESU license
 ```powershell
-Remove-AzConnectedLicense -Name 'myESULicense' -ResourceGroupName 'ytongtest' -SubscriptionId $env.SubcriptionId
+Remove-AzConnectedLicense -Name 'myESULicense' -ResourceGroupName 'ytongtest' -SubscriptionId ********-****-****-****-**********
 ```
 
 Remove an ESU license

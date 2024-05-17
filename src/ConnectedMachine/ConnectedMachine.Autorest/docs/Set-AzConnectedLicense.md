@@ -50,19 +50,19 @@ The operation to Create a license.
 
 ### Example 1: Update an ESU license
 ```powershell
-Set-AzConnectedLicense -Name 'myESULicense' -ResourceGroupName 'ytongtest' -Location 'eastus2euap' -LicenseType 'ESU' -LicenseDetailState 'Deactivated'  -LicenseDetailTarget 'Windows Server 2012' -LicenseDetailEdition 'Datacenter' -LicenseDetailType 'pCore' -LicenseDetailProcessor 16 -SubscriptionId $env.SubcriptionId
+Set-AzConnectedLicense -Name 'myESULicense' -ResourceGroupName 'ytongtest' -Location 'eastus2euap' -LicenseType 'ESU' -LicenseDetailState 'Deactivated'  -LicenseDetailTarget 'Windows Server 2012' -LicenseDetailEdition 'Datacenter' -LicenseDetailType 'pCore' -LicenseDetailProcessor 16 -SubscriptionId ********-****-****-****-**********
 ```
 
 ```output
 DetailAssignedLicense        : 8
 DetailEdition                : Datacenter
-DetailImmutableId            : immutableId
+DetailImmutableId            : ********-****-****-****-**********
 DetailProcessor              : 16
 DetailState                  : Deactivated
 DetailTarget                 : Windows Server 2012
 DetailType                   : pCore
 DetailVolumeLicenseDetail    :
-Id                           : /subscriptions/subcriptionid/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/licenses/myESULicense
+Id                           : /subscriptions/********-****-****-****-**********/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/licenses/myESULicense
 LicenseType                  : ESU
 Location                     : eastus2euap
 Name                         : myESULicense
@@ -76,7 +76,7 @@ SystemDataLastModifiedBy     :
 SystemDataLastModifiedByType :
 Tag                          : {
                                }
-TenantId                     : tenantId
+TenantId                     : ********-****-****-****-**********
 Type                         : Microsoft.HybridCompute/licenses
 ```
 

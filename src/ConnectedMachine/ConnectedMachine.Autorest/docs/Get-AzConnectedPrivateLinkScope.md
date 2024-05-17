@@ -68,11 +68,11 @@ Get-AzConnectedPrivateLinkScope -ResourceGroupName 'ytongtest' -ScopeName 'mySco
 ```
 
 ```output
-Id                           : /subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope
+Id                           : /subscriptions/********-****-****-****-**********/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope
 Location                     : centraluseuap
 Name                         : myScope
 PrivateEndpointConnection    : {}
-PrivateLinkScopeId           : b448b43c-82e3-4b30-9e7c-ceb83eee7b94
+PrivateLinkScopeId           : ********-****-****-****-**********
 ProvisioningState            : Succeeded
 PublicNetworkAccess          : Enabled
 ResourceGroupName            : ytongtest

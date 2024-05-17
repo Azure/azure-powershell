@@ -360,9 +360,9 @@ directive:
     remove: true
 
   # Add back when this API version is added to the operation controller code 
-  # - where:
-  #     subject: NetworkSecurityPerimeterConfiguration$
-  #   remove: true
+  - where:
+      subject: NetworkSecurityPerimeterConfiguration$
+    remove: true
  
   # Removing non-expand commands
   - where:
@@ -390,7 +390,7 @@ directive:
   - remove-operation: Machines_CreateOrUpdate
   - remove-operation: MachineRunCommands_Update
 
-  # Create model cmdlet for complec object
+  # Create model cmdlet for complex object
   - model-cmdlet:
-    - LicenseDetailsParameters
+    - Parameter
 ```

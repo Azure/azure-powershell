@@ -36,7 +36,7 @@ Retrieves information about the model view or the instance view of a hybrid mach
 
 ### Example 1: List all connected machines in a subscription
 ```powershell
-Get-AzConnectedMachine -SubscriptionId $env.SubcriptionId
+Get-AzConnectedMachine -SubscriptionId ********-****-****-****-**********
 ```
 
 ```output

@@ -58,7 +58,7 @@ AsyncExecution                    : False
 ErrorBlobManagedIdentityClientId  :
 ErrorBlobManagedIdentityObjectId  :
 ErrorBlobUri                      :
-Id                                : /subscriptions/subcriptionid/resourceGroups/az-sdk-test/prov
+Id                                : /subscriptions/********-****-****-****-**********/resourceGroups/az-sdk-test/prov
                                     iders/Microsoft.HybridCompute/machines/testmachine/runcommands/myRunCommand2
 InstanceViewEndTime               : 12/4/2023 6:16:55 PM
 InstanceViewError                 :

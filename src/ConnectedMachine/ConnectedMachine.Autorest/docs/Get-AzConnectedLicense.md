@@ -36,7 +36,7 @@ Retrieves information about the view of a license.
 
 ### Example 1: Get a list of ESU licenses
 ```powershell
-Get-AzConnectedLicense -SubscriptionId $env.SubcriptionId
+Get-AzConnectedLicense -SubscriptionId ********-****-****-****-**********
 ```
 
 ```output
@@ -55,7 +55,7 @@ Get a list of ESU licenses
 
 ### Example 2: Get a specific ESU license
 ```powershell
-Get-AzConnectedLicense -Name 'myESULicense' -ResourceGroupName 'ytongtest' -SubscriptionId $env.SubcriptionId
+Get-AzConnectedLicense -Name 'myESULicense' -ResourceGroupName 'ytongtest' -SubscriptionId ********-****-****-****-**********
 ```
 
 ```output
@@ -67,7 +67,7 @@ DetailState                  : Activated
 DetailTarget                 : Windows Server 2012
 DetailType                   : pCore
 DetailVolumeLicenseDetail    :
-Id                           : /subscriptions/subscriptionId/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/licenses/myESULicense
+Id                           : /subscriptions/********-****-****-****-**********/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/licenses/myESULicense
 LicenseType                  : ESU
 Location                     : eastus2euap
 Name                         : myESULicense
