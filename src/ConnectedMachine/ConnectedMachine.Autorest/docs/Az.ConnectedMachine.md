@@ -32,9 +32,6 @@ The operation to get the extension.
 ### [Get-AzConnectedMachineRunCommand](Get-AzConnectedMachineRunCommand.md)
 The operation to get a run command.
 
-### [Get-AzConnectedNetworkSecurityPerimeterConfiguration](Get-AzConnectedNetworkSecurityPerimeterConfiguration.md)
-Gets the network security perimeter configuration for a private link scope.
-
 ### [Get-AzConnectedPrivateLinkScope](Get-AzConnectedPrivateLinkScope.md)
 Returns a Azure Arc PrivateLinkScope.
 
@@ -43,9 +40,6 @@ The operation to install patches on a hybrid machine identity in Azure.
 
 ### [Invoke-AzConnectedAssessMachinePatch](Invoke-AzConnectedAssessMachinePatch.md)
 The operation to assess patches on a hybrid machine identity in Azure.
-
-### [Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration](Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration.md)
-Forces the network security perimeter configuration to refresh for a private link scope.
 
 ### [New-AzConnectedLicense](New-AzConnectedLicense.md)
 The operation to Create a license.

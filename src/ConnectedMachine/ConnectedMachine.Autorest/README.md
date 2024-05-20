@@ -358,7 +358,12 @@ directive:
   - where:
       subject: NetworkConfiguration
     remove: true
- 
+
+  # Remove when this API is fixed
+  - where:
+      subject: NetworkSecurityPerimeterConfiguration$
+    remove: true
+
   # Removing non-expand commands
   - where:
       subject: MachinePatch

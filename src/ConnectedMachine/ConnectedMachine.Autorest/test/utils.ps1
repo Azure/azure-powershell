@@ -46,8 +46,10 @@ function setupEnv() {
     $env.EsuLicenseName = 'myEsuLicense'
     $env.ResourceUri = 'subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine'
     $env.PrivateLinkScopeUri = '/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/privateLinkScopes/myPrivateLinkScope'
-    $env.PerimeterName = 'myPerimeter'
     $env.ExtensionName = 'customScript'
+    $env.ResourceGroupNameNSP = 'adrielk_test'
+    $env.PrivateLinkScopeNameNSP = 'adrielScope'
+    $env.PerimeterName = 'fd1289de-e8d3-4f76-8008-de297232dbf6.adrielScope-91ce5bff-5a70-45e6-b9a4-1dc8a601ad2e'
 
     #New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location | Out-Null
 
