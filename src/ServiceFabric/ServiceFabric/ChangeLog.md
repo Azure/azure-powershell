@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.3.3
 * Updated location of nodeType to use cluster location in stead of resource group location
 
 ## Version 3.3.2

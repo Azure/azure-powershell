@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Fixed a bug where `New-AzBatchApplicationPackage` wouldn't work if the application `AllowUpdates` parameter was set to `$false`.
+
+## Version 3.6.1
 * Removed the out-of-date breaking change message for `Get-AzBatchCertificate` and `New-AzBatchCertificate`.
 
 ## Version 3.6.0
