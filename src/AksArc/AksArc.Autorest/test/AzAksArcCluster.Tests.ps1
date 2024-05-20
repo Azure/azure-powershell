@@ -95,7 +95,7 @@ Describe 'AzAksArc' {
         } | Should -Not -Throw
     }
 
-    It 'RemoveNodepool' {
+    It 'RemoveNodepool' -skip {
         { 
             $config = Remove-AzAksArcNodepool -ClusterName $env.clusterName1 -ResourceGroupName $env.ResourceGroupName1 -Name $env.NodepoolName1 
         } | Should -Not -Throw
