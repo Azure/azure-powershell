@@ -40,7 +40,6 @@ VolumeLicenseDetail :
 
 get the detail of an ESU license
 
-
 ## PARAMETERS
 
 ### -Edition

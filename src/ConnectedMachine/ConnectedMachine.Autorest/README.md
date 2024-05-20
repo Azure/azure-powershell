@@ -358,11 +358,6 @@ directive:
   - where:
       subject: NetworkConfiguration
     remove: true
-
-  # Add back when this API is fixed
-  - where:
-      subject: NetworkSecurityPerimeterConfiguration$
-    remove: true
  
   # Removing non-expand commands
   - where:
