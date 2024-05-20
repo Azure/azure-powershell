@@ -1,0 +1,3 @@
+"Module","Cmdlet","Example","Line","RuleName","ProblemId","Severity","Description","Extent","Remediation"
+"Az.TimeSeriesInsights","New-AzTimeSeriesInsightsEventSource","1","2","Invalid_Parameter_Name","5011","1","New-AzEventHub -MessageRetentionInDays is not a valid parameter name.","-MessageRetentionInDays","Check validity of the parameter -MessageRetentionInDays."
+"Az.TimeSeriesInsights","New-AzTimeSeriesInsightsEventSource","1","2","Invalid_Parameter_Name","5011","1","New-AzEventHub -MessageRetentionInDays is not a valid parameter name.","-MessageRetentionInDays","Check validity of the parameter -MessageRetentionInDays."

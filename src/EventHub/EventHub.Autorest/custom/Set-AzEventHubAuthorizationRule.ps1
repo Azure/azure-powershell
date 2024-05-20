@@ -20,8 +20,7 @@ Sets an EventHub Authorization Rule
 #>
 
 function Set-AzEventHubAuthorizationRule{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAuthorizationRule])]
-
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAuthorizationRule])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpandedNamespace', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(ParameterSetName = 'SetExpandedEntity', HelpMessage = "The name of the Authorization Rule")]
@@ -70,9 +69,8 @@ function Set-AzEventHubAuthorizationRule{
 
         [Parameter(Mandatory, HelpMessage = "The rights associated with the rule.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.AccessRights[]]
+        [System.String[]]
         # The rights associated with the rule.
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChangeAttribute("Rights","12.0.0", "5.0.0","2024-05-21" )]
         ${Rights},
 		
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
