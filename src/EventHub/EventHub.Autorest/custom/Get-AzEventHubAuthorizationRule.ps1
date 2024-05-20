@@ -20,7 +20,7 @@ Gets an EventHub Authorization Rule
 #>
 
 function Get-AzEventHubAuthorizationRule{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAuthorizationRule])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAuthorizationRule])]
     [CmdletBinding(DefaultParameterSetName = 'GetExpandedNamespace', PositionalBinding = $false, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(ParameterSetName = 'GetExpandedEntity', HelpMessage = "The name of the Authorization Rule")]

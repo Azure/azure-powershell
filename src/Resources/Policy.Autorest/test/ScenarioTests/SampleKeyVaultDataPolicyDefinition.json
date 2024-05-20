@@ -1,0 +1,9 @@
+{
+  "if": {
+    "field": "Microsoft.KeyVault.Data/vaults/certificates/issuer.commonName",
+    "equals": "foo"
+  },
+  "then": {
+    "effect": "Audit"
+  }
+}

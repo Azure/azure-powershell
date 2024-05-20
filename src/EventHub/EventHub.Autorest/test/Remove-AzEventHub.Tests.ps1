@@ -18,12 +18,12 @@ Describe 'Remove-AzEventHub' {
     It 'Delete'  {
         New-AzEventHub -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name eh1
         Remove-AzEventHub -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name eh1
-        { Get-AzEventHub -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name eh1 } | Should -Throw
+        { Get-AzEventHub -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name eh1 -ErrorAction Stop } | Should -Throw
     }
 
     It 'DeleteViaIdentity'  {
         $eventhub = New-AzEventHub -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name eh1
         Remove-AzEventHub -InputObject $eventhub
-        { Get-AzEventHub -InputObject $eventhub } | Should -Throw
+        { Get-AzEventHub -InputObject $eventhub -ErrorAction Stop } | Should -Throw
     }
 }

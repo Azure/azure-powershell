@@ -59,14 +59,13 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
+keep-pec-and-plr: true
+disable-transform-identity-type: true
+flatten-userassignedidentity : false
 
 directive:
   - where:
-      variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^CreateViaJsonFilePath$|^CreateViaJsonString$
     remove: true
   - where:
       variant: ^CreateViaIdentity$
@@ -524,14 +523,5 @@ directive:
     clear-alias: true
 
   - model-cmdlet:
-    - KeyVaultProperties
-
-  - where:
-      parameter-name: Status
-    set:
-      breaking-change:
-        old-parameter-type: EntityStatus
-        new-parameter-type: String
-        deprecated-by-version: 4.0.0
-        deprecated-by-azversion: 12.0.0
-        change-effective-date: 2024/05/21
+    - model-name: KeyVaultProperties
+      cmdlet-name: New-AzServiceBusKeyVaultPropertiesObject
