@@ -56,11 +56,7 @@ namespace Microsoft.Azure.Test.HttpRecorder
             Variables = new Dictionary<string, string>();
 
             string testMode = FileSystemUtilsObject?.GetEnvironmentVariable(ConnectionStringKeys.AZURE_TEST_MODE_ENVKEY);
-            if (string.IsNullOrEmpty(testMode))
-            {
-                Mode = HttpRecorderMode.Playback;
-            }
-            else if (Enum.TryParse(testMode, true, out HttpRecorderMode recorderMode) && Enum.IsDefined(typeof(HttpRecorderMode), recorderMode))
+            if (Enum.TryParse(testMode, true, out HttpRecorderMode recorderMode) && Enum.IsDefined(typeof(HttpRecorderMode), recorderMode))
             {
                 Mode = recorderMode;
             }
