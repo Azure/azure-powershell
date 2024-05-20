@@ -18,8 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Removed the out-of-date breaking change message for `Get-AzBatchCertificate` and `New-AzBatchCertificate`.
 * Fixed a bug where `New-AzBatchApplicationPackage` wouldn't work if the application `AllowUpdates` parameter was set to `$false`.
+* Removed the out-of-date breaking change message for `Get-AzBatchCertificate` and `New-AzBatchCertificate`.
 
 ## Version 3.6.0
 * Added new properties `ResourceTags`  and `UpgradePolicy` to `PSCloudPool` and `PSPoolSpecification`.
