@@ -47,7 +47,7 @@ In this directory, run AutoRest:
 > Values
 ``` yaml
 tag: package-2024-05
-commit: e356a785b4d3da1c32b126015408efed6be85998
+commit: c400ca7a5c0e43802b5060b9f0f9470f1ae09227
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/hdinsight/resource-manager/Microsoft.HDInsight/HDInsightOnAks/readme.md
@@ -71,6 +71,33 @@ default-exclude-tableview-properties: true
 ``` yaml
 identity-correction-for-post: true
 directive:
+  - model-cmdlet:
+    - model-name: ManagedIdentitySpec
+      cmdlet-name: New-AzHdInsightOnAksManagedIdentityObject
+  - model-cmdlet:
+    - model-name: ClusterHotfixUpgradeProperties
+      cmdlet-name: New-AzHdInsightOnAksClusterHotfixUpgradeObject
+  - model-cmdlet:
+    - model-name: ClusterPoolAksPatchVersionUpgradeProperties
+      cmdlet-name: New-AzHdInsightOnAksClusterPoolAksPatchVersionUpgradeObject
+  - model-cmdlet:
+    - model-name: NodeProfile
+      cmdlet-name: New-AzHdInsightOnAksNodeProfileObject
+  - model-cmdlet:
+    - model-name: SecretReference
+      cmdlet-name: New-AzHdInsightOnAksSecretReferenceObject
+  - model-cmdlet:
+    - model-name: HiveCatalogOption
+      cmdlet-name: New-AzHdInsightOnAksTrinoHiveCatalogObject
+  - model-cmdlet:
+    - model-name: ClusterConfigFile
+      cmdlet-name: New-AzHdInsightOnAksClusterConfigFileObject
+  - model-cmdlet:
+    - model-name: ClusterServiceConfig
+      cmdlet-name: New-AzHdInsightOnAksClusterServiceConfigObject
+  - model-cmdlet:
+    - model-name: ClusterServiceConfigsProfile
+      cmdlet-name: New-AzHdInsightOnAksClusterServiceConfigsProfileObject
   - from: swagger-document
     where: $.paths..responses.202
     transform: delete $.headers
@@ -315,4 +342,5 @@ directive:
       variant: [Upgrade|UpgradeExpanded|UpgradeViaIdentity|UpgradeViaIdentityExpanded|UpgradeViaJsonFilePath|UpgradeViaJsonString]
     set:
       verb: Upgrade
+
 ```
