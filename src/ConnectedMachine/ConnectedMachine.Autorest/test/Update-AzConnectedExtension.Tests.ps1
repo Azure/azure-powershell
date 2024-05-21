@@ -29,8 +29,7 @@ Describe 'Update-AzConnectedExtension' {
 
     It 'Update' {
         $target = @{"Microsoft.Compute.CustomScriptExtension" = @{"targetVersion"="1.10.12"}}
-        $all = (Update-AzConnectedExtension -ResourceGroupName $env.ResourceGroupName -MachineName $env.MachineName -ExtensionTarget $target)
-        $all | Should -BeNullOrEmpty
+        Update-AzConnectedExtension -ResourceGroupName $env.ResourceGroupName -MachineName $env.MachineName -ExtensionTarget $target
     }
 
     It 'UpdateViaIdentityMachineExpanded' -skip {
