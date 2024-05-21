@@ -31,6 +31,7 @@
 * Added AdminState parameter to Load Balancer Backend Address
     - `New-AzLoadBalancerBackendAddressConfig`
 * Updated PS SDK to older SDK removing identity field
+* Fixed a bug in `Update-AzNetworkVirtualApplianceConnection`
 
 ## Version 7.5.0
 * Added cmdlet `Convert-AzNetworkWatcherClassicConnectionMonitor` for converting a classic connection monitor to V2 connection monitor.
