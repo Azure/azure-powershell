@@ -261,7 +261,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-APPLICATIONOBJECT <IMicrosoftGraphApplication>: key: application object
+APPLICATIONOBJECT `<IMicrosoftGraphApplication>`: key: application object
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[DeletedDateTime <DateTime?>]`: 
   - `[DisplayName <String>]`: The name displayed in directory
@@ -505,7 +505,7 @@ APPLICATIONOBJECT <IMicrosoftGraphApplication>: key: application object
   - `[TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]`: The tokenLifetimePolicies assigned to this application. Supports $expand.
   - `[Web <IMicrosoftGraphWebApplication>]`: webApplication
 
-INPUTOBJECT <IMicrosoftGraphServicePrincipal>: key: service principal object
+INPUTOBJECT `<IMicrosoftGraphServicePrincipal>`: key: service principal object
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[DeletedDateTime <DateTime?>]`: 
   - `[DisplayName <String>]`: The name displayed in directory

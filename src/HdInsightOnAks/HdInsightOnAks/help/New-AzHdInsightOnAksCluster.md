@@ -1178,7 +1178,7 @@ Accept wildcard characters: False
 
 ### -HiveMetastoreDbConnectionAuthenticationMode
 The authentication mode to connect to your Hive metastore database.
-More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manageview=azuresql#authentication-and-authorization
+More details: https://learn.microsoft.com/azure/azure-sql/database/logins-create-manage#authentication-and-authorization
 
 ```yaml
 Type: System.String
@@ -1543,7 +1543,7 @@ Accept wildcard characters: False
 
 ### -MetastoreSpecDbConnectionAuthenticationMode
 The authentication mode to connect to your Hive metastore database.
-More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manageview=azuresql#authentication-and-authorization
+More details: https://learn.microsoft.com/azure/azure-sql/database/logins-create-manage#authentication-and-authorization
 
 ```yaml
 Type: System.String

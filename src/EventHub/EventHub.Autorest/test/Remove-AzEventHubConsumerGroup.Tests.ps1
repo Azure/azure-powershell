@@ -18,12 +18,12 @@ Describe 'Remove-AzEventHubConsumerGroup' {
     It 'Delete' {
         New-AzEventHubConsumerGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name consumerGroup
         Remove-AzEventHubConsumerGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name consumerGroup
-        { Get-AzEventHubConsumerGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name consumerGroup } | Should -Throw
+        { Get-AzEventHubConsumerGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name consumerGroup -ErrorAction Stop } | Should -Throw
     }
 
     It 'DeleteViaIdentity'  {
         $consumerGroup = New-AzEventHubConsumerGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name consumerGroup
         Remove-AzEventHubConsumerGroup -InputObject $consumerGroup
-        { Get-AzEventHubConsumerGroup -InputObject $consumerGroup } | Should -Throw
+        { Get-AzEventHubConsumerGroup -InputObject $consumerGroup -ErrorAction Stop } | Should -Throw
     }
 }

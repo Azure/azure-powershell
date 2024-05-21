@@ -75,7 +75,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.INwRuleSetVirtualNetworkRules
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INwRuleSetVirtualNetworkRules
 
 ## NOTES
 

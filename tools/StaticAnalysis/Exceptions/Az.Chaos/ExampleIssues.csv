@@ -1,0 +1,2 @@
+"Module","Cmdlet","Example","Line","RuleName","ProblemId","Severity","Description","Extent","Remediation"
+"Az.Chaos","Update-AzChaosExperiment","2","1","Unassigned_Parameter","5013","1","Update-AzChaosExperiment -EnableSystemAssignedIdentity must be assigned with a value.","-EnableSystemAssignedIdentity:$false","Assign value for the parameter -EnableSystemAssignedIdentity."

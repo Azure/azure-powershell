@@ -462,7 +462,8 @@ namespace Microsoft.Azure.Management.RedisCache
 
         }
         /// <summary>
-        /// Create or replace (overwrite/recreate, with potential downtime) an existing Redis cache.
+        /// Create or replace (overwrite/recreate, with potential downtime) an existing
+        /// Redis cache.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

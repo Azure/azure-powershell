@@ -16,21 +16,21 @@ Creates a virtual machine scale set.
 ### DefaultParameter (Default)
 ```
 New-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
- [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-AsJob] [-EdgeZone <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-AsJob] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SimpleParameterSet
 ```
 New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [-UserData <String>]
- [-EnableAutomaticOSUpgrade] [-ImageName <String>] -Credential <PSCredential> [-InstanceCount <Int32>]
- [-VirtualNetworkName <String>] [-SubnetName <String>] [-PublicIpAddressName <String>]
- [-DomainNameLabel <String>] [-SecurityGroupName <String>] [-LoadBalancerName <String>]
- [-BackendPort <Int32[]>] [-Location <String>] [-EdgeZone <String>] [-VmSize <String>]
- [-UpgradePolicyMode <UpgradeMode>] [-AllocationMethod <String>] [-VnetAddressPrefix <String>]
- [-SubnetAddressPrefix <String>] [-FrontendPoolName <String>] [-BackendPoolName <String>]
- [-SystemAssignedIdentity] [-UserAssignedIdentity <String>] [-EnableUltraSSD]
+ [-EnableAutomaticOSUpgrade] [-IfMatch <String>] [-IfNoneMatch <String>] [-ImageName <String>]
+ -Credential <PSCredential> [-InstanceCount <Int32>] [-VirtualNetworkName <String>] [-SubnetName <String>]
+ [-PublicIpAddressName <String>] [-DomainNameLabel <String>] [-SecurityGroupName <String>]
+ [-LoadBalancerName <String>] [-BackendPort <Int32[]>] [-Location <String>] [-EdgeZone <String>]
+ [-VmSize <String>] [-UpgradePolicyMode <UpgradeMode>] [-AllocationMethod <String>]
+ [-VnetAddressPrefix <String>] [-SubnetAddressPrefix <String>] [-FrontendPoolName <String>]
+ [-BackendPoolName <String>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String>] [-EnableUltraSSD]
  [-Zone <System.Collections.Generic.List`1[System.String]>] [-NatBackendPort <Int32[]>]
  [-DataDiskSizeInGb <Int32[]>] [-ProximityPlacementGroupId <String>] [-HostGroupId <String>]
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-ScaleInPolicy <String[]>]
@@ -578,6 +578,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -IfMatch
+used to make a request conditional for the PUT and other non-safe methods. The server will only return the requested resources if the resource matches one of the listed ETag values. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfNoneMatch
+Used to make a request conditional for the GET and HEAD methods. The server will only return the requested resources if none of the listed ETag values match the current entity. Used to make a request conditional for the GET and HEAD methods. The server will only return the requested resources if none of the listed ETag values match the current entity. Set to '*' to allow a new record set to be created, but to prevent updating an existing record set. Other values will result in error from server as they are not supported.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

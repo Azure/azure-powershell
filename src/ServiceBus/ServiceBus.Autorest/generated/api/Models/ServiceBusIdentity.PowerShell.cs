@@ -108,6 +108,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
@@ -115,10 +119,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             if (content.Contains("NamespaceName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).NamespaceName = (string) content.GetValueForProperty("NamespaceName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).NamespaceName, global::System.Convert.ToString);
-            }
-            if (content.Contains("SubscriptionId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
             if (content.Contains("QueueName"))
             {
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             }
             if (content.Contains("ConfigName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).ConfigName = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.MigrationConfigurationName?) content.GetValueForProperty("ConfigName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).ConfigName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.MigrationConfigurationName.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).ConfigName = (string) content.GetValueForProperty("ConfigName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).ConfigName, global::System.Convert.ToString);
             }
             if (content.Contains("SubscriptionName"))
             {
@@ -173,6 +173,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
@@ -180,10 +184,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             if (content.Contains("NamespaceName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).NamespaceName = (string) content.GetValueForProperty("NamespaceName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).NamespaceName, global::System.Convert.ToString);
-            }
-            if (content.Contains("SubscriptionId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
             if (content.Contains("QueueName"))
             {
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             }
             if (content.Contains("ConfigName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).ConfigName = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.MigrationConfigurationName?) content.GetValueForProperty("ConfigName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).ConfigName, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.MigrationConfigurationName.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).ConfigName = (string) content.GetValueForProperty("ConfigName",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentityInternal)this).ConfigName, global::System.Convert.ToString);
             }
             if (content.Contains("SubscriptionName"))
             {

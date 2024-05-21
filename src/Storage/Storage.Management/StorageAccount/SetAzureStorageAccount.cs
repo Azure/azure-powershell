@@ -219,7 +219,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             get; set;
         }
 
-        [CmdletParameterBreakingChangeWithVersion("UpgradeToStorageV2", "12.0.0", "7.0.0", ChangeDescription = "A prompt that needs users' confirmation will be added when upgrading a storage account from StorageV1 or BlobStorage to StorageV2. Suppress it with -Force.")]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Upgrade Storage Account Kind to StorageV2.")]
@@ -584,7 +583,33 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             if (ShouldProcess(this.Name, "Set Storage Account"))
             {
-                if (this.force || this.AccessTier == null || ShouldContinue("Changing the access tier may result in additional charges. See (http://go.microsoft.com/fwlink/?LinkId=786482) to learn more.", ""))
+                string shouldContinueMessage = null;
+                if (this.UpgradeToStorageV2.IsPresent)
+                {
+                    if(!this.force && this.OriginStorageAccountProperties.Kind == Kind.Storage)
+                    {
+                        shouldContinueMessage = "Upgrading a General Purpose v1 storage account to a general-purpose v2 account is free. You may specify the desired account tier during the upgrade process. If an account tier is not specified on upgrade, the default account tier of the upgraded account will be Hot. " + 
+                            "However, changing the storage access tier after the upgrade may result in changes to your bill so it is recommended to specify the new account tier during upgrade. See (http://go.microsoft.com/fwlink/?LinkId=786482) to learn more.";
+                    }
+                    else if (!this.force && this.OriginStorageAccountProperties.Kind == Kind.BlobStorage)
+                    {
+                        shouldContinueMessage = "Upgrading a BlobStorage account to a general-purpose v2 account is free as long as the upgraded account's tier remains unchanged. If an account tier is not specified on upgrade, the default account tier of the upgraded account will be Hot. " +
+                            "If there are account access tier changes as part of the upgrade, there will be charges associated with moving blobs as part of the account access tier change. See (http://go.microsoft.com/fwlink/?LinkId=786482) to learn more.";
+                    }
+                    else if (this.AccessTier != null)
+                    {
+                        shouldContinueMessage = "Changing the access tier may result in additional charges. See (http://go.microsoft.com/fwlink/?LinkId=786482) to learn more.";
+                    }
+                }
+                else
+                {
+                    if (this.AccessTier != null)
+                    {
+                        shouldContinueMessage = "Changing the access tier may result in additional charges. See (http://go.microsoft.com/fwlink/?LinkId=786482) to learn more.";
+                    }
+
+                }
+                if (this.force || string.IsNullOrEmpty(shouldContinueMessage) || ShouldContinue(shouldContinueMessage, ""))
                 {
                     StorageAccountUpdateParameters updateParameters = new StorageAccountUpdateParameters();
                     if (this.SkuName != null)
@@ -636,10 +661,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             updateParameters.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>();
                             updateParameters.Identity.UserAssignedIdentities.Add(this.UserAssignedIdentityId, new UserAssignedIdentity());
 
-                            var accountProperties = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
-                            if (accountProperties.Identity != null && accountProperties.Identity.UserAssignedIdentities != null && accountProperties.Identity.UserAssignedIdentities.Count > 0)
+                            if (this.OriginStorageAccountProperties.Identity != null && this.OriginStorageAccountProperties.Identity.UserAssignedIdentities != null && this.OriginStorageAccountProperties.Identity.UserAssignedIdentities.Count > 0)
                             {
-                                foreach (var uid in accountProperties.Identity.UserAssignedIdentities)
+                                foreach (var uid in this.OriginStorageAccountProperties.Identity.UserAssignedIdentities)
                                 {
                                     if (!uid.Key.Equals(this.UserAssignedIdentityId, StringComparison.OrdinalIgnoreCase))
                                     {
@@ -679,15 +703,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         if (enableAzureActiveDirectoryDomainServicesForFile.Value) // enable AADDS
                         {
                             //if user want to enable AADDS, must first disable AD
-                            var originStorageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
-                            if (originStorageAccount.AzureFilesIdentityBasedAuthentication != null
-                                && originStorageAccount.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.AD)
+                            if (this.OriginStorageAccountProperties.AzureFilesIdentityBasedAuthentication != null
+                                && this.OriginStorageAccountProperties.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.AD)
                             {
                                 throw new System.ArgumentException("The Storage account already enabled ActiveDirectoryDomainServicesForFile, please disable it by run this cmdlets with \"-EnableActiveDirectoryDomainServicesForFile $false\" before enable AzureActiveDirectoryDomainServicesForFile.");
                             }
                             //if user want to enable AADDS, must first disable AADKERB
-                            if (originStorageAccount.AzureFilesIdentityBasedAuthentication != null
-                                && originStorageAccount.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.Aadkerb)
+                            if (this.OriginStorageAccountProperties.AzureFilesIdentityBasedAuthentication != null
+                                && this.OriginStorageAccountProperties.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.Aadkerb)
                             {
                                 throw new System.ArgumentException("The Storage account already enabled AzureActiveDirectoryKerberosForFile, please disable it by run this cmdlets with \"-EnableAzureActiveDirectoryKerberosForFile $false\" before enable AzureActiveDirectoryDomainServicesForFile.");
                             }
@@ -697,16 +720,15 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         else //Disable AADDS
                         {
                             // Only disable AADDS; else keep unchanged
-                            var originStorageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
-                            if (originStorageAccount.AzureFilesIdentityBasedAuthentication == null
-                                || originStorageAccount.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.Aadds)
+                            if (this.OriginStorageAccountProperties.AzureFilesIdentityBasedAuthentication == null
+                                || this.OriginStorageAccountProperties.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.Aadds)
                             {
                                 updateParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
                                 updateParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.None;
                             }
                             else
                             {
-                                updateParameters.AzureFilesIdentityBasedAuthentication = originStorageAccount.AzureFilesIdentityBasedAuthentication;
+                                updateParameters.AzureFilesIdentityBasedAuthentication = this.OriginStorageAccountProperties.AzureFilesIdentityBasedAuthentication;
                             }
                         }
                     }
@@ -727,15 +749,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             }
 
                             //if user want to enable AD, must first disable AADDS
-                            var originStorageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
-                            if (originStorageAccount.AzureFilesIdentityBasedAuthentication != null
-                                && originStorageAccount.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.Aadds)
+                            if (this.OriginStorageAccountProperties.AzureFilesIdentityBasedAuthentication != null
+                                && this.OriginStorageAccountProperties.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.Aadds)
                             {
                                 throw new System.ArgumentException("The Storage account already enabled AzureActiveDirectoryDomainServicesForFile, please disable it by run this cmdlets with \"-EnableAzureActiveDirectoryDomainServicesForFile $false\" before enable ActiveDirectoryDomainServicesForFile.");
                             }
                             //if user want to enable AD, must first disable AADKERB
-                            if (originStorageAccount.AzureFilesIdentityBasedAuthentication != null
-                                && originStorageAccount.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.Aadkerb)
+                            if (this.OriginStorageAccountProperties.AzureFilesIdentityBasedAuthentication != null
+                                && this.OriginStorageAccountProperties.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.Aadkerb)
                             {
                                 throw new System.ArgumentException("The Storage account already enabled AzureActiveDirectoryKerberosForFile, please disable it by run this cmdlets with \"-EnableAzureActiveDirectoryKerberosForFile $false\" before enable ActiveDirectoryDomainServicesForFile.");
                             }
@@ -770,16 +791,15 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             }
 
                             // Only disable AD; else keep unchanged
-                            var originStorageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
-                            if (originStorageAccount.AzureFilesIdentityBasedAuthentication == null
-                                || originStorageAccount.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.AD)
+                            if (this.OriginStorageAccountProperties.AzureFilesIdentityBasedAuthentication == null
+                                || this.OriginStorageAccountProperties.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.AD)
                             {
                                 updateParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
                                 updateParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.None;
                             }
                             else
                             {
-                                updateParameters.AzureFilesIdentityBasedAuthentication = originStorageAccount.AzureFilesIdentityBasedAuthentication;
+                                updateParameters.AzureFilesIdentityBasedAuthentication = this.OriginStorageAccountProperties.AzureFilesIdentityBasedAuthentication;
                             }
                         }
                     }
@@ -788,15 +808,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         if (enableAzureActiveDirectoryKerberosForFile.Value) // Enable AADKERB
                         {
                             //if user want to enable AADKERB, must first disable AADDS
-                            var originStorageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
-                            if (originStorageAccount.AzureFilesIdentityBasedAuthentication != null
-                                && originStorageAccount.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.Aadds)
+                            if (this.OriginStorageAccountProperties.AzureFilesIdentityBasedAuthentication != null
+                                && this.OriginStorageAccountProperties.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.Aadds)
                             {
                                 throw new System.ArgumentException("The Storage account already enabled AzureActiveDirectoryDomainServicesForFile, please disable it by run this cmdlets with \"-EnableAzureActiveDirectoryDomainServicesForFile $false\" before enable AzureActiveDirectoryKerberosForFile.");
                             }
                             //if user want to enable AADKERB, must first disable AD
-                            if (originStorageAccount.AzureFilesIdentityBasedAuthentication != null
-                                && originStorageAccount.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.AD)
+                            if (this.OriginStorageAccountProperties.AzureFilesIdentityBasedAuthentication != null
+                                && this.OriginStorageAccountProperties.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.AD)
                             {
                                 throw new System.ArgumentException("The Storage account already enabled ActiveDirectoryDomainServicesForFile, please disable it by run this cmdlets with \"-EnableActiveDirectoryDomainServicesForFile $false\" before enable AzureActiveDirectoryKerberosForFile.");
                             }
@@ -816,16 +835,15 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         else // Disable AADKERB
                         {
                             // Only disable AADKERB; else keep unchanged
-                            var originStorageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
-                            if (originStorageAccount.AzureFilesIdentityBasedAuthentication == null
-                                || originStorageAccount.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.Aadkerb)
+                            if (this.OriginStorageAccountProperties.AzureFilesIdentityBasedAuthentication == null
+                                || this.OriginStorageAccountProperties.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.Aadkerb)
                             {
                                 updateParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
                                 updateParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.None;
                             }
                             else
                             {
-                                updateParameters.AzureFilesIdentityBasedAuthentication = originStorageAccount.AzureFilesIdentityBasedAuthentication;
+                                updateParameters.AzureFilesIdentityBasedAuthentication = this.OriginStorageAccountProperties.AzureFilesIdentityBasedAuthentication;
                             }
                         }
                     }
@@ -904,5 +922,18 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 }
             }
         }
+
+        private StorageModels.StorageAccount OriginStorageAccountProperties
+        {
+            get
+            {
+                if (this.originStorageAccountProperties == null)
+                {
+                    this.originStorageAccountProperties = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
+                }
+                return this.originStorageAccountProperties;
+            }
+        }
+        private StorageModels.StorageAccount originStorageAccountProperties = null;
     }
 }

@@ -25,7 +25,7 @@ Get-AzServiceBusGeoDRConfiguration -ResourceGroupName myResourceGroup -Namespace
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IArmDisasterRecovery
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -34,7 +34,21 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <MigrationConfigurationName?>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [QueueName <String>]: The queue name.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [RuleName <String>]: The rule name.
+  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionName <String>]: The subscription name.
+  [TopicName <String>]: The topic name.
+
+NAMESPACEINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
+  [Alias <String>]: The Disaster Recovery configuration name
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [ConfigName <String>]: The configuration name. Should always be "$default".
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -48,10 +62,11 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusgeodrconfiguration
 #>
 function Get-AzServiceBusGeoDRConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IArmDisasterRecovery])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityNamespace', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
     # The Disaster Recovery configuration name
@@ -84,8 +99,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityNamespace', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity]
+    # Identity Parameter
+    ${NamespaceInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -164,9 +184,10 @@ begin {
         $mapping = @{
             Get = 'Az.ServiceBus.private\Get-AzServiceBusGeoDRConfiguration_Get';
             GetViaIdentity = 'Az.ServiceBus.private\Get-AzServiceBusGeoDRConfiguration_GetViaIdentity';
+            GetViaIdentityNamespace = 'Az.ServiceBus.private\Get-AzServiceBusGeoDRConfiguration_GetViaIdentityNamespace';
             List = 'Az.ServiceBus.private\Get-AzServiceBusGeoDRConfiguration_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {

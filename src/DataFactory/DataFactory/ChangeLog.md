@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.18.4
 * Updated ADF encryption client SDK version to 5.29.8499.2
 
 ## Version 1.18.3

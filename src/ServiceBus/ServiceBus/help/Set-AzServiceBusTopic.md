@@ -17,7 +17,7 @@ Updates a ServiceBus Topic
 Set-AzServiceBusTopic -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AutoDeleteOnIdle <TimeSpan>] [-DefaultMessageTimeToLive <TimeSpan>]
  [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperations] [-EnableExpress]
- [-SupportOrdering] [-MaxSizeInMegabytes <Int32>] [-MaxMessageSizeInKilobytes <Int64>] [-Status <EntityStatus>]
+ [-SupportOrdering] [-MaxSizeInMegabytes <Int32>] [-MaxMessageSizeInKilobytes <Int64>] [-Status <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -27,7 +27,7 @@ Set-AzServiceBusTopic -Name <String> -NamespaceName <String> -ResourceGroupName 
 Set-AzServiceBusTopic -InputObject <IServiceBusIdentity> [-AutoDeleteOnIdle <TimeSpan>]
  [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
  [-EnableBatchedOperations] [-EnableExpress] [-SupportOrdering] [-MaxSizeInMegabytes <Int32>]
- [-MaxMessageSizeInKilobytes <Int64>] [-Status <EntityStatus>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-MaxMessageSizeInKilobytes <Int64>] [-Status <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -328,11 +328,10 @@ Accept wildcard characters: False
 ```
 
 ### -Status
-Maximum size (in KB) of the message payload that can be accepted by the topic.
-This property is only used in Premium today and default is 1024.
+Enumerates the possible values for the status of a messaging entity.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.EntityStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -413,7 +412,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbTopic
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopic
 
 ## NOTES
 

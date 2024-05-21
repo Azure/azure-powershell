@@ -1,0 +1,125 @@
+{
+  "resourceType": "targets/capabilities",
+  "apiVersion": "2024-01-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.chaos"
+  },
+  "commands": [
+    {
+      "name": "Get-AzChaosCapability",
+      "description": "Get a Capability resource that extends a Target resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}/capabilities/{capabilityName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.chaos/get-azchaoscapability"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ParentProviderNamespace <String>",
+              "-ParentResourceName <String>",
+              "-ParentResourceType <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-TargetName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a Capability resource that extends a Target resource.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.capabilityName]"
+            },
+            {
+              "name": "-ParentProviderNamespace",
+              "value": "[Path.parentProviderNamespace]"
+            },
+            {
+              "name": "-ParentResourceName",
+              "value": "[Path.parentResourceName]"
+            },
+            {
+              "name": "-ParentResourceType",
+              "value": "[Path.parentResourceType]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-TargetName",
+              "value": "[Path.targetName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzChaosCapability",
+      "description": "Delete a Capability that extends a Target resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}/capabilities/{capabilityName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.chaos/remove-azchaoscapability"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ParentProviderNamespace <String>",
+              "-ParentResourceName <String>",
+              "-ParentResourceType <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]",
+              "-TargetName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a Capability that extends a Target resource.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.capabilityName]"
+            },
+            {
+              "name": "-ParentProviderNamespace",
+              "value": "[Path.parentProviderNamespace]"
+            },
+            {
+              "name": "-ParentResourceName",
+              "value": "[Path.parentResourceName]"
+            },
+            {
+              "name": "-ParentResourceType",
+              "value": "[Path.parentResourceType]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-TargetName",
+              "value": "[Path.targetName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

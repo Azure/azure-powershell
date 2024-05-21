@@ -78,7 +78,10 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="egressNatRules">List of egress NatRules.
         /// </param>
-        public VpnSiteLinkConnectionProperties(SubResource vpnSiteLink = default(SubResource), int? routingWeight = default(int?), string vpnLinkConnectionMode = default(string), string connectionStatus = default(string), string vpnConnectionProtocolType = default(string), long? ingressBytesTransferred = default(long?), long? egressBytesTransferred = default(long?), int? connectionBandwidth = default(int?), string sharedKey = default(string), bool? enableBgp = default(bool?), System.Collections.Generic.IList<GatewayCustomBgpIpAddressIpConfiguration> vpnGatewayCustomBgpAddresses = default(System.Collections.Generic.IList<GatewayCustomBgpIpAddressIpConfiguration>), bool? usePolicyBasedTrafficSelectors = default(bool?), System.Collections.Generic.IList<IpsecPolicy> ipsecPolicies = default(System.Collections.Generic.IList<IpsecPolicy>), bool? enableRateLimiting = default(bool?), bool? useLocalAzureIPAddress = default(bool?), string provisioningState = default(string), System.Collections.Generic.IList<SubResource> ingressNatRules = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> egressNatRules = default(System.Collections.Generic.IList<SubResource>))
+
+        /// <param name="dpdTimeoutSeconds">Dead Peer Detection timeout in seconds for VpnLink connection.
+        /// </param>
+        public VpnSiteLinkConnectionProperties(SubResource vpnSiteLink = default(SubResource), int? routingWeight = default(int?), string vpnLinkConnectionMode = default(string), string connectionStatus = default(string), string vpnConnectionProtocolType = default(string), long? ingressBytesTransferred = default(long?), long? egressBytesTransferred = default(long?), int? connectionBandwidth = default(int?), string sharedKey = default(string), bool? enableBgp = default(bool?), System.Collections.Generic.IList<GatewayCustomBgpIpAddressIpConfiguration> vpnGatewayCustomBgpAddresses = default(System.Collections.Generic.IList<GatewayCustomBgpIpAddressIpConfiguration>), bool? usePolicyBasedTrafficSelectors = default(bool?), System.Collections.Generic.IList<IpsecPolicy> ipsecPolicies = default(System.Collections.Generic.IList<IpsecPolicy>), bool? enableRateLimiting = default(bool?), bool? useLocalAzureIPAddress = default(bool?), string provisioningState = default(string), System.Collections.Generic.IList<SubResource> ingressNatRules = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> egressNatRules = default(System.Collections.Generic.IList<SubResource>), int? dpdTimeoutSeconds = default(int?))
 
         {
             this.VpnSiteLink = vpnSiteLink;
@@ -99,6 +102,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.ProvisioningState = provisioningState;
             this.IngressNatRules = ingressNatRules;
             this.EgressNatRules = egressNatRules;
+            this.DpdTimeoutSeconds = dpdTimeoutSeconds;
             CustomInit();
         }
 
@@ -215,5 +219,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "egressNatRules")]
         public System.Collections.Generic.IList<SubResource> EgressNatRules {get; set; }
+
+        /// <summary>
+        /// Gets or sets dead Peer Detection timeout in seconds for VpnLink connection.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "dpdTimeoutSeconds")]
+        public int? DpdTimeoutSeconds {get; set; }
     }
 }

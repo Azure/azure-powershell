@@ -62,7 +62,7 @@ namespace Commands.Aks.Test.ScenarioTests
                     }
                 ).WithMockContextAction(mockContext =>
                 {
-                    if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Playback)
+                    if (HttpMockServer.Mode == HttpRecorderMode.Playback)
                     {
                         AzureSession.Instance.DataStore = new MemoryDataStore();
                         var home = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
@@ -72,7 +72,7 @@ namespace Commands.Aks.Test.ScenarioTests
                         var jsonOutput = @"{""" + subscription + @""":{ ""service_principal"":""foo"",""client_secret"":""bar""}}";
                         AzureSession.Instance.DataStore.WriteFile(Path.Combine(home, ".azure", "acsServicePrincipal.json"), jsonOutput);
                     }
-                    else if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Record)
+                    else if (HttpMockServer.Mode == HttpRecorderMode.Record)
                     {
                         AzureSession.Instance.DataStore = new MemoryDataStore();
                         var home = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);

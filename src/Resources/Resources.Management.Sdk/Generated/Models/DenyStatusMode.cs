@@ -40,6 +40,6 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// <summary>
         /// No denyAssignments have been applied.
         /// </summary>
-        public const string None = "None";
+        public const string None = "none";
     }
 }

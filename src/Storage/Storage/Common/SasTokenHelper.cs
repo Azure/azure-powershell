@@ -18,8 +18,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     using Microsoft.Azure.Storage;
     using Microsoft.Azure.Storage.Blob;
     using Microsoft.Azure.Storage.File;
-    using Microsoft.Azure.Storage.Queue;
-    using Microsoft.Azure.Storage.Queue.Protocol;
     using XTable = Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Collections.Generic;
@@ -37,6 +35,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
     internal class SasTokenHelper
     {
+        private const string HttpsOrHttp = "httpsorhttp";
+
         /// <summary>
         /// Validate the container access policy
         /// </summary>
@@ -111,38 +111,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             if (shouldNoExpiryTime && sharedAccessPolicy.SharedAccessExpiryTime.HasValue)
             {
                 throw new InvalidOperationException(Resources.SignedExpiryTimeMustBeOmitted);
-            }
-
-            return !sharedAccessPolicy.SharedAccessExpiryTime.HasValue;
-        }
-
-        /// <summary>
-        /// Validate the queue access policy
-        /// </summary>
-        /// <param name="channel">IStorageQueueManagement channel object</param>
-        /// <param name="queueName">Queue name</param>
-        /// <param name="policy">SharedAccessBlobPolicy object</param>
-        /// <param name="policyIdentifier">The policy identifier which need to be checked.</param>
-        public static bool ValidateQueueAccessPolicy(IStorageQueueManagement channel, string queueName,
-            SharedAccessQueuePolicy policy, string policyIdentifier)
-        {
-            if (string.IsNullOrEmpty(policyIdentifier)) return true;
-            CloudQueue queue = channel.GetQueueReference(queueName);
-            QueueRequestOptions options = null;
-            OperationContext context = null;
-            QueuePermissions permission = channel.GetPermissions(queue, options, context);
-
-            SharedAccessQueuePolicy sharedAccessPolicy =
-                GetExistingPolicy<SharedAccessQueuePolicy>(permission.SharedAccessPolicies, policyIdentifier);
-
-            if (policy.Permissions != SharedAccessQueuePermissions.None)
-            {
-                throw new ArgumentException(Resources.SignedPermissionsMustBeOmitted);
-            }
-
-            if (policy.SharedAccessExpiryTime.HasValue && sharedAccessPolicy.SharedAccessExpiryTime.HasValue)
-            {
-                throw new ArgumentException(Resources.SignedExpiryTimeMustBeOmitted);
             }
 
             return !sharedAccessPolicy.SharedAccessExpiryTime.HasValue;
@@ -354,7 +322,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             DateTime? startTime = null,
             DateTime? expiryTime = null,
             string iPAddressOrRange = null,
-            SharedAccessProtocol? protocol = null)
+            string protocol = null)
         {
             QueueSasBuilder sasBuilder = new QueueSasBuilder
             {
@@ -441,7 +409,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
             if (protocol != null)
             {
-                if (protocol.Value == SharedAccessProtocol.HttpsOrHttp)
+                if (protocol.ToLower() == HttpsOrHttp)
                 {
                     sasBuilder.Protocol = SasProtocol.HttpsAndHttp;
                 }

@@ -22,9 +22,10 @@ Set-AzSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <St
  [-BackupStorageRedundancy <String>] [-SecondaryType <String>] [-MaintenanceConfigurationId <String>]
  [-AssignIdentity] [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>]
  [-KeysToRemove <String[]>] [-FederatedClientId <Guid>] [-PreferredEnclaveType <String>]
- [-EncryptionProtectorAutoRotation] [-UseFreeLimit] [-FreeLimitExhaustionBehavior <String>]
- [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-EncryptionProtectorAutoRotation] [-UseFreeLimit] [-FreeLimitExhaustionBehavior <String>] [-ManualCutover]
+ [-PerformCutover] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### VcoreBasedDatabase
@@ -36,9 +37,10 @@ Set-AzSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <St
  [-BackupStorageRedundancy <String>] [-SecondaryType <String>] [-MaintenanceConfigurationId <String>]
  [-AssignIdentity] [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>]
  [-KeysToRemove <String[]>] [-FederatedClientId <Guid>] [-PreferredEnclaveType <String>]
- [-EncryptionProtectorAutoRotation] [-UseFreeLimit] [-FreeLimitExhaustionBehavior <String>]
- [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-EncryptionProtectorAutoRotation] [-UseFreeLimit] [-FreeLimitExhaustionBehavior <String>] [-ManualCutover]
+ [-PerformCutover] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Rename
@@ -47,9 +49,10 @@ Set-AzSqlDatabase [-DatabaseName] <String> -NewName <String> [-AsJob] [-BackupSt
  [-SecondaryType <String>] [-MaintenanceConfigurationId <String>] [-AssignIdentity]
  [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>]
  [-KeysToRemove <String[]>] [-FederatedClientId <Guid>] [-PreferredEnclaveType <String>]
- [-EncryptionProtectorAutoRotation] [-UseFreeLimit] [-FreeLimitExhaustionBehavior <String>]
- [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-EncryptionProtectorAutoRotation] [-UseFreeLimit] [-FreeLimitExhaustionBehavior <String>] [-ManualCutover]
+ [-PerformCutover] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -512,6 +515,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ManualCutover
+Use Manual Cutover for migrating to Hyperscale.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MaxSizeBytes
 The maximum size of the Azure SQL Database in bytes.
 
@@ -552,6 +570,21 @@ Parameter Sets: Rename
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PerformCutover
+Trigger Cutover for migrating to Hyperscale.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -21,7 +21,7 @@ Updates an EventHub Entity
 
 function Set-AzEventHub{
 
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEventHub])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHub])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of EventHub Entity.")]
@@ -66,9 +66,8 @@ function Set-AzEventHub{
 
         [Parameter(HelpMessage = "Enumerates the possible values for the encoding format of capture description. Note: 'AvroDeflate' will be deprecated in New API Version")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.EncodingCaptureDescription]
+        [System.String]
         #Enumerates the possible values for the encoding format of capture description. Note: 'AvroDeflate' will be deprecated in New API Version
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChangeAttribute("Encoding","12.0.0", "5.0.0","2024-05-21" )]
         ${Encoding},
 
         [Parameter(HelpMessage = "The time window allows you to set the frequency with which the capture to Azure Blobs will happen, value should between 60 to 900 seconds")]
@@ -102,9 +101,8 @@ function Set-AzEventHub{
 
         [Parameter(HelpMessage = "Enumerates the possible values for the status of the Event Hub.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.EntityStatus]
+        [System.String]
         # Enumerates the possible values for the status of the Event Hub.
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChangeAttribute("Status","12.0.0", "5.0.0","2024-05-21" )]
         ${Status},
 
         [Parameter(HelpMessage = "Name for capture destination")]
@@ -114,8 +112,7 @@ function Set-AzEventHub{
 
         [Parameter(HelpMessage = "Type of managed service identity.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChangeAttribute("IdentityType","12.0.0", "5.0.0","2024-05-21" )]
+        [System.String]
         ${IdentityType},
 
         [Parameter(HelpMessage = "Properties for User Assigned Identities")]

@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using Microsoft.ApplicationInsights.Channel;
 using Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Services;
 using Microsoft.WindowsAzure.Commands.Common.Sanitizer;
+using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
 {
@@ -46,25 +45,30 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
             return propertyPath;
         }
 
-        protected bool ExceedsMaxDepth(SanitizerProperty property, SanitizerTelemetry telemetry)
+        protected bool ShouldProcessProperty(SanitizerProperty property, SanitizerTelemetry telemetry)
         {
             if (property == null)
                 return false;
 
             var currentProperty = property;
+            var parentProperty = currentProperty.ParentProperty;
 
             for (var i = 0; i < MaxDepth; i++)
             {
-                if (currentProperty.ParentProperty == null)
+                if (parentProperty == null)
+                    return true;
+
+                if (ReferenceEquals(property, parentProperty))
                     return false;
 
-                currentProperty = currentProperty.ParentProperty;
+                currentProperty = parentProperty;
+                parentProperty = currentProperty.ParentProperty;
             }
 
             telemetry.HasErrorInDetection = true;
-            telemetry.DetectionError = new Exception($"Potential stack overflow exception may occurr on property: {property.PropertyName}!");
+            telemetry.DetectionError = new Exception($"Potential stack overflow exception may occurr on property: '{property.PropertyName}' declared in the object '{property.ValueSupplier.DeclaringType.FullName}' with type '{property.PropertyType.FullName}'");
 
-            return true;
+            return false;
         }
 
         internal abstract SanitizerProviderType ProviderType { get; }

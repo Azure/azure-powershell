@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// <summary>
         /// This resource is managed by the deployment stack.
         /// </summary>
-        public const string Managed = "Managed";
+        public const string Managed = "managed";
         /// <summary>
         /// Unable to remove the deny assignment on resource.
         /// </summary>
@@ -26,9 +26,5 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// next stack deployment, or can be deleted manually.
         /// </summary>
         public const string DeleteFailed = "deleteFailed";
-        /// <summary>
-        /// No denyAssignments have been applied.
-        /// </summary>
-        public const string None = "None";
     }
 }

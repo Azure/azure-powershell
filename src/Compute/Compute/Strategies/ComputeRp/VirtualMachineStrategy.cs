@@ -78,7 +78,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string sharedGalleryImageId = null,
             bool? enableVtpm = null,
             bool? enableSecureBoot = null,
-            string securityType = null
+            string securityType = null,
+            string ifMatch = null,
+            string ifNoneMatch = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -169,9 +171,14 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     {
                         vm.SetAuxAuthHeader(auxAuthHeader);
                     }
+                    if(ifMatch != null || ifNoneMatch != null)
+                    {
+                        vm.SetIfMatchIfNoneMatch(ifMatch, ifNoneMatch);
+                    }
                     return vm;
                 });
 
+        // this function does not get used, as DiskFile parameter set is not supported.
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,

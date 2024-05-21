@@ -190,5 +190,22 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+            if (this.BackendIPConfiguration != null)
+            {
+                this.BackendIPConfiguration.Validate();
+            }
+
+
+
+        }
     }
 }

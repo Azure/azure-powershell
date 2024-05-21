@@ -1,0 +1,181 @@
+{
+  "resourceType": "domains/eventSubscriptions",
+  "apiVersion": "2023-06-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.eventgrid"
+  },
+  "commands": [
+    {
+      "name": "Get-AzEventGridDomainEventSubscriptionDeliveryAttribute",
+      "description": "Get all delivery attributes for an event subscription for domain.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgriddomaineventsubscriptiondeliveryattribute"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DomainName <String>",
+              "-EventSubscriptionName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get all delivery attributes for an event subscription for domain.",
+          "parameters": [
+            {
+              "name": "-DomainName",
+              "value": "[Path.domainName]"
+            },
+            {
+              "name": "-EventSubscriptionName",
+              "value": "[Path.eventSubscriptionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzEventGridDomainEventSubscriptionFullUrl",
+      "description": "Get the full endpoint URL for an event subscription for domain.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/eventSubscriptions/{eventSubscriptionName}/getFullUrl",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgriddomaineventsubscriptionfullurl"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DomainName <String>",
+              "-EventSubscriptionName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the full endpoint URL for an event subscription for domain.",
+          "parameters": [
+            {
+              "name": "-DomainName",
+              "value": "[Path.domainName]"
+            },
+            {
+              "name": "-EventSubscriptionName",
+              "value": "[Path.eventSubscriptionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzEventGridDomainEventSubscription",
+      "description": "Get properties of an event subscription of a domain.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/eventSubscriptions/{eventSubscriptionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgriddomaineventsubscription"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DomainName <String>",
+              "-EventSubscriptionName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get properties of an event subscription of a domain.",
+          "parameters": [
+            {
+              "name": "-DomainName",
+              "value": "[Path.domainName]"
+            },
+            {
+              "name": "-EventSubscriptionName",
+              "value": "[Path.eventSubscriptionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzEventGridDomainEventSubscription",
+      "description": "Delete an existing event subscription for a domain.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/eventSubscriptions/{eventSubscriptionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/remove-azeventgriddomaineventsubscription"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DomainName <String>",
+              "-EventSubscriptionName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete an existing event subscription for a domain.",
+          "parameters": [
+            {
+              "name": "-DomainName",
+              "value": "[Path.domainName]"
+            },
+            {
+              "name": "-EventSubscriptionName",
+              "value": "[Path.eventSubscriptionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

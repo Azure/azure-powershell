@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Cmdlets;
     using System;
 
-    /// <summary>The operation to Update a gallery image.</summary>
+    /// <summary>The operation to update a gallery image.</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/galleryImages/{galleryImageName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzStackHCIVMGalleryImage_UpdateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Description(@"The operation to Update a gallery image.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Description(@"The operation to update a gallery image.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/galleryImages/{galleryImageName}", ApiVersion = "2024-01-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.NotSuggestDefaultParameterSet]

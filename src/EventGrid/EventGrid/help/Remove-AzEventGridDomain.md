@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
+external help file: Az.EventGrid-help.xml
 Module Name: Az.EventGrid
 online version: https://learn.microsoft.com/powershell/module/az.eventgrid/remove-azeventgriddomain
 schema: 2.0.0
@@ -8,56 +8,60 @@ schema: 2.0.0
 # Remove-AzEventGridDomain
 
 ## SYNOPSIS
-Removes an Azure Event Grid Domain.
+Delete existing domain.
 
 ## SYNTAX
 
-### DomainNameParameterSet (Default)
+### Delete (Default)
 ```
-Remove-AzEventGridDomain [-ResourceGroupName] <String> [-Name] <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResourceIdEventSubscriptionParameterSet
-```
-Remove-AzEventGridDomain [-ResourceId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzEventGridDomain -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### DomainInputObjectParameterSet
+### DeleteViaIdentity
 ```
-Remove-AzEventGridDomain [-InputObject] <PSDomain> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzEventGridDomain -InputObject <IEventGridIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Removes an Azure Event Grid Domain.
+Delete existing domain.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Delete existing domain.
 ```powershell
-Remove-AzEventGridDomain -ResourceGroupName MyResourceGroupName -Name Domain1
+Remove-AzEventGridDomain -Name azps-domain -ResourceGroupName azps_test_group_eventgrid
 ```
 
-Removes the Event Grid Domain \`Domain1\` in resource group \`MyResourceGroupName\`.
-
-### Example 2
-```powershell
-Get-AzResource -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/Domains/Domain1" | Remove-AzEventGridDomain
-```
-
-Removes the Event Grid Domain \`Domain1\` in resource group \`MyResourceGroupName\`.
+Delete existing domain.
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -67,37 +71,52 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-EventGrid Domain object.
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.Commands.EventGrid.Models.PSDomain
-Parameter Sets: DomainInputObjectParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -Name
-EventGrid domain name.
+Name of the domain.
 
 ```yaml
 Type: System.String
-Parameter Sets: DomainNameParameterSet
+Parameter Sets: Delete
 Aliases: DomainName
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{Fill PassThru Description}}
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -112,32 +131,33 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: DomainNameParameterSet
+Parameter Sets: Delete
 Aliases: ResourceGroup
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Resource Identifier representing the Event Grid Domain.
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceIdEventSubscriptionParameterSet
+Parameter Sets: Delete
 Aliases:
 
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -177,9 +197,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.EventGrid.Models.PSDomain
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
 
 ## OUTPUTS
 

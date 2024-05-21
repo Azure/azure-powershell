@@ -19,6 +19,13 @@ Remove-AzServiceBusPrivateEndpointConnection -Name <String> -NamespaceName <Stri
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityNamespace
+```
+Remove-AzServiceBusPrivateEndpointConnection -Name <String> -NamespaceInputObject <IServiceBusIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzServiceBusPrivateEndpointConnection -InputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>]
@@ -72,7 +79,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
@@ -91,13 +97,28 @@ The PrivateEndpointConnection name
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityNamespace
 Aliases: PrivateEndpointConnectionName
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NamespaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: DeleteViaIdentityNamespace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -222,3 +243,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[https://msdn.microsoft.com/en-us/library/azure/mt639389.aspx](https://msdn.microsoft.com/en-us/library/azure/mt639389.aspx)
