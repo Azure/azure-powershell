@@ -25,6 +25,7 @@ using System.Management.Automation;
 using System.Text;
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Azure.Management.FrontDoor.Models;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
@@ -114,13 +115,13 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         public string Sku { get; set; }
 
         /// Defines rules that scrub sensitive fields in the Web Application Firewall
-        [Parameter(Mandatory = true, HelpMessage = "Defines rules that scrub sensitive fields in the Web Application Firewall.")]
+        [Parameter(Mandatory = false, HelpMessage = "Defines rules that scrub sensitive fields in the Web Application Firewall.")]
         public PSFrontDoorWafLogScrubbingSetting LogScrubbingSetting { get; set; }
 
         /// Defines the JavaScript challenge cookie validity lifetime in minutes. This
         /// setting is only applicable to Premium_AzureFrontDoor. Value must be an
         /// integer between 5 and 1440 with the default value being 30.
-        [Parameter(Mandatory = true, HelpMessage = "setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.")]
+        [Parameter(Mandatory = false, HelpMessage = "setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.")]
         [ValidateRange(5,1440)]
         public int JavascriptChallengeExpirationInMinutes { get; set; }
 
@@ -137,7 +138,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
             }
 
             var scrubbingRule = new List<Management.FrontDoor.Models.WebApplicationFirewallScrubbingRules>();
-            if (LogScrubbingSetting.ScrubbingRules.Count() > 0)
+            if (LogScrubbingSetting != null && LogScrubbingSetting.ScrubbingRules != null && LogScrubbingSetting.ScrubbingRules.Count() > 0)
             {
                 foreach (var item in LogScrubbingSetting.ScrubbingRules)
                 {
@@ -168,15 +169,22 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                     CustomBlockResponseStatusCode = this.IsParameterBound(c => c.CustomBlockResponseStatusCode) ? CustomBlockResponseStatusCode : (int?)null,
                     RedirectUrl = RedirectUrl,
                     RequestBodyCheck = this.IsParameterBound(c => c.RequestBodyCheck) ? RequestBodyCheck : PSEnabledState.Enabled.ToString(),
-                    JavascriptChallengeExpirationInMinutes = JavascriptChallengeExpirationInMinutes,
-                    LogScrubbing = new Management.FrontDoor.Models.PolicySettingsLogScrubbing
-                    {
-                        ScrubbingRules = scrubbingRule,
-                        State = LogScrubbingSetting.State,
-                    }
                 },
                 Sku = this.IsParameterBound(c => c.Sku) ? new Management.FrontDoor.Models.Sku(Sku) : null,
             };
+
+            if (JavascriptChallengeExpirationInMinutes >=5 && JavascriptChallengeExpirationInMinutes <= 1440)
+            {
+                updateParameters.PolicySettings.JavascriptChallengeExpirationInMinutes = JavascriptChallengeExpirationInMinutes;
+            }
+
+            if (LogScrubbingSetting != null)
+            {
+                updateParameters.PolicySettings.LogScrubbing = new PolicySettingsLogScrubbing();
+                updateParameters.PolicySettings.LogScrubbing.ScrubbingRules = scrubbingRule;
+                updateParameters.PolicySettings.LogScrubbing.State = LogScrubbingSetting.State;
+            }
+
             if (ShouldProcess(Resources.WebApplicationFirewallPolicyTarget, string.Format(Resources.CreateWebApplicationFirewallPolicy, Name)))
             {
                 try

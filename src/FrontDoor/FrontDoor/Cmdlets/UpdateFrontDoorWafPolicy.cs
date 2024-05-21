@@ -114,13 +114,13 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         public string RequestBodyCheck { get; set; }
 
         /// Defines rules that scrub sensitive fields in the Web Application Firewall
-        [Parameter(Mandatory = true, HelpMessage = "Defines rules that scrub sensitive fields in the Web Application Firewall.")]
+        [Parameter(Mandatory = false, HelpMessage = "Defines rules that scrub sensitive fields in the Web Application Firewall.")]
         public PSFrontDoorWafLogScrubbingSetting LogScrubbingSetting { get; set; }
 
         /// Defines the JavaScript challenge cookie validity lifetime in minutes. This
         /// setting is only applicable to Premium_AzureFrontDoor. Value must be an
         /// integer between 5 and 1440 with the default value being 30.
-        [Parameter(Mandatory = true, HelpMessage = "setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.")]
+        [Parameter(Mandatory = false, HelpMessage = "setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.")]
         [ValidateRange(5, 1440)]
         public int JavascriptChallengeExpirationInMinutes { get; set; }
 

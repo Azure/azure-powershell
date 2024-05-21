@@ -6,16 +6,16 @@
       "RequestMethod": "POST",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "11114d00-d5e4-46ab-a462-6a067c48270d"
+          "3441d50a-9b6a-434c-9c50-e910c29589aa"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2924.17105",
+          "FxVersion/6.0.3024.21525",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorClient/6.0.2"
+          "Microsoft.Azure.Management.FrontDoor.FrontDoor/6.0.2"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -33,7 +33,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/CliDevReservedGroup/providers/Microsoft.Network/frontdooroperationresults/9752e214-fb3b-4ee6-828f-f52f29bba70e/frontdoorresults/frontdoorclitest?api-version=2021-06-01"
+          "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/CliDevReservedGroup/providers/Microsoft.Network/frontdooroperationresults/a8a52e60-c7f5-4b59-bb04-c390a77e287e/frontdoorresults/frontdoorclitest?api-version=2021-06-01"
         ],
         "Retry-After": [
           "120"
@@ -42,22 +42,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "99096c86-b3b0-4bf2-aa1e-bd7fbe466117"
+          "8532eea2-c120-471c-885d-2249c8b06656"
         ],
         "x-ms-client-request-id": [
-          "11114d00-d5e4-46ab-a462-6a067c48270d"
+          "3441d50a-9b6a-434c-9c50-e910c29589aa"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/CliDevReservedGroup/providers/Microsoft.Network/frontdooroperationresults/9752e214-fb3b-4ee6-828f-f52f29bba70e?api-version=2021-06-01&t=638505679665770161&c=MIIHKjCCBhKgAwIBAgITHgR0uRvpB9QGBrVnGgAABHS5GzANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNTAxMjEzMzA1WhcNMjUwNDI2MjEzMzA1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMWV9ZucXWP0iSfMxP4MXfBW3crpNAMbJ5-E8kXN0t7w4LRC6nOOI8I0odywcD_X0YmkL4mEhwbuH2cxIwRpYzzUOA34IcpF0oGND62KpmWw38aE9cy5MnJqdSq6VVel1YvEUoOzwkhZ4dVaBF-6Iw3Ag8Fm4H_08p6egnzXVTXdRGmUKX674Pp2kD5WHczMMupT_U-URdNnAkFIsOnYVdEDtNKg3x2oA8QtP4hd3y9iI0lIfiDhLsK3yLMNA28ctns_qsfxfxoE_pG7H6CipxysXebKe1VEd0OeZF2LJb9JY1KS9_oj5FbKN0VqDyz8jftZhMbgiVURaGssRxIbnxkCAwEAAaOCBBcwggQTMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBQBo4YYCssK_vQSnguwrNmfpJFeSDAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMEEGA1UdIAQ6MDgwDAYKKwYBBAGCN3sBATAMBgorBgEEAYI3ewIBMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAIzPQ234mECpNLGUjEc5gZV-w0T1Pl8Wtfv-TcKZNc002ZG5ODdy9juSL1d8704XNQVjBwLhXUsoXOc8pho30kdofBC59bM-UIHww8UvPfyYIefXNImHL94_inzOA7LSbnC6u4VRkzHpXeD2FmiTSikLUuLrRyDIAyH-BP_LVFIPjHtzb-4wP3Hg9n-xgHmfct6G7531aOPEIPWIe4OClRpiK7l-njX8JyoplWl7eEfnXKqkhVFiWKPEDcQdix49UAeQxykrMTjYaK23EOv0otYWm7bHbkBU084VSYlPbceAxcWbqwzuaQOl1CzYJQSEqFsAd0ATKyCuLw1PvPf1EW0&s=aXvpMnx8NLvZ216VFGA4K-WqgZugWKJW8lVW7P0H2l3vBYpdrtNIL_2C2wp__t9CRw9qO790VlOQTD6jT9rLTd9FnP6HLaB5imuDjC_-GI7PN0KUGU2prpp86fZUmMCm8ed3JnxVbEH-Gx1ya7E_7M7vVSaYnFJx4oFlpGXZJJUSudRVrLW0zbyXYkHaFLEmRuKHm7F4bljuumXVfR_RVZkQaZ6Ueyf5No2tMGFG_jPhPAO17tLOY34Ka78zoGsol4wHRZnIgFWe8lNJGfwYg4IwC3kC9mwuC2e4gz2UDfa1_0wMYcf06wGlBdkm60vm_VmTPktQUHlu29_GrDoUNA&h=EKCGb-CYX3WoAduF2HMph6NdG5Ewi8XM0ayCwdgHofM"
+          "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/CliDevReservedGroup/providers/Microsoft.Network/frontdooroperationresults/a8a52e60-c7f5-4b59-bb04-c390a77e287e?api-version=2021-06-01&t=638518590658541350&c=MIIHpTCCBo2gAwIBAgITOgMPIyvO-SSNo3JCxQAEAw8jKzANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSU5GUkEgQ0EgMDEwHhcNMjQwNTE3MDc0MzI1WhcNMjUwNTEyMDc0MzI1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMm-rUyPQv0z_LgvMVxRmSGe7k2sSDcjhZtJtacrGF0aA0mXhldjASVDsIKbducmYozS8YVn2yXvxW_2yo82m2q934keEf1UEKaSADUrozDPX5msTyt18UcXAPp7vPi8MXbYjFOyyuc1uzgXltAbdS5P2ki32RUjUplv8OZZSK5OvCrsyCwkmsg2yKxfHaRObmPqpu65x8lFk2jKBDK30LBTk2StP96kJI1VnIe3fxGXE6_1XKZTCJH9o_4vYvmA3wTHxlu8KWljLk10ttEqy736mEq9ex8TqnJVHebwRZ33UQTFZClqhQrIcLUrar5PXwlFMtvhgI1-Du5tVtKr1KECAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CWTJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSU5GUkElMjBDQSUyMDAxKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MB0GA1UdDgQWBBTVszhW7MMKoXa9-QpBHa5cQlUN9TAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTl2Ztn_PjsurvwwKidileIud8-YzAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAD-urQp96AuB916E-Te8RmgK90YXOfxpQ9UFVrx1h5G83WkRUIlKdESHrUjduIESxCRdkRY2ntf__S09h5_4l7f3rT0jpHXw-_8dUrAbn43jMiQmB2LXzLoyIWaLagT18F_wbUAmRMU1m1WEJE66ngt8mx407-SRKz6rKaPUCD2z-wIeSOcaXXY7KbRVUtbPS4GhSTo3fCRHPGpXS9ftpm-v7z3JFkXFsN7jcHBQDn2YqE7eFoPVqmoQtJZXXzAsWMeqSilE2wmsqn8Ty0ykZnqcfjuRNXoTC9CpuEhZYirAwmdBN87Cb7ZrhR2s8flm-uIqdEhk4mWeNMEyWsm5RLA&s=HxcisxVr-uiMhDgvANyTqMzVEKxN_61yzgnJGoef4eqyY6_rRVGxIi3-FZpqW8HIL-46ctq86rZdnOzx4iM9h_Yopwh9OlOD_OzDykRkXTJH6uIwo-85rDRjSf9HdzipUIgS3-W8VjURHJCLIou1ftBFdiYl9bddiVPPZhCkLlbnV38Rg1xzogjcefELp-I-bmhVbhs50DImSjNwy7wSoXlViNYJM6Mgab-GEK7iou89KXrb-HdbM68PwlmDdY2TLnuYWdqkc0fWystPoXc3AjZAt1ZgauiOrCTXxqdpmr-YkLIxoYEXXgAo1_GoekjVzU_qQCqR9qzBt834jJXXkQ&h=mqr_0B2PMqCoDJI492UmsOnO_w0ePLHiyfed-UBDc1Y"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "245fa94d-cea3-429d-9776-9de3ee4b05a8"
+          "a793240f-3881-4d7c-8129-a1d2e6318ffc"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240506T045246Z:245fa94d-cea3-429d-9776-9de3ee4b05a8"
+          "SOUTHEASTASIA:20240521T033105Z:a793240f-3881-4d7c-8129-a1d2e6318ffc"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -66,10 +66,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 86C734BF6F324318BBBA4DD642C2C948 Ref B: MAA201060516017 Ref C: 2024-05-06T04:52:43Z"
+          "Ref A: 54C7B08C852B4135B48912C186011F95 Ref B: MAA201060516033 Ref C: 2024-05-21T03:31:02Z"
         ],
         "Date": [
-          "Mon, 06 May 2024 04:52:45 GMT"
+          "Tue, 21 May 2024 03:31:05 GMT"
         ],
         "Content-Length": [
           "803"
@@ -90,16 +90,16 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "11114d00-d5e4-46ab-a462-6a067c48270d"
+          "3441d50a-9b6a-434c-9c50-e910c29589aa"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2924.17105",
+          "FxVersion/6.0.3024.21525",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorClient/6.0.2"
+          "Microsoft.Azure.Management.FrontDoor.FrontDoor/6.0.2"
         ]
       },
       "RequestBody": "",
@@ -114,19 +114,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "c962d288-8329-4d21-b14d-f1043c7c4b00"
+          "0e8bfac0-2685-455a-98ca-91a88a9dfdc9"
         ],
         "x-ms-client-request-id": [
-          "11114d00-d5e4-46ab-a462-6a067c48270d"
+          "3441d50a-9b6a-434c-9c50-e910c29589aa"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "63a82fd5-2e44-4b33-8873-3bc50a32634f"
+          "e1925af9-6883-43dc-84a6-1d8963750fa3"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240506T045247Z:63a82fd5-2e44-4b33-8873-3bc50a32634f"
+          "SOUTHEASTASIA:20240521T033107Z:e1925af9-6883-43dc-84a6-1d8963750fa3"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -135,10 +135,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: D68C1255D11443E4B163F5CC29D71B76 Ref B: MAA201060516017 Ref C: 2024-05-06T04:52:46Z"
+          "Ref A: 5785D17DBA45410CAF882B975A835990 Ref B: MAA201060516033 Ref C: 2024-05-21T03:31:06Z"
         ],
         "Date": [
-          "Mon, 06 May 2024 04:52:46 GMT"
+          "Tue, 21 May 2024 03:31:07 GMT"
         ],
         "Content-Length": [
           "1129"
@@ -159,16 +159,16 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e25464ce-bc03-4314-a6ed-a36a54d4c9b6"
+          "04ea15a3-2cfe-493e-9621-c742e588a161"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2924.17105",
+          "FxVersion/6.0.3024.21525",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorClient/6.0.2"
+          "Microsoft.Azure.Management.FrontDoor.FrontDoor/6.0.2"
         ]
       },
       "RequestBody": "",
@@ -183,19 +183,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "c5bac18e-4545-4419-93a3-4821d8eae578"
+          "09bdbe88-0085-4c2c-8dd0-b58b47b4bcaf"
         ],
         "x-ms-client-request-id": [
-          "e25464ce-bc03-4314-a6ed-a36a54d4c9b6"
+          "04ea15a3-2cfe-493e-9621-c742e588a161"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "81a5d259-989f-496d-a82a-f77bb4bf4277"
+          "6bfa7b4d-9750-4afa-a8d0-c900dc360570"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240506T045249Z:81a5d259-989f-496d-a82a-f77bb4bf4277"
+          "SOUTHEASTASIA:20240521T033109Z:6bfa7b4d-9750-4afa-a8d0-c900dc360570"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -204,10 +204,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 0A61F0C1313440158FBDA96C6E482C12 Ref B: MAA201060516019 Ref C: 2024-05-06T04:52:47Z"
+          "Ref A: C8AA526FC524454DBEC6937188C69ED7 Ref B: MAA201060514021 Ref C: 2024-05-21T03:31:07Z"
         ],
         "Date": [
-          "Mon, 06 May 2024 04:52:48 GMT"
+          "Tue, 21 May 2024 03:31:09 GMT"
         ],
         "Content-Length": [
           "1129"
@@ -228,16 +228,16 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e363cffe-292a-442d-8345-6e3bd66c2c2e"
+          "423b9810-eac6-44c9-8b9c-48a66fa89a14"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2924.17105",
+          "FxVersion/6.0.3024.21525",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorClient/6.0.2"
+          "Microsoft.Azure.Management.FrontDoor.FrontDoor/6.0.2"
         ]
       },
       "RequestBody": "",
@@ -252,19 +252,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "7b38e690-ba37-402a-ad7a-1359782f50a3"
+          "f850047b-77cb-44bc-995c-4a3b1d4fab38"
         ],
         "x-ms-client-request-id": [
-          "e363cffe-292a-442d-8345-6e3bd66c2c2e"
+          "423b9810-eac6-44c9-8b9c-48a66fa89a14"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "324224a9-7c00-4132-888b-020476555491"
+          "562bef93-0892-4451-9119-7171f68b5633"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240506T045351Z:324224a9-7c00-4132-888b-020476555491"
+          "SOUTHEASTASIA:20240521T033211Z:562bef93-0892-4451-9119-7171f68b5633"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -273,10 +273,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: DB8826F6861C44A2866FF4F721830C3C Ref B: MAA201060514037 Ref C: 2024-05-06T04:53:49Z"
+          "Ref A: 883C9A4B0B474C6F8AB788AAAE9E426A Ref B: MAA201060516031 Ref C: 2024-05-21T03:32:09Z"
         ],
         "Date": [
-          "Mon, 06 May 2024 04:53:50 GMT"
+          "Tue, 21 May 2024 03:32:11 GMT"
         ],
         "Content-Length": [
           "1117"
@@ -297,16 +297,16 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b5d1f1a9-a85b-4cda-9234-60ca729e65b0"
+          "34bcf38e-7157-46cb-8a84-0845cc4a6342"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2924.17105",
+          "FxVersion/6.0.3024.21525",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorClient/6.0.2"
+          "Microsoft.Azure.Management.FrontDoor.FrontDoor/6.0.2"
         ]
       },
       "RequestBody": "",
@@ -321,19 +321,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "489149b3-52b0-4973-a836-c56b63e5aa53"
+          "3fbde04a-c295-4e9c-92bf-8752396f18ad"
         ],
         "x-ms-client-request-id": [
-          "b5d1f1a9-a85b-4cda-9234-60ca729e65b0"
+          "34bcf38e-7157-46cb-8a84-0845cc4a6342"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11997"
         ],
         "x-ms-correlation-request-id": [
-          "985571b4-5071-4a66-900a-595460cabc3c"
+          "9fb96c0f-5ea3-43fb-84cf-0b54fe540df5"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240506T045453Z:985571b4-5071-4a66-900a-595460cabc3c"
+          "SOUTHEASTASIA:20240521T033313Z:9fb96c0f-5ea3-43fb-84cf-0b54fe540df5"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -342,10 +342,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 21DD0C746DFB4699BD68D668316F0232 Ref B: MAA201060515049 Ref C: 2024-05-06T04:54:51Z"
+          "Ref A: BCD976174B0A4E579A372A1602FB0CDB Ref B: MAA201060514047 Ref C: 2024-05-21T03:33:11Z"
         ],
         "Date": [
-          "Mon, 06 May 2024 04:54:52 GMT"
+          "Tue, 21 May 2024 03:33:12 GMT"
         ],
         "Content-Length": [
           "1115"
@@ -366,16 +366,16 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c3523d32-9029-4d80-98e3-85152409b8e9"
+          "dabbb312-a3c3-41c1-b73e-7a4b09d9527e"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2924.17105",
+          "FxVersion/6.0.3024.21525",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorClient/6.0.2"
+          "Microsoft.Azure.Management.FrontDoor.FrontDoor/6.0.2"
         ]
       },
       "RequestBody": "",
@@ -390,19 +390,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "e9c6da46-2f46-4453-aba2-c77eae973a73"
+          "08ae1083-3ead-4ae9-bd75-56a0b4d7d1f6"
         ],
         "x-ms-client-request-id": [
-          "c3523d32-9029-4d80-98e3-85152409b8e9"
+          "dabbb312-a3c3-41c1-b73e-7a4b09d9527e"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "d9a7ef40-216d-41be-b71d-154b98e60b3b"
+          "245af36e-5ce6-4c3c-baba-ad7c35128445"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240506T045455Z:d9a7ef40-216d-41be-b71d-154b98e60b3b"
+          "SOUTHEASTASIA:20240521T033314Z:245af36e-5ce6-4c3c-baba-ad7c35128445"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -411,10 +411,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 5BE305D3B7AC490095D8E6152A24EE7F Ref B: MAA201060513053 Ref C: 2024-05-06T04:54:53Z"
+          "Ref A: D57E6587B219486D844BA95A58F8AA7C Ref B: MAA201060516047 Ref C: 2024-05-21T03:33:13Z"
         ],
         "Date": [
-          "Mon, 06 May 2024 04:54:55 GMT"
+          "Tue, 21 May 2024 03:33:14 GMT"
         ],
         "Content-Length": [
           "1115"
@@ -435,16 +435,16 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c7f0e3db-d0c7-4f53-bd39-23200aafc945"
+          "4eefe045-6309-4307-aa22-94c7084fc4f1"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2924.17105",
+          "FxVersion/6.0.3024.21525",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorClient/6.0.2"
+          "Microsoft.Azure.Management.FrontDoor.FrontDoor/6.0.2"
         ]
       },
       "RequestBody": "",
@@ -459,19 +459,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "0c20b519-6475-4617-801f-eb5858369ae0"
+          "8c7a5ec2-facd-4635-b62f-23fb25313045"
         ],
         "x-ms-client-request-id": [
-          "c7f0e3db-d0c7-4f53-bd39-23200aafc945"
+          "4eefe045-6309-4307-aa22-94c7084fc4f1"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "d6df22ac-c27a-4372-b4f5-285f926e8838"
+          "1adc8ec3-cf86-4f9d-a0cd-5f94184d2893"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240506T045459Z:d6df22ac-c27a-4372-b4f5-285f926e8838"
+          "MALAYSIASOUTH:20240521T033318Z:1adc8ec3-cf86-4f9d-a0cd-5f94184d2893"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -480,10 +480,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 11B0C2D9246D4FF0B6629D1656359813 Ref B: MAA201060516011 Ref C: 2024-05-06T04:54:57Z"
+          "Ref A: A5EF1F6718FB4556A644766A63D7F974 Ref B: MAA201060516037 Ref C: 2024-05-21T03:33:17Z"
         ],
         "Date": [
-          "Mon, 06 May 2024 04:54:58 GMT"
+          "Tue, 21 May 2024 03:33:18 GMT"
         ],
         "Content-Length": [
           "1117"
@@ -504,16 +504,16 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "99025409-6f20-45c9-993d-9bc0e8265788"
+          "7e24419f-4107-4abd-836b-3f24a8560924"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2924.17105",
+          "FxVersion/6.0.3024.21525",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorClient/6.0.2"
+          "Microsoft.Azure.Management.FrontDoor.FrontDoor/6.0.2"
         ]
       },
       "RequestBody": "",
@@ -528,19 +528,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "679c33a5-3b23-469c-bc46-6ef3525e90a2"
+          "c6d27bf9-a357-459c-974e-41340c192021"
         ],
         "x-ms-client-request-id": [
-          "99025409-6f20-45c9-993d-9bc0e8265788"
+          "7e24419f-4107-4abd-836b-3f24a8560924"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "96d0bf08-0366-4dc5-b8a0-aafec90c7c29"
+          "3a4fbd9e-7248-48d0-8164-661fe637403f"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240506T045600Z:96d0bf08-0366-4dc5-b8a0-aafec90c7c29"
+          "MALAYSIASOUTH:20240521T033421Z:3a4fbd9e-7248-48d0-8164-661fe637403f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -549,10 +549,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 6000C238988048A29D5F9D69F27E5465 Ref B: MAA201060516049 Ref C: 2024-05-06T04:55:59Z"
+          "Ref A: 50570F983D7A496EB926BB4D8B9949E9 Ref B: MAA201060514009 Ref C: 2024-05-21T03:34:19Z"
         ],
         "Date": [
-          "Mon, 06 May 2024 04:56:00 GMT"
+          "Tue, 21 May 2024 03:34:20 GMT"
         ],
         "Content-Length": [
           "1117"
@@ -573,16 +573,16 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "af1b48d5-eaaf-47ab-a6b3-31b8bb2c53d3"
+          "94e64b5d-e5d1-4de2-9a3a-2b9776b15224"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2924.17105",
+          "FxVersion/6.0.3024.21525",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorClient/6.0.2"
+          "Microsoft.Azure.Management.FrontDoor.FrontDoor/6.0.2"
         ]
       },
       "RequestBody": "",
@@ -597,19 +597,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "3b9135a1-d370-46c2-bf6c-cf85c600fe0f"
+          "ff11b56c-750b-452f-a568-a0aa3fce46d9"
         ],
         "x-ms-client-request-id": [
-          "af1b48d5-eaaf-47ab-a6b3-31b8bb2c53d3"
+          "94e64b5d-e5d1-4de2-9a3a-2b9776b15224"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "b77eac57-4a02-4c16-b0d0-0c965ac246ce"
+          "4a61affb-054b-41ad-a315-74e7e8c7b39b"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240506T045702Z:b77eac57-4a02-4c16-b0d0-0c965ac246ce"
+          "SOUTHEASTASIA:20240521T033522Z:4a61affb-054b-41ad-a315-74e7e8c7b39b"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -618,10 +618,79 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 8751615B00E74227B07F8BFDF6D985B9 Ref B: MAA201060514049 Ref C: 2024-05-06T04:57:01Z"
+          "Ref A: 8B3D8445461A4F2ABE6EFCFB6DF11749 Ref B: MAA201060516019 Ref C: 2024-05-21T03:35:21Z"
         ],
         "Date": [
-          "Mon, 06 May 2024 04:57:02 GMT"
+          "Tue, 21 May 2024 03:35:22 GMT"
+        ],
+        "Content-Length": [
+          "1117"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/CliDevReservedGroup/providers/Microsoft.Network/frontdoors/frontdoorclitest/frontendendpoints/afdbyoc-specific-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"name\": \"afdbyoc-specific-localdev-cdn-azure-cn\",\r\n  \"properties\": {\r\n    \"resourceState\": \"Enabled\",\r\n    \"hostName\": \"afdbyoc-specific.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Disabling\",\r\n    \"customHttpsProvisioningSubstate\": \"DeletingCertificate\",\r\n    \"customHttpsConfiguration\": {\r\n      \"certificateSource\": \"AzureKeyVault\",\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"minimumTlsVersion\": \"1.2\",\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"vault\": {\r\n          \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/CliDevReservedGroup/providers/Microsoft.KeyVault/vaults/clibyoc-int\"\r\n        },\r\n        \"secretName\": \"localdev-multi\",\r\n        \"secretVersion\": \"6244bbfa61c241d78403a6e394cc2d30\"\r\n      },\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": null,\r\n        \"certificateTypeAsEnum\": \"Dedicated\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/CliDevReservedGroup/providers/Microsoft.Network/frontDoors/frontdoorclitest/frontendEndpoints/afdbyoc-specific-localdev-cdn-azure-cn?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL0NsaURldlJlc2VydmVkR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2Zyb250RG9vcnMvZnJvbnRkb29yY2xpdGVzdC9mcm9udGVuZEVuZHBvaW50cy9hZmRieW9jLXNwZWNpZmljLWxvY2FsZGV2LWNkbi1henVyZS1jbj9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7c05a1d7-3258-4d28-8980-ee148c87e1ca"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3024.21525",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoor/6.0.2"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "f151ba47-3214-4b4d-befe-dbcc23f07020"
+        ],
+        "x-ms-client-request-id": [
+          "7c05a1d7-3258-4d28-8980-ee148c87e1ca"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "722158be-1cc7-4fc7-9741-7abd5b50de0f"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20240521T033624Z:722158be-1cc7-4fc7-9741-7abd5b50de0f"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: F850F756FA8D48EC937B4E384C02E856 Ref B: MAA201060513017 Ref C: 2024-05-21T03:36:23Z"
+        ],
+        "Date": [
+          "Tue, 21 May 2024 03:36:24 GMT"
         ],
         "Content-Length": [
           "631"
@@ -642,16 +711,16 @@
       "RequestMethod": "POST",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c7f0e3db-d0c7-4f53-bd39-23200aafc945"
+          "4eefe045-6309-4307-aa22-94c7084fc4f1"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2924.17105",
+          "FxVersion/6.0.3024.21525",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorClient/6.0.2"
+          "Microsoft.Azure.Management.FrontDoor.FrontDoor/6.0.2"
         ]
       },
       "RequestBody": "",
@@ -663,7 +732,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/CliDevReservedGroup/providers/Microsoft.Network/frontdooroperationresults/d7cb5c08-d268-4611-881e-c0dca1e4c096/frontdoorresults/frontdoorclitest?api-version=2021-06-01"
+          "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/CliDevReservedGroup/providers/Microsoft.Network/frontdooroperationresults/e16d4bbc-159a-43b8-951c-bc0ed6e1fc5c/frontdoorresults/frontdoorclitest?api-version=2021-06-01"
         ],
         "Retry-After": [
           "120"
@@ -672,22 +741,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "a70fbc80-98d9-4730-b678-10bd77b55af2"
+          "993da24e-6074-4216-a25a-bd71405cae83"
         ],
         "x-ms-client-request-id": [
-          "c7f0e3db-d0c7-4f53-bd39-23200aafc945"
+          "4eefe045-6309-4307-aa22-94c7084fc4f1"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/CliDevReservedGroup/providers/Microsoft.Network/frontdooroperationresults/d7cb5c08-d268-4611-881e-c0dca1e4c096?api-version=2021-06-01&t=638505680975554780&c=MIIHKjCCBhKgAwIBAgITHgR0uRvpB9QGBrVnGgAABHS5GzANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNTAxMjEzMzA1WhcNMjUwNDI2MjEzMzA1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMWV9ZucXWP0iSfMxP4MXfBW3crpNAMbJ5-E8kXN0t7w4LRC6nOOI8I0odywcD_X0YmkL4mEhwbuH2cxIwRpYzzUOA34IcpF0oGND62KpmWw38aE9cy5MnJqdSq6VVel1YvEUoOzwkhZ4dVaBF-6Iw3Ag8Fm4H_08p6egnzXVTXdRGmUKX674Pp2kD5WHczMMupT_U-URdNnAkFIsOnYVdEDtNKg3x2oA8QtP4hd3y9iI0lIfiDhLsK3yLMNA28ctns_qsfxfxoE_pG7H6CipxysXebKe1VEd0OeZF2LJb9JY1KS9_oj5FbKN0VqDyz8jftZhMbgiVURaGssRxIbnxkCAwEAAaOCBBcwggQTMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBQBo4YYCssK_vQSnguwrNmfpJFeSDAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMEEGA1UdIAQ6MDgwDAYKKwYBBAGCN3sBATAMBgorBgEEAYI3ewIBMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAIzPQ234mECpNLGUjEc5gZV-w0T1Pl8Wtfv-TcKZNc002ZG5ODdy9juSL1d8704XNQVjBwLhXUsoXOc8pho30kdofBC59bM-UIHww8UvPfyYIefXNImHL94_inzOA7LSbnC6u4VRkzHpXeD2FmiTSikLUuLrRyDIAyH-BP_LVFIPjHtzb-4wP3Hg9n-xgHmfct6G7531aOPEIPWIe4OClRpiK7l-njX8JyoplWl7eEfnXKqkhVFiWKPEDcQdix49UAeQxykrMTjYaK23EOv0otYWm7bHbkBU084VSYlPbceAxcWbqwzuaQOl1CzYJQSEqFsAd0ATKyCuLw1PvPf1EW0&s=Z6CzR5qA2xfxoIagTH2rT72H-biW0AX1xzofub9M79va_ZXLcH5GZjFNb2zo9Vj_PbthiYbVYYENuwR_46QSzJSL_9YUthFD05u3NyCMQpekHB9CzSfPmworKQ7K83nlXwgxRoXRAY10MSbh-Ka2eZRfyysrUUwaTkducpc-SFTJUuytK1Jop0xwtbvlHv6np-Wcxwz7GFmvTcCaHorDXlGszZH7j2aRRnPvUwOpSySZP98ST_71LNJSR63p43ee4X1UpiUwv0ygqtRxKValsyLAX77WjQDy1XEzNjhRO30RrPuHEteJb_w2JobkshO5or3jBb5wt9Iqp4ulV7H7uA&h=1tyg64UgNjAQmVOP5fH42pClFRmV76qAkvAjAPSoF9E"
+          "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/CliDevReservedGroup/providers/Microsoft.Network/frontdooroperationresults/e16d4bbc-159a-43b8-951c-bc0ed6e1fc5c?api-version=2021-06-01&t=638518591972447360&c=MIIHpTCCBo2gAwIBAgITOgMPIyvO-SSNo3JCxQAEAw8jKzANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSU5GUkEgQ0EgMDEwHhcNMjQwNTE3MDc0MzI1WhcNMjUwNTEyMDc0MzI1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMm-rUyPQv0z_LgvMVxRmSGe7k2sSDcjhZtJtacrGF0aA0mXhldjASVDsIKbducmYozS8YVn2yXvxW_2yo82m2q934keEf1UEKaSADUrozDPX5msTyt18UcXAPp7vPi8MXbYjFOyyuc1uzgXltAbdS5P2ki32RUjUplv8OZZSK5OvCrsyCwkmsg2yKxfHaRObmPqpu65x8lFk2jKBDK30LBTk2StP96kJI1VnIe3fxGXE6_1XKZTCJH9o_4vYvmA3wTHxlu8KWljLk10ttEqy736mEq9ex8TqnJVHebwRZ33UQTFZClqhQrIcLUrar5PXwlFMtvhgI1-Du5tVtKr1KECAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CWTJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSU5GUkElMjBDQSUyMDAxKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MB0GA1UdDgQWBBTVszhW7MMKoXa9-QpBHa5cQlUN9TAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTl2Ztn_PjsurvwwKidileIud8-YzAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAD-urQp96AuB916E-Te8RmgK90YXOfxpQ9UFVrx1h5G83WkRUIlKdESHrUjduIESxCRdkRY2ntf__S09h5_4l7f3rT0jpHXw-_8dUrAbn43jMiQmB2LXzLoyIWaLagT18F_wbUAmRMU1m1WEJE66ngt8mx407-SRKz6rKaPUCD2z-wIeSOcaXXY7KbRVUtbPS4GhSTo3fCRHPGpXS9ftpm-v7z3JFkXFsN7jcHBQDn2YqE7eFoPVqmoQtJZXXzAsWMeqSilE2wmsqn8Ty0ykZnqcfjuRNXoTC9CpuEhZYirAwmdBN87Cb7ZrhR2s8flm-uIqdEhk4mWeNMEyWsm5RLA&s=A3SGFgCxsWe2MWpuQmtclzNFzGGRN0iezX46-tEbj2Q4u-y9_FrSYsUKJUjd5ji8mLXdyA_dVGNuqEsa_MG9H5XaAEmZ_ENGhCbQL-shEazG0IHS9-loc4s1NpgHSZawy8Z2xnT77UXn8DgWmeuG753h0AMah2zqO-HcXhGOFaSO7ZExBdQH_WIrmqIYB5jaDY9KT_omdiJmJI_P4aT1sgKv6GazM80yeSrfvsvgZMuOTemQxeLcXY-ICJJwgRask4P8f6D-a8woe1II0dF1GF9EnmzqpzAtRNN6gvQ2gC8mF7RezlHpKWna9k5oj7k-rutOX-SFM6YMIybLgf8NWA&h=Yk6ux1BTqkp1uxob13sn4ufVNEdgL0kbtpA2ddMayik"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "abea2193-9cd0-4309-8fd5-92aa5bd7b8d2"
+          "3be02f17-0686-4a3f-ad5d-77d4850ed9ca"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240506T045457Z:abea2193-9cd0-4309-8fd5-92aa5bd7b8d2"
+          "SOUTHEASTASIA:20240521T033317Z:3be02f17-0686-4a3f-ad5d-77d4850ed9ca"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -696,10 +765,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: B809F028C683406F9AD71D4E1D5F46BC Ref B: MAA201060516011 Ref C: 2024-05-06T04:54:55Z"
+          "Ref A: 394E12E7D21E418DA5F2C6E6E8CF6335 Ref B: MAA201060516037 Ref C: 2024-05-21T03:33:15Z"
         ],
         "Date": [
-          "Mon, 06 May 2024 04:54:57 GMT"
+          "Tue, 21 May 2024 03:33:16 GMT"
         ],
         "Content-Length": [
           "791"

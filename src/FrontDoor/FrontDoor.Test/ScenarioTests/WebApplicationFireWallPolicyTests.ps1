@@ -35,7 +35,10 @@ function Test-PolicyCrud
     $managedRule1 = New-AzFrontDoorWafManagedRuleObject -Type DefaultRuleSet -Version "1.0" -RuleGroupOverride $override1 -Exclusion $exclusionSet
     $managedRule2 = New-AzFrontDoorWafManagedRuleObject -Type BotProtection -Version "preview-0.1"
 
-    New-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule1 -ManagedRule $managedRule1,$managedRule2 -EnabledState Enabled -Mode Prevention -RequestBodyCheck Disabled
+    $LogScrubbingRule = New-AzFrontDoorWafLogScrubbingRuleObject -MatchVariable "RequestHeaderNames" -SelectorMatchOperator "EqualsAny" -State "Enabled"
+    $logscrubbingSetting = New-AzFrontDoorWafLogScrubbingSettingObject -State Enabled -ScrubbingRules @($LogScrubbingRule)
+
+    New-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Sku Premium_AzureFrontDoor -Customrule $customRule1 -ManagedRule $managedRule1,$managedRule2 -EnabledState Enabled -Mode Prevention -RequestBodyCheck Disabled -LogScrubbingSetting $logscrubbingSetting
 	
     $retrievedPolicy = Get-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName 
     Assert-NotNull $retrievedPolicy
