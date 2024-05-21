@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzScVmmCloud
 
 ## SYNOPSIS
-Updates the Clouds resource.
+Update the Clouds resource.
 
 ## SYNTAX
 
@@ -38,7 +38,7 @@ Update-AzScVmmCloud -Name <String> -ResourceGroupName <String> -JsonString <Stri
 ```
 
 ## DESCRIPTION
-Updates the Clouds resource.
+Update the Clouds resource.
 
 ## EXAMPLES
 
@@ -99,7 +99,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IScVmmIdentity

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzScVmmVMCheckpoint
 
 ## SYNOPSIS
-Creates a checkpoint in virtual machine instance.
+Create a checkpoint in virtual machine instance.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ New-AzScVmmVMCheckpoint -MachineId <String> -JsonString <String> [-DefaultProfil
 ```
 
 ## DESCRIPTION
-Creates a checkpoint in virtual machine instance.
+Create a checkpoint in virtual machine instance.
 
 ## EXAMPLES
 

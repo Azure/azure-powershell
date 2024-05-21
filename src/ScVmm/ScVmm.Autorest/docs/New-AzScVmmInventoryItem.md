@@ -15,19 +15,19 @@ Create InventoryItem.
 ### CreateExpanded (Default)
 ```
 New-AzScVmmInventoryItem -Name <String> -ResourceGroupName <String> -VmmServerName <String>
- -InventoryType <String> [-SubscriptionId <String>] [-Kind <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-SubscriptionId <String>] [-InventoryType <String>] [-Kind <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzScVmmInventoryItem -InputObject <IScVmmIdentity> -InventoryType <String> [-Kind <String>]
+New-AzScVmmInventoryItem -InputObject <IScVmmIdentity> [-InventoryType <String>] [-Kind <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityVmmServerExpanded
 ```
-New-AzScVmmInventoryItem -Name <String> -VmmServerInputObject <IScVmmIdentity> -InventoryType <String>
+New-AzScVmmInventoryItem -Name <String> -VmmServerInputObject <IScVmmIdentity> [-InventoryType <String>]
  [-Kind <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -92,7 +92,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IScVmmIdentity
@@ -114,7 +113,7 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityVmmServerExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -217,7 +216,6 @@ Accept wildcard characters: False
 
 ### -VmmServerInputObject
 Identity Parameter
-To construct, see NOTES section for VMMSERVERINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IScVmmIdentity

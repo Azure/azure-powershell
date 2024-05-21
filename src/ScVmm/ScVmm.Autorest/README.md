@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the ScVmm service.
 
 ---
-## Status
-[![Az.ScVmm](https://img.shields.io/powershellgallery/v/Az.ScVmm.svg?style=flat-square&label=Az.ScVmm "Az.ScVmm")](https://www.powershellgallery.com/packages/Az.ScVmm/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -30,11 +27,12 @@ For information on how to develop for `Az.ScVmm`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: ee9e300b2bc6e68da09d6c98f321675d33ad6c5d
+commit: 9583ed6c26ce1f10bbea92346e28a46394a784b4
 require:
   - $(this-folder)/../../readme.azure.noprofile.md 
 input-file:
   - $(repo)/specification/scvmm/resource-manager/Microsoft.ScVmm/stable/2023-10-07/scvmm.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-03-31-preview/HybridCompute.json
 
 module-version: 0.3.0
 title: ScVmm
@@ -64,7 +62,7 @@ directive:
         "default": {
           "description": "Error response describing why the operation failed.",
           "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/ee9e300b2bc6e68da09d6c98f321675d33ad6c5d/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/9583ed6c26ce1f10bbea92346e28a46394a784b4/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
           }
         }
       }
@@ -89,7 +87,7 @@ directive:
         "default": {
           "description": "Error response describing why the operation failed.",
           "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/ee9e300b2bc6e68da09d6c98f321675d33ad6c5d/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/9583ed6c26ce1f10bbea92346e28a46394a784b4/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
           }
         }
       }
@@ -114,7 +112,7 @@ directive:
         "default": {
           "description": "Error response describing why the operation failed.",
           "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/ee9e300b2bc6e68da09d6c98f321675d33ad6c5d/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/9583ed6c26ce1f10bbea92346e28a46394a784b4/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
           }
         }
       }
@@ -139,7 +137,7 @@ directive:
         "default": {
           "description": "Error response describing why the operation failed.",
           "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/ee9e300b2bc6e68da09d6c98f321675d33ad6c5d/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/9583ed6c26ce1f10bbea92346e28a46394a784b4/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
           }
         }
       }
@@ -164,7 +162,7 @@ directive:
         "default": {
           "description": "Error response describing why the operation failed.",
           "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/ee9e300b2bc6e68da09d6c98f321675d33ad6c5d/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/9583ed6c26ce1f10bbea92346e28a46394a784b4/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
           }
         }
       }
@@ -189,7 +187,7 @@ directive:
         "default": {
           "description": "Error response describing why the operation failed.",
           "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/ee9e300b2bc6e68da09d6c98f321675d33ad6c5d/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/9583ed6c26ce1f10bbea92346e28a46394a784b4/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
           }
         }
       }
@@ -212,7 +210,7 @@ directive:
         "default": {
           "description": "Error response describing why the operation failed.",
           "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/ee9e300b2bc6e68da09d6c98f321675d33ad6c5d/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/9583ed6c26ce1f10bbea92346e28a46394a784b4/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
           }
         }
       }
@@ -234,7 +232,7 @@ directive:
         "default": {
           "description": "Error response describing why the operation failed.",
           "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/ee9e300b2bc6e68da09d6c98f321675d33ad6c5d/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/9583ed6c26ce1f10bbea92346e28a46394a784b4/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
           }
         }
       }
@@ -256,7 +254,7 @@ directive:
         "default": {
           "description": "Error response describing why the operation failed.",
           "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/ee9e300b2bc6e68da09d6c98f321675d33ad6c5d/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/9583ed6c26ce1f10bbea92346e28a46394a784b4/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
           }
         }
       }
@@ -278,7 +276,7 @@ directive:
         "default": {
           "description": "Error response describing why the operation failed.",
           "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/ee9e300b2bc6e68da09d6c98f321675d33ad6c5d/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/9583ed6c26ce1f10bbea92346e28a46394a784b4/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
           }
         }
       }
@@ -300,7 +298,7 @@ directive:
         "default": {
           "description": "Error response describing why the operation failed.",
           "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/ee9e300b2bc6e68da09d6c98f321675d33ad6c5d/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/9583ed6c26ce1f10bbea92346e28a46394a784b4/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
           }
         }
       }
@@ -322,7 +320,7 @@ directive:
         "default": {
           "description": "Error response describing why the operation failed.",
           "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/ee9e300b2bc6e68da09d6c98f321675d33ad6c5d/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/9583ed6c26ce1f10bbea92346e28a46394a784b4/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
           }
         }
       }
@@ -372,6 +370,11 @@ directive:
     remove: true
   - where:
       verb: Set
+    remove: true
+
+  # In "Microsoft.HybridCompute/preview/2024-03-31-preview/HybridCompute.json" service team just to use "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}", so remvoe ohter subjects.
+  - where:
+      subject: MachinePatch|AssessMachinePatch|Gateway|License|LicenseProfile|MachineExtension|MachineRunCommand|AgentVersion|ExtensionMetadata|HybridIdentityMetadata|NetworkProfile|Setting|Extension
     remove: true
 
   - where:

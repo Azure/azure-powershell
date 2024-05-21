@@ -82,7 +82,6 @@ Accept wildcard characters: False
 
 ### -Body
 Defines the delete checkpoint action properties.
-To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineDeleteCheckpoint

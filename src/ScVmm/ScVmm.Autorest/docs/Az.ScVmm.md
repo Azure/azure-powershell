@@ -26,6 +26,9 @@ Implements Cloud GET method.
 ### [Get-AzScVmmInventoryItem](Get-AzScVmmInventoryItem.md)
 Shows an inventory item.
 
+### [Get-AzScVmmMachine](Get-AzScVmmMachine.md)
+Retrieves information about the model view or the instance view of a hybrid machine.
+
 ### [Get-AzScVmmServer](Get-AzScVmmServer.md)
 Implements VMMServer GET method.
 
@@ -37,9 +40,6 @@ Retrieves information about a virtual machine instance.
 
 ### [Get-AzScVmmVMGuestAgent](Get-AzScVmmVMGuestAgent.md)
 Implements GuestAgent GET method.
-
-### [Get-AzScVmmVMHybridIdentityMetadata](Get-AzScVmmVMHybridIdentityMetadata.md)
-Implements HybridIdentityMetadata GET method.
 
 ### [Get-AzScVmmVMTemplate](Get-AzScVmmVMTemplate.md)
 Implements VirtualMachineTemplate GET method.
@@ -58,6 +58,10 @@ Onboards the ScVmm fabric cloud as an Azure cloud resource.
 
 ### [New-AzScVmmInventoryItem](New-AzScVmmInventoryItem.md)
 Create InventoryItem.
+
+### [New-AzScVmmMachine](New-AzScVmmMachine.md)
+The operation to Create a hybrid machine.
+Please note some properties can be set only during machine creation.
 
 ### [New-AzScVmmNetworkInterfaceObject](New-AzScVmmNetworkInterfaceObject.md)
 Create an in-memory object for NetworkInterface.
@@ -82,7 +86,7 @@ The operation to Create a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 
 ### [New-AzScVmmVMCheckpoint](New-AzScVmmVMCheckpoint.md)
-Creates a checkpoint in virtual machine instance.
+Create a checkpoint in virtual machine instance.
 
 ### [New-AzScVmmVMGuestAgent](New-AzScVmmVMGuestAgent.md)
 Create GuestAgent.
@@ -98,6 +102,9 @@ Deregisters the ScVmm fabric cloud from Azure.
 
 ### [Remove-AzScVmmInventoryItem](Remove-AzScVmmInventoryItem.md)
 Deletes an inventoryItem.
+
+### [Remove-AzScVmmMachine](Remove-AzScVmmMachine.md)
+The operation to delete a hybrid machine.
 
 ### [Remove-AzScVmmNetworkInterface](Remove-AzScVmmNetworkInterface.md)
 The operation to Delete a virtual machine network interface.
@@ -133,20 +140,23 @@ The operation to start a virtual machine instance.
 The operation to power off (stop) a virtual machine instance.
 
 ### [Update-AzScVmmAvailabilitySet](Update-AzScVmmAvailabilitySet.md)
-Updates the AvailabilitySets resource.
+Update the AvailabilitySets resource.
 
 ### [Update-AzScVmmCloud](Update-AzScVmmCloud.md)
-Updates the Clouds resource.
+Update the Clouds resource.
+
+### [Update-AzScVmmMachine](Update-AzScVmmMachine.md)
+The operation to Update a hybrid machine.
 
 ### [Update-AzScVmmServer](Update-AzScVmmServer.md)
-Updates the VmmServers resource.
+Update the VmmServers resource.
 
 ### [Update-AzScVmmVirtualNetwork](Update-AzScVmmVirtualNetwork.md)
-Updates the VirtualNetworks resource.
+Update the VirtualNetworks resource.
 
 ### [Update-AzScVmmVM](Update-AzScVmmVM.md)
-The operation to update a virtual machine instance.
+The operation to Update a virtual machine instance.
 
 ### [Update-AzScVmmVMTemplate](Update-AzScVmmVMTemplate.md)
-Updates the VirtualMachineTemplate resource.
+Update the VirtualMachineTemplate resource.
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzScVmmVirtualNetwork
 
 ## SYNOPSIS
-Updates the VirtualNetworks resource.
+Update the VirtualNetworks resource.
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ Update-AzScVmmVirtualNetwork -Name <String> -ResourceGroupName <String> -JsonStr
 ```
 
 ## DESCRIPTION
-Updates the VirtualNetworks resource.
+Update the VirtualNetworks resource.
 
 ## EXAMPLES
 
@@ -100,7 +100,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IScVmmIdentity

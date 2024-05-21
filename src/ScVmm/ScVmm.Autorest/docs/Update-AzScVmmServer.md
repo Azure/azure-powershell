@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzScVmmServer
 
 ## SYNOPSIS
-Updates the VmmServers resource.
+Update the VmmServers resource.
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ Update-AzScVmmServer -Name <String> -ResourceGroupName <String> -JsonString <Str
 ```
 
 ## DESCRIPTION
-Updates the VmmServers resource.
+Update the VmmServers resource.
 
 ## EXAMPLES
 
@@ -100,7 +100,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IScVmmIdentity
