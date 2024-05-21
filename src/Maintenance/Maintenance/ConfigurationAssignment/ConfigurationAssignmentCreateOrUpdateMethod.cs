@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Maintenance
             configurationAssignment.Filter = new ConfigurationAssignmentFilterProperties();
             configurationAssignment.Filter.ResourceGroups = this.FilterResourceGroup == null ? null : this.FilterResourceGroup.ToList();
             configurationAssignment.Filter.ResourceTypes = this.FilterResourceType== null ? null : this.FilterResourceType.ToList();
-            configurationAssignment.Filter.OsTypes = this.FilterOsType == null ? null : this.FilterOsType.ToList();
+            configurationAssignment.Filter.OSTypes = this.FilterOsType == null ? null : this.FilterOsType.ToList();
             configurationAssignment.Filter.Locations = this.FilterLocation == null ? null : this.FilterLocation.ToList();
 
             if (!string.IsNullOrEmpty(this.FilterTag) || !string.IsNullOrEmpty(this.FilterOperator))

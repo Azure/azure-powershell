@@ -9,18 +9,28 @@ namespace Microsoft.Azure.Management.Maintenance
     using Models;
 
     /// <summary>
-    /// ApplyUpdateForResourceGroupOperations operations.
+    /// ScheduledEventOperations operations.
     /// </summary>
-    public partial interface IApplyUpdateForResourceGroupOperations
+    public partial interface IScheduledEventOperations
     {
         /// <summary>
-        /// Get Configuration records within a subscription and resource group
+        /// Post Scheduled Event Acknowledgement
         /// </summary>
         /// <remarks>
-        /// Get Configuration records within a subscription and resource group
+        /// Post Scheduled Event Acknowledgement
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// Resource Group Name
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceType'>
+        /// Resource type
+        /// </param>
+        /// <param name='resourceName'>
+        /// Resource Name
+        /// </param>
+        /// <param name='scheduledEventId'>
+        /// Scheduled Event Id. This is a GUID-formatted string (e.g.
+        /// 00000000-0000-0000-0000-000000000000)
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -34,7 +44,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<ApplyUpdate>>> ListWithHttpMessagesAsync(string resourceGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ScheduledEventApproveResponse>> AcknowledgeWithHttpMessagesAsync(string resourceGroupName, string resourceType, string resourceName, string scheduledEventId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

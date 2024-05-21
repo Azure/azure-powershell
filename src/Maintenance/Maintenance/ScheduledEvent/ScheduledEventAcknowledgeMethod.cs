@@ -24,25 +24,25 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Maintenance
 {
-    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MaintenanceConfiguration", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    [OutputType(typeof(PSMaintenanceConfiguration))]
-    public partial class UpdateAzureRmMaintenanceConfiguration : MaintenanceAutomationBaseCmdlet
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledEvent", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(PSApplyUpdate))]
+    public partial class NewAzureRmScheduledEvent : MaintenanceAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.Name, VerbsData.Update))
+                if (ShouldProcess("default", VerbsCommon.New))
                 {
                     string resourceGroupName = this.ResourceGroupName;
-                    string name = this.Name;
-                    MaintenanceConfiguration configuration = new MaintenanceConfiguration();
-                    MaintenanceAutomationAutoMapperProfile.Mapper.Map<PSMaintenanceConfiguration, MaintenanceConfiguration>(this.Configuration, configuration);
-
-                    var result = MaintenanceConfigurationsClient.Update(resourceGroupName, name, configuration);
-                    var psObject = new PSMaintenanceConfiguration();
-                    MaintenanceAutomationAutoMapperProfile.Mapper.Map<MaintenanceConfiguration, PSMaintenanceConfiguration>(result, psObject);
+                    string resourceType = this.ResourceType;
+                    string resourceName = this.ResourceName;
+                    string ScheduledEvent = this.ScheduledEventId;
+                    ScheduledEventApproveResponse response;
+                    response = ScheduledEventClient.Acknowledge(resourceGroupName, resourceType, resourceName, ScheduledEventId);
+                    var psObject = new PSSchueduledEvent();
+                    MaintenanceAutomationAutoMapperProfile.Mapper.Map<ScheduledEventApproveResponse, PSSchueduledEvent>(response, psObject);
                     WriteObject(psObject);
                 }
             });
@@ -59,21 +59,25 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 1,
+            Position = 2,
             Mandatory = true,
-            HelpMessage = "The maintenance configuration Name.",
+            HelpMessage = "The resource type.",
             ValueFromPipelineByPropertyName = true)]
-        public string Name { get; set; }
+        public string ResourceType { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 2,
+            Position = 3,
             Mandatory = true,
-            HelpMessage = "The maintenance configuration to be updated.",
-            ValueFromPipeline = true)]
-        public PSMaintenanceConfiguration Configuration { get; set; }
+            HelpMessage = "The resource name.",
+            ValueFromPipelineByPropertyName = true)]
+        public string ResourceName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-        public SwitchParameter AsJob { get; set; }
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Mandatory = true,
+            HelpMessage = "The ScheduledEvent Id",
+            ValueFromPipelineByPropertyName = true)]
+        public string ScheduledEventId { get; set; }        
     }
 }
