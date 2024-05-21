@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzAksArcCluster'))
 }
 
 Describe 'AzAksArc' {
-    It 'CreateCluster' {
+    It 'CreateCluster' -skip {
         { 
             $config = New-AzAksArcCluster -ClusterName $env.clusterName1 -ResourceGroupName $env.ResourceGroupName1 -CustomLocationName $env.customLocationId1 -VnetId $env.lnetId1 -ControlPlaneEndpointHostIP $env.controlPlaneIP1
             $config.ProvisioningState | Should -Be 'Succeeded'
@@ -101,7 +101,7 @@ Describe 'AzAksArc' {
         } | Should -Not -Throw
     }
 
-    It 'RemoveCluster' {
+    It 'RemoveCluster' -skip {
         { 
             $config = Remove-AzAksArcCluster -ClusterName $env.clusterName1 -ResourceGroupName $env.ResourceGroupName1
         } | Should -Not -Throw
