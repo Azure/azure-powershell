@@ -49,7 +49,7 @@ function setupEnv() {
     $env.ExtensionName = 'customScript'
     $env.ResourceGroupNameNSP = 'adrielk_test'
     $env.PrivateLinkScopeNameNSP = 'adrielScope'
-    $env.PerimeterName = 'fd1289de-e8d3-4f76-8008-de297232dbf6.adrielScope-91ce5bff-5a70-45e6-b9a4-1dc8a601ad2e'
+    $env.PerimeterName = 'fd1289de-e8d3-4f76-8008-de297232dbf6.adrielScope-e1bf45b1-b9a1-4f8b-a76e-3607869aed94'
 
     #New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location | Out-Null
 
