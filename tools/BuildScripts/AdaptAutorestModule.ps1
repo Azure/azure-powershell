@@ -164,8 +164,11 @@ $job = start-job {
         [string]$ParentModuleName,
         [string]$SubModuleName
     )
+
     $resolveScriptPath = Join-Path $RepoRoot 'tools' 'ResolveTools' 'Resolve-Psd1.ps1'
     $artifacts = Join-Path $RepoRoot 'artifacts'
+    $artifactAccountPsd1Path = Join-Path $artifacts 'Debug' "Az.Accounts" "Az.Accounts.psd1"
+    Import-Module $artifactAccountPsd1Path
     $artifactPsd1Path = Join-Path $artifacts 'Debug' "Az.$ModuleRootName" "Az.$ModuleRootName.psd1"
     $parentModulePath = Join-Path $RepoRoot 'src' $ModuleRootName $ParentModuleName
 
