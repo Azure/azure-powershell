@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// <summary>
     /// Defines the New-FrontDoorWafLogScrubbingSettingObject cmdlet.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorWafCustomRuleGroupByVariableObject"), OutputType(typeof(PSFrontDoorWafLogScrubbingSetting))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorWafLogScrubbingSettingObject"), OutputType(typeof(PSFrontDoorWafLogScrubbingSetting))]
     public class NewFrontDoorWafLogScrubbingSettingObject : AzureFrontDoorCmdletBase
     {
 
