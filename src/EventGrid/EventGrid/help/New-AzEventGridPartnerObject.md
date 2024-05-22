@@ -14,7 +14,7 @@ Create an in-memory object for Partner.
 
 ```
 New-AzEventGridPartnerObject [-AuthorizationExpirationTimeInUtc <DateTime>] [-Name <String>]
- [-RegistrationImmutableId <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-RegistrationImmutableId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,21 +63,6 @@ The partner name.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

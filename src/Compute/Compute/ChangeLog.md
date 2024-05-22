@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 8.0.0
 * Added new optional parameter `SecureVMGuestStateSAS` to cmdlet `Grant-AzDiskAccess`.
 * [Breaking Change] Added ValidateNotNullOrEmpty for `-ResourceGroupName` and `-VMScaleSetName` parameters to `Get-AzVmss` cmdlet. [#20095]
 * Added `Etag` property to PSVirtualMachine and PSVirtualMachineScaleSet objects.   

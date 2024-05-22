@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 7.0.0
 * [Breaking Change] Renamed the property `ResouceType` of `ASRVaultSettings` to `ResourceType`. 
 
 ## Version 6.9.0
