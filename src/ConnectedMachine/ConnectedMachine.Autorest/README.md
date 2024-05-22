@@ -361,7 +361,8 @@ directive:
 
   # Remove when this API is fixed
   - where:
-      subject: NetworkSecurityPerimeterConfiguration$
+      subject: ReconcileNetworkSecurityPerimeterConfiguration$
+      verb: Invoke
     remove: true
 
   # Removing non-expand commands

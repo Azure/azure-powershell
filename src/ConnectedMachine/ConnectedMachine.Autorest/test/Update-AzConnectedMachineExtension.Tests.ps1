@@ -28,8 +28,15 @@ Describe 'Update-AzConnectedMachineExtension' {
     }
 
     It 'Update' {
-        $target = @{"Microsoft.Compute.CustomScriptExtension" = @{"targetVersion"="1.10.12"}}
-        $all = (Update-AzConnectedExtension -ResourceGroupName $env.ResourceGroupName -MachineName $env.MachineName -ExtensionTarget $target)
+        $splat = @{
+            ResourceGroupName = "ytongtest"
+            MachineName = "testmachine"
+            Name = "customScript"
+            Settings = @{
+                commandToExecute = "powershell.exe ls"
+            }
+        }
+        $all = Update-AzConnectedMachineExtension @splat
         $all | Should -Not -BeNullOrEmpty
     }
 

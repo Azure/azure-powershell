@@ -32,6 +32,9 @@ The operation to get the extension.
 ### [Get-AzConnectedMachineRunCommand](Get-AzConnectedMachineRunCommand.md)
 The operation to get a run command.
 
+### [Get-AzConnectedNetworkSecurityPerimeterConfiguration](Get-AzConnectedNetworkSecurityPerimeterConfiguration.md)
+Gets the network security perimeter configuration for a private link scope.
+
 ### [Get-AzConnectedPrivateLinkScope](Get-AzConnectedPrivateLinkScope.md)
 Returns a Azure Arc PrivateLinkScope.
 
