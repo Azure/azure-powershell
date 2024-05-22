@@ -542,11 +542,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 case AzureAccount.AccountType.User:
                     if (password == null)
                     {
+                        const string WamProperty = "InteractiveLoginByWAM";
+
                         var homeAccountId = account.GetProperty(AzureAccount.Property.HomeAccountId) ?? "";
+                        bool useWAM = false;
+                        Boolean.TryParse(account.GetProperty(WamProperty), out useWAM);
 
                         if (!string.IsNullOrEmpty(account.Id))
                         {
-                            return GetSilentParameters(tokenCacheProvider, account, environment, tenant, tokenCache, resourceId, homeAccountId);
+                            return GetSilentParameters(tokenCacheProvider, account, environment, tenant, tokenCache, resourceId, homeAccountId, useWAM);
                         }
 
                         if (account.IsPropertySet("UseDeviceAuth"))
@@ -557,7 +561,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                         {
                             return new UsernamePasswordParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, password, homeAccountId);
                         }
-                        return GetInteractiveParameters(tokenCacheProvider, account, environment, tenant, promptAction, tokenCache, resourceId, homeAccountId);
+                        var parameters = GetInteractiveParameters(tokenCacheProvider, account, environment, tenant, promptAction, tokenCache, resourceId, homeAccountId);
+                        if (parameters is InteractiveWamParameters)
+                        {
+                            account.SetProperty(WamProperty, bool.TrueString);
+                        }
+                        return parameters;
                     }
 
                     return new UsernamePasswordParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, password, null);
@@ -617,9 +626,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 : new InteractiveParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.GetProperty("LoginHint"), homeAccountId, promptAction);
         }
 
-        private static AuthenticationParameters GetSilentParameters(PowerShellTokenCacheProvider tokenCacheProvider, IAzureAccount account, IAzureEnvironment environment, string tenant, IAzureTokenCache tokenCache, string resourceId, string homeAccountId)
+        private static AuthenticationParameters GetSilentParameters(PowerShellTokenCacheProvider tokenCacheProvider, IAzureAccount account, IAzureEnvironment environment, string tenant, IAzureTokenCache tokenCache, string resourceId, string homeAccountId, bool useWAM)
         {
-            return new SilentParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, homeAccountId);
+            return new SilentParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, homeAccountId, useWAM);
         }
     }
 }
