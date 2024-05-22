@@ -16,20 +16,20 @@
 
 <#
 .Synopsis
-Creates a new rule and updates an existing rule
+Create a new rule and updates an existing rule
 .Description
-Creates a new rule and updates an existing rule
+Create a new rule and updates an existing rule
 .Example
 New-AzServiceBusRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -SubscriptionName mySubscription -Name myCorrelationRule -FilterType CorrelationFilter -ContentType contenttype -CorrelationFilterProperty @{a='b';c='d'} -SessionId sessionid -CorrelationId correlationid -MessageId messageid -Label label -ReplyTo replyto -ReplyToSessionId replytosessionid
 .Example
 New-AzServiceBusRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -SubscriptionName mySubscription -Name mySqlRule -FilterType SqlFilter -SqlExpression 3=2 -ActionSqlExpression "SET a=b"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IRule
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IRule
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -38,7 +38,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <MigrationConfigurationName?>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be "$default".
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -58,7 +58,7 @@ PARAMETER <IRule>: Description of Rule Resource.
     [(Any) <String>]: This indicates any property can be added to this object.
   [CorrelationFilterRequiresPreprocessing <Boolean?>]: Value that indicates whether the rule action requires preprocessing.
   [CorrelationId <String>]: Identifier of the correlation.
-  [FilterType <FilterType?>]: Filter type that is evaluated against a BrokeredMessage.
+  [FilterType <String>]: Filter type that is evaluated against a BrokeredMessage.
   [Label <String>]: Application specific label.
   [MessageId <String>]: Identifier of the message.
   [ReplyTo <String>]: Address of the queue to reply to.
@@ -67,32 +67,24 @@ PARAMETER <IRule>: Description of Rule Resource.
   [SqlExpression <String>]: The SQL expression. e.g. MyProperty='ABC'
   [SqlFilterCompatibilityLevel <Int32?>]: This property is reserved for future use. An integer value showing the compatibility level, currently hard-coded to 20.
   [SqlFilterRequiresPreprocessing <Boolean?>]: Value that indicates whether the rule action requires preprocessing.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The type of identity that last modified the resource.
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [To <String>]: Address to send to.
 .Link
 https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusrule
 #>
 function New-AzServiceBusRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule])]
 [CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IRule]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule]
     # Description of Rule Resource.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter()]

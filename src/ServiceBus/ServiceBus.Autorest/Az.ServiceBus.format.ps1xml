@@ -2,9 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.CorrelationFilterProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.CorrelationFilterProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.CorrelationFilterProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.CorrelationFilterProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -24,9 +24,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ResourceNamespacePatchTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ResourceNamespacePatchTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ResourceNamespacePatchTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ResourceNamespacePatchTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -46,9 +46,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api10.TrackedResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.TrackedResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api10.TrackedResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.TrackedResourceTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

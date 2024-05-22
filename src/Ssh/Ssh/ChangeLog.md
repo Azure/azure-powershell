@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 0.2.1
+* Removed the outdated deps.json file.
+
 ## Version 0.2.0
 * Supported updating Service Configuration for Arc resources at runtime.
     - Owners/Contributors can change what port is allowed for SSH connection at runtime by providing the -Port parameter and confirming the operation when prompted.

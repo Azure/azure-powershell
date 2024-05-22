@@ -490,7 +490,9 @@ namespace Microsoft.Azure.Management.Resources
 
         }
         /// <summary>
-        /// When you delete a resource group, all of its resources are also deleted. Deleting a resource group deletes all of its template deployments and currently stored operations.
+        /// When you delete a resource group, all of its resources are also deleted.
+        /// Deleting a resource group deletes all of its template deployments and
+        /// currently stored operations.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group to delete. The name is case insensitive.

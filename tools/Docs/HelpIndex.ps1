@@ -84,10 +84,10 @@ $HelpFolders += Get-ChildItem -Path "$ToolsRootPath/../src" -Recurse -Directory 
 # Map the name of the cmdlet to the location of the help file
 $HelpFileMapping = @{}
 $HelpFolders | ForEach-Object {
-    $helpFiles = Get-ChildItem -Path $_.FullName
+    $helpFiles = Get-ChildItem -Path $_.FullName | Where-Object {-NOT ($_.Name -cmatch "README.md")}
     $helpFiles | ForEach-Object {
         if ($HelpFileMapping.Contains($_.Name)) {
-            throw "Two files exist with the name $_ in $($_.FullName)"
+            throw "Two files exist with the name $($_.Name) in $($_.FullName) and $($HelpFileMapping[$_.Name])"
         }
         else {
             $HelpFileMapping.Add("$($_.Name)", $_.FullName)

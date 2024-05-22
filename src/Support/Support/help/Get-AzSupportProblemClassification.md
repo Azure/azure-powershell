@@ -1,97 +1,89 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Support.dll-Help.xml
+external help file: Az.Support-help.xml
 Module Name: Az.Support
-online version:https://learn.microsoft.com/powershell/module/az.support/get-azsupportproblemclassification
+online version: https://learn.microsoft.com/powershell/module/az.support/get-azsupportproblemclassification
 schema: 2.0.0
 ---
 
 # Get-AzSupportProblemClassification
 
 ## SYNOPSIS
-Get problem classifications for the service specified.
+Get problem classification details for a specific Azure service.
 
 ## SYNTAX
 
-### GetByNameParameterSet (Default)
+### List (Default)
 ```
-Get-AzSupportProblemClassification -ServiceId <String> [-Id <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSupportProblemClassification -ServiceName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
-### GetByParentObjectParameterSet
+### GetViaIdentityService
 ```
-Get-AzSupportProblemClassification [-Id <String>] -ServiceObject <PSSupportService>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSupportProblemClassification -Name <String> -ServiceInputObject <ISupportIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzSupportProblemClassification -Name <String> -ServiceName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzSupportProblemClassification -InputObject <ISupportIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the current list of problem classification for an Azure service. You can use the service and problem classification GUID to create a new support ticket using New-AzSupportTicket.
-
-Always use the service and problem classification GUIDs obtained programmatically. This practice ensures that you have the most recent set of service and problem classification GUIDs for support ticket creation.
+Get problem classification details for a specific Azure service.
 
 ## EXAMPLES
 
-### Example 1: Get all problem classificaitons for a service using service id parameter.
+### Example 1: List Azure Support Problem Classifications
 ```powershell
-Get-AzSupportProblemClassification -ServiceId "{vm_running_windows_service_guid}"
-```
-```output
-Name                                 DisplayName
-----                                 -----------
-4d78b174-3203-a3ac-9e08-41fb35de6354 Compute-VM (cores-vCPUs) subscription limit increases
-923d6b56-d573-f943-b65d-d69ba79ea21a Cannot connect to my VM / My configuration change impacted connectivity
-9e9faedb-7764-448b-244a-14eca26f5362 Cannot connect to my VM / Troubleshoot my network security group (NSG)
-a0456e7c-3e84-2bd5-63e9-2fc8ba7cff73 Cannot connect to my VM / Troubleshoot my VM firewall
-e5c307e3-50ff-5dc9-c8ae-7d35051f88c9 Cannot connect to my VM / I have an issue with my public IP
-f325e249-4f10-e5bd-28f6-a466704826da Cannot connect to my VM / I need to reset my password
-f44a2b74-6a5c-a93f-a259-81e756e8cc27 Cannot connect to my VM / I need guidance with serial console access
-92c2396d-b703-973f-1bca-2eea9425b21a Cannot connect to my VM / Failure to connect using RDP or SSH port
-d36eec9e-cab1-8d62-1ce5-3245a02e3bcf Cannot connect to my VM / My problem is not listed above
-83e6afa6-4ecd-e1c6-ef63-de73e96d0842 Cannot start or stop my VM / My VM will not start after a configuration change
-240605e1-1510-255d-b490-cb95f582b1dc Cannot start or stop my VM / I received a disk related error
-f47d6b99-6f4b-d21a-feee-1800ad391e10 Cannot start or stop my VM / I received an allocation failure
+Get-AzSupportProblemClassification -ServiceName "6f16735c-b0ae-b275-ad3a-03479cfa1396"
 ```
 
-### Example 2: Get all problem classificaitons for a service using parent service object
-```powershell
-Get-AzSupportService -Id "{vm_running_windows_service_guid}" | Get-AzSupportProblemClassification 
-```
 ```output
-Name                                 DisplayName
-----                                 -----------
-4d78b174-3203-a3ac-9e08-41fb35de6354 Compute-VM (cores-vCPUs) subscription limit increases
-923d6b56-d573-f943-b65d-d69ba79ea21a Cannot connect to my VM / My configuration change impacted connectivity
-9e9faedb-7764-448b-244a-14eca26f5362 Cannot connect to my VM / Troubleshoot my network security group (NSG)
-a0456e7c-3e84-2bd5-63e9-2fc8ba7cff73 Cannot connect to my VM / Troubleshoot my VM firewall
-e5c307e3-50ff-5dc9-c8ae-7d35051f88c9 Cannot connect to my VM / I have an issue with my public IP
-f325e249-4f10-e5bd-28f6-a466704826da Cannot connect to my VM / I need to reset my password
-f44a2b74-6a5c-a93f-a259-81e756e8cc27 Cannot connect to my VM / I need guidance with serial console access
-92c2396d-b703-973f-1bca-2eea9425b21a Cannot connect to my VM / Failure to connect using RDP or SSH port
-d36eec9e-cab1-8d62-1ce5-3245a02e3bcf Cannot connect to my VM / My problem is not listed above
-83e6afa6-4ecd-e1c6-ef63-de73e96d0842 Cannot start or stop my VM / My VM will not start after a configuration change
-240605e1-1510-255d-b490-cb95f582b1dc Cannot start or stop my VM / I received a disk related error
-f47d6b99-6f4b-d21a-feee-1800ad391e10 Cannot start or stop my VM / I received an allocation failure
+DisplayName                                                                                     Name                                 SecondaryConsentEnabled
+-----------                                                                                     ----                                 -----------------------
+Compute-VM (cores-vCPUs) subscription limit increases                                           4d78b174-3203-a3ac-9e08-41fb35de6354
+Windows Update, Guest Patching and OS Upgrades / Issue with Azure Automatic VM guest patching   e565bd13-86f0-ecb3-d2b7-0a7501ae8839
+Windows Update, Guest Patching and OS Upgrades / Issue with Azure Update Management patching    8d686480-ef41-5005-358e-12b9be9608fe
 ```
 
-### Example 3: Get details of a single problem classificaiton by id by piping service object
+Lists all the problem classifications (categories) available for a specific Azure service.
+Always use the service and problem classifications obtained programmatically.
+This practice ensures that you always have the most recent set of service and problem classification Ids.
+
+### Example 2: Get Azure Support Problem Classification
 ```powershell
-Get-AzSupportService -Id "{vm_running_windows_service_guid}" | Get-AzSupportProblemClassification -Id 923d6b56-d573-f943-b65d-d69ba79ea21a
+Get-AzSupportProblemClassification -ServiceName "6f16735c-b0ae-b275-ad3a-03479cfa1396" -Name "e565bd13-86f0-ecb3-d2b7-0a7501ae8839"
 ```
+
 ```output
-Name                                 DisplayName
-----                                 -----------
-923d6b56-d573-f943-b65d-d69ba79ea21a Cannot connect to my VM / My configuration change impacted connectivity
+DisplayName             : Windows Update, Guest Patching and OS Upgrades / Issue with Azure Automatic VM guest patching
+Id                      : /providers/Microsoft.Support/services/6f16735c-b0ae-b275-ad3a-03479cfa1396/problemClassifications/e565bd13-86f0-ecb3-d2b7-0a7501ae8839
+Name                    : e565bd13-86f0-ecb3-d2b7-0a7501ae8839
+ResourceGroupName       :
+SecondaryConsentEnabled :
+Type                    : Microsoft.Support/problemClassifications
 ```
+
+Get problem classification details for a specific Azure service.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -100,42 +92,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-Problem classification id.
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: Name
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ServiceId
-Service id for which all problem classifications are retrieved.
-
-```yaml
-Type: System.String
-Parameter Sets: GetByNameParameterSet
-Aliases: ServiceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ServiceObject
-Service object for which problem classifications are retrieved.
-
-```yaml
-Type: Microsoft.Azure.Commands.Support.Models.PSSupportService
-Parameter Sets: GetByParentObjectParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -145,16 +107,61 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+Name of problem classification.
+
+```yaml
+Type: System.String
+Parameter Sets: GetViaIdentityService, Get
+Aliases: ProblemClassificationName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
+Parameter Sets: GetViaIdentityService
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ServiceName
+Name of the Azure service available for support.
+
+```yaml
+Type: System.String
+Parameter Sets: List, Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Support.Models.PSSupportService
+### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Support.Models.PSSupportProblemClassification
+### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IProblemClassification
 
 ## NOTES
 

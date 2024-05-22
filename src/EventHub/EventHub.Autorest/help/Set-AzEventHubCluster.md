@@ -199,10 +199,9 @@ Accept wildcard characters: False
 
 ### -Tag
 Resource tags.
-To construct, see NOTES section for TAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api10.ITrackedResourceTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ITrackedResourceTags
 Parameter Sets: (All)
 Aliases:
 
@@ -253,7 +252,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICluster
 
 ## NOTES
 

@@ -2985,7 +2985,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
         }
 
         /// <summary>
-        /// Update a Custom Location with the specified Resource Name in the specified Resource Group and Subscription.
+        /// Updates a Custom Location with the specified Resource Name in the specified Resource Group and Subscription.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -3036,7 +3036,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
         }
 
         /// <summary>
-        /// Update a Custom Location with the specified Resource Name in the specified Resource Group and Subscription.
+        /// Updates a Custom Location with the specified Resource Name in the specified Resource Group and Subscription.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The updatable fields of an existing Custom Location.</param>
@@ -3097,7 +3097,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
         }
 
         /// <summary>
-        /// Update a Custom Location with the specified Resource Name in the specified Resource Group and Subscription.
+        /// Updates a Custom Location with the specified Resource Name in the specified Resource Group and Subscription.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The updatable fields of an existing Custom Location.</param>
@@ -3156,7 +3156,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
         }
 
         /// <summary>
-        /// Update a Custom Location with the specified Resource Name in the specified Resource Group and Subscription.
+        /// Updates a Custom Location with the specified Resource Name in the specified Resource Group and Subscription.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -3206,7 +3206,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
         }
 
         /// <summary>
-        /// Update a Custom Location with the specified Resource Name in the specified Resource Group and Subscription.
+        /// Updates a Custom Location with the specified Resource Name in the specified Resource Group and Subscription.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -3254,7 +3254,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation
         }
 
         /// <summary>
-        /// Update a Custom Location with the specified Resource Name in the specified Resource Group and Subscription.
+        /// Updates a Custom Location with the specified Resource Name in the specified Resource Group and Subscription.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>

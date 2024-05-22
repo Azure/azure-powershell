@@ -27,12 +27,12 @@ New-AzServiceBusKey -ResourceGroupName myResourceGroup -NamespaceName myNamespac
 New-AzServiceBusKey -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -Name rootmanagesharedaccesskey -KeyType SecondaryKey
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IAccessKeys
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys
 .Link
 https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebuskey
 #>
 function New-AzServiceBusKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IAccessKeys])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys])]
 [CmdletBinding(DefaultParameterSetName='NewExpandedNamespace', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -77,7 +77,7 @@ param(
     [Parameter(Mandatory)]
     [Alias('RegenerateKey')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.KeyType]
+    [System.String]
     # The access key to regenerate.
     ${KeyType},
 
@@ -177,7 +177,7 @@ begin {
             NewExpandedTopic = 'Az.ServiceBus.custom\New-AzServiceBusKey';
             NewExpandedQueue = 'Az.ServiceBus.custom\New-AzServiceBusKey';
         }
-        if (('NewExpandedNamespace', 'NewExpandedTopic', 'NewExpandedQueue') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('NewExpandedNamespace', 'NewExpandedTopic', 'NewExpandedQueue') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {

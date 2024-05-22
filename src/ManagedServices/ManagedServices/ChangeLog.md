@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.0.1
 * Introduced secrets detection feature to safeguard sensitive data.
 
 ## Version 3.0.0

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzConnectedMachineExtension
 
 ## SYNOPSIS
-The operation to Create the extension.
+The operation to create or update the extension.
 
 ## SYNTAX
 
@@ -83,7 +83,7 @@ New-AzConnectedMachineExtension -InputObject <IConnectedMachineIdentity>
 ```
 
 ## DESCRIPTION
-The operation to Create the extension.
+The operation to create or update the extension.
 
 ## EXAMPLES
 

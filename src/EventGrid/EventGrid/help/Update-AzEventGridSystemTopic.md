@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
+external help file: Az.EventGrid-help.xml
 Module Name: Az.EventGrid
 online version: https://learn.microsoft.com/powershell/module/az.eventgrid/update-azeventgridsystemtopic
 schema: 2.0.0
@@ -8,61 +8,68 @@ schema: 2.0.0
 # Update-AzEventGridSystemTopic
 
 ## SYNOPSIS
-Updates the properties of an Event Grid System topic.
+Asynchronously creates a new system topic with the specified parameters.
 
 ## SYNTAX
 
-### TopicNameParameterSet (Default)
+### UpdateExpanded (Default)
 ```
-Update-AzEventGridSystemTopic [-IdentityId <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzEventGridSystemTopic -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-EnableSystemAssignedIdentity <Boolean>] [-IdentityPrincipalId <String>] [-IdentityTenantId <String>]
+ [-Location <String>] [-Source <String>] [-Tag <Hashtable>] [-TopicType <String>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SystemTopicNameParameterSet
+### UpdateViaIdentityExpanded
 ```
-Update-AzEventGridSystemTopic -ResourceGroupName <String> -Name <String> [-IdentityType <String>]
- [-IdentityId <String[]>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzEventGridSystemTopic -InputObject <IEventGridIdentity> [-EnableSystemAssignedIdentity <Boolean>]
+ [-IdentityPrincipalId <String>] [-IdentityTenantId <String>] [-Location <String>] [-Source <String>]
+ [-Tag <Hashtable>] [-TopicType <String>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates the properties of an Event Grid System topic. Can be used to update the identity and tags of a system topic
+Asynchronously creates a new system topic with the specified parameters.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Asynchronously updates a system topic with the specified parameters.
 ```powershell
-Update-AzEventGridSystemTopic -ResourceGroup MyResourceGroupName -Name Topic1 -Tag @{ Department="Finance"; Environment="Test" }
+Update-AzEventGridSystemTopic -Name azps-systopic -ResourceGroupName azps_test_group_eventgrid -Tag @{"abc"="123"}
 ```
 
-Sets the properties of the Event Grid System topic \`Topic1\` in resource group \`MyResourceGroupName\` to replace the tags with the specified tags "Department" and "Environment".
-
-### Example 2
-```powershell
-Update-AzEventGridSystemTopic -ResourceGroup MyResourceGroupName -Name Topic1 -IdentityType "SystemAssigned"
+```output
+Location Name          ResourceGroupName
+-------- ----          -----------------
+eastus   azps-systopic azps_test_group_eventgrid
 ```
 
-Sets the properties of the Event Grid System topic \`Topic1\` in resource group \`MyResourceGroupName\` to change identity type to \`SystemAssigned\`.
+Asynchronously updates a system topic with the specified parameters.
 
-### Example 3
+### Example 2: Asynchronously updates a system topic with the specified parameters.
 ```powershell
-$id1 = '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
-$id2 = '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
-
-Update-AzEventGridSystemTopic -ResourceGroup MyResourceGroupName -Name Topic1 -IdentityType "UserAssigned" -IdentityId $id1,$id2
+$systemtopic = Get-AzEventGridSystemTopic -ResourceGroupName azps_test_group_eventgrid -Name azps-systopic
+Update-AzEventGridSystemTopic -InputObject $systemtopic -Tag @{"abc"="123"}
 ```
 
-Sets the properties of the Event Grid System topic \`Topic1\` in resource group \`MyResourceGroupName\` to change identity type to \`UserAssigned\` with given identity ids.
+```output
+Location Name          ResourceGroupName
+-------- ----          -----------------
+eastus   azps-systopic azps_test_group_eventgrid
+```
+
+Asynchronously updates a system topic with the specified parameters.
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
 
 Required: False
 Position: Named
@@ -71,79 +78,231 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityId
-List of user assigned Identity Ids
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: System.String[]
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Hashtable which represents resource Tags.
+### -IdentityPrincipalId
+The principal ID of resource identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: SystemTopicNameParameterSet
+Parameter Sets: (All)
 Aliases:
-Accepted values: SystemAssigned, UserAssigned, SystemAssigned, UserAssigned, None
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityTenantId
+The tenant ID of resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Location
+Location of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-EventGrid topic name.
+Name of the system topic.
 
 ```yaml
 Type: System.String
-Parameter Sets: SystemTopicNameParameterSet
+Parameter Sets: UpdateExpanded
 Aliases: SystemTopicName
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: System.String
-Parameter Sets: SystemTopicNameParameterSet
-Aliases: ResourceGroup
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Tag
-Hashtable which represents resource Tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: SystemTopicNameParameterSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group within the user's subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases: ResourceGroup
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Source
+Source for the system topic.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Tags of the resource.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TopicType
+TopicType for the system topic.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases: IdentityId
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -183,15 +342,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### System.String[]
-
-### System.Collections.Hashtable
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventGrid.Models.PSSystemTopic
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemTopic
 
 ## NOTES
 

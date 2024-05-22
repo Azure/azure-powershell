@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 2.0.0
+* Converted Az.Support to autorest-based module.
+
 ## Version 1.0.1
 * Added breaking change warning messages for cmdlet deprecation
     - New-AzSupportContactProfileObject
@@ -64,4 +67,3 @@
     - Update-AzSupportTicket
     - New-AzSupportTicketCommunication
     - Get-AzSupportTicketCommunication
-

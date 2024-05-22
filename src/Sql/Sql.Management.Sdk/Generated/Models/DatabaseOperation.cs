@@ -76,7 +76,10 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="isCancellable">Whether the operation can be cancelled.
         /// </param>
-        public DatabaseOperation(string id = default(string), string name = default(string), string type = default(string), string databaseName = default(string), string operation = default(string), string operationFriendlyName = default(string), int? percentComplete = default(int?), string serverName = default(string), System.DateTime? startTime = default(System.DateTime?), string state = default(string), int? errorCode = default(int?), string errorDescription = default(string), int? errorSeverity = default(int?), bool? isUserError = default(bool?), System.DateTime? estimatedCompletionTime = default(System.DateTime?), string description = default(string), bool? isCancellable = default(bool?))
+
+        /// <param name="operationPhaseDetails">The operation phase details.
+        /// </param>
+        public DatabaseOperation(string id = default(string), string name = default(string), string type = default(string), string databaseName = default(string), string operation = default(string), string operationFriendlyName = default(string), int? percentComplete = default(int?), string serverName = default(string), System.DateTime? startTime = default(System.DateTime?), string state = default(string), int? errorCode = default(int?), string errorDescription = default(string), int? errorSeverity = default(int?), bool? isUserError = default(bool?), System.DateTime? estimatedCompletionTime = default(System.DateTime?), string description = default(string), bool? isCancellable = default(bool?), PhaseDetails operationPhaseDetails = default(PhaseDetails))
 
         : base(id, name, type)
         {
@@ -94,6 +97,7 @@ namespace Microsoft.Azure.Management.Sql.Models
             this.EstimatedCompletionTime = estimatedCompletionTime;
             this.Description = description;
             this.IsCancellable = isCancellable;
+            this.OperationPhaseDetails = operationPhaseDetails;
             CustomInit();
         }
 
@@ -186,5 +190,11 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.isCancellable")]
         public bool? IsCancellable {get; private set; }
+
+        /// <summary>
+        /// Gets the operation phase details.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.operationPhaseDetails")]
+        public PhaseDetails OperationPhaseDetails {get; private set; }
     }
 }

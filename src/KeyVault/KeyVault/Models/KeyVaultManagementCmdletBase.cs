@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             return FilterByTag(new List<T> { vault }, tag).FirstOrDefault();
         }
 
-        protected List<PSKeyVaultIdentityItem> ListVaults(string resourceGroupName, Hashtable tag, ResourceTypeName? resourceTypeName = ResourceTypeName.Vault)
+        internal List<PSKeyVaultIdentityItem> ListVaults(string resourceGroupName, Hashtable tag, ResourceTypeName? resourceTypeName = ResourceTypeName.Vault)
         {
             var vaults = new List<PSKeyVaultIdentityItem>();
 

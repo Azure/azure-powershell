@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
+external help file: Az.EventGrid-help.xml
 Module Name: Az.EventGrid
 online version: https://learn.microsoft.com/powershell/module/az.eventgrid/remove-azeventgridsystemtopiceventsubscription
 schema: 2.0.0
@@ -8,44 +8,67 @@ schema: 2.0.0
 # Remove-AzEventGridSystemTopicEventSubscription
 
 ## SYNOPSIS
-Removes an Azure Event Grid system topic event subscription.
+Delete an existing event subscription of a system topic.
 
 ## SYNTAX
 
-### TopicNameParameterSet (Default)
+### Delete (Default)
 ```
-Remove-AzEventGridSystemTopicEventSubscription [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzEventGridSystemTopicEventSubscription -EventSubscriptionName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -SystemTopicName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentitySystemTopic
+```
+Remove-AzEventGridSystemTopicEventSubscription -EventSubscriptionName <String>
+ -SystemTopicInputObject <IEventGridIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SystemTopicEventSuscriptionParameterSet
+### DeleteViaIdentity
 ```
-Remove-AzEventGridSystemTopicEventSubscription -EventSubscriptionName <String> -ResourceGroupName <String>
- -SystemTopicName <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzEventGridSystemTopicEventSubscription -InputObject <IEventGridIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Removes an Azure Event Grid event subscription for an Azure Event Grid system topic.
+Delete an existing event subscription of a system topic.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Delete an existing event subscription of a system topic.
 ```powershell
-Remove-AzEventGridSystemTopicEventSubscription -ResourceGroup MyResourceGroup -SystemTopicName Topic1 -EventSubscriptionName EventSubscription1
+Remove-AzEventGridSystemTopicEventSubscription -EventSubscriptionName azps-evnetsub -ResourceGroupName azps_test_group_eventgrid -SystemTopicName azps-systopic
 ```
 
-Removes the event subscription \`EventSubscription1\` to an Azure Event Grid system topic \`Topic1\` in resource group \`MyResourceGroupName\`.
+Delete an existing event subscription of a system topic.
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -55,23 +78,38 @@ Accept wildcard characters: False
 ```
 
 ### -EventSubscriptionName
-EventGrid event subscription name.
+Name of the event subscription to be created.
+Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
 
 ```yaml
 Type: System.String
-Parameter Sets: SystemTopicEventSuscriptionParameterSet
+Parameter Sets: Delete, DeleteViaIdentitySystemTopic
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Indicates that the cmdlet does not prompt you for confirmation.
-By default, this cmdlet prompts you to confirm that you want to delete the resource
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -86,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Returns the status of the Remove operation. By default, this cmdlet does not generate any output.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -101,32 +139,63 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: SystemTopicEventSuscriptionParameterSet
+Parameter Sets: Delete
+Aliases: ResourceGroup
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SystemTopicInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: DeleteViaIdentitySystemTopic
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -SystemTopicName
-EventGrid topic name.
+Name of the system topic.
 
 ```yaml
 Type: System.String
-Parameter Sets: SystemTopicEventSuscriptionParameterSet
+Parameter Sets: Delete
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -166,7 +235,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
 
 ## OUTPUTS
 

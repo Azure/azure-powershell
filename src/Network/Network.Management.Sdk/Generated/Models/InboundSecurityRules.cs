@@ -24,20 +24,34 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the InboundSecurityRules class.
         /// </summary>
 
+        /// <param name="name">Name of the rule.
+        /// </param>
+
         /// <param name="protocol">Protocol. This should be either TCP or UDP.
         /// Possible values include: &#39;TCP&#39;, &#39;UDP&#39;</param>
 
-        /// <param name="sourceAddressPrefix">The CIDR or source IP range. Only /30, /31 and /32 Ip ranges are allowed.
+        /// <param name="sourceAddressPrefix">The CIDR or source IP range.
         /// </param>
 
         /// <param name="destinationPortRange">NVA port ranges to be opened up. One needs to provide specific ports.
         /// </param>
-        public InboundSecurityRules(string protocol = default(string), string sourceAddressPrefix = default(string), int? destinationPortRange = default(int?))
+
+        /// <param name="destinationPortRanges">NVA port ranges to be opened up. One can provide a range of ports. Allowed
+        /// port value between 0 and 65535.
+        /// </param>
+
+        /// <param name="appliesOn">Public IP name in case of Permanent Rule type &amp; Interface Name in case of
+        /// Auto Expire Rule type
+        /// </param>
+        public InboundSecurityRules(string name = default(string), string protocol = default(string), string sourceAddressPrefix = default(string), int? destinationPortRange = default(int?), System.Collections.Generic.IList<string> destinationPortRanges = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> appliesOn = default(System.Collections.Generic.IList<string>))
 
         {
+            this.Name = name;
             this.Protocol = protocol;
             this.SourceAddressPrefix = sourceAddressPrefix;
             this.DestinationPortRange = destinationPortRange;
+            this.DestinationPortRanges = destinationPortRanges;
+            this.AppliesOn = appliesOn;
             CustomInit();
         }
 
@@ -48,14 +62,19 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
+        /// Gets or sets name of the rule.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
+        public string Name {get; set; }
+
+        /// <summary>
         /// Gets or sets protocol. This should be either TCP or UDP. Possible values include: &#39;TCP&#39;, &#39;UDP&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "protocol")]
         public string Protocol {get; set; }
 
         /// <summary>
-        /// Gets or sets the CIDR or source IP range. Only /30, /31 and /32 Ip ranges
-        /// are allowed.
+        /// Gets or sets the CIDR or source IP range.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sourceAddressPrefix")]
         public string SourceAddressPrefix {get; set; }
@@ -66,6 +85,20 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "destinationPortRange")]
         public int? DestinationPortRange {get; set; }
+
+        /// <summary>
+        /// Gets or sets nVA port ranges to be opened up. One can provide a range of
+        /// ports. Allowed port value between 0 and 65535.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "destinationPortRanges")]
+        public System.Collections.Generic.IList<string> DestinationPortRanges {get; set; }
+
+        /// <summary>
+        /// Gets or sets public IP name in case of Permanent Rule type &amp; Interface Name
+        /// in case of Auto Expire Rule type
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "appliesOn")]
+        public System.Collections.Generic.IList<string> AppliesOn {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -74,6 +107,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </exception>
         public virtual void Validate()
         {
+
 
 
             if (this.DestinationPortRange != null)
@@ -87,6 +121,8 @@ namespace Microsoft.Azure.Management.Network.Models
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "DestinationPortRange", 0);
                 }
             }
+
+
         }
     }
 }
