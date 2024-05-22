@@ -189,7 +189,7 @@ steps:
       $baseBranch = (git branch --show-current)
       Write-Host "Current branch is $baseBranch or $(Build.SourceBranch) or $(Build.SourceBranchName)"
       $tmpBranchName = "archive/$(Build.SourceBranchName)/$(Build.Reason)"
-      if ('Commit' -eq $(TriggerType)) {
+      if ('Commit' -eq "$(TriggerType)") {
         $tmpBranchName =+ "/$(Trigger)"
       }
       Write-Host "Switch to branch $tmpBranchName"
