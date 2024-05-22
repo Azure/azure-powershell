@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVMwareDatastore
 
 ## SYNOPSIS
-Create a datastore in a private cloud cluster
+Update a datastore in a private cloud cluster
 
 ## SYNTAX
 
@@ -44,7 +44,7 @@ Update-AzVMwareDatastore -ClusterName <String> -Name <String> -PrivateCloudInput
 ```
 
 ## DESCRIPTION
-Create a datastore in a private cloud cluster
+Update a datastore in a private cloud cluster
 
 ## EXAMPLES
 
@@ -80,7 +80,6 @@ Accept wildcard characters: False
 
 ### -ClusterInputObject
 Identity Parameter
-To construct, see NOTES section for CLUSTERINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -172,7 +171,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -233,7 +231,6 @@ Accept wildcard characters: False
 
 ### -PrivateCloudInputObject
 Identity Parameter
-To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity

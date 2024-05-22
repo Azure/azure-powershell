@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareScriptSecureStringExecutionParameterObject
+online version: https://learn.microsoft.com/powershell/module/Az.VMware/new-azvmwarescriptsecurestringexecutionparameterobject
 schema: 2.0.0
 ---
 
 # New-AzVMwareScriptSecureStringExecutionParameterObject
 
 ## SYNOPSIS
-Create a in-memory object for ScriptSecureStringExecutionParameter
+Create an in-memory object for ScriptSecureStringExecutionParameter.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzVMwareScriptSecureStringExecutionParameterObject -Name <String> [-SecureVa
 ```
 
 ## DESCRIPTION
-Create a in-memory object for ScriptSecureStringExecutionParameter
+Create an in-memory object for ScriptSecureStringExecutionParameter.
 
 ## EXAMPLES
 

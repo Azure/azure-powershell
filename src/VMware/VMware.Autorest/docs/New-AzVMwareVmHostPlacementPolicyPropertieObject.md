@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareVmHostPlacementPolicyPropertiesObject
+online version: https://learn.microsoft.com/powershell/module/Az.VMware/new-azvmwarevmhostplacementpolicypropertieobject
 schema: 2.0.0
 ---
 
-# New-AzVMwareVmHostPlacementPolicyPropertiesObject
+# New-AzVMwareVmHostPlacementPolicyPropertieObject
 
 ## SYNOPSIS
 Create an in-memory object for VmHostPlacementPolicyProperties.
@@ -13,8 +13,9 @@ Create an in-memory object for VmHostPlacementPolicyProperties.
 ## SYNTAX
 
 ```
-New-AzVMwareVmHostPlacementPolicyPropertiesObject -AffinityType <String> -HostMember <String[]> -Type <String>
- -VMMember <String[]> [-DisplayName <String>] [-State <String>] [<CommonParameters>]
+New-AzVMwareVmHostPlacementPolicyPropertieObject -AffinityType <String> -HostMember <String[]>
+ -VMMember <String[]> [-AffinityStrength <String>] [-AzureHybridBenefitType <String>] [-DisplayName <String>]
+ [-State <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,17 +25,17 @@ Create an in-memory object for VmHostPlacementPolicyProperties.
 
 ### Example 1: Create an in-memory object for VmHostPlacementPolicyProperties.
 ```powershell
-New-AzVMwareVmHostPlacementPolicyPropertiesObject -AffinityType 'AntiAffinity' -HostMember @{"test"="test"}  -Type 'VmHost' -VMMember @{"test"="test"}
+New-AzVMwareVmHostPlacementPolicyPropertieObject -AffinityType 'AntiAffinity' -HostMember @{"test"="test"} -VMMember @{"test"="test"}
 ```
 
 ```output
-AffinityStrength       : 
+AffinityStrength       :
 AffinityType           : AntiAffinity
-AzureHybridBenefitType : 
-DisplayName            : 
+AzureHybridBenefitType :
+DisplayName            :
 HostMember             : {System.Collections.Hashtable}
-ProvisioningState      : 
-State                  : 
+ProvisioningState      :
+State                  :
 Type                   : VmHost
 VMMember               : {System.Collections.Hashtable}
 ```
@@ -42,6 +43,21 @@ VMMember               : {System.Collections.Hashtable}
 Create an in-memory object for VmHostPlacementPolicyProperties.
 
 ## PARAMETERS
+
+### -AffinityStrength
+vm-host placement policy affinity strength (should/must).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AffinityType
 placement policy affinity type.
@@ -52,6 +68,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureHybridBenefitType
+placement policy azure hybrid benefit opt-in type.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -97,21 +128,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Type
-placement policy type.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

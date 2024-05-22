@@ -47,11 +47,11 @@ Get a virtual machine by id in a private cloud cluster
 ### [New-AzVMwareAddon](New-AzVMwareAddon.md)
 Create or update a addon in a private cloud
 
-### [New-AzVMwareAddonSrmPropertiesObject](New-AzVMwareAddonSrmPropertiesObject.md)
-Create a in-memory object for AddonSrmProperties
+### [New-AzVMwareAddonSrmPropertieObject](New-AzVMwareAddonSrmPropertieObject.md)
+Create an in-memory object for AddonSrmProperties.
 
-### [New-AzVMwareAddonVrPropertiesObject](New-AzVMwareAddonVrPropertiesObject.md)
-Create a in-memory object for AddonVrProperties
+### [New-AzVMwareAddonVrPropertieObject](New-AzVMwareAddonVrPropertieObject.md)
+Create an in-memory object for AddonVrProperties.
 
 ### [New-AzVMwareAuthorization](New-AzVMwareAuthorization.md)
 Create an ExpressRoute Circuit Authorization in a private cloud
@@ -68,9 +68,6 @@ Create a datastore in a private cloud cluster
 ### [New-AzVMwareGlobalReachConnection](New-AzVMwareGlobalReachConnection.md)
 Create a global reach connection in a private cloud
 
-### [New-AzVMwareIdentitySourceObject](New-AzVMwareIdentitySourceObject.md)
-Create an in-memory object for IdentitySource.
-
 ### [New-AzVMwarePlacementPolicy](New-AzVMwarePlacementPolicy.md)
 Create a placement policy in a private cloud cluster
 
@@ -84,18 +81,18 @@ Rotate the NSX-T Manager password
 Rotate the vCenter password
 
 ### [New-AzVMwarePSCredentialExecutionParameterObject](New-AzVMwarePSCredentialExecutionParameterObject.md)
-Create a in-memory object for PSCredentialExecutionParameter
+Create an in-memory object for PSCredentialExecutionParameter.
 
 ### [New-AzVMwareScriptSecureStringExecutionParameterObject](New-AzVMwareScriptSecureStringExecutionParameterObject.md)
-Create a in-memory object for ScriptSecureStringExecutionParameter
+Create an in-memory object for ScriptSecureStringExecutionParameter.
 
 ### [New-AzVMwareScriptStringExecutionParameterObject](New-AzVMwareScriptStringExecutionParameterObject.md)
-Create a in-memory object for ScriptStringExecutionParameter
+Create an in-memory object for ScriptStringExecutionParameter.
 
-### [New-AzVMwareVmHostPlacementPolicyPropertiesObject](New-AzVMwareVmHostPlacementPolicyPropertiesObject.md)
+### [New-AzVMwareVmHostPlacementPolicyPropertieObject](New-AzVMwareVmHostPlacementPolicyPropertieObject.md)
 Create an in-memory object for VmHostPlacementPolicyProperties.
 
-### [New-AzVMwareVMPlacementPolicyPropertiesObject](New-AzVMwareVMPlacementPolicyPropertiesObject.md)
+### [New-AzVMwareVMPlacementPolicyPropertieObject](New-AzVMwareVMPlacementPolicyPropertieObject.md)
 Create an in-memory object for VMPlacementPolicyProperties.
 
 ### [Remove-AzVMwareAddon](Remove-AzVMwareAddon.md)
@@ -129,19 +126,19 @@ Return quota for subscription by region
 Return trial status for subscription by region
 
 ### [Update-AzVMwareAuthorization](Update-AzVMwareAuthorization.md)
-Create an ExpressRoute Circuit Authorization in a private cloud
+Update an ExpressRoute Circuit Authorization in a private cloud
 
 ### [Update-AzVMwareCloudLink](Update-AzVMwareCloudLink.md)
-Create a cloud link in a private cloud
+Update a cloud link in a private cloud
 
 ### [Update-AzVMwareCluster](Update-AzVMwareCluster.md)
 Update a cluster in a private cloud
 
 ### [Update-AzVMwareDatastore](Update-AzVMwareDatastore.md)
-Create a datastore in a private cloud cluster
+Update a datastore in a private cloud cluster
 
 ### [Update-AzVMwareGlobalReachConnection](Update-AzVMwareGlobalReachConnection.md)
-Create a global reach connection in a private cloud
+Update a global reach connection in a private cloud
 
 ### [Update-AzVMwarePlacementPolicy](Update-AzVMwarePlacementPolicy.md)
 Update a placement policy in a private cloud cluster

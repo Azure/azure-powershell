@@ -46,7 +46,7 @@ Create a placement policy in a private cloud cluster
 
 ### Example 1: Create or update a placement policy in a private cloud cluster
 ```powershell
-$abc = New-AzVMwareVMPlacementPolicyPropertiesObject -AffinityType 'Affinity' -Type 'VmVm' -VMMember @{"test"="test"}
+$abc = New-AzVMwareVMPlacementPolicyPropertieObject -AffinityType 'Affinity' -VMMember @{"test"="test"}
 New-AzVMwarePlacementPolicy -ClusterName cluster1 -Name policy1 -PrivateCloudName cloud1 -ResourceGroupName group1 -Property $abc
 ```
 
@@ -60,7 +60,7 @@ Create or update a placement policy in a private cloud cluster
 
 ### Example 2: Create or update a placement policy in a private cloud cluster
 ```powershell
-$abc = New-AzVMwareVmHostPlacementPolicyPropertiesObject -AffinityType 'AntiAffinity' -HostMember @{"test"="test"}  -Type 'VmHost' -VMMember @{"test"="test"}
+$abc = New-AzVMwareVmHostPlacementPolicyPropertieObject -AffinityType 'AntiAffinity' -HostMember @{"test"="test"} -VMMember @{"test"="test"}
 New-AzVMwarePlacementPolicy -ClusterName cluster1 -Name policy1 -PrivateCloudName cloud1 -ResourceGroupName group1 -Property $abc
 ```
 
@@ -91,7 +91,6 @@ Accept wildcard characters: False
 
 ### -ClusterInputObject
 Identity Parameter
-To construct, see NOTES section for CLUSTERINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -138,7 +137,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -184,7 +182,6 @@ Accept wildcard characters: False
 
 ### -PrivateCloudInputObject
 Identity Parameter
-To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -215,7 +212,6 @@ Accept wildcard characters: False
 
 ### -Property
 placement policy properties
-To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicyProperties

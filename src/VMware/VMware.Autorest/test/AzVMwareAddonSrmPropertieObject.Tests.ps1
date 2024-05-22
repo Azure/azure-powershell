@@ -3,7 +3,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
 . ($loadEnvPath)
-$TestRecordingFile = Join-Path $PSScriptRoot 'AzVMwareAddonSrmPropertiesObject.Recording.json'
+$TestRecordingFile = Join-Path $PSScriptRoot 'AzVMwareAddonSrmPropertieObject.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -11,10 +11,10 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'AzVMwareAddonSrmPropertiesObject' {
+Describe 'AzVMwareAddonSrmPropertieObject' {
     It 'CreateExpanded' {
         {
-            $config = New-AzVMwareAddonSrmPropertiesObject -LicenseKey "YourLicenseKeyValue"
+            $config = New-AzVMwareAddonSrmPropertieObject -LicenseKey "YourLicenseKeyValue"
             $config.AddonType | Should -Be "SRM"
         } | Should -Not -Throw
     }

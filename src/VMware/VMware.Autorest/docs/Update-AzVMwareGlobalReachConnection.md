@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVMwareGlobalReachConnection
 
 ## SYNOPSIS
-Create a global reach connection in a private cloud
+Update a global reach connection in a private cloud
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ Update-AzVMwareGlobalReachConnection -Name <String> -PrivateCloudInputObject <IV
 ```
 
 ## DESCRIPTION
-Create a global reach connection in a private cloud
+Update a global reach connection in a private cloud
 
 ## EXAMPLES
 
@@ -117,7 +117,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -178,7 +177,6 @@ Accept wildcard characters: False
 
 ### -PrivateCloudInputObject
 Identity Parameter
-To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity

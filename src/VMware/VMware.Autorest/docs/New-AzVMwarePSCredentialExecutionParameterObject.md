@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwarePSCredentialExecutionParameterObject
+online version: https://learn.microsoft.com/powershell/module/Az.VMware/new-azvmwarepscredentialexecutionparameterobject
 schema: 2.0.0
 ---
 
 # New-AzVMwarePSCredentialExecutionParameterObject
 
 ## SYNOPSIS
-Create a in-memory object for PSCredentialExecutionParameter
+Create an in-memory object for PSCredentialExecutionParameter.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzVMwarePSCredentialExecutionParameterObject -Name <String> [-Password <Stri
 ```
 
 ## DESCRIPTION
-Create a in-memory object for PSCredentialExecutionParameter
+Create an in-memory object for PSCredentialExecutionParameter.
 
 ## EXAMPLES
 
