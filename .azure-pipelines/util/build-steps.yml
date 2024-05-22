@@ -65,6 +65,20 @@ steps:
       Write-Host "##vso[task.setvariable variable=TriggerType]$triggerType"
       Write-Host "##vso[task.setvariable variable=Trigger]$trigger"
       Write-Host "##[section]Filter files triggered by ${reason}: ${trigger}" -ForegroundColor DarkYellow
+- task: PowerShell@2
+  displayName: 'Create branch for CI/Manual/Schedule triggered pipeline'
+  condition: or(eq(variables.TriggerType, 'Commit'), eq(variables.TriggerType, 'TargetModule'))
+  inputs:
+    targetType: inline
+    pwsh: true
+    script: |
+      $baseBranchName = "origin/$(Build.SourceBranchName)"
+      $tmpBranchName = "archive/$(Build.SourceBranchName)/$(Build.Reason)"
+      if ('Commit' -eq "$(TriggerType)") {
+        $tmpBranchName += "/$(Trigger)"
+      }
+      Write-Host "##[section]Switch from $baseBranchName to $tmpBranchName"
+      git checkout -b $tmpBranchName $baseBranchName
 - task: DotNetCoreCLI@2
   displayName: Filter changed files
   inputs:
@@ -180,19 +194,6 @@ steps:
     command: custom
     custom: msbuild
     arguments: 'build.proj /t:AzToolsInstaller'
-- task: PowerShell@2
-  displayName: 'Create branch for CI/Manual/Schedule triggered pipeline'
-  inputs:
-    targetType: inline
-    pwsh: true
-    script: |
-      $baseBranch = (git branch --show-current)
-      Write-Host "Current branch is $baseBranch or $(Build.SourceBranch) or $(Build.SourceBranchName)"
-      $tmpBranchName = "archive/$(Build.SourceBranchName)/$(Build.Reason)"
-      if ('Commit' -eq "$(TriggerType)") {
-        $tmpBranchName =+ "/$(Trigger)"
-      }
-      Write-Host "Switch to branch $tmpBranchName"
 - template: publish-artifacts-steps.yml
   parameters:
     artifactName: build-${{ parameters.testFramework }}
