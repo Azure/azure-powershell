@@ -1,14 +1,22 @@
-### Example 1: Check the availability of the cluster pool name.
+### Example 1: {{ Add title here }}
 ```powershell
-$location="west us 2"
-$name="testname"
-Test-AzHdInsightOnAksLocationNameAvailability -Location $location -Name $name -Type Microsoft.HDInsight/clusterPools/clusters
+{{ Add code here }}
 ```
 
 ```output
-Message                                                   NameAvailable Reason
--------                                                   ------------- ------
-Cluster name must follow the 'clusterpool/cluster' format False         Invalid
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Check the availability of the cluster pool name in West Us 2.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+

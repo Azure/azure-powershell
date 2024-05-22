@@ -1,6 +1,6 @@
 ### Example 1: Create an object to hold the cluster pool upgrade parameters.
 ```powershell
-New-AzHdInsightOnAksClusterPoolAKSUpgradeObject -TargetAksVersion "1.27.9" -UpgradeClusterPool $true
+New-AzHdInsightOnAksClusterPoolAksPatchVersionUpgradeObject -TargetAksVersion "1.27.9" -UpgradeClusterPool $true
 ```
 
 ```output
