@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
 {
     public class PSFrontDoorWafLogScrubbingSetting
     {
-        public List<PSFrontDoorWafLogScrubbingRule> ScrubbingRules { get; set; }
+        public PSFrontDoorWafLogScrubbingRule[] ScrubbingRule { get; set; }
 
         public string State { get; set; }
     }

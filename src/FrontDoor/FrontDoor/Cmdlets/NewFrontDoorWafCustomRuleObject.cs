@@ -84,11 +84,11 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Gets or sets describes the list of variables to group the rate limit
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Gets or sets describes the list of variables to group the rate limit")]
-        public List<PSFrontDoorWafCustomRuleGroupByVariable> CustomRules  { get; set; }
+        public PSFrontDoorWafCustomRuleGroupByVariable[] CustomRule  { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var CustomRule = new PSCustomRule
+            var customRule = new PSCustomRule
             {
                 Name = Name,
                 MatchConditions = MatchCondition.ToList(),
@@ -98,9 +98,9 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 RateLimitThreshold = RateLimitThreshold,
                 Action = Action,
                 EnabledState = !this.IsParameterBound(c => c.EnabledState) ? "Enabled" : EnabledState,
-                CustomRules = CustomRules
+                CustomRule = CustomRule
             };
-            WriteObject(CustomRule);
+            WriteObject(customRule);
         }
 
     }

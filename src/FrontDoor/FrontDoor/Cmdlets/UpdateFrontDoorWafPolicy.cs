@@ -217,9 +217,9 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
             {
                 var scrubbingRule = new List<Management.FrontDoor.Models.WebApplicationFirewallScrubbingRules>();
 
-                if (LogScrubbingSetting.ScrubbingRules.Count() > 0)
+                if (LogScrubbingSetting.ScrubbingRule.Count() > 0)
                 {
-                    foreach (var item in LogScrubbingSetting.ScrubbingRules)
+                    foreach (var item in LogScrubbingSetting.ScrubbingRule)
                     {
                         scrubbingRule.Add(new Management.FrontDoor.Models.WebApplicationFirewallScrubbingRules(
                             matchVariable: item.MatchVariable,

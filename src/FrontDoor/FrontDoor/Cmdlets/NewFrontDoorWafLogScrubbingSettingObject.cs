@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// List of log scrubbing rules applied to the Web Application Firewall logs.
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "List of log scrubbing rules applied to the Web Application Firewall logs.")]
-        public List<PSFrontDoorWafLogScrubbingRule> ScrubbingRules { get; set; }
+        public PSFrontDoorWafLogScrubbingRule[] ScrubbingRule { get; set; }
 
         /// State of the log scrubbing config. Default value is Enabled.
         [Parameter(Mandatory = true, HelpMessage = "State of the log scrubbing config. Default value is Enabled.")]
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         {
             var FrontDoorWafLogScrubbingSettingObject = new PSFrontDoorWafLogScrubbingSetting
             {
-                ScrubbingRules = ScrubbingRules,
+                ScrubbingRule = ScrubbingRule,
                 State = State
             };
             WriteObject(FrontDoorWafLogScrubbingSettingObject);
