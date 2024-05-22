@@ -180,6 +180,19 @@ steps:
     command: custom
     custom: msbuild
     arguments: 'build.proj /t:AzToolsInstaller'
+- task: PowerShell@2
+  displayName: 'Create branch for CI/Manual/Schedule triggered pipeline'
+  inputs:
+    targetType: inline
+    pwsh: true
+    script: |
+      $baseBranch = (git branch --show-current)
+      Write-Host "Current branch is $baseBranch or $(Build.SourceBranch) or $(Build.SourceBranchName)"
+      $tmpBranchName = "archive/$(Build.SourceBranchName)/$(Build.Reason)"
+      if ('Commit' -eq $(TriggerType)) {
+        $tmpBranchName =+ "/$(Trigger)"
+      }
+      Write-Host "Switch to branch $tmpBranchName"
 - template: publish-artifacts-steps.yml
   parameters:
     artifactName: build-${{ parameters.testFramework }}
