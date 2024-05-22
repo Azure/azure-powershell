@@ -78,6 +78,7 @@ steps:
         $tmpBranchName += "/$(Trigger)"
       }
       Write-Host "##[section]Switch from $baseBranchName to $tmpBranchName"
+      git fetch $baseBranchName
       git checkout -b $tmpBranchName $baseBranchName
 - task: DotNetCoreCLI@2
   displayName: Filter changed files
