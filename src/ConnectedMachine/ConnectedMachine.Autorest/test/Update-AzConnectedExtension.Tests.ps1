@@ -27,18 +27,10 @@ Describe 'Update-AzConnectedExtension' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Update' {
-        $splat = @{
-            ResourceGroupName = "ytongtest"
-            MachineName = "testmachine"
-            Name = "customScript"
-            Settings = @{
-                commandToExecute = "powershell.exe ls"
-            }
-        }
-        $all = Update-AzConnectedMachineExtension @splat
+    It 'Upgrade' {
+        $target = @{"Microsoft.Compute.CustomScriptExtension" = @{"targetVersion"="1.10.16.0"}}
+        $all = (Update-AzConnectedExtension -ResourceGroupName $env.ResourceGroupName -MachineName $env.MachineName -ExtensionTarget $target)
         $all | Should -Not -BeNullOrEmpty
-
     }
 
     It 'UpdateViaIdentityMachineExpanded' -skip {
