@@ -15,13 +15,13 @@ Create a LocalRulestackResource
 ```
 New-AzPaloAltoNetworksLocalRulestack -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-AssociatedSubscription <String[]>] [-DefaultMode <String>]
- [-Description <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-MinAppIdVersion <String>] [-PanEtag <String>] [-PanLocation <String>] [-Scope <String>]
- [-SecurityServiceAntiSpywareProfile <String>] [-SecurityServiceAntiVirusProfile <String>]
- [-SecurityServiceDnsSubscription <String>] [-SecurityServiceFileBlockingProfile <String>]
- [-SecurityServiceOutboundTrustCertificate <String>] [-SecurityServiceOutboundUnTrustCertificate <String>]
- [-SecurityServiceUrlFilteringProfile <String>] [-SecurityServiceVulnerabilityProfile <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Description <String>] [-EnableSystemAssignedIdentity] [-MinAppIdVersion <String>] [-PanEtag <String>]
+ [-PanLocation <String>] [-Scope <String>] [-SecurityServiceAntiSpywareProfile <String>]
+ [-SecurityServiceAntiVirusProfile <String>] [-SecurityServiceDnsSubscription <String>]
+ [-SecurityServiceFileBlockingProfile <String>] [-SecurityServiceOutboundTrustCertificate <String>]
+ [-SecurityServiceOutboundUnTrustCertificate <String>] [-SecurityServiceUrlFilteringProfile <String>]
+ [-SecurityServiceVulnerabilityProfile <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -120,26 +120,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-The type of managed identity assigned to this resource.
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The identities assigned to this resource by the user.
-
-```yaml
-Type: System.Collections.Hashtable
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -411,6 +396,22 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

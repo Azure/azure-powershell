@@ -74,6 +74,9 @@ Create a LocalRulesResource
 ### [New-AzPaloAltoNetworksLocalRulestack](New-AzPaloAltoNetworksLocalRulestack.md)
 Create a LocalRulestackResource
 
+### [New-AzPaloAltoNetworksNetworkProfileObject](New-AzPaloAltoNetworksNetworkProfileObject.md)
+Create an in-memory object for NetworkProfile.
+
 ### [New-AzPaloAltoNetworksPrefixListLocalRulestack](New-AzPaloAltoNetworksPrefixListLocalRulestack.md)
 Create a PrefixListResource
 
@@ -107,24 +110,12 @@ Reset counters
 ### [Save-AzPaloAltoNetworksFirewallLogProfile](Save-AzPaloAltoNetworksFirewallLogProfile.md)
 Log Profile for Firewall
 
-### [Update-AzPaloAltoNetworksCertificateObjectLocalRulestack](Update-AzPaloAltoNetworksCertificateObjectLocalRulestack.md)
-Create a CertificateObjectLocalRulestackResource
-
 ### [Update-AzPaloAltoNetworksFirewall](Update-AzPaloAltoNetworksFirewall.md)
 Update a FirewallResource
-
-### [Update-AzPaloAltoNetworksFqdnListLocalRulestack](Update-AzPaloAltoNetworksFqdnListLocalRulestack.md)
-Create a FqdnListLocalRulestackResource
-
-### [Update-AzPaloAltoNetworksLocalRule](Update-AzPaloAltoNetworksLocalRule.md)
-Create a LocalRulesResource
 
 ### [Update-AzPaloAltoNetworksLocalRuleCounter](Update-AzPaloAltoNetworksLocalRuleCounter.md)
 Refresh counters
 
 ### [Update-AzPaloAltoNetworksLocalRulestack](Update-AzPaloAltoNetworksLocalRulestack.md)
 Update a LocalRulestackResource
-
-### [Update-AzPaloAltoNetworksPrefixListLocalRulestack](Update-AzPaloAltoNetworksPrefixListLocalRulestack.md)
-Create a PrefixListResource
 
