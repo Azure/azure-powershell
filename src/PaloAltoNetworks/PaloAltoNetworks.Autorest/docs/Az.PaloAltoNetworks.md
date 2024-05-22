@@ -74,9 +74,6 @@ Create a LocalRulesResource
 ### [New-AzPaloAltoNetworksLocalRulestack](New-AzPaloAltoNetworksLocalRulestack.md)
 Create a LocalRulestackResource
 
-### [New-AzPaloAltoNetworksNetworkProfileObject](New-AzPaloAltoNetworksNetworkProfileObject.md)
-Create an in-memory object for NetworkProfile.
-
 ### [New-AzPaloAltoNetworksPrefixListLocalRulestack](New-AzPaloAltoNetworksPrefixListLocalRulestack.md)
 Create a PrefixListResource
 

@@ -89,6 +89,7 @@ directive:
       - model-name: IPAddress
       - model-name: FrontendSetting
       - model-name: NetworkProfile
+        cmdlet-name: New-AzPaloAltoNetworksProfileObject
       - model-name: TagInfo
 
   - where:
