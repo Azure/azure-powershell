@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.5.0
 * Added support to acknowledge scheduled event
 
 ## Version 1.4.1
