@@ -93,7 +93,7 @@ pac91,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac92,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Logz.0.1.1.nupkg;sourceType=sa]Az.Logz,0.1.1
 pac93,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MachineLearning.1.1.4.nupkg;sourceType=sa]Az.MachineLearning,1.1.4
 pac94,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MachineLearningServices.1.0.1.nupkg;sourceType=sa]Az.MachineLearningServices,1.0.1
-pac95,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Maintenance.1.4.1.nupkg;sourceType=sa]Az.Maintenance,1.4.1
+pac95,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Maintenance.1.5.0.nupkg;sourceType=sa]Az.Maintenance,1.5.0
 pac96,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ManagedNetworkFabric.0.1.2.nupkg;sourceType=sa]Az.ManagedNetworkFabric,0.1.2
 pac97,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ManagedServiceIdentity.1.2.1.nupkg;sourceType=sa]Az.ManagedServiceIdentity,1.2.1
 pac98,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ManagedServices.3.0.1.nupkg;sourceType=sa]Az.ManagedServices,3.0.1
