@@ -61,7 +61,7 @@ AGENTPOOLPROFILE <INamedAgentPoolProfile[]>: The agent pool properties for the p
   [VMSize <String>]: The VM sku size of the agent pool node VMs.
   [Name <String>]: Unique name of the default agent pool in the context of the provisioned cluster. Default value is <clusterName>-nodepool1
 .Link
-https://learn.microsoft.com/powershell/module/az.aksarc/new-azaksarcluster
+https://learn.microsoft.com/powershell/module/az.aksarc/new-azaksarccluster
 #>
 function New-AzAksArcCluster {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedCluster])]
