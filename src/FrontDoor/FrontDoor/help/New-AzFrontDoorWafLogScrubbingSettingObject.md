@@ -8,28 +8,31 @@ schema: 2.0.0
 # New-AzFrontDoorWafLogScrubbingSettingObject
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create LogScrubbingSetting object for Waf policy object
+
 
 ## SYNTAX
 
 ```
 New-AzFrontDoorWafLogScrubbingSettingObject
  -ScrubbingRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoorWafLogScrubbingRule]>
- -State <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ -State <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Create LogScrubbingSetting object for Waf policy object
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+ $LogScrubbingRule = New-AzFrontDoorWafLogScrubbingRuleObject -MatchVariable "RequestHeaderNames" -SelectorMatchOperator "EqualsAny" -State "Enabled"
+New-AzFrontDoorWafLogScrubbingSettingObject -State Enabled -ScrubbingRules @($LogScrubbingRule)
+
 ```
 
-{{ Add example description here }}
+Need to create a LogScrubbingRule object before using.
 
 ## PARAMETERS
 

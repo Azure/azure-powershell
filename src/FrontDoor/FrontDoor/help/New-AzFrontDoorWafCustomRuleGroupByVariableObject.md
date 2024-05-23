@@ -8,26 +8,27 @@ schema: 2.0.0
 # New-AzFrontDoorWafCustomRuleGroupByVariableObject
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create CustomRuleGroupByVariable object for custom rule object
 
 ## SYNTAX
 
 ```
 New-AzFrontDoorWafCustomRuleGroupByVariableObject -VariableName <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Create CustomRuleGroupByVariable object for custom rule object
+
+Use cmdlet "New-AzFrontDoorWafCustomRuleGroupByVariableObject" to pass -CustomRule parameter
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+New-AzFrontDoorWafCustomRuleGroupByVariableObject -VariableName SocketAddr
 ```
 
-{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -38,21 +39,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

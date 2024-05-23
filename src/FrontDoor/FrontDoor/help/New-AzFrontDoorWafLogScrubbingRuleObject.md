@@ -8,27 +8,27 @@ schema: 2.0.0
 # New-AzFrontDoorWafLogScrubbingRuleObject
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create LogScrubbingRule object for LogScrubbingSetting
 
 ## SYNTAX
 
 ```
 New-AzFrontDoorWafLogScrubbingRuleObject -MatchVariable <String> -SelectorMatchOperator <String>
  -State <String> [-Selector <String>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Create LogScrubbingRule object for LogScrubbingSetting
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+New-AzFrontDoorWafLogScrubbingRuleObject -MatchVariable "RequestHeaderNames" -SelectorMatchOperator "EqualsAny" -State "Enabled"
 ```
 
-{{ Add example description here }}
+This obejct is a parameter for LogscrubbingSetting
 
 ## PARAMETERS
 
@@ -56,21 +56,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
