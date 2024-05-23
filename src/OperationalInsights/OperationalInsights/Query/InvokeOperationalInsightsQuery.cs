@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Query
         [Parameter(Mandatory = false, HelpMessage = "The timespan to bound the query by.")]
         public TimeSpan? Timespan { get; set; } = null;
 
-        [Parameter(Mandatory = false, HelpMessage = "Puts an upper bound on the amount of time the server will spend processing the query. See: https://dev.loganalytics.io/documentation/Using-the-API/Timeouts")]
+        [Parameter(Mandatory = false, HelpMessage = "Puts an upper bound on the amount of time the server will spend processing the query. See: https://learn.microsoft.com/azure/azure-monitor/logs/api/timeouts")]
         [ValidateRange(1, int.MaxValue)]
         public int? Wait { get; set; }
 

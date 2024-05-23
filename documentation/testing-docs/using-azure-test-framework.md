@@ -103,24 +103,19 @@ For an existing service principal, this command will respect your current settin
 
 #### Record Tests
 
-After creating the service principal, you will need to grant it access to Azure resources. This can be achieved using the following PowerShell command. The argument for this command is the application ID (See [Service Principal Application ID](https://learn.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key))
+You can use either a user account (Recommended) or a Service Principal to record test cases with appropriate permissions.
 
-```powershell
-New-AzRoleAssignment -ApplicationId <ApplicationId> -Scope "/subscriptions/<SubscriptionId>" -RoleDefinitionName Contributor
-```
-
-To use this option, set the following environment variables before starting Visual Studio. The following values are substituted into the below environment variables:
-
-`ClientId`
-
-* The [Service Principal Application ID](https://learn.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key)
-
-`ClientSecret`
-
-* The [Service Principal Authentication Key](https://learn.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key)
+With user account, you may set the following environment variables:
 
 ```
-TEST_CSM_ORGID_AUTHENTICATION=Environment=Prod;SubscriptionId=<SubscriptionId>;TenantId=<TenantId>;ServicePrincipal=<ClientId>;ServicePrincipalSecret=<ClientSecret>;HttpRecorderMode=Record;
+TEST_CSM_ORGID_AUTHENTICATION=Environment=Prod;SubscriptionId=<SubscriptionId>;TenantId=<TenantId>;UserId=<UserId>;
+AZURE_TEST_MODE=Record
+```
+
+For service principal, you may set the following environment variables:
+
+```
+TEST_CSM_ORGID_AUTHENTICATION=Environment=Prod;SubscriptionId=<SubscriptionId>;TenantId=<TenantId>;ServicePrincipal=<ClientId>;ServicePrincipalSecret=<ClientSecret>;
 AZURE_TEST_MODE=Record
 ```
 
@@ -129,7 +124,7 @@ AZURE_TEST_MODE=Record
 The default test mode is `Playback`, so there is no need to set up the `AZURE_TEST_MODE` variable. You may optionally set the environment variables:
 
 ```
-TEST_CSM_ORGID_AUTHENTICATION=Environment=Prod;SubscriptionId=<SubscriptionId>;TenantId=<TenantId>;ServicePrincipal=<ClientId>;ServicePrincipalSecret=<ClientSecret>;HttpRecorderMode=Playback;
+TEST_CSM_ORGID_AUTHENTICATION=Environment=Prod;SubscriptionId=<SubscriptionId>;TenantId=<TenantId>;ServicePrincipal=<ClientId>;ServicePrincipalSecret=<ClientSecret>;
 AZURE_TEST_MODE=Playback
 ```
 
@@ -140,8 +135,8 @@ The recommended approach for building the connection string is using a config fi
 - If JSON config file exists
   - The Test Framework will use it to build the connection string, ignoring any settings from environment variables.
 - If JSON config file does not exist
-  - The Test Framework will first check the TEST_CSM_ORGID_AUTHENTICATION environment variable and use its value to build the connection string.
-  - If `HttpRecorderMode` is not set, then the Test Framework will check the `AZURE_TEST_MODE` environment variable.
+  - The Test Framework will check the `TEST_CSM_ORGID_AUTHENTICATION` environment variable and use its value to build the connection string.
+  - The Test Framework will check the `AZURE_TEST_MODE` environment variable and use its value to build the test mode.
     - If `AZURE_TEST_MODE` is set, its value will be used as the test mode.
     - If `AZURE_TEST_MODE` is not set, the default test mode will be `Playback`.
 
@@ -151,10 +146,8 @@ If you are unsure about the settings on your machine, you can run the command `G
 
 - [Run the tests](https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/azure-powershell-developer-guide.md#recordingrunning-tests) and make sure that you have a generated `.json` file that corresponds to the test name, and it should be located under the `SessionRecords` folder within the test project.
 - If you want to switch from Record to Playback or from Playback to Record, consider below steps.
-  - If you choose to use a JSON config file, update the value of the property `HttpRecorderMode` in the JSON file.
-  - If you prefer environment variables
-    - If you have `HttpRecorderMode` defined in the environment variable `TEST_CSM_ORGID_AUTHENTICATION`, update its value accordingly.
-    - Otherwise, update the value of `AZURE_TEST_MODE`.
+  - If you choose to use a JSON config file, update the value of the property `HttpRecorderMode` in the JSON file directly.
+  - If you prefer environment variables, update the value of environment variable `AZURE_TEST_MODE`.
 
 ## Change Test Environment settings at run-time
 
@@ -179,7 +172,7 @@ Changing the above properties at run-time has the potential to hard code few thi
 
 #### Issue: exceptions in Microsoft.Azure.Test.HttpRecorder
 
-Ensure that the `HttpRecorderMode` in the `TEST_CSM_ORGID_AUTHENTICATION` environment variable is consistent with the value in `AZURE_TEST_MODE` environment variable.
+The `HttpRecorderMode` key in the `TEST_CSM_ORGID_AUTHENTICATION` environment variable has been deprecated. Please remove this key/value pair and use `AZURE_TEST_MODE` instead for recording mode.
 
 ## Supported Environments in Test Framework
 

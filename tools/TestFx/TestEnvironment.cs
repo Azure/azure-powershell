@@ -131,7 +131,6 @@ namespace Microsoft.Azure.Commands.TestFx
                 GraphUri = new Uri(ConnectionString.GetValue(ConnectionStringKeys.GraphUriKey));
             }
 
-            SetupHttpRecorderMode();
             SetupTokenDictionary();
         }
 
@@ -158,28 +157,6 @@ namespace Microsoft.Azure.Commands.TestFx
                 { TestEnvironmentName.Current, new TestEndpoints(TestEnvironmentName.Current) },
                 { TestEnvironmentName.Custom, new TestEndpoints(TestEnvironmentName.Custom) }
             };
-        }
-
-        private void SetupHttpRecorderMode()
-        {
-            string testMode = ConnectionString.GetValue(ConnectionStringKeys.HttpRecorderModeKey);
-            if (string.IsNullOrEmpty(testMode))
-            {
-                testMode = Environment.GetEnvironmentVariable(ConnectionStringKeys.AZURE_TEST_MODE_ENVKEY);
-            }
-
-            // Ideally we should be throwing when incompatible environment (e.g. Environment=Foo) is provided in connection string
-            // But currently we do not throw
-            if (Enum.TryParse(testMode, out HttpRecorderMode recorderMode))
-            {
-                HttpMockServer.Mode = recorderMode;
-            }
-            else
-            {
-                // Log incompatible recorder mode
-                // Currently we set Playback as default recorder mode
-                HttpMockServer.Mode = HttpRecorderMode.Playback;
-            }
         }
 
         private void SetupTokenDictionary()
