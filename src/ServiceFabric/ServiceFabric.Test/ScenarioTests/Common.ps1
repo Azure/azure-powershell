@@ -96,17 +96,17 @@ function Get-CertAppThumbprint
 
 function Get-CACertCommonName
 {
-	return "AzureRMSFTestCert3"
+	return "pstestcert"
 }
 
 function Get-CACertIssuerThumbprint
 {
-	return "169B2A3BD4AF92BEDCE52AD1AA4CE2EB87A931CE"
+	return "EE33C51F5694274B4668D679AC8236A2600B492E"
 }
 
 function Get-CACertSecretUrl
 {
-	return "https://powsfmckv.vault.azure.net/secrets/AzureRMSFTestCert3/f312204e50074a02ba99e633070be7f7"
+	return "https://sfmccnpwkv.vault.azure.net/secrets/pstestcert/092228298fee4f5db31c03332104aee9"
 }
 
 function Get-CertWUSecretUrl
@@ -335,32 +335,32 @@ function Assert-AreEqualObjectPropertiesExcept
 
 function Get-AppTypeName
 {
-    return "VotingType"
+    return "CalcServiceApp"
 }
 
 function Get-AppTypeV1Name
 {
-    return "1.0.0"
+    return "1.0"
 }
 
 function Get-AppTypeV2Name
 {
-    return "2.0.0"
+    return "1.1"
 }
 
 function Get-AppPackageV1
 {
-    return "https://azsfapptest.blob.core.windows.net/azsfapptest/CalcApp_1.0.sfpkg"
+    return "https://clisftestsa.blob.core.windows.net/calappcontainer/CalcApp_1.0.sfpkg?sp=racwdyti&st=2024-05-22T23:20:16Z&se=2024-06-08T07:20:16Z&sv=2022-11-02&sr=b&sig=jFcokw2HE%2FG6%2BdB8V7opOOdL8QeOimpntcjqW92LXHU%3D"
 }
 
 function Get-AppPackageV2
 {
-    return "https://azsfapptest.blob.core.windows.net/azsfapptest/CalcApp_1.1.sfpkg"
+    return "https://clisftestsa.blob.core.windows.net/calappcontainer/CalcApp_1.1.sfpkg?sp=racwdyti&st=2024-05-22T23:20:51Z&se=2024-06-08T07:20:51Z&sv=2022-11-02&sr=b&sig=9CjziHFL3vpxp%2FqrBWf7yTKTavZjj141SIarjCH8slc%3D"
 }
 
 function Get-ServiceTypeName
 {
-    return "VotingWebType"
+    return "CalcServiceType"
 }
 
 # Managed Application functions
