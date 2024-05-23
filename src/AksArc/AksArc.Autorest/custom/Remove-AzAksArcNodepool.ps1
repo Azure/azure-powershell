@@ -20,9 +20,7 @@ Deletes the specified agent pool in the provisioned cluster
 .Description
 Deletes the specified agent pool in the provisioned cluster
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Remove-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Name azps_test_nodepool_example
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAksArcIdentity

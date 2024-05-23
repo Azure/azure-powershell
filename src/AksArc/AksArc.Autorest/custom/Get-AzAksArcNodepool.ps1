@@ -20,9 +20,9 @@ Gets the specified agent pool in the provisioned cluster
 .Description
 Gets the specified agent pool in the provisioned cluster
 .Example
-{{ Add code here }}
+Get-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group
 .Example
-{{ Add code here }}
+Get-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Name azps_test_nodepool1
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAksArcIdentity

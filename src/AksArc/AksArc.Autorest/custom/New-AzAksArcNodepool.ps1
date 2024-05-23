@@ -20,15 +20,27 @@ Create the agent pool in the provisioned cluster
 .Description
 Create the agent pool in the provisioned cluster
 .Example
-{{ Add code here }}
+New-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Name azps_test_nodepool_example
 .Example
-{{ Add code here }}
+New-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Name azps_test_nodepool_example -Count 3
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAksArcIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPool
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IAksArcIdentity>: Identity Parameter
+  [AgentPoolName <String>]: Parameter for the name of the agent pool in the provisioned cluster.
+  [ConnectedClusterResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the connected cluster resource.
+  [CustomLocationResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the custom location resource.
+  [Id <String>]: Resource identity path
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [VirtualNetworkName <String>]: Parameter for the name of the virtual network
 .Link
 https://learn.microsoft.com/powershell/module/az.aksarc/new-azaksarcnodepool
 #>

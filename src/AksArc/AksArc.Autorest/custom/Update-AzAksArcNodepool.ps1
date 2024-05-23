@@ -20,9 +20,11 @@ Update the agent pool in the provisioned cluster
 .Description
 Update the agent pool in the provisioned cluster
 .Example
-{{ Add code here }}
+Update-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Name azps_test_nodepool_example -Count 3
 .Example
-{{ Add code here }}
+Update-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Name azps_test_nodepool_example -Tag @{'key1'= 1; 'key2'= 2}
+.Example
+Update-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Name azps_test_nodepool_example -EnableAutoScaling -MinCount 1 -MaxCount 5
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAksArcIdentity
@@ -41,7 +43,6 @@ INPUTOBJECT <IAksArcIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkName <String>]: Parameter for the name of the virtual network
-
 .Link
 https://learn.microsoft.com/powershell/module/az.aksarc/update-azaksarcnodepool
 #>

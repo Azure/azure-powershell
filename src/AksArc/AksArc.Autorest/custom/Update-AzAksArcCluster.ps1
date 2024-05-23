@@ -20,15 +20,28 @@ Update the provisioned cluster instance
 .Description
 Update the provisioned cluster instance
 .Example
-{{ Add code here }}
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -ControlPlaneCount 3
 .Example
-{{ Add code here }}
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -EnableAutoScaling -MinCount 1 -MaxCount 5
+.Example
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -NfCsiDriverEnabled
+.Example
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SmbCsiDriverEnabled
+.Example
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -LicenseProfileAzureHybridBenefit
+.Example
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -LicenseProfileAzureHybridBenefit:$false
+.Example
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -EnableAutoScaling:$false
+.Example
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -NfCsiDriverEnabled:$false
+.Example
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SmbCsiDriverEnabled:$false
+.Example
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -adminGroupObjectIDs @("2e00cb64-66d8-4c9c-92d8-6462caf99e33", "1b28ff4f-f7c5-4aaa-aa79-ba8b775ab443")
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedCluster
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
 .Link
 https://learn.microsoft.com/powershell/module/az.aksarc/update-azaksarccluster
 #>

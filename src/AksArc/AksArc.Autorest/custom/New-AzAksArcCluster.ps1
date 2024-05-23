@@ -20,9 +20,25 @@ Create the provisioned cluster instance
 .Description
 Create the provisioned cluster instance
 .Example
-{{ Add code here }}
+New-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -ControlPlaneCount 3
 .Example
-{{ Add code here }}
+New-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -EnableAutoScaling -MinCount 1 -MaxCount 5
+.Example
+New-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -NfCsiDriverEnabled
+.Example
+New-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SmbCsiDriverEnabled
+.Example
+New-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -LicenseProfileAzureHybridBenefit
+.Example
+New-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -LicenseProfileAzureHybridBenefit:$false
+.Example
+New-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -EnableAutoScaling:$false
+.Example
+New-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -NfCsiDriverEnabled:$false
+.Example
+New-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SmbCsiDriverEnabled:$false
+.Example
+New-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -adminGroupObjectIDs @("2e00cb64-66d8-4c9c-92d8-6462caf99e33", "1b28ff4f-f7c5-4aaa-aa79-ba8b775ab443")
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedCluster
@@ -44,9 +60,6 @@ AGENTPOOLPROFILE <INamedAgentPoolProfile[]>: The agent pool properties for the p
   [Count <Int32?>]: Number of nodes in the agent pool. The default value is 1.
   [VMSize <String>]: The VM sku size of the agent pool node VMs.
   [Name <String>]: Unique name of the default agent pool in the context of the provisioned cluster. Default value is <clusterName>-nodepool1
-
-SSHPUBLICKEY <ILinuxProfilePropertiesSshPublicKeysItem[]>: The list of SSH public keys used to authenticate with VMs. A maximum of 1 key may be specified.
-  [KeyData <String>]: Certificate public key used to authenticate with VMs through SSH. The certificate must be in PEM format with or without headers.
 .Link
 https://learn.microsoft.com/powershell/module/az.aksarc/new-azaksarcluster
 #>
