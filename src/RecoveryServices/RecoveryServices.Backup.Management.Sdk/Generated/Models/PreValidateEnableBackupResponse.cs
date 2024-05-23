@@ -37,8 +37,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="containerName">Specifies the product specific container name. E.g.
-        /// iaasvmcontainer;iaasvmcontainer;rgname;vmname. This is required
-        /// for portal
+        /// iaasvmcontainer;iaasvmcontainer;rgname;vmname. This is required for portal
         /// </param>
 
         /// <param name="protectedItemName">Specifies the product specific ds name. E.g.
@@ -88,8 +87,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <summary>
         /// Gets or sets specifies the product specific container name. E.g.
-        /// iaasvmcontainer;iaasvmcontainer;rgname;vmname. This is required
-        /// for portal
+        /// iaasvmcontainer;iaasvmcontainer;rgname;vmname. This is required for portal
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "containerName")]
         public string ContainerName {get; set; }

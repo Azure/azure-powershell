@@ -17,7 +17,8 @@ New-AzContainerRegistryExportPipeline -Name <String> -RegistryName <String> -Res
  [-SubscriptionId <String>] [-IdentityPrincipalId <String>] [-IdentityTenantId <String>]
  [-IdentityType <ResourceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>]
  [-Option <PipelineOptions[]>] [-TargetKeyVaultUri <String>] [-TargetType <String>] [-TargetUri <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -325,7 +326,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IExportPipeline
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

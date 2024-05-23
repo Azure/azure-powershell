@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StorageCache-help.xml
 Module Name: Az.StorageCache
 online version: https://learn.microsoft.com/powershell/module/az.storagecache/get-azstoragecachesku
 schema: 2.0.0
@@ -13,7 +13,8 @@ Get the list of StorageCache.Cache SKUs available to this subscription.
 ## SYNTAX
 
 ```
-Get-AzStorageCacheSku [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStorageCacheSku [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,7 +81,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

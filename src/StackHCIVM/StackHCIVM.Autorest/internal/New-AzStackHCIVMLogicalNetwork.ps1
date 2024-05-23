@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-The operation to Create a logical network.
+The operation to create or update a logical network.
 Please note some properties can be set only during logical network creation.
 .Description
-The operation to Create a logical network.
+The operation to create or update a logical network.
 Please note some properties can be set only during logical network creation.
 .Example
 New-AzStackHCIVMLogicalNetwork  -Name "testLnet" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus" -VmSwitchName "testswitch"

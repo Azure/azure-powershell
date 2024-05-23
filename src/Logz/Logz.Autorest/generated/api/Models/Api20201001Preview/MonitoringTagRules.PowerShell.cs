@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -82,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
         /// Creates a new instance of <see cref="MonitoringTagRules" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="MonitoringTagRules" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRules FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,30 +101,102 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20.SystemDataTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.MonitoringTagRulesPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).CreatedBy = (string) content.GetValueForProperty("CreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).CreatedBy, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).CreatedAt = (global::System.DateTime?) content.GetValueForProperty("CreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).CreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRule = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRules) content.GetValueForProperty("LogRule",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRule, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.LogRulesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemData = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20.ISystemData) content.GetValueForProperty("PropertiesSystemData",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemData, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20.SystemDataTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ProvisioningState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).CreatedByType = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType?) content.GetValueForProperty("CreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).CreatedByType, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LastModifiedBy = (string) content.GetValueForProperty("LastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LastModifiedBy, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LastModifiedByType = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType?) content.GetValueForProperty("LastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LastModifiedByType, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("LastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleFilteringTag = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IFilteringTag[]) content.GetValueForProperty("LogRuleFilteringTag",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleFilteringTag, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IFilteringTag>(__y, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.FilteringTagTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataCreatedBy = (string) content.GetValueForProperty("PropertiesSystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataCreatedBy, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("PropertiesSystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleSendAadLog = (bool?) content.GetValueForProperty("LogRuleSendAadLog",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleSendAadLog, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleSendSubscriptionLog = (bool?) content.GetValueForProperty("LogRuleSendSubscriptionLog",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleSendSubscriptionLog, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleSendActivityLog = (bool?) content.GetValueForProperty("LogRuleSendActivityLog",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleSendActivityLog, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataCreatedByType = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType?) content.GetValueForProperty("PropertiesSystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataCreatedByType, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataLastModifiedBy = (string) content.GetValueForProperty("PropertiesSystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataLastModifiedBy, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataLastModifiedByType = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType?) content.GetValueForProperty("PropertiesSystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataLastModifiedByType, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("PropertiesSystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("SystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20.SystemDataTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.MonitoringTagRulesPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("CreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).CreatedBy = (string) content.GetValueForProperty("CreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).CreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("CreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).CreatedAt = (global::System.DateTime?) content.GetValueForProperty("CreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).CreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("LogRule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRule = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRules) content.GetValueForProperty("LogRule",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRule, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.LogRulesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("PropertiesSystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemData = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20.ISystemData) content.GetValueForProperty("PropertiesSystemData",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemData, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20.SystemDataTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ProvisioningState.CreateFrom);
+            }
+            if (content.Contains("CreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).CreatedByType = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType?) content.GetValueForProperty("CreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).CreatedByType, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType.CreateFrom);
+            }
+            if (content.Contains("LastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LastModifiedBy = (string) content.GetValueForProperty("LastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LastModifiedByType = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType?) content.GetValueForProperty("LastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LastModifiedByType, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType.CreateFrom);
+            }
+            if (content.Contains("LastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("LastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("LogRuleFilteringTag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleFilteringTag = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IFilteringTag[]) content.GetValueForProperty("LogRuleFilteringTag",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleFilteringTag, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IFilteringTag>(__y, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.FilteringTagTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("PropertiesSystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataCreatedBy = (string) content.GetValueForProperty("PropertiesSystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("PropertiesSystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("PropertiesSystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("LogRuleSendAadLog"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleSendAadLog = (bool?) content.GetValueForProperty("LogRuleSendAadLog",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleSendAadLog, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("LogRuleSendSubscriptionLog"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleSendSubscriptionLog = (bool?) content.GetValueForProperty("LogRuleSendSubscriptionLog",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleSendSubscriptionLog, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("LogRuleSendActivityLog"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleSendActivityLog = (bool?) content.GetValueForProperty("LogRuleSendActivityLog",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleSendActivityLog, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("PropertiesSystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataCreatedByType = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType?) content.GetValueForProperty("PropertiesSystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataCreatedByType, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType.CreateFrom);
+            }
+            if (content.Contains("PropertiesSystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataLastModifiedBy = (string) content.GetValueForProperty("PropertiesSystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("PropertiesSystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataLastModifiedByType = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType?) content.GetValueForProperty("PropertiesSystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataLastModifiedByType, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType.CreateFrom);
+            }
+            if (content.Contains("PropertiesSystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("PropertiesSystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -140,30 +214,102 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20.SystemDataTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.MonitoringTagRulesPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).CreatedBy = (string) content.GetValueForProperty("CreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).CreatedBy, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).CreatedAt = (global::System.DateTime?) content.GetValueForProperty("CreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).CreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRule = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRules) content.GetValueForProperty("LogRule",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRule, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.LogRulesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemData = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20.ISystemData) content.GetValueForProperty("PropertiesSystemData",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemData, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20.SystemDataTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ProvisioningState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).CreatedByType = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType?) content.GetValueForProperty("CreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).CreatedByType, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LastModifiedBy = (string) content.GetValueForProperty("LastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LastModifiedBy, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LastModifiedByType = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType?) content.GetValueForProperty("LastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LastModifiedByType, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("LastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleFilteringTag = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IFilteringTag[]) content.GetValueForProperty("LogRuleFilteringTag",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleFilteringTag, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IFilteringTag>(__y, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.FilteringTagTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataCreatedBy = (string) content.GetValueForProperty("PropertiesSystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataCreatedBy, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("PropertiesSystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleSendAadLog = (bool?) content.GetValueForProperty("LogRuleSendAadLog",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleSendAadLog, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleSendSubscriptionLog = (bool?) content.GetValueForProperty("LogRuleSendSubscriptionLog",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleSendSubscriptionLog, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleSendActivityLog = (bool?) content.GetValueForProperty("LogRuleSendActivityLog",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleSendActivityLog, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataCreatedByType = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType?) content.GetValueForProperty("PropertiesSystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataCreatedByType, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataLastModifiedBy = (string) content.GetValueForProperty("PropertiesSystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataLastModifiedBy, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataLastModifiedByType = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType?) content.GetValueForProperty("PropertiesSystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataLastModifiedByType, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("PropertiesSystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("SystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20.SystemDataTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.MonitoringTagRulesPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("CreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).CreatedBy = (string) content.GetValueForProperty("CreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).CreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("CreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).CreatedAt = (global::System.DateTime?) content.GetValueForProperty("CreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).CreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("LogRule"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRule = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogRules) content.GetValueForProperty("LogRule",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRule, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.LogRulesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("PropertiesSystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemData = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20.ISystemData) content.GetValueForProperty("PropertiesSystemData",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemData, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20.SystemDataTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ProvisioningState.CreateFrom);
+            }
+            if (content.Contains("CreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).CreatedByType = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType?) content.GetValueForProperty("CreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).CreatedByType, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType.CreateFrom);
+            }
+            if (content.Contains("LastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LastModifiedBy = (string) content.GetValueForProperty("LastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LastModifiedByType = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType?) content.GetValueForProperty("LastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LastModifiedByType, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType.CreateFrom);
+            }
+            if (content.Contains("LastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("LastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("LogRuleFilteringTag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleFilteringTag = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IFilteringTag[]) content.GetValueForProperty("LogRuleFilteringTag",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleFilteringTag, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IFilteringTag>(__y, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.FilteringTagTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("PropertiesSystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataCreatedBy = (string) content.GetValueForProperty("PropertiesSystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("PropertiesSystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("PropertiesSystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("LogRuleSendAadLog"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleSendAadLog = (bool?) content.GetValueForProperty("LogRuleSendAadLog",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleSendAadLog, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("LogRuleSendSubscriptionLog"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleSendSubscriptionLog = (bool?) content.GetValueForProperty("LogRuleSendSubscriptionLog",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleSendSubscriptionLog, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("LogRuleSendActivityLog"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleSendActivityLog = (bool?) content.GetValueForProperty("LogRuleSendActivityLog",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).LogRuleSendActivityLog, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("PropertiesSystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataCreatedByType = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType?) content.GetValueForProperty("PropertiesSystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataCreatedByType, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType.CreateFrom);
+            }
+            if (content.Contains("PropertiesSystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataLastModifiedBy = (string) content.GetValueForProperty("PropertiesSystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("PropertiesSystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataLastModifiedByType = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType?) content.GetValueForProperty("PropertiesSystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataLastModifiedByType, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.CreatedByType.CreateFrom);
+            }
+            if (content.Contains("PropertiesSystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("PropertiesSystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRulesInternal)this).PropertiesSystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializePSObject(content);
         }
 

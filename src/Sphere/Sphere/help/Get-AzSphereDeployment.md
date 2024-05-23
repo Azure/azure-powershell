@@ -17,7 +17,7 @@ Get a Deployment.
 ```
 Get-AzSphereDeployment -CatalogName <String> -DeviceGroupName <String> -ProductName <String>
  -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Filter <String>] [-Maxpagesize <Int32>]
- [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -25,32 +25,32 @@ Get-AzSphereDeployment -CatalogName <String> -DeviceGroupName <String> -ProductN
 ```
 Get-AzSphereDeployment -CatalogName <String> -DeviceGroupName <String> -Name <String> -ProductName <String>
  -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentityProduct
 ```
 Get-AzSphereDeployment -DeviceGroupName <String> -Name <String> -ProductInputObject <ISphereIdentity>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityCatalog
 ```
 Get-AzSphereDeployment -DeviceGroupName <String> -Name <String> -ProductName <String>
- -CatalogInputObject <ISphereIdentity> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ -CatalogInputObject <ISphereIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentityDeviceGroup
 ```
 Get-AzSphereDeployment -Name <String> -DeviceGroupInputObject <ISphereIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzSphereDeployment -InputObject <ISphereIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -277,21 +277,6 @@ Parameter Sets: List, Get, GetViaIdentityCatalog
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

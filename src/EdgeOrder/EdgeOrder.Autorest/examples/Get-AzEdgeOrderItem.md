@@ -1,8 +1,10 @@
 ### Example 1: Get orderItem details
 ```powershell
 $orderItem = Get-AzEdgeOrderItem -Name examplePowershell -SubscriptionId "SubscriptionId" -ResourceGroupName "resourceGroupName"   
-$ordderItem | fl
+$ordderItem | Format-List
+```
 
+```output
 ForwardAddressContactDetail    : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ContactDetails
 ForwardAddressShippingAddress  : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ShippingAddress
 ForwardAddressValidationStatus : Valid

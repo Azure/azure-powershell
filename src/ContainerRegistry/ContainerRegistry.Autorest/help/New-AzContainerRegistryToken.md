@@ -253,23 +253,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`CREDENTIALSCERTIFICATE <ITokenCertificate[]>`: .
-  - `[EncodedPemCertificate <String>]`: Base 64 encoded string of the public certificate1 in PEM format that will be used for authenticating the token.
-  - `[Expiry <DateTime?>]`: The expiry datetime of the certificate.
-  - `[Name <TokenCertificateName?>]`: 
-  - `[Thumbprint <String>]`: The thumbprint of the certificate.
-
-`CREDENTIALSPASSWORD <ITokenPassword[]>`: .
-  - `[CreationTime <DateTime?>]`: The creation datetime of the password.
-  - `[Expiry <DateTime?>]`: The expiry datetime of the password.
-  - `[Name <TokenPasswordName?>]`: The password name "password1" or "password2"
-
 ## RELATED LINKS
 

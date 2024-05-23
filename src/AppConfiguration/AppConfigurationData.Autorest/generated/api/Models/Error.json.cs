@@ -65,11 +65,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
             {
                 return;
             }
-            {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)Type;}
-            {_title = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("title"), out var __jsonTitle) ? (string)__jsonTitle : (string)Title;}
-            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)Name;}
-            {_detail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("detail"), out var __jsonDetail) ? (string)__jsonDetail : (string)Detail;}
-            {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNumber>("status"), out var __jsonStatus) ? (int?)__jsonStatus : Status;}
+            {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)_type;}
+            {_title = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("title"), out var __jsonTitle) ? (string)__jsonTitle : (string)_title;}
+            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
+            {_detail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("detail"), out var __jsonDetail) ? (string)__jsonDetail : (string)_detail;}
+            {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNumber>("status"), out var __jsonStatus) ? (int?)__jsonStatus : _status;}
             AfterFromJson(json);
         }
 

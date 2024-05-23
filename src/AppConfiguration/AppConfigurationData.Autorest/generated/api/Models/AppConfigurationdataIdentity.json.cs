@@ -64,8 +64,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
             {
                 return;
             }
-            {_key = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("key"), out var __jsonKey) ? (string)__jsonKey : (string)Key;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_key = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("key"), out var __jsonKey) ? (string)__jsonKey : (string)_key;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

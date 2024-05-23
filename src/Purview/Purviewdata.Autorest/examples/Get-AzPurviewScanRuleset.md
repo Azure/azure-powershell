@@ -1,7 +1,9 @@
 ### Example 1: Get all custom scanrulesets
 ```powershell
 Get-AzPurviewScanRuleset -Endpoint https://parv-brs-2.purview.azure.com/
+```
 
+```output
 CreatedAt                            : 1/25/2022 2:01:38 AM
 Description                          : asdasd
 ExcludedSystemClassification         : {MICROSOFT.GOVERNMENT.CYPRUS.TAX.IDENTIFICATION.NUMBER, MICROSOFT.GOVERNMENT.CHILE.CDI_NUMBER, MICROSOFT.GOVERNMENT.MALTA.DRIVERS.LICENSE.NUMBER,
@@ -37,7 +39,9 @@ Get all custom scanrulesets
 ### Example 2: Get custom scanruleset by name
 ```powershell
 Get-AzPurviewScanRuleset -Endpoint https://parv-brs-2.purview.azure.com/ -Name TestRule
+```
 
+```output
 CreatedAt                            : 2/17/2022 2:30:15 PM
 Description                          : test desc
 ExcludedSystemClassification         : {MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER, MICROSOFT.SECURITY.COMMON_PASSWORDS, MICROSOFT.MISCELLANEOUS.IPADDRESS}

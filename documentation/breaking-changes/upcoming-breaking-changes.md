@@ -1,11 +1,5 @@
 # Upcoming breaking changes in Azure PowerShell
 
-## General
-
-- In the upcoming major release of Azure PowerShell (Az 12.0.0), the `DisplaySecretsWarning` configuration option will be activated by default. A warning message will be shown when secrets are detected in the output of a cmdlet.
-  For additional context, please visit [Hardening your defense in depth with secrets awareness in Azure command line tools](https://techcommunity.microsoft.com/t5/azure-tools-blog/hardening-your-defense-in-depth-with-secrets-awareness-in-azure/ba-p/4049883).
-  For command usage details, please refer to [Protect secrets in Azure PowerShell](https://go.microsoft.com/fwlink/?linkid=2258844).
-
 ## Az.Accounts
 
 ### `Clear-AzConfig`
@@ -519,22 +513,22 @@
   - `-CleanupPolicy`
     - The parameter : 'CleanupPolicy' is changing.
     The type of the parameter is changing from 'CleanupPolicyRetentionDescription' to 'String'.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '5.0.0'
   - `-Encoding`
     - The parameter : 'Encoding' is changing.
     The type of the parameter is changing from 'EncodingCaptureDescription' to 'String'.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '5.0.0'
   - `-IdentityType`
     - The parameter : 'IdentityType' is changing.
     The type of the parameter is changing from 'CaptureIdentityType' to 'String'.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '5.0.0'
   - `-Status`
     - The parameter : 'Status' is changing.
     The type of the parameter is changing from 'EntityStatus' to 'String'.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '5.0.0'
 
 ### `New-AzEventHubAuthorizationRule`
@@ -542,7 +536,7 @@
 - Parameter breaking-change will happen to all parameter sets
   - `-Rights`
     - The parameter : 'Rights' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '5.0.0'
 
 ### `New-AzEventHubIPRuleConfig`
@@ -550,7 +544,7 @@
 - Parameter breaking-change will happen to all parameter sets
   - `-Action`
     - The parameter : 'Action' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '5.0.0'
 
 ### `New-AzEventHubKey`
@@ -558,7 +552,7 @@
 - Parameter breaking-change will happen to all parameter sets
   - `-KeyType`
     - The parameter : 'KeyType' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '5.0.0'
 
 ### `New-AzEventHubNamespace`
@@ -566,15 +560,15 @@
 - Parameter breaking-change will happen to all parameter sets
   - `-IdentityType`
     - The parameter : 'IdentityType' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '5.0.0'
   - `-PublicNetworkAccess`
     - The parameter : 'PublicNetworkAccess' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '5.0.0'
   - `-SkuName`
     - The parameter : 'SkuName' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '5.0.0'
 
 ### `New-AzEventHubNamespaceV2`
@@ -582,15 +576,15 @@
 - Parameter breaking-change will happen to all parameter sets
   - `-IdentityType`
     - The parameter : 'IdentityType' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '5.0.0'
   - `-PublicNetworkAccess`
     - The parameter : 'PublicNetworkAccess' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '5.0.0'
   - `-SkuName`
     - The parameter : 'SkuName' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '5.0.0'
 
 ### `New-AzEventHubSchemaGroup`
@@ -599,12 +593,12 @@
   - `-SchemaCompatibility`
     - The parameter : 'SchemaCompatibility' is changing.
     The type of the parameter is changing from 'SchemaCompatibility' to 'String'.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '5.0.0'
   - `-SchemaType`
     - The parameter : 'SchemaType' is changing.
     The type of the parameter is changing from 'SchemaType' to 'String'.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '5.0.0'
 
 ### `New-AzEventHubThrottlingPolicyConfig`
@@ -612,7 +606,7 @@
 - Parameter breaking-change will happen to all parameter sets
   - `-MetricId`
     - The parameter : 'MetricId' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '5.0.0'
 
 ### `Set-AzEventHub`
@@ -620,15 +614,15 @@
 - Parameter breaking-change will happen to all parameter sets
   - `-Encoding`
     - The parameter : 'Encoding' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '5.0.0'
   - `-IdentityType`
     - The parameter : 'IdentityType' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '5.0.0'
   - `-Status`
     - The parameter : 'Status' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '5.0.0'
 
 ### `Set-AzEventHubAuthorizationRule`
@@ -636,7 +630,7 @@
 - Parameter breaking-change will happen to all parameter sets
   - `-Rights`
     - The parameter : 'Rights' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '5.0.0'
 
 ### `Set-AzEventHubNamespace`
@@ -644,11 +638,11 @@
 - Parameter breaking-change will happen to all parameter sets
   - `-IdentityType`
     - The parameter : 'IdentityType' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '5.0.0'
   - `-PublicNetworkAccess`
     - The parameter : 'PublicNetworkAccess' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '5.0.0'
 
 ### `Set-AzEventHubNamespaceV2`
@@ -656,11 +650,11 @@
 - Parameter breaking-change will happen to all parameter sets
   - `-IdentityType`
     - The parameter : 'IdentityType' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '5.0.0'
   - `-PublicNetworkAccess`
     - The parameter : 'PublicNetworkAccess' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '5.0.0'
 
 ### `Set-AzEventHubNetworkRuleSet`
@@ -668,14 +662,21 @@
 - Parameter breaking-change will happen to all parameter sets
   - `-DefaultAction`
     - The parameter : 'DefaultAction' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '5.0.0'
   - `-PublicNetworkAccess`
     - The parameter : 'PublicNetworkAccess' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '5.0.0'
 
 ## Az.KeyVault
+
+### `Add-AzKeyVaultKey`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-UseDefaultCVMPolicy`
+    - The offline fallback policy will be removed. Key creation will fail if unable to get regional default CVM SKR policy from MAA Service Discovery API.
+    - This change is expected to take effect from Az.KeyVault version: 6.0.0 and Az version: 12.0.0
 
 ### `Invoke-AzKeyVaultKeyOperation`
 
@@ -880,7 +881,7 @@
 - Parameter breaking-change will happen to all parameter sets
   - `-Rights`
     - The parameter : 'Rights' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '4.0.0'
 
 ### `New-AzServiceBusIPRuleConfig`
@@ -888,7 +889,7 @@
 - Parameter breaking-change will happen to all parameter sets
   - `-Action`
     - The parameter : 'Action' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '4.0.0'
 
 ### `New-AzServiceBusKey`
@@ -896,7 +897,7 @@
 - Parameter breaking-change will happen to all parameter sets
   - `-KeyType`
     - The parameter : 'KeyType' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '4.0.0'
 
 ### `New-AzServiceBusNamespace`
@@ -904,15 +905,15 @@
 - Parameter breaking-change will happen to all parameter sets
   - `-IdentityType`
     - The parameter : 'IdentityType' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '4.0.0'
   - `-PublicNetworkAccess`
     - The parameter : 'PublicNetworkAccess' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '4.0.0'
   - `-SkuName`
     - The parameter : 'SkuName' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '4.0.0'
 
 ### `New-AzServiceBusNamespaceV2`
@@ -920,15 +921,15 @@
 - Parameter breaking-change will happen to all parameter sets
   - `-IdentityType`
     - The parameter : 'IdentityType' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '4.0.0'
   - `-PublicNetworkAccess`
     - The parameter : 'PublicNetworkAccess' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '4.0.0'
   - `-SkuName`
     - The parameter : 'SkuName' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '4.0.0'
 
 ### `New-AzServiceBusQueue`
@@ -937,7 +938,7 @@
   - `-Status`
     - The parameter : 'Status' is changing.
     The type of the parameter is changing from 'EntityStatus' to 'String'.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '4.0.0'
 
 ### `New-AzServiceBusSubscription`
@@ -946,7 +947,7 @@
   - `-Status`
     - The parameter : 'Status' is changing.
     The type of the parameter is changing from 'EntityStatus' to 'String'.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '4.0.0'
 
 ### `New-AzServiceBusTopic`
@@ -955,7 +956,7 @@
   - `-Status`
     - The parameter : 'Status' is changing.
     The type of the parameter is changing from 'EntityStatus' to 'String'.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '4.0.0'
 
 ### `Set-AzServiceBusAuthorizationRule`
@@ -963,7 +964,7 @@
 - Parameter breaking-change will happen to all parameter sets
   - `-Rights`
     - The parameter : 'Rights' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '4.0.0'
 
 ### `Set-AzServiceBusNamespace`
@@ -971,15 +972,15 @@
 - Parameter breaking-change will happen to all parameter sets
   - `-IdentityType`
     - The parameter : 'IdentityType' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '4.0.0'
   - `-PublicNetworkAccess`
     - The parameter : 'PublicNetworkAccess' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '4.0.0'
   - `-SkuName`
     - The parameter : 'SkuName' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '4.0.0'
 
 ### `Set-AzServiceBusNamespaceV2`
@@ -987,15 +988,15 @@
 - Parameter breaking-change will happen to all parameter sets
   - `-IdentityType`
     - The parameter : 'IdentityType' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '4.0.0'
   - `-PublicNetworkAccess`
     - The parameter : 'PublicNetworkAccess' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '4.0.0'
   - `-SkuName`
     - The parameter : 'SkuName' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '4.0.0'
 
 ### `Set-AzServiceBusNetworkRuleSet`
@@ -1003,11 +1004,11 @@
 - Parameter breaking-change will happen to all parameter sets
   - `-DefaultAction`
     - The parameter : 'DefaultAction' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '4.0.0'
   - `-PublicNetworkAccess`
     - The parameter : 'PublicNetworkAccess' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '4.0.0'
 
 ### `Set-AzServiceBusQueue`
@@ -1015,7 +1016,7 @@
 - Parameter breaking-change will happen to all parameter sets
   - `-Status`
     - The parameter : 'Status' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '4.0.0'
 
 ### `Set-AzServiceBusRule`
@@ -1023,7 +1024,7 @@
 - Parameter breaking-change will happen to all parameter sets
   - `-FilterType`
     - The parameter : 'FilterType' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '4.0.0'
 
 ### `Set-AzServiceBusSubscription`
@@ -1031,7 +1032,7 @@
 - Parameter breaking-change will happen to all parameter sets
   - `-Status`
     - The parameter : 'Status' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '4.0.0'
 
 ### `Set-AzServiceBusTopic`
@@ -1039,7 +1040,7 @@
 - Parameter breaking-change will happen to all parameter sets
   - `-Status`
     - The parameter : 'Status' is changing.
-    - This change will take effect on '05/21/2024'- The change is expected to take effect from Az version : '12.0.0'
+    - This change will take effect on '21/05/2024'- The change is expected to take effect from Az version : '12.0.0'
     - The change is expected to take effect from version : '4.0.0'
 
 ## Az.Sql

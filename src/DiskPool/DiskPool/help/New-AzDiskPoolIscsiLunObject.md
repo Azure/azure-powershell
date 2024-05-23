@@ -1,23 +1,24 @@
 ---
-external help file:
+external help file: Az.DiskPool-help.xml
 Module Name: Az.DiskPool
-online version: https://learn.microsoft.com/powershell/module/az.DiskPool/new-AzDiskPoolIscsiLunObject
+online version: https://learn.microsoft.com/powershell/module/Az.DiskPool/new-AzDiskPoolIscsiLunObject
 schema: 2.0.0
 ---
 
 # New-AzDiskPoolIscsiLunObject
 
 ## SYNOPSIS
-Create a in-memory object for IscsiLun
+Create an in-memory object for IscsiLun.
 
 ## SYNTAX
 
 ```
-New-AzDiskPoolIscsiLunObject -ManagedDiskAzureResourceId <String> -Name <String> [<CommonParameters>]
+New-AzDiskPoolIscsiLunObject -ManagedDiskAzureResourceId <String> -Name <String>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a in-memory object for IscsiLun
+Create an in-memory object for IscsiLun.
 
 ## EXAMPLES
 
@@ -71,7 +72,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

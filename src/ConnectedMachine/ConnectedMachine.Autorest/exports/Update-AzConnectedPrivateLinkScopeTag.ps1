@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-Updates an existing PrivateLinkScope's tags.
+Update an existing PrivateLinkScope's tags.
 To update other fields use the CreateOrUpdate method.
 .Description
-Updates an existing PrivateLinkScope's tags.
+Update an existing PrivateLinkScope's tags.
 To update other fields use the CreateOrUpdate method.
 .Example
 $tag = @{ "Tag1" = "Value1" }

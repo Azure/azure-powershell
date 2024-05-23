@@ -1,17 +1,17 @@
 {
-  "Find-AzDataProtectionRestorableTimeRange+[NoContext]+PostExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/BlobBackup-BugBash/providers/Microsoft.DataProtection/backupVaults/jecECYBlobVault/backupInstances?api-version=2023-12-01+1": {
+  "Find-AzDataProtectionRestorableTimeRange+[NoContext]+PostExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/BlobBackup-BugBash/providers/Microsoft.DataProtection/backupVaults/jecECYBlobVault/backupInstances?api-version=2024-04-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/BlobBackup-BugBash/providers/Microsoft.DataProtection/backupVaults/jecECYBlobVault/backupInstances?api-version=2023-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/BlobBackup-BugBash/providers/Microsoft.DataProtection/backupVaults/jecECYBlobVault/backupInstances?api-version=2024-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "080bb62a-3434-46f8-9ef8-b05103c70902" ],
+        "x-ms-unique-id": [ "126" ],
+        "x-ms-client-request-id": [ "badc52e5-3107-4a83-8a1f-e0ef65a663ef" ],
         "CommandName": [ "Get-AzDataProtectionBackupInstance" ],
         "FullCommandName": [ "Get-AzDataProtectionBackupInstance_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.3.1", "PSVersion/v7.4.1", "Az.DataProtection/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v11.3.1", "PSVersion/v7.4.2", "Az.DataProtection/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,15 +22,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1999" ],
+        "x-ms-throttling-version": [ "v1" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "4f0311fd-c095-49c2-a871-19c7650fc170" ],
-        "x-ms-correlation-request-id": [ "4f0311fd-c095-49c2-a871-19c7650fc170" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20240325T012903Z:4f0311fd-c095-49c2-a871-19c7650fc170" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1999" ],
+        "x-ms-request-id": [ "1ba309af-c7b1-4f01-80a9-071fa03123a3" ],
+        "x-ms-correlation-request-id": [ "1ba309af-c7b1-4f01-80a9-071fa03123a3" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240421T143250Z:1ba309af-c7b1-4f01-80a9-071fa03123a3" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 550EAA15271344038681D79E8BC7E60D Ref B: MAA201060516027 Ref C: 2024-03-25T01:29:02Z" ],
-        "Date": [ "Mon, 25 Mar 2024 01:29:02 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: EC5DE17090CE42F6898004AB22722D7E Ref B: MAA201060513019 Ref C: 2024-04-21T14:32:49Z" ],
+        "Date": [ "Sun, 21 Apr 2024 14:32:49 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "8830" ],
@@ -41,11 +42,11 @@
       "isContentBase64": false
     }
   },
-  "Find-AzDataProtectionRestorableTimeRange+[NoContext]+PostExpanded+$POST+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/BlobBackup-BugBash/providers/Microsoft.DataProtection/backupVaults/jecECYBlobVault/backupInstances/jececyblobstorage-jececyblobstorage-61bde38e-542c-4645-af2c-e90d4cdf00e5/findRestorableTimeRanges?api-version=2023-12-01+2": {
+  "Find-AzDataProtectionRestorableTimeRange+[NoContext]+PostExpanded+$POST+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/BlobBackup-BugBash/providers/Microsoft.DataProtection/backupVaults/jecECYBlobVault/backupInstances/jececyblobstorage-jececyblobstorage-61bde38e-542c-4645-af2c-e90d4cdf00e5/findRestorableTimeRanges?api-version=2024-04-01+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/BlobBackup-BugBash/providers/Microsoft.DataProtection/backupVaults/jecECYBlobVault/backupInstances/jececyblobstorage-jececyblobstorage-61bde38e-542c-4645-af2c-e90d4cdf00e5/findRestorableTimeRanges?api-version=2023-12-01",
-      "Content": "{\r\n  \"sourceDataStoreType\": \"OperationalStore\",\r\n  \"startTime\": \"2024-02-24T06:59:03.0000000Z\",\r\n  \"endTime\": \"2024-03-25T06:59:03.0000000Z\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/BlobBackup-BugBash/providers/Microsoft.DataProtection/backupVaults/jecECYBlobVault/backupInstances/jececyblobstorage-jececyblobstorage-61bde38e-542c-4645-af2c-e90d4cdf00e5/findRestorableTimeRanges?api-version=2024-04-01",
+      "Content": "{\r\n  \"sourceDataStoreType\": \"OperationalStore\",\r\n  \"startTime\": \"2024-03-22T20:02:50.0000000Z\",\r\n  \"endTime\": \"2024-04-21T20:02:50.0000000Z\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -59,22 +60,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-throttling-version": [ "v1" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "edce2a91-4c12-4555-9ec9-7843ccc40bad" ],
-        "x-ms-correlation-request-id": [ "edce2a91-4c12-4555-9ec9-7843ccc40bad" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20240325T012905Z:edce2a91-4c12-4555-9ec9-7843ccc40bad" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "cf62f11c-740f-428d-93c0-d2d36bdfc02c" ],
+        "x-ms-correlation-request-id": [ "cf62f11c-740f-428d-93c0-d2d36bdfc02c" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20240421T143252Z:cf62f11c-740f-428d-93c0-d2d36bdfc02c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 1380200CF3C44CB7819217F4232EF3DC Ref B: MAA201060516027 Ref C: 2024-03-25T01:29:03Z" ],
-        "Date": [ "Mon, 25 Mar 2024 01:29:05 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C72192A0CDC04C7DBA6F6FD7B7FBF759 Ref B: MAA201060513019 Ref C: 2024-04-21T14:32:50Z" ],
+        "Date": [ "Sun, 21 Apr 2024 14:32:52 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "389" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"restorableTimeRanges\":[{\"startTime\":\"2024-02-24T06:59:03.0000000Z\",\"endTime\":\"2024-03-25T01:29:05.2876595Z\",\"objectType\":\"RestorableTimeRange\"}],\"objectType\":\"AzureBackupFindRestorableTimeRangesResponse\"},\"id\":\"jececyblobstorage-jececyblobstorage-61bde38e-542c-4645-af2c-e90d4cdf00e5\",\"type\":\"Microsoft.DataProtection/backupVaults/backupInstances/findRestorableTimeRanges\"}",
+      "Content": "{\"properties\":{\"restorableTimeRanges\":[{\"startTime\":\"2024-03-22T20:02:50.0000000Z\",\"endTime\":\"2024-04-21T14:32:52.3674993Z\",\"objectType\":\"RestorableTimeRange\"}],\"objectType\":\"AzureBackupFindRestorableTimeRangesResponse\"},\"id\":\"jececyblobstorage-jececyblobstorage-61bde38e-542c-4645-af2c-e90d4cdf00e5\",\"type\":\"Microsoft.DataProtection/backupVaults/backupInstances/findRestorableTimeRanges\"}",
       "isContentBase64": false
     }
   }

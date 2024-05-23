@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SecurityInsights-help.xml
 Module Name: Az.SecurityInsights
 online version: https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelincidentbookmark
 schema: 2.0.0
@@ -14,7 +14,8 @@ Gets all incident bookmarks.
 
 ```
 Get-AzSentinelIncidentBookmark -IncidentId <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +25,7 @@ Gets all incident bookmarks.
 
 ### Example 1: List all Bookmarks for a given Incident
 ```powershell
- Get-AzSentinelIncidentBookmark -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "7f40bbbc-e205-404b-bc2b-5d71cd1017a8"
+Get-AzSentinelIncidentBookmark -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "7f40bbbc-e205-404b-bc2b-5d71cd1017a8"
 ```
 
 ```output
@@ -35,7 +36,7 @@ Note           : my notes
                  2nd line notes
 CreatedByEmail : luke@contoso.com
 CreatedByName  : Luke
-Name           : 4557d832-41f0-456f-977e-78a2e129b8d0 
+Name           : 4557d832-41f0-456f-977e-78a2e129b8d0
 ```
 
 This command lists all Bookmarks for a given Incident.
@@ -161,7 +162,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

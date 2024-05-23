@@ -1736,7 +1736,10 @@ The type of the parameter is changing from '{0}' to '{1}'.</value>
 Note : Go to {0} for steps to suppress this breaking change warning, and other information on breaking changes in Azure PowerShell.</value>
   </data>
   <data name="PreviewCmdletMessage" xml:space="preserve">
-    <value>This cmdlet is in preview. The functionality may not be available in the selected subscription.</value>
+    <value>This cmdlet is in preview. Its behavior is subject to change based on customer feedback.</value>
+  </data>
+  <data name="PreviewCmdletETAMessage" xml:space="preserve">
+    <value> The estimated generally available date is '{0}'.</value>
   </data>
   <data name="BreakingChangesAttributesInEffectByAzVersion" xml:space="preserve">
     <value>- The change is expected to take effect from Az version : '{0}'</value>

@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.MobileNetwork",
-  "ModuleVersion": "0.4.0",
+  "ModuleVersion": "0.4.1",
   "Cmdlets": [
     {
       "VerbName": "Deploy",

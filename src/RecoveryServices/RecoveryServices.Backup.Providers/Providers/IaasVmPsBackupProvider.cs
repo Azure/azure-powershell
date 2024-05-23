@@ -326,8 +326,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
 
             AzureVmItem item = (AzureVmItem)ProviderData[ItemParams.Item];
-            // do validations
 
+            string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
+            bool isMUAProtected = true;
+
+            // do validations
             ValidateAzureVMDisableProtectionRequest(itemBase);
 
             Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.Id);
@@ -363,7 +366,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 protectedItemUri,
                 serviceClientRequest,
                 vaultName: vaultName,
-                resourceGroupName: resourceGroupName);
+                resourceGroupName: resourceGroupName,
+                auxiliaryAccessToken,
+                isMUAProtected,
+                true);
         }
 
         public RestAzureNS.AzureOperationResponse DisableProtectionWithDeleteData()
@@ -499,6 +505,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string targetSubnetName = (string)ProviderData[RestoreVMBackupItemParams.TargetSubnetName];
             string targetSubscriptionId = (string)ProviderData[RestoreVMBackupItemParams.TargetSubscriptionId];
             bool restoreToEdgeZone = (bool)ProviderData[RestoreVMBackupItemParams.RestoreToEdgeZone];
+            string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
+            bool isMUAOperation = ProviderData.ContainsKey(ResourceGuardParams.IsMUAOperation) ? (bool)ProviderData[ResourceGuardParams.IsMUAOperation] : false;
+
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(rp.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
@@ -699,13 +708,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
                 #endregion
 
+                // check for MUA
+                bool isMUAProtected = isMUAOperation;
+
                 var response = ServiceClientAdapter.RestoreDisk(
                 rp,
                 storageAccountResource.Location,
                 triggerRestoreRequest,
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName,
-                vaultLocation: vaultLocation ?? ServiceClientAdapter.BmsAdapter.GetResourceLocation());
+                vaultLocation: vaultLocation ?? ServiceClientAdapter.BmsAdapter.GetResourceLocation(),
+                auxiliaryAccessToken,
+                isMUAProtected);
+
                 return response;
             }    
         }
@@ -925,7 +940,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
                 
             Logger.Instance.WriteDebug("Validation of Retention policy with Schedule policy is successful");
-                        
+
             PolicyHelpers.ValidateLongTermRetentionPolicyWithTieringPolicy((CmdletModel.LongTermRetentionPolicy)retentionPolicy, tieringDetails);            
             Logger.Instance.WriteDebug("Validation of Retention policy with Tiering policy is successful");
 
@@ -1159,7 +1174,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         ((AzureVmPolicy)policy).AzureBackupRGNameSuffix),
                     SnapshotConsistencyType = consistencyType
                 }
-            };            
+            };
 
             // check for MUA
             bool isMUAProtected = false;

@@ -52,6 +52,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.PowerShell
         [Parameter(Mandatory = true, ParameterSetName = "NoDocs")]
         public SwitchParameter ExcludeDocs { get; set; }
 
+        [Parameter(ParameterSetName = "Docs")]
+        public SwitchParameter AddComplexInterfaceInfo { get; set; }
+
         protected override void ProcessRecord()
         {
             try
@@ -163,7 +166,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.PowerShell
                         var isValidProfile = !String.IsNullOrEmpty(profileName) && profileName != NoProfiles;
                         var docsFolder = isValidProfile ? Path.Combine(DocsFolder, profileName) : DocsFolder;
                         var examplesFolder = isValidProfile ? Path.Combine(ExamplesFolder, profileName) : ExamplesFolder;
-                        WriteMarkdowns(variantGroupsByProfile, moduleInfo, docsFolder, examplesFolder);
+                        WriteMarkdowns(variantGroupsByProfile, moduleInfo, docsFolder, examplesFolder, AddComplexInterfaceInfo.IsPresent);
                     }
                 }
             }

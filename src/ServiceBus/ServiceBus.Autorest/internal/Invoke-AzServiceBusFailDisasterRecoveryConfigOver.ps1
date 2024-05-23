@@ -25,7 +25,7 @@ Invokes GEO DR failover and reconfigure the alias to point to the secondary name
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IFailoverProperties
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverProperties
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
@@ -38,7 +38,21 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <MigrationConfigurationName?>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [QueueName <String>]: The queue name.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [RuleName <String>]: The rule name.
+  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionName <String>]: The subscription name.
+  [TopicName <String>]: The topic name.
+
+NAMESPACEINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
+  [Alias <String>]: The Disaster Recovery configuration name
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [ConfigName <String>]: The configuration name. Should always be "$default".
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -60,6 +74,10 @@ function Invoke-AzServiceBusFailDisasterRecoveryConfigOver {
 param(
     [Parameter(ParameterSetName='Fail', Mandatory)]
     [Parameter(ParameterSetName='FailExpanded', Mandatory)]
+    [Parameter(ParameterSetName='FailViaIdentityNamespace', Mandatory)]
+    [Parameter(ParameterSetName='FailViaIdentityNamespaceExpanded', Mandatory)]
+    [Parameter(ParameterSetName='FailViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='FailViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
     # The Disaster Recovery configuration name
@@ -67,6 +85,8 @@ param(
 
     [Parameter(ParameterSetName='Fail', Mandatory)]
     [Parameter(ParameterSetName='FailExpanded', Mandatory)]
+    [Parameter(ParameterSetName='FailViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='FailViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
     # The namespace name
@@ -74,6 +94,8 @@ param(
 
     [Parameter(ParameterSetName='Fail', Mandatory)]
     [Parameter(ParameterSetName='FailExpanded', Mandatory)]
+    [Parameter(ParameterSetName='FailViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='FailViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
     # Name of the Resource group within the Azure subscription.
@@ -81,6 +103,8 @@ param(
 
     [Parameter(ParameterSetName='Fail')]
     [Parameter(ParameterSetName='FailExpanded')]
+    [Parameter(ParameterSetName='FailViaJsonFilePath')]
+    [Parameter(ParameterSetName='FailViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -93,23 +117,42 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='FailViaIdentityNamespace', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='FailViaIdentityNamespaceExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity]
+    # Identity Parameter
+    ${NamespaceInputObject},
 
     [Parameter(ParameterSetName='Fail', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='FailViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='FailViaIdentityNamespace', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IFailoverProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverProperties]
     # Safe failover is to indicate the service should wait for pending replication to finish before switching to the secondary.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='FailExpanded')]
     [Parameter(ParameterSetName='FailViaIdentityExpanded')]
+    [Parameter(ParameterSetName='FailViaIdentityNamespaceExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Safe failover is to indicate the service should wait for pending replication to finish before switching to the secondary.
     ${IsSafeFailover},
+
+    [Parameter(ParameterSetName='FailViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Fail operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='FailViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    # Json string supplied to the Fail operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -179,9 +222,19 @@ begin {
             FailExpanded = 'Az.ServiceBus.private\Invoke-AzServiceBusFailDisasterRecoveryConfigOver_FailExpanded';
             FailViaIdentity = 'Az.ServiceBus.private\Invoke-AzServiceBusFailDisasterRecoveryConfigOver_FailViaIdentity';
             FailViaIdentityExpanded = 'Az.ServiceBus.private\Invoke-AzServiceBusFailDisasterRecoveryConfigOver_FailViaIdentityExpanded';
+            FailViaIdentityNamespace = 'Az.ServiceBus.private\Invoke-AzServiceBusFailDisasterRecoveryConfigOver_FailViaIdentityNamespace';
+            FailViaIdentityNamespaceExpanded = 'Az.ServiceBus.private\Invoke-AzServiceBusFailDisasterRecoveryConfigOver_FailViaIdentityNamespaceExpanded';
+            FailViaJsonFilePath = 'Az.ServiceBus.private\Invoke-AzServiceBusFailDisasterRecoveryConfigOver_FailViaJsonFilePath';
+            FailViaJsonString = 'Az.ServiceBus.private\Invoke-AzServiceBusFailDisasterRecoveryConfigOver_FailViaJsonString';
         }
-        if (('Fail', 'FailExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('Fail', 'FailExpanded', 'FailViaJsonFilePath', 'FailViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

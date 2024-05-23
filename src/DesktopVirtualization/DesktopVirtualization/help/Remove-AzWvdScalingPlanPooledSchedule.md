@@ -22,7 +22,8 @@ Remove-AzWvdScalingPlanPooledSchedule -ResourceGroupName <String> -ScalingPlanNa
 ### DeleteViaIdentity
 ```
 Remove-AzWvdScalingPlanPooledSchedule -InputObject <IDesktopVirtualizationIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

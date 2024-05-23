@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSecurityConnector
 
 ## SYNOPSIS
-Updates a security connector
+Update a security connector
 
 ## SYNTAX
 
@@ -30,7 +30,7 @@ Update-AzSecurityConnector -InputObject <ISecurityIdentity> [-EnvironmentData <I
 ```
 
 ## DESCRIPTION
-Updates a security connector
+Update a security connector
 
 ## EXAMPLES
 

@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Cmdlets;
     using System;
 
-    /// <summary>The operation to update a virtual machine instance.</summary>
+    /// <summary>The operation to Update a virtual machine instance.</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzConnectedVMwareVM_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualMachineInstance))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Description(@"The operation to update a virtual machine instance.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Description(@"The operation to Update a virtual machine instance.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.HttpPath(Path = "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default", ApiVersion = "2023-10-01")]
     public partial class UpdateAzConnectedVMwareVM_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -282,6 +282,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Cmdlets
                 // Flush buffer
                 WriteObject(_firstResponse);
             }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -499,6 +517,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Cmdlets
         public UpdateAzConnectedVMwareVM_UpdateExpanded()
         {
 
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

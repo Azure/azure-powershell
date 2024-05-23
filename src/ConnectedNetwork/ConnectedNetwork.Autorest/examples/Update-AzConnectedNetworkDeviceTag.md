@@ -2,8 +2,9 @@
 ```powershell
 $tags = @{ NewTag = "NewTagValue"}
 Update-AzConnectedNetworkDeviceTag -DeviceName "myMecDevice" -ResourceGroupName "myResources" -Tag $tags
+```
 
-
+```output
 DeviceType                   : AzureStackEdge
 Id                           : /subscriptions/xxxxx-00000-xxxxx-00000/resourceGroups/myResources/providers/Microsoft.HybridNetwork/devices/myMecDevice
 Location                     : eastus
@@ -29,7 +30,9 @@ Creating an identity with field NewTag and value NewTagValue. Updating the tag o
 $tags = @{ NewTag1 = "NewTagValue1"}
 $mecDevice = @{ DeviceName = "myMecDevice1"; Location = "eastus"; ResourceGroupName = "myResources"; SubscriptionId = "xxxxx-00000-xxxxx-00000"}
 Update-AzConnectedNetworkDeviceTag -InputObject $mecDevice -Tag $tags
+```
 
+```output
 DeviceType                   : AzureStackEdge
 Id                           : /subscriptions/xxxxx-00000-xxxxx-00000/resourceGroups/myResources/providers/Microsoft.HybridNetwork/devices/mec_2111_09
 Location                     : eastus

@@ -40,9 +40,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the resource.
         /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
 
+        /// <param name="ruleType">Rule Type. This should be either AutoExpire or Permanent. Auto Expire Rule
+        /// only creates NSG rules. Permanent Rule creates NSG rule and SLB LB Rule.
+        /// Possible values include: &#39;AutoExpire&#39;, &#39;Permanent&#39;</param>
+
         /// <param name="rules">List of allowed rules.
         /// </param>
-        public InboundSecurityRule(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), System.Collections.Generic.IList<InboundSecurityRules> rules = default(System.Collections.Generic.IList<InboundSecurityRules>))
+        public InboundSecurityRule(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), string ruleType = default(string), System.Collections.Generic.IList<InboundSecurityRules> rules = default(System.Collections.Generic.IList<InboundSecurityRules>))
 
         : base(id)
         {
@@ -50,6 +54,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.Etag = etag;
             this.Type = type;
             this.ProvisioningState = provisioningState;
+            this.RuleType = ruleType;
             this.Rules = rules;
             CustomInit();
         }
@@ -84,6 +89,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }
+
+        /// <summary>
+        /// Gets or sets rule Type. This should be either AutoExpire or Permanent. Auto
+        /// Expire Rule only creates NSG rules. Permanent Rule creates NSG rule and SLB
+        /// LB Rule. Possible values include: &#39;AutoExpire&#39;, &#39;Permanent&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ruleType")]
+        public string RuleType {get; set; }
 
         /// <summary>
         /// Gets or sets list of allowed rules.

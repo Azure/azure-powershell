@@ -41,7 +41,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
                         {
                             if (Service.TrySanitizeData(collItem as string, out string sanitizedData))
                             {
-                                telemetry.DetectedProperties.Add(ResolvePropertyPath(property));
+                                telemetry.SecretsDetected = true;
+                                var propertyPath = ResolvePropertyPath(property);
+                                if (!string.IsNullOrEmpty(propertyPath))
+                                {
+                                    telemetry.DetectedProperties.Add(ResolvePropertyPath(property));
+                                }
                             }
                         }
                         else

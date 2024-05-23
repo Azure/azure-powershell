@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
+external help file: Az.EventGrid-help.xml
 Module Name: Az.EventGrid
 online version: https://learn.microsoft.com/powershell/module/az.eventgrid/new-azeventgridpartnerconfiguration
 schema: 2.0.0
@@ -8,55 +8,76 @@ schema: 2.0.0
 # New-AzEventGridPartnerConfiguration
 
 ## SYNOPSIS
-Creates a new Event Grid partner configuration.
+Synchronously creates or updates a partner configuration with the specified parameters.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzEventGridPartnerConfiguration [-ResourceGroupName] <String> [-Tag <Hashtable>]
- [-MaxExpirationTimeInDays <Int32>] [-AuthorizedPartner <Hashtable[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzEventGridPartnerConfiguration -ResourceGroupName <String> [-SubscriptionId <String>] [-Location <String>]
+ [-PartnerAuthorizationAuthorizedPartnersList <IPartner[]>]
+ [-PartnerAuthorizationDefaultMaximumExpirationTimeInDay <Int32>] [-ProvisioningState <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzEventGridPartnerConfiguration -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzEventGridPartnerConfiguration -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new partner configuration.
+Synchronously creates or updates a partner configuration with the specified parameters.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Synchronously Create a partner configuration with the specified parameters.
 ```powershell
-New-AzEventGridPartnerConfiguration -ResourceGroupName MyResourceGroupName -MaxExpirationTimeInDays 14
+$partner = New-AzEventGridPartnerObject -AuthorizationExpirationTimeInUtc "2023-11-19T09:31:42.521Z" -Name "Auth0" -RegistrationImmutableId "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+New-AzEventGridPartnerConfiguration -ResourceGroupName azps_test_group_eventgrid -Location global -PartnerAuthorizationDefaultMaximumExpirationTimeInDay 10 -PartnerAuthorizationAuthorizedPartnersList $partner
 ```
 
-Creates a new partner configuration under the resource group \`MyResourceGroupName\`.
+```output
+Name    Location ResourceGroupName
+----    -------- -----------------
+default global   azps_test_group_eventgrid
+```
+
+Synchronously Create a partner configuration with the specified parameters.
+
+### Example 2: Synchronously Create a partner configuration with the specified parameters.
+```powershell
+$partnerRegistration = Get-AzEventGridPartnerRegistration -ResourceGroupName azps_test_group_eventgrid -Name azps-registration
+$partner = New-AzEventGridPartnerObject -AuthorizationExpirationTimeInUtc "2023-11-19T09:31:42.521Z" -RegistrationImmutableId $partnerRegistration.ImmutableId
+New-AzEventGridPartnerConfiguration -ResourceGroupName azps_test_group_eventgrid -Location global -PartnerAuthorizationDefaultMaximumExpirationTimeInDay 10 -PartnerAuthorizationAuthorizedPartnersList $partner
+```
+
+```output
+Name    Location ResourceGroupName
+----    -------- -----------------
+default global   azps_test_group_eventgrid
+```
+
+Synchronously Create a partner configuration with the specified parameters.
 
 ## PARAMETERS
 
-### -AuthorizedPartner
-Array of HashTables where each HashTable is the details of an authorized partner.
-Each HashTable has the following key-value info: partnerName, partnerRegistrationImmutableId, and authorizationExpirationTimeInUtc.
-At least one key is required.
-The partnerName is a String, partnerRegistrationImmutableId  is a Guid, and authorizationExpirationTimeInUtc is a DateTime.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: System.Collections.Hashtable[]
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -65,25 +86,146 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MaxExpirationTimeInDays
-Expiration time in days used to validate the authorization expiration time for each authorized partner.
-If this parameter is not specified, the default is 7 days.
-Otherwise, allowed values are between 1 and 365 days.
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Location of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PartnerAuthorizationAuthorizedPartnersList
+The list of authorized partners.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartner[]
+Parameter Sets: CreateExpanded
+Aliases: AuthorizedPartner
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PartnerAuthorizationDefaultMaximumExpirationTimeInDay
+Time used to validate the authorization expiration time for each authorized partner.
+If DefaultMaximumExpirationTimeInDays isnot specified, the default is 7 days.
+Otherwise, allowed values are between 1 and 365 days.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases: MaxExpirationTimeInDays
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProvisioningState
+Provisioning state of the partner configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
@@ -91,24 +233,40 @@ Parameter Sets: (All)
 Aliases: ResourceGroup
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Hashtable which represents resource Tags.
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Tags of the resource.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -148,17 +306,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### System.Collections.Hashtable
-
-### System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-
-### System.Collections.Hashtable[]
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventGrid.Models.PSPartnerConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerConfiguration
 
 ## NOTES
 

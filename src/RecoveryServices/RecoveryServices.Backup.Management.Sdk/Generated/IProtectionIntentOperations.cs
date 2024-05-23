@@ -47,13 +47,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         /// <summary>
         /// Provides the details of the protection intent up item. This is an
-        /// asynchronous operation. To know the status of the operation,
-        /// call the GetItemOperationResult API.
+        /// asynchronous operation. To know the status of the operation, call the
+        /// GetItemOperationResult API.
         /// </summary>
         /// <remarks>
         /// Provides the details of the protection intent up item. This is an
-        /// asynchronous operation. To know the status of the operation,
-        /// call the GetItemOperationResult API.
+        /// asynchronous operation. To know the status of the operation, call the
+        /// GetItemOperationResult API.
         /// </remarks>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.

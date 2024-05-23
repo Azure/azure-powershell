@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMariaDbServer
 
 ## SYNOPSIS
-Creates a new MariaDB.
+Create a new MariaDB.
 
 ## SYNTAX
 
@@ -17,12 +17,12 @@ New-AzMariaDbServer -Name <String> -ResourceGroupName <String> [-SubscriptionId 
  -Sku <String> -AdministratorUsername <String> -AdministratorLoginPassword <SecureString>
  [-SslEnforcement <SslEnforcementEnum>] [-BackupRetentionDay <Int32>]
  [-GeoRedundantBackup <GeoRedundantBackup>] [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>]
- [-Tag <Hashtable>] [-Version <ServerVersion>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-Version <ServerVersion>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new MariaDB.
+Create a new MariaDB.
 
 ## EXAMPLES
 
@@ -344,7 +344,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

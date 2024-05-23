@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='protectedItemName'>
         /// 
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<RecoveryPointResource> List(this IRecoveryPointsRecommendedForMoveOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string objectType = default(string), System.Collections.Generic.IList<string> excludedRpList = default(System.Collections.Generic.IList<string>))
+        public static Microsoft.Rest.Azure.IPage<RecoveryPointResource> List(this IRecoveryPointsRecommendedForMoveOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string objectType = default(string), System.Collections.Generic.IList<string> excludedRPList = default(System.Collections.Generic.IList<string>))
         {
-                return ((IRecoveryPointsRecommendedForMoveOperations)operations).ListAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, objectType, excludedRpList).GetAwaiter().GetResult();
+                return ((IRecoveryPointsRecommendedForMoveOperations)operations).ListAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, objectType, excludedRPList).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -64,9 +64,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RecoveryPointResource>> ListAsync(this IRecoveryPointsRecommendedForMoveOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string objectType = default(string), System.Collections.Generic.IList<string> excludedRpList = default(System.Collections.Generic.IList<string>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RecoveryPointResource>> ListAsync(this IRecoveryPointsRecommendedForMoveOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string objectType = default(string), System.Collections.Generic.IList<string> excludedRPList = default(System.Collections.Generic.IList<string>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, objectType, excludedRpList, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, objectType, excludedRPList, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

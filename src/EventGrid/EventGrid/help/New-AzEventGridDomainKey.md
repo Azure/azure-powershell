@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
+external help file: Az.EventGrid-help.xml
 Module Name: Az.EventGrid
 online version: https://learn.microsoft.com/powershell/module/az.eventgrid/new-azeventgriddomainkey
 schema: 2.0.0
@@ -8,84 +8,65 @@ schema: 2.0.0
 # New-AzEventGridDomainKey
 
 ## SYNOPSIS
-Regenerates the shared access key for an Azure Event Grid Domain.
+Regenerate a shared access key for a domain.
 
 ## SYNTAX
 
-### DomainNameParameterSet (Default)
+### RegenerateExpanded (Default)
 ```
-New-AzEventGridDomainKey [-ResourceGroupName] <String> [-DomainName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DomainInputObjectParameterSet
-```
-New-AzEventGridDomainKey [-Name] <String> [-DomainInputObject] <PSDomain>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzEventGridDomainKey -DomainName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -KeyName <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### ResourceIdEventSubscriptionParameterSet
+### RegenerateViaJsonString
 ```
-New-AzEventGridDomainKey [-Name] <String> [-DomainResourceId] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzEventGridDomainKey -DomainName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### RegenerateViaJsonFilePath
+```
+New-AzEventGridDomainKey -DomainName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### RegenerateViaIdentityExpanded
+```
+New-AzEventGridDomainKey -InputObject <IEventGridIdentity> -KeyName <String> [-DefaultProfile <PSObject>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Regenerates the shared access key for an Azure Event Grid Domain.
+Regenerate a shared access key for a domain.
 
 ## EXAMPLES
 
-### Example 1
-
-Regenerate the key corresponding to key \'key1'\ of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
-
+### Example 1: Regenerate a shared access key for a domain.
 ```powershell
-New-AzEventGridDomainKey -ResourceGroupName MyResourceGroupName -DomainName Domain1 -Name key1
+New-AzEventGridDomainKey -DomainName azps-domain -ResourceGroupName azps_test_group_eventgrid -KeyName key1
 ```
 
 ```output
-Key1                                         Key2
-----                                         ----
-<New Value for Key1>                        <Old Value for Key2>
+Key1        Key2
+----        ----
+JF0co*****= BG*****=
 ```
 
-### Example 2
-
-Regenerate the key corresponding to key \'key1'\ of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
-
-```powershell
-Get-AzEventGridDomain -ResourceGroupName MyResourceGroupName -Name Domain1 | New-AzEventGridTopicKey -KeyName "key1"
-```
-
-```output
-Key1                                         Key2
-----                                         ----
-<New Value for Key1>                        <Old Value for Key2>
-```
-
-### Example 3
-
-Regenerate the key corresponding to key \'key2'\ of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\` using its full resource Id.
-
-```powershell
-New-AzEventGridDomainKey -DomainResourceId /subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1 -KeyName Key2
-```
-
-```output
-Key1                                         Key2
-----                                         ----
-<Old Value for Key1>                        <New Value for Key2>
-```
+Regenerate a shared access key for a domain.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -94,78 +75,124 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DomainInputObject
-EventGrid Domain object.
+### -DomainName
+Name of the domain.
 
 ```yaml
-Type: Microsoft.Azure.Commands.EventGrid.Models.PSDomain
-Parameter Sets: DomainInputObjectParameterSet
+Type: System.String
+Parameter Sets: RegenerateExpanded, RegenerateViaJsonString, RegenerateViaJsonFilePath
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: RegenerateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -DomainName
-EventGrid domain name.
+### -JsonFilePath
+Path of Json file supplied to the Regenerate operation
 
 ```yaml
 Type: System.String
-Parameter Sets: DomainNameParameterSet
+Parameter Sets: RegenerateViaJsonFilePath
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DomainResourceId
-Resource Identifier representing the Event Grid Domain.
+### -JsonString
+Json string supplied to the Regenerate operation
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceIdEventSubscriptionParameterSet
+Parameter Sets: RegenerateViaJsonString
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the key that needs to be regenerated
+### -KeyName
+Key name to regenerate key1 or key2.
 
 ```yaml
 Type: System.String
+Parameter Sets: RegenerateExpanded, RegenerateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: KeyName
+Aliases:
 
-Required: True
-Position: 2
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: DomainNameParameterSet
+Parameter Sets: RegenerateExpanded, RegenerateViaJsonString, RegenerateViaJsonFilePath
 Aliases: ResourceGroup
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateExpanded, RegenerateViaJsonString, RegenerateViaJsonFilePath
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -205,13 +232,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.EventGrid.Models.PSDomain
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.EventGrid.Models.DomainSharedAccessKeys
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IDomainSharedAccessKeys
 
 ## NOTES
 

@@ -16,13 +16,13 @@ using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Microsoft Azure Powershell - Resource Graph AutoGen")]
+[assembly: AssemblyTitle("Microsoft Azure Powershell - ResourceGraph")]
 [assembly: AssemblyCompany(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCompany)]
 [assembly: AssemblyProduct(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyProduct)]
 [assembly: AssemblyCopyright(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCopyright)]
 
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
-[assembly: Guid("26ae9224-1e6e-11eb-adc1-0242ac120002")]
-[assembly: AssemblyVersion("0.13.0")]
-[assembly: AssemblyFileVersion("0.13.0")]
+[assembly: Guid("31458992-7141-42be-b59e-7048f4466400")]
+[assembly: AssemblyVersion("1.0.0")]
+[assembly: AssemblyFileVersion("1.0.0")]

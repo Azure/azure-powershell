@@ -20,7 +20,7 @@ Create an environment in the specified subscription and resource group.
 Create an environment in the specified subscription and resource group.
 
 .Link
-https://learn.microsoft.com/en-us/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightsenvironment
+https://learn.microsoft.com/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightsenvironment
 #>
 function New-AzTimeSeriesInsightsEnvironment {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource])]

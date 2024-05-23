@@ -64,4 +64,4 @@ SystemDataLastModifiedByType :
 Type                         : Microsoft.Relay/namespaces/wcfrelays/authorizationrules
 ```
 
-This cmdlet creates Authorization Rule with Listen rights for the Wcf Relay.
+This cmdlet creates Authorization Rule with Listen rights for for the Wcf Relay.

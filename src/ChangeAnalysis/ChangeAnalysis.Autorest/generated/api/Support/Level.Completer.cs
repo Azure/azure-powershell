@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Noisy".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Noisy", "Noisy", global::System.Management.Automation.CompletionResultType.ParameterValue, "Noisy");
+                yield return new global::System.Management.Automation.CompletionResult("'Noisy'", "Noisy", global::System.Management.Automation.CompletionResultType.ParameterValue, "Noisy");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Normal".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Normal", "Normal", global::System.Management.Automation.CompletionResultType.ParameterValue, "Normal");
+                yield return new global::System.Management.Automation.CompletionResult("'Normal'", "Normal", global::System.Management.Automation.CompletionResultType.ParameterValue, "Normal");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Important".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Important", "Important", global::System.Management.Automation.CompletionResultType.ParameterValue, "Important");
+                yield return new global::System.Management.Automation.CompletionResult("'Important'", "Important", global::System.Management.Automation.CompletionResultType.ParameterValue, "Important");
             }
         }
     }

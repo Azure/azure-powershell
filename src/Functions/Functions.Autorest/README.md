@@ -3,7 +3,6 @@
 This directory contains the PowerShell module for the Functions service.
 
 ---
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -47,6 +46,10 @@ In this directory, run AutoRest:
 ### Suppression
 
 ``` yaml
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
+
 directive:
   - suppress: XmsResourceInPutResponse
     from: WebApps.json
@@ -63,9 +66,9 @@ directive:
 ```
 
 ``` yaml
-branch: main
+commit: 78eac0bd58633028293cb1ec1709baa200bed9e2
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/web/resource-manager/Microsoft.CertificateRegistration/stable/2019-08-01/AppServiceCertificateOrders.json
   - $(repo)/specification/web/resource-manager/Microsoft.CertificateRegistration/stable/2019-08-01/CertificateRegistrationProvider.json
@@ -544,8 +547,8 @@ directive:
 
 # Add Storage and AppInsights cmdlet subset
 require:
-  - $(this-folder)/../helpers/Storage/readme.noprofile.md
-  - $(this-folder)/../helpers/AppInsights/readme.noprofile.md
-  - $(this-folder)/../helpers/ManagedIdentity/readme.noprofile.md
+  - $(this-folder)/../../helpers/Storage/readme.noprofile.md
+  - $(this-folder)/../../helpers/AppInsights/readme.noprofile.md
+  - $(this-folder)/../../helpers/ManagedIdentity/readme.noprofile.md
   
 ```

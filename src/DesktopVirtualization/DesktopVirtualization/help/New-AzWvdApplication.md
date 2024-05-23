@@ -18,16 +18,16 @@ New-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <Stri
  -CommandLineSetting <CommandLineSetting> [-SubscriptionId <String>] [-Description <String>]
  [-FriendlyName <String>] [-ShowInPortal] [-ApplicationType <RemoteApplicationType>]
  [-CommandLineArgument <String>] [-FilePath <String>] [-IconIndex <Int32>] [-IconPath <String>]
- [-MsixPackageApplicationId <String>] [-MsixPackageFamilyName <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-MsixPackageApplicationId <String>] [-MsixPackageFamilyName <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AppAlias
 ```
 New-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <String>
  -CommandLineSetting <CommandLineSetting> [-SubscriptionId <String>] [-Description <String>]
- [-FriendlyName <String>] [-ShowInPortal] -AppAlias <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-FriendlyName <String>] [-ShowInPortal] -AppAlias <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -354,7 +354,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IApplication
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplication
 
 ## NOTES
 

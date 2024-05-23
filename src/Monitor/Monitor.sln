@@ -51,7 +51,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperationalInsights", "..\O
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{0636EEB2-FE81-4424-8CFC-CCEB25360A40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Metric", "MetricsData.Autorest\Az.Metric.csproj", "{192E6EA5-E7BC-4076-A9D8-153F0088A3D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Metricdata", "MetricData.Autorest\Az.Metricdata.csproj", "{F95B32A7-D021-418F-9AC3-33D1A3CAE39C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -146,10 +146,10 @@ Global
 		{0636EEB2-FE81-4424-8CFC-CCEB25360A40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0636EEB2-FE81-4424-8CFC-CCEB25360A40}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0636EEB2-FE81-4424-8CFC-CCEB25360A40}.Release|Any CPU.Build.0 = Release|Any CPU
-		{192E6EA5-E7BC-4076-A9D8-153F0088A3D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{192E6EA5-E7BC-4076-A9D8-153F0088A3D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{192E6EA5-E7BC-4076-A9D8-153F0088A3D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{192E6EA5-E7BC-4076-A9D8-153F0088A3D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F95B32A7-D021-418F-9AC3-33D1A3CAE39C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F95B32A7-D021-418F-9AC3-33D1A3CAE39C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F95B32A7-D021-418F-9AC3-33D1A3CAE39C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F95B32A7-D021-418F-9AC3-33D1A3CAE39C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{99E9B517-1C84-47CA-8364-F4F1C25EC656} = {EAA233B5-64B2-4DB0-991A-DD490E0B252B}

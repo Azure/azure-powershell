@@ -28,27 +28,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotDefined".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotDefined", "NotDefined", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotDefined");
+                yield return new global::System.Management.Automation.CompletionResult("'NotDefined'", "NotDefined", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotDefined");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Enabled".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Enabled", "Enabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Enabled");
+                yield return new global::System.Management.Automation.CompletionResult("'Enabled'", "Enabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Enabled");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Warned".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Warned", "Warned", global::System.Management.Automation.CompletionResultType.ParameterValue, "Warned");
+                yield return new global::System.Management.Automation.CompletionResult("'Warned'", "Warned", global::System.Management.Automation.CompletionResultType.ParameterValue, "Warned");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "PastDue".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("PastDue", "PastDue", global::System.Management.Automation.CompletionResultType.ParameterValue, "PastDue");
+                yield return new global::System.Management.Automation.CompletionResult("'PastDue'", "PastDue", global::System.Management.Automation.CompletionResultType.ParameterValue, "PastDue");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Disabled".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Disabled", "Disabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Disabled");
+                yield return new global::System.Management.Automation.CompletionResult("'Disabled'", "Disabled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Disabled");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Deleted".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Deleted", "Deleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "Deleted");
+                yield return new global::System.Management.Automation.CompletionResult("'Deleted'", "Deleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "Deleted");
             }
         }
     }

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 1.1.0
 * Added parameter PublicNetworkAccess for PostgreSQL single server related cmdlets [#17263]
 

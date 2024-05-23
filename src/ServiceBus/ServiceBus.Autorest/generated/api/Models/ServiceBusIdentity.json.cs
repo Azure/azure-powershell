@@ -76,18 +76,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             {
                 return;
             }
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_namespaceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("namespaceName"), out var __jsonNamespaceName) ? (string)__jsonNamespaceName : (string)NamespaceName;}
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_queueName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("queueName"), out var __jsonQueueName) ? (string)__jsonQueueName : (string)QueueName;}
-            {_authorizationRuleName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("authorizationRuleName"), out var __jsonAuthorizationRuleName) ? (string)__jsonAuthorizationRuleName : (string)AuthorizationRuleName;}
-            {_topicName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("topicName"), out var __jsonTopicName) ? (string)__jsonTopicName : (string)TopicName;}
-            {_privateEndpointConnectionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("privateEndpointConnectionName"), out var __jsonPrivateEndpointConnectionName) ? (string)__jsonPrivateEndpointConnectionName : (string)PrivateEndpointConnectionName;}
-            {_alias = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("alias"), out var __jsonAlias) ? (string)__jsonAlias : (string)Alias;}
-            {_configName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("configName"), out var __jsonConfigName) ? (string)__jsonConfigName : (string)ConfigName;}
-            {_subscriptionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("subscriptionName"), out var __jsonSubscriptionName) ? (string)__jsonSubscriptionName : (string)SubscriptionName;}
-            {_ruleName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("ruleName"), out var __jsonRuleName) ? (string)__jsonRuleName : (string)RuleName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_namespaceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("namespaceName"), out var __jsonNamespaceName) ? (string)__jsonNamespaceName : (string)_namespaceName;}
+            {_queueName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("queueName"), out var __jsonQueueName) ? (string)__jsonQueueName : (string)_queueName;}
+            {_authorizationRuleName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("authorizationRuleName"), out var __jsonAuthorizationRuleName) ? (string)__jsonAuthorizationRuleName : (string)_authorizationRuleName;}
+            {_topicName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("topicName"), out var __jsonTopicName) ? (string)__jsonTopicName : (string)_topicName;}
+            {_privateEndpointConnectionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("privateEndpointConnectionName"), out var __jsonPrivateEndpointConnectionName) ? (string)__jsonPrivateEndpointConnectionName : (string)_privateEndpointConnectionName;}
+            {_alias = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("alias"), out var __jsonAlias) ? (string)__jsonAlias : (string)_alias;}
+            {_configName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("configName"), out var __jsonConfigName) ? (string)__jsonConfigName : (string)_configName;}
+            {_subscriptionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("subscriptionName"), out var __jsonSubscriptionName) ? (string)__jsonSubscriptionName : (string)_subscriptionName;}
+            {_ruleName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("ruleName"), out var __jsonRuleName) ? (string)__jsonRuleName : (string)_ruleName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 
@@ -110,9 +110,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             {
                 return container;
             }
+            AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
             AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
             AddIf( null != (((object)this._namespaceName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString(this._namespaceName.ToString()) : null, "namespaceName" ,container.Add );
-            AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
             AddIf( null != (((object)this._queueName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString(this._queueName.ToString()) : null, "queueName" ,container.Add );
             AddIf( null != (((object)this._authorizationRuleName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString(this._authorizationRuleName.ToString()) : null, "authorizationRuleName" ,container.Add );
             AddIf( null != (((object)this._topicName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Json.JsonString(this._topicName.ToString()) : null, "topicName" ,container.Add );

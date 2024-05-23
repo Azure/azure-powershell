@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-Create a Device.
+Update a Device.
 Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog only.
 .Description
-Create a Device.
+Update a Device.
 Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog only.
 .Example
 {{ Add code here }}

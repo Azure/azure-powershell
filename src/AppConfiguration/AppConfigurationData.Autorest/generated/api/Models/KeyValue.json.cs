@@ -76,14 +76,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
             {
                 return;
             }
-            {_key = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("key"), out var __jsonKey) ? (string)__jsonKey : (string)Key;}
-            {_label = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("label"), out var __jsonLabel) ? (string)__jsonLabel : (string)Label;}
-            {_contentType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("content_type"), out var __jsonContentType) ? (string)__jsonContentType : (string)ContentType;}
-            {_value = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("value"), out var __jsonValue) ? (string)__jsonValue : (string)Value;}
-            {_lastModified = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("last_modified"), out var __jsonLastModified) ? global::System.DateTime.TryParse((string)__jsonLastModified, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastModifiedValue) ? __jsonLastModifiedValue : LastModified : LastModified;}
-            {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.KeyValueTags.FromJson(__jsonTags) : Tag;}
-            {_locked = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonBoolean>("locked"), out var __jsonLocked) ? (bool?)__jsonLocked : Locked;}
-            {_etag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("etag"), out var __jsonEtag) ? (string)__jsonEtag : (string)Etag;}
+            {_key = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("key"), out var __jsonKey) ? (string)__jsonKey : (string)_key;}
+            {_label = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("label"), out var __jsonLabel) ? (string)__jsonLabel : (string)_label;}
+            {_contentType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("content_type"), out var __jsonContentType) ? (string)__jsonContentType : (string)_contentType;}
+            {_value = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("value"), out var __jsonValue) ? (string)__jsonValue : (string)_value;}
+            {_lastModified = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("last_modified"), out var __jsonLastModified) ? global::System.DateTime.TryParse((string)__jsonLastModified, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastModifiedValue) ? __jsonLastModifiedValue : _lastModified : _lastModified;}
+            {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.KeyValueTags.FromJson(__jsonTags) : _tag;}
+            {_locked = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonBoolean>("locked"), out var __jsonLocked) ? (bool?)__jsonLocked : _locked;}
+            {_etag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("etag"), out var __jsonEtag) ? (string)__jsonEtag : (string)_etag;}
             AfterFromJson(json);
         }
 

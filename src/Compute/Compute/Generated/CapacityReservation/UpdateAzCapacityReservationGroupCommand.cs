@@ -131,7 +131,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         {
                             resourceSharingProfile.SubscriptionIds = new List<SubResource>();
                         }
-                        resourceSharingProfile.SubscriptionIds.Add(subResource);
+                        if (!string.IsNullOrEmpty(item))
+                        { 
+                            resourceSharingProfile.SubscriptionIds.Add(subResource);
+                        }
                     }
                     capacityReservationGroupUpdate.SharingProfile = resourceSharingProfile;
                 }

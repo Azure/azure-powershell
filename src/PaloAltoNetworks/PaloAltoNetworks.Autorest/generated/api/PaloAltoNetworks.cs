@@ -13,7 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
     public partial class PaloAltoNetworks
     {
 
-        /// <summary>Create a CertificateObjectGlobalRulestackResource</summary>
+        /// <summary>Update a CertificateObjectGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">certificate name</param>
         /// <param name="body">Resource create parameters.</param>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a CertificateObjectGlobalRulestackResource</summary>
+        /// <summary>Update a CertificateObjectGlobalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a CertificateObjectGlobalRulestackResource</summary>
+        /// <summary>Update a CertificateObjectGlobalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a CertificateObjectGlobalRulestackResource</summary>
+        /// <summary>Update a CertificateObjectGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">certificate name</param>
         /// <param name="jsonString">Json string supplied to the CertificateObjectGlobalRulestackCreateOrUpdate operation</param>
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a CertificateObjectGlobalRulestackResource</summary>
+        /// <summary>Update a CertificateObjectGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">certificate name</param>
         /// <param name="jsonString">Json string supplied to the CertificateObjectGlobalRulestackCreateOrUpdate operation</param>
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a CertificateObjectGlobalRulestackResource</summary>
+        /// <summary>Update a CertificateObjectGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">certificate name</param>
         /// <param name="body">Resource create parameters.</param>
@@ -1480,7 +1480,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a CertificateObjectLocalRulestackResource</summary>
+        /// <summary>Update a CertificateObjectLocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -1532,7 +1532,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a CertificateObjectLocalRulestackResource</summary>
+        /// <summary>Update a CertificateObjectLocalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1594,7 +1594,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a CertificateObjectLocalRulestackResource</summary>
+        /// <summary>Update a CertificateObjectLocalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1654,7 +1654,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a CertificateObjectLocalRulestackResource</summary>
+        /// <summary>Update a CertificateObjectLocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -1705,7 +1705,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a CertificateObjectLocalRulestackResource</summary>
+        /// <summary>Update a CertificateObjectLocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -1754,7 +1754,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a CertificateObjectLocalRulestackResource</summary>
+        /// <summary>Update a CertificateObjectLocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -3723,7 +3723,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a FirewallResource</summary>
+        /// <summary>Update a FirewallResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="firewallName">Firewall resource name</param>
@@ -3772,7 +3772,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a FirewallResource</summary>
+        /// <summary>Update a FirewallResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3831,7 +3831,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a FirewallResource</summary>
+        /// <summary>Update a FirewallResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3888,7 +3888,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a FirewallResource</summary>
+        /// <summary>Update a FirewallResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="firewallName">Firewall resource name</param>
@@ -3936,7 +3936,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a FirewallResource</summary>
+        /// <summary>Update a FirewallResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="firewallName">Firewall resource name</param>
@@ -3982,7 +3982,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a FirewallResource</summary>
+        /// <summary>Update a FirewallResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="firewallName">Firewall resource name</param>
@@ -7217,7 +7217,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a FqdnListGlobalRulestackResource</summary>
+        /// <summary>Update a FqdnListGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">fqdn list name</param>
         /// <param name="body">Resource create parameters.</param>
@@ -7263,7 +7263,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a FqdnListGlobalRulestackResource</summary>
+        /// <summary>Update a FqdnListGlobalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -7319,7 +7319,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a FqdnListGlobalRulestackResource</summary>
+        /// <summary>Update a FqdnListGlobalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -7373,7 +7373,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a FqdnListGlobalRulestackResource</summary>
+        /// <summary>Update a FqdnListGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">fqdn list name</param>
         /// <param name="jsonString">Json string supplied to the FqdnListGlobalRulestackCreateOrUpdate operation</param>
@@ -7418,7 +7418,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a FqdnListGlobalRulestackResource</summary>
+        /// <summary>Update a FqdnListGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">fqdn list name</param>
         /// <param name="jsonString">Json string supplied to the FqdnListGlobalRulestackCreateOrUpdate operation</param>
@@ -7461,7 +7461,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a FqdnListGlobalRulestackResource</summary>
+        /// <summary>Update a FqdnListGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">fqdn list name</param>
         /// <param name="body">Resource create parameters.</param>
@@ -8678,7 +8678,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a FqdnListLocalRulestackResource</summary>
+        /// <summary>Update a FqdnListLocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -8730,7 +8730,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a FqdnListLocalRulestackResource</summary>
+        /// <summary>Update a FqdnListLocalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -8792,7 +8792,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a FqdnListLocalRulestackResource</summary>
+        /// <summary>Update a FqdnListLocalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8852,7 +8852,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a FqdnListLocalRulestackResource</summary>
+        /// <summary>Update a FqdnListLocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -8903,7 +8903,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a FqdnListLocalRulestackResource</summary>
+        /// <summary>Update a FqdnListLocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -8952,7 +8952,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a FqdnListLocalRulestackResource</summary>
+        /// <summary>Update a FqdnListLocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -10498,7 +10498,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a GlobalRulestackResource</summary>
+        /// <summary>Update a GlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -10541,7 +10541,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a GlobalRulestackResource</summary>
+        /// <summary>Update a GlobalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -10594,7 +10594,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a GlobalRulestackResource</summary>
+        /// <summary>Update a GlobalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10645,7 +10645,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a GlobalRulestackResource</summary>
+        /// <summary>Update a GlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="jsonString">Json string supplied to the GlobalRulestackCreateOrUpdate operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -10687,7 +10687,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a GlobalRulestackResource</summary>
+        /// <summary>Update a GlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="jsonString">Json string supplied to the GlobalRulestackCreateOrUpdate operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10727,7 +10727,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a GlobalRulestackResource</summary>
+        /// <summary>Update a GlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -14727,7 +14727,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a LocalRulesResource</summary>
+        /// <summary>Update a LocalRulesResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -14779,7 +14779,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a LocalRulesResource</summary>
+        /// <summary>Update a LocalRulesResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -14841,7 +14841,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a LocalRulesResource</summary>
+        /// <summary>Update a LocalRulesResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -14901,7 +14901,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a LocalRulesResource</summary>
+        /// <summary>Update a LocalRulesResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -14952,7 +14952,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a LocalRulesResource</summary>
+        /// <summary>Update a LocalRulesResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -15001,7 +15001,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a LocalRulesResource</summary>
+        /// <summary>Update a LocalRulesResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -17463,7 +17463,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a LocalRulestackResource</summary>
+        /// <summary>Update a LocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -17512,7 +17512,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a LocalRulestackResource</summary>
+        /// <summary>Update a LocalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -17571,7 +17571,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a LocalRulestackResource</summary>
+        /// <summary>Update a LocalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -17628,7 +17628,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a LocalRulestackResource</summary>
+        /// <summary>Update a LocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -17676,7 +17676,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a LocalRulestackResource</summary>
+        /// <summary>Update a LocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -17722,7 +17722,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a LocalRulestackResource</summary>
+        /// <summary>Update a LocalRulestackResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -23027,7 +23027,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a PostRulesResource</summary>
+        /// <summary>Update a PostRulesResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="priority">Post Rule priority</param>
         /// <param name="body">Resource create parameters.</param>
@@ -23073,7 +23073,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a PostRulesResource</summary>
+        /// <summary>Update a PostRulesResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -23129,7 +23129,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a PostRulesResource</summary>
+        /// <summary>Update a PostRulesResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -23183,7 +23183,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a PostRulesResource</summary>
+        /// <summary>Update a PostRulesResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="priority">Post Rule priority</param>
         /// <param name="jsonString">Json string supplied to the PostRulesCreateOrUpdate operation</param>
@@ -23228,7 +23228,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a PostRulesResource</summary>
+        /// <summary>Update a PostRulesResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="priority">Post Rule priority</param>
         /// <param name="jsonString">Json string supplied to the PostRulesCreateOrUpdate operation</param>
@@ -23271,7 +23271,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a PostRulesResource</summary>
+        /// <summary>Update a PostRulesResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="priority">Post Rule priority</param>
         /// <param name="body">Resource create parameters.</param>
@@ -25295,7 +25295,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a PreRulesResource</summary>
+        /// <summary>Update a PreRulesResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="priority">Pre Rule priority</param>
         /// <param name="body">Resource create parameters.</param>
@@ -25341,7 +25341,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a PreRulesResource</summary>
+        /// <summary>Update a PreRulesResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -25397,7 +25397,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a PreRulesResource</summary>
+        /// <summary>Update a PreRulesResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -25451,7 +25451,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a PreRulesResource</summary>
+        /// <summary>Update a PreRulesResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="priority">Pre Rule priority</param>
         /// <param name="jsonString">Json string supplied to the PreRulesCreateOrUpdate operation</param>
@@ -25496,7 +25496,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a PreRulesResource</summary>
+        /// <summary>Update a PreRulesResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="priority">Pre Rule priority</param>
         /// <param name="jsonString">Json string supplied to the PreRulesCreateOrUpdate operation</param>
@@ -25539,7 +25539,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a PreRulesResource</summary>
+        /// <summary>Update a PreRulesResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="priority">Pre Rule priority</param>
         /// <param name="body">Resource create parameters.</param>
@@ -27563,7 +27563,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a PrefixListGlobalRulestackResource</summary>
+        /// <summary>Update a PrefixListGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">Local Rule priority</param>
         /// <param name="body">Resource create parameters.</param>
@@ -27609,7 +27609,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a PrefixListGlobalRulestackResource</summary>
+        /// <summary>Update a PrefixListGlobalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -27665,7 +27665,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a PrefixListGlobalRulestackResource</summary>
+        /// <summary>Update a PrefixListGlobalRulestackResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -27719,7 +27719,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a PrefixListGlobalRulestackResource</summary>
+        /// <summary>Update a PrefixListGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">Local Rule priority</param>
         /// <param name="jsonString">Json string supplied to the PrefixListGlobalRulestackCreateOrUpdate operation</param>
@@ -27764,7 +27764,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a PrefixListGlobalRulestackResource</summary>
+        /// <summary>Update a PrefixListGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">Local Rule priority</param>
         /// <param name="jsonString">Json string supplied to the PrefixListGlobalRulestackCreateOrUpdate operation</param>
@@ -27807,7 +27807,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a PrefixListGlobalRulestackResource</summary>
+        /// <summary>Update a PrefixListGlobalRulestackResource</summary>
         /// <param name="globalRulestackName">GlobalRulestack resource name</param>
         /// <param name="name">Local Rule priority</param>
         /// <param name="body">Resource create parameters.</param>
@@ -29024,7 +29024,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a PrefixListResource</summary>
+        /// <summary>Update a PrefixListResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -29076,7 +29076,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a PrefixListResource</summary>
+        /// <summary>Update a PrefixListResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -29138,7 +29138,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a PrefixListResource</summary>
+        /// <summary>Update a PrefixListResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -29198,7 +29198,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a PrefixListResource</summary>
+        /// <summary>Update a PrefixListResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -29249,7 +29249,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a PrefixListResource</summary>
+        /// <summary>Update a PrefixListResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>
@@ -29298,7 +29298,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks
             }
         }
 
-        /// <summary>Create a PrefixListResource</summary>
+        /// <summary>Update a PrefixListResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="localRulestackName">LocalRulestack resource name</param>

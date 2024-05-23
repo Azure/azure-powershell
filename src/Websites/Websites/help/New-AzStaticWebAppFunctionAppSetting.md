@@ -15,14 +15,15 @@ Description for Creates or updates the function app settings of a static site.
 ### CreateExpanded (Default)
 ```
 New-AzStaticWebAppFunctionAppSetting -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AppSetting <Hashtable>] [-Kind <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AppSetting <Hashtable>] [-Kind <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzStaticWebAppFunctionAppSetting -InputObject <IWebsitesIdentity> [-AppSetting <Hashtable>]
- [-Kind <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Kind <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -17,8 +17,8 @@ Updates a ServiceBus Topic
 Set-AzServiceBusTopic -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AutoDeleteOnIdle <TimeSpan>] [-DefaultMessageTimeToLive <TimeSpan>]
  [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperations] [-EnableExpress]
- [-MaxMessageSizeInKilobytes <Int64>] [-MaxSizeInMegabytes <Int32>] [-Status <EntityStatus>]
- [-SupportOrdering] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-MaxMessageSizeInKilobytes <Int64>] [-MaxSizeInMegabytes <Int32>] [-Status <String>] [-SupportOrdering]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
@@ -26,8 +26,8 @@ Set-AzServiceBusTopic -Name <String> -NamespaceName <String> -ResourceGroupName 
 Set-AzServiceBusTopic -InputObject <IServiceBusIdentity> [-AutoDeleteOnIdle <TimeSpan>]
  [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
  [-EnableBatchedOperations] [-EnableExpress] [-MaxMessageSizeInKilobytes <Int64>]
- [-MaxSizeInMegabytes <Int32>] [-Status <EntityStatus>] [-SupportOrdering] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-MaxSizeInMegabytes <Int32>] [-Status <String>] [-SupportOrdering] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -327,11 +327,10 @@ Accept wildcard characters: False
 ```
 
 ### -Status
-Maximum size (in KB) of the message payload that can be accepted by the topic.
-This property is only used in Premium today and default is 1024.
+Enumerates the possible values for the status of a messaging entity.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.EntityStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -412,7 +411,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbTopic
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopic
 
 ## NOTES
 

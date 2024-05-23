@@ -28,8 +28,8 @@ New-AzWvdScalingPlanPersonalSchedule -ResourceGroupName <String> -ScalingPlanNam
  [-RampUpActionOnLogoff <SessionHandlingOperation>] [-RampUpAutoStartHost <StartupBehavior>]
  [-RampUpMinutesToWaitOnDisconnect <Int32>] [-RampUpMinutesToWaitOnLogoff <Int32>]
  [-RampUpStartTimeHour <Int32>] [-RampUpStartTimeMinute <Int32>]
- [-RampUpStartVMOnConnect <SetStartVMOnConnect>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-RampUpStartVMOnConnect <SetStartVMOnConnect>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -649,7 +649,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IScalingPlanPersonalSchedule
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPersonalSchedule
 
 ## NOTES
 

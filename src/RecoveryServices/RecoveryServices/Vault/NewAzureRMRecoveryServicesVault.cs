@@ -75,6 +75,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public bool? DisableAzureMonitorAlertsForJobFailure { get; set; }
 
         /// <summary>
+        /// Enables or disables classic email notifications for Site Recovery in RS vault.
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public bool? DisableEmailNotificationsForSiteRecovery { get; set; }
+
+        /// <summary>
+        /// Enables or disables monitor alerts for replication issue in RS vault.
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public bool? DisableAzureMonitorAlertsForAllReplicationIssue { get; set; }
+
+        /// <summary>
+        /// Enables or disables monitor alerts for failover issue in RS vault.
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public bool? DisableAzureMonitorAlertsForAllFailoverIssue { get; set; }
+
+        /// <summary>
         /// Enables or disables public network access for RS vault.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Parameter to Enable/Disable public network access of the vault. This setting is useful with Private Endpoints.")]
@@ -115,18 +133,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     vaultCreateArgs.Sku = new Sku();
                     vaultCreateArgs.Sku.Name = SkuName.Standard;
 
-                    if (DisableAzureMonitorAlertsForJobFailure != null || DisableClassicAlerts != null)
+                    if (DisableAzureMonitorAlertsForJobFailure != null || DisableClassicAlerts != null || DisableEmailNotificationsForSiteRecovery != null || DisableAzureMonitorAlertsForAllReplicationIssue != null || DisableAzureMonitorAlertsForAllFailoverIssue != null)
                     {   
-                        if(DisableAzureMonitorAlertsForJobFailure != null && DisableClassicAlerts != null)
+                        if(DisableAzureMonitorAlertsForJobFailure != null && DisableClassicAlerts != null && DisableEmailNotificationsForSiteRecovery != null && DisableAzureMonitorAlertsForAllReplicationIssue != null && DisableAzureMonitorAlertsForAllFailoverIssue != null)
                         {
                             MonitoringSettings alerts = new MonitoringSettings();
 
                             alerts.AzureMonitorAlertSettings = new AzureMonitorAlertSettings();
                             alerts.AzureMonitorAlertSettings.AlertsForAllJobFailures = (DisableAzureMonitorAlertsForJobFailure == true) ? "Disabled" : "Enabled";
-                            
+                            alerts.AzureMonitorAlertSettings.AlertsForAllReplicationIssues = (DisableAzureMonitorAlertsForAllReplicationIssue == true) ? "Disabled" : "Enabled";
+                            alerts.AzureMonitorAlertSettings.AlertsForAllFailoverIssues = (DisableAzureMonitorAlertsForAllFailoverIssue == true) ? "Disabled" : "Enabled";
+
                             alerts.ClassicAlertSettings = new ClassicAlertSettings();
                             alerts.ClassicAlertSettings.AlertsForCriticalOperations = (DisableClassicAlerts == true) ? "Disabled" : "Enabled";
-                        
+                            alerts.ClassicAlertSettings.EmailNotificationsForSiteRecovery = (DisableEmailNotificationsForSiteRecovery == true) ? "Disabled" : "Enabled";
+
                             vaultCreateArgs.Properties.MonitoringSettings = alerts;
                         }
                         else

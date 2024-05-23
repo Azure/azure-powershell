@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
+external help file: Az.EventGrid-help.xml
 Module Name: Az.EventGrid
 online version: https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgriddomaintopic
 schema: 2.0.0
@@ -8,165 +8,91 @@ schema: 2.0.0
 # Get-AzEventGridDomainTopic
 
 ## SYNOPSIS
-Gets the details of an Event Grid domain topic, or gets a list of all Event Grid domain topics under specific Event Grid domain in the current Azure subscription.
+Get properties of a domain topic.
 
 ## SYNTAX
 
-### DomainTopicNameParameterSet (Default)
+### List (Default)
 ```
-Get-AzEventGridDomainTopic [-ResourceGroupName] <String> [-DomainName] <String> [-Name <String>]
- [-ODataQuery <String>] [-Top <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ResourceIdDomainTopicParameterSet
-```
-Get-AzEventGridDomainTopic [-ResourceId] <String> [-ODataQuery <String>] [-Top <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzEventGridDomainTopic -DomainName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-Filter <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
 ```
 
-### NextLinkParameterSet
+### Get
 ```
-Get-AzEventGridDomainTopic [-NextLink <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzEventGridDomainTopic -DomainName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityDomain
+```
+Get-AzEventGridDomainTopic -Name <String> -DomainInputObject <IEventGridIdentity> [-DefaultProfile <PSObject>]
+ [-PassThru] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzEventGridDomainTopic -InputObject <IEventGridIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzEventGridDomainTopic cmdlet gets either the details of a specified Event Grid domain topic, or a list of all Event Grid domain topics under a specific domain in the current Azure subscription.
-If the domain topic name is provided, the details of a single Event Grid domain topic is returned.
-If the domain topic name is not provided, a list of domain topics under the specified domain name is returned. The number of elements returned in this list is controlled by the Top parameter. If the Top value is not specified or $null, the list will contain all the domain topics items. Otherwise, Top will indicate the maximum number of elements to be returned in the list.
-If more domain topics are still available, the value in NextLink should be used in the next call to get the next page of domain topics.
-Finally, ODataQuery parameter is used to perform filtering for the search results. The filtering query follows OData syntax using the Name property only. The supported operations include: CONTAINS, eq (for equal), ne (for not equal), AND, OR and NOT.
+Get properties of a domain topic.
 
 ## EXAMPLES
 
-### Example 1
-
-Gets the details of Event Grid domain topic \`DomainTopic1\` under Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
-
+### Example 1: List properties of domain topic.
 ```powershell
-Get-AzEventGridDomainTopic -ResourceGroup MyResourceGroupName -DomainName Domain1 -DomainTopicName DomainTopic1
+Get-AzEventGridDomainTopic -DomainName azps-domain -ResourceGroupName azps_test_group_eventgrid
 ```
 
 ```output
-ResourceGroupName : MyResourceGroupName
-DomainName        : DomainTopic1
-DomainTopicName   : Topic1
-Id                : /subscriptions/20902276-e53b-4421-8565-f57bcad74f6e/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1/topics/DomainTopic1
-Type              : Microsoft.EventGrid/domains/topics
-ProvisioningState : Succeeded
+Name             ResourceGroupName
+----             -----------------
+azps-domaintopic azps_test_group_eventgrid
 ```
 
-### Example 2
+List properties of domain topic.
 
-Gets the details of Event Grid domain topic \`DomainTopic1\` under Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\` using the ResourceId option.
-
+### Example 2: List properties of domain topic.
 ```powershell
-Get-AzEventGridDomainTopic -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1/topics/DomainTopic1"
+Get-AzEventGridDomainTopic -DomainName azps-domain -ResourceGroupName azps_test_group_eventgrid -Name azps-domaintopics
 ```
 
 ```output
-ResourceGroupName : MyResourceGroupName
-DomainName        : Domain1
-DomainTopicName   : DomainTopic1
-Id                : /subscriptions/20902276-e53b-4421-8565-f57bcad74f6e/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1/topics/DomainTopic1
-Type              : Microsoft.EventGrid/domains/topics
-ProvisioningState : Succeeded
+Name             ResourceGroupName
+----             -----------------
+azps-domaintopic azps_test_group_eventgrid
 ```
 
-### Example 3
+List properties of domain topic.
 
-List all the Event Grid domain topics under Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\` without pagination (all results are returned in one shot).
-
+### Example 3: Get properties of a domain topic.
 ```powershell
-$result=Get-AzEventGridDomainTopic -ResourceGroup MyResourceGroupName -DomainName Domain1
-Write-Output $result.PsDomainTopicsList
+$domain = Get-AzEventGridDomain -ResourceGroupName azps_test_group_eventgrid -Name azps-domain
+Get-AzEventGridDomainTopic -DomainInputObject $domain -Name azps-domaintopics
 ```
 
 ```output
-ResourceGroupName : MyResourceGroupName
-DomainName        : Domain1
-DomainTopicName   : DomainTopic1
-Id                : /subscriptions/20902276-e53b-4421-8565-f57bcad74f6e/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1/topics/DomainTopic1
-Type              : Microsoft.EventGrid/domains/topics
-ProvisioningState : Succeeded
-
-
-ResourceGroupName : MyResourceGroupName
-DomainName        : Domain1
-DomainTopicName   : DomainTopic2
-Id                : /subscriptions/20902276-e53b-4421-8565-f57bcad74f6e/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1/topics/DomainTopic2
-Type              : Microsoft.EventGrid/domains/topics
-ProvisioningState : Succeeded
-
-
-ResourceGroupName : MyResourceGroupName
-DomainName        : Domain1
-DomainTopicName   : DomainTopic3
-Id                : /subscriptions/20902276-e53b-4421-8565-f57bcad74f6e/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1/topics/DomainTopic3
-Type              : Microsoft.EventGrid/domains/topics
-ProvisioningState : Succeeded
+Name             ResourceGroupName
+----             -----------------
+azps-domaintopic azps_test_group_eventgrid
 ```
 
-### Example 4
-
-List all the Event Grid domain topics under Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\` without pagination (all results are returned in one shot) using ResourceId option
-
-```powershell
-$result=Get-AzEventGridDomainTopic -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1"
-Write-Output $result.PsDomainTopicsList
-```
-
-```output
-ResourceGroupName : MyResourceGroupName
-DomainName        : Domain1
-DomainTopicName   : DomainTopic1
-Id                : /subscriptions/20902276-e53b-4421-8565-f57bcad74f6e/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1/topics/DomainTopic1
-Type              : Microsoft.EventGrid/domains/topics
-ProvisioningState : Succeeded
-
-
-ResourceGroupName : MyResourceGroupName
-DomainName        : Domain1
-DomainTopicName   : DomainTopic2
-Id                : /subscriptions/20902276-e53b-4421-8565-f57bcad74f6e/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1/topics/DomainTopic2
-Type              : Microsoft.EventGrid/domains/topics
-ProvisioningState : Succeeded
-
-
-ResourceGroupName : MyResourceGroupName
-DomainName        : Domain1
-DomainTopicName   : DomainTopic3
-Id                : /subscriptions/20902276-e53b-4421-8565-f57bcad74f6e/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1/topics/DomainTopic3
-Type              : Microsoft.EventGrid/domains/topics
-ProvisioningState : Succeeded
-```
-
-### Example 5
-
-List the Event Grid domain topics (if any) under domain \`Domain1\` in resource group \`MyResourceGroupName\` that satisfies the $odataFilter query 10 domain topics at a time. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of domain topics, user is expected to re-call Get-AzEventGridDomainTopic and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
-
-```powershell
-$total = 0
-$odataFilter = "Name ne 'ABCD'"
-$result = Get-AzEventGridDomainTopic -ResourceGroup MyResourceGroupName -DomainName Domain1 -Top 10 -ODataQuery $odataFilter
-$total += $result.Count
-while ($result.NextLink -ne $Null)
-    {
-        $result = Get-AzEventGridDomainTopic -NextLink $result.NextLink
-        $total += $result.Count
-    }
-
-Write-Output "Total number of domain topics is $Total"
-```
+Get properties of a domain topic.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -175,108 +101,146 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DomainInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: GetViaIdentityDomain
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DomainName
-EventGrid domain name.
+Name of the domain.
 
 ```yaml
 Type: System.String
-Parameter Sets: DomainTopicNameParameterSet
+Parameter Sets: List, Get
 Aliases: Domain
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Filter
+The query used to filter the search results using OData syntax.
+Filtering is permitted on the 'name' property only and with limited number of OData operations.
+These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal).
+No arithmetic operations are supported.
+The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'.
+The following is not a valid filter example: $filter=location eq 'westus'.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -Name
-EventGrid domain topic name.
+Name of the topic.
 
 ```yaml
 Type: System.String
-Parameter Sets: DomainTopicNameParameterSet
+Parameter Sets: Get, GetViaIdentityDomain
 Aliases: DomainTopicName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NextLink
-The link for the next page of resources to be obtained. This value is obtained with the first Get-AzEventGrid cmdlet call when more resources are still available to be queried.
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: System.String
-Parameter Sets: NextLinkParameterSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ODataQuery
-The OData query used for filtering the list results. Filtering is currently allowed on the Name property only.The supported operations include: CONTAINS, eq (for equal), ne (for not equal), AND, OR and NOT.
-
-```yaml
-Type: System.String
-Parameter Sets: DomainTopicNameParameterSet, ResourceIdDomainTopicParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: DomainTopicNameParameterSet
+Parameter Sets: List, Get
 Aliases: ResourceGroup
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Resource Identifier representing the Event Grid Domain or Grid Domain Topic.
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: ResourceIdDomainTopicParameterSet
+Type: System.String[]
+Parameter Sets: List, Get
 Aliases:
 
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Top
-The OData query used for filtering the list results. Filtering is currently allowed on the Name property only.The supported operations include: CONTAINS, eq (for equal), ne (for not equal), AND, OR and NOT.
+The number of results to return per page for the list operation.
+Valid range for top parameter is 1 to 100.
+If not specified, the default number of results to be returned is 20 items per page.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: DomainTopicNameParameterSet, ResourceIdDomainTopicParameterSet
+Parameter Sets: List
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -285,15 +249,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### System.Int32
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventGrid.Models.PSDomainTopic
-
-### Microsoft.Azure.Commands.EventGrid.Models.PSDomainTopicListInstance
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IDomainTopic
 
 ## NOTES
 

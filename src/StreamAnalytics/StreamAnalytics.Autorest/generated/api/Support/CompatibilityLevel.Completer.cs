@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "1.0".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("1.0", "1.0", global::System.Management.Automation.CompletionResultType.ParameterValue, "1.0");
+                yield return new global::System.Management.Automation.CompletionResult("'1.0'", "1.0", global::System.Management.Automation.CompletionResultType.ParameterValue, "1.0");
             }
         }
     }

@@ -1727,10 +1727,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a gallery image.
+The operation to create or update a gallery image.
 Please note some properties can be set only during gallery image creation.
 .Description
-The operation to Create a gallery image.
+The operation to create or update a gallery image.
 Please note some properties can be set only during gallery image creation.
 .Example
 {{ Add code here }}
@@ -2135,10 +2135,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a logical network.
+The operation to create or update a logical network.
 Please note some properties can be set only during logical network creation.
 .Description
-The operation to Create a logical network.
+The operation to create or update a logical network.
 Please note some properties can be set only during logical network creation.
 .Example
 New-AzStackHCIVMLogicalNetwork  -Name "testLnet" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus" -VmSwitchName "testswitch"
@@ -2365,9 +2365,9 @@ end {
 
 <#
 .Synopsis
-The operation to Create the extension.
+The operation to create or update the extension.
 .Description
-The operation to Create the extension.
+The operation to create or update the extension.
 .Example
 {{ Add code here }}
 .Example
@@ -2739,10 +2739,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a hybrid machine.
+The operation to create or update a hybrid machine.
 Please note some properties can be set only during machine creation.
 .Description
-The operation to Create a hybrid machine.
+The operation to create or update a hybrid machine.
 Please note some properties can be set only during machine creation.
 .Example
 {{ Add code here }}
@@ -3073,10 +3073,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a marketplace gallery image.
+The operation to create or update a marketplace gallery image.
 Please note some properties can be set only during marketplace gallery image creation.
 .Description
-The operation to Create a marketplace gallery image.
+The operation to create or update a marketplace gallery image.
 Please note some properties can be set only during marketplace gallery image creation.
 .Example
 {{ Add code here }}
@@ -3314,10 +3314,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a network interface.
+The operation to create or update a network interface.
 Please note some properties can be set only during network interface creation.
 .Description
-The operation to Create a network interface.
+The operation to create or update a network interface.
 Please note some properties can be set only during network interface creation.
 .Example
 New-AzStackHCIVMNetworkInterface  -Name "testNic" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -Location "eastus" -SubnetName "testLnet" 
@@ -3531,10 +3531,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a storage container.
+The operation to create or update a storage container.
 Please note some properties can be set only during storage container creation.
 .Description
-The operation to Create a storage container.
+The operation to create or update a storage container.
 Please note some properties can be set only during storage container creation.
 .Example
 New-AzStackHCIVMStoragePath  -Name "testStoragePath" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"-Location "eastus" -Path "C:\ClusterStorage\Volume1\testpath"
@@ -3725,10 +3725,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a virtual hard disk.
+The operation to create or update a virtual hard disk.
 Please note some properties can be set only during virtual hard disk creation.
 .Description
-The operation to Create a virtual hard disk.
+The operation to create or update a virtual hard disk.
 Please note some properties can be set only during virtual hard disk creation.
 .Example
 New-AzStackHCIVMVirtualHardDisk -Name "testVhd" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -Location "eastus" -SizeGb 2
@@ -3963,10 +3963,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a virtual machine instance.
+The operation to create or update a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 .Description
-The operation to Create a virtual machine instance.
+The operation to create or update a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 .Example
 New-AzStackHCIVMVirtualMachine -Name "testVm" -OsType "Linux"  -ImageName "testImage" -VmSize "Standard_K8S_v1"  -AdminUsername "localadmin" -ComputerName "testVm"  -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus"
@@ -6282,10 +6282,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a gallery image.
+The operation to create or update a gallery image.
 Please note some properties can be set only during gallery image creation.
 .Description
-The operation to Create a gallery image.
+The operation to create or update a gallery image.
 Please note some properties can be set only during gallery image creation.
 .Example
 {{ Add code here }}
@@ -6533,10 +6533,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a logical network.
+The operation to create or update a logical network.
 Please note some properties can be set only during logical network creation.
 .Description
-The operation to Create a logical network.
+The operation to create or update a logical network.
 Please note some properties can be set only during logical network creation.
 .Example
 {{ Add code here }}
@@ -6769,9 +6769,9 @@ end {
 
 <#
 .Synopsis
-The operation to Create the extension.
+The operation to create or update the extension.
 .Description
-The operation to Create the extension.
+The operation to create or update the extension.
 .Example
 {{ Add code here }}
 .Example
@@ -7053,10 +7053,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a hybrid machine.
+The operation to create or update a hybrid machine.
 Please note some properties can be set only during machine creation.
 .Description
-The operation to Create a hybrid machine.
+The operation to create or update a hybrid machine.
 Please note some properties can be set only during machine creation.
 .Example
 {{ Add code here }}
@@ -7387,10 +7387,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a marketplace gallery image.
+The operation to create or update a marketplace gallery image.
 Please note some properties can be set only during marketplace gallery image creation.
 .Description
-The operation to Create a marketplace gallery image.
+The operation to create or update a marketplace gallery image.
 Please note some properties can be set only during marketplace gallery image creation.
 .Example
 {{ Add code here }}
@@ -7632,10 +7632,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a network interface.
+The operation to create or update a network interface.
 Please note some properties can be set only during network interface creation.
 .Description
-The operation to Create a network interface.
+The operation to create or update a network interface.
 Please note some properties can be set only during network interface creation.
 .Example
 {{ Add code here }}
@@ -7855,10 +7855,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a storage container.
+The operation to create or update a storage container.
 Please note some properties can be set only during storage container creation.
 .Description
-The operation to Create a storage container.
+The operation to create or update a storage container.
 Please note some properties can be set only during storage container creation.
 .Example
 {{ Add code here }}
@@ -8055,10 +8055,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a virtual hard disk.
+The operation to create or update a virtual hard disk.
 Please note some properties can be set only during virtual hard disk creation.
 .Description
-The operation to Create a virtual hard disk.
+The operation to create or update a virtual hard disk.
 Please note some properties can be set only during virtual hard disk creation.
 .Example
 {{ Add code here }}
@@ -8299,10 +8299,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a virtual machine instance.
+The operation to create or update a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 .Description
-The operation to Create a virtual machine instance.
+The operation to create or update a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 .Example
 {{ Add code here }}
@@ -9389,9 +9389,9 @@ end {
 
 <#
 .Synopsis
-Create GuestAgent.
+Update GuestAgent.
 .Description
-Create GuestAgent.
+Update GuestAgent.
 .Example
 {{ Add code here }}
 .Example
@@ -9536,9 +9536,9 @@ end {
 
 <#
 .Synopsis
-The operation to Update the extension.
+The operation to create or update the extension.
 .Description
-The operation to Update the extension.
+The operation to create or update the extension.
 .Example
 {{ Add code here }}
 .Example
@@ -10402,10 +10402,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a virtual machine instance.
+The operation to create or update a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 .Description
-The operation to Create a virtual machine instance.
+The operation to create or update a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 .Example
 Update-AzStackHCIVMVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg" -VmMemoryInMB "4"

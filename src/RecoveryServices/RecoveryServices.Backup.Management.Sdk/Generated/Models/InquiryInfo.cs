@@ -24,15 +24,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// Initializes a new instance of the InquiryInfo class.
         /// </summary>
 
-        /// <param name="status">Inquiry Status for this container such as
-        /// InProgress | Failed | Succeeded
+        /// <param name="status">Inquiry Status for this container such as InProgress | Failed | Succeeded
         /// </param>
 
         /// <param name="errorDetail">Error Details if the Status is non-success.
         /// </param>
 
-        /// <param name="inquiryDetails">Inquiry Details which will have workload specific details.
-        /// For e.g. - For SQL and oracle this will contain different details.
+        /// <param name="inquiryDetails">Inquiry Details which will have workload specific details. For e.g. - For
+        /// SQL and oracle this will contain different details.
         /// </param>
         public InquiryInfo(string status = default(string), ErrorDetail errorDetail = default(ErrorDetail), System.Collections.Generic.IList<WorkloadInquiryDetails> inquiryDetails = default(System.Collections.Generic.IList<WorkloadInquiryDetails>))
 
@@ -50,8 +49,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
 
         /// <summary>
-        /// Gets or sets inquiry Status for this container such as
-        /// InProgress | Failed | Succeeded
+        /// Gets or sets inquiry Status for this container such as InProgress | Failed
+        /// | Succeeded
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "status")]
         public string Status {get; set; }
@@ -63,8 +62,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public ErrorDetail ErrorDetail {get; set; }
 
         /// <summary>
-        /// Gets or sets inquiry Details which will have workload specific details.
-        /// For e.g. - For SQL and oracle this will contain different details.
+        /// Gets or sets inquiry Details which will have workload specific details. For
+        /// e.g. - For SQL and oracle this will contain different details.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "inquiryDetails")]
         public System.Collections.Generic.IList<WorkloadInquiryDetails> InquiryDetails {get; set; }

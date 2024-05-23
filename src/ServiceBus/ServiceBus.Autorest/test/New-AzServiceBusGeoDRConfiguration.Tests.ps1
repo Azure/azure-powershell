@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzServiceBusGeoDRConfigur
 }
 
 Describe 'New-AzServiceBusGeoDRConfiguration' {
-    It 'CreateExpanded'  {
+    It 'CreateExpanded' -skip:$($env.secondaryLocation -eq '') {
         $drConfig = New-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -PartnerNamespace $env.secondaryNamespaceResourceId
         $drConfig.ResourceGroupName | Should -Be $env.resourceGroup
         $drConfig.Name | Should -Be $env.alias
@@ -24,7 +24,7 @@ Describe 'New-AzServiceBusGeoDRConfiguration' {
 
         while($drConfig.ProvisioningState -ne "Succeeded"){
             $drConfig = Get-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
-            Start-TestSleep 10
+            Start-Sleep 10
         }
 
         $drConfig = Get-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace

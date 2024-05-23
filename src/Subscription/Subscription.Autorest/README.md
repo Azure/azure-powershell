@@ -3,7 +3,6 @@
 This directory contains the PowerShell module for the Subscription service.
 
 ---
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -33,9 +32,9 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 0f39a2d56070d2bc4251494525cb8af88583a938
+commit: 0f39a2d56070d2bc4251494525cb8af88583a938
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file: 
   - $(repo)/specification/subscription/resource-manager/Microsoft.Subscription/stable/2021-10-01/subscriptions.json
 
@@ -45,6 +44,10 @@ subject-prefix: $(service-name)
 
 identity-correction-for-post: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - from: swagger-document 

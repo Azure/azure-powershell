@@ -1,6 +1,6 @@
 ---
-external help file:
-Module Name: Az.MySql
+external help file: Az.MySql-help.xml
+Module Name: Az.Mysql
 online version: https://learn.microsoft.com/powershell/module/az.mysql/new-azmysqlvirtualnetworkrule
 schema: 2.0.0
 ---
@@ -14,8 +14,8 @@ Creates or updates an existing virtual network rule.
 
 ```
 New-AzMySqlVirtualNetworkRule -Name <String> -ResourceGroupName <String> -ServerName <String>
- -SubnetId <String> [-SubscriptionId <String>] [-IgnoreMissingVnetServiceEndpoint]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -SubnetId <String> [-IgnoreMissingVnetServiceEndpoint] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -233,7 +233,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

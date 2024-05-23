@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Reservations-help.xml
 Module Name: Az.Reservations
 online version: https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationquote
 schema: 2.0.0
@@ -20,13 +20,14 @@ Get-AzReservationQuote [-AppliedScope <String[]>] [-AppliedScopePropertyDisplayN
  [-AppliedScopeType <AppliedScopeType>] [-BillingPlan <ReservationBillingPlan>] [-BillingScopeId <String>]
  [-DisplayName <String>] [-InstanceFlexibility <InstanceFlexibility>] [-Location <String>] [-Quantity <Int32>]
  [-Renew] [-ReservedResourceType <ReservedResourceType>] [-ReviewDateTime <DateTime>] [-Sku <String>]
- [-Term <ReservationTerm>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Term <ReservationTerm>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### Calculate
 ```
-Get-AzReservationQuote -Body <IPurchaseRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzReservationQuote -Body <IPurchaseRequest> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -471,32 +472,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`BODY <IPurchaseRequest>`: The request for reservation purchase
-  - `[AppliedScopePropertyDisplayName <String>]`: Display name
-  - `[AppliedScopePropertyManagementGroupId <String>]`: Fully-qualified identifier of the management group where the benefit must be applied.
-  - `[AppliedScopePropertyResourceGroupId <String>]`: Fully-qualified identifier of the resource group.
-  - `[AppliedScopePropertySubscriptionId <String>]`: Fully-qualified identifier of the subscription.
-  - `[AppliedScopePropertyTenantId <String>]`: Tenant ID where the savings plan should apply benefit.
-  - `[AppliedScopeType <AppliedScopeType?>]`: Type of the Applied Scope.
-  - `[AppliedScopes <String[]>]`: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
-  - `[BillingPlan <ReservationBillingPlan?>]`: Represent the billing plans.
-  - `[BillingScopeId <String>]`: Subscription that will be charged for purchasing reservation or savings plan
-  - `[DisplayName <String>]`: Friendly name of the reservation
-  - `[InstanceFlexibility <InstanceFlexibility?>]`: Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type.
-  - `[Location <String>]`: The Azure region where the reserved resource lives.
-  - `[Quantity <Int32?>]`: Quantity of the skus that are part of the reservation.
-  - `[Renew <Boolean?>]`: Setting this to true will automatically purchase a new reservation on the expiration date time.
-  - `[ReservedResourceType <ReservedResourceType?>]`: The type of the resource that is being reserved.
-  - `[ReviewDateTime <DateTime?>]`: This is the date-time when the Azure hybrid benefit needs to be reviewed.
-  - `[Sku <String>]`: 
-  - `[Term <ReservationTerm?>]`: Represent the term of reservation.
-
 ## RELATED LINKS
-

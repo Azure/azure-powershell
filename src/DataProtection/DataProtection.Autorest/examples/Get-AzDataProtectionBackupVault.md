@@ -52,3 +52,26 @@ Adequate
 ```
 
 First command gets a specific vault by given vault name, then we fetch the secure score of the vault which shows Adequate.
+
+### Example 4: Get encryption settings of backup vault.
+```powershell
+$vault = Get-AzDataProtectionBackupVault -SubscriptionId "xxxx-xxx-xxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName"
+$vault.EncryptionSetting |fl
+$vault.EncryptionSetting.CmkIdentity |fl
+$vault.EncryptionSetting.CmkKeyVaultProperty |fl
+```
+
+```output
+CmkIdentity                 : Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.CmkKekIdentity
+CmkInfrastructureEncryption : Enabled
+CmkKeyVaultProperty         : Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.CmkKeyVaultProperties
+State                       : Enabled
+
+IdentityId   : /subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourcegroups/jeevan-wrk-vms/providers/Microsoft.ManagedIdentity/userAssignedIdentities
+               /userMSIpstest
+IdentityType : UserAssigned
+
+KeyUri : https://jeevantestkeyvaultcmk.vault.azure.net/keys/pstest/3cd5235ad6ac4c11b40a6f35444bcbe1
+```
+
+First command gets a specific vault by given vault name, subsequent three commands fetch the specity properites of encryption settings.

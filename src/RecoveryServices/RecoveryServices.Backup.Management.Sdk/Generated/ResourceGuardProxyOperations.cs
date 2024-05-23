@@ -264,8 +264,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         }
         /// <summary>
-        /// Add or Update ResourceGuardProxy under vault
-        /// Secures vault critical operations
+        /// Add or Update ResourceGuardProxy under vault Secures vault critical
+        /// operations
         /// </summary>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.

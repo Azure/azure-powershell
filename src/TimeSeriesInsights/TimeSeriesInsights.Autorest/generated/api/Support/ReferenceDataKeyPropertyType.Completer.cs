@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
 {
 
-    /// <summary>Argument completer implementation for ReferenceDataKeyPropertyType.</summary>
+    /// <summary>The type of the key property.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.ReferenceDataKeyPropertyTypeTypeConverter))]
     public partial struct ReferenceDataKeyPropertyType :
         System.Management.Automation.IArgumentCompleter
@@ -28,19 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "String".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("String", "String", global::System.Management.Automation.CompletionResultType.ParameterValue, "String");
+                yield return new global::System.Management.Automation.CompletionResult("'String'", "String", global::System.Management.Automation.CompletionResultType.ParameterValue, "String");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Double".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Double", "Double", global::System.Management.Automation.CompletionResultType.ParameterValue, "Double");
+                yield return new global::System.Management.Automation.CompletionResult("'Double'", "Double", global::System.Management.Automation.CompletionResultType.ParameterValue, "Double");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Bool".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Bool", "Bool", global::System.Management.Automation.CompletionResultType.ParameterValue, "Bool");
+                yield return new global::System.Management.Automation.CompletionResult("'Bool'", "Bool", global::System.Management.Automation.CompletionResultType.ParameterValue, "Bool");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DateTime".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DateTime", "DateTime", global::System.Management.Automation.CompletionResultType.ParameterValue, "DateTime");
+                yield return new global::System.Management.Automation.CompletionResult("'DateTime'", "DateTime", global::System.Management.Automation.CompletionResultType.ParameterValue, "DateTime");
             }
         }
     }

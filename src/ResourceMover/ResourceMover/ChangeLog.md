@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 1.2.0
 * Upgraded API version to 2023-08-01.
 * Improved error reporting to the customer using custom cmdlets to handle the error in a better manner.

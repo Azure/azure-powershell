@@ -39,7 +39,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
                             case JTokenType.String:
                                 if (Service.TrySanitizeData(jItem.Value<string>(), out string sanitizedData))
                                 {
-                                    telemetry.DetectedProperties.Add(ResolvePropertyPath(property));
+                                    telemetry.SecretsDetected = true;
+                                    var propertyPath = ResolvePropertyPath(property);
+                                    if (!string.IsNullOrEmpty(propertyPath))
+                                    {
+                                        telemetry.DetectedProperties.Add(propertyPath);
+                                    }
                                 }
                                 break;
                             case JTokenType.Array:

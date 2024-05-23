@@ -28,23 +28,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotSpecified".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotSpecified", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
+                yield return new global::System.Management.Automation.CompletionResult("'NotSpecified'", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SystemAssigned".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SystemAssigned", "SystemAssigned", global::System.Management.Automation.CompletionResultType.ParameterValue, "SystemAssigned");
+                yield return new global::System.Management.Automation.CompletionResult("'SystemAssigned'", "SystemAssigned", global::System.Management.Automation.CompletionResultType.ParameterValue, "SystemAssigned");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "UserAssigned".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("UserAssigned", "UserAssigned", global::System.Management.Automation.CompletionResultType.ParameterValue, "UserAssigned");
+                yield return new global::System.Management.Automation.CompletionResult("'UserAssigned'", "UserAssigned", global::System.Management.Automation.CompletionResultType.ParameterValue, "UserAssigned");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Actor".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Actor", "Actor", global::System.Management.Automation.CompletionResultType.ParameterValue, "Actor");
+                yield return new global::System.Management.Automation.CompletionResult("'Actor'", "Actor", global::System.Management.Automation.CompletionResultType.ParameterValue, "Actor");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DelegatedResourceIdentity".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DelegatedResourceIdentity", "DelegatedResourceIdentity", global::System.Management.Automation.CompletionResultType.ParameterValue, "DelegatedResourceIdentity");
+                yield return new global::System.Management.Automation.CompletionResult("'DelegatedResourceIdentity'", "DelegatedResourceIdentity", global::System.Management.Automation.CompletionResultType.ParameterValue, "DelegatedResourceIdentity");
             }
         }
     }

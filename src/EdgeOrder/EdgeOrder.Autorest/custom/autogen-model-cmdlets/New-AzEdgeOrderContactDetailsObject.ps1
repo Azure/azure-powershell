@@ -23,7 +23,7 @@ Create an in-memory object for ContactDetails.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ContactDetails
 .Link
-https://learn.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderContactDetailsObject
+https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-AzEdgeOrderContactDetailsObject
 #>
 function New-AzEdgeOrderContactDetailsObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ContactDetails')]

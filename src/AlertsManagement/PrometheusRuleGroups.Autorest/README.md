@@ -3,7 +3,6 @@
 This directory contains the PowerShell module for the PrometheusRuleGroups service.
 
 ---
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -45,7 +44,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: fdf43f2fdacf17bd78c0621df44a5c024b61db82
+commit: fdf43f2fdacf17bd78c0621df44a5c024b61db82
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
@@ -58,6 +57,10 @@ subject-prefix: ""
 inlining-threshold: 100
 resourcegroup-append: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
     # Remove the unexpanded parameter set

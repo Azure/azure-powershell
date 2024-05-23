@@ -1,1278 +1,1280 @@
 {
-  "Entries": [
-    {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTU/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "d3700f6a-b1df-4f78-bffe-5369c94b29cb-2020-12-21 13:55:59Z-P"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29321.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "9f3d8e92-ceed-429e-88fe-7c6226199099"
-        ],
-        "x-ms-client-request-id": [
-          "d3700f6a-b1df-4f78-bffe-5369c94b29cb-2020-12-21 13:55:59Z-P"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
-        ],
-        "x-ms-correlation-request-id": [
-          "9f3d8e92-ceed-429e-88fe-7c6226199099"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201221T135559Z:9f3d8e92-ceed-429e-88fe-7c6226199099"
-        ],
-        "Date": [
-          "Mon, 21 Dec 2020 13:55:59 GMT"
-        ],
-        "Content-Length": [
-          "466"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"location\": \"southeastasia\",\r\n  \"name\": \"pstestrsv8895\",\r\n  \"etag\": \"W/\\\"datetime'2019-10-29T07%3A22%3A47.495853Z'\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupProtectionContainers?$filter=friendlyName%20eq%20'pstestsa8895'%20and%20backupManagementType%20eq%20'AzureStorage'%20and%20status%20eq%20'Registered'&api-version=2020-10-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwUHJvdGVjdGlvbkNvbnRhaW5lcnM/JGZpbHRlcj1mcmllbmRseU5hbWUlMjBlcSUyMCdwc3Rlc3RzYTg4OTUnJTIwYW5kJTIwYmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCdBenVyZVN0b3JhZ2UnJTIwYW5kJTIwc3RhdHVzJTIwZXElMjAnUmVnaXN0ZXJlZCcmYXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "20b28e3f-ccfc-4659-a585-6e8e1cb31693"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29321.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "e96f9c92-2a7d-43cd-9e60-bd325378d00b"
-        ],
-        "x-ms-client-request-id": [
-          "20b28e3f-ccfc-4659-a585-6e8e1cb31693",
-          "20b28e3f-ccfc-4659-a585-6e8e1cb31693"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "149"
-        ],
-        "x-ms-correlation-request-id": [
-          "e96f9c92-2a7d-43cd-9e60-bd325378d00b"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201221T135600Z:e96f9c92-2a7d-43cd-9e60-bd325378d00b"
-        ],
-        "Date": [
-          "Mon, 21 Dec 2020 13:56:00 GMT"
-        ],
-        "Content-Length": [
-          "789"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;pstestrg8895;pstestsa8895\",\r\n      \"name\": \"StorageContainer;Storage;pstestrg8895;pstestsa8895\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers\",\r\n      \"properties\": {\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.Storage/storageAccounts/pstestsa8895\",\r\n        \"protectedItemCount\": 1,\r\n        \"friendlyName\": \"pstestsa8895\",\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"registrationStatus\": \"Registered\",\r\n        \"healthStatus\": \"Healthy\",\r\n        \"containerType\": \"StorageContainer\",\r\n        \"protectableObjectType\": \"StorageContainer\"\r\n      }\r\n    }\r\n  ]\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupProtectedItems?$filter=backupManagementType%20eq%20'AzureStorage'%20and%20itemType%20eq%20'AzureFileShare'&api-version=2020-10-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwUHJvdGVjdGVkSXRlbXM/JGZpbHRlcj1iYWNrdXBNYW5hZ2VtZW50VHlwZSUyMGVxJTIwJ0F6dXJlU3RvcmFnZSclMjBhbmQlMjBpdGVtVHlwZSUyMGVxJTIwJ0F6dXJlRmlsZVNoYXJlJyZhcGktdmVyc2lvbj0yMDIwLTEwLTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "5524b784-a47c-4e58-b034-08d9ba47ed44"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29321.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "89544084-0651-4d31-96b7-693132003949"
-        ],
-        "x-ms-client-request-id": [
-          "5524b784-a47c-4e58-b034-08d9ba47ed44",
-          "5524b784-a47c-4e58-b034-08d9ba47ed44"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "149"
-        ],
-        "x-ms-correlation-request-id": [
-          "89544084-0651-4d31-96b7-693132003949"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201221T135600Z:89544084-0651-4d31-96b7-693132003949"
-        ],
-        "Date": [
-          "Mon, 21 Dec 2020 13:56:00 GMT"
-        ],
-        "Content-Length": [
-          "1194"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;pstestrg8895;pstestsa8895/protectedItems/AzureFileShare;698DF595948E2355F2BB744A41CF245D4BA1255D9699CC3C2AD1F5045E177959\",\r\n      \"name\": \"AzureFileShare;698DF595948E2355F2BB744A41CF245D4BA1255D9699CC3C2AD1F5045E177959\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"kpisHealths\": {},\r\n        \"friendlyName\": \"fs1\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"IRPending\",\r\n        \"lastBackupStatus\": \"IRPending\",\r\n        \"protectedItemType\": \"AzureFileShareProtectedItem\",\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workloadType\": \"AzureFileShare\",\r\n        \"containerName\": \"StorageContainer;Storage;pstestrg8895;pstestsa8895\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.Storage/storageAccounts/pstestsa8895\",\r\n        \"policyId\": \"/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupPolicies/afspolicy1\"\r\n      }\r\n    }\r\n  ]\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupFabrics/Azure/protectionContainers/StorageContainer%3BStorage%3Bpstestrg8895%3Bpstestsa8895/protectedItems/AzureFileShare%3B698DF595948E2355F2BB744A41CF245D4BA1255D9699CC3C2AD1F5045E177959?$filter=expand%20eq%20'extendedinfo'&api-version=2020-10-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwRmFicmljcy9BenVyZS9wcm90ZWN0aW9uQ29udGFpbmVycy9TdG9yYWdlQ29udGFpbmVyJTNCU3RvcmFnZSUzQnBzdGVzdHJnODg5NSUzQnBzdGVzdHNhODg5NS9wcm90ZWN0ZWRJdGVtcy9BenVyZUZpbGVTaGFyZSUzQjY5OERGNTk1OTQ4RTIzNTVGMkJCNzQ0QTQxQ0YyNDVENEJBMTI1NUQ5Njk5Q0MzQzJBRDFGNTA0NUUxNzc5NTk/JGZpbHRlcj1leHBhbmQlMjBlcSUyMCdleHRlbmRlZGluZm8nJmFwaS12ZXJzaW9uPTIwMjAtMTAtMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "6344b8ae-aeab-483b-9b85-107143d4d4e9"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29321.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "0bc1e6c4-a41e-486a-8dd7-549d915ea290"
-        ],
-        "x-ms-client-request-id": [
-          "6344b8ae-aeab-483b-9b85-107143d4d4e9",
-          "6344b8ae-aeab-483b-9b85-107143d4d4e9"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "149"
-        ],
-        "x-ms-correlation-request-id": [
-          "0bc1e6c4-a41e-486a-8dd7-549d915ea290"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201221T135601Z:0bc1e6c4-a41e-486a-8dd7-549d915ea290"
-        ],
-        "Date": [
-          "Mon, 21 Dec 2020 13:56:01 GMT"
-        ],
-        "Content-Length": [
-          "1329"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;pstestrg8895;pstestsa8895/protectedItems/AzureFileShare;698DF595948E2355F2BB744A41CF245D4BA1255D9699CC3C2AD1F5045E177959\",\r\n  \"name\": \"AzureFileShare;698DF595948E2355F2BB744A41CF245D4BA1255D9699CC3C2AD1F5045E177959\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n  \"properties\": {\r\n    \"kpisHealths\": {},\r\n    \"friendlyName\": \"fs1\",\r\n    \"protectionStatus\": \"Healthy\",\r\n    \"protectionState\": \"IRPending\",\r\n    \"lastBackupStatus\": \"IRPending\",\r\n    \"extendedInfo\": {\r\n      \"recoveryPointCount\": 0,\r\n      \"policyState\": \"Consistent\",\r\n      \"resourceState\": \"Active\",\r\n      \"resourceStateSyncTime\": \"2020-12-21T13:52:59.7692505Z\"\r\n    },\r\n    \"protectedItemType\": \"AzureFileShareProtectedItem\",\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"workloadType\": \"AzureFileShare\",\r\n    \"containerName\": \"StorageContainer;Storage;pstestrg8895;pstestsa8895\",\r\n    \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.Storage/storageAccounts/pstestsa8895\",\r\n    \"policyId\": \"/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupPolicies/afspolicy1\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupFabrics/Azure/protectionContainers/StorageContainer%3BStorage%3Bpstestrg8895%3Bpstestsa8895/protectedItems/AzureFileShare%3B698DF595948E2355F2BB744A41CF245D4BA1255D9699CC3C2AD1F5045E177959/backup?api-version=2020-10-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwRmFicmljcy9BenVyZS9wcm90ZWN0aW9uQ29udGFpbmVycy9TdG9yYWdlQ29udGFpbmVyJTNCU3RvcmFnZSUzQnBzdGVzdHJnODg5NSUzQnBzdGVzdHNhODg5NS9wcm90ZWN0ZWRJdGVtcy9BenVyZUZpbGVTaGFyZSUzQjY5OERGNTk1OTQ4RTIzNTVGMkJCNzQ0QTQxQ0YyNDVENEJBMTI1NUQ5Njk5Q0MzQzJBRDFGNTA0NUUxNzc5NTkvYmFja3VwP2FwaS12ZXJzaW9uPTIwMjAtMTAtMDE=",
-      "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"objectType\": \"AzureFileShareBackupRequest\"\r\n  }\r\n}",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "0f63345d-c649-457d-9f90-633af45fdd52"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29321.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "77"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;pstestrg8895;pstestsa8895/protectedItems/AzureFileShare;698DF595948E2355F2BB744A41CF245D4BA1255D9699CC3C2AD1F5045E177959/operationResults/ee08117b-e476-43b0-a122-6b20ee8750bb?api-version=2020-10-01"
-        ],
-        "Retry-After": [
-          "60"
-        ],
-        "Azure-AsyncOperation": [
-          "https://management.azure.com/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;pstestrg8895;pstestsa8895/protectedItems/AzureFileShare;698DF595948E2355F2BB744A41CF245D4BA1255D9699CC3C2AD1F5045E177959/operationsStatus/ee08117b-e476-43b0-a122-6b20ee8750bb?api-version=2020-10-01"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "e0aa3f33-c2fd-4359-88d4-b6b73f6833cc"
-        ],
-        "x-ms-client-request-id": [
-          "0f63345d-c649-457d-9f90-633af45fdd52",
-          "0f63345d-c649-457d-9f90-633af45fdd52"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
-        ],
-        "x-ms-correlation-request-id": [
-          "e0aa3f33-c2fd-4359-88d4-b6b73f6833cc"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201221T135601Z:e0aa3f33-c2fd-4359-88d4-b6b73f6833cc"
-        ],
-        "Date": [
-          "Mon, 21 Dec 2020 13:56:01 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupOperations/ee08117b-e476-43b0-a122-6b20ee8750bb?api-version=2020-10-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwT3BlcmF0aW9ucy9lZTA4MTE3Yi1lNDc2LTQzYjAtYTEyMi02YjIwZWU4NzUwYmI/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "3eee1821-0c6b-49e1-a0fa-fa81ccfa90d8"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29321.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "657a9c5f-49af-42f8-b5de-8ac6a9e86a5e"
-        ],
-        "x-ms-client-request-id": [
-          "3eee1821-0c6b-49e1-a0fa-fa81ccfa90d8",
-          "3eee1821-0c6b-49e1-a0fa-fa81ccfa90d8"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "149"
-        ],
-        "x-ms-correlation-request-id": [
-          "657a9c5f-49af-42f8-b5de-8ac6a9e86a5e"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201221T135601Z:657a9c5f-49af-42f8-b5de-8ac6a9e86a5e"
-        ],
-        "Date": [
-          "Mon, 21 Dec 2020 13:56:01 GMT"
-        ],
-        "Content-Length": [
-          "188"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"ee08117b-e476-43b0-a122-6b20ee8750bb\",\r\n  \"name\": \"ee08117b-e476-43b0-a122-6b20ee8750bb\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-12-21T13:56:01.5354908Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupOperations/ee08117b-e476-43b0-a122-6b20ee8750bb?api-version=2020-10-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwT3BlcmF0aW9ucy9lZTA4MTE3Yi1lNDc2LTQzYjAtYTEyMi02YjIwZWU4NzUwYmI/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "b42e8d89-5278-4243-bfa3-1eca2d768b1a"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29321.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "db9059cd-8a7f-4446-8014-d7a43ba0572c"
-        ],
-        "x-ms-client-request-id": [
-          "b42e8d89-5278-4243-bfa3-1eca2d768b1a",
-          "b42e8d89-5278-4243-bfa3-1eca2d768b1a"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "148"
-        ],
-        "x-ms-correlation-request-id": [
-          "db9059cd-8a7f-4446-8014-d7a43ba0572c"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201221T135607Z:db9059cd-8a7f-4446-8014-d7a43ba0572c"
-        ],
-        "Date": [
-          "Mon, 21 Dec 2020 13:56:06 GMT"
-        ],
-        "Content-Length": [
-          "304"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"ee08117b-e476-43b0-a122-6b20ee8750bb\",\r\n  \"name\": \"ee08117b-e476-43b0-a122-6b20ee8750bb\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-12-21T13:56:01.5354908Z\",\r\n  \"endTime\": \"2020-12-21T13:56:01.5354908Z\",\r\n  \"properties\": {\r\n    \"objectType\": \"OperationStatusJobExtendedInfo\",\r\n    \"jobId\": \"796b5265-1dca-493e-9ba0-ad13d2fb2ce8\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupOperations/ee08117b-e476-43b0-a122-6b20ee8750bb?api-version=2020-10-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwT3BlcmF0aW9ucy9lZTA4MTE3Yi1lNDc2LTQzYjAtYTEyMi02YjIwZWU4NzUwYmI/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "6cc4e87e-bf11-4dff-9abe-ff6b9fe5121a"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29321.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "3bcc1206-cd89-4cf0-a121-e227513dacb1"
-        ],
-        "x-ms-client-request-id": [
-          "6cc4e87e-bf11-4dff-9abe-ff6b9fe5121a",
-          "6cc4e87e-bf11-4dff-9abe-ff6b9fe5121a"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "147"
-        ],
-        "x-ms-correlation-request-id": [
-          "3bcc1206-cd89-4cf0-a121-e227513dacb1"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201221T135607Z:3bcc1206-cd89-4cf0-a121-e227513dacb1"
-        ],
-        "Date": [
-          "Mon, 21 Dec 2020 13:56:07 GMT"
-        ],
-        "Content-Length": [
-          "304"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"ee08117b-e476-43b0-a122-6b20ee8750bb\",\r\n  \"name\": \"ee08117b-e476-43b0-a122-6b20ee8750bb\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-12-21T13:56:01.5354908Z\",\r\n  \"endTime\": \"2020-12-21T13:56:01.5354908Z\",\r\n  \"properties\": {\r\n    \"objectType\": \"OperationStatusJobExtendedInfo\",\r\n    \"jobId\": \"796b5265-1dca-493e-9ba0-ad13d2fb2ce8\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupJobs/796b5265-1dca-493e-9ba0-ad13d2fb2ce8?api-version=2020-10-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwSm9icy83OTZiNTI2NS0xZGNhLTQ5M2UtOWJhMC1hZDEzZDJmYjJjZTg/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "da14d744-defa-4f25-b897-ccc1334cc61b"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29321.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0",
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "a041cb31-378c-4821-8f82-f2c62685a750"
-        ],
-        "x-ms-client-request-id": [
-          "da14d744-defa-4f25-b897-ccc1334cc61b",
-          "da14d744-defa-4f25-b897-ccc1334cc61b"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "149"
-        ],
-        "x-ms-correlation-request-id": [
-          "a041cb31-378c-4821-8f82-f2c62685a750"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201221T135607Z:a041cb31-378c-4821-8f82-f2c62685a750"
-        ],
-        "Date": [
-          "Mon, 21 Dec 2020 13:56:07 GMT"
-        ],
-        "Content-Length": [
-          "903"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupJobs/796b5265-1dca-493e-9ba0-ad13d2fb2ce8\",\r\n  \"name\": \"796b5265-1dca-493e-9ba0-ad13d2fb2ce8\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureStorageJob\",\r\n    \"duration\": \"PT2.1645419S\",\r\n    \"storageAccountName\": \"pstestsa8895\",\r\n    \"storageAccountVersion\": \"MicrosoftStorage\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Take Snapshot\",\r\n          \"status\": \"Completed\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"Data Transferred (in MB)\": \"0\",\r\n        \"File Share Name\": \"fs1\",\r\n        \"Whether job is adhoc or scheduled.\": \"True\"\r\n      }\r\n    },\r\n    \"isUserTriggered\": false,\r\n    \"entityFriendlyName\": \"fs1\",\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"operation\": \"Backup\",\r\n    \"status\": \"Completed\",\r\n    \"startTime\": \"2020-12-21T13:56:01.5354908Z\",\r\n    \"endTime\": \"2020-12-21T13:56:03.7000327Z\",\r\n    \"activityId\": \"0f63345d-c649-457d-9f90-633af45fdd52\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupFabrics/Azure/protectionContainers/StorageContainer%3BStorage%3Bpstestrg8895%3Bpstestsa8895/protectedItems/AzureFileShare%3B698DF595948E2355F2BB744A41CF245D4BA1255D9699CC3C2AD1F5045E177959?api-version=2020-10-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwRmFicmljcy9BenVyZS9wcm90ZWN0aW9uQ29udGFpbmVycy9TdG9yYWdlQ29udGFpbmVyJTNCU3RvcmFnZSUzQnBzdGVzdHJnODg5NSUzQnBzdGVzdHNhODg5NS9wcm90ZWN0ZWRJdGVtcy9BenVyZUZpbGVTaGFyZSUzQjY5OERGNTk1OTQ4RTIzNTVGMkJCNzQ0QTQxQ0YyNDVENEJBMTI1NUQ5Njk5Q0MzQzJBRDFGNTA0NUUxNzc5NTk/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
-      "RequestMethod": "DELETE",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "48cef8a9-366b-4d4e-a73a-7aea9ec737d2"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29321.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupOperationResults/a3d80910-e207-4549-aff8-5726d86f9883?api-version=2020-10-01"
-        ],
-        "Retry-After": [
-          "60"
-        ],
-        "Azure-AsyncOperation": [
-          "https://management.azure.com/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupOperations/a3d80910-e207-4549-aff8-5726d86f9883?api-version=2020-10-01"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "59c26d45-026d-4ed9-b8de-ee420d37b3c3"
-        ],
-        "x-ms-client-request-id": [
-          "48cef8a9-366b-4d4e-a73a-7aea9ec737d2",
-          "48cef8a9-366b-4d4e-a73a-7aea9ec737d2"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
-        ],
-        "x-ms-correlation-request-id": [
-          "59c26d45-026d-4ed9-b8de-ee420d37b3c3"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201221T135607Z:59c26d45-026d-4ed9-b8de-ee420d37b3c3"
-        ],
-        "Date": [
-          "Mon, 21 Dec 2020 13:56:07 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupOperations/a3d80910-e207-4549-aff8-5726d86f9883?api-version=2020-10-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwT3BlcmF0aW9ucy9hM2Q4MDkxMC1lMjA3LTQ1NDktYWZmOC01NzI2ZDg2Zjk4ODM/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "967754c4-f93a-4e23-9914-99d2b125f060"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29321.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "07f2f122-41a8-4061-af41-00d9f75cc19f"
-        ],
-        "x-ms-client-request-id": [
-          "967754c4-f93a-4e23-9914-99d2b125f060",
-          "967754c4-f93a-4e23-9914-99d2b125f060"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "146"
-        ],
-        "x-ms-correlation-request-id": [
-          "07f2f122-41a8-4061-af41-00d9f75cc19f"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201221T135608Z:07f2f122-41a8-4061-af41-00d9f75cc19f"
-        ],
-        "Date": [
-          "Mon, 21 Dec 2020 13:56:07 GMT"
-        ],
-        "Content-Length": [
-          "188"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"a3d80910-e207-4549-aff8-5726d86f9883\",\r\n  \"name\": \"a3d80910-e207-4549-aff8-5726d86f9883\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-12-21T13:56:07.7484869Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupOperations/a3d80910-e207-4549-aff8-5726d86f9883?api-version=2020-10-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwT3BlcmF0aW9ucy9hM2Q4MDkxMC1lMjA3LTQ1NDktYWZmOC01NzI2ZDg2Zjk4ODM/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "d20f3b73-5071-4834-bb25-f551d8eef1ca"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29321.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "8f705142-f9bb-4a40-a5f2-f4fac4446bba"
-        ],
-        "x-ms-client-request-id": [
-          "d20f3b73-5071-4834-bb25-f551d8eef1ca",
-          "d20f3b73-5071-4834-bb25-f551d8eef1ca"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "145"
-        ],
-        "x-ms-correlation-request-id": [
-          "8f705142-f9bb-4a40-a5f2-f4fac4446bba"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201221T135613Z:8f705142-f9bb-4a40-a5f2-f4fac4446bba"
-        ],
-        "Date": [
-          "Mon, 21 Dec 2020 13:56:13 GMT"
-        ],
-        "Content-Length": [
-          "188"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"a3d80910-e207-4549-aff8-5726d86f9883\",\r\n  \"name\": \"a3d80910-e207-4549-aff8-5726d86f9883\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-12-21T13:56:07.7484869Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupOperations/a3d80910-e207-4549-aff8-5726d86f9883?api-version=2020-10-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwT3BlcmF0aW9ucy9hM2Q4MDkxMC1lMjA3LTQ1NDktYWZmOC01NzI2ZDg2Zjk4ODM/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "a74a165d-589b-4950-8f49-159e035dee68"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29321.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "c944c0b8-6079-4192-914a-4fb1b65262a2"
-        ],
-        "x-ms-client-request-id": [
-          "a74a165d-589b-4950-8f49-159e035dee68",
-          "a74a165d-589b-4950-8f49-159e035dee68"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "144"
-        ],
-        "x-ms-correlation-request-id": [
-          "c944c0b8-6079-4192-914a-4fb1b65262a2"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201221T135618Z:c944c0b8-6079-4192-914a-4fb1b65262a2"
-        ],
-        "Date": [
-          "Mon, 21 Dec 2020 13:56:18 GMT"
-        ],
-        "Content-Length": [
-          "188"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"a3d80910-e207-4549-aff8-5726d86f9883\",\r\n  \"name\": \"a3d80910-e207-4549-aff8-5726d86f9883\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-12-21T13:56:07.7484869Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupOperations/a3d80910-e207-4549-aff8-5726d86f9883?api-version=2020-10-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwT3BlcmF0aW9ucy9hM2Q4MDkxMC1lMjA3LTQ1NDktYWZmOC01NzI2ZDg2Zjk4ODM/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "c69e2088-760a-49d4-bdc7-44f38216eafd"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29321.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "9ac9c834-6b67-4b4a-9ea6-43c1858d5ede"
-        ],
-        "x-ms-client-request-id": [
-          "c69e2088-760a-49d4-bdc7-44f38216eafd",
-          "c69e2088-760a-49d4-bdc7-44f38216eafd"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "143"
-        ],
-        "x-ms-correlation-request-id": [
-          "9ac9c834-6b67-4b4a-9ea6-43c1858d5ede"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201221T135623Z:9ac9c834-6b67-4b4a-9ea6-43c1858d5ede"
-        ],
-        "Date": [
-          "Mon, 21 Dec 2020 13:56:23 GMT"
-        ],
-        "Content-Length": [
-          "188"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"a3d80910-e207-4549-aff8-5726d86f9883\",\r\n  \"name\": \"a3d80910-e207-4549-aff8-5726d86f9883\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-12-21T13:56:07.7484869Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupOperations/a3d80910-e207-4549-aff8-5726d86f9883?api-version=2020-10-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwT3BlcmF0aW9ucy9hM2Q4MDkxMC1lMjA3LTQ1NDktYWZmOC01NzI2ZDg2Zjk4ODM/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "c845f6d1-4614-4122-8ae5-7f5374271c4b"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29321.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "47671e43-f032-40ac-b8aa-2ec14e894cda"
-        ],
-        "x-ms-client-request-id": [
-          "c845f6d1-4614-4122-8ae5-7f5374271c4b",
-          "c845f6d1-4614-4122-8ae5-7f5374271c4b"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "142"
-        ],
-        "x-ms-correlation-request-id": [
-          "47671e43-f032-40ac-b8aa-2ec14e894cda"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201221T135628Z:47671e43-f032-40ac-b8aa-2ec14e894cda"
-        ],
-        "Date": [
-          "Mon, 21 Dec 2020 13:56:28 GMT"
-        ],
-        "Content-Length": [
-          "188"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"a3d80910-e207-4549-aff8-5726d86f9883\",\r\n  \"name\": \"a3d80910-e207-4549-aff8-5726d86f9883\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-12-21T13:56:07.7484869Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupOperations/a3d80910-e207-4549-aff8-5726d86f9883?api-version=2020-10-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwT3BlcmF0aW9ucy9hM2Q4MDkxMC1lMjA3LTQ1NDktYWZmOC01NzI2ZDg2Zjk4ODM/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "a5546a82-1fa0-41f4-b2ad-b26bd27e2ba2"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29321.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "ba847a31-16a3-4b51-80b5-7d8d79205fa3"
-        ],
-        "x-ms-client-request-id": [
-          "a5546a82-1fa0-41f4-b2ad-b26bd27e2ba2",
-          "a5546a82-1fa0-41f4-b2ad-b26bd27e2ba2"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "141"
-        ],
-        "x-ms-correlation-request-id": [
-          "ba847a31-16a3-4b51-80b5-7d8d79205fa3"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201221T135634Z:ba847a31-16a3-4b51-80b5-7d8d79205fa3"
-        ],
-        "Date": [
-          "Mon, 21 Dec 2020 13:56:33 GMT"
-        ],
-        "Content-Length": [
-          "304"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"a3d80910-e207-4549-aff8-5726d86f9883\",\r\n  \"name\": \"a3d80910-e207-4549-aff8-5726d86f9883\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-12-21T13:56:07.7484869Z\",\r\n  \"endTime\": \"2020-12-21T13:56:07.7484869Z\",\r\n  \"properties\": {\r\n    \"objectType\": \"OperationStatusJobExtendedInfo\",\r\n    \"jobId\": \"3ded20db-b10d-48f1-8527-9ec7cd4ed93a\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupOperations/a3d80910-e207-4549-aff8-5726d86f9883?api-version=2020-10-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwT3BlcmF0aW9ucy9hM2Q4MDkxMC1lMjA3LTQ1NDktYWZmOC01NzI2ZDg2Zjk4ODM/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "3d5bfa65-de50-4cb4-940f-0ef8f2fbdbe8"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29321.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "25f81020-83bb-41c5-9726-9e077d8b4e74"
-        ],
-        "x-ms-client-request-id": [
-          "3d5bfa65-de50-4cb4-940f-0ef8f2fbdbe8",
-          "3d5bfa65-de50-4cb4-940f-0ef8f2fbdbe8"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "140"
-        ],
-        "x-ms-correlation-request-id": [
-          "25f81020-83bb-41c5-9726-9e077d8b4e74"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201221T135634Z:25f81020-83bb-41c5-9726-9e077d8b4e74"
-        ],
-        "Date": [
-          "Mon, 21 Dec 2020 13:56:33 GMT"
-        ],
-        "Content-Length": [
-          "304"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"a3d80910-e207-4549-aff8-5726d86f9883\",\r\n  \"name\": \"a3d80910-e207-4549-aff8-5726d86f9883\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-12-21T13:56:07.7484869Z\",\r\n  \"endTime\": \"2020-12-21T13:56:07.7484869Z\",\r\n  \"properties\": {\r\n    \"objectType\": \"OperationStatusJobExtendedInfo\",\r\n    \"jobId\": \"3ded20db-b10d-48f1-8527-9ec7cd4ed93a\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupJobs/3ded20db-b10d-48f1-8527-9ec7cd4ed93a?api-version=2020-10-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwSm9icy8zZGVkMjBkYi1iMTBkLTQ4ZjEtODUyNy05ZWM3Y2Q0ZWQ5M2E/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "51d636df-a855-4268-a2f0-a3d20fb2756f"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29321.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0",
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "bd8f0128-fe07-4af1-97bc-5fc8c037223d"
-        ],
-        "x-ms-client-request-id": [
-          "51d636df-a855-4268-a2f0-a3d20fb2756f",
-          "51d636df-a855-4268-a2f0-a3d20fb2756f"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "148"
-        ],
-        "x-ms-correlation-request-id": [
-          "bd8f0128-fe07-4af1-97bc-5fc8c037223d"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201221T135634Z:bd8f0128-fe07-4af1-97bc-5fc8c037223d"
-        ],
-        "Date": [
-          "Mon, 21 Dec 2020 13:56:33 GMT"
-        ],
-        "Content-Length": [
-          "821"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupJobs/3ded20db-b10d-48f1-8527-9ec7cd4ed93a\",\r\n  \"name\": \"3ded20db-b10d-48f1-8527-9ec7cd4ed93a\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureStorageJob\",\r\n    \"duration\": \"PT21.7283018S\",\r\n    \"storageAccountName\": \"pstestsa8895\",\r\n    \"storageAccountVersion\": \"Storage\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [],\r\n      \"propertyBag\": {\r\n        \"File Share Name\": \"fs1\",\r\n        \"Storage Account Name\": \"pstestsa8895\"\r\n      }\r\n    },\r\n    \"isUserTriggered\": false,\r\n    \"entityFriendlyName\": \"fs1\",\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"operation\": \"DeleteBackupData\",\r\n    \"status\": \"Completed\",\r\n    \"startTime\": \"2020-12-21T13:56:07.7484869Z\",\r\n    \"endTime\": \"2020-12-21T13:56:29.4767887Z\",\r\n    \"activityId\": \"48cef8a9-366b-4d4e-a73a-7aea9ec737d2\"\r\n  }\r\n}",
-      "StatusCode": 200
-    }
-  ],
-  "Names": {},
-  "Variables": {
-    "SubscriptionId": "38304e13-357e-405e-9e9a-220351dcce8c"
-  }
+    "Entries":  [
+                    {
+                        "RequestUri":  "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895?api-version=2016-06-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTU/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "d3700f6a-b1df-4f78-bffe-5369c94b29cb-2020-12-21 13:55:59Z-P"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29321.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.19042.",
+                                                                  "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.1.0"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "9f3d8e92-ceed-429e-88fe-7c6226199099"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "d3700f6a-b1df-4f78-bffe-5369c94b29cb-2020-12-21 13:55:59Z-P"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/10.0"
+                                                           ],
+                                                "x-ms-ratelimit-remaining-subscription-reads":  [
+                                                                                                    "11999"
+                                                                                                ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "9f3d8e92-ceed-429e-88fe-7c6226199099"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201221T135559Z:9f3d8e92-ceed-429e-88fe-7c6226199099"
+                                                                            ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:35:36 GMT"
+                                                         ],
+                                                "Content-Length":  [
+                                                                       "466"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ]
+                                            },
+                        "ResponseBody":  "{\r\n  \"location\": \"southeastasia\",\r\n  \"name\": \"pstestrsv8895\",\r\n  \"etag\": \"W/\\\"datetime\u00272019-10-29T07%3A22%3A47.495853Z\u0027\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupProtectionContainers?$filter=friendlyName%20eq%20\u0027pstestsa8895\u0027%20and%20backupManagementType%20eq%20\u0027AzureStorage\u0027%20and%20status%20eq%20\u0027Registered\u0027\u0026api-version=2020-10-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwUHJvdGVjdGlvbkNvbnRhaW5lcnM/JGZpbHRlcj1mcmllbmRseU5hbWUlMjBlcSUyMCdwc3Rlc3RzYTg4OTUnJTIwYW5kJTIwYmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCdBenVyZVN0b3JhZ2UnJTIwYW5kJTIwc3RhdHVzJTIwZXElMjAnUmVnaXN0ZXJlZCcmYXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "20b28e3f-ccfc-4659-a585-6e8e1cb31693"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29321.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.19042.",
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "e96f9c92-2a7d-43cd-9e60-bd325378d00b"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "20b28e3f-ccfc-4659-a585-6e8e1cb31693",
+                                                                               "20b28e3f-ccfc-4659-a585-6e8e1cb31693"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/10.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ],
+                                                "x-ms-ratelimit-remaining-subscription-resource-requests":  [
+                                                                                                                "149"
+                                                                                                            ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "e96f9c92-2a7d-43cd-9e60-bd325378d00b"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201221T135600Z:e96f9c92-2a7d-43cd-9e60-bd325378d00b"
+                                                                            ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:35:36 GMT"
+                                                         ],
+                                                "Content-Length":  [
+                                                                       "789"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ]
+                                            },
+                        "ResponseBody":  "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;pstestrg8895;pstestsa8895\",\r\n      \"name\": \"StorageContainer;Storage;pstestrg8895;pstestsa8895\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers\",\r\n      \"properties\": {\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.Storage/storageAccounts/pstestsa8895\",\r\n        \"protectedItemCount\": 1,\r\n        \"friendlyName\": \"pstestsa8895\",\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"registrationStatus\": \"Registered\",\r\n        \"healthStatus\": \"Healthy\",\r\n        \"containerType\": \"StorageContainer\",\r\n        \"protectableObjectType\": \"StorageContainer\"\r\n      }\r\n    }\r\n  ]\r\n}",
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupProtectedItems?$filter=backupManagementType%20eq%20\u0027AzureStorage\u0027%20and%20itemType%20eq%20\u0027AzureFileShare\u0027\u0026api-version=2020-10-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwUHJvdGVjdGVkSXRlbXM/JGZpbHRlcj1iYWNrdXBNYW5hZ2VtZW50VHlwZSUyMGVxJTIwJ0F6dXJlU3RvcmFnZSclMjBhbmQlMjBpdGVtVHlwZSUyMGVxJTIwJ0F6dXJlRmlsZVNoYXJlJyZhcGktdmVyc2lvbj0yMDIwLTEwLTAx",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "5524b784-a47c-4e58-b034-08d9ba47ed44"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29321.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.19042.",
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "89544084-0651-4d31-96b7-693132003949"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "5524b784-a47c-4e58-b034-08d9ba47ed44",
+                                                                               "5524b784-a47c-4e58-b034-08d9ba47ed44"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/10.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ],
+                                                "x-ms-ratelimit-remaining-subscription-resource-requests":  [
+                                                                                                                "149"
+                                                                                                            ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "89544084-0651-4d31-96b7-693132003949"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201221T135600Z:89544084-0651-4d31-96b7-693132003949"
+                                                                            ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:35:36 GMT"
+                                                         ],
+                                                "Content-Length":  [
+                                                                       "1194"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ]
+                                            },
+                        "ResponseBody":  "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;pstestrg8895;pstestsa8895/protectedItems/AzureFileShare;698DF595948E2355F2BB744A41CF245D4BA1255D9699CC3C2AD1F5045E177959\",\r\n      \"name\": \"AzureFileShare;698DF595948E2355F2BB744A41CF245D4BA1255D9699CC3C2AD1F5045E177959\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"kpisHealths\": {},\r\n        \"friendlyName\": \"fs1\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"IRPending\",\r\n        \"lastBackupStatus\": \"IRPending\",\r\n        \"protectedItemType\": \"AzureFileShareProtectedItem\",\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"workloadType\": \"AzureFileShare\",\r\n        \"containerName\": \"StorageContainer;Storage;pstestrg8895;pstestsa8895\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.Storage/storageAccounts/pstestsa8895\",\r\n        \"policyId\": \"/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupPolicies/afspolicy1\"\r\n      }\r\n    }\r\n  ]\r\n}",
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupFabrics/Azure/protectionContainers/StorageContainer%3BStorage%3Bpstestrg8895%3Bpstestsa8895/protectedItems/AzureFileShare%3B698DF595948E2355F2BB744A41CF245D4BA1255D9699CC3C2AD1F5045E177959?$filter=expand%20eq%20\u0027extendedinfo\u0027\u0026api-version=2020-10-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwRmFicmljcy9BenVyZS9wcm90ZWN0aW9uQ29udGFpbmVycy9TdG9yYWdlQ29udGFpbmVyJTNCU3RvcmFnZSUzQnBzdGVzdHJnODg5NSUzQnBzdGVzdHNhODg5NS9wcm90ZWN0ZWRJdGVtcy9BenVyZUZpbGVTaGFyZSUzQjY5OERGNTk1OTQ4RTIzNTVGMkJCNzQ0QTQxQ0YyNDVENEJBMTI1NUQ5Njk5Q0MzQzJBRDFGNTA0NUUxNzc5NTk/JGZpbHRlcj1leHBhbmQlMjBlcSUyMCdleHRlbmRlZGluZm8nJmFwaS12ZXJzaW9uPTIwMjAtMTAtMDE=",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "6344b8ae-aeab-483b-9b85-107143d4d4e9"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29321.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.19042.",
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "0bc1e6c4-a41e-486a-8dd7-549d915ea290"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "6344b8ae-aeab-483b-9b85-107143d4d4e9",
+                                                                               "6344b8ae-aeab-483b-9b85-107143d4d4e9"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/10.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ],
+                                                "x-ms-ratelimit-remaining-subscription-resource-requests":  [
+                                                                                                                "149"
+                                                                                                            ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "0bc1e6c4-a41e-486a-8dd7-549d915ea290"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201221T135601Z:0bc1e6c4-a41e-486a-8dd7-549d915ea290"
+                                                                            ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:35:36 GMT"
+                                                         ],
+                                                "Content-Length":  [
+                                                                       "1329"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ]
+                                            },
+                        "ResponseBody":  "{\r\n  \"id\": \"/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;pstestrg8895;pstestsa8895/protectedItems/AzureFileShare;698DF595948E2355F2BB744A41CF245D4BA1255D9699CC3C2AD1F5045E177959\",\r\n  \"name\": \"AzureFileShare;698DF595948E2355F2BB744A41CF245D4BA1255D9699CC3C2AD1F5045E177959\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n  \"properties\": {\r\n    \"kpisHealths\": {},\r\n    \"friendlyName\": \"fs1\",\r\n    \"protectionStatus\": \"Healthy\",\r\n    \"protectionState\": \"IRPending\",\r\n    \"lastBackupStatus\": \"IRPending\",\r\n    \"extendedInfo\": {\r\n      \"recoveryPointCount\": 0,\r\n      \"policyState\": \"Consistent\",\r\n      \"resourceState\": \"Active\",\r\n      \"resourceStateSyncTime\": \"2020-12-21T13:52:59.7692505Z\"\r\n    },\r\n    \"protectedItemType\": \"AzureFileShareProtectedItem\",\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"workloadType\": \"AzureFileShare\",\r\n    \"containerName\": \"StorageContainer;Storage;pstestrg8895;pstestsa8895\",\r\n    \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.Storage/storageAccounts/pstestsa8895\",\r\n    \"policyId\": \"/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupPolicies/afspolicy1\"\r\n  }\r\n}",
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupFabrics/Azure/protectionContainers/StorageContainer%3BStorage%3Bpstestrg8895%3Bpstestsa8895/protectedItems/AzureFileShare%3B698DF595948E2355F2BB744A41CF245D4BA1255D9699CC3C2AD1F5045E177959/backup?api-version=2020-10-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwRmFicmljcy9BenVyZS9wcm90ZWN0aW9uQ29udGFpbmVycy9TdG9yYWdlQ29udGFpbmVyJTNCU3RvcmFnZSUzQnBzdGVzdHJnODg5NSUzQnBzdGVzdHNhODg5NS9wcm90ZWN0ZWRJdGVtcy9BenVyZUZpbGVTaGFyZSUzQjY5OERGNTk1OTQ4RTIzNTVGMkJCNzQ0QTQxQ0YyNDVENEJBMTI1NUQ5Njk5Q0MzQzJBRDFGNTA0NUUxNzc5NTkvYmFja3VwP2FwaS12ZXJzaW9uPTIwMjAtMTAtMDE=",
+                        "RequestMethod":  "POST",
+                        "RequestBody":  "{\r\n  \"properties\": {\r\n    \"objectType\": \"AzureFileShareBackupRequest\"\r\n  }\r\n}",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "0f63345d-c649-457d-9f90-633af45fdd52"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29321.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.19042.",
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
+                                                              ],
+                                               "Content-Type":  [
+                                                                    "application/json; charset=utf-8"
+                                                                ],
+                                               "Content-Length":  [
+                                                                      "77"
+                                                                  ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "Location":  [
+                                                                 "https://management.azure.com/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;pstestrg8895;pstestsa8895/protectedItems/AzureFileShare;698DF595948E2355F2BB744A41CF245D4BA1255D9699CC3C2AD1F5045E177959/operationResults/ee08117b-e476-43b0-a122-6b20ee8750bb?api-version=2020-10-01"
+                                                             ],
+                                                "Retry-After":  [
+                                                                    "60"
+                                                                ],
+                                                "Azure-AsyncOperation":  [
+                                                                             "https://management.azure.com/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;pstestrg8895;pstestsa8895/protectedItems/AzureFileShare;698DF595948E2355F2BB744A41CF245D4BA1255D9699CC3C2AD1F5045E177959/operationsStatus/ee08117b-e476-43b0-a122-6b20ee8750bb?api-version=2020-10-01"
+                                                                         ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "e0aa3f33-c2fd-4359-88d4-b6b73f6833cc"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "0f63345d-c649-457d-9f90-633af45fdd52",
+                                                                               "0f63345d-c649-457d-9f90-633af45fdd52"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ],
+                                                "x-ms-ratelimit-remaining-subscription-writes":  [
+                                                                                                     "1199"
+                                                                                                 ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "e0aa3f33-c2fd-4359-88d4-b6b73f6833cc"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201221T135601Z:e0aa3f33-c2fd-4359-88d4-b6b73f6833cc"
+                                                                            ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:35:36 GMT"
+                                                         ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Content-Length":  [
+                                                                       "0"
+                                                                   ]
+                                            },
+                        "ResponseBody":  "",
+                        "StatusCode":  202
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupOperations/ee08117b-e476-43b0-a122-6b20ee8750bb?api-version=2020-10-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwT3BlcmF0aW9ucy9lZTA4MTE3Yi1lNDc2LTQzYjAtYTEyMi02YjIwZWU4NzUwYmI/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "3eee1821-0c6b-49e1-a0fa-fa81ccfa90d8"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29321.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.19042.",
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "657a9c5f-49af-42f8-b5de-8ac6a9e86a5e"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "3eee1821-0c6b-49e1-a0fa-fa81ccfa90d8",
+                                                                               "3eee1821-0c6b-49e1-a0fa-fa81ccfa90d8"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/10.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ],
+                                                "x-ms-ratelimit-remaining-subscription-resource-requests":  [
+                                                                                                                "149"
+                                                                                                            ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "657a9c5f-49af-42f8-b5de-8ac6a9e86a5e"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201221T135601Z:657a9c5f-49af-42f8-b5de-8ac6a9e86a5e"
+                                                                            ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:35:36 GMT"
+                                                         ],
+                                                "Content-Length":  [
+                                                                       "188"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ]
+                                            },
+                        "ResponseBody":  "{\r\n  \"id\": \"ee08117b-e476-43b0-a122-6b20ee8750bb\",\r\n  \"name\": \"ee08117b-e476-43b0-a122-6b20ee8750bb\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-12-21T13:56:01.5354908Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\"\r\n}",
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupOperations/ee08117b-e476-43b0-a122-6b20ee8750bb?api-version=2020-10-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwT3BlcmF0aW9ucy9lZTA4MTE3Yi1lNDc2LTQzYjAtYTEyMi02YjIwZWU4NzUwYmI/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "b42e8d89-5278-4243-bfa3-1eca2d768b1a"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29321.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.19042.",
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "db9059cd-8a7f-4446-8014-d7a43ba0572c"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "b42e8d89-5278-4243-bfa3-1eca2d768b1a",
+                                                                               "b42e8d89-5278-4243-bfa3-1eca2d768b1a"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/10.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ],
+                                                "x-ms-ratelimit-remaining-subscription-resource-requests":  [
+                                                                                                                "148"
+                                                                                                            ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "db9059cd-8a7f-4446-8014-d7a43ba0572c"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201221T135607Z:db9059cd-8a7f-4446-8014-d7a43ba0572c"
+                                                                            ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:35:36 GMT"
+                                                         ],
+                                                "Content-Length":  [
+                                                                       "304"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ]
+                                            },
+                        "ResponseBody":  "{\r\n  \"id\": \"ee08117b-e476-43b0-a122-6b20ee8750bb\",\r\n  \"name\": \"ee08117b-e476-43b0-a122-6b20ee8750bb\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-12-21T13:56:01.5354908Z\",\r\n  \"endTime\": \"2020-12-21T13:56:01.5354908Z\",\r\n  \"properties\": {\r\n    \"objectType\": \"OperationStatusJobExtendedInfo\",\r\n    \"jobId\": \"796b5265-1dca-493e-9ba0-ad13d2fb2ce8\"\r\n  }\r\n}",
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupOperations/ee08117b-e476-43b0-a122-6b20ee8750bb?api-version=2020-10-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwT3BlcmF0aW9ucy9lZTA4MTE3Yi1lNDc2LTQzYjAtYTEyMi02YjIwZWU4NzUwYmI/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "6cc4e87e-bf11-4dff-9abe-ff6b9fe5121a"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29321.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.19042.",
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "3bcc1206-cd89-4cf0-a121-e227513dacb1"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "6cc4e87e-bf11-4dff-9abe-ff6b9fe5121a",
+                                                                               "6cc4e87e-bf11-4dff-9abe-ff6b9fe5121a"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/10.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ],
+                                                "x-ms-ratelimit-remaining-subscription-resource-requests":  [
+                                                                                                                "147"
+                                                                                                            ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "3bcc1206-cd89-4cf0-a121-e227513dacb1"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201221T135607Z:3bcc1206-cd89-4cf0-a121-e227513dacb1"
+                                                                            ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:35:36 GMT"
+                                                         ],
+                                                "Content-Length":  [
+                                                                       "304"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ]
+                                            },
+                        "ResponseBody":  "{\r\n  \"id\": \"ee08117b-e476-43b0-a122-6b20ee8750bb\",\r\n  \"name\": \"ee08117b-e476-43b0-a122-6b20ee8750bb\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-12-21T13:56:01.5354908Z\",\r\n  \"endTime\": \"2020-12-21T13:56:01.5354908Z\",\r\n  \"properties\": {\r\n    \"objectType\": \"OperationStatusJobExtendedInfo\",\r\n    \"jobId\": \"796b5265-1dca-493e-9ba0-ad13d2fb2ce8\"\r\n  }\r\n}",
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupJobs/796b5265-1dca-493e-9ba0-ad13d2fb2ce8?api-version=2020-10-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwSm9icy83OTZiNTI2NS0xZGNhLTQ5M2UtOWJhMC1hZDEzZDJmYjJjZTg/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "da14d744-defa-4f25-b897-ccc1334cc61b"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29321.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.19042.",
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/10.0",
+                                                               "Microsoft-IIS/10.0"
+                                                           ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "a041cb31-378c-4821-8f82-f2c62685a750"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "da14d744-defa-4f25-b897-ccc1334cc61b",
+                                                                               "da14d744-defa-4f25-b897-ccc1334cc61b"
+                                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "x-ms-ratelimit-remaining-subscription-resource-requests":  [
+                                                                                                                "149"
+                                                                                                            ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "a041cb31-378c-4821-8f82-f2c62685a750"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201221T135607Z:a041cb31-378c-4821-8f82-f2c62685a750"
+                                                                            ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:35:36 GMT"
+                                                         ],
+                                                "Content-Length":  [
+                                                                       "903"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ]
+                                            },
+                        "ResponseBody":  "{\r\n  \"id\": \"/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupJobs/796b5265-1dca-493e-9ba0-ad13d2fb2ce8\",\r\n  \"name\": \"796b5265-1dca-493e-9ba0-ad13d2fb2ce8\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureStorageJob\",\r\n    \"duration\": \"PT2.1645419S\",\r\n    \"storageAccountName\": \"pstestsa8895\",\r\n    \"storageAccountVersion\": \"MicrosoftStorage\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Take Snapshot\",\r\n          \"status\": \"Completed\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"Data Transferred (in MB)\": \"0\",\r\n        \"File Share Name\": \"fs1\",\r\n        \"Whether job is adhoc or scheduled.\": \"True\"\r\n      }\r\n    },\r\n    \"isUserTriggered\": false,\r\n    \"entityFriendlyName\": \"fs1\",\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"operation\": \"Backup\",\r\n    \"status\": \"Completed\",\r\n    \"startTime\": \"2020-12-21T13:56:01.5354908Z\",\r\n    \"endTime\": \"2020-12-21T13:56:03.7000327Z\",\r\n    \"activityId\": \"0f63345d-c649-457d-9f90-633af45fdd52\"\r\n  }\r\n}",
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupFabrics/Azure/protectionContainers/StorageContainer%3BStorage%3Bpstestrg8895%3Bpstestsa8895/protectedItems/AzureFileShare%3B698DF595948E2355F2BB744A41CF245D4BA1255D9699CC3C2AD1F5045E177959?api-version=2020-10-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwRmFicmljcy9BenVyZS9wcm90ZWN0aW9uQ29udGFpbmVycy9TdG9yYWdlQ29udGFpbmVyJTNCU3RvcmFnZSUzQnBzdGVzdHJnODg5NSUzQnBzdGVzdHNhODg5NS9wcm90ZWN0ZWRJdGVtcy9BenVyZUZpbGVTaGFyZSUzQjY5OERGNTk1OTQ4RTIzNTVGMkJCNzQ0QTQxQ0YyNDVENEJBMTI1NUQ5Njk5Q0MzQzJBRDFGNTA0NUUxNzc5NTk/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
+                        "RequestMethod":  "DELETE",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "48cef8a9-366b-4d4e-a73a-7aea9ec737d2"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29321.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.19042.",
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "Location":  [
+                                                                 "https://management.azure.com/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupOperationResults/a3d80910-e207-4549-aff8-5726d86f9883?api-version=2020-10-01"
+                                                             ],
+                                                "Retry-After":  [
+                                                                    "60"
+                                                                ],
+                                                "Azure-AsyncOperation":  [
+                                                                             "https://management.azure.com/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupOperations/a3d80910-e207-4549-aff8-5726d86f9883?api-version=2020-10-01"
+                                                                         ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "59c26d45-026d-4ed9-b8de-ee420d37b3c3"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "48cef8a9-366b-4d4e-a73a-7aea9ec737d2",
+                                                                               "48cef8a9-366b-4d4e-a73a-7aea9ec737d2"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ],
+                                                "x-ms-ratelimit-remaining-subscription-deletes":  [
+                                                                                                      "14999"
+                                                                                                  ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "59c26d45-026d-4ed9-b8de-ee420d37b3c3"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201221T135607Z:59c26d45-026d-4ed9-b8de-ee420d37b3c3"
+                                                                            ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:35:36 GMT"
+                                                         ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Content-Length":  [
+                                                                       "0"
+                                                                   ]
+                                            },
+                        "ResponseBody":  "",
+                        "StatusCode":  202
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupOperations/a3d80910-e207-4549-aff8-5726d86f9883?api-version=2020-10-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwT3BlcmF0aW9ucy9hM2Q4MDkxMC1lMjA3LTQ1NDktYWZmOC01NzI2ZDg2Zjk4ODM/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "967754c4-f93a-4e23-9914-99d2b125f060"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29321.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.19042.",
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "07f2f122-41a8-4061-af41-00d9f75cc19f"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "967754c4-f93a-4e23-9914-99d2b125f060",
+                                                                               "967754c4-f93a-4e23-9914-99d2b125f060"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/10.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ],
+                                                "x-ms-ratelimit-remaining-subscription-resource-requests":  [
+                                                                                                                "146"
+                                                                                                            ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "07f2f122-41a8-4061-af41-00d9f75cc19f"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201221T135608Z:07f2f122-41a8-4061-af41-00d9f75cc19f"
+                                                                            ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:35:36 GMT"
+                                                         ],
+                                                "Content-Length":  [
+                                                                       "188"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ]
+                                            },
+                        "ResponseBody":  "{\r\n  \"id\": \"a3d80910-e207-4549-aff8-5726d86f9883\",\r\n  \"name\": \"a3d80910-e207-4549-aff8-5726d86f9883\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-12-21T13:56:07.7484869Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\"\r\n}",
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupOperations/a3d80910-e207-4549-aff8-5726d86f9883?api-version=2020-10-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwT3BlcmF0aW9ucy9hM2Q4MDkxMC1lMjA3LTQ1NDktYWZmOC01NzI2ZDg2Zjk4ODM/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "d20f3b73-5071-4834-bb25-f551d8eef1ca"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29321.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.19042.",
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "8f705142-f9bb-4a40-a5f2-f4fac4446bba"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "d20f3b73-5071-4834-bb25-f551d8eef1ca",
+                                                                               "d20f3b73-5071-4834-bb25-f551d8eef1ca"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/10.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ],
+                                                "x-ms-ratelimit-remaining-subscription-resource-requests":  [
+                                                                                                                "145"
+                                                                                                            ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "8f705142-f9bb-4a40-a5f2-f4fac4446bba"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201221T135613Z:8f705142-f9bb-4a40-a5f2-f4fac4446bba"
+                                                                            ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:35:36 GMT"
+                                                         ],
+                                                "Content-Length":  [
+                                                                       "188"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ]
+                                            },
+                        "ResponseBody":  "{\r\n  \"id\": \"a3d80910-e207-4549-aff8-5726d86f9883\",\r\n  \"name\": \"a3d80910-e207-4549-aff8-5726d86f9883\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-12-21T13:56:07.7484869Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\"\r\n}",
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupOperations/a3d80910-e207-4549-aff8-5726d86f9883?api-version=2020-10-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwT3BlcmF0aW9ucy9hM2Q4MDkxMC1lMjA3LTQ1NDktYWZmOC01NzI2ZDg2Zjk4ODM/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "a74a165d-589b-4950-8f49-159e035dee68"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29321.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.19042.",
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "c944c0b8-6079-4192-914a-4fb1b65262a2"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "a74a165d-589b-4950-8f49-159e035dee68",
+                                                                               "a74a165d-589b-4950-8f49-159e035dee68"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/10.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ],
+                                                "x-ms-ratelimit-remaining-subscription-resource-requests":  [
+                                                                                                                "144"
+                                                                                                            ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "c944c0b8-6079-4192-914a-4fb1b65262a2"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201221T135618Z:c944c0b8-6079-4192-914a-4fb1b65262a2"
+                                                                            ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:35:36 GMT"
+                                                         ],
+                                                "Content-Length":  [
+                                                                       "188"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ]
+                                            },
+                        "ResponseBody":  "{\r\n  \"id\": \"a3d80910-e207-4549-aff8-5726d86f9883\",\r\n  \"name\": \"a3d80910-e207-4549-aff8-5726d86f9883\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-12-21T13:56:07.7484869Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\"\r\n}",
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupOperations/a3d80910-e207-4549-aff8-5726d86f9883?api-version=2020-10-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwT3BlcmF0aW9ucy9hM2Q4MDkxMC1lMjA3LTQ1NDktYWZmOC01NzI2ZDg2Zjk4ODM/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "c69e2088-760a-49d4-bdc7-44f38216eafd"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29321.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.19042.",
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "9ac9c834-6b67-4b4a-9ea6-43c1858d5ede"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "c69e2088-760a-49d4-bdc7-44f38216eafd",
+                                                                               "c69e2088-760a-49d4-bdc7-44f38216eafd"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/10.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ],
+                                                "x-ms-ratelimit-remaining-subscription-resource-requests":  [
+                                                                                                                "143"
+                                                                                                            ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "9ac9c834-6b67-4b4a-9ea6-43c1858d5ede"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201221T135623Z:9ac9c834-6b67-4b4a-9ea6-43c1858d5ede"
+                                                                            ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:35:36 GMT"
+                                                         ],
+                                                "Content-Length":  [
+                                                                       "188"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ]
+                                            },
+                        "ResponseBody":  "{\r\n  \"id\": \"a3d80910-e207-4549-aff8-5726d86f9883\",\r\n  \"name\": \"a3d80910-e207-4549-aff8-5726d86f9883\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-12-21T13:56:07.7484869Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\"\r\n}",
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupOperations/a3d80910-e207-4549-aff8-5726d86f9883?api-version=2020-10-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwT3BlcmF0aW9ucy9hM2Q4MDkxMC1lMjA3LTQ1NDktYWZmOC01NzI2ZDg2Zjk4ODM/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "c845f6d1-4614-4122-8ae5-7f5374271c4b"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29321.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.19042.",
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "47671e43-f032-40ac-b8aa-2ec14e894cda"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "c845f6d1-4614-4122-8ae5-7f5374271c4b",
+                                                                               "c845f6d1-4614-4122-8ae5-7f5374271c4b"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/10.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ],
+                                                "x-ms-ratelimit-remaining-subscription-resource-requests":  [
+                                                                                                                "142"
+                                                                                                            ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "47671e43-f032-40ac-b8aa-2ec14e894cda"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201221T135628Z:47671e43-f032-40ac-b8aa-2ec14e894cda"
+                                                                            ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:35:36 GMT"
+                                                         ],
+                                                "Content-Length":  [
+                                                                       "188"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ]
+                                            },
+                        "ResponseBody":  "{\r\n  \"id\": \"a3d80910-e207-4549-aff8-5726d86f9883\",\r\n  \"name\": \"a3d80910-e207-4549-aff8-5726d86f9883\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2020-12-21T13:56:07.7484869Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\"\r\n}",
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupOperations/a3d80910-e207-4549-aff8-5726d86f9883?api-version=2020-10-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwT3BlcmF0aW9ucy9hM2Q4MDkxMC1lMjA3LTQ1NDktYWZmOC01NzI2ZDg2Zjk4ODM/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "a5546a82-1fa0-41f4-b2ad-b26bd27e2ba2"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29321.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.19042.",
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "ba847a31-16a3-4b51-80b5-7d8d79205fa3"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "a5546a82-1fa0-41f4-b2ad-b26bd27e2ba2",
+                                                                               "a5546a82-1fa0-41f4-b2ad-b26bd27e2ba2"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/10.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ],
+                                                "x-ms-ratelimit-remaining-subscription-resource-requests":  [
+                                                                                                                "141"
+                                                                                                            ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "ba847a31-16a3-4b51-80b5-7d8d79205fa3"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201221T135634Z:ba847a31-16a3-4b51-80b5-7d8d79205fa3"
+                                                                            ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:35:36 GMT"
+                                                         ],
+                                                "Content-Length":  [
+                                                                       "304"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ]
+                                            },
+                        "ResponseBody":  "{\r\n  \"id\": \"a3d80910-e207-4549-aff8-5726d86f9883\",\r\n  \"name\": \"a3d80910-e207-4549-aff8-5726d86f9883\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-12-21T13:56:07.7484869Z\",\r\n  \"endTime\": \"2020-12-21T13:56:07.7484869Z\",\r\n  \"properties\": {\r\n    \"objectType\": \"OperationStatusJobExtendedInfo\",\r\n    \"jobId\": \"3ded20db-b10d-48f1-8527-9ec7cd4ed93a\"\r\n  }\r\n}",
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupOperations/a3d80910-e207-4549-aff8-5726d86f9883?api-version=2020-10-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwT3BlcmF0aW9ucy9hM2Q4MDkxMC1lMjA3LTQ1NDktYWZmOC01NzI2ZDg2Zjk4ODM/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "3d5bfa65-de50-4cb4-940f-0ef8f2fbdbe8"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29321.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.19042.",
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "25f81020-83bb-41c5-9726-9e077d8b4e74"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "3d5bfa65-de50-4cb4-940f-0ef8f2fbdbe8",
+                                                                               "3d5bfa65-de50-4cb4-940f-0ef8f2fbdbe8"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/10.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ],
+                                                "x-ms-ratelimit-remaining-subscription-resource-requests":  [
+                                                                                                                "140"
+                                                                                                            ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "25f81020-83bb-41c5-9726-9e077d8b4e74"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201221T135634Z:25f81020-83bb-41c5-9726-9e077d8b4e74"
+                                                                            ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:35:36 GMT"
+                                                         ],
+                                                "Content-Length":  [
+                                                                       "304"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ]
+                                            },
+                        "ResponseBody":  "{\r\n  \"id\": \"a3d80910-e207-4549-aff8-5726d86f9883\",\r\n  \"name\": \"a3d80910-e207-4549-aff8-5726d86f9883\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2020-12-21T13:56:07.7484869Z\",\r\n  \"endTime\": \"2020-12-21T13:56:07.7484869Z\",\r\n  \"properties\": {\r\n    \"objectType\": \"OperationStatusJobExtendedInfo\",\r\n    \"jobId\": \"3ded20db-b10d-48f1-8527-9ec7cd4ed93a\"\r\n  }\r\n}",
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupJobs/3ded20db-b10d-48f1-8527-9ec7cd4ed93a?api-version=2020-10-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnODg5NS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3BzdGVzdHJzdjg4OTUvYmFja3VwSm9icy8zZGVkMjBkYi1iMTBkLTQ4ZjEtODUyNy05ZWM3Y2Q0ZWQ5M2E/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "51d636df-a855-4268-a2f0-a3d20fb2756f"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29321.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.19042.",
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/10.0",
+                                                               "Microsoft-IIS/10.0"
+                                                           ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "bd8f0128-fe07-4af1-97bc-5fc8c037223d"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "51d636df-a855-4268-a2f0-a3d20fb2756f",
+                                                                               "51d636df-a855-4268-a2f0-a3d20fb2756f"
+                                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "x-ms-ratelimit-remaining-subscription-resource-requests":  [
+                                                                                                                "148"
+                                                                                                            ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "bd8f0128-fe07-4af1-97bc-5fc8c037223d"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201221T135634Z:bd8f0128-fe07-4af1-97bc-5fc8c037223d"
+                                                                            ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:35:36 GMT"
+                                                         ],
+                                                "Content-Length":  [
+                                                                       "821"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ]
+                                            },
+                        "ResponseBody":  "{\r\n  \"id\": \"/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupJobs/3ded20db-b10d-48f1-8527-9ec7cd4ed93a\",\r\n  \"name\": \"3ded20db-b10d-48f1-8527-9ec7cd4ed93a\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureStorageJob\",\r\n    \"duration\": \"PT21.7283018S\",\r\n    \"storageAccountName\": \"pstestsa8895\",\r\n    \"storageAccountVersion\": \"Storage\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [],\r\n      \"propertyBag\": {\r\n        \"File Share Name\": \"fs1\",\r\n        \"Storage Account Name\": \"pstestsa8895\"\r\n      }\r\n    },\r\n    \"isUserTriggered\": false,\r\n    \"entityFriendlyName\": \"fs1\",\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"operation\": \"DeleteBackupData\",\r\n    \"status\": \"Completed\",\r\n    \"startTime\": \"2020-12-21T13:56:07.7484869Z\",\r\n    \"endTime\": \"2020-12-21T13:56:29.4767887Z\",\r\n    \"activityId\": \"48cef8a9-366b-4d4e-a73a-7aea9ec737d2\"\r\n  }\r\n}",
+                        "StatusCode":  200
+                    }
+                ],
+    "Names":  {
+
+              },
+    "Variables":  {
+                      "SubscriptionId":  "38304e13-357e-405e-9e9a-220351dcce8c"
+                  }
 }

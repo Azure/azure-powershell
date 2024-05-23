@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureFileServiceCredentialScanObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureFileServiceCredentialScanObject
 schema: 2.0.0
 ---
 
@@ -16,7 +16,8 @@ Create an in-memory object for AzureFileServiceCredentialScan.
 New-AzPurviewAzureFileServiceCredentialScanObject -Kind <ScanAuthorizationType>
  [-CollectionReferenceName <String>] [-CollectionType <String>] [-ConnectedViaReferenceName <String>]
  [-CredentialReferenceName <String>] [-CredentialType <CredentialType>] [-ScanRulesetName <String>]
- [-ScanRulesetType <ScanRulesetType>] [-ShareName <String>] [-Worker <Int32>] [<CommonParameters>]
+ [-ScanRulesetType <ScanRulesetType>] [-ShareName <String>] [-Worker <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -202,7 +203,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureFileServiceCredentialScan
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

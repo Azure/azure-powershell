@@ -710,7 +710,13 @@ begin {
             UpdateGenericUI = 'Az.SecurityInsights.custom\Update-AzSentinelDataConnector';
         }
         if (('UpdateAADAATP', 'UpdateThreatIntelligenceTaxii', 'UpdateThreatIntelligence', 'UpdateOfficeIRM', 'UpdateOfficeATP', 'UpdateOffice365', 'UpdateMicrosoftThreatProtection', 'UpdateMicrosoftThreatIntelligence', 'UpdateMicrosoftDefenderAdvancedThreatProtection', 'UpdateMicrosoftCloudAppSecurity', 'UpdateDynamics365', 'UpdateAzureSecurityCenter', 'UpdateAmazonWebServicesS3', 'UpdateAmazonWebServicesCloudTrail') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         if (('UpdateAADAATP', 'UpdateThreatIntelligenceTaxii', 'UpdateThreatIntelligence', 'UpdateOfficeIRM', 'UpdateOfficeATP', 'UpdateOffice365', 'UpdateMicrosoftThreatProtection', 'UpdateMicrosoftThreatIntelligence', 'UpdateMicrosoftDefenderAdvancedThreatProtection', 'UpdateMicrosoftCloudAppSecurity', 'UpdateDynamics365', 'UpdateViaIdentityThreatIntelligenceTaxii', 'UpdateViaIdentityThreatIntelligence', 'UpdateViaIdentityOfficeIRM', 'UpdateViaIdentityOfficeATP', 'UpdateViaIdentityOffice365', 'UpdateViaIdentityMicrosoftThreatProtection', 'UpdateViaIdentityMicrosoftThreatIntelligence', 'UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection', 'UpdateViaIdentityMicrosoftCloudAppSecurity', 'UpdateViaIdentityDynamics365', 'UpdateViaIdentityAzureSecurityCenter', 'UpdateViaIdentityAADAATP', 'UpdateViaIdentityAmazonWebServicesS3', 'UpdateViaIdentityAmazonWebServicesCloudTrail') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('TenantId')) {
             $PSBoundParameters['TenantId'] = (Get-AzContext).Tenant.Id

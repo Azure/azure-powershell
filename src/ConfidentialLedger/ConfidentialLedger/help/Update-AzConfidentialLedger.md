@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ConfidentialLedger-help.xml
 Module Name: Az.ConfidentialLedger
 online version: https://learn.microsoft.com/powershell/module/az.confidentialledger/update-azconfidentialledger
 schema: 2.0.0
@@ -14,10 +14,11 @@ Updates properties of Confidential Ledger
 
 ### UpdateExpanded (Default)
 ```
-Update-AzConfidentialLedger -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-AadBasedSecurityPrincipal <IAadBasedSecurityPrincipal[]>]
+Update-AzConfidentialLedger -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> [-AadBasedSecurityPrincipal <IAadBasedSecurityPrincipal[]>]
  [-CertBasedSecurityPrincipal <ICertBasedSecurityPrincipal[]>] [-LedgerType <LedgerType>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -25,7 +26,8 @@ Update-AzConfidentialLedger -Name <String> -ResourceGroupName <String> -Location
 Update-AzConfidentialLedger -InputObject <IConfidentialLedgerIdentity> -Location <String>
  [-AadBasedSecurityPrincipal <IAadBasedSecurityPrincipal[]>]
  [-CertBasedSecurityPrincipal <ICertBasedSecurityPrincipal[]>] [-LedgerType <LedgerType>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -297,27 +299,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-AADBASEDSECURITYPRINCIPAL <IAadBasedSecurityPrincipal[]>: Array of all AAD based Security Principals.
-  - `[LedgerRoleName <LedgerRoleName?>]`: LedgerRole associated with the Security Principal of Ledger
-  - `[PrincipalId <String>]`: UUID/GUID based Principal Id of the Security Principal
-  - `[TenantId <String>]`: UUID/GUID based Tenant Id of the Security Principal
-
-CERTBASEDSECURITYPRINCIPAL <ICertBasedSecurityPrincipal[]>: Array of all cert based Security Principals.
-  - `[Cert <String>]`: Public key of the user cert (.pem or .cer)
-  - `[LedgerRoleName <LedgerRoleName?>]`: LedgerRole associated with the Security Principal of Ledger
-
-INPUTOBJECT `<IConfidentialLedgerIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[LedgerName <String>]`: Name of the Confidential Ledger
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[SubscriptionId <String>]`: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
-
 ## RELATED LINKS
-

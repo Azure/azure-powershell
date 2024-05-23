@@ -1,6 +1,6 @@
 ---
-external help file:
-Module Name: Az.MySql
+external help file: Az.MySql-help.xml
+Module Name: Az.Mysql
 online version: https://learn.microsoft.com/powershell/module/az.mysql/new-azmysqlreplica
 schema: 2.0.0
 ---
@@ -13,9 +13,9 @@ Creates a new replica from an existing database.
 ## SYNTAX
 
 ```
-New-AzMySqlReplica -Replica <String> -ResourceGroupName <String> -Master <IServer> [-SubscriptionId <String>]
- [-Location <String>] [-Sku <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzMySqlReplica -Replica <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Master <IServer>
+ [-Location <String>] [-Sku <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -232,39 +232,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`MASTER <IServer>`: The source server object to create replica from.
-  - `Location <String>`: The geo-location where the resource lives
-  - `[Tag <ITrackedResourceTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[AdministratorLogin <String>]`: The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
-  - `[EarliestRestoreDate <DateTime?>]`: Earliest restore point creation time (ISO8601 format)
-  - `[FullyQualifiedDomainName <String>]`: The fully qualified domain name of a server.
-  - `[IdentityType <IdentityType?>]`: The identity type. Set this to 'SystemAssigned' in order to automatically create and assign a Microsoft Entra principal for the resource.
-  - `[InfrastructureEncryption <InfrastructureEncryption?>]`: Status showing whether the server enabled infrastructure encryption.
-  - `[MasterServerId <String>]`: The master server id of a replica server.
-  - `[MinimalTlsVersion <MinimalTlsVersionEnum?>]`: Enforce a minimal Tls version for the server.
-  - `[PublicNetworkAccess <PublicNetworkAccessEnum?>]`: Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'
-  - `[ReplicaCapacity <Int32?>]`: The maximum number of replicas that a master server can have.
-  - `[ReplicationRole <String>]`: The replication role of the server.
-  - `[SkuCapacity <Int32?>]`: The scale up/out capacity, representing server's compute units.
-  - `[SkuFamily <String>]`: The family of hardware.
-  - `[SkuName <String>]`: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
-  - `[SkuSize <String>]`: The size code, to be interpreted by resource as appropriate.
-  - `[SkuTier <SkuTier?>]`: The tier of the particular SKU, e.g. Basic.
-  - `[SslEnforcement <SslEnforcementEnum?>]`: Enable ssl enforcement or not when connect to server.
-  - `[StorageProfileBackupRetentionDay <Int32?>]`: Backup retention days for the server.
-  - `[StorageProfileGeoRedundantBackup <GeoRedundantBackup?>]`: Enable Geo-redundant or not for server backup.
-  - `[StorageProfileStorageAutogrow <StorageAutogrow?>]`: Enable Storage Auto Grow.
-  - `[StorageProfileStorageMb <Int32?>]`: Max storage allowed for a server.
-  - `[UserVisibleState <ServerState?>]`: A state of a server that is visible to user.
-  - `[Version <ServerVersion?>]`: Server version.
 
 ## RELATED LINKS

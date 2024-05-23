@@ -1,7 +1,9 @@
 ### Example 1: Create Azure SQL datawarehouse data source object
 ```powershell
 New-AzPurviewAzureSqlDataWarehouseDataSourceObject -Kind 'AzureSqlDataWarehouse' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ServerEndpoint 'ause.database.windows.net'
+```
 
+```output
 CollectionLastModifiedAt :
 CollectionReferenceName  : parv-brs-2
 CollectionType           : CollectionReference

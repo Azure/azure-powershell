@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Functions-help.xml
 Module Name: Az.Functions
 online version: https://learn.microsoft.com/powershell/module/az.functions/new-azfunctionapp
 schema: 2.0.0
@@ -14,31 +14,32 @@ Creates a function app.
 
 ### Consumption (Default)
 ```
-New-AzFunctionApp -Location <String> -Name <String> -ResourceGroupName <String> -Runtime <String>
- -StorageAccountName <String> [-ApplicationInsightsKey <String>] [-ApplicationInsightsName <String>]
- [-AppSetting <Hashtable>] [-DisableApplicationInsights] [-FunctionsVersion <String>] [-IdentityID <String[]>]
- [-IdentityType <ManagedServiceIdentityType>] [-OSType <String>] [-PassThru] [-RuntimeVersion <String>]
- [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName <String> -Location <String>
+ -Runtime <String> [-SubscriptionId <String>] [-ApplicationInsightsName <String>]
+ [-ApplicationInsightsKey <String>] [-OSType <String>] [-RuntimeVersion <String>] [-FunctionsVersion <String>]
+ [-DisableApplicationInsights] [-PassThru] [-Tag <Hashtable>] [-AppSetting <Hashtable>]
+ [-IdentityType <ManagedServiceIdentityType>] [-IdentityID <String[]>] [-DefaultProfile <PSObject>] [-NoWait]
+ [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByAppServicePlan
 ```
-New-AzFunctionApp -Name <String> -PlanName <String> -ResourceGroupName <String> -Runtime <String>
- -StorageAccountName <String> [-ApplicationInsightsKey <String>] [-ApplicationInsightsName <String>]
- [-AppSetting <Hashtable>] [-DisableApplicationInsights] [-FunctionsVersion <String>] [-IdentityID <String[]>]
- [-IdentityType <ManagedServiceIdentityType>] [-OSType <String>] [-PassThru] [-RuntimeVersion <String>]
- [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName <String> -Runtime <String>
+ [-SubscriptionId <String>] [-ApplicationInsightsName <String>] [-ApplicationInsightsKey <String>]
+ [-OSType <String>] [-RuntimeVersion <String>] [-FunctionsVersion <String>] [-DisableApplicationInsights]
+ [-PassThru] [-Tag <Hashtable>] [-AppSetting <Hashtable>] [-IdentityType <ManagedServiceIdentityType>]
+ [-IdentityID <String[]>] -PlanName <String> [-DefaultProfile <PSObject>] [-NoWait] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CustomDockerImage
 ```
-New-AzFunctionApp -DockerImageName <String> -Name <String> -PlanName <String> -ResourceGroupName <String>
- -StorageAccountName <String> [-ApplicationInsightsKey <String>] [-ApplicationInsightsName <String>]
- [-AppSetting <Hashtable>] [-DisableApplicationInsights] [-DockerRegistryCredential <PSCredential>]
- [-IdentityID <String[]>] [-IdentityType <ManagedServiceIdentityType>] [-PassThru] [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName <String>
+ [-SubscriptionId <String>] [-ApplicationInsightsName <String>] [-ApplicationInsightsKey <String>]
+ [-DisableApplicationInsights] [-PassThru] [-Tag <Hashtable>] [-AppSetting <Hashtable>]
+ [-IdentityType <ManagedServiceIdentityType>] [-IdentityID <String[]>] -PlanName <String>
+ -DockerImageName <String> [-DockerRegistryCredential <PSCredential>] [-DefaultProfile <PSObject>] [-NoWait]
+ [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -143,7 +144,6 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 
-
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
@@ -210,7 +210,7 @@ The Functions version.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByAppServicePlan, Consumption
+Parameter Sets: Consumption, ByAppServicePlan
 Aliases:
 
 Required: False
@@ -306,7 +306,7 @@ The OS to host the function app.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByAppServicePlan, Consumption
+Parameter Sets: Consumption, ByAppServicePlan
 Aliases:
 
 Required: False
@@ -366,7 +366,7 @@ The function runtime.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByAppServicePlan, Consumption
+Parameter Sets: Consumption, ByAppServicePlan
 Aliases:
 
 Required: True
@@ -381,7 +381,7 @@ The function runtime.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByAppServicePlan, Consumption
+Parameter Sets: Consumption, ByAppServicePlan
 Aliases:
 
 Required: False
@@ -479,4 +479,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

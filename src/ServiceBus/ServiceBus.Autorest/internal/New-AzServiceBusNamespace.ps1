@@ -16,11 +16,11 @@
 
 <#
 .Synopsis
-Creates or updates a service namespace.
+Create a service namespace.
 Once created, this namespace's resource manifest is immutable.
 This operation is idempotent.
 .Description
-Creates or updates a service namespace.
+Create a service namespace.
 Once created, this namespace's resource manifest is immutable.
 This operation is idempotent.
 .Example
@@ -35,11 +35,11 @@ New-AzServiceBusNamespace -ResourceGroupName myResourceGroup -Name myNamespace -
 New-AzServiceBusNamespace -ResourceGroupName myResourceGroup -Name myNamespace -SkuName Standard -Location southcentralus -Tag @{k1='v1'; k2='v2'} -DisableLocalAuth
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -48,7 +48,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <MigrationConfigurationName?>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be "$default".
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -71,57 +71,41 @@ PARAMETER <ISbNamespace>: Description of a namespace resource.
     [(Any) <String>]: This indicates any property can be added to this object.
   [AlternateName <String>]: Alternate name for namespace
   [DisableLocalAuth <Boolean?>]: This property disables SAS authentication for the Service Bus namespace.
-  [IdentityType <ManagedServiceIdentityType?>]: Type of managed service identity.
-  [KeySource <KeySource?>]: Enumerates the possible value of keySource for Encryption
-  [KeyVaultProperty <IKeyVaultProperties[]>]: Properties of KeyVault
+  [IdentityType <String>]: Type of managed service identity.
+  [KeySource <String>]: Enumerates the possible value of keySource for Encryption
+  [KeyVaultProperty <List<IKeyVaultProperties>>]: Properties of KeyVault
     [KeyName <String>]: Name of the Key from KeyVault
     [KeyVaultUri <String>]: Uri of KeyVault
     [KeyVersion <String>]: Version of KeyVault
     [UserAssignedIdentity <String>]: ARM ID of user Identity selected for encryption
-  [MinimumTlsVersion <TlsVersion?>]: The minimum TLS version for the cluster to support, e.g. '1.2'
+  [MinimumTlsVersion <String>]: The minimum TLS version for the cluster to support, e.g. '1.2'
   [PremiumMessagingPartition <Int32?>]: The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default value is 1 and possible values are 1, 2 and 4
-  [PrivateEndpointConnection <IPrivateEndpointConnection[]>]: List of private endpoint connections.
-    [ConnectionState <PrivateLinkConnectionStatus?>]: Status of the connection.
+  [PrivateEndpointConnection <List<IPrivateEndpointConnection>>]: List of private endpoint connections.
+    [ConnectionState <String>]: Status of the connection.
     [Description <String>]: Description of the connection state.
     [PrivateEndpointId <String>]: The ARM identifier for Private Endpoint.
-    [ProvisioningState <EndPointProvisioningState?>]: Provisioning state of the Private Endpoint Connection.
-    [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-    [SystemDataCreatedBy <String>]: The identity that created the resource.
-    [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-    [SystemDataLastModifiedAt <DateTime?>]: The type of identity that last modified the resource.
-    [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-    [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [PublicNetworkAccess <PublicNetworkAccess?>]: This determines if traffic is allowed over public network. By default it is enabled.
+    [ProvisioningState <String>]: Provisioning state of the Private Endpoint Connection.
+  [PublicNetworkAccess <String>]: This determines if traffic is allowed over public network. By default it is enabled.
   [RequireInfrastructureEncryption <Boolean?>]: Enable Infrastructure Encryption (Double Encryption)
   [SkuCapacity <Int32?>]: Messaging units for your service bus premium namespace. Valid capacities are {1, 2, 4, 8, 16} multiples of your properties.premiumMessagingPartitions setting. For example, If properties.premiumMessagingPartitions is 1 then possible capacity values are 1, 2, 4, 8, and 16. If properties.premiumMessagingPartitions is 4 then possible capacity values are 4, 8, 16, 32 and 64
-  [SkuName <SkuName?>]: Name of this SKU.
-  [SkuTier <SkuTier?>]: The billing tier of this particular SKU.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The type of identity that last modified the resource.
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [SkuName <String>]: Name of this SKU.
+  [SkuTier <String>]: The billing tier of this particular SKU.
   [UserAssignedIdentity <IIdentityUserAssignedIdentities>]: Properties for User Assigned Identities
     [(Any) <IUserAssignedIdentity>]: This indicates any property can be added to this object.
   [ZoneRedundant <Boolean?>]: Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
 
 PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>: List of private endpoint connections.
-  [ConnectionState <PrivateLinkConnectionStatus?>]: Status of the connection.
+  [ConnectionState <String>]: Status of the connection.
   [Description <String>]: Description of the connection state.
   [PrivateEndpointId <String>]: The ARM identifier for Private Endpoint.
-  [ProvisioningState <EndPointProvisioningState?>]: Provisioning state of the Private Endpoint Connection.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The type of identity that last modified the resource.
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [ProvisioningState <String>]: Provisioning state of the Private Endpoint Connection.
 .Link
 https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusnamespace
+.Link
+https://msdn.microsoft.com/en-us/library/azure/mt639408.aspx
 #>
 function New-AzServiceBusNamespace {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -149,7 +133,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -171,31 +154,30 @@ param(
     ${DisableLocalAuth},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.ManagedServiceIdentityType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.ManagedServiceIdentityType]
+    [System.String]
     # Type of managed service identity.
     ${IdentityType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.KeySource])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("Microsoft.KeyVault")]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.KeySource]
+    [System.String]
     # Enumerates the possible value of keySource for Encryption
     ${KeySource},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IKeyVaultProperties[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IKeyVaultProperties[]]
     # Properties of KeyVault
-    # To construct, see NOTES section for KEYVAULTPROPERTY properties and create a hash table.
     ${KeyVaultProperty},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.TlsVersion])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("1.0", "1.1", "1.2")]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.TlsVersion]
+    [System.String]
     # The minimum TLS version for the cluster to support, e.g.
     # '1.2'
     ${MinimumTlsVersion},
@@ -211,15 +193,14 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IPrivateEndpointConnection[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnection[]]
     # List of private endpoint connections.
-    # To construct, see NOTES section for PRIVATEENDPOINTCONNECTION properties and create a hash table.
     ${PrivateEndpointConnection},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.PublicNetworkAccess])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("Enabled", "Disabled", "SecuredByPerimeter")]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.PublicNetworkAccess]
+    [System.String]
     # This determines if traffic is allowed over public network.
     # By default it is enabled.
     ${PublicNetworkAccess},
@@ -240,29 +221,29 @@ param(
     ${SkuCapacity},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.SkuName])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("Basic", "Standard", "Premium")]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.SkuName]
+    [System.String]
     # Name of this SKU.
     ${SkuName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.SkuTier])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("Basic", "Standard", "Premium")]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.SkuTier]
+    [System.String]
     # The billing tier of this particular SKU.
     ${SkuTier},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api10.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IIdentityUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IIdentityUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # Properties for User Assigned Identities
     ${UserAssignedIdentity},
@@ -275,9 +256,8 @@ param(
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace]
     # Description of a namespace resource.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter()]
@@ -353,8 +333,14 @@ begin {
             CreateExpanded = 'Az.ServiceBus.private\New-AzServiceBusNamespace_CreateExpanded';
             CreateViaIdentity = 'Az.ServiceBus.private\New-AzServiceBusNamespace_CreateViaIdentity';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

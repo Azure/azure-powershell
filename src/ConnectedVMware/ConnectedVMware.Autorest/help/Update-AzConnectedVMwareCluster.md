@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConnectedVMwareCluster
 
 ## SYNOPSIS
-API to update certain properties of the cluster resource.
+API to Update certain properties of the cluster resource.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Update-AzConnectedVMwareCluster -Name <String> -ResourceGroupName <String> -Json
 ```
 
 ## DESCRIPTION
-API to update certain properties of the cluster resource.
+API to Update certain properties of the cluster resource.
 
 ## EXAMPLES
 
@@ -110,7 +110,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity

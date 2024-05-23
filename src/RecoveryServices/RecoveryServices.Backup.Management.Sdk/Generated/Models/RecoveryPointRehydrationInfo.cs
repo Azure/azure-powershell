@@ -24,8 +24,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// Initializes a new instance of the RecoveryPointRehydrationInfo class.
         /// </summary>
 
-        /// <param name="rehydrationRetentionDuration">How long the rehydrated RP should be kept
-        /// Should be ISO8601 Duration format e.g. &#34;P7D&#34;
+        /// <param name="rehydrationRetentionDuration">How long the rehydrated RP should be kept Should be ISO8601 Duration format
+        /// e.g. &#34;P7D&#34;
         /// </param>
 
         /// <param name="rehydrationPriority">Rehydration Priority
@@ -45,8 +45,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
 
         /// <summary>
-        /// Gets or sets how long the rehydrated RP should be kept
-        /// Should be ISO8601 Duration format e.g. &#34;P7D&#34;
+        /// Gets or sets how long the rehydrated RP should be kept Should be ISO8601
+        /// Duration format e.g. &#34;P7D&#34;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "rehydrationRetentionDuration")]
         public string RehydrationRetentionDuration {get; set; }

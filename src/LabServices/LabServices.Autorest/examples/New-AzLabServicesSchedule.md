@@ -1,6 +1,6 @@
 ### Example 1: Create a new schedule in a lab.
 ```powershell
- New-AzLabServicesSchedule `
+New-AzLabServicesSchedule `
             -ResourceGroupName "Group Name" `
             -LabName "Lab Name" `
             -Name "Schedule Name" `
@@ -11,7 +11,9 @@
             -RecurrencePatternWeekDay @($((Get-Date).DayOfWeek)) `
             -RecurrencePatternExpirationDate $((Get-Date).AddDays(20)) `
             -TimeZoneId 'America/Los_Angeles'
+```
 
+```output
 Name
 ----
 Schedule Name

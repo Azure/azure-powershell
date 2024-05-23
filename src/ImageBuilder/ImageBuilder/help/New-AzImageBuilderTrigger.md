@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ImageBuilder-help.xml
 Module Name: Az.ImageBuilder
 online version: https://learn.microsoft.com/powershell/module/az.imagebuilder/new-azimagebuildertrigger
 schema: 2.0.0
@@ -14,8 +14,8 @@ Create or update a trigger for the specified virtual machine image template
 
 ```
 New-AzImageBuilderTrigger -ImageTemplateName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Kind <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Kind <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -202,7 +202,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

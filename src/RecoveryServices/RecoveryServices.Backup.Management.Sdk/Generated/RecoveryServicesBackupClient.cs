@@ -553,7 +553,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             this.GetTieringCostOperationResult = new GetTieringCostOperationResultOperations(this);
             this.TieringCostOperationStatus = new TieringCostOperationStatusOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2023-08-01";
+            this.ApiVersion = "2024-04-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DiskPool-help.xml
 Module Name: Az.DiskPool
 online version: https://learn.microsoft.com/powershell/module/az.diskpool/get-azdiskpooloutboundnetworkdependencyendpoint
 schema: 2.0.0
@@ -14,7 +14,8 @@ Gets the network endpoints of all outbound dependencies of a Disk Pool
 
 ```
 Get-AzDiskPoolOutboundNetworkDependencyEndpoint -DiskPoolName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,7 +77,8 @@ The command lists all outbound network dependency endpoints for a Disk pool.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -147,7 +149,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

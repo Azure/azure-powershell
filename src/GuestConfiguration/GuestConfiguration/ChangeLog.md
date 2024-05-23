@@ -16,6 +16,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.11.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 0.11.0
 * Converted Az.GuestConfiguration to generated module
 

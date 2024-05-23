@@ -1,1091 +1,1093 @@
 {
-  "Entries": [
-    {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/PSTestRGe21008ec?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlZ3JvdXBzL1BTVGVzdFJHZTIxMDA4ZWM/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "b786dbf6-03d1-47d2-99f0-106748c74caa"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.29"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
-        ],
-        "x-ms-request-id": [
-          "d199ae91-6309-41b1-8ae7-4272f09ac497"
-        ],
-        "x-ms-correlation-request-id": [
-          "d199ae91-6309-41b1-8ae7-4272f09ac497"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201219T140631Z:d199ae91-6309-41b1-8ae7-4272f09ac497"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Sat, 19 Dec 2020 14:06:31 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "108"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'PSTestRGe21008ec' could not be found.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/PSTestRGe21008ec?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlZ3JvdXBzL1BTVGVzdFJHZTIxMDA4ZWM/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "0ff9e777-68c5-491f-ae4f-28d0c2928c2f"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.29"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
-        ],
-        "x-ms-request-id": [
-          "356d4b80-c746-4cdb-81ec-b55a81bf1ef9"
-        ],
-        "x-ms-correlation-request-id": [
-          "356d4b80-c746-4cdb-81ec-b55a81bf1ef9"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201219T140639Z:356d4b80-c746-4cdb-81ec-b55a81bf1ef9"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Sat, 19 Dec 2020 14:06:39 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "192"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec\",\r\n  \"name\": \"PSTestRGe21008ec\",\r\n  \"location\": \"southeastasia\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/PSTestRGe21008ec?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlZ3JvdXBzL1BTVGVzdFJHZTIxMDA4ZWM/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"southeastasia\"\r\n}",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "6f973ba6-4508-4e15-a556-af92d958143f"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.29"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "35"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
-        ],
-        "x-ms-request-id": [
-          "e91ad4ed-1a53-41b2-977b-2b20e06c3ad1"
-        ],
-        "x-ms-correlation-request-id": [
-          "e91ad4ed-1a53-41b2-977b-2b20e06c3ad1"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201219T140632Z:e91ad4ed-1a53-41b2-977b-2b20e06c3ad1"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Sat, 19 Dec 2020 14:06:32 GMT"
-        ],
-        "Content-Length": [
-          "192"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec\",\r\n  \"name\": \"PSTestRGe21008ec\",\r\n  \"location\": \"southeastasia\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
-      "StatusCode": 201
-    },
-    {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL1BTVGVzdFJHZTIxMDA4ZWMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9QU1Rlc3RSU1ZlMjEwMDhlYz9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "099b6f6b-ea03-44e8-acb4-47be48e5eef5-2020-12-19 14:06:43Z-P"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "9dd7b9d0-7a64-4f65-8370-5f2c6709f9c0"
-        ],
-        "x-ms-correlation-request-id": [
-          "9dd7b9d0-7a64-4f65-8370-5f2c6709f9c0"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201219T140633Z:9dd7b9d0-7a64-4f65-8370-5f2c6709f9c0"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Sat, 19 Dec 2020 14:06:32 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "239"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec' under resource group 'PSTestRGe21008ec' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL1BTVGVzdFJHZTIxMDA4ZWMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9QU1Rlc3RSU1ZlMjEwMDhlYz9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"location\": \"southeastasia\"\r\n}",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "0a0f9683-03a2-4ee8-85da-233d9f69edfe-2020-12-19 14:06:44Z-P"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.1.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "98"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "416274dd-0ee5-452f-b2e2-3c0fe933c564"
-        ],
-        "x-ms-client-request-id": [
-          "0a0f9683-03a2-4ee8-85da-233d9f69edfe-2020-12-19 14:06:44Z-P"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "209"
-        ],
-        "x-ms-correlation-request-id": [
-          "416274dd-0ee5-452f-b2e2-3c0fe933c564"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201219T140637Z:416274dd-0ee5-452f-b2e2-3c0fe933c564"
-        ],
-        "Date": [
-          "Sat, 19 Dec 2020 14:06:36 GMT"
-        ],
-        "Content-Length": [
-          "466"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"location\": \"southeastasia\",\r\n  \"name\": \"PSTestRSVe21008ec\",\r\n  \"etag\": \"W/\\\"datetime'2020-12-19T14%3A06%3A36.9278776Z'\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
-      "StatusCode": 201
-    },
-    {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec/backupconfig/vaultconfig?api-version=2020-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL1BTVGVzdFJHZTIxMDA4ZWMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9QU1Rlc3RSU1ZlMjEwMDhlYy9iYWNrdXBjb25maWcvdmF1bHRjb25maWc/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "f7a5d515-e390-47ce-b7ba-12d3ff1e02d1"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "49a8dde1-94e7-4bf3-83a2-59dd2f217651"
-        ],
-        "x-ms-client-request-id": [
-          "f7a5d515-e390-47ce-b7ba-12d3ff1e02d1",
-          "f7a5d515-e390-47ce-b7ba-12d3ff1e02d1"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "149"
-        ],
-        "x-ms-correlation-request-id": [
-          "49a8dde1-94e7-4bf3-83a2-59dd2f217651"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201219T140638Z:49a8dde1-94e7-4bf3-83a2-59dd2f217651"
-        ],
-        "Date": [
-          "Sat, 19 Dec 2020 14:06:38 GMT"
-        ],
-        "Content-Length": [
-          "380"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec/backupconfig/vaultconfig\",\r\n  \"name\": \"vaultconfig\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupconfig\",\r\n  \"properties\": {\r\n    \"enhancedSecurityState\": \"Enabled\",\r\n    \"softDeleteFeatureState\": \"Enabled\",\r\n    \"isSoftDeleteFeatureStateEditable\": true\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec/backupconfig/vaultconfig?api-version=2020-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL1BTVGVzdFJHZTIxMDA4ZWMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9QU1Rlc3RSU1ZlMjEwMDhlYy9iYWNrdXBjb25maWcvdmF1bHRjb25maWc/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "c40f148d-160a-42fa-9eed-2355c0900019"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "ebec7774-c74a-4488-b2dc-5cbbefbe0af7"
-        ],
-        "x-ms-client-request-id": [
-          "c40f148d-160a-42fa-9eed-2355c0900019",
-          "c40f148d-160a-42fa-9eed-2355c0900019"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "148"
-        ],
-        "x-ms-correlation-request-id": [
-          "ebec7774-c74a-4488-b2dc-5cbbefbe0af7"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201219T140638Z:ebec7774-c74a-4488-b2dc-5cbbefbe0af7"
-        ],
-        "Date": [
-          "Sat, 19 Dec 2020 14:06:38 GMT"
-        ],
-        "Content-Length": [
-          "380"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec/backupconfig/vaultconfig\",\r\n  \"name\": \"vaultconfig\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupconfig\",\r\n  \"properties\": {\r\n    \"enhancedSecurityState\": \"Enabled\",\r\n    \"softDeleteFeatureState\": \"Enabled\",\r\n    \"isSoftDeleteFeatureStateEditable\": true\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec/backupconfig/vaultconfig?api-version=2020-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL1BTVGVzdFJHZTIxMDA4ZWMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9QU1Rlc3RSU1ZlMjEwMDhlYy9iYWNrdXBjb25maWcvdmF1bHRjb25maWc/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "e82bd10b-13cb-421a-a307-656eec444e21"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "8b10dd3c-b75e-413a-bfdd-3aacef4ef2c7"
-        ],
-        "x-ms-client-request-id": [
-          "e82bd10b-13cb-421a-a307-656eec444e21",
-          "e82bd10b-13cb-421a-a307-656eec444e21"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "147"
-        ],
-        "x-ms-correlation-request-id": [
-          "8b10dd3c-b75e-413a-bfdd-3aacef4ef2c7"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201219T140639Z:8b10dd3c-b75e-413a-bfdd-3aacef4ef2c7"
-        ],
-        "Date": [
-          "Sat, 19 Dec 2020 14:06:39 GMT"
-        ],
-        "Content-Length": [
-          "381"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec/backupconfig/vaultconfig\",\r\n  \"name\": \"vaultconfig\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupconfig\",\r\n  \"properties\": {\r\n    \"enhancedSecurityState\": \"Enabled\",\r\n    \"softDeleteFeatureState\": \"Disabled\",\r\n    \"isSoftDeleteFeatureStateEditable\": true\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec/backupconfig/vaultconfig?api-version=2020-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL1BTVGVzdFJHZTIxMDA4ZWMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9QU1Rlc3RSU1ZlMjEwMDhlYy9iYWNrdXBjb25maWcvdmF1bHRjb25maWc/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
-      "RequestMethod": "PATCH",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"enhancedSecurityState\": \"Enabled\",\r\n    \"softDeleteFeatureState\": \"Disabled\"\r\n  }\r\n}",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "fe7e7d56-0734-4a47-b303-2f59facd4f7e"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "111"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "97cfeb90-d302-4ce9-b2ec-7b61f6644b29"
-        ],
-        "x-ms-client-request-id": [
-          "fe7e7d56-0734-4a47-b303-2f59facd4f7e",
-          "fe7e7d56-0734-4a47-b303-2f59facd4f7e"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
-        ],
-        "x-ms-correlation-request-id": [
-          "97cfeb90-d302-4ce9-b2ec-7b61f6644b29"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201219T140639Z:97cfeb90-d302-4ce9-b2ec-7b61f6644b29"
-        ],
-        "Date": [
-          "Sat, 19 Dec 2020 14:06:39 GMT"
-        ],
-        "Content-Length": [
-          "381"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec/backupconfig/vaultconfig\",\r\n  \"name\": \"vaultconfig\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupconfig\",\r\n  \"properties\": {\r\n    \"enhancedSecurityState\": \"Enabled\",\r\n    \"softDeleteFeatureState\": \"Disabled\",\r\n    \"isSoftDeleteFeatureStateEditable\": true\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL1BTVGVzdFJHZTIxMDA4ZWMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cz9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "27e30da2-bcc1-460e-ac1d-c1a345b37e2e-2020-12-19 14:06:50Z-P"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "0712651f-00b4-4964-ae57-07836a4f70cf"
-        ],
-        "x-ms-client-request-id": [
-          "27e30da2-bcc1-460e-ac1d-c1a345b37e2e-2020-12-19 14:06:50Z-P"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
-        ],
-        "x-ms-correlation-request-id": [
-          "0712651f-00b4-4964-ae57-07836a4f70cf"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201219T140639Z:0712651f-00b4-4964-ae57-07836a4f70cf"
-        ],
-        "Date": [
-          "Sat, 19 Dec 2020 14:06:38 GMT"
-        ],
-        "Content-Length": [
-          "478"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"southeastasia\",\r\n      \"name\": \"PSTestRSVe21008ec\",\r\n      \"etag\": \"W/\\\"datetime'2020-12-19T14%3A06%3A36.9278776Z'\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"privateEndpointStateForBackup\": \"None\",\r\n        \"privateEndpointStateForSiteRecovery\": \"None\"\r\n      },\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec/backupProtectionContainers?$filter=backupManagementType%20eq%20'AzureIaasVM'%20and%20status%20eq%20'Registered'&api-version=2020-10-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL1BTVGVzdFJHZTIxMDA4ZWMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9QU1Rlc3RSU1ZlMjEwMDhlYy9iYWNrdXBQcm90ZWN0aW9uQ29udGFpbmVycz8kZmlsdGVyPWJhY2t1cE1hbmFnZW1lbnRUeXBlJTIwZXElMjAnQXp1cmVJYWFzVk0nJTIwYW5kJTIwc3RhdHVzJTIwZXElMjAnUmVnaXN0ZXJlZCcmYXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "6c60297b-f024-42bc-90c0-fa1100935fad"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "adf6923c-be6c-4787-a281-6592791c73ce"
-        ],
-        "x-ms-client-request-id": [
-          "6c60297b-f024-42bc-90c0-fa1100935fad",
-          "6c60297b-f024-42bc-90c0-fa1100935fad"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "149"
-        ],
-        "x-ms-correlation-request-id": [
-          "adf6923c-be6c-4787-a281-6592791c73ce"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201219T140640Z:adf6923c-be6c-4787-a281-6592791c73ce"
-        ],
-        "Date": [
-          "Sat, 19 Dec 2020 14:06:40 GMT"
-        ],
-        "Content-Length": [
-          "12"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": []\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL1BTVGVzdFJHZTIxMDA4ZWMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9QU1Rlc3RSU1ZlMjEwMDhlYz9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
-      "RequestMethod": "DELETE",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "2c561f1e-30b4-43a1-bbc8-e1baf2532fd0-2020-12-19 14:06:51Z-P"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.1.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "cb737d8d-f9c4-4173-9535-b9be4911ff9e"
-        ],
-        "x-ms-client-request-id": [
-          "2c561f1e-30b4-43a1-bbc8-e1baf2532fd0-2020-12-19 14:06:51Z-P"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "9"
-        ],
-        "x-ms-correlation-request-id": [
-          "cb737d8d-f9c4-4173-9535-b9be4911ff9e"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201219T140642Z:cb737d8d-f9c4-4173-9535-b9be4911ff9e"
-        ],
-        "Date": [
-          "Sat, 19 Dec 2020 14:06:41 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/PSTestRGe21008ec?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlZ3JvdXBzL1BTVGVzdFJHZTIxMDA4ZWM/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
-      "RequestMethod": "DELETE",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "4e67cbb3-e68d-4b7f-a1da-f42bceaefd51"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.29"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSR0UyMTAwOEVDLVNPVVRIRUFTVEFTSUEiLCJqb2JMb2NhdGlvbiI6InNvdXRoZWFzdGFzaWEifQ?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14998"
-        ],
-        "x-ms-request-id": [
-          "4ac6c293-ecb3-430f-8957-08fb1aca8a9f"
-        ],
-        "x-ms-correlation-request-id": [
-          "4ac6c293-ecb3-430f-8957-08fb1aca8a9f"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201219T140643Z:4ac6c293-ecb3-430f-8957-08fb1aca8a9f"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Sat, 19 Dec 2020 14:06:42 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSR0UyMTAwOEVDLVNPVVRIRUFTVEFTSUEiLCJqb2JMb2NhdGlvbiI6InNvdXRoZWFzdGFzaWEifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSMFV5TVRBd09FVkRMVk5QVlZSSVJVRlRWRUZUU1VFaUxDSnFiMkpNYjJOaGRHbHZiaUk2SW5OdmRYUm9aV0Z6ZEdGemFXRWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.29"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSR0UyMTAwOEVDLVNPVVRIRUFTVEFTSUEiLCJqb2JMb2NhdGlvbiI6InNvdXRoZWFzdGFzaWEifQ?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
-        ],
-        "x-ms-request-id": [
-          "7a039426-b095-4312-866f-62bdfa5a6352"
-        ],
-        "x-ms-correlation-request-id": [
-          "7a039426-b095-4312-866f-62bdfa5a6352"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201219T140658Z:7a039426-b095-4312-866f-62bdfa5a6352"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Sat, 19 Dec 2020 14:06:57 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSR0UyMTAwOEVDLVNPVVRIRUFTVEFTSUEiLCJqb2JMb2NhdGlvbiI6InNvdXRoZWFzdGFzaWEifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSMFV5TVRBd09FVkRMVk5QVlZSSVJVRlRWRUZUU1VFaUxDSnFiMkpNYjJOaGRHbHZiaUk2SW5OdmRYUm9aV0Z6ZEdGemFXRWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.29"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSR0UyMTAwOEVDLVNPVVRIRUFTVEFTSUEiLCJqb2JMb2NhdGlvbiI6InNvdXRoZWFzdGFzaWEifQ?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
-        ],
-        "x-ms-request-id": [
-          "1a1bc9c3-df71-4453-8cd8-b9b7f43ef6a2"
-        ],
-        "x-ms-correlation-request-id": [
-          "1a1bc9c3-df71-4453-8cd8-b9b7f43ef6a2"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201219T140713Z:1a1bc9c3-df71-4453-8cd8-b9b7f43ef6a2"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Sat, 19 Dec 2020 14:07:13 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSR0UyMTAwOEVDLVNPVVRIRUFTVEFTSUEiLCJqb2JMb2NhdGlvbiI6InNvdXRoZWFzdGFzaWEifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSMFV5TVRBd09FVkRMVk5QVlZSSVJVRlRWRUZUU1VFaUxDSnFiMkpNYjJOaGRHbHZiaUk2SW5OdmRYUm9aV0Z6ZEdGemFXRWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.29"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11995"
-        ],
-        "x-ms-request-id": [
-          "acf3777c-2871-4a73-ae7a-ebd9aa85852d"
-        ],
-        "x-ms-correlation-request-id": [
-          "acf3777c-2871-4a73-ae7a-ebd9aa85852d"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201219T140728Z:acf3777c-2871-4a73-ae7a-ebd9aa85852d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Sat, 19 Dec 2020 14:07:28 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSR0UyMTAwOEVDLVNPVVRIRUFTVEFTSUEiLCJqb2JMb2NhdGlvbiI6InNvdXRoZWFzdGFzaWEifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSMFV5TVRBd09FVkRMVk5QVlZSSVJVRlRWRUZUU1VFaUxDSnFiMkpNYjJOaGRHbHZiaUk2SW5OdmRYUm9aV0Z6ZEdGemFXRWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.29220.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.29"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
-        ],
-        "x-ms-request-id": [
-          "a48c16ef-7871-492e-a9c2-7682b92c76b3"
-        ],
-        "x-ms-correlation-request-id": [
-          "a48c16ef-7871-492e-a9c2-7682b92c76b3"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20201219T140729Z:a48c16ef-7871-492e-a9c2-7682b92c76b3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Sat, 19 Dec 2020 14:07:28 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 200
-    }
-  ],
-  "Names": {},
-  "Variables": {
-    "SubscriptionId": "38304e13-357e-405e-9e9a-220351dcce8c",
-    "NamingSuffix": "e21008ec-ffa9-4e58-b13d-8068d04d5326"
-  }
+    "Entries":  [
+                    {
+                        "RequestUri":  "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/PSTestRGe21008ec?api-version=2016-09-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlZ3JvdXBzL1BTVGVzdFJHZTIxMDA4ZWM/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "b786dbf6-03d1-47d2-99f0-106748c74caa"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29220.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.18363.",
+                                                                  "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.29"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-failure-cause":  [
+                                                                           "gateway"
+                                                                       ],
+                                                "x-ms-ratelimit-remaining-subscription-reads":  [
+                                                                                                    "11999"
+                                                                                                ],
+                                                "x-ms-request-id":  [
+                                                                        "d199ae91-6309-41b1-8ae7-4272f09ac497"
+                                                                    ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "d199ae91-6309-41b1-8ae7-4272f09ac497"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201219T140631Z:d199ae91-6309-41b1-8ae7-4272f09ac497"
+                                                                            ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:31:36 GMT"
+                                                         ],
+                                                "Content-Type":  [
+                                                                     "application/json; charset=utf-8"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Content-Length":  [
+                                                                       "108"
+                                                                   ]
+                                            },
+                        "ResponseBody":  "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group \u0027PSTestRGe21008ec\u0027 could not be found.\"\r\n  }\r\n}",
+                        "StatusCode":  404
+                    },
+                    {
+                        "RequestUri":  "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/PSTestRGe21008ec?api-version=2016-09-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlZ3JvdXBzL1BTVGVzdFJHZTIxMDA4ZWM/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "0ff9e777-68c5-491f-ae4f-28d0c2928c2f"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29220.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.18363.",
+                                                                  "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.29"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-ratelimit-remaining-subscription-reads":  [
+                                                                                                    "11998"
+                                                                                                ],
+                                                "x-ms-request-id":  [
+                                                                        "356d4b80-c746-4cdb-81ec-b55a81bf1ef9"
+                                                                    ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "356d4b80-c746-4cdb-81ec-b55a81bf1ef9"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201219T140639Z:356d4b80-c746-4cdb-81ec-b55a81bf1ef9"
+                                                                            ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:31:36 GMT"
+                                                         ],
+                                                "Content-Type":  [
+                                                                     "application/json; charset=utf-8"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Content-Length":  [
+                                                                       "192"
+                                                                   ]
+                                            },
+                        "ResponseBody":  "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec\",\r\n  \"name\": \"PSTestRGe21008ec\",\r\n  \"location\": \"southeastasia\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/PSTestRGe21008ec?api-version=2016-09-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlZ3JvdXBzL1BTVGVzdFJHZTIxMDA4ZWM/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+                        "RequestMethod":  "PUT",
+                        "RequestBody":  "{\r\n  \"location\": \"southeastasia\"\r\n}",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "6f973ba6-4508-4e15-a556-af92d958143f"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29220.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.18363.",
+                                                                  "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.29"
+                                                              ],
+                                               "Content-Type":  [
+                                                                    "application/json; charset=utf-8"
+                                                                ],
+                                               "Content-Length":  [
+                                                                      "35"
+                                                                  ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-ratelimit-remaining-subscription-writes":  [
+                                                                                                     "1199"
+                                                                                                 ],
+                                                "x-ms-request-id":  [
+                                                                        "e91ad4ed-1a53-41b2-977b-2b20e06c3ad1"
+                                                                    ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "e91ad4ed-1a53-41b2-977b-2b20e06c3ad1"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201219T140632Z:e91ad4ed-1a53-41b2-977b-2b20e06c3ad1"
+                                                                            ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:31:36 GMT"
+                                                         ],
+                                                "Content-Length":  [
+                                                                       "192"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json; charset=utf-8"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ]
+                                            },
+                        "ResponseBody":  "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec\",\r\n  \"name\": \"PSTestRGe21008ec\",\r\n  \"location\": \"southeastasia\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+                        "StatusCode":  201
+                    },
+                    {
+                        "RequestUri":  "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec?api-version=2016-06-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL1BTVGVzdFJHZTIxMDA4ZWMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9QU1Rlc3RSU1ZlMjEwMDhlYz9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "099b6f6b-ea03-44e8-acb4-47be48e5eef5-2020-12-19 14:06:43Z-P"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29220.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.18363.",
+                                                                  "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.1.0"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-failure-cause":  [
+                                                                           "gateway"
+                                                                       ],
+                                                "x-ms-request-id":  [
+                                                                        "9dd7b9d0-7a64-4f65-8370-5f2c6709f9c0"
+                                                                    ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "9dd7b9d0-7a64-4f65-8370-5f2c6709f9c0"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201219T140633Z:9dd7b9d0-7a64-4f65-8370-5f2c6709f9c0"
+                                                                            ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:31:36 GMT"
+                                                         ],
+                                                "Content-Type":  [
+                                                                     "application/json; charset=utf-8"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Content-Length":  [
+                                                                       "239"
+                                                                   ]
+                                            },
+                        "ResponseBody":  "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource \u0027Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec\u0027 under resource group \u0027PSTestRGe21008ec\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
+                        "StatusCode":  404
+                    },
+                    {
+                        "RequestUri":  "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec?api-version=2016-06-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL1BTVGVzdFJHZTIxMDA4ZWMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9QU1Rlc3RSU1ZlMjEwMDhlYz9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+                        "RequestMethod":  "PUT",
+                        "RequestBody":  "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"location\": \"southeastasia\"\r\n}",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "0a0f9683-03a2-4ee8-85da-233d9f69edfe-2020-12-19 14:06:44Z-P"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29220.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.18363.",
+                                                                  "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.1.0"
+                                                              ],
+                                               "Content-Type":  [
+                                                                    "application/json; charset=utf-8"
+                                                                ],
+                                               "Content-Length":  [
+                                                                      "98"
+                                                                  ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "416274dd-0ee5-452f-b2e2-3c0fe933c564"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "0a0f9683-03a2-4ee8-85da-233d9f69edfe-2020-12-19 14:06:44Z-P"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/10.0"
+                                                           ],
+                                                "x-ms-ratelimit-remaining-subscription-resource-requests":  [
+                                                                                                                "209"
+                                                                                                            ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "416274dd-0ee5-452f-b2e2-3c0fe933c564"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201219T140637Z:416274dd-0ee5-452f-b2e2-3c0fe933c564"
+                                                                            ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:31:36 GMT"
+                                                         ],
+                                                "Content-Length":  [
+                                                                       "466"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ]
+                                            },
+                        "ResponseBody":  "{\r\n  \"location\": \"southeastasia\",\r\n  \"name\": \"PSTestRSVe21008ec\",\r\n  \"etag\": \"W/\\\"datetime\u00272020-12-19T14%3A06%3A36.9278776Z\u0027\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
+                        "StatusCode":  201
+                    },
+                    {
+                        "RequestUri":  "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec/backupconfig/vaultconfig?api-version=2020-10-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL1BTVGVzdFJHZTIxMDA4ZWMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9QU1Rlc3RSU1ZlMjEwMDhlYy9iYWNrdXBjb25maWcvdmF1bHRjb25maWc/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "f7a5d515-e390-47ce-b7ba-12d3ff1e02d1"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29220.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.18363.",
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "49a8dde1-94e7-4bf3-83a2-59dd2f217651"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "f7a5d515-e390-47ce-b7ba-12d3ff1e02d1",
+                                                                               "f7a5d515-e390-47ce-b7ba-12d3ff1e02d1"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/10.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ],
+                                                "x-ms-ratelimit-remaining-subscription-resource-requests":  [
+                                                                                                                "149"
+                                                                                                            ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "49a8dde1-94e7-4bf3-83a2-59dd2f217651"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201219T140638Z:49a8dde1-94e7-4bf3-83a2-59dd2f217651"
+                                                                            ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:31:36 GMT"
+                                                         ],
+                                                "Content-Length":  [
+                                                                       "380"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ]
+                                            },
+                        "ResponseBody":  "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec/backupconfig/vaultconfig\",\r\n  \"name\": \"vaultconfig\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupconfig\",\r\n  \"properties\": {\r\n    \"enhancedSecurityState\": \"Enabled\",\r\n    \"softDeleteFeatureState\": \"Enabled\",\r\n    \"isSoftDeleteFeatureStateEditable\": true\r\n  }\r\n}",
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec/backupconfig/vaultconfig?api-version=2020-10-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL1BTVGVzdFJHZTIxMDA4ZWMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9QU1Rlc3RSU1ZlMjEwMDhlYy9iYWNrdXBjb25maWcvdmF1bHRjb25maWc/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "c40f148d-160a-42fa-9eed-2355c0900019"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29220.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.18363.",
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "ebec7774-c74a-4488-b2dc-5cbbefbe0af7"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "c40f148d-160a-42fa-9eed-2355c0900019",
+                                                                               "c40f148d-160a-42fa-9eed-2355c0900019"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/10.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ],
+                                                "x-ms-ratelimit-remaining-subscription-resource-requests":  [
+                                                                                                                "148"
+                                                                                                            ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "ebec7774-c74a-4488-b2dc-5cbbefbe0af7"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201219T140638Z:ebec7774-c74a-4488-b2dc-5cbbefbe0af7"
+                                                                            ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:31:36 GMT"
+                                                         ],
+                                                "Content-Length":  [
+                                                                       "380"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ]
+                                            },
+                        "ResponseBody":  "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec/backupconfig/vaultconfig\",\r\n  \"name\": \"vaultconfig\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupconfig\",\r\n  \"properties\": {\r\n    \"enhancedSecurityState\": \"Enabled\",\r\n    \"softDeleteFeatureState\": \"Enabled\",\r\n    \"isSoftDeleteFeatureStateEditable\": true\r\n  }\r\n}",
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec/backupconfig/vaultconfig?api-version=2020-10-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL1BTVGVzdFJHZTIxMDA4ZWMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9QU1Rlc3RSU1ZlMjEwMDhlYy9iYWNrdXBjb25maWcvdmF1bHRjb25maWc/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "e82bd10b-13cb-421a-a307-656eec444e21"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29220.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.18363.",
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "8b10dd3c-b75e-413a-bfdd-3aacef4ef2c7"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "e82bd10b-13cb-421a-a307-656eec444e21",
+                                                                               "e82bd10b-13cb-421a-a307-656eec444e21"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/10.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ],
+                                                "x-ms-ratelimit-remaining-subscription-resource-requests":  [
+                                                                                                                "147"
+                                                                                                            ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "8b10dd3c-b75e-413a-bfdd-3aacef4ef2c7"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201219T140639Z:8b10dd3c-b75e-413a-bfdd-3aacef4ef2c7"
+                                                                            ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:31:36 GMT"
+                                                         ],
+                                                "Content-Length":  [
+                                                                       "381"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ]
+                                            },
+                        "ResponseBody":  "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec/backupconfig/vaultconfig\",\r\n  \"name\": \"vaultconfig\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupconfig\",\r\n  \"properties\": {\r\n    \"enhancedSecurityState\": \"Enabled\",\r\n    \"softDeleteFeatureState\": \"Disabled\",\r\n    \"isSoftDeleteFeatureStateEditable\": true\r\n  }\r\n}",
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec/backupconfig/vaultconfig?api-version=2020-10-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL1BTVGVzdFJHZTIxMDA4ZWMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9QU1Rlc3RSU1ZlMjEwMDhlYy9iYWNrdXBjb25maWcvdmF1bHRjb25maWc/YXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
+                        "RequestMethod":  "PATCH",
+                        "RequestBody":  "{\r\n  \"properties\": {\r\n    \"enhancedSecurityState\": \"Enabled\",\r\n    \"softDeleteFeatureState\": \"Disabled\"\r\n  }\r\n}",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "fe7e7d56-0734-4a47-b303-2f59facd4f7e"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29220.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.18363.",
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
+                                                              ],
+                                               "Content-Type":  [
+                                                                    "application/json; charset=utf-8"
+                                                                ],
+                                               "Content-Length":  [
+                                                                      "111"
+                                                                  ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "97cfeb90-d302-4ce9-b2ec-7b61f6644b29"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "fe7e7d56-0734-4a47-b303-2f59facd4f7e",
+                                                                               "fe7e7d56-0734-4a47-b303-2f59facd4f7e"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/10.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ],
+                                                "x-ms-ratelimit-remaining-subscription-writes":  [
+                                                                                                     "1199"
+                                                                                                 ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "97cfeb90-d302-4ce9-b2ec-7b61f6644b29"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201219T140639Z:97cfeb90-d302-4ce9-b2ec-7b61f6644b29"
+                                                                            ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:31:36 GMT"
+                                                         ],
+                                                "Content-Length":  [
+                                                                       "381"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ]
+                                            },
+                        "ResponseBody":  "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec/backupconfig/vaultconfig\",\r\n  \"name\": \"vaultconfig\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupconfig\",\r\n  \"properties\": {\r\n    \"enhancedSecurityState\": \"Enabled\",\r\n    \"softDeleteFeatureState\": \"Disabled\",\r\n    \"isSoftDeleteFeatureStateEditable\": true\r\n  }\r\n}",
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults?api-version=2016-06-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL1BTVGVzdFJHZTIxMDA4ZWMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cz9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "27e30da2-bcc1-460e-ac1d-c1a345b37e2e-2020-12-19 14:06:50Z-P"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29220.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.18363.",
+                                                                  "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.1.0"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "0712651f-00b4-4964-ae57-07836a4f70cf"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "27e30da2-bcc1-460e-ac1d-c1a345b37e2e-2020-12-19 14:06:50Z-P"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/10.0"
+                                                           ],
+                                                "x-ms-ratelimit-remaining-subscription-reads":  [
+                                                                                                    "11998"
+                                                                                                ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "0712651f-00b4-4964-ae57-07836a4f70cf"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201219T140639Z:0712651f-00b4-4964-ae57-07836a4f70cf"
+                                                                            ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:31:36 GMT"
+                                                         ],
+                                                "Content-Length":  [
+                                                                       "478"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ]
+                                            },
+                        "ResponseBody":  "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"southeastasia\",\r\n      \"name\": \"PSTestRSVe21008ec\",\r\n      \"etag\": \"W/\\\"datetime\u00272020-12-19T14%3A06%3A36.9278776Z\u0027\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"privateEndpointStateForBackup\": \"None\",\r\n        \"privateEndpointStateForSiteRecovery\": \"None\"\r\n      },\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec/backupProtectionContainers?$filter=backupManagementType%20eq%20\u0027AzureIaasVM\u0027%20and%20status%20eq%20\u0027Registered\u0027\u0026api-version=2020-10-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL1BTVGVzdFJHZTIxMDA4ZWMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9QU1Rlc3RSU1ZlMjEwMDhlYy9iYWNrdXBQcm90ZWN0aW9uQ29udGFpbmVycz8kZmlsdGVyPWJhY2t1cE1hbmFnZW1lbnRUeXBlJTIwZXElMjAnQXp1cmVJYWFzVk0nJTIwYW5kJTIwc3RhdHVzJTIwZXElMjAnUmVnaXN0ZXJlZCcmYXBpLXZlcnNpb249MjAyMC0xMC0wMQ==",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "6c60297b-f024-42bc-90c0-fa1100935fad"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29220.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.18363.",
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/4.1.3.0"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "adf6923c-be6c-4787-a281-6592791c73ce"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "6c60297b-f024-42bc-90c0-fa1100935fad",
+                                                                               "6c60297b-f024-42bc-90c0-fa1100935fad"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/10.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ],
+                                                "x-ms-ratelimit-remaining-subscription-resource-requests":  [
+                                                                                                                "149"
+                                                                                                            ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "adf6923c-be6c-4787-a281-6592791c73ce"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201219T140640Z:adf6923c-be6c-4787-a281-6592791c73ce"
+                                                                            ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:31:36 GMT"
+                                                         ],
+                                                "Content-Length":  [
+                                                                       "12"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ]
+                                            },
+                        "ResponseBody":  "{\r\n  \"value\": []\r\n}",
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGe21008ec/providers/Microsoft.RecoveryServices/vaults/PSTestRSVe21008ec?api-version=2016-06-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL1BTVGVzdFJHZTIxMDA4ZWMvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9QU1Rlc3RSU1ZlMjEwMDhlYz9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+                        "RequestMethod":  "DELETE",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "2c561f1e-30b4-43a1-bbc8-e1baf2532fd0-2020-12-19 14:06:51Z-P"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29220.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.18363.",
+                                                                  "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.1.0"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "cb737d8d-f9c4-4173-9535-b9be4911ff9e"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "2c561f1e-30b4-43a1-bbc8-e1baf2532fd0-2020-12-19 14:06:51Z-P"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "x-ms-ratelimit-remaining-subscription-resource-requests":  [
+                                                                                                                "9"
+                                                                                                            ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "cb737d8d-f9c4-4173-9535-b9be4911ff9e"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201219T140642Z:cb737d8d-f9c4-4173-9535-b9be4911ff9e"
+                                                                            ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:31:36 GMT"
+                                                         ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Content-Length":  [
+                                                                       "0"
+                                                                   ]
+                                            },
+                        "ResponseBody":  "",
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/PSTestRGe21008ec?api-version=2016-09-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlZ3JvdXBzL1BTVGVzdFJHZTIxMDA4ZWM/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+                        "RequestMethod":  "DELETE",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "4e67cbb3-e68d-4b7f-a1da-f42bceaefd51"
+                                                                          ],
+                                               "Accept-Language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29220.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.18363.",
+                                                                  "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.29"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "Location":  [
+                                                                 "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSR0UyMTAwOEVDLVNPVVRIRUFTVEFTSUEiLCJqb2JMb2NhdGlvbiI6InNvdXRoZWFzdGFzaWEifQ?api-version=2016-09-01"
+                                                             ],
+                                                "Retry-After":  [
+                                                                    "15"
+                                                                ],
+                                                "x-ms-ratelimit-remaining-subscription-deletes":  [
+                                                                                                      "14998"
+                                                                                                  ],
+                                                "x-ms-request-id":  [
+                                                                        "4ac6c293-ecb3-430f-8957-08fb1aca8a9f"
+                                                                    ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "4ac6c293-ecb3-430f-8957-08fb1aca8a9f"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201219T140643Z:4ac6c293-ecb3-430f-8957-08fb1aca8a9f"
+                                                                            ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:31:36 GMT"
+                                                         ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Content-Length":  [
+                                                                       "0"
+                                                                   ]
+                                            },
+                        "ResponseBody":  "",
+                        "StatusCode":  202
+                    },
+                    {
+                        "RequestUri":  "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSR0UyMTAwOEVDLVNPVVRIRUFTVEFTSUEiLCJqb2JMb2NhdGlvbiI6InNvdXRoZWFzdGFzaWEifQ?api-version=2016-09-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSMFV5TVRBd09FVkRMVk5QVlZSSVJVRlRWRUZUU1VFaUxDSnFiMkpNYjJOaGRHbHZiaUk2SW5OdmRYUm9aV0Z6ZEdGemFXRWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29220.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.18363.",
+                                                                  "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.29"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "Location":  [
+                                                                 "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSR0UyMTAwOEVDLVNPVVRIRUFTVEFTSUEiLCJqb2JMb2NhdGlvbiI6InNvdXRoZWFzdGFzaWEifQ?api-version=2016-09-01"
+                                                             ],
+                                                "Retry-After":  [
+                                                                    "15"
+                                                                ],
+                                                "x-ms-ratelimit-remaining-subscription-reads":  [
+                                                                                                    "11997"
+                                                                                                ],
+                                                "x-ms-request-id":  [
+                                                                        "7a039426-b095-4312-866f-62bdfa5a6352"
+                                                                    ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "7a039426-b095-4312-866f-62bdfa5a6352"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201219T140658Z:7a039426-b095-4312-866f-62bdfa5a6352"
+                                                                            ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:31:36 GMT"
+                                                         ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Content-Length":  [
+                                                                       "0"
+                                                                   ]
+                                            },
+                        "ResponseBody":  "",
+                        "StatusCode":  202
+                    },
+                    {
+                        "RequestUri":  "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSR0UyMTAwOEVDLVNPVVRIRUFTVEFTSUEiLCJqb2JMb2NhdGlvbiI6InNvdXRoZWFzdGFzaWEifQ?api-version=2016-09-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSMFV5TVRBd09FVkRMVk5QVlZSSVJVRlRWRUZUU1VFaUxDSnFiMkpNYjJOaGRHbHZiaUk2SW5OdmRYUm9aV0Z6ZEdGemFXRWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29220.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.18363.",
+                                                                  "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.29"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "Location":  [
+                                                                 "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSR0UyMTAwOEVDLVNPVVRIRUFTVEFTSUEiLCJqb2JMb2NhdGlvbiI6InNvdXRoZWFzdGFzaWEifQ?api-version=2016-09-01"
+                                                             ],
+                                                "Retry-After":  [
+                                                                    "15"
+                                                                ],
+                                                "x-ms-ratelimit-remaining-subscription-reads":  [
+                                                                                                    "11996"
+                                                                                                ],
+                                                "x-ms-request-id":  [
+                                                                        "1a1bc9c3-df71-4453-8cd8-b9b7f43ef6a2"
+                                                                    ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "1a1bc9c3-df71-4453-8cd8-b9b7f43ef6a2"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201219T140713Z:1a1bc9c3-df71-4453-8cd8-b9b7f43ef6a2"
+                                                                            ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:31:36 GMT"
+                                                         ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Content-Length":  [
+                                                                       "0"
+                                                                   ]
+                                            },
+                        "ResponseBody":  "",
+                        "StatusCode":  202
+                    },
+                    {
+                        "RequestUri":  "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSR0UyMTAwOEVDLVNPVVRIRUFTVEFTSUEiLCJqb2JMb2NhdGlvbiI6InNvdXRoZWFzdGFzaWEifQ?api-version=2016-09-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSMFV5TVRBd09FVkRMVk5QVlZSSVJVRlRWRUZUU1VFaUxDSnFiMkpNYjJOaGRHbHZiaUk2SW5OdmRYUm9aV0Z6ZEdGemFXRWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29220.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.18363.",
+                                                                  "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.29"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-ratelimit-remaining-subscription-reads":  [
+                                                                                                    "11995"
+                                                                                                ],
+                                                "x-ms-request-id":  [
+                                                                        "acf3777c-2871-4a73-ae7a-ebd9aa85852d"
+                                                                    ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "acf3777c-2871-4a73-ae7a-ebd9aa85852d"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201219T140728Z:acf3777c-2871-4a73-ae7a-ebd9aa85852d"
+                                                                            ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:31:36 GMT"
+                                                         ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Content-Length":  [
+                                                                       "0"
+                                                                   ]
+                                            },
+                        "ResponseBody":  "",
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSR0UyMTAwOEVDLVNPVVRIRUFTVEFTSUEiLCJqb2JMb2NhdGlvbiI6InNvdXRoZWFzdGFzaWEifQ?api-version=2016-09-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSMFV5TVRBd09FVkRMVk5QVlZSSVJVRlRWRUZUU1VFaUxDSnFiMkpNYjJOaGRHbHZiaUk2SW5OdmRYUm9aV0Z6ZEdGemFXRWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "User-Agent":  [
+                                                                  "FxVersion/4.6.29220.03",
+                                                                  "OSName/Windows",
+                                                                  "OSVersion/Microsoft.Windows.10.0.18363.",
+                                                                  "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.29"
+                                                              ]
+                                           },
+                        "ResponseHeaders":  {
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-ratelimit-remaining-subscription-reads":  [
+                                                                                                    "11994"
+                                                                                                ],
+                                                "x-ms-request-id":  [
+                                                                        "a48c16ef-7871-492e-a9c2-7682b92c76b3"
+                                                                    ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "a48c16ef-7871-492e-a9c2-7682b92c76b3"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20201219T140729Z:a48c16ef-7871-492e-a9c2-7682b92c76b3"
+                                                                            ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "X-Content-Type-Options":  [
+                                                                               "nosniff"
+                                                                           ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:31:36 GMT"
+                                                         ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Content-Length":  [
+                                                                       "0"
+                                                                   ]
+                                            },
+                        "ResponseBody":  "",
+                        "StatusCode":  200
+                    }
+                ],
+    "Names":  {
+
+              },
+    "Variables":  {
+                      "SubscriptionId":  "38304e13-357e-405e-9e9a-220351dcce8c",
+                      "NamingSuffix":  "e21008ec-ffa9-4e58-b13d-8068d04d5326"
+                  }
 }

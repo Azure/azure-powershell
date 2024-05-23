@@ -497,6 +497,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 ProviderData[RecoveryPointParams.RehydrateDuration].ToString() : "15";
             string rehydratePriority = ProviderData.ContainsKey(RecoveryPointParams.RehydratePriority) ?
                 ProviderData[RecoveryPointParams.RehydratePriority].ToString() : null;
+            string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
+            bool isMUAOperation = ProviderData.ContainsKey(ResourceGuardParams.IsMUAOperation) ? (bool)ProviderData[ResourceGuardParams.IsMUAOperation] : false;
 
             if (wLRecoveryConfig.RecoveryPoint.ContainerName != null && wLRecoveryConfig.FullRP == null)
             {
@@ -657,13 +659,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
                 #endregion
 
+                // check for MUA
+                bool isMUAProtected = isMUAOperation;
+
                 var response = ServiceClientAdapter.RestoreDisk(
                 (AzureRecoveryPoint)wLRecoveryConfig.RecoveryPoint,
                 "LocationNotRequired",
                 triggerRestoreRequest,
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName,
-                vaultLocation: vaultLocation);
+                vaultLocation: vaultLocation,
+                auxiliaryAccessToken,
+                isMUAProtected);
+
                 return response;
             }
         }
@@ -935,6 +943,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 isMUAProtected = AzureWorkloadProviderHelper.checkMUAForModifyPolicy(oldPolicy, newPolicy, isMUAOperation);
             }
+            if (disableWithRetentionData)
+            {
+                isMUAProtected = true;
+            }
 
             return ServiceClientAdapter.CreateOrUpdateProtectedItem(
                 containerUri,
@@ -943,7 +955,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 vaultName: vaultName,
                 resourceGroupName: vaultResourceGroupName,
                 auxiliaryAccessToken,
-                isMUAProtected);
+                isMUAProtected,
+                disableWithRetentionData);
         }
 
         public void RegisterContainer()

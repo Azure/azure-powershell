@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.HealthcareApis-help.xml
 Module Name: Az.HealthcareApis
 online version: https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcarefhirservice
 schema: 2.0.0
@@ -14,7 +14,7 @@ Creates or updates a FHIR Service resource with the specified parameters.
 
 ```
 New-AzHealthcareFhirService -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- -Kind <FhirServiceKind> -Location <String> [-SubscriptionId <String>]
+ [-SubscriptionId <String>] -Kind <FhirServiceKind> -Location <String>
  [-AccessPolicyObjectId <IFhirServiceAccessPolicyEntry[]>] [-AcrConfigurationLoginServer <String[]>]
  [-AcrConfigurationOciArtifact <IServiceOciArtifactEntry[]>] [-AllowCorsCredential] [-Audience <String>]
  [-Authority <String>] [-CorsHeader <String[]>] [-CorsMaxAge <Int32>] [-CorsMethod <String[]>]
@@ -23,7 +23,8 @@ New-AzHealthcareFhirService -Name <String> -ResourceGroupName <String> -Workspac
  [-PublicNetworkAccess <PublicNetworkAccess>]
  [-ResourceVersionPolicyConfigurationDefault <FhirResourceVersionPolicy>]
  [-ResourceVersionPolicyConfigurationResourceTypeOverride <Hashtable>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -511,20 +512,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IFhirService
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-ACCESSPOLICYOBJECTID <IFhirServiceAccessPolicyEntry[]>: Fhir Service access policies.
-  - `ObjectId <String>`: a Microsoft Entra object ID (User or Apps) that is allowed access to the FHIR service.
-
-ACRCONFIGURATIONOCIARTIFACT <IServiceOciArtifactEntry[]>: The list of Open Container Initiative (OCI) artifacts.
-  - `[Digest <String>]`: The artifact digest.
-  - `[ImageName <String>]`: The artifact name.
-  - `[LoginServer <String>]`: The Azure Container Registry login server.
 
 ## RELATED LINKS

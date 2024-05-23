@@ -23,7 +23,7 @@ Create an in-memory object for AzureDataExplorerDataSource.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerDataSource
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureDataExplorerDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureDataExplorerDataSourceObject
 #>
 function New-AzPurviewAzureDataExplorerDataSourceObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerDataSource')]

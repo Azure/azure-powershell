@@ -32,7 +32,8 @@ Update-AzStaticWebApp -InputObject <IWebsitesIdentity> [-AllowConfigFileUpdate] 
  [-ForkRepositoryName <String>] [-ForkRepositoryOwner <String>] [-GithubActionSecretNameOverride <String>]
  [-Kind <String>] [-OutputLocation <String>] [-RepositoryToken <String>] [-RepositoryUrl <String>]
  [-SkipGithubActionWorkflowGeneration] [-StagingEnvironmentPolicy <StagingEnvironmentPolicy>]
- [-TemplateRepositoryUrl <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TemplateRepositoryUrl <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

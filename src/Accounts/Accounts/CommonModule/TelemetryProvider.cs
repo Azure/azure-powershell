@@ -156,7 +156,6 @@ namespace Microsoft.Azure.Commands.Common
                 PSVersion = AzurePSCmdlet.PowerShellVersion,
                 HostVersion = AzurePSCmdlet.PSHostVersion,
                 PSHostName = AzurePSCmdlet.PSHostName,
-                SanitizerInfo = new SanitizerTelemetry()
             };
 
             if (invocationInfo != null)
@@ -177,6 +176,13 @@ namespace Microsoft.Azure.Commands.Common
                     qosEvent.Uid = MetricHelper.GenerateSha256HashString(context.Account.Id.ToString());
                 }
             }
+
+            var showSecretsWarning = false;
+            if (AzureSession.Instance.TryGetComponent<IOutputSanitizer>(nameof(IOutputSanitizer), out var outputSanitizer))
+            {
+                showSecretsWarning = outputSanitizer?.RequireSecretsDetection == true;
+            }
+            qosEvent.SanitizerInfo = new SanitizerTelemetry(showSecretsWarning);
 
             this[processRecordId] = qosEvent;
             return qosEvent;

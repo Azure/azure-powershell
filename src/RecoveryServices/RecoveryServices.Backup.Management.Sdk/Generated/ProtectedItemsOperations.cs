@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         /// <summary>
         /// Provides the details of the backed up item. This is an asynchronous
-        /// operation. To know the status of the operation,
-        /// call the GetItemOperationResult API.
+        /// operation. To know the status of the operation, call the
+        /// GetItemOperationResult API.
         /// </summary>
         /// <param name='odataQuery'>
         /// 
@@ -299,9 +299,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
         /// <summary>
         /// Enables backup of an item or to modifies the backup policy information of
-        /// an already backed up item. This is an
-        /// asynchronous operation. To know the status of the operation, call the
-        /// GetItemOperationResult API.
+        /// an already backed up item. This is an asynchronous operation. To know the
+        /// status of the operation, call the GetItemOperationResult API.
         /// </summary>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
@@ -318,6 +317,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// </param>
         /// <param name='protectedItemName'>
         /// Item name to be backed up.
+        /// </param>
+        /// <param name='xMsAuthorizationAuxiliary'>
+        /// 
         /// </param>
         /// <param name='parameters'>
         /// resource backed up item
@@ -343,7 +345,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProtectedItemResource>> CreateOrUpdateWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, ProtectedItemResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProtectedItemResource>> CreateOrUpdateWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, ProtectedItemResource parameters, string xMsAuthorizationAuxiliary = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -389,6 +391,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "protectedItemName");
             }
 
+
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -401,6 +404,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
                 tracingParameters.Add("fabricName", fabricName);
                 tracingParameters.Add("containerName", containerName);
                 tracingParameters.Add("protectedItemName", protectedItemName);
+                tracingParameters.Add("xMsAuthorizationAuxiliary", xMsAuthorizationAuxiliary);
 
                 tracingParameters.Add("parameters", parameters);
 
@@ -444,6 +448,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
                     _httpRequest.Headers.Remove("accept-language");
                 }
                 _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
+            }
+            if (xMsAuthorizationAuxiliary != null)
+            {
+                if (_httpRequest.Headers.Contains("x-ms-authorization-auxiliary"))
+                {
+                    _httpRequest.Headers.Remove("x-ms-authorization-auxiliary");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-authorization-auxiliary", xMsAuthorizationAuxiliary);
             }
 
             if (customHeaders != null)
@@ -561,8 +573,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
         /// <summary>
         /// Used to disable backup of an item within a container. This is an
-        /// asynchronous operation. To know the status of the
-        /// request, call the GetItemOperationResult API.
+        /// asynchronous operation. To know the status of the request, call the
+        /// GetItemOperationResult API.
         /// </summary>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVMwareCloudLink
 
 ## SYNOPSIS
-Create a cloud link in a private cloud
+Update a cloud link in a private cloud
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ Update-AzVMwareCloudLink -InputObject <IVMwareIdentity> [-LinkedCloud <String>] 
 ```
 
 ## DESCRIPTION
-Create a cloud link in a private cloud
+Update a cloud link in a private cloud
 
 ## EXAMPLES
 

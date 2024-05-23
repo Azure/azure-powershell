@@ -12,12 +12,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001
     /// the destination. The approach recommended for most customers is to specify the resourceId of the storage account. This
     /// requires a one-time registration of the account's subscription with the Microsoft.CostManagementExports resource provider
     /// in order to give Cost Management services access to the storage. When creating an export in the Azure portal this registration
-    /// is performed automatically but API users may need to register the subscription explicitly (for more information see https://learn.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services
+    /// is performed automatically but API users may need to register the subscription explicitly (for more information see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services
     /// ). Another way to configure the destination is available ONLY to Partners with a Microsoft Partner Agreement plan who
     /// are global admins of their billing account. These Partners, instead of specifying the resourceId of a storage account,
     /// can specify the storage account name along with a SAS token for the account. This allows exports of costs to a storage
     /// account in any tenant. The SAS token should be created for the blob service with Service/Container/Object resource types
-    /// and with Read/Write/Delete/List/Add/Create permissions (for more information see https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/export-cost-data-storage-account-sas-key
+    /// and with Read/Write/Delete/List/Add/Create permissions (for more information see https://docs.microsoft.com/en-us/azure/cost-management-billing/costs/export-cost-data-storage-account-sas-key
     /// ).
     /// </summary>
     public partial class ExportDeliveryDestination :
@@ -83,12 +83,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001
     /// the destination. The approach recommended for most customers is to specify the resourceId of the storage account. This
     /// requires a one-time registration of the account's subscription with the Microsoft.CostManagementExports resource provider
     /// in order to give Cost Management services access to the storage. When creating an export in the Azure portal this registration
-    /// is performed automatically but API users may need to register the subscription explicitly (for more information see https://learn.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services
+    /// is performed automatically but API users may need to register the subscription explicitly (for more information see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services
     /// ). Another way to configure the destination is available ONLY to Partners with a Microsoft Partner Agreement plan who
     /// are global admins of their billing account. These Partners, instead of specifying the resourceId of a storage account,
     /// can specify the storage account name along with a SAS token for the account. This allows exports of costs to a storage
     /// account in any tenant. The SAS token should be created for the blob service with Service/Container/Object resource types
-    /// and with Read/Write/Delete/List/Add/Create permissions (for more information see https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/export-cost-data-storage-account-sas-key
+    /// and with Read/Write/Delete/List/Add/Create permissions (for more information see https://docs.microsoft.com/en-us/azure/cost-management-billing/costs/export-cost-data-storage-account-sas-key
     /// ).
     public partial interface IExportDeliveryDestination :
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.IJsonSerializable
@@ -152,12 +152,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001
     /// the destination. The approach recommended for most customers is to specify the resourceId of the storage account. This
     /// requires a one-time registration of the account's subscription with the Microsoft.CostManagementExports resource provider
     /// in order to give Cost Management services access to the storage. When creating an export in the Azure portal this registration
-    /// is performed automatically but API users may need to register the subscription explicitly (for more information see https://learn.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services
+    /// is performed automatically but API users may need to register the subscription explicitly (for more information see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services
     /// ). Another way to configure the destination is available ONLY to Partners with a Microsoft Partner Agreement plan who
     /// are global admins of their billing account. These Partners, instead of specifying the resourceId of a storage account,
     /// can specify the storage account name along with a SAS token for the account. This allows exports of costs to a storage
     /// account in any tenant. The SAS token should be created for the blob service with Service/Container/Object resource types
-    /// and with Read/Write/Delete/List/Add/Create permissions (for more information see https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/export-cost-data-storage-account-sas-key
+    /// and with Read/Write/Delete/List/Add/Create permissions (for more information see https://docs.microsoft.com/en-us/azure/cost-management-billing/costs/export-cost-data-storage-account-sas-key
     /// ).
     public partial interface IExportDeliveryDestinationInternal
 

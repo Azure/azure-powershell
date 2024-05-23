@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-The operation to update a firmware analysis workspaces.
+The operation to Update a firmware analysis workspaces.
 .Description
-The operation to update a firmware analysis workspaces.
+The operation to Update a firmware analysis workspaces.
 .Example
 Update-AzFirmwareAnalysisWorkspace -ResourceGroupName resourceGroupName -Name workspaceName
 

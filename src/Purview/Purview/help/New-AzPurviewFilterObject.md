@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewFilterObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewFilterObject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,8 @@ Create an in-memory object for Filter.
 ## SYNTAX
 
 ```
-New-AzPurviewFilterObject [-ExcludeUriPrefix <String[]>] [-IncludeUriPrefix <String[]>] [<CommonParameters>]
+New-AzPurviewFilterObject [-ExcludeUriPrefix <String[]>] [-IncludeUriPrefix <String[]>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,7 +77,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Filter
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

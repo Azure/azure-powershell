@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StorageCache-help.xml
 Module Name: Az.StorageCache
 online version: https://learn.microsoft.com/powershell/module/az.storagecache/new-azstoragecacheamlfilesystem
 schema: 2.0.0
@@ -13,13 +13,14 @@ Create or update an AML file system.
 ## SYNTAX
 
 ```
-New-AzStorageCacheAmlFileSystem -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-FilesystemSubnet <String>] [-IdentityType <AmlFilesystemIdentityType>]
+New-AzStorageCacheAmlFileSystem -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> [-FilesystemSubnet <String>] [-IdentityType <AmlFilesystemIdentityType>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-KeyEncryptionKeyUrl <String>]
  [-MaintenanceWindowDayOfWeek <MaintenanceDayOfWeekType>] [-MaintenanceWindowTimeOfDayUtc <String>]
  [-SettingContainer <String>] [-SettingImportPrefix <String>] [-SettingLoggingContainer <String>]
  [-SkuName <String>] [-SourceVaultId <String>] [-StorageCapacityTiB <Single>] [-Tag <Hashtable>]
- [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -422,7 +423,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

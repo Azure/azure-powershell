@@ -92,7 +92,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.ChangeAnalysis/changes$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.ChangeAnalysis/changes$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ChangeAnalysis/changes'");
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/(?<resourceId>[^/]+)/providers/Microsoft.ChangeAnalysis$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/(?<resourceId>[^/]+)/providers/Microsoft.ChangeAnalysis$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/{resourceId}/providers/Microsoft.ChangeAnalysis/resourceChanges'");
@@ -471,7 +471,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ChangeAnalysis/changes$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ChangeAnalysis/changes$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ChangeAnalysis/changes'");
@@ -645,7 +645,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ChangeAnalysis
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.ChangeAnalysis/operations$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.ChangeAnalysis/operations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.ChangeAnalysis/operations'");

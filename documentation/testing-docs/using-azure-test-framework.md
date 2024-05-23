@@ -1,30 +1,31 @@
 # Using Azure PowerShell Test Framework
 
-- [Using Microsoft.Rest.ClientRuntime.Azure.TestFramework](#using-microsoftrestclientruntimeazuretestframework)
+- [Using Azure PowerShell Test Framework](#using-azure-powershell-test-framework)
   - [Getting Started](#getting-started)
   - [Azure PowerShell Test Framework](#azure-powershell-test-framework)
   - [Setup prior to Record or Playback of tests](#setup-prior-to-record-or-playback-of-tests)
-    - [Run Command Set-TestFxEnvironment to Build Connection String (Recommended)](#run-command-set-testfxenvironment-to-build-connection-string-recommended)
-      - [Create New Service Principal](#create-new-service-principal)
-      - [Use Existing Service Principal](#use-existing-service-principal)
+    - [Run Command Set-TestFxEnvironment to Build Connection String](#run-command-set-testfxenvironment-to-build-connection-string)
+      - [Use user account to record test cases (Recommended)](#use-user-account-to-record-test-cases-recommended)
+      - [Create New Service Principal (Not Recommended)](#create-new-service-principal-not-recommended)
+      - [Use Existing Service Principal (Not Recommended)](#use-existing-service-principal-not-recommended)
     - [Manually Set Environment Variables to Build Connection String](#manually-set-environment-variables-to-build-connection-string)
       - [Environment Variables](#environment-variables)
-      - [Record Test with service principal](#record-test-with-service-principal)
-      - [Playback Test](#playback-test)
+      - [Record Tests](#record-tests)
+      - [Playback Tests](#playback-tests)
   - [JSON Config File V.S. Environment Variables](#json-config-file-vs-environment-variables)
   - [Record or Playback Tests](#record-or-playback-tests)
   - [Change Test Environment settings at run-time](#change-test-environment-settings-at-run-time)
-    - [Once you set your connection string, you can add or update key/value settings](#once-you-set-your-connection-string-you-can-add-or-update-keyvalue-settings)
-      - [Note:](#note)
+      - [Once you set your connection string, you can add or update key/value settings](#once-you-set-your-connection-string-you-can-add-or-update-keyvalue-settings)
+    - [Note:](#note)
   - [Troubleshooting](#troubleshooting)
-    - [Issue: exceptions in Microsoft.Azure.Test.HttpRecorder](#issue-exceptions-in-microsoftazuretesthttprecorder)
+      - [Issue: exceptions in Microsoft.Azure.Test.HttpRecorder](#issue-exceptions-in-microsoftazuretesthttprecorder)
   - [Supported Environments in Test Framework](#supported-environments-in-test-framework)
-    - [Default Environments and associated Uri](#default-environments-and-associated-uri)
-      - [Environment = Prod](#environment--prod)
-      - [Environment = Dogfood](#environment--dogfood)
-      - [Environment = Next](#environment--next)
-      - [Environment = Current](#environment--current)
-      - [Environment = Custom](#environment--custom)
+      - [Default Environments and associated Uri](#default-environments-and-associated-uri)
+        - [Environment = Prod](#environment--prod)
+        - [Environment = Dogfood](#environment--dogfood)
+        - [Environment = Next](#environment--next)
+        - [Environment = Current](#environment--current)
+        - [Environment = Custom](#environment--custom)
 
 ## Getting Started
 
@@ -42,44 +43,51 @@ The target framework of test is .Net 6, please ensure .Net runtime Microsoft.NET
 
 ## Setup prior to Record or Playback of tests
 
-In order to Record/Playback a test, test framework needs to setup a connection string that consists of various key/value pairs that provide necessary information.
+To Record/Playback a test case, the test framework must establish a connection string comprising multiple key/value pairs that supply essential information.
 
 You can choose either option to configure the settings:
 
-- Run the [`Set-TestFxEnvironment` cmdlet](#run-command-set-testfxenvironment-to-build-connection-string) (Recommended)
+- [Run the Set-TestFxEnvironment cmdlet](#use-user-account-to-record-test-cases)
 - [Manually set the environment variables](#manually-set-environment-variables-to-build-connection-string)
 
-### Run Command Set-TestFxEnvironment to Build Connection String (Recommended)
+### Run Command Set-TestFxEnvironment to Build Connection String
 
-This cmdlet will allow you to create a credentials file (located in `C:/Users/<currentuser>/.Azure/testcredentials.json`) that will be used to set the connection string when scenario tests are run. This credentials file will be used in all future sessions unless it is deleted.
+This cmdlet enables you to generate a credentials file (located in `C:/Users/<currentuser>/.Azure/testcredentials.json`) that sets the connection string during scenario test execution. This credentials file persists across sessions unless manually deleted.
 
-#### Create New Service Principal
+#### Use user account to record test cases (Recommended)
 
-Using a service principal is the preferred option for recording tests because it works with both .NET Framework and .NET Core.
-In order to create a new service principal, run the following command with an unused service principal display name:
+Using a user account is the preferred method for recording test cases as it avoids storing secret in the local file with plain text. You can obtain the object ID of the user account either from the Azure portal or through Azure PowerShell.
+
+```powershell
+Set-TestFxEnvironment -UserId <UserId> -SubscriptionId <SubscriptionId> -TenantId <TenantId> -RecorderMode "Record"
+```
+
+#### Create New Service Principal (Not Recommended)
+
+Using a service principal is not recommended due to security concerns, but it remains an available option for your use.
+To create a new service principal, execute the following command with a brand new service principal display name:
 
 ```powershell
 Set-TestFxEnvironment -ServicePrincipalDisplayName <DisplayName> -SubscriptionId <SubscriptionId> -TenantId <TenantId> -RecorderMode "Record"
 ```
 
-This command will first create a new service principal. And then set the `Contributor` role assignment for this service principal based upon the subscription provided. After that, it will place the service principal application id and automatically generated secret into the credentials file.
+This command will initially create a new service principal, then assign the `Contributor` role to this service principal according to the specified subscription. Subsequently, it will update the credentials file with the application ID and an automatically generated secret for the service principal.
 
-If the display name of the service principal already exists, it will prompt if you would like to create a new one with the same name.
-If the answer is "Y", the new generated application id and the secret will be saved.
+If the display name of the service principal already exists, you will be prompted to decide whether to create a new one with the same name. If you choose "Y", the newly generated application ID and secret will be stored.
 
-Alternatively, if you prefer creating a service principal by yourself from Azure portal, follow the [Azure AD guide to create a Application Service Principal](https://learn.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-active-directory-application).
+Alternatively, if you prefer to create a service principal manually through the Azure portal, you can refer to [Azure AD guide to create a Application Service Principal](https://learn.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-active-directory-application).
 
-#### Use Existing Service Principal
+#### Use Existing Service Principal (Not Recommended)
 
-If you would like to use an existing service principal, run the following command with an existing service principal application id and secret:
+If you wish to utilize an existing service principal, execute the following command with the application ID and secret of the desired service principal:
 
 ```powershell
 Set-TestFxEnvironment -ServicePrincipalId <ServicePrincipalApplicationId> -ServicePrincipalSecret <ServicePrincipalSecret> -SubscriptionId <SubscriptionId> -TenantId <TenantId> -RecorderMode "Record"
 ```
 
-For existing service principal, this command will respect your own settings and won't assign the `Contributor` role automatically.
+For an existing service principal, this command will respect your current settings and won't assign the `Contributor` role automatically.
 
- 
+
 
 ### Manually Set Environment Variables to Build Connection String
 
@@ -87,67 +95,59 @@ For existing service principal, this command will respect your own settings and 
 
 `TEST_CSM_ORGID_AUTHENTICATION`
 
-* This determines how to connect to Azure. It includes both your authentication and the Azure environment information.
+* This variable determines how to connect to Azure. It encompasses both your authentication credentials and the Azure environment information.
 
 `AZURE_TEST_MODE`
 
-* This specifies whether the test framework will `Record` test sessions or `Playback` previously recorded test sessions.
+* This variable specifies whether the test framework will `Record` test sessions or `Playback` recorded test sessions.
 
 #### Record Tests
 
-After the service principal is created, you will need to give it access to Azure resources. This can be done with the following PowerShell command. The argument for this command is the application id (See [Service Principal Application ID](https://learn.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key))
+You can use either a user account (Recommended) or a Service Principal to record test cases with appropriate permissions.
 
-```powershell
-New-AzRoleAssignment -ApplicationId <ApplicationId> -Scope "/subscriptions/<SubscriptionId>" -RoleDefinitionName Contributor
-```
-
-To use this option, set the following environment variable before starting Visual Studio. The following values are substituted into the below environment variable:
-
-`ClientId`
-
-* The [Service Principal Application ID](https://learn.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key)
-
-`ClientSecret`
-
-* The [Service Principal Authentication Key](https://learn.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key)
+With user account, you may set the following environment variables:
 
 ```
-TEST_CSM_ORGID_AUTHENTICATION=Environment=Prod;SubscriptionId=<SubscriptionId>;TenantId=<TenantId>;ServicePrincipal=<ClientId>;ServicePrincipalSecret=<ClientSecret>;HttpRecorderMode=Record;
+TEST_CSM_ORGID_AUTHENTICATION=Environment=Prod;SubscriptionId=<SubscriptionId>;TenantId=<TenantId>;UserId=<UserId>;
+AZURE_TEST_MODE=Record
+```
+
+For service principal, you may set the following environment variables:
+
+```
+TEST_CSM_ORGID_AUTHENTICATION=Environment=Prod;SubscriptionId=<SubscriptionId>;TenantId=<TenantId>;ServicePrincipal=<ClientId>;ServicePrincipalSecret=<ClientSecret>;
 AZURE_TEST_MODE=Record
 ```
 
 #### Playback Tests
 
-The default test mode is `Playback`, so setting up the `AZURE_TEST_MODE` is not required. You can optionally set environment variables:
+The default test mode is `Playback`, so there is no need to set up the `AZURE_TEST_MODE` variable. You may optionally set the environment variables:
 
 ```
-TEST_CSM_ORGID_AUTHENTICATION=Environment=Prod;SubscriptionId=<SubscriptionId>;TenantId=<TenantId>;ServicePrincipal=<ClientId>;ServicePrincipalSecret=<ClientSecret>;HttpRecorderMode=Playback;
+TEST_CSM_ORGID_AUTHENTICATION=Environment=Prod;SubscriptionId=<SubscriptionId>;TenantId=<TenantId>;ServicePrincipal=<ClientId>;ServicePrincipalSecret=<ClientSecret>;
 AZURE_TEST_MODE=Playback
 ```
 
 ## JSON Config File V.S. Environment Variables
 
-Opting for config file is the recommended way to build connection string because any changes you make will take effect immediately without having to restart Visual Studio. However, updating the environment variables is different. It requires rebooting Visual Studio before it can read the updated values. So following is the steps how Test Framework detects the settings.
+The recommended approach for building the connection string is using a config file, as any changes made will take effect immediately without needing to restart Visual Studio. However, updating environment variables is a different process and requires a restart of Visual Studio for the updated values to be recognized. Here are the steps the Test Framework follows to detect settings:
 
 - If JSON config file exists
-  - It will be used to build the connection string. Anything set in the environment variables will be ignored
+  - The Test Framework will use it to build the connection string, ignoring any settings from environment variables.
 - If JSON config file does not exist
-  - Test framework will first retrieve the environment variable `TEST_CSM_ORGID_AUTHENTICATION` and use its value to build the connection string except for the test mode (Record/Playback).
-  - Then test framework will try to get the value of the environment variable `AZURE_TEST_MODE`
-    - If `AZURE_TEST_MODE` is set, its value will be used as the test mode
-    - Otherwise, the property named `HttpRecorderMode` configured in `TEST_CSM_ORGID_AUTHENTICATION` will be used
-    - If the property `HttpRecorderMode` is also not set, `Playback` will be applied as the default value
+  - The Test Framework will check the `TEST_CSM_ORGID_AUTHENTICATION` environment variable and use its value to build the connection string.
+  - The Test Framework will check the `AZURE_TEST_MODE` environment variable and use its value to build the test mode.
+    - If `AZURE_TEST_MODE` is set, its value will be used as the test mode.
+    - If `AZURE_TEST_MODE` is not set, the default test mode will be `Playback`.
 
-If you are not sure the settings on your machine, please run command `Get-TestFxEnvironment`. It will consolidate above steps and display the ultimate result.
+If you are unsure about the settings on your machine, you can run the command `Get-TestFxEnvironment` to consolidate the steps mentioned above and display the final result.
 
 ## Record or Playback Tests
 
-- [Run the tests](https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/azure-powershell-developer-guide.md#recordingrunning-tests) and make sure that you got a generated `.json` file that matches the test name under the `SessionRecords` folder in the test project.
+- [Run the tests](https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/azure-powershell-developer-guide.md#recordingrunning-tests) and make sure that you have a generated `.json` file that corresponds to the test name, and it should be located under the `SessionRecords` folder within the test project.
 - If you want to switch from Record to Playback or from Playback to Record, consider below steps.
-  - If you opt for JSON config file, update the value of the property `HttpRecorderMode` in the JSON.
-  - If you opt for environment variables
-    - If you have `AZURE_TEST_MODE` set, update the value of this variable
-    - Otherwise, update the value of the property `HttpRecorderMode` defined in the variable `TEST_CSM_ORGID_AUTHENTICATION`
+  - If you choose to use a JSON config file, update the value of the property `HttpRecorderMode` in the JSON file directly.
+  - If you prefer environment variables, update the value of environment variable `AZURE_TEST_MODE`.
 
 ## Change Test Environment settings at run-time
 
@@ -172,7 +172,7 @@ Changing the above properties at run-time has the potential to hard code few thi
 
 #### Issue: exceptions in Microsoft.Azure.Test.HttpRecorder
 
-Ensure that the `HttpRecorderMode` in the `TEST_CSM_ORGID_AUTHENTICATION` environment variable is consistent with the value in `AZURE_TEST_MODE` environment variable.
+The `HttpRecorderMode` key in the `TEST_CSM_ORGID_AUTHENTICATION` environment variable has been deprecated. Please remove this key/value pair and use `AZURE_TEST_MODE` instead for recording mode.
 
 ## Supported Environments in Test Framework
 

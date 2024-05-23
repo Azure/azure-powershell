@@ -84,7 +84,7 @@ function Test-AzureVaultPublicNetworkAccess
 function Test-AzureVaultImmutability
 {	
 	$resourceGroupName = "hiagaCZR-rg"
-	$vaultName = "hiagaImmutableVault"
+	$vaultName = "hiagaImmutableVault3"
 	$location = "eastus2euap"
 	$tag= @{"MABUsed"="Yes";"Owner"="hiaga";"Purpose"="Testing";"DeleteBy"="01-2099"}
 
@@ -180,8 +180,8 @@ function Test-AzureCrossZonalRestore
 	$targetVNetName = "hiagaNZPVNet"
 	$targetVNetRG = "hiagarg"
 	$targetSubnetName = "custom"
-	$recoveryPointId = "169203830578626" # latest vaultStandard recovery point
-	$snapshotRecoveryPointId = "168730494400823" # latest Snapshot (older than 4 hrs) recovery point
+	$recoveryPointId = "175504659649163" # latest vaultStandard recovery point
+	$snapshotRecoveryPointId = "171196026959443" # latest Snapshot (older than 4 hrs) recovery point
 	try
 	{	
 		# Setup
@@ -212,9 +212,9 @@ function Test-AzureCrossZonalRestore
 function Test-AzureMonitorAlerts
 {
 	$location = "centraluseuap"
-	$resourceGroupName = "hiagarg"
-	$vaultName1 = "alerts-pstest-vault1"
-	$vaultName2 = "alerts-pstest-vault2"
+	$resourceGroupName = "hiagarg" # "vijami-alertrg"  
+	$vaultName1 = "Backupalerts-pstest-vault1"
+	$vaultName2 = "Backupalerts-pstest-vault2"
 
 	try
 	{	
@@ -226,14 +226,17 @@ function Test-AzureMonitorAlerts
 
 		# create a vault with Alert settings 
 		$vault2 = New-AzRecoveryServicesVault -Name $vaultName2 -ResourceGroupName $resourceGroupName -Location "centraluseuap" `
-			-Tag $tag -DisableAzureMonitorAlertsForJobFailure $false `
-			-DisableClassicAlerts $true			
+			-DisableAzureMonitorAlertsForJobFailure $false `
+            -DisableAzureMonitorAlertsForAllReplicationIssue $false `
+            -DisableAzureMonitorAlertsForAllFailoverIssue $true `
+            -DisableEmailNotificationsForSiteRecovery $false `
+			-DisableClassicAlerts $true
 		
 		Assert-True { $vault2.Properties.AlertSettings -ne $null }
 		Assert-True { $vault2.Properties.AlertSettings.AzureMonitorAlertsForAllJobFailure -eq "Enabled" }
 		Assert-True { $vault2.Properties.AlertSettings.ClassicAlertsForCriticalOperations -eq "Disabled" }
 
-		$vault = Update-AzRecoveryServicesVault -ResourceGroupName "hiagarg"  -Name "hiagaVault" -DisableClassicAlerts $false
+		$vault = Update-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName  -Name $vaultName1 -DisableClassicAlerts $false
 
 		# update alert settings 
 		$vault1 = Update-AzRecoveryServicesVault -Name $vaultName1 -ResourceGroupName $resourceGroupName `
@@ -972,9 +975,9 @@ function Test-AzureVMBackup
 	$resourceGroupName = "hiagarg"
 	$vaultName = "hiaga-adhoc-vault"
 	$vmName1 = "VM;iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm"
-	$vmName2 = "VM;iaasvmcontainerv2;hiagarg;hiaganewvm3"	
+	$vmName2 = "VM;iaasvmcontainerv2;hiagarg;hiaganevm4"
 	$vmFriendlyName1 = "hiaga-adhoc-vm"
-	$vmFriendlyName2 = "hiaganewvm3"
+	$vmFriendlyName2 = "hiaganevm4"
 	
 	try
 	{

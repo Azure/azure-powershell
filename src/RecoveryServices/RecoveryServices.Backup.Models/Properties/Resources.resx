@@ -755,7 +755,7 @@ Please contact Microsoft for further assistance.</value>
     <value>ResourceGuardMapping not found</value>
   </data>
   <data name="DisableWithRetainBackupNotCrititcal" xml:space="preserve">
-    <value>Invalid parameter Token. Stop protection with retain backup data is not MUA protected</value>
+    <value>Invalid parameter Token. Stop protection with retain backup data as per policy is not MUA protected</value>
   </data>
   <data name="CRRNotSupportedWIthCSR" xml:space="preserve">
     <value>Cross region restore is not supported along with cross subscription restore, please try passing either RestoreToSecondaryRegion or TargetSubscriptionId parameter but not both</value>

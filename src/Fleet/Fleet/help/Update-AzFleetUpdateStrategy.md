@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzFleetUpdateStrategy
 
 ## SYNOPSIS
-Create a FleetUpdateStrategy
+Update a FleetUpdateStrategy
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ Update-AzFleetUpdateStrategy -InputObject <IFleetIdentity> [-IfMatch <String>] [
 ```
 
 ## DESCRIPTION
-Create a FleetUpdateStrategy
+Update a FleetUpdateStrategy
 
 ## EXAMPLES
 

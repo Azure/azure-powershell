@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Reservations-help.xml
 Module Name: Az.Reservations
 online version: https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationcalculaterefund
 schema: 2.0.0
@@ -16,26 +16,26 @@ Calculate price for returning `Reservations` if there are no policy errors.\n
 ```
 Invoke-AzReservationCalculateRefund -ReservationOrderId <String> [-Id <String>]
  [-ReservationToReturnQuantity <Int32>] [-ReservationToReturnReservationId <String>] [-Scope <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Post
 ```
 Invoke-AzReservationCalculateRefund -ReservationOrderId <String> -Body <ICalculateRefundRequest>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PostViaIdentity
-```
-Invoke-AzReservationCalculateRefund -InputObject <IReservationsIdentity> -Body <ICalculateRefundRequest>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PostViaIdentityExpanded
 ```
 Invoke-AzReservationCalculateRefund -InputObject <IReservationsIdentity> [-Id <String>]
  [-ReservationToReturnQuantity <Int32>] [-ReservationToReturnReservationId <String>] [-Scope <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### PostViaIdentity
+```
+Invoke-AzReservationCalculateRefund -InputObject <IReservationsIdentity> -Body <ICalculateRefundRequest>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -149,7 +149,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
-Parameter Sets: PostViaIdentity, PostViaIdentityExpanded
+Parameter Sets: PostViaIdentityExpanded, PostViaIdentity
 Aliases:
 
 Required: True
@@ -164,7 +164,7 @@ Order Id of the reservation
 
 ```yaml
 Type: System.String
-Parameter Sets: Post, PostExpanded
+Parameter Sets: PostExpanded, Post
 Aliases:
 
 Required: True
@@ -267,24 +267,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`BODY <ICalculateRefundRequest>`: Request containing information needed for calculating refund.
-  - `[Id <String>]`: Fully qualified identifier of the reservation order being returned
-  - `[ReservationToReturnQuantity <Int32?>]`: Quantity to be returned. Must be greater than zero.
-  - `[ReservationToReturnReservationId <String>]`: Fully qualified identifier of the reservation being returned
-  - `[Scope <String>]`: The scope of the refund, e.g. Reservation
-
-`INPUTOBJECT <IReservationsIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ReservationId <String>]`: Id of the reservation item
-  - `[ReservationOrderId <String>]`: Order Id of the reservation
-  - `[SubscriptionId <String>]`: Id of the subscription
-
 ## RELATED LINKS
-

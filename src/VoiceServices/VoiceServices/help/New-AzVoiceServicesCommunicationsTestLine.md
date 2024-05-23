@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.VoiceServices-help.xml
 Module Name: Az.VoiceServices
 online version: https://learn.microsoft.com/powershell/module/az.voiceservices/new-azvoiceservicescommunicationstestline
 schema: 2.0.0
@@ -14,9 +14,9 @@ Create a TestLine
 
 ```
 New-AzVoiceServicesCommunicationsTestLine -CommunicationsGatewayName <String> -Name <String>
- -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>] [-PhoneNumber <String>]
- [-Purpose <TestLinePurpose>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String> [-PhoneNumber <String>]
+ [-Purpose <TestLinePurpose>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +32,7 @@ New-AzVoiceServicesCommunicationsTestLine -ResourceGroupName vtest-communication
 ```output
 Location      Name        SystemDataCreatedAt  SystemDataCreatedBy  SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName      RetryAfter
 --------      ----        -------------------  -------------------  ----------------------- ------------------------ ------------------------ ---------------------------- -----------------      ----------
-westcentralus testline-01 12/7/2022 7:56:47 AM v-diya@microsoft.com User                    12/7/2022 7:56:47 AM     v-diya@microsoft.com     User                         vtest-communication-rg 
+westcentralus testline-01 12/7/2022 7:56:47 AM v-diya@microsoft.com User                    12/7/2022 7:56:47 AM     v-diya@microsoft.com     User                         vtest-communication-rg
 ```
 
 Create a test line for the communications gateway.
@@ -70,7 +70,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -248,7 +249,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

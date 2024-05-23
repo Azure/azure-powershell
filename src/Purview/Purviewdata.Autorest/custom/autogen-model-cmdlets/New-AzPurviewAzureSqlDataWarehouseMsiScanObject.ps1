@@ -23,7 +23,7 @@ Create an in-memory object for AzureSqlDataWarehouseMsiScan.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDataWarehouseMsiScan
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDataWarehouseMsiScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSqlDataWarehouseMsiScanObject
 #>
 function New-AzPurviewAzureSqlDataWarehouseMsiScanObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDataWarehouseMsiScan')]

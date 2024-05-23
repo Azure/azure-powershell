@@ -16,10 +16,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzServiceBusPrivateLink')
 
 Describe 'Get-AzServiceBusPrivateLink' {
     It 'Get' {
+        $namespace = Get-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespace
         $privateLink = Get-AzServiceBusPrivateLink -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup
         $privateLink.Name | Should -Be "namespace"
         $privateLink.GroupId | Should -Be "namespace"
         $privateLink.RequiredMember[0] | Should -Be "namespace"
-        $privateLink.RequiredZoneName[0] | Should -Be "privatelink.servicebus.windows.net"
+        $privateLink.RequiredZoneName[0] | Should -Be $([System.Uri]$namespace.ServiceBusEndpoint).Host.ToLower().Replace($env.namespace.ToLower(), 'privatelink')
     }
 }

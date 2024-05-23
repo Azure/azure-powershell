@@ -17,7 +17,7 @@ Updates a ServiceBus Subscription
 Set-AzServiceBusSubscription -Name <String> -TopicName <String> -NamespaceName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-AutoDeleteOnIdle <TimeSpan>]
  [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
- [-LockDuration <TimeSpan>] [-EnableBatchedOperations] [-Status <EntityStatus>] [-ForwardTo <String>]
+ [-LockDuration <TimeSpan>] [-EnableBatchedOperations] [-Status <String>] [-ForwardTo <String>]
  [-ForwardDeadLetteredMessagesTo <String>] [-MaxDeliveryCount <Int32>]
  [-DeadLetteringOnFilterEvaluationException] [-DeadLetteringOnMessageExpiration] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -27,7 +27,7 @@ Set-AzServiceBusSubscription -Name <String> -TopicName <String> -NamespaceName <
 ```
 Set-AzServiceBusSubscription -InputObject <IServiceBusIdentity> [-AutoDeleteOnIdle <TimeSpan>]
  [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
- [-LockDuration <TimeSpan>] [-EnableBatchedOperations] [-Status <EntityStatus>] [-ForwardTo <String>]
+ [-LockDuration <TimeSpan>] [-EnableBatchedOperations] [-Status <String>] [-ForwardTo <String>]
  [-ForwardDeadLetteredMessagesTo <String>] [-MaxDeliveryCount <Int32>]
  [-DeadLetteringOnFilterEvaluationException] [-DeadLetteringOnMessageExpiration] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -385,7 +385,7 @@ Accept wildcard characters: False
 Enumerates the possible values for the status of a messaging entity.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.EntityStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -466,7 +466,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbSubscription
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription
 
 ## NOTES
 

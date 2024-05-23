@@ -45,7 +45,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
-                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
-                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.623\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onOk(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.695\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -384,7 +384,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.623\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onOk(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.695\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -463,7 +463,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
-                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -531,7 +531,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
-                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -586,7 +586,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.623\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onOk(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.695\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -669,7 +669,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
-                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -740,7 +740,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
-                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -795,7 +795,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.623\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onOk(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.695\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -1167,7 +1167,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         case global::System.Net.HttpStatusCode.NoContent:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onNoContent(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.623\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onNoContent(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.695\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -1621,7 +1621,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
-                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -1697,7 +1697,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
-                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -1771,7 +1771,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
-                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -1835,7 +1835,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
-                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -2035,7 +2035,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
-                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -2106,7 +2106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
-                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -2175,7 +2175,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
-                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -2234,7 +2234,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
-                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -2785,7 +2785,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
-                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -2853,7 +2853,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
-                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -2919,7 +2919,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
-                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -2975,7 +2975,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
-                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -3164,7 +3164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
-                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -3235,7 +3235,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
-                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -3304,7 +3304,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
-                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -3363,7 +3363,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
-                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -3519,7 +3519,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
             }
         }
 
-        /// <summary>Creates a key-value.</summary>
+        /// <summary>Put a key-value.</summary>
         /// <param name="key">The key of the key-value to create.</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
         /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
@@ -3583,7 +3583,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
             }
         }
 
-        /// <summary>Creates a key-value.</summary>
+        /// <summary>Put a key-value.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
         /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
@@ -3657,7 +3657,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
             }
         }
 
-        /// <summary>Creates a key-value.</summary>
+        /// <summary>Put a key-value.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
         /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
@@ -3729,7 +3729,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
             }
         }
 
-        /// <summary>Creates a key-value.</summary>
+        /// <summary>Put a key-value.</summary>
         /// <param name="key">The key of the key-value to create.</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
         /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
@@ -3792,7 +3792,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
             }
         }
 
-        /// <summary>Creates a key-value.</summary>
+        /// <summary>Put a key-value.</summary>
         /// <param name="key">The key of the key-value to create.</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
         /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
@@ -3853,7 +3853,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
             }
         }
 
-        /// <summary>Creates a key-value.</summary>
+        /// <summary>Put a key-value.</summary>
         /// <param name="key">The key of the key-value to create.</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
         /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>

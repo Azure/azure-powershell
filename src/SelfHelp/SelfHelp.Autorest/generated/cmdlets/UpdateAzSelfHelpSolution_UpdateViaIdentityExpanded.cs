@@ -15,10 +15,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
     /// [OpenAPI] Update=>PATCH:"/{scope}/providers/Microsoft.Help/solutions/{solutionResourceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzSelfHelpSolution_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Description(@"Update the requiredInputs or additional information needed to execute the solution ")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.HttpPath(Path = "/{scope}/providers/Microsoft.Help/solutions/{solutionResourceName}", ApiVersion = "2023-09-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.HttpPath(Path = "/{scope}/providers/Microsoft.Help/solutions/{solutionResourceName}", ApiVersion = "2024-03-01-preview")]
     public partial class UpdateAzSelfHelpSolution_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener
     {
@@ -36,8 +36,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
-        /// <summary>Solution response.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionPatchRequestBody _solutionPatchRequestBody = new Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.SolutionPatchRequestBody();
+        /// <summary>Solution PatchRequest body</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionPatchRequestBody _solutionPatchRequestBody = new Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.SolutionPatchRequestBody();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -51,17 +51,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.SelfHelp Client => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Module.Instance.ClientAPI;
-
-        /// <summary>The HTML content that needs to be rendered and shown to customer.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The HTML content that needs to be rendered and shown to customer.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The HTML content that needs to be rendered and shown to customer.",
-        SerializedName = @"content",
-        PossibleTypes = new [] { typeof(string) })]
-        public string Content { get => _solutionPatchRequestBody.Content ?? null; set => _solutionPatchRequestBody.Content = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -121,25 +110,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
         ReadOnly = false,
         Description = @"Client input parameters to run Solution",
         SerializedName = @"parameters",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResourcePropertiesParameters) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResourcePropertiesParameters Parameter { get => _solutionPatchRequestBody.Parameter ?? null /* object */; set => _solutionPatchRequestBody.Parameter = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResourcePropertiesParameters) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResourcePropertiesParameters Parameter { get => _solutionPatchRequestBody.Parameter ?? null /* object */; set => _solutionPatchRequestBody.Parameter = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.HttpPipeline Pipeline { get; set; }
-
-        /// <summary>Status of solution provisioning.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Status of solution provisioning.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Status of solution provisioning.",
-        SerializedName = @"provisioningState",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.SolutionProvisioningState) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.SolutionProvisioningState))]
-        public Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.SolutionProvisioningState ProvisioningState { get => _solutionPatchRequestBody.ProvisioningState ?? ((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.SolutionProvisioningState)""); set => _solutionPatchRequestBody.ProvisioningState = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -157,114 +134,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
-        /// <summary>Solution diagnostics results.</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Solution diagnostics results.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Solution diagnostics results.",
-        SerializedName = @"diagnostics",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionsDiagnostic) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionsDiagnostic[] ReplacementMapDiagnostic { get => _solutionPatchRequestBody.ReplacementMapDiagnostic ?? null /* arrayOf */; set => _solutionPatchRequestBody.ReplacementMapDiagnostic = value; }
-
-        /// <summary>Solution metrics based charts</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Solution metrics based charts")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Solution metrics based charts",
-        SerializedName = @"metricsBasedCharts",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IMetricsBasedChart) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IMetricsBasedChart[] ReplacementMapMetricsBasedChart { get => _solutionPatchRequestBody.ReplacementMapMetricsBasedChart ?? null /* arrayOf */; set => _solutionPatchRequestBody.ReplacementMapMetricsBasedChart = value; }
-
-        /// <summary>Solutions Troubleshooters</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Solutions Troubleshooters")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Solutions Troubleshooters",
-        SerializedName = @"troubleshooters",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionsTroubleshooters) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionsTroubleshooters[] ReplacementMapTroubleshooter { get => _solutionPatchRequestBody.ReplacementMapTroubleshooter ?? null /* arrayOf */; set => _solutionPatchRequestBody.ReplacementMapTroubleshooter = value; }
-
-        /// <summary>
-        /// Video solutions, which have the power to engage the customer by stimulating their senses
-        /// </summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Video solutions, which have the power to engage the customer by stimulating their senses")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Video solutions, which have the power to engage the customer by stimulating their senses",
-        SerializedName = @"videos",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IVideo) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IVideo[] ReplacementMapVideo { get => _solutionPatchRequestBody.ReplacementMapVideo ?? null /* arrayOf */; set => _solutionPatchRequestBody.ReplacementMapVideo = value; }
-
-        /// <summary>Group of Videos</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Group of Videos")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Group of Videos",
-        SerializedName = @"videoGroups",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IVideoGroup) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IVideoGroup[] ReplacementMapVideoGroup { get => _solutionPatchRequestBody.ReplacementMapVideoGroup ?? null /* arrayOf */; set => _solutionPatchRequestBody.ReplacementMapVideoGroup = value; }
-
-        /// <summary>Solution AzureKB results</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Solution AzureKB results")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Solution AzureKB results",
-        SerializedName = @"webResults",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IWebResult) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IWebResult[] ReplacementMapWebResult { get => _solutionPatchRequestBody.ReplacementMapWebResult ?? null /* arrayOf */; set => _solutionPatchRequestBody.ReplacementMapWebResult = value; }
-
-        /// <summary>List of section object.</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of section object.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"List of section object.",
-        SerializedName = @"sections",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISection) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISection[] Section { get => _solutionPatchRequestBody.Section ?? null /* arrayOf */; set => _solutionPatchRequestBody.Section = value; }
-
-        /// <summary>Solution Id to identify single solution.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Solution Id to identify single solution.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Solution Id to identify single solution.",
-        SerializedName = @"solutionId",
-        PossibleTypes = new [] { typeof(string) })]
-        public string SolutionId { get => _solutionPatchRequestBody.SolutionId ?? null; set => _solutionPatchRequestBody.SolutionId = value; }
-
-        /// <summary>The title.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The title.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The title.",
-        SerializedName = @"title",
-        PossibleTypes = new [] { typeof(string) })]
-        public string Title { get => _solutionPatchRequestBody.Title ?? null; set => _solutionPatchRequestBody.Title = value; }
-
         /// <summary>Solution request trigger criteria</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Solution request trigger criteria")]
@@ -274,8 +143,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
         ReadOnly = false,
         Description = @"Solution request trigger criteria",
         SerializedName = @"triggerCriteria",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITriggerCriterion) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITriggerCriterion[] TriggerCriterion { get => _solutionPatchRequestBody.TriggerCriterion ?? null /* arrayOf */; set => _solutionPatchRequestBody.TriggerCriterion = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ITriggerCriterion) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ITriggerCriterion[] TriggerCriterion { get => _solutionPatchRequestBody.TriggerCriterion ?? null /* arrayOf */; set => _solutionPatchRequestBody.TriggerCriterion = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -294,12 +163,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource">Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResource">Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResource</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -343,7 +212,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -538,6 +424,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
 
         }
 
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
+        }
+
         /// <summary>
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
@@ -582,12 +483,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource">Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResource">Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResource</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResource> response)
         {
             using( NoSynchronizationContext )
             {
@@ -599,7 +500,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResource
                 WriteObject((await response));
             }
         }

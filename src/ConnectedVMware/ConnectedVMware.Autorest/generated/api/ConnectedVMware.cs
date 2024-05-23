@@ -1830,7 +1830,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the cluster resource.</summary>
+        /// <summary>API to Update certain properties of the cluster resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="clusterName">Name of the cluster.</param>
@@ -1879,7 +1879,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the cluster resource.</summary>
+        /// <summary>API to Update certain properties of the cluster resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1938,7 +1938,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the cluster resource.</summary>
+        /// <summary>API to Update certain properties of the cluster resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1995,7 +1995,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the cluster resource.</summary>
+        /// <summary>API to Update certain properties of the cluster resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="clusterName">Name of the cluster.</param>
@@ -2043,7 +2043,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the cluster resource.</summary>
+        /// <summary>API to Update certain properties of the cluster resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="clusterName">Name of the cluster.</param>
@@ -2089,7 +2089,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the cluster resource.</summary>
+        /// <summary>API to Update certain properties of the cluster resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="clusterName">Name of the cluster.</param>
@@ -4086,7 +4086,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the datastore resource.</summary>
+        /// <summary>API to Update certain properties of the datastore resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="datastoreName">Name of the datastore.</param>
@@ -4135,7 +4135,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the datastore resource.</summary>
+        /// <summary>API to Update certain properties of the datastore resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -4194,7 +4194,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the datastore resource.</summary>
+        /// <summary>API to Update certain properties of the datastore resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4251,7 +4251,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the datastore resource.</summary>
+        /// <summary>API to Update certain properties of the datastore resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="datastoreName">Name of the datastore.</param>
@@ -4299,7 +4299,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the datastore resource.</summary>
+        /// <summary>API to Update certain properties of the datastore resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="datastoreName">Name of the datastore.</param>
@@ -4345,7 +4345,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the datastore resource.</summary>
+        /// <summary>API to Update certain properties of the datastore resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="datastoreName">Name of the datastore.</param>
@@ -6340,7 +6340,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the host resource.</summary>
+        /// <summary>API to Update certain properties of the host resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="hostName">Name of the host.</param>
@@ -6389,7 +6389,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the host resource.</summary>
+        /// <summary>API to Update certain properties of the host resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -6448,7 +6448,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the host resource.</summary>
+        /// <summary>API to Update certain properties of the host resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -6505,7 +6505,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the host resource.</summary>
+        /// <summary>API to Update certain properties of the host resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="hostName">Name of the host.</param>
@@ -6553,7 +6553,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the host resource.</summary>
+        /// <summary>API to Update certain properties of the host resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="hostName">Name of the host.</param>
@@ -6599,7 +6599,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the host resource.</summary>
+        /// <summary>API to Update certain properties of the host resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="hostName">Name of the host.</param>
@@ -6780,7 +6780,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create InventoryItem.</summary>
+        /// <summary>Update InventoryItem.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="vcenterName">Name of the vCenter.</param>
@@ -6832,7 +6832,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create InventoryItem.</summary>
+        /// <summary>Update InventoryItem.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -6894,7 +6894,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create InventoryItem.</summary>
+        /// <summary>Update InventoryItem.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -6954,7 +6954,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create InventoryItem.</summary>
+        /// <summary>Update InventoryItem.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="vcenterName">Name of the vCenter.</param>
@@ -7005,7 +7005,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create InventoryItem.</summary>
+        /// <summary>Update InventoryItem.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="vcenterName">Name of the vCenter.</param>
@@ -7054,7 +7054,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create InventoryItem.</summary>
+        /// <summary>Update InventoryItem.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="vcenterName">Name of the vCenter.</param>
@@ -10180,7 +10180,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the resourcePool resource.</summary>
+        /// <summary>API to Update certain properties of the resourcePool resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="resourcePoolName">Name of the resourcePool.</param>
@@ -10229,7 +10229,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the resourcePool resource.</summary>
+        /// <summary>API to Update certain properties of the resourcePool resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -10288,7 +10288,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the resourcePool resource.</summary>
+        /// <summary>API to Update certain properties of the resourcePool resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10345,7 +10345,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the resourcePool resource.</summary>
+        /// <summary>API to Update certain properties of the resourcePool resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="resourcePoolName">Name of the resourcePool.</param>
@@ -10393,7 +10393,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the resourcePool resource.</summary>
+        /// <summary>API to Update certain properties of the resourcePool resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="resourcePoolName">Name of the resourcePool.</param>
@@ -10439,7 +10439,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the resourcePool resource.</summary>
+        /// <summary>API to Update certain properties of the resourcePool resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="resourcePoolName">Name of the resourcePool.</param>
@@ -12436,7 +12436,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the vCenter resource.</summary>
+        /// <summary>API to Update certain properties of the vCenter resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="vcenterName">Name of the vCenter.</param>
@@ -12485,7 +12485,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the vCenter resource.</summary>
+        /// <summary>API to Update certain properties of the vCenter resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -12544,7 +12544,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the vCenter resource.</summary>
+        /// <summary>API to Update certain properties of the vCenter resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -12601,7 +12601,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the vCenter resource.</summary>
+        /// <summary>API to Update certain properties of the vCenter resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="vcenterName">Name of the vCenter.</param>
@@ -12649,7 +12649,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the vCenter resource.</summary>
+        /// <summary>API to Update certain properties of the vCenter resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="vcenterName">Name of the vCenter.</param>
@@ -12695,7 +12695,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the vCenter resource.</summary>
+        /// <summary>API to Update certain properties of the vCenter resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="vcenterName">Name of the vCenter.</param>
@@ -12876,7 +12876,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create GuestAgent.</summary>
+        /// <summary>Update GuestAgent.</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>
         /// <param name="body">Request payload.</param>
@@ -12921,7 +12921,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create GuestAgent.</summary>
+        /// <summary>Update GuestAgent.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -12975,7 +12975,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create GuestAgent.</summary>
+        /// <summary>Update GuestAgent.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -13027,7 +13027,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create GuestAgent.</summary>
+        /// <summary>Update GuestAgent.</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>
         /// <param name="jsonString">Json string supplied to the VMInstanceGuestAgentsCreate operation</param>
@@ -13071,7 +13071,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create GuestAgent.</summary>
+        /// <summary>Update GuestAgent.</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>
         /// <param name="jsonString">Json string supplied to the VMInstanceGuestAgentsCreate operation</param>
@@ -13113,7 +13113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>Create GuestAgent.</summary>
+        /// <summary>Update GuestAgent.</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>
         /// <param name="body">Request payload.</param>
@@ -14915,7 +14915,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         }
 
         /// <summary>
-        /// The operation to Create a virtual machine instance. Please note some properties can be set only during virtual machine
+        /// The operation to Update a virtual machine instance. Please note some properties can be set only during virtual machine
         /// instance creation.
         /// </summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
@@ -14963,7 +14963,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         }
 
         /// <summary>
-        /// The operation to Create a virtual machine instance. Please note some properties can be set only during virtual machine
+        /// The operation to Update a virtual machine instance. Please note some properties can be set only during virtual machine
         /// instance creation.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -15020,7 +15020,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         }
 
         /// <summary>
-        /// The operation to Create a virtual machine instance. Please note some properties can be set only during virtual machine
+        /// The operation to Update a virtual machine instance. Please note some properties can be set only during virtual machine
         /// instance creation.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -15075,7 +15075,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         }
 
         /// <summary>
-        /// The operation to Create a virtual machine instance. Please note some properties can be set only during virtual machine
+        /// The operation to Update a virtual machine instance. Please note some properties can be set only during virtual machine
         /// instance creation.
         /// </summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
@@ -15122,7 +15122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         }
 
         /// <summary>
-        /// The operation to Create a virtual machine instance. Please note some properties can be set only during virtual machine
+        /// The operation to Update a virtual machine instance. Please note some properties can be set only during virtual machine
         /// instance creation.
         /// </summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
@@ -15167,7 +15167,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
         }
 
         /// <summary>
-        /// The operation to Create a virtual machine instance. Please note some properties can be set only during virtual machine
+        /// The operation to Update a virtual machine instance. Please note some properties can be set only during virtual machine
         /// instance creation.
         /// </summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
@@ -17152,7 +17152,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>The operation to update a virtual machine instance.</summary>
+        /// <summary>The operation to Update a virtual machine instance.</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>
         /// <param name="body">Resource properties to update.</param>
@@ -17197,7 +17197,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>The operation to update a virtual machine instance.</summary>
+        /// <summary>The operation to Update a virtual machine instance.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -17251,7 +17251,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>The operation to update a virtual machine instance.</summary>
+        /// <summary>The operation to Update a virtual machine instance.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -17303,7 +17303,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>The operation to update a virtual machine instance.</summary>
+        /// <summary>The operation to Update a virtual machine instance.</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>
         /// <param name="jsonString">Json string supplied to the VirtualMachineInstancesUpdate operation</param>
@@ -17347,7 +17347,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>The operation to update a virtual machine instance.</summary>
+        /// <summary>The operation to Update a virtual machine instance.</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>
         /// <param name="jsonString">Json string supplied to the VirtualMachineInstancesUpdate operation</param>
@@ -17389,7 +17389,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>The operation to update a virtual machine instance.</summary>
+        /// <summary>The operation to Update a virtual machine instance.</summary>
         /// <param name="resourceUri">The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource
         /// to be extended.</param>
         /// <param name="body">Resource properties to update.</param>
@@ -19565,7 +19565,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the virtual machine template resource.</summary>
+        /// <summary>API to Update certain properties of the virtual machine template resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="virtualMachineTemplateName">Name of the virtual machine template resource.</param>
@@ -19614,7 +19614,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the virtual machine template resource.</summary>
+        /// <summary>API to Update certain properties of the virtual machine template resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -19673,7 +19673,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the virtual machine template resource.</summary>
+        /// <summary>API to Update certain properties of the virtual machine template resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -19730,7 +19730,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the virtual machine template resource.</summary>
+        /// <summary>API to Update certain properties of the virtual machine template resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="virtualMachineTemplateName">Name of the virtual machine template resource.</param>
@@ -19778,7 +19778,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the virtual machine template resource.</summary>
+        /// <summary>API to Update certain properties of the virtual machine template resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="virtualMachineTemplateName">Name of the virtual machine template resource.</param>
@@ -19824,7 +19824,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the virtual machine template resource.</summary>
+        /// <summary>API to Update certain properties of the virtual machine template resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="virtualMachineTemplateName">Name of the virtual machine template resource.</param>
@@ -21823,7 +21823,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the virtual network resource.</summary>
+        /// <summary>API to Update certain properties of the virtual network resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="virtualNetworkName">Name of the virtual network resource.</param>
@@ -21872,7 +21872,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the virtual network resource.</summary>
+        /// <summary>API to Update certain properties of the virtual network resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -21931,7 +21931,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the virtual network resource.</summary>
+        /// <summary>API to Update certain properties of the virtual network resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource properties to update.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -21988,7 +21988,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the virtual network resource.</summary>
+        /// <summary>API to Update certain properties of the virtual network resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="virtualNetworkName">Name of the virtual network resource.</param>
@@ -22036,7 +22036,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the virtual network resource.</summary>
+        /// <summary>API to Update certain properties of the virtual network resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="virtualNetworkName">Name of the virtual network resource.</param>
@@ -22082,7 +22082,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware
             }
         }
 
-        /// <summary>API to update certain properties of the virtual network resource.</summary>
+        /// <summary>API to Update certain properties of the virtual network resource.</summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="virtualNetworkName">Name of the virtual network resource.</param>

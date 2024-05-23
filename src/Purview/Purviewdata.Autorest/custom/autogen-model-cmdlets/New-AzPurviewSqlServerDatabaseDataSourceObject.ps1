@@ -23,7 +23,7 @@ Create an in-memory object for SqlServerDatabaseDataSource.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SqlServerDatabaseDataSource
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewSqlServerDatabaseDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewSqlServerDatabaseDataSourceObject
 #>
 function New-AzPurviewSqlServerDatabaseDataSourceObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SqlServerDatabaseDataSource')]

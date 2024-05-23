@@ -129,19 +129,19 @@ Return quota for subscription by region
 Return trial status for subscription by region
 
 ### [Update-AzVMwareAuthorization](Update-AzVMwareAuthorization.md)
-Create an ExpressRoute Circuit Authorization in a private cloud
+Update an ExpressRoute Circuit Authorization in a private cloud
 
 ### [Update-AzVMwareCloudLink](Update-AzVMwareCloudLink.md)
-Create a cloud link in a private cloud
+Update a cloud link in a private cloud
 
 ### [Update-AzVMwareCluster](Update-AzVMwareCluster.md)
 Update a cluster in a private cloud
 
 ### [Update-AzVMwareDatastore](Update-AzVMwareDatastore.md)
-Create a datastore in a private cloud cluster
+Update a datastore in a private cloud cluster
 
 ### [Update-AzVMwareGlobalReachConnection](Update-AzVMwareGlobalReachConnection.md)
-Create a global reach connection in a private cloud
+Update a global reach connection in a private cloud
 
 ### [Update-AzVMwarePlacementPolicy](Update-AzVMwarePlacementPolicy.md)
 Update a placement policy in a private cloud cluster
