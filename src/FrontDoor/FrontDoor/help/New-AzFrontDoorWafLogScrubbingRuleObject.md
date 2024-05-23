@@ -36,7 +36,7 @@ This obejct is a parameter for LogscrubbingSetting
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 Gets or sets the variable to be scrubbed from the logs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 Gets or sets when matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 Gets or sets when matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 Gets or sets defines the state of a log scrubbing rule.Default value is enabled.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

@@ -10,14 +10,11 @@ schema: 2.0.0
 ## SYNOPSIS
 Create LogScrubbingSetting object for Waf policy object
 
-
 ## SYNTAX
 
 ```
-New-AzFrontDoorWafLogScrubbingSettingObject
- -ScrubbingRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoorWafLogScrubbingRule]>
- -State <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+New-AzFrontDoorWafLogScrubbingSettingObject -ScrubbingRule <PSFrontDoorWafLogScrubbingRule[]> -State <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,9 +24,8 @@ Create LogScrubbingSetting object for Waf policy object
 
 ### Example 1
 ```powershell
- $LogScrubbingRule = New-AzFrontDoorWafLogScrubbingRuleObject -MatchVariable "RequestHeaderNames" -SelectorMatchOperator "EqualsAny" -State "Enabled"
+$LogScrubbingRule = New-AzFrontDoorWafLogScrubbingRuleObject -MatchVariable "RequestHeaderNames" -SelectorMatchOperator "EqualsAny" -State "Enabled"
 New-AzFrontDoorWafLogScrubbingSettingObject -State Enabled -ScrubbingRules @($LogScrubbingRule)
-
 ```
 
 Need to create a LogScrubbingRule object before using.
@@ -40,7 +36,7 @@ Need to create a LogScrubbingRule object before using.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -55,7 +51,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -66,11 +62,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ScrubbingRules
+### -ScrubbingRule
 List of log scrubbing rules applied to the Web Application Firewall logs.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoorWafLogScrubbingRule]
+Type: Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoorWafLogScrubbingRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -86,7 +82,7 @@ State of the log scrubbing config.
 Default value is Enabled.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

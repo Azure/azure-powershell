@@ -16,7 +16,8 @@ Create WAF policy
 New-AzFrontDoorWafPolicy -ResourceGroupName <String> -Name <String> [-EnabledState <PSEnabledState>]
  [-Mode <String>] [-Customrule <PSCustomRule[]>] [-ManagedRule <PSManagedRule[]>] [-RedirectUrl <String>]
  [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>] [-Tag <Hashtable>]
- [-RequestBodyCheck <String>] [-Sku <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-RequestBodyCheck <String>] [-Sku <String>] [-LogScrubbingSetting <PSFrontDoorWafLogScrubbingSetting>]
+ [-JavascriptChallengeExpirationInMinutes <Int32>] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -109,6 +110,36 @@ Type: Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState
 Parameter Sets: (All)
 Aliases:
 Accepted values: Enabled, Disabled
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JavascriptChallengeExpirationInMinutes
+setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LogScrubbingSetting
+Defines rules that scrub sensitive fields in the Web Application Firewall.
+
+```yaml
+Type: Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoorWafLogScrubbingSetting
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

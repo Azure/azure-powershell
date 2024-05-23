@@ -29,14 +29,13 @@ Use cmdlet "New-AzFrontDoorWafCustomRuleGroupByVariableObject" to pass -CustomRu
 New-AzFrontDoorWafCustomRuleGroupByVariableObject -VariableName SocketAddr
 ```
 
-
 ## PARAMETERS
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -51,7 +50,7 @@ Accept wildcard characters: False
 Describes the supported variable for group by
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
