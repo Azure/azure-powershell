@@ -1,5 +1,5 @@
 @{
-  GUID = '3cffe974-28ed-4d53-ba17-f80f0d1cebc5'
+  GUID = '08dc2a27-d4d9-4dd3-9281-3f53d261c926'
   RootModule = './Az.DataCollectionRule.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
