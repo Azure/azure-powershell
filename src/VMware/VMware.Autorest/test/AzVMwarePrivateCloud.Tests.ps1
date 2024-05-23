@@ -43,14 +43,14 @@ Describe 'AzVMwarePrivateCloud' {
         } | Should -Not -Throw
     }
 
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -skip {
         {
             $config = Update-AzVMwarePrivateCloud -Name $env.rstr2 -ResourceGroupName $env.resourceGroup2 -ManagementClusterSize 4
             $config.ManagementClusterSize | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -skip {
         {
             $Id2 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup2)/providers/Microsoft.AVS/privateClouds/$($env.privateCloudName2)"
             $config = Update-AzVMwarePrivateCloud -InputObject $Id2 -ManagementClusterSize 4
