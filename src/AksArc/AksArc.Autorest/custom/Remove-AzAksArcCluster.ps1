@@ -27,7 +27,7 @@ Deletes the provisioned cluster instance
 .Outputs
 System.Boolean
 .Link
-https://learn.microsoft.com/powershell/module/az.aksarc/remove-azaksarcprovisionedclusterinstance
+https://learn.microsoft.com/powershell/module/az.aksarc/remove-azaksarccluster
 #>
 function Remove-AzAksArcCluster {
 [OutputType([System.Boolean])]

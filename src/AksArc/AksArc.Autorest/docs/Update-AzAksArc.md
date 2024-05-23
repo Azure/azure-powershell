@@ -23,27 +23,12 @@ Puts the default VM skus resource type (one time operation, before listing the V
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Dummy command
 ```powershell
-{{ Add code here }}
+No Functionality
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+No functionality
 
 ## PARAMETERS
 

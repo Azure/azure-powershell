@@ -15,11 +15,16 @@ Create the agent pool in the provisioned cluster
 ### CreateExpanded (Default)
 ```
 New-AzAksArcNodepool -ClusterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Count <Int32>] [-EnableAutoScaling] [-ExtendedLocationName <String>]
- [-ExtendedLocationType <String>] [-MaxCount <Int32>] [-MinCount <Int32>] [-NodeLabel <Hashtable>]
- [-NodeTaint <String[]>] [-OSSku <String>] [-OSType <String>] [-StatusErrorMessage <String>]
- [-StatusReadyReplica <IAgentPoolUpdateProfile[]>] [-Tag <Hashtable>] [-VMSize <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Count <Int32>] [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
+ [-NodeLabel <Hashtable>] [-NodeTaint <String[]>] [-OSSku <String>] [-OSType <String>] [-Tag <Hashtable>]
+ [-VMSize <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### AutoScaling
+```
+New-AzAksArcNodepool -ClusterName <String> -Name <String> -ResourceGroupName <String> -EnableAutoScaling
+ -MaxCount <Int32> -MinCount <Int32> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -137,10 +142,10 @@ Default value is false
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
+Parameter Sets: AutoScaling
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -228,10 +233,10 @@ The maximum number of nodes for auto-scaling
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded
+Parameter Sets: AutoScaling
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -243,10 +248,10 @@ The minimum number of nodes for auto-scaling
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded
+Parameter Sets: AutoScaling
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -356,36 +361,6 @@ Parameter Sets: (All)
 Aliases: resource-group
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StatusErrorMessage
-Error messages during an agent pool operation or steady state.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StatusReadyReplica
-.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolUpdateProfile[]
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

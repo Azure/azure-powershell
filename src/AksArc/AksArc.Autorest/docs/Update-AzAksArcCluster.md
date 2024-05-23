@@ -12,10 +12,18 @@ Update the provisioned cluster instance
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
-Update-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> [-MaxCount <Int32>]
- [-MinCount <Int32>] [-SubscriptionId <String>] [-adminGroupObjectIDs <String[]>]
- [-AgentPoolProfile <INamedAgentPoolProfile[]>] [-ControlPlaneCount <Int32>] [-EnableAutoScaling]
+Update-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-adminGroupObjectIDs <String[]>] [-ControlPlaneCount <Int32>] [-LicenseProfileAzureHybridBenefit <String>]
+ [-NfCsiDriverEnabled] [-SmbCsiDriverEnabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### AutoScaling
+```
+Update-AzAksArcCluster -ClusterName <String> -MaxCount <Int32> -MinCount <Int32> -ResourceGroupName <String>
+ -EnableAutoScaling [-SubscriptionId <String>] [-adminGroupObjectIDs <String[]>] [-ControlPlaneCount <Int32>]
  [-LicenseProfileAzureHybridBenefit <String>] [-NfCsiDriverEnabled] [-SmbCsiDriverEnabled]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -27,70 +35,70 @@ Update the provisioned cluster instance
 
 ### Example 1: Scale up control plane count
 ```powershell
-Update-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -ControlPlaneCount 3
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -ControlPlaneCount 3
 ```
 
 Increase control plane count to 3 nodes.
 
 ### Example 2: Enable autoscaling
 ```powershell
-Update-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -EnableAutoScaling -MinCount 1 -MaxCount 5
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -EnableAutoScaling -MinCount 1 -MaxCount 5
 ```
 
 Enable autoscaling in provisioned cluster.
 
 ### Example 3: Enable NfCsiDriver
 ```powershell
-Update-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -NfCsiDriverEnabled
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -NfCsiDriverEnabled
 ```
 
 Enable NfCsi driver in provisioned cluster.
 
 ### Example 4: Enable SmbCsiDriver
 ```powershell
-Update-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SmbCsiDriverEnabled
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SmbCsiDriverEnabled
 ```
 
 Enable SmbCsi driver in provisioned cluster.
 
 ### Example 5: Enable azure hybrid benefit
 ```powershell
-Update-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -LicenseProfileAzureHybridBenefit
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -LicenseProfileAzureHybridBenefit
 ```
 
 Enable Azure Hybrid User Benefits feature for a provisioned cluster.
 
 ### Example 6: Disable azure hybrid benefit
 ```powershell
-Update-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -LicenseProfileAzureHybridBenefit:$false
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -LicenseProfileAzureHybridBenefit:$false
 ```
 
 Disable Azure Hybrid User Benefits feature for a provisioned cluster.
 
 ### Example 7: Disable autoscaling
 ```powershell
-Update-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -EnableAutoScaling:$false
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -EnableAutoScaling:$false
 ```
 
 Disable autoscaling in provisioned cluster.
 
 ### Example 8: Disable NfCsiDriver
 ```powershell
-Update-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -NfCsiDriverEnabled:$false
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -NfCsiDriverEnabled:$false
 ```
 
 Disable NfCsi driver in provisioned cluster.
 
 ### Example 9: Disable SmbCsiDriver
 ```powershell
-Update-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SmbCsiDriverEnabled:$false
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SmbCsiDriverEnabled:$false
 ```
 
 Disable SmbCsi driver in provisioned cluster.
 
 ### Example 10: Update aad admin GUIDS
 ```powershell
-Update-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -adminGroupObjectIDs @("2e00cb64-66d8-4c9c-92d8-6462caf99e33", "1b28ff4f-f7c5-4aaa-aa79-ba8b775ab443")
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -adminGroupObjectIDs @("2e00cb64-66d8-4c9c-92d8-6462caf99e33", "1b28ff4f-f7c5-4aaa-aa79-ba8b775ab443")
 ```
 
 Update aad admin GUIDS.
@@ -102,21 +110,6 @@ Update aad admin GUIDS.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AgentPoolProfile
-The agent pool properties for the provisioned cluster.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.INamedAgentPoolProfile[]
 Parameter Sets: (All)
 Aliases:
 
@@ -195,10 +188,10 @@ The default value is true.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: AutoScaling
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -226,10 +219,10 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: AutoScaling
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -241,10 +234,10 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: AutoScaling
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

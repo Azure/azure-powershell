@@ -20,9 +20,7 @@ Gets the upgrade profile of a provisioned cluster
 .Description
 Gets the upgrade profile of a provisioned cluster
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzAksArcClusterUpgrades -ClusterName azps_test_cluster -ResourceGroup azps_test_group
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterUpgradeProfile

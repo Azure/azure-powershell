@@ -20,14 +20,12 @@ Gets the provisioned cluster instance
 .Description
 Gets the provisioned cluster instance
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroup azps_test_group
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedCluster
 .Link
-https://learn.microsoft.com/powershell/module/az.aksarc/get-azaksarcprovisionedclusterinstance
+https://learn.microsoft.com/powershell/module/az.aksarc/get-azaksarccluster
 #>
 function Get-AzAksArcCluster {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedCluster])]

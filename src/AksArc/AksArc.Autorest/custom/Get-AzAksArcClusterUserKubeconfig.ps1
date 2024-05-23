@@ -20,9 +20,7 @@ Lists the user credentials of the provisioned cluster (can only be used within p
 .Description
 Lists the user credentials of the provisioned cluster (can only be used within private network)
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzAksArcClusterUserKubeconfig -ClusterName azps_test_cluster -ResourceGroup azps_test_group
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IListCredentialResponse

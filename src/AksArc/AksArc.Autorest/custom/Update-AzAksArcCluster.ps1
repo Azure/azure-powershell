@@ -29,24 +29,6 @@ Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedCluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-AGENTPOOLPROFILE <INamedAgentPoolProfile[]>: The agent pool properties for the provisioned cluster.
-  [EnableAutoScaling <Boolean?>]: Whether to enable auto-scaler. Default value is false
-  [MaxCount <Int32?>]: The maximum number of nodes for auto-scaling
-  [MaxPod <Int32?>]: The maximum number of pods that can run on a node.
-  [MinCount <Int32?>]: The minimum number of nodes for auto-scaling
-  [NodeLabel <IAgentPoolProfileNodeLabels>]: The node labels to be persisted across all nodes in agent pool.
-    [(Any) <String>]: This indicates any property can be added to this object.
-  [NodeTaint <List<String>>]: Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule.
-  [OSSku <String>]: Specifies the OS SKU used by the agent pool. The default is CBLMariner if OSType is Linux. The default is Windows2019 when OSType is Windows.
-  [OSType <String>]: The particular KubernetesVersion Image OS Type (Linux, Windows)
-  [Count <Int32?>]: Number of nodes in the agent pool. The default value is 1.
-  [VMSize <String>]: The VM sku size of the agent pool node VMs.
-  [Name <String>]: Unique name of the default agent pool in the context of the provisioned cluster. Default value is <clusterName>-nodepool1
-
-SSHPUBLICKEY <ILinuxProfilePropertiesSshPublicKeysItem[]>: The list of SSH public keys used to authenticate with VMs. A maximum of 1 key may be specified.
-  [KeyData <String>]: Certificate public key used to authenticate with VMs through SSH. The certificate must be in PEM format with or without headers.
 .Link
 https://learn.microsoft.com/powershell/module/az.aksarc/update-azaksarccluster
 #>
@@ -82,24 +64,17 @@ param(
     [System.String[]]
     ${adminGroupObjectIDs},
 
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.INamedAgentPoolProfile[]]
-    # The agent pool properties for the provisioned cluster.
-    ${AgentPoolProfile},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='AutoScaling', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [System.Int32]
     ${MinCount},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='AutoScaling', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [System.Int32]
     ${MaxCount},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='AutoScaling', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Indicates whether to enable NFS CSI Driver.
@@ -215,6 +190,7 @@ process {
         $Scope += "/providers/$ConnectedClusterResourceType/$ClusterName"
         $null = $PSBoundParameters.Remove("ClusterName")
     }
+    $null = $PSBoundParameters.Add("ConnectedClusterResourceUri", $Scope)
 
     # Validate GUIDS
     foreach ($id in $adminGroupObjectIDs) {
@@ -235,6 +211,7 @@ process {
         $null = $PSBoundParameters.Remove("adminGroupObjectIDs")
     }
 
+    # Connected Cluster Update
     if ($ShouldUpdateConnectedCluster) {
           $APIVersion = "2024-01-01"
           $json = 
@@ -262,20 +239,36 @@ process {
             $null = Invoke-AzRestMethod -Path "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/$ConnectedClusterResourceType/$ClusterName/?api-version=$APIVersion" -Method PUT -payload $json
     }
 
+    # Nodepool Update
+    if ($PSBoundParameters.ContainsKey("MinCount"))
+    {
+        $ShouldUpdateDefaultNodepool = $true
+    }
 
-    # $aksarccluster = Get-AzAksArcCluster -ClusterName $ClusterName -ResourceGroupName $ResourceGroupName
+    if ($PSBoundParameters.ContainsKey("MaxCount"))
+    {
+        $ShouldUpdateDefaultNodepool = $true
+    }
 
-    $null = $PSBoundParameters.Add("ConnectedClusterResourceUri", $Scope)
+    if ($PSBoundParameters.ContainsKey("EnableAutoScaling"))
+    {
+        $ShouldUpdateDefaultNodepool = $true
+    }
+
+    if ($ShouldUpdateDefaultNodepool) {
+        $nodepools = Get-AzAksArcCluster -ClusterName $ClusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+        if ($nodepools.length -ne 1) {
+            Write-Error "Error invalid number of nodepools."
+            return
+        }
+
+        Update-AzAksArcNodepool -ClusterName $ClusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -Name $nodepools.Name -EnableAutoScaling:$EnableAutoScaling -MinCount $MinCount -MaxCount $MaxCount
+        $null = $PSBoundParameters.Remove("MinCount")
+        $null = $PSBoundParameters.Remove("MaxCount")
+        $null = $PSBoundParameters.Remove("EnableAutoScaling")
+    }
+
+    # Provisioned Cluster Update
     Az.AksArc.internal\Update-AzAksArcCluster @PSBoundParameters
 }
-
-
-
-
-
-
-
-
-
-
 }

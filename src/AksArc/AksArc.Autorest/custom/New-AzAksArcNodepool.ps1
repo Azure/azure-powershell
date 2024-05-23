@@ -29,11 +29,6 @@ Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPool
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-STATUSREADYREPLICA <IAgentPoolUpdateProfile[]>: .
-  [Count <Int32?>]: Number of nodes in the agent pool. The default value is 1.
-  [VMSize <String>]: The VM sku size of the agent pool node VMs.
 .Link
 https://learn.microsoft.com/powershell/module/az.aksarc/new-azaksarcnodepool
 #>
@@ -82,20 +77,20 @@ param(
     # The default value is 1.
     ${Count},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='AutoScaling', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Whether to enable auto-scaler.
     # Default value is false
     ${EnableAutoScaling},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='AutoScaling', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.Int32]
     # The maximum number of nodes for auto-scaling
     ${MaxCount},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='AutoScaling', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.Int32]
     # The minimum number of nodes for auto-scaling
@@ -131,19 +126,6 @@ param(
     [System.String]
     # The particular KubernetesVersion Image OS Type (Linux, Windows)
     ${OSType},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
-    [System.String]
-    # Error messages during an agent pool operation or steady state.
-    ${StatusErrorMessage},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolUpdateProfile[]]
-    # .
-    ${StatusReadyReplica},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]

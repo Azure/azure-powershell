@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.AksArc
-online version: https://learn.microsoft.com/powershell/module/az.aksarc/get-azaksarcprovisionedclusterinstance
+online version: https://learn.microsoft.com/powershell/module/az.aksarc/get-azaksarccluster
 schema: 2.0.0
 ---
 

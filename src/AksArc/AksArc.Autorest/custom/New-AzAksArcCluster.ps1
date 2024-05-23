@@ -48,7 +48,7 @@ AGENTPOOLPROFILE <INamedAgentPoolProfile[]>: The agent pool properties for the p
 SSHPUBLICKEY <ILinuxProfilePropertiesSshPublicKeysItem[]>: The list of SSH public keys used to authenticate with VMs. A maximum of 1 key may be specified.
   [KeyData <String>]: Certificate public key used to authenticate with VMs through SSH. The certificate must be in PEM format with or without headers.
 .Link
-https://learn.microsoft.com/powershell/module/az.aksarc/new-azaksarcprovisionedclusterinstance
+https://learn.microsoft.com/powershell/module/az.aksarc/new-azaksarcluster
 #>
 function New-AzAksArcCluster {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedCluster])]

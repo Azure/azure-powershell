@@ -20,14 +20,12 @@ Gets the provisioned cluster instance
 .Description
 Gets the provisioned cluster instance
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzAksArcClusterLogs -ipAddress 1.1.1.1 -sshkeypath "" -outdir "/logs"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedCluster
 .Link
-https://learn.microsoft.com/powershell/module/az.aksarc/get-azaksarcprovisionedclusterinstance
+https://learn.microsoft.com/powershell/module/az.aksarc/get-azaksarcclusterlogs
 #>
 function Get-AzAksArcClusterLogs {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedCluster])]

@@ -42,9 +42,6 @@ INPUTOBJECT <IAksArcIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VirtualNetworkName <String>]: Parameter for the name of the virtual network
 
-STATUSREADYREPLICA <IAgentPoolUpdateProfile[]>: .
-  [Count <Int32?>]: Number of nodes in the agent pool. The default value is 1.
-  [VMSize <String>]: The VM sku size of the agent pool node VMs.
 .Link
 https://learn.microsoft.com/powershell/module/az.aksarc/update-azaksarcnodepool
 #>
@@ -94,27 +91,20 @@ param(
     # The default value is 1.
     ${Count},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='AutoScaling', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Whether to enable auto-scaler.
     # Default value is false
     ${EnableAutoScaling},
 
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolUpdateProfile[]]
-    # .
-    ${StatusReadyReplica},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='AutoScaling', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.Int32]
     # The maximum number of nodes for auto-scaling
     ${MaxCount},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='AutoScaling', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.Int32]
     # The minimum number of nodes for auto-scaling
