@@ -31,7 +31,7 @@ Type                         :
 
 List all custom libraries on the cluster.
 
-List all predefined libraries on the cluster.
+### Example 2: List all predefined libraries on the cluster.
 ```powershell
 $clusterResourceGroupName = "Group"
 $clusterpoolName = "ps-test-pool"
