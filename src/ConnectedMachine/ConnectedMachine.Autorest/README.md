@@ -394,6 +394,6 @@ directive:
   # Create model cmdlet for complex object
   - model-cmdlet:
     - model-name: LicenseDetails
-      cmdlet-name: AzConnectedLicenseDetails
+      cmdlet-name: New-AzConnectedLicenseDetails
 
 ```

@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ConnectedMachine
-online version: https://learn.microsoft.com/powershell/module/Az.ConnectedMachine/azconnectedlicensedetails
+online version: https://learn.microsoft.com/powershell/module/Az.ConnectedMachine/new-azconnectedlicensedetails
 schema: 2.0.0
 ---
 
-# AzConnectedLicenseDetails
+# New-AzConnectedLicenseDetails
 
 ## SYNOPSIS
 Create an in-memory object for LicenseDetails.
@@ -13,7 +13,7 @@ Create an in-memory object for LicenseDetails.
 ## SYNTAX
 
 ```
-AzConnectedLicenseDetails [-Edition <String>] [-Processor <Int32>] [-State <String>] [-Target <String>]
+New-AzConnectedLicenseDetails [-Edition <String>] [-Processor <Int32>] [-State <String>] [-Target <String>]
  [-Type <String>] [-VolumeLicenseDetail <IVolumeLicenseDetails[]>] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Create an in-memory object for LicenseDetails.
 
 ### Example 1: get the detail of an ESU license
 ```powershell
-AzConnectedLicenseDetails -State 'Activated' -Target 'Windows Server 2012' -Edition 'Datacenter' -Type 'pCore' -Processor 16
+New-AzConnectedLicenseDetails -State 'Activated' -Target 'Windows Server 2012' -Edition 'Datacenter' -Type 'pCore' -Processor 16
 ```
 
 ```output
