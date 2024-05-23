@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'New-AzHdInsightOnAksHotfixUpgradeObject'))
+if(($null -eq $TestName) -or ($TestName -contains 'New-AzHdInsightOnAksClusterMavenLibraryPropertiesObject'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzHdInsightOnAksHotfixUpgradeObject.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzHdInsightOnAksClusterMavenLibraryPropertiesObject.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,8 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzHdInsightOnAksHotfixUpg
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzHdInsightOnAksHotfixUpgradeObject' {
-    It 'Create' -skip {
+Describe 'New-AzHdInsightOnAksClusterMavenLibraryPropertiesObject' {
+    It '__AllParameterSets' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

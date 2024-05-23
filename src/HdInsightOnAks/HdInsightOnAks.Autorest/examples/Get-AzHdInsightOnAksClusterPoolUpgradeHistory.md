@@ -4,7 +4,7 @@ Get-AzHdInsightOnAksClusterPoolUpgradeHistory -ResourceGroupName $resourceGroupN
 ```
 
 ```output
-Id                           : /subscriptions/10e32bab-26da-4cc4-a441-52b318f824e6/resourceGroups/hilotest/providers/Microsoft.HDInsight/clusterpools/hilopool/upgradeHistories/05_21_2024_07_38_10_AM-NodeOsUpgrade
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/hilotest/providers/Microsoft.HDInsight/clusterpools/hilopool/upgradeHistories/05_21_2024_07_38_10_AM-NodeOsUpgrade
 Name                         : 05_21_2024_07_38_10_AM-NodeOsUpgrade
 Property                     : {
                                  "upgradeType": "NodeOsUpgrade",

@@ -15,8 +15,8 @@ Create a cluster pool.
 ### CreateExpanded (Default)
 ```
 New-AzHdInsightOnAksClusterPool -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-ClusterPoolVersion <String>] [-EnableLogAnalytics]
- [-LogAnalyticWorkspaceResourceId <String>] [-ManagedResourceGroupName <String>]
+ [-SubscriptionId <String>] [-ClusterPoolVersion <String>] [-ComputeProfileAvailabilityZone <String[]>]
+ [-EnableLogAnalytics] [-LogAnalyticWorkspaceResourceId <String>] [-ManagedResourceGroupName <String>]
  [-NetworkProfileApiServerAuthorizedIPRange <String[]>] [-NetworkProfileEnablePrivateApiServer]
  [-NetworkProfileOutboundType <String>] [-SubnetId <String>] [-Tag <Hashtable>] [-VmSize <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -38,11 +38,11 @@ New-AzHdInsightOnAksClusterPool -InputObject <IHdInsightOnAksIdentity> -ClusterP
 ### CreateViaIdentityExpanded
 ```
 New-AzHdInsightOnAksClusterPool -InputObject <IHdInsightOnAksIdentity> -Location <String>
- [-ClusterPoolVersion <String>] [-EnableLogAnalytics] [-LogAnalyticWorkspaceResourceId <String>]
- [-ManagedResourceGroupName <String>] [-NetworkProfileApiServerAuthorizedIPRange <String[]>]
- [-NetworkProfileEnablePrivateApiServer] [-NetworkProfileOutboundType <String>] [-SubnetId <String>]
- [-Tag <Hashtable>] [-VmSize <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ClusterPoolVersion <String>] [-ComputeProfileAvailabilityZone <String[]>] [-EnableLogAnalytics]
+ [-LogAnalyticWorkspaceResourceId <String>] [-ManagedResourceGroupName <String>]
+ [-NetworkProfileApiServerAuthorizedIPRange <String[]>] [-NetworkProfileEnablePrivateApiServer]
+ [-NetworkProfileOutboundType <String>] [-SubnetId <String>] [-Tag <Hashtable>] [-VmSize <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -202,6 +202,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ComputeProfileAvailabilityZone
+The list of Availability zones to use for AKS VMSS nodes.
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -345,6 +360,7 @@ IP ranges are specified in CIDR format, e.g.
 137.117.106.88/29.
 This feature is not compatible with private AKS clusters.
 So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.
+Currently, this property is not supported and please don't use it.
 
 ```yaml
 Type: System.String[]

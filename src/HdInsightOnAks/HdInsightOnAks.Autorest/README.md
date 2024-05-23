@@ -47,7 +47,7 @@ In this directory, run AutoRest:
 > Values
 ``` yaml
 tag: package-2024-05
-commit: c400ca7a5c0e43802b5060b9f0f9470f1ae09227
+commit: e5e14501b7aef4ba7a58a8a463b7192a2f9b0fe4
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/hdinsight/resource-manager/Microsoft.HDInsight/HDInsightOnAks/readme.md
@@ -98,6 +98,12 @@ directive:
   - model-cmdlet:
     - model-name: ClusterServiceConfigsProfile
       cmdlet-name: New-AzHdInsightOnAksClusterServiceConfigsProfileObject
+  # - model-cmdlet:
+  #   - model-name: PyPiLibraryProperties
+  #     cmdlet-name: New-AzHdInsightOnAksClusterPyPiLibraryPropertiesObject
+  # - model-cmdlet:
+  #   - model-name: MavenLibraryProperties
+  #     cmdlet-name: New-AzHdInsightOnAksClusterMavenLibraryPropertiesObject
   - from: swagger-document
     where: $.paths..responses.202
     transform: delete $.headers
