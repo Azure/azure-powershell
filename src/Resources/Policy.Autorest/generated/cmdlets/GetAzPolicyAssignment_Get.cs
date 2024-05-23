@@ -10,6 +10,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Cmdlets;
     using System;
 
+
     /// <summary>
     /// This operation retrieves a single policy assignment, given its name and the scope it was created at.
     /// </summary>
