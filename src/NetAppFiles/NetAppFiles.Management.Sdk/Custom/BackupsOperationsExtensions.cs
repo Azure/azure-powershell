@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='backupName'>
         /// The name of the backup
         /// </param>
-        public static BackupsRestoreFilesHeaders RestoreFiles(this IBackupsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string backupName, BackupRestoreFiles body)
+        public static BackupsRestoreFilesHeaders2023_07_01 RestoreFiles(this IBackupsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string backupName, BackupRestoreFiles body)
         {
             return ((IBackupsOperations)operations).RestoreFilesAsync(resourceGroupName, accountName, poolName, volumeName, backupName, body).GetAwaiter().GetResult();
         }
@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<BackupsRestoreFilesHeaders> RestoreFilesAsync(this IBackupsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string backupName, BackupRestoreFiles body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<BackupsRestoreFilesHeaders2023_07_01> RestoreFilesAsync(this IBackupsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string backupName, BackupRestoreFiles body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.RestoreFilesWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, backupName, body, null, cancellationToken).ConfigureAwait(false))
             {
@@ -615,7 +615,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='backupName'>
         /// The name of the backup
         /// </param>
-        public static BackupsRestoreFilesHeaders BeginRestoreFiles(this IBackupsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string backupName, BackupRestoreFiles body)
+        public static BackupsRestoreFilesHeaders2023_07_01 BeginRestoreFiles(this IBackupsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string backupName, BackupRestoreFiles body)
         {
             return ((IBackupsOperations)operations).BeginRestoreFilesAsync(resourceGroupName, accountName, poolName, volumeName, backupName, body).GetAwaiter().GetResult();
         }
@@ -644,7 +644,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<BackupsRestoreFilesHeaders> BeginRestoreFilesAsync(this IBackupsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string backupName, BackupRestoreFiles body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<BackupsRestoreFilesHeaders2023_07_01> BeginRestoreFilesAsync(this IBackupsOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string backupName, BackupRestoreFiles body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginRestoreFilesWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, backupName, body, null, cancellationToken).ConfigureAwait(false))
             {

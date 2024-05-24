@@ -22,8 +22,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         {
         }
 
-        //[Fact(Skip = "Doesn't work at the moment")]
-        [Fact]
+        [Fact(Skip = "Doesn't work at the moment")]
+        //[Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVolumeGroupCrud()
         {

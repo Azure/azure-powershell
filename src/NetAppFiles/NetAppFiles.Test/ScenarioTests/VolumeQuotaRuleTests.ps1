@@ -34,7 +34,7 @@ function Test-VolumeQuotaRuleCrud
     $gibibyte = 1024 * 1024 * 1024
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
-    $resourceLocation = "eastus"
+    $resourceLocation = "eastus2"
 
     $subnetName = "default"
     $poolSize = 4398046511104
