@@ -33,20 +33,20 @@ function New-AzHdInsightOnAksClusterLibraryObject {
         [Parameter(Mandatory, HelpMessage="Type of the library.")]
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("pypi", "maven")]
         [string]
-        $PropertiesType,
+        $PropertyType,
         [Parameter(HelpMessage="Properties of a library in the cluster.")]
         [string]
-        $properties
+        $property
     )
 
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterLibrary]::New()
 
-        if ($PSBoundParameters.ContainsKey('PropertiesType')) {
-            $Object.PropertiesType = $PropertiesType
+        if ($PSBoundParameters.ContainsKey('PropertyType')) {
+            $Object.PropertiesType = $PropertyType
         }
-        if ($PSBoundParameters.ContainsKey('Remark')) {
-            $Object.Property = $properties
+        if ($PSBoundParameters.ContainsKey('property')) {
+            $Object.Property = $property
         }
         return $Object
     }

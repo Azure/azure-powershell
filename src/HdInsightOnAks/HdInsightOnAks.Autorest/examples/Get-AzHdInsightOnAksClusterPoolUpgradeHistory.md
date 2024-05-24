@@ -1,5 +1,7 @@
 ### Example 1: Get a list of clusterpool upgrade history.
 ```powershell
+$resourceGroupName = "resourceGroupName"
+$clusterPoolName = "clusterPoolName"
 Get-AzHdInsightOnAksClusterPoolUpgradeHistory -ResourceGroupName $resourceGroupName -ClusterPoolName $clusterPoolName
 ```
 
