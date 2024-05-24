@@ -1,23 +1,23 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareAddonSrmPropertiesObject
+online version: https://learn.microsoft.com/powershell/module/Az.VMware/new-azvmwareaddonsrmpropertyobject
 schema: 2.0.0
 ---
 
-# New-AzVMwareAddonSrmPropertiesObject
+# New-AzVMwareAddonSrmPropertyObject
 
 ## SYNOPSIS
-Create a in-memory object for AddonSrmProperties
+Create an in-memory object for AddonSrmProperties.
 
 ## SYNTAX
 
 ```
-New-AzVMwareAddonSrmPropertiesObject -LicenseKey <String> [<CommonParameters>]
+New-AzVMwareAddonSrmPropertyObject [-LicenseKey <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a in-memory object for AddonSrmProperties
+Create an in-memory object for AddonSrmProperties.
 
 ## EXAMPLES
 
@@ -44,7 +44,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

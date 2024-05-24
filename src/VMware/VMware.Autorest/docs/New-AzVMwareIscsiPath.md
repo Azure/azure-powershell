@@ -36,7 +36,18 @@ New-AzVMwareIscsiPath -PrivateCloudName azps_test_cloud -ResourceGroupName azps_
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/iscsiPaths/default   
+Name                         : default
+NetworkBlock                 : 192.168.0.0/24
+ProvisioningState            : Succeeded
+ResourceGroupName            : group1
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : Microsoft.AVS/privateClouds/iscsiPaths
 ```
 
 Create a IscsiPath
@@ -76,7 +87,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity

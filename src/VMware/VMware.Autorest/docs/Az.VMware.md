@@ -50,11 +50,11 @@ Get a VirtualMachine
 ### [New-AzVMwareAddon](New-AzVMwareAddon.md)
 Create or update a addon in a private cloud
 
-### [New-AzVMwareAddonSrmPropertiesObject](New-AzVMwareAddonSrmPropertiesObject.md)
-Create a in-memory object for AddonSrmProperties
+### [New-AzVMwareAddonSrmPropertyObject](New-AzVMwareAddonSrmPropertyObject.md)
+Create an in-memory object for AddonSrmProperties.
 
-### [New-AzVMwareAddonVrPropertiesObject](New-AzVMwareAddonVrPropertiesObject.md)
-Create a in-memory object for AddonVrProperties
+### [New-AzVMwareAddonVrPropertyObject](New-AzVMwareAddonVrPropertyObject.md)
+Create an in-memory object for AddonVrProperties.
 
 ### [New-AzVMwareAuthorization](New-AzVMwareAuthorization.md)
 Create a ExpressRouteAuthorization
@@ -70,9 +70,6 @@ Create a Datastore
 
 ### [New-AzVMwareGlobalReachConnection](New-AzVMwareGlobalReachConnection.md)
 Create a GlobalReachConnection
-
-### [New-AzVMwareIdentitySourceObject](New-AzVMwareIdentitySourceObject.md)
-Create an in-memory object for IdentitySource.
 
 ### [New-AzVMwareIscsiPath](New-AzVMwareIscsiPath.md)
 Create a IscsiPath
@@ -90,18 +87,18 @@ Rotate the NSX-T Manager password
 Rotate the vCenter password
 
 ### [New-AzVMwarePSCredentialExecutionParameterObject](New-AzVMwarePSCredentialExecutionParameterObject.md)
-Create a in-memory object for PSCredentialExecutionParameter
+Create an in-memory object for PSCredentialExecutionParameter.
 
 ### [New-AzVMwareScriptSecureStringExecutionParameterObject](New-AzVMwareScriptSecureStringExecutionParameterObject.md)
-Create a in-memory object for ScriptSecureStringExecutionParameter
+Create an in-memory object for ScriptSecureStringExecutionParameter.
 
 ### [New-AzVMwareScriptStringExecutionParameterObject](New-AzVMwareScriptStringExecutionParameterObject.md)
-Create a in-memory object for ScriptStringExecutionParameter
+Create an in-memory object for ScriptStringExecutionParameter.
 
-### [New-AzVMwareVmHostPlacementPolicyPropertiesObject](New-AzVMwareVmHostPlacementPolicyPropertiesObject.md)
+### [New-AzVMwareVmHostPlacementPolicyPropertyObject](New-AzVMwareVmHostPlacementPolicyPropertyObject.md)
 Create an in-memory object for VmHostPlacementPolicyProperties.
 
-### [New-AzVMwareVMPlacementPolicyPropertiesObject](New-AzVMwareVMPlacementPolicyPropertiesObject.md)
+### [New-AzVMwareVMPlacementPolicyPropertyObject](New-AzVMwareVMPlacementPolicyPropertyObject.md)
 Create an in-memory object for VMPlacementPolicyProperties.
 
 ### [Remove-AzVMwareAddon](Remove-AzVMwareAddon.md)
@@ -138,22 +135,22 @@ Return quota for subscription by region
 Return trial status for subscription by region
 
 ### [Update-AzVMwareAuthorization](Update-AzVMwareAuthorization.md)
-Create a ExpressRouteAuthorization
+Update a ExpressRouteAuthorization
 
 ### [Update-AzVMwareCloudLink](Update-AzVMwareCloudLink.md)
-Create a CloudLink
+Update a CloudLink
 
 ### [Update-AzVMwareCluster](Update-AzVMwareCluster.md)
 Update a Cluster
 
 ### [Update-AzVMwareDatastore](Update-AzVMwareDatastore.md)
-Create a Datastore
+Update a Datastore
 
 ### [Update-AzVMwareGlobalReachConnection](Update-AzVMwareGlobalReachConnection.md)
-Create a GlobalReachConnection
+Update a GlobalReachConnection
 
 ### [Update-AzVMwareIscsiPath](Update-AzVMwareIscsiPath.md)
-Create a IscsiPath
+Update a IscsiPath
 
 ### [Update-AzVMwarePlacementPolicy](Update-AzVMwarePlacementPolicy.md)
 Update a PlacementPolicy

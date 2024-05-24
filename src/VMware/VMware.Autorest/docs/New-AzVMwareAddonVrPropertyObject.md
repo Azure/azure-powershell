@@ -1,23 +1,23 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareAddonVrPropertiesObject
+online version: https://learn.microsoft.com/powershell/module/Az.VMware/new-azvmwareaddonvrpropertyobject
 schema: 2.0.0
 ---
 
-# New-AzVMwareAddonVrPropertiesObject
+# New-AzVMwareAddonVrPropertyObject
 
 ## SYNOPSIS
-Create a in-memory object for AddonVrProperties
+Create an in-memory object for AddonVrProperties.
 
 ## SYNTAX
 
 ```
-New-AzVMwareAddonVrPropertiesObject -VrsCount <Int32> [<CommonParameters>]
+New-AzVMwareAddonVrPropertyObject -VrsCount <Int32> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a in-memory object for AddonVrProperties
+Create an in-memory object for AddonVrProperties.
 
 ## EXAMPLES
 

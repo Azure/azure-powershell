@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Update-AzVMwareWorkloadNetworkVMGroup'))
+if(($null -eq $TestName) -or ($TestName -contains 'New-AzVMwareAddonVrPropertyObject'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzVMwareWorkloadNetworkVMGroup.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzVMwareAddonVrPropertyObject.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,16 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzVMwareWorkloadNetwor
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzVMwareWorkloadNetworkVMGroup' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityPrivateCloudExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
+Describe 'New-AzVMwareAddonVrPropertyObject' {
+    It '__AllParameterSets' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

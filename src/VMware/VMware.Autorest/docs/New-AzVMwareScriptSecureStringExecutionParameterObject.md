@@ -1,24 +1,24 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareScriptSecureStringExecutionParameterObject
+online version: https://learn.microsoft.com/powershell/module/Az.VMware/new-azvmwarescriptsecurestringexecutionparameterobject
 schema: 2.0.0
 ---
 
 # New-AzVMwareScriptSecureStringExecutionParameterObject
 
 ## SYNOPSIS
-Create a in-memory object for ScriptSecureStringExecutionParameter
+Create an in-memory object for ScriptSecureStringExecutionParameter.
 
 ## SYNTAX
 
 ```
-New-AzVMwareScriptSecureStringExecutionParameterObject -Name <String> [-SecureValue <String>]
+New-AzVMwareScriptSecureStringExecutionParameterObject -Name <String> [-SecureValue <SecureString>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a in-memory object for ScriptSecureStringExecutionParameter
+Create an in-memory object for ScriptSecureStringExecutionParameter.
 
 ## EXAMPLES
 
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 A secure value for the passed parameter, not to be stored in logs.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 

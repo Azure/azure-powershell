@@ -8,25 +8,24 @@ schema: 2.0.0
 # Update-AzVMwareIscsiPath
 
 ## SYNOPSIS
-Create a IscsiPath
+Update a IscsiPath
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzVMwareIscsiPath -PrivateCloudName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-NetworkBlock <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzVMwareIscsiPath -InputObject <IVMwareIdentity> [-NetworkBlock <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzVMwareIscsiPath -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a IscsiPath
+Update a IscsiPath
 
 ## EXAMPLES
 
@@ -36,7 +35,18 @@ Update-AzVMwareIscsiPath -PrivateCloudName azps_test_cloud -ResourceGroupName az
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/iscsiPaths/default   
+Name                         : default
+NetworkBlock                 : 192.168.0.0/24
+ProvisioningState            : Succeeded
+ResourceGroupName            : group1
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : Microsoft.AVS/privateClouds/iscsiPaths
 ```
 
 Update a IscsiPath
@@ -76,7 +86,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -87,21 +96,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -NetworkBlock
-CIDR Block for iSCSI path.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

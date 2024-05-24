@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareVMPlacementPolicyPropertiesObject
+online version: https://learn.microsoft.com/powershell/module/Az.VMware/new-azvmwarevmplacementpolicypropertyobject
 schema: 2.0.0
 ---
 
-# New-AzVMwareVMPlacementPolicyPropertiesObject
+# New-AzVMwareVMPlacementPolicyPropertyObject
 
 ## SYNOPSIS
 Create an in-memory object for VMPlacementPolicyProperties.
@@ -13,7 +13,7 @@ Create an in-memory object for VMPlacementPolicyProperties.
 ## SYNTAX
 
 ```
-New-AzVMwareVMPlacementPolicyPropertiesObject -AffinityType <String> -Type <String> -VMMember <String[]>
+New-AzVMwareVMPlacementPolicyPropertyObject -AffinityType <String> -VMMember <String[]>
  [-DisplayName <String>] [-State <String>] [<CommonParameters>]
 ```
 
@@ -79,21 +79,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Type
-placement policy type.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

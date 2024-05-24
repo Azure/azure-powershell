@@ -14,25 +14,24 @@ Create a Cluster
 
 ### CreateExpanded (Default)
 ```
-New-AzVMwareCluster -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
+New-AzVMwareCluster -Name <String> -PrivateCloudName <String> -ResourceGroupName <String> -SkuName <String>
  [-SubscriptionId <String>] [-ClusterSize <Int32>] [-PropertiesHost <String[]>] [-SkuCapacity <Int32>]
- [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
- [-VsanDatastoreName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SkuFamily <String>] [-SkuSize <String>] [-SkuTier <String>] [-VsanDatastoreName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzVMwareCluster -InputObject <IVMwareIdentity> [-ClusterSize <Int32>] [-PropertiesHost <String[]>]
- [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
- [-VsanDatastoreName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzVMwareCluster -InputObject <IVMwareIdentity> -SkuName <String> [-ClusterSize <Int32>]
+ [-PropertiesHost <String[]>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuSize <String>]
+ [-SkuTier <String>] [-VsanDatastoreName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityPrivateCloudExpanded
 ```
-New-AzVMwareCluster -Name <String> -PrivateCloudInputObject <IVMwareIdentity> [-ClusterSize <Int32>]
- [-PropertiesHost <String[]>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>]
+New-AzVMwareCluster -Name <String> -PrivateCloudInputObject <IVMwareIdentity> -SkuName <String>
+ [-ClusterSize <Int32>] [-PropertiesHost <String[]>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
  [-SkuSize <String>] [-SkuTier <String>] [-VsanDatastoreName <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -105,7 +104,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -151,7 +149,6 @@ Accept wildcard characters: False
 
 ### -PrivateCloudInputObject
 Identity Parameter
-To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -253,7 +250,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

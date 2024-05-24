@@ -3,7 +3,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
 . ($loadEnvPath)
-$TestRecordingFile = Join-Path $PSScriptRoot 'AzVMwareAddonVrPropertiesObject.Recording.json'
+$TestRecordingFile = Join-Path $PSScriptRoot 'AzVMwareVMPlacementPolicyPropertyObject.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -11,11 +11,11 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'AzVMwareAddonVrPropertiesObject' {
-    It 'CreateExpanded' {
+Describe 'New-AzVMwareVMPlacementPolicyPropertyObject' {
+    It '__AllParameterSets' {
         {
-            $config = New-AzVMwareAddonVrPropertiesObject -VrsCount 2
-            $config.AddonType | Should -Be "VR"
+            $config = New-AzVMwareVMPlacementPolicyPropertyObject -AffinityType 'Affinity' -VMMember @{"test"="test"}
+            $config.AffinityType | Should -Be "Affinity"
         } | Should -Not -Throw
     }
 }
