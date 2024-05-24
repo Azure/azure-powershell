@@ -120,6 +120,11 @@ directive:
       subject: HybridIdentityMetadata
     remove: true
 
+  - where:
+      verb: Update
+      subject: ""
+    remove: true
+
 # Rename parameters
   - where:
       subject: VirtualNetwork

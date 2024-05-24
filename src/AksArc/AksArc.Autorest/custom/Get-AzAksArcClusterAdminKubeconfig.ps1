@@ -32,14 +32,12 @@ function Get-AzAksArcClusterAdminKubeconfig {
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
-    [Alias('Name')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [System.String]
     # The name of the Kubernetes cluster on which get is called.
     ${ClusterName},
 
     [Parameter(Mandatory)]
-    [Alias('resource-group')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -52,14 +50,6 @@ param(
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Runtime')]
@@ -114,26 +104,11 @@ param(
 )
 
 process {
-    $Scope = "/"
-        if ($PSBoundParameters.ContainsKey("SubscriptionId"))
-        {
-            $Scope += "subscriptions/$SubscriptionId"
-            $null = $PSBoundParameters.Remove("SubscriptionId")
-        }
-
-        if ($PSBoundParameters.ContainsKey("ResourceGroupName"))
-        {
-            $Scope += "/resourceGroups/$ResourceGroupName"
-            $null = $PSBoundParameters.Remove("ResourceGroupName")
-        }
-        $ResourceType = "Microsoft.Kubernetes/connectedClusters"
-        if ($PSBoundParameters.ContainsKey("ClusterName"))
-        {
-            $Scope += "/providers/$ResourceType/$ClusterName"
-            $null = $PSBoundParameters.Remove("ClusterName")
-        }
-
-        $null = $PSBoundParameters.Add("ConnectedClusterResourceUri", $Scope)
-        Az.AksArc.internal\Get-AzAksArcClusterAdminKubeconfig @PSBoundParameters
+    $Scope = GetConnectedClusterResourceURI -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName
+    $null = $PSBoundParameters.Remove("SubscriptionId")
+    $null = $PSBoundParameters.Remove("ResourceGroupName")
+    $null = $PSBoundParameters.Remove("ClusterName")
+    $null = $PSBoundParameters.Add("ConnectedClusterResourceUri", $Scope)
+    Az.AksArc.internal\Get-AzAksArcClusterAdminKubeconfig @PSBoundParameters
 }
 }

@@ -15,29 +15,38 @@ Create the provisioned cluster instance
 ### CreateExpanded (Default)
 ```
 New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -ControlPlaneEndpointHostIP <String>
- -CustomLocationName <String> -VnetId <String> [-SubscriptionId <String>] [-adminGroupObjectIDs <String[]>]
- [-AgentPoolProfile <INamedAgentPoolProfile[]>] [-ClusterVMAccessProfileAuthorizedIprange <String>]
+ -CustomLocationName <String> -Location <String> -VnetId <String> [-SubscriptionId <String>]
+ [-adminGroupObjectIDs <String[]>] [-ClusterVMAccessProfileAuthorizedIprange <String>]
  [-ControlPlaneCount <Int32>] [-ControlPlaneVMSize <String>] [-KubernetesVersion <String>]
  [-LicenseProfileAzureHybridBenefit <String>] [-LoadBalancerProfileCount <Int32>]
- [-NetworkProfileNetworkPolicy <String>] [-NetworkProfilePodCidr <String>] [-NfCsiDriverEnabled]
+ [-NetworkProfilePodCidr <String>] [-NfCsiDriverEnabled] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>]
  [-SmbCsiDriverEnabled] [-SshKeyValue <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
+```
+
+### AutoScaling
+```
+New-AzAksArcCluster -ClusterName <String> -MaxCount <Int32> -MaxPod <Int32> -MinCount <Int32>
+ -ResourceGroupName <String> -ControlPlaneEndpointHostIP <String> -CustomLocationName <String>
+ -EnableAutoScaling -Location <String> -VnetId <String> [-SubscriptionId <String>]
+ [-adminGroupObjectIDs <String[]>] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -ControlPlaneEndpointHostIP <String>
- -CustomLocationName <String> -JsonFilePath <String> -VnetId <String> [-SubscriptionId <String>]
- [-adminGroupObjectIDs <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -CustomLocationName <String> -JsonFilePath <String> -Location <String> -VnetId <String>
+ [-SubscriptionId <String>] [-adminGroupObjectIDs <String[]>] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -ControlPlaneEndpointHostIP <String>
- -CustomLocationName <String> -JsonString <String> -VnetId <String> [-SubscriptionId <String>]
- [-adminGroupObjectIDs <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -CustomLocationName <String> -JsonString <String> -Location <String> -VnetId <String>
+ [-SubscriptionId <String>] [-adminGroupObjectIDs <String[]>] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -132,21 +141,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AgentPoolProfile
-The agent pool properties for the provisioned cluster.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.INamedAgentPoolProfile[]
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AsJob
 Run the command as a job
 
@@ -168,7 +162,7 @@ The name of the Kubernetes cluster on which get is called.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: Name
+Aliases:
 
 Required: True
 Position: Named
@@ -269,6 +263,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableAutoScaling
+Indicates whether to enable NFS CSI Driver.
+The default value is true.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: AutoScaling
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -JsonFilePath
 Path of Json file supplied to the Create operation
 
@@ -346,16 +356,60 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkProfileNetworkPolicy
-Network policy used for building Kubernetes network.
-Possible values include: 'calico'.
+### -Location
+Location
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MaxCount
+
+
+```yaml
+Type: System.Int32
+Parameter Sets: AutoScaling
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MaxPod
+
+
+```yaml
+Type: System.Int32
+Parameter Sets: AutoScaling
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinCount
+
+
+```yaml
+Type: System.Int32
+Parameter Sets: AutoScaling
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -393,6 +447,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NodeLabel
+The node labels to be persisted across all nodes in agent pool.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodeTaint
+Taints added to new nodes during node pool create and scale.
+For example, key=value:NoSchedule.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -415,7 +500,7 @@ The name is case insensitive.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: resource-group
+Aliases:
 
 Required: True
 Position: Named

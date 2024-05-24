@@ -15,19 +15,19 @@ Gets the specified agent pool in the provisioned cluster
 ### List (Default)
 ```
 Get-AzAksArcNodepool -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzAksArcNodepool -ClusterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzAksArcNodepool -ClusterName <String> -InputObject <IAksArcIdentity> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,22 +73,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-
-```yaml
-Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 
@@ -110,7 +94,7 @@ Parameter for the name of the agent pool in the provisioned cluster.
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: AgentPoolName
+Aliases:
 
 Required: True
 Position: Named
@@ -126,7 +110,7 @@ The name is case insensitive.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: resource-group
+Aliases:
 
 Required: True
 Position: Named

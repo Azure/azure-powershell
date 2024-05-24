@@ -24,7 +24,7 @@ Lists the supported kubernetes versions for the specified custom location
 
 ### Example 1: Get supported kubernetes versions
 ```powershell
-Get-AzAksArcKubernetesVersion -ResourceGroupName azps_test_group -CustomLocationResourceUri sample_cl
+Get-AzAksArcKubernetesVersion -CustomLocationResourceUri sample_cl
 ```
 
 This command lists the supported kubernetes versions in the custom location.

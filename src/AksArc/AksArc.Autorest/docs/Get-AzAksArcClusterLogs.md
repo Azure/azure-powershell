@@ -48,7 +48,7 @@ Accept wildcard characters: False
 ```
 
 ### -ipAddress
-The name of the Kubernetes cluster on which get is called.
+IP Address of provisioned cluster
 
 ```yaml
 Type: System.String
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -outdir
-The name of the Kubernetes cluster on which get is called.
+Directory to output logs
 
 ```yaml
 Type: System.String
@@ -78,8 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -sshkeypath
-The name of the resource group.
-The name is case insensitive.
+Path to ssh key for provisioned cluster
 
 ```yaml
 Type: System.String

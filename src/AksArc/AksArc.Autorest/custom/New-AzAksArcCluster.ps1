@@ -43,23 +43,6 @@ New-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedCluster
 .Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-AGENTPOOLPROFILE <INamedAgentPoolProfile[]>: The agent pool properties for the provisioned cluster.
-  [EnableAutoScaling <Boolean?>]: Whether to enable auto-scaler. Default value is false
-  [MaxCount <Int32?>]: The maximum number of nodes for auto-scaling
-  [MaxPod <Int32?>]: The maximum number of pods that can run on a node.
-  [MinCount <Int32?>]: The minimum number of nodes for auto-scaling
-  [NodeLabel <IAgentPoolProfileNodeLabels>]: The node labels to be persisted across all nodes in agent pool.
-    [(Any) <String>]: This indicates any property can be added to this object.
-  [NodeTaint <List<String>>]: Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule.
-  [OSSku <String>]: Specifies the OS SKU used by the agent pool. The default is CBLMariner if OSType is Linux. The default is Windows2019 when OSType is Windows.
-  [OSType <String>]: The particular KubernetesVersion Image OS Type (Linux, Windows)
-  [Count <Int32?>]: Number of nodes in the agent pool. The default value is 1.
-  [VMSize <String>]: The VM sku size of the agent pool node VMs.
-  [Name <String>]: Unique name of the default agent pool in the context of the provisioned cluster. Default value is <clusterName>-nodepool1
 .Link
 https://learn.microsoft.com/powershell/module/az.aksarc/new-azaksarccluster
 #>
@@ -68,14 +51,12 @@ function New-AzAksArcCluster {
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
-        [Alias('Name')]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
         [System.String]
         # The name of the Kubernetes cluster on which get is called.
         ${ClusterName},
     
         [Parameter(Mandatory)]
-        [Alias('resource-group')]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
         [System.String]
         # The name of the resource group.
@@ -108,18 +89,17 @@ function New-AzAksArcCluster {
         # IP address of the Kubernetes API server
         ${ControlPlaneEndpointHostIP},
 
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+        [System.String]
+        # Location
+        ${Location},
+
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
         [System.String[]]
         ${adminGroupObjectIDs},
-    
-        [Parameter(ParameterSetName='CreateExpanded')]
-        [AllowEmptyCollection()]
-        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.INamedAgentPoolProfile[]]
-        # The agent pool properties for the provisioned cluster.
-        ${AgentPoolProfile},
     
         [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
@@ -162,14 +142,6 @@ function New-AzAksArcCluster {
         ${LoadBalancerProfileCount},
     
         [Parameter(ParameterSetName='CreateExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.PSArgumentCompleterAttribute("calico")]
-        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
-        [System.String]
-        # Network policy used for building Kubernetes network.
-        # Possible values include: 'calico'.
-        ${NetworkProfileNetworkPolicy} = "calico",
-    
-        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
         [System.String]
         # A CIDR notation IP Address range from which to assign pod IPs.
@@ -195,7 +167,44 @@ function New-AzAksArcCluster {
         # The list of SSH public keys used to authenticate with VMs.
         # A maximum of 1 key may be specified.
         ${SshKeyValue},
+
+        [Parameter(ParameterSetName='AutoScaling', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
+        [System.Int32]
+        ${MinCount},
     
+        [Parameter(ParameterSetName='AutoScaling', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
+        [System.Int32]
+        ${MaxCount},
+    
+        [Parameter(ParameterSetName='AutoScaling', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # Indicates whether to enable NFS CSI Driver.
+        # The default value is true.
+        ${EnableAutoScaling},
+
+        [Parameter(ParameterSetName='AutoScaling', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
+        [System.Int32]
+        ${MaxPod},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolProfileNodeLabels]))]
+        [System.Collections.Hashtable]
+        # The node labels to be persisted across all nodes in agent pool.
+        ${NodeLabel},
+
+        [Parameter()]
+        [AllowEmptyCollection()]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+        [System.String[]]
+        # Taints added to new nodes during node pool create and scale.
+        # For example, key=value:NoSchedule.
+        ${NodeTaint},
+
         [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
         [System.String]
@@ -270,29 +279,11 @@ function New-AzAksArcCluster {
     )
 
     process {
-        $Scope = "/"
-        if ($PSBoundParameters.ContainsKey("SubscriptionId"))
-        {
-            $Scope += "subscriptions/$SubscriptionId"
-            $null = $PSBoundParameters.Remove("SubscriptionId")
-        }
-    
-        if ($PSBoundParameters.ContainsKey("ResourceGroupName"))
-        {
-            $Scope += "/resourceGroups/$ResourceGroupName"
-            $null = $PSBoundParameters.Remove("ResourceGroupName")
-        }
-        $ConnectedClusterResourceType = "Microsoft.Kubernetes/connectedClusters"
-        
-        if ($PSBoundParameters.ContainsKey("ClusterName"))
-        {
-            $Scope += "/providers/$ConnectedClusterResourceType/$ClusterName"
-            $null = $PSBoundParameters.Remove("ClusterName")
-        }
-    
+        $Scope = GetConnectedClusterResourceURI -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName
+        $null = $PSBoundParameters.Remove("SubscriptionId")
+        $null = $PSBoundParameters.Remove("ResourceGroupName")
+        $null = $PSBoundParameters.Remove("ClusterName")
         $null = $PSBoundParameters.Add("ConnectedClusterResourceUri", $Scope)
-        $null = $PSBoundParameters.Add("ExtendedLocationName", $CustomLocationName)
-
 
         # Network Validations
         $response = Invoke-AzRestMethod -Path "$VnetId/?api-version=2024-01-01" -Method GET
@@ -300,79 +291,41 @@ function New-AzAksArcCluster {
             $lnet = ($response.Content | ConvertFrom-Json)
             $err = ValidateLogicalNetwork -lnet $lnet -ControlPlaneIP $ControlPlaneEndpointHostIP
             if ($err) {
-                Write-Error $err
-                return
+                throw $err
             }
+        } else {
+            throw "Could not locate logical network with id: $VnetId"
         }
 
         # Edit parameters
         $null = $PSBoundParameters.Add("InfraNetworkProfileVnetSubnetId", @($VnetId))
+        $null = $PSBoundParameters.Add("ExtendedLocationType", "CustomLocation")
+        $null = $PSBoundParameters.Add("ExtendedLocationName", $CustomLocationName)
+        $null = $PSBoundParameters.Add("NetworkProfileNetworkPolicy", "calico")
+        $null = $PSBoundParameters.Remove("Location")
         $null = $PSBoundParameters.Remove("CustomLocationName")
         $null = $PSBoundParameters.Remove("VnetId")
-        $null = $PSBoundParameters.Add("ExtendedLocationType", "CustomLocation")
-        $null = $PSBoundParameters.Add("NetworkProfileNetworkPolicy", "calico")
 
 
-        # Validate GUIDS
-        foreach ($id in $adminGroupObjectIDs) {
-            if ($id -match $guidRegex) {
-                continue
-            } else {
-                $invalidGuid = $true
-            }
-        }
-
-        if ($invalidGuid) {
-            Write-Error "Invalid adminGroupObjectIDs. Not a valid GUID."
-            return
-        } elseif ($adminGroupObjectIDs.Length -ne 0) {
-            $adminGroupObjectIDsArr = $adminGroupObjectIDs -join '", "'
-            $adminGroupObjectIDsArr = '"' + $adminGroupObjectIDsArr + '"'
-            $null = $PSBoundParameters.Remove("adminGroupObjectIDs")
-        }
-
-        $APIVersion = "2024-01-01"
-        $json = 
-@"
-    {
-        "location": "eastus",
-        "kind": "ProvisionedCluster",
-        "identity": {
-            "type": "SystemAssigned"
-        },
-        "properties": {
-            "agentPublicKeyCertificate": "",
-            "arcAgentProfile": {
-                "desiredAgentVersion": "",
-                "agentAutoUpgrade": "Enabled"
-            },
-            "aadProfile": {
-                "enableAzureRBAC": false, 
-                "adminGroupObjectIDs": [$adminGroupObjectIDsArr]
-            }
-        }
-    }
-"@  
+        # Create connected cluster parent resource
+        CreateConnectedCluster -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName -Location $Location -adminGroupObjectIDs $adminGroupObjectIDs
+        $null = $PSBoundParameters.Remove("adminGroupObjectIDs")
         
         # Generate public ssh key if one is not provided
         $SshPublicKeyObj = [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.LinuxProfilePropertiesSshPublicKeysItem]::New()
         if ($PSBoundParameters.ContainsKey('SshKeyValue')) {
             $SshPublicKeyObj.KeyData = $SshKeyValue
         } else {
-            $suffix = Get-Random -Minimum -1000 -Maximum 9999
-            $filename = $ClusterName + "_" + $suffix
-            $sshkeydir = $HOME + "\.ssh\" + $filename
-
-            ssh-keygen -b 2048 -t rsa -f $sshkeydir -q -N ''
-            
-            $publickeyfile = $sshkeydir + ".pub"
-            $publicKey = Get-Content -Path $publickeyfile
-            
-            $SshPublicKeyObj.KeyData = $publicKey
+            $SshPublicKeyObj = GenerateSSHKey ClusterName $ClusterName
         }
         $null = $PSBoundParameters.Remove("SshKeyValue")
         $null = $PSBoundParameters.Add("SshPublicKey", @($SshPublicKeyObj))
-        $null = Invoke-AzRestMethod -Path "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/$ConnectedClusterResourceType/$ClusterName/?api-version=$APIVersion" -Method PUT -payload $json
+
+        # Configure Agent Pool
+        $AgentPoolProfile = CreateAgentPoolProfile -EnableAutoScaling:$EnableAutoScaling -MinCount $MinCount -MaxCount $MaxCount -MaxPod $MaxPod -NodeTaint $NodeTaint -NodeLabel $NodeLabel
+        $null = $PSBoundParameters.Add("AgentPoolProfile", $AgentPoolProfile)
+
+        # Create Provisioned Cluster
         Az.AksArc.internal\New-AzAksArcCluster @PSBoundParameters
     }
     }

@@ -37,7 +37,7 @@ The name of the Kubernetes cluster on which get is called.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: Name
+Aliases:
 
 Required: True
 Position: Named
@@ -69,7 +69,7 @@ The name is case insensitive.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: resource-group
+Aliases:
 
 Required: True
 Position: Named

@@ -14,7 +14,7 @@ Lists the user credentials of the provisioned cluster (can only be used within p
 
 ```
 Get-AzAksArcClusterUserKubeconfig -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,25 +52,9 @@ The name of the Kubernetes cluster on which get is called.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: Name
+Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-
-```yaml
-Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -99,7 +83,7 @@ The name is case insensitive.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: resource-group
+Aliases:
 
 Required: True
 Position: Named

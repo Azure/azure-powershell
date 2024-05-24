@@ -50,14 +50,12 @@ function Update-AzAksArcCluster {
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
-    [Alias('Name')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [System.String]
     # The name of the Kubernetes cluster on which get is called.
     ${ClusterName},
 
     [Parameter(Mandatory)]
-    [Alias('resource-group')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -80,19 +78,33 @@ param(
     [Parameter(ParameterSetName='AutoScaling', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [System.Int32]
+    # Min nodes in autoscalar
     ${MinCount},
 
     [Parameter(ParameterSetName='AutoScaling', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [System.Int32]
+    # Max nodes in autoscalar
     ${MaxCount},
 
     [Parameter(ParameterSetName='AutoScaling', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.Management.Automation.SwitchParameter]
-    # Indicates whether to enable NFS CSI Driver.
+    # Indicates whether to enable autoscalar.
     # The default value is true.
     ${EnableAutoScaling},
+
+    [Parameter(ParameterSetName='Upgrade')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+    [System.String]
+    # The version of Kubernetes in use by the provisioned cluster.
+    ${KubernetesVersion},
+
+    [Parameter(ParameterSetName='Upgrade2')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Upgrade the provisioned cluster
+    ${Upgrade},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.PSArgumentCompleterAttribute("True", "False", "NotApplicable")]
@@ -122,15 +134,6 @@ param(
     # Indicates whether to enable SMB CSI Driver.
     # The default value is true.
     ${SmbCsiDriverEnabled},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Runtime')]
@@ -185,74 +188,22 @@ param(
 )
 
 process {
-    $Scope = "/"
-    if ($PSBoundParameters.ContainsKey("SubscriptionId"))
-    {
-        $Scope += "subscriptions/$SubscriptionId"
-        $null = $PSBoundParameters.Remove("SubscriptionId")
-    }
-
-    if ($PSBoundParameters.ContainsKey("ResourceGroupName"))
-    {
-        $Scope += "/resourceGroups/$ResourceGroupName"
-        $null = $PSBoundParameters.Remove("ResourceGroupName")
-    }
-    $ConnectedClusterResourceType = "Microsoft.Kubernetes/connectedClusters"
-    if ($PSBoundParameters.ContainsKey("ClusterName"))
-    {
-        $Scope += "/providers/$ConnectedClusterResourceType/$ClusterName"
-        $null = $PSBoundParameters.Remove("ClusterName")
-    }
+    $Scope = GetConnectedClusterResourceURI -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName
+    $null = $PSBoundParameters.Remove("SubscriptionId")
+    $null = $PSBoundParameters.Remove("ResourceGroupName")
+    $null = $PSBoundParameters.Remove("ClusterName")
     $null = $PSBoundParameters.Add("ConnectedClusterResourceUri", $Scope)
 
-    # Validate GUIDS
-    foreach ($id in $adminGroupObjectIDs) {
-        if ($id -match $guidRegex) {
-            continue
-        } else {
-            $invalidGuid = $true
-        }
-    }
-
-    if ($invalidGuid) {
-        Write-Error "Invalid adminGroupObjectIDs. Not a valid GUID."
-        return
-    } elseif ($adminGroupObjectIDs.Length -ne 0) {
+    # Update Connected Cluster Parent Resource
+    if ($PSBoundParameters.ContainsKey("adminGroupObjectIDs")) {
         $ShouldUpdateConnectedCluster = $true
-        $adminGroupObjectIDsArr = $adminGroupObjectIDs -join '", "'
-        $adminGroupObjectIDsArr = '"' + $adminGroupObjectIDsArr + '"'
-        $null = $PSBoundParameters.Remove("adminGroupObjectIDs")
     }
 
-    # Connected Cluster Update
     if ($ShouldUpdateConnectedCluster) {
-          $APIVersion = "2024-01-01"
-          $json = 
-@"
-    {
-        "location": "eastus",
-        "kind": "ProvisionedCluster",
-        "identity": {
-            "type": "SystemAssigned"
-        },
-        "properties": {
-            "agentPublicKeyCertificate": "",
-            "arcAgentProfile": {
-                "desiredAgentVersion": "",
-                "agentAutoUpgrade": "Enabled"
-            },
-            "aadProfile": {
-                "enableAzureRBAC": false, 
-                "adminGroupObjectIDs": [$adminGroupObjectIDsArr]
-            }
-        }
-    }
-"@  
-
-            $null = Invoke-AzRestMethod -Path "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/$ConnectedClusterResourceType/$ClusterName/?api-version=$APIVersion" -Method PUT -payload $json
+        CreateConnectedCluster -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName -Location "eastus" -adminGroupObjectIDs $adminGroupObjectIDs
     }
 
-    # Nodepool Update
+    # Update Nodepool
     if ($PSBoundParameters.ContainsKey("MinCount"))
     {
         $ShouldUpdateDefaultNodepool = $true
@@ -269,7 +220,7 @@ process {
     }
 
     if ($ShouldUpdateDefaultNodepool) {
-        $nodepools = Get-AzAksArcCluster -ClusterName $ClusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+        $nodepools = Get-AzAksArcNodepool -ClusterName $ClusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
         if ($nodepools.length -ne 1) {
             Write-Error "Error invalid number of nodepools."
             return
@@ -279,9 +230,33 @@ process {
         $null = $PSBoundParameters.Remove("MinCount")
         $null = $PSBoundParameters.Remove("MaxCount")
         $null = $PSBoundParameters.Remove("EnableAutoScaling")
+        return
     }
 
-    # Provisioned Cluster Update
+    # Update Provisioned Cluster
+    if ($PSBoundParameters.ContainsKey("KubernetesVersion"))
+    {   
+        $Upgrades = Get-AzAksArcClusterUpgrades -ClusterName $ClusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+        if ($upgrades.ControlPlaneProfileUpgrade.KubernetesVersion -contains $KubernetesVersion) {
+            continue
+        } else {
+            throw "Kubernetes Version $KubernetesVersion is not a valid upgradable version."
+        }
+    }
+    if ($PSBoundParameters.ContainsKey("Upgrade"))
+    {
+        $Upgrades = Get-AzAksArcClusterUpgrades -ClusterName $ClusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+        $UpgradeListLength = $upgrades.ControlPlaneProfileUpgrade.KubernetesVersion.Length
+        if ($UpgradeListLength -eq 0) {
+            Write-Error "Already on latest kubernetes version."
+            return
+        }
+        $LatestUpgrade = $upgrades.ControlPlaneProfileUpgrade[$UpgradeListLength-1].KubernetesVersion
+
+        $null = $PSBoundParameters.Add("KubernetesVersion", $LatestUpgrade)
+        $null = $PSBoundParameters.Remove("Upgrade")
+    }
+
     Az.AksArc.internal\Update-AzAksArcCluster @PSBoundParameters
 }
 }

@@ -16,16 +16,31 @@ Update the provisioned cluster instance
 ```
 Update-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-adminGroupObjectIDs <String[]>] [-ControlPlaneCount <Int32>] [-LicenseProfileAzureHybridBenefit <String>]
- [-NfCsiDriverEnabled] [-SmbCsiDriverEnabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-NfCsiDriverEnabled] [-SmbCsiDriverEnabled] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AutoScaling
 ```
 Update-AzAksArcCluster -ClusterName <String> -MaxCount <Int32> -MinCount <Int32> -ResourceGroupName <String>
  -EnableAutoScaling [-SubscriptionId <String>] [-adminGroupObjectIDs <String[]>] [-ControlPlaneCount <Int32>]
- [-LicenseProfileAzureHybridBenefit <String>] [-NfCsiDriverEnabled] [-SmbCsiDriverEnabled]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-LicenseProfileAzureHybridBenefit <String>] [-NfCsiDriverEnabled] [-SmbCsiDriverEnabled] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Upgrade
+```
+Update-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-adminGroupObjectIDs <String[]>] [-ControlPlaneCount <Int32>] [-KubernetesVersion <String>]
+ [-LicenseProfileAzureHybridBenefit <String>] [-NfCsiDriverEnabled] [-SmbCsiDriverEnabled] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Upgrade2
+```
+Update-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-adminGroupObjectIDs <String[]>] [-ControlPlaneCount <Int32>] [-LicenseProfileAzureHybridBenefit <String>]
+ [-NfCsiDriverEnabled] [-SmbCsiDriverEnabled] [-Upgrade] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -141,7 +156,7 @@ The name of the Kubernetes cluster on which get is called.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: Name
+Aliases:
 
 Required: True
 Position: Named
@@ -166,24 +181,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-
-```yaml
-Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -EnableAutoScaling
-Indicates whether to enable NFS CSI Driver.
+Indicates whether to enable autoscalar.
 The default value is true.
 
 ```yaml
@@ -192,6 +191,21 @@ Parameter Sets: AutoScaling
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KubernetesVersion
+The version of Kubernetes in use by the provisioned cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: Upgrade
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -215,7 +229,7 @@ Accept wildcard characters: False
 ```
 
 ### -MaxCount
-
+Max nodes in autoscalar
 
 ```yaml
 Type: System.Int32
@@ -230,7 +244,7 @@ Accept wildcard characters: False
 ```
 
 ### -MinCount
-
+Min nodes in autoscalar
 
 ```yaml
 Type: System.Int32
@@ -282,7 +296,7 @@ The name is case insensitive.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: resource-group
+Aliases:
 
 Required: True
 Position: Named
@@ -318,6 +332,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Upgrade
+Upgrade the provisioned cluster
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: Upgrade2
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

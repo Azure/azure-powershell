@@ -15,38 +15,35 @@ Create the agent pool in the provisioned cluster
 ### CreateExpanded (Default)
 ```
 New-AzAksArcNodepool -ClusterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Count <Int32>] [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
- [-NodeLabel <Hashtable>] [-NodeTaint <String[]>] [-OSSku <String>] [-OSType <String>] [-Tag <Hashtable>]
- [-VMSize <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Count <Int32>] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>]
+ [-OSSku <String>] [-OSType <String>] [-Tag <Hashtable>] [-VMSize <String>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### AutoScaling
 ```
 New-AzAksArcNodepool -ClusterName <String> -Name <String> -ResourceGroupName <String> -EnableAutoScaling
- -MaxCount <Int32> -MinCount <Int32> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -MaxCount <Int32> -MinCount <Int32> [-SubscriptionId <String>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzAksArcNodepool -ClusterName <String> -InputObject <IAksArcIdentity> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-ExtendedLocationName <String>]
- [-ExtendedLocationType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzAksArcNodepool -ClusterName <String> -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzAksArcNodepool -ClusterName <String> -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -120,22 +117,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-
-```yaml
-Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -EnableAutoScaling
 Whether to enable auto-scaler.
 Default value is false
@@ -146,37 +127,6 @@ Parameter Sets: AutoScaling
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExtendedLocationName
-ARM Id of the extended location.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExtendedLocationType
-The extended location type.
-Allowed value: 'CustomLocation'
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -264,7 +214,7 @@ Parameter for the name of the agent pool in the provisioned cluster.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: AgentPoolName
+Aliases:
 
 Required: True
 Position: Named
@@ -358,7 +308,7 @@ The name is case insensitive.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: resource-group
+Aliases:
 
 Required: True
 Position: Named

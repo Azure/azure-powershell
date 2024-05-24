@@ -16,22 +16,21 @@ Update the agent pool in the provisioned cluster
 ```
 Update-AzAksArcNodepool -ClusterName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Count <Int32>] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AutoScaling
 ```
-Update-AzAksArcNodepool -ClusterName <String> -ResourceGroupName <String> -EnableAutoScaling -MaxCount <Int32>
- -MinCount <Int32> [-SubscriptionId <String>] [-Count <Int32>] [-NodeLabel <Hashtable>]
- [-NodeTaint <String[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzAksArcNodepool -ClusterName <String> -Name <String> -ResourceGroupName <String> -EnableAutoScaling
+ -MaxCount <Int32> -MinCount <Int32> [-SubscriptionId <String>] [-Count <Int32>] [-NodeLabel <Hashtable>]
+ [-NodeTaint <String[]>] [-Tag <Hashtable>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-Update-AzAksArcNodepool -ClusterName <String> -InputObject <IAksArcIdentity> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Count <Int32>] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzAksArcNodepool -ClusterName <String> -InputObject <IAksArcIdentity> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-Count <Int32>] [-NodeLabel <Hashtable>]
+ [-NodeTaint <String[]>] [-Tag <Hashtable>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,22 +107,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-
-```yaml
-Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -EnableAutoScaling
 Whether to enable auto-scaler.
 Default value is false
@@ -190,8 +173,8 @@ Parameter for the name of the agent pool in the provisioned cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: AgentPoolName
+Parameter Sets: (All)
+Aliases:
 
 Required: True
 Position: Named
@@ -253,7 +236,7 @@ The name is case insensitive.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: resource-group
+Aliases:
 
 Required: True
 Position: Named

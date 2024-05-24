@@ -34,20 +34,19 @@ function Get-AzAksArcClusterLogs {
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
         [System.String]
-        # The name of the Kubernetes cluster on which get is called.
+        # IP Address of provisioned cluster
         ${ipAddress},
     
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
         [System.String]
-        # The name of the resource group.
-        # The name is case insensitive.
+        # Path to ssh key for provisioned cluster
         ${sshkeypath},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
         [System.String]
-        # The name of the Kubernetes cluster on which get is called.
+        # Directory to output logs
         ${outdir},
     
         [Parameter()]

@@ -32,14 +32,12 @@ function Remove-AzAksArcCluster {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
-    [Alias('Name')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [System.String]
     # The name of the Kubernetes cluster on which get is called.
     ${ClusterName},
 
     [Parameter(Mandatory)]
-    [Alias('resource-group')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -52,15 +50,6 @@ param(
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Runtime')]
@@ -121,33 +110,14 @@ param(
 )
 
 process {
-    $Scope = "/"
-    if ($PSBoundParameters.ContainsKey("SubscriptionId"))
-    {
-        $Scope += "subscriptions/$SubscriptionId"
-        $null = $PSBoundParameters.Remove("SubscriptionId")
-    }
-
-    if ($PSBoundParameters.ContainsKey("ResourceGroupName"))
-    {
-        $Scope += "/resourceGroups/$ResourceGroupName"
-        $null = $PSBoundParameters.Remove("ResourceGroupName")
-    }
-    $ConnectedClusterResourceType = "Microsoft.Kubernetes/connectedClusters"
-    
-    if ($PSBoundParameters.ContainsKey("ClusterName"))
-    {
-        $Scope += "/providers/$ConnectedClusterResourceType/$ClusterName"
-        $null = $PSBoundParameters.Remove("ClusterName")
-    }
-
     $APIVersion = "2024-01-01"
-    $null = Invoke-AzRestMethod -Path "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/$ConnectedClusterResourceType/$ClusterName/?api-version=$APIVersion" -Method DELETE
+    $null = Invoke-AzRestMethod -Path "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Kubernetes/connectedClusters/$ClusterName/?api-version=$APIVersion" -Method DELETE
 
+    # Query status until delete is complete
     $stopLoop = $false
     do 
     {
-        $response = Invoke-AzRestMethod -Path "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/$ConnectedClusterResourceType/$ClusterName/?api-version=$APIVersion" -Method GET
+        $response = Invoke-AzRestMethod -Path "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Kubernetes/connectedClusters/$ClusterName/?api-version=$APIVersion" -Method GET
 
         if ($response.StatusCode -eq 404) {
             $stopLoop = $true
