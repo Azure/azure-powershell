@@ -1,49 +1,42 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://learn.microsoft.com/powershell/module/az.netappfiles/remove-aznetappfilesactivedirectory
+online version:
 schema: 2.0.0
 ---
 
-# Remove-AzNetAppFilesActiveDirectory
+# Set-AzNetAppFilesBackupVault
 
 ## SYNOPSIS
-Deletes an Azure NetApp Files (ANF) active directory configuration.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### ByFieldsParameterSet (Default)
 ```
-Remove-AzNetAppFilesActiveDirectory -ResourceGroupName <String> -AccountName <String>
- -ActiveDirectoryId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Set-AzNetAppFilesBackupVault -ResourceGroupName <String> -Location <String> -AccountName <String>
+ -Name <String> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Remove-AzNetAppFilesActiveDirectory -ActiveDirectoryId <String> -AccountObject <PSNetAppFilesAccount>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### ByObjectParameterSet
-```
-Remove-AzNetAppFilesActiveDirectory -InputObject <PSNetAppFilesActiveDirectory> [-PassThru]
+Set-AzNetAppFilesBackupVault -Name <String> [-Tag <Hashtable>] -AccountObject <PSNetAppFilesAccount>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzNetAppFilesActiveDirectory** cmdlet deletes an ANF active directory configuration.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Remove-AzNetAppFilesActiveDirectory -ResourceGroupName "MyRG" -AccountName "MyAccount" -ActiveDirectoryId "MyActiveDirectoryId"
+PS C:\> {{ Add example code here }}
 ```
 
-This command deletes the new ANF active directory configuration with a the name "MyADName".
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -51,7 +44,7 @@ This command deletes the new ANF active directory configuration with a the name 
 The name of the ANF account
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -63,10 +56,10 @@ Accept wildcard characters: False
 ```
 
 ### -AccountObject
-The Account for the Active Directory object
+The Account object for the new BackupVault
 
 ```yaml
-Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
+Type: PSNetAppFilesAccount
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
@@ -77,26 +70,11 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ActiveDirectoryId
-The ID of the ANF active directory
-
-```yaml
-Type: System.String
-Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -107,30 +85,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The active directory object to remove
+### -Location
+The location of the resource
 
 ```yaml
-Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory
-Parameter Sets: ByObjectParameterSet
+Type: String
+Parameter Sets: ByFieldsParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Return whether the specified Active Directory  was successfully removed
+### -Name
+The name of the ANF BackupVault
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: BackupVaultName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -141,7 +119,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
+Type: ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -156,7 +134,7 @@ Accept wildcard characters: False
 The resource group of the ANF account
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -167,11 +145,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Tag
+A hashtable array which represents resource tags
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases: Tags
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -187,7 +180,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -205,21 +198,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
 
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackupVault
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzNetAppFilesActiveDirectory](./Get-AzNetAppFilesActiveDirectory.md)
-[New-AzNetAppFilesActiveDirectory](./New-AzNetAppFilesActiveDirectory.md)
-[Update-AzNetAppFilesActiveDirectory](./Update-AzNetAppFilesActiveDirectory.md)
-[Get-AzNetAppFilesAccount](./Get-AzNetAppFilesAccount.md)
-[New-AzNetAppFilesAccount](./New-AzNetAppFilesAccount.md)
-[Remove-AzNetAppFilesAccount](./Remove-AzNetAppFilesAccount.md)
-[Set-AzNetAppFilesAccount](./Set-AzNetAppFilesAccount.md)
-[Update-AzNetAppFilesAccount](./Update-AzNetAppFilesAccount.md)

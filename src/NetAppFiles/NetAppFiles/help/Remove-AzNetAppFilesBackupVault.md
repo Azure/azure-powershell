@@ -1,57 +1,93 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://learn.microsoft.com/powershell/module/az.netappfiles/update-aznetappfilesaccountcredential
+online version:
 schema: 2.0.0
 ---
 
-# Update-AzNetAppFilesAccountCredential
+# Remove-AzNetAppFilesBackupVault
 
 ## SYNOPSIS
-Renew identity credentials
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### ByFieldsParameterSet (Default)
 ```
-Update-AzNetAppFilesAccountCredential -ResourceGroupName <String> [-Location <String>] -Name <String>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzNetAppFilesBackupVault -ResourceGroupName <String> -AccountName <String> -Name <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ByParentObjectParameterSet
+```
+Remove-AzNetAppFilesBackupVault -Name <String> -AccountObject <PSNetAppFilesAccount> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Update-AzNetAppFilesAccountCredential -ResourceGroupName <String> [-Location <String>] -Name <String>
- -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzNetAppFilesBackupVault -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Update-AzNetAppFilesAccountCredential -ResourceGroupName <String> [-Location <String>] -Name <String>
- -InputObject <PSNetAppFilesAccount> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzNetAppFilesBackupVault -InputObject <PSNetAppFilesBackupVault> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Renew identity credentials that are used to authenticate to key vault, for customer-managed key encryption. If encryption.identity.principalId does not match identity.principalId, running this operation will fix it.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Update-AzNetAppFilesAccountCredential -ResourceGroupName "MyRG" -Name "MyAnfAccount"
+PS C:\> {{ Add example code here }}
 ```
 
-This command renews the identity credentials that are used to authenticate to key vault for the NetAppAccount named MyAnfAccount.
+{{ Add example description here }}
 
 ## PARAMETERS
+
+### -AccountName
+The name of the ANF account
+
+```yaml
+Type: String
+Parameter Sets: ByFieldsParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AccountObject
+The Account object containing the BackupVault to remove
+
+```yaml
+Type: PSNetAppFilesAccount
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -63,10 +99,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The account object to update credentials on
+The BackupVault object to remove
 
 ```yaml
-Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
+Type: PSNetAppFilesBackupVault
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -77,28 +113,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Location
-The location of the resource
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
-The name of the ANF account
+The name of the ANF BackupVault
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: AccountName
+Type: String
+Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
+Aliases: BackupVaultName
 
 Required: True
 Position: Named
@@ -108,10 +129,10 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Return whether the specified NetApp Accounts credentials were successfully renewed/updated
+Return whether the specified BackupVault was successfully removed
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -126,7 +147,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
+Type: ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -141,8 +162,8 @@ Accept wildcard characters: False
 The resource group of the ANF account
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: ByFieldsParameterSet
 Aliases:
 
 Required: True
@@ -153,10 +174,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of the ANF account
+The resource id of the ANF BackupVault
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
@@ -171,7 +192,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -187,7 +208,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -203,13 +224,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
+
 ### System.String
 
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackupVault
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
+### System.Boolean
 
 ## NOTES
 

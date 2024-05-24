@@ -1,61 +1,46 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://learn.microsoft.com/powershell/module/az.netappfiles/get-aznetappfilespool
+online version:
 schema: 2.0.0
 ---
 
-# Get-AzNetAppFilesPool
+# Get-AzNetAppFilesBackupVault
 
 ## SYNOPSIS
-Gets details of an Azure NetApp Files (ANF) pool.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### ByFieldsParameterSet (Default)
 ```
-Get-AzNetAppFilesPool -ResourceGroupName <String> -AccountName <String> [-Name <String>]
+Get-AzNetAppFilesBackupVault -ResourceGroupName <String> -AccountName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Get-AzNetAppFilesPool [-Name <String>] -AccountObject <PSNetAppFilesAccount>
+Get-AzNetAppFilesBackupVault [-Name <String>] -AccountObject <PSNetAppFilesVolume>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Get-AzNetAppFilesPool -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzNetAppFilesBackupVault -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzNetAppFilesPool** cmdlet gets details of an ANF pool.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Get an ANF pool
+### Example 1
 ```powershell
-Get-AzNetAppFilesPool -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MyAnfPool"
+PS C:\> {{ Add example code here }}
 ```
 
-```output
-Location          : westus2
-Id                : /subscriptions/subsID/resourceGroups/MyRG/providers/Microsoft.NetApp/netAppAccounts/MyAnfAccount/capacityPools/MyAnfPool
-Name              : MyAnfAccount/MyAnfPool
-Type              : Microsoft.NetApp/netAppAccounts/capacityPools
-Tags              :
-PoolId            : a3a53a09-fd70-37ab-39dc-392a04cba525
-Size              : 4398046511104
-ServiceLevel	  : Premium
-TotalThroughputMibps: 262.144
-UtilizedThroughputMibps: 164.221
-QosType			  : Auto
-ProvisioningState : Succeeded
-```
-
-This command gets the account named MyAnfPool from the account "MyAnfAccount".
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -63,7 +48,7 @@ This command gets the account named MyAnfPool from the account "MyAnfAccount".
 The name of the ANF account
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -75,10 +60,10 @@ Accept wildcard characters: False
 ```
 
 ### -AccountObject
-The account object containing the pool to return
+The account object containing the BackupVault to return
 
 ```yaml
-Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
+Type: PSNetAppFilesVolume
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
@@ -93,7 +78,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -105,12 +90,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the ANF pool
+The name of the ANF BackupVault
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
-Aliases: PoolName
+Aliases: BackupVaultName
 
 Required: False
 Position: Named
@@ -123,7 +108,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
+Type: ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -135,10 +120,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group of the ANF pool
+The resource group of the ANF account
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -150,10 +135,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of the ANF pool
+The resource id of the ANF BackupVault
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
@@ -171,17 +156,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackup
 
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzNetAppFilesPool](./New-AzNetAppFilesPool.md)
-[Remove-AzNetAppFilesPool](./Remove-AzNetAppFilesPool.md)
-[Set-AzNetAppFilesPool](./Set-AzNetAppFilesPool.md)
-[Update-AzNetAppFilesPool](./Update-AzNetAppFilesPool.md)

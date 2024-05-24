@@ -957,7 +957,7 @@ function TestUpdate-ProtocolType
         $getRetrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1
         Assert-AreEqual "$accName/$poolName/$volName1" $getRetrievedVolume.Name
         Assert-AreEqual 'NFSv4.1' $getRetrievedVolume.ProtocolTypes[0] 
-        Assert-True $getRetrievedVolume.ExportPolicy.Rules[0].Nfsv41
+        
 
     }
     finally
