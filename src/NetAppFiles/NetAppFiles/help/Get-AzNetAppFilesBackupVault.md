@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/get-aznetappfilesbackupvault
 schema: 2.0.0
 ---
 
 # Get-AzNetAppFilesBackupVault
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets details of an Azure NetApp Files (ANF) BackupVault.
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Get-AzNetAppFilesBackupVault -ResourceId <String> [-DefaultProfile <IAzureContex
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzNetAppFilesBackupVault** cmdlet gets details of an ANF BackupVault.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Get-AzNetAppFilesBackupVault -ResourceGroupName "MyRG" -AccountName MyAnfAccount -Name MyBackupVaultName
 ```
 
-{{ Add example description here }}
+This command gets the account named MyBackupVaultName.
 
 ## PARAMETERS
 

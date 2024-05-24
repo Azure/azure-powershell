@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/new-aznetappfilesbackupvault
 schema: 2.0.0
 ---
 
 # New-AzNetAppFilesBackupVault
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new Azure NetApp Files (ANF) BackupVault.
 
 ## SYNTAX
 
@@ -27,16 +27,16 @@ New-AzNetAppFilesBackupVault -Name <String> [-Tag <Hashtable>] -AccountObject <P
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzNetAppFilesBackupVault** cmdlet creates an ANF BackupVault.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+New-AzNetAppFilesBackupVault -ResourceGroupName "MyRG" -AccountName "MyAccount" -Name "MyBackupVaultName" -Location eastus
 ```
 
-{{ Add example description here }}
+This command creates the new ANF account "MyBackupVaultName".
 
 ## PARAMETERS
 

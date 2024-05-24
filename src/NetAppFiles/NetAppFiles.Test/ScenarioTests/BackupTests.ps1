@@ -132,6 +132,7 @@ function Test-BackupCrud
         $retrievedVault = New-AzNetAppFilesBackupVault -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $backupVaultName -Location $backupLocation -Tag @{$newTagName = $newTagValue}
         Assert-AreEqual "$accName1/$backupVaultName" $retrievedVault.Name
 
+        $retrievedVault = Get-AzNetAppFilesBackupVault -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $backupVaultName
         # create and check BackupPolicy
         #$retrievedBackupPolicy = New-AzNetAppFilesBackupPolicy -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -Name $backupPolicyName1 -Tag @{$newTagName = $newTagValue} -Enabled -DailyBackupsToKeep $dailyBackupsToKeep -WeeklyBackupsToKeep $weeklyBackupsToKeep -MonthlyBackupsToKeep $monthlyBackupsToKeep -YearlyBackupsToKeep $yearlyBackupsToKeep
         #Assert-NotNull $retrievedBackupPolicy.Id

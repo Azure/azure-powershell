@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/update-aznetappfilesbackupvault
 schema: 2.0.0
 ---
 
 # Update-AzNetAppFilesBackupVault
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates an Azure NetApp Files (ANF) BackupVault according to the optional modifiers provided.
 
 ## SYNTAX
 
@@ -41,16 +41,16 @@ Update-AzNetAppFilesBackupVault [-Tag <Hashtable>] -InputObject <PSNetAppFilesBa
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Update-AzNetAppFilesAccount** cmdlet modifies an ANF BackupVault.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Update-AzNetAppFilesBackupVault -ResourceGroupName "MyRG" -AccountName "MyAccount" -Name "MyBackupVaultName" -Tag @{"tag1" = "tagValue"}
 ```
 
-{{ Add example description here }}
+This command performs an update on the given account modifying the tags to those provided.
 
 ## PARAMETERS
 

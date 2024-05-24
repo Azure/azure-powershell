@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/remove-aznetappfilesbackupvault
 schema: 2.0.0
 ---
 
 # Remove-AzNetAppFilesBackupVault
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Deletes an Azure NetApp Files (ANF) BackupVault.
 
 ## SYNTAX
 
@@ -40,16 +40,16 @@ Remove-AzNetAppFilesBackupVault -InputObject <PSNetAppFilesBackupVault> [-PassTh
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzNetAppFilesBackupVault** cmdlet deletes an ANF BackupVault.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Remove-AzNetAppFilesBackupVault -ResourceGroupName "MyRG" -AccountName "MyAccount" -Name "MyBackupVaultName"
 ```
 
-{{ Add example description here }}
+This command deletes the ANF BackupVault named "MyBackupVaultName".
 
 ## PARAMETERS
 
