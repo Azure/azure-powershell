@@ -1,4 +1,4 @@
-### Example 1: Update an Azure HDInsight gen2 cluster pool.
+### Example 1: Update an Azure HDInsight cluster pool.
 ```powershell
 # Cluster configuration info
 $location = "East US 2"
@@ -46,4 +46,4 @@ Tag                                            : Microsoft.Azure.PowerShell.Cmdl
 Type                                           : microsoft.hdinsight/clusterpools
 ```
 
-Update an Azure HDInsight gen2 cluster pool enableLogAnalytics.
+Update an Azure HDInsight cluster pool enableLogAnalytics.
