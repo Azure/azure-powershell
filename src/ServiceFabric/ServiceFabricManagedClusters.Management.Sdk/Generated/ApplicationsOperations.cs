@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         public ServiceFabricManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Get the status of the latest application upgrade. It will query the cluster to find the status of the latest application upgrade.
+        /// Get the status of the latest application upgrade. It will query the cluster
+        /// to find the status of the latest application upgrade.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -64,7 +65,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Send a request to start a rollback of the current application upgrade. This will start rolling back the application to the previous version.
+        /// Send a request to start a rollback of the current application upgrade. This
+        /// will start rolling back the application to the previous version.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -89,7 +91,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Send a request to resume the current application upgrade. This will resume the application upgrade from where it was paused.
+        /// Send a request to resume the current application upgrade. This will resume
+        /// the application upgrade from where it was paused.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -337,7 +340,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 
         }
         /// <summary>
-        /// Create or update a Service Fabric managed application resource with the specified name.
+        /// Create or update a Service Fabric managed application resource with the
+        /// specified name.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -598,7 +602,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 
         }
         /// <summary>
-        /// Delete a Service Fabric managed application resource with the specified name.
+        /// Delete a Service Fabric managed application resource with the specified
+        /// name.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

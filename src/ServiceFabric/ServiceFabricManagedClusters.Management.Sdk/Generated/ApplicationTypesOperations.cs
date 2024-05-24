@@ -726,7 +726,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 
         }
         /// <summary>
-        /// Delete a Service Fabric managed application type name resource with the specified name.
+        /// Delete a Service Fabric managed application type name resource with the
+        /// specified name.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

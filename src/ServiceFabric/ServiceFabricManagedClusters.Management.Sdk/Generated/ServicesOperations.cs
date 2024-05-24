@@ -269,7 +269,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 
         }
         /// <summary>
-        /// Create or update a Service Fabric managed service resource with the specified name.
+        /// Create or update a Service Fabric managed service resource with the
+        /// specified name.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
