@@ -63,7 +63,10 @@ function Test-PolicyCrud
     Assert-AreEqual $managedRule2.RuleSetVersion $retrievedPolicy.ManagedRules[1].RuleSetVersion
 
     $customRule2 = New-AzFrontDoorWafCustomRuleObject -Name "Rule2" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Log -Priority 2
-    $updatedPolicy = Update-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule2
+    $LogScrubbingRule = New-AzFrontDoorWafLogScrubbingRuleObject -MatchVariable "RequestHeaderNames" -SelectorMatchOperator "EqualsAny" -State "Disabled"
+    $logscrubbingSetting = New-AzFrontDoorWafLogScrubbingSettingObject -State Enabled -ScrubbingRule @($LogScrubbingRule)
+
+    $updatedPolicy = Update-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule2 -LogScrubbingSetting $logscrubbingSetting
     Assert-NotNull $updatedPolicy
     Assert-AreEqual $Name $updatedPolicy.Name
     Assert-AreEqual $customRule2.Name $updatedPolicy.CustomRules[0].Name

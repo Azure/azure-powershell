@@ -121,8 +121,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// setting is only applicable to Premium_AzureFrontDoor. Value must be an
         /// integer between 5 and 1440 with the default value being 30.
         [Parameter(Mandatory = false, HelpMessage = "setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.")]
-        [ValidateRange(5, 1440)]
-        public int JavascriptChallengeExpirationInMinutes { get; set; }
+        public int? JavascriptChallengeExpirationInMinutes { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -210,7 +209,10 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 
             if (this.IsParameterBound(c => c.JavascriptChallengeExpirationInMinutes))
             {
-                updateParameters.PolicySettings.JavascriptChallengeExpirationInMinutes = JavascriptChallengeExpirationInMinutes;
+                if (JavascriptChallengeExpirationInMinutes != null)
+                {
+                    updateParameters.PolicySettings.JavascriptChallengeExpirationInMinutes = JavascriptChallengeExpirationInMinutes;
+                }
             }
 
             if (this.IsParameterBound(c => c.LogScrubbingSetting))
