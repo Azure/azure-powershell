@@ -258,7 +258,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
 
         }
         /// <summary>
-        /// Create or update a Service Fabric application resource with the specified name.
+        /// Create or update a Service Fabric application resource with the specified
+        /// name.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

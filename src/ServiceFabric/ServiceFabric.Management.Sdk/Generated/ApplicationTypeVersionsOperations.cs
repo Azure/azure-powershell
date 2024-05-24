@@ -269,7 +269,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
 
         }
         /// <summary>
-        /// Create or update a Service Fabric application type version resource with the specified name.
+        /// Create or update a Service Fabric application type version resource with
+        /// the specified name.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -300,7 +301,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         }
 
         /// <summary>
-        /// Delete a Service Fabric application type version resource with the specified name.
+        /// Delete a Service Fabric application type version resource with the
+        /// specified name.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

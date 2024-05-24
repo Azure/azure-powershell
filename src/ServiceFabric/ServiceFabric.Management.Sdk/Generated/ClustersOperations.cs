@@ -273,7 +273,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         }
 
         /// <summary>
-        /// Update the configuration of a Service Fabric cluster resource with the specified name.
+        /// Update the configuration of a Service Fabric cluster resource with the
+        /// specified name.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

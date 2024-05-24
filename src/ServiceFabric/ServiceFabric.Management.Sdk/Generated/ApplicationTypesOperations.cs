@@ -497,7 +497,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
 
         }
         /// <summary>
-        /// Delete a Service Fabric application type name resource with the specified name.
+        /// Delete a Service Fabric application type name resource with the specified
+        /// name.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
