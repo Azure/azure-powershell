@@ -44,7 +44,7 @@ The operation to assess patches on a hybrid machine identity in Azure.
 ### [New-AzConnectedLicense](New-AzConnectedLicense.md)
 The operation to Create a license.
 
-### [New-AzConnectedLicenseDetails](New-AzConnectedLicenseDetails.md)
+### [New-AzConnectedLicenseDetail](New-AzConnectedLicenseDetail.md)
 Create an in-memory object for LicenseDetails.
 
 ### [New-AzConnectedMachineExtension](New-AzConnectedMachineExtension.md)

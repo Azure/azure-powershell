@@ -64,7 +64,6 @@ Type                             : Microsoft.HybridCompute/privateLinkScopes/net
 
 Get network security perimeter of a private link scope
 
-
 ## PARAMETERS
 
 ### -DefaultProfile

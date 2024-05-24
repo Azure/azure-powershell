@@ -1,6 +1,6 @@
 ### Example 1: get the detail of an ESU license
 ```powershell
-New-AzConnectedLicenseDetails -State 'Activated' -Target 'Windows Server 2012' -Edition 'Datacenter' -Type 'pCore' -Processor 16
+New-AzConnectedLicenseDetail -State 'Activated' -Target 'Windows Server 2012' -Edition 'Datacenter' -Type 'pCore' -Processor 16
 ```
 
 ```output
