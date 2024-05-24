@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
             {
                 var scrubbingRule = new List<Management.FrontDoor.Models.WebApplicationFirewallScrubbingRules>();
 
-                if (LogScrubbingSetting.ScrubbingRule.Count() > 0)
+                if (LogScrubbingSetting != null && LogScrubbingSetting.ScrubbingRule != null && LogScrubbingSetting.ScrubbingRule.Count() > 0)
                 {
                     foreach (var item in LogScrubbingSetting.ScrubbingRule)
                     {
@@ -227,12 +227,12 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                             selector: item.Selector,
                             state: item.State));
                     }
+                    updateParameters.PolicySettings.LogScrubbing = new Management.FrontDoor.Models.PolicySettingsLogScrubbing
+                    {
+                        ScrubbingRules = scrubbingRule,
+                        State = LogScrubbingSetting.State,
+                    };
                 }
-                updateParameters.PolicySettings.LogScrubbing = new Management.FrontDoor.Models.PolicySettingsLogScrubbing
-                {
-                    ScrubbingRules = scrubbingRule,
-                    State = LogScrubbingSetting.State,
-                };
             }
 
                 if (ShouldProcess(Resources.WebApplicationFirewallPolicyTarget, string.Format(Resources.WebApplicationFirewallPolicyChangeWarning, Name)))

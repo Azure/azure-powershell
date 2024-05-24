@@ -79,6 +79,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Enabled State. Possible values include: 'Enabled', 'Disabled'.")]
         public string EnabledState { get; set; }
+        [PSArgumentCompleter("Enabled", "Disabled")]
 
         /// <summary>
         /// Gets or sets describes the list of variables to group the rate limit

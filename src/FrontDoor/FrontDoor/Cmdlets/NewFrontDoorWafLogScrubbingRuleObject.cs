@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// Gets or sets the variable to be scrubbed from the logs.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "Gets or sets the variable to be scrubbed from the logs.")]
+        [Parameter(Mandatory = true, HelpMessage = "The variable to be scrubbed from the logs.")]
         [PSArgumentCompleter("RequestHeaderNames", "RequestCookieNames", "QueryStringArgNames", "RequestBodyPostArgNames", "RequestBodyJsonArgNames")]
         public string MatchVariable { get; set; }
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Gets or sets when matchVariable is a collection, operate on the selector to
         /// specify which elements in the collection this rule applies to.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "Gets or sets when matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.")]
+        [Parameter(Mandatory = true, HelpMessage = "The parameter to specify which elements in the collection this rule applies to.")]
         [PSArgumentCompleter("Equals", "Contains", "StartsWith", "EndsWith", "EqualsAny")]
         public string SelectorMatchOperator { get; set; }
 
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Gets or sets defines the state of a log scrubbing rule.Default value is
         /// enabled.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "Gets or sets defines the state of a log scrubbing rule.Default value is enabled.")]
+        [Parameter(Mandatory = true, HelpMessage = "Defines the state of a log scrubbing rule. Default value is enabled.")]
         [PSArgumentCompleter("Enabled", "Disabled")]
         public string State { get; set; }
 
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Gets or sets when matchVariable is a collection, operator used to specify
         /// which elements in the collection this rule applies to.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Gets or sets when matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.")]
+        [Parameter(Mandatory = false, HelpMessage = "The operator used to specify which elements in the collection this rule applies to.")]
         public string Selector { get; set; }
 
         public override void ExecuteCmdlet()
