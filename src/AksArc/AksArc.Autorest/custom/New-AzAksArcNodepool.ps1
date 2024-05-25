@@ -87,6 +87,7 @@ param(
     # The default value is 1.
     ${Count},
 
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='AutoScaling', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.Management.Automation.SwitchParameter]
@@ -94,17 +95,19 @@ param(
     # Default value is false
     ${EnableAutoScaling},
 
-    [Parameter(ParameterSetName='AutoScaling', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
-    [System.Int32]
-    # The maximum number of nodes for auto-scaling
-    ${MaxCount},
-
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='AutoScaling', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.Int32]
     # The minimum number of nodes for auto-scaling
     ${MinCount},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='AutoScaling', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+    [System.Int32]
+    # The maximum number of nodes for auto-scaling
+    ${MaxCount},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]

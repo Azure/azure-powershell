@@ -168,16 +168,19 @@ function New-AzAksArcCluster {
         # A maximum of 1 key may be specified.
         ${SshKeyValue},
 
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Parameter(ParameterSetName='AutoScaling', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
         [System.Int32]
         ${MinCount},
-    
+
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Parameter(ParameterSetName='AutoScaling', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
         [System.Int32]
         ${MaxCount},
-    
+
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Parameter(ParameterSetName='AutoScaling', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
         [System.Management.Automation.SwitchParameter]
@@ -185,6 +188,7 @@ function New-AzAksArcCluster {
         # The default value is true.
         ${EnableAutoScaling},
 
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Parameter(ParameterSetName='AutoScaling', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
         [System.Int32]

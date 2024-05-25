@@ -203,7 +203,7 @@ process {
         CreateConnectedCluster -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName -Location "eastus" -adminGroupObjectIDs $adminGroupObjectIDs
     }
 
-    # Update Nodepool
+    # Update Default Nodepool
     if ($PSBoundParameters.ContainsKey("MinCount"))
     {
         $ShouldUpdateDefaultNodepool = $true
