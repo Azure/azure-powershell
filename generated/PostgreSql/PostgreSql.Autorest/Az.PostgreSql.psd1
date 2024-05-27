@@ -1,5 +1,5 @@
 @{
-  GUID = '85809807-c6ca-41fb-b667-7ac040e536a4'
+  GUID = '2651fcff-cb3d-4000-87af-619b30e54cd3'
   RootModule = './Az.PostgreSql.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'

@@ -1,5 +1,5 @@
 @{
-  GUID = '58f9f986-1839-4efb-baf4-5ba95f2726bd'
+  GUID = '34f07faa-d6c2-4b9e-b51c-d053dcd10493'
   RootModule = './Az.DiagnosticSetting.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'

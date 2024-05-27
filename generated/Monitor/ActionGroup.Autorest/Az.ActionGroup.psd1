@@ -1,5 +1,5 @@
 @{
-  GUID = 'c9f47937-c60a-4575-b669-442455ef6728'
+  GUID = 'd7343dd9-cb2b-4273-80a5-39c2c58b2a76'
   RootModule = './Az.ActionGroup.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'

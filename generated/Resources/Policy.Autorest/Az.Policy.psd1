@@ -1,5 +1,5 @@
 @{
-  GUID = '54d436a4-6f2e-4977-b339-2b40665fd8c4'
+  GUID = '2a3e23eb-da32-4e12-b305-fad14d64e910'
   RootModule = './Az.Policy.psm1'
   ModuleVersion = '0.1.1'
   CompatiblePSEditions = 'Core', 'Desktop'
