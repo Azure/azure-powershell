@@ -148,17 +148,17 @@ Deletes a security connector.
 Deletes a DevOps Connector.
 
 ### [Update-AzSecurityConnector](Update-AzSecurityConnector.md)
-Updates a security connector
+Update a security connector
 
 ### [Update-AzSecurityConnectorAzureDevOpsOrg](Update-AzSecurityConnectorAzureDevOpsOrg.md)
-Updates monitored Azure DevOps organization details.
+Update monitored Azure DevOps organization details.
 
 ### [Update-AzSecurityConnectorAzureDevOpsProject](Update-AzSecurityConnectorAzureDevOpsProject.md)
-Updates a monitored Azure DevOps project resource.
+Update a monitored Azure DevOps project resource.
 
 ### [Update-AzSecurityConnectorAzureDevOpsRepo](Update-AzSecurityConnectorAzureDevOpsRepo.md)
-Updates a monitored Azure DevOps repository resource.
+Update a monitored Azure DevOps repository resource.
 
 ### [Update-AzSecurityConnectorDevOpsConfiguration](Update-AzSecurityConnectorDevOpsConfiguration.md)
-Updates a DevOps Configuration.
+Update a DevOps Configuration.
 

@@ -43,7 +43,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models
         /// <summary>Backing field for <see cref="Scope" /> property.</summary>
         private string _scope;
 
-        /// <summary>The scope of the association.</summary>
+        /// <summary>
+        /// The scope of the association. The scope can be any valid REST resource instance. For example, use '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Compute/virtualMachines/{vm-name}'
+        /// for a virtual machine resource.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Origin(Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.PropertyOrigin.Owned)]
         public string Scope { get => this._scope; set => this._scope = value; }
 
@@ -97,11 +100,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models
         SerializedName = @"resourceProviderName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceProviderName { get; set; }
-        /// <summary>The scope of the association.</summary>
+        /// <summary>
+        /// The scope of the association. The scope can be any valid REST resource instance. For example, use '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Compute/virtualMachines/{vm-name}'
+        /// for a virtual machine resource.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The scope of the association.",
+        Description = @"The scope of the association. The scope can be any valid REST resource instance. For example, use '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Compute/virtualMachines/{vm-name}' for a virtual machine resource.",
         SerializedName = @"scope",
         PossibleTypes = new [] { typeof(string) })]
         string Scope { get; set; }
@@ -128,7 +134,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models
         string ResourceGroupName { get; set; }
         /// <summary>The name of the resource provider.</summary>
         string ResourceProviderName { get; set; }
-        /// <summary>The scope of the association.</summary>
+        /// <summary>
+        /// The scope of the association. The scope can be any valid REST resource instance. For example, use '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Compute/virtualMachines/{vm-name}'
+        /// for a virtual machine resource.
+        /// </summary>
         string Scope { get; set; }
         /// <summary>
         /// The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)

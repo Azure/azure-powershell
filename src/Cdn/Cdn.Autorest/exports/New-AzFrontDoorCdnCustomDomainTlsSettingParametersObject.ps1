@@ -25,7 +25,7 @@ $secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
 New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS12" -Secret $secretResoure
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdDomainHttpsParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdDomainHttpsParameters
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,7 +37,7 @@ SECRET <IResourceReference>: Resource reference to the secret. ie. subs/rg/profi
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnCustomDomainTlsSettingParametersObject
 #>
 function New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AFDDomainHttpsParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AFDDomainHttpsParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -56,7 +56,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceReference]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourceReference]
     # Resource reference to the secret.
     # ie.
     # subs/rg/profile/secret.

@@ -3,7 +3,6 @@
 This directory contains the PowerShell module for the Databricks service.
 
 ---
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -29,9 +28,9 @@ For information on how to develop for `Az.Databricks`, see [how-to.md](how-to.md
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: a078cebc3964c8968d141906c613794ca0453861
+commit: a078cebc3964c8968d141906c613794ca0453861
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/databricks/resource-manager/readme.md
 try-require:
   - $(repo)/specification/databricks/resource-manager/readme.powershell.md
@@ -45,6 +44,10 @@ inlining-threshold: 100
 resourcegroup-append: true
 identity-correction-for-post: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
 # Worked around this issue: https://github.com/Azure/autorest.powershell/issues/1258

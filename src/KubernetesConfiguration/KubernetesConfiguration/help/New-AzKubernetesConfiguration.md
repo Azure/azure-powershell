@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.KubernetesConfiguration-help.xml
 Module Name: Az.KubernetesConfiguration
 online version: https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesconfiguration
 schema: 2.0.0
@@ -14,12 +14,12 @@ Create a new Kubernetes Source Control Configuration.
 
 ```
 New-AzKubernetesConfiguration -ClusterName <String> -ClusterType <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-ClusterScoped]
- [-ConfigurationProtectedSetting <Hashtable>] [-EnableHelmOperator] [-HelmOperatorChartValue <String>]
- [-HelmOperatorChartVersion <String>] [-OperatorInstanceName <String>] [-OperatorNamespace <String>]
- [-OperatorParam <String>] [-OperatorScope <OperatorScopeType>] [-OperatorType <OperatorType>]
- [-RepositoryUrl <String>] [-SshKnownHost <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-ConfigurationProtectedSetting <Hashtable>]
+ [-EnableHelmOperator] [-HelmOperatorChartValue <String>] [-HelmOperatorChartVersion <String>]
+ [-OperatorInstanceName <String>] [-OperatorNamespace <String>] [-OperatorParam <String>]
+ [-OperatorScope <OperatorScopeType>] [-OperatorType <OperatorType>] [-ClusterScoped] [-RepositoryUrl <String>]
+ [-SshKnownHost <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -379,4 +379,3 @@ ALIASES
 New-AzK8sConfiguration
 
 ## RELATED LINKS
-

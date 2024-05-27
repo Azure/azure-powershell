@@ -23,12 +23,12 @@ Create an in-memory object for UrlRedirectAction.
 New-AzCdnUrlRedirectActionObject -Name rule01 -ParameterRedirectType redirect
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UrlRedirectAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlRedirectAction
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnUrlRedirectActionObject
 #>
 function New-AzCdnUrlRedirectActionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UrlRedirectAction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlRedirectAction])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

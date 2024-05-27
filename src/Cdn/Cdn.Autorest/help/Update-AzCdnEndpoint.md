@@ -179,7 +179,7 @@ A list of the delivery rules.
 To construct, see NOTES section for DELIVERYPOLICYRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IDeliveryRule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -197,7 +197,7 @@ block APAC for path /pictures/
 To construct, see NOTES section for GEOFILTER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IGeoFilter[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IGeoFilter[]
 Parameter Sets: (All)
 Aliases:
 
@@ -454,7 +454,7 @@ List of keys used to validate the signed URL hashes.
 To construct, see NOTES section for URLSIGNINGKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUrlSigningKey[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IUrlSigningKey[]
 Parameter Sets: (All)
 Aliases:
 
@@ -520,7 +520,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint
 
 ## NOTES
 

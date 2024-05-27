@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.WindowsIotServices-help.xml
 Module Name: Az.WindowsIotServices
 online version: https://learn.microsoft.com/powershell/module/az.windowsiotservices/update-azwindowsiotservicesdevice
 schema: 2.0.0
@@ -18,15 +18,15 @@ The usual pattern to modify a property is to retrieve the Windows IoT Device Ser
 Update-AzWindowsIotServicesDevice -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-IfMatch <String>] [-AdminDomainName <String>] [-BillingDomainName <String>] [-Etag <String>]
  [-Location <String>] [-Note <String>] [-Quantity <Int64>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzWindowsIotServicesDevice -InputObject <IWindowsIotServicesIdentity> [-IfMatch <String>]
  [-AdminDomainName <String>] [-BillingDomainName <String>] [-Etag <String>] [-Location <String>]
- [-Note <String>] [-Quantity <Int64>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Note <String>] [-Quantity <Int64>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,6 +39,7 @@ The usual pattern to modify a property is to retrieve the Windows IoT Device Ser
 ```powershell
 Update-AzWindowsIotServicesDevice -Name wsi-t03 -ResourceGroupName azure-rg-test -Quantity 10
 ```
+
 ```output
 Location Name    Type                                Etag
 -------- ----    ----                                ----
@@ -51,6 +52,7 @@ This command updates a Windows IoT services by name.
 ```powershell
 Get-AzWindowsIotServicesDevice -Name wsi-t03 -ResourceGroupName azure-rg-test | Update-AzWindowsIotServicesDevice -Quantity 100 -Tag @{'oper'='update'}
 ```
+
 ```output
 Location Name    Type                                Etag
 -------- ----    ----                                ----
@@ -92,7 +94,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -304,18 +307,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IWindowsIotServicesIdentity>`: Identity Parameter
-  - `[DeviceName <String>]`: The name of the Windows IoT Device Service.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group that contains the Windows IoT Device Service.
-  - `[SubscriptionId <String>]`: The subscription identifier.
-
 ## RELATED LINKS
-

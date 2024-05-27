@@ -1,311 +1,313 @@
 {
-  "Entries": [
-    {
-      "RequestUri": "/subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzP2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "238ae7f5-2cf0-4a3b-bfdd-fd55ba721c2e-2016-11-15 14:02:48Z-P"
-        ],
-        "x-ms-version": [
-          "2015-01-01"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesManagementClient/3.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"westus\",\r\n      \"name\": \"sqlpaasrn\",\r\n      \"etag\": \"W/\\\"datetime'2016-11-11T12%3A05%3A23.1413253Z'\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"id\": \"/subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "377"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "2b4d67f3-2447-4a76-ad74-54a964c2246b"
-        ],
-        "x-ms-client-request-id": [
-          "238ae7f5-2cf0-4a3b-bfdd-fd55ba721c2e-2016-11-15 14:02:48Z-P"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14933"
-        ],
-        "x-ms-correlation-request-id": [
-          "2b4d67f3-2447-4a76-ad74-54a964c2246b"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20161115T140250Z:2b4d67f3-2447-4a76-ad74-54a964c2246b"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 15 Nov 2016 14:02:49 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybj9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "3d115bf9-5f7e-4b38-ad0f-4304a41a6452-2016-11-15 14:02:50Z-P"
-        ],
-        "x-ms-version": [
-          "2015-01-01"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesManagementClient/3.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"location\": \"westus\",\r\n  \"name\": \"sqlpaasrn\",\r\n  \"etag\": \"W/\\\"datetime'2016-11-11T12%3A05%3A23.1413253Z'\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "365"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "e2538005-2fe0-4ae9-b2d0-33166899146e"
-        ],
-        "x-ms-client-request-id": [
-          "3d115bf9-5f7e-4b38-ad0f-4304a41a6452-2016-11-15 14:02:50Z-P"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14932"
-        ],
-        "x-ms-correlation-request-id": [
-          "e2538005-2fe0-4ae9-b2d0-33166899146e"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20161115T140250Z:e2538005-2fe0-4ae9-b2d0-33166899146e"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 15 Nov 2016 14:02:50 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupProtectionContainers?$filter=backupManagementType%20eq%20'AzureSql'&api-version=2016-12-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQcm90ZWN0aW9uQ29udGFpbmVycz8kZmlsdGVyPWJhY2t1cE1hbmFnZW1lbnRUeXBlJTIwZXElMjAnQXp1cmVTcWwnJmFwaS12ZXJzaW9uPTIwMTYtMTItMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "7764f60a-d91f-456b-8d69-a59e1f2171cf"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupFabrics/Azure/protectionContainers/AzureSqlContainer;Sql;sqlpaasrg;sqlpaasserver\",\r\n      \"name\": \"AzureSqlContainer;Sql;sqlpaasrg;sqlpaasserver\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"\",\r\n        \"backupManagementType\": \"AzureSql\",\r\n        \"registrationStatus\": \"Registered\",\r\n        \"healthStatus\": \"\",\r\n        \"containerType\": \"AzureSqlContainer\",\r\n        \"protectableObjectType\": \"AzureSqlContainer\"\r\n      }\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "570"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "f1ba5f29-9b70-41ac-88f0-85d2ef51a8a8"
-        ],
-        "x-ms-client-request-id": [
-          "7764f60a-d91f-456b-8d69-a59e1f2171cf",
-          "7764f60a-d91f-456b-8d69-a59e1f2171cf"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14933"
-        ],
-        "x-ms-correlation-request-id": [
-          "f1ba5f29-9b70-41ac-88f0-85d2ef51a8a8"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20161115T140251Z:f1ba5f29-9b70-41ac-88f0-85d2ef51a8a8"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 15 Nov 2016 14:02:51 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupProtectionContainers?$filter=backupManagementType%20eq%20'AzureSql'&api-version=2016-12-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQcm90ZWN0aW9uQ29udGFpbmVycz8kZmlsdGVyPWJhY2t1cE1hbmFnZW1lbnRUeXBlJTIwZXElMjAnQXp1cmVTcWwnJmFwaS12ZXJzaW9uPTIwMTYtMTItMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "c1295424-f454-401c-98ce-b97a0e714e89"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": []\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "12"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "9523eaef-e85f-4832-9d11-7f6f28d7679a"
-        ],
-        "x-ms-client-request-id": [
-          "c1295424-f454-401c-98ce-b97a0e714e89",
-          "c1295424-f454-401c-98ce-b97a0e714e89"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14932"
-        ],
-        "x-ms-correlation-request-id": [
-          "9523eaef-e85f-4832-9d11-7f6f28d7679a"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20161115T140257Z:9523eaef-e85f-4832-9d11-7f6f28d7679a"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 15 Nov 2016 14:02:57 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/registeredIdentities/AzureSqlContainer%3BSql%3Bsqlpaasrg%3Bsqlpaasserver?api-version=2016-06-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9yZWdpc3RlcmVkSWRlbnRpdGllcy9BenVyZVNxbENvbnRhaW5lciUzQlNxbCUzQnNxbHBhYXNyZyUzQnNxbHBhYXNzZXJ2ZXI/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
-      "RequestMethod": "DELETE",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "53ea97ed-ff0f-49e3-9c7d-ab136448facb"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
-        ]
-      },
-      "ResponseBody": "",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "0"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "b121281b-d78a-4839-b317-70d853fcbeb8"
-        ],
-        "x-ms-client-request-id": [
-          "53ea97ed-ff0f-49e3-9c7d-ab136448facb",
-          "53ea97ed-ff0f-49e3-9c7d-ab136448facb"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
-        ],
-        "x-ms-correlation-request-id": [
-          "b121281b-d78a-4839-b317-70d853fcbeb8"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20161115T140257Z:b121281b-d78a-4839-b317-70d853fcbeb8"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 15 Nov 2016 14:02:56 GMT"
-        ]
-      },
-      "StatusCode": 204
-    }
-  ],
-  "Names": {},
-  "Variables": {
-    "SubscriptionId": "f7424430-103b-4ba3-bd9e-b6f0986f848a"
-  }
+    "Entries":  [
+                    {
+                        "RequestUri":  "/subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults?api-version=2016-06-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzP2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "238ae7f5-2cf0-4a3b-bfdd-fd55ba721c2e-2016-11-15 14:02:48Z-P"
+                                                                          ],
+                                               "x-ms-version":  [
+                                                                    "2015-01-01"
+                                                                ],
+                                               "User-Agent":  [
+                                                                  "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesManagementClient/3.0.0.0"
+                                                              ]
+                                           },
+                        "ResponseBody":  "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"westus\",\r\n      \"name\": \"sqlpaasrn\",\r\n      \"etag\": \"W/\\\"datetime\u00272016-11-11T12%3A05%3A23.1413253Z\u0027\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"id\": \"/subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"RS0\",\r\n        \"tier\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
+                        "ResponseHeaders":  {
+                                                "Content-Length":  [
+                                                                       "377"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "2b4d67f3-2447-4a76-ad74-54a964c2246b"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "238ae7f5-2cf0-4a3b-bfdd-fd55ba721c2e-2016-11-15 14:02:48Z-P"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "x-ms-ratelimit-remaining-subscription-reads":  [
+                                                                                                    "14933"
+                                                                                                ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "2b4d67f3-2447-4a76-ad74-54a964c2246b"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20161115T140250Z:2b4d67f3-2447-4a76-ad74-54a964c2246b"
+                                                                            ],
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:08:52 GMT"
+                                                         ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/8.0"
+                                                           ]
+                                            },
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn?api-version=2016-06-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybj9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "3d115bf9-5f7e-4b38-ad0f-4304a41a6452-2016-11-15 14:02:50Z-P"
+                                                                          ],
+                                               "x-ms-version":  [
+                                                                    "2015-01-01"
+                                                                ],
+                                               "User-Agent":  [
+                                                                  "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesManagementClient/3.0.0.0"
+                                                              ]
+                                           },
+                        "ResponseBody":  "{\r\n  \"location\": \"westus\",\r\n  \"name\": \"sqlpaasrn\",\r\n  \"etag\": \"W/\\\"datetime\u00272016-11-11T12%3A05%3A23.1413253Z\u0027\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+                        "ResponseHeaders":  {
+                                                "Content-Length":  [
+                                                                       "365"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "e2538005-2fe0-4ae9-b2d0-33166899146e"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "3d115bf9-5f7e-4b38-ad0f-4304a41a6452-2016-11-15 14:02:50Z-P"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "x-ms-ratelimit-remaining-subscription-reads":  [
+                                                                                                    "14932"
+                                                                                                ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "e2538005-2fe0-4ae9-b2d0-33166899146e"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20161115T140250Z:e2538005-2fe0-4ae9-b2d0-33166899146e"
+                                                                            ],
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:08:52 GMT"
+                                                         ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/8.0"
+                                                           ]
+                                            },
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupProtectionContainers?$filter=backupManagementType%20eq%20\u0027AzureSql\u0027\u0026api-version=2016-12-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQcm90ZWN0aW9uQ29udGFpbmVycz8kZmlsdGVyPWJhY2t1cE1hbmFnZW1lbnRUeXBlJTIwZXElMjAnQXp1cmVTcWwnJmFwaS12ZXJzaW9uPTIwMTYtMTItMDE=",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "7764f60a-d91f-456b-8d69-a59e1f2171cf"
+                                                                          ],
+                                               "accept-language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
+                                                              ]
+                                           },
+                        "ResponseBody":  "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupFabrics/Azure/protectionContainers/AzureSqlContainer;Sql;sqlpaasrg;sqlpaasserver\",\r\n      \"name\": \"AzureSqlContainer;Sql;sqlpaasrg;sqlpaasserver\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"\",\r\n        \"backupManagementType\": \"AzureSql\",\r\n        \"registrationStatus\": \"Registered\",\r\n        \"healthStatus\": \"\",\r\n        \"containerType\": \"AzureSqlContainer\",\r\n        \"protectableObjectType\": \"AzureSqlContainer\"\r\n      }\r\n    }\r\n  ]\r\n}",
+                        "ResponseHeaders":  {
+                                                "Content-Length":  [
+                                                                       "570"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "f1ba5f29-9b70-41ac-88f0-85d2ef51a8a8"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "7764f60a-d91f-456b-8d69-a59e1f2171cf",
+                                                                               "7764f60a-d91f-456b-8d69-a59e1f2171cf"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "x-ms-ratelimit-remaining-subscription-reads":  [
+                                                                                                    "14933"
+                                                                                                ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "f1ba5f29-9b70-41ac-88f0-85d2ef51a8a8"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20161115T140251Z:f1ba5f29-9b70-41ac-88f0-85d2ef51a8a8"
+                                                                            ],
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:08:52 GMT"
+                                                         ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/8.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ]
+                                            },
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/backupProtectionContainers?$filter=backupManagementType%20eq%20\u0027AzureSql\u0027\u0026api-version=2016-12-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9iYWNrdXBQcm90ZWN0aW9uQ29udGFpbmVycz8kZmlsdGVyPWJhY2t1cE1hbmFnZW1lbnRUeXBlJTIwZXElMjAnQXp1cmVTcWwnJmFwaS12ZXJzaW9uPTIwMTYtMTItMDE=",
+                        "RequestMethod":  "GET",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "c1295424-f454-401c-98ce-b97a0e714e89"
+                                                                          ],
+                                               "accept-language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
+                                                              ]
+                                           },
+                        "ResponseBody":  "{\r\n  \"value\": []\r\n}",
+                        "ResponseHeaders":  {
+                                                "Content-Length":  [
+                                                                       "12"
+                                                                   ],
+                                                "Content-Type":  [
+                                                                     "application/json"
+                                                                 ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "9523eaef-e85f-4832-9d11-7f6f28d7679a"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "c1295424-f454-401c-98ce-b97a0e714e89",
+                                                                               "c1295424-f454-401c-98ce-b97a0e714e89"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "x-ms-ratelimit-remaining-subscription-reads":  [
+                                                                                                    "14932"
+                                                                                                ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "9523eaef-e85f-4832-9d11-7f6f28d7679a"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20161115T140257Z:9523eaef-e85f-4832-9d11-7f6f28d7679a"
+                                                                            ],
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:08:52 GMT"
+                                                         ],
+                                                "Server":  [
+                                                               "Microsoft-IIS/8.0"
+                                                           ],
+                                                "X-Powered-By":  [
+                                                                     "ASP.NET"
+                                                                 ]
+                                            },
+                        "StatusCode":  200
+                    },
+                    {
+                        "RequestUri":  "/Subscriptions/f7424430-103b-4ba3-bd9e-b6f0986f848a/resourceGroups/sqlpaasrg/providers/Microsoft.RecoveryServices/vaults/sqlpaasrn/registeredIdentities/AzureSqlContainer%3BSql%3Bsqlpaasrg%3Bsqlpaasserver?api-version=2016-06-01",
+                        "EncodedRequestUri":  "L1N1YnNjcmlwdGlvbnMvZjc0MjQ0MzAtMTAzYi00YmEzLWJkOWUtYjZmMDk4NmY4NDhhL3Jlc291cmNlR3JvdXBzL3NxbHBhYXNyZy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL3NxbHBhYXNybi9yZWdpc3RlcmVkSWRlbnRpdGllcy9BenVyZVNxbENvbnRhaW5lciUzQlNxbCUzQnNxbHBhYXNyZyUzQnNxbHBhYXNzZXJ2ZXI/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+                        "RequestMethod":  "DELETE",
+                        "RequestBody":  "",
+                        "RequestHeaders":  {
+                                               "x-ms-client-request-id":  [
+                                                                              "53ea97ed-ff0f-49e3-9c7d-ab136448facb"
+                                                                          ],
+                                               "accept-language":  [
+                                                                       "en-US"
+                                                                   ],
+                                               "User-Agent":  [
+                                                                  "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/1.1.2"
+                                                              ]
+                                           },
+                        "ResponseBody":  "",
+                        "ResponseHeaders":  {
+                                                "Content-Length":  [
+                                                                       "0"
+                                                                   ],
+                                                "Expires":  [
+                                                                "-1"
+                                                            ],
+                                                "Pragma":  [
+                                                               "no-cache"
+                                                           ],
+                                                "x-ms-request-id":  [
+                                                                        "b121281b-d78a-4839-b317-70d853fcbeb8"
+                                                                    ],
+                                                "x-ms-client-request-id":  [
+                                                                               "53ea97ed-ff0f-49e3-9c7d-ab136448facb",
+                                                                               "53ea97ed-ff0f-49e3-9c7d-ab136448facb"
+                                                                           ],
+                                                "Strict-Transport-Security":  [
+                                                                                  "max-age=31536000; includeSubDomains"
+                                                                              ],
+                                                "x-ms-ratelimit-remaining-subscription-writes":  [
+                                                                                                     "1199"
+                                                                                                 ],
+                                                "x-ms-correlation-request-id":  [
+                                                                                    "b121281b-d78a-4839-b317-70d853fcbeb8"
+                                                                                ],
+                                                "x-ms-routing-request-id":  [
+                                                                                "SOUTHINDIA:20161115T140257Z:b121281b-d78a-4839-b317-70d853fcbeb8"
+                                                                            ],
+                                                "Cache-Control":  [
+                                                                      "no-cache"
+                                                                  ],
+                                                "Date":  [
+                                                             "Fri, 19 Apr 2024 17:08:52 GMT"
+                                                         ]
+                                            },
+                        "StatusCode":  204
+                    }
+                ],
+    "Names":  {
+
+              },
+    "Variables":  {
+                      "SubscriptionId":  "f7424430-103b-4ba3-bd9e-b6f0986f848a"
+                  }
 }

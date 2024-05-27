@@ -124,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -AgentUpdateMaintenanceWindowTimeZone
-Time zone for maintenance as defined in https://learn.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid.
+Time zone for maintenance as defined in https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid.
 Must be set if useLocalTime is true.
 
 ```yaml
@@ -837,7 +837,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IHostPool
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IHostPool
 
 ## NOTES
 

@@ -40,8 +40,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="scriptNameSuffix">Mandatory suffix that should be added to the name of script that is given
-        /// for download to user.
-        /// If its null or empty then , ignore it.
+        /// for download to user. If its null or empty then , ignore it.
         /// </param>
         public ClientScriptForConnect(string scriptContent = default(string), string scriptExtension = default(string), string osType = default(string), string url = default(string), string scriptNameSuffix = default(string))
 
@@ -89,8 +88,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <summary>
         /// Gets or sets mandatory suffix that should be added to the name of script
-        /// that is given for download to user.
-        /// If its null or empty then , ignore it.
+        /// that is given for download to user. If its null or empty then , ignore it.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "scriptNameSuffix")]
         public string ScriptNameSuffix {get; set; }

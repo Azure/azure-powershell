@@ -13,7 +13,8 @@ Get the usage quota of a subscription.
 ## SYNTAX
 
 ```
-Get-AzSignalRUsage [-Location] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSignalRUsage [-Location] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

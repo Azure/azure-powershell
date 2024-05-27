@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Synapse-help.xml
 Module Name: Az.Synapse
 online version: https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopooldatabase
 schema: 2.0.0
@@ -14,9 +14,9 @@ Creates or updates a database.
 
 ```
 New-AzSynapseKustoPoolDatabase -DatabaseName <String> -KustoPoolName <String> -ResourceGroupName <String>
- -WorkspaceName <String> -Kind <Kind> [-SubscriptionId <String>] [-HotCachePeriod <TimeSpan>]
- [-Location <String>] [-SoftDeletePeriod <TimeSpan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -WorkspaceName <String> [-SubscriptionId <String>] -Kind <Kind> [-Location <String>]
+ [-HotCachePeriod <TimeSpan>] [-SoftDeletePeriod <TimeSpan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -262,7 +262,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.HealthcareApis-help.xml
 Module Name: Az.HealthcareApis
 online version: https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareiotconnector
 schema: 2.0.0
@@ -14,12 +14,12 @@ Creates or updates an IoT Connector resource with the specified parameters.
 
 ```
 New-AzHealthcareIotConnector -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- -DeviceMappingContent <Hashtable> -IngestionEndpointConfigurationConsumerGroup <String>
- -IngestionEndpointConfigurationEventHubName <String>
- -IngestionEndpointConfigurationFullyQualifiedEventHubNamespace <String> -Location <String>
- [-SubscriptionId <String>] [-Etag <String>] [-IdentityType <ServiceManagedIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -DeviceMappingContent <Hashtable>
+ -IngestionEndpointConfigurationConsumerGroup <String> -IngestionEndpointConfigurationEventHubName <String>
+ -IngestionEndpointConfigurationFullyQualifiedEventHubNamespace <String> -Location <String> [-Etag <String>]
+ [-IdentityType <ServiceManagedIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -327,7 +327,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

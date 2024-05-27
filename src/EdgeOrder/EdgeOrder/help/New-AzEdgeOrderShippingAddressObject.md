@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.EdgeOrder-help.xml
 Module Name: Az.EdgeOrder
-online version: https://learn.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderShippingAddressObject
+online version: https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-AzEdgeOrderShippingAddressObject
 schema: 2.0.0
 ---
 
@@ -15,7 +15,8 @@ Create an in-memory object for ShippingAddress.
 ```
 New-AzEdgeOrderShippingAddressObject -Country <String> -StreetAddress1 <String> [-AddressType <AddressType>]
  [-City <String>] [-CompanyName <String>] [-PostalCode <String>] [-StateOrProvince <String>]
- [-StreetAddress2 <String>] [-StreetAddress3 <String>] [-ZipExtendedCode <String>] [<CommonParameters>]
+ [-StreetAddress2 <String>] [-StreetAddress3 <String>] [-ZipExtendedCode <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -208,7 +209,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

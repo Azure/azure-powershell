@@ -23,9 +23,13 @@ function CreateModelCmdlet {
     }
 
     $ModelCsPath = Join-Path (Join-Path $PSScriptRoot 'generated\api') 'Models'
-    $ModuleName = 'BillingBenefits'
     $OutputDir = Join-Path $PSScriptRoot 'custom\autogen-model-cmdlets'
     $null = New-Item -ItemType Directory -Force -Path $OutputDir
+    if (''.length -gt 0) {
+        $ModuleName = ''
+    } else {
+        $ModuleName = 'Az.BillingBenefits'
+    }
 
     $CsFiles = Get-ChildItem -Path $ModelCsPath -Recurse -Filter *.cs
     $Content = ''
@@ -64,10 +68,10 @@ function CreateModelCmdlet {
         $ObjectType = $Model
         $ObjectTypeWithNamespace = "${Namespace}.${ObjectType}"
         # remove duplicated module name
-        if ($ObjectType.StartsWith($ModuleName)) {
+        if ($ObjectType.StartsWith('BillingBenefits')) {
             $ModulePrefix = ''
         } else {
-            $ModulePrefix = $ModuleName
+            $ModulePrefix = 'BillingBenefits'
         }
         $OutputPath = Join-Path -ChildPath "New-Az${ModulePrefix}${ObjectType}Object.ps1" -Path $OutputDir
 
@@ -158,7 +162,7 @@ Create an in-memory object for ${ObjectType}.
 .Outputs
 ${ObjectTypeWithNamespace}
 .Link
-https://learn.microsoft.com/powershell/module/az.${ModuleName}/new-Az${ModulePrefix}${ObjectType}Object
+https://learn.microsoft.com/powershell/module/${ModuleName}/new-Az${ModulePrefix}${ObjectType}Object
 #>
 function New-Az${ModulePrefix}${ObjectType}Object {
     [OutputType('${ObjectTypeWithNamespace}')]

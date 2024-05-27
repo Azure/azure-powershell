@@ -16,9 +16,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
         Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IValidates
     {
         /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResource" />
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResource"
+        /// />
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.Resource();
+        private Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.Resource();
 
         /// <summary>
         /// Optional. The defaultConfigurationLink of the artifact, must be a readable storage page blob.
@@ -28,7 +29,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
 
         /// <summary>Resource Id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Inherited)]
-        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Id; }
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Id; }
 
         /// <summary>
         /// Required. The path and arguments to install the gallery application. This is limited to 4096 characters.
@@ -38,16 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
 
         /// <summary>Resource location</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Location = value ; }
-
-        /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Id = value; }
-
-        /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Name = value; }
-
-        /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Type = value; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Location = value ; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersionProperties Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersionInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.GalleryApplicationVersionProperties()); set { {_property = value;} } }
@@ -79,9 +71,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
         /// <summary>Internal Acessors for ReplicationStatusSummary</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IRegionalReplicationStatus[] Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersionInternal.ReplicationStatusSummary { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersionPropertiesInternal)Property).ReplicationStatusSummary; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersionPropertiesInternal)Property).ReplicationStatusSummary = value; }
 
+        /// <summary>Internal Acessors for Id</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Id = value; }
+
+        /// <summary>Internal Acessors for Name</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Name = value; }
+
+        /// <summary>Internal Acessors for Type</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Type = value; }
+
         /// <summary>Resource name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Name; }
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Name; }
 
         /// <summary>Required. The mediaLink of the artifact, must be a readable storage page blob.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Inlined)]
@@ -182,7 +183,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
 
         /// <summary>Resource tags</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Inherited)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Tag = value ?? null /* model class */; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Tag = value ?? null /* model class */; }
 
         /// <summary>
         /// The target regions where the Image Version is going to be replicated to. This property is updatable.
@@ -192,7 +193,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
 
         /// <summary>Resource type</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Inherited)]
-        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Type; }
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Type; }
 
         /// <summary>
         /// Optional. The path and arguments to update the gallery application. If not present, then update operation will invoke
@@ -223,7 +224,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
     /// Specifies information about the gallery Application Version that you want to create or update.
     public partial interface IGalleryApplicationVersion :
         Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResource
+        Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResource
     {
         /// <summary>
         /// Optional. The defaultConfigurationLink of the artifact, must be a readable storage page blob.
@@ -425,7 +426,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
     }
     /// Specifies information about the gallery Application Version that you want to create or update.
     internal partial interface IGalleryApplicationVersionInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal
+        Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal
     {
         /// <summary>
         /// Optional. The defaultConfigurationLink of the artifact, must be a readable storage page blob.

@@ -1,7 +1,7 @@
 ---
 external help file: Az.Nginx-help.xml
 Module Name: Az.Nginx
-online version: https://learn.microsoft.com/powershell/module/az.Nginx/new-AzNginxPrivateIPAddressObject
+online version: https://learn.microsoft.com/powershell/module/Az.Nginx/new-AzNginxPrivateIPAddressObject
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Create an in-memory object for NginxPrivateIPAddress.
 
 ```
 New-AzNginxPrivateIPAddressObject [-PrivateIPAddress <String>]
- [-PrivateIPAllocationMethod <NginxPrivateIPAllocationMethod>] [-SubnetId <String>] [<CommonParameters>]
+ [-PrivateIPAllocationMethod <NginxPrivateIPAllocationMethod>] [-SubnetId <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,10 +87,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxPrivateIPAddress
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxPrivateIPAddress
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

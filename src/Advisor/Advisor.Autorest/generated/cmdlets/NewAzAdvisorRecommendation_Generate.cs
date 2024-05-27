@@ -20,6 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Advisor.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Advisor.Description(@"Initiates the recommendation generation or computation process for a subscription. This operation is asynchronous. The generated recommendations are stored in a cache in the Advisor service.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Advisor.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Advisor.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/generateRecommendations", ApiVersion = "2020-01-01")]
     public partial class NewAzAdvisorRecommendation_Generate : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.IEventListener
     {
@@ -46,9 +47,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Advisor.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Advisor.Advisor Client => Microsoft.Azure.PowerShell.Cmdlets.Advisor.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Advisor.ParameterCategory.Azure)]
@@ -128,12 +130,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Advisor.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="headers">the header result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IRecommendationsGenerateAcceptedResponseHeaders"
-        /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onAccepted method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnAccepted(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IRecommendationsGenerateAcceptedResponseHeaders> headers, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnAccepted(global::System.Net.Http.HttpResponseMessage responseMessage, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -168,7 +168,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Advisor.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Advisor.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -317,19 +334,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Advisor.Cmdlets
             base.StopProcessing();
         }
 
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Advisor.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Advisor.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
+        }
+
         /// <summary>a delegate that is called when the remote service returns 202 (Accepted).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="headers">the header result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IRecommendationsGenerateAcceptedResponseHeaders"
-        /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onAccepted(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IRecommendationsGenerateAcceptedResponseHeaders> headers)
+        private async global::System.Threading.Tasks.Task onAccepted(global::System.Net.Http.HttpResponseMessage responseMessage)
         {
             using( NoSynchronizationContext )
             {
                 var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
-                overrideOnAccepted(responseMessage, headers, ref _returnNow);
+                overrideOnAccepted(responseMessage, ref _returnNow);
                 // if overrideOnAccepted has returned true, then return right away.
                 if ((null != _returnNow && await _returnNow))
                 {

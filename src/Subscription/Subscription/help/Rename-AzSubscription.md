@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Subscription-help.xml
 Module Name: Az.Subscription
 online version: https://learn.microsoft.com/powershell/module/az.subscription/rename-azsubscription
 schema: 2.0.0
@@ -14,14 +14,14 @@ The operation to rename a subscription
 
 ### RenameExpanded (Default)
 ```
-Rename-AzSubscription -Id <String> -SubscriptionName <String> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Rename-AzSubscription -Id <String> -SubscriptionName <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RenameViaIdentityExpanded
 ```
 Rename-AzSubscription -InputObject <ISubscriptionIdentity> -SubscriptionName <String>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -149,4 +149,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -49,6 +49,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
         /// </param>
 
+        /// <param name="localAddressSpace">The local address space of the local virtual network that is peered.
+        /// </param>
+
+        /// <param name="localVirtualNetworkAddressSpace">The current local address space of the local virtual network that is
+        /// peered.
+        /// </param>
+
         /// <param name="remoteAddressSpace">The reference to the address space peered with the remote virtual network.
         /// </param>
 
@@ -76,7 +83,21 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="resourceGuid">The resourceGuid property of the Virtual Network peering resource.
         /// </param>
-        public VirtualNetworkPeeringPropertiesFormat(bool? allowVirtualNetworkAccess = default(bool?), bool? allowForwardedTraffic = default(bool?), bool? allowGatewayTransit = default(bool?), bool? useRemoteGateways = default(bool?), SubResource remoteVirtualNetwork = default(SubResource), AddressSpace remoteAddressSpace = default(AddressSpace), AddressSpace remoteVirtualNetworkAddressSpace = default(AddressSpace), VirtualNetworkBgpCommunities remoteBgpCommunities = default(VirtualNetworkBgpCommunities), VirtualNetworkEncryption remoteVirtualNetworkEncryption = default(VirtualNetworkEncryption), string peeringState = default(string), string peeringSyncLevel = default(string), string provisioningState = default(string), bool? doNotVerifyRemoteGateways = default(bool?), string resourceGuid = default(string))
+
+        /// <param name="peerCompleteVnets">Whether complete virtual network address space is peered.
+        /// </param>
+
+        /// <param name="enableOnlyIPv6Peering">Whether only Ipv6 address space is peered for subnet peering.
+        /// </param>
+
+        /// <param name="localSubnetNames">List of local subnet names that are subnet peered with remote virtual
+        /// network.
+        /// </param>
+
+        /// <param name="remoteSubnetNames">List of remote subnet names from remote virtual network that are subnet
+        /// peered.
+        /// </param>
+        public VirtualNetworkPeeringPropertiesFormat(bool? allowVirtualNetworkAccess = default(bool?), bool? allowForwardedTraffic = default(bool?), bool? allowGatewayTransit = default(bool?), bool? useRemoteGateways = default(bool?), SubResource remoteVirtualNetwork = default(SubResource), AddressSpace localAddressSpace = default(AddressSpace), AddressSpace localVirtualNetworkAddressSpace = default(AddressSpace), AddressSpace remoteAddressSpace = default(AddressSpace), AddressSpace remoteVirtualNetworkAddressSpace = default(AddressSpace), VirtualNetworkBgpCommunities remoteBgpCommunities = default(VirtualNetworkBgpCommunities), VirtualNetworkEncryption remoteVirtualNetworkEncryption = default(VirtualNetworkEncryption), string peeringState = default(string), string peeringSyncLevel = default(string), string provisioningState = default(string), bool? doNotVerifyRemoteGateways = default(bool?), string resourceGuid = default(string), bool? peerCompleteVnets = default(bool?), bool? enableOnlyIPv6Peering = default(bool?), System.Collections.Generic.IList<string> localSubnetNames = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> remoteSubnetNames = default(System.Collections.Generic.IList<string>))
 
         {
             this.AllowVirtualNetworkAccess = allowVirtualNetworkAccess;
@@ -84,6 +105,8 @@ namespace Microsoft.Azure.Management.Network.Models
             this.AllowGatewayTransit = allowGatewayTransit;
             this.UseRemoteGateways = useRemoteGateways;
             this.RemoteVirtualNetwork = remoteVirtualNetwork;
+            this.LocalAddressSpace = localAddressSpace;
+            this.LocalVirtualNetworkAddressSpace = localVirtualNetworkAddressSpace;
             this.RemoteAddressSpace = remoteAddressSpace;
             this.RemoteVirtualNetworkAddressSpace = remoteVirtualNetworkAddressSpace;
             this.RemoteBgpCommunities = remoteBgpCommunities;
@@ -93,6 +116,10 @@ namespace Microsoft.Azure.Management.Network.Models
             this.ProvisioningState = provisioningState;
             this.DoNotVerifyRemoteGateways = doNotVerifyRemoteGateways;
             this.ResourceGuid = resourceGuid;
+            this.PeerCompleteVnets = peerCompleteVnets;
+            this.EnableOnlyIPv6Peering = enableOnlyIPv6Peering;
+            this.LocalSubnetNames = localSubnetNames;
+            this.RemoteSubnetNames = remoteSubnetNames;
             CustomInit();
         }
 
@@ -141,6 +168,20 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "remoteVirtualNetwork")]
         public SubResource RemoteVirtualNetwork {get; set; }
+
+        /// <summary>
+        /// Gets or sets the local address space of the local virtual network that is
+        /// peered.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "localAddressSpace")]
+        public AddressSpace LocalAddressSpace {get; set; }
+
+        /// <summary>
+        /// Gets or sets the current local address space of the local virtual network
+        /// that is peered.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "localVirtualNetworkAddressSpace")]
+        public AddressSpace LocalVirtualNetworkAddressSpace {get; set; }
 
         /// <summary>
         /// Gets or sets the reference to the address space peered with the remote
@@ -198,6 +239,32 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "resourceGuid")]
         public string ResourceGuid {get; private set; }
+
+        /// <summary>
+        /// Gets or sets whether complete virtual network address space is peered.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "peerCompleteVnets")]
+        public bool? PeerCompleteVnets {get; set; }
+
+        /// <summary>
+        /// Gets or sets whether only Ipv6 address space is peered for subnet peering.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enableOnlyIPv6Peering")]
+        public bool? EnableOnlyIPv6Peering {get; set; }
+
+        /// <summary>
+        /// Gets or sets list of local subnet names that are subnet peered with remote
+        /// virtual network.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "localSubnetNames")]
+        public System.Collections.Generic.IList<string> LocalSubnetNames {get; set; }
+
+        /// <summary>
+        /// Gets or sets list of remote subnet names from remote virtual network that
+        /// are subnet peered.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "remoteSubnetNames")]
+        public System.Collections.Generic.IList<string> RemoteSubnetNames {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -209,6 +276,8 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
 
+
+
             if (this.RemoteBgpCommunities != null)
             {
                 this.RemoteBgpCommunities.Validate();
@@ -217,6 +286,8 @@ namespace Microsoft.Azure.Management.Network.Models
             {
                 this.RemoteVirtualNetworkEncryption.Validate();
             }
+
+
 
 
 

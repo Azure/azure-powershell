@@ -14,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
     public partial class VMware
     {
 
-        /// <summary>Create a addon in a private cloud</summary>
+        /// <summary>Update a addon in a private cloud</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">The name of the private cloud.</param>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a addon in a private cloud</summary>
+        /// <summary>Update a addon in a private cloud</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">A addon in the private cloud</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a addon in a private cloud</summary>
+        /// <summary>Update a addon in a private cloud</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">A addon in the private cloud</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a addon in a private cloud</summary>
+        /// <summary>Update a addon in a private cloud</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">The name of the private cloud.</param>
@@ -1506,7 +1506,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create an ExpressRoute Circuit Authorization in a private cloud</summary>
+        /// <summary>Update an ExpressRoute Circuit Authorization in a private cloud</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">The name of the private cloud.</param>
@@ -1558,7 +1558,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create an ExpressRoute Circuit Authorization in a private cloud</summary>
+        /// <summary>Update an ExpressRoute Circuit Authorization in a private cloud</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">An ExpressRoute Circuit Authorization</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1620,7 +1620,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create an ExpressRoute Circuit Authorization in a private cloud</summary>
+        /// <summary>Update an ExpressRoute Circuit Authorization in a private cloud</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">An ExpressRoute Circuit Authorization</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1680,7 +1680,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create an ExpressRoute Circuit Authorization in a private cloud</summary>
+        /// <summary>Update an ExpressRoute Circuit Authorization in a private cloud</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">The name of the private cloud.</param>
@@ -3000,7 +3000,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a cloud link in a private cloud</summary>
+        /// <summary>Update a cloud link in a private cloud</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">The name of the private cloud.</param>
@@ -3052,7 +3052,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a cloud link in a private cloud</summary>
+        /// <summary>Update a cloud link in a private cloud</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">A cloud link in the private cloud</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3114,7 +3114,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a cloud link in a private cloud</summary>
+        /// <summary>Update a cloud link in a private cloud</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">A cloud link in the private cloud</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3174,7 +3174,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a cloud link in a private cloud</summary>
+        /// <summary>Update a cloud link in a private cloud</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">The name of the private cloud.</param>
@@ -4492,7 +4492,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a cluster in a private cloud</summary>
+        /// <summary>Update a cluster in a private cloud</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">The name of the private cloud.</param>
@@ -4544,7 +4544,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a cluster in a private cloud</summary>
+        /// <summary>Update a cluster in a private cloud</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">A cluster in the private cloud</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -4606,7 +4606,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a cluster in a private cloud</summary>
+        /// <summary>Update a cluster in a private cloud</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">A cluster in the private cloud</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4666,7 +4666,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a cluster in a private cloud</summary>
+        /// <summary>Update a cluster in a private cloud</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">The name of the private cloud.</param>
@@ -6873,7 +6873,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a datastore in a private cloud cluster</summary>
+        /// <summary>Update a datastore in a private cloud cluster</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -6928,7 +6928,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a datastore in a private cloud cluster</summary>
+        /// <summary>Update a datastore in a private cloud cluster</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">A datastore in a private cloud cluster</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -6993,7 +6993,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a datastore in a private cloud cluster</summary>
+        /// <summary>Update a datastore in a private cloud cluster</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">A datastore in a private cloud cluster</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -7056,7 +7056,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a datastore in a private cloud cluster</summary>
+        /// <summary>Update a datastore in a private cloud cluster</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -8420,7 +8420,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a global reach connection in a private cloud</summary>
+        /// <summary>Update a global reach connection in a private cloud</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">The name of the private cloud.</param>
@@ -8472,7 +8472,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a global reach connection in a private cloud</summary>
+        /// <summary>Update a global reach connection in a private cloud</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">A global reach connection in the private cloud</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -8534,7 +8534,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a global reach connection in a private cloud</summary>
+        /// <summary>Update a global reach connection in a private cloud</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">A global reach connection in the private cloud</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8594,7 +8594,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a global reach connection in a private cloud</summary>
+        /// <summary>Update a global reach connection in a private cloud</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">The name of the private cloud.</param>
@@ -9920,7 +9920,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create an activation key for on-premises HCX site</summary>
+        /// <summary>Update an activation key for on-premises HCX site</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">The name of the private cloud.</param>
@@ -9973,7 +9973,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create an activation key for on-premises HCX site</summary>
+        /// <summary>Update an activation key for on-premises HCX site</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The HCX Enterprise Site</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -10036,7 +10036,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create an activation key for on-premises HCX site</summary>
+        /// <summary>Update an activation key for on-premises HCX site</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The HCX Enterprise Site</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10096,7 +10096,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create an activation key for on-premises HCX site</summary>
+        /// <summary>Update an activation key for on-premises HCX site</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">The name of the private cloud.</param>
@@ -12088,7 +12088,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a placement policy in a private cloud cluster</summary>
+        /// <summary>Update a placement policy in a private cloud cluster</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -12143,7 +12143,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a placement policy in a private cloud cluster</summary>
+        /// <summary>Update a placement policy in a private cloud cluster</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">A placement policy in the private cloud cluster</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -12208,7 +12208,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a placement policy in a private cloud cluster</summary>
+        /// <summary>Update a placement policy in a private cloud cluster</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">A placement policy in the private cloud cluster</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -12271,7 +12271,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a placement policy in a private cloud cluster</summary>
+        /// <summary>Update a placement policy in a private cloud cluster</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -14199,7 +14199,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a private cloud</summary>
+        /// <summary>Update a private cloud</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -14248,7 +14248,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a private cloud</summary>
+        /// <summary>Update a private cloud</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The private cloud</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -14307,7 +14307,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a private cloud</summary>
+        /// <summary>Update a private cloud</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The private cloud</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -14364,7 +14364,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a private cloud</summary>
+        /// <summary>Update a private cloud</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">Name of the private cloud</param>
@@ -17691,7 +17691,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         }
 
         /// <summary>
-        /// List script cmdlet resources available for a private cloud to create a script execution resource on a private cloud
+        /// List script cmdlet resources available for a private cloud to List a script execution resource on a private cloud
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -17740,7 +17740,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         }
 
         /// <summary>
-        /// List script cmdlet resources available for a private cloud to create a script execution resource on a private cloud
+        /// List script cmdlet resources available for a private cloud to List a script execution resource on a private cloud
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -17799,7 +17799,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         }
 
         /// <summary>
-        /// List script cmdlet resources available for a private cloud to create a script execution resource on a private cloud
+        /// List script cmdlet resources available for a private cloud to List a script execution resource on a private cloud
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -17856,7 +17856,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         }
 
         /// <summary>
-        /// List script cmdlet resources available for a private cloud to create a script execution resource on a private cloud
+        /// List script cmdlet resources available for a private cloud to List a script execution resource on a private cloud
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -18040,7 +18040,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a script execution in a private cloud</summary>
+        /// <summary>Update a script execution in a private cloud</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">The name of the private cloud.</param>
@@ -18092,7 +18092,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a script execution in a private cloud</summary>
+        /// <summary>Update a script execution in a private cloud</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">A script running in the private cloud</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -18154,7 +18154,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a script execution in a private cloud</summary>
+        /// <summary>Update a script execution in a private cloud</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">A script running in the private cloud</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -18214,7 +18214,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
             }
         }
 
-        /// <summary>Create a script execution in a private cloud</summary>
+        /// <summary>Update a script execution in a private cloud</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="privateCloudName">The name of the private cloud.</param>

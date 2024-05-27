@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
 
         private void Initialize(IAuthenticationFactory authFactory, IAzureContext context)
         {
-            user_creds = new UserSuppliedCredential(new CodeSigningServiceCredential(authFactory, context, "api://cf2ab426-f71a-4b61-bb8a-9e505b85bc2e"));
+            user_creds = new UserSuppliedCredential(new CodeSigningServiceCredential(authFactory, context, "https://codesigning.azure.net/"));
         }
 
         private void GetCertificateProfileClient(string endpoint)

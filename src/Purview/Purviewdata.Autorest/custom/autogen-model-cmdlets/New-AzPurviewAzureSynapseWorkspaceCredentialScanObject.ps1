@@ -23,7 +23,7 @@ Create an in-memory object for AzureSynapseWorkspaceCredentialScan.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSynapseWorkspaceCredentialScan
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSynapseWorkspaceCredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSynapseWorkspaceCredentialScanObject
 #>
 function New-AzPurviewAzureSynapseWorkspaceCredentialScanObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSynapseWorkspaceCredentialScan')]

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.BotService-help.xml
 Module Name: Az.BotService
 online version: https://learn.microsoft.com/powershell/module/az.botservice/publish-azbotserviceapp
 schema: 2.0.0
@@ -13,8 +13,8 @@ Returns a BotService specified by the parameters.
 ## SYNTAX
 
 ```
-Publish-AzBotServiceApp -CodeDir <String> -Name <String> -ResourceGroupName <String> [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Publish-AzBotServiceApp -ResourceGroupName <String> -Name <String> -CodeDir <String>
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -116,7 +116,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

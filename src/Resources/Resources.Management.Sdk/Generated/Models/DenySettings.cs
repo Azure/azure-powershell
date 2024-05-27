@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Resources.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines how resources deployed by the deployment stack are locked.
+    /// Defines how resources deployed by the Deployment stack are locked.
     /// </summary>
     public partial class DenySettings
     {
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// Initializes a new instance of the DenySettings class.
         /// </summary>
 
-        /// <param name="mode">denySettings Mode.
+        /// <param name="mode">denySettings Mode that defines denied actions.
         /// Possible values include: &#39;denyDelete&#39;, &#39;denyWriteAndDelete&#39;, &#39;none&#39;</param>
 
         /// <param name="excludedPrincipals">List of AAD principal IDs excluded from the lock. Up to 5 principals are
@@ -34,14 +34,15 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// <param name="excludedActions">List of role-based management operations that are excluded from the
         /// denySettings. Up to 200 actions are permitted. If the denySetting mode is
         /// set to &#39;denyWriteAndDelete&#39;, then the following actions are automatically
-        /// appended to &#39;excludedActions&#39;: &#39;*/read&#39; and
+        /// appended to &#39;excludedActions&#39;: &#39;*\/read&#39; and
         /// &#39;Microsoft.Authorization/locks/delete&#39;. If the denySetting mode is set to
         /// &#39;denyDelete&#39;, then the following actions are automatically appended to
         /// &#39;excludedActions&#39;: &#39;Microsoft.Authorization/locks/delete&#39;. Duplicate
         /// actions will be removed.
         /// </param>
 
-        /// <param name="applyToChildScopes">DenySettings will be applied to child scopes.
+        /// <param name="applyToChildScopes">DenySettings will be applied to child resource scopes of every managed
+        /// resource with a deny assignment.
         /// </param>
         public DenySettings(string mode, System.Collections.Generic.IList<string> excludedPrincipals = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> excludedActions = default(System.Collections.Generic.IList<string>), bool? applyToChildScopes = default(bool?))
 
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Management.Resources.Models
 
 
         /// <summary>
-        /// Gets or sets denySettings Mode. Possible values include: &#39;denyDelete&#39;, &#39;denyWriteAndDelete&#39;, &#39;none&#39;
+        /// Gets or sets denySettings Mode that defines denied actions. Possible values include: &#39;denyDelete&#39;, &#39;denyWriteAndDelete&#39;, &#39;none&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "mode")]
         public string Mode {get; set; }
@@ -76,7 +77,7 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// Gets or sets list of role-based management operations that are excluded
         /// from the denySettings. Up to 200 actions are permitted. If the denySetting
         /// mode is set to &#39;denyWriteAndDelete&#39;, then the following actions are
-        /// automatically appended to &#39;excludedActions&#39;: &#39;*/read&#39; and
+        /// automatically appended to &#39;excludedActions&#39;: &#39;*\/read&#39; and
         /// &#39;Microsoft.Authorization/locks/delete&#39;. If the denySetting mode is set to
         /// &#39;denyDelete&#39;, then the following actions are automatically appended to
         /// &#39;excludedActions&#39;: &#39;Microsoft.Authorization/locks/delete&#39;. Duplicate
@@ -86,7 +87,8 @@ namespace Microsoft.Azure.Management.Resources.Models
         public System.Collections.Generic.IList<string> ExcludedActions {get; set; }
 
         /// <summary>
-        /// Gets or sets denySettings will be applied to child scopes.
+        /// Gets or sets denySettings will be applied to child resource scopes of every
+        /// managed resource with a deny assignment.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "applyToChildScopes")]
         public bool? ApplyToChildScopes {get; set; }

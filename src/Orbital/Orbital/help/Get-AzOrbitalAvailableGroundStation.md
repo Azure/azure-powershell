@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Orbital-help.xml
 Module Name: Az.Orbital
 online version: https://learn.microsoft.com/powershell/module/az.orbital/get-azorbitalavailablegroundstation
 schema: 2.0.0
@@ -13,7 +13,7 @@ Returns list of available ground stations.
 ## SYNTAX
 
 ```
-Get-AzOrbitalAvailableGroundStation -Capability <CapabilityParameter> [-SubscriptionId <String[]>]
+Get-AzOrbitalAvailableGroundStation [-SubscriptionId <String[]>] -Capability <CapabilityParameter>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -101,7 +101,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

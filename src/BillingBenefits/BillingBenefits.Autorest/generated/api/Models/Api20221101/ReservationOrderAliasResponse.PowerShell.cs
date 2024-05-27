@@ -123,14 +123,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IReservationOrderAliasResponseInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IReservationOrderAliasResponseInternal)this).Location, global::System.Convert.ToString);
             }
-            if (content.Contains("AzureAsyncOperation"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IReservationOrderAliasResponseInternal)this).AzureAsyncOperation = (string) content.GetValueForProperty("AzureAsyncOperation",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IReservationOrderAliasResponseInternal)this).AzureAsyncOperation, global::System.Convert.ToString);
-            }
-            if (content.Contains("RetryAfter"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IReservationOrderAliasResponseInternal)this).RetryAfter = (int?) content.GetValueForProperty("RetryAfter",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IReservationOrderAliasResponseInternal)this).RetryAfter, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
             if (content.Contains("SystemDataCreatedBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api30.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api30.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
@@ -279,14 +271,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101
             if (content.Contains("Location"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IReservationOrderAliasResponseInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IReservationOrderAliasResponseInternal)this).Location, global::System.Convert.ToString);
-            }
-            if (content.Contains("AzureAsyncOperation"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IReservationOrderAliasResponseInternal)this).AzureAsyncOperation = (string) content.GetValueForProperty("AzureAsyncOperation",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IReservationOrderAliasResponseInternal)this).AzureAsyncOperation, global::System.Convert.ToString);
-            }
-            if (content.Contains("RetryAfter"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IReservationOrderAliasResponseInternal)this).RetryAfter = (int?) content.GetValueForProperty("RetryAfter",((Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IReservationOrderAliasResponseInternal)this).RetryAfter, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("SystemDataCreatedBy"))
             {

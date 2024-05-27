@@ -3,7 +3,6 @@
 This directory contains the PowerShell module for the ImportExport service.
 
 ---
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -43,14 +42,18 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: a59006e985447b922b68210244e5fd024a30f1b4
+commit: a59006e985447b922b68210244e5fd024a30f1b4
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/storageimportexport/resource-manager/readme.md
 
 title: ImportExport
 module-version: 0.1.0
 subject-prefix: ''
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
+
 directive:
   - from: swagger-document
     where: $..get

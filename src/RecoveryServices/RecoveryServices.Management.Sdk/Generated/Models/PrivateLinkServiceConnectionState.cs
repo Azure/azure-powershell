@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// </summary>
 
         /// <param name="status">Gets or sets the status.
-        /// Possible values include: 'Pending', 'Approved', 'Rejected', 'Disconnected'</param>
+        /// Possible values include: &#39;Pending&#39;, &#39;Approved&#39;, &#39;Rejected&#39;, &#39;Disconnected&#39;</param>
 
         /// <param name="description">Gets or sets description.
         /// </param>

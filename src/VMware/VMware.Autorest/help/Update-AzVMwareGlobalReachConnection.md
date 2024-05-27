@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVMwareGlobalReachConnection
 
 ## SYNOPSIS
-Create a global reach connection in a private cloud
+Update a global reach connection in a private cloud
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ Update-AzVMwareGlobalReachConnection -Name <String> -PrivateCloudInputObject <IV
 ```
 
 ## DESCRIPTION
-Create a global reach connection in a private cloud
+Update a global reach connection in a private cloud
 
 ## EXAMPLES
 

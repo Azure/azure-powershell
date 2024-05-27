@@ -15,10 +15,9 @@ Generates a shared access signature token for an Azure storage queue.
 
 ### SasPolicy
 ```
-New-AzStorageQueueSASToken [-Name] <String> -Policy <String> [-Protocol <String>]
- [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+New-AzStorageQueueSASToken [-Name] <String> -Policy <String> [-Protocol <String>] [-IPAddressOrRange <String>]
+ [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SasPermission

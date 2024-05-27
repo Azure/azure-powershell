@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>DataFactory</PsModuleName>
@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.DataFactories" Version="4.13.3" />
-    <PackageReference Include="Microsoft.DataTransfer.Gateway.Encryption" Version="4.14.7587.7" />
+    <PackageReference Include="Microsoft.DataTransfer.Gateway.Encryption" Version="5.29.8499.2" />
     <PackageReference Include="System.IO.FileSystem.AccessControl" Version="4.5.0" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
     <!-- Include the following DLLs for security issue -->

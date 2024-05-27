@@ -17,7 +17,7 @@ Use '.unassigned' or '.default' for the device group and product names to genera
 ```
 New-AzSphereDeviceCapabilityImage -DeviceName <String> -CatalogName <String> -DeviceGroupName <String>
  -ProductName <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Capability <String[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ New-AzSphereDeviceCapabilityImage -DeviceName <String> -CatalogName <String> -De
 ```
 New-AzSphereDeviceCapabilityImage -DeviceName <String> -CatalogName <String> -DeviceGroupName <String>
  -ProductName <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ New-AzSphereDeviceCapabilityImage -DeviceName <String> -CatalogName <String> -De
 ```
 New-AzSphereDeviceCapabilityImage -DeviceName <String> -CatalogName <String> -DeviceGroupName <String>
  -ProductName <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -41,20 +41,20 @@ New-AzSphereDeviceCapabilityImage -DeviceName <String> -CatalogName <String> -De
 ```
 New-AzSphereDeviceCapabilityImage -DeviceName <String> -DeviceGroupName <String>
  -ProductInputObject <ISphereIdentity> -Capability <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GenerateViaIdentityCatalogExpanded
 ```
 New-AzSphereDeviceCapabilityImage -DeviceName <String> -DeviceGroupName <String> -ProductName <String>
  -CatalogInputObject <ISphereIdentity> -Capability <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GenerateViaIdentityDeviceGroupExpanded
 ```
 New-AzSphereDeviceCapabilityImage -DeviceName <String> -DeviceGroupInputObject <ISphereIdentity>
- -Capability <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ -Capability <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -269,21 +269,6 @@ Parameter Sets: GenerateExpanded, GenerateViaJsonString, GenerateViaJsonFilePath
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -1,8 +1,9 @@
 ### Example 1: Get-AzConnectedNetworkFunction via Resource group and Resource name
 ```powershell
 Get-AzConnectedNetworkFunction -Name myVnf -ResourceGroupName myResources
+```
 
-
+```output
 ContainerConfiguration       : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionPropertiesFormatNetworkFunctionContainerConfigurations
 DeviceId                     : /subscriptions/xxxxx-00000-xxxxx-00000/resourceGroups/myResources/providers/Microsoft.HybridNetwork/devices/myMec
 Etag                         : "0000a530-0000-3400-0000-615c10fa0000"
@@ -36,8 +37,9 @@ Getting information about the network function in resource group myResources wit
 ```powershell
 $vnf = @{ NetworkFunctionName = "myVnf1"; ResourceGroupName = "myResources"; SubscriptionId = "xxxxx-00000-xxxxx-00000"}
 Get-AzConnectedNetworkFunction -InputObject $vnf
+```
 
-
+```output
 ContainerConfiguration       : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionPropertiesFormatNetworkFunctionContainerConfigurations
 DeviceId                     : /subscriptions/xxxxx-00000-xxxxx-00000/resourceGroups/myResources/providers/Microsoft.HybridNetwork/devices/myMec1
 Etag                         : "sampleEtagValue"

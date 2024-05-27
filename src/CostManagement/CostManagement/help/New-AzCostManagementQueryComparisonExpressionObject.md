@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.CostManagement-help.xml
 Module Name: Az.CostManagement
 online version: https://learn.microsoft.com/powershell/module/az.CostManagement/new-AzCostManagementQueryComparisonExpressionObject
 schema: 2.0.0
@@ -93,7 +93,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -1,0 +1,105 @@
+{
+  "resourceType": "namespaces/topics/eventSubscriptions",
+  "apiVersion": "2023-06-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.eventgrid"
+  },
+  "commands": [
+    {
+      "name": "Get-AzEventGridNamespaceTopicEventSubscription",
+      "description": "Get properties of an event subscription of a namespace topic.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridnamespacetopiceventsubscription"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EventSubscriptionName <String>",
+              "-NamespaceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-TopicName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get properties of an event subscription of a namespace topic.",
+          "parameters": [
+            {
+              "name": "-EventSubscriptionName",
+              "value": "[Path.eventSubscriptionName]"
+            },
+            {
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-TopicName",
+              "value": "[Path.topicName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzEventGridNamespaceTopicEventSubscription",
+      "description": "Delete an existing event subscription of a namespace topic.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/remove-azeventgridnamespacetopiceventsubscription"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EventSubscriptionName <String>",
+              "-NamespaceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]",
+              "-TopicName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete an existing event subscription of a namespace topic.",
+          "parameters": [
+            {
+              "name": "-EventSubscriptionName",
+              "value": "[Path.eventSubscriptionName]"
+            },
+            {
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-TopicName",
+              "value": "[Path.topicName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

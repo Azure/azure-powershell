@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.FailoverGroup.Model;
 using Microsoft.Azure.Management.Sql.Models;
@@ -23,6 +22,7 @@ using System.Linq;
 using System.Management.Automation;
 using System;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
@@ -30,7 +30,6 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql FailoverGroup
     /// </summary>
-    [GenericBreakingChangeWithVersion("The default value of FailoverPolicy will change from Automatic to Manual", "12.0.0", "5.0.0")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseFailoverGroup"), OutputType(typeof(AzureSqlFailoverGroupModel))]
     public class NewAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
@@ -85,7 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The failover policy of the Azure SQL Database Failover Group.")]
         [ValidateNotNullOrEmpty]
-        [PSDefaultValue(Help = "Automatic")]
+        [PSDefaultValue(Help = "Manual", Value = FailoverPolicy.Manual)]
         public FailoverPolicy FailoverPolicy { get; set; }
 
         /// <summary>

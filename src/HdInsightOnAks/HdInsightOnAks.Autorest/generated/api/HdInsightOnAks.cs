@@ -2320,7 +2320,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             }
         }
 
-        /// <summary>Create a cluster pool.</summary>
+        /// <summary>Update a cluster pool.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterPoolName">The name of the cluster pool.</param>
@@ -2369,7 +2369,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             }
         }
 
-        /// <summary>Create a cluster pool.</summary>
+        /// <summary>Update a cluster pool.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Cluster Pool to create.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2428,7 +2428,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             }
         }
 
-        /// <summary>Create a cluster pool.</summary>
+        /// <summary>Update a cluster pool.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Cluster Pool to create.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2485,7 +2485,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             }
         }
 
-        /// <summary>Create a cluster pool.</summary>
+        /// <summary>Update a cluster pool.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterPoolName">The name of the cluster pool.</param>
@@ -2533,7 +2533,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             }
         }
 
-        /// <summary>Create a cluster pool.</summary>
+        /// <summary>Update a cluster pool.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterPoolName">The name of the cluster pool.</param>
@@ -2579,7 +2579,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             }
         }
 
-        /// <summary>Create a cluster pool.</summary>
+        /// <summary>Update a cluster pool.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterPoolName">The name of the cluster pool.</param>
@@ -4146,7 +4146,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             }
         }
 
-        /// <summary>Updates an existing Cluster Pool Tags.</summary>
+        /// <summary>Update an existing Cluster Pool Tags.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterPoolName">The name of the cluster pool.</param>
@@ -4195,7 +4195,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             }
         }
 
-        /// <summary>Updates an existing Cluster Pool Tags.</summary>
+        /// <summary>Update an existing Cluster Pool Tags.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to update tags.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -4254,7 +4254,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             }
         }
 
-        /// <summary>Updates an existing Cluster Pool Tags.</summary>
+        /// <summary>Update an existing Cluster Pool Tags.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to update tags.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4311,7 +4311,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             }
         }
 
-        /// <summary>Updates an existing Cluster Pool Tags.</summary>
+        /// <summary>Update an existing Cluster Pool Tags.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterPoolName">The name of the cluster pool.</param>
@@ -4359,7 +4359,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             }
         }
 
-        /// <summary>Updates an existing Cluster Pool Tags.</summary>
+        /// <summary>Update an existing Cluster Pool Tags.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterPoolName">The name of the cluster pool.</param>
@@ -4405,7 +4405,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             }
         }
 
-        /// <summary>Updates an existing Cluster Pool Tags.</summary>
+        /// <summary>Update an existing Cluster Pool Tags.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterPoolName">The name of the cluster pool.</param>
@@ -5392,7 +5392,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             }
         }
 
-        /// <summary>Creates a cluster.</summary>
+        /// <summary>Create a cluster.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterPoolName">The name of the cluster pool.</param>
@@ -5444,7 +5444,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             }
         }
 
-        /// <summary>Creates a cluster.</summary>
+        /// <summary>Create a cluster.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The cluster to create.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -5506,7 +5506,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             }
         }
 
-        /// <summary>Creates a cluster.</summary>
+        /// <summary>Create a cluster.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The cluster to create.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -5566,7 +5566,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             }
         }
 
-        /// <summary>Creates a cluster.</summary>
+        /// <summary>Create a cluster.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterPoolName">The name of the cluster pool.</param>
@@ -5617,7 +5617,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             }
         }
 
-        /// <summary>Creates a cluster.</summary>
+        /// <summary>Create a cluster.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterPoolName">The name of the cluster pool.</param>
@@ -5666,7 +5666,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             }
         }
 
-        /// <summary>Creates a cluster.</summary>
+        /// <summary>Create a cluster.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterPoolName">The name of the cluster pool.</param>
@@ -8642,7 +8642,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             }
         }
 
-        /// <summary>Updates an existing Cluster.</summary>
+        /// <summary>Update an existing Cluster.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterPoolName">The name of the cluster pool.</param>
@@ -8694,7 +8694,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             }
         }
 
-        /// <summary>Updates an existing Cluster.</summary>
+        /// <summary>Update an existing Cluster.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Patch a cluster.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -8756,7 +8756,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             }
         }
 
-        /// <summary>Updates an existing Cluster.</summary>
+        /// <summary>Update an existing Cluster.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Patch a cluster.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8816,7 +8816,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             }
         }
 
-        /// <summary>Updates an existing Cluster.</summary>
+        /// <summary>Update an existing Cluster.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterPoolName">The name of the cluster pool.</param>
@@ -8867,7 +8867,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             }
         }
 
-        /// <summary>Updates an existing Cluster.</summary>
+        /// <summary>Update an existing Cluster.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterPoolName">The name of the cluster pool.</param>
@@ -8916,7 +8916,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             }
         }
 
-        /// <summary>Updates an existing Cluster.</summary>
+        /// <summary>Update an existing Cluster.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterPoolName">The name of the cluster pool.</param>

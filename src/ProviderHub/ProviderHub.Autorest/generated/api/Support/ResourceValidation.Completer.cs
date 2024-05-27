@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotSpecified".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotSpecified", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
+                yield return new global::System.Management.Automation.CompletionResult("'NotSpecified'", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ReservedWords".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ReservedWords", "ReservedWords", global::System.Management.Automation.CompletionResultType.ParameterValue, "ReservedWords");
+                yield return new global::System.Management.Automation.CompletionResult("'ReservedWords'", "ReservedWords", global::System.Management.Automation.CompletionResultType.ParameterValue, "ReservedWords");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ProfaneWords".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ProfaneWords", "ProfaneWords", global::System.Management.Automation.CompletionResultType.ParameterValue, "ProfaneWords");
+                yield return new global::System.Management.Automation.CompletionResult("'ProfaneWords'", "ProfaneWords", global::System.Management.Automation.CompletionResultType.ParameterValue, "ProfaneWords");
             }
         }
     }

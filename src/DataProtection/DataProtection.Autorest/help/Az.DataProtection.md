@@ -29,6 +29,9 @@ Finds the valid recovery point in time ranges for the restore.
 ### [Get-AzDataProtectionBackupInstance](Get-AzDataProtectionBackupInstance.md)
 Gets a backup instance with name in a backup vault
 
+### [Get-AzDataProtectionBackupInstancesExtensionRouting](Get-AzDataProtectionBackupInstancesExtensionRouting.md)
+Gets a list of backup instances associated with a tracked resource
+
 ### [Get-AzDataProtectionBackupPolicy](Get-AzDataProtectionBackupPolicy.md)
 Gets a backup policy belonging to a backup vault
 
@@ -135,7 +138,7 @@ Triggers restore for a BackupInstance
 This operation will stop protection of a backup instance and data will be held forever
 
 ### [Suspend-AzDataProtectionBackupInstanceBackup](Suspend-AzDataProtectionBackupInstanceBackup.md)
-This operation will stop backup for a backup instance and retains the backup data as per the policy (except latest Recovery point, which will be retained forever)
+This operation will stop backup for a backup instance and retains the backup data as per the policy except latest Recovery point, which will be retained forever
 
 ### [Sync-AzDataProtectionBackupInstance](Sync-AzDataProtectionBackupInstance.md)
 Sync backup instance again in case of failure\r\nThis action will retry last failed operation and will bring backup instance to valid state
@@ -151,6 +154,9 @@ Undeletes a soft deleted backup instance
 
 ### [Unlock-AzDataProtectionResourceGuardOperation](Unlock-AzDataProtectionResourceGuardOperation.md)
 Unlocks the critical operation which is protected by the resource guard
+
+### [Update-AzDataProtectionBackupInstance](Update-AzDataProtectionBackupInstance.md)
+Updates a given backup instance
 
 ### [Update-AzDataProtectionBackupInstanceAssociatedPolicy](Update-AzDataProtectionBackupInstanceAssociatedPolicy.md)
 Updates associated policy for a given backup instance

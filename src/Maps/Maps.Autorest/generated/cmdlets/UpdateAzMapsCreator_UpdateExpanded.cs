@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.Extensions;
+    using System;
 
     /// <summary>
     /// Updates the Maps Creator resource. Only a subset of the parameters may be updated after creation, such as Tags.
@@ -17,6 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreator))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Maps.Description(@"Updates the Maps Creator resource. Only a subset of the parameters may be updated after creation, such as Tags.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Maps.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Maps.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}/creators/{creatorName}", ApiVersion = "2021-02-01")]
     public partial class UpdateAzMapsCreator_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.IEventListener
     {
@@ -33,6 +35,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
+
+        /// <summary>Parameters used to update an existing Creator resource.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreatorUpdateParameters _creatorUpdateParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.CreatorUpdateParameters();
 
         /// <summary>Backing field for <see cref="AccountName" /> property.</summary>
         private string _accountName;
@@ -56,16 +61,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Maps.Maps Client => Microsoft.Azure.PowerShell.Cmdlets.Maps.Module.Instance.ClientAPI;
 
-        /// <summary>Backing field for <see cref="CreatorUpdateParametersBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreatorUpdateParameters _creatorUpdateParametersBody= new Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.CreatorUpdateParameters();
-
-        /// <summary>Parameters used to update an existing Creator resource.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreatorUpdateParameters CreatorUpdateParametersBody { get => this._creatorUpdateParametersBody; set => this._creatorUpdateParametersBody = value; }
-
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Maps.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Maps.ParameterCategory.Azure)]
@@ -87,11 +87,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
         Description = @"The storage units to be allocated. Integer values from 1 to 100, inclusive.",
         SerializedName = @"storageUnits",
         PossibleTypes = new [] { typeof(int) })]
-        public int StorageUnit { get => CreatorUpdateParametersBody.StorageUnit ?? default(int); set => CreatorUpdateParametersBody.StorageUnit = value; }
+        public int StorageUnit { get => _creatorUpdateParametersBody.StorageUnit ?? default(int); set => _creatorUpdateParametersBody.StorageUnit = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -187,15 +187,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
         Description = @"Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters.",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreatorUpdateParametersTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreatorUpdateParametersTags Tag { get => CreatorUpdateParametersBody.Tag ?? null /* object */; set => CreatorUpdateParametersBody.Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreatorUpdateParametersTags Tag { get => _creatorUpdateParametersBody.Tag ?? null /* object */; set => _creatorUpdateParametersBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20.IErrorResponse</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
@@ -206,8 +206,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreator"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreator">Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreator</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
@@ -218,6 +218,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.Maps.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -229,7 +234,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Maps.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -263,7 +285,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
                     case Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.Events.Information:
                     {
                         var data = messageData();
-                        WriteInformation(data, new[] { data.Message });
+                        WriteInformation(data.Message, new string[]{});
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.Events.Debug:
@@ -332,7 +354,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Maps.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -347,12 +368,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.CreatorsUpdate(SubscriptionId, ResourceGroupName, AccountName, Name, CreatorUpdateParametersBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.CreatorsUpdate(SubscriptionId, ResourceGroupName, AccountName, Name, _creatorUpdateParametersBody, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,AccountName=AccountName,Name=Name,body=CreatorUpdateParametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,AccountName=AccountName,Name=Name,body=_creatorUpdateParametersBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -379,12 +400,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
 
         }
 
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Maps.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Maps.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
+        }
+
         /// <summary>
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20.IErrorResponse</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
@@ -406,14 +442,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.Maps.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, AccountName=AccountName, Name=Name, body=CreatorUpdateParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, AccountName=AccountName, Name=Name, body=_creatorUpdateParametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, AccountName=AccountName, Name=Name, body=CreatorUpdateParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, AccountName=AccountName, Name=Name, body=_creatorUpdateParametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -423,8 +459,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreator"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreator">Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreator</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>

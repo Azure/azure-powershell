@@ -11,8 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.DoNotFormat]
     public partial class RefundResponse :
         Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IRefundResponse,
-        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IRefundResponseInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.IHeaderSerializable
+        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IRefundResponseInternal
     {
 
         /// <summary>Pricing information containing the amount and the currency code</summary>
@@ -53,12 +52,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101
         /// <summary>Fully qualified identifier of the reservation being returned</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Origin(Microsoft.Azure.PowerShell.Cmdlets.Reservations.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
-
-        /// <summary>Backing field for <see cref="Location" /> property.</summary>
-        private string _location;
-
-        [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Origin(Microsoft.Azure.PowerShell.Cmdlets.Reservations.PropertyOrigin.Owned)]
-        public string Location { get => this._location; set => this._location = value; }
 
         /// <summary>Pricing information containing the amount and the currency code</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Origin(Microsoft.Azure.PowerShell.Cmdlets.Reservations.PropertyOrigin.Inlined)]
@@ -102,15 +95,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101
         /// <summary>Refund session identifier</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Origin(Microsoft.Azure.PowerShell.Cmdlets.Reservations.PropertyOrigin.Inlined)]
         public string SessionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IRefundResponsePropertiesInternal)Property).SessionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IRefundResponsePropertiesInternal)Property).SessionId = value ?? null; }
-
-        /// <param name="headers"></param>
-        void Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.IHeaderSerializable.ReadHeaders(global::System.Net.Http.Headers.HttpResponseHeaders headers)
-        {
-            if (headers.TryGetValues("Location", out var __locationHeader0))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IRefundResponseInternal)this).Location = System.Linq.Enumerable.FirstOrDefault(__locationHeader0) is string __headerLocationHeader0 ? __headerLocationHeader0 : (string)null;
-            }
-        }
 
         /// <summary>Creates an new <see cref="RefundResponse" /> instance.</summary>
         public RefundResponse()
@@ -194,14 +178,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
-
-        [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"",
-        SerializedName = @"Location",
-        PossibleTypes = new [] { typeof(string) })]
-        string Location { get; set; }
         /// <summary>Pricing information containing the amount and the currency code</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
         Required = false,
@@ -268,8 +244,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101
         Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IPrice ConsumedRefundsTotal { get; set; }
         /// <summary>Fully qualified identifier of the reservation being returned</summary>
         string Id { get; set; }
-
-        string Location { get; set; }
         /// <summary>Pricing information containing the amount and the currency code</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IPrice MaxRefundLimit { get; set; }
         /// <summary>Refund Policy errors</summary>

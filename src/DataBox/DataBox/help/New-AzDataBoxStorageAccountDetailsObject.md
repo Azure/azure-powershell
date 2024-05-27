@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataBox-help.xml
 Module Name: Az.DataBox
 online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxStorageAccountDetailsObject
 schema: 2.0.0
@@ -13,7 +13,7 @@ Create an in-memory object for StorageAccountDetails.
 ## SYNTAX
 
 ```
-New-AzDataBoxStorageAccountDetailsObject -DataAccountType <DataAccountType> -StorageAccountId <String>
+New-AzDataBoxStorageAccountDetailsObject -StorageAccountId <String> -DataAccountType <DataAccountType>
  [-SharePassword <String>] [<CommonParameters>]
 ```
 
@@ -22,7 +22,7 @@ Create an in-memory object for StorageAccountDetails.
 
 ## EXAMPLES
 
-### Example 1: Storage account in-memory object 
+### Example 1: Storage account in-memory object
 ```powershell
 New-AzDataBoxStorageAccountDetailsObject -DataAccountType "StorageAccount" -StorageAccountId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/storageAccountName"
 ```
@@ -99,7 +99,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

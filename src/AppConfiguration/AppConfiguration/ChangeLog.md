@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.3.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 1.3.0
 * Added cmdlets to support data plane operation:
   - `Get-AzAppConfigurationKey`

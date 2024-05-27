@@ -271,7 +271,7 @@ Accept wildcard characters: False
 ```
 
 ### -GithubActionSecretNameOverride
-GitHub Action secret name override.
+Github Action secret name override.
 
 ```yaml
 Type: System.String

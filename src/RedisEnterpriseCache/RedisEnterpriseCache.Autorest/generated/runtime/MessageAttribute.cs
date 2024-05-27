@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime
 
         //The version the change is effective from, non mandatory
         public string DeprecateByVersion { get; }
-        public bool DeprecateByVersionSet { get; } = false;
+        public string DeprecateByAzVersion { get; }
 
         //The date on which the change comes in effect
         public DateTime ChangeInEfectByDate { get; }
@@ -32,23 +32,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime
         //New way fo calling the cmdlet
         public string NewWay { get; set; }
 
-        public GenericBreakingChangeAttribute(string message)
+        public GenericBreakingChangeAttribute(string message, string deprecateByAzVersion, string deprecateByVersion)
         {
             _message = message;
+            this.DeprecateByAzVersion = deprecateByAzVersion;
+            this.DeprecateByVersion = deprecateByVersion;
         }
 
-        public GenericBreakingChangeAttribute(string message, string deprecateByVersion)
+        public GenericBreakingChangeAttribute(string message, string deprecateByAzVersion, string deprecateByVersion, string changeInEfectByDate)
         {
             _message = message;
             this.DeprecateByVersion = deprecateByVersion;
-            this.DeprecateByVersionSet = true;
-        }
-
-        public GenericBreakingChangeAttribute(string message, string deprecateByVersion, string changeInEfectByDate)
-        {
-            _message = message;
-            this.DeprecateByVersion = deprecateByVersion;
-            this.DeprecateByVersionSet = true;
+            this.DeprecateByAzVersion = deprecateByAzVersion;
 
             if (DateTime.TryParse(changeInEfectByDate, new CultureInfo("en-US"), DateTimeStyles.None, out DateTime result))
             {
@@ -86,10 +81,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime
                 writeOutput(string.Format(Resources.BreakingChangesAttributesInEffectByDateMessage, this.ChangeInEfectByDate.ToString("d")));
             }
 
-            if (DeprecateByVersionSet)
-            {
-                writeOutput(string.Format(Resources.BreakingChangesAttributesInEffectByVersion, this.DeprecateByVersion));
-            }
+            writeOutput(string.Format(Resources.BreakingChangesAttributesInEffectByAzVersion, this.DeprecateByAzVersion));
+            writeOutput(string.Format(Resources.BreakingChangesAttributesInEffectByVersion, this.DeprecateByVersion));
 
             if (OldWay != null && NewWay != null)
             {
@@ -114,18 +107,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime
 
         public string ReplacementCmdletName { get; set; }
 
-        public CmdletBreakingChangeAttribute() :
-            base(string.Empty)
+        public CmdletBreakingChangeAttribute(string deprecateByAzVersion, string deprecateByVersion) :
+             base(string.Empty, deprecateByAzVersion, deprecateByVersion)
         {
         }
 
-        public CmdletBreakingChangeAttribute(string deprecateByVersione) :
-             base(string.Empty, deprecateByVersione)
-        {
-        }
-
-        public CmdletBreakingChangeAttribute(string deprecateByVersion, string changeInEfectByDate) :
-             base(string.Empty, deprecateByVersion, changeInEfectByDate)
+        public CmdletBreakingChangeAttribute(string deprecateByAzVersion, string deprecateByVersion, string changeInEfectByDate) :
+             base(string.Empty, deprecateByAzVersion, deprecateByVersion, changeInEfectByDate)
         {
         }
 
@@ -146,20 +134,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime
     public class ParameterSetBreakingChangeAttribute : GenericBreakingChangeAttribute
     {
         public string[] ChangedParameterSet { set; get; }
-        public ParameterSetBreakingChangeAttribute(string[] changedParameterSet) :
-            base(string.Empty)
+
+        public ParameterSetBreakingChangeAttribute(string[] changedParameterSet, string deprecateByAzVersion, string deprecateByVersion) :
+             base(string.Empty, deprecateByAzVersion, deprecateByVersion)
         {
             ChangedParameterSet = changedParameterSet;
         }
 
-        public ParameterSetBreakingChangeAttribute(string[] changedParameterSet, string deprecateByVersione) :
-             base(string.Empty, deprecateByVersione)
-        {
-            ChangedParameterSet = changedParameterSet;
-        }
-
-        public ParameterSetBreakingChangeAttribute(string[] changedParameterSet, string deprecateByVersion, string changeInEfectByDate) :
-             base(string.Empty, deprecateByVersion, changeInEfectByDate)
+        public ParameterSetBreakingChangeAttribute(string[] changedParameterSet, string deprecateByAzVersion, string deprecateByVersion, string changeInEfectByDate) :
+             base(string.Empty, deprecateByAzVersion, deprecateByVersion, changeInEfectByDate)
         {
             ChangedParameterSet = changedParameterSet;
         }
@@ -185,6 +168,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime
     {
         public string _message;
 
+        public DateTime EstimatedGaDate { get; }
+
+        public bool IsEstimatedGaDateSet { get; } = false;
+
+
         public PreviewMessageAttribute()
         {
             this._message = Resources.PreviewCmdletMessage;
@@ -192,12 +180,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime
 
         public PreviewMessageAttribute(string message)
         {
-            this._message = message;
+            this._message = string.IsNullOrEmpty(message) ? Resources.PreviewCmdletMessage : message;
         }
 
-        public void PrintCustomAttributeInfo(System.Management.Automation.PSCmdlet psCmdlet)
+        public PreviewMessageAttribute(string message, string estimatedDateOfGa) : this(message)
         {
-            psCmdlet.WriteWarning(this._message);
+            if (DateTime.TryParse(estimatedDateOfGa, new CultureInfo("en-US"), DateTimeStyles.None, out DateTime result))
+            {
+                this.EstimatedGaDate = result;
+                this.IsEstimatedGaDateSet = true;
+            }
+        }
+        
+        public void PrintCustomAttributeInfo(Action<string> writeOutput)
+        {
+            writeOutput(this._message);
+            
+            if (IsEstimatedGaDateSet)
+            {
+                writeOutput(string.Format(Resources.PreviewCmdletETAMessage, this.EstimatedGaDate.ToShortDateString()));
+            }
         }
 
         public virtual bool IsApplicableToInvocation(InvocationInfo invocation)
@@ -219,20 +221,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime
 
         public String NewParameterType { get; set; }
 
-        public ParameterBreakingChangeAttribute(string nameOfParameterChanging) :
-            base(string.Empty)
+        public ParameterBreakingChangeAttribute(string nameOfParameterChanging, string deprecateByAzVersion, string deprecateByVersion) :
+             base(string.Empty, deprecateByAzVersion, deprecateByVersion)
         {
             this.NameOfParameterChanging = nameOfParameterChanging;
         }
 
-        public ParameterBreakingChangeAttribute(string nameOfParameterChanging, string deprecateByVersion) :
-             base(string.Empty, deprecateByVersion)
-        {
-            this.NameOfParameterChanging = nameOfParameterChanging;
-        }
-
-        public ParameterBreakingChangeAttribute(string nameOfParameterChanging, string deprecateByVersion, string changeInEfectByDate) :
-             base(string.Empty, deprecateByVersion, changeInEfectByDate)
+        public ParameterBreakingChangeAttribute(string nameOfParameterChanging, string deprecateByAzVersion, string deprecateByVersion, string changeInEfectByDate) :
+             base(string.Empty, deprecateByAzVersion, deprecateByVersion, changeInEfectByDate)
         {
             this.NameOfParameterChanging = nameOfParameterChanging;
         }
@@ -298,20 +294,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime
 
         public string[] NewOutputProperties { get; set; }
 
-        public OutputBreakingChangeAttribute(string deprecatedCmdletOutputType) :
-            base(string.Empty)
+        public OutputBreakingChangeAttribute(string deprecatedCmdletOutputType, string deprecateByAzVersion, string deprecateByVersion) :
+             base(string.Empty, deprecateByAzVersion, deprecateByVersion)
         {
             this.DeprecatedCmdLetOutputType = deprecatedCmdletOutputType;
         }
 
-        public OutputBreakingChangeAttribute(string deprecatedCmdletOutputType, string deprecateByVersion) :
-             base(string.Empty, deprecateByVersion)
-        {
-            this.DeprecatedCmdLetOutputType = deprecatedCmdletOutputType;
-        }
-
-        public OutputBreakingChangeAttribute(string deprecatedCmdletOutputType, string deprecateByVersion, string changeInEfectByDate) :
-             base(string.Empty, deprecateByVersion, changeInEfectByDate)
+        public OutputBreakingChangeAttribute(string deprecatedCmdletOutputType, string deprecateByAzVersion, string deprecateByVersion, string changeInEfectByDate) :
+             base(string.Empty, deprecateByAzVersion, deprecateByVersion, changeInEfectByDate)
         {
             this.DeprecatedCmdLetOutputType = deprecatedCmdletOutputType;
         }

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,23 +13,29 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.KeyVault.Helpers;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Internal.Common;
 using Microsoft.Azure.KeyVault.WebKey;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
+using Newtonsoft.Json.Linq;
 
 using System;
 using System.Collections;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using System.Net.Http;
 using System.Reflection;
 using System.Security;
+
 using Track2Sdk = Azure.Security.KeyVault.Keys;
 
 namespace Microsoft.Azure.Commands.KeyVault
@@ -74,8 +80,9 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #region Constants 
 
-        private const string DefaultCVMPolicyUrl = "https://raw.githubusercontent.com/Azure/confidential-computing-cvm/main/cvm_deployment/key/skr-policy.json";
-        private const string DefaultCVMPolicyPath = "Microsoft.Azure.Commands.KeyVault.Resources.skr-policy.json";
+        private const string DefaultCVMPolicyApi = "subscriptions/{0}/providers/Microsoft.Attestation/Locations/{1}/defaultProvider";
+        private const string DefaultCVMPolicyTemplatePath = "Microsoft.Azure.Commands.KeyVault.Resources.skr-policy.json";
+        private const string MaaEnpointApiVersion = "2020-10-01";
 
         #endregion
 
@@ -624,30 +631,33 @@ namespace Microsoft.Azure.Commands.KeyVault
         private string GetDefaultCVMPolicy()
         {
             string defaultCVMPolicy = null;
-
             try
             {
-                using (var client = new HttpClient())
+                var location = keyVaultManagementCmdletBase.ListVaults("", null)?.FirstOrDefault(r => r.VaultName.Equals(VaultName ?? HsmName, StringComparison.OrdinalIgnoreCase))?.Location;
+                if (null == location)
                 {
-                    defaultCVMPolicy = client.GetStringAsync(DefaultCVMPolicyUrl).ConfigureAwait(true).GetAwaiter().GetResult();
+                    throw new AzPSException(string.Format(Resources.NoVaultWithGivenNameFound, VaultName), ErrorKind.UserError);
                 }
-
+                string endpoint = DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager);
+                string defaultCVMPolicyUrl = string.Format(DefaultCVMPolicyApi, DefaultContext.Subscription.Id, location);
+                ServiceClientCredentials creds = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(DefaultContext, endpoint);
+                var serviceClient = AzureSession.Instance.ClientFactory.CreateArmClient<AzureRestClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+                string response = serviceClient.Operations.GetResourceWithFullResponse(defaultCVMPolicyUrl, MaaEnpointApiVersion)?.Body;
+                var regionalMaaEndpoint = JObject.Parse(response)?["properties"]?["attestUri"]?.ToString();
+                if (null == regionalMaaEndpoint)
+                {
+                    throw new AzPSException($"unable to get regional MAA endpoint from {defaultCVMPolicyUrl}.", ErrorKind.ServiceError);
+                }
+                using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(DefaultCVMPolicyTemplatePath))
+                using (var reader = new StreamReader(stream))
+                {
+                    defaultCVMPolicy = reader.ReadToEnd();
+                }
+                defaultCVMPolicy = defaultCVMPolicy.Replace("{regional-maa-endpoint}", regionalMaaEndpoint);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                WriteWarning(string.Format(Resources.FetchDefaultCVMPolicyFromLocal, e.Message));
-                try
-                {
-                    using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(DefaultCVMPolicyPath))
-                    using (var reader = new StreamReader(stream))
-                    {
-                        defaultCVMPolicy = reader.ReadToEnd();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw new AzPSArgumentException(string.Format(Resources.FetchDefaultCVMPolicyFailedWithErrorMessage, ex.Message), nameof(UseDefaultCVMPolicy));
-                };
+                throw new AzPSArgumentException(string.Format(Resources.FetchDefaultCVMPolicyFailedWithErrorMessage, ex.Message), nameof(UseDefaultCVMPolicy));
             }
             return defaultCVMPolicy;
         }

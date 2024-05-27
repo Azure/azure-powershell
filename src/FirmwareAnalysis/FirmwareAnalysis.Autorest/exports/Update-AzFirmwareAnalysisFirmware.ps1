@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-The operation to update firmware.
+The operation to Update firmware.
 .Description
-The operation to update firmware.
+The operation to Update firmware.
 .Example
 Update-AzFirmwareAnalysisFirmware -FirmwareId firmwareId -ResourceGroupName resourceGroupName -WorkspaceName workspaceName -Description description -FileSize 1  -FileName fileName -Vendor vendor -Model model -Version version
 

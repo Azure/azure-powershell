@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Msi".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Msi", "Msi", global::System.Management.Automation.CompletionResultType.ParameterValue, "Msi");
+                yield return new global::System.Management.Automation.CompletionResult("'Msi'", "Msi", global::System.Management.Automation.CompletionResultType.ParameterValue, "Msi");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "UserToken".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("UserToken", "UserToken", global::System.Management.Automation.CompletionResultType.ParameterValue, "UserToken");
+                yield return new global::System.Management.Automation.CompletionResult("'UserToken'", "UserToken", global::System.Management.Automation.CompletionResultType.ParameterValue, "UserToken");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ConnectionString".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ConnectionString", "ConnectionString", global::System.Management.Automation.CompletionResultType.ParameterValue, "ConnectionString");
+                yield return new global::System.Management.Automation.CompletionResult("'ConnectionString'", "ConnectionString", global::System.Management.Automation.CompletionResultType.ParameterValue, "ConnectionString");
             }
         }
     }

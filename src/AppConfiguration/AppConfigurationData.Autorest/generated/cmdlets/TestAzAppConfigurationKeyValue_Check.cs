@@ -227,6 +227,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
         SerializedName = @"$Select",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Query)]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PSArgumentCompleterAttribute("key", "label", "content_type", "value", "last_modified", "tags", "locked", "etag")]
         public System.Collections.Generic.List<string> Select { get => this._select; set => this._select = value; }
 
         /// <summary>Backing field for <see cref="SyncToken" /> property.</summary>
@@ -290,6 +291,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
             {
                 // Flush buffer
                 WriteObject(_firstResponse);
+            }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
             }
         }
 
@@ -459,6 +478,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
         public TestAzAppConfigurationKeyValue_Check()
         {
 
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

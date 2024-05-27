@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
 online version: https://learn.microsoft.com/powershell/module/az.networkcloud/new-aznetworkcloudmetricsconfiguration
 schema: 2.0.0
@@ -14,9 +14,10 @@ Create new or update the existing metrics configuration of the provided cluster.
 
 ```
 New-AzNetworkCloudMetricsConfiguration -ClusterName <String> -MetricsConfigurationName <String>
- -ResourceGroupName <String> -CollectionInterval <Int64> -ExtendedLocationName <String>
- -ExtendedLocationType <String> -Location <String> [-SubscriptionId <String>] [-EnabledMetric <String[]>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] -CollectionInterval <Int64>
+ -ExtendedLocationName <String> -ExtendedLocationType <String> -Location <String> [-EnabledMetric <String[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -279,7 +280,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

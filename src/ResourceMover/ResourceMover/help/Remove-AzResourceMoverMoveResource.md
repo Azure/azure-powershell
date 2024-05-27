@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ResourceMover-help.xml
 Module Name: Az.ResourceMover
 online version: https://learn.microsoft.com/powershell/module/az.resourcemover/remove-azresourcemovermoveresource
 schema: 2.0.0
@@ -16,8 +16,8 @@ Deletes a Move Resource from the move collection.
 
 ```
 Remove-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +43,6 @@ Name           : bee69758-c7cb-4160-b3e0-8e4b69ec3731
 Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
 StartTime      : 2/10/2021 1:08:47 PM
 Status         : Succeeded
-
 ```
 
 Remove one Move Resource from the Move Collection.
@@ -213,7 +212,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

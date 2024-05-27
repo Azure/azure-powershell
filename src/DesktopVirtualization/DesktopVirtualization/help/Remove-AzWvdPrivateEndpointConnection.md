@@ -15,25 +15,29 @@ Remove a connection.
 ### Delete (Default)
 ```
 Remove-AzWvdPrivateEndpointConnection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -WorkspaceName <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -WorkspaceName <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Delete1
 ```
 Remove-AzWvdPrivateEndpointConnection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -HostPoolName <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -HostPoolName <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity1
 ```
 Remove-AzWvdPrivateEndpointConnection -InputObject <IDesktopVirtualizationIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzWvdPrivateEndpointConnection -InputObject <IDesktopVirtualizationIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

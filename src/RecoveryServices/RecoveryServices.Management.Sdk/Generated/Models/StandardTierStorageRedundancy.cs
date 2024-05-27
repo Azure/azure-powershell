@@ -13,6 +13,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
 
     public static class StandardTierStorageRedundancy
     {
+        public const string Invalid = "Invalid";
         public const string LocallyRedundant = "LocallyRedundant";
         public const string GeoRedundant = "GeoRedundant";
         public const string ZoneRedundant = "ZoneRedundant";

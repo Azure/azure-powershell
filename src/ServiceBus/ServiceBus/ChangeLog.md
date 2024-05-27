@@ -20,6 +20,12 @@
 -->
 ## Upcoming Release
 
+## Version 4.0.0
+* Moved cmdlets to V4.
+
+## Version 3.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 3.1.0
 * Added Breaking Change Warning for parameter datatype change.
 

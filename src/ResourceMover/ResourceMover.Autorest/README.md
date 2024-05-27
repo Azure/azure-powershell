@@ -3,7 +3,6 @@
 This directory contains the PowerShell module for the ResourceMover service.
 
 ---
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -47,13 +46,13 @@ In this directory, run AutoRest:
 > Metadata
 ``` yaml
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 title: ResourceMover
 service-name: ResourceMover
 prefix: Az
 subject-prefix: $(service-name)
-branch: bf2585e
-repo: https://github.com/Azure/azure-rest-api-specs/tree/$(branch)
+commit: bf2585e9f0696cc8d5f230481612a37eac542f39
+repo: https://github.com/Azure/azure-rest-api-specs/tree/$(commit)
 module-name: $(prefix).$(service-name)
 namespace: Microsoft.Azure.PowerShell.Cmdlets.$(service-name)
 clear-output-folder: true
@@ -62,6 +61,10 @@ aks: $(repo)/specification/resourcemover/resource-manager/Microsoft.Migrate/stab
 input-file:
   - $(aks)/resourcemovercollection.json
 module-version: 1.0.0
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Remove the unexpanded parameter set

@@ -6,6 +6,11 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
 {
 
+    /// <summary>
+    /// The behavior the Time Series Insights service should take when the environment's capacity has been exceeded. If "PauseIngress"
+    /// is specified, new events will not be read from the event source. If "PurgeOldData" is specified, new events will continue
+    /// to be read and old events will be deleted from the environment. The default behavior is PurgeOldData.
+    /// </summary>
     public partial struct StorageLimitExceededBehavior :
         System.IEquatable<StorageLimitExceededBehavior>
     {
@@ -22,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
         /// <param name="value">the value to convert to an instance of <see cref="StorageLimitExceededBehavior" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new StorageLimitExceededBehavior(System.Convert.ToString(value));
+            return new StorageLimitExceededBehavior(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type StorageLimitExceededBehavior</summary>
@@ -49,7 +54,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
         }
 
         /// <summary>
-        /// Creates an instance of the <see cref="StorageLimitExceededBehavior" Enum class./>
+        /// Creates an instance of the <see cref="StorageLimitExceededBehavior"/> Enum class.
         /// </summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private StorageLimitExceededBehavior(string underlyingValue)
@@ -81,8 +86,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
         }
 
         /// <summary>Overriding != operator for enum StorageLimitExceededBehavior</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.StorageLimitExceededBehavior e1, Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.StorageLimitExceededBehavior e2)
         {
@@ -90,8 +95,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
         }
 
         /// <summary>Overriding == operator for enum StorageLimitExceededBehavior</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.StorageLimitExceededBehavior e1, Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.StorageLimitExceededBehavior e2)
         {

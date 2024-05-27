@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 4.2.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 4.2.0
 * Upgraded Azure.Core to 1.37.0.
 * Fixed vulnerability https://github.com/advisories/GHSA-8g9c-28fc-mcx2

@@ -397,7 +397,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// update the customer managed key
         /// </summary>
-        UpdateCustomerManagedKey
+        UpdateCustomerManagedKey,
+
+        /// <summary>
+        /// cross region restore
+        /// </summary>
+        CrossRegionRestore
     }
 
     /// <summary>

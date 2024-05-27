@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzCustomLocationResourceSyncRule
 
 ## SYNOPSIS
-Updates a Resource Sync Rule with the specified Resource Sync Rule name in the specified Resource Group, Subscription and Custom Location name.
+Update a Resource Sync Rule with the specified Resource Sync Rule name in the specified Resource Group, Subscription and Custom Location name.
 
 ## SYNTAX
 
@@ -53,7 +53,7 @@ Update-AzCustomLocationResourceSyncRule -InputObject <ICustomLocationIdentity> [
 ```
 
 ## DESCRIPTION
-Updates a Resource Sync Rule with the specified Resource Sync Rule name in the specified Resource Group, Subscription and Custom Location name.
+Update a Resource Sync Rule with the specified Resource Sync Rule name in the specified Resource Group, Subscription and Custom Location name.
 
 ## EXAMPLES
 

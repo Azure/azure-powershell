@@ -23,7 +23,7 @@ Create an in-memory object for AzureSubscriptionCredentialScan.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSubscriptionCredentialScan
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSubscriptionCredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSubscriptionCredentialScanObject
 #>
 function New-AzPurviewAzureSubscriptionCredentialScanObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSubscriptionCredentialScan')]

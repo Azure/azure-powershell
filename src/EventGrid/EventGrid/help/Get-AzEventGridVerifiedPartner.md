@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
+external help file: Az.EventGrid-help.xml
 Module Name: Az.EventGrid
 online version: https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridverifiedpartner
 schema: 2.0.0
@@ -8,43 +8,72 @@ schema: 2.0.0
 # Get-AzEventGridVerifiedPartner
 
 ## SYNOPSIS
-Gets the details of a specific Event Grid verified partner or gets the details of all verified partners in the current azure subscription.
+Get properties of a verified partner.
 
 ## SYNTAX
 
-### VerifiedPartnerNameParameterSet (Default)
+### List (Default)
 ```
-Get-AzEventGridVerifiedPartner [-Name <String>] [-ODataQuery <String>] [-Top <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzEventGridVerifiedPartner [-Filter <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
 ```
 
-### NextLinkParameterSet
+### Get
 ```
-Get-AzEventGridVerifiedPartner [-NextLink <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzEventGridVerifiedPartner -Name <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzEventGridVerifiedPartner -InputObject <IEventGridIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzEventGridVerifiedPartners will get the detail of a specific verified partner or gets the details of all verified partners in the current Azure subscription.
+Get properties of a verified partner.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: List properties of verified partner.
 ```powershell
-Get-AzEventGridVerifiedPartner -Name VerifiedPartner1
+Get-AzEventGridVerifiedPartner
 ```
 
-Gets the details of verified partner \`VerifiedPartner1\`.
+```output
+Name              ResourceGroupName
+----              -----------------
+Auth0
+MicrosoftGraphAPI
+SAP
+TribalGroup
+```
+
+List properties of verified partner.
+
+### Example 2: Get properties of a verified partner.
+```powershell
+Get-AzEventGridVerifiedPartner -Name MicrosoftGraphAPI
+```
+
+```output
+Name              ResourceGroupName
+----              -----------------
+MicrosoftGraphAPI
+```
+
+Get properties of a verified partner.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -53,68 +82,85 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Filter
+The query used to filter the search results using OData syntax.
+Filtering is permitted on the 'name' property only and with limited number of OData operations.
+These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal).
+No arithmetic operations are supported.
+The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'.
+The following is not a valid filter example: $filter=location eq 'westus'.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
-EventGrid Verified Partner Name.
+Name of the verified partner.
 
 ```yaml
 Type: System.String
-Parameter Sets: VerifiedPartnerNameParameterSet
-Aliases:
+Parameter Sets: Get
+Aliases: VerifiedPartnerName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NextLink
-The link for the next page of resources to be obtained.
-This value is obtained with the first Get-AzEventGrid cmdlet call when more resources are still available to be queried.
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: System.String
-Parameter Sets: NextLinkParameterSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ODataQuery
-The OData query used for filtering the list results.
-Filtering is currently allowed on the Name property only.The supported operations include: CONTAINS, eq (for equal), ne (for not equal), AND, OR and NOT.
-
-```yaml
-Type: System.String
-Parameter Sets: VerifiedPartnerNameParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Top
-The maximum number of resources to be obtained.
-Valid value is between 1 and 100.
-If top value is specified and more results are still available, the result will contain a link to the next page to be queried in NextLink.
-If the Top value is not specified, the full list of resources will be returned at once.
+The number of results to return per page for the list operation.
+Valid range for top parameter is 1 to 100.
+If not specified, the default number of results to be returned is 20 items per page.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: VerifiedPartnerNameParameterSet
+Parameter Sets: List
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -123,15 +169,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### System.Int32
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventGrid.Models.PSVerifiedPartnerListInstance
-
-### Microsoft.Azure.Commands.EventGrid.Models.PSVerifiedPartner
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IVerifiedPartner
 
 ## NOTES
 

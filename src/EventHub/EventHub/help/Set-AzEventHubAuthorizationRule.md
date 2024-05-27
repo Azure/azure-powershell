@@ -15,20 +15,20 @@ Sets an EventHub Authorization Rule
 ### SetExpandedNamespace (Default)
 ```
 Set-AzEventHubAuthorizationRule -NamespaceName <String> -ResourceGroupName <String> [-Name <String>]
- [-SubscriptionId <String>] -Rights <AccessRights[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-SubscriptionId <String>] -Rights <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetExpandedEntity
 ```
 Set-AzEventHubAuthorizationRule -NamespaceName <String> -ResourceGroupName <String> [-Name <String>]
- [-SubscriptionId <String>] -EventHubName <String> -Rights <AccessRights[]> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] -EventHubName <String> -Rights <String[]> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
 ```
-Set-AzEventHubAuthorizationRule -InputObject <IEventHubIdentity> -Rights <AccessRights[]>
+Set-AzEventHubAuthorizationRule -InputObject <IEventHubIdentity> -Rights <String[]>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -196,7 +196,7 @@ Accept wildcard characters: False
 The rights associated with the rule.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.AccessRights[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -262,7 +262,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAuthorizationRule
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAuthorizationRule
 
 ## NOTES
 

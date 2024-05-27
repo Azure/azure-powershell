@@ -1826,3 +1826,41 @@ function Test-SnapshotConfigTierOptionEnhancedSpeed
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Using a TL disk, use the SecureVmGuestStateSas parameter to get the securityDataAccessSAS value.
+#>
+function Test-DiskGrantAccessGetSASWithTL
+{
+    $rgname = Get-ComputeTestResourceName;
+	$loc = Get-ComputeVMLocation;
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $diskname = "d" + $rgname;
+
+        $image = Get-AzVMImage -Skus 2022-datacenter-azure-edition -Offer WindowsServer -PublisherName MicrosoftWindowsServer -Location $loc -Version latest;
+        $diskconfig = New-AzDiskConfig -DiskSizeGB 127 -AccountType Premium_LRS -OsType Windows -CreateOption FromImage -Location $loc;
+
+        $diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id $image.Id;
+
+        $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+
+        $grantAccess = Grant-AzDiskAccess -ResourceGroupName $rgname -DiskName $diskname -Access 'Read' -DurationInSecond 60 -SecureVMGuestStateSAS;
+        Assert-NotNull $grantAccess.securityDataAccessSAS;
+        Assert-NotNull $grantAccess.AccessSAS;
+
+        $grantAccess = Grant-AzDiskAccess -ResourceGroupName $rgname -DiskName $diskname -Access 'Read' -DurationInSecond 60;
+        Assert-NotNull $grantAccess.AccessSAS;
+        Assert-Null $grantAccess.securityDataAccessSAS;
+
+	}
+    finally 
+    {
+		# Cleanup
+		Clean-ResourceGroup $rgname;
+	}
+}

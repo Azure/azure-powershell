@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StreamAnalytics-help.xml
 Module Name: Az.StreamAnalytics
 online version: https://learn.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsfunction
 schema: 2.0.0
@@ -13,9 +13,9 @@ Creates a function or replaces an already existing function under an existing st
 ## SYNTAX
 
 ```
-New-AzStreamAnalyticsFunction -File <String> -JobName <String> -Name <String> -ResourceGroupName <String>
+New-AzStreamAnalyticsFunction -JobName <String> -Name <String> -ResourceGroupName <String> -File <String>
  [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,11 +27,11 @@ Creates a function or replaces an already existing function under an existing st
 ```powershell
 New-AzStreamAnalyticsFunction -ResourceGroupName azure-rg-test -JobName sajob-02-pwsh -Name function-01 -File .\test\template-json\Function_JavascriptUdf.json
 ```
+
 ```output
 Name        Type                                              ETag
 ----        ----                                              ----
 function-01 Microsoft.StreamAnalytics/streamingjobs/functions 7bbd6ccd-c7a4-4910-b2ae-a3eae19d9b18
-
 ```
 
 This command creates a function from the file Function_JavascriptUdf.json.
@@ -66,6 +66,7 @@ This command creates a function from the file Function_JavascriptUdf.json.
 ```powershell
 New-AzStreamAnalyticsFunction -ResourceGroupName azure-rg-test -JobName sajob-02-pwsh -Name function-01 -File .\test\template-json\MachineLearningServices.json
 ```
+
 ```output
 Name        Type                                              ETag
 ----        ----                                              ----
@@ -286,7 +287,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -25,30 +25,13 @@ Check the give Namespace name availability.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ICheckNameAvailabilityParameter
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICheckNameAvailabilityParameter
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ICheckNameAvailabilityResult
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICheckNameAvailabilityResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IEventHubIdentity>: Identity Parameter
-  [Alias <String>]: The Disaster Recovery configuration name
-  [ApplicationGroupName <String>]: The Application Group name 
-  [AuthorizationRuleName <String>]: The authorization rule name.
-  [ClusterName <String>]: The name of the Event Hubs Cluster.
-  [ConsumerGroupName <String>]: The consumer group name
-  [EventHubName <String>]: The Event Hub name
-  [Id <String>]: Resource identity path
-  [NamespaceName <String>]: The Namespace name
-  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
-  [ResourceAssociationName <String>]: The ResourceAssociation Name
-  [ResourceGroupName <String>]: Name of the resource group within the azure subscription.
-  [SchemaGroupName <String>]: The Schema Group name 
-  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 PARAMETER <ICheckNameAvailabilityParameter>: Parameter supplied to check Namespace name availability operation 
   Name <String>: Name to check the namespace name availability
@@ -56,11 +39,10 @@ PARAMETER <ICheckNameAvailabilityParameter>: Parameter supplied to check Namespa
 https://learn.microsoft.com/powershell/module/az.eventhub/test-azeventhubnamespacenameavailability
 #>
 function Test-AzEventHubNamespaceNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ICheckNameAvailabilityResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICheckNameAvailabilityResult])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Check')]
-    [Parameter(ParameterSetName='CheckExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -68,28 +50,29 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CheckViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CheckViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
     [Parameter(ParameterSetName='Check', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CheckViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ICheckNameAvailabilityParameter]
-    # Parameter supplied to check Namespace name availability operation 
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICheckNameAvailabilityParameter]
+    # Parameter supplied to check Namespace name availability operation
     ${Parameter},
 
     [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CheckViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
     [System.String]
     # Name to check the namespace name availability
     ${Name},
+
+    [Parameter(ParameterSetName='CheckViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Check operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CheckViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.String]
+    # Json string supplied to the Check operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -151,11 +134,17 @@ begin {
         $mapping = @{
             Check = 'Az.EventHub.private\Test-AzEventHubNamespaceNameAvailability_Check';
             CheckExpanded = 'Az.EventHub.private\Test-AzEventHubNamespaceNameAvailability_CheckExpanded';
-            CheckViaIdentity = 'Az.EventHub.private\Test-AzEventHubNamespaceNameAvailability_CheckViaIdentity';
-            CheckViaIdentityExpanded = 'Az.EventHub.private\Test-AzEventHubNamespaceNameAvailability_CheckViaIdentityExpanded';
+            CheckViaJsonFilePath = 'Az.EventHub.private\Test-AzEventHubNamespaceNameAvailability_CheckViaJsonFilePath';
+            CheckViaJsonString = 'Az.EventHub.private\Test-AzEventHubNamespaceNameAvailability_CheckViaJsonString';
         }
-        if (('Check', 'CheckExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('Check', 'CheckExpanded', 'CheckViaJsonFilePath', 'CheckViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

@@ -15,13 +15,15 @@ Starts a Synapse Analytics data flow debug session in Synapse Workspace.
 ### StartByName (Default)
 ```
 Start-AzSynapseDataFlowDebugSession -WorkspaceName <String> [-IntegrationRuntimeFile <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### StartByObject
 ```
 Start-AzSynapseDataFlowDebugSession -WorkspaceObject <PSSynapseWorkspace> [-IntegrationRuntimeFile <String>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

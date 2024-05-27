@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConnectedVMwareHost
 
 ## SYNOPSIS
-API to update certain properties of the host resource.
+API to Update certain properties of the host resource.
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ Update-AzConnectedVMwareHost -InputObject <IConnectedVMwareIdentity> [-Tag <Hash
 ```
 
 ## DESCRIPTION
-API to update certain properties of the host resource.
+API to Update certain properties of the host resource.
 
 ## EXAMPLES
 

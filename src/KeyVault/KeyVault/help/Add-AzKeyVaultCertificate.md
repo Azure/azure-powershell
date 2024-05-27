@@ -13,6 +13,14 @@ Adds a certificate to a key vault.
 
 ## SYNTAX
 
+### EnrollCertWithPolicyPath (Default)
+```
+Add-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-PolicyPath] <String> [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### EnrollCertWithPolicyObject
 ```
 Add-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String>
  [-CertificatePolicy] <PSKeyVaultCertificatePolicy> [-Tag <Hashtable>]
@@ -96,7 +104,7 @@ Specifies a **KeyVaultCertificatePolicy** object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificatePolicy
-Parameter Sets: (All)
+Parameter Sets: EnrollCertWithPolicyObject
 Aliases:
 
 Required: True
@@ -133,6 +141,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PolicyPath
+A file path to specify management policy for the certificate that contains JSON encoded policy definition.
+
+```yaml
+Type: System.String
+Parameter Sets: EnrollCertWithPolicyPath
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

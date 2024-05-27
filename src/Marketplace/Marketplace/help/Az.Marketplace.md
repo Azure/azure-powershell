@@ -72,7 +72,7 @@ Changes private store properties
 Create private store collection
 
 ### [New-AzMarketplacePrivateStoreCollectionOffer](New-AzMarketplacePrivateStoreCollectionOffer.md)
-Update or add an offer to a specific collection of the private store.
+Create or add an offer to a specific collection of the private store.
 
 ### [New-AzMarketplacePrivateStoreCollectionOfferMultiContext](New-AzMarketplacePrivateStoreCollectionOfferMultiContext.md)
 Upsert an offer with multiple context details.
@@ -93,7 +93,7 @@ Perform an action on bulk collections
 Changes private store properties
 
 ### [Set-AzMarketplacePrivateStoreCollection](Set-AzMarketplacePrivateStoreCollection.md)
-Create private store collection
+Update private store collection
 
 ### [Set-AzMarketplacePrivateStoreCollectionOffer](Set-AzMarketplacePrivateStoreCollectionOffer.md)
 Update or add an offer to a specific collection of the private store.
@@ -105,7 +105,7 @@ Updates or creates offer for private store.
 Query whether exists any offer in the collections.
 
 ### [Update-AzMarketplacePrivateStoreCollection](Update-AzMarketplacePrivateStoreCollection.md)
-Create private store collection
+Update private store collection
 
 ### [Update-AzMarketplacePrivateStoreCollectionOffer](Update-AzMarketplacePrivateStoreCollectionOffer.md)
 Update or add an offer to a specific collection of the private store.

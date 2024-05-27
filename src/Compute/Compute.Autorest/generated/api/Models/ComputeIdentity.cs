@@ -90,6 +90,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Owned)]
         public string Location { get => this._location; set => this._location = value; }
 
+        /// <summary>Backing field for <see cref="OperationId" /> property.</summary>
+        private string _operationId;
+
+        /// <summary>The ID of an ongoing async operation.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Owned)]
+        public string OperationId { get => this._operationId; set => this._operationId = value; }
+
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
@@ -226,6 +233,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         string Location { get; set; }
+        /// <summary>The ID of an ongoing async operation.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The ID of an ongoing async operation.",
+        SerializedName = @"operationId",
+        PossibleTypes = new [] { typeof(string) })]
+        string OperationId { get; set; }
         /// <summary>The name of the resource group.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(
         Required = false,
@@ -309,6 +324,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
         string InstanceId { get; set; }
         /// <summary>The location upon which run commands is queried.</summary>
         string Location { get; set; }
+        /// <summary>The ID of an ongoing async operation.</summary>
+        string OperationId { get; set; }
         /// <summary>The name of the resource group.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>The name of the virtual machine run command.</summary>

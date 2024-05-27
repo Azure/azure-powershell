@@ -96,7 +96,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Source { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("Path", "12.0.0", "7.0.0", ChangeDescription = "When uploading using SAS token without Read permission, the destination path will be taken as a file path, instead of a directory path previously.")]
         [Parameter(
             Position = 2,
             HelpMessage = "Path to the cloud file which would be uploaded to.")]
@@ -393,9 +392,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     e.RequestInformation.HttpStatusCode == (int)HttpStatusCode.Forbidden)
                 {
                     //Forbidden to check directory existence, might caused by a write only SAS
-                    //Don't report error here since should not block upload with write only SAS
-                    //If the directory not exist, Error will be reported when upload with DMlib later
-                    directoryExists = true;
+                    //Don't report error here since should not block upload with write only SAS,
+                    //Will take as directory not exist here, and take the path as file path (instead of parent dir path), to allow upload file with specific file name and write only sas
+                    //If the dir already exist, will get error later, and customer can set the path to file path to unblock it.
+                    directoryExists = false;
                 }
                 else
                 {
@@ -488,9 +488,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 if (e.Status == 403)
                 {
                     //Forbidden to check directory existence, might caused by a write only SAS
-                    //Don't report error here since should not block upload with write only SAS
-                    //If the directory not exist, Error will be reported when upload with DMlib later
-                    directoryExists = true;
+                    //Don't report error here since should not block upload with write only SAS,
+                    //Will take as directory not exist here, and take the path as file path (instead of parent dir path), to allow upload file with specific file name and write only sas
+                    //If the dir already exist, will get error later, and customer can set the path to file path to unblock it.
+                    directoryExists = false;
                 }
                 else
                 {

@@ -23,7 +23,7 @@ Create an in-memory object for AzureKeyVault.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureKeyVault
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureKeyVaultObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureKeyVaultObject
 #>
 function New-AzPurviewAzureKeyVaultObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureKeyVault')]

@@ -33,8 +33,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="dataMoveLevel">DataMove Level
         /// Possible values include: &#39;Invalid&#39;, &#39;Vault&#39;, &#39;Container&#39;</param>
 
-        /// <param name="sourceContainerArmIds">Source Container ArmIds
-        /// This needs to be populated only if DataMoveLevel is set to container
+        /// <param name="sourceContainerArmIds">Source Container ArmIds This needs to be populated only if DataMoveLevel is
+        /// set to container
         /// </param>
 
         /// <param name="ignoreMoved">Ignore the artifacts which are already moved.
@@ -75,8 +75,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public string DataMoveLevel {get; set; }
 
         /// <summary>
-        /// Gets or sets source Container ArmIds
-        /// This needs to be populated only if DataMoveLevel is set to container
+        /// Gets or sets source Container ArmIds This needs to be populated only if
+        /// DataMoveLevel is set to container
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sourceContainerArmIds")]
         public System.Collections.Generic.IList<string> SourceContainerArmIds {get; set; }

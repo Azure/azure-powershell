@@ -25,7 +25,7 @@ $certificateParameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObj
 New-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001 -Parameter $certificateParameter           
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecret
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecret
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,7 +37,7 @@ PARAMETER <ISecretParameters>: object which contains secret parameters
 https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnsecret
 #>
 function New-AzFrontDoorCdnSecret {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecret])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecret])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -68,7 +68,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecretParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecretParameters]
     # object which contains secret parameters
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},

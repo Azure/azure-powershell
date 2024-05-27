@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
+external help file: Az.EventGrid-help.xml
 Module Name: Az.EventGrid
 online version: https://learn.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsystemtopic
 schema: 2.0.0
@@ -8,67 +8,68 @@ schema: 2.0.0
 # New-AzEventGridSystemTopic
 
 ## SYNOPSIS
-Creates a new Azure Event Grid System Topic.
+Asynchronously creates a new system topic with the specified parameters.
 
 ## SYNTAX
 
-### TopicNameParameterSet (Default)
+### CreateExpanded (Default)
 ```
-New-AzEventGridSystemTopic [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzEventGridSystemTopic -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> [-EnableSystemAssignedIdentity] [-IdentityPrincipalId <String>]
+ [-IdentityTenantId <String>] [-Source <String>] [-Tag <Hashtable>] [-TopicType <String>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SystemTopicNameParameterSet
+### CreateViaJsonString
 ```
-New-AzEventGridSystemTopic -ResourceGroupName <String> -Name <String> -Source <String> -TopicType <String>
- [-Location <String>] [-IdentityType <String>] [-IdentityId <String[]>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzEventGridSystemTopic -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzEventGridSystemTopic -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzEventGridSystemTopic -InputObject <IEventGridIdentity> -Location <String> [-EnableSystemAssignedIdentity]
+ [-IdentityPrincipalId <String>] [-IdentityTenantId <String>] [-Source <String>] [-Tag <Hashtable>]
+ [-TopicType <String>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new Azure Event Grid System Topic. Once the system topic is created, an azure service application can publish events to the system topic.
+Asynchronously creates a new system topic with the specified parameters.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Asynchronously creates a new system topic with the specified parameters.
 ```powershell
-New-AzEventGridSystemTopic -ResourceGroupName MyResourceGroupName -Name Topic1 -Source ServiceBusNamespaceResourceId -TopicType 'Microsoft.ServiceBus.Namespaces' -Location westus2
+New-AzEventGridSystemTopic -Name azps-systopic -ResourceGroupName azps_test_group_eventgrid -Location eastus -Source "/subscriptions/{subId}/resourcegroups/azps_test_group_eventgrid/providers/Microsoft.Storage/storageAccounts/azpssa" -TopicType "microsoft.storage.storageaccounts"
 ```
 
-Creates an Event Grid System topic \`Topic1\`  for the Azure ServiceBus namespace with resource id \`ServiceBusNamespaceResourceId\`  in the specified geographic location \`westus2\`, in resource group \`MyResourceGroupName\`.
-
-### Example 2
-```powershell
-New-AzEventGridSystemTopic -ResourceGroupName MyResourceGroupName -Name Topic1 -Source ServiceBusNamespaceResourceId -TopicType 'Microsoft.ServiceBus.Namespaces' -Location westus2 -Tag @{ Department="Finance"; Environment="Test" }
+```output
+Location Name          ResourceGroupName
+-------- ----          -----------------
+eastus   azps-systopic azps_test_group_eventgrid
 ```
 
-Creates an Event Grid System topic \`Topic1\` for the Azure ServiceBus namespace with resource id \`ServiceBusNamespaceResourceId\` in the specified geographic location \`westus2\`, in resource group \`MyResourceGroupName\` with the specified tags "Department" and "Environment".
-
-### Example 3
-```powershell
-$id1 = '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
-$id2 = '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
-
-New-AzEventGridSystemTopic -ResourceGroupName MyResourceGroupName -Name Topic1 -Source ServiceBusNamespaceResourceId -TopicType 'Microsoft.ServiceBus.Namespaces' -Location westus2 -IdentityType "UserAssigned" -IdentityId $id1,$id2
-```
-
-Creates an Event Grid System topic \`Topic1\`  for the Azure ServiceBus namespace with resource id \`ServiceBusNamespaceResourceId\`  in the specified geographic location \`westus2\`, in resource group \`MyResourceGroupName\` with \`UserAssigned\` identity type with given identity ids.
-
-### Example 4
-```powershell
-New-AzEventGridSystemTopic -ResourceGroupName MyResourceGroupName -Name Topic1 -Source ServiceBusNamespaceResourceId -TopicType 'Microsoft.ServiceBus.Namespaces' -Location westus2 -IdentityType "SystemAssigned"
-```
-
-Creates an Event Grid System topic \`Topic1\`  for the Azure ServiceBus namespace with resource id \`ServiceBusNamespaceResourceId\`  in the specified geographic location \`westus2\`, in resource group \`MyResourceGroupName\` with \`SystemAssigned\` identity type.
+Asynchronously creates a new system topic with the specified parameters.
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
 
 Required: False
 Position: Named
@@ -77,125 +78,261 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityId
-The list of user assigned identities
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: SystemTopicNameParameterSet
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Different identity types.
-Could be either  of following 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+### -IdentityPrincipalId
+The principal ID of resource identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: SystemTopicNameParameterSet
-Aliases:
-Accepted values: SystemAssigned, UserAssigned, SystemAssigned, UserAssigned, None
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Location
-The location of the topic.
-
-```yaml
-Type: System.String
-Parameter Sets: SystemTopicNameParameterSet
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-EventGrid topic name.
+### -IdentityTenantId
+The tenant ID of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: SystemTopicNameParameterSet
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: CreateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Location of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the system topic.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Aliases: SystemTopicName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: SystemTopicNameParameterSet
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases: ResourceGroup
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Source
-Source for a system topic
+Source for the system topic.
 
 ```yaml
 Type: System.String
-Parameter Sets: SystemTopicNameParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Tag
-Hashtable which represents resource Tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: SystemTopicNameParameterSet
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Tags of the resource.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -TopicType
-EventGrid topic type name.
+TopicType for the system topic.
 
 ```yaml
 Type: System.String
-Parameter Sets: SystemTopicNameParameterSet
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases: IdentityId
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -235,15 +372,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### System.String[]
-
-### System.Collections.Hashtable
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventGrid.Models.PSSystemTopic
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemTopic
 
 ## NOTES
 

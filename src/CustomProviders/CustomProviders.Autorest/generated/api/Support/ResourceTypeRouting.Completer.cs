@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Support
 {
 
-    /// <summary>Argument completer implementation for ResourceTypeRouting.</summary>
+    /// <summary>The routing types that are supported for resource requests.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Support.ResourceTypeRoutingTypeConverter))]
     public partial struct ResourceTypeRouting :
         System.Management.Automation.IArgumentCompleter
@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Proxy".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Proxy", "Proxy", global::System.Management.Automation.CompletionResultType.ParameterValue, "Proxy");
+                yield return new global::System.Management.Automation.CompletionResult("'Proxy'", "Proxy", global::System.Management.Automation.CompletionResultType.ParameterValue, "Proxy");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Proxy,Cache".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Proxy,Cache", "Proxy,Cache", global::System.Management.Automation.CompletionResultType.ParameterValue, "Proxy,Cache");
+                yield return new global::System.Management.Automation.CompletionResult("'Proxy,Cache'", "Proxy,Cache", global::System.Management.Automation.CompletionResultType.ParameterValue, "Proxy,Cache");
             }
         }
     }

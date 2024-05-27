@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.9.1
+* Fixed pattern for access policy resource names
+
 ## Version 1.9.0
 * Upgraded API version to 2023-08-01
 * Added support for flush operation

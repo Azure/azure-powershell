@@ -23,7 +23,7 @@ Create an in-memory object for AdlsGen2CredentialScan.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen2CredentialScan
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen2CredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAdlsGen2CredentialScanObject
 #>
 function New-AzPurviewAdlsGen2CredentialScanObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen2CredentialScan')]

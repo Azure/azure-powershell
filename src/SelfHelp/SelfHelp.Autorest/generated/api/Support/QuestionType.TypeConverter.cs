@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support
 {
 
-    /// <summary>Text Input. Will be a single line input.</summary>
+    /// <summary>Type of Question</summary>
     public partial class QuestionTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

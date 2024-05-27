@@ -15,19 +15,21 @@ List node pools in specified cluster.
 ### NameParameterSet (Default)
 ```
 Get-AzAksNodePool -ResourceGroupName <String> -ClusterName <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [-SubscriptionId <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ### IdParameterSet
 ```
-Get-AzAksNodePool -Id <String> [-DefaultProfile <IAzureContextContainer>] [-SubscriptionId <String>]
- [<CommonParameters>]
+Get-AzAksNodePool -Id <String> [-DefaultProfile <IAzureContextContainer>]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### ParentObjectParameterSet
 ```
 Get-AzAksNodePool -ClusterObject <PSKubernetesCluster> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [-SubscriptionId <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

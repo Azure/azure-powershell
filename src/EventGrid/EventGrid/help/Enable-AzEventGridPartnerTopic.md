@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
+external help file: Az.EventGrid-help.xml
 Module Name: Az.EventGrid
 online version: https://learn.microsoft.com/powershell/module/az.eventgrid/enable-azeventgridpartnertopic
 schema: 2.0.0
@@ -8,43 +8,64 @@ schema: 2.0.0
 # Enable-AzEventGridPartnerTopic
 
 ## SYNOPSIS
-Enables an Event Grid partner topic.
+Activate a newly created partner topic.
 
 ## SYNTAX
 
-### PartnerTopicNameParameterSet (Default)
+### Activate (Default)
 ```
-Enable-AzEventGridPartnerTopic [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Enable-AzEventGridPartnerTopic -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### PartnerTopicInputObjectParameterSet
+### ActivateViaIdentity
 ```
-Enable-AzEventGridPartnerTopic [-InputObject] <PSPartnerTopic> [-DefaultProfile <IAzureContextContainer>]
+Enable-AzEventGridPartnerTopic -InputObject <IEventGridIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Enable-AzEventGridPartnerTopic cmdlets enables a specific Event Grid partner topic.
+Activate a newly created partner topic.
 
 ## EXAMPLES
 
-### Example 1
-Enables the Event Grid partner topic \`PartnerTopic1\` in resource group \`MyResourceGroupName\`. 
-
+### Example 1: Activate a newly created partner topic.
 ```powershell
-Enable-AzEventGridPartnerTopic -ResourceGroup  MyResourceGroupName -Name PartnerTopic1
+Enable-AzEventGridPartnerTopic -Name default -ResourceGroupName azps_test_group_eventgrid
 ```
+
+```output
+Location Name    ResourceGroupName
+-------- ----    -----------------
+eastus   default azps_test_group_eventgrid
+```
+
+Activate a newly created partner topic.
+
+### Example 2: Activate a newly created partner topic.
+```powershell
+Get-AzEventGridPartnerTopic -Name default -ResourceGroupName azps_test_group_eventgrid | Enable-AzEventGridPartnerTopic
+```
+
+```output
+Location Name    ResourceGroupName
+-------- ----    -----------------
+eastus   default azps_test_group_eventgrid
+```
+
+Activate a newly created partner topic.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -54,47 +75,78 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-PartnerTopic object.
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.Commands.EventGrid.Models.PSPartnerTopic
-Parameter Sets: PartnerTopicInputObjectParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: ActivateViaIdentity
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -Name
-Event Grid partner topic name.
+Name of the partner topic.
 
 ```yaml
 Type: System.String
-Parameter Sets: PartnerTopicNameParameterSet
+Parameter Sets: Activate
 Aliases: PartnerTopicName
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: PartnerTopicNameParameterSet
+Parameter Sets: Activate
 Aliases: ResourceGroup
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: Activate
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -134,13 +186,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.EventGrid.Models.PSPartnerTopic
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventGrid.Models.PSPartnerTopic
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerTopic
 
 ## NOTES
 

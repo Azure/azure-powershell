@@ -61,14 +61,18 @@ Describe "Import key" {
 
 Describe "Invoke key operation" {
     It "Encrypt and Decrypt a sequence using key" {
-        $encryptedResult = Invoke-AzKeyVaultKeyOperation -Operation Encrypt -Algorithm RSA1_5 -HsmName bez-hsm -Name bez-k -Value (ConvertTo-SecureString -String "test" -AsPlainText -Force) 
-        $decryptedResult = Invoke-AzKeyVaultKeyOperation -Operation Decrypt -Algorithm RSA1_5 -HsmName bez-hsm -Name bez-k -Value (ConvertTo-SecureString -String $$encryptedResult.result -AsPlainText -Force) 
-        $decryptedResult.result | Should -Be "test"
+        $plainText = "test"
+        $byteArray = [system.Text.Encoding]::UTF8.GetBytes($plainText)
+        $encryptedResult = Invoke-AzKeyVaultKeyOperation -Operation Encrypt -Algorithm RSA1_5 -HsmName bez-hsm -Name bez-k -ByteArrayValue $byteArray
+        $decryptedResult = Invoke-AzKeyVaultKeyOperation -Operation Decrypt -Algorithm RSA1_5 -HsmName bez-hsm -Name bez-k -ByteArrayValue $encryptedData.RawResult
+        [system.Text.Encoding]::UTF8.GetString($decryptedData.RawResult) | Should -Be "test"
     }
 
     It "Wrap and Unwrap a sequence using key" {
-        $wrappedResult = Invoke-AzKeyVaultKeyOperation -Operation Wrap -Algorithm RSA1_5 -HsmName bez-hsm -Name bez-k -Value (ConvertTo-SecureString -String "test" -AsPlainText -Force) 
-        $unwrappedResult = Invoke-AzKeyVaultKeyOperation -Operation Unwrap -Algorithm RSA1_5 -HsmName bez-hsm -Name bez-k -Value (ConvertTo-SecureString -String $wrappedResult.result -AsPlainText -Force) 
-        $unwrappedResult.result | Should -Be "test"
+        $key = "ovQIlbB0DgWhZA7sgkPxbg9H-Ly-VlNGPSgGrrZvlIo"
+        $byteArray = [system.Text.Encoding]::UTF8.GetBytes($key)
+        $wrappedResult = Invoke-AzKeyVaultKeyOperation -Operation Wrap -Algorithm RSA1_5 -HsmName bez-hsm -Name bez-k -ByteArrayValue $byteArray
+        $unwrappedResult = Invoke-AzKeyVaultKeyOperation -Operation Unwrap -Algorithm RSA1_5 -HsmName bez-hsm -Name bez-k -ByteArrayValue $wrappedResult.RawResult
+        [system.Text.Encoding]::UTF8.GetString($unwrappedResult.RawResult) | Should -Be $key
     }
 }

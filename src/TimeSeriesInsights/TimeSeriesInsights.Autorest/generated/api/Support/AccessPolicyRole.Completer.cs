@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
 {
 
-    /// <summary>Argument completer implementation for AccessPolicyRole.</summary>
+    /// <summary>
+    /// A role defining the data plane operations that a principal can perform on a Time Series Insights client.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRoleTypeConverter))]
     public partial struct AccessPolicyRole :
         System.Management.Automation.IArgumentCompleter
@@ -28,11 +30,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Reader".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Reader", "Reader", global::System.Management.Automation.CompletionResultType.ParameterValue, "Reader");
+                yield return new global::System.Management.Automation.CompletionResult("'Reader'", "Reader", global::System.Management.Automation.CompletionResultType.ParameterValue, "Reader");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Contributor".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Contributor", "Contributor", global::System.Management.Automation.CompletionResultType.ParameterValue, "Contributor");
+                yield return new global::System.Management.Automation.CompletionResult("'Contributor'", "Contributor", global::System.Management.Automation.CompletionResultType.ParameterValue, "Contributor");
             }
         }
     }

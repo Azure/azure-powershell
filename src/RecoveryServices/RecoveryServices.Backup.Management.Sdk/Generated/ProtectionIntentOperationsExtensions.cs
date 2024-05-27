@@ -53,8 +53,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
         /// <summary>
         /// Provides the details of the protection intent up item. This is an
-        /// asynchronous operation. To know the status of the operation,
-        /// call the GetItemOperationResult API.
+        /// asynchronous operation. To know the status of the operation, call the
+        /// GetItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -79,8 +79,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         /// <summary>
         /// Provides the details of the protection intent up item. This is an
-        /// asynchronous operation. To know the status of the operation,
-        /// call the GetItemOperationResult API.
+        /// asynchronous operation. To know the status of the operation, call the
+        /// GetItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

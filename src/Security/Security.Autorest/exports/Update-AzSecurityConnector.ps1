@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Updates a security connector
+Update a security connector
 .Description
-Updates a security connector
+Update a security connector
 .Example
 Update-AzSecurityConnector -ResourceGroupName "securityConnectors-pwsh-tmp" -Name "ado-sdk-pwsh-test03" -Tag @{myTag="v1"}
 

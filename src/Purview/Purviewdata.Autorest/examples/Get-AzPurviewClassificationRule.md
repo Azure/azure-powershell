@@ -1,7 +1,9 @@
 ### Example 1: Get custom classification rule by name
 ```powershell
 Get-AzPurviewClassificationRule -Endpoint https://parv-brs-2.purview.azure.com/ -Name ClassificationRule1
+```
 
+```output
 ClassificationAction   : Keep
 ClassificationName     : ClassificationName1
 ColumnPattern          : {{
@@ -28,7 +30,9 @@ Get classification rule named Classification1
 ### Example 2: Get all custom classification rules
 ```powershell
 Get-AzPurviewClassificationRule -Endpoint https://parv-brs-2.purview.azure.com/
+```
 
+```output
 ClassificationAction   : Keep
 ClassificationName     : ClassificationName1
 ColumnPattern          : {{

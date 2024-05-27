@@ -18,9 +18,10 @@ New-AzGalleryImageVersion [-ResourceGroupName] <String> [-GalleryName] <String>
  [-GalleryImageDefinitionName] <String> [-Name] <String> [-AsJob] -Location <String>
  [-DataDiskImage <GalleryDataDiskImage[]>] [-OSDiskImage <GalleryOSDiskImage>]
  [-PublishingProfileEndOfLifeDate <DateTime>] [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>]
- [-SourceImageId <String>] [-StorageAccountType <String>] [-SourceImageVMId <String>] [-Tag <Hashtable>] [-TargetRegion <Hashtable[]>]
- [-TargetExtendedLocation <Hashtable[]>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SourceImageId <String>] [-SourceImageVMId <String>] [-StorageAccountType <String>] [-Tag <Hashtable>]
+ [-TargetRegion <Hashtable[]>] [-TargetExtendedLocation <Hashtable[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -493,9 +494,9 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -StorageAccountType
+### -SourceImageVMId
 
-Specifies the storage account type to be used to store the image. This property is not updatable. Available values are Standard_LRS, Standard_ZRS and Premium_LRS.
+The resource Id of the source virtual machine.  Only required when capturing a virtual machine to source this Gallery Image Version.
 
 ```yaml
 Type: System.String
@@ -509,9 +510,9 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SourceImageVMId
+### -StorageAccountType
 
-The resource Id of the source virtual machine.  Only required when capturing a virtual machine to source this Gallery Image Version.
+Specifies the storage account type to be used to store the image. This property is not updatable. Available values are Standard_LRS, Standard_ZRS and Premium_LRS.
 
 ```yaml
 Type: System.String

@@ -39,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.PowerShell
         public MarkdownHelpInfo(VariantGroup variantGroup, string examplesFolder, string externalHelpFilename = "")
         {
             ExternalHelpFilename = externalHelpFilename;
-            ModuleName = variantGroup.ModuleName;
+            ModuleName = variantGroup.RootModuleName != "" ? variantGroup.RootModuleName : variantGroup.ModuleName;
             var helpInfo = variantGroup.HelpInfo;
             var commentInfo = variantGroup.CommentInfo;
             Schema = Version.Parse("2.0.0");
@@ -91,12 +91,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.PowerShell
                 var code = codeStartIndex.HasValue && codeEndIndex.HasValue
                     ? String.Join(Environment.NewLine, eg.Skip(codeStartIndex.Value + 1).Take(codeEndIndex.Value - (codeStartIndex.Value + 1)))
                     : String.Empty;
-                var descriptionStartIndex = (codeEndIndex ?? 0) + 1;
+                var outputStartIndex = eg.Select((l, i) => l.StartsWith(ExampleOutputHeader) ? (int?)i : null).FirstOrDefault(i => i.HasValue);
+                var outputEndIndex = eg.Select((l, i) => l.StartsWith(ExampleOutputFooter) ? (int?)i : null).FirstOrDefault(i => i.HasValue && i > outputStartIndex);
+                var output = outputStartIndex.HasValue && outputEndIndex.HasValue
+                    ? String.Join(Environment.NewLine, eg.Skip(outputStartIndex.Value + 1).Take(outputEndIndex.Value - (outputStartIndex.Value + 1)))
+                    : String.Empty;
+                var descriptionStartIndex = (outputEndIndex ?? (codeEndIndex ?? 0)) + 1;
                 descriptionStartIndex = String.IsNullOrWhiteSpace(eg[descriptionStartIndex]) ? descriptionStartIndex + 1 : descriptionStartIndex;
                 var descriptionEndIndex = eg.Length - 1;
                 descriptionEndIndex = String.IsNullOrWhiteSpace(eg[descriptionEndIndex]) ? descriptionEndIndex - 1 : descriptionEndIndex;
                 var description = String.Join(Environment.NewLine, eg.Skip(descriptionStartIndex).Take((descriptionEndIndex + 1) - descriptionStartIndex));
-                return new MarkdownExampleHelpInfo(name, code, description);
+                return new MarkdownExampleHelpInfo(name, code, output, description);
             }).ToArray();
         }
     }
@@ -132,10 +137,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.PowerShell
             {
                 parameterStrings = parameterStrings.Append(" [-Confirm]").Append(" [-WhatIf]");
             }
-            if (Variant.SupportsPaging)
-            {
-                parameterStrings = parameterStrings.Append(" [-First <UInt64>]").Append(" [-IncludeTotalCount]").Append(" [-Skip <UInt64>]");
-            }
             parameterStrings = parameterStrings.Append(" [<CommonParameters>]");
 
             var lines = new List<string>(20);
@@ -158,12 +159,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.PowerShell
     {
         public string Name { get; }
         public string Code { get; }
+        public string Output { get; }
         public string Description { get; }
 
-        public MarkdownExampleHelpInfo(string name, string code, string description)
+        public MarkdownExampleHelpInfo(string name, string code, string output, string description)
         {
             Name = name;
             Code = code;
+            Output = output;
             Description = description;
         }
     }
@@ -217,12 +220,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.PowerShell
 
     internal static class MarkdownTypesExtensions
     {
-        public static MarkdownExampleHelpInfo ToExampleHelpInfo(this PsHelpExampleInfo exampleInfo) => new MarkdownExampleHelpInfo(exampleInfo.Title, exampleInfo.Code, exampleInfo.Remarks);
+        public static MarkdownExampleHelpInfo ToExampleHelpInfo(this PsHelpExampleInfo exampleInfo) => new MarkdownExampleHelpInfo(exampleInfo.Title, exampleInfo.Code, exampleInfo.Output, exampleInfo.Remarks);
 
         public static MarkdownExampleHelpInfo[] DefaultExampleHelpInfos =
         {
-            new MarkdownExampleHelpInfo("Example 1: {{ Add title here }}", $@"PS C:\> {{{{ Add code here }}}}{Environment.NewLine}{Environment.NewLine}{{{{ Add output here }}}}", @"{{ Add description here }}"),
-            new MarkdownExampleHelpInfo("Example 2: {{ Add title here }}", $@"PS C:\> {{{{ Add code here }}}}{Environment.NewLine}{Environment.NewLine}{{{{ Add output here }}}}", @"{{ Add description here }}")
+            new MarkdownExampleHelpInfo("Example 1: {{ Add title here }}", $@"{{{{ Add code here }}}}", $@"{{{{ Add output here }}}}", @"{{ Add description here }}"),
+            new MarkdownExampleHelpInfo("Example 2: {{ Add title here }}", $@"{{{{ Add code here }}}}", $@"{{{{ Add output here }}}}", @"{{ Add description here }}"),
         };
 
         public static MarkdownParameterHelpInfo[] SupportsShouldProcessParameters =

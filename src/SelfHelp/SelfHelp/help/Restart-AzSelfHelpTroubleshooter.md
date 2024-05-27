@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SelfHelp-help.xml
 Module Name: Az.SelfHelp
 online version: https://learn.microsoft.com/powershell/module/az.selfhelp/restart-azselfhelptroubleshooter
 schema: 2.0.0
@@ -15,14 +15,14 @@ The old resource name is obsolete after this API is invoked.
 
 ### Restart (Default)
 ```
-Restart-AzSelfHelpTroubleshooter -Name <String> -Scope <String> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Restart-AzSelfHelpTroubleshooter -Name <String> -Scope <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RestartViaIdentity
 ```
-Restart-AzSelfHelpTroubleshooter -InputObject <ISelfHelpIdentity> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Restart-AzSelfHelpTroubleshooter -InputObject <ISelfHelpIdentity> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +33,7 @@ The old resource name is obsolete after this API is invoked.
 
 ### Example 1: Restarts troubleshooter instance
 ```powershell
-Restart-AzSelfHelpTroubleshooter -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba" -Name "02d59989-f8a9-4b69-9919-1ef51df4eff6" 
+Restart-AzSelfHelpTroubleshooter -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba" -Name "02d59989-f8a9-4b69-9919-1ef51df4eff6"
 ```
 
 ```output
@@ -41,9 +41,7 @@ Location TroubleshooterResourceName
 
 -------- -------------------------- 
 
-         0b8b324c-be00-410b-988b-175815878690 
-
- 
+         0b8b324c-be00-410b-988b-175815878690
 ```
 
 Restarts Troubleshooter instance.
@@ -99,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-This is an extension resource provider and only resource level extension is supported at the moment.
+scope = resourceUri of affected resource.\<br/\> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
 
 ```yaml
 Type: System.String
@@ -153,9 +151,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IRestartTroubleshooterResponse
+### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IRestartTroubleshooterResponse
 
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.HealthcareApis-help.xml
 Module Name: Az.HealthcareApis
 online version: https://learn.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcarefhirdestination
 schema: 2.0.0
@@ -14,7 +14,8 @@ Lists all FHIR destinations for the given IoT Connector
 
 ```
 Get-AzHealthcareFhirDestination -IotConnectorName <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +39,8 @@ Lists all FHIR destinations for the given IoT Connector
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -123,7 +125,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

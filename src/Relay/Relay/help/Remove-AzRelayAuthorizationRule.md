@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Relay-help.xml
 Module Name: Az.Relay
 online version: https://learn.microsoft.com/powershell/module/az.relay/remove-azrelayauthorizationrule
 schema: 2.0.0
@@ -15,27 +15,28 @@ Deletes a namespace authorization rule.
 ### Delete (Default)
 ```
 Remove-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Delete1
 ```
-Remove-AzRelayAuthorizationRule -HybridConnection <String> -Name <String> -Namespace <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Remove-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -HybridConnection <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Delete2
 ```
 Remove-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String>
- -WcfRelay <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] -WcfRelay <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzRelayAuthorizationRule -InputObject <IRelayIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -254,23 +255,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IRelayIdentity>`: Identity Parameter
-  - `[AuthorizationRuleName <String>]`: The authorization rule name.
-  - `[HybridConnectionName <String>]`: The hybrid connection name.
-  - `[Id <String>]`: Resource identity path
-  - `[NamespaceName <String>]`: The namespace name
-  - `[PrivateEndpointConnectionName <String>]`: The PrivateEndpointConnection name
-  - `[PrivateLinkResourceName <String>]`: The PrivateLinkResource name
-  - `[RelayName <String>]`: The relay name.
-  - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
-  - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
 ## RELATED LINKS
-

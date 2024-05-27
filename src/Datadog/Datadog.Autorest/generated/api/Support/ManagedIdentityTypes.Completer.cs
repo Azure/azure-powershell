@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SystemAssigned".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SystemAssigned", "SystemAssigned", global::System.Management.Automation.CompletionResultType.ParameterValue, "SystemAssigned");
+                yield return new global::System.Management.Automation.CompletionResult("'SystemAssigned'", "SystemAssigned", global::System.Management.Automation.CompletionResultType.ParameterValue, "SystemAssigned");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "UserAssigned".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("UserAssigned", "UserAssigned", global::System.Management.Automation.CompletionResultType.ParameterValue, "UserAssigned");
+                yield return new global::System.Management.Automation.CompletionResult("'UserAssigned'", "UserAssigned", global::System.Management.Automation.CompletionResultType.ParameterValue, "UserAssigned");
             }
         }
     }

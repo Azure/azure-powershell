@@ -6908,9 +6908,9 @@ end {
 
 <#
 .Synopsis
-Create an ExpressRoute Circuit Authorization in a private cloud
+Update an ExpressRoute Circuit Authorization in a private cloud
 .Description
-Create an ExpressRoute Circuit Authorization in a private cloud
+Update an ExpressRoute Circuit Authorization in a private cloud
 .Example
 Update-AzVMwareAuthorization -Name azps_test_authorization -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
 
@@ -7177,9 +7177,9 @@ end {
 
 <#
 .Synopsis
-Create a cloud link in a private cloud
+Update a cloud link in a private cloud
 .Description
-Create a cloud link in a private cloud
+Update a cloud link in a private cloud
 .Example
 Update-AzVMwareCloudLink -Name azps_test_cloudlink -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -LinkedCloud "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group2/providers/Microsoft.AVS/privateClouds/azps_test_cloud2/"
 
@@ -7736,9 +7736,9 @@ end {
 
 <#
 .Synopsis
-Create a datastore in a private cloud cluster
+Update a datastore in a private cloud cluster
 .Description
-Create a datastore in a private cloud cluster
+Update a datastore in a private cloud cluster
 .Example
 Update-AzVMwareDatastore -ClusterName azps_test_cluster -Name azps_test_datastore -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -NetAppVolumeId "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/azps_test_group/providers/Microsoft.NetApp/netAppAccounts/NetAppAccount1/capacityPools/CapacityPool1/volumes/NFSVol1"
 
@@ -8073,9 +8073,9 @@ end {
 
 <#
 .Synopsis
-Create a global reach connection in a private cloud
+Update a global reach connection in a private cloud
 .Description
-Create a global reach connection in a private cloud
+Update a global reach connection in a private cloud
 .Example
 Update-AzVMwareGlobalReachConnection -Name azps_test_grc -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
 

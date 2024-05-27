@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.RedisEnterpriseCache-help.xml
 Module Name: Az.RedisEnterpriseCache
 online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/update-azredisenterprisecache
 schema: 2.0.0
@@ -19,8 +19,8 @@ Update-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> 
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
  [-KeyEncryptionKeyIdentityType <CmkIdentityType>]
  [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-MinimumTlsVersion <TlsVersion>]
- [-Sku <SkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Sku <SkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -29,8 +29,8 @@ Update-AzRedisEnterpriseCache -InputObject <IRedisEnterpriseCacheIdentity> [-Cap
  [-CustomerManagedKeyEncryptionKeyUrl <String>] [-IdentityType <ManagedServiceIdentityType>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-KeyEncryptionKeyIdentityType <CmkIdentityType>]
  [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-MinimumTlsVersion <TlsVersion>]
- [-Sku <SkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Sku <SkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,7 +47,6 @@ Update-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Mini
 Location Name    Type                            Zone Database
 -------- ----    ----                            ---- --------
 West US  MyCache Microsoft.Cache/redisEnterprise      {default}
-
 ```
 
 This command updates the minimum TLS version and adds a tag to the Redis Enterprise cache named MyCache.
@@ -349,22 +348,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IRedisEnterpriseCacheIdentity>`: Identity Parameter
-  - `[ClusterName <String>]`: The name of the RedisEnterprise cluster.
-  - `[DatabaseName <String>]`: The name of the database.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of Azure region.
-  - `[OperationId <String>]`: The ID of an ongoing async operation.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection associated with the Azure resource
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
 ## RELATED LINKS
-

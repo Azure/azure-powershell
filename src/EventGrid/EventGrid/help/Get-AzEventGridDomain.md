@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
+external help file: Az.EventGrid-help.xml
 Module Name: Az.EventGrid
 online version: https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgriddomain
 schema: 2.0.0
@@ -8,218 +8,89 @@ schema: 2.0.0
 # Get-AzEventGridDomain
 
 ## SYNOPSIS
-Gets the details of an Event Grid domain, or gets a list of all Event Grid domains in the current Azure subscription.
+Get properties of a domain.
 
 ## SYNTAX
 
-### ResourceGroupNameParameterSet (Default)
+### List (Default)
 ```
-Get-AzEventGridDomain [[-ResourceGroupName] <String>] [-ODataQuery <String>] [-Top <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### DomainNameParameterSet
-```
-Get-AzEventGridDomain [-ResourceGroupName] <String> [-Name] <String> [-ODataQuery <String>] [-Top <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzEventGridDomain [-SubscriptionId <String[]>] [-Filter <String>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
-### ResourceIdEventSubscriptionParameterSet
+### Get
 ```
-Get-AzEventGridDomain [-ResourceId] <String> [-ODataQuery <String>] [-Top <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzEventGridDomain -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
-### NextLinkParameterSet
+### List1
 ```
-Get-AzEventGridDomain [-NextLink <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzEventGridDomain -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Filter <String>]
+ [-Top <Int32>] [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzEventGridDomain -InputObject <IEventGridIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzEventGridDomain cmdlet gets either the details of a specified Event Grid domain, or a list of all Event Grid domains in the current Azure subscription.
-If the domain name is provided, the details of a single Event Grid domain is returned.
-If the domain name is not provided, a list of domains is returned. The number of elements returned in this list is controlled by the Top parameter. If the Top value is not specified or $null, the list will contain all the domains items returned at once. Otherwise, Top will indicate the maximum number of elements to be returned in the list.
-If more domains are still available, the value in NextLink should be used in the next call to get the next page of domains.
-Finally, ODataQuery parameter is used to perform filtering for the search results. The filtering query follows OData syntax using the Name property only. The supported operations include: CONTAINS, eq (for equal), ne (for not equal), AND, OR and NOT.
+Get properties of a domain.
 
 ## EXAMPLES
 
-### Example 1
-
-Gets the details of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
-
+### Example 1: List properties of domain.
 ```powershell
-Get-AzEventGridDomain -ResourceGroup MyResourceGroupName -Name Domain1
+Get-AzEventGridDomain
 ```
 
 ```output
-ResourceGroupName : MyResourceGroupName
-DomainName        : Domain1
-Id                : /subscriptions/<Azure Subscription Id>/resourceGroups/myresourcegroupname/providers/Microsoft.EventGrid/domains/domain1
-Type              : Microsoft.EventGrid/domains
-Location          : westus2
-Endpoint          : https://domain1.westus2-1.eventgrid.azure.net/api/events
-ProvisioningState : Succeeded
-Tags              : {[Tag1, Value1], [Tag2, Value2]}
+Location Name        ResourceGroupName
+-------- ----        -----------------
+westus2  azps-domain azps_test_group_eventgrid
 ```
 
-### Example 2
+List properties of domain.
 
-Gets the details of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\` using ResourceId option.
-
+### Example 2: List properties of domain.
 ```powershell
-Get-AzEventGridDomain -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1"
+Get-AzEventGridDomain -ResourceGroupName azps_test_group_eventgrid
 ```
 
 ```output
-ResourceGroupName : MyResourceGroupName
-DomainName        : Domain1
-Id                : /subscriptions/<Azure Subscription Id>/resourceGroups/myresourcegroupname/providers/Microsoft.EventGrid/domains/domain1
-Type              : Microsoft.EventGrid/domains
-Location          : westus2
-Endpoint          : https://domain1.westus2-1.eventgrid.azure.net/api/events
-ProvisioningState : Succeeded
-Tags              : {[Tag1, Value1], [Tag2, Value2]}
+Location Name        ResourceGroupName
+-------- ----        -----------------
+westus2  azps-domain azps_test_group_eventgrid
 ```
 
-### Example 3
+List properties of domain.
 
-List all the Event Grid domains in resource group \`MyResourceGroupName\` without pagination (all domains are returned in one shot)
-
+### Example 3: Get properties of a domain.
 ```powershell
-$result=Get-AzEventGridDomain -ResourceGroup MyResourceGroupName
-Write-Output $result.PsDomainsList
+Get-AzEventGridDomain -ResourceGroupName azps_test_group_eventgrid -Name azps-domain
 ```
 
 ```output
-ResourceGroupName : MyResourceGroupName
-DomainName        : Domain1
-Id                : /subscriptions/<Azure Subscription Id>/resourceGroups/myresourcegroupname/providers/Microsoft.EventGrid/domains/domain1
-Type              : Microsoft.EventGrid/domains
-Location          : westus2
-Endpoint          : https://domain1.westus2-1.eventgrid.azure.net/api/events
-ProvisioningState : Succeeded
-Tags              : {[Tag1, Value1], [Tag2, Value2]}
-
-ResourceGroupName : MyResourceGroupName
-DomainName        : Domain2
-Id                : /subscriptions/<Azure Subscription Id>/resourceGroups/myresourcegroupname/providers/Microsoft.EventGrid/domains/domain2
-Type              : Microsoft.EventGrid/domains
-Location          : westus2
-Endpoint          : https://domain2.westus2-1.eventgrid.azure.net/api/events
-ProvisioningState : Succeeded
-Tags              :
-
-ResourceGroupName : MyResourceGroupName
-DomainName        : Domain3
-Id                : /subscriptions/<Azure Subscription Id>/resourceGroups/myresourcegroupname/providers/Microsoft.EventGrid/domains/domain3
-Type              : Microsoft.EventGrid/domains
-Location          : westus2
-Endpoint          : https://domain3.westus2-1.eventgrid.azure.net/api/events
-ProvisioningState : Succeeded
-Tags              : {[Tag3, Value3], [Tag4, Value4]}
-
-ResourceGroupName : MyResourceGroupName
-DomainName        : Domain4
-Id                : /subscriptions/<Azure Subscription Id>/resourceGroups/myresourcegroupname/providers/Microsoft.EventGrid/domains/domain4
-Type              : Microsoft.EventGrid/domains
-Location          : westus2
-Endpoint          : https://domain4.westus2-1.eventgrid.azure.net/api/events
-ProvisioningState : Succeeded
-Tags              :
+Location Name        ResourceGroupName
+-------- ----        -----------------
+westus2  azps-domain azps_test_group_eventgrid
 ```
 
-### Example 4
-
-List the Event Grid domains (if any) in resource group \`MyResourceGroupName\` that satisfies the $odataFilter query 10 domains at a time. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of domains, user is expected to re-call Get-AzEventGridDomain and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
-
-```powershell
-$total = 0
-$odataFilter = "Name ne 'ABCD'"
-$result = Get-AzEventGridDomain -ResourceGroup MyResourceGroupName -Top 10 -ODataQuery $odataFilter
-$total += $result.Count
-while ($null -ne $result.NextLink)
-    {
-        $result = Get-AzEventGridDomain -NextLink $result.NextLink
-        $total += $result.Count
-    }
-
-Write-Output "Total number of domains is $Total"
-```
-
-### Example 5
-
-List all the Event Grid domains in Azure Subscription without pagination (all domains are returned in one shot)
-
-```powershell
-$result=Get-AzEventGridDomain
-Write-Output $result.PsDomainsList
-```
-
-```output
-ResourceGroupName : MyResourceGroupName
-DomainName        : Domain1
-Id                : /subscriptions/<Azure Subscription Id>/resourceGroups/myresourcegroupname1/providers/Microsoft.EventGrid/domains/domain1
-Type              : Microsoft.EventGrid/domains
-Location          : westus2
-Endpoint          : https://domain1.westus2-1.eventgrid.azure.net/api/events
-ProvisioningState : Succeeded
-Tags              : {[Tag1, Value1], [Tag2, Value2]}
-
-ResourceGroupName : MyResourceGroupName
-DomainName        : Domain2
-Id                : /subscriptions/<Azure Subscription Id>/resourceGroups/myresourcegroupname1/providers/Microsoft.EventGrid/domains/domain2
-Type              : Microsoft.EventGrid/domains
-Location          : westus2
-Endpoint          : https://domain2.westus2-1.eventgrid.azure.net/api/events
-ProvisioningState : Succeeded
-Tags              :
-
-ResourceGroupName : MyResourceGroupName
-DomainName        : Domain3
-Id                : /subscriptions/<Azure Subscription Id>/resourceGroups/myresourcegroupname2/providers/Microsoft.EventGrid/domains/domain3
-Type              : Microsoft.EventGrid/domains
-Location          : westus2
-Endpoint          : https://domain3.westus2-1.eventgrid.azure.net/api/events
-ProvisioningState : Succeeded
-Tags              : {[Tag3, Value3], [Tag4, Value4]}
-
-ResourceGroupName : MyResourceGroupName
-DomainName        : Domain4
-Id                : /subscriptions/<Azure Subscription Id>/resourceGroups/myresourcegroupname3/providers/Microsoft.EventGrid/domains/domain4
-Type              : Microsoft.EventGrid/domains
-Location          : westus2
-Endpoint          : https://domain4.westus2-1.eventgrid.azure.net/api/events
-ProvisioningState : Succeeded
-Tags              :
-```
-
-### Example 6
-
-List the Event Grid domains (if any) in Azure Subscription that satisfies the $odataFilter query 20 domains at a time. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of domains, user is expected to re-call Get-AzEventGridDomain and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
-
-```powershell
-$total = 0
-$odataFilter = "Contains(Name, 'ABCD')"
-$result = Get-AzEventGridDomain -Top 20 -ODataQuery $odataFilter
-$total += $result.Count
-while ($null -ne $result.NextLink)
-    {
-        $result = Get-AzEventGridDomain -NextLink $result.NextLink
-        $total += $result.Count
-    }
-Write-Output "Total number of domains is $Total"
-```
+Get properties of a domain.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -228,110 +99,116 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-EventGrid domain name.
+### -Filter
+The query used to filter the search results using OData syntax.
+Filtering is permitted on the 'name' property only and with limited number of OData operations.
+These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal).
+No arithmetic operations are supported.
+The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'.
+The following is not a valid filter example: $filter=location eq 'westus'.
 
 ```yaml
 Type: System.String
-Parameter Sets: DomainNameParameterSet
+Parameter Sets: List, List1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the domain.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
 Aliases: DomainName
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NextLink
-The link for the next page of resources to be obtained.
-This value is obtained with the first Get-AzEventGrid cmdlet call when more resources are still available to be queried.
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: System.String
-Parameter Sets: NextLinkParameterSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ODataQuery
-The OData query used for filtering the list results.
-Filtering is currently allowed on the Name property only.The supported operations include: CONTAINS, eq (for equal), ne (for not equal), AND, OR and NOT.
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceGroupNameParameterSet, DomainNameParameterSet, ResourceIdEventSubscriptionParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupNameParameterSet
-Aliases: ResourceGroup
-
-Required: False
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: DomainNameParameterSet
+Parameter Sets: Get, List1
 Aliases: ResourceGroup
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Resource Identifier representing the Event Grid Domain.
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: ResourceIdEventSubscriptionParameterSet
+Type: System.String[]
+Parameter Sets: List, Get, List1
 Aliases:
 
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Top
-The maximum number of resources to be obtained.
-Valid value is between 1 and 100.
-If top value is specified and more results are still available, the result will contain a link to the next page to be queried in NextLink.
-If the Top value is not specified, the full list of resources will be returned at once.
+The number of results to return per page for the list operation.
+Valid range for top parameter is 1 to 100.
+If not specified, the default number of results to be returned is 20 items per page.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: ResourceGroupNameParameterSet, DomainNameParameterSet, ResourceIdEventSubscriptionParameterSet
+Parameter Sets: List, List1
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -340,13 +217,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventGrid.Models.PSDomain
-
-### Microsoft.Azure.Commands.EventGrid.Models.PSDomainListInstance
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IDomain
 
 ## NOTES
 

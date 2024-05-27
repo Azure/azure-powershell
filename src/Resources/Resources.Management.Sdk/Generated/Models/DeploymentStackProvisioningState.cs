@@ -13,16 +13,16 @@ namespace Microsoft.Azure.Management.Resources.Models
 
     public static class DeploymentStackProvisioningState
     {
-        public const string Creating = "Creating";
-        public const string Validating = "Validating";
-        public const string Waiting = "Waiting";
-        public const string Deploying = "Deploying";
-        public const string Canceling = "Canceling";
-        public const string Locking = "Locking";
-        public const string DeletingResources = "DeletingResources";
-        public const string Succeeded = "Succeeded";
-        public const string Failed = "Failed";
-        public const string Canceled = "Canceled";
-        public const string Deleting = "Deleting";
+        public const string Creating = "creating";
+        public const string Validating = "validating";
+        public const string Waiting = "waiting";
+        public const string Deploying = "deploying";
+        public const string Canceling = "canceling";
+        public const string UpdatingDenyAssignments = "updatingDenyAssignments";
+        public const string DeletingResources = "deletingResources";
+        public const string Succeeded = "succeeded";
+        public const string Failed = "failed";
+        public const string Canceled = "canceled";
+        public const string Deleting = "deleting";
     }
 }

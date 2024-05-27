@@ -3,7 +3,6 @@
 This directory contains the PowerShell module for the StorageCache service.
 
 ---
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -28,9 +27,9 @@ For information on how to develop for `Az.StorageCache`, see [how-to.md](how-to.
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 7a65f22cf67826187f75981e914c7e679039257b
+commit: 7a65f22cf67826187f75981e914c7e679039257b
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2023-05-01/storagecache.json
   - $(repo)/specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2023-05-01/amlfilesystem.json
@@ -42,6 +41,10 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - where:

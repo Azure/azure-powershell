@@ -20,6 +20,12 @@
 
 ## Upcoming Release
 
+## Version 3.0.8
+* Upgraded `Microsoft.DataTransfer.Gateway.Encryption` to `5.29.8499.2`
+
+## Version 3.0.7
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 3.0.6
 * Upgraded Azure.Core to 1.37.0.
 * Fixed vulnerability https://github.com/advisories/GHSA-98g6-xh36-x2p7

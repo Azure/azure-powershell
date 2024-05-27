@@ -26,12 +26,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
 
         public override void SanitizeValue(object sanitizingObject, Stack<object> sanitizingStack, ISanitizerProviderResolver resolver, SanitizerProperty property, SanitizerTelemetry telemetry)
         {
-            var propertyValue = property.GetValue(sanitizingObject);
+            var propertyValue = property?.GetValue(sanitizingObject) ?? sanitizingObject;
             if (propertyValue is string data)
             {
                 if (Service.TrySanitizeData(data, out string sanitizedData))
                 {
-                    telemetry.DetectedProperties.Add(ResolvePropertyPath(property));
+                    telemetry.SecretsDetected = true;
+                    var propertyPath = ResolvePropertyPath(property);
+                    if (!string.IsNullOrEmpty(propertyPath))
+                    {
+                        telemetry.DetectedProperties.Add(propertyPath);
+                    }
                 }
             }
         }

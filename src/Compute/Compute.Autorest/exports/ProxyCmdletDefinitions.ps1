@@ -43,6 +43,7 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [InstanceId <String>]: The instance ID of the virtual machine.
   [Location <String>]: The location upon which run commands is queried.
+  [OperationId <String>]: The ID of an ongoing async operation.
   [ResourceGroupName <String>]: The name of the resource group.
   [RunCommandName <String>]: The name of the virtual machine run command.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
@@ -187,7 +188,13 @@ begin {
             List = 'Az.Compute.private\Get-AzGalleryApplicationVersion_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -268,6 +275,7 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [InstanceId <String>]: The instance ID of the virtual machine.
   [Location <String>]: The location upon which run commands is queried.
+  [OperationId <String>]: The ID of an ongoing async operation.
   [ResourceGroupName <String>]: The name of the resource group.
   [RunCommandName <String>]: The name of the virtual machine run command.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
@@ -397,7 +405,307 @@ begin {
             List = 'Az.Compute.private\Get-AzGalleryApplication_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Compute.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Generates placement scores for Spot VM skus.
+.Description
+Generates placement scores for Spot VM skus.
+.Example
+$resourceSku1 = @{sku = "Standard_D2_v3"}
+$resourceSku2 = @{sku = "Standard_D2_v2"}
+$resourceSku3 = @{sku = "Standard_D4_v3"}
+$desiredSizes = $resourceSku1,$resourceSku2,$resourceSku3
+$desiredLocations = 'japaneast','southcentralus','centralus'
+
+$response = Invoke-AzSpotPlacementRecommender -Location eastus -DesiredCount 1 -DesiredLocation $desiredLocations -DesiredSize $desiredSizes
+$response.PlacementScore
+.Example
+$resourceSku1 = @{sku = "Standard_D2_v3"}
+$resourceSku2 = @{sku = "Standard_D2_v2"}
+$resourceSku3 = @{sku = "Standard_D4_v3"}
+$desiredSizes = $resourceSku1,$resourceSku2,$resourceSku3
+$desiredLocations = 'japaneast','southcentralus','centralus'
+
+$response = Invoke-AzSpotPlacementRecommender -Location eastus -DesiredCount 1 -DesiredLocation $desiredLocations -DesiredSize $desiredSizes -AvailabilityZone
+$response.PlacementScore
+.Example
+$resourceSku1 = @{sku = "Standard_D2_v3"}
+$resourceSku2 = @{sku = "Standard_D2_v2"}
+$resourceSku3 = @{sku = "Standard_D4_v3"}
+$desiredSizes = $resourceSku1,$resourceSku2,$resourceSku3
+$desiredLocations = 'japaneast','southcentralus','centralus'
+$desiredCount = 1
+
+$spotPlacementRecommenderInput = @{desiredLocation = $desiredLocations; desiredSize = $desiredSizes; desiredCount = $desiredCount; availabilityZone = $false}
+
+$response = Invoke-AzSpotPlacementRecommender -Location eastus -SpotPlacementRecommenderInput $spotPlacementRecommenderInput
+$response.PlacementScore
+.Example
+$resourceSku1 = @{sku = "Standard_D2_v3"}
+$resourceSku2 = @{sku = "Standard_D2_v2"}
+$resourceSku3 = @{sku = "Standard_D4_v3"}
+$desiredSizes = $resourceSku1,$resourceSku2,$resourceSku3
+$desiredLocations = 'japaneast','southcentralus','centralus'
+$desiredCount = 1
+
+$spotPlacementRecommenderInput = @{desiredLocation = $desiredLocations; desiredSize = $desiredSizes; desiredCount = $desiredCount; availabilityZone = $true}
+
+$response = Invoke-AzSpotPlacementRecommender -Location eastus -SpotPlacementRecommenderInput $spotPlacementRecommenderInput
+$response.PlacementScore
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240301Preview.ISpotPlacementRecommenderInput
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240301Preview.ISpotPlacementRecommenderResponse
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+DESIREDSIZE <IResourceSize[]>: The desired resource SKUs.
+  [Sku <String>]: The resource's CRP virtual machine SKU size.
+
+INPUTOBJECT <IComputeIdentity>: Identity Parameter
+  [CommandId <String>]: The command id.
+  [GalleryApplicationName <String>]: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryApplicationVersionName <String>]: The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryImageName <String>]: The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  [GalleryImageVersionName <String>]: The name of the gallery image version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  [GalleryName <String>]: The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
+  [Id <String>]: Resource identity path
+  [InstanceId <String>]: The instance ID of the virtual machine.
+  [Location <String>]: The location upon which run commands is queried.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [ResourceGroupName <String>]: The name of the resource group.
+  [RunCommandName <String>]: The name of the virtual machine run command.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
+  [VMScaleSetName <String>]: The name of the VM scale set.
+
+SPOTPLACEMENTRECOMMENDERINPUT <ISpotPlacementRecommenderInput>: SpotPlacementRecommender API Input.
+  [AvailabilityZone <Boolean?>]: Defines if the scope is zonal or regional.
+  [DesiredCount <Int32?>]: Desired instance count per region/zone based on the scope.
+  [DesiredLocation <String[]>]: The desired regions
+  [DesiredSize <IResourceSize[]>]: The desired resource SKUs.
+    [Sku <String>]: The resource's CRP virtual machine SKU size.
+.Link
+https://learn.microsoft.com/powershell/module/az.compute/invoke-azspotplacementrecommender
+#>
+function Invoke-AzSpotPlacementRecommender {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240301Preview.ISpotPlacementRecommenderResponse])]
+[CmdletBinding(DefaultParameterSetName='PostExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Post', Mandatory)]
+    [Parameter(ParameterSetName='PostExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
+    [System.String]
+    # The name of the Azure region.
+    ${Location},
+
+    [Parameter(ParameterSetName='Post')]
+    [Parameter(ParameterSetName='PostExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Subscription credentials which uniquely identify Microsoft Azure subscription.
+    # The subscription ID forms part of the URI for every service call.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Post', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240301Preview.ISpotPlacementRecommenderInput]
+    # SpotPlacementRecommender API Input.
+    # To construct, see NOTES section for SPOTPLACEMENTRECOMMENDERINPUT properties and create a hash table.
+    ${SpotPlacementRecommenderInput},
+
+    [Parameter(ParameterSetName='PostExpanded')]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Defines if the scope is zonal or regional.
+    ${AvailabilityZone},
+
+    [Parameter(ParameterSetName='PostExpanded')]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [System.Int32]
+    # Desired instance count per region/zone based on the scope.
+    ${DesiredCount},
+
+    [Parameter(ParameterSetName='PostExpanded')]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [System.String[]]
+    # The desired regions
+    ${DesiredLocation},
+
+    [Parameter(ParameterSetName='PostExpanded')]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240301Preview.IResourceSize[]]
+    # The desired resource SKUs.
+    # To construct, see NOTES section for DESIREDSIZE properties and create a hash table.
+    ${DesiredSize},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Compute.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Post = 'Az.Compute.private\Invoke-AzSpotPlacementRecommender_Post';
+            PostExpanded = 'Az.Compute.private\Invoke-AzSpotPlacementRecommender_PostExpanded';
+            PostViaIdentity = 'Az.Compute.private\Invoke-AzSpotPlacementRecommender_PostViaIdentity';
+            PostViaIdentityExpanded = 'Az.Compute.private\Invoke-AzSpotPlacementRecommender_PostViaIdentityExpanded';
+        }
+        if (('Post', 'PostExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -476,6 +784,7 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [InstanceId <String>]: The instance ID of the virtual machine.
   [Location <String>]: The location upon which run commands is queried.
+  [OperationId <String>]: The ID of an ongoing async operation.
   [ResourceGroupName <String>]: The name of the resource group.
   [RunCommandName <String>]: The name of the virtual machine run command.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
@@ -625,7 +934,13 @@ begin {
             DeleteViaIdentity = 'Az.Compute.private\Remove-AzGalleryApplicationVersion_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -704,6 +1019,7 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [InstanceId <String>]: The instance ID of the virtual machine.
   [Location <String>]: The location upon which run commands is queried.
+  [OperationId <String>]: The ID of an ongoing async operation.
   [ResourceGroupName <String>]: The name of the resource group.
   [RunCommandName <String>]: The name of the virtual machine run command.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
@@ -847,7 +1163,13 @@ begin {
             DeleteViaIdentity = 'Az.Compute.private\Remove-AzGalleryApplication_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -926,6 +1248,7 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [InstanceId <String>]: The instance ID of the virtual machine.
   [Location <String>]: The location upon which run commands is queried.
+  [OperationId <String>]: The ID of an ongoing async operation.
   [ResourceGroupName <String>]: The name of the resource group.
   [RunCommandName <String>]: The name of the virtual machine run command.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
@@ -1068,7 +1391,13 @@ begin {
             DeleteViaIdentity = 'Az.Compute.private\Remove-AzVMRunCommand_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1147,6 +1476,7 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [InstanceId <String>]: The instance ID of the virtual machine.
   [Location <String>]: The location upon which run commands is queried.
+  [OperationId <String>]: The ID of an ongoing async operation.
   [ResourceGroupName <String>]: The name of the resource group.
   [RunCommandName <String>]: The name of the virtual machine run command.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
@@ -1295,7 +1625,13 @@ begin {
             DeleteViaIdentity = 'Az.Compute.private\Remove-AzVmssVMRunCommand_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1648,7 +1984,13 @@ begin {
             ScriptLocalPath = 'Az.Compute.custom\Set-AzVMRunCommand_ScriptLocalPath';
         }
         if (('UpdateExpanded', 'ScriptLocalPath') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2007,7 +2349,13 @@ begin {
             ScriptLocalPath = 'Az.Compute.custom\Set-AzVmssVMRunCommand_ScriptLocalPath';
         }
         if (('UpdateExpanded', 'ScriptLocalPath') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2086,6 +2434,7 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [InstanceId <String>]: The instance ID of the virtual machine.
   [Location <String>]: The location upon which run commands is queried.
+  [OperationId <String>]: The ID of an ongoing async operation.
   [ResourceGroupName <String>]: The name of the resource group.
   [RunCommandName <String>]: The name of the virtual machine run command.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
@@ -2239,7 +2588,13 @@ begin {
             UpdateViaIdentityExpanded = 'Az.Compute.private\Update-AzGalleryApplication_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2460,7 +2815,13 @@ begin {
             __AllParameterSets = 'Az.Compute.custom\New-AzGalleryApplication';
         }
         if (('__AllParameterSets') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2776,7 +3137,13 @@ begin {
             CreateExpanded = 'Az.Compute.custom\New-AzGalleryApplicationVersion';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2861,6 +3228,7 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [InstanceId <String>]: The instance ID of the virtual machine.
   [Location <String>]: The location upon which run commands is queried.
+  [OperationId <String>]: The ID of an ongoing async operation.
   [ResourceGroupName <String>]: The name of the resource group.
   [RunCommandName <String>]: The name of the virtual machine run command.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
@@ -3069,7 +3437,13 @@ begin {
             UpdateViaIdentityExpanded = 'Az.Compute.custom\Update-AzGalleryApplicationVersion';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

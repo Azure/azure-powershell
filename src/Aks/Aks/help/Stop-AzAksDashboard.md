@@ -13,8 +13,8 @@ Stop the Kubectl SSH tunnel created in Start-AzKubernetesDashboard.
 ## SYNTAX
 
 ```
-Stop-AzAksDashboard [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-SubscriptionId <String>]
- [<CommonParameters>]
+Stop-AzAksDashboard [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

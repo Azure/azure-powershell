@@ -64,19 +64,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_clusterName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("clusterName"), out var __jsonClusterName) ? (string)__jsonClusterName : (string)ClusterName;}
-            {_namespaceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("namespaceName"), out var __jsonNamespaceName) ? (string)__jsonNamespaceName : (string)NamespaceName;}
-            {_authorizationRuleName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("authorizationRuleName"), out var __jsonAuthorizationRuleName) ? (string)__jsonAuthorizationRuleName : (string)AuthorizationRuleName;}
-            {_privateEndpointConnectionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("privateEndpointConnectionName"), out var __jsonPrivateEndpointConnectionName) ? (string)__jsonPrivateEndpointConnectionName : (string)PrivateEndpointConnectionName;}
-            {_resourceAssociationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("resourceAssociationName"), out var __jsonResourceAssociationName) ? (string)__jsonResourceAssociationName : (string)ResourceAssociationName;}
-            {_alias = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("alias"), out var __jsonAlias) ? (string)__jsonAlias : (string)Alias;}
-            {_eventHubName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("eventHubName"), out var __jsonEventHubName) ? (string)__jsonEventHubName : (string)EventHubName;}
-            {_consumerGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("consumerGroupName"), out var __jsonConsumerGroupName) ? (string)__jsonConsumerGroupName : (string)ConsumerGroupName;}
-            {_schemaGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("schemaGroupName"), out var __jsonSchemaGroupName) ? (string)__jsonSchemaGroupName : (string)SchemaGroupName;}
-            {_applicationGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("applicationGroupName"), out var __jsonApplicationGroupName) ? (string)__jsonApplicationGroupName : (string)ApplicationGroupName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_clusterName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("clusterName"), out var __jsonClusterName) ? (string)__jsonClusterName : (string)_clusterName;}
+            {_namespaceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("namespaceName"), out var __jsonNamespaceName) ? (string)__jsonNamespaceName : (string)_namespaceName;}
+            {_authorizationRuleName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("authorizationRuleName"), out var __jsonAuthorizationRuleName) ? (string)__jsonAuthorizationRuleName : (string)_authorizationRuleName;}
+            {_privateEndpointConnectionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("privateEndpointConnectionName"), out var __jsonPrivateEndpointConnectionName) ? (string)__jsonPrivateEndpointConnectionName : (string)_privateEndpointConnectionName;}
+            {_resourceAssociationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("resourceAssociationName"), out var __jsonResourceAssociationName) ? (string)__jsonResourceAssociationName : (string)_resourceAssociationName;}
+            {_alias = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("alias"), out var __jsonAlias) ? (string)__jsonAlias : (string)_alias;}
+            {_eventHubName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("eventHubName"), out var __jsonEventHubName) ? (string)__jsonEventHubName : (string)_eventHubName;}
+            {_consumerGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("consumerGroupName"), out var __jsonConsumerGroupName) ? (string)__jsonConsumerGroupName : (string)_consumerGroupName;}
+            {_schemaGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("schemaGroupName"), out var __jsonSchemaGroupName) ? (string)__jsonSchemaGroupName : (string)_schemaGroupName;}
+            {_applicationGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("applicationGroupName"), out var __jsonApplicationGroupName) ? (string)__jsonApplicationGroupName : (string)_applicationGroupName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

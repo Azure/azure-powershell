@@ -6,15 +6,21 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support
 {
 
-    /// <summary>Text Input. Will be a single line input.</summary>
+    /// <summary>Type of Question</summary>
     public partial struct QuestionType :
         System.IEquatable<QuestionType>
     {
+        /// <summary>DateTime Picker</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.QuestionType DateTimePicker = @"DateTimePicker";
+
         /// <summary>SingleChoice dropdown.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.QuestionType Dropdown = @"Dropdown";
 
         /// <summary>MultiLineInfoBox</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.QuestionType MultiLineInfoBox = @"MultiLineInfoBox";
+
+        /// <summary>Multi Select</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.QuestionType MultiSelect = @"MultiSelect";
 
         /// <summary>SingleChoice radio button</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.QuestionType RadioButton = @"RadioButton";

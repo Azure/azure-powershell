@@ -52,7 +52,8 @@ Add-AzDnsRecordConfig -RecordSet <DnsRecordSet> -Value <String> [-DefaultProfile
 ### SRV
 ```
 Add-AzDnsRecordConfig -RecordSet <DnsRecordSet> -Priority <UInt16> -Target <String> -Port <UInt16>
- -Weight <UInt16> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -Weight <UInt16> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### CNAME
@@ -70,13 +71,15 @@ Add-AzDnsRecordConfig -RecordSet <DnsRecordSet> -CaaFlags <Byte> -CaaTag <String
 ### DS
 ```
 Add-AzDnsRecordConfig -RecordSet <DnsRecordSet> -KeyTag <Int32> -Algorithm <Int32> -DigestType <Int32>
- -Digest <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -Digest <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### TLSA
 ```
 Add-AzDnsRecordConfig -RecordSet <DnsRecordSet> -Usage <Int32> -Selector <Int32> -MatchingType <Int32>
- -CertificateAssociationData <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -CertificateAssociationData <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

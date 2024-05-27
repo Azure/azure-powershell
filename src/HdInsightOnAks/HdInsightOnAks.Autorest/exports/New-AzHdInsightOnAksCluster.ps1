@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Creates a cluster.
+Create a cluster.
 .Description
-Creates a cluster.
+Create a cluster.
 .Example
 # Create Simple Trino Cluster
 $clusterPoolName="{your cluster pool name}";

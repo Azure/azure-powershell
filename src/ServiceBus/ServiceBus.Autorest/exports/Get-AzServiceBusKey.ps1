@@ -27,12 +27,12 @@ Get-AzServiceBusKey -ResourceGroupName myResourceGroup -NamespaceName myNamespac
 Get-AzServiceBusKey -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName topic1 -Name RootManageSharedAccessKey
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IAccessKeys
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys
 .Link
 https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebuskey
 #>
 function Get-AzServiceBusKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IAccessKeys])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys])]
 [CmdletBinding(DefaultParameterSetName='GetExpandedNamespace', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -171,8 +171,14 @@ begin {
             GetExpandedTopic = 'Az.ServiceBus.custom\Get-AzServiceBusKey';
             GetExpandedQueue = 'Az.ServiceBus.custom\Get-AzServiceBusKey';
         }
-        if (('GetExpandedNamespace', 'GetExpandedAlias', 'GetExpandedTopic', 'GetExpandedQueue') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('GetExpandedNamespace', 'GetExpandedAlias', 'GetExpandedTopic', 'GetExpandedQueue') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataBox-help.xml
 Module Name: Az.DataBox
 online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxKeyEncryptionKeyObject
 schema: 2.0.0
@@ -22,7 +22,7 @@ Create an in-memory object for KeyEncryptionKey.
 
 ## EXAMPLES
 
-### Example 1: Create a in-memory object for KeyEncryptionKey 
+### Example 1: Create a in-memory object for KeyEncryptionKey
 ```powershell
 New-AzDataBoxKeyEncryptionKeyObject -KekType "CustomerManaged" -IdentityProperty @{Type = "UserAssigned"; UserAssignedResourceId = "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName"} -KekUrl "keyIdentifier" -KekVaultResourceId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName"
 ```
@@ -111,16 +111,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`IDENTITYPROPERTY <IIdentityProperties>`: Managed identity properties used for key encryption.
-  - `[Type <String>]`: Managed service identity type.
-  - `[UserAssignedResourceId <String>]`: Arm resource id for user assigned identity to be used to fetch MSI token.
-
 ## RELATED LINKS
-

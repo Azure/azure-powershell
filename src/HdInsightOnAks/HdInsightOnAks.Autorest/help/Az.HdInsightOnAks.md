@@ -39,7 +39,7 @@ List a cluster pool available upgrade.
 Lists the config dump of all services running in cluster.
 
 ### [New-AzHdInsightOnAksCluster](New-AzHdInsightOnAksCluster.md)
-Creates a cluster.
+Create a cluster.
 
 ### [New-AzHdInsightOnAksClusterConfigFileObject](New-AzHdInsightOnAksClusterConfigFileObject.md)
 Create cluster config file.
@@ -81,7 +81,7 @@ Deletes a Cluster Pool.
 Resize an existing Cluster.
 
 ### [Set-AzHdInsightOnAksClusterPool](Set-AzHdInsightOnAksClusterPool.md)
-Create a cluster pool.
+Update a cluster pool.
 
 ### [Start-AzHdInsightOnAksClusterJob](Start-AzHdInsightOnAksClusterJob.md)
 Operations on jobs of HDInsight on AKS cluster.
@@ -90,11 +90,11 @@ Operations on jobs of HDInsight on AKS cluster.
 Check the availability of the resource name.
 
 ### [Update-AzHdInsightOnAksCluster](Update-AzHdInsightOnAksCluster.md)
-Updates an existing Cluster.
+Update an existing Cluster.
 
 ### [Update-AzHdInsightOnAksClusterPool](Update-AzHdInsightOnAksClusterPool.md)
 Upgrade a cluster pool.
 
 ### [Update-AzHdInsightOnAksClusterPoolTag](Update-AzHdInsightOnAksClusterPoolTag.md)
-Updates an existing Cluster Pool Tags.
+Update an existing Cluster Pool Tags.
 

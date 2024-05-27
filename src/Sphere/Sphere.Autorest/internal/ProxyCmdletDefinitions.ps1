@@ -126,9 +126,9 @@ end {
 
 <#
 .Synopsis
-Create a Catalog
+Update a Catalog
 .Description
-Create a Catalog
+Update a Catalog
 .Example
 {{ Add code here }}
 .Example
@@ -305,10 +305,10 @@ end {
 
 <#
 .Synopsis
-Create a Deployment.
+Update a Deployment.
 '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
 .Description
-Create a Deployment.
+Update a Deployment.
 '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
 .Example
 {{ Add code here }}
@@ -514,10 +514,10 @@ end {
 
 <#
 .Synopsis
-Create a DeviceGroup.
+Update a DeviceGroup.
 '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
 .Description
-Create a DeviceGroup.
+Update a DeviceGroup.
 '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
 .Example
 {{ Add code here }}
@@ -728,10 +728,10 @@ end {
 
 <#
 .Synopsis
-Create a Device.
+Update a Device.
 Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog only.
 .Description
-Create a Device.
+Update a Device.
 Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog only.
 .Example
 {{ Add code here }}
@@ -921,9 +921,9 @@ end {
 
 <#
 .Synopsis
-Create a Image
+Update a Image
 .Description
-Create a Image
+Update a Image
 .Example
 {{ Add code here }}
 .Example
@@ -1114,10 +1114,10 @@ end {
 
 <#
 .Synopsis
-Create a Product.
+Update a Product.
 '.default' and '.unassigned' are system defined values and cannot be used for product name.
 .Description
-Create a Product.
+Update a Product.
 '.default' and '.unassigned' are system defined values and cannot be used for product name.
 .Example
 {{ Add code here }}

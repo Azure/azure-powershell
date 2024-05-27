@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotSpecified".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotSpecified", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
+                yield return new global::System.Management.Automation.CompletionResult("'NotSpecified'", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Global".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Global", "Global", global::System.Management.Automation.CompletionResultType.ParameterValue, "Global");
+                yield return new global::System.Management.Automation.CompletionResult("'Global'", "Global", global::System.Management.Automation.CompletionResultType.ParameterValue, "Global");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Regional".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Regional", "Regional", global::System.Management.Automation.CompletionResultType.ParameterValue, "Regional");
+                yield return new global::System.Management.Automation.CompletionResult("'Regional'", "Regional", global::System.Management.Automation.CompletionResultType.ParameterValue, "Regional");
             }
         }
     }

@@ -15,7 +15,8 @@ Creates Git repository configuration.
 ```
 New-AzSynapseGitRepositoryConfig -RepositoryType <String> [-HostName <String>] -AccountName <String>
  [-ProjectName <String>] -RepositoryName <String> -CollaborationBranch <String> [-RootFolder <String>]
- [-TenantId <Guid>] [-LastCommitId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-TenantId <Guid>] [-LastCommitId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

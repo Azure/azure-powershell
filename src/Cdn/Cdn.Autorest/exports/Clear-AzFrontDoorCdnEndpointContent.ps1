@@ -27,7 +27,7 @@ $content = New-AzFrontDoorCdnPurgeParametersObject -ContentPath $contentPath
 Clear-AzFrontDoorCdnEndpointContent -ResourceGroupName testps-rg-afdx -ProfileName cdn001 -EndpointName endpointTest001 -Content $content
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdPurgeParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdPurgeParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
@@ -102,7 +102,7 @@ param(
     [Parameter(ParameterSetName='Purge', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='PurgeViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdPurgeParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdPurgeParameters]
     # Parameters required for content purge.
     # To construct, see NOTES section for CONTENT properties and create a hash table.
     ${Content},

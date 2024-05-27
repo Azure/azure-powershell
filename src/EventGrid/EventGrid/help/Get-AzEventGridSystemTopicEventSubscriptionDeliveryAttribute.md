@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
+external help file: Az.EventGrid-help.xml
 Module Name: Az.EventGrid
 online version: https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridsystemtopiceventsubscriptiondeliveryattribute
 schema: 2.0.0
@@ -8,44 +8,60 @@ schema: 2.0.0
 # Get-AzEventGridSystemTopicEventSubscriptionDeliveryAttribute
 
 ## SYNOPSIS
-Gets the delivery attributes for system topic event subscription
+Get all delivery attributes for an event subscription.
 
 ## SYNTAX
 
-### TopicNameParameterSet (Default)
+### Get (Default)
 ```
-Get-AzEventGridSystemTopicEventSubscriptionDeliveryAttribute [-DefaultProfile <IAzureContextContainer>]
+Get-AzEventGridSystemTopicEventSubscriptionDeliveryAttribute -EventSubscriptionName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] -SystemTopicName <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### SystemTopicEventSuscriptionParameterSet
+### GetViaIdentitySystemTopic
 ```
 Get-AzEventGridSystemTopicEventSubscriptionDeliveryAttribute -EventSubscriptionName <String>
- -ResourceGroupName <String> -SystemTopicName <String> [-DefaultProfile <IAzureContextContainer>]
+ -SystemTopicInputObject <IEventGridIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzEventGridSystemTopicEventSubscriptionDeliveryAttribute -InputObject <IEventGridIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the list of delivery attributes for system topic event subscription
+Get all delivery attributes for an event subscription.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get all delivery attributes for an event subscription.
 ```powershell
-Get-AzEventGridSystemTopicEventSubscriptionDeliveryAttribute -ResourceGroupName MyResourceGroupName -SystemTopicName Topic1 -EventSubscriptionName EventSubscription1
+Get-AzEventGridSystemTopicEventSubscriptionDeliveryAttribute -EventSubscriptionName azps-evnetsub -ResourceGroupName azps_test_group_eventgrid -SystemTopicName azps-systopic
 ```
 
-Gets the list of delivery attributest for event subscription \`EventSubscription1\` created for system topic \`Topic1\` in resource group \`MyResourceGroupName\`.
+```output
+Value
+-----
+......
+```
+
+Get all delivery attributes for an event subscription.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -55,47 +71,140 @@ Accept wildcard characters: False
 ```
 
 ### -EventSubscriptionName
-EventGrid event subscription name.
+Name of the event subscription to be created.
+Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
 
 ```yaml
 Type: System.String
-Parameter Sets: SystemTopicEventSuscriptionParameterSet
+Parameter Sets: Get, GetViaIdentitySystemTopic
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: SystemTopicEventSuscriptionParameterSet
+Parameter Sets: Get
+Aliases: ResourceGroup
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String[]
+Parameter Sets: Get
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SystemTopicInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: GetViaIdentitySystemTopic
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -SystemTopicName
-EventGrid topic name.
+Name of the system topic.
 
 ```yaml
 Type: System.String
-Parameter Sets: SystemTopicEventSuscriptionParameterSet
+Parameter Sets: Get
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -104,11 +213,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventGrid.Models.PsDeliveryAttribute
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IDeliveryAttributeListResult
 
 ## NOTES
 

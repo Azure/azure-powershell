@@ -21,7 +21,8 @@ Export-AzSynapseSparkConfiguration -WorkspaceName <String> [-Name <String>] -Out
 ### ExportByObject
 ```
 Export-AzSynapseSparkConfiguration -WorkspaceObject <PSSynapseWorkspace> [-Name <String>]
- -OutputFolder <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -OutputFolder <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ExportByInputObject

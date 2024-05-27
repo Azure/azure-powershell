@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// <param name="name">Name of SKU is RS0 (Recovery Services 0th version) and the tier is standard
         /// tier. They do not have affect on backend storage redundancy or any other
         /// vault settings. To manage storage redundancy, use the backupstorageconfig
-        /// Possible values include: 'Standard', 'RS0'</param>
+        /// Possible values include: &#39;Standard&#39;, &#39;RS0&#39;</param>
 
         /// <param name="tier">The Sku tier.
         /// </param>

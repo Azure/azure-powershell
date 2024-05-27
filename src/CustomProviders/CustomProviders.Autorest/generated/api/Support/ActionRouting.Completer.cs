@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Support
 {
 
-    /// <summary>Argument completer implementation for ActionRouting.</summary>
+    /// <summary>The routing types that are supported for action requests.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Support.ActionRoutingTypeConverter))]
     public partial struct ActionRouting :
         System.Management.Automation.IArgumentCompleter
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Proxy".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Proxy", "Proxy", global::System.Management.Automation.CompletionResultType.ParameterValue, "Proxy");
+                yield return new global::System.Management.Automation.CompletionResult("'Proxy'", "Proxy", global::System.Management.Automation.CompletionResultType.ParameterValue, "Proxy");
             }
         }
     }

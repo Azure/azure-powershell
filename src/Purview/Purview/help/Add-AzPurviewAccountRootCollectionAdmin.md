@@ -15,14 +15,15 @@ Add the administrator for root collection associated with this account.
 ### AddExpanded (Default)
 ```
 Add-AzPurviewAccountRootCollectionAdmin -AccountName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -ObjectId <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] -ObjectId <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AddViaIdentityExpanded
 ```
 Add-AzPurviewAccountRootCollectionAdmin -InputObject <IPurviewIdentity> -ObjectId <String>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -196,20 +197,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IPurviewIdentity>`: Identity Parameter
-  - `[AccountName <String>]`: The name of the account.
-  - `[GroupId <String>]`: The group identifier.
-  - `[Id <String>]`: Resource identity path
-  - `[PrivateEndpointConnectionName <String>]`: Name of the private endpoint connection.
-  - `[ResourceGroupName <String>]`: The resource group name.
-  - `[SubscriptionId <String>]`: The subscription identifier
 
 ## RELATED LINKS
