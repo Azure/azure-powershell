@@ -128,7 +128,26 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 {
                     while (processAuthenticator != null && processAuthenticator.TryAuthenticate(authParamters, out authToken))
                     {
-                        token = authToken?.GetAwaiter().GetResult();
+                        try
+                        {
+                            token = authToken?.GetAwaiter().GetResult();
+                        }
+                        catch (Exception ex)
+                        {
+                            if (!(authParamters is SilentParameters))
+                            {
+                                throw ex;
+                            }
+                            TracingAdapter.Information($"[AuthenticationFactory] SilentAuthenticator with broker fails - Exception message: '{ex.Message}'");
+                            AzConfigReader.FallbackForced = true;
+                            processAuthenticator.TryAuthenticate(authParamters, out authToken);
+                            token = authToken?.GetAwaiter().GetResult();
+                        }
+                        finally
+                        {
+                            AzConfigReader.FallbackForced = false;
+                        }
+
                         if (token != null)
                         {
                             // token.UserId is null when getting tenant token in ADFS environment

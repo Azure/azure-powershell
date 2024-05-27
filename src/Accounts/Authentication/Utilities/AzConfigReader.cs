@@ -18,6 +18,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Shared.Config;
 using Microsoft.Azure.PowerShell.Common.Config;
 
+using System.Threading.Tasks;
+
 namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
 {
     static public class AzConfigReader
@@ -31,9 +33,23 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
             }
         }
 
+        private static bool fallbackForced = false;
+
+        public static bool FallbackForced
+        {
+            get
+            {
+                return fallbackForced;
+            }
+            set
+            {
+                fallbackForced = value;
+            }
+        }
+
         static public bool IsWamEnabled(string authority)
         {
-            if (!string.IsNullOrEmpty(authority) && Session.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var config))
+            if (!fallbackForced && !string.IsNullOrEmpty(authority) && Session.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var config))
             {
                 try
                 {
