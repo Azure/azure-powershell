@@ -133,10 +133,11 @@ steps:
       }
       Write-Host "##[endgroup]"
 
-      Write-Host "##[group]#2. Check no changes from /generated folder"
+      Write-Host "##[group]#2. PR should contain changes from either /src or /generated only"
+      $srcFiles = Get-Content $(FilesChangedOutputPath) | Where-Object { $_ -match "^src.*" }
       $generatedFiles = Get-Content $(FilesChangedOutputPath) | Where-Object { $_ -match "^generated.*" }
-      if ($generatedFiles -and $generatedFiles.Count -gt 0) {
-        $generatedFiles | Foreach-Object { Write-Error "Changes detected in generated folder: $_" }
+      if ($srcFiles -and $srcFiles.Count -gt 0  -and $generatedFiles -and $generatedFiles.Count -gt 0) {
+        Write-Error "PR should contain changes from either /src or /generated only"
         exit 1
       }
       Write-Host "##[endgroup]"
