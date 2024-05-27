@@ -194,10 +194,10 @@ function UploadFileToSpring {
     )
     Write-Host '[1/3] Requesting for upload URL' -ForegroundColor Yellow
     if ($ServiceType -eq 'Enterprise') {
-        $uploadInfo = Az.Spring.internal\Get-AzSpringBuildServiceResourceUploadUrl -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -Name default @DeployPSBoundParameters
+        $uploadInfo = Az.SpringApps.internal\Get-AzSpringBuildServiceResourceUploadUrl -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -Name default @DeployPSBoundParameters
     }
     else {
-        $uploadInfo = Az.Spring.internal\Get-AzSpringAppResourceUploadUrl -ResourceGroupName $ResourceGroupName -serviceName $ServiceName -Name $AppName @DeployPSBoundParameters
+        $uploadInfo = Az.SpringApps.internal\Get-AzSpringAppResourceUploadUrl -ResourceGroupName $ResourceGroupName -serviceName $ServiceName -Name $AppName @DeployPSBoundParameters
     }
     Write-Host '[2/3] Uploading package to blob' -ForegroundColor Yellow
     $uploadUrl = $uploadInfo.UploadUrl
@@ -282,12 +282,12 @@ function DeployEnterpriseSpring {
         $DeployPSBoundParameters
     )
     $buildName = 'default' + (Get-Random)
-    $null = Az.Spring.internal\New-AzSpringBuildServiceBuild -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -BuildServiceName 'default' -Name $buildName -AgentPoolId $AgentPoolId -BuilderId $BuilderId -RelativePath $RelativePath @DeployPSBoundParameters
+    $null = Az.SpringApps.internal\New-AzSpringBuildServiceBuild -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -BuildServiceName 'default' -Name $buildName -AgentPoolId $AgentPoolId -BuilderId $BuilderId -RelativePath $RelativePath @DeployPSBoundParameters
     do {
         Start-Sleep 30
-        $result = Az.Spring.internal\Get-AzSpringBuildServiceBuildResult -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -BuildServiceName 'default' -BuildName $buildName -Name 1
+        $result = Az.SpringApps.internal\Get-AzSpringBuildServiceBuildResult -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -BuildServiceName 'default' -BuildName $buildName -Name 1
         if ($result.ProvisioningState -eq 'Failed') {
-            $resultFailedLog = Az.Spring.internal\Get-AzSpringBuildServiceBuildResultLog -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -BuildServiceName 'default' -BuildName $buildName -Name 1
+            $resultFailedLog = Az.SpringApps.internal\Get-AzSpringBuildServiceBuildResultLog -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -BuildServiceName 'default' -BuildName $buildName -Name 1
             throw "Service build failed, Log file url: $resultFailedLog"
         }
     } until ($result.ProvisioningState -eq 'Succeeded')
