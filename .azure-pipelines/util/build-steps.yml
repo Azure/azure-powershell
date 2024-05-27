@@ -65,6 +65,23 @@ steps:
       Write-Host "##vso[task.setvariable variable=TriggerType]$triggerType"
       Write-Host "##vso[task.setvariable variable=Trigger]$trigger"
       Write-Host "##[section]Filter files triggered by ${reason}: ${trigger}" -ForegroundColor DarkYellow
+- task: PowerShell@2
+  displayName: 'Create branch for CI/Manual/Schedule triggered pipeline'
+  condition: or(eq(variables.TriggerType, 'Commit'), eq(variables.TriggerType, 'TargetModule'))
+  inputs:
+    targetType: inline
+    pwsh: true
+    script: |
+      $baseBranchName = "origin/$(Build.SourceBranchName)"
+      $tmpBranchName = "archive/$(Build.SourceBranchName)/$(Build.Reason)"
+      if ('Commit' -eq "$(TriggerType)") {
+        $tmpBranchName += "/$(Trigger)"
+      }
+      Write-Host "##vso[task.setvariable variable=TmpBranchName]$tmpBranchName"
+      Write-Host "##vso[task.setvariable variable=BaseBranchName]$baseBranchName"
+      Write-Host "##[section]Switch from $baseBranchName to $tmpBranchName"
+      git fetch origin $(Build.SourceBranchName)
+      git checkout -b $tmpBranchName $baseBranchName
 - task: DotNetCoreCLI@2
   displayName: Filter changed files
   inputs:
@@ -116,10 +133,11 @@ steps:
       }
       Write-Host "##[endgroup]"
 
-      Write-Host "##[group]#2. Check no changes from /generated folder"
+      Write-Host "##[group]#2. PR should contain changes from either /src or /generated only"
+      $srcFiles = Get-Content $(FilesChangedOutputPath) | Where-Object { $_ -match "^src.*" }
       $generatedFiles = Get-Content $(FilesChangedOutputPath) | Where-Object { $_ -match "^generated.*" }
-      if ($generatedFiles -and $generatedFiles.Count -gt 0) {
-        $generatedFiles | Foreach-Object { Write-Error "Changes detected in generated folder: $_" }
+      if ($srcFiles -and $srcFiles.Count -gt 0  -and $generatedFiles -and $generatedFiles.Count -gt 0) {
+        Write-Error "PR should contain changes from either /src or /generated only"
         exit 1
       }
       Write-Host "##[endgroup]"
@@ -155,7 +173,7 @@ steps:
       if ('Manual' -eq "$(Build.Reason)" -and ('true' -eq '${{ parameters.ForceRegenerate }}')) {
         . $buildScript -CIPlan -RepoRoot "$(Build.SourcesDirectory)" -Configuration ${{ parameters.configuration }} -ForceRegenerate
       } else {
-        . $buildScript -CIPlan -RepoRoot "$(Build.SourcesDirectory)" -Configuration ${{ parameters.configuration }}
+        . $buildScript -CIPlan -RepoRoot "$(Build.SourcesDirectory)" -Configuration ${{ parameters.configuration }} -ForceRegenerate
       }
 - task: PowerShell@2
   displayName: 'Write pipeline result'
@@ -180,6 +198,38 @@ steps:
     command: custom
     custom: msbuild
     arguments: 'build.proj /t:AzToolsInstaller'
+- task: PowerShell@2
+  displayName: 'Update branch for CI/Manual/Schedule triggered pipeline'
+  condition: or(eq(variables.TriggerType, 'Commit'), eq(variables.TriggerType, 'TargetModule'))
+  inputs:
+    targetType: inline
+    pwsh: true
+    script: |
+      $tmpBranchName = "$(TmpBranchName)"
+      $baseBranchName = "$(BaseBranchName)"
+      $generatedPath = Join-Path "$(Build.SourcesDirectory)" 'generated'
+      $diff = (git diff --numstat $generatedPath)
+      if ((-not $diff) -or ($null -eq $diff) -or (0 -eq $diff.Count)) {
+        return
+      }
+
+      $prTitle = "[skip ci] Archive generated assets to $baseBranchName"
+      $prDescription = "triggered by: $(TriggerType) ($(Trigger))"
+      $prScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'Github' 'CreatePR.ps1'
+
+      git config user.email "65331932+azure-powershell-bot@users.noreply.github.com";
+      git config user.name "azure-powershell-bot";
+      git remote set-url origin https://azure-powershell-bot:$(GithubToken)@github.com/Azure/azure-powershell.git;
+      git add $generatedPath
+      git commit -m $prTitle
+      git push origin $tmpBranchName --force
+      
+      . $prScriptPath -Title $prTitle -HeadBranch $tmpBranchName -BaseBranch "$(Build.SourceBranchName)" -BotAccessToken $(GithubToken) -Description $prDescription
+
+      <#
+        this commidId will be useful when we push directly to target branch in the future
+        $commitId = (git rev-parse HEAD)
+      #>
 - template: publish-artifacts-steps.yml
   parameters:
     artifactName: build-${{ parameters.testFramework }}
