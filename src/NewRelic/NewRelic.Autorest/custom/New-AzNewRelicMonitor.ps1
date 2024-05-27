@@ -327,12 +327,13 @@ process {
     $InsightsProviderNamespace = "microsoft.insights"
     $ProviderNamespaceList = @($NewRelicProviderNamespace, $SaaSProviderNamespace, $InsightsProviderNamespace)
 
+    # Checking resource provide $ProviderNamespaceList on this subscription
     $rpState = Get-AzResourceProvider -ProviderNamespace $ProviderNamespaceList @EnvPSBoundParameters
     $RegisteredResourcesForRP = $rpState.Where({$_.RegistrationState  -eq "Registered"})
     $RegisteredSaaS = $RegisteredResourcesForRP.ProviderNamespace.Contains($SaaSProviderNamespace)
     $RegisteredInsights = $RegisteredResourcesForRP.ProviderNamespace.Contains($InsightsProviderNamespace)
     $RegisteredNewRelic = $RegisteredResourcesForRP.ProviderNamespace.Contains($NewRelicProviderNamespace)
-    if ($RegisteredSaaS && $RegisteredInsights && $RegisteredNewRelic)
+    if ($RegisteredSaaS -and $RegisteredInsights -and $RegisteredNewRelic)
     {
         Write-Debug -Message "NewRelic.Observability, Microsoft.SaaS and microsoft.insights have already registered. Continue creating."
     }

@@ -24,12 +24,6 @@ Get-AzNewRelicMonitoredSubscription -InputObject <INewRelicIdentity> [-DefaultPr
  [<CommonParameters>]
 ```
 
-### List
-```
-Get-AzNewRelicMonitoredSubscription -MonitorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 List the subscriptions currently being monitored by the NewRelic monitor resource.
 
@@ -90,7 +84,7 @@ Name of the Monitors resource
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -106,7 +100,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -121,7 +115,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: False

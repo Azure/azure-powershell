@@ -84,7 +84,7 @@ Delete a TagRule
 Switches the billing for NewRelic monitor resource.
 
 ### [Update-AzNewRelicMonitoredSubscription](Update-AzNewRelicMonitoredSubscription.md)
-Update the subscriptions that are being monitored by the NewRelic monitor resource
+Add the subscriptions that should be monitored by the NewRelic monitor resource.
 
 ### [Update-AzNewRelicMonitorTagRule](Update-AzNewRelicMonitorTagRule.md)
 Update a TagRule

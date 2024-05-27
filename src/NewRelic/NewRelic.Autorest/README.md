@@ -52,6 +52,7 @@ subject-prefix: $(service-name)
 # nested-object-to-string: true
 
 directive:
+  - remove-operation: MonitoredSubscriptions_Update
   # Rename operation
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/monitoredSubscriptions/{configurationName}"].put.operationId
@@ -89,7 +90,7 @@ directive:
     remove: true
   - where:
       variant: ^CreateViaIdentity.*$
-    remove: true 
+    remove: true
   - where:
       variant: ^Switch$|^SwitchViaIdentity$
     remove: true
@@ -101,6 +102,10 @@ directive:
       subject: MetricRule|MetricStatus
       variant: ^Get$|^GetViaIdentity$
     remove: true
+  - where:
+      subject: MonitoredSubscription
+      variant: List
+    hide: true
   # Custom create Monitor
   - where:
       subject: Monitor

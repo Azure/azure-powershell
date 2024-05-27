@@ -15,10 +15,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzNewRelicMonitoredSubscr
 }
 
 Describe 'New-AzNewRelicMonitoredSubscription' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'CreateViaJsonFilePath' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

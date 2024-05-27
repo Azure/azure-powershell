@@ -4,7 +4,7 @@ Get-AzNewRelicMonitorMonitoredResource -MonitorName test-03 -ResourceGroupName p
 ```
 
 ```output
-Id                     : /SUBSCRIPTIONS/11111111-2222-3333-4444-123456789101/RESOURCEGROUPS/PS-TEST/PROVIDERS/MICROSOFT.WEB/SITES/groupTEST
+Id                     : /SUBSCRIPTIONS/11111111-2222-3333-4444-123456789101/RESOURCEGROUPS/PS-TEST/PROVIDERS/MICROSOFT.WEB/SITES/SITETEST
 ReasonForLogsStatus    : CapturedByRules
 ReasonForMetricsStatus : 
 SendingLog             : Enabled
@@ -16,13 +16,13 @@ ReasonForMetricsStatus :
 SendingLog             : Enabled
 SendingMetric          : 
 
-Id                     : /SUBSCRIPTIONS/11111111-2222-3333-4444-123456789101/RESOURCEGROUPS/PS-TEST/PROVIDERS/MICROSOFT.WEB/SITES/groupTEST2
+Id                     : /SUBSCRIPTIONS/11111111-2222-3333-4444-123456789101/RESOURCEGROUPS/PS-TEST/PROVIDERS/MICROSOFT.WEB/SITES/SITETEST2
 ReasonForLogsStatus    : CapturedByRules
 ReasonForMetricsStatus : 
 SendingLog             : Enabled
 SendingMetric          : 
 
-Id                     : /SUBSCRIPTIONS/11111111-2222-3333-4444-123456789101/RESOURCEGROUPS/PS-TEST/PROVIDERS/MICROSOFT.INSIGHTS/COMPONENTS/groupTEST2
+Id                     : /SUBSCRIPTIONS/11111111-2222-3333-4444-123456789101/RESOURCEGROUPS/PS-TEST/PROVIDERS/MICROSOFT.INSIGHTS/COMPONENTS/INSIGHTTEST2
 ReasonForLogsStatus    : CapturedByRules
 ReasonForMetricsStatus : 
 SendingLog             : Enabled
