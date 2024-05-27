@@ -1,13 +1,13 @@
 {
-  "AzVMwareGlobalReachConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudhpqj/authorizations/i1dw9l?api-version=2023-09-01+1": {
+  "AzVMwareGlobalReachConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/authorizations/nr1jsf?api-version=2023-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudhpqj/authorizations/i1dw9l?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/authorizations/nr1jsf?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "48" ],
-        "x-ms-client-request-id": [ "a9676555-81e5-4a75-89fc-b2b1c5b31645" ],
+        "x-ms-client-request-id": [ "53201bd2-d5be-4da1-9958-d0dd895685f2" ],
         "CommandName": [ "Get-AzVMwareAuthorization" ],
         "FullCommandName": [ "Get-AzVMwareAuthorization_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -21,7 +21,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Fri, 24 May 2024 21:21:36 GMT" ]
+        "Date": [ "Mon, 27 May 2024 03:12:43 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -31,15 +31,15 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareGlobalReachConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudj7m9?api-version=2023-09-01+2": {
+  "AzVMwareGlobalReachConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloudv60w?api-version=2023-09-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudj7m9?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloudv60w?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "49" ],
-        "x-ms-client-request-id": [ "224f73d9-3c37-4d05-aa04-18705ff9ad6a" ],
+        "x-ms-client-request-id": [ "ef4f7317-4f9c-472f-be29-584c68f465f7" ],
         "CommandName": [ "Get-AzVMwarePrivateCloud" ],
         "FullCommandName": [ "Get-AzVMwarePrivateCloud_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -53,7 +53,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Fri, 24 May 2024 21:21:36 GMT" ]
+        "Date": [ "Mon, 27 May 2024 03:12:43 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -63,10 +63,10 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareGlobalReachConnection+[NoContext]+List+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudhpqj/globalReachConnections/hqmn0c?api-version=2023-09-01+3": {
+  "AzVMwareGlobalReachConnection+[NoContext]+List+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/globalReachConnections/8kota3?api-version=2023-09-01+3": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudhpqj/globalReachConnections/hqmn0c?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/globalReachConnections/8kota3?api-version=2023-09-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"authorizationKey\": \"37b0db3b-3b17-4c7b-bf76-bf13b01bcadc\",\r\n    \"peerExpressRouteCircuit\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -80,7 +80,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Fri, 24 May 2024 21:21:36 GMT" ]
+        "Date": [ "Mon, 27 May 2024 03:12:43 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -90,16 +90,16 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareGlobalReachConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudhpqj/globalReachConnections/hqmn0c?api-version=2023-09-01+4": {
+  "AzVMwareGlobalReachConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/globalReachConnections/8kota3?api-version=2023-09-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudhpqj/globalReachConnections/hqmn0c?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/globalReachConnections/8kota3?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "51" ],
-        "x-ms-client-request-id": [ "f2add5f2-3326-4ce4-8d26-5536919dee27" ],
+        "x-ms-client-request-id": [ "b5d16af5-a056-451d-b530-66204a9ee119" ],
         "CommandName": [ "New-AzVMwareGlobalReachConnection" ],
         "FullCommandName": [ "New-AzVMwareGlobalReachConnection_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -112,7 +112,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Fri, 24 May 2024 21:22:06 GMT" ]
+        "Date": [ "Mon, 27 May 2024 03:13:14 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -122,16 +122,16 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareGlobalReachConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudhpqj/globalReachConnections/hqmn0c?api-version=2023-09-01+5": {
+  "AzVMwareGlobalReachConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/globalReachConnections/8kota3?api-version=2023-09-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudhpqj/globalReachConnections/hqmn0c?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/globalReachConnections/8kota3?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "52" ],
-        "x-ms-client-request-id": [ "f2add5f2-3326-4ce4-8d26-5536919dee27" ],
+        "x-ms-client-request-id": [ "b5d16af5-a056-451d-b530-66204a9ee119" ],
         "CommandName": [ "New-AzVMwareGlobalReachConnection" ],
         "FullCommandName": [ "New-AzVMwareGlobalReachConnection_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -144,7 +144,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Fri, 24 May 2024 21:22:06 GMT" ]
+        "Date": [ "Mon, 27 May 2024 03:13:14 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -154,15 +154,15 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareGlobalReachConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudhpqj/globalReachConnections?api-version=2023-09-01+6": {
+  "AzVMwareGlobalReachConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/globalReachConnections?api-version=2023-09-01+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudhpqj/globalReachConnections?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/globalReachConnections?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "53" ],
-        "x-ms-client-request-id": [ "a3f70bc3-9551-4c50-bbcd-c8823e8b0842" ],
+        "x-ms-client-request-id": [ "f63aada7-d32d-4044-8aba-5f99ebf33532" ],
         "CommandName": [ "Get-AzVMwareGlobalReachConnection" ],
         "FullCommandName": [ "Get-AzVMwareGlobalReachConnection_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -176,7 +176,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Fri, 24 May 2024 21:22:06 GMT" ]
+        "Date": [ "Mon, 27 May 2024 03:13:14 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -186,15 +186,15 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareGlobalReachConnection+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudhpqj/globalReachConnections/hqmn0c?api-version=2023-09-01+1": {
+  "AzVMwareGlobalReachConnection+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/globalReachConnections/8kota3?api-version=2023-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudhpqj/globalReachConnections/hqmn0c?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/globalReachConnections/8kota3?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "54" ],
-        "x-ms-client-request-id": [ "61fadc6f-02b9-4144-8c24-855f277872ca" ],
+        "x-ms-client-request-id": [ "68c34e03-6fe0-45f5-abf5-4f329bcc4210" ],
         "CommandName": [ "Get-AzVMwareGlobalReachConnection" ],
         "FullCommandName": [ "Get-AzVMwareGlobalReachConnection_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -208,7 +208,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Fri, 24 May 2024 21:22:06 GMT" ]
+        "Date": [ "Mon, 27 May 2024 03:13:14 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -218,15 +218,15 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudhpqj/authorizations/i1dw9l?api-version=2023-09-01+1": {
+  "AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/authorizations/nr1jsf?api-version=2023-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudhpqj/authorizations/i1dw9l?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/authorizations/nr1jsf?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "55" ],
-        "x-ms-client-request-id": [ "713bc175-f1a1-4dea-9283-9201806fd1fa" ],
+        "x-ms-client-request-id": [ "d14ab42f-2e51-4b7e-be7b-b292a6e7ec4d" ],
         "CommandName": [ "Get-AzVMwareAuthorization" ],
         "FullCommandName": [ "Get-AzVMwareAuthorization_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -240,7 +240,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Fri, 24 May 2024 21:22:06 GMT" ]
+        "Date": [ "Mon, 27 May 2024 03:13:14 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -250,15 +250,15 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudj7m9?api-version=2023-09-01+2": {
+  "AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloudv60w?api-version=2023-09-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudj7m9?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloudv60w?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "56" ],
-        "x-ms-client-request-id": [ "a1cfe41e-5fd3-4e8b-aa97-7d58242a5ebe" ],
+        "x-ms-client-request-id": [ "8c5d8bac-0368-4d09-9322-20a23ec8a66c" ],
         "CommandName": [ "Get-AzVMwarePrivateCloud" ],
         "FullCommandName": [ "Get-AzVMwarePrivateCloud_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -272,7 +272,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Fri, 24 May 2024 21:22:06 GMT" ]
+        "Date": [ "Mon, 27 May 2024 03:13:14 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -282,10 +282,10 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudhpqj/globalReachConnections/elpkca?api-version=2023-09-01+3": {
+  "AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/globalReachConnections/g38p9a?api-version=2023-09-01+3": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudhpqj/globalReachConnections/elpkca?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/globalReachConnections/g38p9a?api-version=2023-09-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"authorizationKey\": \"37b0db3b-3b17-4c7b-bf76-bf13b01bcadc\",\r\n    \"peerExpressRouteCircuit\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -299,7 +299,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Fri, 24 May 2024 21:22:06 GMT" ]
+        "Date": [ "Mon, 27 May 2024 03:13:14 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -309,16 +309,16 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudhpqj/globalReachConnections/elpkca?api-version=2023-09-01+4": {
+  "AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/globalReachConnections/g38p9a?api-version=2023-09-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudhpqj/globalReachConnections/elpkca?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/globalReachConnections/g38p9a?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "58" ],
-        "x-ms-client-request-id": [ "ef95f352-3897-487d-8857-2b4fc285cc54" ],
+        "x-ms-client-request-id": [ "8430b8ae-607a-4554-bcb1-1550d9b9f326" ],
         "CommandName": [ "New-AzVMwareGlobalReachConnection" ],
         "FullCommandName": [ "New-AzVMwareGlobalReachConnection_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -331,7 +331,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Fri, 24 May 2024 21:22:37 GMT" ]
+        "Date": [ "Mon, 27 May 2024 03:13:44 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -341,16 +341,16 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudhpqj/globalReachConnections/elpkca?api-version=2023-09-01+5": {
+  "AzVMwareGlobalReachConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/globalReachConnections/g38p9a?api-version=2023-09-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudhpqj/globalReachConnections/elpkca?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/globalReachConnections/g38p9a?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "59" ],
-        "x-ms-client-request-id": [ "ef95f352-3897-487d-8857-2b4fc285cc54" ],
+        "x-ms-client-request-id": [ "8430b8ae-607a-4554-bcb1-1550d9b9f326" ],
         "CommandName": [ "New-AzVMwareGlobalReachConnection" ],
         "FullCommandName": [ "New-AzVMwareGlobalReachConnection_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -363,7 +363,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Fri, 24 May 2024 21:22:37 GMT" ]
+        "Date": [ "Mon, 27 May 2024 03:13:44 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -373,15 +373,15 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareGlobalReachConnection+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudhpqj/globalReachConnections/elpkca?api-version=2023-09-01+1": {
+  "AzVMwareGlobalReachConnection+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/globalReachConnections/g38p9a?api-version=2023-09-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudhpqj/globalReachConnections/elpkca?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/globalReachConnections/g38p9a?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "60" ],
-        "x-ms-client-request-id": [ "08d33e4b-5228-4607-99ee-138943c67669" ],
+        "x-ms-client-request-id": [ "13075d61-3723-4de7-8c62-7ffe9d0b05c5" ],
         "CommandName": [ "Remove-AzVMwareGlobalReachConnection" ],
         "FullCommandName": [ "Remove-AzVMwareGlobalReachConnection_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -395,7 +395,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Fri, 24 May 2024 21:22:37 GMT" ]
+        "Date": [ "Mon, 27 May 2024 03:13:44 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "0" ]

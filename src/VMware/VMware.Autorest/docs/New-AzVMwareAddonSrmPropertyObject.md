@@ -23,7 +23,7 @@ Create an in-memory object for AddonSrmProperties.
 
 ### Example 1: Create a local SRM object for the Addon Property parameter
 ```powershell
-New-AzVMwareAddonSrmPropertiesObject -LicenseKey "YourLicenseKeyValue"
+New-AzVMwareAddonSrmPropertyObject -LicenseKey "YourLicenseKeyValue"
 ```
 
 ```output

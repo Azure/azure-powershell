@@ -1,13 +1,13 @@
 {
-  "AzVMwareVirtualMachine+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudhpqj/clusters/i1dw9l/virtualMachines?api-version=2023-09-01+1": {
+  "AzVMwareVirtualMachine+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/clusters/nr1jsf/virtualMachines?api-version=2023-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudhpqj/clusters/i1dw9l/virtualMachines?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/clusters/nr1jsf/virtualMachines?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "98" ],
-        "x-ms-client-request-id": [ "b72b1d69-f203-4801-b0bd-6becb057ea27" ],
+        "x-ms-client-request-id": [ "1e76d7c0-fc3f-4939-b34c-ff0cfc1cfc5b" ],
         "CommandName": [ "Get-AzVMwareVirtualMachine" ],
         "FullCommandName": [ "Get-AzVMwareVirtualMachine_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -21,7 +21,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Fri, 24 May 2024 21:25:46 GMT" ]
+        "Date": [ "Mon, 27 May 2024 03:16:55 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -31,15 +31,15 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareVirtualMachine+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudhpqj/clusters/i1dw9l/virtualMachines/vm-209?api-version=2023-09-01+1": {
+  "AzVMwareVirtualMachine+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/clusters/nr1jsf/virtualMachines/vm-209?api-version=2023-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupelpkca/providers/Microsoft.AVS/privateClouds/azps_test_cloudhpqj/clusters/i1dw9l/virtualMachines/vm-209?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/clusters/nr1jsf/virtualMachines/vm-209?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "99" ],
-        "x-ms-client-request-id": [ "48ab41f7-89ce-46fd-8eec-4fd1a33e806f" ],
+        "x-ms-client-request-id": [ "bd7c8526-2f15-4a6e-b449-2c937f87c1fb" ],
         "CommandName": [ "Get-AzVMwareVirtualMachine" ],
         "FullCommandName": [ "Get-AzVMwareVirtualMachine_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -53,7 +53,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Fri, 24 May 2024 21:25:46 GMT" ]
+        "Date": [ "Mon, 27 May 2024 03:16:55 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],

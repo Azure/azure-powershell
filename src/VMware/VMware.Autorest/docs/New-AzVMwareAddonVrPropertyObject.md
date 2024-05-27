@@ -23,7 +23,7 @@ Create an in-memory object for AddonVrProperties.
 
 ### Example 1: Create a local VR object for the Addon Property parameter
 ```powershell
-New-AzVMwareAddonVrPropertiesObject -VrsCount 2
+New-AzVMwareAddonVrPropertyObject -VrsCount 2
 ```
 
 ```output

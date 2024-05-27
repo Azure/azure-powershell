@@ -1,6 +1,6 @@
 ### Example 1: Create an in-memory object for VmHostPlacementPolicyProperties.
 ```powershell
-New-AzVMwareVmHostPlacementPolicyPropertiesObject -AffinityType 'AntiAffinity' -HostMember @{"test"="test"}  -Type 'VmHost' -VMMember @{"test"="test"}
+New-AzVMwareVmHostPlacementPolicyPropertyObject -AffinityType 'AntiAffinity' -HostMember @{"test"="test"}  -Type 'VmHost' -VMMember @{"test"="test"}
 ```
 ```output
 AffinityStrength       : 
