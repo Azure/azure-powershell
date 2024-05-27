@@ -1,5 +1,5 @@
 @{
-  GUID = 'e2ccd5b0-af3a-415f-82ed-b9a388aeed61'
+  GUID = 'e30eb483-fd26-4506-b023-b55884c5612d'
   RootModule = './Az.Websites.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'

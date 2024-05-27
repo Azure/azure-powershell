@@ -1,5 +1,5 @@
 @{
-  GUID = 'accceef6-8113-453a-a31c-4f2ce57893d6'
+  GUID = '2b4c29a0-5d88-4760-a4c7-b18ce9cbbc74'
   RootModule = './Az.Purview.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'

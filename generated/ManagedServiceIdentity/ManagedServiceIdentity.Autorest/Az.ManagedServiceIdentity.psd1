@@ -1,5 +1,5 @@
 @{
-  GUID = '1f09fbda-2563-4cfc-9098-100c27b52fa1'
+  GUID = '9268e549-a958-48b5-ae1e-acd7267ddb58'
   RootModule = './Az.ManagedServiceIdentity.psm1'
   ModuleVersion = '0.3.0'
   CompatiblePSEditions = 'Core', 'Desktop'

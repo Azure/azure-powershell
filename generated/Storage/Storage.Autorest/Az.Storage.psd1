@@ -1,5 +1,5 @@
 @{
-  GUID = '14995ab3-8dd3-4201-b5f5-9dc94eac60d4'
+  GUID = 'd844765e-f4ce-4e9f-bb4a-56d656705cf1'
   RootModule = './Az.Storage.psm1'
   ModuleVersion = '5.9.1'
   CompatiblePSEditions = 'Core', 'Desktop'

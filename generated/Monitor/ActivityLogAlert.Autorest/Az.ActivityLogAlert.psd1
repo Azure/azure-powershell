@@ -1,5 +1,5 @@
 @{
-  GUID = '51359a36-98ad-4a4b-878d-564c18864934'
+  GUID = 'f0463a54-b0c0-4e22-912e-67908fabcdef'
   RootModule = './Az.ActivityLogAlert.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'

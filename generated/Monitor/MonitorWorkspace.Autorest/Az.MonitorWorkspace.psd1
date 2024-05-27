@@ -1,5 +1,5 @@
 @{
-  GUID = 'b9f9a546-cc15-45f4-b5cd-579de4cc57ec'
+  GUID = '5a3020da-f301-4694-ac6a-ed5517060347'
   RootModule = './Az.MonitorWorkspace.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'

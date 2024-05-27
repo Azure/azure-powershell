@@ -1,5 +1,5 @@
 @{
-  GUID = 'e83a8252-8dcb-4f34-8fbf-4ded92174cad'
+  GUID = '6f17a12c-1e03-4fce-8cdc-25681756eef7'
   RootModule = './Az.Autoscale.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
