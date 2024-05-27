@@ -1,5 +1,5 @@
 @{
-  GUID = '031a685e-5904-433f-b2f8-4fcef3cd15d8'
+  GUID = 'f1abb793-436b-4ad1-96c2-c7aee2e8f007'
   RootModule = './Az.ApplicationInsights.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
