@@ -62,7 +62,7 @@ function Get-CsprojFromModule {
         foreach ($csproj in (Get-ChildItem -Path $module -Recurse -Filter *.csproj)) {
             $csprojPath = $csproj.FullName
             $uniqueNameReturnCondition = $csprojPath -in $result
-            if ($uniqueNameReturnCondition -or $releaseReturnCondition -or $debugReturnCondition) {
+            if ($uniqueNameReturnCondition) {
                 continue
             }
             $result += $csprojPath
