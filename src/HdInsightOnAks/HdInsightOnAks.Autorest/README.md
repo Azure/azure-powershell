@@ -98,12 +98,6 @@ directive:
   - model-cmdlet:
     - model-name: ClusterServiceConfigsProfile
       cmdlet-name: New-AzHdInsightOnAksClusterServiceConfigsProfileObject
-  # - model-cmdlet:
-  #   - model-name: PyPiLibraryProperties
-  #     cmdlet-name: New-AzHdInsightOnAksClusterPyPiLibraryPropertiesObject
-  # - model-cmdlet:
-  #   - model-name: MavenLibraryProperties
-  #     cmdlet-name: New-AzHdInsightOnAksClusterMavenLibraryPropertiesObject
   - from: swagger-document
     where: $.paths..responses.202
     transform: delete $.headers

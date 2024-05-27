@@ -265,7 +265,7 @@ $keyVaultResourceId="/subscriptions/00000000-0000-0000-0000-000000000000/resourc
 $secretName="{your secret name}"
 $referenceName="{your secret reference name}";
 
-$secretReference=New-AzHdInsightOnAksSecretReferenceObject -SecretName $secretName -ReferenceName $referenceName
+$secretReference=New-AzHdInsightOnAksSecretReferenceObject -KeyVaultObjectName $secretName -ReferenceName $referenceName
 
 #hive catalog configuration
 
@@ -403,7 +403,7 @@ $keyVaultResourceId="/subscriptions/00000000-0000-0000-0000-000000000000/resourc
 $secretName="{your secret name}"
 $referenceName="{your secret reference name}";
 
-$secretReference=New-AzHdInsightOnAksSecretReferenceObject -SecretName $secretName -ReferenceName $referenceName
+$secretReference=New-AzHdInsightOnAksSecretReferenceObject -KeyVaultObjectName $secretName -ReferenceName $referenceName
 
 # Spark config
 $sparkStorageUrl="abfs://{your container}@{your adls gen2 endpoint}" # example abfs://container@adlsgen2storage.dfs.core.windows.net
@@ -562,7 +562,7 @@ $keyVaultResourceId="/subscriptions/00000000-0000-0000-0000-000000000000/resourc
 $secretName="{your secret name}"
 $referenceName="{your secret reference name}";
 
-$secretReference=New-AzHdInsightOnAksSecretReferenceObject -SecretName $secretName -ReferenceName $referenceName
+$secretReference=New-AzHdInsightOnAksSecretReferenceObject -KeyVaultObjectName $secretName -ReferenceName $referenceName
 
 # Flink hive catalog config
 $metastoreDbConnectionUrl="jdbc:sqlserver://{your sql server url};database={your db name};encrypt=true;trustServerCertificate=true;loginTimeout=30;";

@@ -105,7 +105,7 @@ Upgrade a cluster pool and upgrade type is NodeOsUpgrade.
 ```powershell
 $clusterResourceGroupName = "Group"
 $clusterpoolName = "your-clusterpool"
-$upgradeObj = New-AzHdInsightOnAksClusterPoolAKSUpgradeObject -TargetAksVersion "1.27.9" -UpgradeClusterPool $true
+$upgradeObj = New-AzHdInsightOnAksClusterPoolAksPatchVersionUpgradeObject -TargetAksVersion "1.27.9" -UpgradeClusterPool $true
 Upgrade-AzHdInsightOnAksClusterPool -ResourceGroupName $clusterResourceGroupName -ClusterPoolName $clusterpoolName -ClusterPoolUpgradeRequest $upgradeObj
 ```
 
