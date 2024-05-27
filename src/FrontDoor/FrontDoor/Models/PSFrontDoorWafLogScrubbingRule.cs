@@ -25,28 +25,4 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
 
         public string State { get; set; }
     }
-
-    public enum PSAzFrontDoorWafLogScrubbingMatchVariableEnum
-    {
-        RequestHeaderNames,
-        RequestCookieNames,
-        QueryStringArgNames,
-        RequestBodyPostArgNames,
-        RequestBodyJsonArgNames
-    }
-
-    public enum PSAzFrontDoorWafLogScrubbingSelectorMatchOperatorEnum
-    {
-        Equals,
-        Contains,
-        StartsWith,
-        EndsWith,
-        EqualsAny
-    }
-
-    public enum PSAzFrontDoorWafLogScrubbingRuleState
-    {
-        Enabled,
-        Disabled
-    }
 }

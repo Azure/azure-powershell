@@ -19,10 +19,4 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
     {
         public string VariableName { get; set; }
     }
-
-    public enum PSAzFrontDoorWafCustomRuleGroupByVariableum
-    {
-        SocketAddr,
-        GeoLocation
-    }
 }
