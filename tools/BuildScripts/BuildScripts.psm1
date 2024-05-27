@@ -5,20 +5,25 @@ function Get-CsprojFromModule {
         [string]$RepoRoot,
         [string]$Configuration
     )
+    $renamedModules = @{
+        'Storage' = @('Storage.Management');
+        'DataFactory' = @('DataFactoryV1', 'DataFactoryV2')
+    }
 
     $SourceDirectory = Join-Path $RepoRoot 'src'
     $GeneratedDirectory = Join-Path $RepoRoot 'generated'
-    $modulePath = @()
+    $srcModulePath = @()
+    $generatedModulePath = @()
     Write-Host "Finding modules under /src and /generated ..." -ForegroundColor DarkGreen
     foreach ($moduleName in $BuildModuleList) {
         $src = Join-Path $SourceDirectory $moduleName
         $gen = Join-Path $GeneratedDirectory $moduleName
         if (Test-Path $src) {
-            $modulePath += $src
+            $srcModulePath += $src
             Write-Host "Found $moduleName under $src" -ForegroundColor Cyan
         }
         if (Test-Path $gen) {
-            $modulePath += $gen
+            $generatedModulePath += $gen
             Write-Host "Found $moduleName under $gen" -ForegroundColor Cyan
         }
     }
@@ -37,13 +42,25 @@ function Get-CsprojFromModule {
 
     Write-Host "Finding projects to include ..." -ForegroundColor DarkGreen
     $result = @()
-    foreach ($module in $modulePath) {
-        foreach ($csproj in (Get-ChildItem -Path $module -Recurse -Filter *.csproj)) {
+    foreach ($module in $srcModulePath) {
+        foreach ($csproj in (Get-ChildItem -Path $module -Recurse -Filter *.csproj -Exclude 'Az.*.csproj')) {
             $csprojPath = $csproj.FullName
             # Release do not need test, exclude all test projects
             $releaseReturnCondition = ("Release" -eq $Configuration) -and ($csprojPath -match ".*Test.csproj$")
             # Debug only include: 1. not test project 2. is test projects and only in calculated test project list 
             $debugReturnCondition = ("Debug" -eq $Configuration) -and ($csprojPath -match ".*Test.csproj$") -and ($csprojPath -notmatch $testCsprojPattern)
+            $uniqueNameReturnCondition = $csprojPath -in $result
+            if ($uniqueNameReturnCondition -or $releaseReturnCondition -or $debugReturnCondition) {
+                continue
+            }
+            $result += $csprojPath
+            Write-Host "Including project: $($csprojPath)" -ForegroundColor Cyan
+        }
+    }
+
+    foreach ($module in $generatedModulePath) {
+        foreach ($csproj in (Get-ChildItem -Path $module -Recurse -Filter *.csproj)) {
+            $csprojPath = $csproj.FullName
             $uniqueNameReturnCondition = $csprojPath -in $result
             if ($uniqueNameReturnCondition -or $releaseReturnCondition -or $debugReturnCondition) {
                 continue

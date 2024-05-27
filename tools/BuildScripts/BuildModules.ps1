@@ -34,10 +34,6 @@ Import-Module $BuildScriptsModulePath
 
 $notModules = @('lib', 'shared')
 $coreTestModules = @('Compute', 'Network', 'Resources', 'Sql', 'Websites')
-$renamedModules = @{
-    'Storage' = @('Storage.Management');
-    'DataFactory' = @('DataFactoryV1', 'DataFactoryV2')
-}
 $RepoArtifacts = Join-Path $RepoRoot "Artifacts"
 
 $csprojFiles = @()
