@@ -27,7 +27,6 @@ description: Microsoft NetApp Files Azure Resource Provider specification
 ``` yaml
 commit: c3cc9abe085093ba880ee3eeb792edb4fa789553
 input-file:
-   ## - C:\Users\audunn\source\repos\azure\azure-rest-api-specs\specification\netapp\resource-manager\Microsoft.NetApp\stable\2023-11-01\netapp.json
    - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/netapp/resource-manager/Microsoft.NetApp/stable/2023-11-01/netapp.json
 output-folder: Generated
 namespace: Microsoft.Azure.Management.NetApp
