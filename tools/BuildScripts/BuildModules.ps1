@@ -113,6 +113,7 @@ foreach ($moduleRootName in $TargetModule) {
     . $prepareScriptPath -ModuleRootName $moduleRootName -RepoRoot $RepoRoot -ForceRegenerate:$ForceRegenerate -Pipeline:$isPipeline
 }
 
+Set-Location $RepoRoot
 $sln = Join-Path $RepoArtifacts "Azure.PowerShell.sln"
 & dotnet --version
 if (Test-Path $sln) {
