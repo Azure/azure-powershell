@@ -67,6 +67,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             }
             {_netAppVolume = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonObject>("netAppVolume"), out var __jsonNetAppVolume) ? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.NetAppVolume.FromJson(__jsonNetAppVolume) : _netAppVolume;}
             {_diskPoolVolume = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonObject>("diskPoolVolume"), out var __jsonDiskPoolVolume) ? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.DiskPoolVolume.FromJson(__jsonDiskPoolVolume) : _diskPoolVolume;}
+            {_elasticSanVolume = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonObject>("elasticSanVolume"), out var __jsonElasticSanVolume) ? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ElasticSanVolume.FromJson(__jsonElasticSanVolume) : _elasticSanVolume;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("status"), out var __jsonStatus) ? (string)__jsonStatus : (string)_status;}
             AfterFromJson(json);
@@ -105,6 +106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             }
             AddIf( null != this._netAppVolume ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) this._netAppVolume.ToJson(null,serializationMode) : null, "netAppVolume" ,container.Add );
             AddIf( null != this._diskPoolVolume ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) this._diskPoolVolume.ToJson(null,serializationMode) : null, "diskPoolVolume" ,container.Add );
+            AddIf( null != this._elasticSanVolume ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) this._elasticSanVolume.ToJson(null,serializationMode) : null, "elasticSanVolume" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );

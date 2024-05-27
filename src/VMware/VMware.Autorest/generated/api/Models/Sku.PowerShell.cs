@@ -113,6 +113,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)this).Name, global::System.Convert.ToString);
             }
+            if (content.Contains("Tier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)this).Tier = (string) content.GetValueForProperty("Tier",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)this).Tier, global::System.Convert.ToString);
+            }
+            if (content.Contains("Size"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)this).Size = (string) content.GetValueForProperty("Size",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)this).Size, global::System.Convert.ToString);
+            }
+            if (content.Contains("Family"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)this).Family = (string) content.GetValueForProperty("Family",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)this).Family, global::System.Convert.ToString);
+            }
+            if (content.Contains("Capacity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)this).Capacity = (int?) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)this).Capacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -133,6 +149,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("Name"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Tier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)this).Tier = (string) content.GetValueForProperty("Tier",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)this).Tier, global::System.Convert.ToString);
+            }
+            if (content.Contains("Size"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)this).Size = (string) content.GetValueForProperty("Size",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)this).Size, global::System.Convert.ToString);
+            }
+            if (content.Contains("Family"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)this).Family = (string) content.GetValueForProperty("Family",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)this).Family, global::System.Convert.ToString);
+            }
+            if (content.Contains("Capacity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)this).Capacity = (int?) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)this).Capacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializePSObject(content);
         }

@@ -13,6 +13,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdletPropertiesInternal
     {
 
+        /// <summary>Backing field for <see cref="Audience" /> property.</summary>
+        private string _audience;
+
+        /// <summary>
+        /// Specifies whether a script cmdlet is intended to be invoked only through automation or visible to customers
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string Audience { get => this._audience; }
+
         /// <summary>Backing field for <see cref="Description" /> property.</summary>
         private string _description;
 
@@ -20,11 +29,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string Description { get => this._description; }
 
+        /// <summary>Internal Acessors for Audience</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdletPropertiesInternal.Audience { get => this._audience; set { {_audience = value;} } }
+
         /// <summary>Internal Acessors for Description</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdletPropertiesInternal.Description { get => this._description; set { {_description = value;} } }
 
         /// <summary>Internal Acessors for Parameter</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptParameter> Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdletPropertiesInternal.Parameter { get => this._parameter; set { {_parameter = value;} } }
+
+        /// <summary>Internal Acessors for ProvisioningState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdletPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
 
         /// <summary>Internal Acessors for Timeout</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdletPropertiesInternal.Timeout { get => this._timeout; set { {_timeout = value;} } }
@@ -35,6 +50,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>Parameters the script will accept</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptParameter> Parameter { get => this._parameter; }
+
+        /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
+        private string _provisioningState;
+
+        /// <summary>The provisioning state of the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string ProvisioningState { get => this._provisioningState; }
 
         /// <summary>Backing field for <see cref="Timeout" /> property.</summary>
         private string _timeout;
@@ -53,6 +75,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
     public partial interface IScriptCmdletProperties :
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IJsonSerializable
     {
+        /// <summary>
+        /// Specifies whether a script cmdlet is intended to be invoked only through automation or visible to customers
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Specifies whether a script cmdlet is intended to be invoked only through automation or visible to customers",
+        SerializedName = @"audience",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Automation", "Any")]
+        string Audience { get;  }
         /// <summary>Description of the scripts functionality</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -75,6 +111,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"parameters",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptParameter) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptParameter> Parameter { get;  }
+        /// <summary>The provisioning state of the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The provisioning state of the resource.",
+        SerializedName = @"provisioningState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled")]
+        string ProvisioningState { get;  }
         /// <summary>Recommended time limit for execution</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -92,10 +140,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
     internal partial interface IScriptCmdletPropertiesInternal
 
     {
+        /// <summary>
+        /// Specifies whether a script cmdlet is intended to be invoked only through automation or visible to customers
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Automation", "Any")]
+        string Audience { get; set; }
         /// <summary>Description of the scripts functionality</summary>
         string Description { get; set; }
         /// <summary>Parameters the script will accept</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptParameter> Parameter { get; set; }
+        /// <summary>The provisioning state of the resource.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled")]
+        string ProvisioningState { get; set; }
         /// <summary>Recommended time limit for execution</summary>
         string Timeout { get; set; }
 

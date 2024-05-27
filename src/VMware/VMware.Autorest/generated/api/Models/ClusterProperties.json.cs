@@ -65,7 +65,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 return;
             }
-            __commonClusterProperties = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.CommonClusterProperties(json);
+            {_clusterSize = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNumber>("clusterSize"), out var __jsonClusterSize) ? (int?)__jsonClusterSize : _clusterSize;}
+            {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
+            {_clusterId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNumber>("clusterId"), out var __jsonClusterId) ? (int?)__jsonClusterId : _clusterId;}
+            {_host = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonArray>("hosts"), out var __jsonHosts) ? If( __jsonHosts as Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _host;}
+            {_vsanDatastoreName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("vsanDatastoreName"), out var __jsonVsanDatastoreName) ? (string)__jsonVsanDatastoreName : (string)_vsanDatastoreName;}
             AfterFromJson(json);
         }
 
@@ -100,7 +104,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 return container;
             }
-            __commonClusterProperties?.ToJson(container, serializationMode);
+            AddIf( null != this._clusterSize ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNumber((int)this._clusterSize) : null, "clusterSize" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._clusterId ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNumber((int)this._clusterId) : null, "clusterId" ,container.Add );
+            }
+            if (null != this._host)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.XNodeArray();
+                foreach( var __x in this._host )
+                {
+                    AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                }
+                container.Add("hosts",__w);
+            }
+            AddIf( null != (((object)this._vsanDatastoreName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._vsanDatastoreName.ToString()) : null, "vsanDatastoreName" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
