@@ -1,5 +1,5 @@
 # How-To
-This document describes how to develop for `Az.NetworkSecurityPerimeter`.
+This document helps describes how to develop for `Az.NetworkSecurityPerimeter`.
 
 ## Building `Az.NetworkSecurityPerimeter`
 To build, run the `build-module.ps1` at the root of the module directory. This will generate the proxy script cmdlets that are the cmdlets being exported by this module. After the build completes, the proxy script cmdlets will be output to the `exports` folder. To read more about the proxy script cmdlets, look at the [README.md](exports/README.md) in the `exports` folder.
