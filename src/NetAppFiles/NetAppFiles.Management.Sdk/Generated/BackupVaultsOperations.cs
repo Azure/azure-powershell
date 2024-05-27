@@ -629,10 +629,7 @@ namespace Microsoft.Azure.Management.NetApp
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "body");
             }
-            if (body != null)
-            {
-                body.Validate();
-            }
+
             if (this.Client.SubscriptionId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
