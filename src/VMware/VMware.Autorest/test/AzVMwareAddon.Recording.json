@@ -1,8 +1,8 @@
 {
-  "AzVMwareAddon+[NoContext]+List+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/addons/SRM?api-version=2023-09-01+1": {
+  "AzVMwareAddon+[NoContext]+List+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbe0c/addons/SRM?api-version=2023-09-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/addons/SRM?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbe0c/addons/SRM?api-version=2023-09-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"addonType\": \"SRM\",\r\n    \"licenseKey\": \"YourLicenseKeyValue\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -16,7 +16,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Mon, 27 May 2024 03:07:32 GMT" ]
+        "Date": [ "Mon, 27 May 2024 06:58:18 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -26,16 +26,16 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareAddon+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/addons/SRM?api-version=2023-09-01+2": {
+  "AzVMwareAddon+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbe0c/addons/SRM?api-version=2023-09-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/addons/SRM?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbe0c/addons/SRM?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "a48e842b-f86d-4660-a3e9-41e103f1cd6b" ],
+        "x-ms-client-request-id": [ "3d48c545-4f8b-46e6-ab7d-11b6841c3f9e" ],
         "CommandName": [ "Az.VMware.internal\\New-AzVMwareAddon" ],
         "FullCommandName": [ "New-AzVMwareAddon_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -48,7 +48,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Mon, 27 May 2024 03:08:02 GMT" ]
+        "Date": [ "Mon, 27 May 2024 06:58:48 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -58,16 +58,16 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareAddon+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/addons/SRM?api-version=2023-09-01+3": {
+  "AzVMwareAddon+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbe0c/addons/SRM?api-version=2023-09-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/addons/SRM?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbe0c/addons/SRM?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "a48e842b-f86d-4660-a3e9-41e103f1cd6b" ],
+        "x-ms-client-request-id": [ "3d48c545-4f8b-46e6-ab7d-11b6841c3f9e" ],
         "CommandName": [ "Az.VMware.internal\\New-AzVMwareAddon" ],
         "FullCommandName": [ "New-AzVMwareAddon_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -80,7 +80,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Mon, 27 May 2024 03:08:02 GMT" ]
+        "Date": [ "Mon, 27 May 2024 06:58:48 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -90,15 +90,15 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareAddon+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/addons?api-version=2023-09-01+4": {
+  "AzVMwareAddon+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbe0c/addons?api-version=2023-09-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/addons?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbe0c/addons?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "c3d2c608-6fb8-4bd0-b3ba-06100f66075d" ],
+        "x-ms-client-request-id": [ "c2f540f9-3218-44e8-890c-183740d68531" ],
         "CommandName": [ "Az.VMware.internal\\Get-AzVMwareAddon" ],
         "FullCommandName": [ "Get-AzVMwareAddon_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -112,7 +112,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Mon, 27 May 2024 03:08:02 GMT" ]
+        "Date": [ "Mon, 27 May 2024 06:58:48 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -122,15 +122,15 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareAddon+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/addons/vr?api-version=2023-09-01+1": {
+  "AzVMwareAddon+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbe0c/addons/vr?api-version=2023-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/addons/vr?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbe0c/addons/vr?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "9ce066da-88e3-47ef-927f-bdca6e4bafb0" ],
+        "x-ms-client-request-id": [ "5f659d4b-49fa-438b-84e5-390bd3470250" ],
         "CommandName": [ "Az.VMware.internal\\Get-AzVMwareAddon" ],
         "FullCommandName": [ "Get-AzVMwareAddon_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -144,7 +144,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Mon, 27 May 2024 03:08:02 GMT" ]
+        "Date": [ "Mon, 27 May 2024 06:58:48 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -154,10 +154,10 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareAddon+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloudcu3n/addons/SRM?api-version=2023-09-01+1": {
+  "AzVMwareAddon+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbo98/addons/SRM?api-version=2023-09-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloudcu3n/addons/SRM?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbo98/addons/SRM?api-version=2023-09-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"addonType\": \"SRM\",\r\n    \"licenseKey\": \"YourLicenseKeyValue\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -171,7 +171,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Mon, 27 May 2024 03:08:02 GMT" ]
+        "Date": [ "Mon, 27 May 2024 06:58:48 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -181,16 +181,16 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareAddon+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloudcu3n/addons/SRM?api-version=2023-09-01+2": {
+  "AzVMwareAddon+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbo98/addons/SRM?api-version=2023-09-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloudcu3n/addons/SRM?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbo98/addons/SRM?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "d8cb5e14-f430-4eaa-9c3e-05e7c09f4cce" ],
+        "x-ms-client-request-id": [ "3fbe1ed8-8af6-4a93-b1f4-2239df9ed09d" ],
         "CommandName": [ "Az.VMware.internal\\New-AzVMwareAddon" ],
         "FullCommandName": [ "New-AzVMwareAddon_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -203,7 +203,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Mon, 27 May 2024 03:08:32 GMT" ]
+        "Date": [ "Mon, 27 May 2024 06:59:19 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -213,16 +213,16 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareAddon+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloudcu3n/addons/SRM?api-version=2023-09-01+3": {
+  "AzVMwareAddon+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbo98/addons/SRM?api-version=2023-09-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloudcu3n/addons/SRM?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbo98/addons/SRM?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "8" ],
-        "x-ms-client-request-id": [ "d8cb5e14-f430-4eaa-9c3e-05e7c09f4cce" ],
+        "x-ms-client-request-id": [ "3fbe1ed8-8af6-4a93-b1f4-2239df9ed09d" ],
         "CommandName": [ "Az.VMware.internal\\New-AzVMwareAddon" ],
         "FullCommandName": [ "New-AzVMwareAddon_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -235,7 +235,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Mon, 27 May 2024 03:08:32 GMT" ]
+        "Date": [ "Mon, 27 May 2024 06:59:19 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -245,15 +245,15 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareAddon+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloudcu3n/addons/vr?api-version=2023-09-01+1": {
+  "AzVMwareAddon+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbo98/addons/vr?api-version=2023-09-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloudcu3n/addons/vr?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbo98/addons/vr?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "9" ],
-        "x-ms-client-request-id": [ "ffc8a6e0-dbae-4bcf-92e8-695cab492465" ],
+        "x-ms-client-request-id": [ "25cb4cea-37c8-4a92-8979-ddb69ccd1cf3" ],
         "CommandName": [ "Az.VMware.internal\\Remove-AzVMwareAddon" ],
         "FullCommandName": [ "Remove-AzVMwareAddon_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -267,7 +267,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Mon, 27 May 2024 03:08:32 GMT" ]
+        "Date": [ "Mon, 27 May 2024 06:59:19 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "0" ]

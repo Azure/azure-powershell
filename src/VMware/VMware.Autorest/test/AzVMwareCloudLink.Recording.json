@@ -1,9 +1,9 @@
 {
-  "AzVMwareCloudLink+[NoContext]+List+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/cloudLinks/cloudLink1?api-version=2023-09-01+1": {
+  "AzVMwareCloudLink+[NoContext]+List+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbe0c/cloudLinks/cloudLink1?api-version=2023-09-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/cloudLinks/cloudLink1?api-version=2023-09-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"linkedCloud\": \"/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloudcu3n\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbe0c/cloudLinks/cloudLink1?api-version=2023-09-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"linkedCloud\": \"/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbo98\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -16,7 +16,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Mon, 27 May 2024 03:09:36 GMT" ]
+        "Date": [ "Mon, 27 May 2024 07:00:21 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -26,16 +26,16 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareCloudLink+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/cloudLinks/cloudLink1?api-version=2023-09-01+2": {
+  "AzVMwareCloudLink+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbe0c/cloudLinks/cloudLink1?api-version=2023-09-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/cloudLinks/cloudLink1?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbe0c/cloudLinks/cloudLink1?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "20" ],
-        "x-ms-client-request-id": [ "52a9a1d6-c9d8-4120-9f9b-fd02c62ceff2" ],
+        "x-ms-client-request-id": [ "b80dc7ca-8e3d-46f3-9e1c-5a476420760e" ],
         "CommandName": [ "New-AzVMwareCloudLink" ],
         "FullCommandName": [ "New-AzVMwareCloudLink_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -48,7 +48,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Mon, 27 May 2024 03:10:08 GMT" ]
+        "Date": [ "Mon, 27 May 2024 07:00:51 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -58,15 +58,15 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareCloudLink+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/cloudLinks?api-version=2023-09-01+3": {
+  "AzVMwareCloudLink+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbe0c/cloudLinks?api-version=2023-09-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/cloudLinks?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbe0c/cloudLinks?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "21" ],
-        "x-ms-client-request-id": [ "143719bd-80bd-4d15-931e-f331fe2e7d3c" ],
+        "x-ms-client-request-id": [ "6a4d6a4b-c974-481f-b580-1c30376e771d" ],
         "CommandName": [ "Get-AzVMwareCloudLink" ],
         "FullCommandName": [ "Get-AzVMwareCloudLink_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -80,7 +80,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Mon, 27 May 2024 03:10:08 GMT" ]
+        "Date": [ "Mon, 27 May 2024 07:00:51 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -90,15 +90,15 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareCloudLink+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/cloudLinks/cloudLink1?api-version=2023-09-01+1": {
+  "AzVMwareCloudLink+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbe0c/cloudLinks/cloudLink1?api-version=2023-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/cloudLinks/cloudLink1?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbe0c/cloudLinks/cloudLink1?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "22" ],
-        "x-ms-client-request-id": [ "a44fb5e4-c39d-458c-a452-b01a3fd6b75d" ],
+        "x-ms-client-request-id": [ "225e58e3-f0f8-4c4c-b511-edc01ec5b94d" ],
         "CommandName": [ "Get-AzVMwareCloudLink" ],
         "FullCommandName": [ "Get-AzVMwareCloudLink_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -112,7 +112,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Mon, 27 May 2024 03:10:08 GMT" ]
+        "Date": [ "Mon, 27 May 2024 07:00:51 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -122,11 +122,11 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareCloudLink+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/cloudLinks/8kota3?api-version=2023-09-01+1": {
+  "AzVMwareCloudLink+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbe0c/cloudLinks/26fqx9?api-version=2023-09-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/cloudLinks/8kota3?api-version=2023-09-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"linkedCloud\": \"/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloudcu3n\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbe0c/cloudLinks/26fqx9?api-version=2023-09-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"linkedCloud\": \"/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbo98\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -139,7 +139,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Mon, 27 May 2024 03:10:08 GMT" ]
+        "Date": [ "Mon, 27 May 2024 07:00:51 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -149,16 +149,16 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareCloudLink+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/cloudLinks/8kota3?api-version=2023-09-01+2": {
+  "AzVMwareCloudLink+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbe0c/cloudLinks/26fqx9?api-version=2023-09-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/cloudLinks/8kota3?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbe0c/cloudLinks/26fqx9?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "24" ],
-        "x-ms-client-request-id": [ "e039a395-78a7-4be8-921b-fa53ddec52b0" ],
+        "x-ms-client-request-id": [ "b1b4a895-4cef-4cf6-b2e4-81122edae86d" ],
         "CommandName": [ "New-AzVMwareCloudLink" ],
         "FullCommandName": [ "New-AzVMwareCloudLink_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -171,7 +171,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Mon, 27 May 2024 03:10:38 GMT" ]
+        "Date": [ "Mon, 27 May 2024 07:01:22 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -181,15 +181,15 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareCloudLink+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/cloudLinks/8kota3?api-version=2023-09-01+1": {
+  "AzVMwareCloudLink+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbe0c/cloudLinks/26fqx9?api-version=2023-09-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupg38p9a/providers/Microsoft.AVS/privateClouds/azps_test_cloud1elg/cloudLinks/8kota3?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupob3cse/providers/Microsoft.AVS/privateClouds/azps_test_cloudbe0c/cloudLinks/26fqx9?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "25" ],
-        "x-ms-client-request-id": [ "59f97c87-a700-49f3-9609-10794775f658" ],
+        "x-ms-client-request-id": [ "b1a40e69-01c4-4632-9b67-7fe4f1dd2210" ],
         "CommandName": [ "Remove-AzVMwareCloudLink" ],
         "FullCommandName": [ "Remove-AzVMwareCloudLink_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -203,7 +203,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Mon, 27 May 2024 03:10:38 GMT" ]
+        "Date": [ "Mon, 27 May 2024 07:01:22 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "0" ]
