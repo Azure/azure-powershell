@@ -5,7 +5,8 @@ In this directory, run AutoRest:
     autorest --use:@autorest/powershell@4.x
   ```
 
-
+### AutoRest Configuration
+> see https://aka.ms/autorest
 ``` yaml
 isSdkGenerator: true
 powershell: true
