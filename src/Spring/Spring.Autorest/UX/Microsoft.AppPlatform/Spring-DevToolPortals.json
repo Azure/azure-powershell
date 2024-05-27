@@ -1,0 +1,95 @@
+{
+  "resourceType": "Spring/DevToolPortals",
+  "apiVersion": "2023-12-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.springapps"
+  },
+  "commands": [
+    {
+      "name": "Get-AzSpringDevToolPortal",
+      "description": "Get the Application Live  and its properties.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/DevToolPortals/{devToolPortalName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.springapps/get-azspringdevtoolportal"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-ServiceName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the Application Live  and its properties.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.devToolPortalName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServiceName",
+              "value": "[Path.serviceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzSpringDevToolPortal",
+      "description": "Disable the default Dev Tool Portal.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/DevToolPortals/{devToolPortalName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.springapps/remove-azspringdevtoolportal"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-ServiceName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Disable the default Dev Tool Portal.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.devToolPortalName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServiceName",
+              "value": "[Path.serviceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

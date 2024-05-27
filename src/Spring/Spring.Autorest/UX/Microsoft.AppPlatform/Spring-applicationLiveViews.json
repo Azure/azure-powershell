@@ -1,0 +1,95 @@
+{
+  "resourceType": "Spring/applicationLiveViews",
+  "apiVersion": "2023-12-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.springapps"
+  },
+  "commands": [
+    {
+      "name": "Get-AzSpringApplicationLiveView",
+      "description": "Get the Application Live  and its properties.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationLiveViews/{applicationLiveViewName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.springapps/get-azspringapplicationliveview"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-ServiceName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the Application Live  and its properties.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.applicationLiveViewName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServiceName",
+              "value": "[Path.serviceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzSpringApplicationLiveView",
+      "description": "Disable the default Application Live View.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationLiveViews/{applicationLiveViewName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.springapps/remove-azspringapplicationliveview"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-ServiceName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Disable the default Application Live View.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.applicationLiveViewName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServiceName",
+              "value": "[Path.serviceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
