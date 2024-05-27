@@ -61,18 +61,17 @@ function Test-PolicyCrud
     Assert-AreEqual $managedRule1.RuleSetVersion $retrievedPolicy.ManagedRules[0].RuleSetVersion
     Assert-AreEqual $managedRule2.RuleSetType $retrievedPolicy.ManagedRules[1].RuleSetType
     Assert-AreEqual $managedRule2.RuleSetVersion $retrievedPolicy.ManagedRules[1].RuleSetVersion
-
+    Assert-AreEqual "Enabled" $retrievedPolicy.LogScrubbing.State
+    
     $customRule2 = New-AzFrontDoorWafCustomRuleObject -Name "Rule2" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Log -Priority 2
-    $LogScrubbingRule = New-AzFrontDoorWafLogScrubbingRuleObject -MatchVariable "RequestHeaderNames" -SelectorMatchOperator "EqualsAny" -State "Disabled"
-    $logscrubbingSetting = New-AzFrontDoorWafLogScrubbingSettingObject -State Enabled -ScrubbingRule @($LogScrubbingRule)
-
-    $updatedPolicy = Update-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule2 -LogScrubbingSetting $logscrubbingSetting
+    $updatedPolicy = Update-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule2 -LogScrubbingSetting @{}
     Assert-NotNull $updatedPolicy
     Assert-AreEqual $Name $updatedPolicy.Name
     Assert-AreEqual $customRule2.Name $updatedPolicy.CustomRules[0].Name
     Assert-AreEqual $customRule2.Action $updatedPolicy.CustomRules[0].Action
     Assert-AreEqual $customRule2.Priority $updatedPolicy.CustomRules[0].Priority
     Assert-AreEqual $managedRule1.RuleGroupOverrides[0].ManagedRuleOverrides[0].Action $updatedPolicy.ManagedRules[0].RuleGroupOverrides[0].ManagedRuleOverrides[0].Action
+    Assert-Null $updatedPolicy.LogScrubbing
 
     $customRule3 = New-AzFrontDoorWafCustomRuleObject -Name "Rule3" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Log -Priority 3 -EnabledState Disabled
     $updatedPolicy = Update-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule3

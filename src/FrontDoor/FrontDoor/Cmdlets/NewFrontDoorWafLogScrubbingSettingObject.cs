@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// List of log scrubbing rules applied to the Web Application Firewall logs.
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "List of log scrubbing rules applied to the Web Application Firewall logs.")]
+        [AllowEmptyCollection]
         public PSFrontDoorWafLogScrubbingRule[] ScrubbingRule { get; set; }
 
         /// State of the log scrubbing config. Default value is Enabled.
