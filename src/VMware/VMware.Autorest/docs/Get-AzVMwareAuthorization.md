@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzVMwareAuthorization
 
 ## SYNOPSIS
-Get an ExpressRoute Circuit Authorization by name in a private cloud
+Get a ExpressRouteAuthorization
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ Get-AzVMwareAuthorization -Name <String> -PrivateCloudInputObject <IVMwareIdenti
 ```
 
 ## DESCRIPTION
-Get an ExpressRoute Circuit Authorization by name in a private cloud
+Get a ExpressRouteAuthorization
 
 ## EXAMPLES
 
@@ -86,7 +86,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -101,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the ExpressRoute Circuit Authorization in the private cloud
+Name of the ExpressRoute Circuit Authorization
 
 ```yaml
 Type: System.String
@@ -117,7 +116,6 @@ Accept wildcard characters: False
 
 ### -PrivateCloudInputObject
 Identity Parameter
-To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -164,6 +162,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
