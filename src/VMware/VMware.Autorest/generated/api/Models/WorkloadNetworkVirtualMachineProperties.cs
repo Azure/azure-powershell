@@ -20,8 +20,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string DisplayName { get => this._displayName; set => this._displayName = value; }
 
+        /// <summary>Internal Acessors for ProvisioningState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVirtualMachinePropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
+
         /// <summary>Internal Acessors for VMType</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVirtualMachinePropertiesInternal.VMType { get => this._vMType; set { {_vMType = value;} } }
+
+        /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
+        private string _provisioningState;
+
+        /// <summary>The provisioning state of the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string ProvisioningState { get => this._provisioningState; }
 
         /// <summary>Backing field for <see cref="VMType" /> property.</summary>
         private string _vMType;
@@ -51,6 +61,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"displayName",
         PossibleTypes = new [] { typeof(string) })]
         string DisplayName { get; set; }
+        /// <summary>The provisioning state of the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The provisioning state of the resource.",
+        SerializedName = @"provisioningState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Building", "Deleting", "Updating")]
+        string ProvisioningState { get;  }
         /// <summary>Virtual machine type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -71,6 +93,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
     {
         /// <summary>Display name of the VM.</summary>
         string DisplayName { get; set; }
+        /// <summary>The provisioning state of the resource.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Building", "Deleting", "Updating")]
+        string ProvisioningState { get; set; }
         /// <summary>Virtual machine type.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("REGULAR", "EDGE", "SERVICE")]
         string VMType { get; set; }

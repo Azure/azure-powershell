@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Enable or disable DRS-driven VM movement restriction")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/virtualMachines/{virtualMachineId}/restrictMovement", ApiVersion = "2023-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/virtualMachines/{virtualMachineId}/restrictMovement", ApiVersion = "2023-09-01")]
     public partial class LockAzVMwareVirtualMachineMovement_RestrictViaIdentityClusterExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IContext
@@ -157,12 +157,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// <summary>Backing field for <see cref="VirtualMachineId" /> property.</summary>
         private string _virtualMachineId;
 
-        /// <summary>Virtual Machine identifier</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Virtual Machine identifier")]
+        /// <summary>ID of the virtual machine.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "ID of the virtual machine.")]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Virtual Machine identifier",
+        Description = @"ID of the virtual machine.",
         SerializedName = @"virtualMachineId",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Path)]
