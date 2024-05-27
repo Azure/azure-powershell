@@ -1,5 +1,5 @@
 @{
-  GUID = '791e56df-fdca-4b46-9e58-7e4a7c4e8701'
+  GUID = 'bd437770-fab7-4bb0-9976-5e4f32deae23'
   RootModule = './Az.Metricdata.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'

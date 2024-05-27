@@ -1,5 +1,5 @@
 @{
-  GUID = '5d68afef-2016-4216-9fb2-5e000f70d2be'
+  GUID = '95624dd6-2184-4886-a492-5588342c3255'
   RootModule = './Az.ScheduledQueryRule.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'

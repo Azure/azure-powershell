@@ -1,5 +1,5 @@
 @{
-  GUID = 'e0f28b9c-6a6b-4b66-833e-c01780a5577b'
+  GUID = 'd2bca95b-9669-4f22-bf88-7a72f8db5e08'
   RootModule = './Az.KeyVault.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'

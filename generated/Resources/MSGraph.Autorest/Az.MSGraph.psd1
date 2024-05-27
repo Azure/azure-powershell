@@ -1,5 +1,5 @@
 @{
-  GUID = '9c1e9bcf-5175-4d03-99c7-a7f2f7040f46'
+  GUID = '4e1952fb-f0b0-45fd-a516-b2633d4e8b7b'
   RootModule = './Az.MSGraph.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
