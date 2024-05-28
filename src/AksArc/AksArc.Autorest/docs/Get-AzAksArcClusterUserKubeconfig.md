@@ -13,8 +13,8 @@ Lists the user credentials of the provisioned cluster (can only be used within p
 ## SYNTAX
 
 ```
-Get-AzAksArcClusterUserKubeconfig -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzAksArcClusterUserKubeconfig -ClusterName <String> -ResourceGroupName <String> [-FilePath <String>]
+ [-SubscriptionId <String>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,6 +28,13 @@ Get-AzAksArcClusterUserKubeconfig -ClusterName azps_test_cluster -ResourceGroupN
 ```
 
 This command retrieves the user kubeconfig for the provisioned cluster.
+
+### Example 2: Get the user kubeconfig for the provisioned cluster and saves to the specified file. 
+```powershell
+Get-AzAksArcClusterUserKubeconfig -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -FileName "C:\Users\sampleuser\samplekubeconfig"
+```
+
+This command retrieves the user kubeconfig for the provisioned cluster and saves to the specified file.
 
 ## PARAMETERS
 
@@ -55,6 +62,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FilePath
+The path to save the kubeconfig to.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

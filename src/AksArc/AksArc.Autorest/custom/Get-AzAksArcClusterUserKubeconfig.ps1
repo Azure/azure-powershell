@@ -52,6 +52,12 @@ param(
     ${SubscriptionId},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
+    [System.String]
+    # The path to save the kubeconfig to. 
+    ${FilePath},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command as a job
@@ -109,6 +115,15 @@ process {
     $null = $PSBoundParameters.Remove("ResourceGroupName")
     $null = $PSBoundParameters.Remove("ClusterName")
     $null = $PSBoundParameters.Add("ConnectedClusterResourceUri", $Scope)
-    Az.AksArc.internal\Get-AzAksArcClusterUserKubeconfig @PSBoundParameters
+
+    $null = $PSBoundParameters.Remove("FilePath")
+    $result = Az.AksArc.internal\Get-AzAksArcClusterUserKubeconfig @PSBoundParameters
+    $kubeconfig = [System.Text.Encoding]::UTF8.GetString($result.kubeconfig.value)
+
+    if ($FilePath) {
+        $kubeconfig > $FilePath
+    } else {
+        $kubeconfig
+    }
 }
 }
