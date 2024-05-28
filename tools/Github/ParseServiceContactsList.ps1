@@ -19,7 +19,7 @@
 #>
 param(
     [Parameter(Mandatory = $true)]
-    [string]$ADOToken
+    [string] $AccessToken
 )
 
 function InitializeRequiredPackages {
@@ -37,7 +37,6 @@ function InitializeRequiredPackages {
     $requiredPackages = @(
         @{ PackageName = "Newtonsoft.Json"; PackageVersion = "13.0.2"; DllName = "Newtonsoft.Json.dll" },
         @{ PackageName = "YamlDotNet"; PackageVersion = "13.2.0"; DllName = "YamlDotNet.dll" }
-
     )
 
     $requiredPackages | ForEach-Object {
@@ -51,7 +50,7 @@ function InitializeRequiredPackages {
 
 # get wiki content
 $username = ""
-$password = $ADOToken
+$password = $AccessToken
 $pair = "{0}:{1}" -f ($username, $password)
 $bytes = [System.Text.Encoding]::ASCII.GetBytes($pair)
 $token = [System.Convert]::ToBase64String($bytes)
