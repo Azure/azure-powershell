@@ -23,9 +23,9 @@ jobs:
     - name: sync generation
       shell: pwsh
       run: |
-        /*
+        <#
           login as bot
-        */
+        #>
         $commitId = ${{ github.sha }}
         $repoRoot = ${{ github.workspace }}
 
@@ -33,9 +33,9 @@ jobs:
         git checkout origin/future
         git cherry-pick $commitId
         git reset HEAD~1
-        /*
+        <#
           calculate changed modules
-        */
+        #>
         $modulePaths = @()
         git status --short | ForEach-Object { $modulePaths += $_.substring($_.IndexOf("src"), $_.IndexOf(".Autorest")+6) }
         $modulePaths | Select-Object -Unique
