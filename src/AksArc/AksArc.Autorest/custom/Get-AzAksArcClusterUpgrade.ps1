@@ -20,14 +20,14 @@ Gets the upgrade profile of a provisioned cluster
 .Description
 Gets the upgrade profile of a provisioned cluster
 .Example
-Get-AzAksArcClusterUpgrades -ClusterName azps_test_cluster -ResourceGroup azps_test_group
+Get-AzAksArcClusterUpgrade -ClusterName azps_test_cluster -ResourceGroupName azps_test_group
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterUpgradeProfile
 .Link
-https://learn.microsoft.com/powershell/module/az.aksarc/get-azaksarcclusterupgrades
+https://learn.microsoft.com/powershell/module/az.aksarc/get-azaksarcclusterupgrade
 #>
-function Get-AzAksArcClusterUpgrades {
+function Get-AzAksArcClusterUpgrade {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedClusterUpgradeProfile])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
@@ -97,6 +97,6 @@ process {
     $null = $PSBoundParameters.Remove("ResourceGroupName")
     $null = $PSBoundParameters.Remove("ClusterName")
     $null = $PSBoundParameters.Add("ConnectedClusterResourceUri", $Scope)
-    Az.AksArc.internal\Get-AzAksArcClusterUpgrades @PSBoundParameters
+    Az.AksArc.internal\Get-AzAksArcClusterUpgrade @PSBoundParameters
 }
 }

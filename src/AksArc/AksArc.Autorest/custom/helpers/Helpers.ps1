@@ -27,11 +27,11 @@ function CreateConnectedCluster {
         [System.String] $ResourceGroupName,
         [System.String] $ClusterName, 
         [System.String] $Location,
-        [System.String[]] ${adminGroupObjectIDs}
+        [System.String[]] ${AdminGroupObjectID}
     )
 
     # Validate GUIDS
-    foreach ($id in $adminGroupObjectIDs) {
+    foreach ($id in $AdminGroupObjectID) {
         if ($id -match $guidRegex) {
             continue
         } else {
@@ -40,11 +40,11 @@ function CreateConnectedCluster {
     }
 
     if ($invalidGuid) {
-        throw "Invalid adminGroupObjectIDs. Not a valid GUID."
+        throw "Invalid AdminGroupObjectID. Not a valid GUID."
         return
-    } elseif ($adminGroupObjectIDs.Length -ne 0) {
-        $adminGroupObjectIDsArr = $adminGroupObjectIDs -join '", "'
-        $adminGroupObjectIDsArr = '"' + $adminGroupObjectIDsArr + '"'
+    } elseif ($AdminGroupObjectID.Length -ne 0) {
+        $AdminGroupObjectIDArr = $AdminGroupObjectID -join '", "'
+        $AdminGroupObjectIDArr = '"' + $AdminGroupObjectIDArr + '"'
     }
 
     $APIVersion = "2024-01-01"
@@ -64,7 +64,7 @@ function CreateConnectedCluster {
         },
         "aadProfile": {
             "enableAzureRBAC": false, 
-            "adminGroupObjectIDs": [$adminGroupObjectIDsArr]
+            "adminGroupObjectIDs": [$AdminGroupObjectIDArr]
         }
     }
 }

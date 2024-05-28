@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.AksArc
-online version: https://learn.microsoft.com/powershell/module/az.aksarc/get-azaksarcclusterupgrades
+online version: https://learn.microsoft.com/powershell/module/az.aksarc/get-azaksarcclusterupgrade
 schema: 2.0.0
 ---
 
-# Get-AzAksArcClusterUpgrades
+# Get-AzAksArcClusterUpgrade
 
 ## SYNOPSIS
 Gets the upgrade profile of a provisioned cluster
@@ -13,7 +13,7 @@ Gets the upgrade profile of a provisioned cluster
 ## SYNTAX
 
 ```
-Get-AzAksArcClusterUpgrades -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Get-AzAksArcClusterUpgrade -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Gets the upgrade profile of a provisioned cluster
 
 ### Example 1: Get all potential kubernetes version upgrades on the provisioned cluster. 
 ```powershell
-Get-AzAksArcClusterUpgrades -ClusterName azps_test_cluster -ResourceGroup azps_test_group
+Get-AzAksArcClusterUpgrade -ClusterName azps_test_cluster -ResourceGroupName azps_test_group
 ```
 
 This command gets the potential upgrades that can be done on the provisioned cluster.

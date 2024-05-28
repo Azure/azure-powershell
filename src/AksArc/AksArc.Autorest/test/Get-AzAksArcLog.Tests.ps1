@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Get-AzAksArcClusterUpgrades'))
+if(($null -eq $TestName) -or ($TestName -contains 'Get-AzAksArcLog'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzAksArcClusterUpgrades.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzAksArcLog.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzAksArcClusterUpgrades')
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzAksArcClusterUpgrades' {
+Describe 'Get-AzAksArcLog' {
     It 'Get' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

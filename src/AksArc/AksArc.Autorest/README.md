@@ -71,6 +71,24 @@ directive:
       verb: Set
     remove: true
 
+# Fix Operation ID's
+  - from: swagger-document
+    where: $.paths["/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/skus/default"].get
+    transform: >-
+      $["operationId"] = "VMSkus_Get"
+  - from: swagger-document
+    where: $.paths["/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/skus/default"].put
+    transform: >-
+      $["operationId"] = "VMSkus_Create"
+  - from: swagger-document
+    where: $.paths["/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/kubernetesVersions/default"].get
+    transform: >-
+      $["operationId"] = "KubernetesVersions_Get"
+  - from: swagger-document
+    where: $.paths["/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/kubernetesVersions/default"].put
+    transform: >-
+      $["operationId"] = "KubernetesVersions_Create"
+
 # Rename Subjects
   - where:
       subject: AgentPool
@@ -87,7 +105,7 @@ directive:
   - where:
       subject: ProvisionedClusterInstanceUpgradeProfile
     set:
-      subject: ClusterUpgrades
+      subject: ClusterUpgrade
     hide: true
 
   - where:
@@ -121,11 +139,32 @@ directive:
     remove: true
 
   - where:
+      verb: New
+      subject: VMSku
+    remove: true
+
+  - where:
+      verb: New
+      subject: KubernetesVersion
+    remove: true
+
+  - where:
       verb: Update
-      subject: ""
+      subject: VMSku
+    remove: true
+
+  - where:
+      verb: Update
+      subject: KubernetesVersion
     remove: true
 
 # Rename parameters
+  - where:
+      subject: VirtualNetwork
+      parameter-name: ExtendedLocationName
+    set: 
+      parameter-name: CustomLocationID
+  
   - where:
       subject: VirtualNetwork
       parameter-name: ExtendedLocationName

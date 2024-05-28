@@ -15,38 +15,41 @@ Create the provisioned cluster instance
 ### CreateExpanded (Default)
 ```
 New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -ControlPlaneEndpointHostIP <String>
- -CustomLocationName <String> -Location <String> -VnetId <String> [-SubscriptionId <String>]
- [-adminGroupObjectIDs <String[]>] [-ClusterVMAccessProfileAuthorizedIprange <String>]
- [-ControlPlaneCount <Int32>] [-ControlPlaneVMSize <String>] [-KubernetesVersion <String>]
- [-LicenseProfileAzureHybridBenefit <String>] [-LoadBalancerProfileCount <Int32>]
- [-NetworkProfilePodCidr <String>] [-NfCsiDriverEnabled] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>]
- [-SmbCsiDriverEnabled] [-SshKeyValue <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -CustomLocationName <String> -VnetId <String> [-MaxCount <Int32>] [-MaxPod <Int32>] [-MinCount <Int32>]
+ [-SubscriptionId <String>] [-AdminGroupObjectID <String[]>]
+ [-ClusterVMAccessProfileAuthorizedIprange <String>] [-ControlPlaneCount <Int32>]
+ [-ControlPlaneVMSize <String>] [-EnableAutoScaling] [-EnableAzureHybridBenefit] [-KubernetesVersion <String>]
+ [-LoadBalancerProfileCount <Int32>] [-Location <String>] [-NetworkProfilePodCidr <String>]
+ [-NfCsiDriverEnabled] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>] [-SmbCsiDriverEnabled]
+ [-SshKeyValue <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### AutoScaling
 ```
 New-AzAksArcCluster -ClusterName <String> -MaxCount <Int32> -MaxPod <Int32> -MinCount <Int32>
  -ResourceGroupName <String> -ControlPlaneEndpointHostIP <String> -CustomLocationName <String>
- -EnableAutoScaling -Location <String> -VnetId <String> [-SubscriptionId <String>]
- [-adminGroupObjectIDs <String[]>] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>]
+ -EnableAutoScaling -VnetId <String> [-SubscriptionId <String>] [-AdminGroupObjectID <String[]>]
+ [-EnableAzureHybridBenefit] [-Location <String>] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -ControlPlaneEndpointHostIP <String>
- -CustomLocationName <String> -JsonFilePath <String> -Location <String> -VnetId <String>
- [-SubscriptionId <String>] [-adminGroupObjectIDs <String[]>] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -CustomLocationName <String> -JsonFilePath <String> -VnetId <String> [-SubscriptionId <String>]
+ [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit] [-Location <String>] [-NodeLabel <Hashtable>]
+ [-NodeTaint <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -ControlPlaneEndpointHostIP <String>
- -CustomLocationName <String> -JsonString <String> -Location <String> -VnetId <String>
- [-SubscriptionId <String>] [-adminGroupObjectIDs <String[]>] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -CustomLocationName <String> -JsonString <String> -VnetId <String> [-SubscriptionId <String>]
+ [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit] [-Location <String>] [-NodeLabel <Hashtable>]
+ [-NodeTaint <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,14 +87,14 @@ Enable SmbCsi driver in provisioned cluster.
 
 ### Example 5: Enable azure hybrid benefit
 ```powershell
-New-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -LicenseProfileAzureHybridBenefit
+New-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -EnableAzureHybridBenefit
 ```
 
 Enable Azure Hybrid User Benefits feature for a provisioned cluster.
 
 ### Example 6: Disable azure hybrid benefit
 ```powershell
-New-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -LicenseProfileAzureHybridBenefit:$false
+New-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -EnableAzureHybridBenefit:$false
 ```
 
 Disable Azure Hybrid User Benefits feature for a provisioned cluster.
@@ -119,14 +122,14 @@ Disable SmbCsi driver in provisioned cluster.
 
 ### Example 10: New aad admin GUIDS
 ```powershell
-New-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -adminGroupObjectIDs @("2e00cb64-66d8-4c9c-92d8-6462caf99e33", "1b28ff4f-f7c5-4aaa-aa79-ba8b775ab443")
+New-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -AdminGroupObjectID @("2e00cb64-66d8-4c9c-92d8-6462caf99e33", "1b28ff4f-f7c5-4aaa-aa79-ba8b775ab443")
 ```
 
 New aad admin GUIDS.
 
 ## PARAMETERS
 
-### -adminGroupObjectIDs
+### -AdminGroupObjectID
 
 
 ```yaml
@@ -269,10 +272,26 @@ The default value is true.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AutoScaling
+Parameter Sets: AutoScaling, CreateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAzureHybridBenefit
+Indicates whether Azure Hybrid Benefit is opted in.
+Default value is false
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -324,22 +343,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LicenseProfileAzureHybridBenefit
-Indicates whether Azure Hybrid Benefit is opted in.
-Default value is false
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -LoadBalancerProfileCount
 Number of HA Proxy load balancer VMs.
 The default value is 0.
@@ -364,7 +367,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -376,7 +379,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Int32
-Parameter Sets: AutoScaling
+Parameter Sets: AutoScaling, CreateExpanded
 Aliases:
 
 Required: True
@@ -391,7 +394,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Int32
-Parameter Sets: AutoScaling
+Parameter Sets: AutoScaling, CreateExpanded
 Aliases:
 
 Required: True
@@ -406,7 +409,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Int32
-Parameter Sets: AutoScaling
+Parameter Sets: AutoScaling, CreateExpanded
 Aliases:
 
 Required: True

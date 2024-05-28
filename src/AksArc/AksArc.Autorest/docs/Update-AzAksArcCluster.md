@@ -15,32 +15,31 @@ Update the provisioned cluster instance
 ### UpdateExpanded (Default)
 ```
 Update-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-adminGroupObjectIDs <String[]>] [-ControlPlaneCount <Int32>] [-LicenseProfileAzureHybridBenefit <String>]
+ [-AdminGroupObjectID <String[]>] [-ControlPlaneCount <Int32>] [-EnableAzureHybridBenefit]
  [-NfCsiDriverEnabled] [-SmbCsiDriverEnabled] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AutoScaling
 ```
 Update-AzAksArcCluster -ClusterName <String> -MaxCount <Int32> -MinCount <Int32> -ResourceGroupName <String>
- -EnableAutoScaling [-SubscriptionId <String>] [-adminGroupObjectIDs <String[]>] [-ControlPlaneCount <Int32>]
- [-LicenseProfileAzureHybridBenefit <String>] [-NfCsiDriverEnabled] [-SmbCsiDriverEnabled] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -EnableAutoScaling [-SubscriptionId <String>] [-AdminGroupObjectID <String[]>] [-ControlPlaneCount <Int32>]
+ [-EnableAzureHybridBenefit] [-NfCsiDriverEnabled] [-SmbCsiDriverEnabled] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Upgrade
 ```
-Update-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-adminGroupObjectIDs <String[]>] [-ControlPlaneCount <Int32>] [-KubernetesVersion <String>]
- [-LicenseProfileAzureHybridBenefit <String>] [-NfCsiDriverEnabled] [-SmbCsiDriverEnabled] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -KubernetesVersion <String>
+ [-SubscriptionId <String>] [-AdminGroupObjectID <String[]>] [-ControlPlaneCount <Int32>]
+ [-EnableAzureHybridBenefit] [-NfCsiDriverEnabled] [-SmbCsiDriverEnabled] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Upgrade2
 ```
-Update-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-adminGroupObjectIDs <String[]>] [-ControlPlaneCount <Int32>] [-LicenseProfileAzureHybridBenefit <String>]
- [-NfCsiDriverEnabled] [-SmbCsiDriverEnabled] [-Upgrade] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -Upgrade [-SubscriptionId <String>]
+ [-AdminGroupObjectID <String[]>] [-ControlPlaneCount <Int32>] [-EnableAzureHybridBenefit]
+ [-NfCsiDriverEnabled] [-SmbCsiDriverEnabled] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,14 +77,14 @@ Enable SmbCsi driver in provisioned cluster.
 
 ### Example 5: Enable azure hybrid benefit
 ```powershell
-Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -LicenseProfileAzureHybridBenefit
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -EnableAzureHybridBenefit
 ```
 
 Enable Azure Hybrid User Benefits feature for a provisioned cluster.
 
 ### Example 6: Disable azure hybrid benefit
 ```powershell
-Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -LicenseProfileAzureHybridBenefit:$false
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -EnableAzureHybridBenefit:$false
 ```
 
 Disable Azure Hybrid User Benefits feature for a provisioned cluster.
@@ -113,14 +112,28 @@ Disable SmbCsi driver in provisioned cluster.
 
 ### Example 10: Update aad admin GUIDS
 ```powershell
-Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -adminGroupObjectIDs @("2e00cb64-66d8-4c9c-92d8-6462caf99e33", "1b28ff4f-f7c5-4aaa-aa79-ba8b775ab443")
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -AdminGroupObjectID @("2e00cb64-66d8-4c9c-92d8-6462caf99e33", "1b28ff4f-f7c5-4aaa-aa79-ba8b775ab443")
 ```
 
 Update aad admin GUIDS.
 
+### Example 11: Upgrade kubernetes version to latest possible
+```powershell
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Upgrade
+```
+
+Upgrade cluster to latest kubernetes version.
+
+### Example 12: Upgrade kubernetes version to specified version
+```powershell
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -KubernetesVersion "1.28.5"
+```
+
+Upgrade cluster to the specified kubernetes version.
+
 ## PARAMETERS
 
-### -adminGroupObjectIDs
+### -AdminGroupObjectID
 
 
 ```yaml
@@ -197,12 +210,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -KubernetesVersion
-The version of Kubernetes in use by the provisioned cluster.
+### -EnableAzureHybridBenefit
+Indicates whether Azure Hybrid Benefit is opted in.
+Default value is false
 
 ```yaml
-Type: System.String
-Parameter Sets: Upgrade
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -212,16 +226,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LicenseProfileAzureHybridBenefit
-Indicates whether Azure Hybrid Benefit is opted in.
-Default value is false
+### -KubernetesVersion
+The version of Kubernetes in use by the provisioned cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Upgrade
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -344,7 +357,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Upgrade2
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

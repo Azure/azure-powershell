@@ -17,10 +17,7 @@ Gets the provisioned cluster instance
 ### [Get-AzAksArcClusterAdminKubeconfig](Get-AzAksArcClusterAdminKubeconfig.md)
 Lists the admin credentials of the provisioned cluster (can only be used within private network)
 
-### [Get-AzAksArcClusterLogs](Get-AzAksArcClusterLogs.md)
-Gets the provisioned cluster instance
-
-### [Get-AzAksArcClusterUpgrades](Get-AzAksArcClusterUpgrades.md)
+### [Get-AzAksArcClusterUpgrade](Get-AzAksArcClusterUpgrade.md)
 Gets the upgrade profile of a provisioned cluster
 
 ### [Get-AzAksArcClusterUserKubeconfig](Get-AzAksArcClusterUserKubeconfig.md)
@@ -28,6 +25,9 @@ Lists the user credentials of the provisioned cluster (can only be used within p
 
 ### [Get-AzAksArcKubernetesVersion](Get-AzAksArcKubernetesVersion.md)
 Lists the supported kubernetes versions for the specified custom location
+
+### [Get-AzAksArcLog](Get-AzAksArcLog.md)
+Gets the provisioned cluster instance
 
 ### [Get-AzAksArcNodepool](Get-AzAksArcNodepool.md)
 Gets the specified agent pool in the provisioned cluster
@@ -46,9 +46,6 @@ Deletes the provisioned cluster instance
 
 ### [Remove-AzAksArcNodepool](Remove-AzAksArcNodepool.md)
 Deletes the specified agent pool in the provisioned cluster
-
-### [Update-AzAksArc](Update-AzAksArc.md)
-Puts the default VM skus resource type (one time operation, before listing the VM skus)
 
 ### [Update-AzAksArcCluster](Update-AzAksArcCluster.md)
 Update the provisioned cluster instance

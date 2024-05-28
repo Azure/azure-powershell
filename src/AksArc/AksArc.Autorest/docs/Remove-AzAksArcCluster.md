@@ -22,9 +22,9 @@ Deletes the provisioned cluster instance
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove provisioned cluster
 ```powershell
-Remove-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroup azps_test_group
+Remove-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group
 ```
 
 Deletes the provisioned cluster.

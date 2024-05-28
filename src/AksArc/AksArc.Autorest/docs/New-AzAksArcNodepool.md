@@ -15,9 +15,9 @@ Create the agent pool in the provisioned cluster
 ### CreateExpanded (Default)
 ```
 New-AzAksArcNodepool -ClusterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Count <Int32>] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>]
- [-OSSku <String>] [-OSType <String>] [-Tag <Hashtable>] [-VMSize <String>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Count <Int32>] [-EnableAutoScaling] [-MaxCount <Int32>] [-MinCount <Int32>]
+ [-NodeLabel <Hashtable>] [-NodeTaint <String[]>] [-OSSku <String>] [-OSType <String>] [-Tag <Hashtable>]
+ [-VMSize <String>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AutoScaling
@@ -54,10 +54,6 @@ Create the agent pool in the provisioned cluster
 ### Example 1: Create a nodepool
 ```powershell
 New-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Name azps_test_nodepool_example
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 Adds a nodepool in the provisioned cluster with default configuration.
@@ -123,7 +119,7 @@ Default value is false
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AutoScaling
+Parameter Sets: AutoScaling, CreateExpanded
 Aliases:
 
 Required: True
@@ -183,7 +179,7 @@ The maximum number of nodes for auto-scaling
 
 ```yaml
 Type: System.Int32
-Parameter Sets: AutoScaling
+Parameter Sets: AutoScaling, CreateExpanded
 Aliases:
 
 Required: True
@@ -198,7 +194,7 @@ The minimum number of nodes for auto-scaling
 
 ```yaml
 Type: System.Int32
-Parameter Sets: AutoScaling
+Parameter Sets: AutoScaling, CreateExpanded
 Aliases:
 
 Required: True

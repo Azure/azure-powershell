@@ -28,14 +28,14 @@ Enable SmbCsi driver in provisioned cluster.
 
 ### Example 5: Enable azure hybrid benefit
 ```powershell
-Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -LicenseProfileAzureHybridBenefit
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -EnableAzureHybridBenefit
 ```
 
 Enable Azure Hybrid User Benefits feature for a provisioned cluster.
 
 ### Example 6: Disable azure hybrid benefit
 ```powershell
-Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -LicenseProfileAzureHybridBenefit:$false
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -EnableAzureHybridBenefit:$false
 ```
 
 Disable Azure Hybrid User Benefits feature for a provisioned cluster.
@@ -64,20 +64,24 @@ Disable SmbCsi driver in provisioned cluster.
 
 ### Example 10: Update aad admin GUIDS
 ```powershell
-Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -adminGroupObjectIDs @("2e00cb64-66d8-4c9c-92d8-6462caf99e33", "1b28ff4f-f7c5-4aaa-aa79-ba8b775ab443")
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -AdminGroupObjectID @("2e00cb64-66d8-4c9c-92d8-6462caf99e33", "1b28ff4f-f7c5-4aaa-aa79-ba8b775ab443")
 ```
+
+Update aad admin GUIDS. 
 
 ### Example 11: Upgrade kubernetes version to latest possible
 ```powershell
 Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Upgrade
 ```
 
+Upgrade cluster to latest kubernetes version. 
+
 ### Example 12: Upgrade kubernetes version to specified version
 ```powershell
 Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -KubernetesVersion "1.28.5"
 ```
 
-Update aad admin GUIDS. 
+Upgrade cluster to the specified kubernetes version. 
 
 
 

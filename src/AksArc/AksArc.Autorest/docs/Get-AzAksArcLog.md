@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.AksArc
-online version: https://learn.microsoft.com/powershell/module/az.aksarc/get-azaksarcclusterlogs
+online version: https://learn.microsoft.com/powershell/module/az.aksarc/get-azaksarclog
 schema: 2.0.0
 ---
 
-# Get-AzAksArcClusterLogs
+# Get-AzAksArcLog
 
 ## SYNOPSIS
 Gets the provisioned cluster instance
@@ -13,7 +13,7 @@ Gets the provisioned cluster instance
 ## SYNTAX
 
 ```
-Get-AzAksArcClusterLogs -ipAddress <String> -outdir <String> -sshkeypath <String> [-DefaultProfile <PSObject>]
+Get-AzAksArcLog -ipAddress <String> -outdir <String> -sshkeypath <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Gets the provisioned cluster instance
 
 ### Example 1: Get provisioned cluster logs
 ```powershell
-Get-AzAksArcClusterLogs -ipAddress 1.1.1.1 -sshkeypath "" -outdir "/logs"
+Get-AzAksArcClusterLog -ipAddress 1.1.1.1 -sshkeypath "" -outdir "/logs"
 ```
 
 Collects logs and saves to outdir

@@ -38,7 +38,7 @@ Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_te
 .Example
 Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SmbCsiDriverEnabled:$false
 .Example
-Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -adminGroupObjectIDs @("2e00cb64-66d8-4c9c-92d8-6462caf99e33", "1b28ff4f-f7c5-4aaa-aa79-ba8b775ab443")
+Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -AdminGroupObjectID @("2e00cb64-66d8-4c9c-92d8-6462caf99e33", "1b28ff4f-f7c5-4aaa-aa79-ba8b775ab443")
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedCluster
@@ -73,7 +73,7 @@ param(
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.String[]]
-    ${adminGroupObjectIDs},
+    ${AdminGroupObjectID},
 
     [Parameter(ParameterSetName='AutoScaling', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
@@ -94,25 +94,24 @@ param(
     # The default value is true.
     ${EnableAutoScaling},
 
-    [Parameter(ParameterSetName='Upgrade')]
+    [Parameter(ParameterSetName='Upgrade', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.String]
     # The version of Kubernetes in use by the provisioned cluster.
     ${KubernetesVersion},
 
-    [Parameter(ParameterSetName='Upgrade2')]
+    [Parameter(ParameterSetName='Upgrade2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Upgrade the provisioned cluster
     ${Upgrade},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.PSArgumentCompleterAttribute("True", "False", "NotApplicable")]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
-    [System.String]
+    [System.Management.Automation.SwitchParameter]
     # Indicates whether Azure Hybrid Benefit is opted in.
     # Default value is false
-    ${LicenseProfileAzureHybridBenefit},
+    ${EnableAzureHybridBenefit},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
@@ -195,12 +194,12 @@ process {
     $null = $PSBoundParameters.Add("ConnectedClusterResourceUri", $Scope)
 
     # Update Connected Cluster Parent Resource
-    if ($PSBoundParameters.ContainsKey("adminGroupObjectIDs")) {
+    if ($PSBoundParameters.ContainsKey("AdminGroupObjectID")) {
         $ShouldUpdateConnectedCluster = $true
     }
 
     if ($ShouldUpdateConnectedCluster) {
-        CreateConnectedCluster -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName -Location "eastus" -adminGroupObjectIDs $adminGroupObjectIDs
+        CreateConnectedCluster -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName -Location "eastus" -AdminGroupObjectID $AdminGroupObjectID
     }
 
     # Update Default Nodepool
@@ -236,7 +235,7 @@ process {
     # Update Provisioned Cluster
     if ($PSBoundParameters.ContainsKey("KubernetesVersion"))
     {   
-        $Upgrades = Get-AzAksArcClusterUpgrades -ClusterName $ClusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+        $Upgrades = Get-AzAksArcClusterUpgrade -ClusterName $ClusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
         if ($upgrades.ControlPlaneProfileUpgrade.KubernetesVersion -contains $KubernetesVersion) {
             continue
         } else {
@@ -245,7 +244,7 @@ process {
     }
     if ($PSBoundParameters.ContainsKey("Upgrade"))
     {
-        $Upgrades = Get-AzAksArcClusterUpgrades -ClusterName $ClusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+        $Upgrades = Get-AzAksArcClusterUpgrade -ClusterName $ClusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
         $UpgradeListLength = $upgrades.ControlPlaneProfileUpgrade.KubernetesVersion.Length
         if ($UpgradeListLength -eq 0) {
             Write-Error "Already on latest kubernetes version."
@@ -256,6 +255,13 @@ process {
         $null = $PSBoundParameters.Add("KubernetesVersion", $LatestUpgrade)
         $null = $PSBoundParameters.Remove("Upgrade")
     }
+
+    if ($EnableAzureHybridBenefit) {
+        $null = $PSBoundParameters.Add("LicenseProfileAzureHybridBenefit", $true)
+    } else {
+        $null = $PSBoundParameters.Add("LicenseProfileAzureHybridBenefit", $false)
+    }
+    $null = $PSBoundParameters.Remove("EnableAzureHybridBenefit")
 
     Az.AksArc.internal\Update-AzAksArcCluster @PSBoundParameters
 }

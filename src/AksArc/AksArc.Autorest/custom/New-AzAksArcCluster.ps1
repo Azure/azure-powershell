@@ -38,7 +38,7 @@ New-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_
 .Example
 New-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SmbCsiDriverEnabled:$false
 .Example
-New-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -adminGroupObjectIDs @("2e00cb64-66d8-4c9c-92d8-6462caf99e33", "1b28ff4f-f7c5-4aaa-aa79-ba8b775ab443")
+New-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -AdminGroupObjectID @("2e00cb64-66d8-4c9c-92d8-6462caf99e33", "1b28ff4f-f7c5-4aaa-aa79-ba8b775ab443")
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedCluster
@@ -89,7 +89,7 @@ function New-AzAksArcCluster {
         # IP address of the Kubernetes API server
         ${ControlPlaneEndpointHostIP},
 
-        [Parameter(Mandatory)]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
         [System.String]
         # Location
@@ -99,7 +99,7 @@ function New-AzAksArcCluster {
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
         [System.String[]]
-        ${adminGroupObjectIDs},
+        ${AdminGroupObjectID},
     
         [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
@@ -126,13 +126,12 @@ function New-AzAksArcCluster {
         # The version of Kubernetes in use by the provisioned cluster.
         ${KubernetesVersion},
     
-        [Parameter(ParameterSetName='CreateExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.PSArgumentCompleterAttribute("True", "False", "NotApplicable")]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
-        [System.String]
+        [System.Management.Automation.SwitchParameter]
         # Indicates whether Azure Hybrid Benefit is opted in.
         # Default value is false
-        ${LicenseProfileAzureHybridBenefit},
+        ${EnableAzureHybridBenefit},
     
         [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
@@ -312,8 +311,11 @@ function New-AzAksArcCluster {
 
 
         # Create connected cluster parent resource
-        CreateConnectedCluster -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName -Location $Location -adminGroupObjectIDs $adminGroupObjectIDs
-        $null = $PSBoundParameters.Remove("adminGroupObjectIDs")
+        if (!$Location) {
+            $Location = "eastus"
+        }
+        CreateConnectedCluster -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName -Location $Location -AdminGroupObjectID $AdminGroupObjectID
+        $null = $PSBoundParameters.Remove("AdminGroupObjectID")
         
         # Generate public ssh key if one is not provided
         $SshPublicKeyObj = [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.LinuxProfilePropertiesSshPublicKeysItem]::New()
@@ -330,6 +332,12 @@ function New-AzAksArcCluster {
         $null = $PSBoundParameters.Add("AgentPoolProfile", $AgentPoolProfile)
 
         # Create Provisioned Cluster
+        if ($EnableAzureHybridBenefit) {
+            $null = $PSBoundParameters.Add("LicenseProfileAzureHybridBenefit", $true)
+        } else {
+            $null = $PSBoundParameters.Add("LicenseProfileAzureHybridBenefit", $false)
+        }
+        $null = $PSBoundParameters.Remove("EnableAzureHybridBenefit")
         Az.AksArc.internal\New-AzAksArcCluster @PSBoundParameters
     }
     }
