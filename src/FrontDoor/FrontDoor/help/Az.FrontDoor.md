@@ -71,8 +71,17 @@ Create a PSRulesEngineMatchCondition object for creating a rules engine rule.
 ### [New-AzFrontDoorRulesEngineRuleObject](New-AzFrontDoorRulesEngineRuleObject.md)
 Create a PSRulesEngineRule object for Rules Engine creation.
 
+### [New-AzFrontDoorWafCustomRuleGroupByVariableObject](New-AzFrontDoorWafCustomRuleGroupByVariableObject.md)
+Create CustomRuleGroupByVariable object for custom rule object
+
 ### [New-AzFrontDoorWafCustomRuleObject](New-AzFrontDoorWafCustomRuleObject.md)
 Create CustomRule Object for WAF policy creation
+
+### [New-AzFrontDoorWafLogScrubbingRuleObject](New-AzFrontDoorWafLogScrubbingRuleObject.md)
+Create LogScrubbingRule object for LogScrubbingSetting
+
+### [New-AzFrontDoorWafLogScrubbingSettingObject](New-AzFrontDoorWafLogScrubbingSettingObject.md)
+Create LogScrubbingSetting object for Waf policy object
 
 ### [New-AzFrontDoorWafManagedRuleExclusionObject](New-AzFrontDoorWafManagedRuleExclusionObject.md)
 Create managed rule exclusion object for WAF managed rule sets, groups, or rules.

@@ -1,30 +1,30 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.Network/frontDoors/frontdoorpstest2/frontendEndpoints/afd-byoc-latest-localdev-cdn-azure-cn/enableHttps?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDdjZmRiOTgtYzExOC00NThkLThiZGYtMjQ2YmU2NmIxZjVlL3Jlc291cmNlR3JvdXBzL2J6aGFuYWZkdGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy9mcm9udGRvb3Jwc3Rlc3QyL2Zyb250ZW5kRW5kcG9pbnRzL2FmZC1ieW9jLWxhdGVzdC1sb2NhbGRldi1jZG4tYXp1cmUtY24vZW5hYmxlSHR0cHM/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
+      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/CliDevReservedGroup/providers/Microsoft.Network/frontDoors/frontdoorclitest/frontendEndpoints/afdbyoc-specific-localdev-cdn-azure-cn/enableHttps?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL0NsaURldlJlc2VydmVkR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2Zyb250RG9vcnMvZnJvbnRkb29yY2xpdGVzdC9mcm9udGVuZEVuZHBvaW50cy9hZmRieW9jLXNwZWNpZmljLWxvY2FsZGV2LWNkbi1henVyZS1jbi9lbmFibGVIdHRwcz9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"certificateSource\": \"AzureKeyVault\",\r\n  \"minimumTlsVersion\": \"1.2\",\r\n  \"keyVaultCertificateSourceParameters\": {\r\n    \"vault\": {\r\n      \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.KeyVault/vaults/bzhanbyostest\"\r\n    },\r\n    \"secretName\": \"frontdoorpstest2\",\r\n    \"secretVersion\": \"d6b1f0ffd2a142efb2a8a89289802c77\"\r\n  },\r\n  \"protocolType\": \"ServerNameIndication\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e8541a7c-5366-43f2-a690-5835edf0ebeb"
+          "3441d50a-9b6a-434c-9c50-e910c29589aa"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29916.01",
+          "FxVersion/6.0.3024.21525",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/4.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoor/6.0.2"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "433"
+          "436"
         ]
       },
+      "RequestBody": "{\r\n  \"certificateSource\": \"AzureKeyVault\",\r\n  \"minimumTlsVersion\": \"1.2\",\r\n  \"keyVaultCertificateSourceParameters\": {\r\n    \"vault\": {\r\n      \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/CliDevReservedGroup/providers/Microsoft.KeyVault/vaults/clibyoc-int\"\r\n    },\r\n    \"secretName\": \"localdev-multi\",\r\n    \"secretVersion\": \"6244bbfa61c241d78403a6e394cc2d30\"\r\n  },\r\n  \"protocolType\": \"ServerNameIndication\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -33,283 +33,352 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourcegroups/bzhanafdtest/providers/Microsoft.Network/frontdooroperationresults/81b1ced4-a529-4594-af3d-ddf49f10c050/frontdoorresults/frontdoorpstest2?api-version=2020-05-01"
+          "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/CliDevReservedGroup/providers/Microsoft.Network/frontdooroperationresults/a8a52e60-c7f5-4b59-bb04-c390a77e287e/frontdoorresults/frontdoorclitest?api-version=2021-06-01"
         ],
         "Retry-After": [
           "120"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "8532eea2-c120-471c-885d-2249c8b06656"
+        ],
+        "x-ms-client-request-id": [
+          "3441d50a-9b6a-434c-9c50-e910c29589aa"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/CliDevReservedGroup/providers/Microsoft.Network/frontdooroperationresults/a8a52e60-c7f5-4b59-bb04-c390a77e287e?api-version=2021-06-01&t=638518590658541350&c=MIIHpTCCBo2gAwIBAgITOgMPIyvO-SSNo3JCxQAEAw8jKzANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSU5GUkEgQ0EgMDEwHhcNMjQwNTE3MDc0MzI1WhcNMjUwNTEyMDc0MzI1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMm-rUyPQv0z_LgvMVxRmSGe7k2sSDcjhZtJtacrGF0aA0mXhldjASVDsIKbducmYozS8YVn2yXvxW_2yo82m2q934keEf1UEKaSADUrozDPX5msTyt18UcXAPp7vPi8MXbYjFOyyuc1uzgXltAbdS5P2ki32RUjUplv8OZZSK5OvCrsyCwkmsg2yKxfHaRObmPqpu65x8lFk2jKBDK30LBTk2StP96kJI1VnIe3fxGXE6_1XKZTCJH9o_4vYvmA3wTHxlu8KWljLk10ttEqy736mEq9ex8TqnJVHebwRZ33UQTFZClqhQrIcLUrar5PXwlFMtvhgI1-Du5tVtKr1KECAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CWTJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSU5GUkElMjBDQSUyMDAxKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MB0GA1UdDgQWBBTVszhW7MMKoXa9-QpBHa5cQlUN9TAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTl2Ztn_PjsurvwwKidileIud8-YzAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAD-urQp96AuB916E-Te8RmgK90YXOfxpQ9UFVrx1h5G83WkRUIlKdESHrUjduIESxCRdkRY2ntf__S09h5_4l7f3rT0jpHXw-_8dUrAbn43jMiQmB2LXzLoyIWaLagT18F_wbUAmRMU1m1WEJE66ngt8mx407-SRKz6rKaPUCD2z-wIeSOcaXXY7KbRVUtbPS4GhSTo3fCRHPGpXS9ftpm-v7z3JFkXFsN7jcHBQDn2YqE7eFoPVqmoQtJZXXzAsWMeqSilE2wmsqn8Ty0ykZnqcfjuRNXoTC9CpuEhZYirAwmdBN87Cb7ZrhR2s8flm-uIqdEhk4mWeNMEyWsm5RLA&s=HxcisxVr-uiMhDgvANyTqMzVEKxN_61yzgnJGoef4eqyY6_rRVGxIi3-FZpqW8HIL-46ctq86rZdnOzx4iM9h_Yopwh9OlOD_OzDykRkXTJH6uIwo-85rDRjSf9HdzipUIgS3-W8VjURHJCLIou1ftBFdiYl9bddiVPPZhCkLlbnV38Rg1xzogjcefELp-I-bmhVbhs50DImSjNwy7wSoXlViNYJM6Mgab-GEK7iou89KXrb-HdbM68PwlmDdY2TLnuYWdqkc0fWystPoXc3AjZAt1ZgauiOrCTXxqdpmr-YkLIxoYEXXgAo1_GoekjVzU_qQCqR9qzBt834jJXXkQ&h=mqr_0B2PMqCoDJI492UmsOnO_w0ePLHiyfed-UBDc1Y"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "de97d00f-e708-4f06-a5d3-28c58e5e0cbc"
-        ],
-        "x-ms-client-request-id": [
-          "e8541a7c-5366-43f2-a690-5835edf0ebeb"
-        ],
-        "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourcegroups/bzhanafdtest/providers/Microsoft.Network/frontdooroperationresults/81b1ced4-a529-4594-af3d-ddf49f10c050?api-version=2020-05-01"
-        ],
-        "OData-Version": [
-          "4.0"
-        ],
-        "Server": [
-          "Kestrel"
-        ],
         "x-ms-correlation-request-id": [
-          "82b0831d-366e-45d1-adb6-3d5afb0944dd"
+          "a793240f-3881-4d7c-8129-a1d2e6318ffc"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210416T042958Z:82b0831d-366e-45d1-adb6-3d5afb0944dd"
+          "SOUTHEASTASIA:20240521T033105Z:a793240f-3881-4d7c-8129-a1d2e6318ffc"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 54C7B08C852B4135B48912C186011F95 Ref B: MAA201060516033 Ref C: 2024-05-21T03:31:02Z"
+        ],
         "Date": [
-          "Fri, 16 Apr 2021 04:29:58 GMT"
+          "Tue, 21 May 2024 03:31:05 GMT"
         ],
         "Content-Length": [
-          "763"
+          "803"
         ],
         "Content-Type": [
-          "application/json; odata.metadata=minimal; odata.streaming=true"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"hostName\": \"afd-byoc-latest.localdev.cdn.azure.cn\",\r\n  \"sessionAffinityEnabledState\": \"Disabled\",\r\n  \"sessionAffinityTtlSeconds\": 0,\r\n  \"customHttpsProvisioningState\": \"Enabling\",\r\n  \"customHttpsProvisioningSubstate\": \"ImportingUserProvidedCertificate\",\r\n  \"resourceState\": \"Enabled\",\r\n  \"webApplicationFirewallPolicyLink\": null,\r\n  \"customHttpsConfiguration\": {\r\n    \"protocolType\": \"ServerNameIndication\",\r\n    \"certificateSource\": \"AzureKeyVault\",\r\n    \"minimumTlsVersion\": \"1.2\",\r\n    \"frontDoorCertificateSourceParameters\": {\r\n      \"certificateType\": null\r\n    },\r\n    \"keyVaultCertificateSourceParameters\": {\r\n      \"secretName\": \"frontdoorpstest2\",\r\n      \"secretVersion\": \"d6b1f0ffd2a142efb2a8a89289802c77\",\r\n      \"vault\": {\r\n        \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.KeyVault/vaults/bzhanbyostest\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"resourceState\": \"Enabled\",\r\n  \"hostName\": \"afdbyoc-specific.localdev.cdn.azure.cn\",\r\n  \"sessionAffinityEnabledState\": \"Disabled\",\r\n  \"sessionAffinityTtlSeconds\": 0,\r\n  \"webApplicationFirewallPolicyLink\": null,\r\n  \"customHttpsProvisioningState\": \"Enabling\",\r\n  \"customHttpsProvisioningSubstate\": \"ImportingUserProvidedCertificate\",\r\n  \"customHttpsConfiguration\": {\r\n    \"certificateSource\": \"AzureKeyVault\",\r\n    \"protocolType\": \"ServerNameIndication\",\r\n    \"minimumTlsVersion\": \"1.2\",\r\n    \"keyVaultCertificateSourceParameters\": {\r\n      \"vault\": {\r\n        \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/CliDevReservedGroup/providers/Microsoft.KeyVault/vaults/clibyoc-int\"\r\n      },\r\n      \"secretName\": \"localdev-multi\",\r\n      \"secretVersion\": \"6244bbfa61c241d78403a6e394cc2d30\"\r\n    },\r\n    \"frontDoorCertificateSourceParameters\": {\r\n      \"certificateType\": null,\r\n      \"certificateTypeAsEnum\": \"Dedicated\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.Network/frontDoors/frontdoorpstest2/frontendEndpoints/afd-byoc-latest-localdev-cdn-azure-cn?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDdjZmRiOTgtYzExOC00NThkLThiZGYtMjQ2YmU2NmIxZjVlL3Jlc291cmNlR3JvdXBzL2J6aGFuYWZkdGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy9mcm9udGRvb3Jwc3Rlc3QyL2Zyb250ZW5kRW5kcG9pbnRzL2FmZC1ieW9jLWxhdGVzdC1sb2NhbGRldi1jZG4tYXp1cmUtY24/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
+      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/CliDevReservedGroup/providers/Microsoft.Network/frontDoors/frontdoorclitest/frontendEndpoints/afdbyoc-specific-localdev-cdn-azure-cn?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL0NsaURldlJlc2VydmVkR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2Zyb250RG9vcnMvZnJvbnRkb29yY2xpdGVzdC9mcm9udGVuZEVuZHBvaW50cy9hZmRieW9jLXNwZWNpZmljLWxvY2FsZGV2LWNkbi1henVyZS1jbj9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e8541a7c-5366-43f2-a690-5835edf0ebeb"
+          "3441d50a-9b6a-434c-9c50-e910c29589aa"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29916.01",
+          "FxVersion/6.0.3024.21525",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/4.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoor/6.0.2"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
         ],
         "Pragma": [
           "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "0e8bfac0-2685-455a-98ca-91a88a9dfdc9"
+        ],
+        "x-ms-client-request-id": [
+          "3441d50a-9b6a-434c-9c50-e910c29589aa"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "362f94ee-b622-48e4-9977-283299283b7e"
-        ],
-        "x-ms-client-request-id": [
-          "e8541a7c-5366-43f2-a690-5835edf0ebeb"
-        ],
-        "OData-Version": [
-          "4.0"
-        ],
-        "Server": [
-          "Kestrel"
-        ],
         "x-ms-correlation-request-id": [
-          "a68d50c6-e5e0-4930-8f11-761fdfba2e9d"
+          "e1925af9-6883-43dc-84a6-1d8963750fa3"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210416T042959Z:a68d50c6-e5e0-4930-8f11-761fdfba2e9d"
+          "SOUTHEASTASIA:20240521T033107Z:e1925af9-6883-43dc-84a6-1d8963750fa3"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 5785D17DBA45410CAF882B975A835990 Ref B: MAA201060516033 Ref C: 2024-05-21T03:31:06Z"
+        ],
         "Date": [
-          "Fri, 16 Apr 2021 04:29:58 GMT"
+          "Tue, 21 May 2024 03:31:07 GMT"
         ],
         "Content-Length": [
-          "1080"
+          "1129"
         ],
         "Content-Type": [
-          "application/json; odata.metadata=minimal; odata.streaming=true"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourcegroups/bzhanafdtest/providers/Microsoft.Network/frontdoors/frontdoorpstest2/frontendendpoints/afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"afd-byoc-latest.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"customHttpsProvisioningState\": \"Enabling\",\r\n    \"customHttpsProvisioningSubstate\": \"ImportingUserProvidedCertificate\",\r\n    \"resourceState\": \"Enabled\",\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"certificateSource\": \"AzureKeyVault\",\r\n      \"minimumTlsVersion\": \"1.2\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": null\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"secretName\": \"frontdoorpstest2\",\r\n        \"secretVersion\": \"d6b1f0ffd2a142efb2a8a89289802c77\",\r\n        \"vault\": {\r\n          \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.KeyVault/vaults/bzhanbyostest\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/CliDevReservedGroup/providers/Microsoft.Network/frontdoors/frontdoorclitest/frontendendpoints/afdbyoc-specific-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"name\": \"afdbyoc-specific-localdev-cdn-azure-cn\",\r\n  \"properties\": {\r\n    \"resourceState\": \"Enabled\",\r\n    \"hostName\": \"afdbyoc-specific.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Enabling\",\r\n    \"customHttpsProvisioningSubstate\": \"ImportingUserProvidedCertificate\",\r\n    \"customHttpsConfiguration\": {\r\n      \"certificateSource\": \"AzureKeyVault\",\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"minimumTlsVersion\": \"1.2\",\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"vault\": {\r\n          \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/CliDevReservedGroup/providers/Microsoft.KeyVault/vaults/clibyoc-int\"\r\n        },\r\n        \"secretName\": \"localdev-multi\",\r\n        \"secretVersion\": \"6244bbfa61c241d78403a6e394cc2d30\"\r\n      },\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": null,\r\n        \"certificateTypeAsEnum\": \"Dedicated\"\r\n      }\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.Network/frontDoors/frontdoorpstest2/frontendEndpoints/afd-byoc-latest-localdev-cdn-azure-cn?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDdjZmRiOTgtYzExOC00NThkLThiZGYtMjQ2YmU2NmIxZjVlL3Jlc291cmNlR3JvdXBzL2J6aGFuYWZkdGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy9mcm9udGRvb3Jwc3Rlc3QyL2Zyb250ZW5kRW5kcG9pbnRzL2FmZC1ieW9jLWxhdGVzdC1sb2NhbGRldi1jZG4tYXp1cmUtY24/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
+      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/CliDevReservedGroup/providers/Microsoft.Network/frontDoors/frontdoorclitest/frontendEndpoints/afdbyoc-specific-localdev-cdn-azure-cn?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL0NsaURldlJlc2VydmVkR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2Zyb250RG9vcnMvZnJvbnRkb29yY2xpdGVzdC9mcm9udGVuZEVuZHBvaW50cy9hZmRieW9jLXNwZWNpZmljLWxvY2FsZGV2LWNkbi1henVyZS1jbj9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "110c69dd-fca5-4c10-9fa5-fabe23fa4951"
+          "04ea15a3-2cfe-493e-9621-c742e588a161"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29916.01",
+          "FxVersion/6.0.3024.21525",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/4.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoor/6.0.2"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
         ],
         "Pragma": [
           "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "09bdbe88-0085-4c2c-8dd0-b58b47b4bcaf"
+        ],
+        "x-ms-client-request-id": [
+          "04ea15a3-2cfe-493e-9621-c742e588a161"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "9980856f-b2cf-4268-a90e-5d276b940771"
-        ],
-        "x-ms-client-request-id": [
-          "110c69dd-fca5-4c10-9fa5-fabe23fa4951"
-        ],
-        "OData-Version": [
-          "4.0"
-        ],
-        "Server": [
-          "Kestrel"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "751b6655-f9d6-4ba5-9659-ec1da2a1c642"
+          "6bfa7b4d-9750-4afa-a8d0-c900dc360570"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210416T042959Z:751b6655-f9d6-4ba5-9659-ec1da2a1c642"
+          "SOUTHEASTASIA:20240521T033109Z:6bfa7b4d-9750-4afa-a8d0-c900dc360570"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: C8AA526FC524454DBEC6937188C69ED7 Ref B: MAA201060514021 Ref C: 2024-05-21T03:31:07Z"
+        ],
         "Date": [
-          "Fri, 16 Apr 2021 04:29:59 GMT"
+          "Tue, 21 May 2024 03:31:09 GMT"
         ],
         "Content-Length": [
-          "1080"
+          "1129"
         ],
         "Content-Type": [
-          "application/json; odata.metadata=minimal; odata.streaming=true"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourcegroups/bzhanafdtest/providers/Microsoft.Network/frontdoors/frontdoorpstest2/frontendendpoints/afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"afd-byoc-latest.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"customHttpsProvisioningState\": \"Enabling\",\r\n    \"customHttpsProvisioningSubstate\": \"ImportingUserProvidedCertificate\",\r\n    \"resourceState\": \"Enabled\",\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"certificateSource\": \"AzureKeyVault\",\r\n      \"minimumTlsVersion\": \"1.2\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": null\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"secretName\": \"frontdoorpstest2\",\r\n        \"secretVersion\": \"d6b1f0ffd2a142efb2a8a89289802c77\",\r\n        \"vault\": {\r\n          \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.KeyVault/vaults/bzhanbyostest\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/CliDevReservedGroup/providers/Microsoft.Network/frontdoors/frontdoorclitest/frontendendpoints/afdbyoc-specific-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"name\": \"afdbyoc-specific-localdev-cdn-azure-cn\",\r\n  \"properties\": {\r\n    \"resourceState\": \"Enabled\",\r\n    \"hostName\": \"afdbyoc-specific.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Enabling\",\r\n    \"customHttpsProvisioningSubstate\": \"ImportingUserProvidedCertificate\",\r\n    \"customHttpsConfiguration\": {\r\n      \"certificateSource\": \"AzureKeyVault\",\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"minimumTlsVersion\": \"1.2\",\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"vault\": {\r\n          \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/CliDevReservedGroup/providers/Microsoft.KeyVault/vaults/clibyoc-int\"\r\n        },\r\n        \"secretName\": \"localdev-multi\",\r\n        \"secretVersion\": \"6244bbfa61c241d78403a6e394cc2d30\"\r\n      },\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": null,\r\n        \"certificateTypeAsEnum\": \"Dedicated\"\r\n      }\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.Network/frontDoors/frontdoorpstest2/frontendEndpoints/afd-byoc-latest-localdev-cdn-azure-cn?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDdjZmRiOTgtYzExOC00NThkLThiZGYtMjQ2YmU2NmIxZjVlL3Jlc291cmNlR3JvdXBzL2J6aGFuYWZkdGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy9mcm9udGRvb3Jwc3Rlc3QyL2Zyb250ZW5kRW5kcG9pbnRzL2FmZC1ieW9jLWxhdGVzdC1sb2NhbGRldi1jZG4tYXp1cmUtY24/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
+      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/CliDevReservedGroup/providers/Microsoft.Network/frontDoors/frontdoorclitest/frontendEndpoints/afdbyoc-specific-localdev-cdn-azure-cn?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL0NsaURldlJlc2VydmVkR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2Zyb250RG9vcnMvZnJvbnRkb29yY2xpdGVzdC9mcm9udGVuZEVuZHBvaW50cy9hZmRieW9jLXNwZWNpZmljLWxvY2FsZGV2LWNkbi1henVyZS1jbj9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b1ed12c3-3248-46ec-9953-91cddfe7d267"
+          "423b9810-eac6-44c9-8b9c-48a66fa89a14"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29916.01",
+          "FxVersion/6.0.3024.21525",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/4.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoor/6.0.2"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
         ],
         "Pragma": [
           "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "f850047b-77cb-44bc-995c-4a3b1d4fab38"
+        ],
+        "x-ms-client-request-id": [
+          "423b9810-eac6-44c9-8b9c-48a66fa89a14"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "562bef93-0892-4451-9119-7171f68b5633"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20240521T033211Z:562bef93-0892-4451-9119-7171f68b5633"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 883C9A4B0B474C6F8AB788AAAE9E426A Ref B: MAA201060516031 Ref C: 2024-05-21T03:32:09Z"
+        ],
+        "Date": [
+          "Tue, 21 May 2024 03:32:11 GMT"
+        ],
+        "Content-Length": [
+          "1117"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/CliDevReservedGroup/providers/Microsoft.Network/frontdoors/frontdoorclitest/frontendendpoints/afdbyoc-specific-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"name\": \"afdbyoc-specific-localdev-cdn-azure-cn\",\r\n  \"properties\": {\r\n    \"resourceState\": \"Enabled\",\r\n    \"hostName\": \"afdbyoc-specific.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Enabling\",\r\n    \"customHttpsProvisioningSubstate\": \"DeployingCertificate\",\r\n    \"customHttpsConfiguration\": {\r\n      \"certificateSource\": \"AzureKeyVault\",\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"minimumTlsVersion\": \"1.2\",\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"vault\": {\r\n          \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/CliDevReservedGroup/providers/Microsoft.KeyVault/vaults/clibyoc-int\"\r\n        },\r\n        \"secretName\": \"localdev-multi\",\r\n        \"secretVersion\": \"6244bbfa61c241d78403a6e394cc2d30\"\r\n      },\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": null,\r\n        \"certificateTypeAsEnum\": \"Dedicated\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/CliDevReservedGroup/providers/Microsoft.Network/frontDoors/frontdoorclitest/frontendEndpoints/afdbyoc-specific-localdev-cdn-azure-cn?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL0NsaURldlJlc2VydmVkR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2Zyb250RG9vcnMvZnJvbnRkb29yY2xpdGVzdC9mcm9udGVuZEVuZHBvaW50cy9hZmRieW9jLXNwZWNpZmljLWxvY2FsZGV2LWNkbi1henVyZS1jbj9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "34bcf38e-7157-46cb-8a84-0845cc4a6342"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3024.21525",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoor/6.0.2"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "3fbde04a-c295-4e9c-92bf-8752396f18ad"
+        ],
+        "x-ms-client-request-id": [
+          "34bcf38e-7157-46cb-8a84-0845cc4a6342"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11997"
         ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "26bf991f-0183-4857-aa02-8f8db12c2928"
-        ],
-        "x-ms-client-request-id": [
-          "b1ed12c3-3248-46ec-9953-91cddfe7d267"
-        ],
-        "OData-Version": [
-          "4.0"
-        ],
-        "Server": [
-          "Kestrel"
-        ],
         "x-ms-correlation-request-id": [
-          "88d040bb-65e4-4725-8f93-ab2024735f80"
+          "9fb96c0f-5ea3-43fb-84cf-0b54fe540df5"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210416T043100Z:88d040bb-65e4-4725-8f93-ab2024735f80"
+          "SOUTHEASTASIA:20240521T033313Z:9fb96c0f-5ea3-43fb-84cf-0b54fe540df5"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: BCD976174B0A4E579A372A1602FB0CDB Ref B: MAA201060514047 Ref C: 2024-05-21T03:33:11Z"
+        ],
         "Date": [
-          "Fri, 16 Apr 2021 04:31:00 GMT"
+          "Tue, 21 May 2024 03:33:12 GMT"
         ],
         "Content-Length": [
-          "1068"
+          "1115"
         ],
         "Content-Type": [
-          "application/json; odata.metadata=minimal; odata.streaming=true"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourcegroups/bzhanafdtest/providers/Microsoft.Network/frontdoors/frontdoorpstest2/frontendendpoints/afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"afd-byoc-latest.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"customHttpsProvisioningState\": \"Enabling\",\r\n    \"customHttpsProvisioningSubstate\": \"DeployingCertificate\",\r\n    \"resourceState\": \"Enabled\",\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"certificateSource\": \"AzureKeyVault\",\r\n      \"minimumTlsVersion\": \"1.2\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": null\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"secretName\": \"frontdoorpstest2\",\r\n        \"secretVersion\": \"d6b1f0ffd2a142efb2a8a89289802c77\",\r\n        \"vault\": {\r\n          \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.KeyVault/vaults/bzhanbyostest\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/CliDevReservedGroup/providers/Microsoft.Network/frontdoors/frontdoorclitest/frontendendpoints/afdbyoc-specific-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"name\": \"afdbyoc-specific-localdev-cdn-azure-cn\",\r\n  \"properties\": {\r\n    \"resourceState\": \"Enabled\",\r\n    \"hostName\": \"afdbyoc-specific.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Enabled\",\r\n    \"customHttpsProvisioningSubstate\": \"CertificateDeployed\",\r\n    \"customHttpsConfiguration\": {\r\n      \"certificateSource\": \"AzureKeyVault\",\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"minimumTlsVersion\": \"1.2\",\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"vault\": {\r\n          \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/CliDevReservedGroup/providers/Microsoft.KeyVault/vaults/clibyoc-int\"\r\n        },\r\n        \"secretName\": \"localdev-multi\",\r\n        \"secretVersion\": \"6244bbfa61c241d78403a6e394cc2d30\"\r\n      },\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": null,\r\n        \"certificateTypeAsEnum\": \"Dedicated\"\r\n      }\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.Network/frontDoors/frontdoorpstest2/frontendEndpoints/afd-byoc-latest-localdev-cdn-azure-cn?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDdjZmRiOTgtYzExOC00NThkLThiZGYtMjQ2YmU2NmIxZjVlL3Jlc291cmNlR3JvdXBzL2J6aGFuYWZkdGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy9mcm9udGRvb3Jwc3Rlc3QyL2Zyb250ZW5kRW5kcG9pbnRzL2FmZC1ieW9jLWxhdGVzdC1sb2NhbGRldi1jZG4tYXp1cmUtY24/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
+      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/CliDevReservedGroup/providers/Microsoft.Network/frontDoors/frontdoorclitest/frontendEndpoints/afdbyoc-specific-localdev-cdn-azure-cn?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL0NsaURldlJlc2VydmVkR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2Zyb250RG9vcnMvZnJvbnRkb29yY2xpdGVzdC9mcm9udGVuZEVuZHBvaW50cy9hZmRieW9jLXNwZWNpZmljLWxvY2FsZGV2LWNkbi1henVyZS1jbj9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "291e9a3d-c2fc-4966-9840-54deb07714f5"
+          "dabbb312-a3c3-41c1-b73e-7a4b09d9527e"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29916.01",
+          "FxVersion/6.0.3024.21525",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/4.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoor/6.0.2"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -317,68 +386,68 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
-        ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "56bd2721-964f-4623-86d6-4bcb92172514"
+          "08ae1083-3ead-4ae9-bd75-56a0b4d7d1f6"
         ],
         "x-ms-client-request-id": [
-          "291e9a3d-c2fc-4966-9840-54deb07714f5"
+          "dabbb312-a3c3-41c1-b73e-7a4b09d9527e"
         ],
-        "OData-Version": [
-          "4.0"
-        ],
-        "Server": [
-          "Kestrel"
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "cfcde27e-3174-40e4-8889-713307c0a205"
+          "245af36e-5ce6-4c3c-baba-ad7c35128445"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210416T043202Z:cfcde27e-3174-40e4-8889-713307c0a205"
+          "SOUTHEASTASIA:20240521T033314Z:245af36e-5ce6-4c3c-baba-ad7c35128445"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: D57E6587B219486D844BA95A58F8AA7C Ref B: MAA201060516047 Ref C: 2024-05-21T03:33:13Z"
+        ],
         "Date": [
-          "Fri, 16 Apr 2021 04:32:01 GMT"
+          "Tue, 21 May 2024 03:33:14 GMT"
         ],
         "Content-Length": [
-          "1068"
+          "1115"
         ],
         "Content-Type": [
-          "application/json; odata.metadata=minimal; odata.streaming=true"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourcegroups/bzhanafdtest/providers/Microsoft.Network/frontdoors/frontdoorpstest2/frontendendpoints/afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"afd-byoc-latest.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"customHttpsProvisioningState\": \"Enabling\",\r\n    \"customHttpsProvisioningSubstate\": \"DeployingCertificate\",\r\n    \"resourceState\": \"Enabled\",\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"certificateSource\": \"AzureKeyVault\",\r\n      \"minimumTlsVersion\": \"1.2\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": null\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"secretName\": \"frontdoorpstest2\",\r\n        \"secretVersion\": \"d6b1f0ffd2a142efb2a8a89289802c77\",\r\n        \"vault\": {\r\n          \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.KeyVault/vaults/bzhanbyostest\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/CliDevReservedGroup/providers/Microsoft.Network/frontdoors/frontdoorclitest/frontendendpoints/afdbyoc-specific-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"name\": \"afdbyoc-specific-localdev-cdn-azure-cn\",\r\n  \"properties\": {\r\n    \"resourceState\": \"Enabled\",\r\n    \"hostName\": \"afdbyoc-specific.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Enabled\",\r\n    \"customHttpsProvisioningSubstate\": \"CertificateDeployed\",\r\n    \"customHttpsConfiguration\": {\r\n      \"certificateSource\": \"AzureKeyVault\",\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"minimumTlsVersion\": \"1.2\",\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"vault\": {\r\n          \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/CliDevReservedGroup/providers/Microsoft.KeyVault/vaults/clibyoc-int\"\r\n        },\r\n        \"secretName\": \"localdev-multi\",\r\n        \"secretVersion\": \"6244bbfa61c241d78403a6e394cc2d30\"\r\n      },\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": null,\r\n        \"certificateTypeAsEnum\": \"Dedicated\"\r\n      }\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.Network/frontDoors/frontdoorpstest2/frontendEndpoints/afd-byoc-latest-localdev-cdn-azure-cn?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDdjZmRiOTgtYzExOC00NThkLThiZGYtMjQ2YmU2NmIxZjVlL3Jlc291cmNlR3JvdXBzL2J6aGFuYWZkdGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy9mcm9udGRvb3Jwc3Rlc3QyL2Zyb250ZW5kRW5kcG9pbnRzL2FmZC1ieW9jLWxhdGVzdC1sb2NhbGRldi1jZG4tYXp1cmUtY24/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
+      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/CliDevReservedGroup/providers/Microsoft.Network/frontDoors/frontdoorclitest/frontendEndpoints/afdbyoc-specific-localdev-cdn-azure-cn?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL0NsaURldlJlc2VydmVkR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2Zyb250RG9vcnMvZnJvbnRkb29yY2xpdGVzdC9mcm9udGVuZEVuZHBvaW50cy9hZmRieW9jLXNwZWNpZmljLWxvY2FsZGV2LWNkbi1henVyZS1jbj9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "49f1df04-68a5-4cce-a891-728e870ed73f"
+          "4eefe045-6309-4307-aa22-94c7084fc4f1"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29916.01",
+          "FxVersion/6.0.3024.21525",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/4.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoor/6.0.2"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -386,68 +455,68 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11995"
-        ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "48f9ef29-863a-48a1-b3f9-5c07880f61c4"
+          "8c7a5ec2-facd-4635-b62f-23fb25313045"
         ],
         "x-ms-client-request-id": [
-          "49f1df04-68a5-4cce-a891-728e870ed73f"
+          "4eefe045-6309-4307-aa22-94c7084fc4f1"
         ],
-        "OData-Version": [
-          "4.0"
-        ],
-        "Server": [
-          "Kestrel"
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "406aaf9c-9dd7-46fe-8eab-f73a3d90ed4a"
+          "1adc8ec3-cf86-4f9d-a0cd-5f94184d2893"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210416T043303Z:406aaf9c-9dd7-46fe-8eab-f73a3d90ed4a"
+          "MALAYSIASOUTH:20240521T033318Z:1adc8ec3-cf86-4f9d-a0cd-5f94184d2893"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: A5EF1F6718FB4556A644766A63D7F974 Ref B: MAA201060516037 Ref C: 2024-05-21T03:33:17Z"
+        ],
         "Date": [
-          "Fri, 16 Apr 2021 04:33:03 GMT"
+          "Tue, 21 May 2024 03:33:18 GMT"
         ],
         "Content-Length": [
-          "1068"
+          "1117"
         ],
         "Content-Type": [
-          "application/json; odata.metadata=minimal; odata.streaming=true"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourcegroups/bzhanafdtest/providers/Microsoft.Network/frontdoors/frontdoorpstest2/frontendendpoints/afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"afd-byoc-latest.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"customHttpsProvisioningState\": \"Enabling\",\r\n    \"customHttpsProvisioningSubstate\": \"DeployingCertificate\",\r\n    \"resourceState\": \"Enabled\",\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"certificateSource\": \"AzureKeyVault\",\r\n      \"minimumTlsVersion\": \"1.2\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": null\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"secretName\": \"frontdoorpstest2\",\r\n        \"secretVersion\": \"d6b1f0ffd2a142efb2a8a89289802c77\",\r\n        \"vault\": {\r\n          \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.KeyVault/vaults/bzhanbyostest\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/CliDevReservedGroup/providers/Microsoft.Network/frontdoors/frontdoorclitest/frontendendpoints/afdbyoc-specific-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"name\": \"afdbyoc-specific-localdev-cdn-azure-cn\",\r\n  \"properties\": {\r\n    \"resourceState\": \"Enabled\",\r\n    \"hostName\": \"afdbyoc-specific.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Disabling\",\r\n    \"customHttpsProvisioningSubstate\": \"DeletingCertificate\",\r\n    \"customHttpsConfiguration\": {\r\n      \"certificateSource\": \"AzureKeyVault\",\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"minimumTlsVersion\": \"1.2\",\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"vault\": {\r\n          \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/CliDevReservedGroup/providers/Microsoft.KeyVault/vaults/clibyoc-int\"\r\n        },\r\n        \"secretName\": \"localdev-multi\",\r\n        \"secretVersion\": \"6244bbfa61c241d78403a6e394cc2d30\"\r\n      },\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": null,\r\n        \"certificateTypeAsEnum\": \"Dedicated\"\r\n      }\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.Network/frontDoors/frontdoorpstest2/frontendEndpoints/afd-byoc-latest-localdev-cdn-azure-cn?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDdjZmRiOTgtYzExOC00NThkLThiZGYtMjQ2YmU2NmIxZjVlL3Jlc291cmNlR3JvdXBzL2J6aGFuYWZkdGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy9mcm9udGRvb3Jwc3Rlc3QyL2Zyb250ZW5kRW5kcG9pbnRzL2FmZC1ieW9jLWxhdGVzdC1sb2NhbGRldi1jZG4tYXp1cmUtY24/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
+      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/CliDevReservedGroup/providers/Microsoft.Network/frontDoors/frontdoorclitest/frontendEndpoints/afdbyoc-specific-localdev-cdn-azure-cn?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL0NsaURldlJlc2VydmVkR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2Zyb250RG9vcnMvZnJvbnRkb29yY2xpdGVzdC9mcm9udGVuZEVuZHBvaW50cy9hZmRieW9jLXNwZWNpZmljLWxvY2FsZGV2LWNkbi1henVyZS1jbj9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "63b0e2a8-fd4b-4450-893f-4142bdd9ca13"
+          "7e24419f-4107-4abd-836b-3f24a8560924"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29916.01",
+          "FxVersion/6.0.3024.21525",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/4.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoor/6.0.2"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -455,68 +524,68 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
-        ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "b809a265-33b8-4f85-a571-946a6a2dbf53"
+          "c6d27bf9-a357-459c-974e-41340c192021"
         ],
         "x-ms-client-request-id": [
-          "63b0e2a8-fd4b-4450-893f-4142bdd9ca13"
+          "7e24419f-4107-4abd-836b-3f24a8560924"
         ],
-        "OData-Version": [
-          "4.0"
-        ],
-        "Server": [
-          "Kestrel"
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "353756fd-9f6f-4f70-a70e-a05184a50ffe"
+          "3a4fbd9e-7248-48d0-8164-661fe637403f"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210416T043404Z:353756fd-9f6f-4f70-a70e-a05184a50ffe"
+          "MALAYSIASOUTH:20240521T033421Z:3a4fbd9e-7248-48d0-8164-661fe637403f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 50570F983D7A496EB926BB4D8B9949E9 Ref B: MAA201060514009 Ref C: 2024-05-21T03:34:19Z"
+        ],
         "Date": [
-          "Fri, 16 Apr 2021 04:34:04 GMT"
+          "Tue, 21 May 2024 03:34:20 GMT"
         ],
         "Content-Length": [
-          "1068"
+          "1117"
         ],
         "Content-Type": [
-          "application/json; odata.metadata=minimal; odata.streaming=true"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourcegroups/bzhanafdtest/providers/Microsoft.Network/frontdoors/frontdoorpstest2/frontendendpoints/afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"afd-byoc-latest.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"customHttpsProvisioningState\": \"Enabling\",\r\n    \"customHttpsProvisioningSubstate\": \"DeployingCertificate\",\r\n    \"resourceState\": \"Enabled\",\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"certificateSource\": \"AzureKeyVault\",\r\n      \"minimumTlsVersion\": \"1.2\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": null\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"secretName\": \"frontdoorpstest2\",\r\n        \"secretVersion\": \"d6b1f0ffd2a142efb2a8a89289802c77\",\r\n        \"vault\": {\r\n          \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.KeyVault/vaults/bzhanbyostest\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/CliDevReservedGroup/providers/Microsoft.Network/frontdoors/frontdoorclitest/frontendendpoints/afdbyoc-specific-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"name\": \"afdbyoc-specific-localdev-cdn-azure-cn\",\r\n  \"properties\": {\r\n    \"resourceState\": \"Enabled\",\r\n    \"hostName\": \"afdbyoc-specific.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Disabling\",\r\n    \"customHttpsProvisioningSubstate\": \"DeletingCertificate\",\r\n    \"customHttpsConfiguration\": {\r\n      \"certificateSource\": \"AzureKeyVault\",\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"minimumTlsVersion\": \"1.2\",\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"vault\": {\r\n          \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/CliDevReservedGroup/providers/Microsoft.KeyVault/vaults/clibyoc-int\"\r\n        },\r\n        \"secretName\": \"localdev-multi\",\r\n        \"secretVersion\": \"6244bbfa61c241d78403a6e394cc2d30\"\r\n      },\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": null,\r\n        \"certificateTypeAsEnum\": \"Dedicated\"\r\n      }\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.Network/frontDoors/frontdoorpstest2/frontendEndpoints/afd-byoc-latest-localdev-cdn-azure-cn?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDdjZmRiOTgtYzExOC00NThkLThiZGYtMjQ2YmU2NmIxZjVlL3Jlc291cmNlR3JvdXBzL2J6aGFuYWZkdGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy9mcm9udGRvb3Jwc3Rlc3QyL2Zyb250ZW5kRW5kcG9pbnRzL2FmZC1ieW9jLWxhdGVzdC1sb2NhbGRldi1jZG4tYXp1cmUtY24/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
+      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/CliDevReservedGroup/providers/Microsoft.Network/frontDoors/frontdoorclitest/frontendEndpoints/afdbyoc-specific-localdev-cdn-azure-cn?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL0NsaURldlJlc2VydmVkR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2Zyb250RG9vcnMvZnJvbnRkb29yY2xpdGVzdC9mcm9udGVuZEVuZHBvaW50cy9hZmRieW9jLXNwZWNpZmljLWxvY2FsZGV2LWNkbi1henVyZS1jbj9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c3b2bba5-1c26-4a1a-acef-4e32259ab10b"
+          "94e64b5d-e5d1-4de2-9a3a-2b9776b15224"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29916.01",
+          "FxVersion/6.0.3024.21525",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/4.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoor/6.0.2"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -524,68 +593,68 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11993"
-        ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "172966a4-5a98-4b35-9388-9669c0fbf5d7"
+          "ff11b56c-750b-452f-a568-a0aa3fce46d9"
         ],
         "x-ms-client-request-id": [
-          "c3b2bba5-1c26-4a1a-acef-4e32259ab10b"
+          "94e64b5d-e5d1-4de2-9a3a-2b9776b15224"
         ],
-        "OData-Version": [
-          "4.0"
-        ],
-        "Server": [
-          "Kestrel"
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "1b6a6088-4e36-4611-8706-6d20e5268ccc"
+          "4a61affb-054b-41ad-a315-74e7e8c7b39b"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210416T043505Z:1b6a6088-4e36-4611-8706-6d20e5268ccc"
+          "SOUTHEASTASIA:20240521T033522Z:4a61affb-054b-41ad-a315-74e7e8c7b39b"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 8B3D8445461A4F2ABE6EFCFB6DF11749 Ref B: MAA201060516019 Ref C: 2024-05-21T03:35:21Z"
+        ],
         "Date": [
-          "Fri, 16 Apr 2021 04:35:05 GMT"
+          "Tue, 21 May 2024 03:35:22 GMT"
         ],
         "Content-Length": [
-          "1068"
+          "1117"
         ],
         "Content-Type": [
-          "application/json; odata.metadata=minimal; odata.streaming=true"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourcegroups/bzhanafdtest/providers/Microsoft.Network/frontdoors/frontdoorpstest2/frontendendpoints/afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"afd-byoc-latest.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"customHttpsProvisioningState\": \"Enabling\",\r\n    \"customHttpsProvisioningSubstate\": \"DeployingCertificate\",\r\n    \"resourceState\": \"Enabled\",\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"certificateSource\": \"AzureKeyVault\",\r\n      \"minimumTlsVersion\": \"1.2\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": null\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"secretName\": \"frontdoorpstest2\",\r\n        \"secretVersion\": \"d6b1f0ffd2a142efb2a8a89289802c77\",\r\n        \"vault\": {\r\n          \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.KeyVault/vaults/bzhanbyostest\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/CliDevReservedGroup/providers/Microsoft.Network/frontdoors/frontdoorclitest/frontendendpoints/afdbyoc-specific-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"name\": \"afdbyoc-specific-localdev-cdn-azure-cn\",\r\n  \"properties\": {\r\n    \"resourceState\": \"Enabled\",\r\n    \"hostName\": \"afdbyoc-specific.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Disabling\",\r\n    \"customHttpsProvisioningSubstate\": \"DeletingCertificate\",\r\n    \"customHttpsConfiguration\": {\r\n      \"certificateSource\": \"AzureKeyVault\",\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"minimumTlsVersion\": \"1.2\",\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"vault\": {\r\n          \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/CliDevReservedGroup/providers/Microsoft.KeyVault/vaults/clibyoc-int\"\r\n        },\r\n        \"secretName\": \"localdev-multi\",\r\n        \"secretVersion\": \"6244bbfa61c241d78403a6e394cc2d30\"\r\n      },\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": null,\r\n        \"certificateTypeAsEnum\": \"Dedicated\"\r\n      }\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.Network/frontDoors/frontdoorpstest2/frontendEndpoints/afd-byoc-latest-localdev-cdn-azure-cn?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDdjZmRiOTgtYzExOC00NThkLThiZGYtMjQ2YmU2NmIxZjVlL3Jlc291cmNlR3JvdXBzL2J6aGFuYWZkdGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy9mcm9udGRvb3Jwc3Rlc3QyL2Zyb250ZW5kRW5kcG9pbnRzL2FmZC1ieW9jLWxhdGVzdC1sb2NhbGRldi1jZG4tYXp1cmUtY24/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
+      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/CliDevReservedGroup/providers/Microsoft.Network/frontDoors/frontdoorclitest/frontendEndpoints/afdbyoc-specific-localdev-cdn-azure-cn?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL0NsaURldlJlc2VydmVkR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2Zyb250RG9vcnMvZnJvbnRkb29yY2xpdGVzdC9mcm9udGVuZEVuZHBvaW50cy9hZmRieW9jLXNwZWNpZmljLWxvY2FsZGV2LWNkbi1henVyZS1jbj9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "63bf8a8d-e6a2-4755-9145-e1f29601fa5d"
+          "7c05a1d7-3258-4d28-8980-ee148c87e1ca"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29916.01",
+          "FxVersion/6.0.3024.21525",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/4.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoor/6.0.2"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -593,896 +662,68 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11992"
-        ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "8ee6a3c8-cc83-4c3c-ac36-2a8a562abe6f"
+          "f151ba47-3214-4b4d-befe-dbcc23f07020"
         ],
         "x-ms-client-request-id": [
-          "63bf8a8d-e6a2-4755-9145-e1f29601fa5d"
+          "7c05a1d7-3258-4d28-8980-ee148c87e1ca"
         ],
-        "OData-Version": [
-          "4.0"
-        ],
-        "Server": [
-          "Kestrel"
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "8f6681cc-98f8-487b-8f76-0b0bc66dc681"
+          "722158be-1cc7-4fc7-9741-7abd5b50de0f"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210416T043607Z:8f6681cc-98f8-487b-8f76-0b0bc66dc681"
+          "SOUTHEASTASIA:20240521T033624Z:722158be-1cc7-4fc7-9741-7abd5b50de0f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: F850F756FA8D48EC937B4E384C02E856 Ref B: MAA201060513017 Ref C: 2024-05-21T03:36:23Z"
+        ],
         "Date": [
-          "Fri, 16 Apr 2021 04:36:06 GMT"
+          "Tue, 21 May 2024 03:36:24 GMT"
         ],
         "Content-Length": [
-          "1066"
+          "631"
         ],
         "Content-Type": [
-          "application/json; odata.metadata=minimal; odata.streaming=true"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourcegroups/bzhanafdtest/providers/Microsoft.Network/frontdoors/frontdoorpstest2/frontendendpoints/afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"afd-byoc-latest.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"customHttpsProvisioningState\": \"Enabled\",\r\n    \"customHttpsProvisioningSubstate\": \"CertificateDeployed\",\r\n    \"resourceState\": \"Enabled\",\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"certificateSource\": \"AzureKeyVault\",\r\n      \"minimumTlsVersion\": \"1.2\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": null\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"secretName\": \"frontdoorpstest2\",\r\n        \"secretVersion\": \"d6b1f0ffd2a142efb2a8a89289802c77\",\r\n        \"vault\": {\r\n          \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.KeyVault/vaults/bzhanbyostest\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/CliDevReservedGroup/providers/Microsoft.Network/frontdoors/frontdoorclitest/frontendendpoints/afdbyoc-specific-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"name\": \"afdbyoc-specific-localdev-cdn-azure-cn\",\r\n  \"properties\": {\r\n    \"resourceState\": \"Enabled\",\r\n    \"hostName\": \"afdbyoc-specific.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsProvisioningState\": \"Disabled\",\r\n    \"customHttpsProvisioningSubstate\": \"None\",\r\n    \"customHttpsConfiguration\": null\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.Network/frontDoors/frontdoorpstest2/frontendEndpoints/afd-byoc-latest-localdev-cdn-azure-cn?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDdjZmRiOTgtYzExOC00NThkLThiZGYtMjQ2YmU2NmIxZjVlL3Jlc291cmNlR3JvdXBzL2J6aGFuYWZkdGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy9mcm9udGRvb3Jwc3Rlc3QyL2Zyb250ZW5kRW5kcG9pbnRzL2FmZC1ieW9jLWxhdGVzdC1sb2NhbGRldi1jZG4tYXp1cmUtY24/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "3dfaa843-3d40-4b7d-b78e-0a4554ffb73b"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29916.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/4.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11991"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "835c842b-f651-4a25-8937-d6a338d57ac0"
-        ],
-        "x-ms-client-request-id": [
-          "3dfaa843-3d40-4b7d-b78e-0a4554ffb73b"
-        ],
-        "OData-Version": [
-          "4.0"
-        ],
-        "Server": [
-          "Kestrel"
-        ],
-        "x-ms-correlation-request-id": [
-          "ac88850e-5993-4e7d-b95a-1b9f9729018e"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210416T043607Z:ac88850e-5993-4e7d-b95a-1b9f9729018e"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Fri, 16 Apr 2021 04:36:06 GMT"
-        ],
-        "Content-Length": [
-          "1066"
-        ],
-        "Content-Type": [
-          "application/json; odata.metadata=minimal; odata.streaming=true"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourcegroups/bzhanafdtest/providers/Microsoft.Network/frontdoors/frontdoorpstest2/frontendendpoints/afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"afd-byoc-latest.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"customHttpsProvisioningState\": \"Enabled\",\r\n    \"customHttpsProvisioningSubstate\": \"CertificateDeployed\",\r\n    \"resourceState\": \"Enabled\",\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"certificateSource\": \"AzureKeyVault\",\r\n      \"minimumTlsVersion\": \"1.2\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": null\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"secretName\": \"frontdoorpstest2\",\r\n        \"secretVersion\": \"d6b1f0ffd2a142efb2a8a89289802c77\",\r\n        \"vault\": {\r\n          \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.KeyVault/vaults/bzhanbyostest\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.Network/frontDoors/frontdoorpstest2/frontendEndpoints/afd-byoc-latest-localdev-cdn-azure-cn?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDdjZmRiOTgtYzExOC00NThkLThiZGYtMjQ2YmU2NmIxZjVlL3Jlc291cmNlR3JvdXBzL2J6aGFuYWZkdGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy9mcm9udGRvb3Jwc3Rlc3QyL2Zyb250ZW5kRW5kcG9pbnRzL2FmZC1ieW9jLWxhdGVzdC1sb2NhbGRldi1jZG4tYXp1cmUtY24/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "ce490fad-8eda-41da-9e8c-c30b0116e24d"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29916.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/4.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11990"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "8ddc0163-b523-48c4-b2b7-52a03a5ab5ac"
-        ],
-        "x-ms-client-request-id": [
-          "ce490fad-8eda-41da-9e8c-c30b0116e24d"
-        ],
-        "OData-Version": [
-          "4.0"
-        ],
-        "Server": [
-          "Kestrel"
-        ],
-        "x-ms-correlation-request-id": [
-          "547d7825-4bdb-4f35-bf0d-cefc9cb0a901"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210416T043609Z:547d7825-4bdb-4f35-bf0d-cefc9cb0a901"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Fri, 16 Apr 2021 04:36:08 GMT"
-        ],
-        "Content-Length": [
-          "1068"
-        ],
-        "Content-Type": [
-          "application/json; odata.metadata=minimal; odata.streaming=true"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourcegroups/bzhanafdtest/providers/Microsoft.Network/frontdoors/frontdoorpstest2/frontendendpoints/afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"afd-byoc-latest.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"customHttpsProvisioningState\": \"Disabling\",\r\n    \"customHttpsProvisioningSubstate\": \"DeletingCertificate\",\r\n    \"resourceState\": \"Enabled\",\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"certificateSource\": \"AzureKeyVault\",\r\n      \"minimumTlsVersion\": \"1.2\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": null\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"secretName\": \"frontdoorpstest2\",\r\n        \"secretVersion\": \"d6b1f0ffd2a142efb2a8a89289802c77\",\r\n        \"vault\": {\r\n          \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.KeyVault/vaults/bzhanbyostest\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.Network/frontDoors/frontdoorpstest2/frontendEndpoints/afd-byoc-latest-localdev-cdn-azure-cn?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDdjZmRiOTgtYzExOC00NThkLThiZGYtMjQ2YmU2NmIxZjVlL3Jlc291cmNlR3JvdXBzL2J6aGFuYWZkdGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy9mcm9udGRvb3Jwc3Rlc3QyL2Zyb250ZW5kRW5kcG9pbnRzL2FmZC1ieW9jLWxhdGVzdC1sb2NhbGRldi1jZG4tYXp1cmUtY24/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "548f26f9-6b14-4272-b565-2ecf3cb28f07"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29916.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/4.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11989"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "5ad20738-fd6d-4dc1-9e87-7e7718677268"
-        ],
-        "x-ms-client-request-id": [
-          "548f26f9-6b14-4272-b565-2ecf3cb28f07"
-        ],
-        "OData-Version": [
-          "4.0"
-        ],
-        "Server": [
-          "Kestrel"
-        ],
-        "x-ms-correlation-request-id": [
-          "adff2da8-02e8-4b27-8f10-8e7b9cffd2d1"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210416T043710Z:adff2da8-02e8-4b27-8f10-8e7b9cffd2d1"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Fri, 16 Apr 2021 04:37:10 GMT"
-        ],
-        "Content-Length": [
-          "1068"
-        ],
-        "Content-Type": [
-          "application/json; odata.metadata=minimal; odata.streaming=true"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourcegroups/bzhanafdtest/providers/Microsoft.Network/frontdoors/frontdoorpstest2/frontendendpoints/afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"afd-byoc-latest.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"customHttpsProvisioningState\": \"Disabling\",\r\n    \"customHttpsProvisioningSubstate\": \"DeletingCertificate\",\r\n    \"resourceState\": \"Enabled\",\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"certificateSource\": \"AzureKeyVault\",\r\n      \"minimumTlsVersion\": \"1.2\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": null\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"secretName\": \"frontdoorpstest2\",\r\n        \"secretVersion\": \"d6b1f0ffd2a142efb2a8a89289802c77\",\r\n        \"vault\": {\r\n          \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.KeyVault/vaults/bzhanbyostest\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.Network/frontDoors/frontdoorpstest2/frontendEndpoints/afd-byoc-latest-localdev-cdn-azure-cn?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDdjZmRiOTgtYzExOC00NThkLThiZGYtMjQ2YmU2NmIxZjVlL3Jlc291cmNlR3JvdXBzL2J6aGFuYWZkdGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy9mcm9udGRvb3Jwc3Rlc3QyL2Zyb250ZW5kRW5kcG9pbnRzL2FmZC1ieW9jLWxhdGVzdC1sb2NhbGRldi1jZG4tYXp1cmUtY24/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "ffe599d8-9c23-4655-acc9-92130f1783d8"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29916.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/4.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11988"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "0d6ced9d-1068-4002-917c-56ea68a66ad1"
-        ],
-        "x-ms-client-request-id": [
-          "ffe599d8-9c23-4655-acc9-92130f1783d8"
-        ],
-        "OData-Version": [
-          "4.0"
-        ],
-        "Server": [
-          "Kestrel"
-        ],
-        "x-ms-correlation-request-id": [
-          "aeed30f3-190a-491a-b871-09c4fa93f5b4"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210416T043811Z:aeed30f3-190a-491a-b871-09c4fa93f5b4"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Fri, 16 Apr 2021 04:38:10 GMT"
-        ],
-        "Content-Length": [
-          "1068"
-        ],
-        "Content-Type": [
-          "application/json; odata.metadata=minimal; odata.streaming=true"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourcegroups/bzhanafdtest/providers/Microsoft.Network/frontdoors/frontdoorpstest2/frontendendpoints/afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"afd-byoc-latest.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"customHttpsProvisioningState\": \"Disabling\",\r\n    \"customHttpsProvisioningSubstate\": \"DeletingCertificate\",\r\n    \"resourceState\": \"Enabled\",\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"certificateSource\": \"AzureKeyVault\",\r\n      \"minimumTlsVersion\": \"1.2\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": null\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"secretName\": \"frontdoorpstest2\",\r\n        \"secretVersion\": \"d6b1f0ffd2a142efb2a8a89289802c77\",\r\n        \"vault\": {\r\n          \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.KeyVault/vaults/bzhanbyostest\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.Network/frontDoors/frontdoorpstest2/frontendEndpoints/afd-byoc-latest-localdev-cdn-azure-cn?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDdjZmRiOTgtYzExOC00NThkLThiZGYtMjQ2YmU2NmIxZjVlL3Jlc291cmNlR3JvdXBzL2J6aGFuYWZkdGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy9mcm9udGRvb3Jwc3Rlc3QyL2Zyb250ZW5kRW5kcG9pbnRzL2FmZC1ieW9jLWxhdGVzdC1sb2NhbGRldi1jZG4tYXp1cmUtY24/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "9d7c619a-c03d-483b-95e1-d69606a10da8"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29916.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/4.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11987"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "50d6cc97-779b-466a-89eb-b298e31d1184"
-        ],
-        "x-ms-client-request-id": [
-          "9d7c619a-c03d-483b-95e1-d69606a10da8"
-        ],
-        "OData-Version": [
-          "4.0"
-        ],
-        "Server": [
-          "Kestrel"
-        ],
-        "x-ms-correlation-request-id": [
-          "3a3cc11d-799c-43a9-9ec4-5d00233545c7"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210416T043912Z:3a3cc11d-799c-43a9-9ec4-5d00233545c7"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Fri, 16 Apr 2021 04:39:12 GMT"
-        ],
-        "Content-Length": [
-          "1068"
-        ],
-        "Content-Type": [
-          "application/json; odata.metadata=minimal; odata.streaming=true"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourcegroups/bzhanafdtest/providers/Microsoft.Network/frontdoors/frontdoorpstest2/frontendendpoints/afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"afd-byoc-latest.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"customHttpsProvisioningState\": \"Disabling\",\r\n    \"customHttpsProvisioningSubstate\": \"DeletingCertificate\",\r\n    \"resourceState\": \"Enabled\",\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"certificateSource\": \"AzureKeyVault\",\r\n      \"minimumTlsVersion\": \"1.2\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": null\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"secretName\": \"frontdoorpstest2\",\r\n        \"secretVersion\": \"d6b1f0ffd2a142efb2a8a89289802c77\",\r\n        \"vault\": {\r\n          \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.KeyVault/vaults/bzhanbyostest\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.Network/frontDoors/frontdoorpstest2/frontendEndpoints/afd-byoc-latest-localdev-cdn-azure-cn?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDdjZmRiOTgtYzExOC00NThkLThiZGYtMjQ2YmU2NmIxZjVlL3Jlc291cmNlR3JvdXBzL2J6aGFuYWZkdGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy9mcm9udGRvb3Jwc3Rlc3QyL2Zyb250ZW5kRW5kcG9pbnRzL2FmZC1ieW9jLWxhdGVzdC1sb2NhbGRldi1jZG4tYXp1cmUtY24/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "d881e87d-507a-4df9-bb0c-0ffda57446c5"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29916.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/4.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11986"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "b50dbaa2-310e-48e6-94a1-f650a32cf7c2"
-        ],
-        "x-ms-client-request-id": [
-          "d881e87d-507a-4df9-bb0c-0ffda57446c5"
-        ],
-        "OData-Version": [
-          "4.0"
-        ],
-        "Server": [
-          "Kestrel"
-        ],
-        "x-ms-correlation-request-id": [
-          "9d10045e-81d8-4282-a0ec-63aa6a9cd730"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210416T044013Z:9d10045e-81d8-4282-a0ec-63aa6a9cd730"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Fri, 16 Apr 2021 04:40:12 GMT"
-        ],
-        "Content-Length": [
-          "1068"
-        ],
-        "Content-Type": [
-          "application/json; odata.metadata=minimal; odata.streaming=true"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourcegroups/bzhanafdtest/providers/Microsoft.Network/frontdoors/frontdoorpstest2/frontendendpoints/afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"afd-byoc-latest.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"customHttpsProvisioningState\": \"Disabling\",\r\n    \"customHttpsProvisioningSubstate\": \"DeletingCertificate\",\r\n    \"resourceState\": \"Enabled\",\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"certificateSource\": \"AzureKeyVault\",\r\n      \"minimumTlsVersion\": \"1.2\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": null\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"secretName\": \"frontdoorpstest2\",\r\n        \"secretVersion\": \"d6b1f0ffd2a142efb2a8a89289802c77\",\r\n        \"vault\": {\r\n          \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.KeyVault/vaults/bzhanbyostest\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.Network/frontDoors/frontdoorpstest2/frontendEndpoints/afd-byoc-latest-localdev-cdn-azure-cn?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDdjZmRiOTgtYzExOC00NThkLThiZGYtMjQ2YmU2NmIxZjVlL3Jlc291cmNlR3JvdXBzL2J6aGFuYWZkdGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy9mcm9udGRvb3Jwc3Rlc3QyL2Zyb250ZW5kRW5kcG9pbnRzL2FmZC1ieW9jLWxhdGVzdC1sb2NhbGRldi1jZG4tYXp1cmUtY24/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "bddb959f-da37-4eff-ad84-21445767bade"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29916.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/4.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11985"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "c178ca82-b45f-4ccd-9a45-59f1d58df48e"
-        ],
-        "x-ms-client-request-id": [
-          "bddb959f-da37-4eff-ad84-21445767bade"
-        ],
-        "OData-Version": [
-          "4.0"
-        ],
-        "Server": [
-          "Kestrel"
-        ],
-        "x-ms-correlation-request-id": [
-          "4f1c26b0-a643-43b7-b655-794a5b188b83"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210416T044115Z:4f1c26b0-a643-43b7-b655-794a5b188b83"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Fri, 16 Apr 2021 04:41:14 GMT"
-        ],
-        "Content-Length": [
-          "1068"
-        ],
-        "Content-Type": [
-          "application/json; odata.metadata=minimal; odata.streaming=true"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourcegroups/bzhanafdtest/providers/Microsoft.Network/frontdoors/frontdoorpstest2/frontendendpoints/afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"afd-byoc-latest.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"customHttpsProvisioningState\": \"Disabling\",\r\n    \"customHttpsProvisioningSubstate\": \"DeletingCertificate\",\r\n    \"resourceState\": \"Enabled\",\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"certificateSource\": \"AzureKeyVault\",\r\n      \"minimumTlsVersion\": \"1.2\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": null\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"secretName\": \"frontdoorpstest2\",\r\n        \"secretVersion\": \"d6b1f0ffd2a142efb2a8a89289802c77\",\r\n        \"vault\": {\r\n          \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.KeyVault/vaults/bzhanbyostest\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.Network/frontDoors/frontdoorpstest2/frontendEndpoints/afd-byoc-latest-localdev-cdn-azure-cn?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDdjZmRiOTgtYzExOC00NThkLThiZGYtMjQ2YmU2NmIxZjVlL3Jlc291cmNlR3JvdXBzL2J6aGFuYWZkdGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy9mcm9udGRvb3Jwc3Rlc3QyL2Zyb250ZW5kRW5kcG9pbnRzL2FmZC1ieW9jLWxhdGVzdC1sb2NhbGRldi1jZG4tYXp1cmUtY24/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "d16310d9-c4b9-4e99-9e63-b08e0c4194fa"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29916.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/4.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11984"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "a3caedbb-339c-48f4-93ae-6726384a24c4"
-        ],
-        "x-ms-client-request-id": [
-          "d16310d9-c4b9-4e99-9e63-b08e0c4194fa"
-        ],
-        "OData-Version": [
-          "4.0"
-        ],
-        "Server": [
-          "Kestrel"
-        ],
-        "x-ms-correlation-request-id": [
-          "cb0977d7-7cea-4ba9-a329-46299853a8c4"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210416T044216Z:cb0977d7-7cea-4ba9-a329-46299853a8c4"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Fri, 16 Apr 2021 04:42:15 GMT"
-        ],
-        "Content-Length": [
-          "1068"
-        ],
-        "Content-Type": [
-          "application/json; odata.metadata=minimal; odata.streaming=true"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourcegroups/bzhanafdtest/providers/Microsoft.Network/frontdoors/frontdoorpstest2/frontendendpoints/afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"afd-byoc-latest.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"customHttpsProvisioningState\": \"Disabling\",\r\n    \"customHttpsProvisioningSubstate\": \"DeletingCertificate\",\r\n    \"resourceState\": \"Enabled\",\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"certificateSource\": \"AzureKeyVault\",\r\n      \"minimumTlsVersion\": \"1.2\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": null\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"secretName\": \"frontdoorpstest2\",\r\n        \"secretVersion\": \"d6b1f0ffd2a142efb2a8a89289802c77\",\r\n        \"vault\": {\r\n          \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.KeyVault/vaults/bzhanbyostest\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.Network/frontDoors/frontdoorpstest2/frontendEndpoints/afd-byoc-latest-localdev-cdn-azure-cn?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDdjZmRiOTgtYzExOC00NThkLThiZGYtMjQ2YmU2NmIxZjVlL3Jlc291cmNlR3JvdXBzL2J6aGFuYWZkdGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy9mcm9udGRvb3Jwc3Rlc3QyL2Zyb250ZW5kRW5kcG9pbnRzL2FmZC1ieW9jLWxhdGVzdC1sb2NhbGRldi1jZG4tYXp1cmUtY24/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "e34178a2-5b9a-4097-aee6-d6ff2413eed0"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29916.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/4.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11983"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "52831c55-a184-49ee-a7b1-21318577275c"
-        ],
-        "x-ms-client-request-id": [
-          "e34178a2-5b9a-4097-aee6-d6ff2413eed0"
-        ],
-        "OData-Version": [
-          "4.0"
-        ],
-        "Server": [
-          "Kestrel"
-        ],
-        "x-ms-correlation-request-id": [
-          "9500ea1d-83d6-406d-9e48-f7d6603666d4"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210416T044317Z:9500ea1d-83d6-406d-9e48-f7d6603666d4"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Fri, 16 Apr 2021 04:43:16 GMT"
-        ],
-        "Content-Length": [
-          "1068"
-        ],
-        "Content-Type": [
-          "application/json; odata.metadata=minimal; odata.streaming=true"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourcegroups/bzhanafdtest/providers/Microsoft.Network/frontdoors/frontdoorpstest2/frontendendpoints/afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"afd-byoc-latest.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"customHttpsProvisioningState\": \"Disabling\",\r\n    \"customHttpsProvisioningSubstate\": \"DeletingCertificate\",\r\n    \"resourceState\": \"Enabled\",\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"certificateSource\": \"AzureKeyVault\",\r\n      \"minimumTlsVersion\": \"1.2\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": null\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"secretName\": \"frontdoorpstest2\",\r\n        \"secretVersion\": \"d6b1f0ffd2a142efb2a8a89289802c77\",\r\n        \"vault\": {\r\n          \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.KeyVault/vaults/bzhanbyostest\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.Network/frontDoors/frontdoorpstest2/frontendEndpoints/afd-byoc-latest-localdev-cdn-azure-cn?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDdjZmRiOTgtYzExOC00NThkLThiZGYtMjQ2YmU2NmIxZjVlL3Jlc291cmNlR3JvdXBzL2J6aGFuYWZkdGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy9mcm9udGRvb3Jwc3Rlc3QyL2Zyb250ZW5kRW5kcG9pbnRzL2FmZC1ieW9jLWxhdGVzdC1sb2NhbGRldi1jZG4tYXp1cmUtY24/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "39ea20a7-30ea-4081-8b7d-fb2094e67c56"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29916.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/4.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11982"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "c70da74f-d95e-4f4a-8451-19fa0178b06d"
-        ],
-        "x-ms-client-request-id": [
-          "39ea20a7-30ea-4081-8b7d-fb2094e67c56"
-        ],
-        "OData-Version": [
-          "4.0"
-        ],
-        "Server": [
-          "Kestrel"
-        ],
-        "x-ms-correlation-request-id": [
-          "a925c972-a38e-4a43-90e7-fe4cc521fad1"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210416T044418Z:a925c972-a38e-4a43-90e7-fe4cc521fad1"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Fri, 16 Apr 2021 04:44:17 GMT"
-        ],
-        "Content-Length": [
-          "1068"
-        ],
-        "Content-Type": [
-          "application/json; odata.metadata=minimal; odata.streaming=true"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourcegroups/bzhanafdtest/providers/Microsoft.Network/frontdoors/frontdoorpstest2/frontendendpoints/afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"afd-byoc-latest.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"customHttpsProvisioningState\": \"Disabling\",\r\n    \"customHttpsProvisioningSubstate\": \"DeletingCertificate\",\r\n    \"resourceState\": \"Enabled\",\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"certificateSource\": \"AzureKeyVault\",\r\n      \"minimumTlsVersion\": \"1.2\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": null\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"secretName\": \"frontdoorpstest2\",\r\n        \"secretVersion\": \"d6b1f0ffd2a142efb2a8a89289802c77\",\r\n        \"vault\": {\r\n          \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.KeyVault/vaults/bzhanbyostest\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.Network/frontDoors/frontdoorpstest2/frontendEndpoints/afd-byoc-latest-localdev-cdn-azure-cn?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDdjZmRiOTgtYzExOC00NThkLThiZGYtMjQ2YmU2NmIxZjVlL3Jlc291cmNlR3JvdXBzL2J6aGFuYWZkdGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy9mcm9udGRvb3Jwc3Rlc3QyL2Zyb250ZW5kRW5kcG9pbnRzL2FmZC1ieW9jLWxhdGVzdC1sb2NhbGRldi1jZG4tYXp1cmUtY24/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "977e01ff-a7e6-4cfc-8801-1e0fbab8ea23"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29916.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/4.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11981"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "326e6d6c-ecf3-4dde-b579-bcea5362d099"
-        ],
-        "x-ms-client-request-id": [
-          "977e01ff-a7e6-4cfc-8801-1e0fbab8ea23"
-        ],
-        "OData-Version": [
-          "4.0"
-        ],
-        "Server": [
-          "Kestrel"
-        ],
-        "x-ms-correlation-request-id": [
-          "74307df1-c009-465f-bbb7-e76469847e3f"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210416T044519Z:74307df1-c009-465f-bbb7-e76469847e3f"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Fri, 16 Apr 2021 04:45:19 GMT"
-        ],
-        "Content-Length": [
-          "1068"
-        ],
-        "Content-Type": [
-          "application/json; odata.metadata=minimal; odata.streaming=true"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourcegroups/bzhanafdtest/providers/Microsoft.Network/frontdoors/frontdoorpstest2/frontendendpoints/afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"afd-byoc-latest.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"customHttpsProvisioningState\": \"Disabling\",\r\n    \"customHttpsProvisioningSubstate\": \"DeletingCertificate\",\r\n    \"resourceState\": \"Enabled\",\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsConfiguration\": {\r\n      \"protocolType\": \"ServerNameIndication\",\r\n      \"certificateSource\": \"AzureKeyVault\",\r\n      \"minimumTlsVersion\": \"1.2\",\r\n      \"frontDoorCertificateSourceParameters\": {\r\n        \"certificateType\": null\r\n      },\r\n      \"keyVaultCertificateSourceParameters\": {\r\n        \"secretName\": \"frontdoorpstest2\",\r\n        \"secretVersion\": \"d6b1f0ffd2a142efb2a8a89289802c77\",\r\n        \"vault\": {\r\n          \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.KeyVault/vaults/bzhanbyostest\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.Network/frontDoors/frontdoorpstest2/frontendEndpoints/afd-byoc-latest-localdev-cdn-azure-cn?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDdjZmRiOTgtYzExOC00NThkLThiZGYtMjQ2YmU2NmIxZjVlL3Jlc291cmNlR3JvdXBzL2J6aGFuYWZkdGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy9mcm9udGRvb3Jwc3Rlc3QyL2Zyb250ZW5kRW5kcG9pbnRzL2FmZC1ieW9jLWxhdGVzdC1sb2NhbGRldi1jZG4tYXp1cmUtY24/YXBpLXZlcnNpb249MjAyMC0wNS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "e3185c13-e4f3-46f6-9a0e-b46d58a0a819"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29916.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/4.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11980"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "f44f0488-ffa6-4abf-a1d4-3f60871fe692"
-        ],
-        "x-ms-client-request-id": [
-          "e3185c13-e4f3-46f6-9a0e-b46d58a0a819"
-        ],
-        "OData-Version": [
-          "4.0"
-        ],
-        "Server": [
-          "Kestrel"
-        ],
-        "x-ms-correlation-request-id": [
-          "f6b31ead-d6bc-4309-947d-8b9d396a7ca2"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210416T044620Z:f6b31ead-d6bc-4309-947d-8b9d396a7ca2"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Fri, 16 Apr 2021 04:46:19 GMT"
-        ],
-        "Content-Length": [
-          "621"
-        ],
-        "Content-Type": [
-          "application/json; odata.metadata=minimal; odata.streaming=true"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourcegroups/bzhanafdtest/providers/Microsoft.Network/frontdoors/frontdoorpstest2/frontendendpoints/afd-byoc-latest-localdev-cdn-azure-cn\",\r\n  \"type\": \"Microsoft.Network/frontdoors/frontendendpoints\",\r\n  \"properties\": {\r\n    \"hostName\": \"afd-byoc-latest.localdev.cdn.azure.cn\",\r\n    \"sessionAffinityEnabledState\": \"Disabled\",\r\n    \"sessionAffinityTtlSeconds\": 0,\r\n    \"customHttpsProvisioningState\": \"Disabled\",\r\n    \"customHttpsProvisioningSubstate\": \"None\",\r\n    \"resourceState\": \"Enabled\",\r\n    \"webApplicationFirewallPolicyLink\": null,\r\n    \"customHttpsConfiguration\": null\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.Network/frontDoors/frontdoorpstest2/frontendEndpoints/afd-byoc-latest-localdev-cdn-azure-cn/disableHttps?api-version=2020-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDdjZmRiOTgtYzExOC00NThkLThiZGYtMjQ2YmU2NmIxZjVlL3Jlc291cmNlR3JvdXBzL2J6aGFuYWZkdGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29ycy9mcm9udGRvb3Jwc3Rlc3QyL2Zyb250ZW5kRW5kcG9pbnRzL2FmZC1ieW9jLWxhdGVzdC1sb2NhbGRldi1jZG4tYXp1cmUtY24vZGlzYWJsZUh0dHBzP2FwaS12ZXJzaW9uPTIwMjAtMDUtMDE=",
+      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/CliDevReservedGroup/providers/Microsoft.Network/frontDoors/frontdoorclitest/frontendEndpoints/afdbyoc-specific-localdev-cdn-azure-cn/disableHttps?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL0NsaURldlJlc2VydmVkR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2Zyb250RG9vcnMvZnJvbnRkb29yY2xpdGVzdC9mcm9udGVuZEVuZHBvaW50cy9hZmRieW9jLXNwZWNpZmljLWxvY2FsZGV2LWNkbi1henVyZS1jbi9kaXNhYmxlSHR0cHM/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
       "RequestMethod": "POST",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ce490fad-8eda-41da-9e8c-c30b0116e24d"
+          "4eefe045-6309-4307-aa22-94c7084fc4f1"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29916.01",
+          "FxVersion/6.0.3024.21525",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.FrontDoor.FrontDoorManagementClient/4.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoor/6.0.2"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -1491,60 +732,60 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourcegroups/bzhanafdtest/providers/Microsoft.Network/frontdooroperationresults/111789a5-6808-4b60-a8c9-d8e1c34a3395/frontdoorresults/frontdoorpstest2?api-version=2020-05-01"
+          "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/CliDevReservedGroup/providers/Microsoft.Network/frontdooroperationresults/e16d4bbc-159a-43b8-951c-bc0ed6e1fc5c/frontdoorresults/frontdoorclitest?api-version=2021-06-01"
         ],
         "Retry-After": [
           "120"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "bf1f6ce0-dee3-4402-8038-9ac1e0f2c3a6"
+          "993da24e-6074-4216-a25a-bd71405cae83"
         ],
         "x-ms-client-request-id": [
-          "ce490fad-8eda-41da-9e8c-c30b0116e24d"
+          "4eefe045-6309-4307-aa22-94c7084fc4f1"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourcegroups/bzhanafdtest/providers/Microsoft.Network/frontdooroperationresults/111789a5-6808-4b60-a8c9-d8e1c34a3395?api-version=2020-05-01"
+          "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/CliDevReservedGroup/providers/Microsoft.Network/frontdooroperationresults/e16d4bbc-159a-43b8-951c-bc0ed6e1fc5c?api-version=2021-06-01&t=638518591972447360&c=MIIHpTCCBo2gAwIBAgITOgMPIyvO-SSNo3JCxQAEAw8jKzANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSU5GUkEgQ0EgMDEwHhcNMjQwNTE3MDc0MzI1WhcNMjUwNTEyMDc0MzI1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMm-rUyPQv0z_LgvMVxRmSGe7k2sSDcjhZtJtacrGF0aA0mXhldjASVDsIKbducmYozS8YVn2yXvxW_2yo82m2q934keEf1UEKaSADUrozDPX5msTyt18UcXAPp7vPi8MXbYjFOyyuc1uzgXltAbdS5P2ki32RUjUplv8OZZSK5OvCrsyCwkmsg2yKxfHaRObmPqpu65x8lFk2jKBDK30LBTk2StP96kJI1VnIe3fxGXE6_1XKZTCJH9o_4vYvmA3wTHxlu8KWljLk10ttEqy736mEq9ex8TqnJVHebwRZ33UQTFZClqhQrIcLUrar5PXwlFMtvhgI1-Du5tVtKr1KECAwEAAaOCBJIwggSOMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CWTJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSU5GUkElMjBDQSUyMDAxKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQlkyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMElORlJBJTIwQ0ElMjAwMSg0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JZMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3J0MB0GA1UdDgQWBBTVszhW7MMKoXa9-QpBHa5cQlUN9TAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJTkZSQSUyMENBJTIwMDEoNCkuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTl2Ztn_PjsurvwwKidileIud8-YzAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAD-urQp96AuB916E-Te8RmgK90YXOfxpQ9UFVrx1h5G83WkRUIlKdESHrUjduIESxCRdkRY2ntf__S09h5_4l7f3rT0jpHXw-_8dUrAbn43jMiQmB2LXzLoyIWaLagT18F_wbUAmRMU1m1WEJE66ngt8mx407-SRKz6rKaPUCD2z-wIeSOcaXXY7KbRVUtbPS4GhSTo3fCRHPGpXS9ftpm-v7z3JFkXFsN7jcHBQDn2YqE7eFoPVqmoQtJZXXzAsWMeqSilE2wmsqn8Ty0ykZnqcfjuRNXoTC9CpuEhZYirAwmdBN87Cb7ZrhR2s8flm-uIqdEhk4mWeNMEyWsm5RLA&s=A3SGFgCxsWe2MWpuQmtclzNFzGGRN0iezX46-tEbj2Q4u-y9_FrSYsUKJUjd5ji8mLXdyA_dVGNuqEsa_MG9H5XaAEmZ_ENGhCbQL-shEazG0IHS9-loc4s1NpgHSZawy8Z2xnT77UXn8DgWmeuG753h0AMah2zqO-HcXhGOFaSO7ZExBdQH_WIrmqIYB5jaDY9KT_omdiJmJI_P4aT1sgKv6GazM80yeSrfvsvgZMuOTemQxeLcXY-ICJJwgRask4P8f6D-a8woe1II0dF1GF9EnmzqpzAtRNN6gvQ2gC8mF7RezlHpKWna9k5oj7k-rutOX-SFM6YMIybLgf8NWA&h=Yk6ux1BTqkp1uxob13sn4ufVNEdgL0kbtpA2ddMayik"
         ],
-        "OData-Version": [
-          "4.0"
-        ],
-        "Server": [
-          "Kestrel"
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "3f68c2ee-f705-4ac4-a855-3a4558baf043"
+          "3be02f17-0686-4a3f-ad5d-77d4850ed9ca"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20210416T043609Z:3f68c2ee-f705-4ac4-a855-3a4558baf043"
+          "SOUTHEASTASIA:20240521T033317Z:3be02f17-0686-4a3f-ad5d-77d4850ed9ca"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 394E12E7D21E418DA5F2C6E6E8CF6335 Ref B: MAA201060516037 Ref C: 2024-05-21T03:33:15Z"
+        ],
         "Date": [
-          "Fri, 16 Apr 2021 04:36:08 GMT"
+          "Tue, 21 May 2024 03:33:16 GMT"
         ],
         "Content-Length": [
-          "751"
+          "791"
         ],
         "Content-Type": [
-          "application/json; odata.metadata=minimal; odata.streaming=true"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"hostName\": \"afd-byoc-latest.localdev.cdn.azure.cn\",\r\n  \"sessionAffinityEnabledState\": \"Disabled\",\r\n  \"sessionAffinityTtlSeconds\": 0,\r\n  \"customHttpsProvisioningState\": \"Disabling\",\r\n  \"customHttpsProvisioningSubstate\": \"DeletingCertificate\",\r\n  \"resourceState\": \"Enabled\",\r\n  \"webApplicationFirewallPolicyLink\": null,\r\n  \"customHttpsConfiguration\": {\r\n    \"protocolType\": \"ServerNameIndication\",\r\n    \"certificateSource\": \"AzureKeyVault\",\r\n    \"minimumTlsVersion\": \"1.2\",\r\n    \"frontDoorCertificateSourceParameters\": {\r\n      \"certificateType\": null\r\n    },\r\n    \"keyVaultCertificateSourceParameters\": {\r\n      \"secretName\": \"frontdoorpstest2\",\r\n      \"secretVersion\": \"d6b1f0ffd2a142efb2a8a89289802c77\",\r\n      \"vault\": {\r\n        \"id\": \"/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.KeyVault/vaults/bzhanbyostest\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"resourceState\": \"Enabled\",\r\n  \"hostName\": \"afdbyoc-specific.localdev.cdn.azure.cn\",\r\n  \"sessionAffinityEnabledState\": \"Disabled\",\r\n  \"sessionAffinityTtlSeconds\": 0,\r\n  \"webApplicationFirewallPolicyLink\": null,\r\n  \"customHttpsProvisioningState\": \"Disabling\",\r\n  \"customHttpsProvisioningSubstate\": \"DeletingCertificate\",\r\n  \"customHttpsConfiguration\": {\r\n    \"certificateSource\": \"AzureKeyVault\",\r\n    \"protocolType\": \"ServerNameIndication\",\r\n    \"minimumTlsVersion\": \"1.2\",\r\n    \"keyVaultCertificateSourceParameters\": {\r\n      \"vault\": {\r\n        \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/CliDevReservedGroup/providers/Microsoft.KeyVault/vaults/clibyoc-int\"\r\n      },\r\n      \"secretName\": \"localdev-multi\",\r\n      \"secretVersion\": \"6244bbfa61c241d78403a6e394cc2d30\"\r\n    },\r\n    \"frontDoorCertificateSourceParameters\": {\r\n      \"certificateType\": null,\r\n      \"certificateTypeAsEnum\": \"Dedicated\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 202
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "d7cfdb98-c118-458d-8bdf-246be66b1f5e"
+    "SubscriptionId": "27cafca8-b9a4-4264-b399-45d0c9cca1ab"
   }
 }
