@@ -335,7 +335,7 @@ If ($Test -And (($CIPlan.test.Length -Ne 0) -Or ($PSBoundParameters.ContainsKey(
     $FailedTestCases = @{}
     Foreach ($TestResultFile in $TestResultFiles)
     {
-        $Content = Get-Content -Path $TestResultFile
+        $Content = ($TestResultFile | Get-Content)
         $XmlDocument = New-Object System.Xml.XmlDocument
         $XmlDocument.LoadXml($Content)
         $FailedTestIdList = $XmlDocument.TestRun.Results.UnitTestResult | Where-Object { $_.outcome -eq "Failed" } | ForEach-Object { $_.testId }
