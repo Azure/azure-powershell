@@ -43,6 +43,7 @@ using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity;
 using System.Management.Automation.Runspaces;
 using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models;
 using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute;
+using System.ComponentModel.Design;
 
 
 namespace Microsoft.Azure.Commands.Ssh
@@ -277,6 +278,20 @@ namespace Microsoft.Azure.Commands.Ssh
         public string Port { get; set; }
 
         /// <summary>
+        /// The resource tag of the target Azure Resource with the replacement port number.
+        /// </summary>
+        [Parameter(ParameterSetName = InteractiveParameterSet)]
+        [Parameter(ParameterSetName = IpAddressParameterSet)]
+        [Parameter(ParameterSetName = ResourceIdParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceTag { get; set; }
+
+        /// <summary>
+        /// The JSON data that is retrieved from Azure with the target Azure Resource's properties (Resource Type, Resource Tag, etc.)
+        /// </summary>
+        public Dictionary<string, string> TargetMachineTags { get; private set; }
+
+        /// <summary>
         /// The Type of the target Azure Resource.
         /// Either Microsoft.Compute/virtualMachines, Microsoft.HybridCompute/machines, Microsoft.ConnectedVMwarevSphere/virtualMachines, Microsoft.ScVmm/virtualMachines, Microsoft.AzureStackHCI/virtualMachines.
         /// </summary>
@@ -353,7 +368,7 @@ namespace Microsoft.Azure.Commands.Ssh
                 throw new AzPSArgumentException(Resources.RDPOnNonWindowsClient, nameof(Rdp));
             }
 
-                if (CertificateFile != null)
+            if (CertificateFile != null)
             {
                 if (LocalUser == null)
                     WriteWarning(Resources.WarningCertificateWithNoLocalUser);
@@ -398,6 +413,7 @@ namespace Microsoft.Azure.Commands.Ssh
 
         protected internal void SetResourceType()
         {
+            TargetMachineTags = new Dictionary<string, string>();
             if (ParameterSetName.Equals(IpAddressParameterSet))
             {
                 ResourceType = "Microsoft.Compute/virtualMachines";
@@ -420,6 +436,16 @@ namespace Microsoft.Azure.Commands.Ssh
             {
                 IPage<GenericResource> resources = ResourceManagementClient.Resources.ListByResourceGroupWithHttpMessagesAsync(ResourceGroupName, query).GetAwaiter().GetResult().Body;
                 types = resources.Select(resource => resource.Type).ToArray();
+                foreach (var resource in resources)
+                {
+                    if (resource.Tags != null && resource.Tags.Any())
+                    {
+                        foreach (var tag in resource.Tags)
+                        {
+                            TargetMachineTags[tag.Key] = tag.Value;
+                        }
+                    }
+                }
             }
             catch (CloudException exception)
             {
@@ -434,7 +460,7 @@ namespace Microsoft.Azure.Commands.Ssh
             {
                 if (!types.Contains(ResourceType, StringComparer.CurrentCultureIgnoreCase))
                 {
-                    throw new AzPSResourceNotFoundCloudException(String.Format(Resources.ResourceNotFoundTypeProvided,Name, ResourceType, ResourceGroupName));
+                    throw new AzPSResourceNotFoundCloudException(String.Format(Resources.ResourceNotFoundTypeProvided, Name, ResourceType, ResourceGroupName));
                 }
                 return;
             }
@@ -449,6 +475,58 @@ namespace Microsoft.Azure.Commands.Ssh
             }
             ResourceType = types.ElementAt(0);
         }
+
+        protected internal void ConfigurePortNumberFromResourceTag()
+        {
+            // Check if both Port and ResourceTag arguments are specified, throw warning
+            if (!string.IsNullOrEmpty(Port) && !string.IsNullOrEmpty(ResourceTag))
+            {
+                WriteWarning("Both -Port and -ResourceTag arguments were specified. " +
+                             "The -Port option will take precedence and the -ResourceTag will be ignored. " +
+                             "To use the port number from the -ResourceTag, please omit the -Port argument.");
+            }
+
+            // If Port is initialized, use it and return
+            if (!string.IsNullOrEmpty(Port))
+            {
+                return;
+            }
+            // Checking Resource Tag and setting port to its specified port number
+            if (!string.IsNullOrEmpty(ResourceTag))
+            {
+                if (TargetMachineTags.TryGetValue(ResourceTag, out string portValue))
+                {
+                    ValidateAndSetPort(portValue, ResourceTag);
+                }
+                else
+                {
+                    throw new ArgumentException($"Resource tag name {ResourceTag} cannot be found. Contact your administrator to ensure the tag is valid.");
+                }
+                return;
+            }
+
+            // Check for the SSHPort tag
+            if (TargetMachineTags.TryGetValue("SSHPort", out string sshPortValue))
+            {
+                ValidateAndSetPort(sshPortValue, "SSHPort");
+            }
+        }
+        // Valid date port number
+        private void ValidateAndSetPort(string portNum, string tagName)
+        {
+            if (int.TryParse(portNum, out int port) && port > 0 && port < 65536)
+            {
+                Port = portNum;
+            }
+            else
+            {
+                throw new ArgumentException($"Port {portNum} from resource tag {tagName} was used for this command. " +
+                                            "If this is incorrect, use the --port parameter or contact your administrator to correct the resource tag value. " +
+                                            "Port numbers must not be empty, must not contain letters or special characters, and cannot exceed 65535.");
+                
+            }
+        }
+
 
         protected internal void UpdateProgressBar(
             ProgressRecord record,
@@ -760,6 +838,7 @@ namespace Microsoft.Azure.Commands.Ssh
             try
             {
                 var result = ServiceConfigurationsClient.CreateOrupdate(ResourceId, "default", "SSH", serviceConfigurationResource);
+                
             }
             catch (PowerShell.Ssh.Helpers.HybridConnectivity.Models.ErrorResponseException exception)
             {
@@ -774,6 +853,7 @@ namespace Microsoft.Azure.Commands.Ssh
             }
             createdServiceConfig = true;
         }
+       
 
         /// <summary>
         /// Create a default endpoint. Throw an AzPSApplicationException if it fails.
