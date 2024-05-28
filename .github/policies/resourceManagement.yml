@@ -115,15 +115,15 @@ configuration:
           - labelAdded:
               label: Service Attention
           - labelAdded:
-              label: AAD
+              label: AAD-1
         - hasLabel:
             label: Service Attention
         - hasLabel:
-            label: AAD
+            label: AAD-1
         then:
         - mentionUsers:
             mentionees:
-            - adamedx
+            - adamedx-1
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
