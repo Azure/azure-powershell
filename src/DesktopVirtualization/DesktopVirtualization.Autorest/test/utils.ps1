@@ -151,7 +151,9 @@ function setupEnv() {
         Write-Host -ForegroundColor Red 'Failed to create Private Link Workspace resources required for testing...'
         Write-Host -ForegroundColor Red $_.Exception.Message
     }
-
+    #Grab latest Marketplace images
+    $imageList = Get-AzVMImage -Location $env.Location -PublisherName "microsoftwindowsdesktop" -Offer "office-365" -Sku "win11-23h2-avd-m365" | Select Version
+    $env.Add("MarketplaceImageVersion", $imageList[0].Version)
     #Wrap up and create JSON file for tests to use
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'

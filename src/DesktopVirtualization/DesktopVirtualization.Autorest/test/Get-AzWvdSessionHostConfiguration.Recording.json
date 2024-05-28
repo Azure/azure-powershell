@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "155" ],
-        "x-ms-client-request-id": [ "a72f4e39-2e14-4496-9539-e221cb3ea750" ],
+        "x-ms-client-request-id": [ "1dacb599-d63a-46a1-876a-8c474474961c" ],
         "CommandName": [ "Get-AzWvdSessionHostConfiguration" ],
         "FullCommandName": [ "Get-AzWvdSessionHostConfiguration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -24,30 +24,30 @@
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
         "Set-Cookie": [ "ARRAffinity=6ed70d129f929e9c0dc1324370ea99cd733e8f3cb78772a9b8793f4f636e0cf7;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=6ed70d129f929e9c0dc1324370ea99cd733e8f3cb78772a9b8793f4f636e0cf7;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
-        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-throttling-version": [ "v2" ],
         "X-Rate-Limit-Limit": [ "0" ],
         "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
         "X-Rate-Limit-Reset": [ "0" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JocHVIUC9zZXNzaW9uSG9zdENvbmZpZ3VyYXRpb25zL2RlZmF1bHQ=" ],
-        "x-ms-lamport-ts": [ "160631027" ],
-        "x-ms-correlation-id": [ "6d1c38f1-0f06-49c5-afbc-2541039e8a35" ],
-        "x-ms-request-id": [ "a72f4e39-2e14-4496-9539-e221cb3ea750" ],
+        "x-ms-lamport-ts": [ "162166174" ],
+        "x-ms-correlation-id": [ "f475414b-0fd4-4dc7-90ea-8c79b3c3fc06" ],
+        "x-ms-request-id": [ "1dacb599-d63a-46a1-876a-8c474474961c" ],
         "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-correlation-request-id": [ "660f4d96-a8a5-4e45-9f83-781fdaa4da13" ],
-        "x-ms-routing-request-id": [ "WESTCENTRALUS:20240521T003233Z:660f4d96-a8a5-4e45-9f83-781fdaa4da13" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-correlation-request-id": [ "855f75e9-fa3c-4ba4-bd17-17c366da18d1" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20240528T190725Z:855f75e9-fa3c-4ba4-bd17-17c366da18d1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 6D5B59D74A8F4236B8D472084300B864 Ref B: CYS013050702021 Ref C: 2024-05-21T00:32:33Z" ],
-        "Date": [ "Tue, 21 May 2024 00:32:32 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 1D1F7D8B577B4A31BE7E0E21B32B3B82 Ref B: CYS013050703051 Ref C: 2024-05-28T19:07:23Z" ],
+        "Date": [ "Tue, 28 May 2024 19:07:25 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1671" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"default\",\"id\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostConfigurations/default\",\"type\":\"Microsoft.DesktopVirtualization/hostPools/sessionHostConfigurations\",\"properties\":{\"version\":\"2024-05-08T19:09:08Z\",\"provisioningState\":\"Succeeded\",\"vmSizeId\":\"Standard_D2s_v3\",\"vmLocation\":\"westus2\",\"friendlyName\":\"dymmy\",\"vmTags\":{\"cm-resource-parent\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/alecbhpuHP\"},\"vmResourceGroup\":\"alecbUserSessionTests\",\"vmNamePrefix\":\"updateTest\",\"availabilityZones\":null,\"networkInfo\":{\"subnetId\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.Network/virtualNetworks/alecbUserSession-vnet/subnets/default\",\"securityGroupId\":null},\"diskInfo\":{\"type\":\"Standard_LRS\"},\"imageInfo\":{\"type\":\"Marketplace\",\"marketplaceInfo\":{\"offer\":\"office-365\",\"publisher\":\"microsoftwindowsdesktop\",\"sku\":\"win11-23h2-avd-m365\",\"exactVersion\":\"22631.2861.231212\"},\"customInfo\":null},\"domainInfo\":{\"joinType\":\"AzureActiveDirectory\",\"activeDirectoryInfo\":null,\"azureActiveDirectoryInfo\":{\"mdmProviderGuid\":null}},\"vmAdminCredentials\":{\"usernameKeyVaultSecretUri\":\"https://hpuposhkv.vault.azure.net/secrets/LocalAdminUserName\",\"passwordKeyVaultSecretUri\":\"https://hpuposhkv.vault.azure.net/secrets/LocalAdminPW\"},\"bootDiagnosticsInfo\":{\"enabled\":true,\"storageUri\":null},\"securityInfo\":{\"type\":\"TrustedLaunch\",\"secureBootEnabled\":true,\"vTpmEnabled\":true},\"customConfigurationScriptUrl\":null}}",
+      "Content": "{\"name\":\"default\",\"id\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostConfigurations/default\",\"type\":\"Microsoft.DesktopVirtualization/hostPools/sessionHostConfigurations\",\"properties\":{\"version\":\"2024-05-21T00:33:03Z\",\"provisioningState\":\"Succeeded\",\"vmSizeId\":\"Standard_D2s_v3\",\"vmLocation\":\"westus2\",\"friendlyName\":\"dymmy\",\"vmTags\":{\"cm-resource-parent\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/alecbhpuHP\"},\"vmResourceGroup\":\"alecbUserSessionTests\",\"vmNamePrefix\":\"updateTest\",\"availabilityZones\":null,\"networkInfo\":{\"subnetId\":\"/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.Network/virtualNetworks/alecbUserSession-vnet/subnets/default\",\"securityGroupId\":null},\"diskInfo\":{\"type\":\"Standard_LRS\"},\"imageInfo\":{\"type\":\"Marketplace\",\"marketplaceInfo\":{\"offer\":\"office-365\",\"publisher\":\"microsoftwindowsdesktop\",\"sku\":\"win11-23h2-avd-m365\",\"exactVersion\":\"22631.3007.240109\"},\"customInfo\":null},\"domainInfo\":{\"joinType\":\"AzureActiveDirectory\",\"activeDirectoryInfo\":null,\"azureActiveDirectoryInfo\":{\"mdmProviderGuid\":null}},\"vmAdminCredentials\":{\"usernameKeyVaultSecretUri\":\"https://hpuposhkv.vault.azure.net/secrets/LocalAdminUserName\",\"passwordKeyVaultSecretUri\":\"https://hpuposhkv.vault.azure.net/secrets/LocalAdminPW\"},\"bootDiagnosticsInfo\":{\"enabled\":true,\"storageUri\":null},\"securityInfo\":{\"type\":\"TrustedLaunch\",\"secureBootEnabled\":true,\"vTpmEnabled\":true},\"customConfigurationScriptUrl\":null}}",
       "isContentBase64": false
     }
   }
