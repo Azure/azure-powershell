@@ -21,7 +21,7 @@ function Test-NetworkVirtualApplianceRestart
     $rgname = Get-ResourceGroupName
 
     # The commands are not supported in all regions yet.
-    $location = "eastus"
+    $location = "eastus2"
     $nvaname = Get-ResourceName
     $wanname = Get-ResourceName
     $hubname = Get-ResourceName
@@ -56,6 +56,5 @@ function Test-NetworkVirtualApplianceRestart
    	}   
     finally{
         # Clean up.
-        Clean-ResourceGroup $rgname
 	}
 }

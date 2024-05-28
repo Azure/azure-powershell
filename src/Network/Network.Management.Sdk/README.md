@@ -27,7 +27,7 @@ use-extension:
 
 ###
 ``` yaml
-commit: d1f4d6fcf1bbb2e71a32bb2079de12f17fedf56a
+commit: 222ecb7f96343059c8434c7e1f11ad892ffd8c27
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/stable/2023-11-01/applicationGateway.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/stable/2023-11-01/applicationGatewayWafDynamicManifests.json
