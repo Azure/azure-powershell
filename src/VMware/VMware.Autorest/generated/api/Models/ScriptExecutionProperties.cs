@@ -24,7 +24,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         private string _failureReason;
 
         /// <summary>
-        /// Error message if the script was able to run, but if the script itself had errors or powershell threw an exception
+        /// Error message if the script was able to run, but if the script itself had
+        /// errors or powershell threw an exception
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string FailureReason { get => this._failureReason; set => this._failureReason = value; }
@@ -40,7 +41,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameter> _hiddenParameter;
 
         /// <summary>
-        /// Parameters that will be hidden/not visible to ARM, such as passwords and credentials
+        /// Parameters that will be hidden/not visible to ARM, such as passwords and
+        /// credentials
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameter> HiddenParameter { get => this._hiddenParameter; set => this._hiddenParameter = value; }
@@ -165,7 +167,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> Error { get;  }
         /// <summary>
-        /// Error message if the script was able to run, but if the script itself had errors or powershell threw an exception
+        /// Error message if the script was able to run, but if the script itself had
+        /// errors or powershell threw an exception
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -173,7 +176,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Error message if the script was able to run, but if the script itself had errors or powershell threw an exception",
+        Description = @"Error message if the script was able to run, but if the script itself had
+        errors or powershell threw an exception",
         SerializedName = @"failureReason",
         PossibleTypes = new [] { typeof(string) })]
         string FailureReason { get; set; }
@@ -189,7 +193,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? FinishedAt { get;  }
         /// <summary>
-        /// Parameters that will be hidden/not visible to ARM, such as passwords and credentials
+        /// Parameters that will be hidden/not visible to ARM, such as passwords and
+        /// credentials
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -197,7 +202,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Parameters that will be hidden/not visible to ARM, such as passwords and credentials",
+        Description = @"Parameters that will be hidden/not visible to ARM, such as passwords and
+        credentials",
         SerializedName = @"hiddenParameters",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameter) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameter> HiddenParameter { get; set; }
@@ -255,7 +261,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Description = @"The state of the script execution resource",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Pending", "Running", "Succeeded", "Failed", "Cancelling", "Cancelled", "Deleting", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Pending", "Running", "Cancelling", "Cancelled", "Deleting")]
         string ProvisioningState { get;  }
         /// <summary>Time to live for the resource. If not provided, will be available for 60 days</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
@@ -332,13 +338,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>Standard error output stream from the powershell execution</summary>
         System.Collections.Generic.List<string> Error { get; set; }
         /// <summary>
-        /// Error message if the script was able to run, but if the script itself had errors or powershell threw an exception
+        /// Error message if the script was able to run, but if the script itself had
+        /// errors or powershell threw an exception
         /// </summary>
         string FailureReason { get; set; }
         /// <summary>Time the script execution was finished</summary>
         global::System.DateTime? FinishedAt { get; set; }
         /// <summary>
-        /// Parameters that will be hidden/not visible to ARM, such as passwords and credentials
+        /// Parameters that will be hidden/not visible to ARM, such as passwords and
+        /// credentials
         /// </summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameter> HiddenParameter { get; set; }
         /// <summary>Standard information out stream from the powershell execution</summary>
@@ -350,7 +358,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>Parameters the script will accept</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameter> Parameter { get; set; }
         /// <summary>The state of the script execution resource</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Pending", "Running", "Succeeded", "Failed", "Cancelling", "Cancelled", "Deleting", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Pending", "Running", "Cancelling", "Cancelled", "Deleting")]
         string ProvisioningState { get; set; }
         /// <summary>Time to live for the resource. If not provided, will be available for 60 days</summary>
         string Retention { get; set; }

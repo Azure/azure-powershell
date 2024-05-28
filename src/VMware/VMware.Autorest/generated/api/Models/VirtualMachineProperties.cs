@@ -38,6 +38,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>Internal Acessors for MoRefId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVirtualMachinePropertiesInternal.MoRefId { get => this._moRefId; set { {_moRefId = value;} } }
 
+        /// <summary>Internal Acessors for ProvisioningState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVirtualMachinePropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
+
         /// <summary>Internal Acessors for RestrictMovement</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVirtualMachinePropertiesInternal.RestrictMovement { get => this._restrictMovement; set { {_restrictMovement = value;} } }
 
@@ -47,6 +50,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>Virtual machine managed object reference id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string MoRefId { get => this._moRefId; }
+
+        /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
+        private string _provisioningState;
+
+        /// <summary>The provisioning state of the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string ProvisioningState { get => this._provisioningState; }
 
         /// <summary>Backing field for <see cref="RestrictMovement" /> property.</summary>
         private string _restrictMovement;
@@ -100,6 +110,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"moRefId",
         PossibleTypes = new [] { typeof(string) })]
         string MoRefId { get;  }
+        /// <summary>The provisioning state of the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The provisioning state of the resource.",
+        SerializedName = @"provisioningState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled")]
+        string ProvisioningState { get;  }
         /// <summary>Whether VM DRS-driven movement is restricted (enabled) or not (disabled)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -126,6 +148,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         string FolderPath { get; set; }
         /// <summary>Virtual machine managed object reference id</summary>
         string MoRefId { get; set; }
+        /// <summary>The provisioning state of the resource.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled")]
+        string ProvisioningState { get; set; }
         /// <summary>Whether VM DRS-driven movement is restricted (enabled) or not (disabled)</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         string RestrictMovement { get; set; }

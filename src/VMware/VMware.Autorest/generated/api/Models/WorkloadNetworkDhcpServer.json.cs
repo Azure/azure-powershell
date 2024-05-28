@@ -86,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             }
             __workloadNetworkDhcpEntity?.ToJson(container, serializationMode);
             AddIf( null != (((object)this._serverAddress)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._serverAddress.ToString()) : null, "serverAddress" ,container.Add );
-            AddIf( null != this._leaseTime ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNumber((long)this._leaseTime) : null, "leaseTime" ,container.Add );
+            AddIf( null != this._leaseTime ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNumber((int)this._leaseTime) : null, "leaseTime" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             }
             __workloadNetworkDhcpEntity = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.WorkloadNetworkDhcpEntity(json);
             {_serverAddress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("serverAddress"), out var __jsonServerAddress) ? (string)__jsonServerAddress : (string)_serverAddress;}
-            {_leaseTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNumber>("leaseTime"), out var __jsonLeaseTime) ? (long?)__jsonLeaseTime : _leaseTime;}
+            {_leaseTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNumber>("leaseTime"), out var __jsonLeaseTime) ? (int?)__jsonLeaseTime : _leaseTime;}
             AfterFromJson(json);
         }
     }

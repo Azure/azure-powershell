@@ -76,6 +76,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICloudLinkPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICloudLinkPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
             if (content.Contains("Status"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICloudLinkPropertiesInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICloudLinkPropertiesInternal)this).Status, global::System.Convert.ToString);
@@ -101,6 +105,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICloudLinkPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICloudLinkPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
             if (content.Contains("Status"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICloudLinkPropertiesInternal)this).Status = (string) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICloudLinkPropertiesInternal)this).Status, global::System.Convert.ToString);

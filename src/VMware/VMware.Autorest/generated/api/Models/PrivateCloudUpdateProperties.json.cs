@@ -83,6 +83,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {_internet = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("internet"), out var __jsonInternet) ? (string)__jsonInternet : (string)_internet;}
             {_identitySource = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonArray>("identitySources"), out var __jsonIdentitySources) ? If( __jsonIdentitySources as Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource) (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IdentitySource.FromJson(__u) )) ))() : null : _identitySource;}
             {_extendedNetworkBlock = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonArray>("extendedNetworkBlocks"), out var __jsonExtendedNetworkBlocks) ? If( __jsonExtendedNetworkBlocks as Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(string) (__p is Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString __o ? (string)(__o.ToString()) : null)) ))() : null : _extendedNetworkBlock;}
+            {_dnsZoneType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("dnsZoneType"), out var __jsonDnsZoneType) ? (string)__jsonDnsZoneType : (string)_dnsZoneType;}
             AfterFromJson(json);
         }
 
@@ -130,6 +131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
                 }
                 container.Add("extendedNetworkBlocks",__r);
             }
+            AddIf( null != (((object)this._dnsZoneType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._dnsZoneType.ToString()) : null, "dnsZoneType" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

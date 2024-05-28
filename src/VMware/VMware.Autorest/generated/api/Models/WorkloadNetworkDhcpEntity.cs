@@ -8,7 +8,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Extensions;
 
     /// <summary>
-    /// Base class for WorkloadNetworkDhcpServer and WorkloadNetworkDhcpRelay to inherit from
+    /// Base class for WorkloadNetworkDhcpServer and WorkloadNetworkDhcpRelay to
+    /// inherit from
     /// </summary>
     public partial class WorkloadNetworkDhcpEntity :
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpEntity,
@@ -62,7 +63,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 
         }
     }
-    /// Base class for WorkloadNetworkDhcpServer and WorkloadNetworkDhcpRelay to inherit from
+    /// Base class for WorkloadNetworkDhcpServer and WorkloadNetworkDhcpRelay to
+    /// inherit from
     public partial interface IWorkloadNetworkDhcpEntity :
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IJsonSerializable
     {
@@ -99,7 +101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Description = @"The provisioning state",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Building", "Deleting", "Updating", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Building", "Deleting", "Updating")]
         string ProvisioningState { get;  }
         /// <summary>NSX revision number.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
@@ -125,7 +127,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         System.Collections.Generic.List<string> Segment { get;  }
 
     }
-    /// Base class for WorkloadNetworkDhcpServer and WorkloadNetworkDhcpRelay to inherit from
+    /// Base class for WorkloadNetworkDhcpServer and WorkloadNetworkDhcpRelay to
+    /// inherit from
     internal partial interface IWorkloadNetworkDhcpEntityInternal
 
     {
@@ -135,7 +138,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>Display name of the DHCP entity.</summary>
         string DisplayName { get; set; }
         /// <summary>The provisioning state</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Building", "Deleting", "Updating", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Building", "Deleting", "Updating")]
         string ProvisioningState { get; set; }
         /// <summary>NSX revision number.</summary>
         long? Revision { get; set; }
