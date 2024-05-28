@@ -20,7 +20,7 @@ Gets the provisioned cluster instance
 .Description
 Gets the provisioned cluster instance
 .Example
-Get-AzAksArcClusterLog -ipAddress 1.1.1.1 -sshkeypath "" -outdir "/logs"
+Get-AzAksArcLog -ipAddress 1.1.1.1 -sshkeypath "" -outdir "/logs"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedCluster
