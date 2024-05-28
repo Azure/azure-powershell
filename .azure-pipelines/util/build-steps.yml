@@ -173,7 +173,7 @@ steps:
       if ('Manual' -eq "$(Build.Reason)" -and ('true' -eq '${{ parameters.ForceRegenerate }}')) {
         . $buildScript -CIPlan -RepoRoot "$(Build.SourcesDirectory)" -Configuration ${{ parameters.configuration }} -ForceRegenerate
       } else {
-        . $buildScript -CIPlan -RepoRoot "$(Build.SourcesDirectory)" -Configuration ${{ parameters.configuration }} -ForceRegenerate
+        . $buildScript -CIPlan -RepoRoot "$(Build.SourcesDirectory)" -Configuration ${{ parameters.configuration }}
       }
 - task: PowerShell@2
   displayName: 'Write pipeline result'
