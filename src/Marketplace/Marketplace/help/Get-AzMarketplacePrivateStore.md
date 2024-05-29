@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.dll-Help.xml
 Module Name: Az.Marketplace
-online version:https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestore
+online version: https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestore
 schema: 2.0.0
 ---
 
@@ -13,7 +13,8 @@ Get private store list
 ## SYNTAX
 
 ```
-Get-AzMarketplacePrivateStore [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzMarketplacePrivateStore [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

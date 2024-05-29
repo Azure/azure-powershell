@@ -10,6 +10,7 @@
 
 namespace Microsoft.Azure.Management.Compute.Models
 {
+    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
@@ -39,9 +40,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Disk.</param>
         /// <param name="osProfile">Specifies information required for
         /// reimaging the non-ephemeral OS disk.</param>
-        public VirtualMachineScaleSetVMReimageParameters(bool? tempDisk = default(bool?), string exactVersion = default(string), OSProfileProvisioningData osProfile = default(OSProfileProvisioningData))
+        /// <param name="forceUpdateOSDiskForEphemeral">Parameter to force
+        /// update ephemeral OS disk for a virtual machine scale set VM</param>
+        public VirtualMachineScaleSetVMReimageParameters(bool? tempDisk = default(bool?), string exactVersion = default(string), OSProfileProvisioningData osProfile = default(OSProfileProvisioningData), bool? forceUpdateOSDiskForEphemeral = default(bool?))
             : base(tempDisk, exactVersion, osProfile)
         {
+            ForceUpdateOSDiskForEphemeral = forceUpdateOSDiskForEphemeral;
             CustomInit();
         }
 
@@ -49,6 +53,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets parameter to force update ephemeral OS disk for a
+        /// virtual machine scale set VM
+        /// </summary>
+        [JsonProperty(PropertyName = "forceUpdateOSDiskForEphemeral")]
+        public bool? ForceUpdateOSDiskForEphemeral { get; set; }
 
     }
 }

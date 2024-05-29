@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NetworkAnalytics-help.xml
 Module Name: Az.NetworkAnalytics
 online version: https://learn.microsoft.com/powershell/module/az.networkanalytics/remove-aznetworkanalyticsdataproductuserrole
 schema: 2.0.0
@@ -15,17 +15,18 @@ Remove role from the data product.
 ### RemoveExpanded (Default)
 ```
 Remove-AzNetworkAnalyticsDataProductUserRole -DataProductName <String> -ResourceGroupName <String>
- -DataTypeScope <String[]> -PrincipalId <String> -PrincipalType <String> -Role <DataProductUserRole>
- -RoleAssignmentId <String> -RoleId <String> -UserName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -DataTypeScope <String[]> -PrincipalId <String> -PrincipalType <String>
+ -Role <DataProductUserRole> -RoleAssignmentId <String> -RoleId <String> -UserName <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RemoveViaIdentityExpanded
 ```
-Remove-AzNetworkAnalyticsDataProductUserRole -InputObject <INetworkAnalyticsIdentity>
- -DataTypeScope <String[]> -PrincipalId <String> -PrincipalType <String> -Role <DataProductUserRole>
- -RoleAssignmentId <String> -RoleId <String> -UserName <String> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzNetworkAnalyticsDataProductUserRole -InputObject <INetworkAnalyticsIdentity> -DataTypeScope <String[]>
+ -PrincipalId <String> -PrincipalType <String> -Role <DataProductUserRole> -RoleAssignmentId <String>
+ -RoleId <String> -UserName <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +36,7 @@ Remove role from the data product.
 
 ### Example 1: Remove user role from the data product.
 ```powershell
- Remove-AzNetworkAnalyticsDataProductUserRole -DataProductName "dataProductName" -ResourceGroupName "resourceGroupName" -Role Reader -PrincipalType user -RoleId "opinsightsdpqjydom/dataProductName/confmq0f0zpu" -PrincipalId "user@microsoft.com" -DataTypeScope "dataProductName" -RoleAssignmentId "confmq0f0zpu" -UserName "User Name"
+Remove-AzNetworkAnalyticsDataProductUserRole -DataProductName "dataProductName" -ResourceGroupName "resourceGroupName" -Role Reader -PrincipalType user -RoleId "opinsightsdpqjydom/dataProductName/confmq0f0zpu" -PrincipalId "user@microsoft.com" -DataTypeScope "dataProductName" -RoleAssignmentId "confmq0f0zpu" -UserName "User Name"
 ```
 
 Remove user role from the data product.
@@ -285,4 +286,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

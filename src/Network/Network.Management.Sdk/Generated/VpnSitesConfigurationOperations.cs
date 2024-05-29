@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.Network
         public NetworkManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Gives the sas-url to download the configurations for vpn-sites in a resource group.
+        /// Gives the sas-url to download the configurations for vpn-sites in a
+        /// resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The resource group name.
@@ -125,7 +126,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "virtualWANName");
             }
 
-            string apiVersion = "2023-06-01";
+            string apiVersion = "2023-11-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

@@ -26,15 +26,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="backupManagementType">Type of backup management for the backed up item.
-        /// Possible values include: 'Invalid', 'AzureIaasVM', 'MAB', 'DPM',
-        /// 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
-        /// 'DefaultBackup'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;AzureIaasVM&#39;, &#39;MAB&#39;, &#39;DPM&#39;,
+        /// &#39;AzureBackupServer&#39;, &#39;AzureSql&#39;, &#39;AzureStorage&#39;, &#39;AzureWorkload&#39;,
+        /// &#39;DefaultBackup&#39;</param>
 
         /// <param name="workloadType">Type of workload this item represents.
-        /// Possible values include: 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb',
-        /// 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState', 'Client',
-        /// 'GenericDataSource', 'SQLDataBase', 'AzureFileShare', 'SAPHanaDatabase',
-        /// 'SAPAseDatabase', 'SAPHanaDBInstance'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;VM&#39;, &#39;FileFolder&#39;, &#39;AzureSqlDb&#39;,
+        /// &#39;SQLDB&#39;, &#39;Exchange&#39;, &#39;Sharepoint&#39;, &#39;VMwareVM&#39;, &#39;SystemState&#39;, &#39;Client&#39;,
+        /// &#39;GenericDataSource&#39;, &#39;SQLDataBase&#39;, &#39;AzureFileShare&#39;, &#39;SAPHanaDatabase&#39;,
+        /// &#39;SAPAseDatabase&#39;, &#39;SAPHanaDBInstance&#39;</param>
 
         /// <param name="containerName">Unique name of container
         /// </param>
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="createMode">Create mode to indicate recovery of existing soft deleted data source or
         /// creation of new data source.
-        /// Possible values include: 'Invalid', 'Default', 'Recover'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Default&#39;, &#39;Recover&#39;</param>
 
         /// <param name="deferredDeleteTimeInUtc">Time for deferred deletion in UTC
         /// </param>
@@ -84,6 +84,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="softDeleteRetentionPeriodInDays">Soft delete retention period in days
         /// </param>
 
+        /// <param name="vaultId">ID of the vault which protects this item
+        /// </param>
+
         /// <param name="friendlyName">Friendly name of the DB represented by this backup item.
         /// </param>
 
@@ -101,12 +104,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="protectionState">Backup state of this backup item.
-        /// Possible values include: 'Invalid', 'IRPending', 'Protected',
-        /// 'ProtectionError', 'ProtectionStopped', 'ProtectionPaused',
-        /// 'BackupsSuspended'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;IRPending&#39;, &#39;Protected&#39;,
+        /// &#39;ProtectionError&#39;, &#39;ProtectionStopped&#39;, &#39;ProtectionPaused&#39;,
+        /// &#39;BackupsSuspended&#39;</param>
 
         /// <param name="lastBackupStatus">Last backup operation status. Possible values: Healthy, Unhealthy.
-        /// Possible values include: 'Invalid', 'Healthy', 'Unhealthy', 'IRPending'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Healthy&#39;, &#39;Unhealthy&#39;, &#39;IRPending&#39;</param>
 
         /// <param name="lastBackupTime">Timestamp of the last backup operation on this backup item.
         /// </param>
@@ -119,8 +122,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="protectedItemHealthStatus">Health status of the backup item, evaluated based on last heartbeat
         /// received
-        /// Possible values include: 'Invalid', 'Healthy', 'Unhealthy', 'NotReachable',
-        /// 'IRPending'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Healthy&#39;, &#39;Unhealthy&#39;, &#39;NotReachable&#39;,
+        /// &#39;IRPending&#39;</param>
 
         /// <param name="extendedInfo">Additional information for this backup item.
         /// </param>
@@ -130,9 +133,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="nodesList">List of the nodes in case of distributed container.
         /// </param>
-        public AzureVmWorkloadSAPAseDatabaseProtectedItem(string backupManagementType = default(string), string workloadType = default(string), string containerName = default(string), string sourceResourceId = default(string), string policyId = default(string), System.DateTime? lastRecoveryPoint = default(System.DateTime?), string backupSetName = default(string), string createMode = default(string), System.DateTime? deferredDeleteTimeInUtc = default(System.DateTime?), bool? isScheduledForDeferredDelete = default(bool?), string deferredDeleteTimeRemaining = default(string), bool? isDeferredDeleteScheduleUpcoming = default(bool?), bool? isRehydrate = default(bool?), System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), bool? isArchiveEnabled = default(bool?), string policyName = default(string), int? softDeleteRetentionPeriodInDays = default(int?), string friendlyName = default(string), string serverName = default(string), string parentName = default(string), string parentType = default(string), string protectionStatus = default(string), string protectionState = default(string), string lastBackupStatus = default(string), System.DateTime? lastBackupTime = default(System.DateTime?), ErrorDetail lastBackupErrorDetail = default(ErrorDetail), string protectedItemDataSourceId = default(string), string protectedItemHealthStatus = default(string), AzureVmWorkloadProtectedItemExtendedInfo extendedInfo = default(AzureVmWorkloadProtectedItemExtendedInfo), System.Collections.Generic.IDictionary<string, KPIResourceHealthDetails> kpisHealths = default(System.Collections.Generic.IDictionary<string, KPIResourceHealthDetails>), System.Collections.Generic.IList<DistributedNodesInfo> nodesList = default(System.Collections.Generic.IList<DistributedNodesInfo>))
+        public AzureVmWorkloadSAPAseDatabaseProtectedItem(string backupManagementType = default(string), string workloadType = default(string), string containerName = default(string), string sourceResourceId = default(string), string policyId = default(string), System.DateTime? lastRecoveryPoint = default(System.DateTime?), string backupSetName = default(string), string createMode = default(string), System.DateTime? deferredDeleteTimeInUtc = default(System.DateTime?), bool? isScheduledForDeferredDelete = default(bool?), string deferredDeleteTimeRemaining = default(string), bool? isDeferredDeleteScheduleUpcoming = default(bool?), bool? isRehydrate = default(bool?), System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), bool? isArchiveEnabled = default(bool?), string policyName = default(string), int? softDeleteRetentionPeriodInDays = default(int?), string vaultId = default(string), string friendlyName = default(string), string serverName = default(string), string parentName = default(string), string parentType = default(string), string protectionStatus = default(string), string protectionState = default(string), string lastBackupStatus = default(string), System.DateTime? lastBackupTime = default(System.DateTime?), ErrorDetail lastBackupErrorDetail = default(ErrorDetail), string protectedItemDataSourceId = default(string), string protectedItemHealthStatus = default(string), AzureVmWorkloadProtectedItemExtendedInfo extendedInfo = default(AzureVmWorkloadProtectedItemExtendedInfo), System.Collections.Generic.IDictionary<string, KPIResourceHealthDetails> kpisHealths = default(System.Collections.Generic.IDictionary<string, KPIResourceHealthDetails>), System.Collections.Generic.IList<DistributedNodesInfo> nodesList = default(System.Collections.Generic.IList<DistributedNodesInfo>))
 
-        : base(backupManagementType, workloadType, containerName, sourceResourceId, policyId, lastRecoveryPoint, backupSetName, createMode, deferredDeleteTimeInUtc, isScheduledForDeferredDelete, deferredDeleteTimeRemaining, isDeferredDeleteScheduleUpcoming, isRehydrate, resourceGuardOperationRequests, isArchiveEnabled, policyName, softDeleteRetentionPeriodInDays, friendlyName, serverName, parentName, parentType, protectionStatus, protectionState, lastBackupStatus, lastBackupTime, lastBackupErrorDetail, protectedItemDataSourceId, protectedItemHealthStatus, extendedInfo, kpisHealths, nodesList)
+        : base(backupManagementType, workloadType, containerName, sourceResourceId, policyId, lastRecoveryPoint, backupSetName, createMode, deferredDeleteTimeInUtc, isScheduledForDeferredDelete, deferredDeleteTimeRemaining, isDeferredDeleteScheduleUpcoming, isRehydrate, resourceGuardOperationRequests, isArchiveEnabled, policyName, softDeleteRetentionPeriodInDays, vaultId, friendlyName, serverName, parentName, parentType, protectionStatus, protectionState, lastBackupStatus, lastBackupTime, lastBackupErrorDetail, protectedItemDataSourceId, protectedItemHealthStatus, extendedInfo, kpisHealths, nodesList)
         {
             CustomInit();
         }

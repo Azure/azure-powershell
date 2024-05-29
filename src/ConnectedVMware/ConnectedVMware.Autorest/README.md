@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the ConnectedVMware service.
 
 ---
-## Status
-[![Az.ConnectedVMware](https://img.shields.io/powershellgallery/v/Az.ConnectedVMware.svg?style=flat-square&label=Az.ConnectedVMware "Az.ConnectedVMware")](https://www.powershellgallery.com/packages/Az.ConnectedVMware/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

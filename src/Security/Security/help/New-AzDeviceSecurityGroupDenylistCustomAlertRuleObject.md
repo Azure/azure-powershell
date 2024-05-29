@@ -14,7 +14,8 @@ Create new deny list custom alert rule for device security group (IoT Security)
 
 ```
 New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject -Enabled <Boolean> -Type <String>
- -DenylistValue <String[]> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -DenylistValue <String[]> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

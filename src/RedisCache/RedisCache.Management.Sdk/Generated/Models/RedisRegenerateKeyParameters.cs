@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// </summary>
 
         /// <param name="keyType">The Redis access key to regenerate.
-        /// Possible values include: 'Primary', 'Secondary'</param>
+        /// Possible values include: &#39;Primary&#39;, &#39;Secondary&#39;</param>
         public RedisRegenerateKeyParameters(RedisKeyType keyType)
 
         {

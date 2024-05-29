@@ -580,7 +580,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                         Location = Vault.Location,
                         Version = VaultCredentialVersionAad,
                         ResourceType = RecoveryServicesVaultType,
-                        AgentLinks = GetAgentLinks()
+                        AgentLinks = GetAgentLinks(),
+                        PrivateEndpointStateForBackup = (Vault.Properties.PrivateEndpointStateForBackup ?? "None")
                     };
 
                     var serializer = new DataContractSerializer(typeof(RSBackupVaultAADCreds));

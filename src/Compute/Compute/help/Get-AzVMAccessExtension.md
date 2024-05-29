@@ -137,5 +137,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Set-AzVMAccessExtension](./Set-AzVMAccessExtension.md)
 
 [Get-AzVMExtension](./Get-AzVMExtension.md)
-
-

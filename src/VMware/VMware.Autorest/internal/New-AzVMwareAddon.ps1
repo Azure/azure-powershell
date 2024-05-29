@@ -16,61 +16,130 @@
 
 <#
 .Synopsis
-Create or update a addon in a private cloud
+Create a Addon
 .Description
-Create or update a addon in a private cloud
+Create a Addon
 .Example
-$data = New-AzVMwareAddonVrPropertiesObject -VrsCount 2
+$data = New-AzVMwareAddonVrPropertyObject -VrsCount 2
 New-AzVMwareAddon -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -Property $data
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddon
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddon
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-PROPERTY <IAddonProperties>: The properties of an addon resource
-  AddonType <AddonType>: The type of private cloud addon
+INPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon.
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization
+  [CloudLinkName <String>]: Name of the cloud link.
+  [ClusterName <String>]: Name of the cluster
+  [DatastoreName <String>]: Name of the datastore
+  [DhcpId <String>]: The ID of the DHCP configuration
+  [DnsServiceId <String>]: ID of the DNS service.
+  [DnsZoneId <String>]: ID of the DNS zone.
+  [GatewayId <String>]: The ID of the NSX Gateway
+  [GlobalReachConnectionName <String>]: Name of the global reach connection
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [PlacementPolicyName <String>]: Name of the placement policy.
+  [PortMirroringId <String>]: ID of the NSX port mirroring profile.
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: ID of the DNS zone.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet.
+  [ScriptExecutionName <String>]: Name of the script cmdlet.
+  [ScriptPackageName <String>]: Name of the script package.
+  [SegmentId <String>]: The ID of the NSX Segment
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [VMGroupId <String>]: ID of the VM group.
+  [VirtualMachineId <String>]: ID of the virtual machine.
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon.
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization
+  [CloudLinkName <String>]: Name of the cloud link.
+  [ClusterName <String>]: Name of the cluster
+  [DatastoreName <String>]: Name of the datastore
+  [DhcpId <String>]: The ID of the DHCP configuration
+  [DnsServiceId <String>]: ID of the DNS service.
+  [DnsZoneId <String>]: ID of the DNS zone.
+  [GatewayId <String>]: The ID of the NSX Gateway
+  [GlobalReachConnectionName <String>]: Name of the global reach connection
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [PlacementPolicyName <String>]: Name of the placement policy.
+  [PortMirroringId <String>]: ID of the NSX port mirroring profile.
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: ID of the DNS zone.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet.
+  [ScriptExecutionName <String>]: Name of the script cmdlet.
+  [ScriptPackageName <String>]: Name of the script package.
+  [SegmentId <String>]: The ID of the NSX Segment
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [VMGroupId <String>]: ID of the VM group.
+  [VirtualMachineId <String>]: ID of the virtual machine.
+
+PROPERTY <IAddonProperties>: The resource-specific properties for this resource.
+  AddonType <String>: Addon type
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareaddon
 #>
 function New-AzVMwareAddon {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddon])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddon])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateCloudExpanded', Mandatory)]
     [Alias('AddonName')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
-    # Name of the addon for the private cloud
+    # Name of the addon.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
-    # The name of the private cloud.
+    # Name of the private cloud
     ${PrivateCloudName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateCloudExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    ${PrivateCloudInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonProperties]
-    # The properties of an addon resource
-    # To construct, see NOTES section for PROPERTY properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonProperties]
+    # The resource-specific properties for this resource.
     ${Property},
 
     [Parameter()]
@@ -78,7 +147,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -143,9 +213,17 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.VMware.private\New-AzVMwareAddon_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.VMware.private\New-AzVMwareAddon_CreateViaIdentityExpanded';
+            CreateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\New-AzVMwareAddon_CreateViaIdentityPrivateCloudExpanded';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

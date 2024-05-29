@@ -12,20 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.IO;
-using System.Security;
-using System.Collections.Generic;
-using System.Management.Automation;
-using System.Security.Cryptography.X509Certificates;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.KeyVault.Models;
-using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
-using Microsoft.Azure.KeyVault.Models;
+using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Common.Exceptions;
-using Microsoft.Azure.Commands.KeyVault.Properties;
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Management.Automation;
+using System.Security;
+using System.Security.Cryptography.X509Certificates;
+
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -201,16 +202,16 @@ namespace Microsoft.Azure.Commands.KeyVault
                 switch (ParameterSetName)
                 {
                     case ImportCertificateFromFileParameterSet:
-                        // Pem file can't be handled by X509Certificate2Collection in dotnet standard
-                        // Just read it as raw data and pass it to service side
+                        byte[] base64Bytes = File.ReadAllBytes(FilePath);
+                        bool doImport = false;
+
                         if (IsPemFile(FilePath))
                         {
-                            byte[] pemBytes = File.ReadAllBytes(FilePath);
-                            certBundle = this.Track2DataClient.ImportCertificate(VaultName, Name, pemBytes, Password, Tag?.ConvertToDictionary(), Constants.PemContentType, certPolicy: PolicyObject);
+                            doImport = true;
                         }
                         else
                         {
-                            bool doImport = false;
+
                             X509Certificate2Collection userProvidedCertColl = InitializeCertificateCollection();
 
                             // look for at least one certificate which contains a private key
@@ -220,22 +221,23 @@ namespace Microsoft.Azure.Commands.KeyVault
                                 if (doImport)
                                     break;
                             }
+                        }               
 
-                            if (doImport)
-                            {
-                                
-                                byte[] base64Bytes = userProvidedCertColl.Export(X509ContentType.Pfx, Password?.ConvertToString());
-                                certBundle = this.Track2DataClient.ImportCertificate(VaultName, Name, base64Bytes, Password, Tag?.ConvertToDictionary(), certPolicy: PolicyObject);
-                            }
-                            else
-                            {
-                                certBundle = this.DataServiceClient.MergeCertificate(
+                        certBundle = doImport ?
+                                this.Track2DataClient.ImportCertificate(
                                     VaultName,
                                     Name,
-                                    userProvidedCertColl,
-                                    Tag == null ? null : Tag.ConvertToDictionary());
-                            }
-                        }
+                                    base64Bytes,
+                                    Password,
+                                    Tag?.ConvertToDictionary(),
+                                    IsPemFile(FilePath) ? Constants.PemContentType : Constants.Pkcs12ContentType,
+                                    PolicyObject) :
+                                this.Track2DataClient.MergeCertificate(
+                                VaultName,
+                                Name,
+                                new List<byte[]> { base64Bytes },
+                                Tag == null ? null : Tag.ConvertToDictionary());
+
                         break;
 
                     case ImportWithPrivateKeyFromCollectionParameterSet:
@@ -256,6 +258,12 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             return ".pem".Equals(Path.GetExtension(filePath), StringComparison.OrdinalIgnoreCase);
         }
+
+        /// <summary>
+        /// Initialize certificate collection from FilePath
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="FileNotFoundException"></exception>
 
         internal X509Certificate2Collection InitializeCertificateCollection()
         {

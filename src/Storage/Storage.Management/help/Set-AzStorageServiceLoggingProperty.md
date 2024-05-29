@@ -177,5 +177,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzStorageServiceLoggingProperty](./Get-AzStorageServiceLoggingProperty.md)
 
 [New-AzStorageContext](./New-AzStorageContext.md)
-
-

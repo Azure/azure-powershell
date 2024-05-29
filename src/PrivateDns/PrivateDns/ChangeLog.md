@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.5
+* Removed the outdated deps.json file.
+
 ## Version 1.0.4
 * Removed length validation for DNS TXT record to make it consistent with Azure CLI and Azure portal.
 

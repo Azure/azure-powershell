@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ResourceMover-help.xml
 Module Name: Az.ResourceMover
 online version: https://learn.microsoft.com/powershell/module/az.resourcemover/get-azresourcemovermovecollection
 schema: 2.0.0
@@ -50,8 +50,6 @@ Etag                                   Location      Name                       
 "270119e0-0000-0c00-0000-5f5c94940000" centraluseuap PS-centralus-westcentralus-demoRMS  Microsoft.Migrate/moveCollections
 "39015ed4-0000-0c00-0000-5f5ce2760000" centraluseuap PS-centralus-westcentralus-demo2RMS Microsoft.Migrate/moveCollections
 "1000b505-0000-0c00-0000-5f69db6e0000" centraluseuap MoveCollection-cus-eus-ccy         Microsoft.Migrate/moveCollections
-
-
 ```
 
 Get details of all the Move collections in the subscription.
@@ -65,14 +63,13 @@ Get-AzResourceMoverMoveCollection -ResourceGroupName "RG-MoveCollection-demoRMS"
 Etag                                   Location      Name                               Type                             
 ----                                   --------      ----                               ----                             
 "22006609-0000-3300-0000-602169590000" centraluseuap PS-centralus-westcentralus-demoRMS Microsoft.Migrate/moveCollections
-
 ```
 
 Get details of the Move collection with a specified move collection name in the subscription.
 
 ### Example 3: Get details of the Move collection with a specified resource group name in the subscription
 ```powershell
-Get-AzResourceMoverMoveCollection -ResourceGroupName "RG-MoveCollection-demoRMS" 
+Get-AzResourceMoverMoveCollection -ResourceGroupName "RG-MoveCollection-demoRMS"
 ```
 
 ```output
@@ -83,7 +80,6 @@ Etag                                   Location      Name                       
 ----                                   --------      ----                                ----                             
 "22006609-0000-3300-0000-602169590000" centraluseuap PS-centralus-westcentralus-demoRMS  Microsoft.Migrate/moveCollections
 "4e02b0a9-0000-0c00-0000-5fd101cc0000" centraluseuap PS-centralus-westcentralus-demo2RMS Microsoft.Migrate/moveCollections
-
 ```
 
 Get details of the Move Collection with a specified resource group name in the subscription.
@@ -162,7 +158,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

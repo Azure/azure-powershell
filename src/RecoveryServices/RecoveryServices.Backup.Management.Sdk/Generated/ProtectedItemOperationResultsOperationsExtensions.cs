@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the backup item.
@@ -34,7 +35,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// Backup item name whose details are to be fetched.
         /// </param>
         /// <param name='operationId'>
-        /// OperationID which represents the operation whose result needs to be fetched.
+        /// OperationID which represents the operation whose result needs to be
+        /// fetched.
         /// </param>
         public static ProtectedItemResource Get(this IProtectedItemOperationResultsOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string operationId)
         {
@@ -51,7 +53,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the backup item.
@@ -63,7 +66,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// Backup item name whose details are to be fetched.
         /// </param>
         /// <param name='operationId'>
-        /// OperationID which represents the operation whose result needs to be fetched.
+        /// OperationID which represents the operation whose result needs to be
+        /// fetched.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

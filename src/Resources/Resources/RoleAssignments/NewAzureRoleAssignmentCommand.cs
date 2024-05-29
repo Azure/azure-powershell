@@ -250,6 +250,9 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         public SwitchParameter AllowDelegation { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "If specified, skip client side scope validation.")]
+        public SwitchParameter SkipClientSideScopeValidation { get; set; }
+
         #endregion
 
         public Guid RoleAssignmentId { get; set; } = default(Guid);
@@ -337,7 +340,10 @@ namespace Microsoft.Azure.Commands.Resources
                 WriteTerminatingError(ProjectResources.ScopeAndSubscriptionNeitherProvided);
             }
 
-            AuthorizationClient.ValidateScope(parameters.Scope, true);
+            if (!SkipClientSideScopeValidation.IsPresent)
+            {
+                AuthorizationClient.ValidateScope(parameters.Scope, true);
+            }
 
             WriteObject(PoliciesClient.CreateRoleAssignment(parameters, RoleAssignmentId));
         }

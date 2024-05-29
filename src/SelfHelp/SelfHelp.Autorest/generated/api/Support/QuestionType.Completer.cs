@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support
 {
 
-    /// <summary>Text Input. Will be a single line input.</summary>
+    /// <summary>Type of Question</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.QuestionTypeTypeConverter))]
     public partial struct QuestionType :
         System.Management.Automation.IArgumentCompleter
@@ -41,6 +41,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "MultiLineInfoBox".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'MultiLineInfoBox'", "MultiLineInfoBox", global::System.Management.Automation.CompletionResultType.ParameterValue, "MultiLineInfoBox");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "DateTimePicker".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'DateTimePicker'", "DateTimePicker", global::System.Management.Automation.CompletionResultType.ParameterValue, "DateTimePicker");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "MultiSelect".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'MultiSelect'", "MultiSelect", global::System.Management.Automation.CompletionResultType.ParameterValue, "MultiSelect");
             }
         }
     }

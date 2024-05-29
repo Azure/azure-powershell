@@ -136,5 +136,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzStorageQueue](./New-AzStorageQueue.md)
 
 [Remove-AzStorageQueue](./Remove-AzStorageQueue.md)
-
-

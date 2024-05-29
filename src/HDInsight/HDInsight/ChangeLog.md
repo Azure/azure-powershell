@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.1.0
 * Added new feature: Enable secure channels while creating a new cluster.
 * Fixed a bug: When creating a cluster without passing the version, the default version cannot be set to 'default'.
 

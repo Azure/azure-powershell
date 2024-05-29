@@ -51,7 +51,7 @@ namespace VersionController
             var executingAssemblyPath = Assembly.GetExecutingAssembly().Location;
             var versionControllerDirectory = Directory.GetParent(executingAssemblyPath).FullName;
             var artifactsDirectory = Directory.GetParent(versionControllerDirectory).FullName;
-
+            var syntaxChangelog = true;
              _rootDirectory = Directory.GetParent(artifactsDirectory).FullName;
             _projectDirectories = new List<string>{ Path.Combine(_rootDirectory, @"src\") }.Where((d) => Directory.Exists(d)).ToList();
             _outputDirectories = new List<string>{ Path.Combine(_rootDirectory, @"artifacts\Release\") }.Where((d) => Directory.Exists(d)).ToList();
@@ -61,6 +61,7 @@ namespace VersionController
             if (args != null && args.Length > 0)
             {
                 exceptionsDirectory = args[0];
+                syntaxChangelog = false;
             }
 
             if (!Directory.Exists(exceptionsDirectory))
@@ -76,7 +77,9 @@ namespace VersionController
 
             ConsolidateExceptionFiles(exceptionsDirectory);
             ValidateManifest();
-            GenerateSyntaxChangelog(_rootDirectory);
+            if (syntaxChangelog) {
+                GenerateSyntaxChangelog(_rootDirectory);
+            }
             BumpVersions();
         }
         private static void GenerateSyntaxChangelog(string _projectDirectories)

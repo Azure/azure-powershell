@@ -14,12 +14,14 @@ Get security settings in Azure Security Center
 
 ### SubscriptionScope (Default)
 ```
-Get-AzSecuritySetting [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecuritySetting [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SubscriptionLevelResource
 ```
-Get-AzSecuritySetting -SettingName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecuritySetting -SettingName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

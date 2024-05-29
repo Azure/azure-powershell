@@ -15,5 +15,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
     {
         public const string Idle = "Idle";
         public const string Transferring = "Transferring";
+        public const string Failed = "Failed";
+        public const string Unknown = "Unknown";
     }
 }

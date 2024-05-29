@@ -77,9 +77,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_snapshot = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("snapshot"), out var __jsonSnapshot) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ManagementPolicySnapShot.FromJson(__jsonSnapshot) : Snapshot;}
-            {_version = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("version"), out var __jsonVersion) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ManagementPolicyVersion.FromJson(__jsonVersion) : Version;}
-            {_baseBlob = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("baseBlob"), out var __jsonBaseBlob) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ManagementPolicyBaseBlob.FromJson(__jsonBaseBlob) : BaseBlob;}
+            {_snapshot = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("snapshot"), out var __jsonSnapshot) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ManagementPolicySnapShot.FromJson(__jsonSnapshot) : _snapshot;}
+            {_version = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("version"), out var __jsonVersion) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ManagementPolicyVersion.FromJson(__jsonVersion) : _version;}
+            {_baseBlob = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("baseBlob"), out var __jsonBaseBlob) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ManagementPolicyBaseBlob.FromJson(__jsonBaseBlob) : _baseBlob;}
             AfterFromJson(json);
         }
 

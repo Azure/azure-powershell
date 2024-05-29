@@ -25,16 +25,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="backupManagementType">Backup management type for this container.
-        /// Possible values include: 'Invalid', 'AzureIaasVM', 'MAB', 'DPM',
-        /// 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
-        /// 'DefaultBackup'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;AzureIaasVM&#39;, &#39;MAB&#39;, &#39;DPM&#39;,
+        /// &#39;AzureBackupServer&#39;, &#39;AzureSql&#39;, &#39;AzureStorage&#39;, &#39;AzureWorkload&#39;,
+        /// &#39;DefaultBackup&#39;</param>
 
         /// <param name="containerType">Type of container for filter
-        /// Possible values include: 'Invalid', 'Unknown', 'IaasVMContainer',
-        /// 'IaasVMServiceContainer', 'DPMContainer', 'AzureBackupServerContainer',
-        /// 'MABContainer', 'Cluster', 'AzureSqlContainer', 'Windows', 'VCenter',
-        /// 'VMAppContainer', 'SQLAGWorkLoadContainer', 'StorageContainer',
-        /// 'GenericContainer', 'HanaHSRContainer'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Unknown&#39;, &#39;IaasVMContainer&#39;,
+        /// &#39;IaasVMServiceContainer&#39;, &#39;DPMContainer&#39;, &#39;AzureBackupServerContainer&#39;,
+        /// &#39;MABContainer&#39;, &#39;Cluster&#39;, &#39;AzureSqlContainer&#39;, &#39;Windows&#39;, &#39;VCenter&#39;,
+        /// &#39;VMAppContainer&#39;, &#39;SQLAGWorkLoadContainer&#39;, &#39;StorageContainer&#39;,
+        /// &#39;GenericContainer&#39;, &#39;HanaHSRContainer&#39;</param>
 
         /// <param name="backupEngineName">Backup engine name
         /// </param>

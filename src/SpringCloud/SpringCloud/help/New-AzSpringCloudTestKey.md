@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SpringCloud-help.xml
 Module Name: Az.SpringCloud
 online version: https://learn.microsoft.com/powershell/module/az.springcloud/new-azspringcloudtestkey
 schema: 2.0.0
@@ -13,8 +13,8 @@ Regenerate a test key for a Service.
 ## SYNTAX
 
 ```
-New-AzSpringCloudTestKey -Name <String> -ResourceGroupName <String> -KeyType <TestKeyType>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzSpringCloudTestKey -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -KeyType <TestKeyType> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -159,4 +159,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

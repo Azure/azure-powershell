@@ -78,33 +78,66 @@ function New-AzDataMigrationLoginsMigration
             #Defining Default Output Path
             $DefaultOutputFolder = Get-DefaultLoginMigrationsOutputFolder
 
-            #Defining Base and Exe paths
-            $BaseFolder = Join-Path -Path $DefaultOutputFolder -ChildPath Downloads;
-            $ExePath = Join-Path -Path $BaseFolder -ChildPath Logins.Console.csproj\Logins.Console.exe;
+            #Defining Downloads folder
+            $DownloadsFolder = Join-Path -Path $DefaultOutputFolder -ChildPath Downloads;
 
-            #Checking if BaseFolder Path is valid or not
-            if(-Not (Test-Path $BaseFolder))
+            #Checking if DownloadsFolder Path is valid or not
+            if(-Not (Test-Path $DownloadsFolder))
             {
-                $null = New-Item -Path $BaseFolder -ItemType "directory"
+                $null = New-Item -Path $DownloadsFolder -ItemType "directory"
+            }
+            else
+            {
+                #Delete old Login console app files
+                Delete-OldLoginConsoleApp $DownloadsFolder;
             }
 
-            #Testing Whether Console App is downloaded or not
-            $TestExePath =  Test-Path -Path $ExePath;
+            #Determine latest version of Login console app
+            $PackageId = "Microsoft.SqlServer.Migration.LoginsConsoleApp"
+            $LatestNugetOrgDetails = Get-LatestConsoleAppVersionFromNugetOrg $PackageId
 
-            #Downloading and extracting LoginsMigration Zip file
-            if(-Not $TestExePath)
+            #Determine local version of Login console app
+            $ConsoleAppFolders = Get-ChildItem -Path $DownloadsFolder -Filter "$PackageId.*"
+            $LatestLocalNameAndVersion = ""
+            if ($ConsoleAppFolders.Length -gt 0)
             {
-                $ZipSource = "https://sqlassess.blob.core.windows.net/app/LoginsMigration.zip";
-                $ZipDestination = Join-Path -Path $BaseFolder -ChildPath "LoginsMigration.zip";
-                Invoke-RestMethod -Uri $ZipSource -OutFile $ZipDestination;
+                $ConsoleAppFolders = $ConsoleAppFolders | Sort-Object -Property Name -Descending
+                $LatestLocalNameAndVersion = $ConsoleAppFolders[0].Name
+                Write-Host "Installed Login migration console app nupkg version: $LatestLocalNameAndVersion"
 
-                Expand-Archive -Path $ZipDestination -DestinationPath $BaseFolder -Force;
+                if ($AvailablePackagesOnNugetOrg -eq "")
+                {
+                    $LatestNugetOrgDetails.NameAndVersion = $LatestLocalNameAndVersion
+                }
+            }
+            else
+            {
+                #No local console app
+                if ($AvailablePackagesOnNugetOrg -eq "")
+                {
+                    #No version available to download
+                    Write-Host "Connection to NuGet.org required. Please check connection and try again."
+                    return;
+                }
+            }
+
+            Write-Host "Latest Login migration console app nupkg version on Nuget.org: $($LatestNugetOrgDetails.NameAndVersion)";
+            $LatestNugetFolder = Join-Path -Path $DownloadsFolder -ChildPath $LatestNugetOrgDetails.NameAndVersion;
+            $ExePath = "tools\Microsoft.SqlServer.Migration.Logins.ConsoleApp.exe";
+
+            # Check for the latest console app version and download it if needed.
+            CheckAndDownloadConsoleAppFromNugetOrg $LatestLocalNameAndVersion $LatestNugetOrgDetails $ExePath ([ref]$LatestNugetFolder)
+
+            if(-Not (Test-Path -Path "$LatestNugetFolder\$ExePath"))
+            {
+                Write-Host "Failed to locate executable."
+                return
             }
 
             #Collecting data
             if(('CommandLine') -contains $PSCmdlet.ParameterSetName)
             {
-                # The array list $splat contains all the parameters that will be passed to '.\Logins.Console.exe LoginsMigration'
+                # The array list $splat contains all the parameters that will be passed to '.\Microsoft.SqlServer.Migration.Logins.ConsoleApp.exe LoginsMigration'
 
                 $LoginsListArray = $($ListOfLogin -split " ")
                 [System.Collections.ArrayList] $splat = @(
@@ -129,7 +162,10 @@ function New-AzDataMigrationLoginsMigration
     
                     }                       
                 }
-                # Running LoginsMigration                
+
+                $ExePath = Join-Path -Path $LatestNugetFolder -ChildPath $ExePath;
+                # Running LoginsMigration
+                Write-Host "Starting Execution..."
                 & $ExePath LoginsMigration @splat
             }
             else

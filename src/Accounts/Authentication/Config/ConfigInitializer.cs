@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Config.Definitions;
 using Microsoft.Azure.Commands.Common.Authentication.Config.Internal.Interfaces;
+using Microsoft.Azure.Commands.Common.Authentication.Config.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Shared.Config;
 using Microsoft.Azure.PowerShell.Common.Config;
@@ -196,18 +197,23 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                 true,
                 null,
                 new[] { AppliesTo.Az }));
-            //Use DisableErrorRecordsPersistence as opt-out for now, will replace it with EnableErrorRecordsPersistence as opt-in at next major release (November 2023)
             configManager.RegisterConfig(new SimpleTypedConfig<bool>(
-                ConfigKeys.DisableErrorRecordsPersistence,
-                Resources.HelpMessageOfDisableErrorRecordsPersistence,
+                ConfigKeys.EnableErrorRecordsPersistence,
+                Resources.HelpMessageOfEnableErrorRecordsPersistence,
                 false,
-                string.Format("AzPS{0}", ConfigKeys.DisableErrorRecordsPersistence),
+                string.Format("AzPS{0}", ConfigKeys.EnableErrorRecordsPersistence),
                 new[] { AppliesTo.Az }));
             configManager.RegisterConfig(new SimpleTypedConfig<bool>(
                 ConfigKeys.CheckForUpgrade,
                 Resources.HelpMessageOfCheckForUpgrade,
                 true,
                 ConfigKeys.EnvCheckForUpgrade,
+                new[] { AppliesTo.Az }));
+            configManager.RegisterConfig(new SimpleTypedConfig<LoginExperienceConfig>(
+                ConfigKeys.LoginExperienceV2,
+                Resources.HelpMessageOfLoginExperienceV2,
+                LoginExperienceConfig.On,
+                string.Format("AzPS{0}", ConfigKeys.LoginExperienceV2),
                 new[] { AppliesTo.Az }));
 #if DEBUG || TESTCOVERAGE
             configManager.RegisterConfig(new SimpleTypedConfig<bool>(
@@ -226,6 +232,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
             configManager.RegisterConfig(new EnableLoginByWamConfig());
             configManager.RegisterConfig(new EnableInterceptSurveyConfig());
             configManager.RegisterConfig(new DisplayBreakingChangeWarningsConfig());
+            configManager.RegisterConfig(new SimpleTypedConfig<bool>(
+                ConfigKeys.DisplaySecretsWarning,
+                Resources.HelpMessageOfDisplaySecretsWarning,
+                true,
+                "AZURE_CLIENTS_SHOW_SECRETS_WARNING",
+                new[] { AppliesTo.Az }));
+            configManager.RegisterConfig(new DisableInstanceDiscoveryConfig());
         }
     }
 }

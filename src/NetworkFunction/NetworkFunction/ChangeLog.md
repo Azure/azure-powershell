@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.4
+* Changed parsing logic in ATC custom cmdlet
+
+## Version 0.1.3
+* Introduced secrets detection feature to safeguard sensitive data.
+* Added validation in New/Update collector policy cmdlets to throw exception if ExpressRoute Circuit bandwidth is less than 1G.
 ## Version 0.1.2
 * Updated api version to 2022-11-01
 * Added new cmdlet: `Update-AzNetworkFunctionCollectorPolicyTag`

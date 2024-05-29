@@ -31,6 +31,18 @@ Unregister-AzAutomationDscNode -AutomationAccountName "Contoso17" -ResourceGroup
 
 This command removes the DSC node that has the specified GUID from management by the Automation account named Contoso17.
 
+### Example 2: Remove an Azure DSC node from management by an Automation account by specifying the DSC node name
+
+```powershell
+$dscNodeNameToRemove = "MyMachine1"
+$automationAccountName = "Contoso17"
+$resourceGroupName = "ResourceGroup01"
+$nodeToRemove = Get-AzAutomationDscNode -Name $dscNodeNameToRemove -AutomationAccountName $automationAccountName -ResourceGroupName $resourceGroupName
+$nodeToRemove | Unregister-AzAutomationDscNode -AutomationAccountName $automationAccountName -ResourceGroupName $resourceGroupName
+```
+
+This command removes the DSC node that has the name "MyMachine1" from management by the Automation account named Contoso17.
+
 ## PARAMETERS
 
 ### -AutomationAccountName
@@ -161,5 +173,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Register-AzAutomationDscNode](./Register-AzAutomationDscNode.md)
 
 [Set-AzAutomationDscNode](./Set-AzAutomationDscNode.md)
-
-

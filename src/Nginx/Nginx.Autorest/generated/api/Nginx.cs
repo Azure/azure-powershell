@@ -13,10 +13,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
     public partial class Nginx
     {
 
-        /// <summary>Create or update the Nginx certificates for given Nginx deployment</summary>
+        /// <summary>Create or update the NGINX certificates for given NGINX deployment</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="deploymentName">The name of targeted Nginx deployment</param>
+        /// <param name="deploymentName">The name of targeted NGINX deployment</param>
         /// <param name="certificateName">The name of certificate</param>
         /// <param name="body">The certificate</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -27,9 +27,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CertificatesCreate(string subscriptionId, string resourceGroupName, string deploymentName, string certificateName, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CertificatesCreateOrUpdate(string subscriptionId, string resourceGroupName, string deploymentName, string certificateName, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -60,11 +60,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.CertificatesCreate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.CertificatesCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Create or update the Nginx certificates for given Nginx deployment</summary>
+        /// <summary>Create or update the NGINX certificates for given NGINX deployment</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The certificate</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -75,9 +75,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CertificatesCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CertificatesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -121,11 +121,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.CertificatesCreate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.CertificatesCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="CertificatesCreate" /> method.</summary>
+        /// <summary>Actual wire call for <see cref="CertificatesCreateOrUpdate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CertificatesCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CertificatesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -249,13 +249,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxCertificate.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxCertificate.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -271,19 +271,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         }
 
         /// <summary>
-        /// Validation method for <see cref="CertificatesCreate" /> method. Call this like the actual call, but you will get validation
-        /// events back.
+        /// Validation method for <see cref="CertificatesCreateOrUpdate" /> method. Call this like the actual call, but you will get
+        /// validation events back.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="deploymentName">The name of targeted Nginx deployment</param>
+        /// <param name="deploymentName">The name of targeted NGINX deployment</param>
         /// <param name="certificateName">The name of certificate</param>
         /// <param name="body">The certificate</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CertificatesCreate_Validate(string subscriptionId, string resourceGroupName, string deploymentName, string certificateName, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificate body, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task CertificatesCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string deploymentName, string certificateName, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificate body, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -299,10 +299,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
             }
         }
 
-        /// <summary>Deletes a certificate from the nginx deployment</summary>
+        /// <summary>Deletes a certificate from the NGINX deployment</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="deploymentName">The name of targeted Nginx deployment</param>
+        /// <param name="deploymentName">The name of targeted NGINX deployment</param>
         /// <param name="certificateName">The name of certificate</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -313,9 +313,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CertificatesDelete(string subscriptionId, string resourceGroupName, string deploymentName, string certificateName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CertificatesDelete(string subscriptionId, string resourceGroupName, string deploymentName, string certificateName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
             }
         }
 
-        /// <summary>Deletes a certificate from the nginx deployment</summary>
+        /// <summary>Deletes a certificate from the NGINX deployment</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -357,9 +357,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CertificatesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CertificatesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -414,7 +414,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CertificatesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CertificatesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -544,7 +544,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -565,7 +565,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="deploymentName">The name of targeted Nginx deployment</param>
+        /// <param name="deploymentName">The name of targeted NGINX deployment</param>
         /// <param name="certificateName">The name of certificate</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -585,10 +585,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
             }
         }
 
-        /// <summary>Get a certificate of given Nginx deployment</summary>
+        /// <summary>Get a certificate of given NGINX deployment</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="deploymentName">The name of targeted Nginx deployment</param>
+        /// <param name="deploymentName">The name of targeted NGINX deployment</param>
         /// <param name="certificateName">The name of certificate</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -598,9 +598,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CertificatesGet(string subscriptionId, string resourceGroupName, string deploymentName, string certificateName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CertificatesGet(string subscriptionId, string resourceGroupName, string deploymentName, string certificateName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -631,7 +631,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
             }
         }
 
-        /// <summary>Get a certificate of given Nginx deployment</summary>
+        /// <summary>Get a certificate of given NGINX deployment</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -641,9 +641,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CertificatesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CertificatesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -697,7 +697,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CertificatesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CertificatesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -715,13 +715,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxCertificate.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxCertificate.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -742,7 +742,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="deploymentName">The name of targeted Nginx deployment</param>
+        /// <param name="deploymentName">The name of targeted NGINX deployment</param>
         /// <param name="certificateName">The name of certificate</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -762,10 +762,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
             }
         }
 
-        /// <summary>List all certificates of given Nginx deployment</summary>
+        /// <summary>List all certificates of given NGINX deployment</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="deploymentName">The name of targeted Nginx deployment</param>
+        /// <param name="deploymentName">The name of targeted NGINX deployment</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -774,9 +774,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CertificatesList(string subscriptionId, string resourceGroupName, string deploymentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificateListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CertificatesList(string subscriptionId, string resourceGroupName, string deploymentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificateListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -806,7 +806,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
             }
         }
 
-        /// <summary>List all certificates of given Nginx deployment</summary>
+        /// <summary>List all certificates of given NGINX deployment</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -816,9 +816,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CertificatesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificateListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CertificatesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificateListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -870,7 +870,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CertificatesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificateListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CertificatesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificateListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -888,13 +888,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxCertificateListResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxCertificateListResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -915,7 +915,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="deploymentName">The name of targeted Nginx deployment</param>
+        /// <param name="deploymentName">The name of targeted NGINX deployment</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -933,13 +933,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
             }
         }
 
-        /// <summary>Create or update the Nginx configuration for given Nginx deployment</summary>
+        /// <summary>Create or update the NGINX configuration for given NGINX deployment</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="deploymentName">The name of targeted Nginx deployment</param>
-        /// <param name="configurationName">The name of configuration, only 'default' is supported value due to the singleton of Nginx
+        /// <param name="deploymentName">The name of targeted NGINX deployment</param>
+        /// <param name="configurationName">The name of configuration, only 'default' is supported value due to the singleton of NGINX
         /// conf</param>
-        /// <param name="body">The Nginx configuration</param>
+        /// <param name="body">The NGINX configuration</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -948,9 +948,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConfigurationsCreateOrUpdate(string subscriptionId, string resourceGroupName, string deploymentName, string configurationName, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxConfiguration body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConfigurationsCreateOrUpdate(string subscriptionId, string resourceGroupName, string deploymentName, string configurationName, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfiguration body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -985,9 +985,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
             }
         }
 
-        /// <summary>Create or update the Nginx configuration for given Nginx deployment</summary>
+        /// <summary>Create or update the NGINX configuration for given NGINX deployment</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="body">The Nginx configuration</param>
+        /// <param name="body">The NGINX configuration</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -996,9 +996,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConfigurationsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxConfiguration body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConfigurationsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfiguration body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1056,7 +1056,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ConfigurationsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ConfigurationsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1170,13 +1170,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxConfiguration.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxConfiguration.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1197,15 +1197,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="deploymentName">The name of targeted Nginx deployment</param>
-        /// <param name="configurationName">The name of configuration, only 'default' is supported value due to the singleton of Nginx
+        /// <param name="deploymentName">The name of targeted NGINX deployment</param>
+        /// <param name="configurationName">The name of configuration, only 'default' is supported value due to the singleton of NGINX
         /// conf</param>
-        /// <param name="body">The Nginx configuration</param>
+        /// <param name="body">The NGINX configuration</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ConfigurationsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string deploymentName, string configurationName, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxConfiguration body, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ConfigurationsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string deploymentName, string configurationName, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfiguration body, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1221,11 +1221,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
             }
         }
 
-        /// <summary>Reset the Nginx configuration of given Nginx deployment to default</summary>
+        /// <summary>Reset the NGINX configuration of given NGINX deployment to default</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="deploymentName">The name of targeted Nginx deployment</param>
-        /// <param name="configurationName">The name of configuration, only 'default' is supported value due to the singleton of Nginx
+        /// <param name="deploymentName">The name of targeted NGINX deployment</param>
+        /// <param name="configurationName">The name of configuration, only 'default' is supported value due to the singleton of NGINX
         /// conf</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -1236,9 +1236,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConfigurationsDelete(string subscriptionId, string resourceGroupName, string deploymentName, string configurationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConfigurationsDelete(string subscriptionId, string resourceGroupName, string deploymentName, string configurationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1269,7 +1269,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
             }
         }
 
-        /// <summary>Reset the Nginx configuration of given Nginx deployment to default</summary>
+        /// <summary>Reset the NGINX configuration of given NGINX deployment to default</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -1280,9 +1280,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConfigurationsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConfigurationsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1337,7 +1337,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ConfigurationsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ConfigurationsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1467,7 +1467,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1488,8 +1488,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="deploymentName">The name of targeted Nginx deployment</param>
-        /// <param name="configurationName">The name of configuration, only 'default' is supported value due to the singleton of Nginx
+        /// <param name="deploymentName">The name of targeted NGINX deployment</param>
+        /// <param name="configurationName">The name of configuration, only 'default' is supported value due to the singleton of NGINX
         /// conf</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -1509,11 +1509,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
             }
         }
 
-        /// <summary>Get the Nginx configuration of given Nginx deployment</summary>
+        /// <summary>Get the NGINX configuration of given NGINX deployment</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="deploymentName">The name of targeted Nginx deployment</param>
-        /// <param name="configurationName">The name of configuration, only 'default' is supported value due to the singleton of Nginx
+        /// <param name="deploymentName">The name of targeted NGINX deployment</param>
+        /// <param name="configurationName">The name of configuration, only 'default' is supported value due to the singleton of NGINX
         /// conf</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -1523,9 +1523,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConfigurationsGet(string subscriptionId, string resourceGroupName, string deploymentName, string configurationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConfigurationsGet(string subscriptionId, string resourceGroupName, string deploymentName, string configurationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1556,7 +1556,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
             }
         }
 
-        /// <summary>Get the Nginx configuration of given Nginx deployment</summary>
+        /// <summary>Get the NGINX configuration of given NGINX deployment</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -1566,9 +1566,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConfigurationsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConfigurationsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1622,7 +1622,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ConfigurationsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ConfigurationsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1640,13 +1640,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxConfiguration.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxConfiguration.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1667,8 +1667,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="deploymentName">The name of targeted Nginx deployment</param>
-        /// <param name="configurationName">The name of configuration, only 'default' is supported value due to the singleton of Nginx
+        /// <param name="deploymentName">The name of targeted NGINX deployment</param>
+        /// <param name="configurationName">The name of configuration, only 'default' is supported value due to the singleton of NGINX
         /// conf</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -1688,10 +1688,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
             }
         }
 
-        /// <summary>List the Nginx configuration of given Nginx deployment.</summary>
+        /// <summary>List the NGINX configuration of given NGINX deployment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="deploymentName">The name of targeted Nginx deployment</param>
+        /// <param name="deploymentName">The name of targeted NGINX deployment</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -1700,9 +1700,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConfigurationsList(string subscriptionId, string resourceGroupName, string deploymentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxConfigurationListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConfigurationsList(string subscriptionId, string resourceGroupName, string deploymentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfigurationListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1732,7 +1732,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
             }
         }
 
-        /// <summary>List the Nginx configuration of given Nginx deployment.</summary>
+        /// <summary>List the NGINX configuration of given NGINX deployment.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -1742,9 +1742,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConfigurationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxConfigurationListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConfigurationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfigurationListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1796,7 +1796,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ConfigurationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxConfigurationListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ConfigurationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfigurationListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1814,13 +1814,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxConfigurationListResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxConfigurationListResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1841,7 +1841,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="deploymentName">The name of targeted Nginx deployment</param>
+        /// <param name="deploymentName">The name of targeted NGINX deployment</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -1859,10 +1859,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
             }
         }
 
-        /// <summary>Create or update the Nginx deployment</summary>
+        /// <summary>Create or update the NGINX deployment</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="deploymentName">The name of targeted Nginx deployment</param>
+        /// <param name="deploymentName">The name of targeted NGINX deployment</param>
         /// <param name="body"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -1872,9 +1872,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DeploymentsCreate(string subscriptionId, string resourceGroupName, string deploymentName, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeployment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeployment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DeploymentsCreateOrUpdate(string subscriptionId, string resourceGroupName, string deploymentName, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeployment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeployment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1903,11 +1903,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DeploymentsCreate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DeploymentsCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Create or update the Nginx deployment</summary>
+        /// <summary>Create or update the NGINX deployment</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1918,9 +1918,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DeploymentsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeployment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeployment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DeploymentsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeployment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeployment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1961,11 +1961,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DeploymentsCreate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DeploymentsCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="DeploymentsCreate" /> method.</summary>
+        /// <summary>Actual wire call for <see cref="DeploymentsCreateOrUpdate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -1975,7 +1975,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DeploymentsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeployment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DeploymentsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeployment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2089,13 +2089,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxDeployment.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxDeployment.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2111,18 +2111,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         }
 
         /// <summary>
-        /// Validation method for <see cref="DeploymentsCreate" /> method. Call this like the actual call, but you will get validation
-        /// events back.
+        /// Validation method for <see cref="DeploymentsCreateOrUpdate" /> method. Call this like the actual call, but you will get
+        /// validation events back.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="deploymentName">The name of targeted Nginx deployment</param>
+        /// <param name="deploymentName">The name of targeted NGINX deployment</param>
         /// <param name="body"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DeploymentsCreate_Validate(string subscriptionId, string resourceGroupName, string deploymentName, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeployment body, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DeploymentsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string deploymentName, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeployment body, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -2137,10 +2137,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
             }
         }
 
-        /// <summary>Delete the Nginx deployment resource</summary>
+        /// <summary>Delete the NGINX deployment resource</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="deploymentName">The name of targeted Nginx deployment</param>
+        /// <param name="deploymentName">The name of targeted NGINX deployment</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2150,9 +2150,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DeploymentsDelete(string subscriptionId, string resourceGroupName, string deploymentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DeploymentsDelete(string subscriptionId, string resourceGroupName, string deploymentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2181,7 +2181,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
             }
         }
 
-        /// <summary>Delete the Nginx deployment resource</summary>
+        /// <summary>Delete the NGINX deployment resource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -2192,9 +2192,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DeploymentsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DeploymentsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2246,7 +2246,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DeploymentsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DeploymentsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2376,7 +2376,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2397,7 +2397,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="deploymentName">The name of targeted Nginx deployment</param>
+        /// <param name="deploymentName">The name of targeted NGINX deployment</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -2415,10 +2415,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
             }
         }
 
-        /// <summary>Get the Nginx deployment</summary>
+        /// <summary>Get the NGINX deployment</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="deploymentName">The name of targeted Nginx deployment</param>
+        /// <param name="deploymentName">The name of targeted NGINX deployment</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -2427,9 +2427,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DeploymentsGet(string subscriptionId, string resourceGroupName, string deploymentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeployment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DeploymentsGet(string subscriptionId, string resourceGroupName, string deploymentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeployment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2458,7 +2458,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
             }
         }
 
-        /// <summary>Get the Nginx deployment</summary>
+        /// <summary>Get the NGINX deployment</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2468,9 +2468,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DeploymentsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeployment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DeploymentsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeployment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2521,7 +2521,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DeploymentsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeployment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DeploymentsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeployment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2539,13 +2539,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxDeployment.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxDeployment.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2566,7 +2566,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="deploymentName">The name of targeted Nginx deployment</param>
+        /// <param name="deploymentName">The name of targeted NGINX deployment</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -2584,7 +2584,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
             }
         }
 
-        /// <summary>List the Nginx deployments resources</summary>
+        /// <summary>List the NGINX deployments resources</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2594,9 +2594,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DeploymentsList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeploymentListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DeploymentsList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeploymentListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2622,7 +2622,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
             }
         }
 
-        /// <summary>List all Nginx deployments under the specified resource group.</summary>
+        /// <summary>List all NGINX deployments under the specified resource group.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2633,9 +2633,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DeploymentsListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeploymentListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DeploymentsListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeploymentListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2663,7 +2663,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
             }
         }
 
-        /// <summary>List all Nginx deployments under the specified resource group.</summary>
+        /// <summary>List all NGINX deployments under the specified resource group.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2673,9 +2673,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DeploymentsListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeploymentListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DeploymentsListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeploymentListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2724,7 +2724,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DeploymentsListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeploymentListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DeploymentsListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeploymentListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2742,13 +2742,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxDeploymentListResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxDeploymentListResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2785,7 +2785,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
             }
         }
 
-        /// <summary>List the Nginx deployments resources</summary>
+        /// <summary>List the NGINX deployments resources</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2795,9 +2795,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DeploymentsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeploymentListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DeploymentsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeploymentListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2843,7 +2843,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DeploymentsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeploymentListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DeploymentsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeploymentListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2861,13 +2861,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxDeploymentListResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxDeploymentListResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2900,10 +2900,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
             }
         }
 
-        /// <summary>Update the Nginx deployment</summary>
+        /// <summary>Update the NGINX deployment</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="deploymentName">The name of targeted Nginx deployment</param>
+        /// <param name="deploymentName">The name of targeted NGINX deployment</param>
         /// <param name="body"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2913,9 +2913,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DeploymentsUpdate(string subscriptionId, string resourceGroupName, string deploymentName, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeploymentUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeployment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DeploymentsUpdate(string subscriptionId, string resourceGroupName, string deploymentName, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeploymentUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeployment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2948,7 +2948,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
             }
         }
 
-        /// <summary>Update the Nginx deployment</summary>
+        /// <summary>Update the NGINX deployment</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2959,9 +2959,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DeploymentsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeploymentUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeployment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DeploymentsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeploymentUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeployment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3016,7 +3016,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DeploymentsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeployment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DeploymentsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeployment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3133,13 +3133,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxDeployment.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxDeployment.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3160,13 +3160,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="deploymentName">The name of targeted Nginx deployment</param>
+        /// <param name="deploymentName">The name of targeted NGINX deployment</param>
         /// <param name="body"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DeploymentsUpdate_Validate(string subscriptionId, string resourceGroupName, string deploymentName, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeploymentUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DeploymentsUpdate_Validate(string subscriptionId, string resourceGroupName, string deploymentName, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeploymentUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -3181,7 +3181,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
             }
         }
 
-        /// <summary>List all operations provided by Nginx.NginxPlus for the 2022-08-01 api version.</summary>
+        /// <summary>List all operations provided by Nginx.NginxPlus for the 2023-04-01 api version.</summary>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -3190,9 +3190,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3216,7 +3216,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
             }
         }
 
-        /// <summary>List all operations provided by Nginx.NginxPlus for the 2022-08-01 api version.</summary>
+        /// <summary>List all operations provided by Nginx.NginxPlus for the 2023-04-01 api version.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3226,9 +3226,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-08-01";
+            var apiVersion = @"2023-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3271,7 +3271,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OperationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OperationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3289,13 +3289,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.OperationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.OperationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.ResourceProviderDefaultErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }

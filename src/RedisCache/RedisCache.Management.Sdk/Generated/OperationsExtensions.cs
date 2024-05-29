@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.RedisCache
     public static partial class OperationsExtensions
     {
         /// <summary>
-        /// Lists all of the available REST API operations of the Microsoft.Cache provider.
+        /// Lists all of the available REST API operations of the Microsoft.Cache
+        /// provider.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -24,7 +25,8 @@ namespace Microsoft.Azure.Management.RedisCache
         }
 
         /// <summary>
-        /// Lists all of the available REST API operations of the Microsoft.Cache provider.
+        /// Lists all of the available REST API operations of the Microsoft.Cache
+        /// provider.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -40,7 +42,8 @@ namespace Microsoft.Azure.Management.RedisCache
             }
         }
         /// <summary>
-        /// Lists all of the available REST API operations of the Microsoft.Cache provider.
+        /// Lists all of the available REST API operations of the Microsoft.Cache
+        /// provider.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -54,7 +57,8 @@ namespace Microsoft.Azure.Management.RedisCache
         }
 
         /// <summary>
-        /// Lists all of the available REST API operations of the Microsoft.Cache provider.
+        /// Lists all of the available REST API operations of the Microsoft.Cache
+        /// provider.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

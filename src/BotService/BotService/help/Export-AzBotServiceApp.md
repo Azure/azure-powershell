@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.BotService-help.xml
 Module Name: Az.BotService
 online version: https://learn.microsoft.com/powershell/module/az.botservice/export-azbotserviceapp
 schema: 2.0.0
@@ -13,8 +13,9 @@ Returns a BotService specified by the parameters.
 ## SYNTAX
 
 ```
-Export-AzBotServiceApp [-Name <String>] [-ResourceGroupName <String>] [-SavePath <String>]
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Export-AzBotServiceApp [-ResourceGroupName <String>] [-Name <String>] [-SavePath <String>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,7 +89,6 @@ Accept wildcard characters: False
 
 ### -SavePath
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -127,7 +127,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

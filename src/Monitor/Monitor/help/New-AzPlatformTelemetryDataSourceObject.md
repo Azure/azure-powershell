@@ -13,7 +13,8 @@ Create an in-memory object for PlatformTelemetryDataSource.
 ## SYNTAX
 
 ```
-New-AzPlatformTelemetryDataSourceObject -Stream <String[]> [-Name <String>] [<CommonParameters>]
+New-AzPlatformTelemetryDataSourceObject -Stream <String[]> [-Name <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

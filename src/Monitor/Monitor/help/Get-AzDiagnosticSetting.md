@@ -14,12 +14,14 @@ Gets the active diagnostic settings for the specified resource.
 
 ### List (Default)
 ```
-Get-AzDiagnosticSetting -ResourceId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDiagnosticSetting -ResourceId <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzDiagnosticSetting -Name <String> -ResourceId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDiagnosticSetting -Name <String> -ResourceId <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity

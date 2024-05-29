@@ -25,6 +25,7 @@ using System.Management.Automation;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
+using Microsoft.Azure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Metrics
 {
@@ -49,6 +50,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
         public GetAzureRmMetricTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
+            TestExecutionHelpers.SetUpSessionAndProfile();
             insightsMetricOperationsMock = new Mock<IMetricsOperations>();
             MonitorClientMock = new Mock<MonitorManagementClient>() { CallBase = true };
             commandRuntimeMock = new Mock<ICommandRuntime>();

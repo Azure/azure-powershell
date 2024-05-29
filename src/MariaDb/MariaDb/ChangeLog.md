@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 0.2.1
+* Fixed an issue that updating password did not work.
+
 ## Version 0.2.0
 * Removed legacy SkuSize from input and output [#12734]
 * New/Update-AzMyMariaDbFirewallRule create a default name with time stamp when no name is passed [#12737]

@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.NetApp
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// The ID of the target subscription.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
         public string SubscriptionId { get; set;}
 
@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Management.NetApp
             this.VolumeGroups = new VolumeGroupsOperations(this);
             this.Subvolumes = new SubvolumesOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2023-05-01";
+            this.ApiVersion = "2023-07-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

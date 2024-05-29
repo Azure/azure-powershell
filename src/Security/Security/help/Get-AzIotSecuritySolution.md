@@ -14,7 +14,8 @@ Get IoT security solution
 
 ### SubscriptionScope (Default)
 ```
-Get-AzIotSecuritySolution [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzIotSecuritySolution [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceGroupScope
@@ -31,7 +32,8 @@ Get-AzIotSecuritySolution -ResourceGroupName <String> -Name <String> [-DefaultPr
 
 ### ResourceId
 ```
-Get-AzIotSecuritySolution -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzIotSecuritySolution -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

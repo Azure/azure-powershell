@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NetworkAnalytics-help.xml
 Module Name: Az.NetworkAnalytics
 online version: https://learn.microsoft.com/powershell/module/az.networkanalytics/new-aznetworkanalyticsdataproduct
 schema: 2.0.0
@@ -13,8 +13,8 @@ Create data product resource.
 ## SYNTAX
 
 ```
-New-AzNetworkAnalyticsDataProduct -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-CurrentMinorVersion <String>] [-CustomerEncryptionKeyName <String>]
+New-AzNetworkAnalyticsDataProduct -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> [-CurrentMinorVersion <String>] [-CustomerEncryptionKeyName <String>]
  [-CustomerEncryptionKeyVaultUri <String>] [-CustomerEncryptionKeyVersion <String>]
  [-CustomerManagedKeyEncryptionEnabled <ControlState>] [-IdentityType <ManagedServiceIdentityType>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-MajorVersion <String>]
@@ -23,7 +23,8 @@ New-AzNetworkAnalyticsDataProduct -Name <String> -ResourceGroupName <String> -Lo
  [-NetworkaclIPRule <IIPRules[]>] [-NetworkaclVirtualNetworkRule <IVirtualNetworkRule[]>] [-Owner <String[]>]
  [-PrivateLinksEnabled <ControlState>] [-Product <String>] [-PublicNetworkAccess <ControlState>]
  [-Publisher <String>] [-PurviewAccount <String>] [-PurviewCollection <String>] [-Redundancy <ControlState>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +34,7 @@ Create data product resource.
 
 ### Example 1: Create data product resource.
 ```powershell
- New-AzNetworkAnalyticsDataProduct -Name "pwshdp01" -Product "MCC" -MajorVersion "2.0.0" -Publisher "Microsoft" -Location "southcentralus" -ResourceGroupName "ResourceGroupName"
+New-AzNetworkAnalyticsDataProduct -Name "pwshdp01" -Product "MCC" -MajorVersion "2.0.0" -Publisher "Microsoft" -Location "southcentralus" -ResourceGroupName "ResourceGroupName"
 ```
 
 ```output
@@ -545,4 +546,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -37,6 +37,7 @@ using BatchAccount = Microsoft.Azure.Management.Batch.Models.BatchAccount;
 using BatchAccountCreateParameters = Microsoft.Azure.Management.Batch.Models.BatchAccountCreateParameters;
 using BatchAccountKeys = Microsoft.Azure.Management.Batch.Models.BatchAccountKeys;
 using ApplicationPackage = Microsoft.Azure.Management.Batch.Models.ApplicationPackage;
+using System.Security.Policy;
 
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
@@ -194,7 +195,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             int? targetDedicated,
             int? targetLowPriority,
             CertificateReference certReference = null,
-            StartTask startTask = null)
+            StartTask startTask = null,
+            UpgradePolicy upgradePolicy = null)
         {
             PSCertificateReference[] certReferences = null;
             if (certReference != null)
@@ -207,8 +209,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 psStartTask = new PSStartTask(startTask);
             }
 
-            PSCloudServiceConfiguration paasConfiguration = new PSCloudServiceConfiguration("4", "*");
+            PSUpgradePolicy psUpgradePolicy = null;
+            if (upgradePolicy != null)
+            {
+                psUpgradePolicy = new PSUpgradePolicy(upgradePolicy);
+            }
 
+            PSCloudServiceConfiguration paasConfiguration = new PSCloudServiceConfiguration("4", "*");
+           
             NewPoolParameters parameters = new NewPoolParameters(context, poolId)
             {
                 VirtualMachineSize = "standard_d1_v2",
@@ -216,6 +224,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 TargetDedicatedComputeNodes = targetDedicated,
                 TargetLowPriorityComputeNodes = targetLowPriority,
                 CertificateReferences = certReferences,
+                UpgradePolicy = psUpgradePolicy,
                 StartTask = psStartTask,
                 InterComputeNodeCommunicationEnabled = true,
                 TargetCommunicationMode = NodeCommunicationMode.Classic
@@ -223,6 +232,63 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
             CreatePoolIfNotExists(runner, parameters);
         }
+
+        /// <summary>
+        /// Creates a test pool for use in Scenario tests.
+        /// </summary>
+        public static void CreateTestPoolVirtualMachine(
+            BatchTestRunner runner,
+            BatchAccountContext context,
+            string poolId,
+            int? targetDedicated,
+            int? targetLowPriority,
+            CertificateReference certReference = null,
+            StartTask startTask = null,
+            UpgradePolicy upgradePolicy = null)
+        {
+            PSCertificateReference[] certReferences = null;
+            if (certReference != null)
+            {
+                certReferences = new PSCertificateReference[] { new PSCertificateReference(certReference) };
+            }
+            PSStartTask psStartTask = null;
+            if (startTask != null)
+            {
+                psStartTask = new PSStartTask(startTask);
+            }
+
+            PSUpgradePolicy psUpgradePolicy = null;
+            if (upgradePolicy != null)
+            {
+                psUpgradePolicy = new PSUpgradePolicy(upgradePolicy);
+            }
+
+            string vmSize = "STANDARD_D2S_V3";
+            string publisher = "canonical";
+            string offer = "0001-com-ubuntu-server-focal";
+            string sku = "20_04-lts";
+            string nodeAgent = "batch.node.ubuntu 20.04";
+
+            PSImageReference imageReference = new PSImageReference(offer: offer, publisher: publisher, sku: sku);
+            PSVirtualMachineConfiguration vmConfiguration = new PSVirtualMachineConfiguration(imageReference, nodeAgent);
+            vmConfiguration.NodePlacementConfiguration = new PSNodePlacementConfiguration(NodePlacementPolicyType.Zonal);
+
+            NewPoolParameters parameters = new NewPoolParameters(context, poolId)
+            {
+                VirtualMachineSize = vmSize,
+                VirtualMachineConfiguration = vmConfiguration,
+                TargetDedicatedComputeNodes = targetDedicated,
+                TargetLowPriorityComputeNodes = targetLowPriority,
+                CertificateReferences = certReferences,
+                UpgradePolicy = psUpgradePolicy,
+                StartTask = psStartTask,
+                TaskSlotsPerNode = 1,
+                InterComputeNodeCommunicationEnabled = true
+            };
+
+            CreatePoolIfNotExists(runner, parameters);
+        }
+
 
         public static void CreatePoolIfNotExists(
             BatchTestRunner runner,
@@ -269,7 +335,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 // We got the pool not found error, so continue and create the pool
             }
 
-            CreateTestPool(runner, context, MpiPoolId, targetDedicated, targetLowPriority: 0);
+            CreateTestPoolVirtualMachine(runner, context, MpiPoolId, targetDedicated, targetLowPriority: 0);
         }
 
         public static void WaitForSteadyPoolAllocation(BatchTestRunner runner, BatchAccountContext context, string poolId)
@@ -399,7 +465,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             PSMultiInstanceSettings multiInstanceSettings = null;
             if (numInstances > 1)
             {
-                multiInstanceSettings = new PSMultiInstanceSettings("cmd /c echo coordinating", numInstances);
+                multiInstanceSettings = new PSMultiInstanceSettings("/bin/bash -c 'echo coordinating'", numInstances);
             }
 
             NewTaskParameters parameters = new NewTaskParameters(context, jobId, null, taskId)

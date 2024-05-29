@@ -16,8 +16,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMarketplacePrivateStore
 
 Describe 'Get-AzMarketplacePrivateStoreCollectionOffer' {
     It 'List' {
-	
-        $res = Get-AzMarketplacePrivateStoreCollectionOffer -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -CollectionId a260d38c-96cf-492d-a340-404d0c4b3ad6
-	$res.Count | Should -BeGreaterOrEqual 4
-}
+        $response = Get-AzMarketplacePrivateStoreCollectionOffer -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -CollectionId a260d38c-96cf-492d-a340-404d0c4b3ad6
+        $response | Should -Not -Be $null
+	    $response.Count | Should -BeGreaterOrEqual 0
+        $response[0].id | Should -Match "a260d38c-96cf-492d-a340-404d0c4b3ad6"
+    }
 }

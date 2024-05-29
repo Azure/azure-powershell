@@ -65,12 +65,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_storage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("storage"), out var __jsonStorage) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkStorageProfile.FromJson(__jsonStorage) : Storage;}
-            {_jobManager = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("jobManager"), out var __jsonJobManager) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ComputeResourceDefinition.FromJson(__jsonJobManager) : JobManager;}
-            {_historyServer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("historyServer"), out var __jsonHistoryServer) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ComputeResourceDefinition.FromJson(__jsonHistoryServer) : HistoryServer;}
-            {_taskManager = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("taskManager"), out var __jsonTaskManager) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ComputeResourceDefinition.FromJson(__jsonTaskManager) : TaskManager;}
-            {_catalogOption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("catalogOptions"), out var __jsonCatalogOptions) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkCatalogOptions.FromJson(__jsonCatalogOptions) : CatalogOption;}
-            {_numReplica = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("numReplicas"), out var __jsonNumReplicas) ? (int?)__jsonNumReplicas : NumReplica;}
+            {_storage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("storage"), out var __jsonStorage) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkStorageProfile.FromJson(__jsonStorage) : _storage;}
+            {_jobManager = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("jobManager"), out var __jsonJobManager) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ComputeResourceDefinition.FromJson(__jsonJobManager) : _jobManager;}
+            {_historyServer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("historyServer"), out var __jsonHistoryServer) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ComputeResourceDefinition.FromJson(__jsonHistoryServer) : _historyServer;}
+            {_taskManager = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("taskManager"), out var __jsonTaskManager) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ComputeResourceDefinition.FromJson(__jsonTaskManager) : _taskManager;}
+            {_catalogOption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("catalogOptions"), out var __jsonCatalogOptions) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkCatalogOptions.FromJson(__jsonCatalogOptions) : _catalogOption;}
+            {_jobSpec = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("jobSpec"), out var __jsonJobSpec) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkJobProfile.FromJson(__jsonJobSpec) : _jobSpec;}
+            {_numReplica = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("numReplicas"), out var __jsonNumReplicas) ? (int?)__jsonNumReplicas : _numReplica;}
+            {_deploymentMode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("deploymentMode"), out var __jsonDeploymentMode) ? (string)__jsonDeploymentMode : (string)_deploymentMode;}
             AfterFromJson(json);
         }
 
@@ -110,7 +112,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             AddIf( null != this._historyServer ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) this._historyServer.ToJson(null,serializationMode) : null, "historyServer" ,container.Add );
             AddIf( null != this._taskManager ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) this._taskManager.ToJson(null,serializationMode) : null, "taskManager" ,container.Add );
             AddIf( null != this._catalogOption ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) this._catalogOption.ToJson(null,serializationMode) : null, "catalogOptions" ,container.Add );
+            AddIf( null != this._jobSpec ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) this._jobSpec.ToJson(null,serializationMode) : null, "jobSpec" ,container.Add );
             AddIf( null != this._numReplica ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber((int)this._numReplica) : null, "numReplicas" ,container.Add );
+            AddIf( null != (((object)this._deploymentMode)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._deploymentMode.ToString()) : null, "deploymentMode" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -383,9 +383,9 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='volumeName'>
         /// The name of the volume
         /// </param>
-        public static void ResetCifsPassword(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName)
+        public static VolumesResetCifsPasswordHeaders ResetCifsPassword(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName)
         {
-                ((IVolumesOperations)operations).ResetCifsPasswordAsync(resourceGroupName, accountName, poolName, volumeName).GetAwaiter().GetResult();
+                return ((IVolumesOperations)operations).ResetCifsPasswordAsync(resourceGroupName, accountName, poolName, volumeName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -409,9 +409,12 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task ResetCifsPasswordAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VolumesResetCifsPasswordHeaders> ResetCifsPasswordAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.ResetCifsPasswordWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.ResetCifsPasswordWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Break all the file locks on a volume
@@ -1382,9 +1385,9 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='volumeName'>
         /// The name of the volume
         /// </param>
-        public static void BeginResetCifsPassword(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName)
+        public static VolumesResetCifsPasswordHeaders BeginResetCifsPassword(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName)
         {
-                ((IVolumesOperations)operations).BeginResetCifsPasswordAsync(resourceGroupName, accountName, poolName, volumeName).GetAwaiter().GetResult();
+                return ((IVolumesOperations)operations).BeginResetCifsPasswordAsync(resourceGroupName, accountName, poolName, volumeName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -1408,9 +1411,12 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginResetCifsPasswordAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VolumesResetCifsPasswordHeaders> BeginResetCifsPasswordAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginResetCifsPasswordWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginResetCifsPasswordWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Break all the file locks on a volume

@@ -15,13 +15,15 @@ Gets ImmutabilityPolicy of a Storage blob containers
 ### AccountName (Default)
 ```
 Get-AzRmStorageContainerImmutabilityPolicy [-ResourceGroupName] <String> [-StorageAccountName] <String>
- -ContainerName <String> [-Etag <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -ContainerName <String> [-Etag <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 Get-AzRmStorageContainerImmutabilityPolicy -ContainerName <String> -StorageAccount <PSStorageAccount>
- [-Etag <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Etag <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ContainerObject

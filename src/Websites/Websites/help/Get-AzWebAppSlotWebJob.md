@@ -14,7 +14,8 @@ List webjobs for a deployment slot.
 
 ```
 Get-AzWebAppSlotWebJob -AppName <String> -ResourceGroupName <String> -SlotName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

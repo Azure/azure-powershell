@@ -23,4 +23,3 @@ redis
 ```
 
 Operation to update an exiting Binding by pipeline.
-

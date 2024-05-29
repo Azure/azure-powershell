@@ -57,27 +57,12 @@ namespace Microsoft.Azure.Commands.Profile.Context
             switch(scope)
             {
                 case ContextModificationScope.CurrentUser:
-                    settings = new ContextAutosaveSettings
-                    {
-                        CacheDirectory = session.TokenCacheDirectory,
-                        CacheFile = session.TokenCacheFile,
-                        ContextDirectory = session.ARMProfileDirectory,
-                        ContextFile = session.ARMProfileFile,
-                        Mode = ContextSaveMode.CurrentUser
-                    };
+                    settings = ContextAutosaveSettings.FromAzureSession(session, ContextSaveMode.CurrentUser);
                     break;
                 default:
-                    settings = new ContextAutosaveSettings
-                    {
-                        CacheDirectory = NoDirectory,
-                        CacheFile = NoDirectory,
-                        ContextDirectory = NoDirectory,
-                        ContextFile = NoDirectory,
-                        Mode = ContextSaveMode.Process
-                    };
+                    settings = ContextAutosaveSettings.FromAzureSession(session, ContextSaveMode.Process);
                     break;
             }
-
             return settings;
         }
 

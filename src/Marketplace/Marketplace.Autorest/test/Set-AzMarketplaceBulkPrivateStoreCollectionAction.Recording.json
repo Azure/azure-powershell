@@ -1,15 +1,15 @@
 {
-  "Set-AzMarketplaceBulkPrivateStoreCollectionAction+[NoContext]+BulkExpanded+$POST+https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/bulkCollectionsAction?api-version=2021-06-01+1": {
+  "Set-AzMarketplaceBulkPrivateStoreCollectionAction+[NoContext]+BulkExpanded+$POST+https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/bulkCollectionsAction?api-version=2023-01-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/bulkCollectionsAction?api-version=2021-06-01",
-      "Content": "{\n  \"properties\": {\n    \"collectionIds\": [ \"a260d38c-96cf-492d-a340-404d0c4b3ad6\", \"8c7a91db-cd41-43b6-af47-2e869654126d\" ],\n    \"action\": \"EnableCollections\"\n  }\n}",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/bulkCollectionsAction?api-version=2023-01-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"collectionIds\": [ \"a260d38c-96cf-492d-a340-404d0c4b3ad6\", \"8c7a91db-cd41-43b6-af47-2e869654126d\" ],\r\n    \"action\": \"EnableCollections\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "164" ]
+        "Content-Length": [ "169" ]
       }
     },
     "Response": {
@@ -17,27 +17,30 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
         "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=80c7a5f90186ed67b1a22b2d6ba64306a36f909c848093374b79f8b04109a233;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=80c7a5f90186ed67b1a22b2d6ba64306a36f909c848093374b79f8b04109a233;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1190" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-XSS-Protection": [ "1; mode=block" ],
-        "x-ms-version": [ "6.0.01832.0004-467b09b3" ],
-        "Set-Cookie": [ "ARRAffinity=92773f2c1c67026ec4d9126bfcf778845d6357a27b8781ad374bcfa850a3111a;Path=/;HttpOnly;Secure;Domain=marketplacerp.azure.com", "ARRAffinitySameSite=92773f2c1c67026ec4d9126bfcf778845d6357a27b8781ad374bcfa850a3111a;Path=/;HttpOnly;SameSite=None;Secure;Domain=marketplacerp.azure.com" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
+        "x-ms-version": [ "6.0.02586.90-5c77bed2" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-tenant-writes": [ "1195" ],
-        "x-ms-request-id": [ "acd4fba8-d488-4d99-b2de-bfa7e4d01d1b" ],
-        "x-ms-correlation-request-id": [ "acd4fba8-d488-4d99-b2de-bfa7e4d01d1b" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20220124T135910Z:acd4fba8-d488-4d99-b2de-bfa7e4d01d1b" ],
+        "x-azure-ref": [ "20240206T121519Z-e9fr18rg4936d7qwr39u9d2ats00000002x0000000007t6t" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "3fca786f-ff88-4507-bfe5-63760f0688a3" ],
+        "x-ms-correlation-request-id": [ "3fca786f-ff88-4507-bfe5-63760f0688a3" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240206T121520Z:3fca786f-ff88-4507-bfe5-63760f0688a3" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Mon, 24 Jan 2022 13:59:09 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 91FCEAA741594FF98579AB2770FFDB02 Ref B: MRS211050313051 Ref C: 2024-02-06T12:15:19Z" ],
+        "Date": [ "Tue, 06 Feb 2024 12:15:19 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "201" ],
+        "Content-Length": [ "208" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"succeeded\":[{\"collectionName\":\"DefaultCollection\",\"collectionId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\"},{\"collectionName\":\"test1\",\"collectionId\":\"8c7a91db-cd41-43b6-af47-2e869654126d\"}],\"failed\":[]}",
+      "Content": "{\"succeeded\":[{\"collectionName\":\"DefaultCollection\",\"collectionId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\"},{\"collectionName\":\"CopyPWRTest1\",\"collectionId\":\"8c7a91db-cd41-43b6-af47-2e869654126d\"}],\"failed\":[]}",
       "isContentBase64": false
     }
   }

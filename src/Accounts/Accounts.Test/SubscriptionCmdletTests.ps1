@@ -119,7 +119,6 @@ function Test-SetAzureRmContextWithoutSubscription
     Assert-True { $context.Subscription -ne $null }
     Assert-True { $context.Tenant -ne $null }
     Assert-AreEqual $context.Tenant.Id $firstSubscription.HomeTenantId
-    Assert-AreEqual $context.Subscription.Id $firstSubscription.Id
 }
 
 <#

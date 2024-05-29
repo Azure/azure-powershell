@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="type">Type of the sync group log.
-        /// Possible values include: 'All', 'Error', 'Warning', 'Success'</param>
+        /// Possible values include: &#39;All&#39;, &#39;Error&#39;, &#39;Warning&#39;, &#39;Success&#39;</param>
 
         /// <param name="source">Source of the sync group log.
         /// </param>

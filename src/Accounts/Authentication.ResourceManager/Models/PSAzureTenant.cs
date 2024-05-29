@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// The tenant id.
         /// </summary>
-        [Ps1Xml(Label = "Id", Target = ViewControl.Table, Position = 0)]
+        [Ps1Xml(Label = "Id", Target = ViewControl.Table, Position = 1)]
         public string Id { get; set; }
 
         /// <summary>
@@ -106,6 +106,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
             return this.Id;
         }
 
+        [Ps1Xml(Label = "TenantCategory", Target = ViewControl.Table, Position = 2)]
         public string TenantCategory
         {
             get
@@ -130,6 +131,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
             }
         }
 
+        [Ps1Xml(Label = "Name", Target = ViewControl.Table, Position = 0)]
         public string Name
         {
             get
@@ -138,6 +140,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
             }
         }
 
+        [Ps1Xml(Label = "Domains", Target = ViewControl.Table, Position = 3)]
         public string[] Domains
         {
             get

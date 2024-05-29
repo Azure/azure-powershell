@@ -38,13 +38,15 @@ New-AzDataCollectionRule -Name <String> -ResourceGroupName <String> [-Subscripti
 ### CreateViaJsonFilePath
 ```
 New-AzDataCollectionRule -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzDataCollectionRule -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -381,7 +383,6 @@ Accept wildcard characters: False
 
 ### -DataFlow
 The specification of data flows.
-To construct, see NOTES section for DATAFLOW properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataFlow[]
@@ -443,7 +444,6 @@ Accept wildcard characters: False
 
 ### -DataSourceExtension
 The list of Azure VM extension data source configurations.
-To construct, see NOTES section for DATASOURCEEXTENSION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IExtensionDataSource[]
@@ -459,7 +459,6 @@ Accept wildcard characters: False
 
 ### -DataSourceIisLog
 The list of IIS logs source configurations.
-To construct, see NOTES section for DATASOURCEIISLOG properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IIisLogsDataSource[]
@@ -475,7 +474,6 @@ Accept wildcard characters: False
 
 ### -DataSourceLogFile
 The list of Log files source configurations.
-To construct, see NOTES section for DATASOURCELOGFILE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFilesDataSource[]
@@ -491,7 +489,6 @@ Accept wildcard characters: False
 
 ### -DataSourcePerformanceCounter
 The list of performance counter data source configurations.
-To construct, see NOTES section for DATASOURCEPERFORMANCECOUNTER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPerfCounterDataSource[]
@@ -507,7 +504,6 @@ Accept wildcard characters: False
 
 ### -DataSourcePlatformTelemetry
 The list of platform telemetry configurations
-To construct, see NOTES section for DATASOURCEPLATFORMTELEMETRY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPlatformTelemetryDataSource[]
@@ -523,7 +519,6 @@ Accept wildcard characters: False
 
 ### -DataSourcePrometheusForwarder
 The list of Prometheus forwarder data source configurations.
-To construct, see NOTES section for DATASOURCEPROMETHEUSFORWARDER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPrometheusForwarderDataSource[]
@@ -539,7 +534,6 @@ Accept wildcard characters: False
 
 ### -DataSourceSyslog
 The list of Syslog data source configurations.
-To construct, see NOTES section for DATASOURCESYSLOG properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ISyslogDataSource[]
@@ -555,7 +549,6 @@ Accept wildcard characters: False
 
 ### -DataSourceWindowsEventLog
 The list of Windows Event Log data source configurations.
-To construct, see NOTES section for DATASOURCEWINDOWSEVENTLOG properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IWindowsEventLogDataSource[]
@@ -571,7 +564,6 @@ Accept wildcard characters: False
 
 ### -DataSourceWindowsFirewallLog
 The list of Windows Firewall logs source configurations.
-To construct, see NOTES section for DATASOURCEWINDOWSFIREWALLLOG properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IWindowsFirewallLogsDataSource[]
@@ -634,7 +626,6 @@ Accept wildcard characters: False
 
 ### -DestinationEventHub
 List of Event Hubs destinations.
-To construct, see NOTES section for DESTINATIONEVENTHUB properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IEventHubDestination[]
@@ -650,7 +641,6 @@ Accept wildcard characters: False
 
 ### -DestinationEventHubsDirect
 List of Event Hubs Direct destinations.
-To construct, see NOTES section for DESTINATIONEVENTHUBSDIRECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IEventHubDirectDestination[]
@@ -666,7 +656,6 @@ Accept wildcard characters: False
 
 ### -DestinationLogAnalytic
 List of Log Analytics destinations.
-To construct, see NOTES section for DESTINATIONLOGANALYTIC properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogAnalyticsDestination[]
@@ -682,7 +671,6 @@ Accept wildcard characters: False
 
 ### -DestinationMonitoringAccount
 List of monitoring account destinations.
-To construct, see NOTES section for DESTINATIONMONITORINGACCOUNT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMonitoringAccountDestination[]
@@ -698,7 +686,6 @@ Accept wildcard characters: False
 
 ### -DestinationStorageAccount
 List of storage accounts destinations.
-To construct, see NOTES section for DESTINATIONSTORAGEACCOUNT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageBlobDestination[]
@@ -715,7 +702,6 @@ Accept wildcard characters: False
 ### -DestinationStorageBlobsDirect
 List of Storage Blob Direct destinations.
 To be used only for sending data directly to store from the agent.
-To construct, see NOTES section for DESTINATIONSTORAGEBLOBSDIRECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageBlobDestination[]
@@ -731,7 +717,6 @@ Accept wildcard characters: False
 
 ### -DestinationStorageTablesDirect
 List of Storage Table Direct destinations.
-To construct, see NOTES section for DESTINATIONSTORAGETABLESDIRECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageTableDestination[]

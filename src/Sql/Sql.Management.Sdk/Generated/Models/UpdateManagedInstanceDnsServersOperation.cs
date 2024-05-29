@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="status">The status of the DNS refresh operation.
-        /// Possible values include: 'Succeeded', 'Failed'</param>
+        /// Possible values include: &#39;Succeeded&#39;, &#39;Failed&#39;</param>
         public UpdateManagedInstanceDnsServersOperation(string id = default(string), string name = default(string), string type = default(string), string status = default(string))
 
         : base(id, name, type)

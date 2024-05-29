@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 //
-
 using Azure.Core.Pipeline;
+
+using Microsoft.Azure.PowerShell.Authenticators.Identity.Core;
 using Microsoft.Identity.Client;
+
 using System.Net.Http;
 
 namespace Microsoft.Azure.PowerShell.Authenticators.Identity

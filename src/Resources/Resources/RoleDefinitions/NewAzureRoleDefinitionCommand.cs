@@ -41,6 +41,9 @@ namespace Microsoft.Azure.Commands.Resources
 
         public Guid RoleDefinitionId { get; set; } = default(Guid);
 
+        [Parameter(Mandatory = false, HelpMessage = "If specified, skip client side scope validation.")]
+        public SwitchParameter SkipClientSideScopeValidation { get; set; }
+
         public override void ExecuteCmdlet()
         {
             PSRoleDefinition role = null;
@@ -67,8 +70,12 @@ namespace Microsoft.Azure.Commands.Resources
                 role = Role;
             }
 
-            foreach(var scope in role.AssignableScopes) {
-                AuthorizationClient.ValidateScope(scope, false);
+            if (!SkipClientSideScopeValidation.IsPresent)
+            {
+                foreach (var scope in role.AssignableScopes)
+                {
+                    AuthorizationClient.ValidateScope(scope, false);
+                }
             }
 
             WriteObject(PoliciesClient.CreateRoleDefinition(role, RoleDefinitionId));

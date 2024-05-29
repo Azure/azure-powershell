@@ -6,9 +6,12 @@ $sut = (Split-Path -Leaf $MyInvocation.MyCommand.Path) -replace '\.Tests\.', '.'
 # ImportModules
 $hsmName = 'yeminghsm112901'
 $signInName = 'yeliu@microsoft.com'
+$subscriptionId = '0b1f6471-1bf0-4dda-aec3-cb9272f09590'
 $storageAccount = 'bezstorageaccount'
 $containerName = 'backup'
 $keyName = 'test'
+$userManagedIdentityName = 'nori-identity'
+$resourceGroupName = 'nori-testhsm'
 # $sasToken = ConvertTo-SecureString -AsPlainText -Force 'insert sas token'
 $certs = "D:\sd1.cer", "D:\sd2.cer", "D:\sd3.cer" # for security domain
 $certsKeys = @{PublicKey = "D:\sd1.cer"; PrivateKey = "D:\sd1.key" }, @{PublicKey = "D:\sd2.cer"; PrivateKey = "D:\sd2.key" }, @{PublicKey = "D:\sd3.cer"; PrivateKey = "D:\sd3.key" }
@@ -176,6 +179,12 @@ Describe "BackupAndRestoreAzManagedHsm" {
         $script:backupUri | Should -Not -Be $null
     }
 
+    It "Backup a managed Hsm via User Assigned Managed Identity"{
+        Update-AzKeyVaultManagedHsm -UserAssignedIdentity "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$userManagedIdentityName"
+        $script:backupUri = Backup-AzKeyVault -HsmName $hsmName -StorageContainerUri $containerUri -UseUserManagedIdentity
+        $script:backupUri | Should -Not -Be $null
+    }
+
     It "Selective restore a key to managed HSM" {
         $script:backupUri = [System.Uri]::new($script:backupUri)
         $backupFolder = $script:backupUri.Segments[$script:backupUri.Segments.Length - 1]
@@ -190,6 +199,11 @@ Describe "BackupAndRestoreAzManagedHsm" {
         Get-AzKeyVaultKey -HsmName $hsmName | Remove-AzKeyVaultKey -Force
         Get-AzKeyVaultKey -HsmName $hsmName -InRemovedState | Remove-AzKeyVaultKey -InRemovedState -Force
         $restoreResult = Restore-AzKeyVault -HsmName $hsmName -StorageContainerUri $containerUri -BackupFolder $backupFolder -SasToken $sasToken -PassThru
+        $restoreResult | Should -Be $True
+    }
+
+    It "Restore a managed Hsm via User Assigned Managed Identity"{
+        $restoreResult = Restore-AzKeyVault -HsmName $hsmName -StorageContainerUri $containerUri -BackupFolder $backupFolder -UseUserManagedIdentity
         $restoreResult | Should -Be $True
     }
 }

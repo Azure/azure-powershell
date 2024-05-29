@@ -123,25 +123,25 @@ You must provide expected breaking change az version and moudle verision otherwi
 ## Case 1 — Generic Breaking change for a cmdlet
 
 ```csharp
-[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.GenericBreakingChangeWithVersionAttribute("16.0.0", "4.0.0", "2022/05/30")
+[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.GenericBreakingChangeAttribute("message about the change", "16.0.0", "4.0.0", "2022/05/30")
 ```
 
 ## Case 2 — Breaking change for a cmdlet
 
 ```csharp
-[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.CmdletDeprecationWithVersionAttribute("16.0.0", "4.0.0", "2022/05/30", ReplacementCmdletName = 'replace-xxx')
+[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.CmdletBreakingChangeAttribute("16.0.0", "4.0.0", "2022/05/30", ReplacementCmdletName = 'replace-xxx')
 ```
 
 ## Case 3 — Breaking change for an output type
 
 ```csharp
-[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.CmdletOutputBreakingChangeWithVersionAttribute("oldtype", "11.0.0", "5.0.0", "2022/05/11", ReplacementCmdletOutputType = "newtype", DeprecatedOutputProperties = ("propertyA", "PropertyB"), NewOutputProperties = ("PropertyC", "PropertyD"))]
+[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.OutputBreakingChangeAttribute("oldtype", "11.0.0", "5.0.0", "2022/05/11", ReplacementCmdletOutputType = "newtype", DeprecatedOutputProperties = ("propertyA", "PropertyB"), NewOutputProperties = ("PropertyC", "PropertyD"))]
 ```
 
 ## Case 4 — Breaking change for a parameter
 
 ```csharp
-[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.CmdletParameterBreakingChangeWithVersionAttribute("ResourceGroupName", "11.0.0", "4.1.0", "2028/06/18")]
+[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ParameterBreakingChangeAttribute("ResourceGroupName", "11.0.0", "4.1.0", "2028/06/18")]
 ```
 
 ## Case 5 — Preview message

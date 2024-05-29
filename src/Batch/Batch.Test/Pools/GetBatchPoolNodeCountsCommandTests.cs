@@ -74,7 +74,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                     unknown: 11,
                     unusable: 12,
                     waitingForStartTask: 13,
-                    total: 91), // Total
+                    total: 91,
+                    upgradingOS: 1), // Total
                 LowPriority = new ProxyModels.NodeCounts(
                     creating: 1,
                     idle: 2,
@@ -89,7 +90,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                     unknown: 11,
                     unusable: 12,
                     waitingForStartTask: 13,
-                    total: 91), // Total
+                    total: 91,
+                    upgradingOS: 1), // Total
             };
 
             var poolNodeCounts2 = new ProxyModels.PoolNodeCounts()
@@ -109,7 +111,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                     unknown: 21,
                     unusable: 22,
                     waitingForStartTask: 23,
-                    total: 221), // Total
+                    total: 221,
+                    upgradingOS: 1), // Total
                 LowPriority = new ProxyModels.NodeCounts(
                     creating: 11,
                     idle: 12,
@@ -124,7 +127,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                     unknown: 21,
                     unusable: 22,
                     waitingForStartTask: 23,
-                    total: 221), // Total
+                    total: 221,
+                    upgradingOS: 1), // Total
             };
 
             // Simulate node state counts for two pools are returned
@@ -246,6 +250,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             const int unusable = 12;
             const int waitingForStartTask = 13;
             const int total = 91;
+            const int upgradingOS = 1;
 
             var poolNodeCounts = new ProxyModels.PoolNodeCounts()
             {
@@ -265,7 +270,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                     unknown: unknown,
                     unusable: unusable,
                     waitingForStartTask: waitingForStartTask,
-                    total: total), // Total
+                    total: total,
+                    upgradingOS: upgradingOS), // Total
                 // all zero properties
                 LowPriority = new ProxyModels.NodeCounts(
                     creating: 0,
@@ -281,7 +287,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                     unknown: 0,
                     unusable: 0,
                     waitingForStartTask: 0,
-                    total: 0), // Total
+                    total: 0,
+                    upgradingOS: 0), // Total
             };
 
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();

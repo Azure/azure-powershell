@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ADObjectIDRetrievalFailed" xml:space="preserve">
+    <value>Retrieving object ID from Azure Active Directory failed. {0}
+
+Please provide object ID for the user or service principal to set a vault access policy.
+You can find the object ID using Azure Active Directory Module for Windows PowerShell.</value>
+  </data>
+  <data name="ADObjectNotFound" xml:space="preserve">
+    <value>Cannot find the Active Directory object '{0}' in tenant '{1}'. Please make sure that the user or application service principal you are authorizing is registered in the current subscription's Azure Active directory. The TenantID displayed by the cmdlet 'Get-AzContext' is the current subscription's Azure Active directory.</value>
+  </data>
+  <data name="ArmAccountNotFound" xml:space="preserve">
+    <value>No account found in the context. Please login using Connect-AzAccount.</value>
+  </data>
+  <data name="BadParameterSetName" xml:space="preserve">
+    <value>Bad Parameter Set Name</value>
+  </data>
+  <data name="InvalidApplicationId" xml:space="preserve">
+    <value>Invalid application Id.</value>
+  </data>
+  <data name="InvalidObjectIdSyntax" xml:space="preserve">
+    <value>Cannot parse ObjectId into Guid.</value>
+  </data>
+  <data name="InvalidAzureEnvironment" xml:space="preserve">
+    <value>Invalid AzureEnvironment.</value>
+  </data>
+  <data name="InvalidCurrentSubscription" xml:space="preserve">
+    <value>No current subscription has been designated. Use Set-AzContext -SubscriptionName &lt;subscriptionName&gt; to set the current subscription.</value>
+  </data>
+  <data name="InvalidSelectedSubscription" xml:space="preserve">
+    <value>No subscription is currently selected. Use Set-AzContext to activate a subscription.</value>
+  </data>
+  <data name="InvalidSubscriptionState" xml:space="preserve">
+    <value>Your Azure credentials have not been set up or have expired, please run Connect-AzAccount to set up your Azure credentials.</value>
+  </data>
+  <data name="InvalidTagFormat" xml:space="preserve">
+    <value>Invalid tag format. Expect @{Name = "tagName"} or @{Name = "tagName"; Value = "tagValue"}</value>
+  </data>
+  <data name="InvalidVaultName" xml:space="preserve">
+    <value>Invalid vault name.</value>
+  </data>
+  <data name="InvalidVaultUri" xml:space="preserve">
+    <value>Invalid vault uri '{0}'. Vault uri must contain valid dns host name with domain suffix '{1}'.</value>
+  </data>
+  <data name="FileNotFound" xml:space="preserve">
+    <value>Can not find file '{0}'.</value>
+  </data>
+  <data name="NoDefaultUserAccount" xml:space="preserve">
+    <value>There is no default user account associated with this subscription. Certificate accounts are not supported with Azure Key Vault.</value>
+  </data>
+  <data name="NoTenantInContext" xml:space="preserve">
+    <value>No tenant found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to login.</value>
+  </data>
+  <data name="UnsupportedFileFormat" xml:space="preserve">
+    <value>The file format of '{0}' is not supported.</value>
+  </data>
+  <data name="AllPermissionExpansionWarning" xml:space="preserve">
+    <value>The 'all' permission will be removed in May 2018 and does not include the 'purge' permission. 'Purge' permission must be explicitly set.</value>
+  </data>
+  <data name="FileOverwriteCaption" xml:space="preserve">
+    <value>Overwrite File ?</value>
+  </data>
+  <data name="FileOverwriteMessage" xml:space="preserve">
+    <value>Overwrite existing file at '{0}' ?</value>
+  </data>
+  <data name="ADObjectAmbiguous" xml:space="preserve">
+    <value>The Email argument specified, '{1}', matches multiple objects in the Azure Active Directory tenant '{2}'. Please use -UserPrincipalName to narrow down the filter to a single object. The TenantID displayed by the cmdlet 'Get-AzContext' is the current subscription's Azure Active Directory.</value>
+  </data>
+  <data name="ActiveDirectoryClientNull" xml:space="preserve">
+    <value>The current credentials do not have access to Azure Active Directory. Please either use an ObjectId to refer to ActiveDirectory objects, or log in using credentials that have access to Azure Active Directory.</value>
+  </data>
+  <data name="ApplicationNotFoundBy" xml:space="preserve">
+    <value>Could not find application by '{0}'.</value>
+  </data>
+  <data name="AssignRole" xml:space="preserve">
+    <value>Assign role '{0}' to principal '{1}' at scope '{2}'.</value>
+  </data>
+  <data name="RoleAssignmentNotFound" xml:space="preserve">
+    <value>Could not find the role assignment by given parameters.</value>
+  </data>
+  <data name="RoleDefinitionNotFound" xml:space="preserve">
+    <value>Could not to find role definition by '{0}'.</value>
+  </data>
+  <data name="UserNotFoundBy" xml:space="preserve">
+    <value>Could not find user by '{0}'.</value>
+  </data>
+  <data name="ADGraphPermissionWarning" xml:space="preserve">
+    <value>Please make sure you have sufficient permissions in Microsoft Graph to get and list directory objects for validation to work. Otherwise skip with `-BypassObjectIdValidation`.</value>
+  </data>
+  <data name="FetchDefaultCVMPolicyFailedWithErrorMessage" xml:space="preserve">
+    <value>Fetch default CVM Policy failed, {0}</value>
+  </data>
+  <data name="FetchDefaultCVMPolicyFromLocal" xml:space="preserve">
+    <value>Fetching default CVM policy from remote failed because {0}. Trying to fetch default CVM policy from local backup copy.</value>
+  </data>
+</root>

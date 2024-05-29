@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Automanage service.
 
 ---
-## Status
-[![Az.Automanage](https://img.shields.io/powershellgallery/v/Az.Automanage.svg?style=flat-square&label=Az.Automanage "Az.Automanage")](https://www.powershellgallery.com/packages/Az.Automanage/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -31,9 +28,9 @@ For information on how to develop for `Az.Automanage`, see [how-to.md](how-to.md
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 54ad712dbb6f83113574e2c81558cb146740912a
+commit: 54ad712dbb6f83113574e2c81558cb146740912a
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/automanage/resource-manager/Microsoft.Automanage/stable/2022-05-04/automanage.json
 
@@ -43,6 +40,10 @@ input-file:
 inlining-threshold: 100
 resourcegroup-append: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - from: swagger-document

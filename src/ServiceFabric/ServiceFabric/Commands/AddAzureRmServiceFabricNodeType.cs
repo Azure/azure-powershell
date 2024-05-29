@@ -38,6 +38,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Sku = Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models.Sku;
 using LoadBalancingRule = Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.LoadBalancingRule;
 using UpgradeMode = Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models.UpgradeMode;
+using Microsoft.Azure.Management.ServiceFabric;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -234,7 +235,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private string GetLocation()
         {
-            return this.ResourcesClient.ResourceGroups.Get(this.ResourceGroupName).Location;
+            return GetCurrentCluster().Location;
         }
 
         internal void GetProfiles(

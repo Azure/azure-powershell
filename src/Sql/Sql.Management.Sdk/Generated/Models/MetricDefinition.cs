@@ -28,15 +28,15 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="primaryAggregationType">The primary aggregation type defining how metric values are displayed.
-        /// Possible values include: 'None', 'Average', 'Count', 'Minimum', 'Maximum',
-        /// 'Total'</param>
+        /// Possible values include: &#39;None&#39;, &#39;Average&#39;, &#39;Count&#39;, &#39;Minimum&#39;, &#39;Maximum&#39;,
+        /// &#39;Total&#39;</param>
 
         /// <param name="resourceUri">The resource uri of the database.
         /// </param>
 
         /// <param name="unit">The unit of the metric.
-        /// Possible values include: 'Count', 'Bytes', 'Seconds', 'Percent',
-        /// 'CountPerSecond', 'BytesPerSecond'</param>
+        /// Possible values include: &#39;Count&#39;, &#39;Bytes&#39;, &#39;Seconds&#39;, &#39;Percent&#39;,
+        /// &#39;CountPerSecond&#39;, &#39;BytesPerSecond&#39;</param>
 
         /// <param name="metricAvailabilities">The list of database metric availabilities for the metric.
         /// </param>

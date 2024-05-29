@@ -137,6 +137,20 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public PSVirtualApplianceAdditionalNicProperties[] AdditionalNic { get; set; }
 
+        [Parameter(
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "The Internet Ingress IPs Properties of the Virtual Appliance.")]
+        [ValidateNotNullOrEmpty]
+        public PSVirtualApplianceInternetIngressIpsProperties[] InternetIngressIp { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Network Profile of the Virtual Appliance.")]
+        [ValidateNotNullOrEmpty]
+        public PSVirtualApplianceNetworkProfile NetworkProfile { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -180,6 +194,16 @@ namespace Microsoft.Azure.Commands.Network
             if (AdditionalNic != null)
             {
                 networkVirtualAppliance.AdditionalNics = AdditionalNic;
+            }
+
+            if (InternetIngressIp != null)
+            {
+                networkVirtualAppliance.InternetIngressPublicIps = InternetIngressIp;
+            }
+
+            if (NetworkProfile != null)
+            {
+                networkVirtualAppliance.NetworkProfile = NetworkProfile;
             }
 
             var networkVirtualApplianceModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkVirtualAppliance>(networkVirtualAppliance);

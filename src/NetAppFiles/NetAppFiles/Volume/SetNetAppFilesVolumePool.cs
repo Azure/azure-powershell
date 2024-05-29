@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
 using System;
 using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
@@ -157,11 +158,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.PoolChangeMessage, this.Name)))
             {
-                var poolChangeBody = new PoolChangeRequest() { NewPoolResourceId = NewPoolResourceId};
-                var newPoolResourceIdentifier = new ResourceIdentifier(NewPoolResourceId);
-                AzureNetAppFilesManagementClient.Volumes.PoolChange(ResourceGroupName, AccountName, PoolName, Name, poolChangeBody);
-                var anfVolumes = AzureNetAppFilesManagementClient.Volumes.Get(ResourceGroupName, AccountName, newPoolResourceIdentifier.ResourceName, Name);
-                WriteObject(anfVolumes, true);                
+                try
+                {
+                    var poolChangeBody = new PoolChangeRequest() { NewPoolResourceId = NewPoolResourceId };
+                    var newPoolResourceIdentifier = new ResourceIdentifier(NewPoolResourceId);
+                    AzureNetAppFilesManagementClient.Volumes.PoolChange(ResourceGroupName, AccountName, PoolName, Name, poolChangeBody);
+                    var anfVolumes = AzureNetAppFilesManagementClient.Volumes.Get(ResourceGroupName, AccountName, newPoolResourceIdentifier.ResourceName, Name);
+                    WriteObject(anfVolumes, true);
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
         }
     }

@@ -182,7 +182,7 @@ The auxiliary mode of the Network Interface
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: None, MaxConnections, AcceleratedConnections
+Accepted values: None, MaxConnections, AcceleratedConnections, Floating
 
 Required: False
 Position: Named

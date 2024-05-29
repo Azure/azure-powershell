@@ -14,8 +14,8 @@ Remove a VMGalleryApplication object from the PSVirtualMachineScaleSetVMProfile 
 
 ```
 Remove-AzVmssGalleryApplication -VirtualMachineScaleSetVM <PSVirtualMachineScaleSetVMProfile>
- -GalleryApplicationsReferenceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -GalleryApplicationsReferenceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

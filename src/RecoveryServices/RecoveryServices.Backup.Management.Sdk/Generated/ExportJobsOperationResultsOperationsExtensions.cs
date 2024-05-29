@@ -13,8 +13,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public static partial class ExportJobsOperationResultsOperationsExtensions
     {
         /// <summary>
-        /// Gets the operation result of operation triggered by Export Jobs API. If the operation is successful, then it also
-        /// contains URL of a Blob and a SAS key to access the same. The blob contains exported jobs in JSON serialized format.
+        /// Gets the operation result of operation triggered by Export Jobs API. If the
+        /// operation is successful, then it also contains URL of a Blob and a SAS key
+        /// to access the same. The blob contains exported jobs in JSON serialized
+        /// format.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -23,7 +25,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='operationId'>
         /// OperationID which represents the export job.
@@ -34,8 +37,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// Gets the operation result of operation triggered by Export Jobs API. If the operation is successful, then it also
-        /// contains URL of a Blob and a SAS key to access the same. The blob contains exported jobs in JSON serialized format.
+        /// Gets the operation result of operation triggered by Export Jobs API. If the
+        /// operation is successful, then it also contains URL of a Blob and a SAS key
+        /// to access the same. The blob contains exported jobs in JSON serialized
+        /// format.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -44,7 +49,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='operationId'>
         /// OperationID which represents the export job.

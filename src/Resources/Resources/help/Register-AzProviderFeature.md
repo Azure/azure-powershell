@@ -15,7 +15,8 @@ Registers an Azure provider feature in your current subscription context.
 
 ```
 Register-AzProviderFeature -FeatureName <String> -ProviderNamespace <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -124,5 +125,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Get-AzProviderFeature](./Get-AzProviderFeature.md)
-
-

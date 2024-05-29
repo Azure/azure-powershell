@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 1.1.0
 * Updated the default parameter set for Get-AzDevCenterUserSchedule to "list"
 
 ## Version 1.0.0

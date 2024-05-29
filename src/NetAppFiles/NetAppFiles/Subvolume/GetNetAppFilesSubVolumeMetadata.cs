@@ -19,8 +19,10 @@ using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
+using Microsoft.Azure.Management.NetApp.Models;
 using System.Linq;
 using System.Collections.Generic;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
@@ -121,8 +123,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 PoolName = NameParts[1];
                 VolumeName = NameParts[2];
             }
-            var anfSubvolumeMetadata = AzureNetAppFilesManagementClient.Subvolumes.GetMetadata(ResourceGroupName, AccountName, PoolName, VolumeName, Name);
-            WriteObject(anfSubvolumeMetadata.ConvertToPs());
+            try
+            {
+                var anfSubvolumeMetadata = AzureNetAppFilesManagementClient.Subvolumes.GetMetadata(ResourceGroupName, AccountName, PoolName, VolumeName, Name);
+                WriteObject(anfSubvolumeMetadata.ConvertToPs());
+            }
+            catch (ErrorResponseException ex)
+            {
+                throw new CloudException(ex.Body.Error.Message, ex);
+            }
         }
     }
 }

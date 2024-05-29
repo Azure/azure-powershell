@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.LabServices-help.xml
 Module Name: Az.LabServices
 online version: https://learn.microsoft.com/powershell/module/az.labservices/get-azlabserviceslabforvm
 schema: 2.0.0
@@ -13,8 +13,8 @@ API to return the lab for a specific VM.
 ## SYNTAX
 
 ```
-Get-AzLabServicesLabForVM -ResourceId <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzLabServicesLabForVM [-SubscriptionId <String[]>] -ResourceId <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ API to return the lab for a specific VM.
 
 ### Example 1: Get the lab for a Virtual machine.
 ```powershell
-Get-AzLabServicesLabForVm -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<GroupName>/providers/Microsoft.LabServices/labs/<labName>/virtualMachines/<VMName>'
+Get-AzLabServicesLabForVM -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<GroupName>/providers/Microsoft.LabServices/labs/<labName>/virtualMachines/<VMName>'
 ```
 
 ```output
@@ -53,7 +53,6 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-
 
 ```yaml
 Type: System.String
@@ -124,7 +123,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

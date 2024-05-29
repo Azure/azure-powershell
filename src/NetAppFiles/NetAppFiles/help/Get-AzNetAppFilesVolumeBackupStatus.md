@@ -15,7 +15,8 @@ Get volume's backup status
 ### ByFieldsParameterSet (Default)
 ```
 Get-AzNetAppFilesVolumeBackupStatus -ResourceGroupName <String> -AccountName <String> -PoolName <String>
- -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet

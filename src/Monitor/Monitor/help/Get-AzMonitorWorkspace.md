@@ -14,7 +14,8 @@ Returns the specific Azure Monitor workspace
 
 ### List1 (Default)
 ```
-Get-AzMonitorWorkspace [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMonitorWorkspace [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get

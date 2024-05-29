@@ -21,7 +21,8 @@ New-AzSecurityAutomationActionObject -LogicAppResourceId <String> -Uri <String>
 ### SecurityAutomationActionEventHub
 ```
 New-AzSecurityAutomationActionObject -EventHubResourceId <String> -ConnectionString <String>
- [-SasPolicyName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SasPolicyName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SecurityAutomationActionWorkspace
@@ -62,7 +63,7 @@ Creates new security automation action with even-hub type
 The target Event Hub connection string
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SecurityAutomationActionEventHub
 Aliases:
 
@@ -77,7 +78,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -92,7 +93,7 @@ Accept wildcard characters: False
 The target Event Hub Azure Resource ID
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SecurityAutomationActionEventHub
 Aliases:
 
@@ -108,7 +109,7 @@ The triggered Logic App Azure Resource ID.
 This can also reside on other subscriptions, given that you have permissions to trigger the Logic App
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SecurityAutomationActionLogicApp
 Aliases:
 
@@ -123,7 +124,7 @@ Accept wildcard characters: False
 The target Event Hub SAS policy name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SecurityAutomationActionEventHub
 Aliases:
 
@@ -138,7 +139,7 @@ Accept wildcard characters: False
 The Logic App trigger URI endpoint (it will not be included in any response)
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SecurityAutomationActionLogicApp
 Aliases:
 
@@ -153,7 +154,7 @@ Accept wildcard characters: False
 The fully qualified Log Analytics Workspace Azure Resource ID
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SecurityAutomationActionWorkspace
 Aliases:
 

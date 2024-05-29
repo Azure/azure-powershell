@@ -16,8 +16,8 @@ Creates a managed application definition.
 New-AzManagedApplicationDefinition -Name <String> -ResourceGroupName <String> -DisplayName <String>
  -Description <String> -Location <String> -LockLevel <ApplicationLockLevel> [-PackageFileUri <String>]
  [-CreateUiDefinition <String>] [-MainTemplate <String>] -Authorization <String[]> [-Tag <Hashtable>]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

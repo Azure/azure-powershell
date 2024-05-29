@@ -24,4 +24,14 @@ Describe 'Start-AzWorkloadsSapVirtualInstance' {
         $startResponseId = Start-AzWorkloadsSapVirtualInstance -InputObject $env.SapIdSub2
         $startResponseId.Status | Should -Be $env.ProvisioningState
     }
+	
+	It 'StartWithVM' {
+        $startResponse = Start-AzWorkloadsSapVirtualInstance -Name $env.SapVirtualInstanceName -ResourceGroupName $env.ResourceGroupName -StartVM
+        $startResponse.Status | Should -Be $env.ProvisioningState
+    }
+
+    It 'StartViaIdentityWithVM' {
+        $startResponseId = Start-AzWorkloadsSapVirtualInstance -InputObject $env.SapIdSub2 -StartVM
+        $startResponseId.Status | Should -Be $env.ProvisioningState
+    }
 }

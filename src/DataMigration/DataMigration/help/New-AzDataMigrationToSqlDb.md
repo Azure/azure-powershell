@@ -24,7 +24,8 @@ New-AzDataMigrationToSqlDb -ResourceGroupName <String> -SqlDbInstanceName <Strin
  [-TargetSqlConnectionAuthentication <String>] [-TargetSqlConnectionDataSource <String>]
  [-TargetSqlConnectionEncryptConnection] [-TargetSqlConnectionPassword <SecureString>]
  [-TargetSqlConnectionTrustServerCertificate] [-TargetSqlConnectionUserName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

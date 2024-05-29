@@ -14,8 +14,8 @@ Creates collection setting for migration according for the mongoDb migration
 
 ```
 New-AzDataMigrationMongoDbCollectionSetting [-TargetRequestUnit <Int32>] [-CanDelete] [-UniqueShard]
- [-ShardKey <String>] [-DefaultProfile <IAzureContextContainer>] -Name <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ShardKey <String>] [-DefaultProfile <IAzureContextContainer>] -Name <String>
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

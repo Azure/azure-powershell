@@ -312,7 +312,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Whether or not to only get the latest backup for each database.
         /// </param>
         /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -547,7 +548,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Whether or not to only get the latest backup for each database.
         /// </param>
         /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -763,7 +765,8 @@ namespace Microsoft.Azure.Management.Sql
 
         }
         /// <summary>
-        /// Lists the long term retention backups for managed databases in a given location.
+        /// Lists the long term retention backups for managed databases in a given
+        /// location.
         /// </summary>
         /// <param name='locationName'>
         /// The location of the database.
@@ -772,7 +775,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Whether or not to only get the latest backup for each database.
         /// </param>
         /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -984,7 +988,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a long term retention backup for a managed database.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -1224,7 +1229,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes a long term retention backup.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database
@@ -1255,7 +1261,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Lists all long term retention backups for a managed database.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database
@@ -1270,7 +1277,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Whether or not to only get the latest backup for each database.
         /// </param>
         /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1503,7 +1511,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Lists the long term retention backups for a given managed instance.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -1515,7 +1524,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Whether or not to only get the latest backup for each database.
         /// </param>
         /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1738,10 +1748,12 @@ namespace Microsoft.Azure.Management.Sql
 
         }
         /// <summary>
-        /// Lists the long term retention backups for managed databases in a given location.
+        /// Lists the long term retention backups for managed databases in a given
+        /// location.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -1750,7 +1762,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Whether or not to only get the latest backup for each database.
         /// </param>
         /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2178,7 +2191,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes a long term retention backup.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database
@@ -2758,7 +2772,8 @@ namespace Microsoft.Azure.Management.Sql
 
         }
         /// <summary>
-        /// Lists the long term retention backups for managed databases in a given location.
+        /// Lists the long term retention backups for managed databases in a given
+        /// location.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -3304,7 +3319,8 @@ namespace Microsoft.Azure.Management.Sql
 
         }
         /// <summary>
-        /// Lists the long term retention backups for managed databases in a given location.
+        /// Lists the long term retention backups for managed databases in a given
+        /// location.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

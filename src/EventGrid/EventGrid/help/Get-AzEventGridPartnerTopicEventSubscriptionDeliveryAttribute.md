@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
+external help file: Az.EventGrid-help.xml
 Module Name: Az.EventGrid
 online version: https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridpartnertopiceventsubscriptiondeliveryattribute
 schema: 2.0.0
@@ -8,49 +8,60 @@ schema: 2.0.0
 # Get-AzEventGridPartnerTopicEventSubscriptionDeliveryAttribute
 
 ## SYNOPSIS
-Gets the delivery attributes for partner topic event subscription
+Get all delivery attributes for an event subscription of a partner topic.
 
 ## SYNTAX
 
-### PartnerTopicNameParameterSet (Default)
+### Get (Default)
 ```
-Get-AzEventGridPartnerTopicEventSubscriptionDeliveryAttribute [-DefaultProfile <IAzureContextContainer>]
+Get-AzEventGridPartnerTopicEventSubscriptionDeliveryAttribute -EventSubscriptionName <String>
+ -PartnerTopicName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### PartnerTopicEventSubscriptionParameterSet
+### GetViaIdentityPartnerTopic
 ```
-Get-AzEventGridPartnerTopicEventSubscriptionDeliveryAttribute -Name <String> -ResourceGroupName <String>
- -PartnerTopicName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzEventGridPartnerTopicEventSubscriptionDeliveryAttribute -EventSubscriptionName <String>
+ -PartnerTopicInputObject <IEventGridIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ResourceIdPartnerTopicEventSubscriptionParameterSet
+### GetViaIdentity
 ```
-Get-AzEventGridPartnerTopicEventSubscriptionDeliveryAttribute [-ResourceId] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzEventGridPartnerTopicEventSubscriptionDeliveryAttribute -InputObject <IEventGridIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the list of delivery attributes for partner topic event subscription
+Get all delivery attributes for an event subscription of a partner topic.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get all delivery attributes for an event subscription of a partner topic.
 ```powershell
-Get-AzEventGridPartnerTopicEventSubscriptionDeliveryAttribute -ResourceGroupName MyResourceGroupName -PartnerTopicName Topic1 -EventSubscriptionName EventSubscription1
+Get-AzEventGridPartnerTopicEventSubscriptionDeliveryAttribute -PartnerTopicName default -EventSubscriptionName azps-eventsub -ResourceGroupName azps_test_group_eventgrid
 ```
 
-Gets the list of delivery attributest for event subscription \`EventSubscription1\` created for partner topic \`Topic1\` in resource group \`MyResourceGroupName\`.
+```output
+Value
+-----
+......
+```
+
+Get all delivery attributes for an event subscription of a partner topic.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -59,63 +70,141 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-EventGrid event subscription name.
+### -EventSubscriptionName
+Name of the event subscription to be created.
+Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
 
 ```yaml
 Type: System.String
-Parameter Sets: PartnerTopicEventSubscriptionParameterSet
-Aliases: EventSubscriptionName
+Parameter Sets: Get, GetViaIdentityPartnerTopic
+Aliases: Name
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PartnerTopicName
-Event Grid partner topic name.
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: PartnerTopicEventSubscriptionParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PartnerTopicInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: GetViaIdentityPartnerTopic
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PartnerTopicName
+Name of the partner topic.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: PartnerTopicEventSubscriptionParameterSet
+Parameter Sets: Get
 Aliases: ResourceGroup
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Resource Identifier representing the Event Grid Event Subscription.
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: ResourceIdPartnerTopicEventSubscriptionParameterSet
+Type: System.String[]
+Parameter Sets: Get
 Aliases:
 
-Required: True
-Position: 0
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -124,11 +213,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventGrid.Models.PsDeliveryAttribute
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IDeliveryAttributeListResult
 
 ## NOTES
 

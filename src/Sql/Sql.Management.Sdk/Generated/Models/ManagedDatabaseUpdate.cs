@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="status">Status of the database.
-        /// Possible values include: 'Online', 'Offline', 'Shutdown', 'Creating',
-        /// 'Inaccessible', 'Restoring', 'Updating', 'Stopping', 'Stopped', 'Starting',
-        /// 'DbMoving', 'DbCopying'</param>
+        /// Possible values include: &#39;Online&#39;, &#39;Offline&#39;, &#39;Shutdown&#39;, &#39;Creating&#39;,
+        /// &#39;Inaccessible&#39;, &#39;Restoring&#39;, &#39;Updating&#39;, &#39;Stopping&#39;, &#39;Stopped&#39;, &#39;Starting&#39;,
+        /// &#39;DbMoving&#39;, &#39;DbCopying&#39;</param>
 
         /// <param name="creationDate">Creation date of the database.
         /// </param>
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="catalogCollation">Collation of the metadata catalog.
-        /// Possible values include: 'DATABASE_DEFAULT', 'SQL_Latin1_General_CP1_CI_AS'</param>
+        /// Possible values include: &#39;DATABASE_DEFAULT&#39;, &#39;SQL_Latin1_General_CP1_CI_AS&#39;</param>
 
         /// <param name="createMode">Managed database create mode. PointInTimeRestore: Create a database by
         /// restoring a point in time backup of an existing database.
@@ -63,8 +63,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// as the recoverable database resource ID to restore.
         /// RestoreLongTermRetentionBackup: Create a database by restoring from a long
         /// term retention backup (longTermRetentionBackupResourceId required).
-        /// Possible values include: 'Default', 'RestoreExternalBackup',
-        /// 'PointInTimeRestore', 'Recovery', 'RestoreLongTermRetentionBackup'</param>
+        /// Possible values include: &#39;Default&#39;, &#39;RestoreExternalBackup&#39;,
+        /// &#39;PointInTimeRestore&#39;, &#39;Recovery&#39;, &#39;RestoreLongTermRetentionBackup&#39;</param>
 
         /// <param name="storageContainerUri">Conditional. If createMode is RestoreExternalBackup, this value is
         /// required. Specifies the uri of the storage container where backups for this

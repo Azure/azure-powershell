@@ -14,7 +14,8 @@ Create an in-memory object for ScaleRuleMetricDimension.
 
 ```
 New-AzAutoscaleScaleRuleMetricDimensionObject -DimensionName <String>
- -Operator <ScaleRuleMetricDimensionOperationType> -Value <String[]> [<CommonParameters>]
+ -Operator <ScaleRuleMetricDimensionOperationType> -Value <String[]>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

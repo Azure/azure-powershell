@@ -27,7 +27,8 @@ Remove-AzSecurityWorkspaceSetting -ResourceId <String> [-PassThru] [-DefaultProf
 ### InputObject
 ```
 Remove-AzSecurityWorkspaceSetting -InputObject <PSSecurityWorkspaceSetting> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

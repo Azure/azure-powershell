@@ -111,6 +111,11 @@ param(
     # Specifying this parameter to $true will only unregister the cluster nodes with Arc for servers and Azure Stack HCI registration will not be altered.
     ${DisableOnlyAzureArcServer},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    ${IsWAC},
+
     [Parameter(Position=9)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.Management.Automation.PSCredential]

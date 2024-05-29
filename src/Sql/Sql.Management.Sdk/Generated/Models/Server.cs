@@ -70,11 +70,11 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="publicNetworkAccess">Whether or not public endpoint access is allowed for this server.  Value is
         /// optional but if passed in, must be &#39;Enabled&#39; or &#39;Disabled&#39; or
         /// &#39;SecuredByPerimeter&#39;
-        /// Possible values include: 'Enabled', 'Disabled', 'SecuredByPerimeter'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;, &#39;SecuredByPerimeter&#39;</param>
 
         /// <param name="workspaceFeature">Whether or not existing server has a workspace created and if it allows
         /// connection from workspace
-        /// Possible values include: 'Connected', 'Disconnected'</param>
+        /// Possible values include: &#39;Connected&#39;, &#39;Disconnected&#39;</param>
 
         /// <param name="primaryUserAssignedIdentityId">The resource id of a user assigned identity to be used by default.
         /// </param>
@@ -93,14 +93,14 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="restrictOutboundNetworkAccess">Whether or not to restrict outbound network access for this server.  Value
         /// is optional but if passed in, must be &#39;Enabled&#39; or &#39;Disabled&#39;
-        /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="isIPv6Enabled">Whether or not to enable IPv6 support for this server.  Value is optional
         /// but if passed in, must be &#39;Enabled&#39; or &#39;Disabled&#39;
-        /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="externalGovernanceStatus">Status of external governance.
-        /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
         public Server(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ResourceIdentity identity = default(ResourceIdentity), string kind = default(string), string administratorLogin = default(string), string administratorLoginPassword = default(string), string version = default(string), string state = default(string), string fullyQualifiedDomainName = default(string), System.Collections.Generic.IList<ServerPrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<ServerPrivateEndpointConnection>), string minimalTlsVersion = default(string), string publicNetworkAccess = default(string), string workspaceFeature = default(string), string primaryUserAssignedIdentityId = default(string), System.Guid? federatedClientId = default(System.Guid?), string keyId = default(string), ServerExternalAdministrator administrators = default(ServerExternalAdministrator), string restrictOutboundNetworkAccess = default(string), string isIPv6Enabled = default(string), string externalGovernanceStatus = default(string))
 
         : base(location, id, name, type, tags)

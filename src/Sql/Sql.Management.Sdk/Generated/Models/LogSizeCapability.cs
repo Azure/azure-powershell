@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="unit">The units that the limit is expressed in.
-        /// Possible values include: 'Megabytes', 'Gigabytes', 'Terabytes',
-        /// 'Petabytes', 'Percent'</param>
+        /// Possible values include: &#39;Megabytes&#39;, &#39;Gigabytes&#39;, &#39;Terabytes&#39;,
+        /// &#39;Petabytes&#39;, &#39;Percent&#39;</param>
         public LogSizeCapability(int? limit = default(int?), string unit = default(string))
 
         {

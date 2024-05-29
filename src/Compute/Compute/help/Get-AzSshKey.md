@@ -20,8 +20,8 @@ Get-AzSshKey [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IA
 
 ### ResourceIDParameterSet
 ```
-Get-AzSshKey -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Get-AzSshKey -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

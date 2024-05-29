@@ -12,6 +12,34 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Identity;
+
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Authentication.Config.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Sanitizer;
+using Microsoft.Azure.Commands.Profile.Common;
+using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.Profile.Models.Core;
+using Microsoft.Azure.Commands.Profile.Properties;
+using Microsoft.Azure.Commands.Profile.Utilities;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Shared.Config;
+using Microsoft.Azure.PowerShell.Authenticators;
+using Microsoft.Azure.PowerShell.Authenticators.Factories;
+using Microsoft.Azure.PowerShell.Common.Config;
+using Microsoft.Azure.PowerShell.Common.Share.Survey;
+using Microsoft.Identity.Client;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Sanitizer;
+using Microsoft.WindowsAzure.Commands.Common.Utilities;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
 using System;
 using System.Collections.Concurrent;
 using System.Linq;
@@ -21,30 +49,6 @@ using System.Security;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
-using Azure.Identity;
-
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
-using Microsoft.Azure.Commands.Common.Authentication.Factories;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Common;
-using Microsoft.Azure.Commands.Profile.Common;
-using Microsoft.Azure.Commands.Profile.Models.Core;
-using Microsoft.Azure.Commands.Profile.Properties;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.Shared.Config;
-using Microsoft.Azure.PowerShell.Authenticators;
-using Microsoft.Azure.PowerShell.Authenticators.Factories;
-using Microsoft.Azure.PowerShell.Common.Config;
-using Microsoft.Identity.Client;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Utilities;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.PowerShell.Common.Share.Survey;
-using Microsoft.Azure.Commands.Profile.Utilities;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -249,6 +253,7 @@ namespace Microsoft.Azure.Commands.Profile
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
+            ValidateActionRequiredMessageCanBePresented();
             if (AzureEnvironment.PublicEnvironments.ContainsKey(EnvironmentName.AzureCloud))
             {
                 _environment = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
@@ -273,10 +278,18 @@ namespace Microsoft.Azure.Commands.Profile
 
             _writeWarningEvent -= WriteWarningSender;
             _writeWarningEvent += WriteWarningSender;
+            _writeInformationEvent -= WriteInformationSender;
+            _writeInformationEvent += WriteInformationSender;
+
             // store the original write warning handler, register a thread safe one
             AzureSession.Instance.TryGetComponent(WriteWarningKey, out _originalWriteWarning);
             AzureSession.Instance.UnregisterComponent<EventHandler<StreamEventArgs>>(WriteWarningKey);
             AzureSession.Instance.RegisterComponent(WriteWarningKey, () => _writeWarningEvent);
+
+            // store the original write information handler, register a thread safe one
+            AzureSession.Instance.TryGetComponent(WriteInformationKey, out _originalWriteInformation);
+            AzureSession.Instance.UnregisterComponent<EventHandler<StreamEventArgs>>(WriteInformationKey);
+            AzureSession.Instance.RegisterComponent(WriteInformationKey, () => _writeInformationEvent);
 
             // todo: ideally cancellation token should be passed to authentication factory as a parameter
             // however AuthenticationFactory.Authenticate does not support it
@@ -289,9 +302,17 @@ namespace Microsoft.Azure.Commands.Profile
         private event EventHandler<StreamEventArgs> _writeWarningEvent;
         private event EventHandler<StreamEventArgs> _originalWriteWarning;
 
+        private event EventHandler<StreamEventArgs> _writeInformationEvent;
+        private event EventHandler<StreamEventArgs> _originalWriteInformation;
+
         private void WriteWarningSender(object sender, StreamEventArgs args)
         {
             _tasks.Enqueue(new Task(() => this.WriteWarning(args.Message)));
+        }
+
+        private void WriteInformationSender(object sender, StreamEventArgs args)
+        {
+            _tasks.Enqueue(new Task(() => this.WriteInformation(args.Message)));
         }
 
         protected override void StopProcessing()
@@ -486,7 +507,7 @@ namespace Microsoft.Azure.Commands.Profile
                     commonUtilities = new CommonUtilities();
                     AzureSession.Instance.RegisterComponent(nameof(CommonUtilities), () => commonUtilities);
                 }
-                if (!commonUtilities.IsDesktopSession() && IsUsingInteractiveAuthentication())
+                if (!commonUtilities.IsDesktopSession() && IsPopUpInteractiveAuthenticationFlow())
                 {
                     WriteWarning(Resources.InteractiveAuthNotSupported);
                     return;
@@ -503,8 +524,16 @@ namespace Microsoft.Azure.Commands.Profile
                         shouldPopulateContextList = false;
                     }
 
-                    profileClient.WarningLog = (message) => _tasks.Enqueue(new Task(() => this.WriteWarning(message)));
+                    profileClient.WarningLog = (message) => _tasks.Enqueue(new Task(() => this.WriteWarning(message))); 
+                    profileClient.InformationLog = (message) => _tasks.Enqueue(new Task(() => this.WriteInformation(message, false)));
                     profileClient.DebugLog = (message) => _tasks.Enqueue(new Task(() => this.WriteDebugWithTimestamp(message)));
+                    profileClient.PromptAndReadLine = (message) =>
+                    {
+                        var prompt = new Task<string>(() => Prompt(message));
+                        _tasks.Enqueue(prompt);
+                        return prompt.GetAwaiter().GetResult();
+                    };
+
                     var task = new Task<AzureRmProfile>(() => profileClient.Login(
                         azureAccount,
                         _environment,
@@ -518,7 +547,9 @@ namespace Microsoft.Azure.Commands.Profile
                         name,
                         shouldPopulateContextList,
                         MaxContextPopulation,
-                        resourceId));
+                        resourceId,
+                        IsInteractiveAuthenticationFlow(),
+                        IsInteractiveContextSelectionEnabled()));
                     task.Start();
                     while (!task.IsCompleted)
                     {
@@ -549,7 +580,7 @@ namespace Microsoft.Azure.Commands.Profile
                         }
                         else
                         {
-                            if (IsUsingInteractiveAuthentication())
+                            if (IsPopUpInteractiveAuthenticationFlow())
                             {
                                 //Display only if user is using Interactive auth
                                 WriteWarning(Resources.SuggestToUseDeviceCodeAuth);
@@ -559,7 +590,39 @@ namespace Microsoft.Azure.Commands.Profile
                         }
                     }
                 });
+
+                WriteInformation($"{Resources.AnnouncementsHeader}{System.Environment.NewLine}{Resources.AnnouncementsMessage}{System.Environment.NewLine}");
+                WriteInformation($"{Resources.ReportIssue}{System.Environment.NewLine}");
             }
+        }
+
+        private bool IsInteractiveContextSelectionEnabled()
+        {
+            return AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out IConfigManager configManager) ? configManager.GetConfigValue<LoginExperienceConfig>(ConfigKeys.LoginExperienceV2).Equals(LoginExperienceConfig.On) : true;
+        }
+
+        private bool IsInteractiveAuthenticationFlow()
+        {
+            return ParameterSetName.Equals(UserParameterSet);
+        }
+
+        private bool IsPopUpInteractiveAuthenticationFlow()
+        {
+            return ParameterSetName.Equals(UserParameterSet) && UseDeviceAuthentication.IsPresent == false;
+        }
+
+        private void ValidateActionRequiredMessageCanBePresented()
+        {
+            if (UseDeviceAuthentication.IsPresent && IsWriteInformationIgnored())
+            {
+                throw new ActionPreferenceStopException(Resources.DoNotIgnoreInformationIfUserDeviceAuth);
+            }
+        }
+
+        private bool IsWriteInformationIgnored()
+        {
+            return !MyInvocation.BoundParameters.ContainsKey("InformationAction") && ActionPreference.Ignore.ToString().Equals(SessionState?.PSVariable?.GetValue("InformationPreference", ActionPreference.SilentlyContinue)?.ToString() ?? "") ||
+                MyInvocation.BoundParameters.TryGetValue("InformationAction", out var value) && ActionPreference.Ignore.ToString().Equals(value?.ToString() ?? "", StringComparison.InvariantCultureIgnoreCase);
         }
 
         private string PreProcessAuthScope()
@@ -572,11 +635,6 @@ namespace Microsoft.Azure.Commands.Profile
                 WriteDebug($"Map AuthScope from {AuthScope} to {mappedScope}.");
             }
             return mappedScope;
-        }
-
-        private bool IsUsingInteractiveAuthentication()
-        {
-            return ParameterSetName == UserParameterSet && UseDeviceAuthentication == false;
         }
 
         private bool IsUnableToOpenWebPageError(AuthenticationFailedException exception)
@@ -618,6 +676,26 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 writeWarningEvent(this, new StreamEventArgs() { Message = message });
             }
+        }
+
+        private void WriteInformationEvent(string message)
+        {
+            EventHandler<StreamEventArgs> writeInformationEvent;
+            if (AzureSession.Instance.TryGetComponent(WriteInformationKey, out writeInformationEvent))
+            {
+                writeInformationEvent(this, new StreamEventArgs() { Message = message });
+            }
+        }
+
+        /// <summary>
+        /// Prompt a message and read a line, may move to AzPsCmdlet if more cmdlets need to prompt
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        private string Prompt(string message)
+        {
+            this.WriteInformation(message, true);
+            return this.Host.UI.ReadLine();
         }
 
         private static bool CheckForExistingContext(AzureRmProfile profile, string name)
@@ -678,6 +756,7 @@ namespace Microsoft.Azure.Commands.Profile
 #endif
                 AzureSessionInitializer.InitializeAzureSession(WriteInitializationWarnings);
                 AzureSessionInitializer.MigrateAdalCache(AzureSession.Instance, GetAzureContextContainer, WriteInitializationWarnings);
+                AzureSessionInitializer.MigrateMsalCacheWithoutSuffix(AzureSession.Instance, WriteInitializationWarnings);
 #if DEBUG
                 if (!TestMockSupport.RunningMocked)
                 {
@@ -754,6 +833,7 @@ namespace Microsoft.Azure.Commands.Profile
                 AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => new AzureCredentialFactory());
                 AzureSession.Instance.RegisterComponent(nameof(MsalAccessTokenAcquirerFactory), () => new MsalAccessTokenAcquirerFactory());
                 AzureSession.Instance.RegisterComponent<ISshCredentialFactory>(nameof(ISshCredentialFactory), () => new SshCredentialFactory());
+                AzureSession.Instance.RegisterComponent<IOutputSanitizer>(nameof(IOutputSanitizer), () => new OutputSanitizer());
 #if DEBUG || TESTCOVERAGE
                 AzureSession.Instance.RegisterComponent<ITestCoverage>(nameof(ITestCoverage), () => new TestCoverage());
 #endif
@@ -773,6 +853,9 @@ namespace Microsoft.Azure.Commands.Profile
             // unregister the thread-safe write warning, because it won't work out of this cmdlet
             AzureSession.Instance.UnregisterComponent<EventHandler<StreamEventArgs>>(WriteWarningKey);
             AzureSession.Instance.RegisterComponent(WriteWarningKey, () => _originalWriteWarning);
+            // unregister the thread-safe write information, because it won't work out of this cmdlet
+            AzureSession.Instance.UnregisterComponent<EventHandler<StreamEventArgs>>(WriteInformationKey);
+            AzureSession.Instance.RegisterComponent(WriteInformationKey, () => _originalWriteInformation);
         }
     }
 }

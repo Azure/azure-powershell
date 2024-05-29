@@ -81,7 +81,6 @@ Accept wildcard characters: False
 Defines the groups to be executed in parallel in this stage.
 Duplicate groups are not allowed.
 Min size: 1.
-To construct, see NOTES section for GROUP properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateGroup[]

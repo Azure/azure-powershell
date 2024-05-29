@@ -12,18 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 //
+using Azure.Identity;
 
+using Microsoft.Azure.PowerShell.Authenticators.Identity.Core;
+using Microsoft.Identity.Client;
+
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Azure.Identity;
-using Microsoft.Identity.Client;
 
 namespace Microsoft.Azure.PowerShell.Authenticators.Identity
 {
     internal abstract class MsalClientBase<TClient>
         where TClient : IClientApplicationBase
     {
-        private readonly AsyncLockWithValue<TClient> _clientAsyncLock;
+        private readonly AsyncLockWithValue<(TClient Client, TokenCache Cache)> _clientAsyncLock;
+        private readonly AsyncLockWithValue<(TClient Client, TokenCache Cache)> _clientWithCaeAsyncLock;
+        private readonly bool _logAccountDetails;
+        private readonly TokenCachePersistenceOptions _tokenCachePersistenceOptions;
+        protected internal bool IsSupportLoggingEnabled { get; }
+        protected internal bool DisableInstanceDiscovery { get; }
+        protected string[] cp1Capabilities = new[] { "CP1" };
+        protected internal CredentialPipeline Pipeline { get; }
+        internal string TenantId { get; }
+        internal string ClientId { get; }
+        internal Uri AuthorityHost { get; }
 
         /// <summary>
         /// For mocking purposes only.
@@ -34,63 +47,82 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Identity
 
         protected MsalClientBase(CredentialPipeline pipeline, string tenantId, string clientId, TokenCredentialOptions options)
         {
-            // This validation is preformed as a backstop. Validation in TokenCredentialOptions.AuthorityHost prevents users from explicitly
+            // This validation is performed as a backstop. Validation in TokenCredentialOptions.AuthorityHost prevents users from explicitly
             // setting AuthorityHost to a non TLS endpoint. However, the AuthorityHost can also be set by the AZURE_AUTHORITY_HOST environment
             // variable rather than in code. In this case we need to validate the endpoint before we use it. However, we can't validate in
             // CredentialPipeline as this is also used by the ManagedIdentityCredential which allows non TLS endpoints. For this reason
             // we validate here as all other credentials will create an MSAL client.
-            Validations.ValidateAuthorityHost(pipeline?.AuthorityHost);
-            ITokenCacheOptions cacheOptions = options as ITokenCacheOptions;
+            Validations.ValidateAuthorityHost(options?.AuthorityHost);
+            AuthorityHost = options?.AuthorityHost ?? AzureAuthorityHosts.GetDefault();
+            _logAccountDetails = options?.Diagnostics?.IsAccountIdentifierLoggingEnabled ?? false;
+            DisableInstanceDiscovery = options is ISupportsDisableInstanceDiscovery supportsDisableInstanceDiscovery && supportsDisableInstanceDiscovery.DisableInstanceDiscovery;
+            ISupportsTokenCachePersistenceOptions cacheOptions = options as ISupportsTokenCachePersistenceOptions;
+            _tokenCachePersistenceOptions = cacheOptions?.TokenCachePersistenceOptions;
+            IsSupportLoggingEnabled = options?.IsUnsafeSupportLoggingEnabled ?? false;
             Pipeline = pipeline;
             TenantId = tenantId;
             ClientId = clientId;
-            TokenCache = cacheOptions?.TokenCachePersistenceOptions == null ? null : new TokenCache(cacheOptions?.TokenCachePersistenceOptions);
-            _clientAsyncLock = new AsyncLockWithValue<TClient>();
+            _clientAsyncLock = new AsyncLockWithValue<(TClient Client, TokenCache Cache)>();
+            _clientWithCaeAsyncLock = new AsyncLockWithValue<(TClient Client, TokenCache Cache)>();
         }
 
-        internal string TenantId { get; }
+        protected abstract ValueTask<TClient> CreateClientAsync(bool enableCae, bool async, CancellationToken cancellationToken);
 
-        internal string ClientId { get; }
-
-        internal TokenCache TokenCache { get; }
-
-        protected CredentialPipeline Pipeline { get; }
-
-        protected abstract ValueTask<TClient> CreateClientAsync(bool async, CancellationToken cancellationToken);
-
-        protected async ValueTask<TClient> GetClientAsync(bool async, CancellationToken cancellationToken)
+        protected async ValueTask<TClient> GetClientAsync(bool enableCae, bool async, CancellationToken cancellationToken)
         {
-            using(var asyncLock = await _clientAsyncLock.GetLockOrValueAsync(async, cancellationToken).ConfigureAwait(false)) {
+            using (var asyncLock = enableCae ?
+                await _clientWithCaeAsyncLock.GetLockOrValueAsync(async, cancellationToken).ConfigureAwait(false) :
+                await _clientAsyncLock.GetLockOrValueAsync(async, cancellationToken).ConfigureAwait(false))
+            { 
                 if (asyncLock.HasValue)
                 {
-                    return asyncLock.Value;
+                    return asyncLock.Value.Client;
                 }
 
-                var client = await CreateClientAsync(async, cancellationToken).ConfigureAwait(false);
+                var client = await CreateClientAsync(enableCae, async, cancellationToken).ConfigureAwait(false);
 
-                if (TokenCache != null)
+                TokenCache tokenCache = null;
+                if (_tokenCachePersistenceOptions != null)
                 {
-                    await TokenCache.RegisterCache(async, client.UserTokenCache, cancellationToken).ConfigureAwait(false);
+                    tokenCache = new TokenCache(_tokenCachePersistenceOptions, enableCae);
+                    await tokenCache.RegisterCache(async, client.UserTokenCache, cancellationToken).ConfigureAwait(false);
 
                     if (client is IConfidentialClientApplication cca)
                     {
-                        await TokenCache.RegisterCache(async, cca.AppTokenCache, cancellationToken).ConfigureAwait(false);
+                        await tokenCache.RegisterCache(async, cca.AppTokenCache, cancellationToken).ConfigureAwait(false);
                     }
                 }
 
-                asyncLock.SetValue(client);
+                asyncLock.SetValue((Client: client, Cache: tokenCache));
                 return client;
             }
         }
 
         protected void LogMsal(LogLevel level, string message, bool isPii)
         {
-            //Do nothing. Placeholdder.
+            if (!isPii || IsSupportLoggingEnabled)
+            {
+                AzureIdentityEventSource.Singleton.LogMsal(level, message);
+            }
         }
 
         protected void LogAccountDetails(AuthenticationResult result)
         {
-            //Do nothing. Placeholder.
+            if (_logAccountDetails)
+            {
+                var accountDetails = TokenHelper.ParseAccountInfoFromToken(result.AccessToken);
+                AzureIdentityEventSource.Singleton.AuthenticatedAccountDetails(accountDetails.ClientId, accountDetails.TenantId ?? result.TenantId, accountDetails.Upn ?? result.Account?.Username, accountDetails.ObjectId ?? result.UniqueId);
+            }
+        }
+
+        internal async ValueTask<TokenCache> GetTokenCache(bool enableCae)
+        {
+            using (var asyncLock = enableCae ?
+                await _clientWithCaeAsyncLock.GetLockOrValueAsync(true, default).ConfigureAwait(false) :
+                await _clientAsyncLock.GetLockOrValueAsync(true, default).ConfigureAwait(false))
+            {
+                return asyncLock.HasValue ? asyncLock.Value.Cache : null;
+            }
         }
     }
 }

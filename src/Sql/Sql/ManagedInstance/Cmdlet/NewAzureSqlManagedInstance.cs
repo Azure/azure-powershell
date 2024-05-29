@@ -402,6 +402,20 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public string ServicePrincipalType { get; set; }
 
         /// <summary>
+        /// Specifies the internal format of instance databases specific to the SQL engine version
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The instance databases specific to the SQL engine version")]
+        [PSArgumentCompleter("AlwaysUpToDate", "SQLServer2022")]
+        public string DatabaseFormat { get; set; }
+
+        /// <summary>
+        /// Specifies weather or not Managed Instance is freemium
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Weather or not Managed Instance is freemium")]
+        [PSArgumentCompleter("Regular", "Freemium")]
+        public string PricingModel { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -569,8 +583,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                     Sid = this.ExternalAdminSID
                 },
                 ZoneRedundant = this.ZoneRedundant.IsPresent ? this.ZoneRedundant.ToBool() : (bool?)null,
-                ServicePrincipal = ResourceServicePrincipalHelper.GetServicePrincipalObjectFromType(this.ServicePrincipalType ?? null)
-            }); ;
+                ServicePrincipal = ResourceServicePrincipalHelper.GetServicePrincipalObjectFromType(this.ServicePrincipalType ?? null),
+                DatabaseFormat = this.DatabaseFormat,
+                PricingModel = this.PricingModel
+            });
             return newEntity;
         }
 

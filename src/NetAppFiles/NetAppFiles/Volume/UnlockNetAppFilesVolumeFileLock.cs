@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
@@ -147,13 +148,20 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.BreakFileLockOnVolumeMessage, Name)))
             {
-                BreakFileLocksRequest _breakFileLockBody = null;
-                if (string.IsNullOrWhiteSpace(ClientIp))
+                try
                 {
-                    _breakFileLockBody = new BreakFileLocksRequest() { ClientIP = ClientIp, ConfirmRunningDisruptiveOperation = true };
-                }                
-                AzureNetAppFilesManagementClient.Volumes.BreakFileLocks(ResourceGroupName, AccountName, PoolName, Name, body: _breakFileLockBody);
-                success = true;
+                    BreakFileLocksRequest _breakFileLockBody = null;
+                    if (string.IsNullOrWhiteSpace(ClientIp))
+                    {
+                        _breakFileLockBody = new BreakFileLocksRequest() { ClientIP = ClientIp, ConfirmRunningDisruptiveOperation = true };
+                    }
+                    AzureNetAppFilesManagementClient.Volumes.BreakFileLocks(ResourceGroupName, AccountName, PoolName, Name, body: _breakFileLockBody);
+                    success = true;
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
 
             if (PassThru)

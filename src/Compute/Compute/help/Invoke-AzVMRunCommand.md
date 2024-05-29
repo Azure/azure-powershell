@@ -16,14 +16,15 @@ Run a command on the VM.
 ```
 Invoke-AzVMRunCommand [-ResourceGroupName] <String> [-VMName] <String> -CommandId <String>
  [-ScriptPath <String>] [-ScriptString <String>] [-Parameter <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
 ```
 Invoke-AzVMRunCommand -CommandId <String> [-ScriptPath <String>] [-ScriptString <String>]
- [-Parameter <Hashtable>] [-ResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Parameter <Hashtable>] [-ResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### VMParameter
@@ -38,14 +39,39 @@ Invoke a run command on the VM.
 
 ## EXAMPLES
 
-### Example 1: Invoke a command on Windows
+### Example 1: Invoke a command on Windows - Using ScriptPath parameter when the script resides on the remote Windows VM
 ```powershell
 Invoke-AzVMRunCommand -ResourceGroupName 'rgname' -VMName 'vmname' -CommandId 'RunPowerShellScript' -ScriptPath 'sample.ps1' -Parameter @{param1 = "var1"; param2 = "var2"}
 ```
 
 Invoke a run command 'RunPowerShellScript' with overriding the script 'sample.ps1' on a Windows VM named 'vmname' in resource group 'rgname'. Var1 and var2 are defined as parameters in the sample.ps1. Parameter value can be string type only and script is responsible for converting them to other types if needed. 
 
-### Example 2: Invoke a command on Linux
+### Example 2: Invoke a command on Windows - Using ScriptString parameter to execute cmdlet on the Windows VM
+```powershell
+Invoke-AzVMRunCommand -ResourceGroupName 'rgname' -VMName 'vmname' -CommandId 'RunPowerShellScript' -ScriptString "Set-TimeZone -Name 'Coordinated Universal Time' -PassThru"
+```
+
+This command invokes a run command 'RunShellScript' that will execute the cmdlet Set-TimeZone with it's associated parameters. This example is useful when you want to execute short commands on Windows VM.
+
+### Example 3: Invoke a command on Windows - Using ScriptString parameter to run script blocks on the Windows VM
+```powershell
+$ScriptBlock = {
+    param(
+        [string] $NewTimeZone,
+        [string] $NewDate
+        )
+    Set-TimeZone -Id $NewTimeZone
+    Set-Date -Date [DateTime]$NewDate
+}
+
+$Script = [scriptblock]::create($ScriptBlock)
+
+Invoke-AzVMRunCommand -ResourceGroupName 'rgname' -VMName 'vmname' -CommandId 'RunPowerShellScript' -ScriptString $Script -Parameter @{'NewTimeZone' = "UTC"; 'NewDate' = "Dec-8"}
+```
+
+This command invokes a run command 'RunShellScript' that executes a script block on a remote Windows VM named 'vmname'. The script block way allows you to execute multiple cmdlets with parameters in a single invoke and it also saves time on invoking multiple run commands for different cmdlets. Parameter value(s) can be of string type only.
+
+### Example 4: Invoke a command on Linux
 <!-- Skip: Output cannot be splitted from code -->
 
 

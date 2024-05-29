@@ -14,7 +14,8 @@ Update Restore Point Collection.
 
 ```
 Update-AzRestorePointCollection [-ResourceGroupName] <String> [-Name] <String> [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

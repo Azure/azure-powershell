@@ -123,9 +123,19 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='parameters'>
             /// Parameters supplied to the Create Virtual Machine operation.
             /// </param>
-            public static VirtualMachine CreateOrUpdate(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachine parameters)
+            /// <param name='ifMatch'>
+            /// The ETag of the transformation. Omit this value to always overwrite the
+            /// current resource. Specify the last-seen ETag value to prevent accidentally
+            /// overwriting concurrent changes.
+            /// </param>
+            /// <param name='ifNoneMatch'>
+            /// Set to '*' to allow a new record set to be created, but to prevent updating
+            /// an existing record set. Other values will result in error from server as
+            /// they are not supported.
+            /// </param>
+            public static VirtualMachine CreateOrUpdate(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachine parameters, string ifMatch = default(string), string ifNoneMatch = default(string))
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, vmName, parameters).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(resourceGroupName, vmName, parameters, ifMatch, ifNoneMatch).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -144,12 +154,22 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='parameters'>
             /// Parameters supplied to the Create Virtual Machine operation.
             /// </param>
+            /// <param name='ifMatch'>
+            /// The ETag of the transformation. Omit this value to always overwrite the
+            /// current resource. Specify the last-seen ETag value to prevent accidentally
+            /// overwriting concurrent changes.
+            /// </param>
+            /// <param name='ifNoneMatch'>
+            /// Set to '*' to allow a new record set to be created, but to prevent updating
+            /// an existing record set. Other values will result in error from server as
+            /// they are not supported.
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VirtualMachine> CreateOrUpdateAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachine parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualMachine> CreateOrUpdateAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachine parameters, string ifMatch = default(string), string ifNoneMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vmName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vmName, parameters, ifMatch, ifNoneMatch, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -170,9 +190,19 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='parameters'>
             /// Parameters supplied to the Update Virtual Machine operation.
             /// </param>
-            public static VirtualMachine Update(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineUpdate parameters)
+            /// <param name='ifMatch'>
+            /// The ETag of the transformation. Omit this value to always overwrite the
+            /// current resource. Specify the last-seen ETag value to prevent accidentally
+            /// overwriting concurrent changes.
+            /// </param>
+            /// <param name='ifNoneMatch'>
+            /// Set to '*' to allow a new record set to be created, but to prevent updating
+            /// an existing record set. Other values will result in error from server as
+            /// they are not supported.
+            /// </param>
+            public static VirtualMachine Update(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineUpdate parameters, string ifMatch = default(string), string ifNoneMatch = default(string))
             {
-                return operations.UpdateAsync(resourceGroupName, vmName, parameters).GetAwaiter().GetResult();
+                return operations.UpdateAsync(resourceGroupName, vmName, parameters, ifMatch, ifNoneMatch).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -190,12 +220,22 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='parameters'>
             /// Parameters supplied to the Update Virtual Machine operation.
             /// </param>
+            /// <param name='ifMatch'>
+            /// The ETag of the transformation. Omit this value to always overwrite the
+            /// current resource. Specify the last-seen ETag value to prevent accidentally
+            /// overwriting concurrent changes.
+            /// </param>
+            /// <param name='ifNoneMatch'>
+            /// Set to '*' to allow a new record set to be created, but to prevent updating
+            /// an existing record set. Other values will result in error from server as
+            /// they are not supported.
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VirtualMachine> UpdateAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineUpdate parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualMachine> UpdateAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineUpdate parameters, string ifMatch = default(string), string ifNoneMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, vmName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, vmName, parameters, ifMatch, ifNoneMatch, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -1102,6 +1142,54 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
+            /// Attach and detach data disks to/from the virtual machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the attach and detach data disks operation on the
+            /// virtual machine.
+            /// </param>
+            public static StorageProfile AttachDetachDataDisks(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, AttachDetachDataDisksRequest parameters)
+            {
+                return operations.AttachDetachDataDisksAsync(resourceGroupName, vmName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Attach and detach data disks to/from the virtual machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the attach and detach data disks operation on the
+            /// virtual machine.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<StorageProfile> AttachDetachDataDisksAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, AttachDetachDataDisksRequest parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.AttachDetachDataDisksWithHttpMessagesAsync(resourceGroupName, vmName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Run command on the VM.
             /// </summary>
             /// <param name='operations'>
@@ -1211,9 +1299,19 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='parameters'>
             /// Parameters supplied to the Create Virtual Machine operation.
             /// </param>
-            public static VirtualMachine BeginCreateOrUpdate(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachine parameters)
+            /// <param name='ifMatch'>
+            /// The ETag of the transformation. Omit this value to always overwrite the
+            /// current resource. Specify the last-seen ETag value to prevent accidentally
+            /// overwriting concurrent changes.
+            /// </param>
+            /// <param name='ifNoneMatch'>
+            /// Set to '*' to allow a new record set to be created, but to prevent updating
+            /// an existing record set. Other values will result in error from server as
+            /// they are not supported.
+            /// </param>
+            public static VirtualMachine BeginCreateOrUpdate(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachine parameters, string ifMatch = default(string), string ifNoneMatch = default(string))
             {
-                return operations.BeginCreateOrUpdateAsync(resourceGroupName, vmName, parameters).GetAwaiter().GetResult();
+                return operations.BeginCreateOrUpdateAsync(resourceGroupName, vmName, parameters, ifMatch, ifNoneMatch).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -1232,12 +1330,22 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='parameters'>
             /// Parameters supplied to the Create Virtual Machine operation.
             /// </param>
+            /// <param name='ifMatch'>
+            /// The ETag of the transformation. Omit this value to always overwrite the
+            /// current resource. Specify the last-seen ETag value to prevent accidentally
+            /// overwriting concurrent changes.
+            /// </param>
+            /// <param name='ifNoneMatch'>
+            /// Set to '*' to allow a new record set to be created, but to prevent updating
+            /// an existing record set. Other values will result in error from server as
+            /// they are not supported.
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VirtualMachine> BeginCreateOrUpdateAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachine parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualMachine> BeginCreateOrUpdateAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachine parameters, string ifMatch = default(string), string ifNoneMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vmName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vmName, parameters, ifMatch, ifNoneMatch, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -1258,9 +1366,19 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='parameters'>
             /// Parameters supplied to the Update Virtual Machine operation.
             /// </param>
-            public static VirtualMachine BeginUpdate(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineUpdate parameters)
+            /// <param name='ifMatch'>
+            /// The ETag of the transformation. Omit this value to always overwrite the
+            /// current resource. Specify the last-seen ETag value to prevent accidentally
+            /// overwriting concurrent changes.
+            /// </param>
+            /// <param name='ifNoneMatch'>
+            /// Set to '*' to allow a new record set to be created, but to prevent updating
+            /// an existing record set. Other values will result in error from server as
+            /// they are not supported.
+            /// </param>
+            public static VirtualMachine BeginUpdate(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineUpdate parameters, string ifMatch = default(string), string ifNoneMatch = default(string))
             {
-                return operations.BeginUpdateAsync(resourceGroupName, vmName, parameters).GetAwaiter().GetResult();
+                return operations.BeginUpdateAsync(resourceGroupName, vmName, parameters, ifMatch, ifNoneMatch).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -1278,12 +1396,22 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='parameters'>
             /// Parameters supplied to the Update Virtual Machine operation.
             /// </param>
+            /// <param name='ifMatch'>
+            /// The ETag of the transformation. Omit this value to always overwrite the
+            /// current resource. Specify the last-seen ETag value to prevent accidentally
+            /// overwriting concurrent changes.
+            /// </param>
+            /// <param name='ifNoneMatch'>
+            /// Set to '*' to allow a new record set to be created, but to prevent updating
+            /// an existing record set. Other values will result in error from server as
+            /// they are not supported.
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VirtualMachine> BeginUpdateAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineUpdate parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualMachine> BeginUpdateAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineUpdate parameters, string ifMatch = default(string), string ifNoneMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, vmName, parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, vmName, parameters, ifMatch, ifNoneMatch, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -1790,6 +1918,54 @@ namespace Microsoft.Azure.Management.Compute
             public static async Task<VirtualMachineInstallPatchesResult> BeginInstallPatchesAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, VirtualMachineInstallPatchesParameters installPatchesInput, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginInstallPatchesWithHttpMessagesAsync(resourceGroupName, vmName, installPatchesInput, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Attach and detach data disks to/from the virtual machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the attach and detach data disks operation on the
+            /// virtual machine.
+            /// </param>
+            public static StorageProfile BeginAttachDetachDataDisks(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, AttachDetachDataDisksRequest parameters)
+            {
+                return operations.BeginAttachDetachDataDisksAsync(resourceGroupName, vmName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Attach and detach data disks to/from the virtual machine.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='vmName'>
+            /// The name of the virtual machine.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the attach and detach data disks operation on the
+            /// virtual machine.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<StorageProfile> BeginAttachDetachDataDisksAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, AttachDetachDataDisksRequest parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginAttachDetachDataDisksWithHttpMessagesAsync(resourceGroupName, vmName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

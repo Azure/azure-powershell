@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonS3CredentialScanObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAmazonS3CredentialScanObject
 schema: 2.0.0
 ---
 
@@ -16,7 +16,8 @@ Create an in-memory object for AmazonS3CredentialScan.
 New-AzPurviewAmazonS3CredentialScanObject -Kind <ScanAuthorizationType> [-CollectionReferenceName <String>]
  [-CollectionType <String>] [-ConnectedViaReferenceName <String>] [-CredentialReferenceName <String>]
  [-CredentialType <CredentialType>] [-IsMauiScan <Boolean>] [-RoleArn <String>] [-ScanRulesetName <String>]
- [-ScanRulesetType <ScanRulesetType>] [-Worker <Int32>] [<CommonParameters>]
+ [-ScanRulesetType <ScanRulesetType>] [-Worker <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -217,7 +218,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonS3CredentialScan
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

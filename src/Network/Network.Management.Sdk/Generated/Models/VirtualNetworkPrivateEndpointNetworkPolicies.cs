@@ -15,5 +15,7 @@ namespace Microsoft.Azure.Management.Network.Models
     {
         public const string Enabled = "Enabled";
         public const string Disabled = "Disabled";
+        public const string NetworkSecurityGroupEnabled = "NetworkSecurityGroupEnabled";
+        public const string RouteTableEnabled = "RouteTableEnabled";
     }
 }

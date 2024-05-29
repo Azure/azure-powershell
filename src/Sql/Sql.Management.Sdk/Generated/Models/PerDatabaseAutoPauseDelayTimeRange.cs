@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="unit">Unit of time that delay is expressed in
-        /// Possible values include: 'Minutes'</param>
+        /// Possible values include: &#39;Minutes&#39;</param>
 
         /// <param name="doNotPauseValue">Value that is used to not pause (infinite delay before pause)
         /// </param>

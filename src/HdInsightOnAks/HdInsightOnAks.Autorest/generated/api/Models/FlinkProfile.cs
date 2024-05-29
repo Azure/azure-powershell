@@ -20,6 +20,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkCatalogOptions CatalogOption { get => (this._catalogOption = this._catalogOption ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkCatalogOptions()); set => this._catalogOption = value; }
 
+        /// <summary>Backing field for <see cref="DeploymentMode" /> property.</summary>
+        private string _deploymentMode;
+
+        /// <summary>
+        /// A string property that indicates the deployment mode of Flink cluster. It can have one of the following enum values =>
+        /// Application, Session. Default value is Session
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
+        public string DeploymentMode { get => this._deploymentMode; set => this._deploymentMode = value; }
+
         /// <summary>Backing field for <see cref="HistoryServer" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IComputeResourceDefinition _historyServer;
 
@@ -34,6 +44,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// <summary>The required memory in MB, Container memory will be 110 percentile</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
         public long? HistoryServerMemory { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IComputeResourceDefinitionInternal)HistoryServer).Memory; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IComputeResourceDefinitionInternal)HistoryServer).Memory = value ?? default(long); }
+
+        /// <summary>
+        /// The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string HiveMetastoreDbConnectionAuthenticationMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkCatalogOptionsInternal)CatalogOption).HiveMetastoreDbConnectionAuthenticationMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkCatalogOptionsInternal)CatalogOption).HiveMetastoreDbConnectionAuthenticationMode = value ?? null; }
 
         /// <summary>
         /// Secret reference name from secretsProfile.secrets containing password for database connection.
@@ -64,6 +80,48 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
         public long JobManagerMemory { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IComputeResourceDefinitionInternal)JobManager).Memory; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IComputeResourceDefinitionInternal)JobManager).Memory = value ; }
 
+        /// <summary>Backing field for <see cref="JobSpec" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobProfile _jobSpec;
+
+        /// <summary>
+        /// Job specifications for flink clusters in application deployment mode. The specification is immutable even if job properties
+        /// are changed by calling the RunJob API, please use the ListJob API to get the latest job information.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobProfile JobSpec { get => (this._jobSpec = this._jobSpec ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkJobProfile()); set => this._jobSpec = value; }
+
+        /// <summary>
+        /// A string property representing additional JVM arguments for the Flink job. It should be space separated value.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string JobSpecArg { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobProfileInternal)JobSpec).Arg; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobProfileInternal)JobSpec).Arg = value ?? null; }
+
+        /// <summary>
+        /// A string property that specifies the entry class for the Flink job. If not specified, the entry point is auto-detected
+        /// from the flink job jar package.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string JobSpecEntryClass { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobProfileInternal)JobSpec).EntryClass; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobProfileInternal)JobSpec).EntryClass = value ?? null; }
+
+        /// <summary>A string property that represents the name of the job JAR.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string JobSpecJarName { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobProfileInternal)JobSpec).JarName; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobProfileInternal)JobSpec).JarName = value ?? null; }
+
+        /// <summary>A string property that specifies the directory where the job JAR is located.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string JobSpecJobJarDirectory { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobProfileInternal)JobSpec).JobJarDirectory; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobProfileInternal)JobSpec).JobJarDirectory = value ?? null; }
+
+        /// <summary>A string property that represents the name of the savepoint for the Flink job</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string JobSpecSavePointName { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobProfileInternal)JobSpec).SavePointName; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobProfileInternal)JobSpec).SavePointName = value ?? null; }
+
+        /// <summary>
+        /// A string property that indicates the upgrade mode to be performed on the Flink job. It can have one of the following enum
+        /// values => STATELESS_UPDATE, UPDATE, LAST_STATE_UPDATE.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string JobSpecUpgradeMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobProfileInternal)JobSpec).UpgradeMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobProfileInternal)JobSpec).UpgradeMode = value ?? null; }
+
         /// <summary>Internal Acessors for CatalogOption</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkCatalogOptions Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal.CatalogOption { get => (this._catalogOption = this._catalogOption ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkCatalogOptions()); set { {_catalogOption = value;} } }
 
@@ -75,6 +133,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
 
         /// <summary>Internal Acessors for JobManager</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IComputeResourceDefinition Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal.JobManager { get => (this._jobManager = this._jobManager ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ComputeResourceDefinition()); set { {_jobManager = value;} } }
+
+        /// <summary>Internal Acessors for JobSpec</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal.JobSpec { get => (this._jobSpec = this._jobSpec ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkJobProfile()); set { {_jobSpec = value;} } }
 
         /// <summary>Internal Acessors for Storage</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkStorageProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkProfileInternal.Storage { get => (this._storage = this._storage ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkStorageProfile()); set { {_storage = value;} } }
@@ -129,6 +190,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
     public partial interface IFlinkProfile :
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IJsonSerializable
     {
+        /// <summary>
+        /// A string property that indicates the deployment mode of Flink cluster. It can have one of the following enum values =>
+        /// Application, Session. Default value is Session
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A string property that indicates the deployment mode of Flink cluster. It can have one of the following enum values => Application, Session. Default value is Session",
+        SerializedName = @"deploymentMode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("Application", "Session")]
+        string DeploymentMode { get; set; }
         /// <summary>The required CPU.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = false,
@@ -151,6 +227,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         SerializedName = @"memory",
         PossibleTypes = new [] { typeof(long) })]
         long? HistoryServerMemory { get; set; }
+        /// <summary>
+        /// The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization",
+        SerializedName = @"metastoreDbConnectionAuthenticationMode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("SqlAuth", "IdentityAuth")]
+        string HiveMetastoreDbConnectionAuthenticationMode { get; set; }
         /// <summary>
         /// Secret reference name from secretsProfile.secrets containing password for database connection.
         /// </summary>
@@ -208,6 +298,81 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         SerializedName = @"memory",
         PossibleTypes = new [] { typeof(long) })]
         long JobManagerMemory { get; set; }
+        /// <summary>
+        /// A string property representing additional JVM arguments for the Flink job. It should be space separated value.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A string property representing additional JVM arguments for the Flink job. It should be space separated value.",
+        SerializedName = @"args",
+        PossibleTypes = new [] { typeof(string) })]
+        string JobSpecArg { get; set; }
+        /// <summary>
+        /// A string property that specifies the entry class for the Flink job. If not specified, the entry point is auto-detected
+        /// from the flink job jar package.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A string property that specifies the entry class for the Flink job. If not specified, the entry point is auto-detected from the flink job jar package.",
+        SerializedName = @"entryClass",
+        PossibleTypes = new [] { typeof(string) })]
+        string JobSpecEntryClass { get; set; }
+        /// <summary>A string property that represents the name of the job JAR.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A string property that represents the name of the job JAR.",
+        SerializedName = @"jarName",
+        PossibleTypes = new [] { typeof(string) })]
+        string JobSpecJarName { get; set; }
+        /// <summary>A string property that specifies the directory where the job JAR is located.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A string property that specifies the directory where the job JAR is located.",
+        SerializedName = @"jobJarDirectory",
+        PossibleTypes = new [] { typeof(string) })]
+        string JobSpecJobJarDirectory { get; set; }
+        /// <summary>A string property that represents the name of the savepoint for the Flink job</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A string property that represents the name of the savepoint for the Flink job",
+        SerializedName = @"savePointName",
+        PossibleTypes = new [] { typeof(string) })]
+        string JobSpecSavePointName { get; set; }
+        /// <summary>
+        /// A string property that indicates the upgrade mode to be performed on the Flink job. It can have one of the following enum
+        /// values => STATELESS_UPDATE, UPDATE, LAST_STATE_UPDATE.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A string property that indicates the upgrade mode to be performed on the Flink job. It can have one of the following enum values => STATELESS_UPDATE, UPDATE, LAST_STATE_UPDATE.",
+        SerializedName = @"upgradeMode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("STATELESS_UPDATE", "UPDATE", "LAST_STATE_UPDATE")]
+        string JobSpecUpgradeMode { get; set; }
         /// <summary>The number of task managers.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = false,
@@ -273,12 +438,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkCatalogOptions CatalogOption { get; set; }
         /// <summary>Hive Catalog Option for Flink cluster.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkHiveCatalogOption CatalogOptionHive { get; set; }
+        /// <summary>
+        /// A string property that indicates the deployment mode of Flink cluster. It can have one of the following enum values =>
+        /// Application, Session. Default value is Session
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("Application", "Session")]
+        string DeploymentMode { get; set; }
         /// <summary>History Server container/ process CPU and memory requirements</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IComputeResourceDefinition HistoryServer { get; set; }
         /// <summary>The required CPU.</summary>
         float? HistoryServerCpu { get; set; }
         /// <summary>The required memory in MB, Container memory will be 110 percentile</summary>
         long? HistoryServerMemory { get; set; }
+        /// <summary>
+        /// The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("SqlAuth", "IdentityAuth")]
+        string HiveMetastoreDbConnectionAuthenticationMode { get; set; }
         /// <summary>
         /// Secret reference name from secretsProfile.secrets containing password for database connection.
         /// </summary>
@@ -293,6 +469,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         float JobManagerCpu { get; set; }
         /// <summary>The required memory in MB, Container memory will be 110 percentile</summary>
         long JobManagerMemory { get; set; }
+        /// <summary>
+        /// Job specifications for flink clusters in application deployment mode. The specification is immutable even if job properties
+        /// are changed by calling the RunJob API, please use the ListJob API to get the latest job information.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobProfile JobSpec { get; set; }
+        /// <summary>
+        /// A string property representing additional JVM arguments for the Flink job. It should be space separated value.
+        /// </summary>
+        string JobSpecArg { get; set; }
+        /// <summary>
+        /// A string property that specifies the entry class for the Flink job. If not specified, the entry point is auto-detected
+        /// from the flink job jar package.
+        /// </summary>
+        string JobSpecEntryClass { get; set; }
+        /// <summary>A string property that represents the name of the job JAR.</summary>
+        string JobSpecJarName { get; set; }
+        /// <summary>A string property that specifies the directory where the job JAR is located.</summary>
+        string JobSpecJobJarDirectory { get; set; }
+        /// <summary>A string property that represents the name of the savepoint for the Flink job</summary>
+        string JobSpecSavePointName { get; set; }
+        /// <summary>
+        /// A string property that indicates the upgrade mode to be performed on the Flink job. It can have one of the following enum
+        /// values => STATELESS_UPDATE, UPDATE, LAST_STATE_UPDATE.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("STATELESS_UPDATE", "UPDATE", "LAST_STATE_UPDATE")]
+        string JobSpecUpgradeMode { get; set; }
         /// <summary>The number of task managers.</summary>
         int? NumReplica { get; set; }
         /// <summary>The storage profile</summary>

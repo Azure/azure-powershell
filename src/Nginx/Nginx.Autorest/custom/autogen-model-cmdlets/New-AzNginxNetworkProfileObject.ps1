@@ -21,25 +21,25 @@ Create an in-memory object for NginxNetworkProfile.
 Create an in-memory object for NginxNetworkProfile.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxNetworkProfile
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxNetworkProfile
 .Link
-https://learn.microsoft.com/powershell/module/az.Nginx/new-AzNginxNetworkProfileObject
+https://learn.microsoft.com/powershell/module/Az.Nginx/new-AzNginxNetworkProfileObject
 #>
 function New-AzNginxNetworkProfileObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxNetworkProfile')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxNetworkProfile')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxFrontendIPConfiguration]
+        [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxFrontendIPConfiguration]
         $FrontEndIPConfiguration,
         [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxNetworkInterfaceConfiguration]
+        [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxNetworkInterfaceConfiguration]
         $NetworkInterfaceConfiguration
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxNetworkProfile]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxNetworkProfile]::New()
 
         if ($PSBoundParameters.ContainsKey('FrontEndIPConfiguration')) {
             $Object.FrontEndIPConfiguration = $FrontEndIPConfiguration

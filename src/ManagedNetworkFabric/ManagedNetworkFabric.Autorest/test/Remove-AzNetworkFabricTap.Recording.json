@@ -1,0 +1,129 @@
+{
+  "Remove-AzNetworkFabricTap+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkTaps/networkTapName?api-version=2023-06-15+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkTaps/networkTapName?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "cc5da1e9-f170-4d63-be16-d1980beb7154" ],
+        "CommandName": [ "Remove-AzNetworkFabricTap" ],
+        "FullCommandName": [ "Remove-AzNetworkFabricTap_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3901842d-0000-0100-0000-6511214f0000\"" ],
+        "Location": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/7412a839-c918-4815-a892-e080c631e0e8*2EB4950173911E5F3F1CCFDCC974EE112914BF0071ADDD68C5489DDA6EBE9051?api-version=2023-06-15" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "a4a28ed8-95c2-4238-92d5-892d7522796d" ],
+        "x-ms-request-id": [ "60ccef95-8c25-4ed7-bdce-04d949ac1244" ],
+        "x-ms-correlation-request-id": [ "8ec06db1-869c-48bf-95ae-be2a8483365f" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/7412a839-c918-4815-a892-e080c631e0e8*2EB4950173911E5F3F1CCFDCC974EE112914BF0071ADDD68C5489DDA6EBE9051?api-version=2023-06-15" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230925T055735Z:8ec06db1-869c-48bf-95ae-be2a8483365f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 25 Sep 2023 05:57:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzNetworkFabricTap+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/7412a839-c918-4815-a892-e080c631e0e8*2EB4950173911E5F3F1CCFDCC974EE112914BF0071ADDD68C5489DDA6EBE9051?api-version=2023-06-15+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/7412a839-c918-4815-a892-e080c631e0e8*2EB4950173911E5F3F1CCFDCC974EE112914BF0071ADDD68C5489DDA6EBE9051?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "cc5da1e9-f170-4d63-be16-d1980beb7154" ],
+        "CommandName": [ "Remove-AzNetworkFabricTap" ],
+        "FullCommandName": [ "Remove-AzNetworkFabricTap_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0e02fe2c-0000-0100-0000-651121500000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-request-id": [ "aed7f58e-a497-4fd2-a07f-f24237ff3e7c" ],
+        "x-ms-correlation-request-id": [ "9c4dd81b-1902-46a1-b9f8-207a66536c3f" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230925T055806Z:9c4dd81b-1902-46a1-b9f8-207a66536c3f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 25 Sep 2023 05:58:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "654" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/7412a839-c918-4815-a892-e080c631e0e8*2EB4950173911E5F3F1CCFDCC974EE112914BF0071ADDD68C5489DDA6EBE9051\",\"name\":\"7412a839-c918-4815-a892-e080c631e0e8*2EB4950173911E5F3F1CCFDCC974EE112914BF0071ADDD68C5489DDA6EBE9051\",\"resourceId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkTaps/networkTapName\",\"status\":\"Succeeded\",\"startTime\":\"2023-09-25T05:57:35.4224791Z\",\"endTime\":\"2023-09-25T05:57:36.0482766Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzNetworkFabricTap+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/7412a839-c918-4815-a892-e080c631e0e8*2EB4950173911E5F3F1CCFDCC974EE112914BF0071ADDD68C5489DDA6EBE9051?api-version=2023-06-15+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/7412a839-c918-4815-a892-e080c631e0e8*2EB4950173911E5F3F1CCFDCC974EE112914BF0071ADDD68C5489DDA6EBE9051?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "cc5da1e9-f170-4d63-be16-d1980beb7154" ],
+        "CommandName": [ "Remove-AzNetworkFabricTap" ],
+        "FullCommandName": [ "Remove-AzNetworkFabricTap_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0e02fe2c-0000-0100-0000-651121500000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-request-id": [ "fc62b0f7-1b6f-450a-93d8-bafd6eaa297a" ],
+        "x-ms-correlation-request-id": [ "70e80d3d-c84c-4fcf-934e-557c8659b8e2" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230925T055807Z:70e80d3d-c84c-4fcf-934e-557c8659b8e2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 25 Sep 2023 05:58:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "654" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/7412a839-c918-4815-a892-e080c631e0e8*2EB4950173911E5F3F1CCFDCC974EE112914BF0071ADDD68C5489DDA6EBE9051\",\"name\":\"7412a839-c918-4815-a892-e080c631e0e8*2EB4950173911E5F3F1CCFDCC974EE112914BF0071ADDD68C5489DDA6EBE9051\",\"resourceId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkTaps/networkTapName\",\"status\":\"Succeeded\",\"startTime\":\"2023-09-25T05:57:35.4224791Z\",\"endTime\":\"2023-09-25T05:57:36.0482766Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the MachineLearningServices service.
 
 ---
-## Status
-[![Az.MachineLearningServices](https://img.shields.io/powershellgallery/v/Az.MachineLearningServices.svg?style=flat-square&label=Az.MachineLearningServices "Az.MachineLearningServices")](https://www.powershellgallery.com/packages/Az.MachineLearningServices/)
 
 ## Info
 - Modifiable: yes

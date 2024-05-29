@@ -14,7 +14,8 @@ Command to get the Restore Point
 
 ```
 Get-AzRestorePoint [-ResourceGroupName] <String> [-RestorePointCollectionName] <String> [-Name] <String>
- [-InstanceView] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-InstanceView] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

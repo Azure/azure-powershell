@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.1.1
 * Updated dataset limit from 5 Tb to 100 Tib.
   
 ## Version 2.1.0

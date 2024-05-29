@@ -1,0 +1,40 @@
+{
+  "Update-AzNetworkFabricNeighborGroup+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName?api-version=2023-06-15+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName?api-version=2023-06-15",
+      "Content": "{\n  \"properties\": {\n    \"destination\": {\n      \"ipv4Addresses\": [ \"10.11.10.11\" ],\n      \"ipv6Addresses\": [ \"2FF::/101\" ]\n    }\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "133" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0c0245d0-0000-0100-0000-650c545b0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "55e2fe8b-2106-4a5d-90f9-9321c44beac2" ],
+        "x-ms-request-id": [ "a430c32f-9297-46ce-84fd-9de007428193" ],
+        "x-ms-correlation-request-id": [ "ea46bc50-bd95-488c-b4ad-5e0548539539" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230921T143403Z:ea46bc50-bd95-488c-b4ad-5e0548539539" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 21 Sep 2023 14:34:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "652" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName\",\"name\":\"NeighborGroupName\",\"type\":\"microsoft.managednetworkfabric/neighborgroups\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-rmarimuthu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-09-21T14:31:12.0279771Z\",\"lastModifiedBy\":\"v-rmarimuthu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-09-21T14:34:03.1383998Z\"},\"properties\":{\"destination\":{\"ipv4Addresses\":[\"10.11.10.11\"],\"ipv6Addresses\":[\"2FF::/101\"]},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

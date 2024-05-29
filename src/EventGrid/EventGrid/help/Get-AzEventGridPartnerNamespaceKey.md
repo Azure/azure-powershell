@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
+external help file: Az.EventGrid-help.xml
 Module Name: Az.EventGrid
 online version: https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridpartnernamespacekey
 schema: 2.0.0
@@ -8,43 +8,44 @@ schema: 2.0.0
 # Get-AzEventGridPartnerNamespaceKey
 
 ## SYNOPSIS
-Gets the details of an Event Grid partner namespace key.
+List the two keys used to publish to a partner namespace.
 
 ## SYNTAX
 
-### PartnerNamespaceNameParameterSet (Default)
 ```
-Get-AzEventGridPartnerNamespaceKey -ResourceGroupName <String> -PartnerNamespaceName <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### PartnerNamespaceInputObjectParameterSet
-```
-Get-AzEventGridPartnerNamespaceKey -InputObject <PSPartnerNamespace> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzEventGridPartnerNamespaceKey -PartnerNamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzEventGridPartnerNamespaceKey cmdlet gets the details of an Event Grid partner namespace key.
+List the two keys used to publish to a partner namespace.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: List the two keys used to publish to a partner namespace.
 ```powershell
-Get-AzEventGridPartnerNamespaceKey -ResourceGroupName MyResourceGroupName -PartnerNamespaceName PartnerNamespace1
+Get-AzEventGridPartnerNamespaceKey -PartnerNamespaceName azps-partnernamespace -ResourceGroupName azps_test_group_eventgrid
 ```
 
-Gets the details of the keys for Event Grid partner namespace \`PartnerNamespace1\` in resource group \`MyResourceGroupName\`.
+```output
+Key1        Key2
+----        ----
+JF0co*****= BG*****=
+```
+
+List the two keys used to publish to a partner namespace.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -53,48 +54,95 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-PartnerNamespace object
-
-```yaml
-Type: Microsoft.Azure.Commands.EventGrid.Models.PSPartnerNamespace
-Parameter Sets: PartnerNamespaceInputObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -PartnerNamespaceName
-Event Grid partner namespace name.
+Name of the partner namespace.
 
 ```yaml
 Type: System.String
-Parameter Sets: PartnerNamespaceNameParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: PartnerNamespaceNameParameterSet
-Aliases:
+Parameter Sets: (All)
+Aliases: ResourceGroup
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -103,15 +151,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.EventGrid.Models.PSPartnerNamespace
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventGrid.Models.PSPartnerNamespaceListInstance
-
-### Microsoft.Azure.Commands.EventGrid.Models.PSPartnerNamespace
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerNamespaceSharedAccessKeys
 
 ## NOTES
 

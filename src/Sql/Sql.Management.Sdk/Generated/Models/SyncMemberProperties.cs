@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
 
         /// <param name="databaseType">Database type of the sync member.
-        /// Possible values include: 'AzureSqlDatabase', 'SqlServerDatabase'</param>
+        /// Possible values include: &#39;AzureSqlDatabase&#39;, &#39;SqlServerDatabase&#39;</param>
 
         /// <param name="syncAgentId">ARM resource id of the sync agent in the sync member.
         /// </param>
@@ -57,16 +57,16 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="syncDirection">Sync direction of the sync member.
-        /// Possible values include: 'Bidirectional', 'OneWayMemberToHub',
-        /// 'OneWayHubToMember'</param>
+        /// Possible values include: &#39;Bidirectional&#39;, &#39;OneWayMemberToHub&#39;,
+        /// &#39;OneWayHubToMember&#39;</param>
 
         /// <param name="syncState">Sync state of the sync member.
-        /// Possible values include: 'SyncInProgress', 'SyncSucceeded', 'SyncFailed',
-        /// 'DisabledTombstoneCleanup', 'DisabledBackupRestore',
-        /// 'SyncSucceededWithWarnings', 'SyncCancelling', 'SyncCancelled',
-        /// 'UnProvisioned', 'Provisioning', 'Provisioned', 'ProvisionFailed',
-        /// 'DeProvisioning', 'DeProvisioned', 'DeProvisionFailed', 'Reprovisioning',
-        /// 'ReprovisionFailed', 'UnReprovisioned'</param>
+        /// Possible values include: &#39;SyncInProgress&#39;, &#39;SyncSucceeded&#39;, &#39;SyncFailed&#39;,
+        /// &#39;DisabledTombstoneCleanup&#39;, &#39;DisabledBackupRestore&#39;,
+        /// &#39;SyncSucceededWithWarnings&#39;, &#39;SyncCancelling&#39;, &#39;SyncCancelled&#39;,
+        /// &#39;UnProvisioned&#39;, &#39;Provisioning&#39;, &#39;Provisioned&#39;, &#39;ProvisionFailed&#39;,
+        /// &#39;DeProvisioning&#39;, &#39;DeProvisioned&#39;, &#39;DeProvisionFailed&#39;, &#39;Reprovisioning&#39;,
+        /// &#39;ReprovisionFailed&#39;, &#39;UnReprovisioned&#39;</param>
         public SyncMemberProperties(string databaseType = default(string), string syncAgentId = default(string), System.Guid? sqlServerDatabaseId = default(System.Guid?), string syncMemberAzureDatabaseResourceId = default(string), bool? usePrivateLinkConnection = default(bool?), string privateEndpointName = default(string), string serverName = default(string), string databaseName = default(string), string userName = default(string), string password = default(string), string syncDirection = default(string), string syncState = default(string))
 
         {

@@ -32,10 +32,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         /// <param name="securityEncryptionType">Specifies the EncryptionType
         /// of the managed disk. It is set to DiskWithVMGuestState for
-        /// encryption of the managed disk along with VMGuestState blob, and
-        /// VMGuestStateOnly for encryption of just the VMGuestState blob.
-        /// **Note:** It can be set for only Confidential VMs. Possible values
-        /// include: 'VMGuestStateOnly', 'DiskWithVMGuestState'</param>
+        /// encryption of the managed disk along with VMGuestState blob,
+        /// VMGuestStateOnly for encryption of just the VMGuestState blob, and
+        /// NonPersistedTPM for not persisting firmware state in the
+        /// VMGuestState blob.. **Note:** It can be set for only Confidential
+        /// VMs. Possible values include: 'VMGuestStateOnly',
+        /// 'DiskWithVMGuestState', 'NonPersistedTPM'</param>
         /// <param name="diskEncryptionSet">Specifies the customer managed disk
         /// encryption set resource id for the managed disk that is used for
         /// Customer Managed Key encrypted ConfidentialVM OS Disk and VMGuest
@@ -55,10 +57,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Gets or sets specifies the EncryptionType of the managed disk. It
         /// is set to DiskWithVMGuestState for encryption of the managed disk
-        /// along with VMGuestState blob, and VMGuestStateOnly for encryption
-        /// of just the VMGuestState blob. **Note:** It can be set for only
-        /// Confidential VMs. Possible values include: 'VMGuestStateOnly',
-        /// 'DiskWithVMGuestState'
+        /// along with VMGuestState blob, VMGuestStateOnly for encryption of
+        /// just the VMGuestState blob, and NonPersistedTPM for not persisting
+        /// firmware state in the VMGuestState blob.. **Note:** It can be set
+        /// for only Confidential VMs. Possible values include:
+        /// 'VMGuestStateOnly', 'DiskWithVMGuestState', 'NonPersistedTPM'
         /// </summary>
         [JsonProperty(PropertyName = "securityEncryptionType")]
         public string SecurityEncryptionType { get; set; }

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.LoadTesting-help.xml
 Module Name: Az.LoadTesting
 online version: https://learn.microsoft.com/powershell/module/az.loadtesting/update-azload
 schema: 2.0.0
@@ -16,7 +16,7 @@ Update an Azure Load Testing resource.
 Update-AzLoad -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-EncryptionIdentity <String>] [-EncryptionKey <String>] [-IdentityType <ManagedServiceIdentityType>]
  [-IdentityUserAssigned <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -282,7 +282,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
 
-            string apiVersion = "2023-06-01";
+            string apiVersion = "2023-11-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

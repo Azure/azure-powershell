@@ -91,6 +91,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {"usgoviowa", "usgovvirginia"},
             {"usgovvirginia", "usgovtexas"},
             {"malaysiasouth", "japanwest"},
+            {"taiwannorth", "taiwannorthwest"},
+            {"taiwannorthwest", "taiwannorth"},
             {"jioindiacentral", "jioindiawest"},
             {"jioindiawest", "jioindiacentral"}
         };

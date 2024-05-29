@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="type">Service principal type.
-        /// Possible values include: 'None', 'SystemAssigned'</param>
+        /// Possible values include: &#39;None&#39;, &#39;SystemAssigned&#39;</param>
         public ServicePrincipal(string principalId = default(string), string clientId = default(string), string tenantId = default(string), string type = default(string))
 
         {

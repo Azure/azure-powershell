@@ -25,11 +25,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="type">Recovery point tier type.
-        /// Possible values include: 'Invalid', 'InstantRP', 'HardenedRP', 'ArchivedRP'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;, &#39;ArchivedRP&#39;</param>
 
         /// <param name="status">Recovery point tier status.
-        /// Possible values include: 'Invalid', 'Valid', 'Disabled', 'Deleted',
-        /// 'Rehydrated'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Valid&#39;, &#39;Disabled&#39;, &#39;Deleted&#39;,
+        /// &#39;Rehydrated&#39;</param>
 
         /// <param name="extendedInfo">Recovery point tier status.
         /// </param>

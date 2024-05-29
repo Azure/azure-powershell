@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.1
+* Removed the outdated deps.json file.
+
 ## Version 1.0.0
 * General availability for module Az.MachineLearningServices
 

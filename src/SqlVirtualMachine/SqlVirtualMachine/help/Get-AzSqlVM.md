@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SqlVirtualMachine-help.xml
 Module Name: Az.SqlVirtualMachine
 online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/get-azsqlvm
 schema: 2.0.0
@@ -14,7 +14,8 @@ Gets a SQL virtual machine.
 
 ### List1 (Default)
 ```
-Get-AzSqlVM [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSqlVM [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -23,21 +24,21 @@ Get-AzSqlVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### List2
 ```
-Get-AzSqlVM -InputObject <ISqlVirtualMachineIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
+Get-AzSqlVM -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzSqlVM -GroupName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzSqlVM -ResourceGroupName <String> [-SubscriptionId <String[]>] -GroupName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List2
+### GetViaIdentity
 ```
-Get-AzSqlVM -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzSqlVM -InputObject <ISqlVirtualMachineIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -56,10 +57,8 @@ Location	Name		ResourceGroupName
 --------	----		-----------------
 eastus		sqlvm1		ResourceGroup01	
 eastus		sqlvm2		ResourceGroup01	
-eastus		sqlvm3		ResourceGroup02	
+eastus		sqlvm3		ResourceGroup02
 ```
-
-
 
 ### Example 2: Get a SQL Virtual Machine
 ```powershell
@@ -69,10 +68,8 @@ Get-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1'
 ```output
 Location	Name		ResourceGroupName
 --------	----		-----------------
-eastus		sqlvm1		ResourceGroup01	
+eastus		sqlvm1		ResourceGroup01
 ```
-
-
 
 ### Example 3: List all SQL Virtual Machines in a SQL Virtual Machine Group
 ```powershell
@@ -83,10 +80,8 @@ Get-AzSqlVM -ResourceGroupName 'ResourceGroup01' -GroupName 'sqlvmgroup01'
 Location	Name		ResourceGroupName
 --------	----		-----------------
 eastus		sqlvm1		ResourceGroup01	
-eastus		sqlvm2		ResourceGroup01	
+eastus		sqlvm2		ResourceGroup01
 ```
-
-
 
 ## PARAMETERS
 
@@ -173,7 +168,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List, List2
+Parameter Sets: Get, List2, List
 Aliases:
 
 Required: True
@@ -188,7 +183,7 @@ Subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1, List2
+Parameter Sets: List1, Get, List2, List
 Aliases:
 
 Required: False
@@ -211,20 +206,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ISqlVirtualMachineIdentity>`: Identity Parameter
-  - `[AvailabilityGroupListenerName <String>]`: Name of the availability group listener.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  - `[SqlVirtualMachineGroupName <String>]`: Name of the SQL virtual machine group.
-  - `[SqlVirtualMachineName <String>]`: Name of the SQL virtual machine.
-  - `[SubscriptionId <String>]`: Subscription ID that identifies an Azure subscription.
-
 ## RELATED LINKS
-

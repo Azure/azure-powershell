@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="failoverPolicy">Failover policy of the read-write endpoint for the failover group. If
         /// failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is
         /// required.
-        /// Possible values include: 'Manual', 'Automatic'</param>
+        /// Possible values include: &#39;Manual&#39;, &#39;Automatic&#39;</param>
 
         /// <param name="failoverWithDataLossGracePeriodMinutes">Grace period before failover with data loss is attempted for the read-write
         /// endpoint. If failoverPolicy is Automatic then

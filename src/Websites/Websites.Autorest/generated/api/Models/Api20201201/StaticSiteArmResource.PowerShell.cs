@@ -169,10 +169,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).Branch = (string) content.GetValueForProperty("Branch",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).Branch, global::System.Convert.ToString);
             }
-            if (content.Contains("Provider"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).Provider = (string) content.GetValueForProperty("Provider",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).Provider, global::System.Convert.ToString);
-            }
             if (content.Contains("CustomDomain"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).CustomDomain = (string[]) content.GetValueForProperty("CustomDomain",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).CustomDomain, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
@@ -184,6 +180,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201
             if (content.Contains("PrivateEndpointConnection"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).PrivateEndpointConnection = (Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IResponseMessageEnvelopeRemotePrivateEndpointConnection[]) content.GetValueForProperty("PrivateEndpointConnection",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).PrivateEndpointConnection, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IResponseMessageEnvelopeRemotePrivateEndpointConnection>(__y, Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.ResponseMessageEnvelopeRemotePrivateEndpointConnectionTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("StagingEnvironmentPolicy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).StagingEnvironmentPolicy = (Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.StagingEnvironmentPolicy?) content.GetValueForProperty("StagingEnvironmentPolicy",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).StagingEnvironmentPolicy, Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.StagingEnvironmentPolicy.CreateFrom);
+            }
+            if (content.Contains("AllowConfigFileUpdate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).AllowConfigFileUpdate = (bool?) content.GetValueForProperty("AllowConfigFileUpdate",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).AllowConfigFileUpdate, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("ContentDistributionEndpoint"))
             {
@@ -197,13 +201,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).UserProvidedFunctionApp = (Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteUserProvidedFunctionApp[]) content.GetValueForProperty("UserProvidedFunctionApp",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).UserProvidedFunctionApp, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteUserProvidedFunctionApp>(__y, Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.StaticSiteUserProvidedFunctionAppTypeConverter.ConvertFrom));
             }
-            if (content.Contains("StagingEnvironmentPolicy"))
+            if (content.Contains("Provider"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).StagingEnvironmentPolicy = (Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.StagingEnvironmentPolicy?) content.GetValueForProperty("StagingEnvironmentPolicy",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).StagingEnvironmentPolicy, Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.StagingEnvironmentPolicy.CreateFrom);
-            }
-            if (content.Contains("AllowConfigFileUpdate"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).AllowConfigFileUpdate = (bool?) content.GetValueForProperty("AllowConfigFileUpdate",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).AllowConfigFileUpdate, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).Provider = (string) content.GetValueForProperty("Provider",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).Provider, global::System.Convert.ToString);
             }
             if (content.Contains("SkuName"))
             {
@@ -398,10 +398,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).Branch = (string) content.GetValueForProperty("Branch",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).Branch, global::System.Convert.ToString);
             }
-            if (content.Contains("Provider"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).Provider = (string) content.GetValueForProperty("Provider",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).Provider, global::System.Convert.ToString);
-            }
             if (content.Contains("CustomDomain"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).CustomDomain = (string[]) content.GetValueForProperty("CustomDomain",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).CustomDomain, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
@@ -413,6 +409,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201
             if (content.Contains("PrivateEndpointConnection"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).PrivateEndpointConnection = (Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IResponseMessageEnvelopeRemotePrivateEndpointConnection[]) content.GetValueForProperty("PrivateEndpointConnection",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).PrivateEndpointConnection, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IResponseMessageEnvelopeRemotePrivateEndpointConnection>(__y, Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.ResponseMessageEnvelopeRemotePrivateEndpointConnectionTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("StagingEnvironmentPolicy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).StagingEnvironmentPolicy = (Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.StagingEnvironmentPolicy?) content.GetValueForProperty("StagingEnvironmentPolicy",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).StagingEnvironmentPolicy, Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.StagingEnvironmentPolicy.CreateFrom);
+            }
+            if (content.Contains("AllowConfigFileUpdate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).AllowConfigFileUpdate = (bool?) content.GetValueForProperty("AllowConfigFileUpdate",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).AllowConfigFileUpdate, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("ContentDistributionEndpoint"))
             {
@@ -426,13 +430,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).UserProvidedFunctionApp = (Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteUserProvidedFunctionApp[]) content.GetValueForProperty("UserProvidedFunctionApp",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).UserProvidedFunctionApp, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteUserProvidedFunctionApp>(__y, Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.StaticSiteUserProvidedFunctionAppTypeConverter.ConvertFrom));
             }
-            if (content.Contains("StagingEnvironmentPolicy"))
+            if (content.Contains("Provider"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).StagingEnvironmentPolicy = (Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.StagingEnvironmentPolicy?) content.GetValueForProperty("StagingEnvironmentPolicy",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).StagingEnvironmentPolicy, Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.StagingEnvironmentPolicy.CreateFrom);
-            }
-            if (content.Contains("AllowConfigFileUpdate"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).AllowConfigFileUpdate = (bool?) content.GetValueForProperty("AllowConfigFileUpdate",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).AllowConfigFileUpdate, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).Provider = (string) content.GetValueForProperty("Provider",((Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResourceInternal)this).Provider, global::System.Convert.ToString);
             }
             if (content.Contains("SkuName"))
             {

@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnRoute'))
 
 Describe 'Update-AzFrontDoorCdnRoute'  {
     BeforeAll {
-        $frontDoorEndpointName = 'end-pstest020'
+        $frontDoorEndpointName = 'e-clipstest150'
         Write-Host -ForegroundColor Green "Start to create Stand_AzureFrontDoor SKU endpoint domain : $($frontDoorEndpointName)"
         New-AzFrontDoorCdnEndpoint -EndpointName $frontDoorEndpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global | Out-Null
 

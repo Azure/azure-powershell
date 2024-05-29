@@ -28,67 +28,67 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "encrypt".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("encrypt", "encrypt", global::System.Management.Automation.CompletionResultType.ParameterValue, "encrypt");
+                yield return new global::System.Management.Automation.CompletionResult("'encrypt'", "encrypt", global::System.Management.Automation.CompletionResultType.ParameterValue, "encrypt");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "decrypt".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("decrypt", "decrypt", global::System.Management.Automation.CompletionResultType.ParameterValue, "decrypt");
+                yield return new global::System.Management.Automation.CompletionResult("'decrypt'", "decrypt", global::System.Management.Automation.CompletionResultType.ParameterValue, "decrypt");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "wrapKey".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("wrapKey", "wrapKey", global::System.Management.Automation.CompletionResultType.ParameterValue, "wrapKey");
+                yield return new global::System.Management.Automation.CompletionResult("'wrapKey'", "wrapKey", global::System.Management.Automation.CompletionResultType.ParameterValue, "wrapKey");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "unwrapKey".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("unwrapKey", "unwrapKey", global::System.Management.Automation.CompletionResultType.ParameterValue, "unwrapKey");
+                yield return new global::System.Management.Automation.CompletionResult("'unwrapKey'", "unwrapKey", global::System.Management.Automation.CompletionResultType.ParameterValue, "unwrapKey");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "sign".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("sign", "sign", global::System.Management.Automation.CompletionResultType.ParameterValue, "sign");
+                yield return new global::System.Management.Automation.CompletionResult("'sign'", "sign", global::System.Management.Automation.CompletionResultType.ParameterValue, "sign");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "verify".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("verify", "verify", global::System.Management.Automation.CompletionResultType.ParameterValue, "verify");
+                yield return new global::System.Management.Automation.CompletionResult("'verify'", "verify", global::System.Management.Automation.CompletionResultType.ParameterValue, "verify");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "get".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("get", "get", global::System.Management.Automation.CompletionResultType.ParameterValue, "get");
+                yield return new global::System.Management.Automation.CompletionResult("'get'", "get", global::System.Management.Automation.CompletionResultType.ParameterValue, "get");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "list".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("list", "list", global::System.Management.Automation.CompletionResultType.ParameterValue, "list");
+                yield return new global::System.Management.Automation.CompletionResult("'list'", "list", global::System.Management.Automation.CompletionResultType.ParameterValue, "list");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "create".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("create", "create", global::System.Management.Automation.CompletionResultType.ParameterValue, "create");
+                yield return new global::System.Management.Automation.CompletionResult("'create'", "create", global::System.Management.Automation.CompletionResultType.ParameterValue, "create");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "update".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("update", "update", global::System.Management.Automation.CompletionResultType.ParameterValue, "update");
+                yield return new global::System.Management.Automation.CompletionResult("'update'", "update", global::System.Management.Automation.CompletionResultType.ParameterValue, "update");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "import".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("import", "import", global::System.Management.Automation.CompletionResultType.ParameterValue, "import");
+                yield return new global::System.Management.Automation.CompletionResult("'import'", "import", global::System.Management.Automation.CompletionResultType.ParameterValue, "import");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "delete".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("delete", "delete", global::System.Management.Automation.CompletionResultType.ParameterValue, "delete");
+                yield return new global::System.Management.Automation.CompletionResult("'delete'", "delete", global::System.Management.Automation.CompletionResultType.ParameterValue, "delete");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "backup".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("backup", "backup", global::System.Management.Automation.CompletionResultType.ParameterValue, "backup");
+                yield return new global::System.Management.Automation.CompletionResult("'backup'", "backup", global::System.Management.Automation.CompletionResultType.ParameterValue, "backup");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "restore".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("restore", "restore", global::System.Management.Automation.CompletionResultType.ParameterValue, "restore");
+                yield return new global::System.Management.Automation.CompletionResult("'restore'", "restore", global::System.Management.Automation.CompletionResultType.ParameterValue, "restore");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "recover".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("recover", "recover", global::System.Management.Automation.CompletionResultType.ParameterValue, "recover");
+                yield return new global::System.Management.Automation.CompletionResult("'recover'", "recover", global::System.Management.Automation.CompletionResultType.ParameterValue, "recover");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "purge".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("purge", "purge", global::System.Management.Automation.CompletionResultType.ParameterValue, "purge");
+                yield return new global::System.Management.Automation.CompletionResult("'purge'", "purge", global::System.Management.Automation.CompletionResultType.ParameterValue, "purge");
             }
         }
     }

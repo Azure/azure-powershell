@@ -21,6 +21,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.PowerShell
 
     private const string ModelNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models";
     private const string SupportNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support";
+    private const string PropertiesExcludedForTableview = @"Id,Type";
+
     private static readonly bool IsAzure = Convert.ToBoolean(@"true");
 
     protected override void ProcessRecord()
@@ -55,7 +57,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.PowerShell
       return types.Select(t => new ViewParameters(t, t.GetProperties()
           .Select(p => new PropertyFormat(p))
           .Where(pf => !pf.Property.GetCustomAttributes<DoNotFormatAttribute>().Any()
-                       && (!IsAzure || pf.Property.Name != "Id")
+                       && (!PropertiesExcludedForTableview.Split(',').Contains(pf.Property.Name))
                        && (pf.FormatTable != null || (pf.Origin != PropertyOrigin.Inlined && pf.Property.PropertyType.IsPsSimple())))
           .OrderByDescending(pf => pf.Index.HasValue)
           .ThenBy(pf => pf.Index)

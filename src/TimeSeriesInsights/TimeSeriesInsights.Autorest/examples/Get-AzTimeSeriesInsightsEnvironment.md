@@ -1,7 +1,8 @@
 ### Example 1: Get a time series insights environment
 ```powershell
 Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest001
-
+```
+```output
 DataAccessFqdn               : b6d113a4-0865-405f-b09e-ad4355b5d046.env.timeseries.azure.com
 DataAccessId                 : b6d113a4-0865-405f-b09e-ad4355b5d046
 DataRetentionTime            : 1.01:25:00
@@ -30,7 +31,8 @@ This command gets a time series insights environment.
 ### Example 2: List all time series insights environments
 ```powershell
 Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup
-
+```
+```output
 DataAccessFqdn                      : 3de1d1e1-4f9b-4bc6-aad3-a835597dcd86.env.timeseries.azure.com
 DataAccessId                        : 3de1d1e1-4f9b-4bc6-aad3-a835597dcd86
 Id                                  : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/testgroup/providers/Microsoft.TimeSeriesInsights/environments/ 
@@ -82,7 +84,8 @@ This command lists all time series insights environments in a resource group.
 ```powershell
 $env = Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName tsi-test-i01k5l -Name tsi-envv8u56x 
 Get-AzTimeSeriesInsightsEnvironment -InputObject $env
-
+```
+```output
 DataAccessFqdn               : d76a61f2-8a30-41a5-9587-f241eb9b48d9.env.timeseries.azure.com
 DataAccessId                 : d76a61f2-8a30-41a5-9587-f241eb9b48d9
 DataRetentionTime            : 1.01:25:00

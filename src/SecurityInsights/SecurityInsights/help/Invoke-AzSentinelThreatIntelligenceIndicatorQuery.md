@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SecurityInsights-help.xml
 Module Name: Az.SecurityInsights
 online version: https://learn.microsoft.com/powershell/module/az.securityinsights/invoke-azsentinelthreatintelligenceindicatorquery
 schema: 2.0.0
@@ -17,8 +17,8 @@ Invoke-AzSentinelThreatIntelligenceIndicatorQuery -ResourceGroupName <String> -W
  [-SubscriptionId <String>] [-Id <String[]>] [-IncludeDisabled] [-Keyword <String[]>] [-MaxConfidence <Int32>]
  [-MaxValidUntil <String>] [-MinConfidence <Int32>] [-MinValidUntil <String>] [-PageSize <Int32>]
  [-PatternType <String[]>] [-SkipToken <String>] [-SortBy <IThreatIntelligenceSortingCriteria[]>]
- [-Source <String[]>] [-ThreatType <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Source <String[]>] [-ThreatType <String[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -341,16 +341,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`SORTBY <IThreatIntelligenceSortingCriteria[]>`: Columns to sort by and sorting order
-  - `[ItemKey <String>]`: Column name
-  - `[SortOrder <ThreatIntelligenceSortingCriteriaEnum?>]`: Sorting order (ascending/descending/unsorted).
-
 ## RELATED LINKS
-

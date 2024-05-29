@@ -14,7 +14,8 @@ Modifies UEFI properties of gen 2 virtual machines that are part of virtual mach
 
 ```
 Set-AzVmssUefi [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [[-EnableVtpm] <Boolean>]
- [[-EnableSecureBoot] <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-EnableSecureBoot] <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

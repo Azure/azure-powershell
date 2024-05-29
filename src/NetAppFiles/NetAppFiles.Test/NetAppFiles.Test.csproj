@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\NetAppFiles\NetAppFiles.csproj" />
 	<ProjectReference Include="..\NetAppFiles.Management.Sdk\NetAppFiles.Management.Sdk.csproj" />
+	<PackageReference Include="Microsoft.Azure.Management.ManagedServiceIdentity" Version="0.10.0-preview" />
   </ItemGroup>
 
   <ItemGroup>

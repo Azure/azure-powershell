@@ -2,9 +2,525 @@
 <Configuration>
   <ViewDefinitions>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.AcknowledgeOfferNotificationDetails</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.AcknowledgeOfferNotificationDetails#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Acknowledge</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Dismiss</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RemoveOffer</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Acknowledge</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Dismiss</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RemoveOffer</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.AdminRequestApprovalProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.AdminRequestApprovalProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AdminAction</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Administrator</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Comment</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DisplayName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Icon</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OfferId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PublisherId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AdminAction</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Administrator</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Comment</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Icon</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OfferId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PublisherId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.AdminRequestApprovalsList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.AdminRequestApprovalsList#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.AdminRequestApprovalsResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.AdminRequestApprovalsResource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.AnyExistingOffersInTheCollectionsResponse</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.AnyExistingOffersInTheCollectionsResponse#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Value</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Value</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.BulkCollectionsDetails</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.BulkCollectionsDetails#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Action</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Action</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Collection</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Collection#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.CollectionOffersByContext</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.CollectionOffersByContext#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Context</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Context</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.CollectionOffersByContextList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.CollectionOffersByContextList#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.CollectionProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.CollectionProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AllSubscription</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ApproveAllItem</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ApproveAllItemsModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Claim</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CollectionId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CollectionName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NumberOfOffer</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AllSubscription</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ApproveAllItem</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ApproveAllItemsModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Claim</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CollectionId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CollectionName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NumberOfOffer</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.CollectionsDetails</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.CollectionsDetails#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CollectionId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CollectionName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CollectionId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CollectionName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.CollectionsList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.CollectionsList#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.CollectionsSubscriptionsMappingDetails</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.CollectionsSubscriptionsMappingDetails#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CollectionName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CollectionName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ContextAndPlansDetails</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ContextAndPlansDetails#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Context</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Context</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ErrorResponseError</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ErrorResponseError#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.MarketplaceIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.MarketplaceIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.MarketplaceIdentity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -48,493 +564,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.AcknowledgeOfferNotificationDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.MultiContextAndPlansProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.AcknowledgeOfferNotificationDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.MultiContextAndPlansProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Acknowledge</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AddPlan</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Dismiss</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RemoveOffer</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RemovePlan</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Acknowledge</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AddPlan</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Dismiss</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RemoveOffer</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RemovePlan</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.AdminRequestApprovalProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.AdminRequestApprovalProperties</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AdminAction</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Administrator</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ApprovedPlan</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CollectionId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Comment</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DisplayName</Label>
+            <Label>ETag</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>OfferId</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PublisherId</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>AdminAction</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Administrator</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ApprovedPlan</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CollectionId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Comment</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DisplayName</PropertyName>
+                <PropertyName>ETag</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>OfferId</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PublisherId</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.AdminRequestApprovalsList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.NewNotifications</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.AdminRequestApprovalsList</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.AdminRequestApprovalsResource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.AdminRequestApprovalsResource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedByType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedByType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.BillingAccountsResponse</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.BillingAccountsResponse</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>BillingAccount</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>BillingAccount</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.BulkCollectionsDetails</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.BulkCollectionsDetails</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Action</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CollectionId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Action</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CollectionId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.Collection</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.Collection</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedByType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedByType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.CollectionProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.CollectionProperties</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AllSubscription</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Claim</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CollectionId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CollectionName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Enabled</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>NumberOfOffer</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SubscriptionsList</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AllSubscription</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Claim</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CollectionId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CollectionName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Enabled</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>NumberOfOffer</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SubscriptionsList</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.CollectionsDetails</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.CollectionsDetails</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>CollectionId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CollectionName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>CollectionId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CollectionName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.CollectionsList</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.CollectionsList</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.CollectionsSubscriptionsMappingDetails</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.CollectionsSubscriptionsMappingDetails</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>CollectionName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Subscription</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>CollectionName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Subscription</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.CollectionsToSubscriptionsMappingProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.CollectionsToSubscriptionsMappingProperties</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>SubscriptionId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>SubscriptionId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ErrorResponseError</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ErrorResponseError</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Code</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Code</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.NewNotifications</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.NewNotifications</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.NewNotifications#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -578,9 +638,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.NotificationsSettingsProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.NotificationsSettingsProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.NotificationsSettingsProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.NotificationsSettingsProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -600,9 +660,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.Offer</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Offer</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.Offer</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Offer#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -626,6 +686,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -652,15 +715,18 @@
               <TableColumnItem>
                 <PropertyName>SystemDataLastModifiedByType</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.OfferListResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.OfferListResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.OfferListResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.OfferListResponse#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -680,9 +746,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.OfferProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.OfferProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.OfferProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.OfferProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -703,9 +769,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>PublisherDisplayName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SpecificPlanIdsLimitation</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>UniqueOfferId</Label>
@@ -736,9 +799,6 @@
                 <PropertyName>PublisherDisplayName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SpecificPlanIdsLimitation</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>UniqueOfferId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -750,9 +810,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.OfferPropertiesIconFileUris</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.OfferPropertiesIconFileUris</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.OfferPropertiesIconFileUris</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.OfferPropertiesIconFileUris#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -772,9 +832,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.OperationListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.OperationListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.OperationListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.OperationListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -794,9 +854,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.Plan</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Plan</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.Plan</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Plan#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -840,9 +900,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.PlanDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.PlanDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.PlanDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.PlanDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -886,9 +946,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.PlanNotificationDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.PlanNotificationDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.PlanNotificationDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.PlanNotificationDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -914,9 +974,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.PlanRequesterDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.PlanRequesterDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.PlanRequesterDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.PlanRequesterDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -942,9 +1002,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.PrivateStore</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.PrivateStore</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.PrivateStore</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.PrivateStore#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -968,6 +1028,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -994,15 +1057,18 @@
               <TableColumnItem>
                 <PropertyName>SystemDataLastModifiedByType</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.PrivateStoreList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.PrivateStoreList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.PrivateStoreList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.PrivateStoreList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1022,17 +1088,14 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.PrivateStoreProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.PrivateStoreProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.PrivateStoreProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.PrivateStoreProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>Availability</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CollectionId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ETag</Label>
@@ -1057,9 +1120,6 @@
                 <PropertyName>Availability</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>CollectionId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>ETag</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1080,9 +1140,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.PrivateStorePropertiesBranding</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.PrivateStorePropertiesBranding</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.PrivateStorePropertiesBranding</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.PrivateStorePropertiesBranding#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1102,17 +1162,14 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.QueryApprovedPlans</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.QueryApprovedPlans</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.QueryApprovedPlans</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.QueryApprovedPlans#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>OfferId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PlanId</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1121,18 +1178,15 @@
               <TableColumnItem>
                 <PropertyName>OfferId</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PlanId</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.QueryApprovedPlansDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.QueryApprovedPlansDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.QueryApprovedPlansDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.QueryApprovedPlansDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1141,9 +1195,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>PlanId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SubscriptionId</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1155,18 +1206,15 @@
               <TableColumnItem>
                 <PropertyName>PlanId</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SubscriptionId</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.QueryOffers</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.QueryOffers</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.QueryOffers</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.QueryOffers#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1186,9 +1234,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.QueryRequestApproval</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.QueryRequestApproval</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.QueryRequestApproval</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.QueryRequestApproval#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1220,9 +1268,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.Recipient</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Recipient</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.Recipient</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Recipient#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1254,9 +1302,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.RequestApprovalProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.RequestApprovalProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.RequestApprovalProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.RequestApprovalProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1300,9 +1348,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.RequestApprovalResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.RequestApprovalResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.RequestApprovalResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.RequestApprovalResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1326,6 +1374,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1352,15 +1403,18 @@
               <TableColumnItem>
                 <PropertyName>SystemDataLastModifiedByType</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.RequestApprovalsDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.RequestApprovalsDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.RequestApprovalsDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.RequestApprovalsDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1404,9 +1458,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.RequestApprovalsList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.RequestApprovalsList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.RequestApprovalsList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.RequestApprovalsList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1426,15 +1480,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.RequestDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.RequestDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.RequestDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.RequestDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>PlanId</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>PublisherId</Label>
           </TableColumnHeader>
@@ -1445,9 +1496,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>PlanId</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PublisherId</PropertyName>
               </TableColumnItem>
@@ -1460,9 +1508,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.Resource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.Resource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Resource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1482,9 +1530,53 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.SingleOperation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.RuleListResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.SingleOperation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.RuleListResponse#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.SetRulesRequest</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.SetRulesRequest#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.SingleOperation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.SingleOperation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1516,9 +1608,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.SingleOperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.SingleOperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.SingleOperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.SingleOperationDisplay#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1556,9 +1648,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.StopSellNotifications</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.StopSellNotifications</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.StopSellNotifications</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.StopSellNotifications#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1602,9 +1694,123 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.SystemData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.StopSellOffersPlansNotificationsListProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.SystemData</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.StopSellOffersPlansNotificationsListProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DisplayName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Icon</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsEntire</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MessageCode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OfferId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PublicContext</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Icon</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsEntire</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MessageCode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OfferId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PublicContext</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Subscription</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Subscription#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DisplayName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>State</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SubscriptionId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>State</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubscriptionId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.SubscriptionsResponse</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.SubscriptionsResponse#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Count</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SkipToken</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Count</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SkipToken</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.SystemData</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.SystemData#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1654,33 +1860,21 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.TransferOffersDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.TransferOffersDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.TransferOffersDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.TransferOffersDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>OfferIdsList</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>Operation</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>TargetCollection</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>OfferIdsList</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>Operation</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>TargetCollection</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1688,9 +1882,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.UserRequestDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.UserRequestDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.UserRequestDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.UserRequestDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1734,9 +1928,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.WithdrawDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.WithdrawDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.WithdrawDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.WithdrawDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

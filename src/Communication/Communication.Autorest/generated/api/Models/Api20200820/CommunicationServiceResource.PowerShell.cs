@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -73,10 +75,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820
             if (content.Contains("SystemData"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.SystemDataTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("AzureAsyncOperation"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResourceInternal)this).AzureAsyncOperation = (string) content.GetValueForProperty("AzureAsyncOperation",((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResourceInternal)this).AzureAsyncOperation, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
@@ -170,10 +168,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820
             if (content.Contains("SystemData"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.SystemDataTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("AzureAsyncOperation"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResourceInternal)this).AzureAsyncOperation = (string) content.GetValueForProperty("AzureAsyncOperation",((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResourceInternal)this).AzureAsyncOperation, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
@@ -278,7 +272,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820
         /// Creates a new instance of <see cref="CommunicationServiceResource" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="CommunicationServiceResource" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

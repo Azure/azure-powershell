@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.HdInsightOnAks-help.xml
 Module Name: Az.HdInsightOnAks
 online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksFlinkJobObject
 schema: 2.0.0
@@ -13,9 +13,10 @@ Create an object as a parameter for submitting cluster work
 ## SYNTAX
 
 ```
-New-AzHdInsightOnAksFlinkJobObject -Action <String> -JobName <String> [-Arg <String>] [-EntryClass <String>]
- [-FlinkConfiguration <IFlinkJobPropertiesFlinkConfiguration>] [-JarName <String>] [-JobJarDirectory <String>]
- [-SavePointName <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzHdInsightOnAksFlinkJobObject -Action <String> -JobName <String> [-JobJarDirectory <String>]
+ [-JarName <String>] [-EntryClass <String>] [-Arg <String>] [-SavePointName <String>]
+ [-FlinkConfiguration <IFlinkJobPropertiesFlinkConfiguration>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +26,7 @@ Create an object as a parameter for submitting cluster work
 
 ### Example 1: Create an object as a parameter for submitting cluster work.
 ```powershell
- $flinkJobProperties = New-AzHdInsightOnAksFlinkJobObject -Action "NEW" -JobName "job1" `
+$flinkJobProperties = New-AzHdInsightOnAksFlinkJobObject -Action "NEW" -JobName "job1" `
         -JarName "JarName" -EntryClass "com.microsoft.hilo.flink.job.streaming.SleepJob" `
         -JobJarDirectory "abfs://flinkjob@hilosa.dfs.core.windows.net/jars" `
         -FlinkConfiguration @{parallelism=1}
@@ -34,7 +35,6 @@ Create an object as a parameter for submitting cluster work
 ```output
 Id Name SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Type
 -- ---- ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- ----
-
 ```
 
 Create an object as a parameter for submitting cluster work.
@@ -91,7 +91,6 @@ Accept wildcard characters: False
 Additional properties used to configure Flink jobs.
 It allows users to set properties such as parallelism and jobSavePointDirectory.
 It accepts additional key-value pairs as properties, where the keys are strings and the values are strings as well.
-To construct, see NOTES section for FLINKCONFIGURATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobPropertiesFlinkConfiguration
@@ -165,37 +164,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -208,4 +176,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

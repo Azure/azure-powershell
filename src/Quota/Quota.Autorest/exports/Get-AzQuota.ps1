@@ -71,7 +71,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Quota.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]

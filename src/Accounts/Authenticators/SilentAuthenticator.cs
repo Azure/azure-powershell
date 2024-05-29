@@ -12,18 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Core;
+using Azure.Identity;
+using Azure.Identity.Broker;
+
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Utilities;
+using Microsoft.Azure.PowerShell.Authenticators.Factories;
+
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-
-using Azure.Core;
-using Azure.Identity.BrokeredAuthentication;
-using Microsoft.Azure.PowerShell.Authenticators.Factories;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Azure.Identity;
-using Microsoft.Azure.PowerShell.Common.Config;
-using Microsoft.Azure.Commands.Shared.Config;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             AzureSession.Instance.TryGetComponent(nameof(AzureCredentialFactory), out AzureCredentialFactory azureCredentialFactory);
             SharedTokenCacheCredentialOptions options = GetTokenCredentialOptions(silentParameters, tenantId, authority, tokenCacheProvider);
             var cacheCredential = azureCredentialFactory.CreateSharedTokenCacheCredentials(options);
-            var requestContext = new TokenRequestContext(scopes);
+            var requestContext = new TokenRequestContext(scopes, isCaeEnabled: true);
             var parametersLog = $"- TenantId:'{options.TenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}', UserId:'{silentParameters.UserId}'";
             return MsalAccessToken.GetAccessTokenAsync(
                 nameof(SilentAuthenticator),
@@ -58,9 +58,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
         private static SharedTokenCacheCredentialOptions GetTokenCredentialOptions(SilentParameters silentParameters, string tenantId, string authority, PowerShellTokenCacheProvider tokenCacheProvider)
         {
-            bool isWamEnabled = AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var config)
-                && config.GetConfigValue<bool>(ConfigKeys.EnableLoginByWam);
-            SharedTokenCacheCredentialOptions options = isWamEnabled
+            SharedTokenCacheCredentialOptions options = AzConfigReader.IsWamEnabled(authority)
                 ? new SharedTokenCacheCredentialBrokerOptions(tokenCacheProvider.GetTokenCachePersistenceOptions())
                 : new SharedTokenCacheCredentialOptions(tokenCacheProvider.GetTokenCachePersistenceOptions());
             options.EnableGuestTenantAuthentication = true;
@@ -68,6 +66,12 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             options.Username = silentParameters.UserId;
             options.AuthorityHost = new Uri(authority);
             options.TenantId = tenantId;
+            options.DisableInstanceDiscovery = silentParameters.DisableInstanceDiscovery ?? options.DisableInstanceDiscovery;
+            if (options is SharedTokenCacheCredentialBrokerOptions optionsBroker)
+            {
+                optionsBroker.IsLegacyMsaPassthroughEnabled = true;
+                return optionsBroker;
+            }
             return options;
         }
 

@@ -49,7 +49,7 @@ function Test-VolumeGroupCrud
     $resourceLocation = "northeurope"
     $vnetName = "vnetnortheurope-anf"
     $subnetId = "/subscriptions/$subsId/resourceGroups/$fixedResourceGroup/providers/Microsoft.Network/virtualNetworks/$vnetName/subnets/$subnetName"
-    $proximityPlacementGroup = "/subscriptions/69a75bda-882e-44d5-8431-63421204132a/resourceGroups/sdk-net-test-qa2/providers/Microsoft.Compute/proximityPlacementGroups/sdk_test_northeurope_ppg"
+    $proximityPlacementGroup = "/subscriptions/$subsId/resourceGroups/$fixedResourceGroup/providers/Microsoft.Compute/proximityPlacementGroups/sdk_test_northeurope_ppg"
     
     # create the list of protocol types
     $protocolTypes = New-Object string[] 1

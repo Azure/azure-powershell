@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventHubCluster
 
 ## SYNOPSIS
-Creates or updates an instance of an Event Hubs Cluster.
+Create an instance of an Event Hubs Cluster.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzEventHubCluster -Name <String> -ResourceGroupName <String> [-SubscriptionI
 ```
 
 ## DESCRIPTION
-Creates or updates an instance of an Event Hubs Cluster.
+Create an instance of an Event Hubs Cluster.
 
 ## EXAMPLES
 
@@ -257,7 +257,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ICluster
 
 ## NOTES
 

@@ -14,7 +14,8 @@ Gets an autoscale setting
 
 ### List1 (Default)
 ```
-Get-AzAutoscaleSetting [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzAutoscaleSetting [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -31,7 +32,8 @@ Get-AzAutoscaleSetting -ResourceGroupName <String> [-SubscriptionId <String[]>] 
 
 ### GetViaIdentity
 ```
-Get-AzAutoscaleSetting -InputObject <IAutoscaleIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzAutoscaleSetting -InputObject <IAutoscaleIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

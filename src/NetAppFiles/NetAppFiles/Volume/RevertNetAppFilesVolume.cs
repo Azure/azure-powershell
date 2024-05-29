@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
@@ -147,9 +148,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.RevertVolumeMessage, Name)))
             {
-                var volumeRevertBody = new VolumeRevert() { SnapshotId = SnapshotId };
-                AzureNetAppFilesManagementClient.Volumes.Revert(ResourceGroupName, AccountName, PoolName, Name, volumeRevertBody);
-                success = true;
+                try
+                {
+                    var volumeRevertBody = new VolumeRevert() { SnapshotId = SnapshotId };
+                    AzureNetAppFilesManagementClient.Volumes.Revert(ResourceGroupName, AccountName, PoolName, Name, volumeRevertBody);
+                    success = true;
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
 
             if (PassThru)

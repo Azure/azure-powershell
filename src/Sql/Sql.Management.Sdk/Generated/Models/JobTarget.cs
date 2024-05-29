@@ -26,11 +26,11 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
 
         /// <param name="membershipType">Whether the target is included or excluded from the group.
-        /// Possible values include: 'Include', 'Exclude'</param>
+        /// Possible values include: &#39;Include&#39;, &#39;Exclude&#39;</param>
 
         /// <param name="type">The target type.
-        /// Possible values include: 'TargetGroup', 'SqlDatabase', 'SqlElasticPool',
-        /// 'SqlShardMap', 'SqlServer'</param>
+        /// Possible values include: &#39;TargetGroup&#39;, &#39;SqlDatabase&#39;, &#39;SqlElasticPool&#39;,
+        /// &#39;SqlShardMap&#39;, &#39;SqlServer&#39;</param>
 
         /// <param name="serverName">The target server name.
         /// </param>

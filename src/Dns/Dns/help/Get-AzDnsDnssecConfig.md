@@ -26,7 +26,8 @@ Get-AzDnsDnssecConfig -ResourceGroupName <String> [-SubscriptionId <String[]>] -
 
 ### GetViaIdentity
 ```
-Get-AzDnsDnssecConfig -InputObject <IDnsIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDnsDnssecConfig -InputObject <IDnsIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

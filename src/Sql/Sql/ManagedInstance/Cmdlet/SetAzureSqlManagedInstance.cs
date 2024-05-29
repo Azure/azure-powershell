@@ -271,6 +271,20 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public string ServicePrincipalType { get; set; }
 
         /// <summary>
+        /// Specifies the internal format of instance databases specific to the SQL engine version
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The instance databases specific to the SQL engine version")]
+        [PSArgumentCompleter("AlwaysUpToDate", "SQLServer2022")]
+        public string DatabaseFormat { get; set; }
+
+        /// <summary>
+        /// Specifies weather or not Managed Instance is freemium
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Weather or not Managed Instance is freemium")]
+        [PSArgumentCompleter("Regular", "Freemium")]
+        public string PricingModel { get; set; }
+
+        /// <summary>
         /// Get the instance to update
         /// </summary>
         /// <returns>The instance being updated</returns>
@@ -357,6 +371,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             updateData[0].ZoneRedundant = this.ZoneRedundant.IsPresent ? this.ZoneRedundant.ToBool() : (bool?)null;
             updateData[0].RequestedBackupStorageRedundancy = this.BackupStorageRedundancy ?? updateData[0].CurrentBackupStorageRedundancy;
             updateData[0].ServicePrincipal = ResourceServicePrincipalHelper.GetServicePrincipalObjectFromType(this.ServicePrincipalType ?? null);
+            updateData[0].DatabaseFormat = this.DatabaseFormat?? updateData[0].DatabaseFormat;
+            updateData[0].PricingModel = this.PricingModel ?? updateData[0].PricingModel;
+
             return updateData;
         }
 

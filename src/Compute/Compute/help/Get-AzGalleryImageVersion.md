@@ -29,7 +29,8 @@ Get-AzGalleryImageVersion [-GalleryImageDefinitionName] <String> [[-Name] <Strin
 ### CommunityGalleryParameterSet
 ```
 Get-AzGalleryImageVersion [-GalleryImageDefinitionName] <String> [[-Name] <String>] [-ExpandReplicationStatus]
- -GalleryPublicName <String> -Location <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -GalleryPublicName <String> -Location <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameter

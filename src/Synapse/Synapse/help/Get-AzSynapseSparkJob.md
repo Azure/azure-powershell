@@ -15,13 +15,15 @@ Gets a Synapse Analytics Spark job.
 ### GetSparkJobsByIdParameterSet (Default)
 ```
 Get-AzSynapseSparkJob -WorkspaceName <String> -SparkPoolName <String> [-LivyId <Int32>] [-Name <String>]
- [-ApplicationId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ApplicationId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetSparkJobsByIdFromParentObjectParameterSet
 ```
 Get-AzSynapseSparkJob -SparkPoolObject <PSSynapseSparkPool> [-LivyId <Int32>] [-Name <String>]
- [-ApplicationId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ApplicationId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

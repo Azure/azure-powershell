@@ -201,7 +201,17 @@ function Update-AzStackHCIVMVirtualMachine {
             $null = $PSBoundParameters.Remove("ResourceGroupName")
             $null = $PSBoundParameters.Remove("ResourceId")
             $null = $PSBoundParameters.Remove("Name")
-            return  Az.StackHCIVM.internal\Update-AzStackHCIVMVirtualMachine @PSBoundParameters   
+            try{
+                Az.StackHCIVM.internal\Update-AzStackHCIVMVirtualMachine -ErrorAction Stop @PSBoundParameters 
+            } catch {
+                $e = $_
+                if ($e.FullyQualifiedErrorId -match "MissingAzureKubernetesMapping" ){
+                    Write-Error "An older version of the Arc VM cluster extension is installed on your cluster. Please downgrade the Az.StackHCIVm version to 1.0.1 to proceed." -ErrorAction Stop
+                } else {
+                    Write-Error $e.Exception.Message -ErrorAction Stop
+                }
+            }
+            
             } else {             
                 Write-Error "One or more input parameters are invalid. Resource ID is: $ResourceId, name is $name, resource group name is $resourcegroupname, subscription id is $subscriptionid"
             }  

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SqlVirtualMachine-help.xml
 Module Name: Az.SqlVirtualMachine
 online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/update-azsqlvmgroup
 schema: 2.0.0
@@ -18,8 +18,8 @@ Update-AzSqlVMGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId 
  [-ClusterBootstrapAccount <String>] [-ClusterOperatorAccount <String>]
  [-ClusterSubnetType <ClusterSubnetType>] [-DomainFqdn <String>] [-FileShareWitnessPath <String>]
  [-OuPath <String>] [-SqlServiceAccount <String>] [-StorageAccountPrimaryKey <SecureString>]
- [-StorageAccountUrl <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-StorageAccountUrl <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -28,7 +28,8 @@ Update-AzSqlVMGroup -InputObject <ISqlVirtualMachineIdentity> [-ClusterBootstrap
  [-ClusterOperatorAccount <String>] [-ClusterSubnetType <ClusterSubnetType>] [-DomainFqdn <String>]
  [-FileShareWitnessPath <String>] [-OuPath <String>] [-SqlServiceAccount <String>]
  [-StorageAccountPrimaryKey <SecureString>] [-StorageAccountUrl <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,8 +48,6 @@ Location Name           ResourceGroupName
 eastus   sqlvmgroup01	ResourceGroup01
 ```
 
-
-
 ### Example 2
 ```powershell
 $group = Get-AzSqlVMGroup -ResourceGroupName 'ResourceGroup01' -Name 'sqlvmgroup01'
@@ -60,8 +59,6 @@ Location Name           ResourceGroupName
 -------- ----           -----------------
 eastus   sqlvmgroup01	ResourceGroup01
 ```
-
-
 
 ## PARAMETERS
 
@@ -367,20 +364,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ISqlVirtualMachineIdentity>`: Identity Parameter
-  - `[AvailabilityGroupListenerName <String>]`: Name of the availability group listener.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  - `[SqlVirtualMachineGroupName <String>]`: Name of the SQL virtual machine group.
-  - `[SqlVirtualMachineName <String>]`: Name of the SQL virtual machine.
-  - `[SubscriptionId <String>]`: Subscription ID that identifies an Azure subscription.
-
 ## RELATED LINKS
-

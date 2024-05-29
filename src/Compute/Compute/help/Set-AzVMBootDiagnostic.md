@@ -16,7 +16,8 @@ Modifies boot diagnostics properties of a virtual machine.
 ### EnableBootDiagnostics
 ```
 Set-AzVMBootDiagnostic [-VM] <PSVirtualMachine> [-Enable] [[-ResourceGroupName] <String>]
- [[-StorageAccountName] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-StorageAccountName] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### DisableBootDiagnostics
@@ -155,5 +156,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVM](./Get-AzVM.md)
 
 [Get-AzVMBootDiagnosticsData](./Get-AzVMBootDiagnosticsData.md)
-
-

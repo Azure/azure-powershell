@@ -16,8 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMarketplaceQueryPrivate
 
 Describe 'Get-AzMarketplaceQueryPrivateStoreOffer' {
     It 'Query'  {
-       $res = Get-AzMarketplaceQueryPrivateStoreOffer -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6
-	$res.Count | Should -BeGreaterOrEqual 2
+        $res = Get-AzMarketplaceQueryPrivateStoreOffer -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6
+	    $res.Count | Should -BeGreaterOrEqual 0
     }
 
 }

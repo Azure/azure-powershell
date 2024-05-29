@@ -19,10 +19,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
-using System.Globalization;
+using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using System.Collections.Generic;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Backup
 {
@@ -162,8 +162,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, Name)))
             {
-                var anfSubvolume = AzureNetAppFilesManagementClient.Subvolumes.Update(ResourceGroupName, accountName: AccountName, poolName: PoolName, volumeName: VolumeName, subvolumeName: Name, subvolumePatch);
-                WriteObject(anfSubvolume.ConvertToPs());
+                try
+                {
+                    var anfSubvolume = AzureNetAppFilesManagementClient.Subvolumes.Update(ResourceGroupName, accountName: AccountName, poolName: PoolName, volumeName: VolumeName, subvolumeName: Name, subvolumePatch);
+                    WriteObject(anfSubvolume.ConvertToPs());
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
         }
     }

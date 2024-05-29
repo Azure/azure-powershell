@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="state">Specifies the state of ledger digest upload.
-        /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
         public ManagedLedgerDigestUploadsProperties(string digestStorageEndpoint = default(string), string state = default(string))
 
         {

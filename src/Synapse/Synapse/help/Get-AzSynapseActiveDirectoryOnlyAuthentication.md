@@ -39,11 +39,13 @@ The **Get-AzSynapseActiveDirectoryOnlyAuthentication** cmdlet gets Microsoft Ent
 ```powershell
 Get-AzSynapseActiveDirectoryOnlyAuthentication -WorkspaceName ContosoWorkspace
 ```
+
 ```output
 WorkspaceName     AzureADOnlyAuthenticationProperty State      CreationDate
 -------------     --------------------------------- -----      ------------
 ContosoWorkspace                               True Consistent 3/23/2022 8:27:47 AM
 ```
+
 This command gets Microsoft Entra-only authentication status for Synapse workspace ContosoWorkspace.
 
 ### Example 2
@@ -51,22 +53,26 @@ This command gets Microsoft Entra-only authentication status for Synapse workspa
 $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 $ws | Get-AzSynapseActiveDirectoryOnlyAuthentication
 ```
+
 ```output
 WorkspaceName     AzureADOnlyAuthenticationProperty State      CreationDate
 -------------     --------------------------------- -----      ------------
 ContosoWorkspace                               True Consistent 3/23/2022 8:27:47 AM
 ```
+
 This command gets Microsoft Entra-only authentication status for Synapse workspace ContosoWorkspace through pipeline.
 
 ### Example 3
 ```powershell
 Get-AzSynapseActiveDirectoryOnlyAuthentication -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace
 ```
+
 ```output
 WorkspaceName     AzureADOnlyAuthenticationProperty State      CreationDate
 -------------     --------------------------------- -----      ------------
 ContosoWorkspace                               True Consistent 3/23/2022 8:27:47 AM
 ```
+
 This command gets Microsoft Entra-only authentication for workspace ContosoWorkspace by ResourceId.
 
 ## PARAMETERS

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="encryptionAtRestType">Encryption At Rest Type
-        /// Possible values include: 'Invalid', 'MicrosoftManaged', 'CustomerManaged'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;MicrosoftManaged&#39;, &#39;CustomerManaged&#39;</param>
 
         /// <param name="keyUri">Key Vault Key URI
         /// </param>
@@ -31,12 +31,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="lastUpdateStatus">
-        /// Possible values include: 'Invalid', 'NotEnabled', 'PartiallySucceeded',
-        /// 'PartiallyFailed', 'Failed', 'Succeeded', 'Initialized',
-        /// 'FirstInitialization'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;NotEnabled&#39;, &#39;PartiallySucceeded&#39;,
+        /// &#39;PartiallyFailed&#39;, &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Initialized&#39;,
+        /// &#39;FirstInitialization&#39;</param>
 
         /// <param name="infrastructureEncryptionState">
-        /// Possible values include: 'Invalid', 'Disabled', 'Enabled'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Disabled&#39;, &#39;Enabled&#39;</param>
         public BackupResourceEncryptionConfig(string encryptionAtRestType = default(string), string keyUri = default(string), string subscriptionId = default(string), string lastUpdateStatus = default(string), string infrastructureEncryptionState = default(string))
 
         {

@@ -14,8 +14,8 @@ Migrate Sql Server Schema from the source Sql Servers to the target Azure Sql Se
 
 ### ConfigFile (Default)
 ```
-New-AzDataMigrationSqlServerSchema -ConfigFilePath <String> [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzDataMigrationSqlServerSchema -ConfigFilePath <String> [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CommandLine

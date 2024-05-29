@@ -25,6 +25,8 @@ Start-AzWorkloadsSapVirtualInstance -Name DB0 -ResourceGroupName db0-vis-rg
 Start-AzWorkloadsSapVirtualInstance -InputObject /subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/db0-vis-rg/providers/Microsoft.Workloads/sapVirtualInstances/DB0
 
 .Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.IStartRequest
+.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.IOperationStatusResult
@@ -32,6 +34,9 @@ Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.IOperationStatusResult
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <IStartRequest>: Start SAP instance(s) request body.
+  [StartVM <Boolean?>]: The boolean value indicates whether to start the virtual machines before starting the SAP instances.
 
 INPUTOBJECT <IWorkloadsIdentity>: Identity Parameter
   [ApplicationInstanceName <String>]: The name of SAP Application Server instance resource.
@@ -49,9 +54,10 @@ https://learn.microsoft.com/powershell/module/az.workloads/start-azworkloadssapv
 #>
 function Start-AzWorkloadsSapVirtualInstance {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.IOperationStatusResult])]
-[CmdletBinding(DefaultParameterSetName='Start', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='StartExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Start', Mandatory)]
+    [Parameter(ParameterSetName='StartExpanded', Mandatory)]
     [Alias('SapVirtualInstanceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Path')]
     [System.String]
@@ -59,6 +65,7 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Start', Mandatory)]
+    [Parameter(ParameterSetName='StartExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -66,6 +73,7 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Start')]
+    [Parameter(ParameterSetName='StartExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -73,11 +81,27 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='StartViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='StartViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='Start', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='StartViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.IStartRequest]
+    # Start SAP instance(s) request body.
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(ParameterSetName='StartExpanded')]
+    [Parameter(ParameterSetName='StartViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # The boolean value indicates whether to start the virtual machines before starting the SAP instances.
+    ${StartVM},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -167,13 +191,25 @@ begin {
 
         $mapping = @{
             Start = 'Az.Workloads.private\Start-AzWorkloadsSapVirtualInstance_Start';
+            StartExpanded = 'Az.Workloads.private\Start-AzWorkloadsSapVirtualInstance_StartExpanded';
             StartViaIdentity = 'Az.Workloads.private\Start-AzWorkloadsSapVirtualInstance_StartViaIdentity';
+            StartViaIdentityExpanded = 'Az.Workloads.private\Start-AzWorkloadsSapVirtualInstance_StartViaIdentityExpanded';
         }
-        if (('Start') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('Start', 'StartExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

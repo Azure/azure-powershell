@@ -19,7 +19,9 @@ using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
+using Microsoft.Azure.Management.NetApp.Models;
 using System.Linq;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 {
@@ -50,6 +52,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
             Mandatory = false,
             HelpMessage = "The name of the ANF pool",
             ParameterSetName = FieldsParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = ParentObjectParameterSet,
+            HelpMessage = "The name of the ANF pool")]
         [ValidateNotNullOrEmpty]
         [Alias("PoolName")]
         [ResourceNameCompleter("Microsoft.NetApp/netAppAccounts/capacityPools", nameof(ResourceGroupName), nameof(AccountName))]
@@ -94,8 +100,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
             }
             else
             {
-                var anfPools = AzureNetAppFilesManagementClient.Pools.List(ResourceGroupName, AccountName).Select(e => e.ToPsNetAppFilesPool());
-                WriteObject(anfPools, true);
+                try
+                {
+                    var anfPools = AzureNetAppFilesManagementClient.Pools.List(ResourceGroupName, AccountName).Select(e => e.ToPsNetAppFilesPool());
+                    WriteObject(anfPools, true);
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
         }
     }

@@ -42,7 +42,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets all ledger digest upload settings on a database.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -262,7 +263,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the current ledger digest upload configuration for a database.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -482,10 +484,12 @@ namespace Microsoft.Azure.Management.Sql
 
         }
         /// <summary>
-        /// Enables upload ledger digests to an Azure Storage account or an Azure Confidential Ledger instance.
+        /// Enables upload ledger digests to an Azure Storage account or an Azure
+        /// Confidential Ledger instance.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -510,10 +514,12 @@ namespace Microsoft.Azure.Management.Sql
         }
 
         /// <summary>
-        /// Disables uploading ledger digests to an Azure Storage account or an Azure Confidential Ledger instance.
+        /// Disables uploading ledger digests to an Azure Storage account or an Azure
+        /// Confidential Ledger instance.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -535,10 +541,12 @@ namespace Microsoft.Azure.Management.Sql
         }
 
         /// <summary>
-        /// Enables upload ledger digests to an Azure Storage account or an Azure Confidential Ledger instance.
+        /// Enables upload ledger digests to an Azure Storage account or an Azure
+        /// Confidential Ledger instance.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -773,10 +781,12 @@ namespace Microsoft.Azure.Management.Sql
 
         }
         /// <summary>
-        /// Disables uploading ledger digests to an Azure Storage account or an Azure Confidential Ledger instance.
+        /// Disables uploading ledger digests to an Azure Storage account or an Azure
+        /// Confidential Ledger instance.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.

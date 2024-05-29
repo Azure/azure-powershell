@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the App service.
 
 ---
-## Status
-[![Az.App](https://img.shields.io/powershellgallery/v/Az.App.svg?style=flat-square&label=Az.App "Az.App")](https://www.powershellgallery.com/packages/Az.App/)
 
 ## Info
 - Modifiable: yes

@@ -14,7 +14,8 @@ Untag ACR tag.
 
 ```
 Remove-AzContainerRegistryTag -RepositoryName <String> -Name <String> -RegistryName <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

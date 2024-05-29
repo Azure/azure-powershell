@@ -14,12 +14,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public partial interface IBackupPoliciesOperations
     {
         /// <summary>
-        /// Lists of backup policies associated with Recovery Services Vault. API provides pagination parameters to fetch
-        /// scoped results.
+        /// Lists of backup policies associated with Recovery Services Vault. API
+        /// provides pagination parameters to fetch scoped results.
         /// </summary>
         /// <remarks>
-        /// Lists of backup policies associated with Recovery Services Vault. API provides pagination parameters to fetch
-        /// scoped results.
+        /// Lists of backup policies associated with Recovery Services Vault. API
+        /// provides pagination parameters to fetch scoped results.
         /// </remarks>
         /// <param name='odataQuery'>
         /// 
@@ -28,7 +28,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -45,12 +46,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ProtectionPolicyResource>>> ListWithHttpMessagesAsync(string vaultName, string resourceGroupName, Microsoft.Rest.Azure.OData.ODataQuery<ProtectionPolicyQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<ProtectionPolicyQueryObject>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists of backup policies associated with Recovery Services Vault. API provides pagination parameters to fetch
-        /// scoped results.
+        /// Lists of backup policies associated with Recovery Services Vault. API
+        /// provides pagination parameters to fetch scoped results.
         /// </summary>
         /// <remarks>
-        /// Lists of backup policies associated with Recovery Services Vault. API provides pagination parameters to fetch
-        /// scoped results.
+        /// Lists of backup policies associated with Recovery Services Vault. API
+        /// provides pagination parameters to fetch scoped results.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

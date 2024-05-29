@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets all ledger digest upload settings on a database.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -49,7 +50,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the current ledger digest upload configuration for a database.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -72,13 +74,16 @@ namespace Microsoft.Azure.Management.Sql
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedLedgerDigestUploads>> GetWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Enables upload ledger digests to an Azure Storage account or an Azure Confidential Ledger instance.
+        /// Enables upload ledger digests to an Azure Storage account or an Azure
+        /// Confidential Ledger instance.
         /// </summary>
         /// <remarks>
-        /// Enables upload ledger digests to an Azure Storage account or an Azure Confidential Ledger instance.
+        /// Enables upload ledger digests to an Azure Storage account or an Azure
+        /// Confidential Ledger instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -104,13 +109,16 @@ namespace Microsoft.Azure.Management.Sql
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedLedgerDigestUploads>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string databaseName, ManagedLedgerDigestUploads parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Disables uploading ledger digests to an Azure Storage account or an Azure Confidential Ledger instance.
+        /// Disables uploading ledger digests to an Azure Storage account or an Azure
+        /// Confidential Ledger instance.
         /// </summary>
         /// <remarks>
-        /// Disables uploading ledger digests to an Azure Storage account or an Azure Confidential Ledger instance.
+        /// Disables uploading ledger digests to an Azure Storage account or an Azure
+        /// Confidential Ledger instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -133,13 +141,16 @@ namespace Microsoft.Azure.Management.Sql
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedLedgerDigestUploads>> DisableWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Enables upload ledger digests to an Azure Storage account or an Azure Confidential Ledger instance.
+        /// Enables upload ledger digests to an Azure Storage account or an Azure
+        /// Confidential Ledger instance.
         /// </summary>
         /// <remarks>
-        /// Enables upload ledger digests to an Azure Storage account or an Azure Confidential Ledger instance.
+        /// Enables upload ledger digests to an Azure Storage account or an Azure
+        /// Confidential Ledger instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -165,13 +176,16 @@ namespace Microsoft.Azure.Management.Sql
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedLedgerDigestUploads>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string databaseName, ManagedLedgerDigestUploads parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Disables uploading ledger digests to an Azure Storage account or an Azure Confidential Ledger instance.
+        /// Disables uploading ledger digests to an Azure Storage account or an Azure
+        /// Confidential Ledger instance.
         /// </summary>
         /// <remarks>
-        /// Disables uploading ledger digests to an Azure Storage account or an Azure Confidential Ledger instance.
+        /// Disables uploading ledger digests to an Azure Storage account or an Azure
+        /// Confidential Ledger instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.

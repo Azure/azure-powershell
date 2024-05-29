@@ -1,8 +1,8 @@
 {
-  "Remove-AzNginxDeployment+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test91922?api-version=2022-08-01+1": {
+  "Remove-AzNginxDeployment+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test91922?api-version=2023-04-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test91922?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test91922?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -23,10 +23,10 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"000008ea-0000-0600-0000-632b62d10000\"" ],
-        "Location": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01" ],
+        "Location": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01" ],
         "x-ms-request-id": [ "39fb1e63-2564-457a-a016-11e2b1f17e49" ],
         "x-ms-correlation-request-id": [ "c6a9395f-a0cf-47d6-a48c-e42a11f27a65" ],
         "x-ms-routing-request-id": [ "WESTCENTRALUS:20220921T191529Z:c6a9395f-a0cf-47d6-a48c-e42a11f27a65" ],
@@ -43,10 +43,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxDeployment+[NoContext]+Delete+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01+2": {
+  "Remove-AzNginxDeployment+[NoContext]+Delete+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -84,10 +84,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxDeployment+[NoContext]+Delete+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01+3": {
+  "Remove-AzNginxDeployment+[NoContext]+Delete+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -125,10 +125,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxDeployment+[NoContext]+Delete+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01+4": {
+  "Remove-AzNginxDeployment+[NoContext]+Delete+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -166,10 +166,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxDeployment+[NoContext]+Delete+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01+5": {
+  "Remove-AzNginxDeployment+[NoContext]+Delete+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -207,10 +207,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxDeployment+[NoContext]+Delete+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01+6": {
+  "Remove-AzNginxDeployment+[NoContext]+Delete+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -248,10 +248,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxDeployment+[NoContext]+Delete+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01+7": {
+  "Remove-AzNginxDeployment+[NoContext]+Delete+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -289,10 +289,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxDeployment+[NoContext]+Delete+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01+8": {
+  "Remove-AzNginxDeployment+[NoContext]+Delete+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -330,10 +330,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxDeployment+[NoContext]+Delete+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01+9": {
+  "Remove-AzNginxDeployment+[NoContext]+Delete+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/39fb1e63-2564-457a-a016-11e2b1f17e49*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -371,10 +371,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxDeployment+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments?api-version=2022-08-01+10": {
+  "Remove-AzNginxDeployment+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments?api-version=2023-04-01+10": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -412,10 +412,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test91922?api-version=2022-08-01+1": {
+  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test91922?api-version=2023-04-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test91922?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test91922?api-version=2023-04-01",
       "Content": "{\n  \"properties\": {\n    \"networkProfile\": {\n      \"frontEndIPConfiguration\": {\n        \"publicIPAddresses\": [\n          {\n            \"id\": \"/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Microsoft.Network/publicIPAddresses/test91922-ip\"\n          }\n        ]\n      },\n      \"networkInterfaceConfiguration\": {\n        \"subnetId\": \"/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Microsoft.Network/virtualNetworks/test91922-vnet/subnets/default\"\n      }\n    }\n  },\n  \"sku\": {\n    \"name\": \"preview_Monthly_gmz7xq9ge3py\"\n  },\n  \"location\": \"westcentralus\"\n}",
       "isContentBase64": false,
       "Headers": {
@@ -431,13 +431,13 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"00003aea-0000-0600-0000-632b63a80000\"" ],
-        "Location": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/751613a6-e3c9-43d1-9565-1c701e5c162e*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01" ],
+        "Location": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/751613a6-e3c9-43d1-9565-1c701e5c162e*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:0d872b79-fbba-4031-abaa-ef9aa3e0050d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/751613a6-e3c9-43d1-9565-1c701e5c162e*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/751613a6-e3c9-43d1-9565-1c701e5c162e*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01" ],
         "x-ms-request-id": [ "751613a6-e3c9-43d1-9565-1c701e5c162e" ],
         "x-ms-correlation-request-id": [ "adc66f16-a429-415c-9552-79e347eea5bc" ],
         "x-ms-routing-request-id": [ "WESTCENTRALUS:20220921T191904Z:adc66f16-a429-415c-9552-79e347eea5bc" ],
@@ -452,10 +452,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/751613a6-e3c9-43d1-9565-1c701e5c162e*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01+2": {
+  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/751613a6-e3c9-43d1-9565-1c701e5c162e*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/751613a6-e3c9-43d1-9565-1c701e5c162e*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/751613a6-e3c9-43d1-9565-1c701e5c162e*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -493,10 +493,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/751613a6-e3c9-43d1-9565-1c701e5c162e*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01+3": {
+  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/751613a6-e3c9-43d1-9565-1c701e5c162e*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/751613a6-e3c9-43d1-9565-1c701e5c162e*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/751613a6-e3c9-43d1-9565-1c701e5c162e*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -534,10 +534,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/751613a6-e3c9-43d1-9565-1c701e5c162e*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01+4": {
+  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/751613a6-e3c9-43d1-9565-1c701e5c162e*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/751613a6-e3c9-43d1-9565-1c701e5c162e*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/751613a6-e3c9-43d1-9565-1c701e5c162e*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -575,10 +575,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/751613a6-e3c9-43d1-9565-1c701e5c162e*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01+5": {
+  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/751613a6-e3c9-43d1-9565-1c701e5c162e*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/751613a6-e3c9-43d1-9565-1c701e5c162e*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/751613a6-e3c9-43d1-9565-1c701e5c162e*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -616,10 +616,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test91922?api-version=2022-08-01+6": {
+  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test91922?api-version=2023-04-01+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test91922?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test91922?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -658,10 +658,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test91922?api-version=2022-08-01+7": {
+  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test91922?api-version=2023-04-01+7": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test91922?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test91922?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -682,10 +682,10 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"000052ea-0000-0600-0000-632b64210000\"" ],
-        "Location": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01" ],
+        "Location": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01" ],
         "x-ms-request-id": [ "255d079c-febe-4b2d-bf1d-270d694ad789" ],
         "x-ms-correlation-request-id": [ "c12e9f34-14bb-4a75-97eb-35493764f82a" ],
         "x-ms-routing-request-id": [ "WESTCENTRALUS:20220921T192105Z:c12e9f34-14bb-4a75-97eb-35493764f82a" ],
@@ -702,10 +702,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01+8": {
+  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -743,10 +743,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01+9": {
+  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -784,10 +784,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01+10": {
+  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01+10": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -825,10 +825,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01+11": {
+  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01+11": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -866,10 +866,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01+12": {
+  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01+12": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -907,10 +907,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01+13": {
+  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01+13": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -948,10 +948,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01+14": {
+  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01+14": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -989,10 +989,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01+15": {
+  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01+15": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/WESTCENTRALUS/operationStatuses/255d079c-febe-4b2d-bf1d-270d694ad789*4DED123E7B6A51AF215C14A4E9881A179834269457630451885B55CD44AB0997?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1030,10 +1030,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments?api-version=2022-08-01+16": {
+  "Remove-AzNginxDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments?api-version=2023-04-01+16": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

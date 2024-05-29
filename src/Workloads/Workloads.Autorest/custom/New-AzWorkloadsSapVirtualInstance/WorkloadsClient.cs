@@ -29,9 +29,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SapVirtualInstancesCreateViaJsonString(string subscriptionId, string resourceGroupName, string sapVirtualInstanceName, string jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapVirtualInstance>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SapVirtualInstancesCreateViaJsonString(string subscriptionId, string resourceGroupName, string sapVirtualInstanceName, string jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapVirtualInstance>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {

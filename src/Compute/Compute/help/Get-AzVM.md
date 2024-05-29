@@ -33,7 +33,8 @@ Get-AzVM -Location <String> [-Status] [-UserData] [-DefaultProfile <IAzureContex
 
 ### GetVirtualMachineById
 ```
-Get-AzVM [-Status] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVM [-Status] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -442,5 +443,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Stop-AzVM](./Stop-AzVM.md)
 
 [Update-AzVM](./Update-AzVM.md)
-
-

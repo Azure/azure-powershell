@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -54,6 +54,8 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Security.AccessControl;
 using System.Security.Principal;
 using Microsoft.Azure.Commands.Common.Strategies.Compute;
+using System.Security.Policy;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -219,6 +221,7 @@ namespace Microsoft.Azure.Commands.Compute
             "FlatcarLinuxFreeGen2",
             "Win2022Datacenter",
             "Win2022AzureEditionCore",
+            "Win2022AzureEdition",
             "Win2019Datacenter",
             "Win2016Datacenter",
             "Win2012R2Datacenter",
@@ -437,6 +440,18 @@ namespace Microsoft.Azure.Commands.Compute
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
         public bool? EnableSecureBoot { get; set; } = null;
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "used to make a request conditional for the PUT and other non-safe methods. The server will only return the requested resources if the resource matches one of the listed ETag values. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.")]
+        public string IfMatch { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Used to make a request conditional for the GET and HEAD methods. The server will only return the requested resources if none of the listed ETag values match the current entity. Used to make a request conditional for the GET and HEAD methods. The server will only return the requested resources if none of the listed ETag values match the current entity. Set to '*' to allow a new record set to be created, but to prevent updating an existing record set. Other values will result in error from server as they are not supported.")]
+        public string IfNoneMatch { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -697,10 +712,12 @@ namespace Microsoft.Azure.Commands.Compute
                         sharedGalleryImageId: _cmdlet.SharedGalleryImageId,
                         securityType: _cmdlet.SecurityType,
                         enableVtpm: _cmdlet.EnableVtpm,
-                        enableSecureBoot: _cmdlet.EnableSecureBoot
+                        enableSecureBoot: _cmdlet.EnableSecureBoot,
+                        ifMatch: _cmdlet.IfMatch,
+                        ifNoneMatch: _cmdlet.IfNoneMatch
                         );
                 }
-                else
+                else  // does not get used. DiskFile parameter set is not supported.
                 {
                     var disk = resourceGroup.CreateManagedDiskConfig(
                         name: _cmdlet.Name,
@@ -763,9 +780,15 @@ namespace Microsoft.Azure.Commands.Compute
                     this.EnableVtpm = this.EnableVtpm ?? true;
                     this.EnableSecureBoot = this.EnableSecureBoot ?? true;
                 }
+                // Default in TL Image to ease later migration. 
                 else if (this.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
                 {
-                    this.SecurityType = this.SecurityType;
+                    if (!this.IsParameterBound(c => c.Image)
+                    && !this.IsParameterBound(c => c.ImageReferenceId)
+                    && !this.IsParameterBound(c => c.SharedGalleryImageId))
+                    {
+                        this.Image = ConstantValues.TrustedLaunchDefaultImageAlias;
+                    }
                 }
                 
             }
@@ -936,14 +959,12 @@ namespace Microsoft.Azure.Commands.Compute
              && this.VM.StorageProfile?.ImageReference?.SharedGalleryImageId == null) //had to add this
             {
                 defaultTrustedLaunchAndUefi();
-
                 setTrustedLaunchImage();
             }
-
             // Disk attached scenario for TL defaulting
             // Determines if the disk has SecurityType enabled.
             // If so, turns on TrustedLaunch for this VM.
-            if (this.VM.SecurityProfile?.SecurityType == null
+            else if (this.VM.SecurityProfile?.SecurityType == null
                 && this.VM.StorageProfile?.OsDisk?.ManagedDisk?.Id != null)
             {
                 var mDiskId = this.VM.StorageProfile?.OsDisk?.ManagedDisk.Id.ToString();
@@ -957,9 +978,97 @@ namespace Microsoft.Azure.Commands.Compute
                     defaultTrustedLaunchAndUefi();
                 }
             }
+            // ImageReference provided, TL defaulting occurs if image is Gen2. 
+            // This will handle when the Id is provided in a URI format and 
+            // when the image segments are provided individually.
+            else if (this.VM.SecurityProfile?.SecurityType == null
+                && this.VM.StorageProfile?.ImageReference != null)
+            {
+                if (this.VM.StorageProfile?.ImageReference?.Id != null)
+                {
+                    string imageRefString = this.VM.StorageProfile.ImageReference.Id.ToString();
 
-            // Guest Attestation extension defaulting scenario check.
-            // And SecureBootEnabled and VtpmEnabled defaulting scenario.
+                    string galleryImgIdPattern = @"/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroup>[^/]+)/providers/Microsoft.Compute/galleries/(?<gallery>[^/]+)/images/(?<image>[^/]+)";
+                    string managedImageIdPattern = @"/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroup>[^/]+)/providers/Microsoft.Compute/images/(?<image>[^/]+)";
+                    string defaultExistingImagePattern = @"/Subscriptions/(?<subscriptionId>[^/]+)/Providers/Microsoft.Compute/Locations/(?<location>[^/]+)/Publishers/(?<publisher>[^/]+)/ArtifactTypes/VMImage/Offers/(?<offer>[^/]+)/Skus/(?<sku>[^/]+)/Versions/(?<version>[^/]+)";
+
+                    //Gallery Id
+                    Regex galleryRgx = new Regex(galleryImgIdPattern, RegexOptions.IgnoreCase);
+                    Match galleryMatch = galleryRgx.Match(imageRefString);
+                    // Managed Image Id
+                    Regex managedImageRgx = new Regex(managedImageIdPattern, RegexOptions.IgnoreCase);
+                    Match managedImageMatch = managedImageRgx.Match(imageRefString);
+                    // Default Image Id
+                    Regex defaultImageRgx = new Regex(defaultExistingImagePattern, RegexOptions.IgnoreCase);
+                    Match defaultImageMatch = defaultImageRgx.Match(imageRefString);
+
+                    if (defaultImageMatch.Success)
+                    {
+                        var parts = imageRefString.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                        // It's a default existing image  
+                        string imagePublisher = parts[Array.IndexOf(parts, "Publishers") + 1];
+                        string imageOffer = parts[Array.IndexOf(parts, "Offers") + 1];
+                        string imageSku = parts[Array.IndexOf(parts, "Skus") + 1];
+                        string imageVersion = parts[Array.IndexOf(parts, "Versions") + 1];
+                        //location is required when config object provided. 
+                        var imgResponse = ComputeClient.ComputeManagementClient.VirtualMachineImages.GetWithHttpMessagesAsync(
+                                this.Location.Canonicalize(),
+                                imagePublisher,
+                                imageOffer,
+                                imageSku,
+                                version: imageVersion).GetAwaiter().GetResult();
+
+                        setHyperVGenForImageCheckAndTLDefaulting(imgResponse);
+                    }
+                    // This scenario might have additional logic added later, so making its own if check fo now.
+                    else if (galleryMatch.Success || managedImageMatch.Success)
+                    {
+                        // do nothing, send message to use TL.
+                        if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
+                        {
+                            WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
+                        }
+                    }
+                    else
+                    {
+                        // Default behavior is to remind customer to use TrustedLaunch.
+                        if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
+                        {
+                            WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
+                        }
+                    }
+                }
+                else if (this.VM.StorageProfile?.ImageReference?.SharedGalleryImageId != null) {
+                    // do nothing, send message to use TrustedLaunch.
+                    if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
+                    {
+                        WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
+                    }
+                }
+                else if (this.VM.StorageProfile?.ImageReference?.CommunityGalleryImageId != null) {
+                    // do nothing, send message to use TrustedLaunch.
+                    if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
+                    {
+                        WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
+                    }
+                }
+                else
+                {
+                    // handle each field in image reference itself to then call it.
+                    Microsoft.Rest.Azure.AzureOperationResponse<VirtualMachineImage> specificImageRespone = retrieveSpecificImageFromNotId();
+                    setHyperVGenForImageCheckAndTLDefaulting(specificImageRespone);
+                }
+            }
+            else if (this.VM.SecurityProfile?.SecurityType == ConstantValues.TrustedLaunchSecurityType
+                && this.VM.StorageProfile?.ImageReference == null
+                && this.VM.StorageProfile?.OsDisk?.ManagedDisk?.Id == null //had to add this
+                && this.VM.StorageProfile?.ImageReference?.SharedGalleryImageId == null)
+            {
+                defaultTrustedLaunchAndUefi();
+                setTrustedLaunchImage();
+            }
+
+            // SecureBootEnabled and VtpmEnabled defaulting scenario.
             if (this.VM.SecurityProfile?.SecurityType != null
                 && (this.VM.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType 
                 || this.VM.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType))
@@ -973,49 +1082,6 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     this.VM.SecurityProfile.UefiSettings = new UefiSettings(true, true);
                 }
-            }
-            
-
-            // ImageReference provided, TL defaulting occurs if image is Gen2. 
-            if (this.VM.SecurityProfile?.SecurityType == null
-                && this.VM.StorageProfile?.ImageReference != null)
-            {
-                if (this.VM.StorageProfile?.ImageReference?.Id != null)//This code should never happen apparently
-                {
-                    string imageRefString = this.VM.StorageProfile.ImageReference.Id.ToString();
-
-                    var parts = imageRefString.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-
-                    string imagePublisher = parts[Array.IndexOf(parts, "Publishers") + 1];
-                    string imageOffer = parts[Array.IndexOf(parts, "Offers") + 1];
-                    string imageSku = parts[Array.IndexOf(parts, "Skus") + 1];
-                    string imageVersion = parts[Array.IndexOf(parts, "Versions") + 1];
-                    //location is required when config object provided. 
-                    var imgResponse = ComputeClient.ComputeManagementClient.VirtualMachineImages.GetWithHttpMessagesAsync(
-                            this.Location.Canonicalize(),
-                            imagePublisher,
-                            imageOffer,
-                            imageSku,
-                            version: imageVersion).GetAwaiter().GetResult();
-
-                    setHyperVGenForImageCheckAndTLDefaulting(imgResponse);
-                }
-                else
-                {
-                    // handle each field in image reference itself to then call it.
-                    Microsoft.Rest.Azure.AzureOperationResponse<VirtualMachineImage> specificImageRespone = retrieveSpecificImageFromNotId();
-                    setHyperVGenForImageCheckAndTLDefaulting(specificImageRespone);
-                }
-            }
-
-            if (this.VM.SecurityProfile?.SecurityType == ConstantValues.TrustedLaunchSecurityType
-             && this.VM.StorageProfile?.ImageReference == null
-             && this.VM.StorageProfile?.OsDisk?.ManagedDisk?.Id == null //had to add this
-             && this.VM.StorageProfile?.ImageReference?.SharedGalleryImageId == null) 
-            {
-                defaultTrustedLaunchAndUefi();
-
-                setTrustedLaunchImage();
             }
 
             // Standard security type removing value since API does not support it yet.
@@ -1097,7 +1163,7 @@ namespace Microsoft.Azure.Commands.Compute
                         result = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.VM.Name,
-                        parameters,
+                        parameters,this.IfMatch,this.IfNoneMatch,
                         auxAuthHeader).GetAwaiter().GetResult();
                     }
                     catch (Exception ex)

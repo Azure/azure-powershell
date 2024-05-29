@@ -14,6 +14,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.Type Decision = @"Decision";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.Type Input = @"Input";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.Type Insight = @"Insight";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.Type Solution = @"Solution";

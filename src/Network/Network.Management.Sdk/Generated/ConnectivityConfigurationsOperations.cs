@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "configurationName");
             }
 
-            string apiVersion = "2023-06-01";
+            string apiVersion = "2023-11-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Management.Network
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "configurationName");
             }
 
-            string apiVersion = "2023-06-01";
+            string apiVersion = "2023-11-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -514,7 +514,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Deletes a network manager connectivity configuration, specified by the resource group, network manager name, and connectivity configuration name
+        /// Deletes a network manager connectivity configuration, specified by the
+        /// resource group, network manager name, and connectivity configuration name
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -617,7 +618,7 @@ namespace Microsoft.Azure.Management.Network
                 }
             }
 
-            string apiVersion = "2023-06-01";
+            string apiVersion = "2023-11-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -849,7 +850,7 @@ namespace Microsoft.Azure.Management.Network
             }
 
 
-            string apiVersion = "2023-06-01";
+            string apiVersion = "2023-11-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

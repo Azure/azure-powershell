@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="provisioningState">Provisioning state of server configuration option.
-        /// Possible values include: 'Created', 'InProgress', 'Succeeded', 'Failed',
-        /// 'Canceled'</param>
+        /// Possible values include: &#39;Created&#39;, &#39;InProgress&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;,
+        /// &#39;Canceled&#39;</param>
         public ServerConfigurationOptionProperties(int serverConfigurationOptionValue, string provisioningState = default(string))
 
         {

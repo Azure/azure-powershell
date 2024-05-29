@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.cdn/new-azcdnorigin
 schema: 2.0.0
@@ -17,7 +17,8 @@ New-AzCdnOrigin -EndpointName <String> -Name <String> -ProfileName <String> -Res
  [-SubscriptionId <String>] [-Enabled] [-HostName <String>] [-HttpPort <Int32>] [-HttpsPort <Int32>]
  [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkAlias <String>]
  [-PrivateLinkApprovalMessage <String>] [-PrivateLinkLocation <String>] [-PrivateLinkResourceId <String>]
- [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,7 +28,7 @@ Creates a new origin within the specified endpoint.
 
 ### Example 1: Create an AzureCDN origin under the AzureCDN endpoint
 ```powershell
-New-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1 -HostName "host1.hello.com" 
+New-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1 -HostName "host1.hello.com"
 ```
 
 ```output
@@ -375,11 +376,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOrigin
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOrigin
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

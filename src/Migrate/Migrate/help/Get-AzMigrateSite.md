@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratesite
 schema: 2.0.0
@@ -31,7 +31,6 @@ Get-AzMigrateSite -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVMwar
 ETag Location      Name                Type
 ---- --------      ----                ----
      southeastasia BBVMwareAVScbbcsite Microsoft.OffAzure/VMwareSites
-
 ```
 
 Get site by name
@@ -111,7 +110,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

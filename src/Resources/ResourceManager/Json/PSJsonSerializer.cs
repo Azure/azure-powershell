@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json
 
             if (value is JObject jObject)
             {
-                return jObject.ToObject<Dictionary<object, object>>();
+                return jObject.Properties().ToDictionary(x => x.Name, x => x.Value);
             }
 
             Type type = value.GetType();

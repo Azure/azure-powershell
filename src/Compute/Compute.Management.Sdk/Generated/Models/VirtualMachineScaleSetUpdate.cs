@@ -74,9 +74,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// instance.</param>
         /// <param name="spotRestorePolicy">Specifies the Spot Restore
         /// properties for the virtual machine scale set.</param>
+        /// <param name="resiliencyPolicy">Policy for Resiliency</param>
         /// <param name="identity">The identity of the virtual machine scale
         /// set, if configured.</param>
-        public VirtualMachineScaleSetUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), Plan plan = default(Plan), UpgradePolicy upgradePolicy = default(UpgradePolicy), AutomaticRepairsPolicy automaticRepairsPolicy = default(AutomaticRepairsPolicy), VirtualMachineScaleSetUpdateVMProfile virtualMachineProfile = default(VirtualMachineScaleSetUpdateVMProfile), bool? overprovision = default(bool?), bool? doNotRunExtensionsOnOverprovisionedVMs = default(bool?), bool? singlePlacementGroup = default(bool?), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), ScaleInPolicy scaleInPolicy = default(ScaleInPolicy), SubResource proximityPlacementGroup = default(SubResource), PriorityMixPolicy priorityMixPolicy = default(PriorityMixPolicy), SpotRestorePolicy spotRestorePolicy = default(SpotRestorePolicy), VirtualMachineScaleSetIdentity identity = default(VirtualMachineScaleSetIdentity))
+        public VirtualMachineScaleSetUpdate(IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), Plan plan = default(Plan), UpgradePolicy upgradePolicy = default(UpgradePolicy), AutomaticRepairsPolicy automaticRepairsPolicy = default(AutomaticRepairsPolicy), VirtualMachineScaleSetUpdateVMProfile virtualMachineProfile = default(VirtualMachineScaleSetUpdateVMProfile), bool? overprovision = default(bool?), bool? doNotRunExtensionsOnOverprovisionedVMs = default(bool?), bool? singlePlacementGroup = default(bool?), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), ScaleInPolicy scaleInPolicy = default(ScaleInPolicy), SubResource proximityPlacementGroup = default(SubResource), PriorityMixPolicy priorityMixPolicy = default(PriorityMixPolicy), SpotRestorePolicy spotRestorePolicy = default(SpotRestorePolicy), ResiliencyPolicy resiliencyPolicy = default(ResiliencyPolicy), VirtualMachineScaleSetIdentity identity = default(VirtualMachineScaleSetIdentity))
             : base(tags)
         {
             Sku = sku;
@@ -92,6 +93,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             ProximityPlacementGroup = proximityPlacementGroup;
             PriorityMixPolicy = priorityMixPolicy;
             SpotRestorePolicy = spotRestorePolicy;
+            ResiliencyPolicy = resiliencyPolicy;
             Identity = identity;
             CustomInit();
         }
@@ -196,6 +198,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.spotRestorePolicy")]
         public SpotRestorePolicy SpotRestorePolicy { get; set; }
+
+        /// <summary>
+        /// Gets or sets policy for Resiliency
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.resiliencyPolicy")]
+        public ResiliencyPolicy ResiliencyPolicy { get; set; }
 
         /// <summary>
         /// Gets or sets the identity of the virtual machine scale set, if

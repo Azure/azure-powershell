@@ -23,7 +23,7 @@ Create an in-memory object for TeradataDataSource.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.TeradataDataSource
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewTeradataDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewTeradataDataSourceObject
 #>
 function New-AzPurviewTeradataDataSourceObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.TeradataDataSource')]

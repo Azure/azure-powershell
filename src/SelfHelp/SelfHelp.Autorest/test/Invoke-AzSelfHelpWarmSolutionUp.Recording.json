@@ -1,0 +1,38 @@
+{
+  "Invoke-AzSelfHelpWarmSolutionUp+[NoContext]+WarmExpanded+$POST+https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/sm1dxne74h/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/solutions/mig5lps1nd/warmup?api-version=2024-03-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/sm1dxne74h/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/solutions/mig5lps1nd/warmup?api-version=2024-03-01-preview",
+      "Content": "{\n  \"parameters\": {\n    \"ProductId\": \"13491\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "50" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "499" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "d6fd6241-3468-40ff-8121-968d773e3767" ],
+        "x-ms-correlation-request-id": [ "d6fd6241-3468-40ff-8121-968d773e3767" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20240405T204626Z:d6fd6241-3468-40ff-8121-968d773e3767" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D7D8B1AF09F44E5AA5973A61E4FDDA6A Ref B: BN1AA2051015017 Ref C: 2024-04-05T20:46:24Z" ],
+        "Date": [ "Fri, 05 Apr 2024 20:46:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

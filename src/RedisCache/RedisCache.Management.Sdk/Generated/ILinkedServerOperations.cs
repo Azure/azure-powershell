@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// Adds a linked server to the Redis cache (requires Premium SKU).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// Deletes the linked server from a redis cache (requires Premium SKU).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the redis cache.
@@ -69,16 +69,18 @@ namespace Microsoft.Azure.Management.RedisCache
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string name, string linkedServerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<LinkedServerDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string name, string linkedServerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the detailed information about a linked server of a redis cache (requires Premium SKU).
+        /// Gets the detailed information about a linked server of a redis cache
+        /// (requires Premium SKU).
         /// </summary>
         /// <remarks>
-        /// Gets the detailed information about a linked server of a redis cache (requires Premium SKU).
+        /// Gets the detailed information about a linked server of a redis cache
+        /// (requires Premium SKU).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the redis cache.
@@ -101,13 +103,15 @@ namespace Microsoft.Azure.Management.RedisCache
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RedisLinkedServerWithProperties>> GetWithHttpMessagesAsync(string resourceGroupName, string name, string linkedServerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the list of linked servers associated with this redis cache (requires Premium SKU).
+        /// Gets the list of linked servers associated with this redis cache (requires
+        /// Premium SKU).
         /// </summary>
         /// <remarks>
-        /// Gets the list of linked servers associated with this redis cache (requires Premium SKU).
+        /// Gets the list of linked servers associated with this redis cache (requires
+        /// Premium SKU).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the redis cache.
@@ -133,7 +137,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// Adds a linked server to the Redis cache (requires Premium SKU).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -165,7 +169,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// Deletes the linked server from a redis cache (requires Premium SKU).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the redis cache.
@@ -182,13 +186,15 @@ namespace Microsoft.Azure.Management.RedisCache
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string name, string linkedServerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<LinkedServerDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string name, string linkedServerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the list of linked servers associated with this redis cache (requires Premium SKU).
+        /// Gets the list of linked servers associated with this redis cache (requires
+        /// Premium SKU).
         /// </summary>
         /// <remarks>
-        /// Gets the list of linked servers associated with this redis cache (requires Premium SKU).
+        /// Gets the list of linked servers associated with this redis cache (requires
+        /// Premium SKU).
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

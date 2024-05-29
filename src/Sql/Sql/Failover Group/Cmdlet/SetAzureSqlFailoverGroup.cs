@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,6 +23,7 @@ using System.Linq;
 using System.Management.Automation;
 using System;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 {
@@ -59,7 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The failover policy of the Azure SQL Database Failover Group.")]
         [ValidateNotNullOrEmpty]
-        [PSDefaultValue(Help = "Automatic")]
+        [PSDefaultValue(Help = "Manual", Value = FailoverPolicy.Manual)]
         public FailoverPolicy FailoverPolicy { get; set; }
 
         /// <summary>
@@ -103,13 +104,13 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         protected override IEnumerable<AzureSqlFailoverGroupModel> GetEntity()
         {
             bool useV2Get = MyInvocation.BoundParameters.ContainsKey("PartnerServerList");
-            AzureSqlFailoverGroupModel model = ModelAdapter.GetFailoverGroup(this.ResourceGroupName, this.ServerName, this.FailoverGroupName, useV2Get);
+            AzureSqlFailoverGroupModel model = ModelAdapter.GetFailoverGroup(this.ResourceGroupName, this.ServerName, this.FailoverGroupName);
 
             // For cases when existing failover group is multi-secondary, but no multi-secondary properties change in the Set invocation.
             if (model.PartnerServers != null && model.PartnerServers.Any() && model.PartnerServers.Count > 1)
             {
                 useV2Get = true;
-                model = ModelAdapter.GetFailoverGroup(this.ResourceGroupName, this.ServerName, this.FailoverGroupName, useV2Get);
+                model = ModelAdapter.GetFailoverGroup(this.ResourceGroupName, this.ServerName, this.FailoverGroupName);
             }
             return new List<AzureSqlFailoverGroupModel>() { model };
         }

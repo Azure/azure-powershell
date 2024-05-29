@@ -14,7 +14,8 @@ Gets a Storage Mover resource.
 
 ### List (Default)
 ```
-Get-AzStorageMover [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStorageMover [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -31,7 +32,8 @@ Get-AzStorageMover -ResourceGroupName <String> [-SubscriptionId <String[]>] [-De
 
 ### GetViaIdentity
 ```
-Get-AzStorageMover -InputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStorageMover -InputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

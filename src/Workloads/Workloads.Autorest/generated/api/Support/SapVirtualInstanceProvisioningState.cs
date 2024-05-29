@@ -10,6 +10,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support
     public partial struct SapVirtualInstanceProvisioningState :
         System.IEquatable<SapVirtualInstanceProvisioningState>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapVirtualInstanceProvisioningState Canceled = @"Canceled";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapVirtualInstanceProvisioningState Creating = @"Creating";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapVirtualInstanceProvisioningState Deleting = @"Deleting";

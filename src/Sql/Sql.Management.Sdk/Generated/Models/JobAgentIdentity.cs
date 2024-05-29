@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="type">The job agent identity type
-        /// Possible values include: 'None', 'SystemAssigned', 'UserAssigned',
-        /// 'SystemAssignedUserAssigned'</param>
+        /// Possible values include: &#39;None&#39;, &#39;SystemAssigned&#39;, &#39;UserAssigned&#39;,
+        /// &#39;SystemAssignedUserAssigned&#39;</param>
 
         /// <param name="userAssignedIdentities">The resource ids of the user assigned identities to use
         /// </param>

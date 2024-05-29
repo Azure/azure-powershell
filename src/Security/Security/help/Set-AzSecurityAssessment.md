@@ -17,7 +17,8 @@ Create or update a security assessment result on a resource
 Set-AzSecurityAssessment -Name <String> -StatusCode <String> [-StatusCause <String>]
  [-StatusDescription <String>]
  [-AdditionalData <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdLevelResource
@@ -25,7 +26,8 @@ Set-AzSecurityAssessment -Name <String> -StatusCode <String> [-StatusCause <Stri
 Set-AzSecurityAssessment -Name <String> -AssessedResourceId <String> -StatusCode <String>
  [-StatusCause <String>] [-StatusDescription <String>]
  [-AdditionalData <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

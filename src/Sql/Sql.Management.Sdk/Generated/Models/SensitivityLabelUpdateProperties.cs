@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
 
         /// <param name="op">
-        /// Possible values include: 'set', 'remove'</param>
+        /// Possible values include: &#39;set&#39;, &#39;remove&#39;</param>
 
         /// <param name="schema">Schema name of the column to update.
         /// </param>

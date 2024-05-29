@@ -28,13 +28,15 @@ Restore-AzKeyVaultKey -HsmName <String> [-InputFile] <String> [-DefaultProfile <
 ### ByInputObject
 ```
 Restore-AzKeyVaultKey [-InputObject] <PSKeyVault> [-InputFile] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### HsmByInputObject
 ```
 Restore-AzKeyVaultKey [-HsmObject] <PSManagedHsm> [-InputFile] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceId
@@ -258,4 +260,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzKeyVaultKey](./Get-AzKeyVaultKey.md)
 
 [Remove-AzKeyVaultKey](./Remove-AzKeyVaultKey.md)
-

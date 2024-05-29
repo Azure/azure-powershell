@@ -13,17 +13,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
-using System.Globalization;
-using Microsoft.Azure.Commands.NetAppFiles.Helpers;
+using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using System.Collections.Generic;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Backup
 {
@@ -180,8 +177,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
-                var restoreFileResponse = AzureNetAppFilesManagementClient.Backups.RestoreFiles(resourceGroupName: ResourceGroupName, accountName: AccountName, poolName: PoolName, volumeName: VolumeName, backupName: Name, body: backupRestoreFiles);
-                success = true;
+                try
+                {
+                    var restoreFileResponse = AzureNetAppFilesManagementClient.Backups.RestoreFiles(resourceGroupName: ResourceGroupName, accountName: AccountName, poolName: PoolName, volumeName: VolumeName, backupName: Name, body: backupRestoreFiles);
+                    success = true;
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
             if (PassThru.IsPresent)
             {

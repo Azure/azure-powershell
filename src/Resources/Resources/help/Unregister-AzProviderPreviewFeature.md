@@ -14,7 +14,8 @@ Removes a feature registration from your account.
 
 ```
 Unregister-AzProviderPreviewFeature -Name <String> -ProviderNamespace <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

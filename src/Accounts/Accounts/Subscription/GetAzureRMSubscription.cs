@@ -74,8 +74,7 @@ namespace Microsoft.Azure.Commands.Profile
                     {
                         ThrowSubscriptionNotFoundError(this.TenantId, this.SubscriptionName);
                     }
-
-                    WriteObject(result.Select((s) => new PSAzureSubscription(s)), enumerateCollection: true); 
+                    WriteSubscriptions(result);
                 }
                 catch (AadAuthenticationException exception)
                 {
@@ -117,13 +116,13 @@ namespace Microsoft.Azure.Commands.Profile
                         if (TenantId.Equals(DefaultContext.Tenant.Id))
                         {
                             var subscriptions = _client.ListSubscriptions(TenantId);
-                            WriteObject(subscriptions.Select((s) => new PSAzureSubscription(s)), enumerateCollection: true);
+                            WriteSubscriptions(subscriptions);
                         }
                     }
                     else
                     {
                         var subscriptions = _client.ListSubscriptions(TenantId);
-                        WriteObject(subscriptions.Select((s) => new PSAzureSubscription(s)), enumerateCollection: true);
+                        WriteSubscriptions(subscriptions);
                     }
                 }
                 catch (AadAuthenticationException exception)
@@ -145,7 +144,13 @@ namespace Microsoft.Azure.Commands.Profile
         {
             throw new PSArgumentException(string.Format(Resources.TenantAuthFailed, tenant), exception);
         }
+
+        private void WriteSubscriptions(IEnumerable<IAzureSubscription> subscriptions)
+        {
+            if (null != subscriptions && subscriptions.Any())
+            {
+                WriteObject(subscriptions.Select((s) => new PSAzureSubscription(s)).OrderBy(s => s.TenantId).ThenBy(s=>s.Name), enumerateCollection: true);
+            }
+        }
     }
-
-
 }

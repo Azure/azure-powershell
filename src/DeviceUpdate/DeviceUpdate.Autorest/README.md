@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the DeviceUpdate service.
 
 ---
-## Status
-[![Az.DeviceUpdate](https://img.shields.io/powershellgallery/v/Az.DeviceUpdate.svg?style=flat-square&label=Az.DeviceUpdate "Az.DeviceUpdate")](https://www.powershellgallery.com/packages/Az.DeviceUpdate/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -30,9 +27,9 @@ For information on how to develop for `Az.DeviceUpdate`, see [how-to.md](how-to.
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: a7480c1f8b16b7b2be41de94726dca359e93178b
+commit: a7480c1f8b16b7b2be41de94726dca359e93178b
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/deviceupdate/resource-manager/Microsoft.DeviceUpdate/stable/2022-10-01/privatelinks.json
   - $(repo)/specification/deviceupdate/resource-manager/Microsoft.DeviceUpdate/stable/2022-10-01/deviceupdate.json
@@ -44,6 +41,10 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - where:

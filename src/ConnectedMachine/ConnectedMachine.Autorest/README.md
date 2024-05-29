@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the ConnectedMachine service.
 
 ---
-## Status
-[![Az.ConnectedMachine](https://img.shields.io/powershellgallery/v/Az.ConnectedMachine.svg?style=flat-square&label=Az.ConnectedMachine "Az.ConnectedMachine")](https://www.powershellgallery.com/packages/Az.ConnectedMachine/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -41,12 +38,12 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
  
 ``` yaml
-commit: 2d044b8a317aff46d45080f5a797ac376955f648
+commit: 9c51b17f1c544eea0f6a67c01a6b763995521f52
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2023-10-03-preview/HybridCompute.json
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2023-10-03-preview/privateLinkScopes.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-03-31-preview/HybridCompute.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-03-31-preview/privateLinkScopes.json
  
 module-version: 0.5.0
 title: ConnectedMachine
@@ -84,16 +81,7 @@ directive:
             "description": "The expand expression to apply on the operation.",
           }
         ]
- 
-  - from: swagger-document
-    where: $.definitions.Machine.properties.properties
-    transform: >-
-      return {
-          "x-ms-client-flatten": true,
-          "$ref": "#/definitions/MachineProperties",
-          "description": "Hybrid Compute Machine properties"
-        }
- 
+
   - from: swagger-document
     where: $.definitions.MachineExtensionUpdateProperties.properties
     transform: >-
@@ -133,6 +121,7 @@ directive:
           "description": "The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all."
         }
       }
+
   - from: swagger-document
     where: $.definitions.MachineExtensionProperties.properties
     transform: >-
@@ -181,6 +170,7 @@ directive:
           "description": "The machine extension instance view."
         }
       }
+
   # add 200 response to run-command delete 
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands/{runCommandName}"].delete.responses
@@ -213,7 +203,7 @@ directive:
         "default": {
           "description": "Error response describing why the operation failed.",
           "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/2d044b8a317aff46d45080f5a797ac376955f648/specification/common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+            "$ref": "../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
           }
         }
       }
@@ -265,6 +255,12 @@ directive:
       parameter-name: AgentUpgradeEnableAutomaticUpgrade
     set:
       parameter-name: AgentUpgradeEnableAutomatic
+    
+  # Rename Tag to Tags
+  - where:
+      property-name: Tag
+    set:
+      property-name: Tags
  
   # Formatting
   - where:
@@ -324,21 +320,48 @@ directive:
       subject: MachineRunCommand
       verb: Set
     remove: true
-
-  # add back when swagger change is checked in
-  - where:
-      subject: License
-    remove: true
+  # internal API
   - where:
       subject: LicenseProfile
     remove: true
   - where:
-      subject: NetworkConfiguration
+      subject: Extension
+      variant: Upgrade
+    remove: true
+
+  # we will release gateway and setting commands in a seperate module
+  - where:
+      subject: Gateway
     remove: true
   - where:
-      subject: NetworkSecurityPerimeterConfiguration$
+      subject: Setting
     remove: true
- 
+
+  # We don't want user to send PATCH to the ESU license API
+  - where:
+      subject: License
+      verb: Update
+    remove: true
+  - where:
+      subject: License
+      verb: Validate
+    remove: true
+  - where:
+      subject: License
+      verb: Test
+    remove: true
+
+  # We don't want user to talk directly to the network configuration API
+  - where:
+      subject: NetworkConfiguration
+    remove: true
+
+  # Remove when this API is fixed
+  - where:
+      subject: ReconcileNetworkSecurityPerimeterConfiguration$
+      verb: Invoke
+    remove: true
+
   # Removing non-expand commands
   - where:
       subject: MachinePatch
@@ -361,7 +384,13 @@ directive:
         description: Gets the list of ResourceGroupName's available for this subscription.
         script: Get-AzResourceGroup | Select-Object -ExpandProperty ResourceGroupName
  
-  # These APIs are used by the agent so they do not need to be in the cmdlets.
+  # These APIs are used by the agent so they do not need to be in the cmdlets
   - remove-operation: Machines_CreateOrUpdate
   - remove-operation: MachineRunCommands_Update
+
+  # Create model cmdlet for complex object
+  - model-cmdlet:
+    - model-name: LicenseDetails
+      cmdlet-name: New-AzConnectedLicenseDetail
+
 ```

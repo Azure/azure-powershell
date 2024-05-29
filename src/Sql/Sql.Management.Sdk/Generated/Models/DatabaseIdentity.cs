@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
 
         /// <param name="type">The identity type
-        /// Possible values include: 'None', 'UserAssigned'</param>
+        /// Possible values include: &#39;None&#39;, &#39;UserAssigned&#39;</param>
 
         /// <param name="tenantId">The Azure Active Directory tenant id.
         /// </param>

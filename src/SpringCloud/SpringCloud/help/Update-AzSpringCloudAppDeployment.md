@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SpringCloud-help.xml
 Module Name: Az.SpringCloud
 online version: https://learn.microsoft.com/powershell/module/az.springcloud/update-azspringcloudappdeployment
 schema: 2.0.0
@@ -18,7 +18,7 @@ Update-AzSpringCloudAppDeployment -AppName <String> -Name <String> -ResourceGrou
  -ServiceName <String> [-SubscriptionId <String>] [-Active] [-AddonConfig <Hashtable>]
  [-EnvironmentVariable <Hashtable>] [-ResourceRequestCpu <String>] [-ResourceRequestMemory <String>]
  [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>] [-Source <IUserSourceInfo>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -26,7 +26,7 @@ Update-AzSpringCloudAppDeployment -AppName <String> -Name <String> -ResourceGrou
 Update-AzSpringCloudAppDeployment -InputObject <ISpringCloudIdentity> [-Active] [-AddonConfig <Hashtable>]
  [-EnvironmentVariable <Hashtable>] [-ResourceRequestCpu <String>] [-ResourceRequestMemory <String>]
  [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>] [-Source <IUserSourceInfo>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -420,4 +420,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[Version <String>]`: Version of the source
 
 ## RELATED LINKS
-

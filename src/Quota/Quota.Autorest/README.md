@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Quota service.
 
 ---
-## Status
-[![Az.Quota](https://img.shields.io/powershellgallery/v/Az.Quota.svg?style=flat-square&label=Az.Quota "Az.Quota")](https://www.powershellgallery.com/packages/Az.Quota/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

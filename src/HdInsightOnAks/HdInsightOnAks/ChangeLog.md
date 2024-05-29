@@ -19,6 +19,21 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 0.1.1
+* Changes in the Cluster Pool
+  - Enable create cluster pool with user network profile.
+  - Enable get cluster pool available upgrade versions.
+  - Enable upgrade cluster pool.
+* Changes in the Cluster
+  - Enable create Ranger cluster.
+  - Enable get cluster available upgrade versions.
+  - Enable set internal ingress.
+  - Enable upgrade cluster.
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 0.1.0
 * First preview release for module Az.HdInsightOnAks
 

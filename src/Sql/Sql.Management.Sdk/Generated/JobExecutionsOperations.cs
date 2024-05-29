@@ -42,7 +42,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Lists all executions in a job agent.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -51,16 +52,20 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the job agent.
         /// </param>
         /// <param name='createTimeMin'>
-        /// If specified, only job executions created at or after the specified time are included.
+        /// If specified, only job executions created at or after the specified time
+        /// are included.
         /// </param>
         /// <param name='createTimeMax'>
-        /// If specified, only job executions created before the specified time are included.
+        /// If specified, only job executions created before the specified time are
+        /// included.
         /// </param>
         /// <param name='endTimeMin'>
-        /// If specified, only job executions completed at or after the specified time are included.
+        /// If specified, only job executions completed at or after the specified time
+        /// are included.
         /// </param>
         /// <param name='endTimeMax'>
-        /// If specified, only job executions completed before the specified time are included.
+        /// If specified, only job executions completed before the specified time are
+        /// included.
         /// </param>
         /// <param name='isActive'>
         /// If specified, only active or only completed job executions are included.
@@ -325,7 +330,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Lists a job&#39;s executions.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -337,16 +343,20 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the job to get.
         /// </param>
         /// <param name='createTimeMin'>
-        /// If specified, only job executions created at or after the specified time are included.
+        /// If specified, only job executions created at or after the specified time
+        /// are included.
         /// </param>
         /// <param name='createTimeMax'>
-        /// If specified, only job executions created before the specified time are included.
+        /// If specified, only job executions created before the specified time are
+        /// included.
         /// </param>
         /// <param name='endTimeMin'>
-        /// If specified, only job executions completed at or after the specified time are included.
+        /// If specified, only job executions completed at or after the specified time
+        /// are included.
         /// </param>
         /// <param name='endTimeMax'>
-        /// If specified, only job executions completed before the specified time are included.
+        /// If specified, only job executions completed before the specified time are
+        /// included.
         /// </param>
         /// <param name='isActive'>
         /// If specified, only active or only completed job executions are included.
@@ -618,7 +628,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a job execution.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -854,7 +865,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates or updates a job execution.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -885,7 +897,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Requests cancellation of a job execution.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -1100,7 +1113,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Starts an elastic job execution.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -1128,7 +1142,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates or updates a job execution.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -1382,7 +1397,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Starts an elastic job execution.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.

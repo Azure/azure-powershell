@@ -28,19 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "User".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("User", "User", global::System.Management.Automation.CompletionResultType.ParameterValue, "User");
+                yield return new global::System.Management.Automation.CompletionResult("'User'", "User", global::System.Management.Automation.CompletionResultType.ParameterValue, "User");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Application".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Application", "Application", global::System.Management.Automation.CompletionResultType.ParameterValue, "Application");
+                yield return new global::System.Management.Automation.CompletionResult("'Application'", "Application", global::System.Management.Automation.CompletionResultType.ParameterValue, "Application");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ManagedIdentity".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ManagedIdentity", "ManagedIdentity", global::System.Management.Automation.CompletionResultType.ParameterValue, "ManagedIdentity");
+                yield return new global::System.Management.Automation.CompletionResult("'ManagedIdentity'", "ManagedIdentity", global::System.Management.Automation.CompletionResultType.ParameterValue, "ManagedIdentity");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Key".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Key", "Key", global::System.Management.Automation.CompletionResultType.ParameterValue, "Key");
+                yield return new global::System.Management.Automation.CompletionResult("'Key'", "Key", global::System.Management.Automation.CompletionResultType.ParameterValue, "Key");
             }
         }
     }

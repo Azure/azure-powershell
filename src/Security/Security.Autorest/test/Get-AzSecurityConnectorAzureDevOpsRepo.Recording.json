@@ -1,0 +1,190 @@
+{
+  "Get-AzSecurityConnectorAzureDevOpsRepo+[NoContext]+List+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos?api-version=2023-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos?api-version=2023-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "9558e794-b6e0-4245-ad7e-99a589307e08" ],
+        "CommandName": [ "Get-AzSecurityConnectorAzureDevOpsRepo" ],
+        "FullCommandName": [ "Get-AzSecurityConnectorAzureDevOpsRepo_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=b0d653e3d2c4fba6e75578139341b84b35dee63a8a317f007b2447d8196b79e5;Path=/;HttpOnly;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com", "ARRAffinitySameSite=b0d653e3d2c4fba6e75578139341b84b35dee63a8a317f007b2447d8196b79e5;Path=/;HttpOnly;SameSite=None;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Request-Context": [ "appId=cid-v1:b8e19897-bfe4-49ad-ad76-b9526fa18eea" ],
+        "mise-correlation-id": [ "1fbff945-4344-4882-b3b9-53d8b84c3ddd" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "1ad617b3-5ee4-4517-893a-563144994b22" ],
+        "x-ms-correlation-request-id": [ "1ad617b3-5ee4-4517-893a-563144994b22" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T020836Z:1ad617b3-5ee4-4517-893a-563144994b22" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: BDE645F1B6C24AD0B14DAEE42E58248E Ref B: CO6AA3150220037 Ref C: 2024-02-14T02:08:35Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:08:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "9840" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"parentOrgName\":\"dfdsdktests\",\"parentProjectName\":\"ContosoSDKDfd\",\"repoId\":\"22a344e3-8ad3-4a97-88a6-768a4e710777\",\"repoUrl\":\"https://dev.azure.com/dfdsdktests/ContosoSDKDfd/_git/ContosoSDKDfd\",\"onboardingState\":\"Onboarded\",\"actionableRemediation\":{\"state\":\"Enabled\",\"categoryConfigurations\":[{\"minimumSeverityLevel\":\"High\",\"category\":\"IaC\"}],\"branchConfiguration\":{\"branchNames\":[],\"annotateDefaultBranch\":\"Enabled\"},\"inheritFromParentState\":\"Enabled\"},\"provisioningStatusMessage\":\"OK\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:34:19Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos/ContosoSDKDfd\",\"name\":\"ContosoSDKDfd\",\"type\":\"Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs/projects/repos\"},{\"properties\":{\"parentOrgName\":\"dfdsdktests\",\"parentProjectName\":\"ContosoSDKDfd\",\"repoId\":\"35cd4811-63c7-4043-8587-f0a9cf37709e\",\"repoUrl\":\"https://dev.azure.com/dfdsdktests/ContosoSDKDfd/_git/TestApp0\",\"onboardingState\":\"Onboarded\",\"actionableRemediation\":{\"state\":\"Enabled\",\"categoryConfigurations\":[{\"minimumSeverityLevel\":\"High\",\"category\":\"IaC\"}],\"branchConfiguration\":{\"branchNames\":[],\"annotateDefaultBranch\":\"Enabled\"},\"inheritFromParentState\":\"Enabled\"},\"provisioningStatusMessage\":\"OK\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:34:19Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos/TestApp0\",\"name\":\"TestApp0\",\"type\":\"Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs/projects/repos\"},{\"properties\":{\"parentOrgName\":\"dfdsdktests\",\"parentProjectName\":\"ContosoSDKDfd\",\"repoId\":\"77c1e69a-41a5-4de7-8b9c-0acab45f5bca\",\"repoUrl\":\"https://dev.azure.com/dfdsdktests/ContosoSDKDfd/_git/TestApp2\",\"onboardingState\":\"Onboarded\",\"actionableRemediation\":{\"state\":\"Enabled\",\"categoryConfigurations\":[{\"minimumSeverityLevel\":\"High\",\"category\":\"IaC\"}],\"branchConfiguration\":{\"branchNames\":[],\"annotateDefaultBranch\":\"Enabled\"},\"inheritFromParentState\":\"Enabled\"},\"provisioningStatusMessage\":\"OK\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:34:19Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos/TestApp2\",\"name\":\"TestApp2\",\"type\":\"Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs/projects/repos\"},{\"properties\":{\"parentOrgName\":\"dfdsdktests\",\"parentProjectName\":\"ContosoSDKDfd\",\"repoId\":\"e42d18c5-0cef-4f19-9b09-3e2ab58e9be6\",\"repoUrl\":\"https://dev.azure.com/dfdsdktests/ContosoSDKDfd/_git/TestApp5\",\"onboardingState\":\"Onboarded\",\"actionableRemediation\":{\"state\":\"Enabled\",\"categoryConfigurations\":[{\"minimumSeverityLevel\":\"High\",\"category\":\"IaC\"}],\"branchConfiguration\":{\"branchNames\":[],\"annotateDefaultBranch\":\"Enabled\"},\"inheritFromParentState\":\"Enabled\"},\"provisioningStatusMessage\":\"OK\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:34:19Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos/TestApp5\",\"name\":\"TestApp5\",\"type\":\"Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs/projects/repos\"},{\"properties\":{\"parentOrgName\":\"dfdsdktests\",\"parentProjectName\":\"ContosoSDKDfd\",\"repoId\":\"0d2570d8-0dfd-480a-93c4-4b945d4bd240\",\"repoUrl\":\"https://dev.azure.com/dfdsdktests/ContosoSDKDfd/_git/TestApp8\",\"onboardingState\":\"Onboarded\",\"actionableRemediation\":{\"state\":\"Enabled\",\"categoryConfigurations\":[{\"minimumSeverityLevel\":\"High\",\"category\":\"IaC\"}],\"branchConfiguration\":{\"branchNames\":[],\"annotateDefaultBranch\":\"Enabled\"},\"inheritFromParentState\":\"Enabled\"},\"provisioningStatusMessage\":\"OK\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:34:19Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos/TestApp8\",\"name\":\"TestApp8\",\"type\":\"Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs/projects/repos\"},{\"properties\":{\"parentOrgName\":\"dfdsdktests\",\"parentProjectName\":\"ContosoSDKDfd\",\"repoId\":\"36b0a509-f1d8-4d7a-82f7-66493fbcc766\",\"repoUrl\":\"https://dev.azure.com/dfdsdktests/ContosoSDKDfd/_git/TestApp6\",\"onboardingState\":\"Onboarded\",\"actionableRemediation\":{\"state\":\"Enabled\",\"categoryConfigurations\":[{\"minimumSeverityLevel\":\"High\",\"category\":\"IaC\"}],\"branchConfiguration\":{\"branchNames\":[],\"annotateDefaultBranch\":\"Enabled\"},\"inheritFromParentState\":\"Enabled\"},\"provisioningStatusMessage\":\"OK\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:34:19Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos/TestApp6\",\"name\":\"TestApp6\",\"type\":\"Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs/projects/repos\"},{\"properties\":{\"parentOrgName\":\"dfdsdktests\",\"parentProjectName\":\"ContosoSDKDfd\",\"repoId\":\"cece391b-987e-4418-9091-69c009c076a2\",\"repoUrl\":\"https://dev.azure.com/dfdsdktests/ContosoSDKDfd/_git/TestApp1\",\"onboardingState\":\"Onboarded\",\"actionableRemediation\":{\"state\":\"Enabled\",\"categoryConfigurations\":[{\"minimumSeverityLevel\":\"High\",\"category\":\"IaC\"}],\"branchConfiguration\":{\"branchNames\":[],\"annotateDefaultBranch\":\"Enabled\"},\"inheritFromParentState\":\"Enabled\"},\"provisioningStatusMessage\":\"OK\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:34:19Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos/TestApp1\",\"name\":\"TestApp1\",\"type\":\"Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs/projects/repos\"},{\"properties\":{\"parentOrgName\":\"dfdsdktests\",\"parentProjectName\":\"ContosoSDKDfd\",\"repoId\":\"7b15f005-9985-44b3-b6ef-7c1b50400f1f\",\"repoUrl\":\"https://dev.azure.com/dfdsdktests/ContosoSDKDfd/_git/TestApp9\",\"onboardingState\":\"Onboarded\",\"actionableRemediation\":{\"state\":\"Enabled\",\"categoryConfigurations\":[{\"minimumSeverityLevel\":\"High\",\"category\":\"IaC\"}],\"branchConfiguration\":{\"branchNames\":[],\"annotateDefaultBranch\":\"Enabled\"},\"inheritFromParentState\":\"Enabled\"},\"provisioningStatusMessage\":\"OK\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:34:19Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos/TestApp9\",\"name\":\"TestApp9\",\"type\":\"Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs/projects/repos\"},{\"properties\":{\"parentOrgName\":\"dfdsdktests\",\"parentProjectName\":\"ContosoSDKDfd\",\"repoId\":\"e6fdca92-f9f8-4d62-a327-840ed4fa6c54\",\"repoUrl\":\"https://dev.azure.com/dfdsdktests/ContosoSDKDfd/_git/TestApp4\",\"onboardingState\":\"Onboarded\",\"actionableRemediation\":{\"state\":\"Enabled\",\"categoryConfigurations\":[{\"minimumSeverityLevel\":\"High\",\"category\":\"IaC\"}],\"branchConfiguration\":{\"branchNames\":[],\"annotateDefaultBranch\":\"Enabled\"},\"inheritFromParentState\":\"Enabled\"},\"provisioningStatusMessage\":\"OK\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:34:19Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos/TestApp4\",\"name\":\"TestApp4\",\"type\":\"Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs/projects/repos\"},{\"properties\":{\"parentOrgName\":\"dfdsdktests\",\"parentProjectName\":\"ContosoSDKDfd\",\"repoId\":\"7ae95dbf-2233-454a-930b-9a23039d9af2\",\"repoUrl\":\"https://dev.azure.com/dfdsdktests/ContosoSDKDfd/_git/TestApp7\",\"onboardingState\":\"Onboarded\",\"actionableRemediation\":{\"state\":\"Enabled\",\"categoryConfigurations\":[{\"minimumSeverityLevel\":\"High\",\"category\":\"IaC\"}],\"branchConfiguration\":{\"branchNames\":[],\"annotateDefaultBranch\":\"Enabled\"},\"inheritFromParentState\":\"Enabled\"},\"provisioningStatusMessage\":\"OK\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:34:19Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos/TestApp7\",\"name\":\"TestApp7\",\"type\":\"Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs/projects/repos\"}],\"nextLink\":\"https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos?api-version=2023-09-01-preview\\u0026continuation-token=eyJPcHRpbWlzdGljRGlyZWN0RXhlY3V0aW9uVG9rZW4iOnsidG9rZW4iOiIrUklEOn42RElDQUxFR1p5aXZTUVFBQUFBQURBPT0jUlQ6MSNUUkM6MTAjSVNWOjIjSUVPOjY1NTY3I1FDRjo4I0ZQQzpBYTlKQkFBQUFBQU1zVWtFQUFBQUFBdz0iLCJyYW5nZSI6eyJtaW4iOiIwNUMxRTVCNUUzNkY4NiIsIm1heCI6IkZGIn19fQ==\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSecurityConnectorAzureDevOpsRepo+[NoContext]+List+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos?api-version=2023-09-01-preview\u0026continuation-token=eyJPcHRpbWlzdGljRGlyZWN0RXhlY3V0aW9uVG9rZW4iOnsidG9rZW4iOiIrUklEOn42RElDQUxFR1p5aXZTUVFBQUFBQURBPT0jUlQ6MSNUUkM6MTAjSVNWOjIjSUVPOjY1NTY3I1FDRjo4I0ZQQzpBYTlKQkFBQUFBQU1zVWtFQUFBQUFBdz0iLCJyYW5nZSI6eyJtaW4iOiIwNUMxRTVCNUUzNkY4NiIsIm1heCI6IkZGIn19fQ==+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos?api-version=2023-09-01-preview\u0026continuation-token=eyJPcHRpbWlzdGljRGlyZWN0RXhlY3V0aW9uVG9rZW4iOnsidG9rZW4iOiIrUklEOn42RElDQUxFR1p5aXZTUVFBQUFBQURBPT0jUlQ6MSNUUkM6MTAjSVNWOjIjSUVPOjY1NTY3I1FDRjo4I0ZQQzpBYTlKQkFBQUFBQU1zVWtFQUFBQUFBdz0iLCJyYW5nZSI6eyJtaW4iOiIwNUMxRTVCNUUzNkY4NiIsIm1heCI6IkZGIn19fQ==",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "9558e794-b6e0-4245-ad7e-99a589307e08" ],
+        "CommandName": [ "Get-AzSecurityConnectorAzureDevOpsRepo" ],
+        "FullCommandName": [ "Get-AzSecurityConnectorAzureDevOpsRepo_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=ca594a79766484e25889904bf326227201e6905138dd325ca221b8b7af91ccae;Path=/;HttpOnly;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com", "ARRAffinitySameSite=ca594a79766484e25889904bf326227201e6905138dd325ca221b8b7af91ccae;Path=/;HttpOnly;SameSite=None;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Request-Context": [ "appId=cid-v1:b8e19897-bfe4-49ad-ad76-b9526fa18eea" ],
+        "mise-correlation-id": [ "b27f6e6b-b7d6-4466-aa84-48797b8c2b28" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "5f49fd83-75aa-44ad-baeb-4a444c354297" ],
+        "x-ms-correlation-request-id": [ "5f49fd83-75aa-44ad-baeb-4a444c354297" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T020837Z:5f49fd83-75aa-44ad-baeb-4a444c354297" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8EDF57E486E3420F8C90623CC06F9586 Ref B: CO6AA3150220037 Ref C: 2024-02-14T02:08:36Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:08:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1864" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"parentOrgName\":\"dfdsdktests\",\"parentProjectName\":\"ContosoSDKDfd\",\"repoId\":\"c52cd770-0ef6-44c1-8d7f-a631dda6f3d6\",\"repoUrl\":\"https://dev.azure.com/dfdsdktests/ContosoSDKDfd/_git/TestApp10\",\"onboardingState\":\"Onboarded\",\"actionableRemediation\":{\"state\":\"Enabled\",\"categoryConfigurations\":[{\"minimumSeverityLevel\":\"High\",\"category\":\"IaC\"}],\"branchConfiguration\":{\"branchNames\":[],\"annotateDefaultBranch\":\"Enabled\"},\"inheritFromParentState\":\"Enabled\"},\"provisioningStatusMessage\":\"OK\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:34:19Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos/TestApp10\",\"name\":\"TestApp10\",\"type\":\"Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs/projects/repos\"},{\"properties\":{\"parentOrgName\":\"dfdsdktests\",\"parentProjectName\":\"ContosoSDKDfd\",\"repoId\":\"53065519-b543-47e3-941b-d38608f985fa\",\"repoUrl\":\"https://dev.azure.com/dfdsdktests/ContosoSDKDfd/_git/TestApp3\",\"onboardingState\":\"Onboarded\",\"actionableRemediation\":{\"state\":\"Enabled\",\"categoryConfigurations\":[{\"minimumSeverityLevel\":\"High\",\"category\":\"IaC\"}],\"branchConfiguration\":{\"branchNames\":[],\"annotateDefaultBranch\":\"Enabled\"},\"inheritFromParentState\":\"Enabled\"},\"provisioningStatusMessage\":\"OK\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:34:19Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos/TestApp3\",\"name\":\"TestApp3\",\"type\":\"Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs/projects/repos\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSecurityConnectorAzureDevOpsRepo+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos/TestApp0?api-version=2023-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos/TestApp0?api-version=2023-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "3223d8d7-87de-4cee-a462-648f52998337" ],
+        "CommandName": [ "Get-AzSecurityConnectorAzureDevOpsRepo" ],
+        "FullCommandName": [ "Get-AzSecurityConnectorAzureDevOpsRepo_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=b0d653e3d2c4fba6e75578139341b84b35dee63a8a317f007b2447d8196b79e5;Path=/;HttpOnly;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com", "ARRAffinitySameSite=b0d653e3d2c4fba6e75578139341b84b35dee63a8a317f007b2447d8196b79e5;Path=/;HttpOnly;SameSite=None;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Request-Context": [ "appId=cid-v1:b8e19897-bfe4-49ad-ad76-b9526fa18eea" ],
+        "mise-correlation-id": [ "db269018-e974-4168-9579-7140d44ba837" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "b649ac04-deb1-4c8f-a040-29035fb7ecb2" ],
+        "x-ms-correlation-request-id": [ "b649ac04-deb1-4c8f-a040-29035fb7ecb2" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T020837Z:b649ac04-deb1-4c8f-a040-29035fb7ecb2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DE7C8835191B429B974044F2E25BB777 Ref B: CO6AA3150220037 Ref C: 2024-02-14T02:08:37Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:08:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "924" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"parentOrgName\":\"dfdsdktests\",\"parentProjectName\":\"ContosoSDKDfd\",\"repoId\":\"35cd4811-63c7-4043-8587-f0a9cf37709e\",\"repoUrl\":\"https://dev.azure.com/dfdsdktests/ContosoSDKDfd/_git/TestApp0\",\"onboardingState\":\"Onboarded\",\"actionableRemediation\":{\"state\":\"Enabled\",\"categoryConfigurations\":[{\"minimumSeverityLevel\":\"High\",\"category\":\"IaC\"}],\"branchConfiguration\":{\"branchNames\":[],\"annotateDefaultBranch\":\"Enabled\"},\"inheritFromParentState\":\"Enabled\"},\"provisioningStatusMessage\":\"OK\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:34:19Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos/TestApp0\",\"name\":\"TestApp0\",\"type\":\"Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs/projects/repos\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSecurityConnectorAzureDevOpsRepo+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos/TestApp0?api-version=2023-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos/TestApp0?api-version=2023-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "498be2d4-1043-4996-8b49-c5aef8aa16aa" ],
+        "CommandName": [ "Get-AzSecurityConnectorAzureDevOpsRepo" ],
+        "FullCommandName": [ "Get-AzSecurityConnectorAzureDevOpsRepo_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=1c6c7a0a18efcd0c1f62ff61ff05f8a61bfe22533cfce5122cfd179979045df0;Path=/;HttpOnly;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com", "ARRAffinitySameSite=1c6c7a0a18efcd0c1f62ff61ff05f8a61bfe22533cfce5122cfd179979045df0;Path=/;HttpOnly;SameSite=None;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Request-Context": [ "appId=cid-v1:b8e19897-bfe4-49ad-ad76-b9526fa18eea" ],
+        "mise-correlation-id": [ "3e730443-a62d-467f-989b-566f227246d9" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "3c473061-a47d-4996-acd5-ec99c7ab4e9b" ],
+        "x-ms-correlation-request-id": [ "3c473061-a47d-4996-acd5-ec99c7ab4e9b" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T020838Z:3c473061-a47d-4996-acd5-ec99c7ab4e9b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 23DFD558EB204ACD918BB7C84157092A Ref B: CO6AA3150220037 Ref C: 2024-02-14T02:08:38Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:08:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "924" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"parentOrgName\":\"dfdsdktests\",\"parentProjectName\":\"ContosoSDKDfd\",\"repoId\":\"35cd4811-63c7-4043-8587-f0a9cf37709e\",\"repoUrl\":\"https://dev.azure.com/dfdsdktests/ContosoSDKDfd/_git/TestApp0\",\"onboardingState\":\"Onboarded\",\"actionableRemediation\":{\"state\":\"Enabled\",\"categoryConfigurations\":[{\"minimumSeverityLevel\":\"High\",\"category\":\"IaC\"}],\"branchConfiguration\":{\"branchNames\":[],\"annotateDefaultBranch\":\"Enabled\"},\"inheritFromParentState\":\"Enabled\"},\"provisioningStatusMessage\":\"OK\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:34:19Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos/TestApp0\",\"name\":\"TestApp0\",\"type\":\"Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs/projects/repos\"}",
+      "isContentBase64": false
+    }
+  }
+}

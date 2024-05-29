@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="description">
         /// </param>
-        public ResourceGuardProxyBase(string resourceGuardResourceId = default(string), System.Collections.Generic.IList<ResourceGuardOperationDetail> resourceGuardOperationDetails = default(System.Collections.Generic.IList<ResourceGuardOperationDetail>), string lastUpdatedTime = default(string), string description = default(string))
+        public ResourceGuardProxyBase(string resourceGuardResourceId, System.Collections.Generic.IList<ResourceGuardOperationDetail> resourceGuardOperationDetails = default(System.Collections.Generic.IList<ResourceGuardOperationDetail>), string lastUpdatedTime = default(string), string description = default(string))
 
         {
             this.ResourceGuardResourceId = resourceGuardResourceId;
@@ -71,5 +71,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "description")]
         public string Description {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (this.ResourceGuardResourceId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ResourceGuardResourceId");
+            }
+
+
+
+
+        }
     }
 }

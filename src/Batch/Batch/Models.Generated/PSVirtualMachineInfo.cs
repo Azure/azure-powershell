@@ -74,5 +74,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 this.imageReference = value;
             }
         }
+        
+        public string ScaleSetVmResourceId
+        {
+            get
+            {
+                return this.omObject.ScaleSetVmResourceId;
+            }
+            set
+            {
+                this.omObject.ScaleSetVmResourceId = value;
+            }
+        }
     }
 }

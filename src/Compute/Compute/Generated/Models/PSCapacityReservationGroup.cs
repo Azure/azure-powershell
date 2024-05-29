@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Management.Compute.Models;
@@ -16,5 +16,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public IList<SubResourceReadOnly> VirtualMachinesAssociated { get; set; }
         public CapacityReservationGroupInstanceView InstanceView { get; set; }
         public IList<string> Zones { get; set; }
+        public ResourceSharingProfile SharingProfile { get; set; }
     }
 }

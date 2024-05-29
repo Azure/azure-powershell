@@ -14,7 +14,8 @@ Gets a log profile.
 ## SYNTAX
 
 ```
-Get-AzLogProfile [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzLogProfile [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,5 +104,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Add-AzLogProfile](./Add-AzLogProfile.md)
 
 [Remove-AzLogProfile](./Remove-AzLogProfile.md)
-
-

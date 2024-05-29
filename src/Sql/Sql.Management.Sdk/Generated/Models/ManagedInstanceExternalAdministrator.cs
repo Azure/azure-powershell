@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
 
         /// <param name="administratorType">Type of the sever administrator.
-        /// Possible values include: 'ActiveDirectory'</param>
+        /// Possible values include: &#39;ActiveDirectory&#39;</param>
 
         /// <param name="principalType">Principal Type of the sever administrator.
-        /// Possible values include: 'User', 'Group', 'Application'</param>
+        /// Possible values include: &#39;User&#39;, &#39;Group&#39;, &#39;Application&#39;</param>
 
         /// <param name="login">Login name of the server administrator.
         /// </param>

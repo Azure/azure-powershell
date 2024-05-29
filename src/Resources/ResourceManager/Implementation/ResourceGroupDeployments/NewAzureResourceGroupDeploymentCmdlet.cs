@@ -78,6 +78,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Aux tenant ids for cross tenant references in deployments.")]
+        public string[] AuxTenant { get; set; }
+
         protected override ConfirmImpact ConfirmImpact => ((CmdletAttribute)Attribute.GetCustomAttribute(
             typeof(NewAzureResourceGroupDeploymentCmdlet),
             typeof(CmdletAttribute))).ConfirmImpact;
@@ -102,7 +105,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     Type = RollbackToLastDeployment ? OnErrorDeploymentType.LastSuccessful : OnErrorDeploymentType.SpecificDeployment,
                     DeploymentName = RollbackToLastDeployment ? null : RollBackDeploymentName
                 }
-                : null
+                : null,
+            AuxTenantHeaders = GetAuxiliaryAuthHeaderFromTenantIds(AuxTenant)
         };
 
         protected override PSDeploymentWhatIfCmdletParameters BuildWhatIfParameters() => new PSDeploymentWhatIfCmdletParameters(
@@ -117,7 +121,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             templateParametersUri: this.TemplateParameterUri,
             templateParametersObject: this.GetTemplateParameterObject(),
             resultFormat: this.WhatIfResultFormat,
-            excludeChangeTypes: this.WhatIfExcludeChangeType); 
+            excludeChangeTypes: this.WhatIfExcludeChangeType);
 
         protected override void OnProcessRecord()
         {

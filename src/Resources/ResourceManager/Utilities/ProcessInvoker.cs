@@ -99,14 +99,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                 }
             }
 
+            var stderr = new StringBuilder();
+            proc.ErrorDataReceived += (sender, e) =>  stderr.AppendLine(e.Data);
             proc.Start();
-            var stdout = proc.StandardOutput.ReadToEnd();
-            var stderr = proc.StandardError.ReadToEnd();
+    
+            // To avoid deadlocks, use an asynchronous read operation on at least one of the streams.  
+            proc.BeginErrorReadLine();
+            var stdout = proc.StandardOutput.ReadToEnd();  
             proc.WaitForExit();
-
+    
             return new ProcessOutput {
                 Stdout = stdout,
-                Stderr = stderr,
+                Stderr = stderr.ToString(),
                 ExitCode = proc.ExitCode
             };
         }

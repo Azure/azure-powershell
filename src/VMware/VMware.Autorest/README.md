@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the VMware service.
 
 ---
-## Status
-[![Az.VMware](https://img.shields.io/powershellgallery/v/Az.VMware.svg?style=flat-square&label=Az.VMware "Az.VMware")](https://www.powershellgallery.com/packages/Az.VMware/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -47,22 +44,20 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 2e665b044670074d91e8a9e6d04f23fbe3c8a06e
+commit: e934daa5febe039d94794aa0ffc53a7f996db11f
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
-input-file: 
-  - $(repo)/specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json
+  - $(this-folder)/../../readme.azure.noprofile.md
+input-file:
+  - $(repo)/specification/vmware/resource-manager/Microsoft.AVS/stable/2023-09-01/vmware.json
 
 module-version: 0.4.0
 title: VMware
 subject-prefix: $(service-name)
 
-identity-correction-for-post: true
-resourcegroup-append: true
-nested-object-to-string: true
+support-json-input: false
 
 directive:
-  - from: swagger-document 
+  - from: swagger-document
     where: $.definitions.AdminCredentials.properties.nsxtPassword
     transform: >-
       return {
@@ -72,7 +67,7 @@ directive:
           "x-ms-secret": true,
           "format": "password"
       }
-  - from: swagger-document 
+  - from: swagger-document
     where: $.definitions.AdminCredentials.properties.vcenterPassword
     transform: >-
       return {
@@ -83,7 +78,7 @@ directive:
           "format": "password"
       }
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?Expanded)
     remove: true
   - where:
       variant: ^Restrict$|^RestrictViaIdentity$
@@ -121,21 +116,58 @@ directive:
     remove: true
   - where:
       verb: Test
-      subject: ^LocationTrialAvailability$|^LocationQuotaAvailability$
+      subject: ^LocationQuotaAvailability$
       variant: ^CheckViaIdentity$
+    remove: true
+  # Remove v4 variant
+  - where:
+      verb: Test
+      subject: ^LocationTrialAvailability$
+      variant: ^Check$|CheckViaIdentity
+    remove: true
+  - where:
+      verb: New
+      subject: PrivateCloud
+      variant: CreateViaIdentityExpanded
+    remove: true
+  # custom set SKU Name optional
+  # - where:
+  #     verb: Test
+  #     subject: ^LocationTrialAvailability$
+  #   hide: true
+  # Remove the list variant as the workloadNetwork only have one enum value
+  - where:
+      verb: Get
+      subject: WorkloadNetwork
+  #   variant: List
+    hide: true
+  # Hide parent object variant to fix 'multiple types define RestrictMovement [string, IVirtualMachineRestrictMovement]'
+  - where:
+      verb: Lock
+      subject: VirtualMachineMovement
+      variant: ^RestrictViaIdentityCluster$|^RestrictViaIdentityPrivateCloud$
+    remove: true
+  # Hide HcxEnterpriseSite, ScriptExecution, Addon update
+  - where:
+      verb: Update
+      subject: HcxEnterpriseSite|ScriptExecution|Addon
     remove: true
   - no-inline:
       - AddonProperties
       - PlacementPolicyProperties
   # Re-name and custom it
-  # - model-cmdlet:
-  #     - VMPlacementPolicyProperties
-  #     - VmHostPlacementPolicyProperties
-  #     - ScriptSecureStringExecutionParameter
-  #     - ScriptStringExecutionParameter
-  #     - PSCredentialExecutionParameter
-  #     - AddonSrmProperties
-  #     - AddonVrProperties
+  - model-cmdlet:
+      - model-name: VMPlacementPolicyProperties
+        cmdlet-name: New-AzVMwareVMPlacementPolicyPropertyObject
+      - model-name: VmHostPlacementPolicyProperties
+        cmdlet-name: New-AzVMwareVmHostPlacementPolicyPropertyObject
+      # - model-name: ScriptSecureStringExecutionParameter
+      # - model-name: ScriptStringExecutionParameter
+      # - model-name: PSCredentialExecutionParameter
+      # - model-name: AddonSrmProperties
+      #   cmdlet-name: New-AzVMwareAddonSrmPropertyObject
+      # - model-name: AddonVrProperties
+      #   cmdlet-name: New-AzVMwareAddonVrPropertyObject
   - where:
       verb: Get
       subject: ^PrivateCloudAdminCredentials$

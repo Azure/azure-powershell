@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Support
 {
 
+    /// <summary>The type of validation to run against a matching request.</summary>
     public partial struct ValidationType :
         System.IEquatable<ValidationType>
     {
@@ -18,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Support
         /// <param name="value">the value to convert to an instance of <see cref="ValidationType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ValidationType(System.Convert.ToString(value));
+            return new ValidationType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ValidationType</summary>
@@ -51,7 +52,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Support
             return this._value;
         }
 
-        /// <summary>Creates an instance of the <see cref="ValidationType" Enum class./></summary>
+        /// <summary>Creates an instance of the <see cref="ValidationType"/> Enum class.</summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private ValidationType(string underlyingValue)
         {
@@ -75,8 +76,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Support
         }
 
         /// <summary>Overriding != operator for enum ValidationType</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Support.ValidationType e1, Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Support.ValidationType e2)
         {
@@ -84,8 +85,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Support
         }
 
         /// <summary>Overriding == operator for enum ValidationType</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Support.ValidationType e1, Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Support.ValidationType e2)
         {

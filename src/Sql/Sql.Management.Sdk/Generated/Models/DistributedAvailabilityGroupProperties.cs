@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="replicationMode">The replication mode of a distributed availability group. Parameter will be
         /// ignored during link creation.
-        /// Possible values include: 'Async', 'Sync'</param>
+        /// Possible values include: &#39;Async&#39;, &#39;Sync&#39;</param>
 
         /// <param name="distributedAvailabilityGroupId">The distributed availability group id
         /// </param>

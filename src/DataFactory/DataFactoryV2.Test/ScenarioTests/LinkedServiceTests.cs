@@ -51,5 +51,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
         {
             TestRunner.RunTestScript("Test-LinkedServiceWithResourceId");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLinkedServiceWithSqlServerV2()
+        {
+            TestRunner.RunTestScript("Test-LinkedService-SqlServer");
+        }
     }
 }

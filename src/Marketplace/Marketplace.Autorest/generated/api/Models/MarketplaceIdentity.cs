@@ -67,6 +67,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The admin request approval ID to get create or update",
         SerializedName = @"adminRequestApprovalId",
         PossibleTypes = new [] { typeof(string) })]
@@ -75,6 +78,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The collection ID",
         SerializedName = @"collectionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -83,6 +89,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -91,6 +100,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The offer ID to update or delete",
         SerializedName = @"offerId",
         PossibleTypes = new [] { typeof(string) })]
@@ -99,6 +111,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The store ID - must use the tenant ID",
         SerializedName = @"privateStoreId",
         PossibleTypes = new [] { typeof(string) })]
@@ -107,6 +122,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The request approval ID to get create or update",
         SerializedName = @"requestApprovalId",
         PossibleTypes = new [] { typeof(string) })]

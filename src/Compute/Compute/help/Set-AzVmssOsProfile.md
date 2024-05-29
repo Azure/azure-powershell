@@ -547,5 +547,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Add-AzVmssSecret](./Add-AzVmssSecret.md)
 
 [New-AzVmssConfig](./New-AzVmssConfig.md)
-
-

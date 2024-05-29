@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 if ($UsePreviousConfigForRecord) {
     $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
@@ -77,6 +102,7 @@ function setupEnv() {
         Write-Host "$TableName results: $status"
     }
     write-Host "Starting sleep to allow time for ingestion"
+    #Start-Sleep -Seconds 600
     Start-WaitForData 600
 
     # Alert Rules that trigger off custom data.
@@ -155,7 +181,7 @@ function setupEnv() {
     #$DeviceCodeRequest = Invoke-RestMethod @DeviceCodeRequestParams
     #Write-Host $DeviceCodeRequest.message -ForegroundColor Yellow
     #write-host "You need to go login with the data above. script will continue in "
-    #start-testsleep -Seconds 120
+    #start-sleep -Seconds 120
     #$uri = "https://login.microsoftonline.com/"+$env.Tenant+"/oauth2/token"
     #$TokenRequestParams = @{
     #    Method = 'POST'
@@ -187,7 +213,7 @@ function setupEnv() {
     $TemplateFile = (Get-ChildItem $TemplatePath\authorization\template.json).FullName
     $TemplateParametersFile = (Get-ChildItem $TemplatePath\authorization\template.parameters.json).FullName
     $result = New-AzDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name Authorization -ResourceGroupName $resourceGroupName
-    Start-TestSleep 60
+    start-sleep 60
 
     #Create Automation Rule
     Write-Host "Start to create test automation rule"

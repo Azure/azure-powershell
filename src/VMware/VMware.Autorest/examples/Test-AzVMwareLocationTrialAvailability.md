@@ -1,6 +1,6 @@
 ### Example 1: Check trial availability
 ```powershell
-Test-AzVMwareLocationTrialAvailability -Location westcentralus
+Test-AzVMwareLocationTrialAvailability -Location westcentralus -Name av36
 ```
 ```output
 AvailableHost Status

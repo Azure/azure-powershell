@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
 
         /// <param name="requestedBackupStorageRedundancy">The storage redundancy type of the copied backup
-        /// Possible values include: 'Geo', 'Local', 'Zone', 'GeoZone'</param>
+        /// Possible values include: &#39;Geo&#39;, &#39;Local&#39;, &#39;Zone&#39;, &#39;GeoZone&#39;</param>
         public UpdateLongTermRetentionBackupParameters(string requestedBackupStorageRedundancy = default(string))
 
         {

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SpringCloud-help.xml
 Module Name: Az.SpringCloud
 online version: https://learn.microsoft.com/powershell/module/az.springcloud/test-azspringcloudconfigserver
 schema: 2.0.0
@@ -18,7 +18,7 @@ Test-AzSpringCloudConfigServer -Name <String> -ResourceGroupName <String> [-Subs
  [-GitHostKey <String>] [-GitHostKeyAlgorithm <String>] [-GitLabel <String>] [-GitPassword <String>]
  [-GitPrivateKey <String>] [-GitRepository <IGitPatternRepository[]>] [-GitSearchPath <String[]>]
  [-GitStrictHostKeyChecking] [-GitUri <String>] [-GitUsername <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentityExpanded
@@ -26,8 +26,8 @@ Test-AzSpringCloudConfigServer -Name <String> -ResourceGroupName <String> [-Subs
 Test-AzSpringCloudConfigServer -InputObject <ISpringCloudIdentity> [-GitHostKey <String>]
  [-GitHostKeyAlgorithm <String>] [-GitLabel <String>] [-GitPassword <String>] [-GitPrivateKey <String>]
  [-GitRepository <IGitPatternRepository[]>] [-GitSearchPath <String[]>] [-GitStrictHostKeyChecking]
- [-GitUri <String>] [-GitUsername <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-GitUri <String>] [-GitUsername <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +37,7 @@ Check if the config server settings are valid.
 
 ### Example 1: Check if the config server settings are valid
 ```powershell
- Test-AzSpringCloudConfigServer -ResourceGroupName SpringCloud-gp-junxi -Name springcloud-service
+Test-AzSpringCloudConfigServer -ResourceGroupName SpringCloud-gp-junxi -Name springcloud-service
 ```
 
 ```output
@@ -409,4 +409,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS
-

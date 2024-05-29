@@ -14,7 +14,8 @@ Retrieve a list of organization objects.
 
 ```
 Get-AzADOrganization [-Count] [-Expand <String[]>] [-Filter <String>] [-Orderby <String[]>] [-Search <String>]
- [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -182,4 +183,3 @@ ALIASES
 ## RELATED LINKS
 
 [Find more info here](https://learn.microsoft.com/graph/api/organization-list?view=graph-rest-1.0)
-

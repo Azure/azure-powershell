@@ -14,7 +14,8 @@ Disable delete retention policy  for the Azure Storage Blob service.
 
 ```
 Disable-AzStorageDeleteRetentionPolicy [-PassThru] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -131,6 +131,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).RunCommandName = (string) content.GetValueForProperty("RunCommandName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).RunCommandName, global::System.Convert.ToString);
             }
+            if (content.Contains("GatewayName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).GatewayName = (string) content.GetValueForProperty("GatewayName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).GatewayName, global::System.Convert.ToString);
+            }
+            if (content.Contains("BaseProvider"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).BaseProvider = (string) content.GetValueForProperty("BaseProvider",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).BaseProvider, global::System.Convert.ToString);
+            }
+            if (content.Contains("BaseResourceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).BaseResourceType = (string) content.GetValueForProperty("BaseResourceType",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).BaseResourceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("BaseResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).BaseResourceName = (string) content.GetValueForProperty("BaseResourceName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).BaseResourceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SettingsResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).SettingsResourceName = (string) content.GetValueForProperty("SettingsResourceName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).SettingsResourceName, global::System.Convert.ToString);
+            }
             if (content.Contains("ScopeName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).ScopeName = (string) content.GetValueForProperty("ScopeName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).ScopeName, global::System.Convert.ToString);
@@ -231,6 +251,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("RunCommandName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).RunCommandName = (string) content.GetValueForProperty("RunCommandName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).RunCommandName, global::System.Convert.ToString);
+            }
+            if (content.Contains("GatewayName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).GatewayName = (string) content.GetValueForProperty("GatewayName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).GatewayName, global::System.Convert.ToString);
+            }
+            if (content.Contains("BaseProvider"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).BaseProvider = (string) content.GetValueForProperty("BaseProvider",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).BaseProvider, global::System.Convert.ToString);
+            }
+            if (content.Contains("BaseResourceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).BaseResourceType = (string) content.GetValueForProperty("BaseResourceType",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).BaseResourceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("BaseResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).BaseResourceName = (string) content.GetValueForProperty("BaseResourceName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).BaseResourceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SettingsResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).SettingsResourceName = (string) content.GetValueForProperty("SettingsResourceName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).SettingsResourceName, global::System.Convert.ToString);
             }
             if (content.Contains("ScopeName"))
             {

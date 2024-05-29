@@ -70,10 +70,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_daysAfterModificationGreaterThan = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("daysAfterModificationGreaterThan"), out var __jsonDaysAfterModificationGreaterThan) ? (float?)__jsonDaysAfterModificationGreaterThan : DaysAfterModificationGreaterThan;}
-            {_daysAfterLastAccessTimeGreaterThan = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("daysAfterLastAccessTimeGreaterThan"), out var __jsonDaysAfterLastAccessTimeGreaterThan) ? (float?)__jsonDaysAfterLastAccessTimeGreaterThan : DaysAfterLastAccessTimeGreaterThan;}
-            {_daysAfterLastTierChangeGreaterThan = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("daysAfterLastTierChangeGreaterThan"), out var __jsonDaysAfterLastTierChangeGreaterThan) ? (float?)__jsonDaysAfterLastTierChangeGreaterThan : DaysAfterLastTierChangeGreaterThan;}
-            {_daysAfterCreationGreaterThan = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("daysAfterCreationGreaterThan"), out var __jsonDaysAfterCreationGreaterThan) ? (float?)__jsonDaysAfterCreationGreaterThan : DaysAfterCreationGreaterThan;}
+            {_daysAfterModificationGreaterThan = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("daysAfterModificationGreaterThan"), out var __jsonDaysAfterModificationGreaterThan) ? (float?)__jsonDaysAfterModificationGreaterThan : _daysAfterModificationGreaterThan;}
+            {_daysAfterLastAccessTimeGreaterThan = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("daysAfterLastAccessTimeGreaterThan"), out var __jsonDaysAfterLastAccessTimeGreaterThan) ? (float?)__jsonDaysAfterLastAccessTimeGreaterThan : _daysAfterLastAccessTimeGreaterThan;}
+            {_daysAfterLastTierChangeGreaterThan = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("daysAfterLastTierChangeGreaterThan"), out var __jsonDaysAfterLastTierChangeGreaterThan) ? (float?)__jsonDaysAfterLastTierChangeGreaterThan : _daysAfterLastTierChangeGreaterThan;}
+            {_daysAfterCreationGreaterThan = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("daysAfterCreationGreaterThan"), out var __jsonDaysAfterCreationGreaterThan) ? (float?)__jsonDaysAfterCreationGreaterThan : _daysAfterCreationGreaterThan;}
             AfterFromJson(json);
         }
 

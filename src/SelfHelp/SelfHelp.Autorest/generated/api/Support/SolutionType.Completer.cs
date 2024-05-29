@@ -34,6 +34,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Solutions'", "Solutions", global::System.Management.Automation.CompletionResultType.ParameterValue, "Solutions");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Troubleshooters".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Troubleshooters'", "Troubleshooters", global::System.Management.Automation.CompletionResultType.ParameterValue, "Troubleshooters");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "SelfHelp".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'SelfHelp'", "SelfHelp", global::System.Management.Automation.CompletionResultType.ParameterValue, "SelfHelp");
+            }
         }
     }
 }

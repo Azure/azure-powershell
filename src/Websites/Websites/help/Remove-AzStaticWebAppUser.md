@@ -15,14 +15,14 @@ Description for Deletes the user entry from the static site.
 ### Delete (Default)
 ```
 Remove-AzStaticWebAppUser -AuthProvider <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -UserId <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] -UserId <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzStaticWebAppUser -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzStaticWebAppUser -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

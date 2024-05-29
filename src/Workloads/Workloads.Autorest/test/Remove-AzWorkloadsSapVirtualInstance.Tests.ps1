@@ -17,11 +17,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzWorkloadsSapVirtualI
 Describe 'Remove-AzWorkloadsSapVirtualInstance' {
     It 'Delete' {
         $deletedVIS = Remove-AzWorkloadsSapVirtualInstance -Name $env.DeletionVIS -ResourceGroupName $env.DeletionRG
-        $deletedVIS.Status | Should -Be $env.ProvisioningState
+        $deletedVIS.Status | Should -Be $null
     }
 
     It 'DeleteViaIdentity' {
         $deletedVIS = Remove-AzWorkloadsSapVirtualInstance -InputObject $env.DeletionVISID
-        $deletedVIS.Status | Should -Be $env.ProvisioningState
+        $deletedVIS.Status | Should -Be $null
     }
 }

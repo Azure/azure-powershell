@@ -15,7 +15,8 @@ Get deployment operation for management group deployment
 ### GetByDeploymentName (Default)
 ```
 Get-AzManagementGroupDeploymentOperation -ManagementGroupId <String> -DeploymentName <String>
- [-OperationId <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-OperationId <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByDeploymentObject

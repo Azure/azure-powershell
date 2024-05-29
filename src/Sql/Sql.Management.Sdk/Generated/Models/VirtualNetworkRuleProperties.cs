@@ -32,8 +32,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="state">Virtual Network Rule State
-        /// Possible values include: 'Initializing', 'InProgress', 'Ready', 'Failed',
-        /// 'Deleting', 'Unknown'</param>
+        /// Possible values include: &#39;Initializing&#39;, &#39;InProgress&#39;, &#39;Ready&#39;, &#39;Failed&#39;,
+        /// &#39;Deleting&#39;, &#39;Unknown&#39;</param>
         public VirtualNetworkRuleProperties(string virtualNetworkSubnetId, bool? ignoreMissingVnetServiceEndpoint = default(bool?), string state = default(string))
 
         {

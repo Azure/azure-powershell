@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="restorePointType">The type of restore point
-        /// Possible values include: 'CONTINUOUS', 'DISCRETE'</param>
+        /// Possible values include: &#39;CONTINUOUS&#39;, &#39;DISCRETE&#39;</param>
 
         /// <param name="earliestRestoreDate">The earliest time to which this database can be restored
         /// </param>

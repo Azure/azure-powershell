@@ -16,11 +16,14 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.Profile.Models.Core;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Linq;
+
 using Xunit;
 using Xunit.Abstractions;
 
@@ -57,7 +60,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             Assert.True(CommandRuntimeMock.OutputPipeline.Count == 2);
-            Assert.Equal(TenantId, ((PSAzureTenant)CommandRuntimeMock.OutputPipeline[1]).Id.ToString());
+            // skip first item as it's PSAzureContext
+            Assert.Contains(TenantId, CommandRuntimeMock.OutputPipeline.Skip(1).Select(tenant => ((PSAzureTenant)tenant).Id));
         }
 
         [Fact]
@@ -76,7 +80,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             Assert.True(CommandRuntimeMock.OutputPipeline.Count >= 2);
-            Assert.Equal(TenantId, ((PSAzureTenant)CommandRuntimeMock.OutputPipeline[1]).Id.ToString());
+            // skip first item as it's PSAzureContext
+            Assert.Contains(TenantId, CommandRuntimeMock.OutputPipeline.Skip(1).Select(tenant => ((PSAzureTenant)tenant).Id));
         }
 
         [Fact]
@@ -94,7 +99,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             Assert.True(CommandRuntimeMock.OutputPipeline.Count >= 2);
-            Assert.Equal(TenantId, ((PSAzureTenant)CommandRuntimeMock.OutputPipeline[1]).Id.ToString());
+            // skip first item as it's PSAzureContext
+            Assert.Contains(TenantId, CommandRuntimeMock.OutputPipeline.Skip(1).Select(tenant => ((PSAzureTenant)tenant).Id));
         }
 
         private void Login(string subscriptionId, string tenantId)

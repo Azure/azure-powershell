@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.TokenCac
             ContextContainerInitializer = new Lazy<IAzureContextContainer>(getContextContainer);
         }
 
-        public void MigrateFromAdalToMsal()
+        public void MigrateFromAdalToMsal(string tokenCacheFile)
         {
             MsalCacheHelper cacheHelper = null;
             var builder = PublicClientApplicationBuilder.Create(Constants.PowerShellClientId);
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.TokenCac
                         if (!HasRegistered)
                         {
                             HasRegistered = true;
-                            cacheHelper = MsalCacheHelperProvider.GetCacheHelper();
+                            cacheHelper = MsalCacheHelperProvider.GetCacheHelper(tokenCacheFile);
                             cacheHelper.RegisterCache(clientApplication.UserTokenCache);
                         }
                     }
@@ -100,7 +100,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.TokenCac
                         var tenantId = GetTenantId(account.Username);
                         if(!string.IsNullOrEmpty(tenantId))
                         {
-                            clientApplication.AcquireTokenSilent(scopes, account).WithAuthority(environment.ActiveDirectoryAuthority, tenantId).ExecuteAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+                            var uriBuilder = new UriBuilder(environment.ActiveDirectoryAuthority)
+                            {
+                                Path = tenantId
+                            };
+                            clientApplication.AcquireTokenSilent(scopes, account).WithTenantIdFromAuthority(uriBuilder.Uri).ExecuteAsync().ConfigureAwait(false).GetAwaiter().GetResult();
                         }
                     }
                     //TODO: Set HomeAccountId for migration

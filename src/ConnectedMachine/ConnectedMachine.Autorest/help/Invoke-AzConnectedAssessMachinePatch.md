@@ -37,7 +37,7 @@ Invoke-AzConnectedAssessMachinePatch -Name testMachine -ResourceGroupName az-sdk
 ```output
 AssessmentActivityId                 LastModifiedDateTime OSType  PatchServiceUsed RebootPending StartDateTime       StartedBy  Status
 --------------------                 -------------------- ------  ---------------- ------------- -------------       ---------  ------
-3e456d9e-9789-4427-b631-84c587afeade 8/2/2023 7:59:25 AM  Windows WU               False         7/28/2023 7:56:18 AM User      Succeed
+********-****-****-****-********** 8/2/2023 7:59:25 AM  Windows WU               False         7/28/2023 7:56:18 AM User      Succeed
 ```
 
 Invoke machine patches.
@@ -77,7 +77,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity

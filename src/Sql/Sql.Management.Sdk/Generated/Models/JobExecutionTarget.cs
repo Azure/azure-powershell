@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
 
         /// <param name="type">The type of the target.
-        /// Possible values include: 'TargetGroup', 'SqlDatabase', 'SqlElasticPool',
-        /// 'SqlShardMap', 'SqlServer'</param>
+        /// Possible values include: &#39;TargetGroup&#39;, &#39;SqlDatabase&#39;, &#39;SqlElasticPool&#39;,
+        /// &#39;SqlShardMap&#39;, &#39;SqlServer&#39;</param>
 
         /// <param name="serverName">The server name.
         /// </param>

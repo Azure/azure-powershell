@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public partial interface IJobsOperations
     {
         /// <summary>
-        /// Triggers export of jobs specified by filters and returns an OperationID to track.
+        /// Triggers export of jobs specified by filters and returns an OperationID to
+        /// track.
         /// </summary>
         /// <remarks>
-        /// Triggers export of jobs specified by filters and returns an OperationID to track.
+        /// Triggers export of jobs specified by filters and returns an OperationID to
+        /// track.
         /// </remarks>
         /// <param name='odataQuery'>
         /// 
@@ -26,7 +28,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

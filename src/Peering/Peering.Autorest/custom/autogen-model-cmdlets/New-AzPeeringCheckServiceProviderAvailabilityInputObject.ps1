@@ -23,7 +23,7 @@ Create an in-memory object for CheckServiceProviderAvailabilityInput.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.CheckServiceProviderAvailabilityInput
 .Link
-https://learn.microsoft.com/powershell/module/az.Peering/new-AzPeeringCheckServiceProviderAvailabilityInputObject
+https://learn.microsoft.com/powershell/module/Az.Peering/new-AzPeeringCheckServiceProviderAvailabilityInputObject
 #>
 function New-AzPeeringCheckServiceProviderAvailabilityInputObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.CheckServiceProviderAvailabilityInput')]

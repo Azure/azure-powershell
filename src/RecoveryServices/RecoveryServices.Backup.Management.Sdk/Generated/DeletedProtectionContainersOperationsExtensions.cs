@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
@@ -42,7 +43,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.

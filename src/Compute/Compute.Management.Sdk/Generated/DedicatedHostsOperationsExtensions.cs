@@ -326,6 +326,62 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
+            /// Redeploy the dedicated host. The operation will complete successfully once
+            /// the dedicated host has migrated to a new node and is running. To determine
+            /// the health of VMs deployed on the dedicated host after the redeploy check
+            /// the Resource Health Center in the Azure Portal. Please refer to
+            /// https://docs.microsoft.com/azure/service-health/resource-health-overview
+            /// for more details.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='hostGroupName'>
+            /// The name of the dedicated host group.
+            /// </param>
+            /// <param name='hostName'>
+            /// The name of the dedicated host.
+            /// </param>
+            public static DedicatedHostsRedeployHeaders Redeploy(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName)
+            {
+                return operations.RedeployAsync(resourceGroupName, hostGroupName, hostName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Redeploy the dedicated host. The operation will complete successfully once
+            /// the dedicated host has migrated to a new node and is running. To determine
+            /// the health of VMs deployed on the dedicated host after the redeploy check
+            /// the Resource Health Center in the Azure Portal. Please refer to
+            /// https://docs.microsoft.com/azure/service-health/resource-health-overview
+            /// for more details.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='hostGroupName'>
+            /// The name of the dedicated host group.
+            /// </param>
+            /// <param name='hostName'>
+            /// The name of the dedicated host.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DedicatedHostsRedeployHeaders> RedeployAsync(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.RedeployWithHttpMessagesAsync(resourceGroupName, hostGroupName, hostName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <summary>
             /// Lists all available dedicated host sizes to which the specified dedicated
             /// host can be resized. NOTE: The dedicated host sizes provided can be used to
             /// only scale up the existing dedicated host.
@@ -573,6 +629,62 @@ namespace Microsoft.Azure.Management.Compute
             public static async Task BeginRestartAsync(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginRestartWithHttpMessagesAsync(resourceGroupName, hostGroupName, hostName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Redeploy the dedicated host. The operation will complete successfully once
+            /// the dedicated host has migrated to a new node and is running. To determine
+            /// the health of VMs deployed on the dedicated host after the redeploy check
+            /// the Resource Health Center in the Azure Portal. Please refer to
+            /// https://docs.microsoft.com/azure/service-health/resource-health-overview
+            /// for more details.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='hostGroupName'>
+            /// The name of the dedicated host group.
+            /// </param>
+            /// <param name='hostName'>
+            /// The name of the dedicated host.
+            /// </param>
+            public static DedicatedHostsRedeployHeaders BeginRedeploy(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName)
+            {
+                return operations.BeginRedeployAsync(resourceGroupName, hostGroupName, hostName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Redeploy the dedicated host. The operation will complete successfully once
+            /// the dedicated host has migrated to a new node and is running. To determine
+            /// the health of VMs deployed on the dedicated host after the redeploy check
+            /// the Resource Health Center in the Azure Portal. Please refer to
+            /// https://docs.microsoft.com/azure/service-health/resource-health-overview
+            /// for more details.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='hostGroupName'>
+            /// The name of the dedicated host group.
+            /// </param>
+            /// <param name='hostName'>
+            /// The name of the dedicated host.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DedicatedHostsRedeployHeaders> BeginRedeployAsync(this IDedicatedHostsOperations operations, string resourceGroupName, string hostGroupName, string hostName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginRedeployWithHttpMessagesAsync(resourceGroupName, hostGroupName, hostName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>

@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="status">Operation status.
-        /// Possible values include: 'Invalid', 'InProgress', 'Succeeded', 'Failed',
-        /// 'Canceled'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;InProgress&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;,
+        /// &#39;Canceled&#39;</param>
 
         /// <param name="startTime">Operation start time. Format: ISO-8601.
         /// </param>

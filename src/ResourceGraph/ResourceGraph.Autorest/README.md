@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the ResourceGraph service.
 
 ---
-## Status
-[![Az.ResourceGraph](https://img.shields.io/powershellgallery/v/Az.ResourceGraph.svg?style=flat-square&label=Az.ResourceGraph "Az.ResourceGraph")](https://www.powershellgallery.com/packages/Az.ResourceGraph/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -17,7 +14,7 @@ This directory contains the PowerShell module for the ResourceGraph service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -30,7 +27,7 @@ For information on how to develop for `Az.ResourceGraph`, see [how-to.md](how-to
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: e521d49bb1d1f262bd2131b57eea5c1436047650
+commit: e521d49bb1d1f262bd2131b57eea5c1436047650
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
@@ -39,6 +36,10 @@ input-file:
 title: ResourceGraph
 module-version: 0.1.0
 subject-prefix: $(service-name)
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - from: swagger-document

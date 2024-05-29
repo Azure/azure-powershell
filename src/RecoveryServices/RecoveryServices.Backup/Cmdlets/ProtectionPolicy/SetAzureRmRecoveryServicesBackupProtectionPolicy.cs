@@ -108,6 +108,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.AzureBackupResourceGroupSuffix)]        
         public string BackupSnapshotResourceGroupSuffix { get; set; }
 
+        /// <summary>
+        /// Snapshot consistency type to be used for backup. If set to OnlyCrashConsistent, all associated items will have crash consistent snapshot. Possible values are OnlyCrashConsistent, Default.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.SnapshotConsistencyType)]
+        public SnapshotConsistencyType SnapshotConsistencyType { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -146,6 +152,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         Policy.Name));
                 }
 
+                if (SnapshotConsistencyType != 0 &&  Policy.BackupManagementType != BackupManagementType.AzureVM)
+                {
+                    throw new ArgumentException(string.Format(Resources.InvalidParameterSnapshotConsistencyType));
+                }
 
                 // check if smart tiering feature is enabled on this subscription                
                 bool isSmartTieringEnabled = true;                
@@ -198,7 +208,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         { PolicyParams.TieringPolicy, tieringDetails},
                         { PolicyParams.IsSmartTieringEnabled, isSmartTieringEnabled},
                         { PolicyParams.BackupSnapshotResourceGroup, BackupSnapshotResourceGroup},
-                        { PolicyParams.BackupSnapshotResourceGroupSuffix, BackupSnapshotResourceGroupSuffix}
+                        { PolicyParams.BackupSnapshotResourceGroupSuffix, BackupSnapshotResourceGroupSuffix},
+                        { PolicyParams.SnapshotConsistencyType, SnapshotConsistencyType}
                     }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(

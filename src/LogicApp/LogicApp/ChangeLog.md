@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.5.1
+* Removed the *.deps.json file that caused false positive security alerts. [#23603]
+
 ## Version 1.5.0
 * Fixed issue that `Get-AzLogicAppTriggerHistory` and `Get-AzLogicAppRunAction` only retrieving the first page of results [#9141]
 

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Subscription-help.xml
 Module Name: Az.Subscription
 online version: https://learn.microsoft.com/powershell/module/az.subscription/get-azsubscriptionpolicy
 schema: 2.0.0
@@ -27,9 +27,9 @@ Get-AzSubscriptionPolicy
 ```
 
 ```output
-Name    PolicyId                             BlockSubscriptionsIntoTenant BlockSubscriptionsLeavingTenant
-----    --------                             ---------------------------- -------------------------------
-default XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX False                        True
+Name    PolicyId                             BlockSubscriptionsIntoTenant BlockSubscriptionsLeavingTenant
+----    --------                             ---------------------------- -------------------------------
+default XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX False                        True
 ```
 
 Get the subscription tenant policy for the user's tenant.
@@ -64,4 +64,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

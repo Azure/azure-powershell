@@ -114,10 +114,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("name"), out var __jsonName) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.UsageName.FromJson(__jsonName) : Name;}
-            {_unit = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("unit"), out var __jsonUnit) ? (string)__jsonUnit : (string)Unit;}
-            {_currentValue = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("currentValue"), out var __jsonCurrentValue) ? (int?)__jsonCurrentValue : CurrentValue;}
-            {_limit = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("limit"), out var __jsonLimit) ? (int?)__jsonLimit : Limit;}
+            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("name"), out var __jsonName) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.UsageName.FromJson(__jsonName) : _name;}
+            {_unit = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("unit"), out var __jsonUnit) ? (string)__jsonUnit : (string)_unit;}
+            {_currentValue = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("currentValue"), out var __jsonCurrentValue) ? (int?)__jsonCurrentValue : _currentValue;}
+            {_limit = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("limit"), out var __jsonLimit) ? (int?)__jsonLimit : _limit;}
             AfterFromJson(json);
         }
     }

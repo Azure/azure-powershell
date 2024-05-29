@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public static partial class OperationOperationsExtensions
     {
         /// <summary>
-        /// Validate operation for specified backed up item. This is a synchronous operation.
+        /// Validate operation for specified backed up item. This is a synchronous
+        /// operation.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -22,15 +23,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
-        public static ValidateOperationsResponse Validate(this IOperationOperations operations, string vaultName, string resourceGroupName, ValidateOperationRequest parameters)
+        public static ValidateOperationsResponse Validate(this IOperationOperations operations, string vaultName, string resourceGroupName, string id, ValidateOperationRequest properties)
         {
-                return ((IOperationOperations)operations).ValidateAsync(vaultName, resourceGroupName, parameters).GetAwaiter().GetResult();
+                return ((IOperationOperations)operations).ValidateAsync(vaultName, resourceGroupName, id, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Validate operation for specified backed up item. This is a synchronous operation.
+        /// Validate operation for specified backed up item. This is a synchronous
+        /// operation.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -39,14 +42,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ValidateOperationsResponse> ValidateAsync(this IOperationOperations operations, string vaultName, string resourceGroupName, ValidateOperationRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ValidateOperationsResponse> ValidateAsync(this IOperationOperations operations, string vaultName, string resourceGroupName, string id, ValidateOperationRequest properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ValidateWithHttpMessagesAsync(vaultName, resourceGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ValidateWithHttpMessagesAsync(vaultName, resourceGroupName, id, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

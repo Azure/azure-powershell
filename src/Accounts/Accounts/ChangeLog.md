@@ -19,6 +19,48 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.0.0
+* Web Account Manager (WAM) was set the default experience of interactive login. For more details please refer to https://go.microsoft.com/fwlink/?linkid=2272007
+* Enabled secrets detection option by default.
+* Fixed a null reference issue during the process of `Get-AzContext -ListAvailable` [#24854].
+* Supported interactive subscription selection for user login flow. See more details at [Announcing a new login experience with Azure PowerShell and Azure CLI
+](https://techcommunity.microsoft.com/t5/azure-tools-blog/announcing-a-new-login-experience-with-azure-powershell-and/ba-p/4109357)
+* Added config `LoginExperienceV2` to allow customer to switch the default behavior of context selection back. Check the help document of `Update-AzConfig` for more details.
+* Supported auto-discovery of the endpoint of OperationalInsights (azure-powershell-common/pull/414)
+* Updated the reference of Azure PowerShell Common to 1.3.94-preview.
+* [Breaking Change] Removed config `DisableErrorRecordsPersistence` to disable writing error records, error recording is now opt-in
+* Added config `EnableErrorRecordsPersistence` to enable writing error records to file system
+
+## Version 2.19.0
+> [!IMPORTANT]
+> Preannouncement: The default interactive login experience will change from browser based to `Web Account Manager` (WAM) based on supported platforms, [learn more](https://learn.microsoft.com/en-us/entra/msal/dotnet/acquiring-tokens/desktop-mobile/wam). Only interactive login flow is influeced by WAM. This will take effect from the release of **May 21st**.
+* Fixed secrets detection issues.
+
+## Version 2.17.0
+* Enabled globally disabling instance discovery before token acquisition [#22535].
+* Implemented secrets detection feature for autorest modules.
+* Added `AsSecureString` to `Get-AzAccessToken` to convert the returned token to SecureString [#24190].
+* Upgraded Azure.Core to 1.37.0.
+
+## Version 2.16.0
+* Added a preview feature to detect secrets and sensitive information from the output of Azure PowerShell cmdlets to prevent leakage. Enable it by `Set-AzConfig -DisplaySecretsWarning $true`. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844
+* Fixed `CacheDirectory` and `CacheFile` out-of-sync issue in AzureRmContextSettings.json and the customers are not allowed to change these 2 properties.
+* Redirected device code login messages from warning stream to information stream if use device authentication in `Connect-AzAccount`.
+
+## Version 2.15.1
+* Adjusted output format to be more user-friendly for `Get-AzContext/Tenant/Subscription` and `Invoke-AzRestMethod`, including
+    - ordering and grouping output items to make items easy to find.
+    - re-prioritizing positions for output properties to highlight valuable properties.
+* Upgraded the reference of Azure PowerShell Common to 1.3.90-preview.
+* Upgraded Azure.Identity to 1.10.3 [#23018].
+  - Renamed token cache from `msal.cache` to `msal.cache.cae` or `masl.cache.nocae`.
+* Enabled Continue Access Evaluation (CAE) for all Service Principals login methods.
+* Supported signing in with Microsoft Account (MSA) via Web Account Manager (WAM). Enable it by `Set-AzConfig -EnableLoginByWam $true`.
+* Fixed the multiple `x-ms-unique-id` values issue.
+
+## Version 2.15.0
+* Fixed the authentication issue when using `FederatedToken` in Sovereign Clouds. [#23742]
 * Added upcoming breaking change warning for deprecation of config parameter `DisableErrorRecordsPersistence`.
 
 ## Version 2.13.2
@@ -26,8 +68,8 @@
 * Upgraded Azure.Core to 1.35.0.
 
 ## Version 2.13.1
-* Added the module name in breaking change messages 
-* Upgraded Microsoft.ApplicationInsights version from 2.13.1 to 2.18.0 
+* Added the module name in breaking change messages
+* Upgraded Microsoft.ApplicationInsights version from 2.13.1 to 2.18.0
 
 ## Version 2.13.0
 * Supported in-tool notification for version upgrade.
@@ -38,7 +80,7 @@
 
 ## Version 2.12.5
 * Changed output stream from debug stream to warning stream for `CmdletPreviewAttribute`
-* Decreased the prompted frequency of preview warning message to once per cmdlet in one session  
+* Decreased the prompted frequency of preview warning message to once per cmdlet in one session
 * Reworded default preview message and added estimated GA date for `CmdletPreviewAttribute`
 * Updated Azure.Core to 1.33.0
 

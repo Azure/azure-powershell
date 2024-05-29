@@ -82,15 +82,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201
             {_defaultHostname = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonString>("defaultHostname"), out var __jsonDefaultHostname) ? (string)__jsonDefaultHostname : (string)DefaultHostname;}
             {_repositoryUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonString>("repositoryUrl"), out var __jsonRepositoryUrl) ? (string)__jsonRepositoryUrl : (string)RepositoryUrl;}
             {_branch = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonString>("branch"), out var __jsonBranch) ? (string)__jsonBranch : (string)Branch;}
-            {_provider = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonString>("provider"), out var __jsonProvider) ? (string)__jsonProvider : (string)Provider;}
             {_customDomain = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonArray>("customDomains"), out var __jsonCustomDomains) ? If( __jsonCustomDomains as Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : CustomDomain;}
             {_repositoryToken = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonString>("repositoryToken"), out var __jsonRepositoryToken) ? (string)__jsonRepositoryToken : (string)RepositoryToken;}
             {_privateEndpointConnection = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonArray>("privateEndpointConnections"), out var __jsonPrivateEndpointConnections) ? If( __jsonPrivateEndpointConnections as Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IResponseMessageEnvelopeRemotePrivateEndpointConnection[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IResponseMessageEnvelopeRemotePrivateEndpointConnection) (Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.ResponseMessageEnvelopeRemotePrivateEndpointConnection.FromJson(__p) )) ))() : null : PrivateEndpointConnection;}
+            {_stagingEnvironmentPolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonString>("stagingEnvironmentPolicy"), out var __jsonStagingEnvironmentPolicy) ? (string)__jsonStagingEnvironmentPolicy : (string)StagingEnvironmentPolicy;}
+            {_allowConfigFileUpdate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonBoolean>("allowConfigFileUpdates"), out var __jsonAllowConfigFileUpdates) ? (bool?)__jsonAllowConfigFileUpdates : AllowConfigFileUpdate;}
             {_contentDistributionEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonString>("contentDistributionEndpoint"), out var __jsonContentDistributionEndpoint) ? (string)__jsonContentDistributionEndpoint : (string)ContentDistributionEndpoint;}
             {_keyVaultReferenceIdentity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonString>("keyVaultReferenceIdentity"), out var __jsonKeyVaultReferenceIdentity) ? (string)__jsonKeyVaultReferenceIdentity : (string)KeyVaultReferenceIdentity;}
             {_userProvidedFunctionApp = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonArray>("userProvidedFunctionApps"), out var __jsonUserProvidedFunctionApps) ? If( __jsonUserProvidedFunctionApps as Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteUserProvidedFunctionApp[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__l, (__k)=>(Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteUserProvidedFunctionApp) (Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.StaticSiteUserProvidedFunctionApp.FromJson(__k) )) ))() : null : UserProvidedFunctionApp;}
-            {_stagingEnvironmentPolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonString>("stagingEnvironmentPolicy"), out var __jsonStagingEnvironmentPolicy) ? (string)__jsonStagingEnvironmentPolicy : (string)StagingEnvironmentPolicy;}
-            {_allowConfigFileUpdate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonBoolean>("allowConfigFileUpdates"), out var __jsonAllowConfigFileUpdates) ? (bool?)__jsonAllowConfigFileUpdates : AllowConfigFileUpdate;}
+            {_provider = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonString>("provider"), out var __jsonProvider) ? (string)__jsonProvider : (string)Provider;}
             AfterFromJson(json);
         }
 
@@ -123,10 +123,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201
             AddIf( null != (((object)this._branch)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonString(this._branch.ToString()) : null, "branch" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != (((object)this._provider)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonString(this._provider.ToString()) : null, "provider" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.SerializationMode.IncludeReadOnly))
-            {
                 if (null != this._customDomain)
                 {
                     var __w = new Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.XNodeArray();
@@ -150,6 +146,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201
                     container.Add("privateEndpointConnections",__r);
                 }
             }
+            AddIf( null != (((object)this._stagingEnvironmentPolicy)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonString(this._stagingEnvironmentPolicy.ToString()) : null, "stagingEnvironmentPolicy" ,container.Add );
+            AddIf( null != this._allowConfigFileUpdate ? (Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonBoolean((bool)this._allowConfigFileUpdate) : null, "allowConfigFileUpdates" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.SerializationMode.IncludeReadOnly))
             {
                 AddIf( null != (((object)this._contentDistributionEndpoint)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonString(this._contentDistributionEndpoint.ToString()) : null, "contentDistributionEndpoint" ,container.Add );
@@ -170,8 +168,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201
                     container.Add("userProvidedFunctionApps",__m);
                 }
             }
-            AddIf( null != (((object)this._stagingEnvironmentPolicy)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonString(this._stagingEnvironmentPolicy.ToString()) : null, "stagingEnvironmentPolicy" ,container.Add );
-            AddIf( null != this._allowConfigFileUpdate ? (Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonBoolean((bool)this._allowConfigFileUpdate) : null, "allowConfigFileUpdates" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.SerializationMode.IncludeReadOnly))
+            {
+                AddIf( null != (((object)this._provider)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonString(this._provider.ToString()) : null, "provider" ,container.Add );
+            }
             AfterToJson(ref container);
             return container;
         }

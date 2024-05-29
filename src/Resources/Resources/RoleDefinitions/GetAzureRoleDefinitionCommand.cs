@@ -51,6 +51,9 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "If specified, only displays the custom created roles in the directory.")]
         public SwitchParameter Custom { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "If specified, skip client side scope validation.")]
+        public SwitchParameter SkipClientSideScopeValidation { get; set; }
+
         #endregion
 
 
@@ -73,7 +76,10 @@ namespace Microsoft.Azure.Commands.Resources
                 WriteTerminatingError(ProjectResources.ScopeAndSubscriptionNeitherProvided);
             }
 
-            AuthorizationClient.ValidateScope(options.Scope, true);
+            if (!SkipClientSideScopeValidation.IsPresent)
+            {
+                AuthorizationClient.ValidateScope(options.Scope, true);
+            }
 
             IEnumerable<PSRoleDefinition> filteredRoleDefinitions = PoliciesClient.FilterRoleDefinitions(options);
 

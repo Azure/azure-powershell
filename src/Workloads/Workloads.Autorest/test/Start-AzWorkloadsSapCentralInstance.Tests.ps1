@@ -24,4 +24,14 @@ Describe 'Start-AzWorkloadsSapCentralInstance' {
         $startResponseId = Start-AzWorkloadsSapCentralInstance -InputObject $env.CsServerIdSub2
         $startResponseId.Status | Should -Be $env.ProvisioningState
     }
+	
+	It 'StartWithVM' {
+        $startResponse = Start-AzWorkloadsSapCentralInstance -Name $env.SapCentralInstanceName -ResourceGroupName $env.ResourceGroupName -SapVirtualInstanceName $env.SapVirtualInstanceName -StartVM
+        $startResponse.Status | Should -Be $env.ProvisioningState
+    }
+
+    It 'StartViaIdentityWithVM' {
+        $startResponseId = Start-AzWorkloadsSapCentralInstance -InputObject $env.CsServerIdSub2 -StartVM
+        $startResponseId.Status | Should -Be $env.ProvisioningState
+    }
 }

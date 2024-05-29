@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzVMwareLocationTrialAva
 }
 
 Describe 'Test-AzVMwareLocationTrialAvailability' {
-    It 'Check' -skip {
+    It 'CheckExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

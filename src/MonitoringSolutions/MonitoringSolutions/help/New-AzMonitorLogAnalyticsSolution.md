@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MonitoringSolutions-help.xml
 Module Name: Az.MonitoringSolutions
 online version: https://learn.microsoft.com/powershell/module/az.monitoringsolutions/new-azmonitorloganalyticssolution
 schema: 2.0.0
@@ -13,9 +13,9 @@ Creates a log analytics solution.
 ## SYNTAX
 
 ```
-New-AzMonitorLogAnalyticsSolution -ResourceGroupName <String> -Location <String> -Type <String>
- -WorkspaceResourceId <String> [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMonitorLogAnalyticsSolution -ResourceGroupName <String> [-SubscriptionId <String>] -Type <String>
+ -Location <String> -WorkspaceResourceId <String> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +41,7 @@ Commonly used types are:
 
 | Type | Description |
 | :-----| :----- |
-| SecurityCenterFree |  Azure Security Center – Free Edition |
+| SecurityCenterFree |  Azure Security Center - Free Edition |
 | Security | Azure Security Center |
 | Updates | Update Management |
 | ContainerInsights | Azure Monitor for Containers |
@@ -211,11 +211,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
 
-
-
 [Get-AzOperationalInsightsWorkspace](https://learn.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace)
-

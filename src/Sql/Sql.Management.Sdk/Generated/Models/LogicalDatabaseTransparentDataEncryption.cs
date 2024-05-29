@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="state">Specifies the state of the transparent data encryption.
-        /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
         public LogicalDatabaseTransparentDataEncryption(string id = default(string), string name = default(string), string type = default(string), TransparentDataEncryptionState? state = default(TransparentDataEncryptionState?))
 
         : base(id, name, type)

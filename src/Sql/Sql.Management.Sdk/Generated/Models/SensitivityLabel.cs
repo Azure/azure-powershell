@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="rank">
-        /// Possible values include: 'None', 'Low', 'Medium', 'High', 'Critical'</param>
+        /// Possible values include: &#39;None&#39;, &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;, &#39;Critical&#39;</param>
         public SensitivityLabel(string id = default(string), string name = default(string), string type = default(string), string managedBy = default(string), string schemaName = default(string), string tableName = default(string), string columnName = default(string), string labelName = default(string), string labelId = default(string), string informationType = default(string), string informationTypeId = default(string), bool? isDisabled = default(bool?), SensitivityLabelRank? rank = default(SensitivityLabelRank?))
 
         : base(id, name, type)

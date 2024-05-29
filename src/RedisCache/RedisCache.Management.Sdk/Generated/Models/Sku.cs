@@ -25,11 +25,11 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// </summary>
 
         /// <param name="name">The type of Redis cache to deploy. Valid values: (Basic, Standard, Premium)
-        /// Possible values include: 'Basic', 'Standard', 'Premium'</param>
+        /// Possible values include: &#39;Basic&#39;, &#39;Standard&#39;, &#39;Premium&#39;</param>
 
         /// <param name="family">The SKU family to use. Valid values: (C, P). (C = Basic/Standard, P =
         /// Premium).
-        /// Possible values include: 'C', 'P'</param>
+        /// Possible values include: &#39;C&#39;, &#39;P&#39;</param>
 
         /// <param name="capacity">The size of the Redis cache to deploy. Valid values: for C (Basic/Standard)
         /// family (0, 1, 2, 3, 4, 5, 6), for P (Premium) family (1, 2, 3, 4).

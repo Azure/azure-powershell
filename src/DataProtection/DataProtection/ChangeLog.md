@@ -19,6 +19,17 @@
 -->
 ## Upcoming Release
 
+## Version 2.4.0
+* Added vault tier restore and update backup instance for blobs.
+* Added CmkEnryption parameters to Get-AzDataProtectionBackupVault, New-AzDataProtectionBackupVault and Update-AzDataProtectionBackupVault cmdlets.
+* Added MUA support for DisableVaultImmutability, Restore, Stop-Protection, Suspend-backup, Disable soft delete operations.
+
+## Version 2.3.0
+* Onboarded new workloads AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL for data protection.
+
+## Version 2.2.0
+* Added support for Cross region restore for Backup vaults
+
 ## Version 2.1.0
 * Added soft delete and MUA feature for Backup vaults
 

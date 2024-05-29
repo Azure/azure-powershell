@@ -14,7 +14,8 @@ Gets the JIT network access policies
 
 ### SubscriptionScope (Default)
 ```
-Get-AzJitNetworkAccessPolicy [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzJitNetworkAccessPolicy [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceGroupScope

@@ -1,0 +1,47 @@
+{
+  "Get-AzMarketplacePrivateStoreCollectionMapOffersToContext+[NoContext]+ListExpanded+$POST+https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/a260d38c-96cf-492d-a340-404d0c4b3ad6/mapOffersToContexts?api-version=2023-01-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/a260d38c-96cf-492d-a340-404d0c4b3ad6/mapOffersToContexts?api-version=2023-01-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"subscriptionIds\": [ \"1f58b5dd-313c-42ed-84fc-f1e351bba7fb\", \"ab3de7bc-7a6e-4e9f-a34a-f6922df453e4\" ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "135" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=80c7a5f90186ed67b1a22b2d6ba64306a36f909c848093374b79f8b04109a233;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=80c7a5f90186ed67b1a22b2d6ba64306a36f909c848093374b79f8b04109a233;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1193" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-version": [ "6.0.02586.90-5c77bed2" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-azure-ref": [ "20240206T121444Z-e9fr18rg4936d7qwr39u9d2ats00000002x0000000007scg" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "815c1ea9-9ce6-4ddc-b6c8-6a3991c08992" ],
+        "x-ms-correlation-request-id": [ "815c1ea9-9ce6-4ddc-b6c8-6a3991c08992" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240206T121445Z:815c1ea9-9ce6-4ddc-b6c8-6a3991c08992" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-MSEdge-Ref": [ "Ref A: 63452161B12C45AA83583F6F1BC379FD Ref B: MRS211050313051 Ref C: 2024-02-06T12:14:44Z" ],
+        "Date": [ "Tue, 06 Feb 2024 12:14:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4773" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"context\":\"00000000-0000-0000-0000-000000000000\",\"offers\":{\"value\":[{\"uniqueOfferId\":\"aumatics.azure_managedservices\",\"offerDisplayName\":\"Aumatics Azure Managed Services\",\"publisherDisplayName\":\"Aumatics\",\"specificPlanIdsLimitation\":null,\"eTag\":\"\\\"c303ee7f-0000-0100-0000-65c0b1020000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"createdAt\":\"2024-02-05T09:57:22.5643444Z\",\"modifiedAt\":\"2024-02-05T09:57:22.5643444Z\",\"plans\":[{\"planId\":\"azure_managedservices_professional\",\"skuId\":\"0001\",\"planDisplayName\":\"Azure Managed Services - Professional\",\"accessibility\":\"Public\",\"altStackReference\":null,\"stackType\":null}],\"iconFileUris\":{\"small\":\"https://store-images.s-microsoft.com/image/apps.28502.8bd414a4-a646-44ba-b745-faf1acee99a2.5610b36b-a1d5-4ed6-a2ec-675fd8b46e6e.6ed46d56-5177-4b3b-b792-d171f21ac71e\",\"medium\":\"https://store-images.s-microsoft.com/image/apps.47342.8bd414a4-a646-44ba-b745-faf1acee99a2.5610b36b-a1d5-4ed6-a2ec-675fd8b46e6e.c4c26433-ca62-4cf7-ba7c-a756fdd8ee51\",\"large\":\"https://store-images.s-microsoft.com/image/apps.63869.8bd414a4-a646-44ba-b745-faf1acee99a2.5610b36b-a1d5-4ed6-a2ec-675fd8b46e6e.acbf0bd7-1405-41ef-8bbb-bf62c04c60e0\"},\"updateSuppressedDueIdempotence\":false}]}},{\"context\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"offers\":{\"value\":[{\"uniqueOfferId\":\"test_test_pmc2pc1.vm_4plans_privatestoretesting\",\"offerDisplayName\":\"Test Base for VM Private Store\",\"publisherDisplayName\":\"Test PMC 2 PC\",\"specificPlanIdsLimitation\":[\"plan3\"],\"eTag\":\"\\\"c503b892-0000-0100-0000-65c0cb150000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"createdAt\":\"2024-02-05T11:48:37.5866264Z\",\"modifiedAt\":\"2024-02-05T11:48:37.6022504Z\",\"plans\":[{\"planId\":\"plan3\",\"skuId\":\"0003\",\"planDisplayName\":\"Plan3\",\"accessibility\":\"Unknown\",\"altStackReference\":null,\"stackType\":null}],\"iconFileUris\":{\"medium\":\"https://store-images.s-microsoft.com/image/apps.47730.e4c872ef-fcba-4287-b5ff-5526c4cee53a.b94f1a28-7936-42c1-b674-8361b5ca9666.e2760c98-3678-47a6-b228-0ca2ec8dea7c\",\"small\":\"https://store-images.s-microsoft.com/image/apps.24616.e4c872ef-fcba-4287-b5ff-5526c4cee53a.b94f1a28-7936-42c1-b674-8361b5ca9666.4eaae684-1741-4d55-8019-e35616172a23\",\"large\":\"https://store-images.s-microsoft.com/image/apps.28795.e4c872ef-fcba-4287-b5ff-5526c4cee53a.b94f1a28-7936-42c1-b674-8361b5ca9666.65b0c4d7-6a12-48d2-8f44-b54c118e19d4\"},\"updateSuppressedDueIdempotence\":false}]}},{\"context\":\"1f58b5dd-313c-42ed-84fc-f1e351bba7fb\",\"offers\":{\"value\":[{\"uniqueOfferId\":\"test_test_pmc2pc1.vm_4plans_privatestoretesting\",\"offerDisplayName\":\"Test Base for VM Private Store\",\"publisherDisplayName\":\"Test PMC 2 PC\",\"specificPlanIdsLimitation\":[\"plan1\"],\"eTag\":\"\\\"c503b892-0000-0100-0000-65c0cb150000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"createdAt\":\"2024-02-05T11:48:37.5866264Z\",\"modifiedAt\":\"2024-02-05T11:48:37.6022504Z\",\"plans\":[{\"planId\":\"plan1\",\"skuId\":\"0001\",\"planDisplayName\":\"Plan1\",\"accessibility\":\"Unknown\",\"altStackReference\":null,\"stackType\":null}],\"iconFileUris\":{\"medium\":\"https://store-images.s-microsoft.com/image/apps.47730.e4c872ef-fcba-4287-b5ff-5526c4cee53a.b94f1a28-7936-42c1-b674-8361b5ca9666.e2760c98-3678-47a6-b228-0ca2ec8dea7c\",\"small\":\"https://store-images.s-microsoft.com/image/apps.24616.e4c872ef-fcba-4287-b5ff-5526c4cee53a.b94f1a28-7936-42c1-b674-8361b5ca9666.4eaae684-1741-4d55-8019-e35616172a23\",\"large\":\"https://store-images.s-microsoft.com/image/apps.28795.e4c872ef-fcba-4287-b5ff-5526c4cee53a.b94f1a28-7936-42c1-b674-8361b5ca9666.65b0c4d7-6a12-48d2-8f44-b54c118e19d4\"},\"updateSuppressedDueIdempotence\":false}]}},{\"context\":\"ab3de7bc-7a6e-4e9f-a34a-f6922df453e4\",\"offers\":{\"value\":[{\"uniqueOfferId\":\"test_test_pmc2pc1.vm_4plans_privatestoretesting\",\"offerDisplayName\":\"Test Base for VM Private Store\",\"publisherDisplayName\":\"Test PMC 2 PC\",\"specificPlanIdsLimitation\":[\"plan2\"],\"eTag\":\"\\\"c503b892-0000-0100-0000-65c0cb150000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"createdAt\":\"2024-02-05T11:48:37.5866264Z\",\"modifiedAt\":\"2024-02-05T11:48:37.6022504Z\",\"plans\":[{\"planId\":\"plan2\",\"skuId\":\"0002\",\"planDisplayName\":\"Plan2\",\"accessibility\":\"Unknown\",\"altStackReference\":null,\"stackType\":null}],\"iconFileUris\":{\"medium\":\"https://store-images.s-microsoft.com/image/apps.47730.e4c872ef-fcba-4287-b5ff-5526c4cee53a.b94f1a28-7936-42c1-b674-8361b5ca9666.e2760c98-3678-47a6-b228-0ca2ec8dea7c\",\"small\":\"https://store-images.s-microsoft.com/image/apps.24616.e4c872ef-fcba-4287-b5ff-5526c4cee53a.b94f1a28-7936-42c1-b674-8361b5ca9666.4eaae684-1741-4d55-8019-e35616172a23\",\"large\":\"https://store-images.s-microsoft.com/image/apps.28795.e4c872ef-fcba-4287-b5ff-5526c4cee53a.b94f1a28-7936-42c1-b674-8361b5ca9666.65b0c4d7-6a12-48d2-8f44-b54c118e19d4\"},\"updateSuppressedDueIdempotence\":false}]}}]}",
+      "isContentBase64": false
+    }
+  }
+}

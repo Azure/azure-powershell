@@ -77,8 +77,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_count = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("count"), out var __jsonCount) ? (int)__jsonCount : Count;}
-            {_podPrefix = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("podPrefix"), out var __jsonPodPrefix) ? (string)__jsonPodPrefix : (string)PodPrefix;}
+            {_count = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("count"), out var __jsonCount) ? (int)__jsonCount : _count;}
+            {_podPrefix = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("podPrefix"), out var __jsonPodPrefix) ? (string)__jsonPodPrefix : (string)_podPrefix;}
             AfterFromJson(json);
         }
 

@@ -65,12 +65,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_computeProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("computeProfile"), out var __jsonComputeProfile) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ComputeProfile.FromJson(__jsonComputeProfile) : ComputeProfile;}
-            {_clusterProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("clusterProfile"), out var __jsonClusterProfile) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterProfile.FromJson(__jsonClusterProfile) : ClusterProfile;}
-            {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)ProvisioningState;}
-            {_clusterType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("clusterType"), out var __jsonClusterType) ? (string)__jsonClusterType : (string)ClusterType;}
-            {_deploymentId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("deploymentId"), out var __jsonDeploymentId) ? (string)__jsonDeploymentId : (string)DeploymentId;}
-            {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("status"), out var __jsonStatus) ? (string)__jsonStatus : (string)Status;}
+            {_computeProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("computeProfile"), out var __jsonComputeProfile) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ComputeProfile.FromJson(__jsonComputeProfile) : _computeProfile;}
+            {_clusterProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("clusterProfile"), out var __jsonClusterProfile) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterProfile.FromJson(__jsonClusterProfile) : _clusterProfile;}
+            {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
+            {_clusterType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("clusterType"), out var __jsonClusterType) ? (string)__jsonClusterType : (string)_clusterType;}
+            {_deploymentId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("deploymentId"), out var __jsonDeploymentId) ? (string)__jsonDeploymentId : (string)_deploymentId;}
+            {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("status"), out var __jsonStatus) ? (string)__jsonStatus : (string)_status;}
             AfterFromJson(json);
         }
 

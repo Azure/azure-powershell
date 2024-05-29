@@ -42,7 +42,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a list of managed instance keys.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -261,7 +262,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a managed instance key.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -481,13 +483,15 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates or updates a managed instance key.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
         /// </param>
         /// <param name='keyName'>
-        /// The name of the managed instance key to be operated on (updated or created).
+        /// The name of the managed instance key to be operated on (updated or
+        /// created).
         /// </param>
         /// <param name='parameters'>
         /// The requested managed instance key resource state.
@@ -509,7 +513,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes the managed instance key with the given name.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -534,13 +539,15 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates or updates a managed instance key.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
         /// </param>
         /// <param name='keyName'>
-        /// The name of the managed instance key to be operated on (updated or created).
+        /// The name of the managed instance key to be operated on (updated or
+        /// created).
         /// </param>
         /// <param name='parameters'>
         /// The requested managed instance key resource state.
@@ -787,7 +794,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes the managed instance key with the given name.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.

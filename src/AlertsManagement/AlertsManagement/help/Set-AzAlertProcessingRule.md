@@ -26,7 +26,8 @@ Set-AzAlertProcessingRule -ResourceGroupName <String> -Name <String> [-Descripti
  [-ScheduleReccurenceDaysOfMonth <String>] [-ScheduleReccurence2DaysOfMonth <String>]
  [-ScheduleReccurenceStartTime <String>] [-ScheduleReccurence2StartTime <String>]
  [-ScheduleReccurenceEndTime <String>] [-ScheduleReccurence2EndTime <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByInputObject
@@ -49,7 +50,8 @@ Set-AzAlertProcessingRule -ResourceGroupName <String> -Name <String> [-Descripti
  [-ScheduleReccurenceDaysOfMonth <String>] [-ScheduleReccurence2DaysOfMonth <String>]
  [-ScheduleReccurenceStartTime <String>] [-ScheduleReccurence2StartTime <String>]
  [-ScheduleReccurenceEndTime <String>] [-ScheduleReccurence2EndTime <String>] -ActionGroupId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

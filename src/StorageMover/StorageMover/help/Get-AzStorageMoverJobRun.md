@@ -15,7 +15,8 @@ Gets a Job Run resource.
 ### List (Default)
 ```
 Get-AzStorageMoverJobRun -JobDefinitionName <String> -ProjectName <String> -ResourceGroupName <String>
- -StorageMoverName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -StorageMoverName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -27,7 +28,8 @@ Get-AzStorageMoverJobRun -JobDefinitionName <String> -Name <String> -ProjectName
 
 ### GetViaIdentity
 ```
-Get-AzStorageMoverJobRun -InputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStorageMoverJobRun -InputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

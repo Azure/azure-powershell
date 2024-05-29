@@ -21,12 +21,14 @@ New-AzGalleryImageDefinition [-ResourceGroupName] <String> [-GalleryName] <Strin
  [-MinimumVCPU <Int32>] [-MaximumMemory <Int32>] [-MaximumVCPU <Int32>] [-PrivacyStatementUri <String>]
  [-PurchasePlanName <String>] [-PurchasePlanProduct <String>] [-PurchasePlanPublisher <String>]
  [-ReleaseNoteUri <String>] [-Tag <Hashtable>] [-Feature <GalleryImageFeature[]>] [-Architecture <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 
-Create a gallery image definition.
+Create a gallery image definition. 
+The gallery image definition will default to 'HyperVGeneration: V2' and 'SecurityType: TrustedLaunchSupported' if `-HyperVGeneration` and `-Feature @{Name: SecurityType}` is not set explicitly. Set SecurityType to 'None' to opt out of this defaulting (See Example 10). 
 
 ## EXAMPLES
 
@@ -44,7 +46,7 @@ $description = "My gallery"
 New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Specialized" -OsType "Linux" -Description $description
 ```
 
-Creates a gallery image definition to contain image versions for specialized linux images.
+Creates a gallery image definition to contain image versions for specialized linux images. This will default the Gallery Image to HyperVGeneration V2 and Trusted Launch as `-HyperVGeneration` and `-Feature SecurityType` is not set explicitly.
 
 ### Example 2: Create an image definition for generalized linux images
 
@@ -185,6 +187,25 @@ New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryNam
 
 Creates a gallery image definition for linux generalized images and specify either the string or path to an EULA agreement, privacy statement, and release notes tied to all image versions in the image definition.
 
+### Example 10: Create a gallery image definition with Standard SecurityType feature
+
+```powershell
+$rgName = "myResourceGroup"
+$galleryName = "myGallery"
+$galleryImageDefinitionName = "myImage"
+$location = "eastus"
+$publisherName = "GreatPublisher"
+$offerName = "GreatOffer"
+$skuName = "GreatSku"
+
+$Feature1 = @{Name='SecurityType';Value='None'}
+$Features = @($Feature1)
+
+New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Generalized" -OsType "Linux" -Feature $Features
+```
+
+Create a gallery image definition with standard security type feature by providing 'None' as the value of the SecurityType feature.
+
 ## PARAMETERS
 
 ### -Architecture
@@ -301,6 +322,7 @@ Accept wildcard characters: False
 ### -Feature
 
 A list of gallery image features.
+For SecurityType, acceptable inputs are: None, TrustedlaunchSupported, Trustedlaunch, ConfidentialVM, ConfidentialVMSupported, TrustedandConfidentialVMSupported
 
 ```yaml
 Type: Microsoft.Azure.Management.Compute.Models.GalleryImageFeature[]

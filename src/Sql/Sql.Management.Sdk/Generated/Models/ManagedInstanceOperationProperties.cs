@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="state">The operation state.
-        /// Possible values include: 'Pending', 'InProgress', 'Succeeded', 'Failed',
-        /// 'CancelInProgress', 'Cancelled'</param>
+        /// Possible values include: &#39;Pending&#39;, &#39;InProgress&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;,
+        /// &#39;CancelInProgress&#39;, &#39;Cancelled&#39;</param>
 
         /// <param name="errorCode">The operation error code.
         /// </param>

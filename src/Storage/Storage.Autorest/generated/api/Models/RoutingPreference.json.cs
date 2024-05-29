@@ -80,9 +80,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_routingChoice = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("routingChoice"), out var __jsonRoutingChoice) ? (string)__jsonRoutingChoice : (string)RoutingChoice;}
-            {_publishMicrosoftEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("publishMicrosoftEndpoints"), out var __jsonPublishMicrosoftEndpoints) ? (bool?)__jsonPublishMicrosoftEndpoints : PublishMicrosoftEndpoint;}
-            {_publishInternetEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("publishInternetEndpoints"), out var __jsonPublishInternetEndpoints) ? (bool?)__jsonPublishInternetEndpoints : PublishInternetEndpoint;}
+            {_routingChoice = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("routingChoice"), out var __jsonRoutingChoice) ? (string)__jsonRoutingChoice : (string)_routingChoice;}
+            {_publishMicrosoftEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("publishMicrosoftEndpoints"), out var __jsonPublishMicrosoftEndpoints) ? (bool?)__jsonPublishMicrosoftEndpoints : _publishMicrosoftEndpoint;}
+            {_publishInternetEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("publishInternetEndpoints"), out var __jsonPublishInternetEndpoints) ? (bool?)__jsonPublishInternetEndpoints : _publishInternetEndpoint;}
             AfterFromJson(json);
         }
 

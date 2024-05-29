@@ -45,7 +45,6 @@ namespace Microsoft.Azure.Commands.Common
         {
             // add a header...
             request.Headers.Add("x-ms-unique-id", Interlocked.Increment(ref this.count).ToString());
-
             // continue with pipeline.
             return next(request, token, cancel, signal);
         }

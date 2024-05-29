@@ -47,12 +47,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string DatabaseName { get => this._databaseName; set => this._databaseName = value; }
 
+        /// <summary>Backing field for <see cref="DeploymentId" /> property.</summary>
+        private string _deploymentId;
+
+        /// <summary>Deployment Id.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public string DeploymentId { get => this._deploymentId; set => this._deploymentId = value; }
+
+        /// <summary>Backing field for <see cref="EmailConfigurationName" /> property.</summary>
+        private string _emailConfigurationName;
+
+        /// <summary>The email configuration name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public string EmailConfigurationName { get => this._emailConfigurationName; set => this._emailConfigurationName = value; }
+
         /// <summary>Backing field for <see cref="EventName" /> property.</summary>
         private string _eventName;
 
         /// <summary>Unique name of an event within a migrate project.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string EventName { get => this._eventName; set => this._eventName = value; }
+
+        /// <summary>Backing field for <see cref="FabricAgentName" /> property.</summary>
+        private string _fabricAgentName;
+
+        /// <summary>The fabric agent (Dra) name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public string FabricAgentName { get => this._fabricAgentName; set => this._fabricAgentName = value; }
 
         /// <summary>Backing field for <see cref="FabricName" /> property.</summary>
         private string _fabricName;
@@ -88,6 +109,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// <summary>Job ARM name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string JobName { get => this._jobName; set => this._jobName = value; }
+
+        /// <summary>Backing field for <see cref="Location" /> property.</summary>
+        private string _location;
+
+        /// <summary>The name of the Azure region.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public string Location { get => this._location; set => this._location = value; }
 
         /// <summary>Backing field for <see cref="LogicalNetworkName" /> property.</summary>
         private string _logicalNetworkName;
@@ -145,6 +173,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string NetworkName { get => this._networkName; set => this._networkName = value; }
 
+        /// <summary>Backing field for <see cref="OperationId" /> property.</summary>
+        private string _operationId;
+
+        /// <summary>The ID of an ongoing async operation.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public string OperationId { get => this._operationId; set => this._operationId = value; }
+
         /// <summary>Backing field for <see cref="OperationStatusName" /> property.</summary>
         private string _operationStatusName;
 
@@ -165,6 +200,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// <summary>Protectable item name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string ProtectableItemName { get => this._protectableItemName; set => this._protectableItemName = value; }
+
+        /// <summary>Backing field for <see cref="ProtectedItemName" /> property.</summary>
+        private string _protectedItemName;
+
+        /// <summary>The protected item name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public string ProtectedItemName { get => this._protectedItemName; set => this._protectedItemName = value; }
 
         /// <summary>Backing field for <see cref="ProtectionContainerName" /> property.</summary>
         private string _protectionContainerName;
@@ -200,6 +242,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// <summary>Replication protected item name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string ReplicatedProtectedItemName { get => this._replicatedProtectedItemName; set => this._replicatedProtectedItemName = value; }
+
+        /// <summary>Backing field for <see cref="ReplicationExtensionName" /> property.</summary>
+        private string _replicationExtensionName;
+
+        /// <summary>The replication extension name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public string ReplicationExtensionName { get => this._replicationExtensionName; set => this._replicationExtensionName = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -249,6 +298,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// <summary>The ID of the target subscription.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
+
+        /// <summary>Backing field for <see cref="VaultName" /> property.</summary>
+        private string _vaultName;
+
+        /// <summary>The vault name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Origin(Microsoft.Azure.PowerShell.Cmdlets.Migrate.PropertyOrigin.Owned)]
+        public string VaultName { get => this._vaultName; set => this._vaultName = value; }
 
         /// <summary>Backing field for <see cref="VaultSettingName" /> property.</summary>
         private string _vaultSettingName;
@@ -320,6 +376,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"databaseName",
         PossibleTypes = new [] { typeof(string) })]
         string DatabaseName { get; set; }
+        /// <summary>Deployment Id.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Deployment Id.",
+        SerializedName = @"deploymentId",
+        PossibleTypes = new [] { typeof(string) })]
+        string DeploymentId { get; set; }
+        /// <summary>The email configuration name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The email configuration name.",
+        SerializedName = @"emailConfigurationName",
+        PossibleTypes = new [] { typeof(string) })]
+        string EmailConfigurationName { get; set; }
         /// <summary>Unique name of an event within a migrate project.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -328,6 +400,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"eventName",
         PossibleTypes = new [] { typeof(string) })]
         string EventName { get; set; }
+        /// <summary>The fabric agent (Dra) name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The fabric agent (Dra) name.",
+        SerializedName = @"fabricAgentName",
+        PossibleTypes = new [] { typeof(string) })]
+        string FabricAgentName { get; set; }
         /// <summary>Fabric name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -368,6 +448,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"jobName",
         PossibleTypes = new [] { typeof(string) })]
         string JobName { get; set; }
+        /// <summary>The name of the Azure region.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the Azure region.",
+        SerializedName = @"location",
+        PossibleTypes = new [] { typeof(string) })]
+        string Location { get; set; }
         /// <summary>Logical network name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -432,6 +520,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"networkName",
         PossibleTypes = new [] { typeof(string) })]
         string NetworkName { get; set; }
+        /// <summary>The ID of an ongoing async operation.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The ID of an ongoing async operation.",
+        SerializedName = @"operationId",
+        PossibleTypes = new [] { typeof(string) })]
+        string OperationId { get; set; }
         /// <summary>Operation status ARM name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -456,6 +552,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"protectableItemName",
         PossibleTypes = new [] { typeof(string) })]
         string ProtectableItemName { get; set; }
+        /// <summary>The protected item name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The protected item name.",
+        SerializedName = @"protectedItemName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ProtectedItemName { get; set; }
         /// <summary>Protection container name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -496,6 +600,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"replicatedProtectedItemName",
         PossibleTypes = new [] { typeof(string) })]
         string ReplicatedProtectedItemName { get; set; }
+        /// <summary>The replication extension name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The replication extension name.",
+        SerializedName = @"replicationExtensionName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ReplicationExtensionName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -552,6 +664,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
+        /// <summary>The vault name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The vault name.",
+        SerializedName = @"vaultName",
+        PossibleTypes = new [] { typeof(string) })]
+        string VaultName { get; set; }
         /// <summary>Vault setting name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Info(
         Required = false,
@@ -591,8 +711,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         string DatabaseInstanceName { get; set; }
         /// <summary>Unique name of a database in Azure migration hub.</summary>
         string DatabaseName { get; set; }
+        /// <summary>Deployment Id.</summary>
+        string DeploymentId { get; set; }
+        /// <summary>The email configuration name.</summary>
+        string EmailConfigurationName { get; set; }
         /// <summary>Unique name of an event within a migrate project.</summary>
         string EventName { get; set; }
+        /// <summary>The fabric agent (Dra) name.</summary>
+        string FabricAgentName { get; set; }
         /// <summary>Fabric name.</summary>
         string FabricName { get; set; }
         /// <summary>Host ARM name.</summary>
@@ -603,6 +729,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         string IntentObjectName { get; set; }
         /// <summary>Job ARM name.</summary>
         string JobName { get; set; }
+        /// <summary>The name of the Azure region.</summary>
+        string Location { get; set; }
         /// <summary>Logical network name.</summary>
         string LogicalNetworkName { get; set; }
         /// <summary>Machine ARM name.</summary>
@@ -619,12 +747,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         string NetworkMappingName { get; set; }
         /// <summary>Primary network name.</summary>
         string NetworkName { get; set; }
+        /// <summary>The ID of an ongoing async operation.</summary>
+        string OperationId { get; set; }
         /// <summary>Operation status ARM name.</summary>
         string OperationStatusName { get; set; }
         /// <summary>Replication policy name.</summary>
         string PolicyName { get; set; }
         /// <summary>Protectable item name.</summary>
         string ProtectableItemName { get; set; }
+        /// <summary>The protected item name.</summary>
+        string ProtectedItemName { get; set; }
         /// <summary>Protection container name.</summary>
         string ProtectionContainerName { get; set; }
         /// <summary>Recovery services provider name.</summary>
@@ -635,6 +767,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         string RecoveryPointName { get; set; }
         /// <summary>Replication protected item name.</summary>
         string ReplicatedProtectedItemName { get; set; }
+        /// <summary>The replication extension name.</summary>
+        string ReplicationExtensionName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>The name of the recovery services vault.</summary>
@@ -649,6 +783,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         string StorageClassificationName { get; set; }
         /// <summary>The ID of the target subscription.</summary>
         string SubscriptionId { get; set; }
+        /// <summary>The vault name.</summary>
+        string VaultName { get; set; }
         /// <summary>Vault setting name.</summary>
         string VaultSettingName { get; set; }
         /// <summary>VCenter ARM name.</summary>

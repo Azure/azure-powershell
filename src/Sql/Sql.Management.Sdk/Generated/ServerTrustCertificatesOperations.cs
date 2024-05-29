@@ -39,10 +39,12 @@ namespace Microsoft.Azure.Management.Sql
         public SqlManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Gets a list of server trust certificates that were uploaded from box to the given Sql Managed Instance.
+        /// Gets a list of server trust certificates that were uploaded from box to the
+        /// given Sql Managed Instance.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -249,10 +251,12 @@ namespace Microsoft.Azure.Management.Sql
 
         }
         /// <summary>
-        /// Gets a server trust certificate that was uploaded from box to Sql Managed Instance.
+        /// Gets a server trust certificate that was uploaded from box to Sql Managed
+        /// Instance.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -472,7 +476,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Uploads a server trust certificate from box to Sql Managed Instance.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -497,10 +502,12 @@ namespace Microsoft.Azure.Management.Sql
         }
 
         /// <summary>
-        /// Deletes a server trust certificate that was uploaded from box to Sql Managed Instance.
+        /// Deletes a server trust certificate that was uploaded from box to Sql
+        /// Managed Instance.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -525,7 +532,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Uploads a server trust certificate from box to Sql Managed Instance.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -775,10 +783,12 @@ namespace Microsoft.Azure.Management.Sql
 
         }
         /// <summary>
-        /// Deletes a server trust certificate that was uploaded from box to Sql Managed Instance.
+        /// Deletes a server trust certificate that was uploaded from box to Sql
+        /// Managed Instance.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -974,7 +984,8 @@ namespace Microsoft.Azure.Management.Sql
 
         }
         /// <summary>
-        /// Gets a list of server trust certificates that were uploaded from box to the given Sql Managed Instance.
+        /// Gets a list of server trust certificates that were uploaded from box to the
+        /// given Sql Managed Instance.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

@@ -24,7 +24,7 @@ The Get-AzEnvironment cmdlet gets endpoints and metadata for an instance of Azur
 
 ### Example 1: Getting all Azure environments
 ```powershell
-Get-AzEnvironment 
+Get-AzEnvironment
 ```
 
 ```Output

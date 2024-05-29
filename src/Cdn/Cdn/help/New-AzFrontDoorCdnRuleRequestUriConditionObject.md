@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRequestUriConditionObject
 schema: 2.0.0
@@ -13,7 +13,7 @@ Create an in-memory object for DeliveryRuleRequestUriCondition.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnRuleRequestUriConditionObject -Name <MatchVariable> -ParameterOperator <RequestUriOperator>
+New-AzFrontDoorCdnRuleRequestUriConditionObject -ParameterOperator <RequestUriOperator> -Name <MatchVariable>
  [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>] [-ParameterTransform <Transform[]>]
  [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ Create an in-memory object for DeliveryRuleRequestUriCondition.
 
 ### Example 1: Create an in-memory object for DeliveryRuleRequestUriCondition
 ```powershell
- New-AzFrontDoorCdnRuleRequestUriConditionObject -Name RequestUri -ParameterOperator Equal -ParameterMatchValue /test
+New-AzFrontDoorCdnRuleRequestUriConditionObject -Name RequestUri -ParameterOperator Equal -ParameterMatchValue /test
 ```
 
 ```output
@@ -120,11 +120,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRequestUriCondition
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestUriCondition
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

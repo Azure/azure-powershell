@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.AlertsManagement",
-  "ModuleVersion": "0.6.1",
+  "ModuleVersion": "0.6.2",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlert",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlert, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlert, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "StartDateTime": "System.Nullable`1[System.DateTime]",
               "LastModifiedDateTime": "System.Nullable`1[System.DateTime]",
@@ -889,7 +889,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertModification",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertModification, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertModification, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Items": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertModificationItem]"
             },
@@ -952,7 +952,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Resources": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
               "ResourceTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
@@ -1052,7 +1052,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
                   "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Resources": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
                     "ResourceTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
@@ -1152,7 +1152,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "LastModifiedAt": "System.Nullable`1[System.DateTime]",
@@ -1462,7 +1462,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Resources": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
               "ResourceTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
@@ -1754,7 +1754,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroupModification",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroupModification, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroupModification, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Items": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroupModificationItem]"
             },
@@ -1817,7 +1817,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Resources": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
               "ResourceTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
@@ -1917,7 +1917,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
                   "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Resources": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
                     "ResourceTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
@@ -2017,7 +2017,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertsSummary",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertsSummary, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertsSummary, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AggregatedCounts": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAggregatedCounts",
               "TotalAlerts": "System.Nullable`1[System.Int32]",
@@ -2660,7 +2660,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "LastModifiedAt": "System.Nullable`1[System.DateTime]",
@@ -2704,7 +2704,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         }
@@ -2775,7 +2775,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -2836,7 +2836,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -2856,7 +2856,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
                   "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CreatedAt": "System.Nullable`1[System.DateTime]",
                     "LastModifiedAt": "System.Nullable`1[System.DateTime]",
@@ -2912,7 +2912,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -2958,7 +2958,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -2985,7 +2985,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "LastModifiedAt": "System.Nullable`1[System.DateTime]",
@@ -3051,7 +3051,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "LastModifiedAt": "System.Nullable`1[System.DateTime]",
@@ -3395,7 +3395,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
                   "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CreatedAt": "System.Nullable`1[System.DateTime]",
                     "LastModifiedAt": "System.Nullable`1[System.DateTime]",
@@ -4513,7 +4513,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "LastModifiedAt": "System.Nullable`1[System.DateTime]",
@@ -4588,7 +4588,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "LastModifiedAt": "System.Nullable`1[System.DateTime]",
@@ -4750,7 +4750,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
                   "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CreatedAt": "System.Nullable`1[System.DateTime]",
                     "LastModifiedAt": "System.Nullable`1[System.DateTime]",
@@ -4970,7 +4970,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlert",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlert, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlert, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "StartDateTime": "System.Nullable`1[System.DateTime]",
               "LastModifiedDateTime": "System.Nullable`1[System.DateTime]",
@@ -5068,7 +5068,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlert",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlert, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlert, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "StartDateTime": "System.Nullable`1[System.DateTime]",
               "LastModifiedDateTime": "System.Nullable`1[System.DateTime]",
@@ -5232,7 +5232,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
                   "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlert",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlert, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlert, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "StartDateTime": "System.Nullable`1[System.DateTime]",
                     "LastModifiedDateTime": "System.Nullable`1[System.DateTime]",
@@ -5336,7 +5336,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Resources": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
               "ResourceTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
@@ -5421,7 +5421,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Resources": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
               "ResourceTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
@@ -5551,7 +5551,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
                   "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Resources": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
                     "ResourceTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
@@ -5651,7 +5651,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupResource, Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupResource, Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Rule": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRule[]",
               "Enabled": "System.Nullable`1[System.Boolean]",
@@ -5700,7 +5700,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupsIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupsIdentity, Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupsIdentity, Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ResourceGroupName": "System.String",
@@ -5719,7 +5719,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.PSObject",
-            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -5728,7 +5728,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -5737,7 +5737,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -5747,7 +5747,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -5766,7 +5766,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.PSCredential",
-            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -5775,7 +5775,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         }
@@ -5825,7 +5825,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5840,7 +5840,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5855,7 +5855,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5871,7 +5871,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5902,7 +5902,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5917,7 +5917,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5987,7 +5987,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6002,7 +6002,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6017,7 +6017,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6033,7 +6033,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6064,7 +6064,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6079,7 +6079,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6119,7 +6119,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6134,7 +6134,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6149,7 +6149,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6165,7 +6165,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6196,7 +6196,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6211,7 +6211,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6231,7 +6231,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupsIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupsIdentity, Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupsIdentity, Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ResourceGroupName": "System.String",
@@ -6256,7 +6256,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6271,7 +6271,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6286,7 +6286,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6302,7 +6302,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6333,7 +6333,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6348,7 +6348,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6372,7 +6372,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6387,7 +6387,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6402,7 +6402,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6418,7 +6418,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6449,7 +6449,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6464,7 +6464,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6491,7 +6491,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupResource, Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupResource, Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Rule": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRule[]",
               "Enabled": "System.Nullable`1[System.Boolean]",
@@ -6548,7 +6548,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRule[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRule[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRule"
           },
           "ValidateNotNullOrEmpty": false
@@ -6586,7 +6586,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -6617,7 +6617,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.PSObject",
-            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -6626,7 +6626,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -6635,7 +6635,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -6645,7 +6645,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -6664,7 +6664,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.PSCredential",
-            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -6673,7 +6673,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         }
@@ -6748,7 +6748,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRule[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRule[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRule"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6810,7 +6810,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6859,7 +6859,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6874,7 +6874,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6889,7 +6889,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6905,7 +6905,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6936,7 +6936,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6951,7 +6951,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6978,7 +6978,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.PrometheusRuleGroupAction",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.PrometheusRuleGroupAction, Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.PrometheusRuleGroupAction, Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ActionProperty": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupActionProperties",
               "ActionGroupId": "System.String"
@@ -7091,7 +7091,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupActionProperties",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupActionProperties, Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupActionProperties, Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         }
@@ -7121,7 +7121,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupActionProperties",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupActionProperties, Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupActionProperties, Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7148,7 +7148,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.PrometheusRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.PrometheusRule, Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.PrometheusRule, Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Annotation": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleAnnotations",
               "Action": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupAction[]",
@@ -7270,7 +7270,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupAction[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupAction[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupAction[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupAction"
           },
           "ValidateNotNullOrEmpty": false
@@ -7289,7 +7289,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleAnnotations",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleAnnotations, Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleAnnotations, Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -7316,7 +7316,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleLabels",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleLabels, Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleLabels, Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -7382,7 +7382,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupAction[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupAction[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupAction[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupAction"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7413,7 +7413,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleAnnotations",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleAnnotations, Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleAnnotations, Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7458,7 +7458,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleLabels",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleLabels, Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleLabels, Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7585,7 +7585,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupsIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupsIdentity, Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupsIdentity, Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ResourceGroupName": "System.String",
@@ -7604,7 +7604,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.PSObject",
-            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -7613,7 +7613,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -7622,7 +7622,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -7632,7 +7632,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -7642,7 +7642,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -7660,7 +7660,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.PSCredential",
-            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -7669,7 +7669,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         }
@@ -7733,7 +7733,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7748,7 +7748,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7763,7 +7763,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7779,7 +7779,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7795,7 +7795,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7825,7 +7825,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7840,7 +7840,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7860,7 +7860,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupsIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupsIdentity, Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupsIdentity, Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ResourceGroupName": "System.String",
@@ -7885,7 +7885,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7900,7 +7900,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7915,7 +7915,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7931,7 +7931,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -7947,7 +7947,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7977,7 +7977,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7992,7 +7992,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8016,7 +8016,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8031,7 +8031,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8046,7 +8046,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8062,7 +8062,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8078,7 +8078,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8108,7 +8108,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8123,7 +8123,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8150,7 +8150,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupResource, Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupResource, Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Rule": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRule[]",
               "Enabled": "System.Nullable`1[System.Boolean]",
@@ -8198,7 +8198,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupsIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupsIdentity, Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupsIdentity, Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ResourceGroupName": "System.String",
@@ -8213,7 +8213,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -8235,7 +8235,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.PSObject",
-            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -8244,7 +8244,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -8253,7 +8253,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -8263,7 +8263,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -8282,7 +8282,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.PSCredential",
-            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -8291,7 +8291,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         }
@@ -8351,7 +8351,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8385,7 +8385,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8400,7 +8400,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8415,7 +8415,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8431,7 +8431,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8462,7 +8462,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8477,7 +8477,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8497,7 +8497,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupsIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupsIdentity, Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.IPrometheusRuleGroupsIdentity, Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ResourceGroupName": "System.String",
@@ -8518,7 +8518,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8552,7 +8552,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8567,7 +8567,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8582,7 +8582,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8598,7 +8598,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8629,7 +8629,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8644,7 +8644,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8664,7 +8664,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8698,7 +8698,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8713,7 +8713,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8728,7 +8728,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8744,7 +8744,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8775,7 +8775,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8790,7 +8790,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9006,7 +9006,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertModificationItem]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertModificationItem]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertModificationItem, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertModificationItem, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertModificationItem"
       ]
@@ -9014,7 +9014,7 @@
     "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertModificationItem": {
       "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
       "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertModificationItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertModificationItem, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertModificationItem, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Event": "System.String",
         "ModifiedAt": "System.String",
@@ -9135,7 +9135,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroupModificationItem]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroupModificationItem]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroupModificationItem, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroupModificationItem, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroupModificationItem"
       ]
@@ -9143,7 +9143,7 @@
     "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroupModificationItem": {
       "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
       "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroupModificationItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroupModificationItem, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroupModificationItem, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Event": "System.String",
         "ModifiedAt": "System.String",
@@ -9189,7 +9189,7 @@
     "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAggregatedCounts": {
       "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
       "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAggregatedCounts",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAggregatedCounts, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAggregatedCounts, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Content": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.AlertsSummaryGroupItem]"
       },
@@ -9301,13 +9301,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRule[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRule[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRule[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRule[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRule"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRule": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRule, Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRule, Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Annotation": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleAnnotations",
         "Action": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupAction[]",
@@ -9325,18 +9325,18 @@
     "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleAnnotations": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleAnnotations",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleAnnotations, Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleAnnotations, Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupAction[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupAction[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupAction[], Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupAction[], Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupAction"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupAction": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupAction",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupAction, Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupAction, Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ActionProperty": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupActionProperties",
         "ActionGroupId": "System.String"
@@ -9345,12 +9345,12 @@
     "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupActionProperties": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupActionProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupActionProperties, Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupActionProperties, Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleLabels": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleLabels",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleLabels, Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleLabels, Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
     },
     "System.Nullable`1[System.Boolean]": {
       "Namespace": "System",
@@ -9382,7 +9382,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep, Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.SendAsyncStep, Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -9555,7 +9555,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.Json.JsonNode": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.Json",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.Json.JsonNode",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.Json.JsonNode, Az.PrometheusRuleGroups.private, Version=0.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.Json.JsonNode, Az.PrometheusRuleGroups.private, Version=0.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Item": "Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Runtime.Json.JsonNode"
       },

@@ -117,6 +117,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-RDGet");
         }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RDWithConditionGetScenario()
+        {
+            TestRunner.RunTestScript("Test-RDWithAbacConditionsGet");
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

@@ -12,12 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStacks;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
@@ -36,6 +40,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public string resourceGroupsCleanupAction { get; set; }
 
+        public string managementGroupsCleanupAction { get; set; }
+
         public SystemData systemData { get; set; }
 
         public string location { get; set; }
@@ -44,9 +50,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public Dictionary<string, DeploymentVariable> outputs { get; set; }
 
-        public Dictionary<string, DeploymentVariable> parameters { get; set; }
+        public IDictionary<string, PSDeploymentStackParameter> parameters { get; set; }
 
-        public IDictionary<string, string> Tags { get; set; }
+        public IDictionary<string, string> tags { get; set; }
 
         public DeploymentStacksParametersLink parametersLink { get; set; }
 
@@ -70,7 +76,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public string deploymentId { get; set; }
 
-        public ErrorResponse error { get; set; }
+        public ErrorDetail error { get; set; }
+
+        public string correlationId { get; set; }
 
         public PSDeploymentStack() { }
 
@@ -80,8 +88,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             this.name = deploymentStack.Name;
             this.type = deploymentStack.Type;
             this.systemData = deploymentStack.SystemData;
-            this.resourcesCleanupAction = (deploymentStack.ActionOnUnmanage != null) ? deploymentStack.ActionOnUnmanage.Resources : null;
-            this.resourceGroupsCleanupAction = (deploymentStack.ActionOnUnmanage != null) ? deploymentStack.ActionOnUnmanage.ResourceGroups : null;
+            this.resourcesCleanupAction = deploymentStack.ActionOnUnmanage.Resources;
+            this.resourceGroupsCleanupAction = deploymentStack.ActionOnUnmanage.ResourceGroups;
+            this.managementGroupsCleanupAction = deploymentStack.ActionOnUnmanage.ManagementGroups;
             this.location = deploymentStack.Location;
             this.parametersLink = deploymentStack.ParametersLink;
             this.debugSetting = deploymentStack.DebugSetting;
@@ -97,16 +106,67 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             this.duration = deploymentStack.Duration;
             this.error = deploymentStack.Error;
             this.parametersLink = deploymentStack.ParametersLink;
-            this.Tags = deploymentStack.Tags;
+            this.tags = deploymentStack.Tags;
+            this.correlationId = deploymentStack.CorrelationId;
+
 
             // Convert the raw outputs and parameters objects to dictionaries.
-            this.parameters = deploymentStack.Parameters != null ? FormatMappedObject(deploymentStack.Parameters) : null;
-            this.outputs = deploymentStack.Outputs != null ? FormatMappedObject(deploymentStack.Outputs) : null;
+            this.parameters = deploymentStack.Parameters != null ? ConvertParameterDictionary(deploymentStack.Parameters) : null;
+            this.outputs = deploymentStack.Outputs != null ? ConvertOutputDictionary(deploymentStack.Outputs) : null;
         }
 
-        public string GetFormattedParameterTable() 
+        public static string ConstructDeploymentStacksParametersTable(IDictionary<string, PSDeploymentStackParameter> dictionary)
         {
-            return ResourcesExtensions.ConstructDeploymentVariableTable(this.parameters);
+            if (dictionary == null)
+            {
+                return null;
+            }
+
+            var maxNameLength = 15;
+            dictionary.Keys.ForEach(k => maxNameLength = Math.Max(maxNameLength, k.Length + 2));
+
+            var maxTypeLength = 25;
+            dictionary.Values.ForEach(v => maxTypeLength = Math.Max(maxTypeLength, v.Type.Length + 2));
+
+            StringBuilder result = new StringBuilder();
+
+            var rawParameters = dictionary.Where(entry => entry.Value.KeyVaultReference == null);
+            var refParameters = dictionary.Where(entry => entry.Value.KeyVaultReference != null);
+
+            if (rawParameters.Count() > 0)
+            {
+                string rowFormat = "{0, -" + maxNameLength + "}  {1, -" + maxTypeLength + "}  {2, -10}\r\n";
+                result.AppendLine();
+                result.AppendFormat(rowFormat, "Name", "Type", "Value");
+                result.AppendFormat(rowFormat, GeneralUtilities.GenerateSeparator(maxNameLength, "="), GeneralUtilities.GenerateSeparator(maxTypeLength, "="), GeneralUtilities.GenerateSeparator(10, "="));
+
+                foreach (KeyValuePair<string, PSDeploymentStackParameter> pair in rawParameters)
+                {
+                    result.AppendFormat(rowFormat, pair.Key, pair.Value.Type,
+                        JsonConvert.SerializeObject(pair.Value.Value).Indent(maxNameLength + maxTypeLength + 4).Trim());
+                }
+            }
+
+            if (refParameters.Count() > 0)
+            {
+                string rowFormat = "{0, -" + maxNameLength + "}  {1, -" + maxTypeLength + "}  {2, -10}  {3, -15}  {4, -10}\r\n";
+                result.AppendLine();
+                result.AppendFormat(rowFormat, "Name", "Type", "SecretName", "SecretVersion", "KeyVault");
+                result.AppendFormat(rowFormat, GeneralUtilities.GenerateSeparator(maxNameLength, "="), GeneralUtilities.GenerateSeparator(maxTypeLength, "="), GeneralUtilities.GenerateSeparator(10, "="), GeneralUtilities.GenerateSeparator(15, "="), GeneralUtilities.GenerateSeparator(10, "="));
+
+                foreach (KeyValuePair<string, PSDeploymentStackParameter> pair in refParameters)
+                { 
+                    result.AppendFormat(rowFormat, pair.Key, pair.Value.Type, pair.Value.KeyVaultReference.SecretName, pair.Value.KeyVaultReference.SecretVersion, pair.Value.KeyVaultReference.KeyVault.Id);
+                }
+          
+            }
+
+            return result.ToString();
+        }
+
+        public string GetFormattedParameterTable()
+        {
+            return ConstructDeploymentStacksParametersTable(this.parameters);
         }
 
         public string GetFormattedOutputTable()
@@ -116,7 +176,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public string GetFormattedTagTable()
         {
-            return ResourcesExtensions.ConstructTagsTableFromIDictionary(this.Tags);
+            return ResourcesExtensions.ConstructTagsTableFromIDictionary(this.tags);
         }
 
         private const char Whitespace = ' ';
@@ -128,7 +188,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
                 : GetFormattedErrorString(this.error).TrimEnd('\r', '\n');
         }
 
-        private static string GetFormattedErrorString(ErrorResponse error, int level = 0)
+        private static string GetFormattedErrorString(ErrorDetail error, int level = 0)
         {
             if (error.Details == null)
             {
@@ -137,7 +197,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
             string errorDetail = null;
 
-            foreach (ErrorResponse detail in error.Details)
+            foreach (ErrorDetail detail in error.Details)
             {
                 errorDetail += GetIndentation(level) + GetFormattedErrorString(detail, level + 1) + System.Environment.NewLine;
             }
@@ -157,44 +217,93 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
                 : null;
         }
 
-        internal static Dictionary<string, DeploymentVariable> FormatMappedObject(object rawObject)
+
+        /// <summary>
+        /// This conversion method is required to fit the outputs in the deployment stack response object into a custom powershell object that has additional structure and 
+        /// custom output formatting. It also enables type population for outputs that are not returned with an explict type.
+        /// </summary>
+        /// <param name="outputs">The outputs of the deployment stack response object.</param>
+        internal static Dictionary<string, DeploymentVariable> ConvertOutputDictionary(object outputs)
         {
-            Dictionary<string, DeploymentVariable> mappedDeploymentVariables = new Dictionary<string, DeploymentVariable>();
+            var outputsPS = new Dictionary<string, DeploymentVariable>();
 
             // Extract DeploymentVariables from the passed in json object.
-            var jObject = JObject.Parse(rawObject.ToString());
+            var jObject = JObject.Parse(outputs.ToString());
             foreach (var props in jObject.Properties())
             {
-                mappedDeploymentVariables[props.Name] = ExtractDeploymentVariable(props.Value as JObject);
+                outputsPS[props.Name] = ExtractDeploymentVariableFromJObject(props.Value as JObject);
             }
 
             // Continue deserialize if the type of Value in DeploymentVariable is array.
-            mappedDeploymentVariables?.Values.ForEach(dv =>
+            outputsPS?.Values.ForEach(dv =>
             { 
-                if ("Array".Equals(dv?.Type))
+                if ("Array".Equals(dv?.Type) && dv?.Value != null)
                 {
-                    dv.Value = JsonConvert.DeserializeObject<object[]>(dv.Value.ToString());
+                    dv.Value = dv.Value.ToString().FromJson<object[]>();
                 }
             });
 
-            return mappedDeploymentVariables;
+            return outputsPS;
         }
 
-        internal static DeploymentVariable ExtractDeploymentVariable(JObject jObject)
+        /// <summary>
+        /// This conversion method is required to fit the parameters in the deployment stack response object into a custom powershell object that has additional structure and 
+        /// custom output formatting. It also enables type population for parameters that are not returned with an explict type.
+        /// </summary>
+        /// <param name="parameters">The deployment parameters of the deployment stack response object.</param>
+        internal static Dictionary<string, PSDeploymentStackParameter> ConvertParameterDictionary(IDictionary<string, DeploymentParameter> parameters)
         {
-            // Attempt to desialize the DeploymentVariable.
-            DeploymentVariable dVar = JsonConvert.DeserializeObject<DeploymentVariable>(jObject.ToString());
+            var parametersPS = new Dictionary<string, PSDeploymentStackParameter>();
 
-            // If the type is null, attempt to infer the type.
+            foreach (var key in parameters.Keys)
+            {
+                // Each entry will be an explicit parameter value or a key vault reference, both of which can include type.
+                PSDeploymentStackParameter parameter;
+                if (parameters[key].Reference != null)
+                {
+                    parameter = new PSDeploymentStackParameter { KeyVaultReference = parameters[key].Reference };
+
+                    if (parameters[key].Type != null)
+                    {
+                        parameter.Type = parameters[key].Type;
+                    }
+                    else
+                    {
+                        // If type does not exist, secret value is unknown and the type cannot be inferred:
+                        parameter.Type = "unknown";
+                    }
+                }
+                else
+                {
+                    // If the type is not present, attempt to infer:
+                    parameter = new PSDeploymentStackParameter { Value = parameters[key].Value, Type = parameters[key].Type != null ? parameters[key].Type : ExtractDeploymentStackParameterValueType(parameters[key].Value) };
+                    if (parameter.Value != null && "Array".Equals(parameter.Type))
+                    {
+                        parameter.Value = JsonConvert.DeserializeObject<object[]>(parameter.Value.ToString());
+                    }
+                }
+
+                parametersPS.Add(key, parameter);
+            }
+
+            return parametersPS;
+        }
+
+        internal static DeploymentVariable ExtractDeploymentVariableFromJObject(JObject jObject)
+        {
+            // Attempt to desialize the DeploymentVariable:
+            var dVar = jObject.ToString().FromJson<DeploymentVariable>();
+
+            // If the type is null, attempt to infer the type:
             if (dVar.Type is null)
             {
                 JToken value; 
                 var hasValue = jObject.TryGetValue("value", out value);
                 
-                // Value was there, we can infer the type.
+                // Value was there, we can infer the type:
                 if (hasValue)
                 {
-                    // interpret type and find matching ARM type
+                    // interpret type and find matching ARM type:
                     switch (value.Type)
                     {
                         case JTokenType.String:
@@ -217,6 +326,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             }
             
             return dVar;
+        }
+
+        internal static string ExtractDeploymentStackParameterValueType(object value)
+        {
+            // Switch on the value's type in an attempt to infer type from value:
+            switch (value)
+            {
+                case int _:
+                    return "int";
+                case string _:
+                    return "string";
+                case bool _:
+                    return "bool";
+                case JArray _:
+                    return "array";
+                default:
+                    return "object";
+            }
         }
     }
 }

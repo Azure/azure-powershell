@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the WebPubSub service.
 
 ---
-## Status
-[![Az.SignalR](https://img.shields.io/powershellgallery/v/Az.SignalR.svg?style=flat-square&label=Az.SignalR "Az.SignalR")](https://www.powershellgallery.com/packages/Az.SignalR/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -50,11 +47,15 @@ psm1-custom: custom/Az.SignalR.custom.psm1
 title: WebPubSub
 subject-prefix: ''
 # When updating the commit hash, please update all occurrences in the file
-branch: 492cf91751be945ceae53cfdd53b1ff2fb878703
+commit: 492cf91751be945ceae53cfdd53b1ff2fb878703
 
 # If there are post APIs for some kinds of actions in the RP, you may need to
 # uncomment following line to support viaIdentity for these post APIs
 identity-correction-for-post: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs

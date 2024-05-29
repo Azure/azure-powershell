@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="diffBackupIntervalInHours">The differential backup interval in hours. This is how many interval hours
         /// between each differential backup will be supported. This is only applicable
         /// to live databases but not dropped databases.
-        /// Possible values include: '12', '24'</param>
+        /// Possible values include: &#39;12&#39;, &#39;24&#39;</param>
         public BackupShortTermRetentionPolicyProperties(int? retentionDays = default(int?), int? diffBackupIntervalInHours = default(int?))
 
         {

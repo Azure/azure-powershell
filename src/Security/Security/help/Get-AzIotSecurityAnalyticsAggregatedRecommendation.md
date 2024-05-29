@@ -21,7 +21,8 @@ Get-AzIotSecurityAnalyticsAggregatedRecommendation -ResourceGroupName <String> -
 ### SolutionLevelResource
 ```
 Get-AzIotSecurityAnalyticsAggregatedRecommendation -ResourceGroupName <String> -SolutionName <String>
- -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

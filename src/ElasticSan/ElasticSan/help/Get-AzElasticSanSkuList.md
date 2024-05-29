@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ElasticSan-help.xml
 Module Name: Az.ElasticSan
 online version: https://learn.microsoft.com/powershell/module/az.elasticsan/get-azelasticsanskulist
 schema: 2.0.0
@@ -22,7 +22,7 @@ List all the available Skus in the region and information related to them
 
 ## EXAMPLES
 
-### Example 1: Get all the available Skus 
+### Example 1: Get all the available Skus
 ```powershell
 Get-AzElasticSanSkuList
 ```
@@ -96,4 +96,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

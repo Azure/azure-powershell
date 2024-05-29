@@ -68,9 +68,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_keyUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("keyUri"), out var __jsonKeyUri) ? (string)__jsonKeyUri : (string)KeyUri;}
-            {_currentVersionedKeyIdentifier = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("currentVersionedKeyIdentifier"), out var __jsonCurrentVersionedKeyIdentifier) ? (string)__jsonCurrentVersionedKeyIdentifier : (string)CurrentVersionedKeyIdentifier;}
-            {_lastKeyRotationTimestamp = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("lastKeyRotationTimestamp"), out var __jsonLastKeyRotationTimestamp) ? global::System.DateTime.TryParse((string)__jsonLastKeyRotationTimestamp, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastKeyRotationTimestampValue) ? __jsonLastKeyRotationTimestampValue : LastKeyRotationTimestamp : LastKeyRotationTimestamp;}
+            {_keyUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("keyUri"), out var __jsonKeyUri) ? (string)__jsonKeyUri : (string)_keyUri;}
+            {_currentVersionedKeyIdentifier = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("currentVersionedKeyIdentifier"), out var __jsonCurrentVersionedKeyIdentifier) ? (string)__jsonCurrentVersionedKeyIdentifier : (string)_currentVersionedKeyIdentifier;}
+            {_lastKeyRotationTimestamp = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("lastKeyRotationTimestamp"), out var __jsonLastKeyRotationTimestamp) ? global::System.DateTime.TryParse((string)__jsonLastKeyRotationTimestamp, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastKeyRotationTimestampValue) ? __jsonLastKeyRotationTimestampValue : _lastKeyRotationTimestamp : _lastKeyRotationTimestamp;}
             AfterFromJson(json);
         }
 

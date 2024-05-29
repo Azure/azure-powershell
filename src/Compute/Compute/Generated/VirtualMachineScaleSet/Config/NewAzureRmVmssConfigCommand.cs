@@ -173,9 +173,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string AutomaticRepairGracePeriod { get; set; }
 
+        [Alias("AutoOSUpgrade")]
         [Parameter(
-            Mandatory = false)]
-        public SwitchParameter AutoOSUpgrade { get; set; }
+            Mandatory = false,
+            HelpMessage = "Whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the image becomes available.")]
+        public SwitchParameter EnableAutomaticOSUpgrade { get; set; }
 
         [Parameter(
             Mandatory = false)]
@@ -469,7 +471,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vUpgradePolicy.RollingUpgradePolicy = this.RollingUpgradePolicy;
             }
             
-            if (this.AutoOSUpgrade.IsPresent)
+            if (this.EnableAutomaticOSUpgrade.IsPresent)
             {
                 if (vUpgradePolicy == null)
                 {
@@ -479,7 +481,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     vUpgradePolicy.AutomaticOSUpgradePolicy = new AutomaticOSUpgradePolicy();
                 }
-                vUpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade = this.AutoOSUpgrade.IsPresent;
+                vUpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade = this.EnableAutomaticOSUpgrade.IsPresent;
             }
 
             if (this.EnableAutomaticRepair.IsPresent)
@@ -935,10 +937,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Identity = vIdentity,
                 OrchestrationMode = this.IsParameterBound(c => c.OrchestrationMode) ? this.OrchestrationMode : null,
                 SpotRestorePolicy = this.IsParameterBound(c => c.EnableSpotRestore) ? new SpotRestorePolicy(true, this.SpotRestoreTimeout) : null,
-                PriorityMixPolicy = vPriorityMixPolicy 
+                PriorityMixPolicy = vPriorityMixPolicy
             };
 
             WriteObject(vVirtualMachineScaleSet);
         }
     }
 }
+

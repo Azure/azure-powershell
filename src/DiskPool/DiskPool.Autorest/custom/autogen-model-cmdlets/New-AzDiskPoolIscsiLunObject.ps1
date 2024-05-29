@@ -16,14 +16,14 @@
 
 <#
 .Synopsis
-Create a in-memory object for IscsiLun
+Create an in-memory object for IscsiLun.
 .Description
-Create a in-memory object for IscsiLun
+Create an in-memory object for IscsiLun.
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiLun
 .Link
-https://learn.microsoft.com/powershell/module/az.DiskPool/new-AzDiskPoolIscsiLunObject
+https://learn.microsoft.com/powershell/module/Az.DiskPool/new-AzDiskPoolIscsiLunObject
 #>
 function New-AzDiskPoolIscsiLunObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiLun')]
@@ -41,8 +41,12 @@ function New-AzDiskPoolIscsiLunObject {
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiLun]::New()
 
-        $Object.ManagedDiskAzureResourceId = $ManagedDiskAzureResourceId
-        $Object.Name = $Name
+        if ($PSBoundParameters.ContainsKey('ManagedDiskAzureResourceId')) {
+            $Object.ManagedDiskAzureResourceId = $ManagedDiskAzureResourceId
+        }
+        if ($PSBoundParameters.ContainsKey('Name')) {
+            $Object.Name = $Name
+        }
         return $Object
     }
 }

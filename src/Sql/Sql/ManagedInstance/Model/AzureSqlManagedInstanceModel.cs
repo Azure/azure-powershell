@@ -114,7 +114,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         /// </summary>
         public string TimezoneId { get; set; }
 
-
          /// <summary>
         /// Gets or sets the resource id of the dns zone partner of the managed instance
         /// </summary>
@@ -179,5 +178,23 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         /// Gets or sets the service principal object
         /// </summary>
         public Common.ServicePrincipal ServicePrincipal { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the internal format of instance databases specific
+        /// to the SQL engine version. Possible values include: &#39;AlwaysUpToDate&#39;, &#39;SQLServer2022&#39;
+        /// </summary>
+        public string DatabaseFormat { get; set; }
+
+        /// <summary>
+        /// Gets or sets weather or not Managed Instance is freemium.
+        /// Possible values include: &#39;Regular&#39;, &#39;Freemium&#39;
+        /// </summary>
+        public string PricingModel { get; set; }
+
+        /// <summary>
+        /// Gets or sets the external governance status of the managed instance.
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// </summary>
+        public string ExternalGovernanceStatus { get; set; }
     }
 }

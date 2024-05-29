@@ -15,7 +15,8 @@ Gets a DNS zone.
 
 ### Default (Default)
 ```
-Get-AzDnsZone [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDnsZone [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceGroup

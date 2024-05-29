@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="mappingType">Type of data directory mapping
-        /// Possible values include: 'Invalid', 'Data', 'Log'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Data&#39;, &#39;Log&#39;</param>
 
         /// <param name="sourceLogicalName">Restore source logical name path
         /// </param>

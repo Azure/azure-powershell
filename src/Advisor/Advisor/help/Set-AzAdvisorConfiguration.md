@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Advisor-help.xml
 Module Name: Az.Advisor
 online version: https://learn.microsoft.com/powershell/module/az.advisor/Set-AzAdvisorConfiguration
 schema: 2.0.0
@@ -15,19 +15,19 @@ Updates or creates the Azure Advisor Configuration.
 ### CreateByLCT (Default)
 ```
 Set-AzAdvisorConfiguration [-SubscriptionId <String>] [-Exclude] [-LowCpuThreshold <CpuThreshold>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateByRG
+```
+Set-AzAdvisorConfiguration [-SubscriptionId <String>] -ResourceGroupName <String> [-Exclude]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByInputObject
 ```
 Set-AzAdvisorConfiguration -InputObject <IAdvisorIdentity> [-Exclude] [-LowCpuThreshold <CpuThreshold>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateByRG
-```
-Set-AzAdvisorConfiguration -ResourceGroupName <String> [-SubscriptionId <String>] [-Exclude]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -117,7 +117,7 @@ Valid values: 5 (default), 10, 15 or 20.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold
-Parameter Sets: CreateByInputObject, CreateByLCT
+Parameter Sets: CreateByLCT, CreateByInputObject
 Aliases:
 
 Required: False
@@ -201,22 +201,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IAdvisorIdentity>`: Identity Parameter
-  - `[ConfigurationName <ConfigurationName?>]`: Advisor configuration name. Value must be 'default'
-  - `[Id <String>]`: Resource identity path
-  - `[Name <String>]`: Name of metadata entity.
-  - `[OperationId <String>]`: The operation ID, which can be found from the Location field in the generate recommendation response header.
-  - `[RecommendationId <String>]`: The recommendation ID.
-  - `[ResourceGroup <String>]`: The name of the Azure resource group.
-  - `[ResourceUri <String>]`: The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
-  - `[SubscriptionId <String>]`: The Azure subscription ID.
-
 ## RELATED LINKS
-

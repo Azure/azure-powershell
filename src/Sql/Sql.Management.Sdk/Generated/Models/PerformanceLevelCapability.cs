@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="unit">Unit type used to measure performance level.
-        /// Possible values include: 'DTU', 'VCores'</param>
+        /// Possible values include: &#39;DTU&#39;, &#39;VCores&#39;</param>
         public PerformanceLevelCapability(double? value = default(double?), string unit = default(string))
 
         {

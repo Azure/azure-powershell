@@ -211,5 +211,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzDnsRecordSet](./Remove-AzDnsRecordSet.md)
 
 [Set-AzDnsRecordSet](./Set-AzDnsRecordSet.md)
-
-

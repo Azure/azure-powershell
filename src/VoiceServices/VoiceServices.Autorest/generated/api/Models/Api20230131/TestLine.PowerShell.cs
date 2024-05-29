@@ -113,10 +113,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLineInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLineProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLineInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.TestLinePropertiesTypeConverter.ConvertFrom);
             }
-            if (content.Contains("RetryAfter"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLineInternal)this).RetryAfter = (int?) content.GetValueForProperty("RetryAfter",((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLineInternal)this).RetryAfter, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
             if (content.Contains("SystemDataCreatedBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
@@ -197,10 +193,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131
             if (content.Contains("Property"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLineInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLineProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLineInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.TestLinePropertiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("RetryAfter"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLineInternal)this).RetryAfter = (int?) content.GetValueForProperty("RetryAfter",((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLineInternal)this).RetryAfter, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("SystemDataCreatedBy"))
             {

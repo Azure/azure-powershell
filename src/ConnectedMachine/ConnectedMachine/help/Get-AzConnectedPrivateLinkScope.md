@@ -14,19 +14,20 @@ Returns a Azure Arc PrivateLinkScope.
 
 ### List (Default)
 ```
-Get-AzConnectedPrivateLinkScope [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzConnectedPrivateLinkScope [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzConnectedPrivateLinkScope -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzConnectedPrivateLinkScope -ResourceGroupName <String> -ScopeName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,33 +35,60 @@ Returns a Azure Arc PrivateLinkScope.
 
 ## EXAMPLES
 
-### Example 1: List all private link scopes in a resource group
+### Example 1: get all private link scope of a resource group
 ```powershell
-Get-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName
+Get-AzConnectedPrivateLinkScope -ResourceGroupName 'ytongtest'
 ```
 
 ```output
-Name              Location    PublicNetworkAccess ProvisioningState
-----              --------    ------------------- ----------------- 
-name1             eastus2euap Enabled             Succeeded
-name2             eastus2euap Disabled            Succeeded
-name3             eastus2euap Enabled             Succeeded
+Id                           : /subscriptions/subcriptionid/resourceGroups/ytongtest/providers/M
+                               icrosoft.HybridCompute/privateLinkScopes/myScope
+Location                     : centraluseuap
+Name                         : myScope
+PrivateEndpointConnection    : {}
+PrivateLinkScopeId           : scopeId
+ProvisioningState            : Succeeded
+PublicNetworkAccess          : Enabled
+ResourceGroupName            : ytongtest
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Tag                          : {
+                               }
+Type                         : Microsoft.HybridCompute/privateLinkScopes
 ```
 
-Lists all private link scopes in a specified resource group
+get all private link scope of a resource group
 
-### Example 2: Get a private link scope in a resource group by name
+### Example 2: get specific private link scope
 ```powershell
-Get-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName
+Get-AzConnectedPrivateLinkScope -ResourceGroupName 'ytongtest' -ScopeName 'myScope'
 ```
 
 ```output
-Name         Location    PublicNetworkAccess ProvisioningState
-----         --------    ------------------- -----------------
-name1        eastus2euap Enabled             Succeeded
+Id                           : /subscriptions/********-****-****-****-**********/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope
+Location                     : centraluseuap
+Name                         : myScope
+PrivateEndpointConnection    : {}
+PrivateLinkScopeId           : ********-****-****-****-**********
+ProvisioningState            : Succeeded
+PublicNetworkAccess          : Enabled
+ResourceGroupName            : ytongtest
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Tag                          : {
+                               }
+Type                         : Microsoft.HybridCompute/privateLinkScopes
 ```
 
-Gets a private link scope in a specified resource group by name
+get specific private link scope
 
 ## PARAMETERS
 
@@ -72,6 +100,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -133,7 +176,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IHybridComputePrivateLinkScope
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHybridComputePrivateLinkScope
 
 ## NOTES
 

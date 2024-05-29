@@ -76,14 +76,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
                 throw new PSInvalidOperationException(string.Format("'{0}' is not a valid path. You cannot enable context autosave without a valid token cache path", tokenPath));
             }
 
-            result = new ContextAutosaveSettings
-            {
-                CacheDirectory = session.TokenCacheDirectory,
-                CacheFile = session.TokenCacheFile,
-                ContextDirectory = session.ARMProfileDirectory,
-                ContextFile = session.ARMProfileFile,
-                Mode = ContextSaveMode.CurrentUser
-            };
+            result = ContextAutosaveSettings.FromAzureSession(session, ContextSaveMode.CurrentUser);
 
             FileUtilities.DataStore = session.DataStore;
             session.ARMContextSaveMode = ContextSaveMode.CurrentUser;

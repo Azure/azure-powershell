@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="conflictResolutionPolicy">Conflict resolution policy of the sync group.
-        /// Possible values include: 'HubWin', 'MemberWin'</param>
+        /// Possible values include: &#39;HubWin&#39;, &#39;MemberWin&#39;</param>
 
         /// <param name="syncDatabaseId">ARM resource id of the sync database in the sync group.
         /// </param>
@@ -56,8 +56,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="syncState">Sync state of the sync group.
-        /// Possible values include: 'NotReady', 'Error', 'Warning', 'Progressing',
-        /// 'Good'</param>
+        /// Possible values include: &#39;NotReady&#39;, &#39;Error&#39;, &#39;Warning&#39;, &#39;Progressing&#39;,
+        /// &#39;Good&#39;</param>
 
         /// <param name="schema">Sync schema of the sync group.
         /// </param>

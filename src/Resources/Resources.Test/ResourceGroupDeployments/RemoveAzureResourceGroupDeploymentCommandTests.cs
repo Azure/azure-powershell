@@ -20,10 +20,11 @@ using Moq;
 using Xunit;
 using Xunit.Abstractions;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Resources
 {
-    public class RemoveAzureResourceGroupDeploymentCommandTests
+    public class RemoveAzureResourceGroupDeploymentCommandTests : RMTestBase
     {
         private RemoveAzureResourceGroupDeploymentCmdlet cmdlet;
 

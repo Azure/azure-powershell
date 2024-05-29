@@ -67,7 +67,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="elasticSanResourceId">Required if createOption is
         /// CopyFromSanSnapshot. This is the ARM id of the source elastic san
         /// volume snapshot.</param>
-        public CreationData(string createOption, string storageAccountId = default(string), ImageDiskReference imageReference = default(ImageDiskReference), ImageDiskReference galleryImageReference = default(ImageDiskReference), string sourceUri = default(string), string sourceResourceId = default(string), string sourceUniqueId = default(string), long? uploadSizeBytes = default(long?), int? logicalSectorSize = default(int?), string securityDataUri = default(string), bool? performancePlus = default(bool?), string elasticSanResourceId = default(string))
+        /// <param name="provisionedBandwidthCopySpeed">If this field is set on
+        /// a snapshot and createOption is CopyStart, the snapshot will be
+        /// copied at a quicker speed. Possible values include: 'None',
+        /// 'Enhanced'</param>
+        public CreationData(string createOption, string storageAccountId = default(string), ImageDiskReference imageReference = default(ImageDiskReference), ImageDiskReference galleryImageReference = default(ImageDiskReference), string sourceUri = default(string), string sourceResourceId = default(string), string sourceUniqueId = default(string), long? uploadSizeBytes = default(long?), int? logicalSectorSize = default(int?), string securityDataUri = default(string), bool? performancePlus = default(bool?), string elasticSanResourceId = default(string), string provisionedBandwidthCopySpeed = default(string))
         {
             CreateOption = createOption;
             StorageAccountId = storageAccountId;
@@ -81,6 +85,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             SecurityDataUri = securityDataUri;
             PerformancePlus = performancePlus;
             ElasticSanResourceId = elasticSanResourceId;
+            ProvisionedBandwidthCopySpeed = provisionedBandwidthCopySpeed;
             CustomInit();
         }
 
@@ -180,6 +185,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "elasticSanResourceId")]
         public string ElasticSanResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets if this field is set on a snapshot and createOption is
+        /// CopyStart, the snapshot will be copied at a quicker speed. Possible
+        /// values include: 'None', 'Enhanced'
+        /// </summary>
+        [JsonProperty(PropertyName = "provisionedBandwidthCopySpeed")]
+        public string ProvisionedBandwidthCopySpeed { get; set; }
 
         /// <summary>
         /// Validate the object.

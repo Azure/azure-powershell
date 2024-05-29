@@ -65,8 +65,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_web = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("web"), out var __jsonWeb) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ConnectivityProfileWeb.FromJson(__jsonWeb) : Web;}
-            {_ssh = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray>("ssh"), out var __jsonSsh) ? If( __jsonSsh as Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshConnectivityEndpoint>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshConnectivityEndpoint) (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.SshConnectivityEndpoint.FromJson(__u) )) ))() : null : Ssh;}
+            {_web = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("web"), out var __jsonWeb) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ConnectivityProfileWeb.FromJson(__jsonWeb) : _web;}
+            {_ssh = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray>("ssh"), out var __jsonSsh) ? If( __jsonSsh as Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshConnectivityEndpoint>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshConnectivityEndpoint) (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.SshConnectivityEndpoint.FromJson(__u) )) ))() : null : _ssh;}
             AfterFromJson(json);
         }
 

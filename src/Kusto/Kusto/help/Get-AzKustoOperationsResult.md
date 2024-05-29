@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Kusto-help.xml
 Module Name: Az.Kusto
 online version: https://learn.microsoft.com/powershell/module/az.kusto/get-azkustooperationsresult
 schema: 2.0.0
@@ -20,7 +20,8 @@ Get-AzKustoOperationsResult -Location <String> -OperationId <String> [-Subscript
 
 ### GetViaIdentity
 ```
-Get-AzKustoOperationsResult -InputObject <IKustoIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzKustoOperationsResult -InputObject <IKustoIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -134,4 +135,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

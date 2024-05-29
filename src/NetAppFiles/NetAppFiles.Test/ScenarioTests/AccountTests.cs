@@ -43,5 +43,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         {
             TestRunner.RunTestScript("Test-AccountPipelines");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAccountCMK()
+        {
+            TestRunner.RunTestScript("Test-AccountCMK");
+        }
     }
 }

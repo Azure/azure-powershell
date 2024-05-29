@@ -65,7 +65,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_subnetId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("subnetId"), out var __jsonSubnetId) ? (string)__jsonSubnetId : (string)SubnetId;}
+            {_subnetId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("subnetId"), out var __jsonSubnetId) ? (string)__jsonSubnetId : (string)_subnetId;}
+            {_outboundType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("outboundType"), out var __jsonOutboundType) ? (string)__jsonOutboundType : (string)_outboundType;}
+            {_enablePrivateApiServer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean>("enablePrivateApiServer"), out var __jsonEnablePrivateApiServer) ? (bool?)__jsonEnablePrivateApiServer : _enablePrivateApiServer;}
+            {_apiServerAuthorizedIPRange = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray>("apiServerAuthorizedIpRanges"), out var __jsonApiServerAuthorizedIPRanges) ? If( __jsonApiServerAuthorizedIPRanges as Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _apiServerAuthorizedIPRange;}
             AfterFromJson(json);
         }
 
@@ -101,6 +104,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
                 return container;
             }
             AddIf( null != (((object)this._subnetId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._subnetId.ToString()) : null, "subnetId" ,container.Add );
+            AddIf( null != (((object)this._outboundType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._outboundType.ToString()) : null, "outboundType" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate))
+            {
+                AddIf( null != this._enablePrivateApiServer ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean((bool)this._enablePrivateApiServer) : null, "enablePrivateApiServer" ,container.Add );
+            }
+            if (null != this._apiServerAuthorizedIPRange)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.XNodeArray();
+                foreach( var __x in this._apiServerAuthorizedIPRange )
+                {
+                    AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                }
+                container.Add("apiServerAuthorizedIpRanges",__w);
+            }
             AfterToJson(ref container);
             return container;
         }

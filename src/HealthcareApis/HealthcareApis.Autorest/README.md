@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the HealthcareApis service.
 
 ---
-## Status
-[![Az.HealthcareApis](https://img.shields.io/powershellgallery/v/Az.HealthcareApis.svg?style=flat-square&label=Az.HealthcareApis "Az.HealthcareApis")](https://www.powershellgallery.com/packages/Az.HealthcareApis/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -30,9 +27,9 @@ For information on how to develop for `Az.HealthcareApis`, see [how-to.md](how-t
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 672281444dd67605420fc9b3bcbd170040708380
+commit: 672281444dd67605420fc9b3bcbd170040708380
 require:
-  - $(this-folder)/../readme.azure.noprofile.md 
+  - $(this-folder)/../../readme.azure.noprofile.md 
 input-file:
   - $(repo)/specification/healthcareapis/resource-manager/Microsoft.HealthcareApis/stable/2021-11-01/healthcare-apis.json
 
@@ -45,6 +42,10 @@ identity-correction-for-post: true
 
 metadata: 
   tags: Azure ResourceManager ARM PSModule $(service-name) HealthCare FhirService
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - where:

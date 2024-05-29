@@ -20,7 +20,8 @@ Get-AzNetAppFilesVolume -ResourceGroupName <String> -AccountName <String> -PoolN
 
 ### ByResourceIdParameterSet
 ```
-Get-AzNetAppFilesVolume -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetAppFilesVolume -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet

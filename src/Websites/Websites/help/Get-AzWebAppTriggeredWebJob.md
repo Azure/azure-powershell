@@ -21,7 +21,8 @@ Get-AzWebAppTriggeredWebJob -AppName <String> -ResourceGroupName <String> [-Subs
 ### Get
 ```
 Get-AzWebAppTriggeredWebJob -AppName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity

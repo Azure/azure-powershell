@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the DynatraceObservability service.
 
 ---
-## Status
-[![Az.DynatraceObservability](https://img.shields.io/powershellgallery/v/Az.DynatraceObservability.svg?style=flat-square&label=Az.DynatraceObservability "Az.DynatraceObservability")](https://www.powershellgallery.com/packages/Az.DynatraceObservability/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -30,9 +27,9 @@ For information on how to develop for `Az.DynatraceObservability`, see [how-to.m
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 8820fa48b53c2c5c6cada3d44046b879932893cd
+commit: 8820fa48b53c2c5c6cada3d44046b879932893cd
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/dynatrace/resource-manager/Dynatrace.Observability/stable/2021-09-01/dynatrace.json
 title: DynatraceObservability
@@ -41,6 +38,10 @@ subject-prefix: Dynatrace
 inlining-threshold: 100
 resourcegroup-append: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - where:

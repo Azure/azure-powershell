@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Check if a resource name is available.
         /// </remarks>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='name'>
         /// Resource name to verify.
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Check if a file path is available.
         /// </remarks>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='name'>
         /// File path to verify.
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Check if a quota is available.
         /// </remarks>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='name'>
         /// Name of the resource to verify.
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Provides storage to network proximity and logical zone mapping information.
         /// </remarks>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Get details of the specified network sibling set.
         /// </remarks>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='networkSiblingSetId'>
         /// Network Sibling Set ID for a group of volumes sharing networking resources
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Update the network features of the specified network sibling set.
         /// </remarks>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='networkSiblingSetId'>
         /// Network Sibling Set ID for a group of volumes sharing networking resources
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Update the network features of the specified network sibling set.
         /// </remarks>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='networkSiblingSetId'>
         /// Network Sibling Set ID for a group of volumes sharing networking resources

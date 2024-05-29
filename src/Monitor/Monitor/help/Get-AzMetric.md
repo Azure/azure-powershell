@@ -25,7 +25,8 @@ Get-AzMetric [-ResourceId] <String> [-TimeGrain <TimeSpan>] [-StartTime <DateTim
 Get-AzMetric [-ResourceId] <String> [-TimeGrain <TimeSpan>] [-AggregationType <AggregationType>]
  [-StartTime <DateTime>] [-EndTime <DateTime>] [-Top <Int32>] [-OrderBy <String>] [-MetricNamespace <String>]
  [-ResultType <ResultType>] [-MetricFilter <String>] [-Dimension <String[]>] [-MetricName] <String[]>
- [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -172,7 +173,7 @@ This command gets detailed output for the Requests metric.
 
 ### Example 4: Get summarized output for a specified metric with specified dimension filter
 ```powershell
-$dimFilter = @((New-AzMetricFilter -Dimension City -Operator eq -Value "Seattle","Toronto"), (New-AzMetricFilter -Dimension AuthenticationType -Operator eq -Value User))
+$dimFilter = "$(New-AzMetricFilter -Dimension City -Operator eq -Value "Seattle","Toronto") and $(New-AzMetricFilter -Dimension AuthenticationType -Operator eq -Value User)"
 
 Get-AzMetric -ResourceId <resourceId> -MetricName PageViews -TimeGrain 00:05:00 -MetricFilter $dimFilter -StartTime 2018-02-01T12:00:00Z -EndTime 2018-02-01T12:10:00Z -AggregationType Average
 ```
@@ -469,5 +470,3 @@ https://learn.microsoft.com/azure/azure-monitor/platform/metrics-supported
 
 [Get-AzMetricDefinition](./Get-AzMetricDefinition.md)
 [New-AzMetricFilter](./New-AzMetricFilter.md)
-
-

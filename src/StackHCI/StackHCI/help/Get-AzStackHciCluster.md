@@ -14,7 +14,8 @@ Get HCI cluster.
 
 ### List (Default)
 ```
-Get-AzStackHciCluster [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStackHciCluster [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -31,7 +32,8 @@ Get-AzStackHciCluster -ResourceGroupName <String> [-SubscriptionId <String[]>] [
 
 ### GetViaIdentity
 ```
-Get-AzStackHciCluster -InputObject <IStackHciIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStackHciCluster -InputObject <IStackHciIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

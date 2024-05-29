@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
 
         /// <param name="exhaustionBehaviorType">Free limit exhaustion behavior type
-        /// Possible values include: 'AutoPause', 'BillOverUsage'</param>
+        /// Possible values include: &#39;AutoPause&#39;, &#39;BillOverUsage&#39;</param>
 
         /// <param name="status">Free limit exhaustion behavior status
-        /// Possible values include: 'Visible', 'Available', 'Default', 'Disabled'</param>
+        /// Possible values include: &#39;Visible&#39;, &#39;Available&#39;, &#39;Default&#39;, &#39;Disabled&#39;</param>
         public FreeLimitExhaustionBehaviorCapability(string exhaustionBehaviorType = default(string), CapabilityStatus? status = default(CapabilityStatus?))
 
         {

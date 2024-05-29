@@ -25,7 +25,7 @@ Creates a Virtual Instance for SAP solutions (VIS) resource
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapVirtualInstance
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapVirtualInstance
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,7 +37,7 @@ CONFIGURATION <ISapConfiguration>: Defines if the SAP system is being created us
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadssapvirtualinstance
 #>
 function New-AzWorkloadsSapVirtualInstance {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapVirtualInstance])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapVirtualInstance])]
   [CmdletBinding(DefaultParameterSetName='CreateWithDiscovery', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
   param(
       [Parameter(Mandatory)]
@@ -182,7 +182,7 @@ function New-AzWorkloadsSapVirtualInstance {
   process {
       try {
             $configuration = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapConfigurationType]::Discovery
-            $discoveryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.DiscoveryConfiguration]::new();
+            $discoveryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.DiscoveryConfiguration]::new();
             $discoveryConfiguration.ConfigurationType = $configuration
             $discoveryConfiguration.CentralServerVMId = $CentralServerVmId
             $null = $PSBoundParameters.Remove('CentralServerVmId')

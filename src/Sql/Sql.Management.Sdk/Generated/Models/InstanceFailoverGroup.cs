@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="secondaryType">Type of the geo-secondary instance. Set &#39;Standby&#39; if the instance is used
         /// as a DR option only.
-        /// Possible values include: 'Geo', 'Standby'</param>
+        /// Possible values include: &#39;Geo&#39;, &#39;Standby&#39;</param>
 
         /// <param name="readWriteEndpoint">Read-write endpoint of the failover group instance.
         /// </param>
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="replicationRole">Local replication role of the failover group instance.
-        /// Possible values include: 'Primary', 'Secondary'</param>
+        /// Possible values include: &#39;Primary&#39;, &#39;Secondary&#39;</param>
 
         /// <param name="replicationState">Replication state of the failover group instance.
         /// </param>

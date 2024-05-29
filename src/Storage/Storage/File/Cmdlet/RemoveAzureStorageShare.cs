@@ -107,6 +107,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     {
                         share = AzureStorageFileShare.GetTrack2FileShareClient(this.Share, (AzureStorageContext)this.Context, this.ClientOptions);
                     }
+                    this.SnapshotTime = this.Share.SnapshotTime == null ? null : this.Share.SnapshotTime;
 
                     // Build and set storage context for the output object when
                     // 1. input track1 object and storage context is missing 2. the current context doesn't match the context of the input object 
@@ -138,7 +139,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "'IncludeAllSnapshot' should only be specified to delete a base share, and should not be specified to delete a Share snapshot: {0}", share.Uri));
                     }
 
-                    if (force || ShareIsEmpty(share) || ShouldContinue(string.Format("Remove share and all content in it: {0}", share.Name), ""))
+                    string promptMessage;
+                    if (this.SnapshotTime != null)
+                    {
+                        promptMessage = string.Format("Remove share snapshot and all files in it: {0}, SnapshotTime: {1}", share.Name, this.SnapshotTime.Value.ToUniversalTime().ToString("o"));
+                    }
+                    else
+                    {
+                        promptMessage = string.Format("Remove share and all content in it: {0}", share.Name);
+                    }
+
+                    if (force || ShareIsEmpty(share) || ShouldContinue(promptMessage, ""))
                     {
                         bool includeSnapshots = false;
                         bool retryDeleteSnapshot = false;

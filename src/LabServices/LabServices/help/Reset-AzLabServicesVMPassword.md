@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.LabServices-help.xml
 Module Name: Az.LabServices
 online version: https://learn.microsoft.com/powershell/module/az.labservices/reset-azlabservicesvmpassword
 schema: 2.0.0
@@ -14,21 +14,23 @@ Resets a lab virtual machine password.
 
 ### ResourceId (Default)
 ```
-Reset-AzLabServicesVMPassword -Password <SecureString> -ResourceId <String> [-SubscriptionId <String>]
- [-Username <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [<CommonParameters>]
+Reset-AzLabServicesVMPassword [-SubscriptionId <String>] -Password <SecureString> -Username <String>
+ -ResourceId <String> [-DefaultProfile <PSObject>] [-PassThru] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Reset
 ```
 Reset-AzLabServicesVMPassword -LabName <String> -ResourceGroupName <String> -VirtualMachineName <String>
- -Password <SecureString> -Username <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -Password <SecureString> -Username <String> [-DefaultProfile <PSObject>]
+ [-PassThru] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### VM
 ```
-Reset-AzLabServicesVMPassword -Password <SecureString> -VM <VirtualMachine> [-SubscriptionId <String>]
- [-Username <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [<CommonParameters>]
+Reset-AzLabServicesVMPassword [-SubscriptionId <String>] -Password <SecureString> -Username <String>
+ -VM <VirtualMachine> [-DefaultProfile <PSObject>] [-PassThru] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -154,7 +156,6 @@ Accept wildcard characters: False
 
 ### -ResourceId
 
-
 ```yaml
 Type: System.String
 Parameter Sets: ResourceId
@@ -274,20 +275,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-VM `<VirtualMachine>`: 
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-
 ## RELATED LINKS
-

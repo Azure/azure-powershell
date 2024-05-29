@@ -28,35 +28,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotSpecified".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotSpecified", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
+                yield return new global::System.Management.Automation.CompletionResult("'NotSpecified'", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Canary".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Canary", "Canary", global::System.Management.Automation.CompletionResultType.ParameterValue, "Canary");
+                yield return new global::System.Management.Automation.CompletionResult("'Canary'", "Canary", global::System.Management.Automation.CompletionResultType.ParameterValue, "Canary");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "LowTraffic".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("LowTraffic", "LowTraffic", global::System.Management.Automation.CompletionResultType.ParameterValue, "LowTraffic");
+                yield return new global::System.Management.Automation.CompletionResult("'LowTraffic'", "LowTraffic", global::System.Management.Automation.CompletionResultType.ParameterValue, "LowTraffic");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "MediumTraffic".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("MediumTraffic", "MediumTraffic", global::System.Management.Automation.CompletionResultType.ParameterValue, "MediumTraffic");
+                yield return new global::System.Management.Automation.CompletionResult("'MediumTraffic'", "MediumTraffic", global::System.Management.Automation.CompletionResultType.ParameterValue, "MediumTraffic");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "HighTraffic".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("HighTraffic", "HighTraffic", global::System.Management.Automation.CompletionResultType.ParameterValue, "HighTraffic");
+                yield return new global::System.Management.Automation.CompletionResult("'HighTraffic'", "HighTraffic", global::System.Management.Automation.CompletionResultType.ParameterValue, "HighTraffic");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("None", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
+                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "RestOfTheWorldGroupOne".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("RestOfTheWorldGroupOne", "RestOfTheWorldGroupOne", global::System.Management.Automation.CompletionResultType.ParameterValue, "RestOfTheWorldGroupOne");
+                yield return new global::System.Management.Automation.CompletionResult("'RestOfTheWorldGroupOne'", "RestOfTheWorldGroupOne", global::System.Management.Automation.CompletionResultType.ParameterValue, "RestOfTheWorldGroupOne");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "RestOfTheWorldGroupTwo".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("RestOfTheWorldGroupTwo", "RestOfTheWorldGroupTwo", global::System.Management.Automation.CompletionResultType.ParameterValue, "RestOfTheWorldGroupTwo");
+                yield return new global::System.Management.Automation.CompletionResult("'RestOfTheWorldGroupTwo'", "RestOfTheWorldGroupTwo", global::System.Management.Automation.CompletionResultType.ParameterValue, "RestOfTheWorldGroupTwo");
             }
         }
     }

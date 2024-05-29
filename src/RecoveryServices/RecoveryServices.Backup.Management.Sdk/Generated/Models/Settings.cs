@@ -64,8 +64,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <summary>
         /// Gets or sets workload compression flag. This has been added so that
-        /// &#39;isSqlCompression&#39;
-        /// will be deprecated once clients upgrade to consider this flag.
+        /// &#39;isSqlCompression&#39; will be deprecated once clients upgrade to consider this
+        /// flag.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "isCompression")]
         public bool? IsCompression {get; set; }

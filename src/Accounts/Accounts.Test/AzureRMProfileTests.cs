@@ -854,10 +854,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             cmdlt.InvokeEndProcessing();
 
             var subscriptionName = MockSubscriptionClientFactory.GetSubscriptionNameFromId(secondList[0]);
+            var targetSubscription = (PSAzureSubscription)commandRuntimeMock.OutputPipeline.Where(sub => ((PSAzureSubscription)sub).Id.Equals(secondList[0])).FirstOrDefault();
 
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 7);
-            Assert.Equal("Disabled", ((PSAzureSubscription)commandRuntimeMock.OutputPipeline[2]).State);
-            Assert.Equal(subscriptionName, ((PSAzureSubscription)commandRuntimeMock.OutputPipeline[2]).Name);
+            Assert.Equal("Disabled", targetSubscription?.State);
+            Assert.Equal(subscriptionName, targetSubscription?.Name);
         }
 
         [Fact]
@@ -1297,8 +1298,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         }
 
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "It's a limitation of mocked command in test framework, which uses ICommandRuntime instead of ICommandRuntime2. Connect-AzAccount uses WriteInformation() while WriteInformation only is defined in ICommandRuntime2.")]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void CanRenewTokenLogin()
         {
             var tenants = new List<string> { DefaultTenant.ToString() };

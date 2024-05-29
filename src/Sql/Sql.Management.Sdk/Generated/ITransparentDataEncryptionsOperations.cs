@@ -20,13 +20,15 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a list of the logical database&#39;s transparent data encryption.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the logical database for which the transparent data encryption is defined.
+        /// The name of the logical database for which the transparent data encryption
+        /// is defined.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -49,13 +51,15 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a logical database&#39;s transparent data encryption.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the logical database for which the transparent data encryption is defined.
+        /// The name of the logical database for which the transparent data encryption
+        /// is defined.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -78,13 +82,15 @@ namespace Microsoft.Azure.Management.Sql
         /// Updates a logical database&#39;s transparent data encryption configuration.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the logical database for which the security alert policy is defined.
+        /// The name of the logical database for which the security alert policy is
+        /// defined.
         /// </param>
         /// <param name='parameters'>
         /// The database transparent data encryption.
@@ -110,13 +116,15 @@ namespace Microsoft.Azure.Management.Sql
         /// Updates a logical database&#39;s transparent data encryption configuration.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the logical database for which the security alert policy is defined.
+        /// The name of the logical database for which the security alert policy is
+        /// defined.
         /// </param>
         /// <param name='parameters'>
         /// The database transparent data encryption.

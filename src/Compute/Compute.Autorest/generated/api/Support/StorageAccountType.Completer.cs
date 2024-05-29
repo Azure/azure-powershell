@@ -40,6 +40,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Premium_LRS'", "Premium_LRS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Premium_LRS");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "StandardSSD_LRS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'StandardSSD_LRS'", "StandardSSD_LRS", global::System.Management.Automation.CompletionResultType.ParameterValue, "StandardSSD_LRS");
+            }
         }
     }
 }

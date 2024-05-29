@@ -15,7 +15,8 @@ Cancel a running deployment at a management group
 ### StopByDeploymentName (Default)
 ```
 Stop-AzManagementGroupDeployment [-ManagementGroupId] <String> [-Name] <String> [-PassThru] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### StopByDeploymentId
@@ -27,7 +28,8 @@ Stop-AzManagementGroupDeployment -Id <String> [-PassThru] [-Pre] [-DefaultProfil
 ### StopByInputObject
 ```
 Stop-AzManagementGroupDeployment -InputObject <PSDeployment> [-PassThru] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

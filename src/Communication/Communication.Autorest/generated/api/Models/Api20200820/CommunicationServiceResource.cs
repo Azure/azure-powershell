@@ -11,8 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820
     public partial class CommunicationServiceResource :
         Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource,
         Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResourceInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IValidates,
-        Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IHeaderSerializable
+        Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IValidates
     {
         /// <summary>
         /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ILocationResource"
@@ -31,12 +30,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820
         /// />
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ITaggedResource __taggedResource = new Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.TaggedResource();
-
-        /// <summary>Backing field for <see cref="AzureAsyncOperation" /> property.</summary>
-        private string _azureAsyncOperation;
-
-        [Microsoft.Azure.PowerShell.Cmdlets.Communication.Origin(Microsoft.Azure.PowerShell.Cmdlets.Communication.PropertyOrigin.Owned)]
-        public string AzureAsyncOperation { get => this._azureAsyncOperation; set => this._azureAsyncOperation = value; }
 
         /// <summary>The location where the communication service stores its data at rest.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Communication.Origin(Microsoft.Azure.PowerShell.Cmdlets.Communication.PropertyOrigin.Inlined)]
@@ -164,20 +157,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820
 
         }
 
-        /// <param name="headers"></param>
-        void Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IHeaderSerializable.ReadHeaders(global::System.Net.Http.Headers.HttpResponseHeaders headers)
-        {
-            if (headers.TryGetValues("Azure-AsyncOperation", out var __azureAsyncOperationHeader0))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResourceInternal)this).AzureAsyncOperation = System.Linq.Enumerable.FirstOrDefault(__azureAsyncOperationHeader0) is string __headerAzureAsyncOperationHeader0 ? __headerAzureAsyncOperationHeader0 : (string)null;
-            }
-        }
-
         /// <summary>Validates that this object meets the validation criteria.</summary>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IEventListener" /> instance that will receive validation
         /// events.</param>
         /// <returns>
-        /// A < see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
+        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
         /// </returns>
         public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IEventListener eventListener)
         {
@@ -196,13 +180,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820
         Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ILocationResource,
         Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ITaggedResource
     {
-        [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"",
-        SerializedName = @"Azure-AsyncOperation",
-        PossibleTypes = new [] { typeof(string) })]
-        string AzureAsyncOperation { get; set; }
         /// <summary>The location where the communication service stores its data at rest.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(
         Required = false,
@@ -309,7 +286,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820
         Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ILocationResourceInternal,
         Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ITaggedResourceInternal
     {
-        string AzureAsyncOperation { get; set; }
         /// <summary>The location where the communication service stores its data at rest.</summary>
         string DataLocation { get; set; }
         /// <summary>FQDN of the CommunicationService instance.</summary>

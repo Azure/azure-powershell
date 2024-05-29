@@ -626,5 +626,27 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VMDefaultsToTrustedLaunchWithNullEncryptionAtHost");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestVMTLWithGallerySourceImage()
+        {
+            TestRunner.RunTestScript("Test-VMTLWithGallerySourceImage");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestCapacityReservationSharingProfile()
+        {
+            TestRunner.RunTestScript("Test-CapacityReservationSharingProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestVMDefaultsToTrustedLaunchImgWhenStnd()
+        {
+            TestRunner.RunTestScript("Test-VMDefaultsToTrustedLaunchImgWhenStnd");
+        }
+
     }
 }

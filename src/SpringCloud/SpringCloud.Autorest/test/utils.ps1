@@ -155,7 +155,7 @@ function setupEnv() {
     set-content -Path (Join-Path $PSScriptRoot '.\deployment-templates\key-vault\parameters.json') -Value (ConvertTo-Json $keyVaultPara)
     New-AzDeployment -Mode Incremental -TemplateFile (Join-Path $PSScriptRoot '.\deployment-templates\key-vault\template.json') -TemplateParameterFile (Join-Path $PSScriptRoot '.\deployment-templates\key-vault\parameters.json') -ResourceGroupName $env.resourceGroup
 
-    Start-TestSleep -Seconds 60 # The keyVault not ready to create certificate
+    Start-Sleep -Seconds 60 # The keyVault not ready to create certificate
     $keyVault = Get-AzKeyVault -ResourceGroupName $env.resourceGroup -VaultName $env.name
     $env.add('vaultUri', $keyVault.VaultUri);
 
@@ -176,7 +176,7 @@ function setupEnv() {
     $cosmosdbPara.parameters.cosmosdb_name.value = $env.cosmosDbName41
     set-content -Path (Join-Path $PSScriptRoot '.\deployment-templates\cosmos-db\parameters-02.json') -Value (ConvertTo-Json $cosmosdbPara)
     New-AzDeployment -Mode Incremental -TemplateFile (Join-Path $PSScriptRoot '.\deployment-templates\cosmos-db\template-02.json') -TemplateParameterFile (Join-Path $PSScriptRoot '.\deployment-templates\cosmos-db\parameters-02.json') -ResourceGroupName $env.resourceGroup
-    Start-TestSleep -Seconds 60
+    Start-Sleep -Seconds 60
     $cosmosdb01 = Get-AzCosmosDBAccount -ResourceGroupName $env.resourceGroup -Name $env.cosmosDbName40
     $cosmosdb02 = Get-AzCosmosDBAccount -ResourceGroupName $env.resourceGroup -Name $env.cosmosDbName41
     Write-Host -ForegroundColor Green "Wait for cosmosdb creating..."

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// List all the private endpoint connections associated with the redis cache.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cacheName'>
         /// The name of the Redis cache.
@@ -40,19 +40,22 @@ namespace Microsoft.Azure.Management.RedisCache
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<PrivateEndpointConnection>>> ListWithHttpMessagesAsync(string resourceGroupName, string cacheName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the specified private endpoint connection associated with the redis cache.
+        /// Gets the specified private endpoint connection associated with the redis
+        /// cache.
         /// </summary>
         /// <remarks>
-        /// Gets the specified private endpoint connection associated with the redis cache.
+        /// Gets the specified private endpoint connection associated with the redis
+        /// cache.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cacheName'>
         /// The name of the Redis cache.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Azure resource
+        /// The name of the private endpoint connection associated with the Azure
+        /// resource
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -69,25 +72,29 @@ namespace Microsoft.Azure.Management.RedisCache
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnection>> GetWithHttpMessagesAsync(string resourceGroupName, string cacheName, string privateEndpointConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Update the state of specified private endpoint connection associated with the redis cache.
+        /// Update the state of specified private endpoint connection associated with
+        /// the redis cache.
         /// </summary>
         /// <remarks>
-        /// Update the state of specified private endpoint connection associated with the redis cache.
+        /// Update the state of specified private endpoint connection associated with
+        /// the redis cache.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cacheName'>
         /// The name of the Redis cache.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Azure resource
+        /// The name of the private endpoint connection associated with the Azure
+        /// resource
         /// </param>
         /// <param name='privateEndpoint'>
         /// The resource of private end point.
         /// </param>
         /// <param name='privateLinkServiceConnectionState'>
-        /// A collection of information about the state of the connection between service consumer and provider.
+        /// A collection of information about the state of the connection between
+        /// service consumer and provider.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -104,19 +111,22 @@ namespace Microsoft.Azure.Management.RedisCache
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnection>> PutWithHttpMessagesAsync(string resourceGroupName, string cacheName, string privateEndpointConnectionName, PrivateEndpoint privateEndpoint = default(PrivateEndpoint), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with the redis cache.
+        /// Deletes the specified private endpoint connection associated with the redis
+        /// cache.
         /// </summary>
         /// <remarks>
-        /// Deletes the specified private endpoint connection associated with the redis cache.
+        /// Deletes the specified private endpoint connection associated with the redis
+        /// cache.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cacheName'>
         /// The name of the Redis cache.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Azure resource
+        /// The name of the private endpoint connection associated with the Azure
+        /// resource
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -130,25 +140,29 @@ namespace Microsoft.Azure.Management.RedisCache
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string cacheName, string privateEndpointConnectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Update the state of specified private endpoint connection associated with the redis cache.
+        /// Update the state of specified private endpoint connection associated with
+        /// the redis cache.
         /// </summary>
         /// <remarks>
-        /// Update the state of specified private endpoint connection associated with the redis cache.
+        /// Update the state of specified private endpoint connection associated with
+        /// the redis cache.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cacheName'>
         /// The name of the Redis cache.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Azure resource
+        /// The name of the private endpoint connection associated with the Azure
+        /// resource
         /// </param>
         /// <param name='privateEndpoint'>
         /// The resource of private end point.
         /// </param>
         /// <param name='privateLinkServiceConnectionState'>
-        /// A collection of information about the state of the connection between service consumer and provider.
+        /// A collection of information about the state of the connection between
+        /// service consumer and provider.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

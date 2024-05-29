@@ -44,6 +44,9 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.RoleAssignment, HelpMessage = "Role Assignment.")]
         public PSRoleAssignment InputObject { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "If specified, skip client side scope validation.")]
+        public SwitchParameter SkipClientSideScopeValidation { get; set; }
+
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
         #endregion
@@ -95,7 +98,10 @@ namespace Microsoft.Azure.Commands.Resources
             }
 
             // Validate the request
-            AuthorizationClient.ValidateScope(parameters.Scope, false);
+            if (!SkipClientSideScopeValidation.IsPresent)
+            {
+                AuthorizationClient.ValidateScope(parameters.Scope, false);
+            }
             bool isValidRequest = true;
 
             // Check that only Description, Condition and ConditionVersion have been changed, if anything else is changed the whole request fails

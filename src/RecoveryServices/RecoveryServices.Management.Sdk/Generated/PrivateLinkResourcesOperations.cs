@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.RecoveryServices
         public RecoveryServicesClient Client { get; private set; }
 
         /// <summary>
-        /// Returns the list of private link resources that need to be created for Backup and SiteRecovery
+        /// Returns the list of private link resources that need to be created for
+        /// Backup and SiteRecovery
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -268,7 +269,8 @@ namespace Microsoft.Azure.Management.RecoveryServices
 
         }
         /// <summary>
-        /// Returns a specified private link resource that need to be created for Backup and SiteRecovery
+        /// Returns a specified private link resource that need to be created for
+        /// Backup and SiteRecovery
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -507,7 +509,8 @@ namespace Microsoft.Azure.Management.RecoveryServices
 
         }
         /// <summary>
-        /// Returns the list of private link resources that need to be created for Backup and SiteRecovery
+        /// Returns the list of private link resources that need to be created for
+        /// Backup and SiteRecovery
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

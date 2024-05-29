@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="licenseType">The license type to apply for this elastic pool.
-        /// Possible values include: 'LicenseIncluded', 'BasePrice'</param>
+        /// Possible values include: &#39;LicenseIncluded&#39;, &#39;BasePrice&#39;</param>
 
         /// <param name="maintenanceConfigurationId">Maintenance configuration id assigned to the elastic pool. This
         /// configuration defines the period when the maintenance updates will will
@@ -52,10 +52,10 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="preferredEnclaveType">Type of enclave requested on the elastic pool.
-        /// Possible values include: 'Default', 'VBS'</param>
+        /// Possible values include: &#39;Default&#39;, &#39;VBS&#39;</param>
 
         /// <param name="availabilityZone">Specifies the availability zone the pool&#39;s primary replica is pinned to.
-        /// Possible values include: 'NoPreference', '1', '2', '3'</param>
+        /// Possible values include: &#39;NoPreference&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;</param>
         public ElasticPoolUpdateProperties(long? maxSizeBytes = default(long?), double? minCapacity = default(double?), ElasticPoolPerDatabaseSettings perDatabaseSettings = default(ElasticPoolPerDatabaseSettings), bool? zoneRedundant = default(bool?), string licenseType = default(string), string maintenanceConfigurationId = default(string), int? highAvailabilityReplicaCount = default(int?), string preferredEnclaveType = default(string), string availabilityZone = default(string))
 
         {

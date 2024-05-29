@@ -15,7 +15,8 @@ Gets the Autoscale history.
 
 ```
 Get-AzAutoscaleHistory [-ResourceId <String>] [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>]
- [-Caller <String>] [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Caller <String>] [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -308,5 +309,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzAutoscaleSetting](./Get-AzAutoscaleSetting.md)
 
 [Remove-AzAutoscaleSetting](./Remove-AzAutoscaleSetting.md)
-
-

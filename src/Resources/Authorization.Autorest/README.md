@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Authorization service.
 
 ---
-## Status
-[![Az.Authorization](https://img.shields.io/powershellgallery/v/Az.Authorization.svg?style=flat-square&label=Az.Authorization "Az.Authorization")](https://www.powershellgallery.com/packages/Az.Authorization/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

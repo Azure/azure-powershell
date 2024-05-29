@@ -8,14 +8,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
     using static Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.Extensions;
     using System;
 
-    /// <summary>Puts the SAP Application Server Instance resource.</summary>
+    /// <summary>
+    /// Updates the SAP Application server instance resource. This can be used to update tags on the resource.
+    /// </summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzWorkloadsSapApplicationInstance_UpdateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapApplicationServerInstance))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Description(@"Puts the SAP Application Server Instance resource.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapApplicationServerInstance))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Description(@"Updates the SAP Application server instance resource. This can be used to update tags on the resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}", ApiVersion = "2023-10-01-preview")]
     public partial class UpdateAzWorkloadsSapApplicationInstance_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.IEventListener
     {
@@ -29,17 +32,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
         private string __processRecordId;
 
         /// <summary>Defines the request body for updating SAP Application Instance.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.IUpdateSapApplicationInstanceRequest _body = new Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.UpdateSapApplicationInstanceRequest();
+        private Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.IUpdateSapApplicationInstanceRequest _body = new Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.UpdateSapApplicationInstanceRequest();
 
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
-
-        /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.ParameterCategory.Runtime)]
-        public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -95,14 +93,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.ParameterCategory.Path)]
         public string Name { get => this._name; set => this._name = value; }
-
-        /// <summary>
-        /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
-        /// asynchronously.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command asynchronously")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.ParameterCategory.Runtime)]
-        public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.HttpPipeline" /> that the remote call will use.
@@ -180,8 +170,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
         ReadOnly = false,
         Description = @"Gets or sets the Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.IUpdateSapApplicationInstanceRequestTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.IUpdateSapApplicationInstanceRequestTags Tag { get => _body.Tag ?? null /* object */; set => _body.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.IUpdateSapApplicationInstanceRequestTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.IUpdateSapApplicationInstanceRequestTags Tag { get => _body.Tag ?? null /* object */; set => _body.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -200,12 +190,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapApplicationServerInstance">Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapApplicationServerInstance</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapApplicationServerInstance">Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapApplicationServerInstance</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapApplicationServerInstance> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapApplicationServerInstance> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -225,35 +215,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
             ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.Events.CmdletBeginProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
         }
 
-        /// <summary>Creates a duplicate instance of this cmdlet (via JSON serialization).</summary>
-        /// <returns>a duplicate instance of UpdateAzWorkloadsSapApplicationInstance_UpdateExpanded</returns>
-        public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets.UpdateAzWorkloadsSapApplicationInstance_UpdateExpanded Clone()
-        {
-            var clone = new UpdateAzWorkloadsSapApplicationInstance_UpdateExpanded();
-            clone.__correlationId = this.__correlationId;
-            clone.__processRecordId = this.__processRecordId;
-            clone.DefaultProfile = this.DefaultProfile;
-            clone.InvocationInformation = this.InvocationInformation;
-            clone.Proxy = this.Proxy;
-            clone.Pipeline = this.Pipeline;
-            clone.AsJob = this.AsJob;
-            clone.Break = this.Break;
-            clone.ProxyCredential = this.ProxyCredential;
-            clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
-            clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
-            clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone._body = this._body;
-            clone.SubscriptionId = this.SubscriptionId;
-            clone.ResourceGroupName = this.ResourceGroupName;
-            clone.SapVirtualInstanceName = this.SapVirtualInstanceName;
-            clone.Name = this.Name;
-            return clone;
-        }
-
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Workloads.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -286,8 +268,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.Events.Information:
                     {
-                        // When an operation supports asjob, Information messages must go thru verbose.
-                        WriteVerbose($"INFORMATION: {(messageData().Message ?? global::System.String.Empty)}");
+                        var data = messageData();
+                        WriteInformation(data.Message, new string[]{});
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.Events.Debug:
@@ -299,24 +281,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
                     {
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
-                    }
-                    case Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.Events.DelayBeforePolling:
-                    {
-                        if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
-                        {
-                            var data = messageData();
-                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
-                            {
-                                var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
-                                var location = response.GetFirstHeader(@"Location");
-                                var uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? response.RequestMessage.RequestUri.AbsoluteUri : location : asyncOperation;
-                                WriteObject(new Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.PowerShell.AsyncOperationResponse { Target = uri });
-                                // do nothing more.
-                                data.Cancel();
-                                return;
-                            }
-                        }
-                        break;
                     }
                 }
                 await Microsoft.Azure.PowerShell.Cmdlets.Workloads.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
@@ -338,21 +302,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
                 // work
                 if (ShouldProcess($"Call remote 'SapApplicationServerInstancesUpdate' operation"))
                 {
-                    if (true == MyInvocation?.BoundParameters?.ContainsKey("AsJob"))
+                    using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.IEventListener)this).Token) )
                     {
-                        var instance = this.Clone();
-                        var job = new Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.PowerShell.AsyncJob(instance, this.MyInvocation.Line, this.MyInvocation.MyCommand.Name, this._cancellationTokenSource.Token, this._cancellationTokenSource.Cancel);
-                        JobRepository.Add(job);
-                        var task = instance.ProcessRecordAsync();
-                        job.Monitor(task);
-                        WriteObject(job);
-                    }
-                    else
-                    {
-                        using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.IEventListener)this).Token) )
-                        {
-                            asyncCommandRuntime.Wait( ProcessRecordAsync(),((Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.IEventListener)this).Token);
-                        }
+                        asyncCommandRuntime.Wait( ProcessRecordAsync(),((Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.IEventListener)this).Token);
                     }
                 }
             }
@@ -432,6 +384,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
 
         }
 
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Workloads.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Workloads.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
+        }
+
         /// <summary>
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
@@ -476,12 +443,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapApplicationServerInstance">Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapApplicationServerInstance</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapApplicationServerInstance">Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapApplicationServerInstance</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapApplicationServerInstance> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapApplicationServerInstance> response)
         {
             using( NoSynchronizationContext )
             {
@@ -493,7 +460,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapApplicationServerInstance
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapApplicationServerInstance
                 WriteObject((await response));
             }
         }

@@ -1,110 +1,126 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Support.dll-Help.xml
+external help file: Az.Support-help.xml
 Module Name: Az.Support
-online version:https://learn.microsoft.com/powershell/module/az.support/get-azsupportticket
+online version: https://learn.microsoft.com/powershell/module/az.support/get-azsupportticket
 schema: 2.0.0
 ---
 
 # Get-AzSupportTicket
 
 ## SYNOPSIS
-Get support tickets.
+Get ticket details for an Azure subscription.
+Support ticket data is available for 18 months after ticket creation.
+If a ticket was created more than 18 months ago, a request for data might cause an error.
+If no parameters are specified, then this command will retrieve all tickets created in the last week by default.
 
 ## SYNTAX
 
-### ListParameterSet (Default)
+### List (Default)
 ```
-Get-AzSupportTicket [-Filter <String>] [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
- [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzSupportTicket [-SubscriptionId <String[]>] [-Filter <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
-### GetByNameParameterSet
+### Get
 ```
-Get-AzSupportTicket -Name <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
- [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzSupportTicket [-SubscriptionId <String[]>] -Name <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzSupportTicket -InputObject <ISupportIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the list of support tickets. It will retrieve all the support tickets if you do not specify any parameters. You can also filter the support tickets by Status or CreatedDate using the Filter parameter. Here are some examples of filter values that you can specify.
-
-| Scenario                                                         | Filter                                           |
-|------------------------------------------------------------------|--------------------------------------------------|
-| Get tickets that are in open state                               | "Status eq 'Open'"                               |
-| Get tickets that are in closed state                             | "Status eq 'Closed'"                             |
-| Get tickets that were created on or after 20th Dec, 2019         | "CreatedDate ge 2019-12-20"                      |
-| Get tickets that were created after 20th Dec, 2019               | "CreatedDate gt 2019-12-20"                      |
-| Gets tickets created after 20th Dec, 2019 that are in open state | "CreatedDate gt 2019-12-20 and Status eq 'Open'" |
-
-
-This cmdlet supports paging via First and Skip parameters.
-
-You can also retrieve a single support ticket by specifying the ticket name. 
+Get ticket details for an Azure subscription.
+Support ticket data is available for 18 months after ticket creation.
+If a ticket was created more than 18 months ago, a request for data might cause an error.
+If no parameters are specified, then this command will retrieve all tickets created in the last week by default.
 
 ## EXAMPLES
 
-### Example 1: Get first 2 tickets
+### Example 1: Get list of support tickets at subscription level
 ```powershell
-Get-AzSupportTicket -First 2
-```
-```output
-Name  Title                        SupportTicketId Severity ServiceDisplayName            Status CreatedDate
-----  -----                        --------------- -------- ------------------            ------ -----------
-test1 test title1                  150010521000317 Minimal  Virtual Machine running Linux Closed 2/5/2020 1:33:53 AM
-test2 test title2                  150010521000318 Minimal  Billing                       Closed 2/5/2020 1:33:53 AM
+Get-AzSupportTicket
 ```
 
-### Example 2: Get first 2 tickets after skipping the first 2
-```powershell
-Get-AzSupportTicket -Skip 2 -First 2
-```
 ```output
-Name  Title                        SupportTicketId Severity ServiceDisplayName            Status CreatedDate
-----  -----                        --------------- -------- ------------------            ------ -----------
-test3 test title3                  150010521000314 Minimal  Virtual Machine running Linux Closed 2/5/2020 1:33:53 AM
-test4 test title4                  150010521000315 Minimal  Billing                       Closed 2/5/2020 1:33:53 AM
+Name                                                   Title                                 SupportTicketId  Severity ServiceDisplayName CreatedDate
+----                                                   -----                                 ---------------  -------- ------------------ -----------
+517f2da6-9bc71cda-278fc71b-7b86-4289-baec-922e8be1a04a test                                  2403080040012292 Minimal  Billing            3/8/2024 9:03:26 PM
+test1-5dda17d0-a60d-4f4c-82e3-0fe3604c0ed4             test ticket - please ignore and close 2403060040007460 Minimal  Billing            3/6/2024 3:09:28 PM
+
+Lists all the support tickets for an Azure subscription. If no parameters are specified, then this command will retrieve all tickets created in the last week by default.
 ```
 
-### Example 3: Get a support ticket by name
+### Example 2: Get a support ticket at subscription level
 ```powershell
-Get-AzSupportTicket -Name "test1"
-```
-```output
-Name  Title                        SupportTicketId Severity ServiceDisplayName            Status CreatedDate
-----  -----                        --------------- -------- ------------------            ------ -----------
-test1 test title1                  150010521000317 Minimal  Virtual Machine running Linux Closed 2/5/2020 1:33:53 AM
+Get-AzSupportTicket -SupportTicketName "test1-5dda17d0-a60d-4f4c-82e3-0fe3604c0ed4"
 ```
 
-### Example 4: Get first 2 support tickets filtered by status
-```powershell
-Get-AzSupportTicket -Filter "Status eq 'Closed'" -First 2
-```
 ```output
-Name  Title                        SupportTicketId Severity ServiceDisplayName            Status CreatedDate
-----  -----                        --------------- -------- ------------------            ------ -----------
-test1 test title1                  150010521000317 Minimal  Virtual Machine running Linux Closed 2/5/2020 1:33:53 AM
-test2 test title2                  150010521000318 Minimal  Billing                       Closed 2/5/2020 1:33:53 AM
+AdvancedDiagnosticConsent                  : No
+ContactDetailAdditionalEmailAddress        :
+ContactDetailCountry                       : USA
+ContactDetailFirstName                     : test
+ContactDetailLastName                      : test
+ContactDetailPhoneNumber                   :
+ContactDetailPreferredContactMethod        : Email
+ContactDetailPreferredSupportLanguage      : en-US
+ContactDetailPreferredTimeZone             : Pacific Standard Time
+ContactDetailPrimaryEmailAddress           : test@test.com
+CreatedDate                                : 2/22/2024 12:55:38 AM
+Description                                : test ticket - please ignore and close
+EnrollmentId                               :
+FileWorkspaceName                          : 2402220010000447
+Id                                         : /subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Su
+                                             pport/supportTickets/test1-5dda17d0-a60d-4f4c-82e3-0fe3604c0ed4
+ModifiedDate                               : 2/22/2024 5:49:22 AM
+Name                                       : test1-5dda17d0-a60d-4f4c-82e3-0fe3604c0ed4
+ProblemClassificationDisplayName           : Add or update VAT, tax id, PO number or profile information
+ProblemClassificationId                    : /providers/Microsoft.Support/services/517f2da6-78fd-0498-4e22-ad26996b1dfc
+                                             /problemClassifications/3ec1a070-f242-9ecf-5a7c-e1a88ce029ef
+ProblemScopingQuestion                     :
+ProblemStartTime                           :
+QuotaTicketDetailQuotaChangeRequest        :
+QuotaTicketDetailQuotaChangeRequestSubType :
+QuotaTicketDetailQuotaChangeRequestVersion :
+Require24X7Response                        : False
+ResourceGroupName                          :
+SecondaryConsent                           :
+ServiceDisplayName                         : Billing
+ServiceId                                  : /providers/Microsoft.Support/services/517f2da6-78fd-0498-4e22-ad26996b1dfc
+ServiceLevelAgreementExpirationTime        : 2/22/2024 8:56:00 PM
+ServiceLevelAgreementSlaMinute             : 480
+ServiceLevelAgreementStartTime             : 2/22/2024 12:55:38 AM
+Severity                                   : Minimal
+Status                                     : Updating
+SupportEngineerEmailAddress                :test@test.com
+SupportPlanDisplayName                     : Azure Support Plan - Internal
+SupportPlanId                              : U291cmNlOkF6dXJlTW9kZXJuLFN1YnNjcmlwdGlvbklkOjc2Y2I3N2ZhLThiMTctNGVhYi05ND
+                                             kzLWI2NWRhY2U5OTgxMyxTb3ZlcmVpZ25DbG91ZDpQdWJsaWMsT2ZmZXJJZDpNUy1BWlItMDAx
+                                             NVAs
+SupportPlanType                            : Azure Internal
+SupportTicketId                            : 2402220010000447
+TechnicalTicketDetailResourceId            :
+Title                                      : test ticket - please ignore and close
+Type                                       : Microsoft.Support/supportTickets
 ```
 
-### Example 5: Get all support tickets that are in Open state and created after Dec 20th, 2019
-```powershell
-Get-AzSupportTicket -Filter "Status eq 'Open' and CreatedDate gt 2019-12-20"
-```
-```output
-Name  Title                        SupportTicketId Severity ServiceDisplayName            Status CreatedDate
-----  -----                        --------------- -------- ------------------            ------ -----------
-test6 test title6                  150010521000311 Minimal  Virtual Machine running Linux Open   2/5/2020 1:33:53 AM
-test7 test title7                  150010521000312 Minimal  Billing                       Open   2/5/2020 1:33:53 AM
-```
+Get ticket details for an Azure subscription
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -114,11 +130,16 @@ Accept wildcard characters: False
 ```
 
 ### -Filter
-Filter to be applied to the results of this cmdlet.
+The filter to apply on the operation.
+We support 'odata v4.0' filter semantics.
+[Learn more](https://docs.microsoft.com/odata/concepts/queryoptions-overview).
+_Status_, _ServiceId_, and _ProblemClassificationId_ filters can only be used with Equals ('eq') operator.
+For _CreatedDate_ filter, the supported operators are Greater Than ('gt') and Greater Than or Equals ('ge').
+When using both filters, combine them using the logical 'AND'.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListParameterSet
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -128,13 +149,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
-Name of support ticket that this cmdlet gets.
+Support ticket name.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByNameParameterSet
-Aliases:
+Parameter Sets: Get
+Aliases: SupportTicketName
 
 Required: True
 Position: Named
@@ -143,46 +180,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IncludeTotalCount
-Reports the total number of objects in the data set (an integer) followed by the selected objects.
-If the cmdlet cannot determine the total count, it displays "Unknown total count." The integer has an Accuracy property that indicates the reliability of the total count value.
-The value of Accuracy ranges from 0.0 to 1.0 where 0.0 means that the cmdlet could not count the objects, 1.0 means that the count is exact, and a value between 0.0 and 1.0 indicates an increasingly reliable estimate.
+### -SubscriptionId
+Azure subscription Id.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Skip
-Ignores the specified number of objects and then gets the remaining objects.
-Enter the number of objects to skip.
+### -Top
+The number of values to return in the collection.
+Default is 25 and max is 100.
 
 ```yaml
-Type: System.UInt64
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -First
-Gets only the specified number of objects.
-Enter the number of objects to get.
-
-```yaml
-Type: System.UInt64
-Parameter Sets: (All)
+Type: System.Int32
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -197,11 +216,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Support.Models.PSSupportTicket
+### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportTicketDetails
 
 ## NOTES
 

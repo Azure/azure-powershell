@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Get the default and current limits for quotas
         /// </remarks>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Get the default and current subscription quota limit
         /// </remarks>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='quotaLimitName'>
         /// The name of the Quota Limit

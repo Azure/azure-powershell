@@ -31,11 +31,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                         {
                             if(KeyName == null)
                             {
-                                Track2DataClient.RestoreHsm(HsmName, StorageContainerUri, SasToken.ConvertToString(), BackupFolder);
+                                Track2DataClient.RestoreHsm(HsmName, StorageContainerUri, SasToken?.ConvertToString(), BackupFolder);
                             }
                             else
                             {
-                                Track2DataClient.SelectiveRestoreHsm(HsmName, KeyName,StorageContainerUri, SasToken.ConvertToString(), BackupFolder);
+                                Track2DataClient.SelectiveRestoreHsm(HsmName, KeyName,StorageContainerUri, SasToken?.ConvertToString(), BackupFolder);
                                 errorMsg = string.Format(Resources.SelectiveRestoreFailed, KeyName, HsmName);
                             }
                         }

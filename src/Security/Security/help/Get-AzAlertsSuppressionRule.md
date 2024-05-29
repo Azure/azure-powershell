@@ -14,12 +14,14 @@ Gets alerts suppression rules.
 
 ### SubscriptionScope (Default)
 ```
-Get-AzAlertsSuppressionRule [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAlertsSuppressionRule [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SubscriptionLevelResource
 ```
-Get-AzAlertsSuppressionRule -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAlertsSuppressionRule -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceId

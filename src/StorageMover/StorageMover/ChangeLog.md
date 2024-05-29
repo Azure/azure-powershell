@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 1.3.0
 * Renamed SmbFileShare endpoint cmdlets
 
 ## Version 1.2.0

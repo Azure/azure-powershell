@@ -23,9 +23,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         [Ps1Xml(Target = ViewControl.List, Label = nameof(RawResult), Position = 1)]
         public byte[] RawResult { get; }
 
-        // Summary: encryted result or wraped result is base64 format. decryted result or unwraped result is plain text
-        public string Result { get; }
-
         // Summary: Algorithm used.
         [Ps1Xml(Target = ViewControl.List, Label = nameof(Algorithm), Position = 2)]
         public string Algorithm { get; }
@@ -34,7 +31,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
             this.KeyId = wrapResult.KeyId;
             this.RawResult = wrapResult.EncryptedKey;
-            this.Result = System.Convert.ToBase64String(wrapResult.EncryptedKey);
             this.Algorithm = wrapResult.Algorithm.ToString();
         }
 
@@ -42,7 +38,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
             this.KeyId = unwrapResult.KeyId;
             this.RawResult = unwrapResult.Key;
-            this.Result = System.Text.Encoding.UTF8.GetString(unwrapResult.Key);
             this.Algorithm = unwrapResult.Algorithm.ToString();
         }
 
@@ -50,7 +45,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
             this.KeyId = encryptResult.KeyId;
             this.RawResult = encryptResult.Ciphertext;
-            this.Result = System.Convert.ToBase64String(encryptResult.Ciphertext);
             this.Algorithm = encryptResult.Algorithm.ToString();
         }
 
@@ -58,7 +52,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
             this.KeyId = decryptResult.KeyId;
             this.RawResult = decryptResult.Plaintext;
-            this.Result = System.Text.Encoding.UTF8.GetString(decryptResult.Plaintext);
             this.Algorithm = decryptResult.Algorithm.ToString();
         }
     }

@@ -30,8 +30,8 @@ Update-AzScheduledQueryRule -InputObject <IScheduledQueryRuleIdentity> [-ActionC
  [-CriterionAllOf <ICondition[]>] [-Description <String>] [-DisplayName <String>] [-Enabled]
  [-EvaluationFrequency <TimeSpan>] [-MuteActionsDuration <TimeSpan>] [-OverrideQueryTimeRange <TimeSpan>]
  [-Scope <String[]>] [-Severity <Int64>] [-SkipQueryValidation] [-Tag <Hashtable>]
- [-TargetResourceType <String[]>] [-WindowSize <TimeSpan>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-TargetResourceType <String[]>] [-WindowSize <TimeSpan>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

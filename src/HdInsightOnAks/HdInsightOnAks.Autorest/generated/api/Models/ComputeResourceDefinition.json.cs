@@ -65,8 +65,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_cpu = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("cpu"), out var __jsonCpu) ? (float)__jsonCpu : Cpu;}
-            {_memory = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("memory"), out var __jsonMemory) ? (long)__jsonMemory : Memory;}
+            {_cpu = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("cpu"), out var __jsonCpu) ? (float)__jsonCpu : _cpu;}
+            {_memory = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("memory"), out var __jsonMemory) ? (long)__jsonMemory : _memory;}
             AfterFromJson(json);
         }
 

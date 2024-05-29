@@ -24,4 +24,14 @@ Describe 'Stop-AzWorkloadsSapCentralInstance' {
         $stopResponseId = Stop-AzWorkloadsSapCentralInstance -InputObject $env.CsServerIdSub2
         $stopResponseId.Status | Should -Be $env.ProvisioningState
     }
+	
+	It 'StopExpandedWithVM' {
+        $stopResponse = Stop-AzWorkloadsSapCentralInstance -Name $env.SapCentralInstanceName -ResourceGroupName $env.ResourceGroupName -SapVirtualInstanceName $env.SapVirtualInstanceName -DeallocateVM
+        $stopResponse.Status | Should -Be $env.ProvisioningState
+    }
+
+    It 'StopViaIdentityExpandedWithVM' {
+        $stopResponseId = Stop-AzWorkloadsSapCentralInstance -InputObject $env.CsServerIdSub2 -DeallocateVM
+        $stopResponseId.Status | Should -Be $env.ProvisioningState
+    }
 }

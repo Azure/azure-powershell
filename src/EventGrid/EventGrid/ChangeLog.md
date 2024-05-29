@@ -19,6 +19,16 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.0
+* Updated to use the 2023-06-01-preview API version.
+
+## Version 1.6.1
+* Added breaking change messages due to structure update:
+  - The cmdlet `Set-AzEventGridTopic` will be removed.
+  - In the `Remove-AzEventGridSubscription` parameters will be deprecated.
+  - In the `Get-AzEventGrid*` the parameter `ODataQuery`, `NextLink`, `ResourceId` will be removed.
+  - In the `New/Update-AzEventGrid*` parameters will be deprecated.
+
 ## Version 1.6.0
 * Added fix for DeliveryAttributeMapping
 * Added validation for StorageQueueTtl

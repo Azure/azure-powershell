@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SpringCloud-help.xml
 Module Name: Az.SpringCloud
 online version: https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudBuildpacksGroupObject
 schema: 2.0.0
@@ -94,4 +94,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[Id <String>]`: Id of the buildpack
 
 ## RELATED LINKS
-

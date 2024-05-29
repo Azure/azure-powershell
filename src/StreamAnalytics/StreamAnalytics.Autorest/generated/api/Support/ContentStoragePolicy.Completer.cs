@@ -31,11 +31,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SystemAccount".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SystemAccount", "SystemAccount", global::System.Management.Automation.CompletionResultType.ParameterValue, "SystemAccount");
+                yield return new global::System.Management.Automation.CompletionResult("'SystemAccount'", "SystemAccount", global::System.Management.Automation.CompletionResultType.ParameterValue, "SystemAccount");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "JobStorageAccount".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("JobStorageAccount", "JobStorageAccount", global::System.Management.Automation.CompletionResultType.ParameterValue, "JobStorageAccount");
+                yield return new global::System.Management.Automation.CompletionResult("'JobStorageAccount'", "JobStorageAccount", global::System.Management.Automation.CompletionResultType.ParameterValue, "JobStorageAccount");
             }
         }
     }

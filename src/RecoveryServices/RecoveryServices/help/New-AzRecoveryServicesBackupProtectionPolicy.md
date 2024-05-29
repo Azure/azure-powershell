@@ -18,8 +18,9 @@ New-AzRecoveryServicesBackupProtectionPolicy [-Name] <String> [-WorkloadType] <W
  [[-BackupManagementType] <BackupManagementType>] [[-RetentionPolicy] <RetentionPolicyBase>]
  [[-SchedulePolicy] <SchedulePolicyBase>] [[-MoveToArchiveTier] <Boolean>] [[-TieringMode] <TieringMode>]
  [[-TierAfterDuration] <Int32>] [[-TierAfterDurationType] <String>] [-BackupSnapshotResourceGroup <String>]
- [-BackupSnapshotResourceGroupSuffix <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-BackupSnapshotResourceGroupSuffix <String>] [-SnapshotConsistencyType <SnapshotConsistencyType>]
+ [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -134,6 +135,25 @@ Finally we create a **BackupProtectionPolicy** object based on the schedule and 
 
 ## PARAMETERS
 
+### -BackupManagementType
+The class of resources being protected. The acceptable values for this parameter are:
+- AzureVM
+- AzureStorage
+- AzureWorkload
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]
+Parameter Sets: (All)
+Aliases:
+Accepted values: AzureVM, AzureStorage, AzureWorkload
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -BackupSnapshotResourceGroup
 Custom resource group name to store the instant recovery points of managed virtual machines. This is optional
 
@@ -161,25 +181,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BackupManagementType
-The class of resources being protected. The acceptable values for this parameter are:
-- AzureVM
-- AzureStorage
-- AzureWorkload
-
-```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]
-Parameter Sets: (All)
-Aliases:
-Accepted values: AzureVM, AzureStorage, AzureWorkload
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -257,6 +258,22 @@ Required: False
 Position: 5
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SnapshotConsistencyType
+Snapshot consistency type to be used for backup. If set to OnlyCrashConsistent, all associated items will have crash consistent snapshot. Possible values are OnlyCrashConsistent, Default
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SnapshotConsistencyType
+Parameter Sets: (All)
+Aliases:
+Accepted values: Default, OnlyCrashConsistent
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

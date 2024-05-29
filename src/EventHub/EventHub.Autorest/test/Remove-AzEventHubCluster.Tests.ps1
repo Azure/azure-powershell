@@ -18,11 +18,11 @@ Describe 'Remove-AzEventHubCluster' {
 
     It 'Delete' -skip {
         Remove-AzEventHubCluster -ResourceGroupName $env.clusterResourceGroup -Name $env.cluster2
-        { Get-AzEventHubCluster -ResourceGroupName $env.clusterResourceGroup -Name $env.cluster2 } | Should -Throw
+        { Get-AzEventHubCluster -ResourceGroupName $env.clusterResourceGroup -Name $env.cluster2 -ErrorAction Stop } | Should -Throw
     }
 
     It 'DeleteViaIdentity' -skip {
         $cluster = Get-AzEventHubCluster -ResourceGroupName $env.clusterResourceGroup -Name $env.cluster2
-        { Remove-AzEventHubCluster -InputObject $cluster } | Should -Throw
+        { Remove-AzEventHubCluster -InputObject $cluster -ErrorAction Stop } | Should -Throw
     }
 }

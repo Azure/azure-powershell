@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 
 using Azure.Core;
 using Azure.Identity;
-using Azure.Identity.BrokeredAuthentication;
+using Azure.Identity.Broker;
 
 using Hyak.Common;
 
@@ -44,11 +44,12 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
             var clientId = Constants.PowerShellClientId;
 
-            var requestContext = new TokenRequestContext(scopes);
+            var requestContext = new TokenRequestContext(scopes, isCaeEnabled: true);
             var authority = interactiveParameters.Environment.ActiveDirectoryAuthority;
 
             var options = new InteractiveBrowserCredentialBrokerOptions(WindowHandleUtilities.GetConsoleOrTerminalWindow())
             {
+                IsLegacyMsaPassthroughEnabled = true, // to support MSA account
                 ClientId = clientId,
                 TenantId = tenantId,
                 TokenCachePersistenceOptions = tokenCacheProvider.GetTokenCachePersistenceOptions(),
@@ -59,6 +60,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 RedirectUri = GetReplyUrl(onPremise, interactiveParameters.PromptAction),
                 LoginHint = interactiveParameters.UserId
             };
+            options.DisableInstanceDiscovery = interactiveParameters.DisableInstanceDiscovery ?? options.DisableInstanceDiscovery;
             var browserCredential = new InteractiveBrowserCredential(options);
 
             TracingAdapter.Information($"{DateTime.Now:T} - [InteractiveWamAuthenticator] Calling InteractiveBrowserCredential.AuthenticateAsync with TenantId:'{options.TenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}', RedirectUri:'{options.RedirectUri}'");

@@ -1,8 +1,8 @@
 {
-  "New-AzNginxCertificate+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates/testNewCert?api-version=2022-08-01+1": {
+  "New-AzNginxCertificate+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates/testNewCert?api-version=2023-04-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates/testNewCert?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates/testNewCert?api-version=2023-04-01",
       "Content": "{\n  \"properties\": {\n    \"keyVirtualPath\": \"test.key\",\n    \"certificateVirtualPath\": \"test.cert\",\n    \"keyVaultSecretId\": \"https://integration-tests-kv.vault.azure.net/secrets/newcert\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -18,13 +18,13 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"93005b94-0000-0200-0000-632a3f190000\"" ],
-        "Location": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/2a016f5d-d33b-40b4-bd7b-1cb6e61a211a*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2022-08-01" ],
+        "Location": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/2a016f5d-d33b-40b4-bd7b-1cb6e61a211a*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2023-04-01" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:0d872b79-fbba-4031-abaa-ef9aa3e0050d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/2a016f5d-d33b-40b4-bd7b-1cb6e61a211a*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2022-08-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/2a016f5d-d33b-40b4-bd7b-1cb6e61a211a*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2023-04-01" ],
         "x-ms-request-id": [ "2a016f5d-d33b-40b4-bd7b-1cb6e61a211a" ],
         "x-ms-correlation-request-id": [ "acc75fd2-6eb9-46a2-84f8-9e0fdf5265db" ],
         "x-ms-routing-request-id": [ "WESTCENTRALUS:20220920T223049Z:acc75fd2-6eb9-46a2-84f8-9e0fdf5265db" ],
@@ -39,10 +39,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzNginxCertificate+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/2a016f5d-d33b-40b4-bd7b-1cb6e61a211a*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2022-08-01+2": {
+  "New-AzNginxCertificate+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/2a016f5d-d33b-40b4-bd7b-1cb6e61a211a*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2023-04-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/2a016f5d-d33b-40b4-bd7b-1cb6e61a211a*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/2a016f5d-d33b-40b4-bd7b-1cb6e61a211a*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -80,10 +80,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzNginxCertificate+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/2a016f5d-d33b-40b4-bd7b-1cb6e61a211a*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2022-08-01+3": {
+  "New-AzNginxCertificate+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/2a016f5d-d33b-40b4-bd7b-1cb6e61a211a*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2023-04-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/2a016f5d-d33b-40b4-bd7b-1cb6e61a211a*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/2a016f5d-d33b-40b4-bd7b-1cb6e61a211a*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -121,10 +121,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzNginxCertificate+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates/testNewCert?api-version=2022-08-01+4": {
+  "New-AzNginxCertificate+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates/testNewCert?api-version=2023-04-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates/testNewCert?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates/testNewCert?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

@@ -1,7 +1,9 @@
 ### Example 1: Remove a data source by name
 ```powershell
 Remove-AzPurviewDataSource -Endpoint 'https://rs-2.purview.azure.com/' -Name 'NewDataSource'
+```
 
+```output
 CollectionLastModifiedAt : 2/9/2022 2:49:14 AM
 CollectionReferenceName  : brs-2
 CollectionType           : CollectionReference

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.CloudService-help.xml
 Module Name: Az.CloudService
 online version: https://learn.microsoft.com/powershell/module/az.cloudservice/new-azcloudservice
 schema: 2.0.0
@@ -15,30 +15,31 @@ Please note some properties can be set only during cloud service creation.
 
 ### CreateExpanded (Default)
 ```
-New-AzCloudService -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+New-AzCloudService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  [-AllowModelOverride] [-Configuration <String>] [-ConfigurationUrl <String>]
  [-ExtensionProfile <ICloudServiceExtensionProfile>] [-NetworkProfile <ICloudServiceNetworkProfile>]
  [-OSProfile <ICloudServiceOSProfile>] [-PackageUrl <String>] [-RoleProfile <ICloudServiceRoleProfile>]
  [-StartCloudService] [-Tag <Hashtable>] [-UpgradeMode <CloudServiceUpgradeMode>] [-Zone <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### quickCreateParameterSetWithoutStorage
 ```
-New-AzCloudService -Name <String> -ResourceGroupName <String> -ConfigurationFile <String>
- -DefinitionFile <String> -Location <String> -PackageUrl <String> [-SubscriptionId <String>]
- [-DnsName <String>] [-ExtensionProfile <ICloudServiceExtensionProfile>] [-KeyVaultName <String>]
- [-StartCloudService] [-Tag <Hashtable>] [-UpgradeMode <CloudServiceUpgradeMode>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzCloudService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
+ [-ExtensionProfile <ICloudServiceExtensionProfile>] -PackageUrl <String> [-StartCloudService]
+ [-Tag <Hashtable>] [-UpgradeMode <CloudServiceUpgradeMode>] -ConfigurationFile <String>
+ -DefinitionFile <String> [-DnsName <String>] [-KeyVaultName <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### quickCreateParameterSetWithStorage
 ```
-New-AzCloudService -Name <String> -ResourceGroupName <String> -ConfigurationFile <String>
- -DefinitionFile <String> -Location <String> -PackageFile <String> -StorageAccount <String>
- [-SubscriptionId <String>] [-DnsName <String>] [-ExtensionProfile <ICloudServiceExtensionProfile>]
- [-KeyVaultName <String>] [-StartCloudService] [-Tag <Hashtable>] [-UpgradeMode <CloudServiceUpgradeMode>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzCloudService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
+ [-ExtensionProfile <ICloudServiceExtensionProfile>] [-StartCloudService] [-Tag <Hashtable>]
+ [-UpgradeMode <CloudServiceUpgradeMode>] -ConfigurationFile <String> -DefinitionFile <String>
+ -PackageFile <String> -StorageAccount <String> [-DnsName <String>] [-KeyVaultName <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -211,7 +212,6 @@ $cloudService = New-AzCloudService                                              
                           -PackageFile C:\CS.cspkg                                      `
                           -StorageAccount ContosoStorAcc                                `
                           -KeyVaultName ContosoKV
-
 ```
 
 Above set of commands creates a cloud service by extracting NetworkProfile and RoleProfile information from the .CsCfg and .CsDef files.
@@ -237,7 +237,6 @@ $cloudService = New-AzCloudService                                              
                           -ConfigurationFile C:\files\CS.cscfg                          `
                           -DefinitionFile C:\files\CS.csdef                             `
                           -packageUrl $cspkgUrl                                         `
-
 ```
 
 Above set of commands creates a cloud service by extracting NetworkProfile and RoleProfile information from the .CsCfg and .CsDef files.
@@ -498,7 +497,19 @@ The service package URL can be Shared Access Signature (SAS) URI from any storag
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, quickCreateParameterSetWithoutStorage
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: quickCreateParameterSetWithoutStorage
 Aliases:
 
 Required: True
@@ -681,52 +692,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`EXTENSIONPROFILE <ICloudServiceExtensionProfile>`: Describes a cloud service extension profile.
-  - `[Extension <IExtension[]>]`: List of extensions for the cloud service.
-    - `[AutoUpgradeMinorVersion <Boolean?>]`: Explicitly specify whether platform can automatically upgrade typeHandlerVersion to higher minor versions when they become available.
-    - `[ForceUpdateTag <String>]`: Tag to force apply the provided public and protected settings.         Changing the tag value allows for re-running the extension without changing any of the public or protected settings.         If forceUpdateTag is not changed, updates to public or protected settings would still be applied by the handler.         If neither forceUpdateTag nor any of public or protected settings change, extension would flow to the role instance with the same sequence-number, and         it is up to handler implementation whether to re-run it or not
-    - `[Name <String>]`: The name of the extension.
-    - `[ProtectedSetting <String>]`: Protected settings for the extension which are encrypted before sent to the role instance.
-    - `[ProtectedSettingFromKeyVaultSecretUrl <String>]`: Secret URL which contains the protected settings of the extension
-    - `[Publisher <String>]`: The name of the extension handler publisher.
-    - `[RolesAppliedTo <String[]>]`: Optional list of roles to apply this extension. If property is not specified or '*' is specified, extension is applied to all roles in the cloud service.
-    - `[Setting <String>]`: Public settings for the extension. For JSON extensions, this is the JSON settings for the extension. For XML Extension (like RDP), this is the XML setting for the extension.
-    - `[SourceVaultId <String>]`: Resource Id
-    - `[Type <String>]`: Specifies the type of the extension.
-    - `[TypeHandlerVersion <String>]`: Specifies the version of the extension. Specifies the version of the extension. If this element is not specified or an asterisk (*) is used as the value, the latest version of the extension is used. If the value is specified with a major version number and an asterisk as the minor version number (X.), the latest minor version of the specified major version is selected. If a major version number and a minor version number are specified (X.Y), the specific extension version is selected. If a version is specified, an auto-upgrade is performed on the role instance.
-
-`NETWORKPROFILE <ICloudServiceNetworkProfile>`: Network Profile for the cloud service.
-  - `[LoadBalancerConfiguration <ILoadBalancerConfiguration[]>]`: List of Load balancer configurations. Cloud service can have up to two load balancer configurations, corresponding to a Public Load Balancer and an Internal Load Balancer.
-    - `FrontendIPConfiguration <ILoadBalancerFrontendIPConfiguration[]>`: Specifies the frontend IP to be used for the load balancer. Only IPv4 frontend IP address is supported. Each load balancer configuration must have exactly one frontend IP configuration.
-      - `Name <String>`: The name of the resource that is unique within the set of frontend IP configurations used by the load balancer. This name can be used to access the resource.
-      - `[PrivateIPAddress <String>]`: The virtual network private IP address of the IP configuration.
-      - `[PublicIPAddressId <String>]`: Resource Id
-      - `[SubnetId <String>]`: Resource Id
-    - `Name <String>`: The name of the Load balancer
-    - `[Id <String>]`: Resource Id
-  - `[SlotType <CloudServiceSlotType?>]`: Slot type for the cloud service.         Possible values are <br /><br />**Production**<br /><br />**Staging**<br /><br />         If not specified, the default value is Production.
-  - `[SwappableCloudService <ISubResource>]`: The id reference of the cloud service containing the target IP with which the subject cloud service can perform a swap. This property cannot be updated once it is set. The swappable cloud service referred by this id must be present otherwise an error will be thrown.
-    - `[Id <String>]`: Resource Id
-
-`OSPROFILE <ICloudServiceOSProfile>`: Describes the OS profile for the cloud service.
-  - `[Secret <ICloudServiceVaultSecretGroup[]>]`: Specifies set of certificates that should be installed onto the role instances.
-    - `[SourceVaultId <String>]`: Resource Id
-    - `[VaultCertificate <ICloudServiceVaultCertificate[]>]`: The list of key vault references in SourceVault which contain certificates.
-      - `[CertificateUrl <String>]`: This is the URL of a certificate that has been uploaded to Key Vault as a secret.
-
-`ROLEPROFILE <ICloudServiceRoleProfile>`: Describes the role profile for the cloud service.
-  - `[Role <ICloudServiceRoleProfileProperties[]>]`: List of roles for the cloud service.
-    - `[Name <String>]`: Resource name.
-    - `[SkuCapacity <Int64?>]`: Specifies the number of role instances in the cloud service.
-    - `[SkuName <String>]`: The sku name. NOTE: If the new SKU is not supported on the hardware the cloud service is currently on, you need to delete and recreate the cloud service or move back to the old sku.
-    - `[SkuTier <String>]`: Specifies the tier of the cloud service. Possible Values are <br /><br /> **Standard** <br /><br /> **Basic**
-
 ## RELATED LINKS
-

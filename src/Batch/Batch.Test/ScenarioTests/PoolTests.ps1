@@ -29,9 +29,21 @@ function Test-PoolCRUD
         $osFamily = "4"
         $targetOSVersion = "*"
         $targetDedicated = 0
-        $vmSize = "small"
-        $paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
-        New-AzBatchPool $poolId1 -CloudServiceConfiguration $paasConfiguration -TargetDedicated $targetDedicated -VirtualMachineSize $vmSize -BatchContext $context
+       
+        $vmSize = "standard_d1_v2"
+        $publisher = "microsoft-azure-batch"
+        $offer = "ubuntu-server-container"
+        $osSKU = "20-04-lts"
+        $nodeAgent = "batch.node.ubuntu 20.04"
+        $imageRef = New-Object Microsoft.Azure.Commands.Batch.Models.PSImageReference -ArgumentList @($offer, $publisher, $osSKU)
+        $iaasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSVirtualMachineConfiguration -ArgumentList @($imageRef, $nodeAgent)
+        $iaasConfiguration.ContainerConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSContainerConfiguration
+        $iaasConfiguration.ContainerConfiguration.ContainerImageNames = New-Object System.Collections.Generic.List[string]
+        $iaasConfiguration.ContainerConfiguration.ContainerImageNames.Add("test1")
+        $iaasConfiguration.ContainerConfiguration.type = "dockerCompatible"
+        
+        New-AzBatchPool $poolId1 -VirtualMachineConfiguration $iaasConfiguration -TargetDedicated $targetDedicated -VirtualMachineSize $vmSize -BatchContext $context
+
 
         $vmSize = "standard_d1_v2"
         $publisher = "microsoft-azure-batch"
@@ -42,8 +54,9 @@ function Test-PoolCRUD
         $iaasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSVirtualMachineConfiguration -ArgumentList @($imageRef, $nodeAgent)
         $iaasConfiguration.ContainerConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSContainerConfiguration
         $iaasConfiguration.ContainerConfiguration.ContainerImageNames = New-Object System.Collections.Generic.List[string]
-        $iaasConfiguration.ContainerConfiguration.ContainerImageNames.Add("test")
+        $iaasConfiguration.ContainerConfiguration.ContainerImageNames.Add("test2")
         $iaasConfiguration.ContainerConfiguration.type = "dockerCompatible"
+
         New-AzBatchPool $poolId2 -VirtualMachineConfiguration $iaasConfiguration -TargetDedicated $targetDedicated -VirtualMachineSize $vmSize -BatchContext $context
 
         # List the pools to ensure they were created
@@ -56,7 +69,7 @@ function Test-PoolCRUD
         # Ensure that some of the properties were set correctly
         Assert-NotNull $pool2.VirtualMachineConfiguration.ContainerConfiguration
         Assert-NotNull $pool2.VirtualMachineConfiguration.ContainerConfiguration.ContainerImageNames
-        Assert-AreEqual "test" $pool2.VirtualMachineConfiguration.ContainerConfiguration.ContainerImageNames[0]
+        Assert-AreEqual "test2" $pool2.VirtualMachineConfiguration.ContainerConfiguration.ContainerImageNames[0]
 
         # Update a pool
         $startTaskCmd = "/bin/bash -c 'echo start task'"

@@ -13,8 +13,8 @@ Returns Logs directory path on the current node.
 ## SYNTAX
 
 ```
-Get-AzStackHCILogsDirectory [[-Credential] <PSCredential>] [[-ComputerName] <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Get-AzStackHCILogsDirectory [[-Credential] <PSCredential>] [[-ComputerName] <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

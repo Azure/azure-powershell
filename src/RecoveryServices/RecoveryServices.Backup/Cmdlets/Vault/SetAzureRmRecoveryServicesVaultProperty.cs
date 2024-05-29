@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         BackupResourceVaultConfigResource param = new BackupResourceVaultConfigResource();
                         param.Properties = new BackupResourceVaultConfig();
 
-                        param.Properties.SoftDeleteFeatureState = (SoftDeleteFeatureState.ToLower() == "alwayson") ? "AlwaysON" : ((SoftDeleteFeatureState != null) ? SoftDeleteFeatureState + "d" : currentConfig.Properties.SoftDeleteFeatureState);
+                        param.Properties.SoftDeleteFeatureState = ((SoftDeleteFeatureState != null) && SoftDeleteFeatureState.ToLower() == "alwayson") ? "AlwaysON" : ((SoftDeleteFeatureState != null) ? SoftDeleteFeatureState + "d" : currentConfig.Properties.SoftDeleteFeatureState);
 
                         param.Properties.EnhancedSecurityState = (DisableHybridBackupSecurityFeature != null) ? (((bool)DisableHybridBackupSecurityFeature) ? "Disabled" : "Enabled") : currentConfig.Properties.EnhancedSecurityState;
 

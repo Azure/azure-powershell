@@ -161,6 +161,9 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.RoleAssignment, HelpMessage = "Role Assignment.")]
         public PSRoleAssignment InputObject { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "If specified, skip client side scope validation.")]
+        public SwitchParameter SkipClientSideScopeValidation { get; set; }
+
         public override void ExecuteCmdlet()
         {
             IEnumerable<PSRoleAssignment> roleAssignments = null;
@@ -201,7 +204,11 @@ namespace Microsoft.Azure.Commands.Resources
                 WriteTerminatingError(ProjectResources.ScopeAndSubscriptionNeitherProvided);
             }
 
-            AuthorizationClient.ValidateScope(options.Scope, true);
+            if (!SkipClientSideScopeValidation.IsPresent)
+            {
+                AuthorizationClient.ValidateScope(options.Scope, true);
+            }
+
             ConfirmAction(
                 string.Format(ProjectResources.RemovingRoleAssignment, ObjectId, Scope, RoleDefinitionName),
                 ObjectId,

@@ -13,7 +13,8 @@ Describes region specific information
 ## SYNTAX
 
 ```
-Get-AzNetAppFilesRegionInfo -Location <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetAppFilesRegionInfo -Location <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

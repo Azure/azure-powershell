@@ -1,7 +1,9 @@
 ### Example 1: Get trigger schedule for scan run
 ```powershell
 Get-AzPurviewTrigger -Endpoint https://parv-brs-2.purview.azure.com/ -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan-6HK'
+```
 
+```output
 CreatedAt                  : 2/17/2022 1:35:12 PM
 Id                         : datasources/DataScanTestData-Parv/scans/Scan-6HK/triggers/default
 IncrementalScanStartTime   :

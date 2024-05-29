@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
 
         /// <param name="type">The output destination type.
-        /// Possible values include: 'SqlDatabase'</param>
+        /// Possible values include: &#39;SqlDatabase&#39;</param>
 
         /// <param name="subscriptionId">The output destination subscription id.
         /// </param>

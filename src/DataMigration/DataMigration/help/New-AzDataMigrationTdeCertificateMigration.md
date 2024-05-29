@@ -16,8 +16,8 @@ Migrate TDE certificate(s) from source SQL Server to the target Azure SQL Server
 New-AzDataMigrationTdeCertificateMigration -SourceSqlConnectionString <SecureString>
  -TargetSubscriptionId <String> -TargetResourceGroupName <String> -TargetManagedInstanceName <String>
  -NetworkSharePath <String> -NetworkShareDomain <String> -DatabaseName <String[]>
- [-NetworkShareUserName <String>] [-NetworkSharePassword <SecureString>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-NetworkShareUserName <String>] [-NetworkSharePassword <SecureString>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Kusto-help.xml
 Module Name: Az.Kusto
 online version: https://learn.microsoft.com/powershell/module/az.kusto/invoke-azkustoinvitedatabasefollower
 schema: 2.0.0
@@ -15,7 +15,7 @@ Generates an invitation token that allows attaching a follower database to this 
 ### InviteExpanded (Default)
 ```
 Invoke-AzKustoInviteDatabaseFollower -ClusterName <String> -DatabaseName <String> -ResourceGroupName <String>
- -InviteeEmail <String> [-SubscriptionId <String>]
+ [-SubscriptionId <String>] -InviteeEmail <String>
  [-TableLevelSharingPropertyExternalTablesToExclude <String[]>]
  [-TableLevelSharingPropertyExternalTablesToInclude <String[]>]
  [-TableLevelSharingPropertyFunctionsToExclude <String[]>]
@@ -23,20 +23,14 @@ Invoke-AzKustoInviteDatabaseFollower -ClusterName <String> -DatabaseName <String
  [-TableLevelSharingPropertyMaterializedViewsToExclude <String[]>]
  [-TableLevelSharingPropertyMaterializedViewsToInclude <String[]>]
  [-TableLevelSharingPropertyTablesToExclude <String[]>] [-TableLevelSharingPropertyTablesToInclude <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Invite
 ```
 Invoke-AzKustoInviteDatabaseFollower -ClusterName <String> -DatabaseName <String> -ResourceGroupName <String>
- -Parameter <IDatabaseInviteFollowerRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### InviteViaIdentity
-```
-Invoke-AzKustoInviteDatabaseFollower -InputObject <IKustoIdentity> -Parameter <IDatabaseInviteFollowerRequest>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -Parameter <IDatabaseInviteFollowerRequest> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InviteViaIdentityExpanded
@@ -49,7 +43,13 @@ Invoke-AzKustoInviteDatabaseFollower -InputObject <IKustoIdentity> -InviteeEmail
  [-TableLevelSharingPropertyMaterializedViewsToExclude <String[]>]
  [-TableLevelSharingPropertyMaterializedViewsToInclude <String[]>]
  [-TableLevelSharingPropertyTablesToExclude <String[]>] [-TableLevelSharingPropertyTablesToInclude <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InviteViaIdentity
+```
+Invoke-AzKustoInviteDatabaseFollower -InputObject <IKustoIdentity> -Parameter <IDatabaseInviteFollowerRequest>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,7 +71,7 @@ The name of the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Invite, InviteExpanded
+Parameter Sets: InviteExpanded, Invite
 Aliases:
 
 Required: True
@@ -86,7 +86,7 @@ The name of the database in the Kusto cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Invite, InviteExpanded
+Parameter Sets: InviteExpanded, Invite
 Aliases:
 
 Required: True
@@ -118,7 +118,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
-Parameter Sets: InviteViaIdentity, InviteViaIdentityExpanded
+Parameter Sets: InviteViaIdentityExpanded, InviteViaIdentity
 Aliases:
 
 Required: True
@@ -165,7 +165,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Invite, InviteExpanded
+Parameter Sets: InviteExpanded, Invite
 Aliases:
 
 Required: True
@@ -180,7 +180,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Invite, InviteExpanded
+Parameter Sets: InviteExpanded, Invite
 Aliases:
 
 Required: False
@@ -357,4 +357,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

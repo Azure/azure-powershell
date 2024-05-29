@@ -15,7 +15,8 @@ Get volume's restore status
 ### ByFieldsParameterSet (Default)
 ```
 Get-AzNetAppFilesVolumeRestoreStatus -ResourceGroupName <String> -AccountName <String> -PoolName <String>
- -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet

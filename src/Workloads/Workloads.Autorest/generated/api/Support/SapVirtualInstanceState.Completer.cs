@@ -74,6 +74,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'RegistrationComplete'", "RegistrationComplete", global::System.Management.Automation.CompletionResultType.ParameterValue, "RegistrationComplete");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ACSSInstallationBlocked".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ACSSInstallationBlocked'", "ACSSInstallationBlocked", global::System.Management.Automation.CompletionResultType.ParameterValue, "ACSSInstallationBlocked");
+            }
         }
     }
 }

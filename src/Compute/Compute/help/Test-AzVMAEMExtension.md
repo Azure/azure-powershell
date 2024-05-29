@@ -148,5 +148,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzVMAEMExtension](./Remove-AzVMAEMExtension.md)
 
 [Set-AzVMAEMExtension](./Set-AzVMAEMExtension.md)
-
-

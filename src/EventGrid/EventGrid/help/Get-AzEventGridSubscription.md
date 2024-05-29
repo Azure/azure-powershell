@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
+external help file: Az.EventGrid-help.xml
 Module Name: Az.EventGrid
 online version: https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridsubscription
 schema: 2.0.0
@@ -8,219 +8,77 @@ schema: 2.0.0
 # Get-AzEventGridSubscription
 
 ## SYNOPSIS
-Gets the details of an event subscription, or gets a list of all event subscriptions in the current Azure subscription.
+Get properties of an event subscription.
 
 ## SYNTAX
 
-### EventSubscriptionTopicNameParameterSet (Default)
+### Get (Default)
 ```
-Get-AzEventGridSubscription [-EventSubscriptionName <String>] [-ResourceGroupName <String>]
- [-TopicName <String>] [-IncludeFullEndpointUrl] [-ODataQuery <String>] [-Top <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ResourceIdEventSubscriptionParameterSet
-```
-Get-AzEventGridSubscription [-EventSubscriptionName <String>] [-ResourceId] <String> [-IncludeFullEndpointUrl]
- [-ODataQuery <String>] [-Top <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### EventSubscriptionDomainNameParameterSet
-```
-Get-AzEventGridSubscription [-EventSubscriptionName <String>] [-ResourceGroupName <String>]
- [-DomainName <String>] [-DomainTopicName <String>] [-IncludeFullEndpointUrl] [-ODataQuery <String>]
- [-Top <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### EventSubscriptionTopicTypeNameParameterSet
-```
-Get-AzEventGridSubscription [-ResourceGroupName <String>] [-TopicTypeName <String>] [-Location <String>]
- [-IncludeFullEndpointUrl] [-ODataQuery <String>] [-Top <Int32>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzEventGridSubscription -Name <String> -Scope <String> [-DefaultProfile <PSObject>] [-PassThru]
  [<CommonParameters>]
 ```
 
-### EventSubscriptionCustomTopicInputObjectParameterSet
+### GetViaIdentity
 ```
-Get-AzEventGridSubscription [-InputObject] <PSTopic> [-ODataQuery <String>] [-Top <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### EventSubscriptionDomainInputObjectParameterSet
-```
-Get-AzEventGridSubscription [-DomainInputObject] <PSDomain> [-ODataQuery <String>] [-Top <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzEventGridSubscription -InputObject <IEventGridIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
 ```
 
-### EventSubscriptionDomainTopicInputObjectParameterSet
+### List
 ```
-Get-AzEventGridSubscription [-DomainTopicInputObject] <PSDomainTopic> [-ODataQuery <String>] [-Top <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzEventGridSubscription -ProviderNamespace <String> -ResourceGroupName <String> -ResourceName <String>
+ -ResourceTypeName <String> [-SubscriptionId <String[]>] [-Filter <String>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
-### NextLinkParameterSet
+### List1
 ```
-Get-AzEventGridSubscription [-NextLink <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzEventGridSubscription -ResourceGroupName <String> [-SubscriptionId <String[]>] -DomainName <String>
+ -TopicName <String> [-Filter <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [-PassThru]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzEventGridSubscription cmdlet gets either the details of a specified Event Grid subscription, or a list of all Event Grid subscriptions in the current Azure subscription or resource group.
-If the event subscription name is provided, the details of a single Event Grid subscription is returned.
-If the event subscription name is not provided, a list of all event subscriptions is returned. The number of elements returned in this list is controlled by the Top parameter. If the Top value is not specified or $null, the list will contain all the event subscription items. Otherwise, Top will indicate the maximum number of elements to be returned in the list.
-If more event subscriptions are still available, the value in NextLink should be used in the next call to get the next page of event subscriptions.
-Finally, ODataQuery parameter is used to perform filtering for the search results. The filtering query follows OData syntax using the Name property only. The supported operations include: CONTAINS, eq (for equal), ne (for not equal), AND, OR and NOT.
+Get properties of an event subscription.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get properties of an event subscription.
 ```powershell
-Get-AzEventGridSubscription -ResourceGroupName MyResourceGroupName -TopicName Topic1 -EventSubscriptionName EventSubscription1
+Get-AzEventGridSubscription -ResourceGroupName azps_test_group_eventgrid -DomainName azps-domain -TopicName azps-topic
 ```
 
-Gets the details of event subscription \`EventSubscription1\` created for topic \`Topic1\` in resource group \`MyResourceGroupName\`.
-
-### Example 2
-```powershell
-Get-AzEventGridSubscription -ResourceGroupName MyResourceGroupName -TopicName Topic1 -EventSubscriptionName EventSubscription1 -IncludeFullEndpointUrl
+```output
+Name              ResourceGroupName
+----              -----------------
+azps-eventsubname azps_test_group_eventgrid
 ```
 
-Gets the details of event subscription \`EventSubscription1\` created for topic \`Topic1\` in resource group \`MyResourceGroupName\`, including the full endpoint URL if it is a webhook based event subscription.
+Get properties of an event subscription.
 
-### Example 3
+### Example 2: Get properties of an event subscription.
 ```powershell
-Get-AzEventGridSubscription -ResourceGroupName MyResourceGroupName -TopicName Topic1
+Get-AzEventGridSubscription -Name azps-eventsub -Scope "/subscriptions/{subId}/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/topics/azps-topic"
 ```
 
-Get a list of all the event subscriptions created for topic \`Topic1\` in resource group \`MyResourceGroupName\` without pagination.
-
-### Example 4
-```powershell
-$odataFilter = "Name ne 'ABCD'"
-Get-AzEventGridSubscription -ResourceGroupName MyResourceGroupName -TopicName Topic1 -Top 10 -ODataQuery $odataFilter
-Get-AzEventGridSubscription $result.NextLink
+```output
+Name          ResourceGroupName
+----          -----------------
+azps-eventsub azps_test_group_eventgrid
 ```
 
-List the first 10 event subscriptions (if any) created for topic \`Topic1\` in resource group \`MyResourceGroupName\` that satisfies the $odataFilter query. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of event subscriptions, user is expected to re-call Get-AzEventGridSubscription and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
-
-### Example 5
-```powershell
-Get-AzEventGridSubscription -ResourceGroupName MyResourceGroupName -EventSubscriptionName EventSubscription1
-```
-
-Gets the details of event subscription \`EventSubscription1\` created for resource group \`MyResourceGroupName\`.
-
-### Example 6
-```powershell
-Get-AzEventGridSubscription -EventSubscriptionName EventSubscription1
-```
-
-Gets the details of event subscription \`EventSubscription1\` created for the currently selected Azure subscription.
-
-### Example 7
-```powershell
-Get-AzEventGridSubscription -ResourceGroupName MyResourceGroupName
-```
-
-Gets the list of all global event subscriptions created under the resource group \`MyResourceGroupName\` without pagination.
-
-### Example 8
-```powershell
-$odataFilter = "Name ne 'ABCD'"
-Get-AzEventGridSubscription -ResourceGroupName MyResourceGroupName -Top 5 -ODataQuery $odataFilter
-Get-AzEventGridSubscription $result.NextLink
-```
-
-List the first 5 event subscriptions (if any) created under resource group \`MyResourceGroupName\` that satisfies the $odataFilter query. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of event subscriptions, user is expected to re-call Get-AzEventGridSubscription and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
-
-### Example 9
-```powershell
-Get-AzEventGridSubscription
-```
-
-Gets the list of all global event subscriptions created under the currently selected Azure subscription without pagination.
-
-### Example 10
-```powershell
-$odataFilter = "Name ne 'ABCD'"
-Get-AzEventGridSubscription -Top 15 -ODataQuery $odataFilter
-Get-AzEventGridSubscription $result.NextLink
-```
-
-List the first 15 global event subscriptions (if any) created under the currently selected Azure subscription that satisfies the $odataFilter query. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of event subscriptions, user is expected to re-call Get-AzEventGridSubscription and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
-
-### Example 11
-```powershell
-Get-AzEventGridSubscription -ResourceGroupName MyResourceGroupName -Location westus2
-```
-
-Gets the list of all regional event subscriptions created under resource group \`MyResourceGroupName\` in the specified location \`westus2\` without pagination.
-
-### Example 12
-```powershell
-$odataFilter = "Name ne 'ABCD'"
-Get-AzEventGridSubscription -ResourceGroupName MyResourceGroupName -Location westus2 -Top 15 -ODataQuery $odataFilter
-Get-AzEventGridSubscription $result.NextLink
-```
-
-List the first 15 regional event subscriptions (if any) created under resource group \`MyResourceGroupName\` in the specified location \`westus2\` that satisfies the $odataFilter query. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of event subscriptions, user is expected to re-call Get-AzEventGridSubscription and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
-
-### Example 13
-```powershell
-Get-AzEventGridSubscription -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$namespaceName"
-```
-
-Gets the list of all event subscriptions created for the specified EventHub namespace without pagination.
-
-### Example 14
-```powershell
-$odataFilter = "Name ne 'ABCD'"
-Get-AzEventGridSubscription -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$namespaceName" -Top 25 -ODataQuery $odataFilter
-Get-AzEventGridSubscription $result.NextLink
-```
-
-List the first 25 event subscriptions (if any) created for the specified EventHub namespace that satisfies the $odataFilter query. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of event subscriptions, user is expected to re-call Get-AzEventGridSubscription and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
-
-### Example 15
-```powershell
-Get-AzEventGridSubscription -TopicTypeName "Microsoft.EventHub.Namespaces" -Location $location
-```
-
-Gets the list of all event subscriptions created for the specified topic type (EventHub namespaces) in the specified location without pagination.
-
-### Example 16
-```powershell
-$odataFilter = "Name ne 'ABCD'"
-Get-AzEventGridSubscription -TopicTypeName "Microsoft.EventHub.Namespaces" -Location $location -Top 15 -ODataQuery $odataFilter
-Get-AzEventGridSubscription $result.NextLink
-```
-
-List the first 15 event subscriptions (if any) created for the specified topic type (EventHub namespaces) in the specified location that satisfies the $odataFilter query. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of event subscriptions, user is expected to re-call Get-AzEventGridSubscription and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
-
-### Example 17
-```powershell
-Get-AzEventGridSubscription -TopicTypeName "Microsoft.Resources.ResourceGroups" -ResourceGroupName MyResourceGroupName
-```
-
-Gets the list of all event subscriptions created for the specific resource group without pagination.
-
-### Example 18
-```powershell
-$odataFilter = "Name ne 'ABCD'"
-Get-AzEventGridSubscription -TopicTypeName "Microsoft.Resources.ResourceGroups" -ResourceGroupName MyResourceGroupName -Top 100 -ODataQuery $odataFilter
-Get-AzEventGridSubscription $result.NextLink
-```
-
-List the first 100 event subscriptions (if any) created for the specific resource group that satisfies the $odataFilter query. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of event subscriptions, user is expected to re-call Get-AzEventGridSubscription and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
+Get properties of an event subscription.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -229,87 +87,32 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DomainInputObject
-EventGrid Domain object.
-
-```yaml
-Type: Microsoft.Azure.Commands.EventGrid.Models.PSDomain
-Parameter Sets: EventSubscriptionDomainInputObjectParameterSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DomainName
-EventGrid domain name.
+Name of the top level domain.
 
 ```yaml
 Type: System.String
-Parameter Sets: EventSubscriptionDomainNameParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DomainTopicInputObject
-EventGrid Domain Topic object.
-
-```yaml
-Type: Microsoft.Azure.Commands.EventGrid.Models.PSDomainTopic
-Parameter Sets: EventSubscriptionDomainTopicInputObjectParameterSet
+Parameter Sets: List1
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DomainTopicName
-EventGrid domain topic name.
+### -Filter
+The query used to filter the search results using OData syntax.
+Filtering is permitted on the 'name' property only and with limited number of OData operations.
+These operations are: the 'contains' function as well as the following logical operations: not, and, or, eq (for equal), and ne (for not equal).
+No arithmetic operations are supported.
+The following is a valid filter example: $filter=contains(namE, 'PATTERN') and name ne 'PATTERN-1'.
+The following is not a valid filter example: $filter=location eq 'westus'.
 
 ```yaml
 Type: System.String
-Parameter Sets: EventSubscriptionDomainNameParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -EventSubscriptionName
-The name of the event subscription
-
-```yaml
-Type: System.String
-Parameter Sets: EventSubscriptionTopicNameParameterSet, ResourceIdEventSubscriptionParameterSet, EventSubscriptionDomainNameParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -IncludeFullEndpointUrl
-Include the full endpoint URL of the event subscription destination.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: EventSubscriptionTopicNameParameterSet, ResourceIdEventSubscriptionParameterSet, EventSubscriptionDomainNameParameterSet, EventSubscriptionTopicTypeNameParameterSet
+Parameter Sets: List, List1
 Aliases:
 
 Required: False
@@ -320,137 +123,172 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-EventGrid Topic object.
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.Commands.EventGrid.Models.PSTopic
-Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Location
-Location
+### -Name
+Name of the event subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: EventSubscriptionTopicTypeNameParameterSet
-Aliases:
+Parameter Sets: Get
+Aliases: EventSubscriptionName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NextLink
-The link for the next page of resources to be obtained. This value is obtained with the first Get-AzEventGrid cmdlet call when more resources are still available to be queried.
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: System.String
-Parameter Sets: NextLinkParameterSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ODataQuery
-The OData query used for filtering the list results. Filtering is currently allowed on the Name property only.The supported operations include: CONTAINS, eq (for equal), ne (for not equal), AND, OR and NOT.
+### -ProviderNamespace
+Namespace of the provider of the topic.
 
 ```yaml
 Type: System.String
-Parameter Sets: EventSubscriptionTopicNameParameterSet, ResourceIdEventSubscriptionParameterSet, EventSubscriptionDomainNameParameterSet, EventSubscriptionTopicTypeNameParameterSet, EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
+Parameter Sets: List
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: EventSubscriptionTopicNameParameterSet, EventSubscriptionDomainNameParameterSet, EventSubscriptionTopicTypeNameParameterSet
+Parameter Sets: List, List1
 Aliases: ResourceGroup
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Identifier of the resource to which event subscriptions have been created.
+### -ResourceName
+Name of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceIdEventSubscriptionParameterSet
+Parameter Sets: List
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceTypeName
+Name of the resource type.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Scope
+The scope of the event subscription.
+The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace, or an EventGrid topic.
+For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for a resource, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}' for an EventGrid topic.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String[]
+Parameter Sets: List, List1
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Top
-The OData query used for filtering the list results. Filtering is currently allowed on the Name property only.The supported operations include: CONTAINS, eq (for equal), ne (for not equal), AND, OR and NOT.
+The number of results to return per page for the list operation.
+Valid range for top parameter is 1 to 100.
+If not specified, the default number of results to be returned is 20 items per page.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: EventSubscriptionTopicNameParameterSet, ResourceIdEventSubscriptionParameterSet, EventSubscriptionDomainNameParameterSet, EventSubscriptionTopicTypeNameParameterSet, EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
+Type: System.Int32
+Parameter Sets: List, List1
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -TopicName
-EventGrid Topic Name.
+Name of the domain topic.
 
 ```yaml
 Type: System.String
-Parameter Sets: EventSubscriptionTopicNameParameterSet
-Aliases:
+Parameter Sets: List1
+Aliases: DomainTopicName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -TopicTypeName
-TopicType name
-
-```yaml
-Type: System.String
-Parameter Sets: EventSubscriptionTopicTypeNameParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -459,19 +297,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.EventGrid.Models.PSTopic
-
-### Microsoft.Azure.Commands.EventGrid.Models.PSDomain
-
-### Microsoft.Azure.Commands.EventGrid.Models.PSDomainTopic
-
-### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventSubscription
 
 ## NOTES
 

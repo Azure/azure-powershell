@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Nginx-help.xml
 Module Name: Az.Nginx
 online version: https://learn.microsoft.com/powershell/module/az.nginx/new-aznginxdeployment
 schema: 2.0.0
@@ -8,20 +8,21 @@ schema: 2.0.0
 # New-AzNginxDeployment
 
 ## SYNOPSIS
-Create or update the Nginx deployment
+Create or update the NGINX deployment
 
 ## SYNTAX
 
 ```
-New-AzNginxDeployment -Name <String> -ResourceGroupName <String> -Location <String>
- -NetworkProfile <INginxNetworkProfile> -SkuName <String> [-SubscriptionId <String>]
- [-EnableDiagnosticsSupport] [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-ManagedResourceGroup <String>] [-StorageAccountContainerName <String>] [-StorageAccountName <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzNginxDeployment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
+ -NetworkProfile <INginxNetworkProfile> -SkuName <String> [-EnableDiagnosticsSupport]
+ [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-ManagedResourceGroup <String>]
+ [-ScalingPropertyCapacity <Int32>] [-StorageAccountContainerName <String>] [-StorageAccountName <String>]
+ [-Tag <Hashtable>] [-UserProfilePreferredEmail <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update the Nginx deployment
+Create or update the NGINX deployment
 
 ## EXAMPLES
 
@@ -56,7 +57,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -146,7 +148,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of targeted Nginx deployment
+The name of targeted NGINX deployment
 
 ```yaml
 Type: System.String
@@ -165,7 +167,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for NETWORKPROFILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxNetworkProfile
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxNetworkProfile
 Parameter Sets: (All)
 Aliases:
 
@@ -201,6 +203,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScalingPropertyCapacity
+.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -282,6 +299,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UserProfilePreferredEmail
+The preferred support contact email address of the user used for sending alerts and notification.
+Can be an empty string or a valid email address.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -320,27 +353,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeployment
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeployment
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`NETWORKPROFILE <INginxNetworkProfile>`: .
-  - `[FrontEndIPConfiguration <INginxFrontendIPConfiguration>]`: 
-    - `[PrivateIPAddress <INginxPrivateIPAddress[]>]`: 
-      - `[PrivateIPAddress <String>]`: 
-      - `[PrivateIPAllocationMethod <NginxPrivateIPAllocationMethod?>]`: 
-      - `[SubnetId <String>]`: 
-    - `[PublicIPAddress <INginxPublicIPAddress[]>]`: 
-      - `[Id <String>]`: 
-  - `[NetworkInterfaceConfiguration <INginxNetworkInterfaceConfiguration>]`: 
-    - `[SubnetId <String>]`: 
-
 ## RELATED LINKS
-

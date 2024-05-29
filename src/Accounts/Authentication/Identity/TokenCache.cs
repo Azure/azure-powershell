@@ -12,15 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 //
+using Azure.Identity;
+
+using Microsoft.Azure.PowerShell.Authenticators.Identity.Core;
+using Microsoft.Identity.Client;
+using Microsoft.Identity.Client.Extensions.Msal;
 
 using System;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
-using Azure.Identity;
-using Microsoft.Identity.Client;
-using Microsoft.Identity.Client.Extensions.Msal;
 
 namespace Microsoft.Azure.PowerShell.Authenticators.Identity
 {
@@ -39,13 +41,19 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Identity
         private readonly bool _allowUnencryptedStorage;
         private readonly string _name;
         private readonly bool _persistToDisk;
-        private static AsyncLockWithValue<MsalCacheHelperWrapper> cacheHelperLock = new AsyncLockWithValue<MsalCacheHelperWrapper>();
+        private AsyncLockWithValue<MsalCacheHelperWrapper> cacheHelperLock = new AsyncLockWithValue<MsalCacheHelperWrapper>();
         private readonly MsalCacheHelperWrapper _cacheHelperWrapper;
 
         /// <summary>
         /// The internal state of the cache.
         /// </summary>
         internal byte[] Data { get; private set; }
+
+        /// <summary>
+        /// Determines whether the token cache will be associated with CAE enabled requests.
+        /// </summary>
+        /// <value>If true, this cache services only CAE enabled requests.Otherwise, this cache services non-CAE enabled requests.</value>
+        internal bool IsCaeEnabled { get;}
 
         private class CacheTimestamp
         {
@@ -69,14 +77,16 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Identity
         /// Creates a new instance of <see cref="TokenCache"/> with the specified options.
         /// </summary>
         /// <param name="options">Options controlling the storage of the <see cref="TokenCache"/>.</param>
-        public TokenCache(TokenCachePersistenceOptions options = null)
-            : this(options, default, default)
+        /// <param name="enableCae">Controls whether this cache will be associated with CAE requests or non-CAE requests.</param>
+        public TokenCache(TokenCachePersistenceOptions options = null, bool enableCae = false)
+            : this(options, default, default, enableCae)
         { }
 
-        internal TokenCache(TokenCachePersistenceOptions options, MsalCacheHelperWrapper cacheHelperWrapper, Func<IPublicClientApplication> publicApplicationFactory = null)
+        internal TokenCache(TokenCachePersistenceOptions options, MsalCacheHelperWrapper cacheHelperWrapper, Func<IPublicClientApplication> publicApplicationFactory = null, bool enableCae = false)
         {
             _cacheHelperWrapper = cacheHelperWrapper ?? new MsalCacheHelperWrapper();
             _publicClientApplicationFactory = publicApplicationFactory ?? new Func<IPublicClientApplication>(() => PublicClientApplicationBuilder.Create(Guid.NewGuid().ToString()).Build());
+            IsCaeEnabled = enableCae;
             if (options is UnsafeTokenCacheOptions inMemoryOptions)
             {
                 TokenCacheUpdatedAsync = inMemoryOptions.TokenCacheUpdatedAsync;
@@ -87,7 +97,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Identity
             else
             {
                 _allowUnencryptedStorage = options?.UnsafeAllowUnencryptedStorage ?? false;
-                _name = options?.Name ?? Constants.DefaultMsalTokenCacheName;
+                _name = (options?.Name ?? Constants.DefaultMsalTokenCacheName) + (enableCae ? Constants.CaeEnabledCacheSuffix : Constants.CaeDisabledCacheSuffix);
                 _persistToDisk = true;
             }
         }
@@ -100,7 +110,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Identity
         /// <summary>
         /// A delegate that will be called before the cache is accessed. The data returned will be used to set the current state of the cache.
         /// </summary>
-        internal Func<Task<ReadOnlyMemory<byte>>> RefreshCacheFromOptionsAsync;
+        internal Func<TokenCacheRefreshArgs, CancellationToken, Task<TokenCacheData>> RefreshCacheFromOptionsAsync;
 
         internal virtual async Task RegisterCache(bool async, ITokenCache tokenCache, CancellationToken cancellationToken)
         {
@@ -138,15 +148,6 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Identity
             }
         }
 
-        /// <summary>
-        /// Resets the <see cref="cacheHelperLock"/> so that tests can validate multiple calls to <see cref="RegisterCache"/>
-        /// This should only be used for testing.
-        /// </summary>
-        internal static void ResetWrapperCache()
-        {
-            cacheHelperLock = new AsyncLockWithValue<MsalCacheHelperWrapper>();
-        }
-
         private async Task OnBeforeCacheAccessAsync(TokenCacheNotificationArgs args)
         {
             await _lock.WaitAsync().ConfigureAwait(false);
@@ -155,7 +156,8 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Identity
             {
                 if (RefreshCacheFromOptionsAsync != null)
                 {
-                    Data = (await RefreshCacheFromOptionsAsync().ConfigureAwait(false)).ToArray();
+                    Data = (await RefreshCacheFromOptionsAsync(new TokenCacheRefreshArgs(args, IsCaeEnabled), default).ConfigureAwait(false))
+                        .CacheBytes.ToArray();
                 }
                 args.TokenCache.DeserializeMsalV3(Data, true);
 
@@ -193,7 +195,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Identity
                 if (TokenCacheUpdatedAsync != null)
                 {
                     var eventBytes = Data.ToArray();
-                    await TokenCacheUpdatedAsync(new TokenCacheUpdatedArgs(eventBytes)).ConfigureAwait(false);
+                    await TokenCacheUpdatedAsync(new TokenCacheUpdatedArgs(eventBytes, IsCaeEnabled)).ConfigureAwait(false);
                 }
 
                 _lastUpdated = _cacheAccessMap.GetOrCreateValue(tokenCache).Update();

@@ -39,15 +39,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         public RecoveryServicesBackupClient Client { get; private set; }
 
         /// <summary>
-        /// Provisions a script which invokes an iSCSI connection to the backup data. Executing this script opens a file
-        /// explorer displaying all the recoverable files and folders. This is an asynchronous operation. To know the status of
+        /// Provisions a script which invokes an iSCSI connection to the backup data.
+        /// Executing this script opens a file explorer displaying all the recoverable
+        /// files and folders. This is an asynchronous operation. To know the status of
         /// provisioning, call GetProtectedItemOperationResult API.
         /// </summary>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the backed up items.
@@ -59,8 +61,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// Backed up item name whose files/folders are to be restored.
         /// </param>
         /// <param name='recoveryPointId'>
-        /// Recovery point ID which represents backed up data. iSCSI connection will be provisioned
-        /// for this backed up data.
+        /// Recovery point ID which represents backed up data. iSCSI connection will be
+        /// provisioned for this backed up data.
         /// </param>
         /// <param name='parameters'>
         /// resource ILR request
@@ -289,14 +291,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         }
         /// <summary>
-        /// Revokes an iSCSI connection which can be used to download a script. Executing this script opens a file explorer
-        /// displaying all recoverable files and folders. This is an asynchronous operation.
+        /// Revokes an iSCSI connection which can be used to download a script.
+        /// Executing this script opens a file explorer displaying all recoverable
+        /// files and folders. This is an asynchronous operation.
         /// </summary>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the backed up items.
@@ -308,8 +312,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// Backed up item name whose files/folders are to be restored.
         /// </param>
         /// <param name='recoveryPointId'>
-        /// Recovery point ID which represents backed up data. iSCSI connection will be revoked for
-        /// this backed up data.
+        /// Recovery point ID which represents backed up data. iSCSI connection will be
+        /// revoked for this backed up data.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.

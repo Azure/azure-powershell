@@ -19,11 +19,13 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
+using Microsoft.Azure.Management.NetApp.Models;
 using System.Globalization;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
 {
@@ -54,7 +56,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
 
         [Parameter(
             Mandatory = false,
+            ParameterSetName = FieldsParameterSet,
             HelpMessage = "The name of the ANF backup policy")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The name of the ANF volume",
+            ParameterSetName = ParentObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias("BackupPolicyName")]
         [ResourceNameCompleter(
@@ -96,15 +103,22 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
                 AccountName = NameParts[0];
             }
 
-            if (Name != null)
+            try
             {
-                var anfBackupPolicy = AzureNetAppFilesManagementClient.BackupPolicies.Get(ResourceGroupName, AccountName, backupPolicyName: Name);
-                WriteObject(anfBackupPolicy.ConvertToPs());
+                if (Name != null)
+                {
+                    var anfBackupPolicy = AzureNetAppFilesManagementClient.BackupPolicies.Get(ResourceGroupName, AccountName, backupPolicyName: Name);
+                    WriteObject(anfBackupPolicy.ConvertToPs());
+                }
+                else
+                {
+                    var anfBackupPolicies = AzureNetAppFilesManagementClient.BackupPolicies.List(ResourceGroupName, AccountName).Select(e => e.ConvertToPs());
+                    WriteObject(anfBackupPolicies, true);
+                }
             }
-            else
+            catch (ErrorResponseException ex)
             {
-                var anfBackupPolicies = AzureNetAppFilesManagementClient.BackupPolicies.List(ResourceGroupName, AccountName).Select(e => e.ConvertToPs());
-                WriteObject(anfBackupPolicies, true);
+                throw new CloudException(ex.Body.Error.Message, ex);
             }
         }
     }

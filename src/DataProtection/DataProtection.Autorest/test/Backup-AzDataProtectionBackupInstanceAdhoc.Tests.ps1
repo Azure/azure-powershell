@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Backup-AzDataProtectionBackupInstanceAdhoc' {
-    It 'BackupExpanded' {
+    It 'BackupExpanded' {        
         $sub = $env.TestTriggerBackup.SubscriptionId
         $rgName = $env.TestTriggerBackup.ResourceGroupName
         $vaultName = $env.TestTriggerBackup.VaultName
@@ -36,7 +36,7 @@ Describe 'Backup-AzDataProtectionBackupInstanceAdhoc' {
         $jobstatus | Should be "Completed"
     }
 
-    It 'OssBackup' {
+    It 'OssBackup' {        
         # Test trigger Backup for Oss DB
         # Delete this test
         $sub = $env.TestOssBackupScenario.SubscriptionId
@@ -49,7 +49,7 @@ Describe 'Backup-AzDataProtectionBackupInstanceAdhoc' {
         $secretURI = $env.TestOssBackupScenario.SecretURI
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName $rgName  -VaultName  $vaultName
-        $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | where {$_.Name -eq $policyName}
+        $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | Where-Object {$_.Name -eq $policyName}
 
         $instance  = Get-AzDataProtectionBackupInstance -Subscription $sub -ResourceGroup $rgName -Vault $vaultName | Where-Object {($_.Property.DataSourceInfo.Type -eq "Microsoft.DBforPostgreSQL/servers/databases") -and ($_.Property.DataSourceInfo.ResourceId -match $serverName)}
 
@@ -59,12 +59,13 @@ Describe 'Backup-AzDataProtectionBackupInstanceAdhoc' {
 
         $jobid = $backupJob.JobId.Split("/")[-1]
         $jobstatus = "InProgress"
-        while($jobstatus -ne "Completed")
+        while($jobstatus -eq "InProgress")
         {
             Start-TestSleep -Seconds 10
             $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
             $jobstatus = $currentjob.Status
         }
+        $jobstatus | Should be "Completed"
     }
 
     It 'Backup' -skip {

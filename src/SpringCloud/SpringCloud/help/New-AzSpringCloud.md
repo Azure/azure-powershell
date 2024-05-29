@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SpringCloud-help.xml
 Module Name: Az.SpringCloud
 online version: https://learn.microsoft.com/powershell/module/az.springcloud/new-azspringcloud
 schema: 2.0.0
@@ -17,7 +17,7 @@ New-AzSpringCloud -Name <String> -ResourceGroupName <String> [-SubscriptionId <S
  [-NetworkProfileResourceGroup <String>] [-NetworkProfileServiceCidr <String>]
  [-NetworkProfileServiceResourceGroup <String>] [-NetworkProfileServiceSubnetId <String>]
  [-NetworkProfileSubnetId <String>] [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>]
- [-Tag <Hashtable>] [-ZoneRedundant] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-Tag <Hashtable>] [-ZoneRedundant] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Create a new Service or update an exiting Service.
 
 ## EXAMPLES
 
-### Example 1: Create or update a new standard spring cloud service 
+### Example 1: Create or update a new standard spring cloud service
 ```powershell
 New-AzSpringCloud -ResourceGroupName springcloudrg -Name spring-pwsh01 -Location eastus
 ```
@@ -40,7 +40,7 @@ eastus   springcloud-service 2022/6/28 7:59:45   ******@microsoft.com    User   
 
 Create or update a new standard spring cloud service.
 
-### Example 2: Create or update a new enterprise spring cloud service 
+### Example 2: Create or update a new enterprise spring cloud service
 ```powershell
 New-AzSpringCloud -ResourceGroupName springcloudrg -Name espring-pwsh01 -Location eastus -SkuTier "Enterprise" -SkuName "E0"
 ```
@@ -357,4 +357,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

@@ -173,7 +173,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 PrimaryUserAssignedIdentityId = model.PrimaryUserAssignedIdentityId,
                 KeyId = model.KeyId,
                 ZoneRedundant = model.ZoneRedundant,
-                ServicePrincipal = ResourceServicePrincipalHelper.UnwrapServicePrincipalObject(model.ServicePrincipal)
+                ServicePrincipal = ResourceServicePrincipalHelper.UnwrapServicePrincipalObject(model.ServicePrincipal),
+                DatabaseFormat = model.DatabaseFormat,
+                PricingModel = model.PricingModel
             });
 
             return CreateManagedInstanceModelFromResponse(resp);
@@ -197,7 +199,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 SubnetId = model.SubnetId,
                 VCores = model.VCores,
                 PublicDataEndpointEnabled = model.PublicDataEndpointEnabled,
-                ProxyOverride = model.ProxyOverride,
+                ProxyOverride = model.ProxyOverride
             });
 
             return CreateManagedInstanceModelFromResponse(resp);
@@ -213,12 +215,21 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             Communicator.Remove(resourceGroupName, managedInstanceName);
         }
 
-
+        /// <summary>
+        /// Starts a managed instance.
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="name">The name of the managed instance</param>
         public void StartManagedInstance(string resourceGroupName, string name)
         {
             Communicator.Start(resourceGroupName, name);
         }
 
+        /// <summary>
+        /// Stops a managed instance.
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="name">The name of the managed instance</param>
         public void StopManagedInstance(string resourceGroupName, string name)
         {
             Communicator.Stop(resourceGroupName, name);
@@ -280,6 +291,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             managedInstance.PrimaryUserAssignedIdentityId = resp.PrimaryUserAssignedIdentityId;
             managedInstance.KeyId = resp.KeyId;
             managedInstance.ZoneRedundant = resp.ZoneRedundant;
+            managedInstance.DatabaseFormat = resp.DatabaseFormat;
+            managedInstance.PricingModel = resp.PricingModel;
+            managedInstance.ExternalGovernanceStatus = resp.ExternalGovernanceStatus;
 
             return managedInstance;
         }
@@ -434,7 +448,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 userList = MicrosoftGraphClient.FilterUsers(filter).Where(gr => string.Equals(gr.UserPrincipalName, displayName, StringComparison.OrdinalIgnoreCase));
             }
 
-            // No user was found. Check if the display name is a guest user. 
+            // No user was found. Check if the display name is a guest user.
             if (userList == null || userList.Count() == 0)
             {
                 // Check if the display name is the UPN

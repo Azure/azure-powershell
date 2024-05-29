@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a list of a distributed availability groups in instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -46,7 +47,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a distributed availability group info.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -69,13 +71,16 @@ namespace Microsoft.Azure.Management.Sql
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DistributedAvailabilityGroup>> GetWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string distributedAvailabilityGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Creates a distributed availability group between Sql On-Prem and Sql Managed Instance.
+        /// Creates a distributed availability group between Sql On-Prem and Sql
+        /// Managed Instance.
         /// </summary>
         /// <remarks>
-        /// Creates a distributed availability group between Sql On-Prem and Sql Managed Instance.
+        /// Creates a distributed availability group between Sql On-Prem and Sql
+        /// Managed Instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -101,13 +106,16 @@ namespace Microsoft.Azure.Management.Sql
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DistributedAvailabilityGroup>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string distributedAvailabilityGroupName, DistributedAvailabilityGroup parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Drops a distributed availability group between Sql On-Prem and Sql Managed Instance.
+        /// Drops a distributed availability group between Sql On-Prem and Sql Managed
+        /// Instance.
         /// </summary>
         /// <remarks>
-        /// Drops a distributed availability group between Sql On-Prem and Sql Managed Instance.
+        /// Drops a distributed availability group between Sql On-Prem and Sql Managed
+        /// Instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -133,7 +141,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Updates a distributed availability group replication mode.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -159,13 +168,16 @@ namespace Microsoft.Azure.Management.Sql
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DistributedAvailabilityGroup>> UpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string distributedAvailabilityGroupName, DistributedAvailabilityGroup parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Creates a distributed availability group between Sql On-Prem and Sql Managed Instance.
+        /// Creates a distributed availability group between Sql On-Prem and Sql
+        /// Managed Instance.
         /// </summary>
         /// <remarks>
-        /// Creates a distributed availability group between Sql On-Prem and Sql Managed Instance.
+        /// Creates a distributed availability group between Sql On-Prem and Sql
+        /// Managed Instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -191,13 +203,16 @@ namespace Microsoft.Azure.Management.Sql
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DistributedAvailabilityGroup>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string distributedAvailabilityGroupName, DistributedAvailabilityGroup parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Drops a distributed availability group between Sql On-Prem and Sql Managed Instance.
+        /// Drops a distributed availability group between Sql On-Prem and Sql Managed
+        /// Instance.
         /// </summary>
         /// <remarks>
-        /// Drops a distributed availability group between Sql On-Prem and Sql Managed Instance.
+        /// Drops a distributed availability group between Sql On-Prem and Sql Managed
+        /// Instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -223,7 +238,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Updates a distributed availability group replication mode.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.

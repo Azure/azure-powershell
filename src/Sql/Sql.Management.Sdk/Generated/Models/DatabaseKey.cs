@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
 
         /// <param name="type">The database key type. Only supported value is &#39;AzureKeyVault&#39;.
-        /// Possible values include: 'AzureKeyVault'</param>
+        /// Possible values include: &#39;AzureKeyVault&#39;</param>
 
         /// <param name="thumbprint">Thumbprint of the database key.
         /// </param>

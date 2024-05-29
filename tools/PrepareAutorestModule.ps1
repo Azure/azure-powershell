@@ -95,7 +95,7 @@ $FailedModuleList = @()
 foreach ($Module in $ModuleList)
 {
     $RootModuleFolder = "$PSScriptRoot\..\src\$Module\"
-    $SubModuleFolders = (Get-ChildItem -path $RootModuleFolder -filter Az.*.psd1 -Recurse).Directory
+    $SubModuleFolders = Get-ChildItem -path $RootModuleFolder -filter *.Autorest -Directory
     if ($Null -eq $SubModuleFolders)
     {
         # Module is not found maybe it's deleted in this PR
@@ -140,8 +140,13 @@ if ($FailedModuleList.Length -ne 0)
     Write-Error "Failed to generate code for module(s): $FailedModuleList"
     foreach ($failedModule in $FailedModuleList)
     {
-        Write-Error "========= Error log for $failedModule ========="
-        Write-Host (Get-Content "$AutorestOutputDir\$failedModule.log")
+        Write-Error "========= Start of error log for $failedModule ========="
+        $Logs = Get-Content "$AutorestOutputDir\$failedModule.log"
+        foreach ($line in $Logs)
+        {
+            Write-Error $line
+        }
+        Write-Error "========= End of error log for $failedModule ========="
     }
     exit 1
 }

@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="status">
-        /// Possible values include: 'NotStarted', 'InProgress', 'SlowedDown',
-        /// 'Completed', 'Failed', 'Canceled'</param>
+        /// Possible values include: &#39;NotStarted&#39;, &#39;InProgress&#39;, &#39;SlowedDown&#39;,
+        /// &#39;Completed&#39;, &#39;Failed&#39;, &#39;Canceled&#39;</param>
         public UpsertManagedServerOperationStep(int? order = default(int?), string name = default(string), string status = default(string))
 
         {

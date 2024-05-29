@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Peering-help.xml
 Module Name: Az.Peering
 online version: https://learn.microsoft.com/powershell/module/az.peering/update-azpeering
 schema: 2.0.0
@@ -15,13 +15,13 @@ Updates tags for a peering with the specified name under the given subscription 
 ### UpdateExpanded (Default)
 ```
 Update-AzPeering -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzPeering -InputObject <IPeeringIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzPeering -InputObject <IPeeringIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,7 +46,8 @@ Updates the specified peering's tags
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -180,24 +181,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IPeeringIdentity>`: Identity Parameter
-  - `[ConnectionMonitorTestName <String>]`: The name of the connection monitor test
-  - `[Id <String>]`: Resource identity path
-  - `[PeerAsnName <String>]`: The peer ASN name.
-  - `[PeeringName <String>]`: The name of the peering.
-  - `[PeeringServiceName <String>]`: The name of the peering service.
-  - `[PrefixName <String>]`: The name of the prefix.
-  - `[RegisteredAsnName <String>]`: The name of the registered ASN.
-  - `[RegisteredPrefixName <String>]`: The name of the registered prefix.
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[SubscriptionId <String>]`: The Azure subscription ID.
-
 ## RELATED LINKS
-

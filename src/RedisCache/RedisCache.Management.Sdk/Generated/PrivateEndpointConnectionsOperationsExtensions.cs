@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cacheName'>
         /// The name of the Redis cache.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cacheName'>
         /// The name of the Redis cache.
@@ -52,19 +52,21 @@ namespace Microsoft.Azure.Management.RedisCache
             }
         }
         /// <summary>
-        /// Gets the specified private endpoint connection associated with the redis cache.
+        /// Gets the specified private endpoint connection associated with the redis
+        /// cache.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cacheName'>
         /// The name of the Redis cache.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Azure resource
+        /// The name of the private endpoint connection associated with the Azure
+        /// resource
         /// </param>
         public static PrivateEndpointConnection Get(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string cacheName, string privateEndpointConnectionName)
         {
@@ -72,19 +74,21 @@ namespace Microsoft.Azure.Management.RedisCache
         }
 
         /// <summary>
-        /// Gets the specified private endpoint connection associated with the redis cache.
+        /// Gets the specified private endpoint connection associated with the redis
+        /// cache.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cacheName'>
         /// The name of the Redis cache.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Azure resource
+        /// The name of the private endpoint connection associated with the Azure
+        /// resource
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -97,19 +101,21 @@ namespace Microsoft.Azure.Management.RedisCache
             }
         }
         /// <summary>
-        /// Update the state of specified private endpoint connection associated with the redis cache.
+        /// Update the state of specified private endpoint connection associated with
+        /// the redis cache.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cacheName'>
         /// The name of the Redis cache.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Azure resource
+        /// The name of the private endpoint connection associated with the Azure
+        /// resource
         /// </param>
         public static PrivateEndpointConnection Put(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string cacheName, string privateEndpointConnectionName, PrivateEndpoint privateEndpoint = default(PrivateEndpoint), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState))
         {
@@ -117,19 +123,21 @@ namespace Microsoft.Azure.Management.RedisCache
         }
 
         /// <summary>
-        /// Update the state of specified private endpoint connection associated with the redis cache.
+        /// Update the state of specified private endpoint connection associated with
+        /// the redis cache.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cacheName'>
         /// The name of the Redis cache.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Azure resource
+        /// The name of the private endpoint connection associated with the Azure
+        /// resource
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -142,19 +150,21 @@ namespace Microsoft.Azure.Management.RedisCache
             }
         }
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with the redis cache.
+        /// Deletes the specified private endpoint connection associated with the redis
+        /// cache.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cacheName'>
         /// The name of the Redis cache.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Azure resource
+        /// The name of the private endpoint connection associated with the Azure
+        /// resource
         /// </param>
         public static void Delete(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string cacheName, string privateEndpointConnectionName)
         {
@@ -162,19 +172,21 @@ namespace Microsoft.Azure.Management.RedisCache
         }
 
         /// <summary>
-        /// Deletes the specified private endpoint connection associated with the redis cache.
+        /// Deletes the specified private endpoint connection associated with the redis
+        /// cache.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cacheName'>
         /// The name of the Redis cache.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Azure resource
+        /// The name of the private endpoint connection associated with the Azure
+        /// resource
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -184,19 +196,21 @@ namespace Microsoft.Azure.Management.RedisCache
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, cacheName, privateEndpointConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Update the state of specified private endpoint connection associated with the redis cache.
+        /// Update the state of specified private endpoint connection associated with
+        /// the redis cache.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cacheName'>
         /// The name of the Redis cache.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Azure resource
+        /// The name of the private endpoint connection associated with the Azure
+        /// resource
         /// </param>
         public static PrivateEndpointConnection BeginPut(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string cacheName, string privateEndpointConnectionName, PrivateEndpoint privateEndpoint = default(PrivateEndpoint), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState))
         {
@@ -204,19 +218,21 @@ namespace Microsoft.Azure.Management.RedisCache
         }
 
         /// <summary>
-        /// Update the state of specified private endpoint connection associated with the redis cache.
+        /// Update the state of specified private endpoint connection associated with
+        /// the redis cache.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cacheName'>
         /// The name of the Redis cache.
         /// </param>
         /// <param name='privateEndpointConnectionName'>
-        /// The name of the private endpoint connection associated with the Azure resource
+        /// The name of the private endpoint connection associated with the Azure
+        /// resource
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

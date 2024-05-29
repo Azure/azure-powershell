@@ -19,13 +19,6 @@ Update-AzConnectedExtension -MachineName <String> -ResourceGroupName <String> [-
  [-WhatIf] [<CommonParameters>]
 ```
 
-### Upgrade
-```
-Update-AzConnectedExtension -MachineName <String> -ResourceGroupName <String>
- -ExtensionUpgradeParameter <IMachineExtensionUpgrade> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpgradeViaIdentity
 ```
 Update-AzConnectedExtension -InputObject <IConnectedMachineIdentity>
@@ -120,11 +113,10 @@ Accept wildcard characters: False
 
 ### -ExtensionUpgradeParameter
 Describes the Machine Extension Upgrade Properties.
-To construct, see NOTES section for EXTENSIONUPGRADEPARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtensionUpgrade
-Parameter Sets: Upgrade, UpgradeViaIdentity
+Parameter Sets: UpgradeViaIdentity
 Aliases:
 
 Required: True
@@ -136,7 +128,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
@@ -185,7 +176,7 @@ The name of the hybrid machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaJsonFilePath, UpgradeViaJsonString
+Parameter Sets: UpgradeExpanded, UpgradeViaJsonFilePath, UpgradeViaJsonString
 Aliases:
 
 Required: True
@@ -231,7 +222,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaJsonFilePath, UpgradeViaJsonString
+Parameter Sets: UpgradeExpanded, UpgradeViaJsonFilePath, UpgradeViaJsonString
 Aliases:
 
 Required: True
@@ -246,7 +237,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaJsonFilePath, UpgradeViaJsonString
+Parameter Sets: UpgradeExpanded, UpgradeViaJsonFilePath, UpgradeViaJsonString
 Aliases:
 
 Required: False

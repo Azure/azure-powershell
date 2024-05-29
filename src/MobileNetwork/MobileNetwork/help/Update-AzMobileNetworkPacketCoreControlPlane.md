@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MobileNetwork-help.xml
 Module Name: Az.MobileNetwork
 online version: https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworkpacketcorecontrolplane
 schema: 2.0.0
@@ -14,15 +14,15 @@ Updates packet core control planes.
 
 ```
 Update-AzMobileNetworkPacketCoreControlPlane -PacketCoreControlPlaneName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AzureStackEdgeDeviceId <String>] [-AzureStackHciClusterId <String>]
- [-ConnectedClusterId <String>] [-ControlPlaneAccessInterfaceIpv4Address <String>]
- [-ControlPlaneAccessInterfaceIpv4Gateway <String>] [-ControlPlaneAccessInterfaceIpv4Subnet <String>]
- [-ControlPlaneAccessInterfaceName <String>] [-CoreNetworkTechnology <CoreNetworkType>]
- [-CustomLocationId <String>] [-HttpsServerCertificateUrl <String>]
+ [-SubscriptionId <String>] [-LocalDiagnosticAccessAuthenticationType <AuthenticationType>]
+ [-PlatformType <PlatformType>] [-Site <ISiteResourceId[]>] [-Sku <BillingSku>]
+ [-AzureStackEdgeDeviceId <String>] [-AzureStackHciClusterId <String>] [-ConnectedClusterId <String>]
+ [-ControlPlaneAccessInterfaceIpv4Address <String>] [-ControlPlaneAccessInterfaceIpv4Gateway <String>]
+ [-ControlPlaneAccessInterfaceIpv4Subnet <String>] [-ControlPlaneAccessInterfaceName <String>]
+ [-CoreNetworkTechnology <CoreNetworkType>] [-CustomLocationId <String>] [-HttpsServerCertificateUrl <String>]
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-InteropSetting <Hashtable>] [-LocalDiagnosticAccessAuthenticationType <AuthenticationType>]
- [-PlatformType <PlatformType>] [-Site <ISiteResourceId[]>] [-Sku <BillingSku>] [-Tag <Hashtable>]
- [-UeMtu <Int32>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-InteropSetting <Hashtable>] [-UeMtu <Int32>] [-Version <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -460,15 +460,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`SITE <ISiteResourceId[]>`: Site(s) under which this packet core control plane should be deployed. The sites must be in the same location as the packet core control plane.
-  - `Id <String>`: Site resource ID.
-
 ## RELATED LINKS
-

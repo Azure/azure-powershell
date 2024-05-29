@@ -10,6 +10,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support
     public partial struct SapVirtualInstanceState :
         System.IEquatable<SapVirtualInstanceState>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapVirtualInstanceState AcssInstallationBlocked = @"ACSSInstallationBlocked";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapVirtualInstanceState DiscoveryFailed = @"DiscoveryFailed";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapVirtualInstanceState DiscoveryInProgress = @"DiscoveryInProgress";

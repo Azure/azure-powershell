@@ -19,5 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 1.0.0
+* General availability of 'Az.Nginx' module
+
 ## Version 0.1.0
 * First preview release for module Az.Nginx

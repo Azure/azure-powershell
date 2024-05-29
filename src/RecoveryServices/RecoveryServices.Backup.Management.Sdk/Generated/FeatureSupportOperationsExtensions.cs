@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public static partial class FeatureSupportOperationsExtensions
     {
         /// <summary>
-        /// It will validate if given feature with resource properties is supported in service
+        /// It will validate if given feature with resource properties is supported in
+        /// service
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -27,7 +28,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// It will validate if given feature with resource properties is supported in service
+        /// It will validate if given feature with resource properties is supported in
+        /// service
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

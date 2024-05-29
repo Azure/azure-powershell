@@ -6,62 +6,59 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2a019c29-8a17-45fb-8d23-b18bce86d394"
+          "9cf9c002-32c9-41aa-9fb9-6bbfc44f6d86"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2323.48002",
+          "FxVersion/6.0.2523.51912",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
+          "OSVersion/Microsoft.Windows.10.0.23606",
           "Microsoft.Azure.Commands.Common.MSGraph.Version1.0.MicrosoftGraphClient/1.3.86"
         ]
       },
       "RequestBody": "",
       "ResponseHeaders": {
+        "Date": [
+          "Tue, 19 Dec 2023 07:59:57 GMT"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Connection": [
+          "keep-alive"
+        ],
         "Cache-Control": [
           "no-cache"
         ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "83ea618a-f1cb-4ba9-9b2e-f66c41bf78aa"
-        ],
-        "x-ms-correlation-request-id": [
-          "83ea618a-f1cb-4ba9-9b2e-f66c41bf78aa"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20231016T082414Z:83ea618a-f1cb-4ba9-9b2e-f66c41bf78aa"
-        ],
         "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "max-age=31536000"
         ],
-        "X-Content-Type-Options": [
-          "nosniff"
+        "request-id": [
+          "e4f0035d-7b5d-4935-bb5a-41f0bf01b4ed"
         ],
-        "Date": [
-          "Mon, 16 Oct 2023 08:24:13 GMT"
+        "client-request-id": [
+          "e4f0035d-7b5d-4935-bb5a-41f0bf01b4ed"
+        ],
+        "x-ms-ags-diagnostic": [
+          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"003\",\"RoleInstance\":\"CO1PEPF00004A99\"}}"
+        ],
+        "x-ms-resource-unit": [
+          "1"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "137"
+          "application/json"
         ],
         "Retry-After": [
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingApiVersionParameter\",\r\n    \"message\": \"The api-version query parameter (?api-version=) is required for all requests.\"\r\n  }\r\n}",
-      "StatusCode": 400
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": \"Resource '6d764d35-6b3b-49ea-83f8-5c223b56eac5' does not exist or one of its queried reference-property objects are not present.\",\r\n    \"innerError\": {\r\n      \"date\": \"2023-12-19T07:59:57\",\r\n      \"request-id\": \"e4f0035d-7b5d-4935-bb5a-41f0bf01b4ed\",\r\n      \"client-request-id\": \"e4f0035d-7b5d-4935-bb5a-41f0bf01b4ed\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 404
     },
     {
       "RequestUri": "/v1.0/servicePrincipals/6d764d35-6b3b-49ea-83f8-5c223b56eac5",
@@ -69,62 +66,59 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2a019c29-8a17-45fb-8d23-b18bce86d394"
+          "9ef61c14-b844-46f5-a314-cf975f1ff943"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2323.48002",
+          "FxVersion/6.0.2523.51912",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
+          "OSVersion/Microsoft.Windows.10.0.23606",
           "Microsoft.Azure.Commands.Common.MSGraph.Version1.0.MicrosoftGraphClient/1.3.86"
         ]
       },
       "RequestBody": "",
       "ResponseHeaders": {
+        "Date": [
+          "Tue, 19 Dec 2023 07:59:57 GMT"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Connection": [
+          "keep-alive"
+        ],
         "Cache-Control": [
           "no-cache"
         ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "3819ffc3-04a1-40b9-8903-35a32621b084"
-        ],
-        "x-ms-correlation-request-id": [
-          "3819ffc3-04a1-40b9-8903-35a32621b084"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20231016T082414Z:3819ffc3-04a1-40b9-8903-35a32621b084"
-        ],
         "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "max-age=31536000"
         ],
-        "X-Content-Type-Options": [
-          "nosniff"
+        "request-id": [
+          "9bbb8fd6-f214-4783-bcf4-d5da1ffb16d0"
         ],
-        "Date": [
-          "Mon, 16 Oct 2023 08:24:13 GMT"
+        "client-request-id": [
+          "9bbb8fd6-f214-4783-bcf4-d5da1ffb16d0"
+        ],
+        "x-ms-ags-diagnostic": [
+          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"003\",\"RoleInstance\":\"CO1PEPF00004A99\"}}"
+        ],
+        "x-ms-resource-unit": [
+          "1"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "137"
+          "application/json"
         ],
         "Retry-After": [
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingApiVersionParameter\",\r\n    \"message\": \"The api-version query parameter (?api-version=) is required for all requests.\"\r\n  }\r\n}",
-      "StatusCode": 400
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": \"Resource '6d764d35-6b3b-49ea-83f8-5c223b56eac5' does not exist or one of its queried reference-property objects are not present.\",\r\n    \"innerError\": {\r\n      \"date\": \"2023-12-19T07:59:57\",\r\n      \"request-id\": \"9bbb8fd6-f214-4783-bcf4-d5da1ffb16d0\",\r\n      \"client-request-id\": \"9bbb8fd6-f214-4783-bcf4-d5da1ffb16d0\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 404
     },
     {
       "RequestUri": "/v1.0/directoryObjects/6d764d35-6b3b-49ea-83f8-5c223b56eac5",
@@ -132,79 +126,76 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2a019c29-8a17-45fb-8d23-b18bce86d394"
+          "a46815b2-407f-4a41-b6a4-3968107eaebd"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2323.48002",
+          "FxVersion/6.0.2523.51912",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
+          "OSVersion/Microsoft.Windows.10.0.23606",
           "Microsoft.Azure.Commands.Common.MSGraph.Version1.0.MicrosoftGraphClient/1.3.86"
         ]
       },
       "RequestBody": "",
       "ResponseHeaders": {
+        "Date": [
+          "Tue, 19 Dec 2023 07:59:57 GMT"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Connection": [
+          "keep-alive"
+        ],
         "Cache-Control": [
           "no-cache"
         ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "992603d1-e473-441a-8760-7609cdba7b5b"
-        ],
-        "x-ms-correlation-request-id": [
-          "992603d1-e473-441a-8760-7609cdba7b5b"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20231016T082414Z:992603d1-e473-441a-8760-7609cdba7b5b"
-        ],
         "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "max-age=31536000"
         ],
-        "X-Content-Type-Options": [
-          "nosniff"
+        "request-id": [
+          "35f8be95-90da-42b5-a1e3-d81aa0594f47"
         ],
-        "Date": [
-          "Mon, 16 Oct 2023 08:24:13 GMT"
+        "client-request-id": [
+          "35f8be95-90da-42b5-a1e3-d81aa0594f47"
+        ],
+        "x-ms-ags-diagnostic": [
+          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"003\",\"RoleInstance\":\"CO1PEPF00004A99\"}}"
+        ],
+        "x-ms-resource-unit": [
+          "1"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "137"
+          "application/json"
         ],
         "Retry-After": [
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingApiVersionParameter\",\r\n    \"message\": \"The api-version query parameter (?api-version=) is required for all requests.\"\r\n  }\r\n}",
-      "StatusCode": 400
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": \"Resource '6d764d35-6b3b-49ea-83f8-5c223b56eac5' does not exist or one of its queried reference-property objects are not present.\",\r\n    \"innerError\": {\r\n      \"date\": \"2023-12-19T07:59:57\",\r\n      \"request-id\": \"35f8be95-90da-42b5-a1e3-d81aa0594f47\",\r\n      \"client-request-id\": \"35f8be95-90da-42b5-a1e3-d81aa0594f47\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 404
     },
     {
-      "RequestUri": "//subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Authorization/roleAssignments/0f7b6fb6-a5f4-4046-83eb-dfd93c5e4b72?api-version=2020-08-01-preview",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzBiMWY2NDcxLTFiZjAtNGRkYS1hZWMzLWNiOTI3MmYwOTU5MC9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZUFzc2lnbm1lbnRzLzBmN2I2ZmI2LWE1ZjQtNDA0Ni04M2ViLWRmZDkzYzVlNGI3Mj9hcGktdmVyc2lvbj0yMDIwLTA4LTAxLXByZXZpZXc=",
+      "RequestUri": "//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleAssignments/0f7b6fb6-a5f4-4046-83eb-dfd93c5e4b72?api-version=2020-08-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzQwMDRhOWZkLWQ1OGUtNDhkYy1hZWIyLTRhNGFlYzU4NjA2Zi9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZUFzc2lnbm1lbnRzLzBmN2I2ZmI2LWE1ZjQtNDA0Ni04M2ViLWRmZDkzYzVlNGI3Mj9hcGktdmVyc2lvbj0yMDIwLTA4LTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2a019c29-8a17-45fb-8d23-b18bce86d394"
+          "0811044f-721a-4019-9059-6459c49f6784"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2323.48002",
+          "FxVersion/6.0.2523.51912",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/2.13.0.0"
+          "OSVersion/Microsoft.Windows.10.0.23606",
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/6.12.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -213,7 +204,7 @@
           "254"
         ]
       },
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"roleDefinitionId\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\r\n    \"principalId\": \"6d764d35-6b3b-49ea-83f8-5c223b56eac5\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"roleDefinitionId\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7\",\r\n    \"principalId\": \"6d764d35-6b3b-49ea-83f8-5c223b56eac5\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -222,7 +213,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "885ffdb2-4e94-4f69-b833-354e17aa163b"
+          "91b03a6f-95a5-4f19-817a-39c478b8f7be"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -237,13 +228,13 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "f96bc716-4b16-4ebf-8fbf-0cb7dd9d8788"
+          "90c34555-f4e3-445c-b9cf-a7a66c6d9001"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20231016T082416Z:f96bc716-4b16-4ebf-8fbf-0cb7dd9d8788"
+          "WESTUS2:20231219T075957Z:90c34555-f4e3-445c-b9cf-a7a66c6d9001"
         ],
         "Date": [
-          "Mon, 16 Oct 2023 08:24:15 GMT"
+          "Tue, 19 Dec 2023 07:59:57 GMT"
         ],
         "Content-Length": [
           "489"
@@ -258,12 +249,12 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"PrincipalNotFound\",\r\n    \"message\": \"Principal 6d764d356b3b49ea83f85c223b56eac5 does not exist in the directory 54826b22-38d6-4fb2-bad9-b7b93a3e9c5a. Check that you have the correct principal ID. If you are creating this principal and then immediately assigning a role, this error might be related to a replication delay. In this case, set the role assignment principalType property to a value, such as ServicePrincipal, User, or Group.  See https://aka.ms/docs-principaltype\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"PrincipalNotFound\",\r\n    \"message\": \"Principal 6d764d356b3b49ea83f85c223b56eac5 does not exist in the directory 1273adef-00a3-4086-a51a-dbcce1857d36. Check that you have the correct principal ID. If you are creating this principal and then immediately assigning a role, this error might be related to a replication delay. In this case, set the role assignment principalType property to a value, such as ServicePrincipal, User, or Group.  See https://aka.ms/docs-principaltype\"\r\n  }\r\n}",
       "StatusCode": 400
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "0b1f6471-1bf0-4dda-aec3-cb9272f09590"
+    "SubscriptionId": "4004a9fd-d58e-48dc-aeb2-4a4aec58606f"
   }
 }

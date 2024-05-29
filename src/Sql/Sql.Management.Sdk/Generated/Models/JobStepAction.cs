@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
 
         /// <param name="type">Type of action being executed by the job step.
-        /// Possible values include: 'TSql'</param>
+        /// Possible values include: &#39;TSql&#39;</param>
 
         /// <param name="source">The source of the action to execute.
-        /// Possible values include: 'Inline'</param>
+        /// Possible values include: &#39;Inline&#39;</param>
 
         /// <param name="value">The action value, for example the text of the T-SQL script to execute.
         /// </param>

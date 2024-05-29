@@ -779,9 +779,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
             if (this.CoolnessPeriod != null)
             {
-                if (this.CoolnessPeriod > 63)
+                if (this.CoolnessPeriod > 183)
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "CoolnessPeriod", 63);
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "CoolnessPeriod", 183);
                 }
                 if (this.CoolnessPeriod < 7)
                 {

@@ -42,7 +42,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a specific Azure Active Directory only authentication property.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -252,16 +253,19 @@ namespace Microsoft.Azure.Management.Sql
 
         }
         /// <summary>
-        /// Sets Server Active Directory only authentication property or updates an existing server Active Directory only authentication property.
+        /// Sets Server Active Directory only authentication property or updates an
+        /// existing server Active Directory only authentication property.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='parameters'>
-        /// The required parameters for creating or updating an Active Directory only authentication property.
+        /// The required parameters for creating or updating an Active Directory only
+        /// authentication property.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -280,7 +284,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes an existing server Active Directory only authentication property.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -302,7 +307,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a list of server Azure Active Directory only authentications.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -509,16 +515,19 @@ namespace Microsoft.Azure.Management.Sql
 
         }
         /// <summary>
-        /// Sets Server Active Directory only authentication property or updates an existing server Active Directory only authentication property.
+        /// Sets Server Active Directory only authentication property or updates an
+        /// existing server Active Directory only authentication property.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='parameters'>
-        /// The required parameters for creating or updating an Active Directory only authentication property.
+        /// The required parameters for creating or updating an Active Directory only
+        /// authentication property.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -758,7 +767,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes an existing server Active Directory only authentication property.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.

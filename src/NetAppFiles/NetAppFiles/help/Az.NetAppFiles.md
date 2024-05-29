@@ -27,7 +27,7 @@ Gets details of an Azure NetApp Files (ANF) Backup.
 Gets details of an Azure NetApp Files (ANF) Backup Policy.
 
 ### [Get-AzNetAppFilesNetworkSiblingSet](Get-AzNetAppFilesNetworkSiblingSet.md)
-{{ Fill in the Synopsis }}
+Get details of a network sibling set
 
 ### [Get-AzNetAppFilesPool](Get-AzNetAppFilesPool.md)
 Gets details of an Azure NetApp Files (ANF) pool.
@@ -206,6 +206,9 @@ Updates an Azure NetApp Files (ANF) backup to the optional modifiers provided.
 
 ### [Update-AzNetAppFilesBackupPolicy](Update-AzNetAppFilesBackupPolicy.md)
 Updates an Azure NetApp Files (ANF) backup policy to the optional modifiers provided.
+
+### [Update-AzNetAppFilesNetworkSiblingSet](Update-AzNetAppFilesNetworkSiblingSet.md)
+Update the network features of a network sibling set
 
 ### [Update-AzNetAppFilesPool](Update-AzNetAppFilesPool.md)
 Updates an Azure NetApp Files (ANF) pool according to the optional modifiers provided.

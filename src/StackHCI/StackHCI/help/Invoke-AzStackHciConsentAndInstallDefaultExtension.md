@@ -15,7 +15,8 @@ Add consent time for default extensions and initiate extensions installation
 ### And (Default)
 ```
 Invoke-AzStackHciConsentAndInstallDefaultExtension -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### AndViaIdentity

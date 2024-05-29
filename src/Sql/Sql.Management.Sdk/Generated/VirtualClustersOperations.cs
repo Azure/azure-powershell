@@ -39,10 +39,12 @@ namespace Microsoft.Azure.Management.Sql
         public SqlManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Synchronizes the DNS server settings used by the managed instances inside the given virtual cluster.
+        /// Synchronizes the DNS server settings used by the managed instances inside
+        /// the given virtual cluster.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='virtualClusterName'>
         /// The name of the virtual cluster.
@@ -442,7 +444,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a list of virtual clusters in a resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -642,7 +645,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a virtual cluster.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='virtualClusterName'>
         /// The name of the virtual cluster.
@@ -852,7 +856,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes a virtual cluster.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='virtualClusterName'>
         /// The name of the virtual cluster.
@@ -874,7 +879,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Updates a virtual cluster.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='virtualClusterName'>
         /// The name of the virtual cluster.
@@ -899,7 +905,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes a virtual cluster.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='virtualClusterName'>
         /// The name of the virtual cluster.
@@ -1088,7 +1095,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Updates a virtual cluster.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='virtualClusterName'>
         /// The name of the virtual cluster.

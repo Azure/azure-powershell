@@ -10,4 +10,3 @@ RelativePath Version ArtifactSelector RuntimeVersion
 ```
 
 Create an in-memory object for SourceUploadedUserSourceInfo.
-

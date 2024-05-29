@@ -33,12 +33,13 @@ Describe 'Initialize-AzDataProtectionRestoreRequest' {
             $restoreJob = Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName $instances[0].BackupInstanceName -ResourceGroupName $rgName -VaultName $vaultName -SubscriptionId $sub -Parameter $BlobResReq
             $jobid = $restoreJob.JobId.Split("/")[-1]
             $jobstatus = "InProgress"
-            while($jobstatus -ne "Completed")
+            while($jobstatus -eq "InProgress")
             {
                 Start-TestSleep -Seconds 10
                 $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
                 $jobstatus = $currentjob.Status
             }
+            $jobstatus | Should be "Completed"
         }
     }
 }

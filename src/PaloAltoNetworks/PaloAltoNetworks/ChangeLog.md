@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded managed identity parameters.
+* Updated example for new managed identity.
+
+## Version 0.2.3
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 0.2.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 0.2.1
 * Upgraded API version to 2023-09-01
 
 ## Version 0.1.0

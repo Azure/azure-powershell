@@ -123,8 +123,8 @@ namespace Microsoft.Azure.Commands.Network
                     {
                         new PSApplicationGatewayFirewallPolicyManagedRuleSet()
                         {
-                            RuleSetType = "OWASP",
-                            RuleSetVersion = "3.0"
+                            RuleSetType = "Microsoft_DefaultRuleSet",
+                            RuleSetVersion = "2.1"
                         }
                     }
                 };

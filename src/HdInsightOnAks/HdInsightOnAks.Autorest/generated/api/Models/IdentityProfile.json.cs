@@ -77,9 +77,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_msiResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("msiResourceId"), out var __jsonMsiResourceId) ? (string)__jsonMsiResourceId : (string)MsiResourceId;}
-            {_msiClientId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("msiClientId"), out var __jsonMsiClientId) ? (string)__jsonMsiClientId : (string)MsiClientId;}
-            {_msiObjectId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("msiObjectId"), out var __jsonMsiObjectId) ? (string)__jsonMsiObjectId : (string)MsiObjectId;}
+            {_msiResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("msiResourceId"), out var __jsonMsiResourceId) ? (string)__jsonMsiResourceId : (string)_msiResourceId;}
+            {_msiClientId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("msiClientId"), out var __jsonMsiClientId) ? (string)__jsonMsiClientId : (string)_msiClientId;}
+            {_msiObjectId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("msiObjectId"), out var __jsonMsiObjectId) ? (string)__jsonMsiObjectId : (string)_msiObjectId;}
             AfterFromJson(json);
         }
 

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnManagedHttpsParametersObject
 schema: 2.0.0
@@ -13,9 +13,9 @@ Create an in-memory object for CdnManagedHttpsParameters.
 ## SYNTAX
 
 ```
-New-AzCdnManagedHttpsParametersObject -CertificateSource <CertificateSource>
- -CertificateSourceParameterCertificateType <CertificateType> -ProtocolType <ProtocolType>
- [-MinimumTlsVersion <MinimumTlsVersion>] [<CommonParameters>]
+New-AzCdnManagedHttpsParametersObject -CertificateSourceParameterCertificateType <CertificateType>
+ -CertificateSource <CertificateSource> -ProtocolType <ProtocolType> [-MinimumTlsVersion <MinimumTlsVersion>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,11 +105,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.CdnManagedHttpsParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CdnManagedHttpsParameters
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

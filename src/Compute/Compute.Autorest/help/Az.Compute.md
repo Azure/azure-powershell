@@ -17,6 +17,9 @@ Retrieves information about a gallery Application Definition.
 ### [Get-AzGalleryApplicationVersion](Get-AzGalleryApplicationVersion.md)
 Retrieves information about a gallery Application Version.
 
+### [Invoke-AzSpotPlacementRecommender](Invoke-AzSpotPlacementRecommender.md)
+Generates placement scores for Spot VM skus.
+
 ### [New-AzGalleryApplication](New-AzGalleryApplication.md)
 Create or update a gallery Application Definition.
 

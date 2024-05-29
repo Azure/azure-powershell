@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="state">Specifies the state of the audit. If state is Enabled, storageEndpoint or
         /// isAzureMonitorTargetEnabled are required.
-        /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="storageEndpoint">Specifies the blob storage endpoint (e.g.
         /// https://MyAccount.blob.core.windows.net). If state is Enabled,

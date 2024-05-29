@@ -203,6 +203,37 @@ namespace Microsoft.Azure.Management.Compute
         /// </exception>
         Task<AzureOperationResponse> RestartWithHttpMessagesAsync(string resourceGroupName, string hostGroupName, string hostName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Redeploy the dedicated host. The operation will complete
+        /// successfully once the dedicated host has migrated to a new node and
+        /// is running. To determine the health of VMs deployed on the
+        /// dedicated host after the redeploy check the Resource Health Center
+        /// in the Azure Portal. Please refer to
+        /// https://docs.microsoft.com/azure/service-health/resource-health-overview
+        /// for more details.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='hostGroupName'>
+        /// The name of the dedicated host group.
+        /// </param>
+        /// <param name='hostName'>
+        /// The name of the dedicated host.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationHeaderResponse<DedicatedHostsRedeployHeaders>> RedeployWithHttpMessagesAsync(string resourceGroupName, string hostGroupName, string hostName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Lists all available dedicated host sizes to which the specified
         /// dedicated host can be resized. NOTE: The dedicated host sizes
         /// provided can be used to only scale up the existing dedicated host.
@@ -350,6 +381,37 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> BeginRestartWithHttpMessagesAsync(string resourceGroupName, string hostGroupName, string hostName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Redeploy the dedicated host. The operation will complete
+        /// successfully once the dedicated host has migrated to a new node and
+        /// is running. To determine the health of VMs deployed on the
+        /// dedicated host after the redeploy check the Resource Health Center
+        /// in the Azure Portal. Please refer to
+        /// https://docs.microsoft.com/azure/service-health/resource-health-overview
+        /// for more details.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='hostGroupName'>
+        /// The name of the dedicated host group.
+        /// </param>
+        /// <param name='hostName'>
+        /// The name of the dedicated host.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationHeaderResponse<DedicatedHostsRedeployHeaders>> BeginRedeployWithHttpMessagesAsync(string resourceGroupName, string hostGroupName, string hostName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists all of the dedicated hosts in the specified dedicated host
         /// group. Use the nextLink property in the response to get the next

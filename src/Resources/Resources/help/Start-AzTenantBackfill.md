@@ -13,7 +13,8 @@ Starts backfilling subscriptions for the current Tenant
 ## SYNTAX
 
 ```
-Start-AzTenantBackfill [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AzTenantBackfill [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

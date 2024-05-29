@@ -13,7 +13,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public static partial class ValidateOperationOperationsExtensions
     {
         /// <summary>
-        /// Validate operation for specified backed up item in the form of an asynchronous operation. Returns tracking headers which can be tracked using GetValidateOperationResult API.
+        /// Validate operation for specified backed up item in the form of an
+        /// asynchronous operation. Returns tracking headers which can be tracked using
+        /// GetValidateOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -22,15 +24,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
-        public static void Trigger(this IValidateOperationOperations operations, string vaultName, string resourceGroupName, ValidateOperationRequest parameters)
+        public static void Trigger(this IValidateOperationOperations operations, string vaultName, string resourceGroupName, string id, ValidateOperationRequest properties)
         {
-                ((IValidateOperationOperations)operations).TriggerAsync(vaultName, resourceGroupName, parameters).GetAwaiter().GetResult();
+                ((IValidateOperationOperations)operations).TriggerAsync(vaultName, resourceGroupName, id, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Validate operation for specified backed up item in the form of an asynchronous operation. Returns tracking headers which can be tracked using GetValidateOperationResult API.
+        /// Validate operation for specified backed up item in the form of an
+        /// asynchronous operation. Returns tracking headers which can be tracked using
+        /// GetValidateOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -39,17 +44,20 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task TriggerAsync(this IValidateOperationOperations operations, string vaultName, string resourceGroupName, ValidateOperationRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task TriggerAsync(this IValidateOperationOperations operations, string vaultName, string resourceGroupName, string id, ValidateOperationRequest properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.TriggerWithHttpMessagesAsync(vaultName, resourceGroupName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.TriggerWithHttpMessagesAsync(vaultName, resourceGroupName, id, properties, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Validate operation for specified backed up item in the form of an asynchronous operation. Returns tracking headers which can be tracked using GetValidateOperationResult API.
+        /// Validate operation for specified backed up item in the form of an
+        /// asynchronous operation. Returns tracking headers which can be tracked using
+        /// GetValidateOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -58,15 +66,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
-        public static void BeginTrigger(this IValidateOperationOperations operations, string vaultName, string resourceGroupName, ValidateOperationRequest parameters)
+        public static void BeginTrigger(this IValidateOperationOperations operations, string vaultName, string resourceGroupName, string id, ValidateOperationRequest properties)
         {
-                ((IValidateOperationOperations)operations).BeginTriggerAsync(vaultName, resourceGroupName, parameters).GetAwaiter().GetResult();
+                ((IValidateOperationOperations)operations).BeginTriggerAsync(vaultName, resourceGroupName, id, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Validate operation for specified backed up item in the form of an asynchronous operation. Returns tracking headers which can be tracked using GetValidateOperationResult API.
+        /// Validate operation for specified backed up item in the form of an
+        /// asynchronous operation. Returns tracking headers which can be tracked using
+        /// GetValidateOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -75,14 +86,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginTriggerAsync(this IValidateOperationOperations operations, string vaultName, string resourceGroupName, ValidateOperationRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginTriggerAsync(this IValidateOperationOperations operations, string vaultName, string resourceGroupName, string id, ValidateOperationRequest properties, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginTriggerWithHttpMessagesAsync(vaultName, resourceGroupName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.BeginTriggerWithHttpMessagesAsync(vaultName, resourceGroupName, id, properties, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
     }
 }

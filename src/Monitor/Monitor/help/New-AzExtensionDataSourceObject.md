@@ -14,7 +14,8 @@ Create an in-memory object for ExtensionDataSource.
 
 ```
 New-AzExtensionDataSourceObject -ExtensionName <String> [-ExtensionSetting <Hashtable>]
- [-InputDataSource <String[]>] [-Name <String>] [-Stream <String[]>] [<CommonParameters>]
+ [-InputDataSource <String[]>] [-Name <String>] [-Stream <String[]>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

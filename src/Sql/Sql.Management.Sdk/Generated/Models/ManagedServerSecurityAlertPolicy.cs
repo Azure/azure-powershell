@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="state">Specifies the state of the policy, whether it is enabled or disabled or a
         /// policy has not been applied yet on the specific database.
-        /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="disabledAlerts">Specifies an array of alerts that are disabled. Allowed values are:
         /// Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly,

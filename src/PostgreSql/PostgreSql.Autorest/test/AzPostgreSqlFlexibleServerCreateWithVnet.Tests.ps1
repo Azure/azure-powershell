@@ -17,6 +17,10 @@ $DEFAULT_VNET_PREFIX = '10.0.0.0/16'
 $DEFAULT_SUBNET_PREFIX = '10.0.0.0/24'
 
 Describe 'AzPostgreSqlFlexibleServerCreateWithVnet' {
+
+    function WaitServerDelete(){
+        Start-TestSleep -Seconds 500
+    }
     function ValidateSubnetVnet($Server, $VnetName, $SubnetName, $SubnetPrefix){
         $Vnet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $env.resourceGroup
         $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $Vnet
@@ -32,7 +36,7 @@ Describe 'AzPostgreSqlFlexibleServerCreateWithVnet' {
         $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $Vnet
 
         Remove-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $ServerName
-        Start-TestSleep -Seconds 500
+        WaitServerDelete
         $Subnet = Remove-AzDelegation -Name $DELEGATION_SERVICE_NAME -Subnet $Subnet
         Set-AzVirtualNetwork -VirtualNetwork $Vnet
         Remove-AzVirtualNetwork -Name $Vnet.Name -ResourceGroupName $env.resourceGroup -Force
@@ -149,7 +153,7 @@ Describe 'AzPostgreSqlFlexibleServerCreateWithVnet' {
                 $Delegation.ServiceName | Should -Be $DELEGATION_SERVICE_NAME
 
                 Remove-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName3
-                Start-TestSleep -Seconds 500
+                WaitServerDelete
                 Remove-AzVirtualNetwork -Name $Vnet.Name -ResourceGroupName PostgreSqlTest2 -Force
             } | Should -Not -Throw
         }

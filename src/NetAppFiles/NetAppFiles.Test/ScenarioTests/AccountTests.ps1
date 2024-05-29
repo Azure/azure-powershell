@@ -50,6 +50,7 @@ function Test-AccountActiveDirectory
         New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation -Tags @{$groupTagName = $groupTagValue}
 
         # check multiple ADs are captured
+        Write-log "Create Accoount multiple AD:"
         # currently this is not permitted and throws a message
         try
         {
@@ -59,7 +60,7 @@ function Test-AccountActiveDirectory
             $newTagName = "tag1"
             $newTagValue = "tagValue1"
             #$retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -ActiveDirector $activeDirectories
-
+            #New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -ActiveDirectory $activeDirectories
             Assert-ThrowsContains{  New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -ActiveDirectory $activeDirectories} 'Only one active directory allowed';
             #Assert-True { $false }
         }
@@ -76,6 +77,7 @@ function Test-AccountActiveDirectory
         $activedirectories = @( $activeDirectory1 )
 
         # create and check account 1
+        
         $newTagName = "tag1"
         $newTagValue = "tagValue1"
         $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -ActiveDirectory $activeDirectories
@@ -192,6 +194,91 @@ function Test-AccountCrud
         Clean-ResourceGroup $resourceGroup
     }
 }
+
+<#
+.SYNOPSIS
+Test Account CMK CRUD operations
+#>
+function Test-AccountCMK
+{
+    #$resourceGroup = "somename2"
+    $currentSub = (Get-AzureRmContext).Subscription
+    $subsid = $currentSub.SubscriptionId
+
+    $resourceGroup = Get-ResourceGroupName
+    $accName1 = Get-ResourceName
+    $accName2 = Get-ResourceName
+    $identityName = Get-ResourceName
+    #$keyVaultName = Get-ResourceName
+    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
+    $keySource = "Microsoft.KeyVault"
+    $keyVaultUri = "https://akvtestvault2.vault.azure.net/"
+    $keyName = "akvTestMaster"
+    $keyVaultName = "akvTestVault2"
+    $keyVaultResourceId = "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/resourceGroups/akvTestRG/providers/Microsoft.KeyVault/vaults/akvTestVault2"
+    $kvResourceGroup = "akvTestRG"
+    # $userAssignedIdentity = "/subscriptions/$subsid/resourcegroups/$resourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/FakeUserIdentity"
+    $userAssignedIdentity = "/subscriptions/$subsid/resourcegroups/akvTestRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/abAkvIdenity"
+
+    $identityType = "UserAssigned"
+
+    try
+    {
+        # create the resource group
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
+
+        # New-AzResourceGroup -Name $resourceGroup -Tags @{Owner = 'b-aubald'} -Location $resourceLocation
+        # $userAssignedIdenity = New-AzUserAssignedIdentity -ResourceGroupName $resourceGroup -Name $identityName -Location $resourceLocation
+        # Create keyvault and userIdeneity then give the identity access to the keyvault
+        # $azKeyVault = New-AzKeyVault -Name $keyVaultName -ResourceGroupName $resourceGroup -Location $resourceLocation -EnablePurgeProtection                
+        
+        #Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ResourceGroupname $kvResourceGroup -ObjectId $userAssignedIdenity.PrincipalId -PermissionsToKeys create,get,encrypt,decrypt  -BypassObjectIdValidation
+        # Create key
+        #$keyVaultKey = Add-AzKeyVaultKey -VaultName $keyVaultName -Name $keyName -Destination "Software"
+
+        # create and check account 1
+        $newTagName = "tag1"
+        $newTagValue = "tagValue1"
+
+        # $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue}
+        $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -EncryptionKeySource $keySource -IdentityType $identityType -KeyVaultKeyName $keyName -KeyVaultResourceId $keyVaultResourceId -KeyVaultUri $keyVaultUri -UserAssignedIdentity $userAssignedIdentity
+        Assert-AreEqual $accName1 $retrievedAcc.Name
+        Assert-AreEqual True $retrievedAcc.Tags.ContainsKey($newTagName)
+        Assert-AreEqual "tagValue1" $retrievedAcc.Tags[$newTagName].ToString()
+        Assert-NotNull $retrievedAcc.Identity.UserAssignedIdentities
+        Assert-AreEqual True $retrievedAcc.Tags.ContainsKey($newTagName)
+        Assert-AreEqual True $retrievedAcc.Identity.UserAssignedIdentities.ContainsKey($userAssignedIdentity)
+
+        # create and check account 2 using the Confirm flag
+        $retrievedAcc2 = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName2 -Confirm:$false
+        Assert-AreEqual $accName2 $retrievedAcc2.Name
+
+        # update and check account setting Encryption CMK properties
+        $retrievedAcc2 = Update-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName2 -EncryptionKeySource $keySource -IdentityType $identityType -KeyVaultKeyName $keyName -KeyVaultResourceId $keyVaultResourceId -KeyVaultUri $keyVaultUri -UserAssignedIdentity $userAssignedIdentity
+        Assert-AreEqual $accName2 $retrievedAcc2.Name
+        Assert-NotNull $retrievedAcc.Identity.UserAssignedIdentities
+        Assert-AreEqual True $retrievedAcc.Tags.ContainsKey($newTagName)
+        Assert-AreEqual True $retrievedAcc.Identity.UserAssignedIdentities.ContainsKey($userAssignedIdentity)
+
+        # Assert-ThrowsContains{$retrievedAcc = Update-AzNetAppFilesAccountCredential -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 } 'NetApp account does not have an MSI credentials, therefore it is ineligible for renewal of credentials'
+        Update-AzNetAppFilesAccountCredential -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 
+
+        # get and check accounts by group (list)
+        $retrievedAcc = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup
+        # check the names but the order does not appear to be guaranteed (perhaps because the names are randomly generated)
+        Assert-AreEqual 2 $retrievedAcc.Length
+
+        Remove-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -AccountName $accName1
+        $retrievedAcc = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup
+        Assert-AreEqual 1 $retrievedAcc.Length
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroup
+    }
+}
+
 
 <#
 .SYNOPSIS

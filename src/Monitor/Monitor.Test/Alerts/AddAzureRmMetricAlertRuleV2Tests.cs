@@ -27,9 +27,10 @@ using System.Management.Automation;
 using System.Threading;
 using Xunit;
 using Xunit.Abstractions;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 {
-    public class AddAzureRmMetricAlertRuleV2Tests
+    public class AddAzureRmMetricAlertRuleV2Tests : RMTestBase
     {
         private readonly AddAzureRmMetricAlertRuleV2Command _cmdlet;
         private readonly Mock<IMetricAlertsOperations> _insightsMetricAlertsOperationsMock;

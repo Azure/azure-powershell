@@ -40,6 +40,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="tags">Resource tags.
         /// </param>
 
+        /// <param name="zones">A list of availability zones denoting where the resource needs to come
+        /// from.
+        /// </param>
+
         /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
         /// </param>
 
@@ -82,10 +86,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="enableKerberos">Enable/Disable Kerberos feature of the Bastion Host resource.
         /// </param>
-        public BastionHost(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), Sku sku = default(Sku), string provisioningState = default(string), System.Collections.Generic.IList<BastionHostIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<BastionHostIPConfiguration>), string dnsName = default(string), SubResource virtualNetwork = default(SubResource), BastionHostPropertiesFormatNetworkAcls networkAcls = default(BastionHostPropertiesFormatNetworkAcls), int? scaleUnits = default(int?), bool? disableCopyPaste = default(bool?), bool? enableFileCopy = default(bool?), bool? enableIPConnect = default(bool?), bool? enableShareableLink = default(bool?), bool? enableTunneling = default(bool?), bool? enableKerberos = default(bool?))
+        public BastionHost(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), string etag = default(string), Sku sku = default(Sku), string provisioningState = default(string), System.Collections.Generic.IList<BastionHostIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<BastionHostIPConfiguration>), string dnsName = default(string), SubResource virtualNetwork = default(SubResource), BastionHostPropertiesFormatNetworkAcls networkAcls = default(BastionHostPropertiesFormatNetworkAcls), int? scaleUnits = default(int?), bool? disableCopyPaste = default(bool?), bool? enableFileCopy = default(bool?), bool? enableIPConnect = default(bool?), bool? enableShareableLink = default(bool?), bool? enableTunneling = default(bool?), bool? enableKerberos = default(bool?))
 
         : base(id, name, type, location, tags)
         {
+            this.Zones = zones;
             this.Etag = etag;
             this.Sku = sku;
             this.ProvisioningState = provisioningState;
@@ -108,6 +113,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets a list of availability zones denoting where the resource needs
+        /// to come from.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "zones")]
+        public System.Collections.Generic.IList<string> Zones {get; set; }
 
         /// <summary>
         /// Gets a unique read-only string that changes whenever the resource is
@@ -204,6 +216,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </exception>
         public virtual void Validate()
         {
+
 
 
 

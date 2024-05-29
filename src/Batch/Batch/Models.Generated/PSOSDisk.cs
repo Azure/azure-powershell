@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSDiffDiskSettings ephemeralOSDiskSettings;
         
+        private PSManagedDisk managedDisk;
+        
         public PSOSDisk()
         {
             this.omObject = new Microsoft.Azure.Batch.OSDisk();
@@ -48,6 +50,30 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new System.ArgumentNullException("omObject");
             }
             this.omObject = omObject;
+        }
+        
+        public Microsoft.Azure.Batch.Common.CachingType? Caching
+        {
+            get
+            {
+                return this.omObject.Caching;
+            }
+            set
+            {
+                this.omObject.Caching = value;
+            }
+        }
+        
+        public System.Int32? DiskSizeGB
+        {
+            get
+            {
+                return this.omObject.DiskSizeGB;
+            }
+            set
+            {
+                this.omObject.DiskSizeGB = value;
+            }
         }
         
         public PSDiffDiskSettings EphemeralOSDiskSettings
@@ -72,6 +98,43 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.omObject.EphemeralOSDiskSettings = value.omObject;
                 }
                 this.ephemeralOSDiskSettings = value;
+            }
+        }
+        
+        public PSManagedDisk ManagedDisk
+        {
+            get
+            {
+                if (((this.managedDisk == null) 
+                            && (this.omObject.ManagedDisk != null)))
+                {
+                    this.managedDisk = new PSManagedDisk(this.omObject.ManagedDisk);
+                }
+                return this.managedDisk;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.ManagedDisk = null;
+                }
+                else
+                {
+                    this.omObject.ManagedDisk = value.omObject;
+                }
+                this.managedDisk = value;
+            }
+        }
+        
+        public System.Boolean? WriteAcceleratorEnabled
+        {
+            get
+            {
+                return this.omObject.WriteAcceleratorEnabled;
+            }
+            set
+            {
+                this.omObject.WriteAcceleratorEnabled = value;
             }
         }
     }

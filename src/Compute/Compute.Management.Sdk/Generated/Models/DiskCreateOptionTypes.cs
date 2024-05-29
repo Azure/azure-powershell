@@ -19,5 +19,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public const string FromImage = "FromImage";
         public const string Empty = "Empty";
         public const string Attach = "Attach";
+        public const string Copy = "Copy";
+        public const string Restore = "Restore";
     }
 }

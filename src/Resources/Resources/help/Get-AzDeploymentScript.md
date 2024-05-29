@@ -26,7 +26,8 @@ Get-AzDeploymentScript [-ResourceGroupName] <String> [-Name] <String>
 
 ### GetDeploymentScriptByResourceId
 ```
-Get-AzDeploymentScript [-Id] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDeploymentScript [-Id] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Synapse service.
 
 ---
-## Status
-[![Az.Synapse](https://img.shields.io/powershellgallery/v/Az.Synapse.svg?style=flat-square&label=Az.Synapse "Az.Synapse")](https://www.powershellgallery.com/packages/Az.Synapse/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -17,7 +14,7 @@ This directory contains the PowerShell module for the Synapse service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -49,11 +46,12 @@ In this directory, run AutoRest:
 ### General settings
 > Values
 ``` yaml
+commit: 57e4490a06aad262ca9154dc15b40f5a11bf7af5
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/57e4490a06aad262ca9154dc15b40f5a11bf7af5/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json
+  - $(repo)/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json
 
 ```
 
@@ -73,6 +71,10 @@ output-folder: .
 > Directives
 ``` yaml
 identity-correction-for-post: true
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
+
 directive:
   # Fix the case mismatch between swagger and RP
   - from: swagger-document

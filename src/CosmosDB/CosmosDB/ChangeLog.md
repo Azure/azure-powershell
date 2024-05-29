@@ -19,6 +19,26 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.14.3
+* Removed the out-of-date breaking change message for `Get-AzCosmosDBAccountKey`.
+
+## Version 1.14.2
+* Upgraded Azure.Core to 1.37.0.
+
+## Version 1.14.1
+* Fixed validation issues in same-account collection/container/graph and database/table/Gremlin restores, affecting the following cmdlets:
+- Restore-AzCosmosDBSqlDatabase
+- Restore-AzCosmosDBSqlContainer
+- Restore-AzCosmosDBMongoDBDatabase
+- Restore-AzCosmosDBMongoDBCollection
+- Restore-AzCosmosDBGremlinDatabase
+- Restore-AzCosmosDBGremlinGraph
+- Restore-AzCosmosDBTable
+* Upgraded SDK `Azure.Security.KeyVault.Keys` TO 4.6.0-beta.1.
+* Added breaking change message for ListConnectionStrings changes
+
+## Version 1.14.0
 * Introduced Restore-AzCosmosDBSqlDatabase, Restore-AzCosmosDBSqlContainer to restore deleted database and containers in the same account for SQL.
 * Introduced Restore-AzCosmosDBMongoDBDatabase, Restore-AzCosmosDBMongoDBCollection to restore deleted database and collections in the same account for MongoDB.
 * Introduced Restore-AzCosmosDBGremlinDatabase, Restore-AzCosmosDBGremlinGraph to restore deleted database and graph in the same account for Gremlin.

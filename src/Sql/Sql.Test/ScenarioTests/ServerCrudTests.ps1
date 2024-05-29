@@ -343,9 +343,13 @@ function Test-CreateandUpdateServerWithMinimalTlsVersion
 		$tlsNone = "None"
 
 		# With all parameters
-		$job = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName `
-			-Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials -MinimalTlsVersion $tls1_2 -AsJob
-		$job | Wait-Job
+		#Checking creation as well as defaulting of MinimalTlsVersion
+		#$job = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName `
+		#	-Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials -AsJob
+		#$job | Wait-Job
+
+		New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName `
+			-Location $rg.Location -ServerVersion $version -SqlAdministratorCredentials $credentials
 
 		$server1 =  Get-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName
 		Assert-AreEqual $server1.MinimalTlsVersion $tls1_2

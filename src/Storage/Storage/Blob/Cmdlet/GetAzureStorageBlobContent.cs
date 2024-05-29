@@ -375,7 +375,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 }
                 catch (global::Azure.RequestFailedException e) when (e.Status == 401) // need diskRP bearer token
                 {
-                    string audience = Util.GetAudienceFrom401ExceptionMessage(e.Message);
+                    string audience = GetAudienceFrom401ExceptionMessage(e);
                     if (audience != null)
                     {
                         WriteDebugLog(string.Format("Need bearer token with audience {0} to access the blob, so will generate bearer token and resend the request.", audience));
@@ -431,6 +431,39 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             //there is no need to check the read/write permission on the specified file path, the datamovement libraray will do that
 
             return filePath;
+        }
+
+        /// <summary>
+        /// When request doesn't container a proper bearer token, server will return 401 error include the audience of the required bearer token.
+        /// This function will get the audience of bearer token from SDK exception message.
+        /// If server not return audience, will output null.
+        /// </summary>
+        private string GetAudienceFrom401ExceptionMessage(global::Azure.RequestFailedException exception)
+        {
+            string authenticateHeaderName = "WWW-Authenticate";
+            string audience = null;
+            foreach (var header in exception.GetRawResponse().Headers)
+            {
+                string headerName = header.Name;
+                if (headerName.StartsWith(authenticateHeaderName))
+                {
+                    string headerValue = header.Value;
+                    WriteDebugLog(string.Format("Found header name: {0}, value: {1}", headerName, headerValue));
+                    string audienceName = "resource_id=";
+                    try
+                    {
+                        string authText = headerValue.Split(new string[] { audienceName }, StringSplitOptions.None)[1];
+                        audience = authText.Split(new string[] { " " }, StringSplitOptions.None)[0];
+                        WriteDebugLog(string.Format("Found audience: {0}", audience));
+                        return audience;
+                    }
+                    catch
+                    {
+                        WriteDebugLog(string.Format("Failed to parse the header. The parsing result has length of {0}", audience.Length));
+                    }
+                }
+            }
+            return null;
         }
 
         /// <summary>

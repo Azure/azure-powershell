@@ -218,6 +218,9 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
         public SwitchParameter IncludeClassicAdministrators { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "If specified, skip client side scope validation.")]
+        public SwitchParameter SkipClientSideScopeValidation { get; set; }
+
         #endregion
 
 
@@ -251,7 +254,10 @@ namespace Microsoft.Azure.Commands.Resources
                 WriteTerminatingError(ProjectResources.ScopeAndSubscriptionNeitherProvided);
             }
 
-            AuthorizationClient.ValidateScope(options.Scope, true);
+            if (!SkipClientSideScopeValidation.IsPresent)
+            {
+                AuthorizationClient.ValidateScope(options.Scope, true);
+            }
 
             List<PSRoleAssignment> ra = PoliciesClient.FilterRoleAssignments(options, DefaultProfile.DefaultContext.Subscription?.Id?.ToString());
 

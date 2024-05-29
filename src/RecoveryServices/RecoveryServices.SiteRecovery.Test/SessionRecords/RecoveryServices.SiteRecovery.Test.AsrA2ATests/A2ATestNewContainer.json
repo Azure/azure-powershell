@@ -51,7 +51,7 @@
                                                                                "nosniff"
                                                                            ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "202"
@@ -67,8 +67,8 @@
                         "StatusCode":  201
                     },
                     {
-                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg33/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest33?api-version=2023-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczMy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzM/YXBpLXZlcnNpb249MjAyMy0wMi0wMQ==",
+                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg33/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest33?api-version=2024-04-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczMy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzM/YXBpLXZlcnNpb249MjAyNC0wNC0wMQ==",
                         "RequestMethod":  "PUT",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -123,7 +123,7 @@
                                                                                   "max-age=31536000; includeSubDomains"
                                                                               ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "475"
@@ -139,8 +139,8 @@
                         "StatusCode":  201
                     },
                     {
-                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg33/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest33?api-version=2023-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczMy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzM/YXBpLXZlcnNpb249MjAyMy0wMi0wMQ==",
+                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg33/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest33?api-version=2024-04-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczMy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzM/YXBpLXZlcnNpb249MjAyNC0wNC0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -189,7 +189,7 @@
                                                                                   "max-age=31536000; includeSubDomains"
                                                                               ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "475"
@@ -205,8 +205,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg33/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest33/extendedInformation/vaultExtendedInfo?api-version=2023-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczMy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzMvZXh0ZW5kZWRJbmZvcm1hdGlvbi92YXVsdEV4dGVuZGVkSW5mbz9hcGktdmVyc2lvbj0yMDIzLTAyLTAx",
+                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg33/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest33/extendedInformation/vaultExtendedInfo?api-version=2024-04-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczMy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzMvZXh0ZW5kZWRJbmZvcm1hdGlvbi92YXVsdEV4dGVuZGVkSW5mbz9hcGktdmVyc2lvbj0yMDI0LTA0LTAx",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -258,7 +258,7 @@
                                                                                   "max-age=31536000; includeSubDomains"
                                                                               ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "86"
@@ -274,8 +274,8 @@
                         "StatusCode":  404
                     },
                     {
-                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg33/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest33/extendedInformation/vaultExtendedInfo?api-version=2023-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczMy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzMvZXh0ZW5kZWRJbmZvcm1hdGlvbi92YXVsdEV4dGVuZGVkSW5mbz9hcGktdmVyc2lvbj0yMDIzLTAyLTAx",
+                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg33/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest33/extendedInformation/vaultExtendedInfo?api-version=2024-04-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczMy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzMvZXh0ZW5kZWRJbmZvcm1hdGlvbi92YXVsdEV4dGVuZGVkSW5mbz9hcGktdmVyc2lvbj0yMDI0LTA0LTAx",
                         "RequestMethod":  "PUT",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -333,7 +333,7 @@
                                                                                   "max-age=31536000; includeSubDomains"
                                                                               ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "465"
@@ -349,8 +349,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg33/providers/Microsoft.RecoveryServices/vaults?api-version=2023-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczMy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzP2FwaS12ZXJzaW9uPTIwMjMtMDItMDE=",
+                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg33/providers/Microsoft.RecoveryServices/vaults?api-version=2024-04-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczMy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzP2FwaS12ZXJzaW9uPTIwMjQtMDQtMDE=",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -399,7 +399,7 @@
                                                                                   "max-age=31536000; includeSubDomains"
                                                                               ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "500"
@@ -484,7 +484,7 @@
                                                                                 "WESTUS:20221011T181624Z:79557625-2b80-470c-8d92-34fda1527610"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Expires":  [
                                                                 "-1"
@@ -550,7 +550,7 @@
                                                                                 "WESTUS:20221011T181625Z:aa710568-119d-44b0-8326-fae23ce1c32b"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "733"
@@ -619,7 +619,7 @@
                                                                                 "WESTUS:20221011T181625Z:e671fa82-7c35-4711-8670-7a810ba18756"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "733"
@@ -688,7 +688,7 @@
                                                                                 "WESTCENTRALUS:20221011T181645Z:466b23da-accf-4d4a-8a13-e8c0c8028fb7"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1315"
@@ -757,7 +757,7 @@
                                                                                 "WESTCENTRALUS:20221011T181706Z:7d80f287-22b1-4dcf-b045-555ed743de75"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1315"
@@ -826,7 +826,7 @@
                                                                                 "WESTCENTRALUS:20221011T181726Z:694b46ae-57dd-440b-9e15-628861812f30"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1315"
@@ -895,7 +895,7 @@
                                                                                 "WESTCENTRALUS:20221011T181746Z:1ad0740d-1ade-478a-ba19-32d37deb6988"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1352"
@@ -964,7 +964,7 @@
                                                                                 "WESTCENTRALUS:20221011T181747Z:2afdad95-704b-492b-b2f2-6b268247433b"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "679"
@@ -1033,7 +1033,7 @@
                                                                                 "WESTCENTRALUS:20221011T181910Z:a0cf439f-d8ae-4ee2-9e3e-00718a37bfa6"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "679"
@@ -1118,7 +1118,7 @@
                                                                                 "WESTCENTRALUS:20221011T181747Z:51a34a8d-1dba-4e55-b244-16b6c594c852"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Expires":  [
                                                                 "-1"
@@ -1184,7 +1184,7 @@
                                                                                 "WESTCENTRALUS:20221011T181747Z:7d6e2a89-f6a0-424f-9ba4-560ef1f74c62"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1316"
@@ -1253,7 +1253,7 @@
                                                                                 "WESTCENTRALUS:20221011T181748Z:e1338b6f-d2cc-4ac3-857e-1905caac038a"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1316"
@@ -1322,7 +1322,7 @@
                                                                                 "WESTUS:20221011T181808Z:7f9b7758-e87d-432e-b616-c64407fb05d8"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1316"
@@ -1391,7 +1391,7 @@
                                                                                 "WESTUS:20221011T181828Z:cdbdc133-fa4f-464c-8226-28cc0c3bea14"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1316"
@@ -1460,7 +1460,7 @@
                                                                                 "WESTCENTRALUS:20221011T181849Z:5a063bb5-1e6f-40d1-adbb-94cc40ece577"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1316"
@@ -1529,7 +1529,7 @@
                                                                                 "WESTCENTRALUS:20221011T181909Z:6fe7b595-86ed-40a0-a858-6afb93f385ad"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1355"
@@ -1598,7 +1598,7 @@
                                                                                 "WESTCENTRALUS:20221011T181909Z:db10e859-b95c-4f4a-b21a-61c04c8694cb"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "696"
@@ -1667,7 +1667,7 @@
                                                                                 "WESTCENTRALUS:20221011T181910Z:61965e50-15a8-4102-b088-09a1379c787a"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "696"
@@ -1752,7 +1752,7 @@
                                                                                 "WESTCENTRALUS:20221011T181911Z:e38d04c4-bf45-42f8-97c2-1e6c6cabb988"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Expires":  [
                                                                 "-1"
@@ -1818,7 +1818,7 @@
                                                                                 "WESTCENTRALUS:20221011T181911Z:540758fb-21c7-4b75-8e2d-ca915900b7f2"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "733"
@@ -1887,7 +1887,7 @@
                                                                                 "WESTCENTRALUS:20221011T181911Z:fed2bff6-29b2-4931-9055-6f12e5474a1e"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "733"
@@ -1956,7 +1956,7 @@
                                                                                 "WESTCENTRALUS:20221011T181932Z:c5d05a49-8f7a-440c-ad64-acd8c0db55a0"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1804"
@@ -2025,7 +2025,7 @@
                                                                                 "WESTCENTRALUS:20221011T181932Z:4a0534cd-6719-4bc3-8039-48aa3666ff80"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "574"
@@ -2094,7 +2094,7 @@
                                                                                 "WESTCENTRALUS:20221011T181932Z:61a6e87f-7f93-41bc-93dd-f55d1d520fe0"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:57 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:41 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "28"

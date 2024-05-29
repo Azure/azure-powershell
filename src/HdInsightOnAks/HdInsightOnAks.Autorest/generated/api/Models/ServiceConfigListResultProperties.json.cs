@@ -77,14 +77,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_serviceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("serviceName"), out var __jsonServiceName) ? (string)__jsonServiceName : (string)ServiceName;}
-            {_fileName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("fileName"), out var __jsonFileName) ? (string)__jsonFileName : (string)FileName;}
-            {_content = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("content"), out var __jsonContent) ? (string)__jsonContent : (string)Content;}
-            {_componentName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("componentName"), out var __jsonComponentName) ? (string)__jsonComponentName : (string)ComponentName;}
-            {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)Type;}
-            {_path = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("path"), out var __jsonPath) ? (string)__jsonPath : (string)Path;}
-            {_customKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("customKeys"), out var __jsonCustomKeys) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ServiceConfigListResultPropertiesCustomKeys.FromJson(__jsonCustomKeys) : CustomKey;}
-            {_defaultKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("defaultKeys"), out var __jsonDefaultKeys) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ServiceConfigListResultPropertiesDefaultKeys.FromJson(__jsonDefaultKeys) : DefaultKey;}
+            {_serviceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("serviceName"), out var __jsonServiceName) ? (string)__jsonServiceName : (string)_serviceName;}
+            {_fileName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("fileName"), out var __jsonFileName) ? (string)__jsonFileName : (string)_fileName;}
+            {_content = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("content"), out var __jsonContent) ? (string)__jsonContent : (string)_content;}
+            {_componentName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("componentName"), out var __jsonComponentName) ? (string)__jsonComponentName : (string)_componentName;}
+            {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)_type;}
+            {_path = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("path"), out var __jsonPath) ? (string)__jsonPath : (string)_path;}
+            {_customKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("customKeys"), out var __jsonCustomKeys) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ServiceConfigListResultPropertiesCustomKeys.FromJson(__jsonCustomKeys) : _customKey;}
+            {_defaultKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("defaultKeys"), out var __jsonDefaultKeys) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ServiceConfigListResultPropertiesDefaultKeys.FromJson(__jsonDefaultKeys) : _defaultKey;}
             AfterFromJson(json);
         }
 

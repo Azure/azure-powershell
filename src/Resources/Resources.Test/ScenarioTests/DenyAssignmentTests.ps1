@@ -30,7 +30,7 @@ function Test-GetDa
 function Test-GetDaById
 {
     # Random select a id from the result of listing deny assignments
-    $id = "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/managed-rg-feng-purview/providers/Microsoft.Authorization/denyAssignments/5184754b-6c52-436a-90a5-cae79bfbfea1"
+    $id = "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/denyAssignments/22704996-fbd0-4ab1-8625-722d897825d2"
     $assignments = Get-AzDenyAssignment -Id $id
     
     Assert-NotNull $assignments
@@ -40,8 +40,8 @@ function Test-GetDaById
 
 function Test-GetDaByIdAndSpecifiedScope
 {
-    $id = '5184754b-6c52-436a-90a5-cae79bfbfea1'
-    $scope = "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/managed-rg-feng-purview"
+    $id = '22704996-fbd0-4ab1-8625-722d897825d2'
+    $scope = "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"
     $assignments = Get-AzDenyAssignment -Id $id -Scope $scope
     
     Assert-NotNull $assignments
@@ -82,7 +82,7 @@ function Test-GetDaByObjectId
 
 function Test-GetDaByObjectIdAndGroupExpansion
 {
-    $objectId = '4d712a4e-1897-4dd0-845f-452a5b82844e'
+    $objectId = 'fc6c8339-646b-4fb2-a2e2-80f95c0baf96'
     $assignments = Get-AzDenyAssignment -ObjectId $objectId -ExpandPrincipalGroups
     
     Assert-NotNull $assignments
@@ -114,7 +114,7 @@ function Test-GetDaByObjectIdAndRGNameResourceNameResourceType
 function Test-GetDaByObjectIdAndScope
 {
     $objectId = '00000000-0000-0000-0000-000000000000'
-    $scope = "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/managed-rg-feng-purview"
+    $scope = "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"
     $assignments = Get-AzDenyAssignment -ObjectId $objectId -Scope $scope
     
     Assert-NotNull $assignments
@@ -123,7 +123,7 @@ function Test-GetDaByObjectIdAndScope
 
 function Test-GetDaBySignInName
 {
-    $signInName = 'bez@azuresdkteam.onmicrosoft.com'
+    $signInName = 'test2@rbacCliTest.onmicrosoft.com'
     $assignments = Get-AzDenyAssignment -SignInName $signInName
     
     Assert-NotNull $assignments
@@ -214,7 +214,7 @@ function Test-GetDaByServicePrincipalNameAndScope
 
 function Test-GetDaByScope
 {
-    $scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/managed-rg-feng-purview'
+    $scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/AzureAuthzSDK'
     $assignments = Get-AzDenyAssignment -Scope $scope
     
     Assert-NotNull $assignments

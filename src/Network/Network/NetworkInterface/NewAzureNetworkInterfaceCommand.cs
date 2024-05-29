@@ -246,6 +246,7 @@ namespace Microsoft.Azure.Commands.Network
             MNM.NetworkInterfaceAuxiliaryMode.None,
             MNM.NetworkInterfaceAuxiliaryMode.MaxConnections,
             MNM.NetworkInterfaceAuxiliaryMode.AcceleratedConnections,
+            MNM.NetworkInterfaceAuxiliaryMode.Floating,
             IgnoreCase = true)]
         public string AuxiliaryMode { get; set; }
 

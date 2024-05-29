@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MobileNetwork-help.xml
 Module Name: Az.MobileNetwork
 online version: https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkServiceDataFlowTemplateObject
 schema: 2.0.0
@@ -14,7 +14,8 @@ Create an in-memory object for ServiceDataFlowTemplate.
 
 ```
 New-AzMobileNetworkServiceDataFlowTemplateObject -Direction <SdfDirection> -Protocol <String[]>
- -RemoteIPList <String[]> -TemplateName <String> [-Port <String[]>] [<CommonParameters>]
+ -RemoteIPList <String[]> -TemplateName <String> [-Port <String[]>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -138,7 +139,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

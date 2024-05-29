@@ -15,13 +15,15 @@ Gets details of an Azure NetApp Files (ANF) Backup.
 ### ByFieldsParameterSet (Default)
 ```
 Get-AzNetAppFilesBackup -ResourceGroupName <String> -AccountName <String> -PoolName <String>
- [-VolumeName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-VolumeName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByAccountBackupFieldsParameterSet
 ```
 Get-AzNetAppFilesBackup -ResourceGroupName <String> -AccountName <String> [-Name <String>]
- [-AccountBackupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-AccountBackupName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet

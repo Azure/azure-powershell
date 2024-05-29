@@ -19,7 +19,8 @@ Add-AzWebtestAlertRule -MetricName <String> -TargetResourceUri <String> -WindowS
  -FailedLocationCount <Int32> [-MetricNamespace <String>] -Location <String> [-Description <String>]
  [-DisableRule] -ResourceGroupName <String> -Name <String>
  [-Action <System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -284,5 +285,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzAlertHistory](./Get-AzAlertHistory.md)
 
 [New-AzAlertRuleWebhook](./New-AzAlertRuleWebhook.md)
-
-

@@ -17,7 +17,8 @@ Imports a certificate to a key vault.
 ```
 Import-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String> -FilePath <String>
  [-Password <SecureString>] [-PolicyPath <String>] [-PolicyObject <PSKeyVaultCertificatePolicy>]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ImportWithPrivateKeyFromString
@@ -32,7 +33,8 @@ Import-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String> -Certificate
 ```
 Import-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-PolicyPath <String>]
  [-PolicyObject <PSKeyVaultCertificatePolicy>] [-CertificateCollection] <X509Certificate2Collection>
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

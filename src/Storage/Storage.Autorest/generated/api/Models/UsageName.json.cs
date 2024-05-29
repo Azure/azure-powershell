@@ -106,8 +106,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_value = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("value"), out var __jsonValue) ? (string)__jsonValue : (string)Value;}
-            {_localizedValue = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("localizedValue"), out var __jsonLocalizedValue) ? (string)__jsonLocalizedValue : (string)LocalizedValue;}
+            {_value = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("value"), out var __jsonValue) ? (string)__jsonValue : (string)_value;}
+            {_localizedValue = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("localizedValue"), out var __jsonLocalizedValue) ? (string)__jsonLocalizedValue : (string)_localizedValue;}
             AfterFromJson(json);
         }
     }

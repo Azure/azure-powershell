@@ -20,7 +20,7 @@ Get-AzSynapseFirewallRule [-ResourceGroupName <String>] -WorkspaceName <String> 
 
 ### GetByParentObjectParameterSet
 ```
-Get-AzSynapseFirewallRule -WorkSpaceObject <PSSynapseWorkspace> [-Name <String>]
+Get-AzSynapseFirewallRule -WorkspaceObject <PSSynapseWorkspace> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -114,7 +114,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WorkSpaceObject
+### -WorkspaceObject
 workspace input object, usually passed through the pipeline.
 
 ```yaml

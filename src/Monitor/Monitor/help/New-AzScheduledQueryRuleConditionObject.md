@@ -16,7 +16,8 @@ Create an in-memory object for Condition.
 New-AzScheduledQueryRuleConditionObject [-Dimension <IDimension[]>]
  [-FailingPeriodMinFailingPeriodsToAlert <Int64>] [-FailingPeriodNumberOfEvaluationPeriod <Int64>]
  [-MetricMeasureColumn <String>] [-MetricName <String>] [-Operator <ConditionOperator>] [-Query <String>]
- [-ResourceIdColumn <String>] [-Threshold <Double>] [-TimeAggregation <TimeAggregation>] [<CommonParameters>]
+ [-ResourceIdColumn <String>] [-Threshold <Double>] [-TimeAggregation <TimeAggregation>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

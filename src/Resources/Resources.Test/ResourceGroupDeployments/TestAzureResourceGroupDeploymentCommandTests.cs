@@ -25,10 +25,11 @@ using Xunit;
 using Xunit.Abstractions;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Resources
 {
-    public class TestAzureResourceGroupDeploymentCommandTests
+    public class TestAzureResourceGroupDeploymentCommandTests : RMTestBase
     {
         private TestAzureResourceGroupDeploymentCmdlet cmdlet;
 

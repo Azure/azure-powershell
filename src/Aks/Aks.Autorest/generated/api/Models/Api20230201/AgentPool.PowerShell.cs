@@ -72,10 +72,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IAgentPoolInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IManagedClusterAgentPoolProfileProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IAgentPoolInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterAgentPoolProfilePropertiesTypeConverter.ConvertFrom);
             }
-            if (content.Contains("AzureAsyncOperation"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IAgentPoolInternal)this).AzureAsyncOperation = (string) content.GetValueForProperty("AzureAsyncOperation",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IAgentPoolInternal)this).AzureAsyncOperation, global::System.Convert.ToString);
-            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ISubResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ISubResourceInternal)this).Id, global::System.Convert.ToString);
@@ -344,10 +340,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201
             if (content.Contains("Property"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IAgentPoolInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IManagedClusterAgentPoolProfileProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IAgentPoolInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ManagedClusterAgentPoolProfilePropertiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("AzureAsyncOperation"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IAgentPoolInternal)this).AzureAsyncOperation = (string) content.GetValueForProperty("AzureAsyncOperation",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IAgentPoolInternal)this).AzureAsyncOperation, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

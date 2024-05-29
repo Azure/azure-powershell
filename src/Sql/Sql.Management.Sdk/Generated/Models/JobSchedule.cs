@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="type">Schedule interval type
-        /// Possible values include: 'Once', 'Recurring'</param>
+        /// Possible values include: &#39;Once&#39;, &#39;Recurring&#39;</param>
 
         /// <param name="enabled">Whether or not the schedule is enabled.
         /// </param>

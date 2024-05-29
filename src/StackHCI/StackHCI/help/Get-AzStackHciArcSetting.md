@@ -21,12 +21,14 @@ Get-AzStackHciArcSetting -ClusterName <String> -ResourceGroupName <String> [-Sub
 ### Get
 ```
 Get-AzStackHciArcSetting -ClusterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzStackHciArcSetting -InputObject <IStackHciIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStackHciArcSetting -InputObject <IStackHciIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

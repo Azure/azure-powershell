@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
 
             EnableNonSslPort = cache.EnableNonSslPort.Value;
             RedisVersion = cache.RedisVersion;
+            UpdateChannel = cache.UpdateChannel;
             Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Sku.Family, cache.Sku.Capacity);
             Sku = cache.Sku.Name;
             ResourceGroupName = resourceGroupName;
@@ -52,14 +53,14 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
                 foreach (PropertyInfo property in cache.RedisConfiguration.GetType().GetProperties())
                 {
                     System.Attribute attr = property.GetCustomAttribute(typeof(JsonPropertyAttribute));
-                    if(property.GetValue(cache.RedisConfiguration) != null && attr != null)
+                    if (property.GetValue(cache.RedisConfiguration) != null && attr != null)
                     {
                         JsonPropertyAttribute jsonAttr = (JsonPropertyAttribute)attr;
                         RedisConfiguration[jsonAttr.PropertyName] = (string)property.GetValue(cache.RedisConfiguration);
                     }
-                    
+
                 }
-                if(cache.RedisConfiguration.AdditionalProperties != null)
+                if (cache.RedisConfiguration.AdditionalProperties != null)
                 {
                     foreach (KeyValuePair<string, object> kvPair in cache.RedisConfiguration.AdditionalProperties)
                     {
@@ -84,18 +85,19 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
                 if (cache.Identity.UserAssignedIdentities?.Count > 0)
                 {
                     UserAssignedIdentity = new List<string>();
-                    foreach( var identity in cache.Identity.UserAssignedIdentities)
+                    foreach (var identity in cache.Identity.UserAssignedIdentities)
                     {
                         UserAssignedIdentity.Add(identity.Key);
                     }
                     if (nameof(ManagedServiceIdentityType.SystemAssigned).Equals(IdentityType))
                     {
                         IdentityType = nameof(ManagedServiceIdentityType.SystemAssignedUserAssigned);
-                    } else
+                    }
+                    else
                     {
                         IdentityType = nameof(ManagedServiceIdentityType.UserAssigned);
                     }
-                    
+
                 }
             }
         }
@@ -145,6 +147,8 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
         public bool EnableNonSslPort { get; protected set; }
 
         public string RedisVersion { get; protected set; }
+
+        public string UpdateChannel { get; protected set; }
 
         public string Size { get; protected set; }
 

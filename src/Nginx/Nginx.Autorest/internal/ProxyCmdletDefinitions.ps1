@@ -16,21 +16,21 @@
 
 <#
 .Synopsis
-List all operations provided by Nginx.NginxPlus for the 2022-08-01 api version.
+List all operations provided by Nginx.NginxPlus for the 2023-04-01 api version.
 .Description
-List all operations provided by Nginx.NginxPlus for the 2022-08-01 api version.
+List all operations provided by Nginx.NginxPlus for the 2023-04-01 api version.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IOperationResult
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IOperationResult
 .Link
 https://learn.microsoft.com/powershell/module/az.nginx/get-aznginxoperation
 #>
 function Get-AzNginxOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IOperationResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IOperationResult])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -38,7 +38,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]

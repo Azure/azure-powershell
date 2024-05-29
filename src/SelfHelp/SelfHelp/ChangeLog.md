@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.0
+* Added support for Discovery NLP API at Subscription and Tenant levels.
+* Added support for SelfHelp API and Discovery API at Tenant level.
+* Added support for Simplified Solutions API.
+
 ## Version 0.1.1
 * Added support for discovery API as the first point of entry in Help RP.
 * Added support for new solution types (Diagnostics, Azure Solutions, Troubleshooters) in preview

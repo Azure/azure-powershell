@@ -238,6 +238,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime
         /// Clones an HttpRequestMessage (without the content)
         /// </summary>
         /// <param name="original">Original HttpRequestMessage (Will be diposed before returning)</param>
+        /// <param name="requestUri"></param>
+        /// <param name="method"></param>
         /// <returns>A clone of the HttpRequestMessage</returns>
         internal static HttpRequestMessage Clone(this HttpRequestMessage original, System.Uri requestUri = null, System.Net.Http.HttpMethod method = null)
         {
@@ -255,7 +257,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime
 
             foreach (KeyValuePair<string, IEnumerable<string>> header in original.Headers)
             {
+                /*
+                **temporarily skip cloning telemetry related headers**
                 clone.Headers.TryAddWithoutValidation(header.Key, header.Value);
+                */
+                if (!"x-ms-unique-id".Equals(header.Key) && !"x-ms-client-request-id".Equals(header.Key) && !"CommandName".Equals(header.Key) && !"FullCommandName".Equals(header.Key) && !"ParameterSetName".Equals(header.Key) && !"User-Agent".Equals(header.Key))
+                {
+                    clone.Headers.TryAddWithoutValidation(header.Key, header.Value);
+                }
             }
 
             return clone;
@@ -265,6 +274,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime
         /// Clones an HttpRequestMessage (including the content stream and content headers) 
         /// </summary>
         /// <param name="original">Original HttpRequestMessage (Will be diposed before returning)</param>
+        /// <param name="requestUri"></param>
+        /// <param name="method"></param>
         /// <returns>A clone of the HttpRequestMessage</returns>
         internal static async Task<HttpRequestMessage> CloneWithContent(this HttpRequestMessage original, System.Uri requestUri = null, System.Net.Http.HttpMethod method = null)
         {

@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="serverKeyType">The server key type like &#39;ServiceManaged&#39;, &#39;AzureKeyVault&#39;.
-        /// Possible values include: 'ServiceManaged', 'AzureKeyVault'</param>
+        /// Possible values include: &#39;ServiceManaged&#39;, &#39;AzureKeyVault&#39;</param>
 
         /// <param name="uri">The URI of the server key. If the ServerKeyType is AzureKeyVault, then the
         /// URI is required.

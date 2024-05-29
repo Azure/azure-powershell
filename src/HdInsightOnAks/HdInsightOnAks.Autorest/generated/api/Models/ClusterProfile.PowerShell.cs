@@ -92,6 +92,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ConnectivityProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IConnectivityProfile) content.GetValueForProperty("ConnectivityProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ConnectivityProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ConnectivityProfileTypeConverter.ConvertFrom);
             }
+            if (content.Contains("ClusterAccessProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterAccessProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAccessProfile) content.GetValueForProperty("ClusterAccessProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterAccessProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterAccessProfileTypeConverter.ConvertFrom);
+            }
             if (content.Contains("LogAnalyticsProfile"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LogAnalyticsProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLogAnalyticsProfile) content.GetValueForProperty("LogAnalyticsProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LogAnalyticsProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterLogAnalyticsProfileTypeConverter.ConvertFrom);
@@ -108,6 +112,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).AutoscaleProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfile) content.GetValueForProperty("AutoscaleProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).AutoscaleProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.AutoscaleProfileTypeConverter.ConvertFrom);
             }
+            if (content.Contains("RangerPluginProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerPluginProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterRangerPluginProfile) content.GetValueForProperty("RangerPluginProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerPluginProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterRangerPluginProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("KafkaProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfile) content.GetValueForProperty("KafkaProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.KafkaProfileTypeConverter.ConvertFrom);
+            }
             if (content.Contains("TrinoProfile"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).TrinoProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfile) content.GetValueForProperty("TrinoProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).TrinoProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.TrinoProfileTypeConverter.ConvertFrom);
@@ -119,6 +131,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("SparkProfile"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SparkProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkProfile) content.GetValueForProperty("SparkProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SparkProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.SparkProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("RangerProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfile) content.GetValueForProperty("RangerProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerProfileTypeConverter.ConvertFrom);
             }
             if (content.Contains("ClusterVersion"))
             {
@@ -135,10 +151,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("ServiceConfigsProfile"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ServiceConfigsProfile = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigsProfile>) content.GetValueForProperty("ServiceConfigsProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ServiceConfigsProfile, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigsProfile>(__y, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterServiceConfigsProfileTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("KafkaProfile"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileKafkaProfile) content.GetValueForProperty("KafkaProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterProfileKafkaProfileTypeConverter.ConvertFrom);
             }
             if (content.Contains("LlapProfile"))
             {
@@ -192,6 +204,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).FlinkProfileNumReplica = (int?) content.GetValueForProperty("FlinkProfileNumReplica",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).FlinkProfileNumReplica, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
+            if (content.Contains("FlinkProfileDeploymentMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).FlinkProfileDeploymentMode = (string) content.GetValueForProperty("FlinkProfileDeploymentMode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).FlinkProfileDeploymentMode, global::System.Convert.ToString);
+            }
             if (content.Contains("IdentityProfileMsiResourceId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).IdentityProfileMsiResourceId = (string) content.GetValueForProperty("IdentityProfileMsiResourceId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).IdentityProfileMsiResourceId, global::System.Convert.ToString);
@@ -207,6 +223,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("SecretProfileKeyVaultResourceId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SecretProfileKeyVaultResourceId = (string) content.GetValueForProperty("SecretProfileKeyVaultResourceId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SecretProfileKeyVaultResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ClusterAccessProfileEnableInternalIngress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterAccessProfileEnableInternalIngress = (bool) content.GetValueForProperty("ClusterAccessProfileEnableInternalIngress",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterAccessProfileEnableInternalIngress, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ClusterAccessProfilePrivateLinkServiceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterAccessProfilePrivateLinkServiceId = (string) content.GetValueForProperty("ClusterAccessProfilePrivateLinkServiceId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterAccessProfilePrivateLinkServiceId, global::System.Convert.ToString);
             }
             if (content.Contains("LogAnalyticProfileApplicationLog"))
             {
@@ -272,6 +296,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LoadBasedConfigScalingRule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScalingRule>) content.GetValueForProperty("LoadBasedConfigScalingRule",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LoadBasedConfigScalingRule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScalingRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ScalingRuleTypeConverter.ConvertFrom));
             }
+            if (content.Contains("RangerPluginProfileEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerPluginProfileEnabled = (bool) content.GetValueForProperty("RangerPluginProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerPluginProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("KafkaProfileDiskStorage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileDiskStorage = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IDiskStorageProfile) content.GetValueForProperty("KafkaProfileDiskStorage",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileDiskStorage, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.DiskStorageProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("KafkaProfileClusterIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileClusterIdentity = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfile) content.GetValueForProperty("KafkaProfileClusterIdentity",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileClusterIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IdentityProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("KafkaProfileConnectivityEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileConnectivityEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaConnectivityEndpoints) content.GetValueForProperty("KafkaProfileConnectivityEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileConnectivityEndpoint, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.KafkaConnectivityEndpointsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("KafkaProfileEnableKRaft"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileEnableKRaft = (bool?) content.GetValueForProperty("KafkaProfileEnableKRaft",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileEnableKRaft, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("KafkaProfileEnablePublicEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileEnablePublicEndpoint = (bool?) content.GetValueForProperty("KafkaProfileEnablePublicEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileEnablePublicEndpoint, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("KafkaProfileRemoteStorageUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileRemoteStorageUri = (string) content.GetValueForProperty("KafkaProfileRemoteStorageUri",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileRemoteStorageUri, global::System.Convert.ToString);
+            }
             if (content.Contains("TrinoProfileCoordinator"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).TrinoProfileCoordinator = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoCoordinator) content.GetValueForProperty("TrinoProfileCoordinator",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).TrinoProfileCoordinator, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.TrinoCoordinatorTypeConverter.ConvertFrom);
@@ -312,6 +364,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).FlinkProfileCatalogOption = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkCatalogOptions) content.GetValueForProperty("FlinkProfileCatalogOption",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).FlinkProfileCatalogOption, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkCatalogOptionsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("FlinkProfileJobSpec"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).FlinkProfileJobSpec = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobProfile) content.GetValueForProperty("FlinkProfileJobSpec",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).FlinkProfileJobSpec, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkJobProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("JobSpecUpgradeMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobSpecUpgradeMode = (string) content.GetValueForProperty("JobSpecUpgradeMode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobSpecUpgradeMode, global::System.Convert.ToString);
+            }
             if (content.Contains("SparkProfileMetastoreSpec"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SparkProfileMetastoreSpec = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkMetastoreSpec) content.GetValueForProperty("SparkProfileMetastoreSpec",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SparkProfileMetastoreSpec, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.SparkMetastoreSpecTypeConverter.ConvertFrom);
@@ -324,9 +384,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SparkProfileDefaultStorageUrl = (string) content.GetValueForProperty("SparkProfileDefaultStorageUrl",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SparkProfileDefaultStorageUrl, global::System.Convert.ToString);
             }
+            if (content.Contains("RangerProfileRangerAdmin"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerProfileRangerAdmin = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAdminSpec) content.GetValueForProperty("RangerProfileRangerAdmin",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerProfileRangerAdmin, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerAdminSpecTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("RangerProfileRangerAudit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerProfileRangerAudit = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAuditSpec) content.GetValueForProperty("RangerProfileRangerAudit",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerProfileRangerAudit, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerAuditSpecTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("RangerProfileRangerUsersync"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerProfileRangerUsersync = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerUsersyncSpec) content.GetValueForProperty("RangerProfileRangerUsersync",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerProfileRangerUsersync, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerUsersyncSpecTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("RangerUsersyncMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerUsersyncMode = (string) content.GetValueForProperty("RangerUsersyncMode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerUsersyncMode, global::System.Convert.ToString);
+            }
             if (content.Contains("WebFqdn"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).WebFqdn = (string) content.GetValueForProperty("WebFqdn",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).WebFqdn, global::System.Convert.ToString);
+            }
+            if (content.Contains("WebPrivateFqdn"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).WebPrivateFqdn = (string) content.GetValueForProperty("WebPrivateFqdn",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).WebPrivateFqdn, global::System.Convert.ToString);
             }
             if (content.Contains("ApplicationLogStdOutEnabled"))
             {
@@ -335,6 +415,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("ApplicationLogStdErrorEnabled"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ApplicationLogStdErrorEnabled = (bool?) content.GetValueForProperty("ApplicationLogStdErrorEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ApplicationLogStdErrorEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("DiskStorageDataDiskSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DiskStorageDataDiskSize = (int) content.GetValueForProperty("DiskStorageDataDiskSize",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DiskStorageDataDiskSize, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("DiskStorageDataDiskType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DiskStorageDataDiskType = (string) content.GetValueForProperty("DiskStorageDataDiskType",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DiskStorageDataDiskType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ClusterIdentityMsiResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterIdentityMsiResourceId = (string) content.GetValueForProperty("ClusterIdentityMsiResourceId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterIdentityMsiResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ClusterIdentityMsiClientId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterIdentityMsiClientId = (string) content.GetValueForProperty("ClusterIdentityMsiClientId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterIdentityMsiClientId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ClusterIdentityMsiObjectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterIdentityMsiObjectId = (string) content.GetValueForProperty("ClusterIdentityMsiObjectId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterIdentityMsiObjectId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConnectivityEndpointBootstrapServerEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ConnectivityEndpointBootstrapServerEndpoint = (string) content.GetValueForProperty("ConnectivityEndpointBootstrapServerEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ConnectivityEndpointBootstrapServerEndpoint, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConnectivityEndpointBrokerEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ConnectivityEndpointBrokerEndpoint = (System.Collections.Generic.List<string>) content.GetValueForProperty("ConnectivityEndpointBrokerEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ConnectivityEndpointBrokerEndpoint, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("CoordinatorDebug"))
             {
@@ -392,6 +500,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).FlinkProfileCatalogOptionsHive = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkHiveCatalogOption) content.GetValueForProperty("FlinkProfileCatalogOptionsHive",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).FlinkProfileCatalogOptionsHive, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkHiveCatalogOptionTypeConverter.ConvertFrom);
             }
+            if (content.Contains("JobSpecJobJarDirectory"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobSpecJobJarDirectory = (string) content.GetValueForProperty("JobSpecJobJarDirectory",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobSpecJobJarDirectory, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobSpecJarName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobSpecJarName = (string) content.GetValueForProperty("JobSpecJarName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobSpecJarName, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobSpecEntryClass"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobSpecEntryClass = (string) content.GetValueForProperty("JobSpecEntryClass",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobSpecEntryClass, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobSpecArg"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobSpecArg = (string) content.GetValueForProperty("JobSpecArg",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobSpecArg, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobSpecSavePointName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobSpecSavePointName = (string) content.GetValueForProperty("JobSpecSavePointName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobSpecSavePointName, global::System.Convert.ToString);
+            }
             if (content.Contains("MetastoreSpecDbServerHost"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).MetastoreSpecDbServerHost = (string) content.GetValueForProperty("MetastoreSpecDbServerHost",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).MetastoreSpecDbServerHost, global::System.Convert.ToString);
@@ -399,6 +527,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("MetastoreSpecDbName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).MetastoreSpecDbName = (string) content.GetValueForProperty("MetastoreSpecDbName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).MetastoreSpecDbName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MetastoreSpecDbConnectionAuthenticationMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).MetastoreSpecDbConnectionAuthenticationMode = (string) content.GetValueForProperty("MetastoreSpecDbConnectionAuthenticationMode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).MetastoreSpecDbConnectionAuthenticationMode, global::System.Convert.ToString);
             }
             if (content.Contains("MetastoreSpecDbUserName"))
             {
@@ -419,6 +551,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("SparkProfileUserPluginsSpecPlugin"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SparkProfileUserPluginsSpecPlugin = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkUserPlugin>) content.GetValueForProperty("SparkProfileUserPluginsSpecPlugin",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SparkProfileUserPluginsSpecPlugin, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkUserPlugin>(__y, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.SparkUserPluginTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("RangerAdminDatabase"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerAdminDatabase = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAdminSpecDatabase) content.GetValueForProperty("RangerAdminDatabase",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerAdminDatabase, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerAdminSpecDatabaseTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("RangerAdmin"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerAdmin = (System.Collections.Generic.List<string>) content.GetValueForProperty("RangerAdmin",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerAdmin, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("RangerAuditStorageAccount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerAuditStorageAccount = (string) content.GetValueForProperty("RangerAuditStorageAccount",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerAuditStorageAccount, global::System.Convert.ToString);
+            }
+            if (content.Contains("RangerUsersyncEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerUsersyncEnabled = (bool?) content.GetValueForProperty("RangerUsersyncEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerUsersyncEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("RangerUsersyncGroup"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerUsersyncGroup = (System.Collections.Generic.List<string>) content.GetValueForProperty("RangerUsersyncGroup",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerUsersyncGroup, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("RangerUsersyncUserMappingLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerUsersyncUserMappingLocation = (string) content.GetValueForProperty("RangerUsersyncUserMappingLocation",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerUsersyncUserMappingLocation, global::System.Convert.ToString);
+            }
+            if (content.Contains("RangerUsersyncUser"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerUsersyncUser = (System.Collections.Generic.List<string>) content.GetValueForProperty("RangerUsersyncUser",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerUsersyncUser, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("CoordinatorDebugEnable"))
             {
@@ -460,6 +620,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).WorkerDebugSuspend = (bool?) content.GetValueForProperty("WorkerDebugSuspend",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).WorkerDebugSuspend, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
+            if (content.Contains("HiveMetastoreDbConnectionAuthenticationMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).HiveMetastoreDbConnectionAuthenticationMode = (string) content.GetValueForProperty("HiveMetastoreDbConnectionAuthenticationMode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).HiveMetastoreDbConnectionAuthenticationMode, global::System.Convert.ToString);
+            }
             if (content.Contains("HiveMetastoreDbConnectionPasswordSecret"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).HiveMetastoreDbConnectionPasswordSecret = (string) content.GetValueForProperty("HiveMetastoreDbConnectionPasswordSecret",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).HiveMetastoreDbConnectionPasswordSecret, global::System.Convert.ToString);
@@ -471,6 +635,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("HiveMetastoreDbConnectionUserName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).HiveMetastoreDbConnectionUserName = (string) content.GetValueForProperty("HiveMetastoreDbConnectionUserName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).HiveMetastoreDbConnectionUserName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DatabaseHost"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DatabaseHost = (string) content.GetValueForProperty("DatabaseHost",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DatabaseHost, global::System.Convert.ToString);
+            }
+            if (content.Contains("DatabaseName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DatabaseName = (string) content.GetValueForProperty("DatabaseName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DatabaseName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DatabasePasswordSecretRef"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DatabasePasswordSecretRef = (string) content.GetValueForProperty("DatabasePasswordSecretRef",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DatabasePasswordSecretRef, global::System.Convert.ToString);
+            }
+            if (content.Contains("DatabaseUsername"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DatabaseUsername = (string) content.GetValueForProperty("DatabaseUsername",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DatabaseUsername, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -505,6 +685,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ConnectivityProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IConnectivityProfile) content.GetValueForProperty("ConnectivityProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ConnectivityProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ConnectivityProfileTypeConverter.ConvertFrom);
             }
+            if (content.Contains("ClusterAccessProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterAccessProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAccessProfile) content.GetValueForProperty("ClusterAccessProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterAccessProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterAccessProfileTypeConverter.ConvertFrom);
+            }
             if (content.Contains("LogAnalyticsProfile"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LogAnalyticsProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLogAnalyticsProfile) content.GetValueForProperty("LogAnalyticsProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LogAnalyticsProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterLogAnalyticsProfileTypeConverter.ConvertFrom);
@@ -521,6 +705,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).AutoscaleProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfile) content.GetValueForProperty("AutoscaleProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).AutoscaleProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.AutoscaleProfileTypeConverter.ConvertFrom);
             }
+            if (content.Contains("RangerPluginProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerPluginProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterRangerPluginProfile) content.GetValueForProperty("RangerPluginProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerPluginProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterRangerPluginProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("KafkaProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfile) content.GetValueForProperty("KafkaProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.KafkaProfileTypeConverter.ConvertFrom);
+            }
             if (content.Contains("TrinoProfile"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).TrinoProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfile) content.GetValueForProperty("TrinoProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).TrinoProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.TrinoProfileTypeConverter.ConvertFrom);
@@ -532,6 +724,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("SparkProfile"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SparkProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkProfile) content.GetValueForProperty("SparkProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SparkProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.SparkProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("RangerProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfile) content.GetValueForProperty("RangerProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerProfileTypeConverter.ConvertFrom);
             }
             if (content.Contains("ClusterVersion"))
             {
@@ -548,10 +744,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("ServiceConfigsProfile"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ServiceConfigsProfile = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigsProfile>) content.GetValueForProperty("ServiceConfigsProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ServiceConfigsProfile, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigsProfile>(__y, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterServiceConfigsProfileTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("KafkaProfile"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileKafkaProfile) content.GetValueForProperty("KafkaProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterProfileKafkaProfileTypeConverter.ConvertFrom);
             }
             if (content.Contains("LlapProfile"))
             {
@@ -605,6 +797,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).FlinkProfileNumReplica = (int?) content.GetValueForProperty("FlinkProfileNumReplica",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).FlinkProfileNumReplica, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
+            if (content.Contains("FlinkProfileDeploymentMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).FlinkProfileDeploymentMode = (string) content.GetValueForProperty("FlinkProfileDeploymentMode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).FlinkProfileDeploymentMode, global::System.Convert.ToString);
+            }
             if (content.Contains("IdentityProfileMsiResourceId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).IdentityProfileMsiResourceId = (string) content.GetValueForProperty("IdentityProfileMsiResourceId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).IdentityProfileMsiResourceId, global::System.Convert.ToString);
@@ -620,6 +816,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("SecretProfileKeyVaultResourceId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SecretProfileKeyVaultResourceId = (string) content.GetValueForProperty("SecretProfileKeyVaultResourceId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SecretProfileKeyVaultResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ClusterAccessProfileEnableInternalIngress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterAccessProfileEnableInternalIngress = (bool) content.GetValueForProperty("ClusterAccessProfileEnableInternalIngress",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterAccessProfileEnableInternalIngress, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ClusterAccessProfilePrivateLinkServiceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterAccessProfilePrivateLinkServiceId = (string) content.GetValueForProperty("ClusterAccessProfilePrivateLinkServiceId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterAccessProfilePrivateLinkServiceId, global::System.Convert.ToString);
             }
             if (content.Contains("LogAnalyticProfileApplicationLog"))
             {
@@ -685,6 +889,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LoadBasedConfigScalingRule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScalingRule>) content.GetValueForProperty("LoadBasedConfigScalingRule",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).LoadBasedConfigScalingRule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScalingRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ScalingRuleTypeConverter.ConvertFrom));
             }
+            if (content.Contains("RangerPluginProfileEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerPluginProfileEnabled = (bool) content.GetValueForProperty("RangerPluginProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerPluginProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("KafkaProfileDiskStorage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileDiskStorage = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IDiskStorageProfile) content.GetValueForProperty("KafkaProfileDiskStorage",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileDiskStorage, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.DiskStorageProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("KafkaProfileClusterIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileClusterIdentity = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfile) content.GetValueForProperty("KafkaProfileClusterIdentity",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileClusterIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IdentityProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("KafkaProfileConnectivityEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileConnectivityEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaConnectivityEndpoints) content.GetValueForProperty("KafkaProfileConnectivityEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileConnectivityEndpoint, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.KafkaConnectivityEndpointsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("KafkaProfileEnableKRaft"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileEnableKRaft = (bool?) content.GetValueForProperty("KafkaProfileEnableKRaft",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileEnableKRaft, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("KafkaProfileEnablePublicEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileEnablePublicEndpoint = (bool?) content.GetValueForProperty("KafkaProfileEnablePublicEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileEnablePublicEndpoint, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("KafkaProfileRemoteStorageUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileRemoteStorageUri = (string) content.GetValueForProperty("KafkaProfileRemoteStorageUri",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileRemoteStorageUri, global::System.Convert.ToString);
+            }
             if (content.Contains("TrinoProfileCoordinator"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).TrinoProfileCoordinator = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoCoordinator) content.GetValueForProperty("TrinoProfileCoordinator",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).TrinoProfileCoordinator, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.TrinoCoordinatorTypeConverter.ConvertFrom);
@@ -725,6 +957,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).FlinkProfileCatalogOption = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkCatalogOptions) content.GetValueForProperty("FlinkProfileCatalogOption",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).FlinkProfileCatalogOption, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkCatalogOptionsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("FlinkProfileJobSpec"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).FlinkProfileJobSpec = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobProfile) content.GetValueForProperty("FlinkProfileJobSpec",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).FlinkProfileJobSpec, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkJobProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("JobSpecUpgradeMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobSpecUpgradeMode = (string) content.GetValueForProperty("JobSpecUpgradeMode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobSpecUpgradeMode, global::System.Convert.ToString);
+            }
             if (content.Contains("SparkProfileMetastoreSpec"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SparkProfileMetastoreSpec = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkMetastoreSpec) content.GetValueForProperty("SparkProfileMetastoreSpec",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SparkProfileMetastoreSpec, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.SparkMetastoreSpecTypeConverter.ConvertFrom);
@@ -737,9 +977,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SparkProfileDefaultStorageUrl = (string) content.GetValueForProperty("SparkProfileDefaultStorageUrl",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SparkProfileDefaultStorageUrl, global::System.Convert.ToString);
             }
+            if (content.Contains("RangerProfileRangerAdmin"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerProfileRangerAdmin = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAdminSpec) content.GetValueForProperty("RangerProfileRangerAdmin",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerProfileRangerAdmin, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerAdminSpecTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("RangerProfileRangerAudit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerProfileRangerAudit = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAuditSpec) content.GetValueForProperty("RangerProfileRangerAudit",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerProfileRangerAudit, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerAuditSpecTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("RangerProfileRangerUsersync"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerProfileRangerUsersync = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerUsersyncSpec) content.GetValueForProperty("RangerProfileRangerUsersync",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerProfileRangerUsersync, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerUsersyncSpecTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("RangerUsersyncMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerUsersyncMode = (string) content.GetValueForProperty("RangerUsersyncMode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerUsersyncMode, global::System.Convert.ToString);
+            }
             if (content.Contains("WebFqdn"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).WebFqdn = (string) content.GetValueForProperty("WebFqdn",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).WebFqdn, global::System.Convert.ToString);
+            }
+            if (content.Contains("WebPrivateFqdn"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).WebPrivateFqdn = (string) content.GetValueForProperty("WebPrivateFqdn",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).WebPrivateFqdn, global::System.Convert.ToString);
             }
             if (content.Contains("ApplicationLogStdOutEnabled"))
             {
@@ -748,6 +1008,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("ApplicationLogStdErrorEnabled"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ApplicationLogStdErrorEnabled = (bool?) content.GetValueForProperty("ApplicationLogStdErrorEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ApplicationLogStdErrorEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("DiskStorageDataDiskSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DiskStorageDataDiskSize = (int) content.GetValueForProperty("DiskStorageDataDiskSize",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DiskStorageDataDiskSize, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("DiskStorageDataDiskType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DiskStorageDataDiskType = (string) content.GetValueForProperty("DiskStorageDataDiskType",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DiskStorageDataDiskType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ClusterIdentityMsiResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterIdentityMsiResourceId = (string) content.GetValueForProperty("ClusterIdentityMsiResourceId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterIdentityMsiResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ClusterIdentityMsiClientId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterIdentityMsiClientId = (string) content.GetValueForProperty("ClusterIdentityMsiClientId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterIdentityMsiClientId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ClusterIdentityMsiObjectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterIdentityMsiObjectId = (string) content.GetValueForProperty("ClusterIdentityMsiObjectId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterIdentityMsiObjectId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConnectivityEndpointBootstrapServerEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ConnectivityEndpointBootstrapServerEndpoint = (string) content.GetValueForProperty("ConnectivityEndpointBootstrapServerEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ConnectivityEndpointBootstrapServerEndpoint, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConnectivityEndpointBrokerEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ConnectivityEndpointBrokerEndpoint = (System.Collections.Generic.List<string>) content.GetValueForProperty("ConnectivityEndpointBrokerEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ConnectivityEndpointBrokerEndpoint, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("CoordinatorDebug"))
             {
@@ -805,6 +1093,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).FlinkProfileCatalogOptionsHive = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkHiveCatalogOption) content.GetValueForProperty("FlinkProfileCatalogOptionsHive",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).FlinkProfileCatalogOptionsHive, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkHiveCatalogOptionTypeConverter.ConvertFrom);
             }
+            if (content.Contains("JobSpecJobJarDirectory"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobSpecJobJarDirectory = (string) content.GetValueForProperty("JobSpecJobJarDirectory",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobSpecJobJarDirectory, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobSpecJarName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobSpecJarName = (string) content.GetValueForProperty("JobSpecJarName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobSpecJarName, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobSpecEntryClass"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobSpecEntryClass = (string) content.GetValueForProperty("JobSpecEntryClass",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobSpecEntryClass, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobSpecArg"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobSpecArg = (string) content.GetValueForProperty("JobSpecArg",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobSpecArg, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobSpecSavePointName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobSpecSavePointName = (string) content.GetValueForProperty("JobSpecSavePointName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).JobSpecSavePointName, global::System.Convert.ToString);
+            }
             if (content.Contains("MetastoreSpecDbServerHost"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).MetastoreSpecDbServerHost = (string) content.GetValueForProperty("MetastoreSpecDbServerHost",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).MetastoreSpecDbServerHost, global::System.Convert.ToString);
@@ -812,6 +1120,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("MetastoreSpecDbName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).MetastoreSpecDbName = (string) content.GetValueForProperty("MetastoreSpecDbName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).MetastoreSpecDbName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MetastoreSpecDbConnectionAuthenticationMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).MetastoreSpecDbConnectionAuthenticationMode = (string) content.GetValueForProperty("MetastoreSpecDbConnectionAuthenticationMode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).MetastoreSpecDbConnectionAuthenticationMode, global::System.Convert.ToString);
             }
             if (content.Contains("MetastoreSpecDbUserName"))
             {
@@ -832,6 +1144,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("SparkProfileUserPluginsSpecPlugin"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SparkProfileUserPluginsSpecPlugin = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkUserPlugin>) content.GetValueForProperty("SparkProfileUserPluginsSpecPlugin",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SparkProfileUserPluginsSpecPlugin, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkUserPlugin>(__y, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.SparkUserPluginTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("RangerAdminDatabase"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerAdminDatabase = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAdminSpecDatabase) content.GetValueForProperty("RangerAdminDatabase",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerAdminDatabase, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerAdminSpecDatabaseTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("RangerAdmin"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerAdmin = (System.Collections.Generic.List<string>) content.GetValueForProperty("RangerAdmin",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerAdmin, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("RangerAuditStorageAccount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerAuditStorageAccount = (string) content.GetValueForProperty("RangerAuditStorageAccount",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerAuditStorageAccount, global::System.Convert.ToString);
+            }
+            if (content.Contains("RangerUsersyncEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerUsersyncEnabled = (bool?) content.GetValueForProperty("RangerUsersyncEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerUsersyncEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("RangerUsersyncGroup"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerUsersyncGroup = (System.Collections.Generic.List<string>) content.GetValueForProperty("RangerUsersyncGroup",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerUsersyncGroup, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("RangerUsersyncUserMappingLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerUsersyncUserMappingLocation = (string) content.GetValueForProperty("RangerUsersyncUserMappingLocation",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerUsersyncUserMappingLocation, global::System.Convert.ToString);
+            }
+            if (content.Contains("RangerUsersyncUser"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerUsersyncUser = (System.Collections.Generic.List<string>) content.GetValueForProperty("RangerUsersyncUser",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).RangerUsersyncUser, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("CoordinatorDebugEnable"))
             {
@@ -873,6 +1213,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).WorkerDebugSuspend = (bool?) content.GetValueForProperty("WorkerDebugSuspend",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).WorkerDebugSuspend, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
+            if (content.Contains("HiveMetastoreDbConnectionAuthenticationMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).HiveMetastoreDbConnectionAuthenticationMode = (string) content.GetValueForProperty("HiveMetastoreDbConnectionAuthenticationMode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).HiveMetastoreDbConnectionAuthenticationMode, global::System.Convert.ToString);
+            }
             if (content.Contains("HiveMetastoreDbConnectionPasswordSecret"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).HiveMetastoreDbConnectionPasswordSecret = (string) content.GetValueForProperty("HiveMetastoreDbConnectionPasswordSecret",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).HiveMetastoreDbConnectionPasswordSecret, global::System.Convert.ToString);
@@ -884,6 +1228,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("HiveMetastoreDbConnectionUserName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).HiveMetastoreDbConnectionUserName = (string) content.GetValueForProperty("HiveMetastoreDbConnectionUserName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).HiveMetastoreDbConnectionUserName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DatabaseHost"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DatabaseHost = (string) content.GetValueForProperty("DatabaseHost",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DatabaseHost, global::System.Convert.ToString);
+            }
+            if (content.Contains("DatabaseName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DatabaseName = (string) content.GetValueForProperty("DatabaseName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DatabaseName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DatabasePasswordSecretRef"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DatabasePasswordSecretRef = (string) content.GetValueForProperty("DatabasePasswordSecretRef",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DatabasePasswordSecretRef, global::System.Convert.ToString);
+            }
+            if (content.Contains("DatabaseUsername"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DatabaseUsername = (string) content.GetValueForProperty("DatabaseUsername",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DatabaseUsername, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

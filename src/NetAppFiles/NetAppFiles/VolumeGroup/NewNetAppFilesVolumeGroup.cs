@@ -19,12 +19,12 @@ using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
-using System.Linq;
 using System.Collections.Generic;
 using System.Collections;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Management.NetApp.Models;
 using System;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 {   
@@ -353,9 +353,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
             var volumeGroup = CreateVolumeGroup(Name, ResourceGroupName, AccountName, poolResourceId, tagPairs);
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
-                var anfVolumeGroups = AzureNetAppFilesManagementClient.VolumeGroups.Create(ResourceGroupName, AccountName, Name, volumeGroup);
-                var ret = anfVolumeGroups.ConvertToPs();
-                WriteObject(ret);
+                try
+                {
+                    var anfVolumeGroups = AzureNetAppFilesManagementClient.VolumeGroups.Create(ResourceGroupName, AccountName, Name, volumeGroup);
+                    var ret = anfVolumeGroups.ConvertToPs();
+                    WriteObject(ret);
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
         }
 
@@ -497,7 +504,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
                     ApplicationType = ApplicationType,
                     ApplicationIdentifier = ApplicationIdentifier,
                     GlobalPlacementRules = GlobalPlacementRule,
-                    DeploymentSpecId = SAPHANAOnGENPOPDeploymentSpecID,
+                    //DeploymentSpecId = SAPHANAOnGENPOPDeploymentSpecID,
                     GroupDescription = GroupDescription                    
                 },
                 Volumes = volumesInGroup

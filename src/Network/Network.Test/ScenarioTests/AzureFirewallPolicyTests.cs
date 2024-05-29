@@ -204,5 +204,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AzureFirewallPolicyRuleCollectionGroupSizeProperty");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallPolicyIDPSProfiles()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallPolicyIDPSProfiles");
+        }
     }
 }

@@ -77,10 +77,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_comparisonRule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("comparisonRule"), out var __jsonComparisonRule) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ComparisonRule.FromJson(__jsonComparisonRule) : ComparisonRule;}
-            {_actionType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("actionType"), out var __jsonActionType) ? (string)__jsonActionType : (string)ActionType;}
-            {_evaluationCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("evaluationCount"), out var __jsonEvaluationCount) ? (int)__jsonEvaluationCount : EvaluationCount;}
-            {_scalingMetric = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("scalingMetric"), out var __jsonScalingMetric) ? (string)__jsonScalingMetric : (string)ScalingMetric;}
+            {_comparisonRule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("comparisonRule"), out var __jsonComparisonRule) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ComparisonRule.FromJson(__jsonComparisonRule) : _comparisonRule;}
+            {_actionType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("actionType"), out var __jsonActionType) ? (string)__jsonActionType : (string)_actionType;}
+            {_evaluationCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("evaluationCount"), out var __jsonEvaluationCount) ? (int)__jsonEvaluationCount : _evaluationCount;}
+            {_scalingMetric = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("scalingMetric"), out var __jsonScalingMetric) ? (string)__jsonScalingMetric : (string)_scalingMetric;}
             AfterFromJson(json);
         }
 

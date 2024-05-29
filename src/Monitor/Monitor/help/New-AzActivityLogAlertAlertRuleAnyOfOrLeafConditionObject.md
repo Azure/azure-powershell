@@ -14,7 +14,8 @@ Create an in-memory object for AlertRuleAnyOfOrLeafCondition.
 
 ```
 New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject [-AnyOf <IAlertRuleLeafCondition[]>]
- [-ContainsAny <String[]>] [-Equal <String>] [-Field <String>] [<CommonParameters>]
+ [-ContainsAny <String[]>] [-Equal <String>] [-Field <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

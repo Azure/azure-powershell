@@ -63,7 +63,7 @@ Describe 'Set-AzEventHub' {
     It 'SetViaIdentityExpanded'  {
         $eventhub = New-AzEventHub -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name eventhub
 
-        { Set-AzEventHub -InputObject $eventhub } | Should -Throw 'Please specify the property you want to update on the -InputObject'
+        { Set-AzEventHub -InputObject $eventhub -ErrorAction Stop } | Should -Throw 'Please specify the property you want to update on the -InputObject'
 
         $eventhub = Set-AzEventHub -InputObject $eventhub -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer $env.blobContainer -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId $env.storageAccountId
         $eventhub.PartitionCount | Should -Be 4
