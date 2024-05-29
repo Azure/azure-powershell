@@ -10,7 +10,7 @@ ExcludedPatchCount FailedPatchCount InstallationActivityId               Install
                                                                                                                   owExc
                                                                                                                   eeded
 ------------------ ---------------- ----------------------               ------------------- -------------------- -----
-0                  0                cd3c2d11-2852-4558-8497-f6c805aa4361 0                   7/28/2023 7:55:08 AM  False
+0                  0                ********-****-****-****-********** 0                   7/28/2023 7:55:08 AM  False
 ```
 
 Install machine patches.
