@@ -17,15 +17,16 @@ Adds an listener to an application gateway.
 Add-AzApplicationGatewayListener -ApplicationGateway <PSApplicationGateway> -Name <String>
  [-FrontendIPConfiguration <PSApplicationGatewayFrontendIPConfiguration>]
  [-FrontendPort <PSApplicationGatewayFrontendPort>] [-SslCertificate <PSApplicationGatewaySslCertificate>]
- [-SslProfile <PSApplicationGatewaySslProfile>] [-HostNames <String[]>] -Protocol <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-SslProfile <PSApplicationGatewaySslProfile>] -Protocol <String> [-HostNames <String[]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
 Add-AzApplicationGatewayListener -ApplicationGateway <PSApplicationGateway> -Name <String>
  [-FrontendIPConfigurationId <String>] [-FrontendPortId <String>] [-SslCertificateId <String>]
- [-SslProfileId <String>] [-HostNames <String[]>] -Protocol <String> [-DefaultProfile <IAzureContextContainer>] [-HostNames <String[]>] [<CommonParameters>]
+ [-SslProfileId <String>] -Protocol <String> [-HostNames <String[]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
