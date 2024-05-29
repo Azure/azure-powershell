@@ -66,6 +66,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", nameof(TargetResourceGroupName))]
         public string TargetInstanceName { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Id of the target subscription.", ParameterSetName = MoveCopyManagedDatabaseByNameParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Id of the target subscription.", ParameterSetName = MoveCopyManagedDatabaseByInputObjectParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Id of the target subscription.", ParameterSetName = MoveCopyManagedDatabaseByResourceIdParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string TargetSubscriptionId { get; set; }
+
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = MoveCopyManagedDatabaseByInputObjectParameterSet, HelpMessage = "Managed database object.")]
         [ValidateNotNull]
         public AzureSqlManagedDatabaseModel DatabaseObject { get; set; }
@@ -125,6 +131,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                 SubscriptionId = ModelAdapter.Context.Subscription.Id,
                 TargetInstanceName = TargetInstanceName,
                 TargetResourceGroupName = TargetResourceGroupName ?? ResourceGroupName,
+                TargetSubscriptionId = TargetSubscriptionId ?? ModelAdapter.Context.Subscription.Id
             };
         }
 
