@@ -123,7 +123,7 @@ Describe 'Update-AzSqlVM' {
         $sqlVM1.AutoBackupSettingRetentionPeriod | Should -Be 10
 
         Remove-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
-        }
+    }
 
         It 'Update-AddSqlVMtoGroup' {
         # Assuming Group $env.SqlVMGroupId exists at this time and $env.SqlVMName_HA2 is created
@@ -138,9 +138,9 @@ Describe 'Update-AzSqlVM' {
         
         $sqlVM2 = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName_HA2 -Expand *
         $sqlVM2.GroupResourceId | Should -Be $env.SqlVMGroupId
-        }
+    }
         
-        It 'Update-RemoveSqlVMfromGroup' {                
+    It 'Update-RemoveSqlVMfromGroup' {                
         # Assuming $env.SqlVMName_HA2 is created already and added to Group $env.SqlVMGroupId 
         # If the test case fails, make sure Sql server is running before running test case
         $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName_HA2 `
@@ -149,11 +149,11 @@ Describe 'Update-AzSqlVM' {
         $sqlVM2 = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName_HA2 -Expand *
         $sqlVM2.GroupResourceId | Should -Be $null
         }
-	
+
 		It 'Update-AdAuthenticationEnable1' {
         $sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Location $env.Location
 
-        $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -AzureAdAuthenticationSettingClientId '6d81e2bc-dcc5-45c9-9327-1cfee9612933'
+        $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -IdentityType 'UserAssigned' -ManagedIdentityClientId '6d81e2bc-dcc5-45c9-9327-1cfee9612933'
         # note: user assigned managed identity is associated to sql vm and it has the required permissions
         $sqlVM.Name | Should -Be $env.SqlVMName
         $sqlVM.SqlImageOffer | Should -Be 'SQL2022-WS2022'
@@ -164,12 +164,12 @@ Describe 'Update-AzSqlVM' {
         $sqlVM1.AzureAdAuthenticationSettingClientId | Should -Be '6d81e2bc-dcc5-45c9-9327-1cfee9612933'
         
         # Remove-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
-        }
+    }
 		
-		It 'Update-AdAuthenticationEnable2' {
+	It 'Update-AdAuthenticationEnable2' {
         $sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Location $env.Location
 
-        $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -AzureAdAuthenticationSettingClientId ''
+        $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -IdentityType 'SystemAssigned'
         # note: system managed identity is enabled on sql vm and it has the required permissions
         $sqlVM.Name | Should -Be $env.SqlVMName
         $sqlVM.SqlImageOffer | Should -Be 'SQL2022-WS2022'
@@ -180,17 +180,17 @@ Describe 'Update-AzSqlVM' {
         $sqlVM2.AzureAdAuthenticationSettingClientId | Should -Be ''
         
         # Remove-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
-        }
+    }
 		
-		It 'AdAuthenticationFailurescenario1' {
+	It 'AdAuthenticationFailurescenario1' {
 		$sqlVM = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
 		# note: id 'random value' is not associated to sql vm so it throws the error
-		{$sqlVM | Update-AzSqlVMADAuth -AzureAdAuthenticationSettingClientId 'random value'} | Should -Throw		
-		}
+		{$sqlVM | Update-AzSqlVMADAuth -IdentityType 'UserAssigned' -ManagedIdentityClientId 'random value'} | Should -Throw		
+	}
 		
-		It 'AdAuthenticationFailurescenario2' {
+	It 'AdAuthenticationFailurescenario2' {
 		$sqlVM = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
 		# note: id '47c329a2-0bb1-48c5-9966-b84b957c6a77' is associated to sql vm but doesn't have required permissions. so it throws the error
-		{$sqlVM | Update-AzSqlVMADAuth -AzureAdAuthenticationSettingClientId '47c329a2-0bb1-48c5-9966-b84b957c6a77'} | Should -Throw		
-		}
+		{$sqlVM | Update-AzSqlVMADAuth -IdentityType 'UserAssigned' -ManagedIdentityClientId '47c329a2-0bb1-48c5-9966-b84b957c6a77'} | Should -Throw		
+	}
 }

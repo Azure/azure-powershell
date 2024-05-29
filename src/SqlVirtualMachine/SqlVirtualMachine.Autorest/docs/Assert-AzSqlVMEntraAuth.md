@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.SqlVirtualMachine
-online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/Assert-AzSqlVMADAuth
+online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/Assert-AzSqlVMEntraAuth
 schema: 2.0.0
 ---
 
-# Assert-AzSqlVMADAuth
+# Assert-AzSqlVMEntraAuth
 
 ## SYNOPSIS
 Validates a SQL virtual machine Entra Authentication.
@@ -14,16 +14,16 @@ Validates a SQL virtual machine Entra Authentication.
 
 ### AssertExpanded (Default)
 ```
-Assert-AzSqlVMADAuth -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AzureAdAuthenticationSettingClientId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Assert-AzSqlVMEntraAuth -Name <String> -ResourceGroupName <String> -IdentityType <String>
+ [-SubscriptionId <String>] [-ManagedIdentityClientId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AssertViaIdentity
 ```
-Assert-AzSqlVMADAuth -InputObject <ISqlVirtualMachineIdentity>
- [-AzureAdAuthenticationSettingClientId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Assert-AzSqlVMEntraAuth -InputObject <ISqlVirtualMachineIdentity> -IdentityType <String>
+ [-ManagedIdentityClientId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +33,7 @@ Validates a SQL virtual machine Entra Authentication.
 
 ### Example 1:
 ```powershell
-Assert-AzSqlVMADAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AzureAdAuthenticationSettingClientId ''
+Assert-AzSqlVMEntraAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -IdentityType 'SystemAssigned'
 ```
 
 ```output
@@ -44,7 +44,7 @@ Validates system assigned managed identity for enabling Entra authentication on 
 
 ### Example 2:
 ```powershell
-Assert-AzSqlVMADAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AzureAdAuthenticationSettingClientId '11111111-2222-3333-4444-555555555555'
+Assert-AzSqlVMEntraAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -IdentityType 'UserAssigned' -ManagedIdentityClientId '11111111-2222-3333-4444-555555555555'
 ```
 
 ```output
@@ -56,7 +56,7 @@ validates user assigned managed identity for enabling Entra authentication on Sq
 ### Example 3:
 ```powershell
 $sqlVM = Get-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1'
-$sqlVM | Assert-AzSqlVMADAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AzureAdAuthenticationSettingClientId ''
+$sqlVM | Assert-AzSqlVMEntraAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -IdentityType 'SystemAssigned'
 ```
 
 ```output
@@ -68,7 +68,7 @@ Validates system assigned managed identity for enabling Entra authentication on 
 ### Example 4:
 ```powershell
 $sqlVM = Get-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1'
-$sqlVM | Assert-AzSqlVMADAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AzureAdAuthenticationSettingClientId '11111111-2222-3333-4444-555555555555'
+$sqlVM | Assert-AzSqlVMEntraAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -IdentityType 'UserAssigned' -ManagedIdentityClientId '11111111-2222-3333-4444-555555555555'
 ```
 
 ```output
@@ -94,22 +94,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AzureAdAuthenticationSettingClientId
-The client Id of the Managed Identity to query Microsoft Graph API.
-An empty string must be used for the system assigned Managed Identity
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -119,6 +103,21 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -138,6 +137,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ManagedIdentityClientId
+The client Id of the Managed Identity to query Microsoft Graph API.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

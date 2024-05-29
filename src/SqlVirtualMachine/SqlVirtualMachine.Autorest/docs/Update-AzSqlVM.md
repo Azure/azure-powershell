@@ -25,12 +25,12 @@ Update-AzSqlVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <Stri
  [-AutoBackupSettingStorageAccountUrl <String>] [-AutoBackupSettingStorageContainerName <String>]
  [-AutoPatchingSettingDayOfWeek <DayOfWeek>] [-AutoPatchingSettingEnable]
  [-AutoPatchingSettingMaintenanceWindowDuration <Int32>]
- [-AutoPatchingSettingMaintenanceWindowStartingHour <Int32>] [-AzureAdAuthenticationSettingClientId <String>]
- [-AzureAdAuthenticationSettingEnable] [-AzureAdAuthenticationSkipClientValidation] [-EnableAutomaticUpgrade]
- [-LicenseType <SqlServerLicenseType>] [-Offer <String>] [-ScheduleDayOfWeek <AssessmentDayOfWeek>]
- [-ScheduleEnable] [-ScheduleMonthlyOccurrence <Int32>] [-ScheduleStartTime <String>]
- [-ScheduleWeeklyInterval <Int32>] [-Sku <SqlImageSku>] [-SqlManagementType <SqlManagementMode>]
- [-SqlVirtualMachineGroupResourceId <String>] [-Tag <Hashtable>] [-VirtualMachineResourceId <String>]
+ [-AutoPatchingSettingMaintenanceWindowStartingHour <Int32>] [-EnableAutomaticUpgrade]
+ [-IdentityType <String>] [-LicenseType <SqlServerLicenseType>] [-ManagedIdentityClientId <String>]
+ [-Offer <String>] [-ScheduleDayOfWeek <AssessmentDayOfWeek>] [-ScheduleEnable]
+ [-ScheduleMonthlyOccurrence <Int32>] [-ScheduleStartTime <String>] [-ScheduleWeeklyInterval <Int32>]
+ [-Sku <SqlImageSku>] [-SqlManagementType <SqlManagementMode>] [-SqlVirtualMachineGroupResourceId <String>]
+ [-Tag <Hashtable>] [-VirtualMachineResourceId <String>]
  [-WsfcDomainCredentialsClusterBootstrapAccountPassword <SecureString>]
  [-WsfcDomainCredentialsClusterOperatorAccountPassword <SecureString>]
  [-WsfcDomainCredentialsSqlServiceAccountPassword <SecureString>] [-WsfcStaticIP <String>]
@@ -50,12 +50,12 @@ Update-AzSqlVM -InputObject <ISqlVirtualMachineIdentity> [-AssessmentSettingEnab
  [-AutoBackupSettingStorageAccountUrl <String>] [-AutoBackupSettingStorageContainerName <String>]
  [-AutoPatchingSettingDayOfWeek <DayOfWeek>] [-AutoPatchingSettingEnable]
  [-AutoPatchingSettingMaintenanceWindowDuration <Int32>]
- [-AutoPatchingSettingMaintenanceWindowStartingHour <Int32>] [-AzureAdAuthenticationSettingClientId <String>]
- [-AzureAdAuthenticationSettingEnable] [-AzureAdAuthenticationSkipClientValidation] [-EnableAutomaticUpgrade]
- [-LicenseType <SqlServerLicenseType>] [-Offer <String>] [-ScheduleDayOfWeek <AssessmentDayOfWeek>]
- [-ScheduleEnable] [-ScheduleMonthlyOccurrence <Int32>] [-ScheduleStartTime <String>]
- [-ScheduleWeeklyInterval <Int32>] [-Sku <SqlImageSku>] [-SqlManagementType <SqlManagementMode>]
- [-SqlVirtualMachineGroupResourceId <String>] [-Tag <Hashtable>] [-VirtualMachineResourceId <String>]
+ [-AutoPatchingSettingMaintenanceWindowStartingHour <Int32>] [-EnableAutomaticUpgrade]
+ [-IdentityType <String>] [-LicenseType <SqlServerLicenseType>] [-ManagedIdentityClientId <String>]
+ [-Offer <String>] [-ScheduleDayOfWeek <AssessmentDayOfWeek>] [-ScheduleEnable]
+ [-ScheduleMonthlyOccurrence <Int32>] [-ScheduleStartTime <String>] [-ScheduleWeeklyInterval <Int32>]
+ [-Sku <SqlImageSku>] [-SqlManagementType <SqlManagementMode>] [-SqlVirtualMachineGroupResourceId <String>]
+ [-Tag <Hashtable>] [-VirtualMachineResourceId <String>]
  [-WsfcDomainCredentialsClusterBootstrapAccountPassword <SecureString>]
  [-WsfcDomainCredentialsClusterOperatorAccountPassword <SecureString>]
  [-WsfcDomainCredentialsSqlServiceAccountPassword <SecureString>] [-WsfcStaticIP <String>]
@@ -212,7 +212,7 @@ Update a SQL virtual machine's tag as a background job.
 
 ### Example 11
 ```powershell
-Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AzureAdAuthenticationSettingEnable -AzureAdAuthenticationSettingClientId ''
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -IdentityType 'SystemAssigned'
 ```
 
 ```output
@@ -221,11 +221,11 @@ Location	Name		ResourceGroupName
 eastus		sqlvm1		ResourceGroup01	
 ```
 
-Update a SQL virtual machine to enable "authentication with Microsoft Entra ID" using "System-assigned managed identity"
+Update a SQL virtual machine to enable Microsoft Entra authentication using "System-assigned managed identity"
 
 ### Example 12
 ```powershell
-Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AzureAdAuthenticationSettingEnable -AzureAdAuthenticationSettingClientId '11111111-2222-3333-4444-555555555555'
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -IdentityType 'UserAssigned' -ManagedIdentityClientId '11111111-2222-3333-4444-555555555555'
 ```
 
 ```output
@@ -234,7 +234,7 @@ Location	Name		ResourceGroupName
 eastus		sqlvm1		ResourceGroup01	
 ```
 
-Update a SQL virtual machine to enable "authentication with Microsoft Entra ID" using "User-assigned managed identity"
+Update a SQL virtual machine to enable Microsoft Entra authentication using "User-assigned managed identity"
 
 ## PARAMETERS
 
@@ -558,52 +558,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AzureAdAuthenticationSettingClientId
-The client Id of the Managed Identity to query Microsoft Graph API.
-An empty string must be used for the system assigned Managed Identity
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AzureAdAuthenticationSettingEnable
-Enable Azure Ad Authentication on SQL virtual machine.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AzureAdAuthenticationSkipClientValidation
-Skip client validation while enabling Azure Ad Authentication on SQL virtual machine.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -624,6 +578,21 @@ Enable automatic upgrade of Sql IaaS extension Agent.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -655,6 +624,22 @@ SQL Server license type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlServerLicenseType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedIdentityClientId
+The client Id of the Managed Identity to query Microsoft Graph API.
+An empty string must be used for the system assigned Managed Identity
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
