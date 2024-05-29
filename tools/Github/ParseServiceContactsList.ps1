@@ -58,7 +58,7 @@ $headers = @{
     Authorization = "Basic {0}" -f ($token)
 }
 
-$response = Invoke-RestMethod 'https://dev.azure.com/azclitools/internal/_apis/wiki/wikis/internal.wiki/pages?path=/Service%20Contact%20List&includeContent=true' -Headers $headers
+$response = Invoke-RestMethod 'https://dev.azure.com/azclitools/internal/_apis/wiki/wikis/internal.wiki/pages?path=/Service%20Contact%20List&includeContent=true' -Headers $headers -ErrorAction Stop
 $contactsList = ($response.content -split "\n") | Where-Object { $_ -like '|*' } | Select-Object -Skip 2
 
 $idxServiceTeamLabel = 2
