@@ -61,60 +61,62 @@ $headers = @{
 $response = Invoke-RestMethod 'https://dev.azure.com/azclitools/internal/_apis/wiki/wikis/internal.wiki/pages?path=/Service%20Contact%20List&includeContent=true' -Headers $headers -ErrorAction Stop
 $contactsList = ($response.content -split "\n") | Where-Object { $_ -like '|*' } | Select-Object -Skip 2
 
-$idxServiceTeamLabel = 2
-$idxPSNotifyGithubHandler = 6
-$serviceContacts = [System.Collections.Generic.SortedList[System.String, PSCustomObject]]::new()
+if ($null -ne $contactsList) {
+    $idxServiceTeamLabel = 2
+    $idxPSNotifyGithubHandler = 6
+    $serviceContacts = [System.Collections.Generic.SortedList[System.String, PSCustomObject]]::new()
 
-foreach ($contacts in $contactsList) {
-    $items = $contacts -split "\|"
-    $colServiceTeamLabel = $items[$idxServiceTeamLabel]
-    if (![string]::IsNullOrWhiteSpace($colServiceTeamLabel)) {
-        $serviceTeamLabel = $colServiceTeamLabel.Trim()
-        $colPSNotifyGithubHandler = $items[$idxPSNotifyGithubHandler]
+    foreach ($contacts in $contactsList) {
+        $items = $contacts -split "\|"
+        $colServiceTeamLabel = $items[$idxServiceTeamLabel]
+        if (![string]::IsNullOrWhiteSpace($colServiceTeamLabel)) {
+            $serviceTeamLabel = $colServiceTeamLabel.Trim()
+            $colPSNotifyGithubHandler = $items[$idxPSNotifyGithubHandler]
 
-        if (![string]::IsNullOrWhiteSpace($colPSNotifyGithubHandler)) {
-            $psNotifyGithubHandler = $colPSNotifyGithubHandler.Trim()
-            [array]$mentionees = $psNotifyGithubHandler.Split(",", [StringSplitOptions]::RemoveEmptyEntries) | ForEach-Object {
-                $_.Trim()
-            }
+            if (![string]::IsNullOrWhiteSpace($colPSNotifyGithubHandler)) {
+                $psNotifyGithubHandler = $colPSNotifyGithubHandler.Trim()
+                [array]$mentionees = $psNotifyGithubHandler.Split(",", [StringSplitOptions]::RemoveEmptyEntries) | ForEach-Object {
+                    $_.Trim()
+                }
 
-            $serviceContacts.Add($serviceTeamLabel, [PSCustomObject]@{
-                if   = @(
-                    [PSCustomObject]@{
-                        or  = @(
-                            [PSCustomObject]@{
-                                labelAdded = [PSCustomObject]@{
-                                    label = 'Service Attention'
+                $serviceContacts.Add($serviceTeamLabel, [PSCustomObject]@{
+                    if   = @(
+                        [PSCustomObject]@{
+                            or  = @(
+                                [PSCustomObject]@{
+                                    labelAdded = [PSCustomObject]@{
+                                        label = 'Service Attention'
+                                    }
+                                },
+                                [PSCustomObject]@{
+                                    labelAdded = [PSCustomObject]@{
+                                        label = $serviceTeamLabel
+                                    }
                                 }
-                            },
-                            [PSCustomObject]@{
-                                labelAdded = [PSCustomObject]@{
-                                    label = $serviceTeamLabel
-                                }
+                            )
+                        },
+                        [PSCustomObject]@{
+                            hasLabel = [PSCustomObject]@{
+                                label = 'Service Attention'
                             }
-                        )
-                    },
-                    [PSCustomObject]@{
-                        hasLabel = [PSCustomObject]@{
-                            label = 'Service Attention'
+                        },
+                        [PSCustomObject]@{
+                            hasLabel = [PSCustomObject]@{
+                                label = $serviceTeamLabel
+                            }
                         }
-                    },
-                    [PSCustomObject]@{
-                        hasLabel = [PSCustomObject]@{
-                            label = $serviceTeamLabel
+                    )
+                    then = @(
+                        [PSCustomObject]@{
+                            mentionUsers = [PSCustomObject]@{
+                                mentionees       = $mentionees
+                                replyTemplate    = 'Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.'
+                                assignMentionees = 'False'
+                            }
                         }
-                    }
-                )
-                then = @(
-                    [PSCustomObject]@{
-                        mentionUsers = [PSCustomObject]@{
-                            mentionees       = $mentionees
-                            replyTemplate    = 'Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.'
-                            assignMentionees = 'False'
-                        }
-                    }
-                )
-            })
+                    )
+                })
+            }
         }
     }
 }
