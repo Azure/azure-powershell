@@ -31,14 +31,14 @@ The Restart-AzNetworkVirtualAppliance cmdlet restarts the virtual machine instan
 
 ### Example 1
 ```powershell
-PS C:\> Restart-AzNetworkVirtualAppliance -Name testNvaName -ResourceGroupName testRgName -InstanceId "1","0"
+Restart-AzNetworkVirtualAppliance -Name testNvaName -ResourceGroupName testRgName -InstanceId "1","0"
 ```
 
 This command restarts the instances with ID "1" and ID "0" of the network virtual appliance named "testNvaName" that belongs to the resource group named "testRgName".
 
 ### Example 2
 ```powershell
-PS C:\> Restart-AzNetworkVirtualAppliance -Name testNvaName -ResourceGroupName testRgName
+Restart-AzNetworkVirtualAppliance -Name testNvaName -ResourceGroupName testRgName
 ```
 
 This command restarts all the instances of the network virtual appliance named "testNvaName" that belongs to the resource group named "testRgName".
