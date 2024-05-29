@@ -8,7 +8,7 @@ schema: 2.0.0
 # Restart-AzNetworkVirtualAppliance
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Restarts a virtual machine instance in the Network Virtual Appliance or all the instances in a Network Virtual Appliance.
 
 ## SYNTAX
 
@@ -25,16 +25,23 @@ Restart-AzNetworkVirtualAppliance [-InstanceId <String[]>] -ResourceId <String> 
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Restart-AzNetworkVirtualAppliance cmdlet restarts the virtual machine instances associated with a Network Virtual Appliance (NVA).This cmdlet can also be used to restart a specific virtual machine associates with the NVA by using the InstanceId parameter.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Restart-AzNetworkVirtualAppliance -Name testNvaName -ResourceGroupName testRgName -InstanceId "1","0"
 ```
 
-{{ Add example description here }}
+This command restarts the instances with ID "1" and ID "0" of the network virtual appliance named "testNvaName" that belongs to the resource group named "testRgName".
+
+### Example 2
+```powershell
+PS C:\> Restart-AzNetworkVirtualAppliance -Name testNvaName -ResourceGroupName testRgName
+```
+
+This command restarts all the instances of the network virtual appliance named "testNvaName" that belongs to the resource group named "testRgName".
 
 ## PARAMETERS
 
