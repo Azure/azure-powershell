@@ -85,6 +85,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Metricdata", "..\Monitor\MetricData.Autorest\Az.Metricdata.csproj", "{9DBBA2D2-18E1-4BBF-9042-B3AF82202C5E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.NetworkSecurityPerimeter", "NetworkSecurityPerimeter.Autorest\Az.NetworkSecurityPerimeter.csproj", "{004742DC-7F01-4917-B112-9178CAB6789D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -242,11 +244,15 @@ Global
 		{BE9114D3-FCC6-412D-927A-1EA60FF4D357}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE9114D3-FCC6-412D-927A-1EA60FF4D357}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE9114D3-FCC6-412D-927A-1EA60FF4D357}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9DBBA2D2-18E1-4BBF-9042-B3AF82202C5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+    {9DBBA2D2-18E1-4BBF-9042-B3AF82202C5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9DBBA2D2-18E1-4BBF-9042-B3AF82202C5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DBBA2D2-18E1-4BBF-9042-B3AF82202C5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DBBA2D2-18E1-4BBF-9042-B3AF82202C5E}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
+    {004742DC-7F01-4917-B112-9178CAB6789D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{004742DC-7F01-4917-B112-9178CAB6789D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{004742DC-7F01-4917-B112-9178CAB6789D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{004742DC-7F01-4917-B112-9178CAB6789D}.Release|Any CPU.Build.0 = Release|Any CPU
+  EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D5E3481B-5E0A-4256-94B1-CABCE4C53175} = {79185BDB-05C9-465A-98C9-23BECA753BDC}
 		{23F3DCC3-F45E-4342-B4CF-389504E7AA84} = {79185BDB-05C9-465A-98C9-23BECA753BDC}

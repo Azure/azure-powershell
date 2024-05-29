@@ -57,7 +57,8 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '3.0.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.PowerShell.AutoMapper.dll', 
-               'Microsoft.Azure.PowerShell.Network.Management.Sdk.dll'
+               'Microsoft.Azure.PowerShell.Network.Management.Sdk.dll', 
+               'NetworkSecurityPerimeter.Autorest/bin/Az.NetworkSecurityPerimeter.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -66,13 +67,35 @@ RequiredAssemblies = 'Microsoft.Azure.PowerShell.AutoMapper.dll',
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'Network.generated.format.ps1xml'
+FormatsToProcess = 'Network.generated.format.ps1xml', 
+               'NetworkSecurityPerimeter.Autorest/Az.NetworkSecurityPerimeter.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Network.dll')
+NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Network.dll', 
+               'NetworkSecurityPerimeter.Autorest/Az.NetworkSecurityPerimeter.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @()
+FunctionsToExport = 'Get-AzNetworkSecurityPerimeter', 
+               'Get-AzNetworkSecurityPerimeterAccessRule', 
+               'Get-AzNetworkSecurityPerimeterAssociableResourceType', 
+               'Get-AzNetworkSecurityPerimeterAssociation', 
+               'Get-AzNetworkSecurityPerimeterLink', 
+               'Get-AzNetworkSecurityPerimeterLinkReference', 
+               'Get-AzNetworkSecurityPerimeterProfile', 
+               'New-AzNetworkSecurityPerimeter', 
+               'New-AzNetworkSecurityPerimeterAccessRule', 
+               'New-AzNetworkSecurityPerimeterAssociation', 
+               'New-AzNetworkSecurityPerimeterLink', 
+               'New-AzNetworkSecurityPerimeterProfile', 
+               'Remove-AzNetworkSecurityPerimeter', 
+               'Remove-AzNetworkSecurityPerimeterAccessRule', 
+               'Remove-AzNetworkSecurityPerimeterAssociation', 
+               'Remove-AzNetworkSecurityPerimeterLink', 
+               'Remove-AzNetworkSecurityPerimeterLinkReference', 
+               'Remove-AzNetworkSecurityPerimeterProfile', 
+               'Update-AzNetworkSecurityPerimeterAccessRule', 
+               'Update-AzNetworkSecurityPerimeterAssociation', 
+               'Update-AzNetworkSecurityPerimeterLink'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate', 
