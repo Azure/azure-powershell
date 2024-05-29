@@ -20,9 +20,9 @@ Returns a Azure Arc PrivateLinkScope.
 .Description
 Returns a Azure Arc PrivateLinkScope.
 .Example
-Get-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName
+Get-AzConnectedPrivateLinkScope -ResourceGroupName 'ytongtest'
 .Example
-Get-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName
+Get-AzConnectedPrivateLinkScope -ResourceGroupName 'ytongtest' -ScopeName 'myScope'
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHybridComputePrivateLinkScope

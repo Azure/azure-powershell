@@ -1,0 +1,85 @@
+{
+  "resourceType": "licenses",
+  "apiVersion": "2024-03-31-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.connectedmachine"
+  },
+  "commands": [
+    {
+      "name": "Get-AzConnectedLicense",
+      "description": "Retrieves information about the view of a license.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/licenses/{licenseName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedlicense"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Retrieves information about the view of a license.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.licenseName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzConnectedLicense",
+      "description": "The operation to delete a license.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/licenses/{licenseName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.connectedmachine/remove-azconnectedlicense"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "The operation to delete a license.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.licenseName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
