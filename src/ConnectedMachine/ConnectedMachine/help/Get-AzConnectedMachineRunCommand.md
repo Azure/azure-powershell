@@ -15,13 +15,13 @@ The operation to get a run command.
 ### List (Default)
 ```
 Get-AzConnectedMachineRunCommand -MachineName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Expand <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzConnectedMachineRunCommand -MachineName <String> -ResourceGroupName <String> -RunCommandName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -59,7 +59,7 @@ AsyncExecution                    : False
 ErrorBlobManagedIdentityClientId  :
 ErrorBlobManagedIdentityObjectId  :
 ErrorBlobUri                      :
-Id                                : /subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/prov
+Id                                : /subscriptions/********-****-****-****-**********/resourceGroups/az-sdk-test/prov
                                     iders/Microsoft.HybridCompute/machines/testmachine/runcommands/myRunCommand2
 InstanceViewEndTime               : 12/4/2023 6:16:55 PM
 InstanceViewError                 :
@@ -142,6 +142,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
