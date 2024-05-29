@@ -1,1 +1,2 @@
-"Az.DesktopVirtualization","Update-AzWvdApplication","Update-AzWvdApplication","1","8410","The parameter set '__AllParameterSets' for cmdlet 'Update-AzWvdApplication' has been removed.","Flagged as false positive."
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Az.DesktopVirtualization","Update-AzWvdApplication","Update-AzWvdApplication","0","1050","The parameter set '__AllParameterSets' for cmdlet 'Update-AzWvdApplication' has been removed.","Add parameter set '__AllParameterSets' back to cmdlet 'Update-AzWvdApplication'.
