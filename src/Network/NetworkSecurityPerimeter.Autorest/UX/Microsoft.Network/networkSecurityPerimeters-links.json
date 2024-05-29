@@ -1,6 +1,6 @@
 {
   "resourceType": "networkSecurityPerimeters/links",
-  "apiVersion": "2023-07-01-preview",
+  "apiVersion": "2023-08-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.network"
   },

@@ -71,4 +71,15 @@ Describe 'Update-AzNetworkSecurityPerimeterAccessRule' {
         } | Should -Not -Throw
     }
 
+    It 'UpdateViaIdentityExpandedServiceTag' {
+        {
+           # this test case is dependent on the above test case
+           $GETObj = Get-AzNetworkSecurityPerimeterAccessRule -Name $env.tmpAccessRule4 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -ProfileName $env.tmpProfile1
+
+           $UpdateObj = Update-AzNetworkSecurityPerimeterAccessRule -InputObject $GETObj -ServiceTag @('st1', 'st2')
+
+           $UpdateObj.ServiceTag | Should -Be @('st1', 'st2')
+           
+        } | Should -Not -Throw
+    }
 }

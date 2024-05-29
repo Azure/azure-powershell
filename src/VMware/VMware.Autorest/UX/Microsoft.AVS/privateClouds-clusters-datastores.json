@@ -1,13 +1,13 @@
 {
   "resourceType": "privateClouds/clusters/datastores",
-  "apiVersion": "2023-03-01",
+  "apiVersion": "2023-09-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.vmware"
   },
   "commands": [
     {
       "name": "Get-AzVMwareDatastore",
-      "description": "Get a datastore in a private cloud cluster",
+      "description": "Get a Datastore",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores/{datastoreName}",
       "help": {
         "learnMore": {
@@ -27,7 +27,7 @@
       },
       "examples": [
         {
-          "description": "Get a datastore in a private cloud cluster",
+          "description": "Get a Datastore",
           "parameters": [
             {
               "name": "-ClusterName",
@@ -55,7 +55,7 @@
     },
     {
       "name": "Remove-AzVMwareDatastore",
-      "description": "Delete a datastore in a private cloud cluster",
+      "description": "Delete a Datastore",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores/{datastoreName}",
       "help": {
         "learnMore": {
@@ -75,7 +75,7 @@
       },
       "examples": [
         {
-          "description": "Delete a datastore in a private cloud cluster",
+          "description": "Delete a Datastore",
           "parameters": [
             {
               "name": "-ClusterName",

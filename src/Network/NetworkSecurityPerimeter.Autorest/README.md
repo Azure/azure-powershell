@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the NetworkSecurityPerimeter service.
 
 ---
-## Status
-[![Az.NetworkSecurityPerimeter](https://img.shields.io/powershellgallery/v/Az.NetworkSecurityPerimeter.svg?style=flat-square&label=Az.NetworkSecurityPerimeter "Az.NetworkSecurityPerimeter")](https://www.powershellgallery.com/packages/Az.NetworkSecurityPerimeter/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -36,8 +33,8 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - https://github.com/kaushal087/azure-rest-api-specs/blob/7de3d5b29bb67401acd1a799cf7c55b1b7b07185/specification/network/resource-manager/Microsoft.Network/preview/2023-07-01-preview/networkSecurityPerimeter.json
-#  - C:\repo\azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/preview/2023-07-01-preview/networkSecurityPerimeter.json
+  - https://github.com/bhupeshbhatt1985/azure-rest-api-specs/blob/fdc2e7b8efa15b521c7af6b041f226d5a090d5e1/specification/network/resource-manager/Microsoft.Network/preview/2023-08-01-preview/networkSecurityPerimeter.json
+#  - C:\repo\azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/preview/2023-08-01-preview/networkSecurityPerimeter.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 

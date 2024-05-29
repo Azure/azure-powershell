@@ -149,7 +149,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -196,7 +195,6 @@ Accept wildcard characters: False
 ### -LocalInboundProfile
 Local Inbound profile names to which Inbound is allowed.
 Use ['*'] to allow inbound to all profiles.
-It's default value is ['*'].
 
 ```yaml
 Type: System.String[]
@@ -227,7 +225,6 @@ Accept wildcard characters: False
 
 ### -NetworkSecurityPerimeterInputObject
 Identity Parameter
-To construct, see NOTES section for NETWORKSECURITYPERIMETERINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
@@ -243,7 +240,6 @@ Accept wildcard characters: False
 
 ### -Parameter
 The network security perimeter link resource
-To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLink
@@ -261,7 +257,6 @@ Accept wildcard characters: False
 Remote Inbound profile names to which Inbound is allowed.
 Use ['*'] to allow inbound to all profiles.
 This property can only be updated in auto-approval mode.
-It's default value is ['*'].
 
 ```yaml
 Type: System.String[]
