@@ -5,7 +5,7 @@ env:
   PR: ${{ github.event.pull_request.html_url }}
 on:
   push:
-    branch:
+    branches:
       - 'generation'
 jobs:
   process_labels:
