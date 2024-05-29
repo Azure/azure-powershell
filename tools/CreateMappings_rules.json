@@ -891,5 +891,9 @@
   {
     "module": "StorageAction",
     "alias": "StorageAction"
+  },
+  {
+    "module": "AksArc",
+    "alias": "AksArc"
   }
 ]
