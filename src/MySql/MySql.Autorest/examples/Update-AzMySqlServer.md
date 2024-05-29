@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update MySql server by resource group and server name
 ```powershell
-{{ Add code here }}
+Update-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -SslEnforcement Disabled
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----          -------- ------------------ ------- ----------------------- -------   -------        --------------
+mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4 GeneralPurpose Disabled
 ```
 
-{{ Add description here }}
+This cmdlet updates MySql server by resource group and server name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update MySql server by identity.
 ```powershell
-{{ Add code here }}
+Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Update-AzMySqlServer -BackupRetentionDay 23 -StorageInMb 10240
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----          -------- ------------------ ------- ----------------------- -------   -------        --------------
+mysql-test    eastus   mysql_test         5.7     10240                   GP_Gen5_4 GeneralPurpose Disabled
 ```
 
-{{ Add description here }}
-
+This cmdlet updates MySql server by identity.

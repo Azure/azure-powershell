@@ -8,78 +8,86 @@ schema: 2.0.0
 # Update-AzMySqlServer
 
 ## SYNOPSIS
-Creates a new server or updates an existing server.
-The update action will overwrite the existing server.
+Update an existing server.
+The request body can contain one to many of the properties present in the normal server definition.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzMySqlServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AdministratorLoginPassword <SecureString>] [-BackupGeoRedundantBackup <String>]
- [-BackupIntervalHour <Int32>] [-BackupRetentionDay <Int32>] [-DataEncryptionGeoBackupKeyUri <String>]
- [-DataEncryptionGeoBackupUserAssignedIdentityId <String>] [-DataEncryptionPrimaryKeyUri <String>]
- [-DataEncryptionPrimaryUserAssignedIdentityId <String>] [-DataEncryptionType <String>]
- [-EnableSystemAssignedIdentity <Boolean?>] [-HighAvailabilityMode <String>]
- [-HighAvailabilityStandbyAvailabilityZone <String>] [-MaintenanceWindowCustomWindow <String>]
- [-MaintenanceWindowDayOfWeek <Int32>] [-MaintenanceWindowStartHour <Int32>]
- [-MaintenanceWindowStartMinute <Int32>] [-ReplicationRole <String>] [-SkuName <String>] [-SkuTier <String>]
- [-StorageAutoGrow <String>] [-StorageAutoIoScaling <String>] [-StorageIop <Int32>]
- [-StorageLogOnDisk <String>] [-StorageSizeGb <Int32>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AdministratorLoginPassword <SecureString>] [-BackupRetentionDay <Int32>] [-GeoRedundantBackup <String>]
+ [-IdentityType <String>] [-MinimalTlsVersion <String>] [-PublicNetworkAccess <String>]
+ [-ReplicationRole <String>] [-Sku <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuSize <String>]
+ [-SkuTier <String>] [-SslEnforcement <String>] [-StorageAutoGrow <String>] [-StorageInMb <Int32>]
+ [-Tag <Hashtable>] [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzMySqlServer -InputObject <IMySqlIdentity> [-AdministratorLoginPassword <SecureString>]
- [-BackupGeoRedundantBackup <String>] [-BackupIntervalHour <Int32>] [-BackupRetentionDay <Int32>]
- [-DataEncryptionGeoBackupKeyUri <String>] [-DataEncryptionGeoBackupUserAssignedIdentityId <String>]
- [-DataEncryptionPrimaryKeyUri <String>] [-DataEncryptionPrimaryUserAssignedIdentityId <String>]
- [-DataEncryptionType <String>] [-EnableSystemAssignedIdentity <Boolean?>] [-HighAvailabilityMode <String>]
- [-HighAvailabilityStandbyAvailabilityZone <String>] [-MaintenanceWindowCustomWindow <String>]
- [-MaintenanceWindowDayOfWeek <Int32>] [-MaintenanceWindowStartHour <Int32>]
- [-MaintenanceWindowStartMinute <Int32>] [-ReplicationRole <String>] [-SkuName <String>] [-SkuTier <String>]
- [-StorageAutoGrow <String>] [-StorageAutoIoScaling <String>] [-StorageIop <Int32>]
- [-StorageLogOnDisk <String>] [-StorageSizeGb <Int32>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-BackupRetentionDay <Int32>] [-GeoRedundantBackup <String>] [-IdentityType <String>]
+ [-MinimalTlsVersion <String>] [-PublicNetworkAccess <String>] [-ReplicationRole <String>] [-Sku <String>]
+ [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuSize <String>] [-SkuTier <String>]
+ [-SslEnforcement <String>] [-StorageAutoGrow <String>] [-StorageInMb <Int32>] [-Tag <Hashtable>]
  [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaJsonFilePath
+```
+Update-AzMySqlServer -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzMySqlServer -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates a new server or updates an existing server.
-The update action will overwrite the existing server.
+Update an existing server.
+The request body can contain one to many of the properties present in the normal server definition.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update MySql server by resource group and server name
 ```powershell
-{{ Add code here }}
+Update-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -SslEnforcement Disabled
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----          -------- ------------------ ------- ----------------------- -------   -------        --------------
+mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4 GeneralPurpose Disabled
 ```
 
-{{ Add description here }}
+This cmdlet updates MySql server by resource group and server name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update MySql server by identity.
 ```powershell
-{{ Add code here }}
+Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Update-AzMySqlServer -BackupRetentionDay 23 -StorageInMb 10240
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----          -------- ------------------ ------- ----------------------- -------   -------        --------------
+mysql-test    eastus   mysql_test         5.7     10240                   GP_Gen5_4 GeneralPurpose Disabled
 ```
 
-{{ Add description here }}
+This cmdlet updates MySql server by identity.
 
 ## PARAMETERS
 
 ### -AdministratorLoginPassword
-The password of the administrator login (required for server creation).
+The password of the administrator login.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -104,117 +112,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BackupGeoRedundantBackup
-Whether or not geo redundant backup is enabled.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BackupIntervalHour
-Backup interval hours for the server.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -BackupRetentionDay
 Backup retention days for the server.
+Day count is between 7 and 35.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DataEncryptionGeoBackupKeyUri
-Geo backup key uri as key vault can't cross region, need cmk in same region as geo backup
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DataEncryptionGeoBackupUserAssignedIdentityId
-Geo backup user identity resource id as identity can't cross region, need identity in same region as geo backup
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DataEncryptionPrimaryKeyUri
-Primary key uri
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DataEncryptionPrimaryUserAssignedIdentityId
-Primary user identity resource id
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DataEncryptionType
-The key type, AzureKeyVault for enable cmk, SystemManaged for disable cmk.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -240,12 +144,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableSystemAssignedIdentity
-Decides if enable a system assigned identity for the resource.
+### -GeoRedundantBackup
+Enable Geo-redundant or not for server backup.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -255,27 +159,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HighAvailabilityMode
-High availability mode for a server.
+### -IdentityType
+The identity type.
+Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HighAvailabilityStandbyAvailabilityZone
-Availability zone of the standby server.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -300,57 +190,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -MaintenanceWindowCustomWindow
-indicates whether custom window is enabled or disabled
+### -JsonFilePath
+Path of Json file supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateViaJsonFilePath
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MaintenanceWindowDayOfWeek
-day of week for maintenance window
+### -JsonString
+Json string supplied to the Update operation
 
 ```yaml
-Type: System.Int32
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateViaJsonString
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MaintenanceWindowStartHour
-start hour for maintenance window
+### -MinimalTlsVersion
+Enforce a minimal Tls version for the server.
 
 ```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MaintenanceWindowStartMinute
-start minute for maintenance window
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -365,7 +240,7 @@ The name of the server.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: ServerName
 
 Required: True
@@ -390,12 +265,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ReplicationRole
-The replication role.
+### -PublicNetworkAccess
+Whether or not public network access is allowed for this server.
+Value is optional but if passed in, must be 'Enabled' or 'Disabled'
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReplicationRole
+The replication role of the server.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -411,7 +302,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -421,13 +312,58 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SkuName
-The name of the sku, e.g.
-Standard_D32s_v3.
+### -Sku
+The name of the sku, typically, tier + family + cores, e.g.
+B_Gen4_1, GP_Gen5_8.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuCapacity
+The scale up/out capacity, representing server's compute units.
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuFamily
+The family of hardware.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuSize
+The size code, to be interpreted by resource as appropriate.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -439,11 +375,26 @@ Accept wildcard characters: False
 
 ### -SkuTier
 The tier of the particular SKU, e.g.
-GeneralPurpose.
+Basic.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SslEnforcement
+Enable ssl enforcement or not when connect to server.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -454,11 +405,11 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAutoGrow
-Enable Storage Auto Grow or not.
+Enable Storage Auto Grow.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -468,57 +419,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageAutoIoScaling
-Enable IO Auto Scaling or not.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageIop
-Storage IOPS for a server.
+### -StorageInMb
+Max storage allowed for a server.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageLogOnDisk
-Enable Log On Disk or not.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageSizeGb
-Max storage size allowed for a server.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -533,7 +439,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -544,27 +450,11 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags.
+Application-specific metadata in the form of key-value pairs.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UserAssignedIdentity
-The array of user assigned identities associated with the resource.
-The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -575,11 +465,11 @@ Accept wildcard characters: False
 ```
 
 ### -Version
-Server version.
+The version of a server.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False

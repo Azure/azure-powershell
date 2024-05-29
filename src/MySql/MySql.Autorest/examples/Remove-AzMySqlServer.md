@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove MySql server by resourceGroup and server name
 ```powershell
-{{ Add code here }}
+Remove-AzMySqlServer -ResourceGroupName PowershellMySqlTest -Name mysql-test
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This cmdlet removes MySql server by resourceGroup and server name.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove MySql server by identity
 ```powershell
-{{ Add code here }}
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test"
+Remove-AzMySqlServer -InputObject $ID
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+These cmdlets remove MySql server by identity.

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzMySqlFirewallRule
 
 ## SYNOPSIS
-Deletes a firewall rule.
+Deletes a server firewall rule.
 
 ## SYNTAX
 
@@ -25,38 +25,31 @@ Remove-AzMySqlFirewallRule -InputObject <IMySqlIdentity> [-DefaultProfile <PSObj
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentityFlexibleServer
+### DeleteViaIdentityServer
 ```
-Remove-AzMySqlFirewallRule -FlexibleServerInputObject <IMySqlIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzMySqlFirewallRule -Name <String> -ServerInputObject <IMySqlIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes a firewall rule.
+Deletes a server firewall rule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove MySql Firewall Rule by name
 ```powershell
-{{ Add code here }}
+Remove-AzMySqlFirewallRule -Name rule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This cmdlet removes MySql Firewall Rule by name.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove MySql Firewall Rule by identity
 ```powershell
-{{ Add code here }}
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/firewallRules/rule"
+Remove-AzMySqlFirewallRule -InputObject $ID
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+These cmdlets remove MySql Firewall Rule by identity.
 
 ## PARAMETERS
 
@@ -91,21 +84,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FlexibleServerInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
-Parameter Sets: DeleteViaIdentityFlexibleServer
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 
@@ -126,7 +104,7 @@ The name of the server firewall rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityFlexibleServer
+Parameter Sets: Delete, DeleteViaIdentityServer
 Aliases: FirewallRuleName
 
 Required: True
@@ -179,6 +157,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServerInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+Parameter Sets: DeleteViaIdentityServer
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

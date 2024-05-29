@@ -15,8 +15,7 @@ Gets information about a configuration of server.
 ### List (Default)
 ```
 Get-AzMySqlConfiguration -ResourceGroupName <String> -ServerName <String> [-SubscriptionId <String[]>]
- [-Keyword <String>] [-Page <Int32>] [-PageSize <Int32>] [-Tag <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -30,10 +29,10 @@ Get-AzMySqlConfiguration -Name <String> -ResourceGroupName <String> -ServerName 
 Get-AzMySqlConfiguration -InputObject <IMySqlIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentityFlexibleServer
+### GetViaIdentityServer
 ```
-Get-AzMySqlConfiguration -FlexibleServerInputObject <IMySqlIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMySqlConfiguration -Name <String> -ServerInputObject <IMySqlIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,27 +40,39 @@ Gets information about a configuration of server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all configurations in specified MySql server
 ```powershell
-{{ Add code here }}
+Get-AzMySqlConfiguration -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                                     Type
+----                                     ----
+audit_log_enabled                        Microsoft.DBforMySQL/servers/configurations
+audit_log_events                         Microsoft.DBforMySQL/servers/configurations
+audit_log_exclude_users                  Microsoft.DBforMySQL/servers/configurations
+audit_log_include_users                  Microsoft.DBforMySQL/servers/configurations
+...
+transaction_prealloc_size                Microsoft.DBforMySQL/servers/configurations
+tx_isolation                             Microsoft.DBforMySQL/servers/configurations
+updatable_views_with_limit               Microsoft.DBforMySQL/servers/configurations
+wait_timeout                             Microsoft.DBforMySQL/servers/configurations
 ```
 
-{{ Add description here }}
+This cmdlet lists all configurations in specified MySql server.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get specified MySql configuration by name
 ```powershell
-{{ Add code here }}
+Get-AzMySqlConfiguration -Name time_zone -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name      Type
+----      ----
+time_zone Microsoft.DBforMySQL/servers/configurations
 ```
 
-{{ Add description here }}
+This cmdlet gets specified MySql configuration by name.
 
 ## PARAMETERS
 
@@ -81,21 +92,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FlexibleServerInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
-Parameter Sets: GetViaIdentityFlexibleServer
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 
@@ -111,60 +107,15 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Keyword
-The keyword of the server configuration.
-
-```yaml
-Type: System.String
-Parameter Sets: List
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the server configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityFlexibleServer
+Parameter Sets: Get, GetViaIdentityServer
 Aliases: ConfigurationName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Page
-The page of the server configuration.
-
-```yaml
-Type: System.Int32
-Parameter Sets: List
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PageSize
-The pageSize of the server configuration.
-
-```yaml
-Type: System.Int32
-Parameter Sets: List
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -184,6 +135,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServerInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+Parameter Sets: GetViaIdentityServer
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -213,21 +179,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-The tags of the server configuration.
-
-```yaml
-Type: System.String
-Parameter Sets: List
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

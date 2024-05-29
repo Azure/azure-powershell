@@ -1,22 +1,26 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update MySql configuration by name
 ```powershell
-{{ Add code here }}
+Update-AzMySqlConfiguration -Name net_retry_count -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -Value 15
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name            Value
+----            -----
+net_retry_count 15
 ```
 
-{{ Add description here }}
+This cmdlet updates MySql configuration by name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update MySql configuration by identity.
 ```powershell
-{{ Add code here }}
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/configurations/wait_timeout"
+Update-AzMySqlConfiguration -InputObject $ID -Value 150
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name         Value
+----         -----
+wait_timeout 150
 ```
 
-{{ Add description here }}
-
+These cmdlets update MySql configuration by identity.

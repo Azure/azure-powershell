@@ -15,21 +15,48 @@ Creates a new firewall rule or updates an existing firewall rule.
 ### UpdateExpanded (Default)
 ```
 Update-AzMySqlFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <String>
- [-SubscriptionId <String>] [-EndIPAddress <String>] [-StartIPAddress <String>] [-DefaultProfile <PSObject>]
+ -EndIPAddress <String> -StartIPAddress <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ClientIPAddress
+```
+Update-AzMySqlFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <String>
+ -ClientIPAddress <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ClientIPAddressViaIdentity
+```
+Update-AzMySqlFirewallRule -InputObject <IMySqlIdentity> -ClientIPAddress <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzMySqlFirewallRule -InputObject <IMySqlIdentity> [-EndIPAddress <String>] [-StartIPAddress <String>]
+Update-AzMySqlFirewallRule -InputObject <IMySqlIdentity> -EndIPAddress <String> -StartIPAddress <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityFlexibleServerExpanded
+### UpdateViaIdentityServerExpanded
 ```
-Update-AzMySqlFirewallRule -FlexibleServerInputObject <IMySqlIdentity> -Name <String> [-EndIPAddress <String>]
- [-StartIPAddress <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Update-AzMySqlFirewallRule -Name <String> -ServerInputObject <IMySqlIdentity> -EndIPAddress <String>
+ -StartIPAddress <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzMySqlFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzMySqlFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,27 +64,46 @@ Creates a new firewall rule or updates an existing firewall rule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update MySql Firewall Rule by name
 ```powershell
-{{ Add code here }}
+Update-AzMySqlFirewallRule -Name rule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -EndIPAddress 0.0.0.3 -StartIPAddress 0.0.0.2
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name StartIPAddress EndIPAddress
+---- -------------- ------------
+rule 0.0.0.2        0.0.0.3
 ```
 
-{{ Add description here }}
+This cmdlet updates MySql Firewall Rule by name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update MySql Firewall Rule by identity.
 ```powershell
-{{ Add code here }}
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/firewallRules/rule"
+Update-AzMySqlFirewallRule -InputObject $ID -EndIPAddress 0.0.0.3 -StartIPAddress 0.0.0.2
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name StartIPAddress EndIPAddress
+---- -------------- ------------
+rule 0.0.0.2        0.0.0.3
 ```
 
-{{ Add description here }}
+These cmdlets update MySql Firewall Rule by identity.
+
+### Example 3: Update MySql Firewall Rule by -ClientIPAddress.
+```powershell
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/firewallRules/rule"
+Update-AzMySqlFirewallRule -InputObject $ID -ClientIPAddress 0.0.0.2
+```
+
+```output
+Name StartIPAddress EndIPAddress
+---- -------------- ------------
+rule 0.0.0.2        0.0.0.2
+```
+
+These cmdlets update MySql Firewall Rule by -ClientIPAddress.
 
 ## PARAMETERS
 
@@ -70,6 +116,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClientIPAddress
+Client specified single IP of the server firewall rule.
+Must be IPv4 format.
+
+```yaml
+Type: System.String
+Parameter Sets: ClientIPAddress, ClientIPAddressViaIdentity
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -98,28 +160,13 @@ Must be IPv4 format.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FlexibleServerInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
-Parameter Sets: UpdateViaIdentityFlexibleServerExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServerExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -128,7 +175,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: ClientIPAddressViaIdentity, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -138,12 +185,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the server firewall rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityFlexibleServerExpanded
+Parameter Sets: ClientIPAddress, UpdateExpanded, UpdateViaIdentityServerExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: FirewallRuleName
 
 Required: True
@@ -174,7 +251,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: ClientIPAddress, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -184,12 +261,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ServerInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+Parameter Sets: UpdateViaIdentityServerExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ServerName
 The name of the server.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: ClientIPAddress, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -205,10 +297,10 @@ Must be IPv4 format.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityServerExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -220,7 +312,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: ClientIPAddress, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False

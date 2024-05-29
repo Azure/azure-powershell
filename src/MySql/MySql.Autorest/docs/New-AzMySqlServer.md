@@ -15,54 +15,36 @@ The update action will overwrite the existing server.
 
 ### CreateExpanded (Default)
 ```
-New-AzMySqlServer -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-AdministratorLogin <String>] [-AdministratorLoginPassword <SecureString>] [-AvailabilityZone <String>]
- [-BackupGeoRedundantBackup <String>] [-BackupIntervalHour <Int32>] [-BackupRetentionDay <Int32>]
- [-CreateMode <String>] [-DataEncryptionGeoBackupKeyUri <String>]
- [-DataEncryptionGeoBackupUserAssignedIdentityId <String>] [-DataEncryptionPrimaryKeyUri <String>]
- [-DataEncryptionPrimaryUserAssignedIdentityId <String>] [-DataEncryptionType <String>]
- [-EnableSystemAssignedIdentity] [-HighAvailabilityMode <String>]
- [-HighAvailabilityStandbyAvailabilityZone <String>] [-ImportSourcePropertyDataDirPath <String>]
- [-ImportSourcePropertySasToken <String>] [-ImportSourcePropertyStorageType <String>]
- [-ImportSourcePropertyStorageUrl <String>] [-NetworkDelegatedSubnetResourceId <String>]
- [-NetworkPrivateDnsZoneResourceId <String>] [-NetworkPublicNetworkAccess <String>]
- [-ReplicationRole <String>] [-RestorePointInTime <DateTime>] [-SkuName <String>] [-SkuTier <String>]
- [-SourceServerResourceId <String>] [-StorageAutoGrow <String>] [-StorageAutoIoScaling <String>]
- [-StorageIop <Int32>] [-StorageLogOnDisk <String>] [-StorageSizeGb <Int32>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMySqlServer -Name <String> -ResourceGroupName <String> -AdministratorLoginPassword <SecureString>
+ -AdministratorUserName <String> -Location <String> -Sku <String> [-SubscriptionId <String>]
+ [-BackupRetentionDay <Int32>] [-GeoRedundantBackup <String>] [-IdentityType <String>]
+ [-InfrastructureEncryption <String>] [-MinimalTlsVersion <String>] [-PublicNetworkAccess <String>]
+ [-SslEnforcement <String>] [-StorageAutoGrow <String>] [-StorageInMb <Int32>] [-Tag <Hashtable>]
+ [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzMySqlServer -InputObject <IMySqlIdentity> -Location <String> [-AdministratorLogin <String>]
- [-AdministratorLoginPassword <SecureString>] [-AvailabilityZone <String>]
- [-BackupGeoRedundantBackup <String>] [-BackupIntervalHour <Int32>] [-BackupRetentionDay <Int32>]
- [-CreateMode <String>] [-DataEncryptionGeoBackupKeyUri <String>]
- [-DataEncryptionGeoBackupUserAssignedIdentityId <String>] [-DataEncryptionPrimaryKeyUri <String>]
- [-DataEncryptionPrimaryUserAssignedIdentityId <String>] [-DataEncryptionType <String>]
- [-EnableSystemAssignedIdentity] [-HighAvailabilityMode <String>]
- [-HighAvailabilityStandbyAvailabilityZone <String>] [-ImportSourcePropertyDataDirPath <String>]
- [-ImportSourcePropertySasToken <String>] [-ImportSourcePropertyStorageType <String>]
- [-ImportSourcePropertyStorageUrl <String>] [-NetworkDelegatedSubnetResourceId <String>]
- [-NetworkPrivateDnsZoneResourceId <String>] [-NetworkPublicNetworkAccess <String>]
- [-ReplicationRole <String>] [-RestorePointInTime <DateTime>] [-SkuName <String>] [-SkuTier <String>]
- [-SourceServerResourceId <String>] [-StorageAutoGrow <String>] [-StorageAutoIoScaling <String>]
- [-StorageIop <Int32>] [-StorageLogOnDisk <String>] [-StorageSizeGb <Int32>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMySqlServer -InputObject <IMySqlIdentity> -AdministratorLoginPassword <SecureString>
+ -AdministratorUserName <String> -Location <String> -Sku <String> [-BackupRetentionDay <Int32>]
+ [-GeoRedundantBackup <String>] [-IdentityType <String>] [-InfrastructureEncryption <String>]
+ [-MinimalTlsVersion <String>] [-PublicNetworkAccess <String>] [-SslEnforcement <String>]
+ [-StorageAutoGrow <String>] [-StorageInMb <Int32>] [-Tag <Hashtable>] [-Version <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzMySqlServer -Name <String> -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>]
+New-AzMySqlServer -Name <String> -ResourceGroupName <String> -AdministratorLoginPassword <SecureString>
+ -AdministratorUserName <String> -JsonFilePath <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzMySqlServer -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMySqlServer -Name <String> -ResourceGroupName <String> -AdministratorLoginPassword <SecureString>
+ -AdministratorUserName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,55 +53,48 @@ The update action will overwrite the existing server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new MySql server
 ```powershell
-{{ Add code here }}
+New-AzMySqlServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -Location eastus -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku GP_Gen5_4
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
+----          -------- ------------------ ------- ----------------------- -------   -------        ------------
+mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4 GeneralPurpose Enabled
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+These cmdlets create a new MySql server.
 
 ## PARAMETERS
 
-### -AdministratorLogin
-The administrator's login name of a server.
-Can only be specified when the server is being created (and is required for creation).
+### -AdministratorLoginPassword
+The password of the administrator.
+Minimum 8 characters and maximum 128 characters.
+Password must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers, and non-alphanumeric characters.
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: System.Security.SecureString
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AdministratorLoginPassword
-The password of the administrator login (required for server creation).
+### -AdministratorUserName
+Administrator username for the server.
+Once set, it cannot be changed.
 
 ```yaml
-Type: System.Security.SecureString
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -141,146 +116,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AvailabilityZone
-availability Zone information of the server.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BackupGeoRedundantBackup
-Whether or not geo redundant backup is enabled.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BackupIntervalHour
-Backup interval hours for the server.
-
-```yaml
-Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -BackupRetentionDay
 Backup retention days for the server.
+Day count is between 7 and 35.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CreateMode
-The mode to create a new MySQL server.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DataEncryptionGeoBackupKeyUri
-Geo backup key uri as key vault can't cross region, need cmk in same region as geo backup
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DataEncryptionGeoBackupUserAssignedIdentityId
-Geo backup user identity resource id as identity can't cross region, need identity in same region as geo backup
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DataEncryptionPrimaryKeyUri
-Primary key uri
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DataEncryptionPrimaryUserAssignedIdentityId
-Primary user identity resource id
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DataEncryptionType
-The key type, AzureKeyVault for enable cmk, SystemManaged for disable cmk.
-
-```yaml
-Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -307,23 +148,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableSystemAssignedIdentity
-Decides if enable a system assigned identity for the resource.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HighAvailabilityMode
-High availability mode for a server.
+### -GeoRedundantBackup
+Enable Geo-redundant or not for server backup.
 
 ```yaml
 Type: System.String
@@ -337,8 +163,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HighAvailabilityStandbyAvailabilityZone
-Availability zone of the standby server.
+### -IdentityType
+The identity type.
+Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
 
 ```yaml
 Type: System.String
@@ -352,54 +179,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ImportSourcePropertyDataDirPath
-Relative path of data directory in storage.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ImportSourcePropertySasToken
-Sas token for accessing source storage.
-Read and list permissions are required for sas token.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ImportSourcePropertyStorageType
-Storage type of import source.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ImportSourcePropertyStorageUrl
-Uri of the import source storage.
+### -InfrastructureEncryption
+Status showing whether the server enabled infrastructure encryption.
 
 ```yaml
 Type: System.String
@@ -459,7 +240,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The geo-location where the resource lives
+The location the resource resides in.
 
 ```yaml
 Type: System.String
@@ -467,6 +248,21 @@ Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinimalTlsVersion
+Enforce a minimal Tls version for the server.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -488,52 +284,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkDelegatedSubnetResourceId
-Delegated subnet resource id used to setup vnet for a server.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NetworkPrivateDnsZoneResourceId
-Private DNS zone resource id.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NetworkPublicNetworkAccess
-Whether or not public network access is allowed for this server.
-Value is 'Disabled' when server has VNet integration.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -549,8 +299,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ReplicationRole
-The replication role.
+### -PublicNetworkAccess
+Whether or not public network access is allowed for this server.
+Value is optional but if passed in, must be 'Enabled' or 'Disabled'
 
 ```yaml
 Type: System.String
@@ -580,55 +331,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RestorePointInTime
-Restore point creation time (ISO8601 format), specifying the time to restore from.
-
-```yaml
-Type: System.DateTime
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuName
-The name of the sku, e.g.
-Standard_D32s_v3.
+### -Sku
+The name of the sku, typically, tier + family + cores, e.g.
+B_Gen4_1, GP_Gen5_8.
 
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SkuTier
-The tier of the particular SKU, e.g.
-GeneralPurpose.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SourceServerResourceId
-The source MySQL server id.
+### -SslEnforcement
+Enable ssl enforcement or not when connect to server.
 
 ```yaml
 Type: System.String
@@ -643,7 +363,7 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAutoGrow
-Enable Storage Auto Grow or not.
+Enable Storage Auto Grow.
 
 ```yaml
 Type: System.String
@@ -657,53 +377,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageAutoIoScaling
-Enable IO Auto Scaling or not.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageIop
-Storage IOPS for a server.
-
-```yaml
-Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageLogOnDisk
-Enable Log On Disk or not.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageSizeGb
-Max storage size allowed for a server.
+### -StorageInMb
+Max storage allowed for a server.
 
 ```yaml
 Type: System.Int32
@@ -733,26 +408,10 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags.
+Application-specific metadata in the form of key-value pairs.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UserAssignedIdentity
-The array of user assigned identities associated with the resource.
-The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
-
-```yaml
-Type: System.String[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 

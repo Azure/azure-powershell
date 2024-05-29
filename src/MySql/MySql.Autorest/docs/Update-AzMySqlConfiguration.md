@@ -8,28 +8,46 @@ schema: 2.0.0
 # Update-AzMySqlConfiguration
 
 ## SYNOPSIS
-Updates a configuration of a server.
+Update a configuration of a server.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzMySqlConfiguration -Name <String> -ResourceGroupName <String> -ServerName <String>
- [-SubscriptionId <String>] [-ConfigurationValue <String>] [-Source <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Source <String>] [-Value <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateExpanded1
+```
+Update-AzMySqlConfiguration -Name <String> -ResourceGroupName <String> -ServerName <String>
+ [-SubscriptionId <String>] [-Source <String>] [-Value <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzMySqlConfiguration -InputObject <IMySqlIdentity> [-ConfigurationValue <String>] [-Source <String>]
+Update-AzMySqlConfiguration -InputObject <IMySqlIdentity> [-Source <String>] [-Value <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityFlexibleServerExpanded
+### UpdateViaIdentityExpanded1
 ```
-Update-AzMySqlConfiguration -FlexibleServerInputObject <IMySqlIdentity> -Name <String>
- [-ConfigurationValue <String>] [-Source <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzMySqlConfiguration -InputObject <IMySqlIdentity> [-Source <String>] [-Value <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityServerExpanded
+```
+Update-AzMySqlConfiguration -Name <String> -ServerInputObject <IMySqlIdentity> [-Source <String>]
+ [-Value <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityServerExpanded1
+```
+Update-AzMySqlConfiguration -Name <String> -ServerInputObject <IMySqlIdentity> [-Source <String>]
+ [-Value <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -47,31 +65,36 @@ Update-AzMySqlConfiguration -Name <String> -ResourceGroupName <String> -ServerNa
 ```
 
 ## DESCRIPTION
-Updates a configuration of a server.
+Update a configuration of a server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update MySql configuration by name
 ```powershell
-{{ Add code here }}
+Update-AzMySqlConfiguration -Name net_retry_count -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -Value 15
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name            Value
+----            -----
+net_retry_count 15
 ```
 
-{{ Add description here }}
+This cmdlet updates MySql configuration by name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update MySql configuration by identity.
 ```powershell
-{{ Add code here }}
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/configurations/wait_timeout"
+Update-AzMySqlConfiguration -InputObject $ID -Value 150
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name         Value
+----         -----
+wait_timeout 150
 ```
 
-{{ Add description here }}
+These cmdlets update MySql configuration by identity.
 
 ## PARAMETERS
 
@@ -81,21 +104,6 @@ Run the command as a job
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConfigurationValue
-Value of the configuration.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityFlexibleServerExpanded
 Aliases:
 
 Required: False
@@ -121,27 +129,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FlexibleServerInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
-Parameter Sets: UpdateViaIdentityFlexibleServerExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -186,7 +179,7 @@ The name of the server configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityFlexibleServerExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityServerExpanded, UpdateViaIdentityServerExpanded1, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: ConfigurationName
 
 Required: True
@@ -217,7 +210,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -227,12 +220,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ServerInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+Parameter Sets: UpdateViaIdentityServerExpanded, UpdateViaIdentityServerExpanded1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ServerName
 The name of the server.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -247,7 +255,7 @@ Source of the configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityFlexibleServerExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1, UpdateViaIdentityServerExpanded, UpdateViaIdentityServerExpanded1
 Aliases:
 
 Required: False
@@ -262,12 +270,27 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Value
+Value of the configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1, UpdateViaIdentityServerExpanded, UpdateViaIdentityServerExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

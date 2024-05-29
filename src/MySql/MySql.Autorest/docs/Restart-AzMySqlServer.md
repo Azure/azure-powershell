@@ -12,45 +12,16 @@ Restarts a server.
 
 ## SYNTAX
 
-### RestartExpanded (Default)
+### Restart (Default)
 ```
 Restart-AzMySqlServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-MaxFailoverSecond <Int32>] [-RestartWithFailover <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Restart
-```
-Restart-AzMySqlServer -Name <String> -ResourceGroupName <String> -Parameter <IServerRestartParameter>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestartViaIdentity
 ```
-Restart-AzMySqlServer -InputObject <IMySqlIdentity> -Parameter <IServerRestartParameter>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RestartViaIdentityExpanded
-```
-Restart-AzMySqlServer -InputObject <IMySqlIdentity> [-MaxFailoverSecond <Int32>]
- [-RestartWithFailover <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### RestartViaJsonFilePath
-```
-Restart-AzMySqlServer -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### RestartViaJsonString
-```
-Restart-AzMySqlServer -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Restart-AzMySqlServer -InputObject <IMySqlIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,27 +29,20 @@ Restarts a server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Restart MySql server by resource group and server name
 ```powershell
-{{ Add code here }}
+Restart-AzMySqlServer -ResourceGroupName PowershellMySqlTest -Name mysql-test
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This cmdlet restarts MySql server by resource group and server name.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Restart MySql server by identity
 ```powershell
-{{ Add code here }}
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/restart"
+Restart-AzMySqlServer -InputObject $ID
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+These cmdlets restart MySql server by identity.
 
 ## PARAMETERS
 
@@ -118,7 +82,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
-Parameter Sets: RestartViaIdentity, RestartViaIdentityExpanded
+Parameter Sets: RestartViaIdentity
 Aliases:
 
 Required: True
@@ -128,57 +92,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Restart operation
-
-```yaml
-Type: System.String
-Parameter Sets: RestartViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Restart operation
-
-```yaml
-Type: System.String
-Parameter Sets: RestartViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MaxFailoverSecond
-The maximum allowed failover time in seconds.
-
-```yaml
-Type: System.Int32
-Parameter Sets: RestartExpanded, RestartViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the server.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart, RestartExpanded, RestartViaJsonFilePath, RestartViaJsonString
+Parameter Sets: Restart
 Aliases: ServerName
 
 Required: True
@@ -203,21 +122,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Server restart parameters.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IServerRestartParameter
-Parameter Sets: Restart, RestartViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -PassThru
 Returns true when the command succeeds
 
@@ -239,25 +143,10 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart, RestartExpanded, RestartViaJsonFilePath, RestartViaJsonString
+Parameter Sets: Restart
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RestartWithFailover
-Whether or not failover to standby server when restarting a server with high availability enabled.
-
-```yaml
-Type: System.String
-Parameter Sets: RestartExpanded, RestartViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -269,7 +158,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart, RestartExpanded, RestartViaJsonFilePath, RestartViaJsonString
+Parameter Sets: Restart
 Aliases:
 
 Required: False
@@ -316,8 +205,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IServerRestartParameter
 
 ## OUTPUTS
 

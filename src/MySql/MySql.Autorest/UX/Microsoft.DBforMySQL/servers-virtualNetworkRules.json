@@ -1,0 +1,95 @@
+{
+  "resourceType": "servers/virtualNetworkRules",
+  "apiVersion": "2017-12-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.mysql"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMySqlVirtualNetworkRule",
+      "description": "Gets a virtual network rule.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqlvirtualnetworkrule"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-ServerName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a virtual network rule.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.virtualNetworkRuleName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServerName",
+              "value": "[Path.serverName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzMySqlVirtualNetworkRule",
+      "description": "Deletes the virtual network rule with the given name.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mysql/remove-azmysqlvirtualnetworkrule"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-ServerName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes the virtual network rule with the given name.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.virtualNetworkRuleName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServerName",
+              "value": "[Path.serverName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
