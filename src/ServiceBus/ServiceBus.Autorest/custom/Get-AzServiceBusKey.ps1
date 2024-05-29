@@ -20,7 +20,7 @@ Gets the SASKey of a ServiceBus namespace, queue or topic.
 #>
 
 function Get-AzServiceBusKey{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IAccessKeys])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys])]
     [CmdletBinding(DefaultParameterSetName = 'GetExpandedNamespace', PositionalBinding = $false, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(ParameterSetName = 'GetExpandedQueue', Mandatory, HelpMessage = "The name of the Authorization Rule")]

@@ -19,6 +19,14 @@ Describe 'Update-AzVMwarePlacementPolicy' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
+    It 'UpdateViaIdentityPrivateCloudExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaIdentityClusterExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
     It 'UpdateViaIdentityExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

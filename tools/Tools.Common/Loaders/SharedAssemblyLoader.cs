@@ -53,7 +53,7 @@ namespace Tools.Common.Loaders
                 }
                 else
                 {
-                    Console.WriteLine($"PreloadSharedAssemblies: Could not find directory {libFolder}.");
+                    Console.WriteLine($"PreloadSharedAssemblies: Could not find directory {sharedAssemblyFolder}.");
                 }
             }
         }

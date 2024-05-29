@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the CustomLocation service.
 
 ---
-## Status
-[![Az.CustomLocation](https://img.shields.io/powershellgallery/v/Az.CustomLocation.svg?style=flat-square&label=Az.CustomLocation "Az.CustomLocation")](https://www.powershellgallery.com/packages/Az.CustomLocation/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -33,7 +30,7 @@ For information on how to develop for `Az.CustomLocation`, see [how-to.md](how-t
 commit: f1180941e238bc99ac71f9535ecd126bb8b77d8f
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
-input-file: 
+input-file:
   - $(repo)/specification/extendedlocation/resource-manager/Microsoft.ExtendedLocation/preview/2021-08-31-preview/customlocations.json
 
 module-version: 0.1.0
@@ -43,7 +40,7 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 
 directive:
-  - from: swagger-document 
+  - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ExtendedLocation/customLocations/{resourceName}"].delete.responses
     transform: >-
       return {
@@ -63,8 +60,7 @@ directive:
           }
         }
       }
-
-  - from: swagger-document 
+  - from: swagger-document
     where: $.definitions.customLocationProperties.properties.provisioningState
     transform: >-
       return {
@@ -89,8 +85,16 @@ directive:
     where: $
     transform: return $.replace(/\{resourceName\}\/enabledResourceTypes/g, "{resourceName}/enabledresourcetypes")
 
+  - from: swagger-document
+    where: $.definitions.customLocation
+    transform: $['required'] = ['properties']
+
+  - from: swagger-document
+    where: $.definitions.customLocationProperties
+    transform: $['required'] = ['clusterExtensionIds', 'hostResourceId', 'namespace']
+
   - where:
-      variant: ^(Create|Update).*(?<!Expanded|JsonFilePath|JsonString)$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
       subject: CustomLocation
@@ -114,11 +118,6 @@ directive:
 
   - where:
       subject: CustomLocationOperation
-    hide: true
-
-  - where:
-      verb: New|Update
-      subject: CustomLocation
     hide: true
 
   - where:

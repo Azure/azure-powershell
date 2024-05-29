@@ -1,0 +1,105 @@
+{
+  "resourceType": "profiles/endpoints/origins",
+  "apiVersion": "2024-02-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.cdn"
+  },
+  "commands": [
+    {
+      "name": "Get-AzCdnOrigin",
+      "description": "Gets an existing origin within an endpoint.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnorigin"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EndpointName <String>",
+              "-Name <String>",
+              "-ProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets an existing origin within an endpoint.",
+          "parameters": [
+            {
+              "name": "-EndpointName",
+              "value": "[Path.endpointName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.originName]"
+            },
+            {
+              "name": "-ProfileName",
+              "value": "[Path.profileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzCdnOrigin",
+      "description": "Deletes an existing origin within an endpoint.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cdn/remove-azcdnorigin"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EndpointName <String>",
+              "-Name <String>",
+              "-ProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes an existing origin within an endpoint.",
+          "parameters": [
+            {
+              "name": "-EndpointName",
+              "value": "[Path.endpointName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.originName]"
+            },
+            {
+              "name": "-ProfileName",
+              "value": "[Path.profileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

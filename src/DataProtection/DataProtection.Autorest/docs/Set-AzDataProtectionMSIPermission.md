@@ -22,8 +22,9 @@ Set-AzDataProtectionMSIPermission -BackupInstance <IBackupInstanceResource> -Per
 ### SetPermissionsForRestore
 ```
 Set-AzDataProtectionMSIPermission -PermissionsScope <String> -RestoreRequest <IAzureBackupRestoreRequest>
- -SnapshotResourceGroupId <String> -VaultName <String> -VaultResourceGroup <String> [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -VaultName <String> -VaultResourceGroup <String> [-DatasourceType <DatasourceTypes>]
+ [-SnapshotResourceGroupId <String>] [-StorageAccountARMId <String>] [-SubscriptionId <String>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,11 +108,26 @@ Backup instance request object which will be used to configure backup
 To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBackupInstanceResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstanceResource
 Parameter Sets: SetPermissionsForBackup
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DatasourceType
+Datasource Type
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes
+Parameter Sets: SetPermissionsForRestore
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -153,7 +169,7 @@ Restore request object which will be used for restore
 To construct, see NOTES section for RESTOREREQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IAzureBackupRestoreRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRestoreRequest
 Parameter Sets: SetPermissionsForRestore
 Aliases:
 
@@ -172,7 +188,38 @@ Type: System.String
 Parameter Sets: SetPermissionsForRestore
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccountARMId
+Target storage account ARM Id.
+Use this parameter for DatasourceType AzureDatabaseForMySQL, AzureDatabaseForPGFlexServer.
+
+```yaml
+Type: System.String
+Parameter Sets: SetPermissionsForRestore
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription Id of the backup vault
+
+```yaml
+Type: System.String
+Parameter Sets: SetPermissionsForRestore
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -200,7 +247,7 @@ Resource group of the backup vault
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: ResourceGroupName
 
 Required: True
 Position: Named

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzVMwareDatastore
 
 ## SYNOPSIS
-Get a datastore in a private cloud cluster
+Get a Datastore
 
 ## SYNTAX
 
@@ -42,7 +42,7 @@ Get-AzVMwareDatastore -ClusterName <String> -Name <String> -PrivateCloudInputObj
 ```
 
 ## DESCRIPTION
-Get a datastore in a private cloud cluster
+Get a Datastore
 
 ## EXAMPLES
 
@@ -77,7 +77,6 @@ Get a datastore in a data store name.
 
 ### -ClusterInputObject
 Identity Parameter
-To construct, see NOTES section for CLUSTERINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -92,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterName
-Name of the cluster in the private cloud
+Name of the cluster
 
 ```yaml
 Type: System.String
@@ -124,7 +123,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -139,7 +137,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the datastore in the private cloud cluster
+Name of the datastore
 
 ```yaml
 Type: System.String
@@ -155,7 +153,6 @@ Accept wildcard characters: False
 
 ### -PrivateCloudInputObject
 Identity Parameter
-To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -202,6 +199,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]

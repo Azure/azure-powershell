@@ -50,7 +50,7 @@ function Restore-AzMySqlFlexibleServer_PointInTimeRestore {
         [System.String]
         ${Zone},
 
-        [Parameter(HelpMessage = 'The id of an existing Subnet the private access server will created to. Please note that the subnet will be delegated to Microsoft.DBforPostgreSQL/flexibleServers. After delegation, this subnet cannot be used for any other type of Azure resources.')]
+        [Parameter(HelpMessage = 'The id of an existing Subnet the private access server will created to. Please note that the subnet will be delegated to Microsoft.DBforMySQL/flexibleServers. After delegation, this subnet cannot be used for any other type of Azure resources.')]
         [System.String]
         ${Subnet},
 

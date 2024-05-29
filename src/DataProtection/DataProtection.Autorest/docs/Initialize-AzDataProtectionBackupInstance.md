@@ -48,7 +48,7 @@ This object can now be used to configure backup for the given disk.
 
 ### Example 2: Initialize Backup instance object for AzureKubernetesService
 ```powershell
-$policy = Get-AzDataProtectionBackupPolicy -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -ResourceGroupName "resourceGroupName" | where {$_.Name -eq "policyName"}
+$policy = Get-AzDataProtectionBackupPolicy -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -ResourceGroupName "resourceGroupName" | Where-Object {$_.Name -eq "policyName"}
 $sourceClusterId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.ContainerService/managedClusters/aks-cluster"
 $snapshotResourceGroupId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName"
 $backupConfig = New-AzDataProtectionBackupConfigurationClientObject -SnapshotVolume $true -IncludeClusterScopeResource $true -DatasourceType AzureKubernetesService -LabelSelector "x=y","foo=bar" 
@@ -68,15 +68,35 @@ The fourth command backup configuration object needed for AzureKubernetesService
 The fifth command initializes the client object for backup instance.
 This object can now be used to configure backup using New-AzDataProtectionBackupInstance after all necessary permissions are assigned with Set-AzDataProtectionMSIPermission command.
 
+### Example 3: Configure protection for AzureDatabaseForPGFlexServer
+```powershell
+$vault = Get-AzDataProtectionBackupVault -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName"
+$pol = Get-AzDataProtectionBackupPolicy -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -ResourceGroupName "resourceGroupName" -Name "policyName"
+$datasourceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rgName/providers/Microsoft.DBforPostgreSQL/flexibleServers/test-pgflex"
+$backupInstanceClientObject = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureDatabaseForPGFlexServer -DatasourceLocation $vault.Location -PolicyId $pol[0].Id -DatasourceId $datasourceId
+```
+
+```output
+Name BackupInstanceName
+---- ------------------
+     test-pgflex-test-pgflex-ed68435e-069t-4b4a-9d84-d0c194800fc2
+```
+
+The first command gets the backup vault.
+The second command get the AzureDatabaseForPGFlexServer policy.
+The third command datasource ARM Id.
+The fourth command initializes the backup instance.
+Similarly use datasourcetype AzureDatabaseForMySQL to initialize backup instance for AzureDatabaseForMySQL.
+
 ## PARAMETERS
 
 ### -BackupConfiguration
 Backup configuration for backup.
-Use this parameter to configure protection for AzureKubernetesService.
+Use this parameter to configure protection for AzureKubernetesService,AzureBlob.
 To construct, see NOTES section for BACKUPCONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBackupDatasourceParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupDatasourceParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -216,7 +236,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBackupInstanceResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstanceResource
 
 ## NOTES
 

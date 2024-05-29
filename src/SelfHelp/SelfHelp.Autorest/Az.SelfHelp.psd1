@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.SelfHelp.private.dll'
   FormatsToProcess = './Az.SelfHelp.format.ps1xml'
-  FunctionsToExport = 'Get-AzSelfHelpDiagnostic', 'Get-AzSelfHelpDiscoverySolution', 'Get-AzSelfHelpSolution', 'Get-AzSelfHelpTroubleshooter', 'Invoke-AzSelfHelpCheckNameAvailability', 'Invoke-AzSelfHelpContinueTroubleshooter', 'New-AzSelfHelpDiagnostic', 'New-AzSelfHelpSolution', 'New-AzSelfHelpTroubleshooter', 'Restart-AzSelfHelpTroubleshooter', 'Stop-AzSelfHelpTroubleshooter', 'Update-AzSelfHelpSolution', '*'
+  FunctionsToExport = 'Get-AzSelfHelpDiagnostic', 'Get-AzSelfHelpDiscoverySolution', 'Get-AzSelfHelpSimplifiedSolution', 'Get-AzSelfHelpSolution', 'Get-AzSelfHelpSolutionSelfHelp', 'Get-AzSelfHelpTroubleshooter', 'Invoke-AzSelfHelpCheckNameAvailability', 'Invoke-AzSelfHelpContinueTroubleshooter', 'Invoke-AzSelfHelpDiscoverySolutionNlpSubscriptionScope', 'Invoke-AzSelfHelpDiscoverySolutionNlpTenantScope', 'Invoke-AzSelfHelpWarmSolutionUp', 'New-AzSelfHelpDiagnostic', 'New-AzSelfHelpSimplifiedSolution', 'New-AzSelfHelpSolution', 'New-AzSelfHelpTroubleshooter', 'Restart-AzSelfHelpTroubleshooter', 'Stop-AzSelfHelpTroubleshooter', 'Update-AzSelfHelpSolution', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

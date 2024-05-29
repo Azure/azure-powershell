@@ -18,7 +18,7 @@ Describe 'Update-AzSynapseKustoPool' {
     It 'UpdateExpanded' {
         $updatedKustoPool = Update-AzSynapseKustoPool -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Name $env.kustoPoolName -SkuName $env.updatedSkuName -SkuSize $env.skuSize
         Validate_Cluster $updatedKustoPool $env.workspaceName $env.kustoPoolName $env.location "Running" "Succeeded" $env.resourceType $env.updatedSkuName $env.skuSize $env.capacity
-        Start-Sleep -Seconds 30
+        Start-TestSleep -Seconds 30
     }
 
     It 'UpdateViaIdentityExpanded' {

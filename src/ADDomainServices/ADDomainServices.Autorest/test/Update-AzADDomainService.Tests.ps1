@@ -18,7 +18,7 @@ Describe 'Update-AzADDomainService' {
     }
 
     It 'UpdateViaIdentityExpanded' {
-        # Start-Sleep -s 240
+        Start-TestSleep 240
         $GetADDomainExample = Get-AzADDomainService -ResourceGroupName $env.ResourceGroupName -Name $env.ADdomainName
         $UpdateADDomain = Update-AzADDomainService -InputObject $GetADDomainExample -DomainSecuritySettingTlsV1 $env.TlsV1Status2
         $UpdateADDomain.DomainSecuritySettingTlsV1 | Should -Be $env.TlsV1Status2

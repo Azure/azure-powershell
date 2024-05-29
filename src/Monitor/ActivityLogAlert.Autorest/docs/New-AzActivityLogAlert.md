@@ -26,7 +26,7 @@ Create a new Activity Log Alert rule or update an existing one.
 
 ### Example 1: Create activity log alert
 ```powershell
-$scope = "subscriptions/"+(Get-AzContext).Subscription.ID
+$scope = "/subscriptions/"+(Get-AzContext).Subscription.ID
 $actiongroup=New-AzActivityLogAlertActionGroupObject -Id $ActionGroupResourceId -WebhookProperty @{"sampleWebhookProperty"="SamplePropertyValue"}
 $condition1=New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject -Equal Administrative -Field category
 $condition2=New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject -Equal Error -Field level
@@ -255,27 +255,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`ACTION <IActionGroup[]>`: The list of the Action Groups. To construct, see NOTES section for ACTIONGROUP properties and create a hash table.
-  - `Id <String>`: The resource ID of the Action Group. This cannot be null or empty.
-  - `[WebhookProperty <IActionGroupWebhookProperties>]`: the dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-`CONDITION <IAlertRuleAnyOfOrLeafCondition[]>`: The list of Activity Log Alert rule conditions. To construct, see NOTES section for CONDITIONALLOF properties and create a hash table.
-  - `[ContainsAny <String[]>]`: The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.
-  - `[Equal <String>]`: The value of the event's field will be compared to this value (case-insensitive) to determine if the condition is met.
-  - `[Field <String>]`: The name of the Activity Log event's field that this condition will examine.         The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties'.
-  - `[AnyOf <IAlertRuleLeafCondition[]>]`: An Activity Log Alert rule condition that is met when at least one of its member leaf conditions are met.
-    - `[ContainsAny <String[]>]`: The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.
-    - `[Equal <String>]`: The value of the event's field will be compared to this value (case-insensitive) to determine if the condition is met.
-    - `[Field <String>]`: The name of the Activity Log event's field that this condition will examine.         The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties'.
 
 ## RELATED LINKS
 

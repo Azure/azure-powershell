@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the SelfHelp service.
 
 ---
-## Status
-[![Az.SelfHelp](https://img.shields.io/powershellgallery/v/Az.SelfHelp.svg?style=flat-square&label=Az.SelfHelp "Az.SelfHelp")](https://www.powershellgallery.com/packages/Az.SelfHelp/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -32,7 +29,7 @@ For information on how to develop for `Az.SelfHelp`, see [how-to.md](how-to.md).
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 270eeb7a7883e0ad4e183e809fb67c6551d0eaa0
+commit: 1145a0df0f91b5f0f1f5ab66667899a61eda5e2b
 require:
   # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
