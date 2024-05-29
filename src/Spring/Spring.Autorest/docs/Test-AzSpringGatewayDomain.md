@@ -19,38 +19,6 @@ Test-AzSpringGatewayDomain -GatewayName <String> -ResourceGroupName <String> -Se
  [<CommonParameters>]
 ```
 
-### Validate
-```
-Test-AzSpringGatewayDomain -GatewayName <String> -ResourceGroupName <String> -ServiceName <String>
- -ValidatePayload <ICustomDomainValidatePayload> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ValidateViaIdentity
-```
-Test-AzSpringGatewayDomain -InputObject <ISpringAppsIdentity> -ValidatePayload <ICustomDomainValidatePayload>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ValidateViaIdentityExpanded
-```
-Test-AzSpringGatewayDomain -InputObject <ISpringAppsIdentity> -Name <String> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ValidateViaIdentitySpring
-```
-Test-AzSpringGatewayDomain -GatewayName <String> -SpringInputObject <ISpringAppsIdentity>
- -ValidatePayload <ICustomDomainValidatePayload> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ValidateViaIdentitySpringExpanded
-```
-Test-AzSpringGatewayDomain -GatewayName <String> -SpringInputObject <ISpringAppsIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### ValidateViaJsonFilePath
 ```
 Test-AzSpringGatewayDomain -GatewayName <String> -ResourceGroupName <String> -ServiceName <String>
@@ -106,28 +74,13 @@ The name of Spring Cloud Gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate, ValidateExpanded, ValidateViaIdentitySpring, ValidateViaIdentitySpringExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
-Parameter Sets: ValidateViaIdentity, ValidateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -166,7 +119,7 @@ Name to be validated
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded, ValidateViaIdentitySpringExpanded
+Parameter Sets: ValidateExpanded
 Aliases:
 
 Required: True
@@ -182,7 +135,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate, ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -197,28 +150,13 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate, ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SpringInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
-Parameter Sets: ValidateViaIdentitySpring, ValidateViaIdentitySpringExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -228,28 +166,13 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate, ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ValidatePayload
-Custom domain validate payload.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ICustomDomainValidatePayload
-Parameter Sets: Validate, ValidateViaIdentity, ValidateViaIdentitySpring
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -288,10 +211,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ICustomDomainValidatePayload
-
-### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 

@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete the Spring Cloud Gateway custom domain.
 ```powershell
-{{ Add code here }}
+Remove-AzSpringCloudGatewayCustomDomain -ResourceGroupName azps_test_group_spring -ServiceName azps-spring-01 -GatewayName default -DomainName customdomain
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Delete the Spring Cloud Gateway custom domain.

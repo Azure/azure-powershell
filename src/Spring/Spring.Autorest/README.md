@@ -110,6 +110,188 @@ directive:
       }
 
   - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/DevToolPortals/{devToolPortalName}"].delete.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK."
+        },
+        "202": {
+          "description": "Accepted. The response indicates the default Dev Tool Portal is now deleting.",
+          "headers": {
+            "Location": {
+              "type": "string"
+            }
+          }
+        },
+        "204": {
+          "description": "Success. The response indicates the defaultDev Tool Portal doesn't exist or has deleted."
+        },
+        "default": {
+          "description": "Error response describing why the operation failed.",
+          "schema": {
+            "$ref": "#/definitions/CloudError"
+          }
+        }
+      }
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apms/{apmName}"].delete.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK."
+        },
+        "202": {
+          "description": "Accepted. The response indicates the delete operation is performed in the background.",
+          "headers": {
+            "Location": {
+              "type": "string"
+            }
+          }
+        },
+        "204": {
+          "description": "Success. The response indicates the resource doesn't exist."
+        },
+        "default": {
+          "description": "Error response describing why the operation failed.",
+          "schema": {
+            "$ref": "#/definitions/CloudError"
+          }
+        }
+      }
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationLiveViews/{applicationLiveViewName}"].delete.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK."
+        },
+        "202": {
+          "description": "Accepted. The response indicates the default Application Live View is now deleting.",
+          "headers": {
+            "Location": {
+              "type": "string"
+            }
+          }
+        },
+        "204": {
+          "description": "Success. The response indicates the defaultApplication Live View doesn't exist or has deleted."
+        },
+        "default": {
+          "description": "Error response describing why the operation failed.",
+          "schema": {
+            "$ref": "#/definitions/CloudError"
+          }
+        }
+      }
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries/{containerRegistryName}"].delete.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK."
+        },
+        "202": {
+          "description": "Accepted. The response indicates the delete operation is performed in the background.",
+          "headers": {
+            "Location": {
+              "type": "string"
+            }
+          }
+        },
+        "204": {
+          "description": "Success. The response indicates the resource doesn't exist."
+        },
+        "default": {
+          "description": "Error response describing why the operation failed.",
+          "schema": {
+            "$ref": "#/definitions/CloudError"
+          }
+        }
+      }
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}"].delete.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK."
+        },
+        "202": {
+          "description": "Accepted. The response indicates the delete operation is performed in the background.",
+          "headers": {
+            "Location": {
+              "type": "string"
+            }
+          }
+        },
+        "204": {
+          "description": "Success. The response indicates the build resource doesn't exist or has deleted."
+        },
+        "default": {
+          "description": "Error response describing why the operation failed.",
+          "schema": {
+            "$ref": "#/definitions/CloudError"
+          }
+        }
+      }
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}"].delete.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK."
+        },
+        "202": {
+          "description": "Accepted. The response indicates the application accelerator is now deleting.",
+          "headers": {
+            "Location": {
+              "type": "string"
+            }
+          }
+        },
+        "204": {
+          "description": "Success. The response indicates the application accelerator doesn't exist or has deleted."
+        },
+        "default": {
+          "description": "Error response describing why the operation failed.",
+          "schema": {
+            "$ref": "#/definitions/CloudError"
+          }
+        }
+      }
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators/{customizedAcceleratorName}"].delete.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK."
+        },
+        "202": {
+          "description": "Accepted. The response indicates the customized accelerator is now deleting.",
+          "headers": {
+            "Location": {
+              "type": "string"
+            }
+          }
+        },
+        "204": {
+          "description": "Success. The response indicates the customized accelerator doesn't exist or has deleted."
+        },
+        "default": {
+          "description": "Error response describing why the operation failed.",
+          "schema": {
+            "$ref": "#/definitions/CloudError"
+          }
+        }
+      }
+
+  - from: swagger-document
     where: $
     transform: return $.replace(/\/subscriptions\/\{subscriptionId\}\/resourceGroups\/\{resourceGroupName\}\/providers\/Microsoft\.AppPlatform\/Spring\/\{serviceName\}\/buildServices\/\{buildServiceName\}\/builds\/\{buildName\}/g, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{buildName}")
 
@@ -137,6 +319,9 @@ directive:
     remove: true
   - where: 
       variant: ^Generate$|^GenerateViaIdentity$|^GenerateViaIdentityExpanded$|^Regenerate$|^RegenerateViaIdentity$
+    remove: true
+  - where: 
+      variant: ^Validate$|^ValidateViaIdentity$|^ValidateViaIdentityApplicationAccelerator$|^ValidateViaIdentityExpanded$|^ValidateViaIdentitySpring$|^ValidateViaIdentitySpringExpanded$|^Check$|^CheckViaIdentity$|^CheckViaIdentityExpanded$
     remove: true
 
   - where:

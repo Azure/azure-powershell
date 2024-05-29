@@ -19,40 +19,6 @@ Test-AzSpringConfigurationService -ResourceGroupName <String> -ServiceName <Stri
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Validate
-```
-Test-AzSpringConfigurationService -ResourceGroupName <String> -ServiceName <String>
- -Setting <IConfigurationServiceSettings> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ValidateViaIdentity
-```
-Test-AzSpringConfigurationService -InputObject <ISpringAppsIdentity> -Setting <IConfigurationServiceSettings>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ValidateViaIdentityExpanded
-```
-Test-AzSpringConfigurationService -InputObject <ISpringAppsIdentity>
- [-GitRepository <IConfigurationServiceGitRepository[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ValidateViaIdentitySpring
-```
-Test-AzSpringConfigurationService -SpringInputObject <ISpringAppsIdentity>
- -Setting <IConfigurationServiceSettings> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ValidateViaIdentitySpringExpanded
-```
-Test-AzSpringConfigurationService -SpringInputObject <ISpringAppsIdentity>
- [-GitRepository <IConfigurationServiceGitRepository[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### ValidateViaJsonFilePath
 ```
 Test-AzSpringConfigurationService -ResourceGroupName <String> -ServiceName <String> -JsonFilePath <String>
@@ -123,28 +89,13 @@ Repositories of Application Configuration Service git property.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IConfigurationServiceGitRepository[]
-Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded, ValidateViaIdentitySpringExpanded
+Parameter Sets: ValidateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
-Parameter Sets: ValidateViaIdentity, ValidateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -199,7 +150,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate, ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -214,7 +165,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate, ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -224,43 +175,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Setting
-The settings of Application Configuration Service.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IConfigurationServiceSettings
-Parameter Sets: Validate, ValidateViaIdentity, ValidateViaIdentitySpring
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -SpringInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
-Parameter Sets: ValidateViaIdentitySpring, ValidateViaIdentitySpringExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate, ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -305,10 +226,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IConfigurationServiceSettings
-
-### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 

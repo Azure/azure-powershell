@@ -21,28 +21,6 @@ Test-AzSpringConfigServer -Name <String> -ResourceGroupName <String> [-Subscript
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Validate
-```
-Test-AzSpringConfigServer -Name <String> -ResourceGroupName <String>
- -ConfigServerSetting <IConfigServerSettings> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ValidateViaIdentity
-```
-Test-AzSpringConfigServer -InputObject <ISpringAppsIdentity> -ConfigServerSetting <IConfigServerSettings>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ValidateViaIdentityExpanded
-```
-Test-AzSpringConfigServer -InputObject <ISpringAppsIdentity> [-GitHostKey <String>]
- [-GitHostKeyAlgorithm <String>] [-GitLabel <String>] [-GitPassword <String>] [-GitPrivateKey <String>]
- [-GitRepository <IGitPatternRepository[]>] [-GitSearchPath <String[]>] [-GitStrictHostKeyChecking]
- [-GitUri <String>] [-GitUsername <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
 ### ValidateViaJsonFilePath
 ```
 Test-AzSpringConfigServer -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
@@ -92,21 +70,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ConfigServerSetting
-The settings of config server.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IConfigServerSettings
-Parameter Sets: Validate, ValidateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -128,7 +91,7 @@ Public sshKey of git repository.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
+Parameter Sets: ValidateExpanded
 Aliases:
 
 Required: False
@@ -143,7 +106,7 @@ SshKey algorithm of git repository.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
+Parameter Sets: ValidateExpanded
 Aliases:
 
 Required: False
@@ -158,7 +121,7 @@ Label of the repository
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
+Parameter Sets: ValidateExpanded
 Aliases:
 
 Required: False
@@ -173,7 +136,7 @@ Password of git repository basic auth.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
+Parameter Sets: ValidateExpanded
 Aliases:
 
 Required: False
@@ -188,7 +151,7 @@ Private sshKey algorithm of git repository.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
+Parameter Sets: ValidateExpanded
 Aliases:
 
 Required: False
@@ -203,7 +166,7 @@ Repositories of git.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IGitPatternRepository[]
-Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
+Parameter Sets: ValidateExpanded
 Aliases:
 
 Required: False
@@ -218,7 +181,7 @@ Searching path of the repository
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
+Parameter Sets: ValidateExpanded
 Aliases:
 
 Required: False
@@ -233,7 +196,7 @@ Strict host key checking or not.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
+Parameter Sets: ValidateExpanded
 Aliases:
 
 Required: False
@@ -248,7 +211,7 @@ URI of the repository
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
+Parameter Sets: ValidateExpanded
 Aliases:
 
 Required: False
@@ -263,28 +226,13 @@ Username of git repository basic auth.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
+Parameter Sets: ValidateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
-Parameter Sets: ValidateViaIdentity, ValidateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -323,7 +271,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate, ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -354,7 +302,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate, ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -370,7 +318,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate, ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -415,10 +363,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IConfigServerSettings
-
-### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 

@@ -36,27 +36,12 @@ Delete the application accelerator.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete the application accelerator.
 ```powershell
-{{ Add code here }}
+Remove-AzSpringApplicationAccelerator -ResourceGroupName azps_test_group_spring -ServiceName azps-spring-01 -Name default
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Delete the application accelerator.
 
 ## PARAMETERS
 

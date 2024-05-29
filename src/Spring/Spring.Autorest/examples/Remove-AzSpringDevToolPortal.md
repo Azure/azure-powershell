@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Disable the default Dev Tool Portal.
 ```powershell
-{{ Add code here }}
+Remove-AzSpringDevToolPortal -ResourceGroupName azps_test_group_spring -ServiceName azps-spring-01 -Name default
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Disable the default Dev Tool Portal.

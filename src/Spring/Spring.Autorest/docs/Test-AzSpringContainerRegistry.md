@@ -12,45 +12,11 @@ Check if the container registry properties are valid.
 
 ## SYNTAX
 
-### ValidateViaIdentity (Default)
-```
-Test-AzSpringContainerRegistry -InputObject <ISpringAppsIdentity>
- -ContainerRegistryProperty <IContainerRegistryProperties> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Validate
-```
-Test-AzSpringContainerRegistry -Name <String> -ResourceGroupName <String> -ServiceName <String>
- -ContainerRegistryProperty <IContainerRegistryProperties> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ValidateExpanded
+### ValidateExpanded (Default)
 ```
 Test-AzSpringContainerRegistry -Name <String> -ResourceGroupName <String> -ServiceName <String>
  -Credentials <IContainerRegistryCredentials> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ValidateViaIdentityExpanded
-```
-Test-AzSpringContainerRegistry -InputObject <ISpringAppsIdentity> -Credentials <IContainerRegistryCredentials>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ValidateViaIdentitySpring
-```
-Test-AzSpringContainerRegistry -Name <String> -SpringInputObject <ISpringAppsIdentity>
- -ContainerRegistryProperty <IContainerRegistryProperties> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ValidateViaIdentitySpringExpanded
-```
-Test-AzSpringContainerRegistry -Name <String> -SpringInputObject <ISpringAppsIdentity>
- -Credentials <IContainerRegistryCredentials> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
 ```
 
 ### ValidateViaJsonFilePath
@@ -103,27 +69,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ContainerRegistryProperty
-Container registry resource payload.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IContainerRegistryProperties
-Parameter Sets: Validate, ValidateViaIdentity, ValidateViaIdentitySpring
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Credentials
 The credentials of the container registry resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IContainerRegistryCredentials
-Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded, ValidateViaIdentitySpringExpanded
+Parameter Sets: ValidateExpanded
 Aliases:
 
 Required: True
@@ -146,21 +97,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
-Parameter Sets: ValidateViaIdentity, ValidateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -199,7 +135,7 @@ The name of the container registry.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate, ValidateExpanded, ValidateViaIdentitySpring, ValidateViaIdentitySpringExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: (All)
 Aliases: ContainerRegistryName
 
 Required: True
@@ -230,7 +166,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate, ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -245,7 +181,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate, ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -255,28 +191,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SpringInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
-Parameter Sets: ValidateViaIdentitySpring, ValidateViaIdentitySpringExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate, ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -321,10 +242,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IContainerRegistryProperties
-
-### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 

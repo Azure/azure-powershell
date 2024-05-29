@@ -22,28 +22,6 @@ Test-AzSpringCustomizedAccelerator -ApplicationAcceleratorName <String> -Name <S
  [-IconUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Validate
-```
-Test-AzSpringCustomizedAccelerator -ApplicationAcceleratorName <String> -Name <String>
- -ResourceGroupName <String> -ServiceName <String> -Property <ICustomizedAcceleratorProperties>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ValidateViaIdentity
-```
-Test-AzSpringCustomizedAccelerator -InputObject <ISpringAppsIdentity>
- -Property <ICustomizedAcceleratorProperties> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### ValidateViaIdentityApplicationAccelerator
-```
-Test-AzSpringCustomizedAccelerator -ApplicationAcceleratorInputObject <ISpringAppsIdentity> -Name <String>
- -Property <ICustomizedAcceleratorProperties> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
 ### ValidateViaIdentityApplicationAcceleratorExpanded
 ```
 Test-AzSpringCustomizedAccelerator -ApplicationAcceleratorInputObject <ISpringAppsIdentity> -Name <String>
@@ -52,32 +30,6 @@ Test-AzSpringCustomizedAccelerator -ApplicationAcceleratorInputObject <ISpringAp
  [-GitRepositoryCommit <String>] [-GitRepositoryGitTag <String>] [-GitRepositoryIntervalInSecond <Int32>]
  [-GitRepositorySubPath <String>] [-IconUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ValidateViaIdentityExpanded
-```
-Test-AzSpringCustomizedAccelerator -InputObject <ISpringAppsIdentity> -AuthSettingAuthType <String>
- -GitRepositoryUrl <String> [-AcceleratorTag <String[]>] [-AcceleratorType <String>] [-Description <String>]
- [-DisplayName <String>] [-GitRepositoryBranch <String>] [-GitRepositoryCommit <String>]
- [-GitRepositoryGitTag <String>] [-GitRepositoryIntervalInSecond <Int32>] [-GitRepositorySubPath <String>]
- [-IconUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ValidateViaIdentitySpring
-```
-Test-AzSpringCustomizedAccelerator -ApplicationAcceleratorName <String> -Name <String>
- -SpringInputObject <ISpringAppsIdentity> -Property <ICustomizedAcceleratorProperties>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ValidateViaIdentitySpringExpanded
-```
-Test-AzSpringCustomizedAccelerator -ApplicationAcceleratorName <String> -Name <String>
- -SpringInputObject <ISpringAppsIdentity> -AuthSettingAuthType <String> -GitRepositoryUrl <String>
- [-AcceleratorTag <String[]>] [-AcceleratorType <String>] [-Description <String>] [-DisplayName <String>]
- [-GitRepositoryBranch <String>] [-GitRepositoryCommit <String>] [-GitRepositoryGitTag <String>]
- [-GitRepositoryIntervalInSecond <Int32>] [-GitRepositorySubPath <String>] [-IconUrl <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ValidateViaJsonFilePath
@@ -119,7 +71,7 @@ Check the customized accelerator are valid.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ValidateExpanded, ValidateViaIdentityApplicationAcceleratorExpanded, ValidateViaIdentityExpanded, ValidateViaIdentitySpringExpanded
+Parameter Sets: ValidateExpanded, ValidateViaIdentityApplicationAcceleratorExpanded
 Aliases:
 
 Required: False
@@ -134,7 +86,7 @@ Type of the customized accelerator.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaIdentityApplicationAcceleratorExpanded, ValidateViaIdentityExpanded, ValidateViaIdentitySpringExpanded
+Parameter Sets: ValidateExpanded, ValidateViaIdentityApplicationAcceleratorExpanded
 Aliases:
 
 Required: False
@@ -149,7 +101,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
-Parameter Sets: ValidateViaIdentityApplicationAccelerator, ValidateViaIdentityApplicationAcceleratorExpanded
+Parameter Sets: ValidateViaIdentityApplicationAcceleratorExpanded
 Aliases:
 
 Required: True
@@ -164,7 +116,7 @@ The name of the application accelerator.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate, ValidateExpanded, ValidateViaIdentitySpring, ValidateViaIdentitySpringExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
 Aliases:
 
 Required: True
@@ -194,7 +146,7 @@ The type of the auth setting.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaIdentityApplicationAcceleratorExpanded, ValidateViaIdentityExpanded, ValidateViaIdentitySpringExpanded
+Parameter Sets: ValidateExpanded, ValidateViaIdentityApplicationAcceleratorExpanded
 Aliases:
 
 Required: True
@@ -225,7 +177,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaIdentityApplicationAcceleratorExpanded, ValidateViaIdentityExpanded, ValidateViaIdentitySpringExpanded
+Parameter Sets: ValidateExpanded, ValidateViaIdentityApplicationAcceleratorExpanded
 Aliases:
 
 Required: False
@@ -240,7 +192,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaIdentityApplicationAcceleratorExpanded, ValidateViaIdentityExpanded, ValidateViaIdentitySpringExpanded
+Parameter Sets: ValidateExpanded, ValidateViaIdentityApplicationAcceleratorExpanded
 Aliases:
 
 Required: False
@@ -255,7 +207,7 @@ Git repository branch to be used.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaIdentityApplicationAcceleratorExpanded, ValidateViaIdentityExpanded, ValidateViaIdentitySpringExpanded
+Parameter Sets: ValidateExpanded, ValidateViaIdentityApplicationAcceleratorExpanded
 Aliases:
 
 Required: False
@@ -270,7 +222,7 @@ Git repository commit to be used.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaIdentityApplicationAcceleratorExpanded, ValidateViaIdentityExpanded, ValidateViaIdentitySpringExpanded
+Parameter Sets: ValidateExpanded, ValidateViaIdentityApplicationAcceleratorExpanded
 Aliases:
 
 Required: False
@@ -285,7 +237,7 @@ Git repository tag to be used.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaIdentityApplicationAcceleratorExpanded, ValidateViaIdentityExpanded, ValidateViaIdentitySpringExpanded
+Parameter Sets: ValidateExpanded, ValidateViaIdentityApplicationAcceleratorExpanded
 Aliases:
 
 Required: False
@@ -300,7 +252,7 @@ Interval for checking for updates to Git or image repository.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: ValidateExpanded, ValidateViaIdentityApplicationAcceleratorExpanded, ValidateViaIdentityExpanded, ValidateViaIdentitySpringExpanded
+Parameter Sets: ValidateExpanded, ValidateViaIdentityApplicationAcceleratorExpanded
 Aliases:
 
 Required: False
@@ -315,7 +267,7 @@ Folder path inside the git repository to consider as the root of the accelerator
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaIdentityApplicationAcceleratorExpanded, ValidateViaIdentityExpanded, ValidateViaIdentitySpringExpanded
+Parameter Sets: ValidateExpanded, ValidateViaIdentityApplicationAcceleratorExpanded
 Aliases:
 
 Required: False
@@ -330,7 +282,7 @@ Git repository URL for the accelerator.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaIdentityApplicationAcceleratorExpanded, ValidateViaIdentityExpanded, ValidateViaIdentitySpringExpanded
+Parameter Sets: ValidateExpanded, ValidateViaIdentityApplicationAcceleratorExpanded
 Aliases:
 
 Required: True
@@ -345,28 +297,13 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaIdentityApplicationAcceleratorExpanded, ValidateViaIdentityExpanded, ValidateViaIdentitySpringExpanded
+Parameter Sets: ValidateExpanded, ValidateViaIdentityApplicationAcceleratorExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
-Parameter Sets: ValidateViaIdentity, ValidateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -405,7 +342,7 @@ The name of the customized accelerator.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate, ValidateExpanded, ValidateViaIdentityApplicationAccelerator, ValidateViaIdentityApplicationAcceleratorExpanded, ValidateViaIdentitySpring, ValidateViaIdentitySpringExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: (All)
 Aliases: CustomizedAcceleratorName
 
 Required: True
@@ -430,28 +367,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Property
-Customized accelerator properties payload
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ICustomizedAcceleratorProperties
-Parameter Sets: Validate, ValidateViaIdentity, ValidateViaIdentityApplicationAccelerator, ValidateViaIdentitySpring
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group that contains the resource.
 You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate, ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
 Aliases:
 
 Required: True
@@ -466,7 +388,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate, ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
 Aliases:
 
 Required: True
@@ -476,28 +398,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SpringInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
-Parameter Sets: ValidateViaIdentitySpring, ValidateViaIdentitySpringExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate, ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
 Aliases:
 
 Required: False
@@ -542,8 +449,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ICustomizedAcceleratorProperties
 
 ### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 

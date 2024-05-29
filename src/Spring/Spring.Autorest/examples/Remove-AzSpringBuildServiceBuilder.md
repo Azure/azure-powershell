@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a KPack builder.
 ```powershell
-{{ Add code here }}
+Remove-AzSpringBuildServiceBuilder -ResourceGroupName azps_test_group_spring -ServiceName azps-spring-01 -Name azps-builder
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Delete a KPack builder.
