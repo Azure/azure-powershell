@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Update Remove/New stack cmdlets with warnings for management groups ActionOnUnmanage and remove DeleteResourcesAndResourceGroups as valid ActionOnUnmanage value.
 * Supported get and assign versioned policy definitions and sets
 * Fixed syntax incompatible with windows powershell [#24971]
 * Fixed bug with `Get-AzPolicyExemption` requesting 'ParentResourcePath'
