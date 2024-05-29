@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Lists all of the available server versions supported by Microsoft.AppPlatform provider.
 ```powershell
-{{ Add code here }}
+Get-AzSpringServiceSupportedServerVersion -ResourceGroupName azps_test_group_spring -ServiceName azps-spring-01
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Server Value     Version
+------ -----     -------
+Tomcat Tomcat_9  9
+Tomcat Tomcat_10 10
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Lists all of the available server versions supported by Microsoft.AppPlatform provider.

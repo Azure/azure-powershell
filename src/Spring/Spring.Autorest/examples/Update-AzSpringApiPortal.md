@@ -1,4 +1,4 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update the default API portal or Update the existing API portal.
 ```powershell
 Update-AzSpringApiPortal -ResourceGroupName azps_test_group_spring -ServiceName azps-spring-01 -Name default -GatewayId $gatewayObj.Id -Public:$true -SkuName "E0" -SkuCapacity 2 -SkuTier "Enterprise"
 ```
@@ -38,16 +38,4 @@ Type                         : Microsoft.AppPlatform/Spring/apiPortals
 Url                          : azps-spring-01-apiportal-7fc53.svc.azuremicroservices.io
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Update the default API portal or Update the existing API portal.

@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for NetCoreZipUploadedUserSourceInfo.
 ```powershell
-{{ Add code here }}
+New-AzSpringAppDeploymentNetCoreZipUploadedObject -NetCoreMainEntryPath aaa -RuntimeVersion 1.0 -RelativePath abc/anc -Version 1.2
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+NetCoreMainEntryPath : aaa
+RelativePath         : abc/anc
+RuntimeVersion       : 1.0
+Type                 : NetCoreZip
+Version              : 1.2
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Create an in-memory object for NetCoreZipUploadedUserSourceInfo.

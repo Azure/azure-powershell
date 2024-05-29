@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Check if the Application Configuration Service resource is valid.
 ```powershell
-{{ Add code here }}
+Test-AzSpringConfigurationServiceResource -ResourceGroupName azps_test_group_spring -ServiceName azps-spring-01 -ConfigurationServiceName default
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+GitPropertyValidationResultGitReposValidationResult GitPropertyValidationResultIsValid
+--------------------------------------------------- ----------------------------------
+{}                                                                                True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Check if the Application Configuration Service resource is valid.

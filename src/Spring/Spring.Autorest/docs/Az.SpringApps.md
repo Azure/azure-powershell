@@ -179,12 +179,6 @@ Create an in-memory object for JarUploadedUserSourceInfo.
 ### [New-AzSpringAppDeploymentNetCoreZipUploadedObject](New-AzSpringAppDeploymentNetCoreZipUploadedObject.md)
 Create an in-memory object for NetCoreZipUploadedUserSourceInfo.
 
-### [New-AzSpringAppDeploymentSettingAddonConfigObject](New-AzSpringAppDeploymentSettingAddonConfigObject.md)
-Create an in-memory object for DeploymentSettingsAddonConfigs.
-
-### [New-AzSpringAppDeploymentSettingEnvVariableObject](New-AzSpringAppDeploymentSettingEnvVariableObject.md)
-Create an in-memory object for DeploymentSettingsEnvironmentVariables.
-
 ### [New-AzSpringAppDeploymentSettingObject](New-AzSpringAppDeploymentSettingObject.md)
 Create an in-memory object for DeploymentSettings.
 
@@ -406,9 +400,6 @@ Update the application accelerator.
 
 ### [Update-AzSpringApplicationLiveView](Update-AzSpringApplicationLiveView.md)
 Update the default Application Live View or Update the existing Application Live View.
-
-### [Update-AzSpringBuildService](Update-AzSpringBuildService.md)
-Update a KPack build.
 
 ### [Update-AzSpringBuildServiceAgentPool](Update-AzSpringBuildServiceAgentPool.md)
 Update build service agent pool.

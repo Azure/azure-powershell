@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for ActiveDeploymentCollection.
 ```powershell
-{{ Add code here }}
+New-AzSpringAppActiveDeploymentCollectionObject -ActiveDeploymentName green,green1
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ActiveDeploymentName
+--------------------
+{green, green1}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Create an in-memory object for ActiveDeploymentCollection.

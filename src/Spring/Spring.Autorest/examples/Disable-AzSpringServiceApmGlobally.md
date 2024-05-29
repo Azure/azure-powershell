@@ -1,22 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Disable an APM globally.
 ```powershell
-{{ Add code here }}
+$apmObj = Get-AzSpringApm -ResourceGroupName azps_test_group_spring -ServiceName azps-spring-01 -Name azps-apm
+Disable-AzSpringServiceApmGlobally -ResourceGroupName azps_test_group_spring -ServiceName azps-spring-01 -ResourceId $apmObj.Id -PassThru
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Disable an APM globally.

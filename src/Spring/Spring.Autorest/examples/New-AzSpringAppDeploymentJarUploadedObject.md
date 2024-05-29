@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for JarUploadedUserSourceInfo.
 ```powershell
-{{ Add code here }}
+New-AzSpringAppDeploymentJarUploadedObject -RuntimeVersion "Java_8" -RelativePath "<default>"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+JvmOption      :
+RelativePath   : <default>
+RuntimeVersion : Java_8
+Type           : Jar
+Version        :
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Create an in-memory object for JarUploadedUserSourceInfo.

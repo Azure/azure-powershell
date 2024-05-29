@@ -1,22 +1,20 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for GitPatternRepository.
 ```powershell
-{{ Add code here }}
+New-AzSpringGitPatternObject -Name "gitPatternName" -Uri "uriString" -HostKey "hostKeyString" -HostKeyAlgorithm "hostKeyAlgorithmString" -Label "labelString" -Password "password" -Pattern "patternString" -PrivateKey "privateKeyString" -SearchPath "searchPathString" -StrictHostKeyChecking:$true -Username "xxx"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+HostKey               : hostKeyString
+HostKeyAlgorithm      : hostKeyAlgorithmString
+Label                 : labelString
+Name                  : gitPatternName
+Password              : password
+Pattern               : {patternString}
+PrivateKey            : privateKeyString
+SearchPath            : {searchPathString}
+StrictHostKeyChecking : True
+Uri                   : uriString
+Username              : xxx
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Create an in-memory object for GitPatternRepository.

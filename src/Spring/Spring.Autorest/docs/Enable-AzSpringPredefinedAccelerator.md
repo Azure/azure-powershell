@@ -43,27 +43,16 @@ Enable predefined accelerator.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Enable predefined accelerator.
 ```powershell
-{{ Add code here }}
+Enable-AzSpringPredefinedAccelerator -ResourceGroupName azps_test_group_spring -ServiceName azps-spring-01 -ApplicationAcceleratorName default -Name asa-node-express -PassThru
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Enable predefined accelerator.
 
 ## PARAMETERS
 

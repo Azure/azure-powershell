@@ -21,27 +21,25 @@ Create an in-memory object for ContentCertificateProperties.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for ContentCertificateProperties.
 ```powershell
-{{ Add code here }}
+New-AzSpringContentCertificateObject -Content "string"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ActivateDate      :
+Content           : string
+DnsName           :
+ExpirationDate    :
+IssuedDate        :
+Issuer            :
+ProvisioningState :
+SubjectName       :
+Thumbprint        :
+Type              : ContentCertificate
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create an in-memory object for ContentCertificateProperties.
 
 ## PARAMETERS
 

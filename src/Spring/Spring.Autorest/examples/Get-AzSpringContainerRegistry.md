@@ -1,22 +1,51 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get the container registries resource.
 ```powershell
-{{ Add code here }}
+Get-AzSpringContainerRegistry -ResourceGroupName azps_test_group_spring -ServiceName azps-spring-01
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Credentials                  : {
+                                 "type": "BasicAuth",
+                                 "server": "azpsacr0523.azurecr.io",
+                                 "username": "azpsacr0523"
+                               }
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_spring/providers/Microsoft.AppPlatform/Spring/azps-spring-01/containerRegistries/default
+Name                         : default
+ProvisioningState            : Succeeded
+ResourceGroupName            : azps_test_group_spring
+SystemDataCreatedAt          : 2024-05-24 上午 07:55:46
+SystemDataCreatedBy          : v-jinpel@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 2024-05-24 上午 07:55:46
+SystemDataLastModifiedBy     : v-jinpel@microsoft.com
+SystemDataLastModifiedByType : User
+Type                         : Microsoft.AppPlatform/Spring/containerRegistries
 ```
 
-{{ Add description here }}
+Get the container registries resource.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get the container registries resource.
 ```powershell
-{{ Add code here }}
+Get-AzSpringContainerRegistry -ResourceGroupName azps_test_group_spring -ServiceName azps-spring-01 -Name default
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Credentials                  : {
+                                 "type": "BasicAuth",
+                                 "server": "azpsacr0523.azurecr.io",
+                                 "username": "azpsacr0523"
+                               }
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_spring/providers/Microsoft.AppPlatform/Spring/azps-spring-01/containerRegistries/default
+Name                         : default
+ProvisioningState            : Succeeded
+ResourceGroupName            : azps_test_group_spring
+SystemDataCreatedAt          : 2024-05-24 上午 07:55:46
+SystemDataCreatedBy          : v-jinpel@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 2024-05-24 上午 07:55:46
+SystemDataLastModifiedBy     : v-jinpel@microsoft.com
+SystemDataLastModifiedByType : User
+Type                         : Microsoft.AppPlatform/Spring/containerRegistries
 ```
 
-{{ Add description here }}
-
+Get the container registries resource.

@@ -99,27 +99,18 @@ Check the customized accelerator are valid.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Check the customized accelerator are valid.
 ```powershell
-{{ Add code here }}
+Test-AzSpringCustomizedAccelerator -ResourceGroupName azps_test_group_spring -ServiceName azps-spring-01 -Name default -GitRepositoryUrl "https://github.com/lijinpei2008/ghatest" -ApplicationAcceleratorName default -AuthSettingAuthType Accelerator
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+IsValid Message
+------- -------
+  False Custom domain 'default' is invalid.
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Check the customized accelerator are valid.
 
 ## PARAMETERS
 

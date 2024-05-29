@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Checks that the resource name is valid and is not already in use.
 ```powershell
-{{ Add code here }}
+Test-AzSpringNameAvailability -Location eastus -Name myserver -Type "Microsoft.AppPlatform/Spring"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Message NameAvailable Reason
+------- ------------- ------
+                 True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Checks that the resource name is valid and is not already in use.

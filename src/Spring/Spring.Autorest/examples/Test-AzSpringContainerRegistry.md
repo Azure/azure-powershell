@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Check if the container registry properties are valid.
 ```powershell
-{{ Add code here }}
+$containerRegistryObj = New-AzSpringContainerRegistryCredentialObject -Password "ibOL0******887K" -Server azpsacr.azurecr.io -Username azpsacr
+Test-AzSpringContainerRegistry -ResourceGroupName azps_test_group_spring -ServiceName azps-spring-01 -Name default -ContainerRegistryProperty $containerRegistryObj
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+IsValid Message
+------- -------
+  False credential cannot be null.:
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Check if the container registry properties are valid.

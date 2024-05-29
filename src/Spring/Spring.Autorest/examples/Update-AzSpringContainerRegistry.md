@@ -1,22 +1,7 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update container registry resource.
 ```powershell
-{{ Add code here }}
+$containerRegistryObj = New-AzSpringContainerRegistryCredentialObject -Password "ibOL0******887K" -Server azpsacr.azurecr.io -Username azpsacr
+Update-AzSpringContainerRegistry -Name default -ResourceGroupName azps_test_group_spring -ServiceName azps-spring-01 -Credentials $containerRegistryObj
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Update container registry resource.

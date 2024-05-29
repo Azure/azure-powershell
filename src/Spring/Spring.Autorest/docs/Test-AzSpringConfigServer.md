@@ -62,27 +62,18 @@ Check if the config server settings are valid.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Check if the config server settings are valid.
 ```powershell
-{{ Add code here }}
+Test-AzSpringConfigServer -ResourceGroupName azps_test_group_spring -Name azps-spring-02
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Detail IsValid
+------ -------
+{}        True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Check if the config server settings are valid.
 
 ## PARAMETERS
 

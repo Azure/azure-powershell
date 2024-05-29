@@ -57,6 +57,62 @@ subject-prefix: Spring
 identity-correction-for-post: true
 
 directive:
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/stop"].post.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK."
+        },
+        "202": {
+          "description": "Accepted. The response indicates the stop operation is performed in the background."
+        },
+        "404": {
+          "description": "Not found. The response indicates the service does not exist.",
+          "x-ms-error-response": true
+        },
+        "409": {
+          "description": "Conflict. The response indicates the exiting Service is now updating.",
+          "x-ms-error-response": true
+        },
+        "default": {
+          "description": "Error response describing why the operation failed.",
+          "schema": {
+            "$ref": "#/definitions/CloudError"
+          }
+        }
+      }
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/start"].post.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK."
+        },
+        "202": {
+          "description": "Accepted. The response indicates the stop operation is performed in the background."
+        },
+        "404": {
+          "description": "Not found. The response indicates the service does not exist.",
+          "x-ms-error-response": true
+        },
+        "409": {
+          "description": "Conflict. The response indicates the exiting Service is now updating.",
+          "x-ms-error-response": true
+        },
+        "default": {
+          "description": "Error response describing why the operation failed.",
+          "schema": {
+            "$ref": "#/definitions/CloudError"
+          }
+        }
+      }
+
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/\/subscriptions\/\{subscriptionId\}\/resourceGroups\/\{resourceGroupName\}\/providers\/Microsoft\.AppPlatform\/Spring\/\{serviceName\}\/buildServices\/\{buildServiceName\}\/builds\/\{buildName\}/g, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{buildName}")
+
   - where:
       verb: Set
       subject: BuildServiceAgentPoolPut
@@ -365,6 +421,11 @@ directive:
       default:
         script: "'default'"
 
+  - where:
+      verb: Update
+      subject: BuildService
+    hide: true
+
   # Returns a random value of RelativePath after each execution of Get-AzSpringAppsResourceUploadUrl
   - where:
       verb: Get
@@ -525,6 +586,16 @@ directive:
           - ProvisioningState
           - Active
 
+  - where:
+      model-name: PredefinedAcceleratorResource
+    set:
+      format-table:
+        properties:
+          - Name
+          - DisplayName
+          - ProvisioningState
+          - ResourceGroupName
+
   - no-inline:
     - UserSourceInfo
     - CertificateProperties
@@ -544,10 +615,6 @@ directive:
       cmdlet-name: New-AzSpringConfigurationServiceGitObject
     - model-name: GitPatternRepository
       cmdlet-name: New-AzSpringGitPatternObject
-    - model-name: DeploymentSettingsEnvironmentVariables
-      cmdlet-name: New-AzSpringAppDeploymentSettingEnvVariableObject
-    - model-name: DeploymentSettingsAddonConfigs
-      cmdlet-name: New-AzSpringAppDeploymentSettingAddonConfigObject
     - model-name: ActiveDeploymentCollection
       cmdlet-name: New-AzSpringAppActiveDeploymentCollectionObject
     - model-name: BuildpacksGroupProperties

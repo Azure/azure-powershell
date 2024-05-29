@@ -22,27 +22,18 @@ Create an in-memory object for ContainerRegistryBasicCredentials.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for ContainerRegistryBasicCredentials.
 ```powershell
-{{ Add code here }}
+New-AzSpringContainerRegistryCredentialObject -Password "ibOL0******887K" -Server azpsacr.azurecr.io -Username azpsacr
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Password        Server             Type      Username
+--------        ------             ----      --------
+ibOL0******887K azpsacr.azurecr.io BasicAuth azpsacr
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create an in-memory object for ContainerRegistryBasicCredentials.
 
 ## PARAMETERS
 

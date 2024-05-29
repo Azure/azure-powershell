@@ -1,22 +1,16 @@
-### Example 1: {{ Add title here }}
+### Example 1: List supported APM types for a Service.
 ```powershell
-{{ Add code here }}
+Get-AzSpringServiceSupportedApmType -ResourceGroupName azps_test_group_spring -ServiceName azps-spring-01
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name
+----
+AppDynamics
+ApplicationInsights
+Dynatrace
+ElasticAPM
+NewRelic
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+List supported APM types for a Service.

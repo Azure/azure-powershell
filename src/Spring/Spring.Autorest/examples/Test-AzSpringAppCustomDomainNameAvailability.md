@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Check the resource name is valid as well as not in use.
 ```powershell
-{{ Add code here }}
+Test-AzSpringAppCustomDomainNameAvailability -ResourceGroupName azps_test_group_spring -ServiceName azps-spring-02 -AppName tools -Name default
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+IsValid Message
+------- -------
+  False Custom domain 'default' is invalid.
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Check the resource name is valid as well as not in use.

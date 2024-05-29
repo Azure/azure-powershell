@@ -1,22 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: List sensitive environment variables of Spring Cloud Gateway.
 ```powershell
-{{ Add code here }}
+Get-AzSpringGatewayEnvSecret -ResourceGroupName azps_test_group_spring -ServiceName azps-spring-01 -GatewayName default
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+{
+}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+List sensitive environment variables of Spring Cloud Gateway.

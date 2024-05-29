@@ -54,6 +54,14 @@ Create container registry resource.
 
 ### Example 1: Create container registry resource.
 ```powershell
+$containerRegistryObj = New-AzSpringContainerRegistryCredentialObject -Password "ibOL0******887K" -Server azpsacr.azurecr.io -Username azpsacr
+New-AzSpringContainerRegistry -Name default -ResourceGroupName azps_test_group_spring -ServiceName azps-spring-01 -Credentials $containerRegistryObj
+```
+
+Create container registry resource.
+
+### Example 2: Create container registry resource.
+```powershell
 $jsonStr = '
 {
   "properties": {
