@@ -44,6 +44,9 @@ function New-AzPaloAltoNetworksProfileObject {
         [Parameter(Mandatory, HelpMessage="List of IPs associated with the Firewall.")]
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddress[]]
         $PublicIP,
+        [Parameter(HelpMessage="Non-RFC 1918 address.")]
+        [string[]]
+        $TrustedRange,
         [Parameter(HelpMessage="Address Space.")]
         [string]
         $VHubAddressSpace,
@@ -111,6 +114,9 @@ function New-AzPaloAltoNetworksProfileObject {
         }
         if ($PSBoundParameters.ContainsKey('PublicIP')) {
             $Object.PublicIP = $PublicIP
+        }
+        if ($PSBoundParameters.ContainsKey('TrustedRange')) {
+            $Object.TrustedRange = $TrustedRange
         }
         if ($PSBoundParameters.ContainsKey('VHubAddressSpace')) {
             $Object.VHubAddressSpace = $VHubAddressSpace

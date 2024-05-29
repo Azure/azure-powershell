@@ -14,8 +14,9 @@ Create an in-memory object for NetworkProfile.
 
 ```
 New-AzPaloAltoNetworksProfileObject -EnableEgressNat <String> -NetworkType <String> -PublicIP <IIPAddress[]>
- [-EgressNatIP <IIPAddress[]>] [-VHubAddressSpace <String>] [-VHubResourceId <String>]
- [-VnetAddressSpace <String>] [-VnetConfigurationIPOfTrustSubnetForUdrAddress <String>]
+ [-EgressNatIP <IIPAddress[]>] [-TrustedRange <String[]>] [-VHubAddressSpace <String>]
+ [-VHubResourceId <String>] [-VnetAddressSpace <String>]
+ [-VnetConfigurationIPOfTrustSubnetForUdrAddress <String>]
  [-VnetConfigurationIPOfTrustSubnetForUdrResourceId <String>]
  [-VnetConfigurationTrustSubnetAddressSpace <String>] [-VnetConfigurationTrustSubnetResourceId <String>]
  [-VnetConfigurationUnTrustSubnetAddressSpace <String>] [-VnetConfigurationUnTrustSubnetResourceId <String>]
@@ -23,7 +24,7 @@ New-AzPaloAltoNetworksProfileObject -EnableEgressNat <String> -NetworkType <Stri
  [-VwanConfigurationIPOfTrustSubnetForUdrResourceId <String>]
  [-VwanConfigurationNetworkVirtualApplianceId <String>] [-VwanConfigurationTrustSubnetAddressSpace <String>]
  [-VwanConfigurationTrustSubnetResourceId <String>] [-VwanConfigurationUnTrustSubnetAddressSpace <String>]
- [-VwanConfigurationUnTrustSubnetResourceId <String>] [<CommonParameters>]
+ [-VwanConfigurationUnTrustSubnetResourceId <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,6 +94,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicIP
 List of IPs associated with the Firewall.
 
@@ -102,6 +118,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TrustedRange
+Non-RFC 1918 address.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
