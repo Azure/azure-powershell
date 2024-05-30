@@ -64,6 +64,10 @@ function setupEnv() {
     $resourceGroup = "azps-testcase-pan"
     $env.Add("resourceGroup", $resourceGroup)
 
+    # Need to create Managed Identity and copy the resourceid
+    $managedIdentityId = "/subscriptions/$($env.SubscriptionId)/resourcegroups/$($env.resourceGroup)/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uami0524"
+    $env.Add("managedIdentityId", $managedIdentityId)
+
     # Use mock environment, so we donnot run this cmdlet.
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
 

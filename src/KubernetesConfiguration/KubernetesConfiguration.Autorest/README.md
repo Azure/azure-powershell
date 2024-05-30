@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the KubernetesConfiguration service.
 
 ---
-## Status
-[![Az.KubernetesConfiguration](https://img.shields.io/powershellgallery/v/Az.KubernetesConfiguration.svg?style=flat-square&label=Az.KubernetesConfiguration "Az.KubernetesConfiguration")](https://www.powershellgallery.com/packages/Az.KubernetesConfiguration/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

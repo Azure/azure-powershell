@@ -1,0 +1,52 @@
+{
+  "resourceType": "locations/targetTypes/capabilityTypes",
+  "apiVersion": "2024-01-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.chaos"
+  },
+  "commands": [
+    {
+      "name": "Get-AzChaosCapabilityType",
+      "description": "Get a Capability Type resource for given Target Type and location.",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Chaos/locations/{locationName}/targetTypes/{targetTypeName}/capabilityTypes/{capabilityTypeName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.chaos/get-azchaoscapabilitytype"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-LocationName <String>",
+              "-Name <String>",
+              "[-SubscriptionId <String[]>]",
+              "-TargetTypeName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a Capability Type resource for given Target Type and location.",
+          "parameters": [
+            {
+              "name": "-LocationName",
+              "value": "[Path.locationName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.capabilityTypeName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-TargetTypeName",
+              "value": "[Path.targetTypeName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

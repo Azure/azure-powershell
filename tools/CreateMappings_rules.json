@@ -879,5 +879,17 @@
   {
     "alias": "Sphere",
     "module": "Sphere"
+  },
+  {
+    "module": "StandbyPool",
+    "alias": "StandbyPool"
+  },
+  {
+    "module": "Chaos",
+    "alias": "Chaos"
+  },
+  {
+    "module": "StorageAction",
+    "alias": "StorageAction"
   }
 ]

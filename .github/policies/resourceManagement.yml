@@ -286,6 +286,24 @@ configuration:
           - labelAdded:
               label: Service Attention
           - labelAdded:
+              label: Arc enabled servers
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Arc enabled servers
+        then:
+        - mentionUsers:
+            mentionees:
+            - rpsqrd
+            - edyoung
+            - vedkale
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
               label: ArcResourceBridge
         - hasLabel:
             label: Service Attention
@@ -538,23 +556,6 @@ configuration:
           - labelAdded:
               label: Service Attention
           - labelAdded:
-              label: Azure Arc enabled servers
-        - hasLabel:
-            label: Service Attention
-        - hasLabel:
-            label: Azure Arc enabled servers
-        then:
-        - mentionUsers:
-            mentionees:
-            - rpsqrd
-            - edyoung
-            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
-            assignMentionees: False
-      - if:
-        - or:
-          - labelAdded:
-              label: Service Attention
-          - labelAdded:
               label: Azure Data Explorer
         - hasLabel:
             label: Service Attention
@@ -674,6 +675,22 @@ configuration:
             mentionees:
             - alex-frankel
             - filizt
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: Bootstrapper
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Bootstrapper
+        then:
+        - mentionUsers:
+            mentionees:
+            - bganapa
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -1865,6 +1882,22 @@ configuration:
             mentionees:
             - sourabhguha
             - inesk-vt
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: DnsResolver
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: DnsResolver
+        then:
+        - mentionUsers:
+            mentionees:
+            - arpit-gagneja
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:

@@ -1,0 +1,40 @@
+{
+  "Update-AzSupportTicket+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/cca0326c-4c31-46d8-8fcb-c67023a46f4b/providers/Microsoft.Support/supportTickets/test-e4014af3-5709-42f6-b4a4-0678c08f02d6?api-version=2024-04-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/cca0326c-4c31-46d8-8fcb-c67023a46f4b/providers/Microsoft.Support/supportTickets/test-e4014af3-5709-42f6-b4a4-0678c08f02d6?api-version=2024-04-01",
+      "Content": "{\r\n  \"advancedDiagnosticConsent\": \"Yes\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "42" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "660699ef-bd2d-4076-8d64-213b36f32a43" ],
+        "x-ms-correlation-request-id": [ "660699ef-bd2d-4076-8d64-213b36f32a43" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20240423T180808Z:660699ef-bd2d-4076-8d64-213b36f32a43" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 907F8D6DE38545198D6FC7678FBBBB60 Ref B: MNZ221060619009 Ref C: 2024-04-23T18:08:06Z" ],
+        "Date": [ "Tue, 23 Apr 2024 18:08:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1638" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/cca0326c-4c31-46d8-8fcb-c67023a46f4b/providers/Microsoft.Support/supportTickets/test-e4014af3-5709-42f6-b4a4-0678c08f02d6\",\"name\":\"test-e4014af3-5709-42f6-b4a4-0678c08f02d6\",\"type\":\"Microsoft.Support/supportTickets\",\"properties\":{\"description\":\"test ticket - please ignore and close\",\"problemClassificationId\":\"/providers/Microsoft.Support/services/517f2da6-78fd-0498-4e22-ad26996b1dfc/problemClassifications/3ec1a070-f242-9ecf-5a7c-e1a88ce029ef\",\"problemClassificationDisplayName\":\"Add or update VAT, tax id, PO number or profile information\",\"severity\":\"Minimal\",\"require24X7Response\":false,\"enrollmentId\":\"\",\"contactDetails\":{\"firstName\":\"test\",\"lastName\":\"test\",\"preferredContactMethod\":\"Email\",\"primaryEmailAddress\":\"test@test.com\",\"preferredTimeZone\":\"Pacific Standard Time\",\"country\":\"USA\",\"preferredSupportLanguage\":\"en-US\"},\"serviceLevelAgreement\":{\"startTime\":\"2024-04-23T18:03:21Z\",\"expirationTime\":\"2024-04-23T22:03:21Z\",\"slaMinutes\":240},\"supportEngineer\":{},\"supportPlanType\":\"ProDirect\",\"supportPlanDisplayName\":\"Azure Support Plan – ProDirect\",\"advancedDiagnosticConsent\":\"Yes\",\"isTemporaryTicket\":\"No\",\"supportPlanId\":\"U291cmNlOkVBLFN1YnNjcmlwdGlvbklkOmNjYTAzMjZjLTRjMzEtNDZkOC04ZmNiLWM2NzAyM2E0NmY0YixPZmZlcklkOk1TLUFaUi0wMDQyUCxTb3ZlcmVpZ25DbG91ZDpQdWJsaWMs\",\"fileWorkspaceName\":\"2404230040010595\",\"supportTicketId\":\"2404230040010595\",\"title\":\"test ticket - please ignore and close\",\"serviceId\":\"/providers/Microsoft.Support/services/517f2da6-78fd-0498-4e22-ad26996b1dfc\",\"serviceDisplayName\":\"Billing\",\"status\":\"Open\",\"createdDate\":\"2024-04-23T18:03:21Z\",\"modifiedDate\":\"2024-04-23T18:06:17Z\"}}",
+      "isContentBase64": false
+    }
+  }
+}
