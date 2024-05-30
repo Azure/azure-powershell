@@ -1,0 +1,181 @@
+{
+  "resourceType": "topics/eventSubscriptions",
+  "apiVersion": "2023-06-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.eventgrid"
+  },
+  "commands": [
+    {
+      "name": "Get-AzEventGridTopicEventSubscriptionDeliveryAttribute",
+      "description": "Get all delivery attributes for an event subscription for topic.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridtopiceventsubscriptiondeliveryattribute"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EventSubscriptionName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-TopicName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get all delivery attributes for an event subscription for topic.",
+          "parameters": [
+            {
+              "name": "-EventSubscriptionName",
+              "value": "[Path.eventSubscriptionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-TopicName",
+              "value": "[Path.topicName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzEventGridTopicEventSubscriptionFullUrl",
+      "description": "Get the full endpoint URL for an event subscription for topic.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}/getFullUrl",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridtopiceventsubscriptionfullurl"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EventSubscriptionName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-TopicName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the full endpoint URL for an event subscription for topic.",
+          "parameters": [
+            {
+              "name": "-EventSubscriptionName",
+              "value": "[Path.eventSubscriptionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-TopicName",
+              "value": "[Path.topicName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzEventGridTopicEventSubscription",
+      "description": "Get properties of an event subscription of a topic.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridtopiceventsubscription"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EventSubscriptionName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-TopicName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get properties of an event subscription of a topic.",
+          "parameters": [
+            {
+              "name": "-EventSubscriptionName",
+              "value": "[Path.eventSubscriptionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-TopicName",
+              "value": "[Path.topicName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzEventGridTopicEventSubscription",
+      "description": "Delete an existing event subscription for a topic.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/remove-azeventgridtopiceventsubscription"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EventSubscriptionName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]",
+              "-TopicName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete an existing event subscription for a topic.",
+          "parameters": [
+            {
+              "name": "-EventSubscriptionName",
+              "value": "[Path.eventSubscriptionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-TopicName",
+              "value": "[Path.topicName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -252,11 +252,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IAccessKeys
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 
