@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Remove the Windows virtual desktop registration info.
+Remove the Azure Virtual Desktop registration info.
 .Description
-Remove the Windows virtual desktop registration info.
+Remove the Azure Virtual Desktop registration info.
 #>
 function Remove-AzWvdRegistrationInfo {
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
