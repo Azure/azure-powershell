@@ -82,20 +82,20 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(PrivateRange, Formatting.Indented); }
         }
 
-      #region Private Range Validation
-      private void ValidatePrivateRange(string[] privateRange)
-      {
-        foreach (var ip in privateRange)
+        #region Private Range Validation
+        private void ValidatePrivateRange(string[] privateRange)
         {
-          if (ip.Equals(IANAPrivateRanges, StringComparison.OrdinalIgnoreCase))
-            continue;
+            foreach (var ip in privateRange)
+            {
+                if (ip.Equals(IANAPrivateRanges, StringComparison.OrdinalIgnoreCase))
+                    continue;
 
-        if (ip.Contains("/"))
-          Utilities.CIDR.IPv4.Validate.MaskedIpAddress(ip);
-        else
-          Utilities.CIDR.IPv4.Validate.IpAddress(ip);
+                if (ip.Contains("/"))
+                    Utilities.CIDR.IPv4.Validate.MaskedIpAddress(ip);
+                else
+                    Utilities.CIDR.IPv4.Validate.IpAddress(ip);
+            }
         }
-      }
         #endregion
     }
 }
