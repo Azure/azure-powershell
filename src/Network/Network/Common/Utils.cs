@@ -55,8 +55,8 @@ namespace Microsoft.Azure.Commands.Network
         public static bool IsIpv4PrivatePeeringNull(PSPeering privatePeering)
         {
             if (privatePeering == null ||
-              (privatePeering.PrimaryPeerAddressPrefix == null &&
-              privatePeering.SecondaryPeerAddressPrefix == null))
+                 (privatePeering.PrimaryPeerAddressPrefix == null &&
+                  privatePeering.SecondaryPeerAddressPrefix == null))
             {
                 return true;
             }
@@ -67,9 +67,9 @@ namespace Microsoft.Azure.Commands.Network
     public static class FirewallConstants
     {
         public static readonly System.Collections.Generic.List<string> RestrictedBasicSkuFirewallRegions = new System.Collections.Generic.List<string>()
-      {
-        "TaiwanNorth","CanadaEast","JioIndiaWest", "PolandCentral", "SpainCentral", "USSecWestCentral", "BelgiumCentral", "GermanyNorth", "SwedenSouth", "ChinaEast3"
-      };
+        {
+            "TaiwanNorth","CanadaEast","JioIndiaWest", "PolandCentral", "SpainCentral", "USSecWestCentral", "BelgiumCentral", "GermanyNorth", "SwedenSouth", "ChinaEast3"
+        };
         public static bool IsRegionRestrictedForBasicFirewall(string region)
         {
             if (!string.IsNullOrEmpty(region))
