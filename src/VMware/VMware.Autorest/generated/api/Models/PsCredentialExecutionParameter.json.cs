@@ -79,7 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             }
             __scriptExecutionParameter = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ScriptExecutionParameter(json);
             {_username = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("username"), out var __jsonUsername) ? (string)__jsonUsername : (string)_username;}
-            {_password = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("password"), out var __jsonPassword) ? (string)__jsonPassword : (string)_password;}
+            {_password = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("password"), out var __jsonPassword) ? new System.Net.NetworkCredential("",(string)__jsonPassword).SecurePassword : _password;}
             AfterFromJson(json);
         }
 
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             }
             __scriptExecutionParameter?.ToJson(container, serializationMode);
             AddIf( null != (((object)this._username)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._username.ToString()) : null, "username" ,container.Add );
-            AddIf( null != (((object)this._password)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._password.ToString()) : null, "password" ,container.Add );
+            AddIf( null != (((object)this._password)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(System.Runtime.InteropServices.Marshal.PtrToStringBSTR(System.Runtime.InteropServices.Marshal.SecureStringToBSTR(this._password))) : null, "password" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

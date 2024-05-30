@@ -240,3 +240,13 @@ stages:
         targetType: filePath
         filePath: ./tools/TestFx/Live/SendLiveTestReport.ps1
         arguments: -EmailServiceConnectionString '$(EmailServiceConnectionString)' -EmailFrom '$(EmailFrom)'
+
+    - task: AzurePowerShell@5
+      displayName: Save live test results
+      condition: or(eq(variables['Build.Reason'], 'Schedule'), eq(variables['Build.SourceBranch'], 'refs/heads/internal/release'))
+      inputs:
+        pwsh: true
+        azurePowerShellVersion: latestVersion
+        azureSubscription: $(KustoServiceConnectionName)
+        scriptType: filePath
+        scriptPath: ./tools/TestFx/Live/SaveLiveTestResult.ps1

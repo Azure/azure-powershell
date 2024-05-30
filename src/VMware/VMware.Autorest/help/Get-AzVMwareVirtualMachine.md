@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzVMwareVirtualMachine
 
 ## SYNOPSIS
-Get a virtual machine by id in a private cloud cluster
+Get a VirtualMachine
 
 ## SYNTAX
 
@@ -42,7 +42,7 @@ Get-AzVMwareVirtualMachine -ClusterName <String> -Id <String> -PrivateCloudInput
 ```
 
 ## DESCRIPTION
-Get a virtual machine by id in a private cloud cluster
+Get a VirtualMachine
 
 ## EXAMPLES
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterName
-Name of the cluster in the private cloud
+Name of the cluster
 
 ```yaml
 Type: System.String
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-Virtual Machine identifier
+ID of the virtual machine.
 
 ```yaml
 Type: System.String
@@ -199,6 +199,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
