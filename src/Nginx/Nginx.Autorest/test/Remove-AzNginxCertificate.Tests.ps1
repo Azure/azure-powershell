@@ -22,7 +22,7 @@ Describe 'Remove-AzNginxCertificate' {
     }
 
     It 'DeleteViaIdentity' {
-        $cert = New-AzNginxCertificate -DeploymentName $env.nginxDeployment1 -Name $env.nginxNewCert -ResourceGroupName $env.resourceGroup -CertificateVirtualPath test.cert -KeyVirtualPath test.key -KeyVaultSecretId https://integration-tests-kv.vault.azure.net/secrets/newcert
+        $cert = New-AzNginxCertificate -DeploymentName $env.nginxDeployment1 -Name $env.nginxNewCert -ResourceGroupName $env.resourceGroup -CertificateVirtualPath /etc/nginx/certs/testnew.cert -KeyVirtualPath /etc/nginx/certs/testnew.key -KeyVaultSecretId https://integration-tests-kv.vault.azure.net/secrets/newcert
         Remove-AzNginxCertificate -InputObject $cert
         $certList = Get-AzNginxCertificate -DeploymentName $env.nginxDeployment1 -ResourceGroupName $env.resourceGroup
         $certList.Name | Should -Not -Contain $env.nginxNewCert

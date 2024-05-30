@@ -21,18 +21,27 @@ Create an in-memory object for NginxPublicIPAddress.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for NginxPublicIPAddress
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzNginxPublicIPAddressObject -Id /subscriptions/xxxxxxxxxx-xxxx-xxxxx-xxxxxxxxxxxx/resourceGroups/nginx-test-rg/providers/Microsoft.Network/publicIPAddresses/nginx-test-ip
+{{ Add code here }}
 ```
 
 ```output
-Id
---
-/subscriptions/xxxxxxxxxx-xxxx-xxxxx-xxxxxxxxxxxx/resourceGroups/nginx-test-rg/providers/Microsoft.Network/publicIPAddresses/nginx-test-ip
+{{ Add output here }}
 ```
 
-Create an in-memory object for NginxPublicIPAddress.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -58,7 +67,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxPublicIPAddress
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxPublicIPAddress
 
 ## NOTES
 

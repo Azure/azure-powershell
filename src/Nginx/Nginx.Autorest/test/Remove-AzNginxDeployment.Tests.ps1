@@ -24,7 +24,7 @@ Describe 'Remove-AzNginxDeployment' {
     It 'DeleteViaIdentity' {
         $publicIp = New-AzNginxPublicIPAddressObject -Id /subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Microsoft.Network/publicIPAddresses/test91922-ip
         $networkProfile = New-AzNginxNetworkProfileObject -FrontEndIPConfiguration @{PublicIPAddress=@($publicIp)} -NetworkInterfaceConfiguration @{SubnetId='/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Microsoft.Network/virtualNetworks/test91922-vnet/subnets/default'}
-        $deployment = New-AzNginxDeployment -Name $env.nginxDeployment2 -ResourceGroupName $env.resourceGroup -Location westcentralus -NetworkProfile $networkProfile -SkuName preview_Monthly_gmz7xq9ge3py
+        $deployment = New-AzNginxDeployment -Name $env.nginxDeployment2 -ResourceGroupName $env.resourceGroup -Location eastus -NetworkProfile $networkProfile -SkuName preview_Monthly_gmz7xq9ge3py
         Remove-AzNginxDeployment -InputObject $deployment
         $deploymentList = Get-AzNginxDeployment -ResourceGroupName $env.resourceGroup
         $deploymentList.Name | Should -Not -Contain $env.nginxDeployment2

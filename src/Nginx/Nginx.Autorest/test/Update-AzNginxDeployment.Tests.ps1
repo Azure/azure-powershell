@@ -20,6 +20,11 @@ Describe 'Update-AzNginxDeployment' {
         $nginx.EnableDiagnosticsSupport | Should -Be True
     }
 
+    It 'UpdateExpanded' {
+        $nginx = Update-AzNginxDeployment -DeploymentName $env.nginxDeployment1 -ResourceGroupName $env.resourceGroup -AutoUpgradeProfileUpgradeChannel $env.nginxAutoupgradeChannel
+        $nginx.AutoUpgradeProfileUpgradeChannel | Should -Be $env.nginxAutoupgradeChannel
+    }
+
     It 'UpdateViaIdentityExpanded' {
         $nginx = Get-AzNginxDeployment -Name $env.nginxDeployment1 -ResourceGroupName $env.resourceGroup
         $res = Update-AzNginxDeployment -InputObject $nginx -EnableDiagnosticsSupport:$false

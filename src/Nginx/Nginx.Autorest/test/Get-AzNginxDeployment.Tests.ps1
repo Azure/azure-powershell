@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzNginxDeployment'))
 Describe 'Get-AzNginxDeployment' {
     It 'List' {
         $nginxList = Get-AzNginxDeployment -ResourceGroupName $env.resourceGroup
-        $nginxList.Count | Should -Be 1
+        $nginxList.Count | Should -Be 6
     }
 
     It 'Get' {

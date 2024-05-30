@@ -1,12 +1,22 @@
-### Example 1: Create an in-memory object for NginxPublicIPAddress
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzNginxPublicIPAddressObject -Id /subscriptions/xxxxxxxxxx-xxxx-xxxxx-xxxxxxxxxxxx/resourceGroups/nginx-test-rg/providers/Microsoft.Network/publicIPAddresses/nginx-test-ip
+{{ Add code here }}
 ```
 
 ```output
-Id
---
-/subscriptions/xxxxxxxxxx-xxxx-xxxxx-xxxxxxxxxxxx/resourceGroups/nginx-test-rg/providers/Microsoft.Network/publicIPAddresses/nginx-test-ip
+{{ Add output here }}
 ```
 
-Create an in-memory object for NginxPublicIPAddress.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+

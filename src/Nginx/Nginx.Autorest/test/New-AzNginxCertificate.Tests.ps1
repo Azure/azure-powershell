@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzNginxCertificate'))
 
 Describe 'New-AzNginxCertificate' {
     It 'CreateExpanded' {
-        $cert = New-AzNginxCertificate -DeploymentName $env.nginxDeployment1 -Name $env.nginxNewCert -ResourceGroupName $env.resourceGroup -CertificateVirtualPath test.cert -KeyVirtualPath test.key -KeyVaultSecretId https://integration-tests-kv.vault.azure.net/secrets/newcert
+        $cert = New-AzNginxCertificate -DeploymentName $env.nginxDeployment1 -Name $env.nginxNewCert -ResourceGroupName $env.resourceGroup -CertificateVirtualPath /etc/nginx/certs/testnew.cert -KeyVirtualPath /etc/nginx/certs/testnew.key -KeyVaultSecretId https://integration-tests-kv.vault.azure.net/secrets/newcert
         $cert.ProvisioningState | Should -Be 'Succeeded'
     }
 }

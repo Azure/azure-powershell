@@ -29,18 +29,18 @@ For information on how to develop for `Az.Nginx`, see [how-to.md](how-to.md).
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-commit: e38e7dd462571865266d320bd7cec9804c67f70b
-tag: package-2023-04-01
+commit: a1c5b4bbc29061bfff3bb912001d1b8a32431702
+tag: package-2024-01-01-preview
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/nginx/resource-manager/NGINX.NGINXPLUS/stable/2023-04-01/swagger.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/nginx/resource-manager/NGINX.NGINXPLUS/preview/2024-01-01-preview/swagger.json
 
 root-module-name: $(prefix).Nginx
 title: Nginx
-module-version: 0.1.0
+module-version: 1.0.0
 subject-prefix: Nginx
 nested-object-to-string: true
 

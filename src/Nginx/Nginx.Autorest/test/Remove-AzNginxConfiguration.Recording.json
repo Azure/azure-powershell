@@ -1,17 +1,17 @@
 {
-  "Remove-AzNginxConfiguration+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/configurations/default?api-version=2023-04-01+1": {
+  "Remove-AzNginxConfiguration+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test922/configurations/default?api-version=2024-01-01-preview+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/configurations/default?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test922/configurations/default?api-version=2024-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "d5dde62e-7bd8-40be-959a-bcd3ff1e791a" ],
+        "x-ms-client-request-id": [ "a76d6055-df32-4845-9220-0ecf13819f5d" ],
         "CommandName": [ "Remove-AzNginxConfiguration" ],
         "FullCommandName": [ "Remove-AzNginxConfiguration_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Nginx/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.Nginx/1.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,17 +22,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/b359ad89-001a-4cb5-bea1-80b8de6fb423*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B?api-version=2023-04-01" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "Location": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS/operationStatuses/c1ca2aa7-8585-46ca-948c-bec6d73eed7e*E309545C55747825444BFB64F5292AA87BE4A0730D06056234AC6AFBF88EF4C9?api-version=2024-01-01-preview\u0026t=638526918458139966\u0026c=MIIHhzCCBm-gAwIBAgITHgSByWw1Ed_Zii__gAAABIHJbDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNTA5MDgzNDM1WhcNMjUwNTA0MDgzNDM1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALNFJKuLEBOS1uJWUNu0aCYdzkvbSxuiHNgHKq6PuXp_wGHkpHquW69ms0LW5DvZap48H9sV5xKt6ySk967Oee9fZJi5_YlpZVGdXVn0zlQgGeYY9rRI1L_cSXBP1CpTy5zLY7Rn1-SPMHhagoWVxo8-EuSK_DzE7w3IPMaVY5b88gSUINVc9bzUjEZwEYStU1NgplNmRGsNNChH4tk6EH5-7Jb4fWI3BrqzDCtIb6E_WbhSvzdvFPGS4J0E1onRBy6Xz_vM6qyzWN4fXmM2RvJGGlrC6RPhvgt8Txe-He4-2DZYJpWKWsC0_wu5j6KjZ-NzenSUnTQcu-9W3xECD5ECAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBRi1KWAwEgEks2oqmt17tiHjdbe4jAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAM-MTv2S9fu4pNTicrlwYeFLUtHz888urDWIBxQy6vtFuWhPC2lbEjdA3JMZTJgcLGY-dW2uuBeo0FeNk_O4TXbN2vI2YENXpwIGFbj9pLExOmwDYGOVjby2UvDsstQTAs2P1mxiOFf06K_f_TQ7xNi5rLezmVtjPGPhHzbgkF5sPU6Wi350gfVcAc3oTiQbqi2ZfEp9ixHOE3Xo-1zP1ogHBSAgc-aIGgtALL14a74DT_2xwBNVZkOBMqg8C-0V6GrzXMwKdyGWcjbjPDO5DvjDVDwvp982OO6pLlqtfp-ADJNmorDJ3O3SeT6sAZIaLvinBY2nFAPgR5uD0-AXcMk\u0026s=jc951KIxXxRfltdAjcmnIvxj6eDH1Knlh0noGWHs0SKRjgNh9HPMVaYEp5XdSQ3akqrPA9ISIvA-Eq_K1L23bW5jTuj6GcHhZ1TioEoNKbxtNVGio48uhQo-3NS3Hk7-oDyIfiCqI0sX7PPAnoK6JkUjlCtsiKBQxA6gN-fqqM_yj4jgxuwQJD3XVx52olvbHqCE-rxlux6N0rGXtjhkvdwPE3tc4fA0cWvxh5nVRunviVF0o_07nOgsJGnCEq66QHlaLfI4t07FfZ72WnynlPtp8SRQIo3SgBQGupkfnnvAkW_GO4ox6xBJcdLUF-SIzrjmrsbZTYxlUClGkHR1sQ\u0026h=QExqWFvrIx0uNcJPCpcbY2ER3ZGN5JD0DUa4JjovKZA" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:0d872b79-fbba-4031-abaa-ef9aa3e0050d" ],
+        "mise-correlation-id": [ "14e117ba-c666-4147-8ab4-a8ebb26d969a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/b359ad89-001a-4cb5-bea1-80b8de6fb423*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B?api-version=2023-04-01" ],
-        "x-ms-request-id": [ "b359ad89-001a-4cb5-bea1-80b8de6fb423" ],
-        "x-ms-correlation-request-id": [ "8a614d3f-ec55-4d0f-bfb3-248b78496eed" ],
-        "x-ms-routing-request-id": [ "WESTUS:20220921T183805Z:8a614d3f-ec55-4d0f-bfb3-248b78496eed" ],
-        "Date": [ "Wed, 21 Sep 2022 18:38:05 GMT" ]
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS/operationStatuses/c1ca2aa7-8585-46ca-948c-bec6d73eed7e*E309545C55747825444BFB64F5292AA87BE4A0730D06056234AC6AFBF88EF4C9?api-version=2024-01-01-preview\u0026t=638526918457983682\u0026c=MIIHhzCCBm-gAwIBAgITHgSByWw1Ed_Zii__gAAABIHJbDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNTA5MDgzNDM1WhcNMjUwNTA0MDgzNDM1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALNFJKuLEBOS1uJWUNu0aCYdzkvbSxuiHNgHKq6PuXp_wGHkpHquW69ms0LW5DvZap48H9sV5xKt6ySk967Oee9fZJi5_YlpZVGdXVn0zlQgGeYY9rRI1L_cSXBP1CpTy5zLY7Rn1-SPMHhagoWVxo8-EuSK_DzE7w3IPMaVY5b88gSUINVc9bzUjEZwEYStU1NgplNmRGsNNChH4tk6EH5-7Jb4fWI3BrqzDCtIb6E_WbhSvzdvFPGS4J0E1onRBy6Xz_vM6qyzWN4fXmM2RvJGGlrC6RPhvgt8Txe-He4-2DZYJpWKWsC0_wu5j6KjZ-NzenSUnTQcu-9W3xECD5ECAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBRi1KWAwEgEks2oqmt17tiHjdbe4jAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAM-MTv2S9fu4pNTicrlwYeFLUtHz888urDWIBxQy6vtFuWhPC2lbEjdA3JMZTJgcLGY-dW2uuBeo0FeNk_O4TXbN2vI2YENXpwIGFbj9pLExOmwDYGOVjby2UvDsstQTAs2P1mxiOFf06K_f_TQ7xNi5rLezmVtjPGPhHzbgkF5sPU6Wi350gfVcAc3oTiQbqi2ZfEp9ixHOE3Xo-1zP1ogHBSAgc-aIGgtALL14a74DT_2xwBNVZkOBMqg8C-0V6GrzXMwKdyGWcjbjPDO5DvjDVDwvp982OO6pLlqtfp-ADJNmorDJ3O3SeT6sAZIaLvinBY2nFAPgR5uD0-AXcMk\u0026s=c__midEl1mMMdHnaLtugc6vlD34W_C1Bnmnjsl_1s3UPLljJhp-WBe9-OZyennd2ET26jM3ttMghCUtw6NDzUgDLCtWxtICQwuVadfHfV2LMuph5RA_qZ8uGy0V5hcHqLzpnfT9X3iy9DWA43rDqondWdgb-YRQpvwSWR55XYFj87zE6BiMrFQXV4d3gr-tohVeDOIJAMMqddor-CnlJ1ve4rlWw7HQ1bUzdP-9I81QRg2QRJi2laPLi6Duaqj31X8Kc0VpNgwwIiRoV2_bZg1YSxV0AAaD0W5cetgdQaYiMiXLHF0BODNKrDYEIj6l4YpUwtw6v23vl44Ldj0YSFg\u0026h=8N3jbLsJiHwGa69UJ6VcUEHpOSF9ztQ1s_O8rhx8aCA" ],
+        "x-ms-request-id": [ "c1ca2aa7-8585-46ca-948c-bec6d73eed7e" ],
+        "x-ms-correlation-request-id": [ "caec58c7-b735-47e8-be6b-15ba1e4ab211" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-routing-request-id": [ "WESTUS:20240530T185045Z:caec58c7-b735-47e8-be6b-15ba1e4ab211" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9F43DBD93B5846229FD314659CD79059 Ref B: SJC211051205029 Ref C: 2024-05-30T18:50:42Z" ],
+        "Date": [ "Thu, 30 May 2024 18:50:45 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "4" ],
@@ -43,61 +47,64 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxConfiguration+[NoContext]+Delete+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/b359ad89-001a-4cb5-bea1-80b8de6fb423*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B?api-version=2023-04-01+2": {
+  "Remove-AzNginxConfiguration+[NoContext]+Delete+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS/operationStatuses/c1ca2aa7-8585-46ca-948c-bec6d73eed7e*E309545C55747825444BFB64F5292AA87BE4A0730D06056234AC6AFBF88EF4C9?api-version=2024-01-01-preview\u0026t=638526918457983682\u0026c=MIIHhzCCBm-gAwIBAgITHgSByWw1Ed_Zii__gAAABIHJbDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNTA5MDgzNDM1WhcNMjUwNTA0MDgzNDM1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALNFJKuLEBOS1uJWUNu0aCYdzkvbSxuiHNgHKq6PuXp_wGHkpHquW69ms0LW5DvZap48H9sV5xKt6ySk967Oee9fZJi5_YlpZVGdXVn0zlQgGeYY9rRI1L_cSXBP1CpTy5zLY7Rn1-SPMHhagoWVxo8-EuSK_DzE7w3IPMaVY5b88gSUINVc9bzUjEZwEYStU1NgplNmRGsNNChH4tk6EH5-7Jb4fWI3BrqzDCtIb6E_WbhSvzdvFPGS4J0E1onRBy6Xz_vM6qyzWN4fXmM2RvJGGlrC6RPhvgt8Txe-He4-2DZYJpWKWsC0_wu5j6KjZ-NzenSUnTQcu-9W3xECD5ECAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBRi1KWAwEgEks2oqmt17tiHjdbe4jAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAM-MTv2S9fu4pNTicrlwYeFLUtHz888urDWIBxQy6vtFuWhPC2lbEjdA3JMZTJgcLGY-dW2uuBeo0FeNk_O4TXbN2vI2YENXpwIGFbj9pLExOmwDYGOVjby2UvDsstQTAs2P1mxiOFf06K_f_TQ7xNi5rLezmVtjPGPhHzbgkF5sPU6Wi350gfVcAc3oTiQbqi2ZfEp9ixHOE3Xo-1zP1ogHBSAgc-aIGgtALL14a74DT_2xwBNVZkOBMqg8C-0V6GrzXMwKdyGWcjbjPDO5DvjDVDwvp982OO6pLlqtfp-ADJNmorDJ3O3SeT6sAZIaLvinBY2nFAPgR5uD0-AXcMk\u0026s=c__midEl1mMMdHnaLtugc6vlD34W_C1Bnmnjsl_1s3UPLljJhp-WBe9-OZyennd2ET26jM3ttMghCUtw6NDzUgDLCtWxtICQwuVadfHfV2LMuph5RA_qZ8uGy0V5hcHqLzpnfT9X3iy9DWA43rDqondWdgb-YRQpvwSWR55XYFj87zE6BiMrFQXV4d3gr-tohVeDOIJAMMqddor-CnlJ1ve4rlWw7HQ1bUzdP-9I81QRg2QRJi2laPLi6Duaqj31X8Kc0VpNgwwIiRoV2_bZg1YSxV0AAaD0W5cetgdQaYiMiXLHF0BODNKrDYEIj6l4YpUwtw6v23vl44Ldj0YSFg\u0026h=8N3jbLsJiHwGa69UJ6VcUEHpOSF9ztQ1s_O8rhx8aCA+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/b359ad89-001a-4cb5-bea1-80b8de6fb423*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS/operationStatuses/c1ca2aa7-8585-46ca-948c-bec6d73eed7e*E309545C55747825444BFB64F5292AA87BE4A0730D06056234AC6AFBF88EF4C9?api-version=2024-01-01-preview\u0026t=638526918457983682\u0026c=MIIHhzCCBm-gAwIBAgITHgSByWw1Ed_Zii__gAAABIHJbDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNTA5MDgzNDM1WhcNMjUwNTA0MDgzNDM1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALNFJKuLEBOS1uJWUNu0aCYdzkvbSxuiHNgHKq6PuXp_wGHkpHquW69ms0LW5DvZap48H9sV5xKt6ySk967Oee9fZJi5_YlpZVGdXVn0zlQgGeYY9rRI1L_cSXBP1CpTy5zLY7Rn1-SPMHhagoWVxo8-EuSK_DzE7w3IPMaVY5b88gSUINVc9bzUjEZwEYStU1NgplNmRGsNNChH4tk6EH5-7Jb4fWI3BrqzDCtIb6E_WbhSvzdvFPGS4J0E1onRBy6Xz_vM6qyzWN4fXmM2RvJGGlrC6RPhvgt8Txe-He4-2DZYJpWKWsC0_wu5j6KjZ-NzenSUnTQcu-9W3xECD5ECAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBRi1KWAwEgEks2oqmt17tiHjdbe4jAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAM-MTv2S9fu4pNTicrlwYeFLUtHz888urDWIBxQy6vtFuWhPC2lbEjdA3JMZTJgcLGY-dW2uuBeo0FeNk_O4TXbN2vI2YENXpwIGFbj9pLExOmwDYGOVjby2UvDsstQTAs2P1mxiOFf06K_f_TQ7xNi5rLezmVtjPGPhHzbgkF5sPU6Wi350gfVcAc3oTiQbqi2ZfEp9ixHOE3Xo-1zP1ogHBSAgc-aIGgtALL14a74DT_2xwBNVZkOBMqg8C-0V6GrzXMwKdyGWcjbjPDO5DvjDVDwvp982OO6pLlqtfp-ADJNmorDJ3O3SeT6sAZIaLvinBY2nFAPgR5uD0-AXcMk\u0026s=c__midEl1mMMdHnaLtugc6vlD34W_C1Bnmnjsl_1s3UPLljJhp-WBe9-OZyennd2ET26jM3ttMghCUtw6NDzUgDLCtWxtICQwuVadfHfV2LMuph5RA_qZ8uGy0V5hcHqLzpnfT9X3iy9DWA43rDqondWdgb-YRQpvwSWR55XYFj87zE6BiMrFQXV4d3gr-tohVeDOIJAMMqddor-CnlJ1ve4rlWw7HQ1bUzdP-9I81QRg2QRJi2laPLi6Duaqj31X8Kc0VpNgwwIiRoV2_bZg1YSxV0AAaD0W5cetgdQaYiMiXLHF0BODNKrDYEIj6l4YpUwtw6v23vl44Ldj0YSFg\u0026h=8N3jbLsJiHwGa69UJ6VcUEHpOSF9ztQ1s_O8rhx8aCA",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "d5dde62e-7bd8-40be-959a-bcd3ff1e791a" ],
+        "x-ms-client-request-id": [ "a76d6055-df32-4845-9220-0ecf13819f5d" ],
         "CommandName": [ "Remove-AzNginxConfiguration" ],
         "FullCommandName": [ "Remove-AzNginxConfiguration_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Nginx/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.Nginx/1.0.0" ]
       },
       "ContentHeaders": {
       }
     },
     "Response": {
-      "StatusCode": 202,
+      "StatusCode": 200,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"85018798-0000-0200-0000-632b5a0e0000\"" ],
+        "ETag": [ "\"be0078bd-0000-0100-0000-6658ca9c0000\"" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-request-id": [ "4ffd55ef-e885-4289-903c-3168e3be2f4e" ],
+        "x-ms-correlation-request-id": [ "afb0ce66-d1ee-4060-8dfc-011bb16ef71d" ],
         "x-ms-ratelimit-remaining-tenant-reads": [ "11999" ],
-        "x-ms-request-id": [ "8e1a2169-6006-415c-ae8b-d2954d8240ec" ],
-        "x-ms-correlation-request-id": [ "f21a22e2-7153-4507-9064-39eed17286cd" ],
-        "x-ms-routing-request-id": [ "WESTUS:20220921T183836Z:f21a22e2-7153-4507-9064-39eed17286cd" ],
+        "x-ms-routing-request-id": [ "WESTUS:20240530T185116Z:afb0ce66-d1ee-4060-8dfc-011bb16ef71d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 21 Sep 2022 18:38:35 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 7B1161B073974BBA9EB47EF12E9F7594 Ref B: SJC211051205029 Ref C: 2024-05-30T18:51:15Z" ],
+        "Date": [ "Thu, 30 May 2024 18:51:15 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "523" ],
+        "Content-Length": [ "582" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/b359ad89-001a-4cb5-bea1-80b8de6fb423*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B\",\"name\":\"b359ad89-001a-4cb5-bea1-80b8de6fb423*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B\",\"resourceId\":\"/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/configurations/default\",\"status\":\"Deleting\",\"startTime\":\"2022-09-21T18:38:05.5063049Z\",\"error\":{}}",
+      "Content": "{\"id\":\"/providers/Nginx.NginxPlus/locations/EASTUS/operationStatuses/c1ca2aa7-8585-46ca-948c-bec6d73eed7e*E309545C55747825444BFB64F5292AA87BE4A0730D06056234AC6AFBF88EF4C9\",\"name\":\"c1ca2aa7-8585-46ca-948c-bec6d73eed7e*E309545C55747825444BFB64F5292AA87BE4A0730D06056234AC6AFBF88EF4C9\",\"resourceId\":\"/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test922/configurations/default\",\"status\":\"Succeeded\",\"startTime\":\"2024-05-30T18:50:43.3539142Z\",\"endTime\":\"2024-05-30T18:51:08.0552056Z\",\"error\":{},\"properties\":null}",
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxConfiguration+[NoContext]+Delete+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/b359ad89-001a-4cb5-bea1-80b8de6fb423*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B?api-version=2023-04-01+3": {
+  "Remove-AzNginxConfiguration+[NoContext]+Delete+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS/operationStatuses/c1ca2aa7-8585-46ca-948c-bec6d73eed7e*E309545C55747825444BFB64F5292AA87BE4A0730D06056234AC6AFBF88EF4C9?api-version=2024-01-01-preview\u0026t=638526918458139966\u0026c=MIIHhzCCBm-gAwIBAgITHgSByWw1Ed_Zii__gAAABIHJbDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNTA5MDgzNDM1WhcNMjUwNTA0MDgzNDM1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALNFJKuLEBOS1uJWUNu0aCYdzkvbSxuiHNgHKq6PuXp_wGHkpHquW69ms0LW5DvZap48H9sV5xKt6ySk967Oee9fZJi5_YlpZVGdXVn0zlQgGeYY9rRI1L_cSXBP1CpTy5zLY7Rn1-SPMHhagoWVxo8-EuSK_DzE7w3IPMaVY5b88gSUINVc9bzUjEZwEYStU1NgplNmRGsNNChH4tk6EH5-7Jb4fWI3BrqzDCtIb6E_WbhSvzdvFPGS4J0E1onRBy6Xz_vM6qyzWN4fXmM2RvJGGlrC6RPhvgt8Txe-He4-2DZYJpWKWsC0_wu5j6KjZ-NzenSUnTQcu-9W3xECD5ECAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBRi1KWAwEgEks2oqmt17tiHjdbe4jAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAM-MTv2S9fu4pNTicrlwYeFLUtHz888urDWIBxQy6vtFuWhPC2lbEjdA3JMZTJgcLGY-dW2uuBeo0FeNk_O4TXbN2vI2YENXpwIGFbj9pLExOmwDYGOVjby2UvDsstQTAs2P1mxiOFf06K_f_TQ7xNi5rLezmVtjPGPhHzbgkF5sPU6Wi350gfVcAc3oTiQbqi2ZfEp9ixHOE3Xo-1zP1ogHBSAgc-aIGgtALL14a74DT_2xwBNVZkOBMqg8C-0V6GrzXMwKdyGWcjbjPDO5DvjDVDwvp982OO6pLlqtfp-ADJNmorDJ3O3SeT6sAZIaLvinBY2nFAPgR5uD0-AXcMk\u0026s=jc951KIxXxRfltdAjcmnIvxj6eDH1Knlh0noGWHs0SKRjgNh9HPMVaYEp5XdSQ3akqrPA9ISIvA-Eq_K1L23bW5jTuj6GcHhZ1TioEoNKbxtNVGio48uhQo-3NS3Hk7-oDyIfiCqI0sX7PPAnoK6JkUjlCtsiKBQxA6gN-fqqM_yj4jgxuwQJD3XVx52olvbHqCE-rxlux6N0rGXtjhkvdwPE3tc4fA0cWvxh5nVRunviVF0o_07nOgsJGnCEq66QHlaLfI4t07FfZ72WnynlPtp8SRQIo3SgBQGupkfnnvAkW_GO4ox6xBJcdLUF-SIzrjmrsbZTYxlUClGkHR1sQ\u0026h=QExqWFvrIx0uNcJPCpcbY2ER3ZGN5JD0DUa4JjovKZA+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/b359ad89-001a-4cb5-bea1-80b8de6fb423*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS/operationStatuses/c1ca2aa7-8585-46ca-948c-bec6d73eed7e*E309545C55747825444BFB64F5292AA87BE4A0730D06056234AC6AFBF88EF4C9?api-version=2024-01-01-preview\u0026t=638526918458139966\u0026c=MIIHhzCCBm-gAwIBAgITHgSByWw1Ed_Zii__gAAABIHJbDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNTA5MDgzNDM1WhcNMjUwNTA0MDgzNDM1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALNFJKuLEBOS1uJWUNu0aCYdzkvbSxuiHNgHKq6PuXp_wGHkpHquW69ms0LW5DvZap48H9sV5xKt6ySk967Oee9fZJi5_YlpZVGdXVn0zlQgGeYY9rRI1L_cSXBP1CpTy5zLY7Rn1-SPMHhagoWVxo8-EuSK_DzE7w3IPMaVY5b88gSUINVc9bzUjEZwEYStU1NgplNmRGsNNChH4tk6EH5-7Jb4fWI3BrqzDCtIb6E_WbhSvzdvFPGS4J0E1onRBy6Xz_vM6qyzWN4fXmM2RvJGGlrC6RPhvgt8Txe-He4-2DZYJpWKWsC0_wu5j6KjZ-NzenSUnTQcu-9W3xECD5ECAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBRi1KWAwEgEks2oqmt17tiHjdbe4jAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAM-MTv2S9fu4pNTicrlwYeFLUtHz888urDWIBxQy6vtFuWhPC2lbEjdA3JMZTJgcLGY-dW2uuBeo0FeNk_O4TXbN2vI2YENXpwIGFbj9pLExOmwDYGOVjby2UvDsstQTAs2P1mxiOFf06K_f_TQ7xNi5rLezmVtjPGPhHzbgkF5sPU6Wi350gfVcAc3oTiQbqi2ZfEp9ixHOE3Xo-1zP1ogHBSAgc-aIGgtALL14a74DT_2xwBNVZkOBMqg8C-0V6GrzXMwKdyGWcjbjPDO5DvjDVDwvp982OO6pLlqtfp-ADJNmorDJ3O3SeT6sAZIaLvinBY2nFAPgR5uD0-AXcMk\u0026s=jc951KIxXxRfltdAjcmnIvxj6eDH1Knlh0noGWHs0SKRjgNh9HPMVaYEp5XdSQ3akqrPA9ISIvA-Eq_K1L23bW5jTuj6GcHhZ1TioEoNKbxtNVGio48uhQo-3NS3Hk7-oDyIfiCqI0sX7PPAnoK6JkUjlCtsiKBQxA6gN-fqqM_yj4jgxuwQJD3XVx52olvbHqCE-rxlux6N0rGXtjhkvdwPE3tc4fA0cWvxh5nVRunviVF0o_07nOgsJGnCEq66QHlaLfI4t07FfZ72WnynlPtp8SRQIo3SgBQGupkfnnvAkW_GO4ox6xBJcdLUF-SIzrjmrsbZTYxlUClGkHR1sQ\u0026h=QExqWFvrIx0uNcJPCpcbY2ER3ZGN5JD0DUa4JjovKZA",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "d5dde62e-7bd8-40be-959a-bcd3ff1e791a" ],
+        "x-ms-client-request-id": [ "a76d6055-df32-4845-9220-0ecf13819f5d" ],
         "CommandName": [ "Remove-AzNginxConfiguration" ],
         "FullCommandName": [ "Remove-AzNginxConfiguration_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Nginx/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.Nginx/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -107,69 +114,31 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"8501ba98-0000-0200-0000-632b5a2c0000\"" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11998" ],
-        "x-ms-request-id": [ "d9fa8efc-24e1-4346-907f-267980ba0140" ],
-        "x-ms-correlation-request-id": [ "07ae405d-10b5-4121-a1b8-939ac1a0c310" ],
-        "x-ms-routing-request-id": [ "WESTUS:20220921T183906Z:07ae405d-10b5-4121-a1b8-939ac1a0c310" ],
+        "ETag": [ "\"be0078bd-0000-0100-0000-6658ca9c0000\"" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-request-id": [ "b7dde90f-aaf6-412f-9c48-b269d227dec7" ],
+        "x-ms-correlation-request-id": [ "dc599806-de22-4688-b66a-2cdc83e20fc5" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11999" ],
+        "x-ms-routing-request-id": [ "WESTUS:20240530T185116Z:dc599806-de22-4688-b66a-2cdc83e20fc5" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 21 Sep 2022 18:39:06 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: BD3591FD4E544408A63B9D1F5A3E0BA6 Ref B: SJC211051205029 Ref C: 2024-05-30T18:51:16Z" ],
+        "Date": [ "Thu, 30 May 2024 18:51:16 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "583" ],
+        "Content-Length": [ "582" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/b359ad89-001a-4cb5-bea1-80b8de6fb423*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B\",\"name\":\"b359ad89-001a-4cb5-bea1-80b8de6fb423*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B\",\"resourceId\":\"/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/configurations/default\",\"status\":\"Succeeded\",\"startTime\":\"2022-09-21T18:38:05.5063049Z\",\"endTime\":\"2022-09-21T18:38:36.2847011Z\",\"error\":{},\"properties\":null}",
+      "Content": "{\"id\":\"/providers/Nginx.NginxPlus/locations/EASTUS/operationStatuses/c1ca2aa7-8585-46ca-948c-bec6d73eed7e*E309545C55747825444BFB64F5292AA87BE4A0730D06056234AC6AFBF88EF4C9\",\"name\":\"c1ca2aa7-8585-46ca-948c-bec6d73eed7e*E309545C55747825444BFB64F5292AA87BE4A0730D06056234AC6AFBF88EF4C9\",\"resourceId\":\"/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test922/configurations/default\",\"status\":\"Succeeded\",\"startTime\":\"2024-05-30T18:50:43.3539142Z\",\"endTime\":\"2024-05-30T18:51:08.0552056Z\",\"error\":{},\"properties\":null}",
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxConfiguration+[NoContext]+Delete+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/b359ad89-001a-4cb5-bea1-80b8de6fb423*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B?api-version=2023-04-01+4": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/b359ad89-001a-4cb5-bea1-80b8de6fb423*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B?api-version=2023-04-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "d5dde62e-7bd8-40be-959a-bcd3ff1e791a" ],
-        "CommandName": [ "Remove-AzNginxConfiguration" ],
-        "FullCommandName": [ "Remove-AzNginxConfiguration_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Nginx/0.1.0" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "ETag": [ "\"8501ba98-0000-0200-0000-632b5a2c0000\"" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11997" ],
-        "x-ms-request-id": [ "41baa265-8c5b-436a-abd8-6274d676b260" ],
-        "x-ms-correlation-request-id": [ "b0147e6f-b546-40d2-a1a2-3d19dfa452e2" ],
-        "x-ms-routing-request-id": [ "WESTUS:20220921T183906Z:b0147e6f-b546-40d2-a1a2-3d19dfa452e2" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 21 Sep 2022 18:39:06 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "583" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/b359ad89-001a-4cb5-bea1-80b8de6fb423*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B\",\"name\":\"b359ad89-001a-4cb5-bea1-80b8de6fb423*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B\",\"resourceId\":\"/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/configurations/default\",\"status\":\"Succeeded\",\"startTime\":\"2022-09-21T18:38:05.5063049Z\",\"endTime\":\"2022-09-21T18:38:36.2847011Z\",\"error\":{},\"properties\":null}",
-      "isContentBase64": false
-    }
-  },
-  "Remove-AzNginxConfiguration+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/configurations/default?api-version=2023-04-01+1": {
+  "Remove-AzNginxConfiguration+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test922/configurations/default?api-version=2024-01-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/configurations/default?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test922/configurations/default?api-version=2024-01-01-preview",
       "Content": "{\n  \"properties\": {\n    \"files\": [\n      {\n        \"content\": \"aHR0cCB7DQogICAgdXBzdHJlYW0gYXBwIHsNCiAgICAgICAgc2VydmVyIDE3Mi4yNy4wLjQ6ODA7DQogICAgfQ0KICAgIHNlcnZlciB7DQogICAgICAgIGxpc3RlbiA4MDsNCiAgICAgICAgbG9jYXRpb24gLyB7DQogICAgICAgICAgICBkZWZhdWx0X3R5cGUgdGV4dC9odG1sOw0KICAgICAgICAgICAgcmV0dXJuIDIwMCAnPCFET0NUWVBFIGh0bWw+PGgxIHN0eWxlPSJmb250LXNpemU6MzBweDsiPkhlbGxvIGZyb20gTmdpbnggV2ViIFNlcnZlciE8L2gxPlxuJzsNCiAgICAgICAgfQ0KICAgICAgICBsb2NhdGlvbiAvYXBwLyB7DQogICAgICAgICAgICBwcm94eV9wYXNzIGh0dHA6Ly9hcHAuYmxvYi5jb3JlLndpbmRvd3MubmV0LzsNCiAgICAgICAgICAgIHByb3h5X2h0dHBfdmVyc2lvbiAxLjE7DQogICAgICAgICAgICBwcm94eV9yZWFkX3RpbWVvdXQgNjAwOw0KCSAgICAgICAgcHJveHlfY29ubmVjdF90aW1lb3V0IDYwMDsNCgkgICAgICAgIHByb3h5X3NlbmRfdGltZW91dCA2MDA7DQogICAgICAgIH0NCiAgICB9DQp9\",\n        \"virtualPath\": \"nginx.conf\"\n      }\n    ],\n    \"rootFile\": \"nginx.conf\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -184,41 +153,89 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/17379b3b-7aab-475b-96c3-59d02c9957be*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B?api-version=2023-04-01" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "Location": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS/operationStatuses/b2b7408a-3b22-4aa7-9b25-9ac05c971065*E309545C55747825444BFB64F5292AA87BE4A0730D06056234AC6AFBF88EF4C9?api-version=2024-01-01-preview\u0026t=638526918776523845\u0026c=MIIHhzCCBm-gAwIBAgITHgSByWw1Ed_Zii__gAAABIHJbDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNTA5MDgzNDM1WhcNMjUwNTA0MDgzNDM1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALNFJKuLEBOS1uJWUNu0aCYdzkvbSxuiHNgHKq6PuXp_wGHkpHquW69ms0LW5DvZap48H9sV5xKt6ySk967Oee9fZJi5_YlpZVGdXVn0zlQgGeYY9rRI1L_cSXBP1CpTy5zLY7Rn1-SPMHhagoWVxo8-EuSK_DzE7w3IPMaVY5b88gSUINVc9bzUjEZwEYStU1NgplNmRGsNNChH4tk6EH5-7Jb4fWI3BrqzDCtIb6E_WbhSvzdvFPGS4J0E1onRBy6Xz_vM6qyzWN4fXmM2RvJGGlrC6RPhvgt8Txe-He4-2DZYJpWKWsC0_wu5j6KjZ-NzenSUnTQcu-9W3xECD5ECAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBRi1KWAwEgEks2oqmt17tiHjdbe4jAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAM-MTv2S9fu4pNTicrlwYeFLUtHz888urDWIBxQy6vtFuWhPC2lbEjdA3JMZTJgcLGY-dW2uuBeo0FeNk_O4TXbN2vI2YENXpwIGFbj9pLExOmwDYGOVjby2UvDsstQTAs2P1mxiOFf06K_f_TQ7xNi5rLezmVtjPGPhHzbgkF5sPU6Wi350gfVcAc3oTiQbqi2ZfEp9ixHOE3Xo-1zP1ogHBSAgc-aIGgtALL14a74DT_2xwBNVZkOBMqg8C-0V6GrzXMwKdyGWcjbjPDO5DvjDVDwvp982OO6pLlqtfp-ADJNmorDJ3O3SeT6sAZIaLvinBY2nFAPgR5uD0-AXcMk\u0026s=l5iEvj0VRkxXv96yHAFhkhWmtxodXyqiWdxUsUDkZZlrc4rhDac-TpJ7jwocqskdV4U1CREms6iSjeiRTQ46hszW4EJdLdfYwkhoCpPL5-6OzlgMN3v1URYvPkDNN3qIz4t8d1t3ltJ7J72LYkrFm8QA1RUYtFgzvd5DDNuJy1jsw15qmGtssW6YFxcEjPp4htA71J9BE8vADjvMqrtusZ_dqYLTNqMRUj_O5AqV3FcWhRzWcNXovNbeZChZV2M7O7Mrin7TrIiFysrcIM7vsKe4K6Ly-VILWw33_O7DHnY7ckfcg4yGRhslmJVOdslcN68Lykp8FY_eKYerm7ja7A\u0026h=5j-DCbDO17nwbXQWjo7EwkPds-ejRnl_3Z0yOBcL_xc" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:0d872b79-fbba-4031-abaa-ef9aa3e0050d" ],
+        "mise-correlation-id": [ "3e995121-f1e4-4f89-bf61-4e1d30e222d9" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/17379b3b-7aab-475b-96c3-59d02c9957be*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B?api-version=2023-04-01" ],
-        "x-ms-request-id": [ "17379b3b-7aab-475b-96c3-59d02c9957be" ],
-        "x-ms-correlation-request-id": [ "bc3112db-79de-471d-be33-3a396e60b5c4" ],
-        "x-ms-routing-request-id": [ "WESTUS:20220921T183907Z:bc3112db-79de-471d-be33-3a396e60b5c4" ],
-        "Date": [ "Wed, 21 Sep 2022 18:39:07 GMT" ]
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS/operationStatuses/b2b7408a-3b22-4aa7-9b25-9ac05c971065*E309545C55747825444BFB64F5292AA87BE4A0730D06056234AC6AFBF88EF4C9?api-version=2024-01-01-preview\u0026t=638526918776367761\u0026c=MIIHhzCCBm-gAwIBAgITHgSByWw1Ed_Zii__gAAABIHJbDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNTA5MDgzNDM1WhcNMjUwNTA0MDgzNDM1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALNFJKuLEBOS1uJWUNu0aCYdzkvbSxuiHNgHKq6PuXp_wGHkpHquW69ms0LW5DvZap48H9sV5xKt6ySk967Oee9fZJi5_YlpZVGdXVn0zlQgGeYY9rRI1L_cSXBP1CpTy5zLY7Rn1-SPMHhagoWVxo8-EuSK_DzE7w3IPMaVY5b88gSUINVc9bzUjEZwEYStU1NgplNmRGsNNChH4tk6EH5-7Jb4fWI3BrqzDCtIb6E_WbhSvzdvFPGS4J0E1onRBy6Xz_vM6qyzWN4fXmM2RvJGGlrC6RPhvgt8Txe-He4-2DZYJpWKWsC0_wu5j6KjZ-NzenSUnTQcu-9W3xECD5ECAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBRi1KWAwEgEks2oqmt17tiHjdbe4jAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAM-MTv2S9fu4pNTicrlwYeFLUtHz888urDWIBxQy6vtFuWhPC2lbEjdA3JMZTJgcLGY-dW2uuBeo0FeNk_O4TXbN2vI2YENXpwIGFbj9pLExOmwDYGOVjby2UvDsstQTAs2P1mxiOFf06K_f_TQ7xNi5rLezmVtjPGPhHzbgkF5sPU6Wi350gfVcAc3oTiQbqi2ZfEp9ixHOE3Xo-1zP1ogHBSAgc-aIGgtALL14a74DT_2xwBNVZkOBMqg8C-0V6GrzXMwKdyGWcjbjPDO5DvjDVDwvp982OO6pLlqtfp-ADJNmorDJ3O3SeT6sAZIaLvinBY2nFAPgR5uD0-AXcMk\u0026s=WZouMMdnfh1dPXL2fAgyKV8atSH4iXXhcqjETTZng2_LUEQUsDUWKgCXWe-dg-1AXDZkqBsYW51aHwmW5zqdG5YpMbObJwph9DfBbNgk_gO9ay21HwbXIWcuVi4jydFf0LWRa6D4OlFCq894I79iHeHjwd637SYQwDltkQv-k7oQr4WZbjPK0bXTd6M_fl-1HbKDF2PpAQHamV0WGez__OlbuCYfkac_kMnh2VSthH6fZ_Xg8HEnP8-cEVODZXftmfZaOIazTHf6c_T8aTyOPcDBqhqc9H05x1ucZTazNXMqGGEaMwqTyz9Gn635kDIanNLFLkgT2CsC4SRTjDKGCQ\u0026h=ntcbVpJyL2_OT3q6T5xdg1oZb0YozIRE-UwaTYMcvYM" ],
+        "x-ms-request-id": [ "b2b7408a-3b22-4aa7-9b25-9ac05c971065" ],
+        "x-ms-correlation-request-id": [ "c0dd25a2-dacc-47cb-b6ce-0f9ee8fa9f4f" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-routing-request-id": [ "WESTUS:20240530T185117Z:c0dd25a2-dacc-47cb-b6ce-0f9ee8fa9f4f" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B98B9337692D4E3490EE2230FD22ABEE Ref B: SJC211051205029 Ref C: 2024-05-30T18:51:16Z" ],
+        "Date": [ "Thu, 30 May 2024 18:51:17 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1299" ],
+        "Content-Length": [ "1327" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/configurations/default\",\"name\":\"default\",\"type\":\"nginx.nginxplus/nginxdeployments/configurations\",\"systemData\":{\"createdBy\":\"limgu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-09-21T18:39:07.2608197Z\",\"lastModifiedBy\":\"limgu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-09-21T18:39:07.2608197Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"files\":[{\"content\":\"aHR0cCB7DQogICAgdXBzdHJlYW0gYXBwIHsNCiAgICAgICAgc2VydmVyIDE3Mi4yNy4wLjQ6ODA7DQogICAgfQ0KICAgIHNlcnZlciB7DQogICAgICAgIGxpc3RlbiA4MDsNCiAgICAgICAgbG9jYXRpb24gLyB7DQogICAgICAgICAgICBkZWZhdWx0X3R5cGUgdGV4dC9odG1sOw0KICAgICAgICAgICAgcmV0dXJuIDIwMCAnPCFET0NUWVBFIGh0bWw+PGgxIHN0eWxlPSJmb250LXNpemU6MzBweDsiPkhlbGxvIGZyb20gTmdpbnggV2ViIFNlcnZlciE8L2gxPlxuJzsNCiAgICAgICAgfQ0KICAgICAgICBsb2NhdGlvbiAvYXBwLyB7DQogICAgICAgICAgICBwcm94eV9wYXNzIGh0dHA6Ly9hcHAuYmxvYi5jb3JlLndpbmRvd3MubmV0LzsNCiAgICAgICAgICAgIHByb3h5X2h0dHBfdmVyc2lvbiAxLjE7DQogICAgICAgICAgICBwcm94eV9yZWFkX3RpbWVvdXQgNjAwOw0KCSAgICAgICAgcHJveHlfY29ubmVjdF90aW1lb3V0IDYwMDsNCgkgICAgICAgIHByb3h5X3NlbmRfdGltZW91dCA2MDA7DQogICAgICAgIH0NCiAgICB9DQp9\",\"virtualPath\":\"nginx.conf\"}],\"package\":null,\"rootFile\":\"nginx.conf\"}}",
+      "Content": "{\"id\":\"/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test922/configurations/default\",\"name\":\"default\",\"type\":\"nginx.nginxplus/nginxdeployments/configurations\",\"systemData\":{\"createdBy\":\"jamesfan@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-05-30T18:51:16.8399117Z\",\"lastModifiedBy\":\"jamesfan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-05-30T18:51:16.8399117Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"files\":[{\"content\":\"aHR0cCB7DQogICAgdXBzdHJlYW0gYXBwIHsNCiAgICAgICAgc2VydmVyIDE3Mi4yNy4wLjQ6ODA7DQogICAgfQ0KICAgIHNlcnZlciB7DQogICAgICAgIGxpc3RlbiA4MDsNCiAgICAgICAgbG9jYXRpb24gLyB7DQogICAgICAgICAgICBkZWZhdWx0X3R5cGUgdGV4dC9odG1sOw0KICAgICAgICAgICAgcmV0dXJuIDIwMCAnPCFET0NUWVBFIGh0bWw+PGgxIHN0eWxlPSJmb250LXNpemU6MzBweDsiPkhlbGxvIGZyb20gTmdpbnggV2ViIFNlcnZlciE8L2gxPlxuJzsNCiAgICAgICAgfQ0KICAgICAgICBsb2NhdGlvbiAvYXBwLyB7DQogICAgICAgICAgICBwcm94eV9wYXNzIGh0dHA6Ly9hcHAuYmxvYi5jb3JlLndpbmRvd3MubmV0LzsNCiAgICAgICAgICAgIHByb3h5X2h0dHBfdmVyc2lvbiAxLjE7DQogICAgICAgICAgICBwcm94eV9yZWFkX3RpbWVvdXQgNjAwOw0KCSAgICAgICAgcHJveHlfY29ubmVjdF90aW1lb3V0IDYwMDsNCgkgICAgICAgIHByb3h5X3NlbmRfdGltZW91dCA2MDA7DQogICAgICAgIH0NCiAgICB9DQp9\",\"virtualPath\":\"nginx.conf\"}],\"protectedFiles\":null,\"package\":null,\"rootFile\":\"nginx.conf\"}}",
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxConfiguration+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/17379b3b-7aab-475b-96c3-59d02c9957be*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B?api-version=2023-04-01+2": {
+  "Remove-AzNginxConfiguration+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS/operationStatuses/b2b7408a-3b22-4aa7-9b25-9ac05c971065*E309545C55747825444BFB64F5292AA87BE4A0730D06056234AC6AFBF88EF4C9?api-version=2024-01-01-preview\u0026t=638526918776367761\u0026c=MIIHhzCCBm-gAwIBAgITHgSByWw1Ed_Zii__gAAABIHJbDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNTA5MDgzNDM1WhcNMjUwNTA0MDgzNDM1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALNFJKuLEBOS1uJWUNu0aCYdzkvbSxuiHNgHKq6PuXp_wGHkpHquW69ms0LW5DvZap48H9sV5xKt6ySk967Oee9fZJi5_YlpZVGdXVn0zlQgGeYY9rRI1L_cSXBP1CpTy5zLY7Rn1-SPMHhagoWVxo8-EuSK_DzE7w3IPMaVY5b88gSUINVc9bzUjEZwEYStU1NgplNmRGsNNChH4tk6EH5-7Jb4fWI3BrqzDCtIb6E_WbhSvzdvFPGS4J0E1onRBy6Xz_vM6qyzWN4fXmM2RvJGGlrC6RPhvgt8Txe-He4-2DZYJpWKWsC0_wu5j6KjZ-NzenSUnTQcu-9W3xECD5ECAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBRi1KWAwEgEks2oqmt17tiHjdbe4jAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAM-MTv2S9fu4pNTicrlwYeFLUtHz888urDWIBxQy6vtFuWhPC2lbEjdA3JMZTJgcLGY-dW2uuBeo0FeNk_O4TXbN2vI2YENXpwIGFbj9pLExOmwDYGOVjby2UvDsstQTAs2P1mxiOFf06K_f_TQ7xNi5rLezmVtjPGPhHzbgkF5sPU6Wi350gfVcAc3oTiQbqi2ZfEp9ixHOE3Xo-1zP1ogHBSAgc-aIGgtALL14a74DT_2xwBNVZkOBMqg8C-0V6GrzXMwKdyGWcjbjPDO5DvjDVDwvp982OO6pLlqtfp-ADJNmorDJ3O3SeT6sAZIaLvinBY2nFAPgR5uD0-AXcMk\u0026s=WZouMMdnfh1dPXL2fAgyKV8atSH4iXXhcqjETTZng2_LUEQUsDUWKgCXWe-dg-1AXDZkqBsYW51aHwmW5zqdG5YpMbObJwph9DfBbNgk_gO9ay21HwbXIWcuVi4jydFf0LWRa6D4OlFCq894I79iHeHjwd637SYQwDltkQv-k7oQr4WZbjPK0bXTd6M_fl-1HbKDF2PpAQHamV0WGez__OlbuCYfkac_kMnh2VSthH6fZ_Xg8HEnP8-cEVODZXftmfZaOIazTHf6c_T8aTyOPcDBqhqc9H05x1ucZTazNXMqGGEaMwqTyz9Gn635kDIanNLFLkgT2CsC4SRTjDKGCQ\u0026h=ntcbVpJyL2_OT3q6T5xdg1oZb0YozIRE-UwaTYMcvYM+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/17379b3b-7aab-475b-96c3-59d02c9957be*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS/operationStatuses/b2b7408a-3b22-4aa7-9b25-9ac05c971065*E309545C55747825444BFB64F5292AA87BE4A0730D06056234AC6AFBF88EF4C9?api-version=2024-01-01-preview\u0026t=638526918776367761\u0026c=MIIHhzCCBm-gAwIBAgITHgSByWw1Ed_Zii__gAAABIHJbDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNTA5MDgzNDM1WhcNMjUwNTA0MDgzNDM1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALNFJKuLEBOS1uJWUNu0aCYdzkvbSxuiHNgHKq6PuXp_wGHkpHquW69ms0LW5DvZap48H9sV5xKt6ySk967Oee9fZJi5_YlpZVGdXVn0zlQgGeYY9rRI1L_cSXBP1CpTy5zLY7Rn1-SPMHhagoWVxo8-EuSK_DzE7w3IPMaVY5b88gSUINVc9bzUjEZwEYStU1NgplNmRGsNNChH4tk6EH5-7Jb4fWI3BrqzDCtIb6E_WbhSvzdvFPGS4J0E1onRBy6Xz_vM6qyzWN4fXmM2RvJGGlrC6RPhvgt8Txe-He4-2DZYJpWKWsC0_wu5j6KjZ-NzenSUnTQcu-9W3xECD5ECAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBRi1KWAwEgEks2oqmt17tiHjdbe4jAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAM-MTv2S9fu4pNTicrlwYeFLUtHz888urDWIBxQy6vtFuWhPC2lbEjdA3JMZTJgcLGY-dW2uuBeo0FeNk_O4TXbN2vI2YENXpwIGFbj9pLExOmwDYGOVjby2UvDsstQTAs2P1mxiOFf06K_f_TQ7xNi5rLezmVtjPGPhHzbgkF5sPU6Wi350gfVcAc3oTiQbqi2ZfEp9ixHOE3Xo-1zP1ogHBSAgc-aIGgtALL14a74DT_2xwBNVZkOBMqg8C-0V6GrzXMwKdyGWcjbjPDO5DvjDVDwvp982OO6pLlqtfp-ADJNmorDJ3O3SeT6sAZIaLvinBY2nFAPgR5uD0-AXcMk\u0026s=WZouMMdnfh1dPXL2fAgyKV8atSH4iXXhcqjETTZng2_LUEQUsDUWKgCXWe-dg-1AXDZkqBsYW51aHwmW5zqdG5YpMbObJwph9DfBbNgk_gO9ay21HwbXIWcuVi4jydFf0LWRa6D4OlFCq894I79iHeHjwd637SYQwDltkQv-k7oQr4WZbjPK0bXTd6M_fl-1HbKDF2PpAQHamV0WGez__OlbuCYfkac_kMnh2VSthH6fZ_Xg8HEnP8-cEVODZXftmfZaOIazTHf6c_T8aTyOPcDBqhqc9H05x1ucZTazNXMqGGEaMwqTyz9Gn635kDIanNLFLkgT2CsC4SRTjDKGCQ\u0026h=ntcbVpJyL2_OT3q6T5xdg1oZb0YozIRE-UwaTYMcvYM",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "becf7513-6639-4069-9236-43b774c54d96" ],
+        "CommandName": [ "New-AzNginxConfiguration" ],
+        "FullCommandName": [ "New-AzNginxConfiguration_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.Nginx/1.0.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"be00e1be-0000-0100-0000-6658cab40000\"" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-request-id": [ "3726850c-4109-4466-a410-19f2f822f764" ],
+        "x-ms-correlation-request-id": [ "f6bd032e-b1d7-4d52-b605-8b63ecae0c01" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11999" ],
+        "x-ms-routing-request-id": [ "WESTUS:20240530T185147Z:f6bd032e-b1d7-4d52-b605-8b63ecae0c01" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1CD287771FE04F27959B77FD446F90D3 Ref B: SJC211051205029 Ref C: 2024-05-30T18:51:47Z" ],
+        "Date": [ "Thu, 30 May 2024 18:51:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "581" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Nginx.NginxPlus/locations/EASTUS/operationStatuses/b2b7408a-3b22-4aa7-9b25-9ac05c971065*E309545C55747825444BFB64F5292AA87BE4A0730D06056234AC6AFBF88EF4C9\",\"name\":\"b2b7408a-3b22-4aa7-9b25-9ac05c971065*E309545C55747825444BFB64F5292AA87BE4A0730D06056234AC6AFBF88EF4C9\",\"resourceId\":\"/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test922/configurations/default\",\"status\":\"Succeeded\",\"startTime\":\"2024-05-30T18:51:17.1780742Z\",\"endTime\":\"2024-05-30T18:51:32.074405Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzNginxConfiguration+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test922/configurations/default?api-version=2024-01-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test922/configurations/default?api-version=2024-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "44da9168-748c-4200-b7ee-37a24b174153" ],
+        "x-ms-client-request-id": [ "becf7513-6639-4069-9236-43b774c54d96" ],
         "CommandName": [ "New-AzNginxConfiguration" ],
         "FullCommandName": [ "New-AzNginxConfiguration_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Nginx/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.Nginx/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -228,79 +245,42 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"85011199-0000-0200-0000-632b5a550000\"" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11996" ],
-        "x-ms-request-id": [ "b15936cd-a6a2-42ba-b89f-9ca648f1566d" ],
-        "x-ms-correlation-request-id": [ "7fd43eda-600d-4b32-95e5-2bf4b0288f3b" ],
-        "x-ms-routing-request-id": [ "WESTUS:20220921T183937Z:7fd43eda-600d-4b32-95e5-2bf4b0288f3b" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 21 Sep 2022 18:39:37 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "582" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/17379b3b-7aab-475b-96c3-59d02c9957be*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B\",\"name\":\"17379b3b-7aab-475b-96c3-59d02c9957be*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B\",\"resourceId\":\"/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/configurations/default\",\"status\":\"Succeeded\",\"startTime\":\"2022-09-21T18:39:07.4667115Z\",\"endTime\":\"2022-09-21T18:39:17.766403Z\",\"error\":{},\"properties\":null}",
-      "isContentBase64": false
-    }
-  },
-  "Remove-AzNginxConfiguration+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/configurations/default?api-version=2023-04-01+3": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/configurations/default?api-version=2023-04-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "44da9168-748c-4200-b7ee-37a24b174153" ],
-        "CommandName": [ "New-AzNginxConfiguration" ],
-        "FullCommandName": [ "New-AzNginxConfiguration_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Nginx/0.1.0" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:0d872b79-fbba-4031-abaa-ef9aa3e0050d" ],
+        "mise-correlation-id": [ "71f5bc19-7064-4d76-b1c9-ddfd4f55fe63" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "4433e254-3bf6-41e7-b77b-a0af492ce2d2" ],
-        "x-ms-correlation-request-id": [ "e32041e7-f249-4076-984e-47bb65c80799" ],
-        "x-ms-routing-request-id": [ "WESTUS:20220921T183939Z:e32041e7-f249-4076-984e-47bb65c80799" ],
-        "Date": [ "Wed, 21 Sep 2022 18:39:39 GMT" ]
+        "x-ms-request-id": [ "d06bb67b-0ef2-4569-871d-7119edadd29f" ],
+        "x-ms-correlation-request-id": [ "962b65c4-efeb-4077-96c6-981a31949856" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-routing-request-id": [ "WESTUS:20240530T185148Z:962b65c4-efeb-4077-96c6-981a31949856" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A9153D59B29B43BCA0ABF21E50261525 Ref B: SJC211051205029 Ref C: 2024-05-30T18:51:47Z" ],
+        "Date": [ "Thu, 30 May 2024 18:51:48 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1079" ],
+        "Content-Length": [ "1123" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/NGINX.NGINXPLUS/nginxDeployments/test920/configurations/default\",\"name\":\"default\",\"type\":\"NGINX.NGINXPLUS/nginxDeployments/configurations\",\"properties\":{\"provisioningState\":\"Succeeded\",\"files\":[{\"content\":\"aHR0cCB7DQogICAgdXBzdHJlYW0gYXBwIHsNCiAgICAgICAgc2VydmVyIDE3Mi4yNy4wLjQ6ODA7DQogICAgfQ0KICAgIHNlcnZlciB7DQogICAgICAgIGxpc3RlbiA4MDsNCiAgICAgICAgbG9jYXRpb24gLyB7DQogICAgICAgICAgICBkZWZhdWx0X3R5cGUgdGV4dC9odG1sOw0KICAgICAgICAgICAgcmV0dXJuIDIwMCAnPCFET0NUWVBFIGh0bWw+PGgxIHN0eWxlPSJmb250LXNpemU6MzBweDsiPkhlbGxvIGZyb20gTmdpbnggV2ViIFNlcnZlciE8L2gxPlxuJzsNCiAgICAgICAgfQ0KICAgICAgICBsb2NhdGlvbiAvYXBwLyB7DQogICAgICAgICAgICBwcm94eV9wYXNzIGh0dHA6Ly9hcHAuYmxvYi5jb3JlLndpbmRvd3MubmV0LzsNCiAgICAgICAgICAgIHByb3h5X2h0dHBfdmVyc2lvbiAxLjE7DQogICAgICAgICAgICBwcm94eV9yZWFkX3RpbWVvdXQgNjAwOw0KCSAgICAgICAgcHJveHlfY29ubmVjdF90aW1lb3V0IDYwMDsNCgkgICAgICAgIHByb3h5X3NlbmRfdGltZW91dCA2MDA7DQogICAgICAgIH0NCiAgICB9DQp9\",\"virtualPath\":\"nginx.conf\"}],\"package\":{\"data\":null},\"rootFile\":\"nginx.conf\"}}",
+      "Content": "{\"id\":\"/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/NGINX.NGINXPLUS/nginxDeployments/test922/configurations/default\",\"name\":\"default\",\"type\":\"NGINX.NGINXPLUS/nginxDeployments/configurations\",\"properties\":{\"provisioningState\":\"Succeeded\",\"files\":[{\"content\":\"aHR0cCB7DQogICAgdXBzdHJlYW0gYXBwIHsNCiAgICAgICAgc2VydmVyIDE3Mi4yNy4wLjQ6ODA7DQogICAgfQ0KICAgIHNlcnZlciB7DQogICAgICAgIGxpc3RlbiA4MDsNCiAgICAgICAgbG9jYXRpb24gLyB7DQogICAgICAgICAgICBkZWZhdWx0X3R5cGUgdGV4dC9odG1sOw0KICAgICAgICAgICAgcmV0dXJuIDIwMCAnPCFET0NUWVBFIGh0bWw+PGgxIHN0eWxlPSJmb250LXNpemU6MzBweDsiPkhlbGxvIGZyb20gTmdpbnggV2ViIFNlcnZlciE8L2gxPlxuJzsNCiAgICAgICAgfQ0KICAgICAgICBsb2NhdGlvbiAvYXBwLyB7DQogICAgICAgICAgICBwcm94eV9wYXNzIGh0dHA6Ly9hcHAuYmxvYi5jb3JlLndpbmRvd3MubmV0LzsNCiAgICAgICAgICAgIHByb3h5X2h0dHBfdmVyc2lvbiAxLjE7DQogICAgICAgICAgICBwcm94eV9yZWFkX3RpbWVvdXQgNjAwOw0KCSAgICAgICAgcHJveHlfY29ubmVjdF90aW1lb3V0IDYwMDsNCgkgICAgICAgIHByb3h5X3NlbmRfdGltZW91dCA2MDA7DQogICAgICAgIH0NCiAgICB9DQp9\",\"virtualPath\":\"nginx.conf\"}],\"protectedFiles\":null,\"package\":{\"data\":null,\"protectedFiles\":null},\"rootFile\":\"nginx.conf\"}}",
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxConfiguration+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/configurations/default?api-version=2023-04-01+4": {
+  "Remove-AzNginxConfiguration+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test922/configurations/default?api-version=2024-01-01-preview+4": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/configurations/default?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test922/configurations/default?api-version=2024-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "8" ],
-        "x-ms-client-request-id": [ "fe70135a-3649-4564-9fd1-a6e5c7848e16" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "6e30936e-d330-4b6b-922a-f7b18d49f994" ],
         "CommandName": [ "Remove-AzNginxConfiguration" ],
         "FullCommandName": [ "Remove-AzNginxConfiguration_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Nginx/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.Nginx/1.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -311,17 +291,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/bc14061b-2857-452a-84e1-6be1134acf02*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B?api-version=2023-04-01" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "Location": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS/operationStatuses/c88c8946-fff9-491e-969f-7c247bfb9d36*E309545C55747825444BFB64F5292AA87BE4A0730D06056234AC6AFBF88EF4C9?api-version=2024-01-01-preview\u0026t=638526919089197797\u0026c=MIIHhzCCBm-gAwIBAgITHgSByWw1Ed_Zii__gAAABIHJbDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNTA5MDgzNDM1WhcNMjUwNTA0MDgzNDM1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALNFJKuLEBOS1uJWUNu0aCYdzkvbSxuiHNgHKq6PuXp_wGHkpHquW69ms0LW5DvZap48H9sV5xKt6ySk967Oee9fZJi5_YlpZVGdXVn0zlQgGeYY9rRI1L_cSXBP1CpTy5zLY7Rn1-SPMHhagoWVxo8-EuSK_DzE7w3IPMaVY5b88gSUINVc9bzUjEZwEYStU1NgplNmRGsNNChH4tk6EH5-7Jb4fWI3BrqzDCtIb6E_WbhSvzdvFPGS4J0E1onRBy6Xz_vM6qyzWN4fXmM2RvJGGlrC6RPhvgt8Txe-He4-2DZYJpWKWsC0_wu5j6KjZ-NzenSUnTQcu-9W3xECD5ECAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBRi1KWAwEgEks2oqmt17tiHjdbe4jAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAM-MTv2S9fu4pNTicrlwYeFLUtHz888urDWIBxQy6vtFuWhPC2lbEjdA3JMZTJgcLGY-dW2uuBeo0FeNk_O4TXbN2vI2YENXpwIGFbj9pLExOmwDYGOVjby2UvDsstQTAs2P1mxiOFf06K_f_TQ7xNi5rLezmVtjPGPhHzbgkF5sPU6Wi350gfVcAc3oTiQbqi2ZfEp9ixHOE3Xo-1zP1ogHBSAgc-aIGgtALL14a74DT_2xwBNVZkOBMqg8C-0V6GrzXMwKdyGWcjbjPDO5DvjDVDwvp982OO6pLlqtfp-ADJNmorDJ3O3SeT6sAZIaLvinBY2nFAPgR5uD0-AXcMk\u0026s=Azcvuz69GegZuNtfyYLinxv3v8LX6DZDQFCfKz0vuaUdTI5deNl-Fs7wcSsFRQQ5k-WMUpw8CVCyxZMuMoWKAZlfQuXQIEU1s7EF2KxL_iyl4Jgj-oCqY9-hea_Ftcs21gC0gCmtUSaJWiB6K0p44V9NBR4EalOvwalZBHV4lhljBWqy4MolYvT9xrC3BYX5Q1-PsqoczCgt69AAYA3iz6UMP_8SCJHuGE2GabK1sUx128q9Zf1GNysT3UFY-Jp-uxza4Y0VEMze7pVawM2DSFQlxEHPTpgegpRzkQUBBGy9nFtFowGrT0gSegKvYUVe7g--wJHIIlxxzYTr3PqxqA\u0026h=edwSznPJlzRY0TZIOGc7691vIfDndor8ItrcAme5qXs" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:0d872b79-fbba-4031-abaa-ef9aa3e0050d" ],
+        "mise-correlation-id": [ "63be106d-5521-4a56-8350-b35a44083dea" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/bc14061b-2857-452a-84e1-6be1134acf02*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B?api-version=2023-04-01" ],
-        "x-ms-request-id": [ "bc14061b-2857-452a-84e1-6be1134acf02" ],
-        "x-ms-correlation-request-id": [ "6e0fb350-6e41-4494-a5f3-9f1ef40510be" ],
-        "x-ms-routing-request-id": [ "WESTUS:20220921T183940Z:6e0fb350-6e41-4494-a5f3-9f1ef40510be" ],
-        "Date": [ "Wed, 21 Sep 2022 18:39:39 GMT" ]
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS/operationStatuses/c88c8946-fff9-491e-969f-7c247bfb9d36*E309545C55747825444BFB64F5292AA87BE4A0730D06056234AC6AFBF88EF4C9?api-version=2024-01-01-preview\u0026t=638526919089197797\u0026c=MIIHhzCCBm-gAwIBAgITHgSByWw1Ed_Zii__gAAABIHJbDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNTA5MDgzNDM1WhcNMjUwNTA0MDgzNDM1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALNFJKuLEBOS1uJWUNu0aCYdzkvbSxuiHNgHKq6PuXp_wGHkpHquW69ms0LW5DvZap48H9sV5xKt6ySk967Oee9fZJi5_YlpZVGdXVn0zlQgGeYY9rRI1L_cSXBP1CpTy5zLY7Rn1-SPMHhagoWVxo8-EuSK_DzE7w3IPMaVY5b88gSUINVc9bzUjEZwEYStU1NgplNmRGsNNChH4tk6EH5-7Jb4fWI3BrqzDCtIb6E_WbhSvzdvFPGS4J0E1onRBy6Xz_vM6qyzWN4fXmM2RvJGGlrC6RPhvgt8Txe-He4-2DZYJpWKWsC0_wu5j6KjZ-NzenSUnTQcu-9W3xECD5ECAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBRi1KWAwEgEks2oqmt17tiHjdbe4jAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAM-MTv2S9fu4pNTicrlwYeFLUtHz888urDWIBxQy6vtFuWhPC2lbEjdA3JMZTJgcLGY-dW2uuBeo0FeNk_O4TXbN2vI2YENXpwIGFbj9pLExOmwDYGOVjby2UvDsstQTAs2P1mxiOFf06K_f_TQ7xNi5rLezmVtjPGPhHzbgkF5sPU6Wi350gfVcAc3oTiQbqi2ZfEp9ixHOE3Xo-1zP1ogHBSAgc-aIGgtALL14a74DT_2xwBNVZkOBMqg8C-0V6GrzXMwKdyGWcjbjPDO5DvjDVDwvp982OO6pLlqtfp-ADJNmorDJ3O3SeT6sAZIaLvinBY2nFAPgR5uD0-AXcMk\u0026s=Azcvuz69GegZuNtfyYLinxv3v8LX6DZDQFCfKz0vuaUdTI5deNl-Fs7wcSsFRQQ5k-WMUpw8CVCyxZMuMoWKAZlfQuXQIEU1s7EF2KxL_iyl4Jgj-oCqY9-hea_Ftcs21gC0gCmtUSaJWiB6K0p44V9NBR4EalOvwalZBHV4lhljBWqy4MolYvT9xrC3BYX5Q1-PsqoczCgt69AAYA3iz6UMP_8SCJHuGE2GabK1sUx128q9Zf1GNysT3UFY-Jp-uxza4Y0VEMze7pVawM2DSFQlxEHPTpgegpRzkQUBBGy9nFtFowGrT0gSegKvYUVe7g--wJHIIlxxzYTr3PqxqA\u0026h=edwSznPJlzRY0TZIOGc7691vIfDndor8ItrcAme5qXs" ],
+        "x-ms-request-id": [ "c88c8946-fff9-491e-969f-7c247bfb9d36" ],
+        "x-ms-correlation-request-id": [ "b9224e39-1718-447d-a7fa-6e79c84f8b60" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-routing-request-id": [ "WESTUS:20240530T185148Z:b9224e39-1718-447d-a7fa-6e79c84f8b60" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AE61AFE346D941759F8378C46BCFCF81 Ref B: SJC211051205029 Ref C: 2024-05-30T18:51:48Z" ],
+        "Date": [ "Thu, 30 May 2024 18:51:48 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "4" ],
@@ -332,61 +316,64 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxConfiguration+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/bc14061b-2857-452a-84e1-6be1134acf02*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B?api-version=2023-04-01+5": {
+  "Remove-AzNginxConfiguration+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS/operationStatuses/c88c8946-fff9-491e-969f-7c247bfb9d36*E309545C55747825444BFB64F5292AA87BE4A0730D06056234AC6AFBF88EF4C9?api-version=2024-01-01-preview\u0026t=638526919089197797\u0026c=MIIHhzCCBm-gAwIBAgITHgSByWw1Ed_Zii__gAAABIHJbDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNTA5MDgzNDM1WhcNMjUwNTA0MDgzNDM1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALNFJKuLEBOS1uJWUNu0aCYdzkvbSxuiHNgHKq6PuXp_wGHkpHquW69ms0LW5DvZap48H9sV5xKt6ySk967Oee9fZJi5_YlpZVGdXVn0zlQgGeYY9rRI1L_cSXBP1CpTy5zLY7Rn1-SPMHhagoWVxo8-EuSK_DzE7w3IPMaVY5b88gSUINVc9bzUjEZwEYStU1NgplNmRGsNNChH4tk6EH5-7Jb4fWI3BrqzDCtIb6E_WbhSvzdvFPGS4J0E1onRBy6Xz_vM6qyzWN4fXmM2RvJGGlrC6RPhvgt8Txe-He4-2DZYJpWKWsC0_wu5j6KjZ-NzenSUnTQcu-9W3xECD5ECAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBRi1KWAwEgEks2oqmt17tiHjdbe4jAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAM-MTv2S9fu4pNTicrlwYeFLUtHz888urDWIBxQy6vtFuWhPC2lbEjdA3JMZTJgcLGY-dW2uuBeo0FeNk_O4TXbN2vI2YENXpwIGFbj9pLExOmwDYGOVjby2UvDsstQTAs2P1mxiOFf06K_f_TQ7xNi5rLezmVtjPGPhHzbgkF5sPU6Wi350gfVcAc3oTiQbqi2ZfEp9ixHOE3Xo-1zP1ogHBSAgc-aIGgtALL14a74DT_2xwBNVZkOBMqg8C-0V6GrzXMwKdyGWcjbjPDO5DvjDVDwvp982OO6pLlqtfp-ADJNmorDJ3O3SeT6sAZIaLvinBY2nFAPgR5uD0-AXcMk\u0026s=Azcvuz69GegZuNtfyYLinxv3v8LX6DZDQFCfKz0vuaUdTI5deNl-Fs7wcSsFRQQ5k-WMUpw8CVCyxZMuMoWKAZlfQuXQIEU1s7EF2KxL_iyl4Jgj-oCqY9-hea_Ftcs21gC0gCmtUSaJWiB6K0p44V9NBR4EalOvwalZBHV4lhljBWqy4MolYvT9xrC3BYX5Q1-PsqoczCgt69AAYA3iz6UMP_8SCJHuGE2GabK1sUx128q9Zf1GNysT3UFY-Jp-uxza4Y0VEMze7pVawM2DSFQlxEHPTpgegpRzkQUBBGy9nFtFowGrT0gSegKvYUVe7g--wJHIIlxxzYTr3PqxqA\u0026h=edwSznPJlzRY0TZIOGc7691vIfDndor8ItrcAme5qXs+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/bc14061b-2857-452a-84e1-6be1134acf02*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS/operationStatuses/c88c8946-fff9-491e-969f-7c247bfb9d36*E309545C55747825444BFB64F5292AA87BE4A0730D06056234AC6AFBF88EF4C9?api-version=2024-01-01-preview\u0026t=638526919089197797\u0026c=MIIHhzCCBm-gAwIBAgITHgSByWw1Ed_Zii__gAAABIHJbDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNTA5MDgzNDM1WhcNMjUwNTA0MDgzNDM1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALNFJKuLEBOS1uJWUNu0aCYdzkvbSxuiHNgHKq6PuXp_wGHkpHquW69ms0LW5DvZap48H9sV5xKt6ySk967Oee9fZJi5_YlpZVGdXVn0zlQgGeYY9rRI1L_cSXBP1CpTy5zLY7Rn1-SPMHhagoWVxo8-EuSK_DzE7w3IPMaVY5b88gSUINVc9bzUjEZwEYStU1NgplNmRGsNNChH4tk6EH5-7Jb4fWI3BrqzDCtIb6E_WbhSvzdvFPGS4J0E1onRBy6Xz_vM6qyzWN4fXmM2RvJGGlrC6RPhvgt8Txe-He4-2DZYJpWKWsC0_wu5j6KjZ-NzenSUnTQcu-9W3xECD5ECAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBRi1KWAwEgEks2oqmt17tiHjdbe4jAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAM-MTv2S9fu4pNTicrlwYeFLUtHz888urDWIBxQy6vtFuWhPC2lbEjdA3JMZTJgcLGY-dW2uuBeo0FeNk_O4TXbN2vI2YENXpwIGFbj9pLExOmwDYGOVjby2UvDsstQTAs2P1mxiOFf06K_f_TQ7xNi5rLezmVtjPGPhHzbgkF5sPU6Wi350gfVcAc3oTiQbqi2ZfEp9ixHOE3Xo-1zP1ogHBSAgc-aIGgtALL14a74DT_2xwBNVZkOBMqg8C-0V6GrzXMwKdyGWcjbjPDO5DvjDVDwvp982OO6pLlqtfp-ADJNmorDJ3O3SeT6sAZIaLvinBY2nFAPgR5uD0-AXcMk\u0026s=Azcvuz69GegZuNtfyYLinxv3v8LX6DZDQFCfKz0vuaUdTI5deNl-Fs7wcSsFRQQ5k-WMUpw8CVCyxZMuMoWKAZlfQuXQIEU1s7EF2KxL_iyl4Jgj-oCqY9-hea_Ftcs21gC0gCmtUSaJWiB6K0p44V9NBR4EalOvwalZBHV4lhljBWqy4MolYvT9xrC3BYX5Q1-PsqoczCgt69AAYA3iz6UMP_8SCJHuGE2GabK1sUx128q9Zf1GNysT3UFY-Jp-uxza4Y0VEMze7pVawM2DSFQlxEHPTpgegpRzkQUBBGy9nFtFowGrT0gSegKvYUVe7g--wJHIIlxxzYTr3PqxqA\u0026h=edwSznPJlzRY0TZIOGc7691vIfDndor8ItrcAme5qXs",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "6e30936e-d330-4b6b-922a-f7b18d49f994" ],
+        "CommandName": [ "Remove-AzNginxConfiguration" ],
+        "FullCommandName": [ "Remove-AzNginxConfiguration_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.Nginx/1.0.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"be0071c0-0000-0100-0000-6658cada0000\"" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-request-id": [ "38d9b8a8-d00f-47ed-b17b-9679d985fe9e" ],
+        "x-ms-correlation-request-id": [ "f8c8aa16-da0b-49bb-88ca-8641e07ce40d" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11999" ],
+        "x-ms-routing-request-id": [ "WESTUS:20240530T185219Z:f8c8aa16-da0b-49bb-88ca-8641e07ce40d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FF14F6C7C94C4DBE8E709ECEB7BCBE07 Ref B: SJC211051205029 Ref C: 2024-05-30T18:52:18Z" ],
+        "Date": [ "Thu, 30 May 2024 18:52:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "582" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Nginx.NginxPlus/locations/EASTUS/operationStatuses/c88c8946-fff9-491e-969f-7c247bfb9d36*E309545C55747825444BFB64F5292AA87BE4A0730D06056234AC6AFBF88EF4C9\",\"name\":\"c88c8946-fff9-491e-969f-7c247bfb9d36*E309545C55747825444BFB64F5292AA87BE4A0730D06056234AC6AFBF88EF4C9\",\"resourceId\":\"/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test922/configurations/default\",\"status\":\"Succeeded\",\"startTime\":\"2024-05-30T18:51:48.7226609Z\",\"endTime\":\"2024-05-30T18:52:10.7529662Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzNginxConfiguration+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS/operationStatuses/c88c8946-fff9-491e-969f-7c247bfb9d36*E309545C55747825444BFB64F5292AA87BE4A0730D06056234AC6AFBF88EF4C9?api-version=2024-01-01-preview\u0026t=638526919089197797\u0026c=MIIHhzCCBm-gAwIBAgITHgSByWw1Ed_Zii__gAAABIHJbDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNTA5MDgzNDM1WhcNMjUwNTA0MDgzNDM1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALNFJKuLEBOS1uJWUNu0aCYdzkvbSxuiHNgHKq6PuXp_wGHkpHquW69ms0LW5DvZap48H9sV5xKt6ySk967Oee9fZJi5_YlpZVGdXVn0zlQgGeYY9rRI1L_cSXBP1CpTy5zLY7Rn1-SPMHhagoWVxo8-EuSK_DzE7w3IPMaVY5b88gSUINVc9bzUjEZwEYStU1NgplNmRGsNNChH4tk6EH5-7Jb4fWI3BrqzDCtIb6E_WbhSvzdvFPGS4J0E1onRBy6Xz_vM6qyzWN4fXmM2RvJGGlrC6RPhvgt8Txe-He4-2DZYJpWKWsC0_wu5j6KjZ-NzenSUnTQcu-9W3xECD5ECAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBRi1KWAwEgEks2oqmt17tiHjdbe4jAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAM-MTv2S9fu4pNTicrlwYeFLUtHz888urDWIBxQy6vtFuWhPC2lbEjdA3JMZTJgcLGY-dW2uuBeo0FeNk_O4TXbN2vI2YENXpwIGFbj9pLExOmwDYGOVjby2UvDsstQTAs2P1mxiOFf06K_f_TQ7xNi5rLezmVtjPGPhHzbgkF5sPU6Wi350gfVcAc3oTiQbqi2ZfEp9ixHOE3Xo-1zP1ogHBSAgc-aIGgtALL14a74DT_2xwBNVZkOBMqg8C-0V6GrzXMwKdyGWcjbjPDO5DvjDVDwvp982OO6pLlqtfp-ADJNmorDJ3O3SeT6sAZIaLvinBY2nFAPgR5uD0-AXcMk\u0026s=Azcvuz69GegZuNtfyYLinxv3v8LX6DZDQFCfKz0vuaUdTI5deNl-Fs7wcSsFRQQ5k-WMUpw8CVCyxZMuMoWKAZlfQuXQIEU1s7EF2KxL_iyl4Jgj-oCqY9-hea_Ftcs21gC0gCmtUSaJWiB6K0p44V9NBR4EalOvwalZBHV4lhljBWqy4MolYvT9xrC3BYX5Q1-PsqoczCgt69AAYA3iz6UMP_8SCJHuGE2GabK1sUx128q9Zf1GNysT3UFY-Jp-uxza4Y0VEMze7pVawM2DSFQlxEHPTpgegpRzkQUBBGy9nFtFowGrT0gSegKvYUVe7g--wJHIIlxxzYTr3PqxqA\u0026h=edwSznPJlzRY0TZIOGc7691vIfDndor8ItrcAme5qXs+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS/operationStatuses/c88c8946-fff9-491e-969f-7c247bfb9d36*E309545C55747825444BFB64F5292AA87BE4A0730D06056234AC6AFBF88EF4C9?api-version=2024-01-01-preview\u0026t=638526919089197797\u0026c=MIIHhzCCBm-gAwIBAgITHgSByWw1Ed_Zii__gAAABIHJbDANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNTA5MDgzNDM1WhcNMjUwNTA0MDgzNDM1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALNFJKuLEBOS1uJWUNu0aCYdzkvbSxuiHNgHKq6PuXp_wGHkpHquW69ms0LW5DvZap48H9sV5xKt6ySk967Oee9fZJi5_YlpZVGdXVn0zlQgGeYY9rRI1L_cSXBP1CpTy5zLY7Rn1-SPMHhagoWVxo8-EuSK_DzE7w3IPMaVY5b88gSUINVc9bzUjEZwEYStU1NgplNmRGsNNChH4tk6EH5-7Jb4fWI3BrqzDCtIb6E_WbhSvzdvFPGS4J0E1onRBy6Xz_vM6qyzWN4fXmM2RvJGGlrC6RPhvgt8Txe-He4-2DZYJpWKWsC0_wu5j6KjZ-NzenSUnTQcu-9W3xECD5ECAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBRi1KWAwEgEks2oqmt17tiHjdbe4jAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAM-MTv2S9fu4pNTicrlwYeFLUtHz888urDWIBxQy6vtFuWhPC2lbEjdA3JMZTJgcLGY-dW2uuBeo0FeNk_O4TXbN2vI2YENXpwIGFbj9pLExOmwDYGOVjby2UvDsstQTAs2P1mxiOFf06K_f_TQ7xNi5rLezmVtjPGPhHzbgkF5sPU6Wi350gfVcAc3oTiQbqi2ZfEp9ixHOE3Xo-1zP1ogHBSAgc-aIGgtALL14a74DT_2xwBNVZkOBMqg8C-0V6GrzXMwKdyGWcjbjPDO5DvjDVDwvp982OO6pLlqtfp-ADJNmorDJ3O3SeT6sAZIaLvinBY2nFAPgR5uD0-AXcMk\u0026s=Azcvuz69GegZuNtfyYLinxv3v8LX6DZDQFCfKz0vuaUdTI5deNl-Fs7wcSsFRQQ5k-WMUpw8CVCyxZMuMoWKAZlfQuXQIEU1s7EF2KxL_iyl4Jgj-oCqY9-hea_Ftcs21gC0gCmtUSaJWiB6K0p44V9NBR4EalOvwalZBHV4lhljBWqy4MolYvT9xrC3BYX5Q1-PsqoczCgt69AAYA3iz6UMP_8SCJHuGE2GabK1sUx128q9Zf1GNysT3UFY-Jp-uxza4Y0VEMze7pVawM2DSFQlxEHPTpgegpRzkQUBBGy9nFtFowGrT0gSegKvYUVe7g--wJHIIlxxzYTr3PqxqA\u0026h=edwSznPJlzRY0TZIOGc7691vIfDndor8ItrcAme5qXs",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "9" ],
-        "x-ms-client-request-id": [ "fe70135a-3649-4564-9fd1-a6e5c7848e16" ],
+        "x-ms-client-request-id": [ "6e30936e-d330-4b6b-922a-f7b18d49f994" ],
         "CommandName": [ "Remove-AzNginxConfiguration" ],
         "FullCommandName": [ "Remove-AzNginxConfiguration_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Nginx/0.1.0" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "ETag": [ "\"85012a99-0000-0200-0000-632b5a6d0000\"" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11995" ],
-        "x-ms-request-id": [ "af403386-c697-4479-b771-6b315d5711b5" ],
-        "x-ms-correlation-request-id": [ "75ae667f-fca6-44e8-b8a2-cc37f870150d" ],
-        "x-ms-routing-request-id": [ "WESTUS:20220921T184010Z:75ae667f-fca6-44e8-b8a2-cc37f870150d" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 21 Sep 2022 18:40:09 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "523" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/bc14061b-2857-452a-84e1-6be1134acf02*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B\",\"name\":\"bc14061b-2857-452a-84e1-6be1134acf02*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B\",\"resourceId\":\"/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/configurations/default\",\"status\":\"Deleting\",\"startTime\":\"2022-09-21T18:39:40.1590135Z\",\"error\":{}}",
-      "isContentBase64": false
-    }
-  },
-  "Remove-AzNginxConfiguration+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/bc14061b-2857-452a-84e1-6be1134acf02*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B?api-version=2023-04-01+6": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/bc14061b-2857-452a-84e1-6be1134acf02*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B?api-version=2023-04-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "10" ],
-        "x-ms-client-request-id": [ "fe70135a-3649-4564-9fd1-a6e5c7848e16" ],
-        "CommandName": [ "Remove-AzNginxConfiguration" ],
-        "FullCommandName": [ "Remove-AzNginxConfiguration_DeleteViaIdentity" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Nginx/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.Nginx/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -396,62 +383,24 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"85019699-0000-0200-0000-632b5a8b0000\"" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11994" ],
-        "x-ms-request-id": [ "6f9f064a-6910-4993-b65c-a6d6436932c3" ],
-        "x-ms-correlation-request-id": [ "e25167fb-8811-4c44-a3bd-9163c4dcbfb0" ],
-        "x-ms-routing-request-id": [ "WESTUS:20220921T184040Z:e25167fb-8811-4c44-a3bd-9163c4dcbfb0" ],
+        "ETag": [ "\"be0071c0-0000-0100-0000-6658cada0000\"" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-request-id": [ "48db1663-2359-4da5-8f69-280d58fa8062" ],
+        "x-ms-correlation-request-id": [ "b977d42a-e67b-444a-979f-1118e5ba2666" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11999" ],
+        "x-ms-routing-request-id": [ "WESTUS:20240530T185219Z:b977d42a-e67b-444a-979f-1118e5ba2666" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 21 Sep 2022 18:40:39 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0E921C6FFE9E416F937C43317AC52469 Ref B: SJC211051205029 Ref C: 2024-05-30T18:52:19Z" ],
+        "Date": [ "Thu, 30 May 2024 18:52:19 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "583" ],
+        "Content-Length": [ "582" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/bc14061b-2857-452a-84e1-6be1134acf02*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B\",\"name\":\"bc14061b-2857-452a-84e1-6be1134acf02*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B\",\"resourceId\":\"/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/configurations/default\",\"status\":\"Succeeded\",\"startTime\":\"2022-09-21T18:39:40.1590135Z\",\"endTime\":\"2022-09-21T18:40:11.3446887Z\",\"error\":{},\"properties\":null}",
-      "isContentBase64": false
-    }
-  },
-  "Remove-AzNginxConfiguration+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/bc14061b-2857-452a-84e1-6be1134acf02*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B?api-version=2023-04-01+7": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/bc14061b-2857-452a-84e1-6be1134acf02*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B?api-version=2023-04-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "11" ],
-        "x-ms-client-request-id": [ "fe70135a-3649-4564-9fd1-a6e5c7848e16" ],
-        "CommandName": [ "Remove-AzNginxConfiguration" ],
-        "FullCommandName": [ "Remove-AzNginxConfiguration_DeleteViaIdentity" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Nginx/0.1.0" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "ETag": [ "\"85019699-0000-0200-0000-632b5a8b0000\"" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11993" ],
-        "x-ms-request-id": [ "c984c213-42de-46da-a459-ad4794a49abe" ],
-        "x-ms-correlation-request-id": [ "dfbe6d6f-adb5-4778-8e09-629dff7a3cd9" ],
-        "x-ms-routing-request-id": [ "WESTUS:20220921T184041Z:dfbe6d6f-adb5-4778-8e09-629dff7a3cd9" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 21 Sep 2022 18:40:40 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "583" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/bc14061b-2857-452a-84e1-6be1134acf02*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B\",\"name\":\"bc14061b-2857-452a-84e1-6be1134acf02*4BC556F250F47E98E908DEDDD2D91FB372E56073186E06738474CA69EF50F15B\",\"resourceId\":\"/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/configurations/default\",\"status\":\"Succeeded\",\"startTime\":\"2022-09-21T18:39:40.1590135Z\",\"endTime\":\"2022-09-21T18:40:11.3446887Z\",\"error\":{},\"properties\":null}",
+      "Content": "{\"id\":\"/providers/Nginx.NginxPlus/locations/EASTUS/operationStatuses/c88c8946-fff9-491e-969f-7c247bfb9d36*E309545C55747825444BFB64F5292AA87BE4A0730D06056234AC6AFBF88EF4C9\",\"name\":\"c88c8946-fff9-491e-969f-7c247bfb9d36*E309545C55747825444BFB64F5292AA87BE4A0730D06056234AC6AFBF88EF4C9\",\"resourceId\":\"/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test922/configurations/default\",\"status\":\"Succeeded\",\"startTime\":\"2024-05-30T18:51:48.7226609Z\",\"endTime\":\"2024-05-30T18:52:10.7529662Z\",\"error\":{},\"properties\":null}",
       "isContentBase64": false
     }
   }

@@ -22,18 +22,27 @@ Create an in-memory object for NginxPrivateIPAddress.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for NginxPrivateIPAddress
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzNginxPrivateIPAddressObject -PrivateIPAddress 10.0.0.0 -PrivateIPAllocationMethod Static -SubnetId /subscriptions/xxxxxxxxxx-xxxx-xxxxx-xxxxxxxxxxxx/resourceGroups/nginx-test-rg/providers/Microsoft.Network/virtualNetworks/nginx-test-vnet/subnets/default
+{{ Add code here }}
 ```
 
 ```output
-PrivateIPAddress PrivateIPAllocationMethod SubnetId
----------------- ------------------------- --------
-10.0.0.0         Static                    /subscriptions/xxxxxxxxxx-xxxx-xxxxx-xxxxxxxxxxxx/resourceGroups/nginx-test-rg/providers/Microsoft.Network/virtualNetworks/nginx-test-vnet/subnets/default
+{{ Add output here }}
 ```
 
-Create an in-memory object for NginxPrivateIPAddress.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -89,7 +98,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxPrivateIPAddress
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxPrivateIPAddress
 
 ## NOTES
 

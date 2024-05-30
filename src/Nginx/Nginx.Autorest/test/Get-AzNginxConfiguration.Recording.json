@@ -1,17 +1,17 @@
 {
-  "Get-AzNginxConfiguration+[NoContext]+List+$GET+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/configurations?api-version=2023-04-01+1": {
+  "Get-AzNginxConfiguration+[NoContext]+List+$GET+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test922/configurations?api-version=2024-01-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/configurations?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test922/configurations?api-version=2024-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "3ce35d00-0e1f-4891-93e0-16b2f4e258e7" ],
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "e153a325-a25d-4b24-8615-d205702d1168" ],
         "CommandName": [ "Get-AzNginxConfiguration" ],
         "FullCommandName": [ "Get-AzNginxConfiguration_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Nginx/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.Nginx/1.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,38 +22,42 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:0d872b79-fbba-4031-abaa-ef9aa3e0050d" ],
+        "mise-correlation-id": [ "f5ef80b5-70be-4461-adc3-5c982723ba01" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "dda59bcb-197a-4e67-be54-072ff27d76e2" ],
-        "x-ms-correlation-request-id": [ "ce3af573-5198-4634-8fd6-93f2c2862fe5" ],
-        "x-ms-routing-request-id": [ "WESTCENTRALUS:20220920T223031Z:ce3af573-5198-4634-8fd6-93f2c2862fe5" ],
-        "Date": [ "Tue, 20 Sep 2022 22:30:31 GMT" ]
+        "x-ms-request-id": [ "64e5b2f6-decf-43e0-b755-a81a11e94343" ],
+        "x-ms-correlation-request-id": [ "db332def-7d47-46fe-9d26-7c33736b6bd7" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240530T184239Z:db332def-7d47-46fe-9d26-7c33736b6bd7" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: BBC74355B43A4E20B86496367D1E100E Ref B: CO1EDGE2714 Ref C: 2024-05-30T18:42:38Z" ],
+        "Date": [ "Thu, 30 May 2024 18:42:39 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1899" ],
+        "Content-Length": [ "1135" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/NGINX.NGINXPLUS/nginxDeployments/test920/configurations/default\",\"name\":\"default\",\"type\":\"NGINX.NGINXPLUS/nginxDeployments/configurations\",\"properties\":{\"provisioningState\":\"Succeeded\",\"files\":[{\"content\":\"aHR0cCB7DQogICAgc2VydmVyIHsNCiAgICAgICAgbGlzdGVuIDgwOw0KICAgICAgICBsb2NhdGlvbiAvIHsNCiAgICAgICAgICAgIGRlZmF1bHRfdHlwZSB0ZXh0L2h0bWw7DQogICAgICAgICAgICByZXR1cm4gMjAwICc8IWRvY3R5cGUgaHRtbD48aHRtbCBsYW5nPSJlbiI+PGhlYWQ+PC9oZWFkPjxib2R5Pg0KICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9IndyYXBwZXIiIHN0eWxlPSJ3aWR0aDogMTAwJTsgaGVpZ2h0OiA5MHZoOyBiYWNrZ3JvdW5kOiAjYWFhYWFhMTE7IHBvc2l0aW9uOiByZWxhdGl2ZSI+DQogICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9ImRpYWxvZyIgc3R5bGU9IndpZHRoOiAzMHZ3OyBoZWlnaHQ6IDMwdmg7IHBvc2l0aW9uOiBhYnNvbHV0ZTsgbGVmdDogNTAlOyB0b3A6IDUwJTsgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7IGJhY2tncm91bmQ6ICMwMDAwMDAxMTsgYm9yZGVyLXJhZGl1czogMXJlbTsgZGlzcGxheTogZmxleDsganVzdGlmeS1jb250ZW50OiBjZW50ZXI7IGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47IGFsaWduLWl0ZW1zOiBjZW50ZXI7IHBhZGRpbmc6IDFyZW07IHRleHQtYWxpZ246IGNlbnRlcjsiPg0KICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBzdHlsZT0iZm9udC1zaXplOiAycmVtOyBmb250LXdlaWdodDogYm9sZCI+TkdJTlggY29uZmlndXJhdGlvbiBzdWNjZXNzZnVsbHkgdXBsb2FkZWQgdGhyb3VnaCBhIENJL0NEIHBpcGVsaW5lITwvZGl2Pg0KICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBzdHlsZT0ibWFyZ2luLXRvcDogMXJlbSI+dGltZTogMzoxM3BtPC9kaXY+DQogICAgICAgICAgICAgICAgICAgICAgICA8YSBzdHlsZT0ibWFyZ2luLXRvcDogMXJlbTsgY29sb3I6IGdyZWVuOyBjdXJzb3I6IHBvaW50ZXI7IiBocmVmPSJodHRwczovL2RvY3MubmdpbnguY29tL25naW54LWZvci1henVyZS8iIHRhcmdldD0iX2JsYW5rIj5sZWFybiBtb3JlIGFib3V0IE5HSU5YIGZvciBBenVyZTwvYT4NCiAgICAgICAgICAgICAgICAgICAgPC9kaXY+DQogICAgICAgICAgICAgICAgPC9kaXY+DQogICAgICAgICAgICA8L2JvZHk+PC9odG1sPic7DQogICAgICAgIH0NCiAgICB9DQp9\",\"virtualPath\":\"etc/nginx/nginx.conf\"}],\"package\":{\"data\":null},\"rootFile\":\"etc/nginx/nginx.conf\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/NGINX.NGINXPLUS/nginxDeployments/test922/configurations/default\",\"name\":\"default\",\"type\":\"NGINX.NGINXPLUS/nginxDeployments/configurations\",\"properties\":{\"provisioningState\":\"Succeeded\",\"files\":[{\"content\":\"aHR0cCB7DQogICAgdXBzdHJlYW0gYXBwIHsNCiAgICAgICAgc2VydmVyIDE3Mi4yNy4wLjQ6ODA7DQogICAgfQ0KICAgIHNlcnZlciB7DQogICAgICAgIGxpc3RlbiA4MDsNCiAgICAgICAgbG9jYXRpb24gLyB7DQogICAgICAgICAgICBkZWZhdWx0X3R5cGUgdGV4dC9odG1sOw0KICAgICAgICAgICAgcmV0dXJuIDIwMCAnPCFET0NUWVBFIGh0bWw+PGgxIHN0eWxlPSJmb250LXNpemU6MzBweDsiPkhlbGxvIGZyb20gTmdpbnggV2ViIFNlcnZlciE8L2gxPlxuJzsNCiAgICAgICAgfQ0KICAgICAgICBsb2NhdGlvbiAvYXBwLyB7DQogICAgICAgICAgICBwcm94eV9wYXNzIGh0dHA6Ly9hcHAuYmxvYi5jb3JlLndpbmRvd3MubmV0LzsNCiAgICAgICAgICAgIHByb3h5X2h0dHBfdmVyc2lvbiAxLjE7DQogICAgICAgICAgICBwcm94eV9yZWFkX3RpbWVvdXQgNjAwOw0KCSAgICAgICAgcHJveHlfY29ubmVjdF90aW1lb3V0IDYwMDsNCgkgICAgICAgIHByb3h5X3NlbmRfdGltZW91dCA2MDA7DQogICAgICAgIH0NCiAgICB9DQp9\",\"virtualPath\":\"nginx.conf\"}],\"protectedFiles\":null,\"package\":{\"data\":null,\"protectedFiles\":null},\"rootFile\":\"nginx.conf\"}}]}",
       "isContentBase64": false
     }
   },
-  "Get-AzNginxConfiguration+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/configurations/default?api-version=2023-04-01+1": {
+  "Get-AzNginxConfiguration+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test922/configurations/default?api-version=2024-01-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/configurations/default?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test922/configurations/default?api-version=2024-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "276b3a54-e253-4436-93bf-490283555f29" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "445e7139-cf13-4800-9426-f36610abbaa6" ],
         "CommandName": [ "Get-AzNginxConfiguration" ],
         "FullCommandName": [ "Get-AzNginxConfiguration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Nginx/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.Nginx/1.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -64,38 +68,42 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:0d872b79-fbba-4031-abaa-ef9aa3e0050d" ],
+        "mise-correlation-id": [ "51335bfb-52de-4cc0-b61d-631ee62605f6" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "e218b923-5bc4-43bc-9fdd-664a279b9999" ],
-        "x-ms-correlation-request-id": [ "111fa06c-2f21-4d6a-9eaf-3b45bb431989" ],
-        "x-ms-routing-request-id": [ "WESTCENTRALUS:20220920T223031Z:111fa06c-2f21-4d6a-9eaf-3b45bb431989" ],
-        "Date": [ "Tue, 20 Sep 2022 22:30:31 GMT" ]
+        "x-ms-request-id": [ "c18d2b96-c3b4-440e-a57e-f4b17e7fcac6" ],
+        "x-ms-correlation-request-id": [ "6651041b-9d06-42c2-b47f-9b24076dc209" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20240530T184239Z:6651041b-9d06-42c2-b47f-9b24076dc209" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 53C71CBD5015401B88F9DA52F9D1A0B7 Ref B: CO1EDGE2714 Ref C: 2024-05-30T18:42:39Z" ],
+        "Date": [ "Thu, 30 May 2024 18:42:39 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1887" ],
+        "Content-Length": [ "1123" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/NGINX.NGINXPLUS/nginxDeployments/test920/configurations/default\",\"name\":\"default\",\"type\":\"NGINX.NGINXPLUS/nginxDeployments/configurations\",\"properties\":{\"provisioningState\":\"Succeeded\",\"files\":[{\"content\":\"aHR0cCB7DQogICAgc2VydmVyIHsNCiAgICAgICAgbGlzdGVuIDgwOw0KICAgICAgICBsb2NhdGlvbiAvIHsNCiAgICAgICAgICAgIGRlZmF1bHRfdHlwZSB0ZXh0L2h0bWw7DQogICAgICAgICAgICByZXR1cm4gMjAwICc8IWRvY3R5cGUgaHRtbD48aHRtbCBsYW5nPSJlbiI+PGhlYWQ+PC9oZWFkPjxib2R5Pg0KICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9IndyYXBwZXIiIHN0eWxlPSJ3aWR0aDogMTAwJTsgaGVpZ2h0OiA5MHZoOyBiYWNrZ3JvdW5kOiAjYWFhYWFhMTE7IHBvc2l0aW9uOiByZWxhdGl2ZSI+DQogICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9ImRpYWxvZyIgc3R5bGU9IndpZHRoOiAzMHZ3OyBoZWlnaHQ6IDMwdmg7IHBvc2l0aW9uOiBhYnNvbHV0ZTsgbGVmdDogNTAlOyB0b3A6IDUwJTsgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7IGJhY2tncm91bmQ6ICMwMDAwMDAxMTsgYm9yZGVyLXJhZGl1czogMXJlbTsgZGlzcGxheTogZmxleDsganVzdGlmeS1jb250ZW50OiBjZW50ZXI7IGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47IGFsaWduLWl0ZW1zOiBjZW50ZXI7IHBhZGRpbmc6IDFyZW07IHRleHQtYWxpZ246IGNlbnRlcjsiPg0KICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBzdHlsZT0iZm9udC1zaXplOiAycmVtOyBmb250LXdlaWdodDogYm9sZCI+TkdJTlggY29uZmlndXJhdGlvbiBzdWNjZXNzZnVsbHkgdXBsb2FkZWQgdGhyb3VnaCBhIENJL0NEIHBpcGVsaW5lITwvZGl2Pg0KICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBzdHlsZT0ibWFyZ2luLXRvcDogMXJlbSI+dGltZTogMzoxM3BtPC9kaXY+DQogICAgICAgICAgICAgICAgICAgICAgICA8YSBzdHlsZT0ibWFyZ2luLXRvcDogMXJlbTsgY29sb3I6IGdyZWVuOyBjdXJzb3I6IHBvaW50ZXI7IiBocmVmPSJodHRwczovL2RvY3MubmdpbnguY29tL25naW54LWZvci1henVyZS8iIHRhcmdldD0iX2JsYW5rIj5sZWFybiBtb3JlIGFib3V0IE5HSU5YIGZvciBBenVyZTwvYT4NCiAgICAgICAgICAgICAgICAgICAgPC9kaXY+DQogICAgICAgICAgICAgICAgPC9kaXY+DQogICAgICAgICAgICA8L2JvZHk+PC9odG1sPic7DQogICAgICAgIH0NCiAgICB9DQp9\",\"virtualPath\":\"etc/nginx/nginx.conf\"}],\"package\":{\"data\":null},\"rootFile\":\"etc/nginx/nginx.conf\"}}",
+      "Content": "{\"id\":\"/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/NGINX.NGINXPLUS/nginxDeployments/test922/configurations/default\",\"name\":\"default\",\"type\":\"NGINX.NGINXPLUS/nginxDeployments/configurations\",\"properties\":{\"provisioningState\":\"Succeeded\",\"files\":[{\"content\":\"aHR0cCB7DQogICAgdXBzdHJlYW0gYXBwIHsNCiAgICAgICAgc2VydmVyIDE3Mi4yNy4wLjQ6ODA7DQogICAgfQ0KICAgIHNlcnZlciB7DQogICAgICAgIGxpc3RlbiA4MDsNCiAgICAgICAgbG9jYXRpb24gLyB7DQogICAgICAgICAgICBkZWZhdWx0X3R5cGUgdGV4dC9odG1sOw0KICAgICAgICAgICAgcmV0dXJuIDIwMCAnPCFET0NUWVBFIGh0bWw+PGgxIHN0eWxlPSJmb250LXNpemU6MzBweDsiPkhlbGxvIGZyb20gTmdpbnggV2ViIFNlcnZlciE8L2gxPlxuJzsNCiAgICAgICAgfQ0KICAgICAgICBsb2NhdGlvbiAvYXBwLyB7DQogICAgICAgICAgICBwcm94eV9wYXNzIGh0dHA6Ly9hcHAuYmxvYi5jb3JlLndpbmRvd3MubmV0LzsNCiAgICAgICAgICAgIHByb3h5X2h0dHBfdmVyc2lvbiAxLjE7DQogICAgICAgICAgICBwcm94eV9yZWFkX3RpbWVvdXQgNjAwOw0KCSAgICAgICAgcHJveHlfY29ubmVjdF90aW1lb3V0IDYwMDsNCgkgICAgICAgIHByb3h5X3NlbmRfdGltZW91dCA2MDA7DQogICAgICAgIH0NCiAgICB9DQp9\",\"virtualPath\":\"nginx.conf\"}],\"protectedFiles\":null,\"package\":{\"data\":null,\"protectedFiles\":null},\"rootFile\":\"nginx.conf\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzNginxConfiguration+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/configurations/default?api-version=2023-04-01+1": {
+  "Get-AzNginxConfiguration+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test922/configurations/default?api-version=2024-01-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/configurations/default?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test922/configurations/default?api-version=2024-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "9db78d50-250b-468d-8c57-014dc3cc4767" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "03a81fec-27e2-49fc-8f2b-ab147f0d1733" ],
         "CommandName": [ "Get-AzNginxConfiguration" ],
         "FullCommandName": [ "Get-AzNginxConfiguration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Nginx/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.Nginx/1.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -106,38 +114,42 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:0d872b79-fbba-4031-abaa-ef9aa3e0050d" ],
+        "mise-correlation-id": [ "a3f8fff7-d6d7-44d3-a39f-0b2b1f8b1d83" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "c3a5c532-4070-428e-9172-265156b54667" ],
-        "x-ms-correlation-request-id": [ "4538a918-e6bc-40fc-af3b-599eb948274c" ],
-        "x-ms-routing-request-id": [ "WESTCENTRALUS:20220920T223032Z:4538a918-e6bc-40fc-af3b-599eb948274c" ],
-        "Date": [ "Tue, 20 Sep 2022 22:30:31 GMT" ]
+        "x-ms-request-id": [ "a6f6801d-9082-440c-98f2-1887e045cbb0" ],
+        "x-ms-correlation-request-id": [ "dd281dfe-8026-43eb-aba4-203bafe4e078" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20240530T184240Z:dd281dfe-8026-43eb-aba4-203bafe4e078" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 82F5C55929344065A1D3426CE12ACCD4 Ref B: CO1EDGE2714 Ref C: 2024-05-30T18:42:39Z" ],
+        "Date": [ "Thu, 30 May 2024 18:42:40 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1887" ],
+        "Content-Length": [ "1123" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/NGINX.NGINXPLUS/nginxDeployments/test920/configurations/default\",\"name\":\"default\",\"type\":\"NGINX.NGINXPLUS/nginxDeployments/configurations\",\"properties\":{\"provisioningState\":\"Succeeded\",\"files\":[{\"content\":\"aHR0cCB7DQogICAgc2VydmVyIHsNCiAgICAgICAgbGlzdGVuIDgwOw0KICAgICAgICBsb2NhdGlvbiAvIHsNCiAgICAgICAgICAgIGRlZmF1bHRfdHlwZSB0ZXh0L2h0bWw7DQogICAgICAgICAgICByZXR1cm4gMjAwICc8IWRvY3R5cGUgaHRtbD48aHRtbCBsYW5nPSJlbiI+PGhlYWQ+PC9oZWFkPjxib2R5Pg0KICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9IndyYXBwZXIiIHN0eWxlPSJ3aWR0aDogMTAwJTsgaGVpZ2h0OiA5MHZoOyBiYWNrZ3JvdW5kOiAjYWFhYWFhMTE7IHBvc2l0aW9uOiByZWxhdGl2ZSI+DQogICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9ImRpYWxvZyIgc3R5bGU9IndpZHRoOiAzMHZ3OyBoZWlnaHQ6IDMwdmg7IHBvc2l0aW9uOiBhYnNvbHV0ZTsgbGVmdDogNTAlOyB0b3A6IDUwJTsgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7IGJhY2tncm91bmQ6ICMwMDAwMDAxMTsgYm9yZGVyLXJhZGl1czogMXJlbTsgZGlzcGxheTogZmxleDsganVzdGlmeS1jb250ZW50OiBjZW50ZXI7IGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47IGFsaWduLWl0ZW1zOiBjZW50ZXI7IHBhZGRpbmc6IDFyZW07IHRleHQtYWxpZ246IGNlbnRlcjsiPg0KICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBzdHlsZT0iZm9udC1zaXplOiAycmVtOyBmb250LXdlaWdodDogYm9sZCI+TkdJTlggY29uZmlndXJhdGlvbiBzdWNjZXNzZnVsbHkgdXBsb2FkZWQgdGhyb3VnaCBhIENJL0NEIHBpcGVsaW5lITwvZGl2Pg0KICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBzdHlsZT0ibWFyZ2luLXRvcDogMXJlbSI+dGltZTogMzoxM3BtPC9kaXY+DQogICAgICAgICAgICAgICAgICAgICAgICA8YSBzdHlsZT0ibWFyZ2luLXRvcDogMXJlbTsgY29sb3I6IGdyZWVuOyBjdXJzb3I6IHBvaW50ZXI7IiBocmVmPSJodHRwczovL2RvY3MubmdpbnguY29tL25naW54LWZvci1henVyZS8iIHRhcmdldD0iX2JsYW5rIj5sZWFybiBtb3JlIGFib3V0IE5HSU5YIGZvciBBenVyZTwvYT4NCiAgICAgICAgICAgICAgICAgICAgPC9kaXY+DQogICAgICAgICAgICAgICAgPC9kaXY+DQogICAgICAgICAgICA8L2JvZHk+PC9odG1sPic7DQogICAgICAgIH0NCiAgICB9DQp9\",\"virtualPath\":\"etc/nginx/nginx.conf\"}],\"package\":{\"data\":null},\"rootFile\":\"etc/nginx/nginx.conf\"}}",
+      "Content": "{\"id\":\"/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/NGINX.NGINXPLUS/nginxDeployments/test922/configurations/default\",\"name\":\"default\",\"type\":\"NGINX.NGINXPLUS/nginxDeployments/configurations\",\"properties\":{\"provisioningState\":\"Succeeded\",\"files\":[{\"content\":\"aHR0cCB7DQogICAgdXBzdHJlYW0gYXBwIHsNCiAgICAgICAgc2VydmVyIDE3Mi4yNy4wLjQ6ODA7DQogICAgfQ0KICAgIHNlcnZlciB7DQogICAgICAgIGxpc3RlbiA4MDsNCiAgICAgICAgbG9jYXRpb24gLyB7DQogICAgICAgICAgICBkZWZhdWx0X3R5cGUgdGV4dC9odG1sOw0KICAgICAgICAgICAgcmV0dXJuIDIwMCAnPCFET0NUWVBFIGh0bWw+PGgxIHN0eWxlPSJmb250LXNpemU6MzBweDsiPkhlbGxvIGZyb20gTmdpbnggV2ViIFNlcnZlciE8L2gxPlxuJzsNCiAgICAgICAgfQ0KICAgICAgICBsb2NhdGlvbiAvYXBwLyB7DQogICAgICAgICAgICBwcm94eV9wYXNzIGh0dHA6Ly9hcHAuYmxvYi5jb3JlLndpbmRvd3MubmV0LzsNCiAgICAgICAgICAgIHByb3h5X2h0dHBfdmVyc2lvbiAxLjE7DQogICAgICAgICAgICBwcm94eV9yZWFkX3RpbWVvdXQgNjAwOw0KCSAgICAgICAgcHJveHlfY29ubmVjdF90aW1lb3V0IDYwMDsNCgkgICAgICAgIHByb3h5X3NlbmRfdGltZW91dCA2MDA7DQogICAgICAgIH0NCiAgICB9DQp9\",\"virtualPath\":\"nginx.conf\"}],\"protectedFiles\":null,\"package\":{\"data\":null,\"protectedFiles\":null},\"rootFile\":\"nginx.conf\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzNginxConfiguration+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/configurations/default?api-version=2023-04-01+2": {
+  "Get-AzNginxConfiguration+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test922/configurations/default?api-version=2024-01-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/configurations/default?api-version=2023-04-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test922/configurations/default?api-version=2024-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "8" ],
-        "x-ms-client-request-id": [ "1f27a067-e52d-4728-a839-fc6544887558" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "94540839-9d8c-496f-a1f8-5e430d085234" ],
         "CommandName": [ "Get-AzNginxConfiguration" ],
         "FullCommandName": [ "Get-AzNginxConfiguration_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Nginx/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.Nginx/1.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -148,22 +160,26 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:0d872b79-fbba-4031-abaa-ef9aa3e0050d" ],
+        "mise-correlation-id": [ "9bb059a2-7909-4077-b32c-4ce146d0da48" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "868f8c60-1924-468e-bbda-7364a507d51a" ],
-        "x-ms-correlation-request-id": [ "00e32a90-013f-48fb-b559-d049253b1253" ],
-        "x-ms-routing-request-id": [ "WESTCENTRALUS:20220920T223032Z:00e32a90-013f-48fb-b559-d049253b1253" ],
-        "Date": [ "Tue, 20 Sep 2022 22:30:32 GMT" ]
+        "x-ms-request-id": [ "e1d21c66-6a4d-439b-9c09-055cbcb7df9f" ],
+        "x-ms-correlation-request-id": [ "d8a454e3-f4fc-47d6-8d38-aab9ac3ecb63" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240530T184240Z:d8a454e3-f4fc-47d6-8d38-aab9ac3ecb63" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 81DB9D28BFA14D3FB27D4CDCD3EE7260 Ref B: CO1EDGE2714 Ref C: 2024-05-30T18:42:40Z" ],
+        "Date": [ "Thu, 30 May 2024 18:42:40 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1887" ],
+        "Content-Length": [ "1123" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/NGINX.NGINXPLUS/nginxDeployments/test920/configurations/default\",\"name\":\"default\",\"type\":\"NGINX.NGINXPLUS/nginxDeployments/configurations\",\"properties\":{\"provisioningState\":\"Succeeded\",\"files\":[{\"content\":\"aHR0cCB7DQogICAgc2VydmVyIHsNCiAgICAgICAgbGlzdGVuIDgwOw0KICAgICAgICBsb2NhdGlvbiAvIHsNCiAgICAgICAgICAgIGRlZmF1bHRfdHlwZSB0ZXh0L2h0bWw7DQogICAgICAgICAgICByZXR1cm4gMjAwICc8IWRvY3R5cGUgaHRtbD48aHRtbCBsYW5nPSJlbiI+PGhlYWQ+PC9oZWFkPjxib2R5Pg0KICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9IndyYXBwZXIiIHN0eWxlPSJ3aWR0aDogMTAwJTsgaGVpZ2h0OiA5MHZoOyBiYWNrZ3JvdW5kOiAjYWFhYWFhMTE7IHBvc2l0aW9uOiByZWxhdGl2ZSI+DQogICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9ImRpYWxvZyIgc3R5bGU9IndpZHRoOiAzMHZ3OyBoZWlnaHQ6IDMwdmg7IHBvc2l0aW9uOiBhYnNvbHV0ZTsgbGVmdDogNTAlOyB0b3A6IDUwJTsgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7IGJhY2tncm91bmQ6ICMwMDAwMDAxMTsgYm9yZGVyLXJhZGl1czogMXJlbTsgZGlzcGxheTogZmxleDsganVzdGlmeS1jb250ZW50OiBjZW50ZXI7IGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47IGFsaWduLWl0ZW1zOiBjZW50ZXI7IHBhZGRpbmc6IDFyZW07IHRleHQtYWxpZ246IGNlbnRlcjsiPg0KICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBzdHlsZT0iZm9udC1zaXplOiAycmVtOyBmb250LXdlaWdodDogYm9sZCI+TkdJTlggY29uZmlndXJhdGlvbiBzdWNjZXNzZnVsbHkgdXBsb2FkZWQgdGhyb3VnaCBhIENJL0NEIHBpcGVsaW5lITwvZGl2Pg0KICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBzdHlsZT0ibWFyZ2luLXRvcDogMXJlbSI+dGltZTogMzoxM3BtPC9kaXY+DQogICAgICAgICAgICAgICAgICAgICAgICA8YSBzdHlsZT0ibWFyZ2luLXRvcDogMXJlbTsgY29sb3I6IGdyZWVuOyBjdXJzb3I6IHBvaW50ZXI7IiBocmVmPSJodHRwczovL2RvY3MubmdpbnguY29tL25naW54LWZvci1henVyZS8iIHRhcmdldD0iX2JsYW5rIj5sZWFybiBtb3JlIGFib3V0IE5HSU5YIGZvciBBenVyZTwvYT4NCiAgICAgICAgICAgICAgICAgICAgPC9kaXY+DQogICAgICAgICAgICAgICAgPC9kaXY+DQogICAgICAgICAgICA8L2JvZHk+PC9odG1sPic7DQogICAgICAgIH0NCiAgICB9DQp9\",\"virtualPath\":\"etc/nginx/nginx.conf\"}],\"package\":{\"data\":null},\"rootFile\":\"etc/nginx/nginx.conf\"}}",
+      "Content": "{\"id\":\"/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/NGINX.NGINXPLUS/nginxDeployments/test922/configurations/default\",\"name\":\"default\",\"type\":\"NGINX.NGINXPLUS/nginxDeployments/configurations\",\"properties\":{\"provisioningState\":\"Succeeded\",\"files\":[{\"content\":\"aHR0cCB7DQogICAgdXBzdHJlYW0gYXBwIHsNCiAgICAgICAgc2VydmVyIDE3Mi4yNy4wLjQ6ODA7DQogICAgfQ0KICAgIHNlcnZlciB7DQogICAgICAgIGxpc3RlbiA4MDsNCiAgICAgICAgbG9jYXRpb24gLyB7DQogICAgICAgICAgICBkZWZhdWx0X3R5cGUgdGV4dC9odG1sOw0KICAgICAgICAgICAgcmV0dXJuIDIwMCAnPCFET0NUWVBFIGh0bWw+PGgxIHN0eWxlPSJmb250LXNpemU6MzBweDsiPkhlbGxvIGZyb20gTmdpbnggV2ViIFNlcnZlciE8L2gxPlxuJzsNCiAgICAgICAgfQ0KICAgICAgICBsb2NhdGlvbiAvYXBwLyB7DQogICAgICAgICAgICBwcm94eV9wYXNzIGh0dHA6Ly9hcHAuYmxvYi5jb3JlLndpbmRvd3MubmV0LzsNCiAgICAgICAgICAgIHByb3h5X2h0dHBfdmVyc2lvbiAxLjE7DQogICAgICAgICAgICBwcm94eV9yZWFkX3RpbWVvdXQgNjAwOw0KCSAgICAgICAgcHJveHlfY29ubmVjdF90aW1lb3V0IDYwMDsNCgkgICAgICAgIHByb3h5X3NlbmRfdGltZW91dCA2MDA7DQogICAgICAgIH0NCiAgICB9DQp9\",\"virtualPath\":\"nginx.conf\"}],\"protectedFiles\":null,\"package\":{\"data\":null,\"protectedFiles\":null},\"rootFile\":\"nginx.conf\"}}",
       "isContentBase64": false
     }
   }

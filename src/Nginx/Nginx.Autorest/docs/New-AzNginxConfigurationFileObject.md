@@ -21,18 +21,27 @@ Create an in-memory object for NginxConfigurationFile.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for NginxConfigurationFile
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzNginxConfigurationFileObject -Content aHR0cCB7 -VirtualPath nginx.conf
+{{ Add code here }}
 ```
 
 ```output
-Content  VirtualPath
--------  -----------
-aHR0cCB7 nginx.conf
+{{ Add output here }}
 ```
 
-Create an in-memory object for NginxConfigurationFile.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -73,7 +82,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxConfigurationFile
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxConfigurationFile
 
 ## NOTES
 
