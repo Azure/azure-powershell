@@ -18,7 +18,8 @@
         - Additional information about change #1
 -->
 
-## Upcoming Release
+## Upcoming 
+* Introduce validation of MG scoped deployment stack during New/Set cmdlet execution.
 
 ## Version 7.1.0
 * Fixed deployment and deployment stack New/Set cmdlets to fail if template/parameter uri fails to downloads.
