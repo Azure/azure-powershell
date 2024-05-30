@@ -119,13 +119,16 @@ steps:
       $noGenerateInfo = @()
       $modules=Get-Content $(FilesChangedOutputPath) -OutVariable paths | Foreach-Object { if($_ -match "^src.*\.Autorest"){ Write-Output $Matches[0] } } | Select-Object -Unique
       foreach ($module in $modules) {
+        $hasGenerateInfo = $false
         $pattern = "^$module/generate-info.json"
         foreach ($path in $paths) {
           if ($path -match $pattern) {
-            continue
+            $hasGenerateInfo = $true
           }
         }
-        $noGenerateInfo += $module
+        if (-not $hasGenerateInfo) {
+          $noGenerateInfo += $module
+        }
       }
       if ($noGenerateInfo -and $noGenerateInfo.Count -gt 0) {
         $noGenerateInfo | Foreach-Object { Write-Error "No generate-info.json detected for $_" }
