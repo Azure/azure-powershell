@@ -31,13 +31,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network.Management.Sdk", ".
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network", "..\Network\Network\Network.csproj", "{A9029A09-56B7-4C93-86C2-6C87D221DB3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ServiceBus", "ServiceBus.Autorest\Az.ServiceBus.csproj", "{D3F636EA-BB01-4B1E-9DF5-B3BEE70BCE5F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBus.Test", "ServiceBus.Test\ServiceBus.Test.csproj", "{5FB1D9C1-4143-439E-8090-7B8F47258629}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBus", "ServiceBus\ServiceBus.csproj", "{F1545AFE-AE51-4AD9-908B-6BEC4020551A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{6C846ED1-8B7B-4011-90EB-2D1425532E05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ServiceBus", "..\..\generated\ServiceBus\ServiceBus.Autorest\Az.ServiceBus.csproj", "{DD3F4089-50B0-432A-8202-22FC4F767311}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -92,10 +92,6 @@ Global
 		{A9029A09-56B7-4C93-86C2-6C87D221DB3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9029A09-56B7-4C93-86C2-6C87D221DB3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9029A09-56B7-4C93-86C2-6C87D221DB3D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D3F636EA-BB01-4B1E-9DF5-B3BEE70BCE5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D3F636EA-BB01-4B1E-9DF5-B3BEE70BCE5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D3F636EA-BB01-4B1E-9DF5-B3BEE70BCE5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D3F636EA-BB01-4B1E-9DF5-B3BEE70BCE5F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5FB1D9C1-4143-439E-8090-7B8F47258629}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5FB1D9C1-4143-439E-8090-7B8F47258629}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FB1D9C1-4143-439E-8090-7B8F47258629}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -108,6 +104,10 @@ Global
 		{6C846ED1-8B7B-4011-90EB-2D1425532E05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C846ED1-8B7B-4011-90EB-2D1425532E05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C846ED1-8B7B-4011-90EB-2D1425532E05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD3F4089-50B0-432A-8202-22FC4F767311}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD3F4089-50B0-432A-8202-22FC4F767311}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD3F4089-50B0-432A-8202-22FC4F767311}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD3F4089-50B0-432A-8202-22FC4F767311}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{755CDF73-57AC-4C32-9A38-0FC3386960C4} = {C73E5E35-0904-421C-B129-06E433EFADF4}
