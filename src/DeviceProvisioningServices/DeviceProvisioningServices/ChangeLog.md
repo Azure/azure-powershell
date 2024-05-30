@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.10.1
 * Removed the outdated deps.json file.
 
 ## Version 0.10.0

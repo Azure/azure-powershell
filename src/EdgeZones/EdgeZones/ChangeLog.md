@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.1
 * Fixed the placeholder in psd1 file.
 
 ## Version 0.1.0

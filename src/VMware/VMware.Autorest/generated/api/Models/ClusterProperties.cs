@@ -10,66 +10,133 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
     /// <summary>The properties of a cluster</summary>
     public partial class ClusterProperties :
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterProperties,
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterPropertiesInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IValidates
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterPropertiesInternal
     {
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterProperties"
-        /// />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterProperties __commonClusterProperties = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.CommonClusterProperties();
+
+        /// <summary>Backing field for <see cref="ClusterId" /> property.</summary>
+        private int? _clusterId;
 
         /// <summary>The identity</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
-        public int? ClusterId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)__commonClusterProperties).ClusterId; }
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public int? ClusterId { get => this._clusterId; }
+
+        /// <summary>Backing field for <see cref="ClusterSize" /> property.</summary>
+        private int? _clusterSize;
 
         /// <summary>The cluster size</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
-        public int? ClusterSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)__commonClusterProperties).ClusterSize; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)__commonClusterProperties).ClusterSize = value ?? default(int); }
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public int? ClusterSize { get => this._clusterSize; set => this._clusterSize = value; }
+
+        /// <summary>Backing field for <see cref="Host" /> property.</summary>
+        private System.Collections.Generic.List<string> _host;
 
         /// <summary>The hosts</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
-        public System.Collections.Generic.List<string> Host { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)__commonClusterProperties).Host; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)__commonClusterProperties).Host = value ?? null /* arrayOf */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> Host { get => this._host; set => this._host = value; }
 
         /// <summary>Internal Acessors for ClusterId</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal.ClusterId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)__commonClusterProperties).ClusterId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)__commonClusterProperties).ClusterId = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterPropertiesInternal.ClusterId { get => this._clusterId; set { {_clusterId = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)__commonClusterProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)__commonClusterProperties).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
+
+        /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
+        private string _provisioningState;
 
         /// <summary>The state of the cluster provisioning</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
-        public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)__commonClusterProperties).ProvisioningState; }
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string ProvisioningState { get => this._provisioningState; }
+
+        /// <summary>Backing field for <see cref="VsanDatastoreName" /> property.</summary>
+        private string _vsanDatastoreName;
+
+        /// <summary>Name of the vsan datastore associated with the cluster</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string VsanDatastoreName { get => this._vsanDatastoreName; set => this._vsanDatastoreName = value; }
 
         /// <summary>Creates an new <see cref="ClusterProperties" /> instance.</summary>
         public ClusterProperties()
         {
 
         }
-
-        /// <summary>Validates that this object meets the validation criteria.</summary>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive validation
-        /// events.</param>
-        /// <returns>
-        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener)
-        {
-            await eventListener.AssertNotNull(nameof(__commonClusterProperties), __commonClusterProperties);
-            await eventListener.AssertObjectIsValid(nameof(__commonClusterProperties), __commonClusterProperties);
-        }
     }
     /// The properties of a cluster
     public partial interface IClusterProperties :
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterProperties
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IJsonSerializable
     {
+        /// <summary>The identity</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The identity",
+        SerializedName = @"clusterId",
+        PossibleTypes = new [] { typeof(int) })]
+        int? ClusterId { get;  }
+        /// <summary>The cluster size</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The cluster size",
+        SerializedName = @"clusterSize",
+        PossibleTypes = new [] { typeof(int) })]
+        int? ClusterSize { get; set; }
+        /// <summary>The hosts</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The hosts",
+        SerializedName = @"hosts",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> Host { get; set; }
+        /// <summary>The state of the cluster provisioning</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The state of the cluster provisioning",
+        SerializedName = @"provisioningState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Cancelled", "Deleting", "Updating")]
+        string ProvisioningState { get;  }
+        /// <summary>Name of the vsan datastore associated with the cluster</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name of the vsan datastore associated with the cluster",
+        SerializedName = @"vsanDatastoreName",
+        PossibleTypes = new [] { typeof(string) })]
+        string VsanDatastoreName { get; set; }
 
     }
     /// The properties of a cluster
-    internal partial interface IClusterPropertiesInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal
+    internal partial interface IClusterPropertiesInternal
+
     {
+        /// <summary>The identity</summary>
+        int? ClusterId { get; set; }
+        /// <summary>The cluster size</summary>
+        int? ClusterSize { get; set; }
+        /// <summary>The hosts</summary>
+        System.Collections.Generic.List<string> Host { get; set; }
+        /// <summary>The state of the cluster provisioning</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Cancelled", "Deleting", "Updating")]
+        string ProvisioningState { get; set; }
+        /// <summary>Name of the vsan datastore associated with the cluster</summary>
+        string VsanDatastoreName { get; set; }
 
     }
 }

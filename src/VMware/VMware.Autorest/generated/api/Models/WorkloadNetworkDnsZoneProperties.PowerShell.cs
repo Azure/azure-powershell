@@ -144,7 +144,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             }
             if (content.Contains("DnsService"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZonePropertiesInternal)this).DnsService = (long?) content.GetValueForProperty("DnsService",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZonePropertiesInternal)this).DnsService, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZonePropertiesInternal)this).DnsService = (int?) content.GetValueForProperty("DnsService",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZonePropertiesInternal)this).DnsService, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("ProvisioningState"))
             {
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             }
             if (content.Contains("DnsService"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZonePropertiesInternal)this).DnsService = (long?) content.GetValueForProperty("DnsService",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZonePropertiesInternal)this).DnsService, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZonePropertiesInternal)this).DnsService = (int?) content.GetValueForProperty("DnsService",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZonePropertiesInternal)this).DnsService, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("ProvisioningState"))
             {

@@ -72,6 +72,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 
             switch ( json.StringProperty("type") )
             {
+                case "Credential":
+                {
+                    return new PsCredentialExecutionParameter(json);
+                }
                 case "SecureValue":
                 {
                     return new ScriptSecureStringExecutionParameter(json);
@@ -79,10 +83,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
                 case "Value":
                 {
                     return new ScriptStringExecutionParameter(json);
-                }
-                case "Credential":
-                {
-                    return new PsCredentialExecutionParameter(json);
                 }
             }
             return new ScriptExecutionParameter(json);
@@ -100,8 +100,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 return;
             }
-            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
             {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)_type;}
+            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
             AfterFromJson(json);
         }
 
@@ -124,8 +124,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 return container;
             }
-            AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
             AddIf( null != (((object)this._type)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._type.ToString()) : null, "type" ,container.Add );
+            AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

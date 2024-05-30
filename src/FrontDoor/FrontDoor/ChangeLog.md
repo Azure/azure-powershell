@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded to api version 2024-02-01
+* Added log scrubbing support and custom rules group by variable support
+
+## Version 1.10.1
 * Removed the outdated deps.json file.
 
 ## Version 1.10.0

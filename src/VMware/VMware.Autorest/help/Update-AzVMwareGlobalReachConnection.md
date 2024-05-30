@@ -8,34 +8,31 @@ schema: 2.0.0
 # Update-AzVMwareGlobalReachConnection
 
 ## SYNOPSIS
-Update a global reach connection in a private cloud
+Update a GlobalReachConnection
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzVMwareGlobalReachConnection -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AuthorizationKey <String>] [-ExpressRouteId <String>]
- [-PeerExpressRouteCircuit <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzVMwareGlobalReachConnection -InputObject <IVMwareIdentity> [-AuthorizationKey <String>]
- [-ExpressRouteId <String>] [-PeerExpressRouteCircuit <String>] [-DefaultProfile <PSObject>] [-AsJob]
+Update-AzVMwareGlobalReachConnection -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityPrivateCloudExpanded
 ```
 Update-AzVMwareGlobalReachConnection -Name <String> -PrivateCloudInputObject <IVMwareIdentity>
- [-AuthorizationKey <String>] [-ExpressRouteId <String>] [-PeerExpressRouteCircuit <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a global reach connection in a private cloud
+Update a GlobalReachConnection
 
 ## EXAMPLES
 
@@ -69,21 +66,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AuthorizationKey
-Authorization key from the peer express route used for the global reach connection
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -92,21 +74,6 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExpressRouteId
-The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -131,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the global reach connection in the private cloud
+Name of the global reach connection
 
 ```yaml
 Type: System.String
@@ -160,21 +127,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PeerExpressRouteCircuit
-Identifier of the ExpressRoute Circuit to peer with in the global reach connection
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PrivateCloudInputObject
 Identity Parameter
 
@@ -191,7 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateCloudName
-The name of the private cloud.
+Name of the private cloud
 
 ```yaml
 Type: System.String
@@ -223,6 +175,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

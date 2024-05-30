@@ -117,7 +117,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             }
             if (content.Contains("AccessRulesVersion"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterProfileInternal)this).AccessRulesVersion = (string) content.GetValueForProperty("AccessRulesVersion",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterProfileInternal)this).AccessRulesVersion, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterProfileInternal)this).AccessRulesVersion = (int?) content.GetValueForProperty("AccessRulesVersion",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterProfileInternal)this).AccessRulesVersion, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("AccessRule"))
             {
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             }
             if (content.Contains("DiagnosticSettingsVersion"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterProfileInternal)this).DiagnosticSettingsVersion = (string) content.GetValueForProperty("DiagnosticSettingsVersion",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterProfileInternal)this).DiagnosticSettingsVersion, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterProfileInternal)this).DiagnosticSettingsVersion = (int?) content.GetValueForProperty("DiagnosticSettingsVersion",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterProfileInternal)this).DiagnosticSettingsVersion, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("EnabledLogCategory"))
             {
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             }
             if (content.Contains("AccessRulesVersion"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterProfileInternal)this).AccessRulesVersion = (string) content.GetValueForProperty("AccessRulesVersion",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterProfileInternal)this).AccessRulesVersion, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterProfileInternal)this).AccessRulesVersion = (int?) content.GetValueForProperty("AccessRulesVersion",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterProfileInternal)this).AccessRulesVersion, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("AccessRule"))
             {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             }
             if (content.Contains("DiagnosticSettingsVersion"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterProfileInternal)this).DiagnosticSettingsVersion = (string) content.GetValueForProperty("DiagnosticSettingsVersion",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterProfileInternal)this).DiagnosticSettingsVersion, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterProfileInternal)this).DiagnosticSettingsVersion = (int?) content.GetValueForProperty("DiagnosticSettingsVersion",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterProfileInternal)this).DiagnosticSettingsVersion, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("EnabledLogCategory"))
             {

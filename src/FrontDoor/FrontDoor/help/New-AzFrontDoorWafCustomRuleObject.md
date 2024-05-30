@@ -15,7 +15,8 @@ Create CustomRule Object for WAF policy creation
 ```
 New-AzFrontDoorWafCustomRuleObject -Name <String> -RuleType <String> -MatchCondition <PSMatchCondition[]>
  -Action <String> -Priority <Int32> [-RateLimitDurationInMinutes <Int32>] [-RateLimitThreshold <Int32>]
- [-EnabledState <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-EnabledState <String>] [-CustomRule <PSFrontDoorWafCustomRuleGroupByVariable[]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,6 +49,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomRule
+Gets or sets describes the list of variables to group the rate limit
+
+```yaml
+Type: Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoorWafCustomRuleGroupByVariable[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

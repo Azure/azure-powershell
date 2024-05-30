@@ -84,6 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {_processor = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNumber>("processors"), out var __jsonProcessors) ? (int?)__jsonProcessors : _processor;}
             {_assignedLicense = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNumber>("assignedLicenses"), out var __jsonAssignedLicenses) ? (int?)__jsonAssignedLicenses : _assignedLicense;}
             {_immutableId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("immutableId"), out var __jsonImmutableId) ? (string)__jsonImmutableId : (string)_immutableId;}
+            {_volumeLicenseDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonArray>("volumeLicenseDetails"), out var __jsonVolumeLicenseDetails) ? If( __jsonVolumeLicenseDetails as Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IVolumeLicenseDetails>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IVolumeLicenseDetails) (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.VolumeLicenseDetails.FromJson(__u) )) ))() : null : _volumeLicenseDetail;}
             AfterFromJson(json);
         }
 
@@ -118,6 +119,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._immutableId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString(this._immutableId.ToString()) : null, "immutableId" ,container.Add );
+            }
+            if (null != this._volumeLicenseDetail)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.XNodeArray();
+                foreach( var __x in this._volumeLicenseDetail )
+                {
+                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                }
+                container.Add("volumeLicenseDetails",__w);
             }
             AfterToJson(ref container);
             return container;

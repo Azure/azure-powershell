@@ -27,7 +27,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         private string _mountOption;
 
         /// <summary>
-        /// Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN
+        /// Mode that describes whether the LUN has to be mounted as a datastore or
+        /// attached as a LUN
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string MountOption { get => this._mountOption; set => this._mountOption = value; }
@@ -68,7 +69,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         PossibleTypes = new [] { typeof(string) })]
         string LunName { get; set; }
         /// <summary>
-        /// Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN
+        /// Mode that describes whether the LUN has to be mounted as a datastore or
+        /// attached as a LUN
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -76,7 +78,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN",
+        Description = @"Mode that describes whether the LUN has to be mounted as a datastore or
+        attached as a LUN",
         SerializedName = @"mountOption",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("MOUNT", "ATTACH")]
@@ -112,7 +115,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>Name of the LUN to be used for datastore</summary>
         string LunName { get; set; }
         /// <summary>
-        /// Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN
+        /// Mode that describes whether the LUN has to be mounted as a datastore or
+        /// attached as a LUN
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("MOUNT", "ATTACH")]
         string MountOption { get; set; }

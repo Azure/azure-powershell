@@ -84,6 +84,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)this).DiskPoolVolume = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDiskPoolVolume) content.GetValueForProperty("DiskPoolVolume",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)this).DiskPoolVolume, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.DiskPoolVolumeTypeConverter.ConvertFrom);
             }
+            if (content.Contains("ElasticSanVolume"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)this).ElasticSanVolume = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IElasticSanVolume) content.GetValueForProperty("ElasticSanVolume",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)this).ElasticSanVolume, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ElasticSanVolumeTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
@@ -107,6 +111,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("DiskPoolVolumePath"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)this).DiskPoolVolumePath = (string) content.GetValueForProperty("DiskPoolVolumePath",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)this).DiskPoolVolumePath, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticSanVolumeTargetId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)this).ElasticSanVolumeTargetId = (string) content.GetValueForProperty("ElasticSanVolumeTargetId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)this).ElasticSanVolumeTargetId, global::System.Convert.ToString);
             }
             if (content.Contains("DiskPoolVolumeMountOption"))
             {
@@ -137,6 +145,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)this).DiskPoolVolume = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDiskPoolVolume) content.GetValueForProperty("DiskPoolVolume",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)this).DiskPoolVolume, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.DiskPoolVolumeTypeConverter.ConvertFrom);
             }
+            if (content.Contains("ElasticSanVolume"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)this).ElasticSanVolume = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IElasticSanVolume) content.GetValueForProperty("ElasticSanVolume",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)this).ElasticSanVolume, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ElasticSanVolumeTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
@@ -160,6 +172,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("DiskPoolVolumePath"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)this).DiskPoolVolumePath = (string) content.GetValueForProperty("DiskPoolVolumePath",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)this).DiskPoolVolumePath, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticSanVolumeTargetId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)this).ElasticSanVolumeTargetId = (string) content.GetValueForProperty("ElasticSanVolumeTargetId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal)this).ElasticSanVolumeTargetId, global::System.Convert.ToString);
             }
             if (content.Contains("DiskPoolVolumeMountOption"))
             {
