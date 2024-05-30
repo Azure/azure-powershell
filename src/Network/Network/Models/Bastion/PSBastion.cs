@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             EnableTunneling = false;
             EnableIpConnect = false;
             EnableShareableLink = false;
+            EnableSessionRecording = false;
         }
 
         public PSBastion(string name, string rgName, string location, string sku = null)
@@ -49,6 +50,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             EnableTunneling = false;
             EnableIpConnect = false;
             EnableShareableLink = false;
+            EnableSessionRecording = false;
         }
 
         public List<PSBastionIPConfiguration> IpConfigurations { get; set; }
