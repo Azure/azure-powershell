@@ -41,7 +41,7 @@ jobs:
         if (0 -eq $modulePaths.Count) {
           return
         }
-        $modulePaths | Select-Object -Unique
+        $modulePaths = $modulePaths | Select-Object -Unique
         foreach ($modulePath in $modulePaths) {
           $modulePath = Join-Path $repoRoot $modulePath
           Set-Location $modulePath
