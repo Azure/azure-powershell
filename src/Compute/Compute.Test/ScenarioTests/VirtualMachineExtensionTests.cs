@@ -158,6 +158,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureDiskEncryptionEncryptionIdentityNonNullIdentityAndSecurityProfile()
+        {
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionEncryptionIdentityNonNullIdentityAndSecurityProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureDiskEncryptionEncryptionIdentity()
+        {
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionEncryptionIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineBginfoExtension()
         {
             TestRunner.RunTestScript("Test-VirtualMachineBginfoExtension");

@@ -1705,6 +1705,187 @@ function Test-AzureDiskEncryptionLnxManagedDisk
 
 <#
 .SYNOPSIS
+Test the Set-AzVMDiskEncryptionExtension single pass enable for EncryptionIdentity
+#>
+function Test-AzureDiskEncryptionEncryptionIdentity
+{
+    $testMode = Get-ComputeTestMode
+    $rgname = Get-ComputeTestResourceName
+    try
+    {
+        # create virtual machine
+        $loc = "eastus2euap";
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        # VM Profile & Hardware
+        $vmsize = 'Standard_D2S_V3';
+        $vmname = 'vm' + $rgname;
+        $imagePublisher = "RedHat";
+        $imageOffer = "RHEL";
+        $imageSku = "92-gen2";
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Static -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
+
+        # Storage Account (SA)
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        Retry-IfException { $global:stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        $stokey = (Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname)[0].Value;
+
+        $osDiskName = 'linuxOsDisk';
+        $osDiskCaching = 'ReadWrite';
+        $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/linuxos.vhd";
+        $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -Caching $osDiskCaching -CreateOption FromImage -Linux;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
+        # OS & Image
+        $user = "Foo12";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force; <#[SuppressMessage("Microsoft.Security", "CS001:SecretInline", Justification="Credentials are used only for the duration of test. Resources are deleted at the end of the test.")]#>
+        <#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Credentials are used only for the duration of test. Resources are deleted at the end of the test.")]#>
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+        $vhdContainer = "https://$stoname.blob.core.windows.net/test";
+
+        $p = Set-AzVMOperatingSystem -VM $p -Linux -ComputerName $computerName -Credential $cred -DisablePasswordAuthentication;
+        Write-Verbose "Adding SSH public key for VM"
+        $sshPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9tGj7bjzqid3QP5YpH2+YGK8Or2KRZLdNuRGiFqgefGEF4uZrsKXeRXAXS7ia5CdCSIu020PDR69nPZq3dEQGp8GNMKXvfIBIpI++BISbT1jPuMVwEnI4JESGI4ay1glh1JtbRzQsktNjUGUYDxoOAYbtj3GU5lvw2CJ5WmobtcQbXLHWYqdDmTZQ7ry7l6GCjJSzye4IkwlQoGUql/T2iU2bLQyOCsFzcDEzFv6hVR8iFcV+eOJNHIkjCQz3Bw+tOTZbHMz1G95tSswdkrdwfMvR8fkWmby39lnFC+I7xcySQI6FMzaQZ7bA0tFGpp1JoThy5J5hBak5yOTqGBYL dummy@cc-1b92760a-6bb78476c6-h5cwh";
+        $sshPath = "/home/" + $user + "/.ssh/authorized_keys"
+        Add-AzVMSshPublicKey -VM $p -KeyData $sshPublicKey -Path $sshPath
+        Write-Verbose "Added SSH public key successfully."
+        $p = Set-AzVMSourceImage -VM $p -PublisherName $imagePublisher -Offer $imageOffer -Skus $imageSku -Version "latest"
+        Assert-AreEqual $p.OSProfile.AdminUsername $user;
+        Assert-AreEqual $p.OSProfile.ComputerName $computerName;
+        Assert-AreEqual $p.OSProfile.AdminPassword $password;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Offer $imageOffer;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Publisher $imagePublisher;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Sku $imageSku;
+
+        # Virtual Machine
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
+
+        $encIdentity = "/subscriptions/759532d8-9991-4d04-878f-49f0f4804906/resourcegroups/vimishRg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pwshtestmsi"
+
+        Set-AzVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmname -EncryptionIdentity $encIdentity -Force;
+
+        $updatedVm = Get-AzVM -Name $vmname -ResourceGroupName $rgname;
+        Assert-AreEqual $encIdentity $updatedVm.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId;
+    }
+    finally
+    {
+        Clean-ResourceGroup($rgname)
+    }
+}
+
+<#
+.SYNOPSIS
+Test the Set-AzVMDiskEncryptionExtension single pass enable for EncryptionIdentity
+#>
+function Test-AzureDiskEncryptionEncryptionIdentityNonNullIdentityAndSecurityProfile
+{
+    $testMode = Get-ComputeTestMode
+    $rgname = Get-ComputeTestResourceName
+    try
+    {
+        # create virtual machine
+        $loc = "eastus2euap";
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        # VM Profile & Hardware
+        $vmsize = 'Standard_D2S_V3';
+        $vmname = 'vm' + $rgname;
+        $imagePublisher = "RedHat";
+        $imageOffer = "RHEL";
+        $imageSku = "92-gen2";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -IdentityType SystemAssigned;
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Static -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
+
+        # Storage Account (SA)
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        Retry-IfException { $global:stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        $stokey = (Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname)[0].Value;
+
+        $osDiskName = 'linuxOsDisk';
+        $osDiskCaching = 'ReadWrite';
+        $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/linuxos.vhd";
+        $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -Caching $osDiskCaching -CreateOption FromImage -Linux;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
+        # OS & Image
+        $user = "Foo12";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force; <#[SuppressMessage("Microsoft.Security", "CS001:SecretInline", Justification="Credentials are used only for the duration of test. Resources are deleted at the end of the test.")]#>
+        <#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Credentials are used only for the duration of test. Resources are deleted at the end of the test.")]#>
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+        $vhdContainer = "https://$stoname.blob.core.windows.net/test";
+
+        $p = Set-AzVMOperatingSystem -VM $p -Linux -ComputerName $computerName -Credential $cred -DisablePasswordAuthentication;
+        Write-Verbose "Adding SSH public key for VM"
+        $sshPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9tGj7bjzqid3QP5YpH2+YGK8Or2KRZLdNuRGiFqgefGEF4uZrsKXeRXAXS7ia5CdCSIu020PDR69nPZq3dEQGp8GNMKXvfIBIpI++BISbT1jPuMVwEnI4JESGI4ay1glh1JtbRzQsktNjUGUYDxoOAYbtj3GU5lvw2CJ5WmobtcQbXLHWYqdDmTZQ7ry7l6GCjJSzye4IkwlQoGUql/T2iU2bLQyOCsFzcDEzFv6hVR8iFcV+eOJNHIkjCQz3Bw+tOTZbHMz1G95tSswdkrdwfMvR8fkWmby39lnFC+I7xcySQI6FMzaQZ7bA0tFGpp1JoThy5J5hBak5yOTqGBYL dummy@cc-1b92760a-6bb78476c6-h5cwh";
+        $sshPath = "/home/" + $user + "/.ssh/authorized_keys"
+        Add-AzVMSshPublicKey -VM $p -KeyData $sshPublicKey -Path $sshPath
+        Write-Verbose "Added SSH public key successfully."
+        $p = Set-AzVMSourceImage -VM $p -PublisherName $imagePublisher -Offer $imageOffer -Skus $imageSku -Version "latest"
+        Assert-AreEqual $p.OSProfile.AdminUsername $user;
+        Assert-AreEqual $p.OSProfile.ComputerName $computerName;
+        Assert-AreEqual $p.OSProfile.AdminPassword $password;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Offer $imageOffer;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Publisher $imagePublisher;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Sku $imageSku;
+
+        # Virtual Machine
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
+
+        $encIdentity = "/subscriptions/759532d8-9991-4d04-878f-49f0f4804906/resourcegroups/vimishRg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pwshtestmsi"
+
+        Set-AzVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmname -EncryptionIdentity $encIdentity -Force;
+
+        $updatedVm = Get-AzVM -Name $vmname -ResourceGroupName $rgname;
+        Assert-AreEqual $encIdentity $updatedVm.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId;
+    }
+    finally
+    {
+        Clean-ResourceGroup($rgname)
+    }
+}
+
+<#
+.SYNOPSIS
 Test AzureDiskEncryption extension
 #>
 function Test-AzureDiskEncryptionExtension
