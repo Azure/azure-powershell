@@ -94,7 +94,7 @@ function Test-GetVmConfig
     {
         $stnd = "Standard";
         $vm = New-AzVM -ResourceGroupName $ResourceGroupName -Name $VmName -Location "eastus" -Credential $cred -DomainNameLabel $domainlabel -SecurityType $stnd
-        Remove-Item ./config -ErrorAction Ignore
+        Remove-Item ./config -ErrorAction Ignore 
 
         Assert-NotNull $vm
         $configEntry = Export-AzSshConfig -ResourceGroupName $ResourceGroupName -Name $VmName -ConfigFilePath ./config -LocalUser $username

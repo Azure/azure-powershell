@@ -411,14 +411,8 @@ namespace Microsoft.Azure.Commands.Ssh
 
         }
 
-        protected internal void SetResourceType()
+        protected internal void HandleTargetProperties()
         {
-            TargetMachineTags = new Dictionary<string, string>();
-            if (ParameterSetName.Equals(IpAddressParameterSet))
-            {
-                ResourceType = "Microsoft.Compute/virtualMachines";
-                return;
-            }
             if (ParameterSetName.Equals(ResourceIdParameterSet))
             {
                 ResourceIdentifier idParser = new ResourceIdentifier(ResourceId);
@@ -430,51 +424,67 @@ namespace Microsoft.Azure.Commands.Ssh
             var resourcetypefilter = supportedResourceTypes.Select(type => $"resourceType eq '{type}'").ToArray();
             String filter = $"$filter=name eq '{Name}' and ({String.Join(" or ", resourcetypefilter)})";
             ODataQuery<GenericResourceFilter> query = new ODataQuery<GenericResourceFilter>(filter);
-
-            String[] types;
             try
             {
                 IPage<GenericResource> resources = ResourceManagementClient.Resources.ListByResourceGroupWithHttpMessagesAsync(ResourceGroupName, query).GetAwaiter().GetResult().Body;
-                types = resources.Select(resource => resource.Type).ToArray();
-                foreach (var resource in resources)
+
+                if(resources == null || !resources.Any())
                 {
-                    if (resource.Tags != null && resource.Tags.Any())
-                    {
-                        foreach (var tag in resource.Tags)
-                        {
-                            TargetMachineTags[tag.Key] = tag.Value;
-                        }
-                    }
+                    throw new AzPSResourceNotFoundCloudException(String.Format(Resources.ResourceNotFoundNoTypeProvided, Name, ResourceGroupName));
                 }
+                if (resources.Count() > 1)
+                {
+                    throw new AzPSArgumentException(String.Format(Resources.MultipleResourcesWithSameName, Name, ResourceGroupName), ResourceType);
+                }
+                    
+                
+                GenericResource resource = resources.First();
+
+                SetResourceType(resource);
+                SetAzureTargetResourceTags(resource);
+
             }
             catch (CloudException exception)
             {
                 throw new AzPSCloudException(String.Format(Resources.ListResourcesCloudException, ResourceGroupName, exception.Message));
             }
-            catch (ArgumentNullException)
+        }
+
+        protected internal void SetResourceType(GenericResource resource)
+        {
+
+            if (ParameterSetName.Equals(IpAddressParameterSet))
             {
-                throw new AzPSApplicationException(String.Format(Resources.ListResourcesArgumentNullException, ResourceGroupName));
+                ResourceType = "Microsoft.Compute/virtualMachines";
+                return;
             }
 
             if (ResourceType != null)
             {
-                if (!types.Contains(ResourceType, StringComparer.CurrentCultureIgnoreCase))
+                if (!ResourceType.Equals(resource.Type, StringComparison.CurrentCultureIgnoreCase))
                 {
-                    throw new AzPSResourceNotFoundCloudException(String.Format(Resources.ResourceNotFoundTypeProvided, Name, ResourceType, ResourceGroupName));
+                    throw new AzPSResourceNotFoundCloudException(string.Format(Resources.ResourceNotFoundTypeProvided, Name, ResourceType, ResourceGroupName));
                 }
                 return;
             }
 
-            if (types.Count() > 1)
-            {
-                throw new AzPSArgumentException(String.Format(Resources.MultipleResourcesWithSameName, Name, ResourceGroupName), ResourceType);
-            }
-            else if (types.Count() < 1)
-            {
-                throw new AzPSResourceNotFoundCloudException(String.Format(Resources.ResourceNotFoundNoTypeProvided, Name, ResourceGroupName));
-            }
-            ResourceType = types.ElementAt(0);
+            ResourceType = resource.Type;
         }
+
+        protected internal void SetAzureTargetResourceTags(GenericResource resource)
+        {
+            TargetMachineTags = new Dictionary<string, string>();
+
+            if (resource.Tags != null && resource.Tags.Any())
+            {
+                foreach (var tag in resource.Tags)
+                {
+                    TargetMachineTags[tag.Key] = tag.Value;
+                }
+            }
+            ConfigurePortNumberFromResourceTag();
+        }
+
 
         protected internal void ConfigurePortNumberFromResourceTag()
         {
@@ -485,7 +495,6 @@ namespace Microsoft.Azure.Commands.Ssh
                              "The -Port option will take precedence and the -ResourceTag will be ignored. " +
                              "To use the port number from the -ResourceTag, please omit the -Port argument.");
             }
-
             // If Port is initialized, use it and return
             if (!string.IsNullOrEmpty(Port))
             {
@@ -521,9 +530,8 @@ namespace Microsoft.Azure.Commands.Ssh
             else
             {
                 throw new ArgumentException($"Port {portNum} from resource tag {tagName} was used for this command. " +
-                                            "If this is incorrect, use the --port parameter or contact your administrator to correct the resource tag value. " +
+                                            "If this is incorrect, use the -Port parameter or contact your administrator to correct the resource tag value. " +
                                             "Port numbers must not be empty, must not contain letters or special characters, and cannot exceed 65535.");
-                
             }
         }
 

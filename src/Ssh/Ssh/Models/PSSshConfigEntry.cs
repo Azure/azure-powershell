@@ -65,11 +65,6 @@ namespace Microsoft.Azure.Commands.Ssh.Models
         public string Port { get; set; }
 
         /// <summary>
-        /// Resource tag.
-        /// </summary>
-        public string ResourceTag { get; set; }
-
-        /// <summary>
         /// Either AAD or LocalUser
         /// </summary>
         public string LoginType { get; set; }
@@ -120,7 +115,6 @@ namespace Microsoft.Azure.Commands.Ssh.Models
             this.HostName = GetPropertyValueFromConfigDictionary(configEntry, "HostName");
             this.ProxyCommand = GetPropertyValueFromConfigDictionary(configEntry, "ProxyCommand");
             this.Port = GetPropertyValueFromConfigDictionary(configEntry, "Port");
-            this.ResourceTag = GetPropertyValueFromConfigDictionary(configEntry, "ResourceTag");
             this.User = GetPropertyValueFromConfigDictionary(configEntry, "User");
             this.IdentityFile = GetPropertyValueFromConfigDictionary(configEntry, "IdentityFile");
             this.CertificateFile = GetPropertyValueFromConfigDictionary(configEntry, "CertificateFile");

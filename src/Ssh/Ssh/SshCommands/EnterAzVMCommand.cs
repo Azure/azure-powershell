@@ -88,12 +88,11 @@ namespace Microsoft.Azure.Commands.Ssh
             base.ExecuteCmdlet();
 
             ValidateParameters();
-            SetResourceType();
+            HandleTargetProperties();
 
             record = new ProgressRecord(0, "Preparing for SSH connection", "Initiating connection setup");
             UpdateProgressBar(record, "Setup SSH connection", 0);
 
-            ConfigurePortNumberFromResourceTag();
 
             if (!IsArc() && !ParameterSetName.Equals(IpAddressParameterSet))
             {
