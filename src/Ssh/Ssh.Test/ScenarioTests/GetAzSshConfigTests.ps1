@@ -101,7 +101,7 @@ function Test-GetVmConfig
 
         Assert-NotNull $configEntry
         Assert-AreEqual $configEntry.Host "$ResourceGroupName-$VmName"
-        Assert-AreEqual $configEntry.User $username
+        Assert-AreEqual $configEntry.User $username`
         Assert-AreEqual $configEntry.ResourceType "Microsoft.Compute/virtualMachines"
         Assert-AreEqual $configEntry.LoginType "LocalUser"
         Assert-Null $configEntry.CertificateFile
@@ -119,5 +119,46 @@ function Test-GetVmConfig
         Remove-AzResourceGroup -Name $ResourceGroupName -Force
     }
 }
+function Test-ConfigurePortFromRSTags
+{
+    $VmName = "TestVM"
+    $ResourceGroupName = "TestResourceGroup"
+    $SubscriptionId = (Get-AzContext).Subscription.Id
+    $TenantId = (Get-AzContext).Tenant.Id
+    
+    $username = "azuretestuser"
+    $password = "P@ssword123" | ConvertTo-SecureString -AsPlainText -Force
+    $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $username, $password
 
+    New-AzResourceGroup -Name $ResourceGroupName -Location "eastus" | Out-Null
 
+    $tags = @{
+        "Environment" = "Test"
+        "Department" = "IT"
+        "SSHPort" = "2222"
+    }
+
+    try 
+    {
+        $vm = New-AzVM -ResourceGroupName $ResourceGroupName -Name $VmName -Location "eastus" -Credential $cred -Tag $tags
+        Assert-NotNull $vm
+
+        $retrievedVM = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VmName
+        $resource = @{
+            Tags = $retrievedVM.Tags
+        }
+
+        $script = {
+            param ($resource)
+            ConfigurePortNumberFromResourceTag -resource $resource
+        }
+
+        $Port = Invoke-Command -ScriptBlock $script -ArgumentList $resource
+
+        Assert-AreEqual "2222" $Port
+    }
+    finally {
+        Remove-Item ./config -ErrorAction Ignore -Force
+        Remove-AzResourceGroup -Name $ResourceGroupName -Force
+    }
+}
