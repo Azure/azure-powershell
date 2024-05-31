@@ -30,7 +30,7 @@ function Get-CsprojFromModule {
 
     $testCsprojPattern = @()
     foreach ($testModule in $TestModuleList) {
-        if ($testModule -in $renamedModules) {
+        if ($testModule -in $renamedModules.Keys) {
             foreach ($renamedTestModule in $renamedModules[$testModule]) {
                 $testCsprojPattern += "^*.$renamedTestModule.Test.csproj$"
             }
