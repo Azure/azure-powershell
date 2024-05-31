@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Assert-AzSqlVMEntraAuth'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Assert-AzSqlVMEntraAuth' {
+Describe 'Assert-AzSqlVMEntraAuth' -Tag 'LiveOnly' {
     It 'AssertExpanded' {
     $sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Location $env.Location
 	$result1 = Assert-AzSqlVMEntraAuth -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -IdentityType 'SystemAssigned'	
