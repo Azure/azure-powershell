@@ -422,13 +422,14 @@ namespace Microsoft.Azure.Commands.Ssh
             }
 
             var resourcetypefilter = supportedResourceTypes.Select(type => $"resourceType eq '{type}'").ToArray();
-            String filter = $"$filter=name eq '{Name}' and ({String.Join(" or ", resourcetypefilter)})";
+            string filter = $"$filter=name eq '{Name}' and ({String.Join(" or ", resourcetypefilter)})";
             ODataQuery<GenericResourceFilter> query = new ODataQuery<GenericResourceFilter>(filter);
+
             try
             {
                 IPage<GenericResource> resources = ResourceManagementClient.Resources.ListByResourceGroupWithHttpMessagesAsync(ResourceGroupName, query).GetAwaiter().GetResult().Body;
 
-                if(resources == null || !resources.Any())
+                if (resources == null || !resources.Any())
                 {
                     throw new AzPSResourceNotFoundCloudException(String.Format(Resources.ResourceNotFoundNoTypeProvided, Name, ResourceGroupName));
                 }
@@ -436,8 +437,7 @@ namespace Microsoft.Azure.Commands.Ssh
                 {
                     throw new AzPSArgumentException(String.Format(Resources.MultipleResourcesWithSameName, Name, ResourceGroupName), ResourceType);
                 }
-                    
-                
+
                 GenericResource resource = resources.First();
 
                 SetResourceType(resource);
@@ -452,20 +452,15 @@ namespace Microsoft.Azure.Commands.Ssh
 
         protected internal void SetResourceType(GenericResource resource)
         {
-
             if (ParameterSetName.Equals(IpAddressParameterSet))
             {
                 ResourceType = "Microsoft.Compute/virtualMachines";
                 return;
             }
 
-            if (ResourceType != null)
+            if (ResourceType != null && !ResourceType.Equals(resource.Type, StringComparison.CurrentCultureIgnoreCase))
             {
-                if (!ResourceType.Equals(resource.Type, StringComparison.CurrentCultureIgnoreCase))
-                {
-                    throw new AzPSResourceNotFoundCloudException(string.Format(Resources.ResourceNotFoundTypeProvided, Name, ResourceType, ResourceGroupName));
-                }
-                return;
+                throw new AzPSResourceNotFoundCloudException(String.Format(Resources.ResourceNotFoundTypeProvided, Name, ResourceType, ResourceGroupName));
             }
 
             ResourceType = resource.Type;
@@ -484,7 +479,6 @@ namespace Microsoft.Azure.Commands.Ssh
             }
             ConfigurePortNumberFromResourceTag();
         }
-
 
         protected internal void ConfigurePortNumberFromResourceTag()
         {
@@ -520,7 +514,7 @@ namespace Microsoft.Azure.Commands.Ssh
                 ValidateAndSetPort(sshPortValue, "SSHPort");
             }
         }
-        // Valid date port number
+
         private void ValidateAndSetPort(string portNum, string tagName)
         {
             if (int.TryParse(portNum, out int port) && port > 0 && port < 65536)
@@ -534,6 +528,7 @@ namespace Microsoft.Azure.Commands.Ssh
                                             "Port numbers must not be empty, must not contain letters or special characters, and cannot exceed 65535.");
             }
         }
+
 
 
         protected internal void UpdateProgressBar(
