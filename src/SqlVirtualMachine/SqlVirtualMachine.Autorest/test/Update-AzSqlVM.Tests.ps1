@@ -149,8 +149,10 @@ Describe 'Update-AzSqlVM' {
         $sqlVM2 = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName_HA2 -Expand *
         $sqlVM2.GroupResourceId | Should -Be $null
         }
+}
 
-		It 'Update-AdAuthenticationEnable1' {
+Describe 'Update-AzSqlVM-EntraAuth' -Tag 'LiveOnly' {
+	It 'Update-AdAuthenticationEnable1' {
         $sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Location $env.Location
 
         $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -IdentityType 'UserAssigned' -ManagedIdentityClientId '6d81e2bc-dcc5-45c9-9327-1cfee9612933'

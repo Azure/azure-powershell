@@ -573,7 +573,7 @@ process {
 
         if ($hasManagedIdentityClientId -or $hasIdentityType)
         {
-            Assert-AzSqlVMEntraAuth -ResourceGroupName $sqlVM.ResourceGroupName -Name $sqlVM.Name -ManagedIdentityClientId $ManagedIdentityClientId -IdentityType $IdentityType
+            Assert-AzSqlVMEntraAuth -SubscriptionId $sqlVM.SubscriptionId -ResourceGroupName $sqlVM.ResourceGroupName -Name $sqlVM.Name -ManagedIdentityClientId $ManagedIdentityClientId -IdentityType $IdentityType
         }
         if ($PSCmdlet.ShouldProcess("SQL virtual machine $($sqlvm.Name)", "Update")) {
             Az.SqlVirtualMachine.internal\New-AzSqlVM -InputObject $sqlvm -Parameter $sqlvm @PSBoundParameters

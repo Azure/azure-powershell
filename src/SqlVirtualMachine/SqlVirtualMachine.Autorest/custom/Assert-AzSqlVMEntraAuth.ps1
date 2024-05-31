@@ -280,8 +280,8 @@ function Assert-SqlVMversion {
     try {
     # Get the SQL VM instance
 	$vmExtensionName = 'SqlIaasExtension'
-    $uri = "https://management.azure.com/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Compute/virtualMachines/$SqlVirtualMachineName/extensions/$vmExtensionName" + "?`$expand=instanceView&api-version=2024-03-01"
-	$jsonObject = Invoke-AzRestMethod -Method GET -Uri $uri | Select-Object -ExpandProperty Content | ConvertFrom-Json
+    $path = "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Compute/virtualMachines/$SqlVirtualMachineName/extensions/$vmExtensionName" + "?`$expand=instanceView&api-version=2024-03-01"
+	$jsonObject = Invoke-AzRestMethod -Method GET -Path $path | Select-Object -ExpandProperty Content | ConvertFrom-Json
     $resourceProviderPluginStatus = $jsonObject.properties.instanceView.substatuses | Where-Object { $_.code -like "*Resource Provider Plugin*"} 
 
     if ($resourceProviderPluginStatus) {
@@ -349,8 +349,8 @@ function Assert-MsiValidity {
 
     try {
         # Get the VM instance
-        $uri = "https://management.azure.com/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Compute/virtualMachines/$SqlVirtualMachineName/" + "?`$expand=instanceView&api-version=2024-03-01"
-        $vm = Invoke-AzRestMethod -Method GET -Uri $uri | Select-Object -ExpandProperty Content | ConvertFrom-Json
+        $path = "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Compute/virtualMachines/$SqlVirtualMachineName/" + "?`$expand=instanceView&api-version=2024-03-01"
+        $vm = Invoke-AzRestMethod -Method GET -Path $path | Select-Object -ExpandProperty Content | ConvertFrom-Json
     }
     catch {
         throw "Unable to validate Azure Entra authentication due to retrieving the Azure virtual machine instance encountering an error: $_"
@@ -433,7 +433,8 @@ function Find-RoleId {
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.DoNotExportAttribute()]
     param()
     try {
-        $uri = "https://graph.microsoft.com/v1.0/servicePrincipals?" + "`$filter=displayName eq 'Microsoft Graph'"
+        $graphurl = (Get-AzContext).Environment.ExtendedProperties.MicrosoftGraphUrl
+        $uri = $graphurl + "/v1.0/servicePrincipals?" + "`$filter=displayName eq 'Microsoft Graph'"
         $result = Invoke-AzRestMethod -Method GET -Uri $uri | Select-Object -ExpandProperty Content | ConvertFrom-Json
         $servicePrincipals = $result.value
 
@@ -480,7 +481,8 @@ function Get-DirectoryRoleList {
     )
 	
     try {
-        $uri = "https://graph.microsoft.com/v1.0/servicePrincipals/$PrincipalId/transitiveMemberOf/microsoft.graph.directoryRole"
+        $graphurl = (Get-AzContext).Environment.ExtendedProperties.MicrosoftGraphUrl
+        $uri = $graphurl + "/v1.0/servicePrincipals/$PrincipalId/transitiveMemberOf/microsoft.graph.directoryRole"
         $RoleList = Invoke-AzRestMethod -Method GET -Uri $uri | Select-Object -ExpandProperty Content | ConvertFrom-Json
         return $RoleList.value
     }
@@ -497,7 +499,8 @@ function Get-AssignedAppRoleList {
     )
 	
     try {
-        $uri = "https://graph.microsoft.com/v1.0/servicePrincipals/$PrincipalId/appRoleAssignments"
+        $graphurl = (Get-AzContext).Environment.ExtendedProperties.MicrosoftGraphUrl
+        $uri = $graphurl + "/v1.0/servicePrincipals/$PrincipalId/appRoleAssignments"
         $RoleList = Invoke-AzRestMethod -Method GET -Uri $uri | Select-Object -ExpandProperty Content | ConvertFrom-Json
         return $RoleList.value.AppRoleId
     }
