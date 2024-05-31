@@ -48,14 +48,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupVault
         [Parameter(
             Mandatory = true,
             ParameterSetName = FieldsParameterSet,
-            HelpMessage = "The location of the resource")]
-        [ValidateNotNullOrEmpty]
-        [LocationCompleter("Microsoft.NetApp/netAppAccounts/backupPolicies")]
-        public string Location { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = FieldsParameterSet,
             HelpMessage = "The name of the ANF account")]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter(
@@ -141,8 +133,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupVault
             }
             else if (ParameterSetName == ParentObjectParameterSet)
             {
-                ResourceGroupName = AccountObject.ResourceGroupName;
-                Location = AccountObject.Location;
+                ResourceGroupName = AccountObject.ResourceGroupName;                
                 var NameParts = AccountObject.Name.Split('/');
                 AccountName = NameParts[0];
             }
