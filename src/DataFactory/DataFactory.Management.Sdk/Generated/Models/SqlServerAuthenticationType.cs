@@ -7,16 +7,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 {
 
     /// <summary>
-    /// Defines values for ExpressionV2Type.
+    /// Defines values for SqlServerAuthenticationType.
     /// </summary>
 
 
-    public static class ExpressionV2Type
+    public static class SqlServerAuthenticationType
     {
-        public const string Constant = "Constant";
-        public const string Field = "Field";
-        public const string Unary = "Unary";
-        public const string Binary = "Binary";
-        public const string NAry = "NAry";
+        public const string SQL = "SQL";
+        public const string Windows = "Windows";
     }
 }

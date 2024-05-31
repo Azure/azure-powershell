@@ -8,39 +8,21 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     using System.Linq;
 
     /// <summary>
-    /// Amazon RDS for SQL Server linked service.
+    /// Sql Server family connector common linked service properties.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("AmazonRdsForSqlServer")]
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class AmazonRdsForSqlServerLinkedService : LinkedService
+    public partial class SqlServerBaseLinkedServiceTypeProperties
     {
         /// <summary>
-        /// Initializes a new instance of the AmazonRdsForSqlServerLinkedService class.
+        /// Initializes a new instance of the SqlServerBaseLinkedServiceTypeProperties class.
         /// </summary>
-        public AmazonRdsForSqlServerLinkedService()
+        public SqlServerBaseLinkedServiceTypeProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the AmazonRdsForSqlServerLinkedService class.
+        /// Initializes a new instance of the SqlServerBaseLinkedServiceTypeProperties class.
         /// </summary>
-
-        /// <param name="additionalProperties">The nested object which contains the information and credential which can
-        /// be used to connect with related store or compute resource.
-        /// </param>
-
-        /// <param name="connectVia">The integration runtime reference.
-        /// </param>
-
-        /// <param name="description">Linked service description.
-        /// </param>
-
-        /// <param name="parameters">Parameters for linked service.
-        /// </param>
-
-        /// <param name="annotations">List of tags that can be used for describing the linked service.
-        /// </param>
 
         /// <param name="server">The name or network address of the instance of SQL Server to which to
         /// connect, used by recommended version. Type: string (or Expression with
@@ -142,30 +124,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// time that the connection is requested, used by recommended version. Type:
         /// Boolean (or Expression with resultType boolean).
         /// </param>
+        public SqlServerBaseLinkedServiceTypeProperties(object server = default(object), object database = default(object), object encrypt = default(object), object trustServerCertificate = default(object), object hostNameInCertificate = default(object), object applicationIntent = default(object), object connectTimeout = default(object), object connectRetryCount = default(object), object connectRetryInterval = default(object), object loadBalanceTimeout = default(object), object commandTimeout = default(object), object integratedSecurity = default(object), object failoverPartner = default(object), object maxPoolSize = default(object), object minPoolSize = default(object), object multipleActiveResultSets = default(object), object multiSubnetFailover = default(object), object packetSize = default(object), object pooling = default(object))
 
-        /// <param name="connectionString">The connection string. Type: string, SecureString or
-        /// AzureKeyVaultSecretReference.
-        /// </param>
-
-        /// <param name="authenticationType">The type used for authentication. Type: string.
-        /// Possible values include: &#39;SQL&#39;, &#39;Windows&#39;</param>
-
-        /// <param name="userName">The on-premises Windows authentication user name. Type: string (or
-        /// Expression with resultType string).
-        /// </param>
-
-        /// <param name="password">The on-premises Windows authentication password.
-        /// </param>
-
-        /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
-        /// using the integration runtime credential manager. Type: string.
-        /// </param>
-
-        /// <param name="alwaysEncryptedSettings">Sql always encrypted properties.
-        /// </param>
-        public AmazonRdsForSqlServerLinkedService(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object server = default(object), object database = default(object), object encrypt = default(object), object trustServerCertificate = default(object), object hostNameInCertificate = default(object), object applicationIntent = default(object), object connectTimeout = default(object), object connectRetryCount = default(object), object connectRetryInterval = default(object), object loadBalanceTimeout = default(object), object commandTimeout = default(object), object integratedSecurity = default(object), object failoverPartner = default(object), object maxPoolSize = default(object), object minPoolSize = default(object), object multipleActiveResultSets = default(object), object multiSubnetFailover = default(object), object packetSize = default(object), object pooling = default(object), object connectionString = default(object), string authenticationType = default(string), object userName = default(object), SecretBase password = default(SecretBase), string encryptedCredential = default(string), SqlAlwaysEncryptedProperties alwaysEncryptedSettings = default(SqlAlwaysEncryptedProperties))
-
-        : base(additionalProperties, connectVia, description, parameters, annotations)
         {
             this.Server = server;
             this.Database = database;
@@ -186,12 +146,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             this.MultiSubnetFailover = multiSubnetFailover;
             this.PacketSize = packetSize;
             this.Pooling = pooling;
-            this.ConnectionString = connectionString;
-            this.AuthenticationType = authenticationType;
-            this.UserName = userName;
-            this.Password = password;
-            this.EncryptedCredential = encryptedCredential;
-            this.AlwaysEncryptedSettings = alwaysEncryptedSettings;
             CustomInit();
         }
 
@@ -206,14 +160,14 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// which to connect, used by recommended version. Type: string (or Expression
         /// with resultType string).
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.server")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "server")]
         public object Server {get; set; }
 
         /// <summary>
         /// Gets or sets the name of the database, used by recommended version. Type:
         /// string (or Expression with resultType string).
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.database")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "database")]
         public object Database {get; set; }
 
         /// <summary>
@@ -222,7 +176,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// are true/yes/mandatory, false/no/optional and strict. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.encrypt")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "encrypt")]
         public object Encrypt {get; set; }
 
         /// <summary>
@@ -230,7 +184,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// walking the certificate chain to validate trust, used by recommended
         /// version. Type: Boolean (or Expression with resultType boolean).
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.trustServerCertificate")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "trustServerCertificate")]
         public object TrustServerCertificate {get; set; }
 
         /// <summary>
@@ -239,7 +193,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Source is used for certificate validation, used by recommended version.
         /// Type: string (or Expression with resultType string).
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.hostNameInCertificate")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "hostNameInCertificate")]
         public object HostNameInCertificate {get; set; }
 
         /// <summary>
@@ -247,7 +201,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// used by recommended version. Possible values are ReadOnly and ReadWrite.
         /// Type: string (or Expression with resultType string).
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.applicationIntent")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "applicationIntent")]
         public object ApplicationIntent {get; set; }
 
         /// <summary>
@@ -255,7 +209,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// the server before terminating the attempt and generating an error, used by
         /// recommended version. Type: integer (or Expression with resultType integer).
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.connectTimeout")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "connectTimeout")]
         public object ConnectTimeout {get; set; }
 
         /// <summary>
@@ -264,7 +218,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// must be an integer between 0 and 255. Type: integer (or Expression with
         /// resultType integer).
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.connectRetryCount")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "connectRetryCount")]
         public object ConnectRetryCount {get; set; }
 
         /// <summary>
@@ -273,7 +227,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// by recommended version. This must be an integer between 1 and 60. Type:
         /// integer (or Expression with resultType integer).
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.connectRetryInterval")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "connectRetryInterval")]
         public object ConnectRetryInterval {get; set; }
 
         /// <summary>
@@ -281,7 +235,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// the connection pool before being destroyed, used by recommended version.
         /// Type: integer (or Expression with resultType integer).
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.loadBalanceTimeout")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "loadBalanceTimeout")]
         public object LoadBalanceTimeout {get; set; }
 
         /// <summary>
@@ -289,7 +243,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// attempt to execute a command and generating an error, used by recommended
         /// version. Type: integer (or Expression with resultType integer).
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.commandTimeout")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "commandTimeout")]
         public object CommandTimeout {get; set; }
 
         /// <summary>
@@ -298,7 +252,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// are used for authentication (when true), used by recommended version. Type:
         /// Boolean (or Expression with resultType boolean).
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.integratedSecurity")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "integratedSecurity")]
         public object IntegratedSecurity {get; set; }
 
         /// <summary>
@@ -306,7 +260,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// primary server is down, used by recommended version. Type: string (or
         /// Expression with resultType string).
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.failoverPartner")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "failoverPartner")]
         public object FailoverPartner {get; set; }
 
         /// <summary>
@@ -314,7 +268,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// pool for this specific connection string, used by recommended version.
         /// Type: integer (or Expression with resultType integer).
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.maxPoolSize")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "maxPoolSize")]
         public object MaxPoolSize {get; set; }
 
         /// <summary>
@@ -322,7 +276,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// pool for this specific connection string, used by recommended version.
         /// Type: integer (or Expression with resultType integer).
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.minPoolSize")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "minPoolSize")]
         public object MinPoolSize {get; set; }
 
         /// <summary>
@@ -332,7 +286,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// connection, used by recommended version. Type: Boolean (or Expression with
         /// resultType boolean).
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.multipleActiveResultSets")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "multipleActiveResultSets")]
         public object MultipleActiveResultSets {get; set; }
 
         /// <summary>
@@ -342,7 +296,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// by recommended version. Type: Boolean (or Expression with resultType
         /// boolean).
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.multiSubnetFailover")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "multiSubnetFailover")]
         public object MultiSubnetFailover {get; set; }
 
         /// <summary>
@@ -350,7 +304,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// with an instance of server, used by recommended version. Type: integer (or
         /// Expression with resultType integer).
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.packetSize")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "packetSize")]
         public object PacketSize {get; set; }
 
         /// <summary>
@@ -358,85 +312,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// opened every time that the connection is requested, used by recommended
         /// version. Type: Boolean (or Expression with resultType boolean).
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.pooling")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "pooling")]
         public object Pooling {get; set; }
-
-        /// <summary>
-        /// Gets or sets the connection string. Type: string, SecureString or
-        /// AzureKeyVaultSecretReference.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.connectionString")]
-        public object ConnectionString {get; set; }
-
-        /// <summary>
-        /// Gets or sets the type used for authentication. Type: string. Possible values include: &#39;SQL&#39;, &#39;Windows&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.authenticationType")]
-        public string AuthenticationType {get; set; }
-
-        /// <summary>
-        /// Gets or sets the on-premises Windows authentication user name. Type: string
-        /// (or Expression with resultType string).
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.userName")]
-        public object UserName {get; set; }
-
-        /// <summary>
-        /// Gets or sets the on-premises Windows authentication password.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.password")]
-        public SecretBase Password {get; set; }
-
-        /// <summary>
-        /// Gets or sets the encrypted credential used for authentication. Credentials
-        /// are encrypted using the integration runtime credential manager. Type:
-        /// string.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
-        public string EncryptedCredential {get; set; }
-
-        /// <summary>
-        /// Gets or sets sql always encrypted properties.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.alwaysEncryptedSettings")]
-        public SqlAlwaysEncryptedProperties AlwaysEncryptedSettings {get; set; }
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public override void Validate()
-        {
-            base.Validate();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            if (this.AlwaysEncryptedSettings != null)
-            {
-                this.AlwaysEncryptedSettings.Validate();
-            }
-        }
     }
 }

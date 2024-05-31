@@ -7,16 +7,15 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 {
 
     /// <summary>
-    /// Defines values for ExpressionV2Type.
+    /// Defines values for AzureSqlMIAuthenticationType.
     /// </summary>
 
 
-    public static class ExpressionV2Type
+    public static class AzureSqlMIAuthenticationType
     {
-        public const string Constant = "Constant";
-        public const string Field = "Field";
-        public const string Unary = "Unary";
-        public const string Binary = "Binary";
-        public const string NAry = "NAry";
+        public const string SQL = "SQL";
+        public const string ServicePrincipal = "ServicePrincipal";
+        public const string SystemAssignedManagedIdentity = "SystemAssignedManagedIdentity";
+        public const string UserAssignedManagedIdentity = "UserAssignedManagedIdentity";
     }
 }
