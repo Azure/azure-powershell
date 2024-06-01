@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded api version to 2024-01-16
 
 ## Version 5.2.0
 * Generated cmdlets of api version 2023-11-01-preview. Includes support for the following operations:

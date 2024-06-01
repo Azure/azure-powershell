@@ -61,7 +61,7 @@ Invoke-AzWvdControlSessionHostUpdate -HostPoolName HostPoolName `
 Action types for controlling hostpool update.
 
 ```yaml
-Type: HostPoolUpdateAction
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolUpdateAction
 Parameter Sets: PostExpanded, PostViaIdentityExpanded
 Aliases:
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 Run the command as a job
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -92,7 +92,7 @@ The cancel message sent to the user on the session host.
 This is can only be specified if the action is 'Cancel'.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PostExpanded, PostViaIdentityExpanded
 Aliases:
 
@@ -108,7 +108,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -124,7 +124,7 @@ Represents properties for a hostpool update.
 To construct, see NOTES section for HOSTPOOLCONTROLPARAMETER properties and create a hash table.
 
 ```yaml
-Type: IHostPoolControlParameter
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IHostPoolControlParameter
 Parameter Sets: Post, PostViaIdentity
 Aliases:
 
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 The name of the host pool within the specified resource group
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PostExpanded, Post
 Aliases:
 
@@ -155,7 +155,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: IDesktopVirtualizationIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 Parameter Sets: PostViaIdentityExpanded, PostViaIdentity
 Aliases:
 
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 Run the command asynchronously
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -185,7 +185,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -201,7 +201,7 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PostExpanded, Post
 Aliases:
 
@@ -216,7 +216,7 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PostExpanded, Post
 Aliases:
 
@@ -231,7 +231,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -247,7 +247,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

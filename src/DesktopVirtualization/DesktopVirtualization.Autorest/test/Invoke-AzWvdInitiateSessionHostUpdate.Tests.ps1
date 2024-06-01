@@ -16,6 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzWvdInitiateSessionHo
 
 Describe 'Invoke-AzWvdInitiateSessionHostUpdate' {
     It 'PostExpanded' {
+
         Invoke-AzWvdInitiateSessionHostUpdate -HostPoolName $env.AutomatedHostpoolPersistent -ResourceGroupName $env.ResourceGroupPersistent `
         -SubscriptionId $env.subscriptionId -ScheduledDateTimeZone 'Pacific Standard Time' `
         -UpdateDeleteOriginalVM `
