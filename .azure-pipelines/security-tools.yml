@@ -95,4 +95,3 @@ jobs:
     inputs:
       artifactName: artifacts
       targetPath: artifacts
-...
