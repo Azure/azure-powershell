@@ -28,7 +28,7 @@ Invoke-AzWvdInitiateSessionHostUpdate -HostPoolName HostPoolName `
           -UpdateLogOffMessage "logging off for hostpool update."
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IUpdateSessionHostsRequestBody
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IUpdateSessionHostsRequestBody
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
@@ -104,7 +104,7 @@ param(
     [Parameter(ParameterSetName='Post', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IUpdateSessionHostsRequestBody]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IUpdateSessionHostsRequestBody]
     # Object containing the definition for properties to be used for a sessionHostUpdate operation.
     # To construct, see NOTES section for UPDATESESSIONHOSTSREQUESTBODY properties and create a hash table.
     ${UpdateSessionHostsRequestBody},
@@ -246,7 +246,13 @@ begin {
             PostViaIdentityExpanded = 'Az.DesktopVirtualization.private\Invoke-AzWvdInitiateSessionHostUpdate_PostViaIdentityExpanded';
         }
         if (('Post', 'PostExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

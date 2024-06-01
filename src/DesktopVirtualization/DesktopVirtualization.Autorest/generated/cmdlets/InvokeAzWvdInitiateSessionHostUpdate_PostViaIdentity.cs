@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Description(@"Initiates a hostpool update or schedule an update for the future.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostManagements/default/initiateSessionHostUpdate", ApiVersion = "2023-11-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostManagements/default/initiateSessionHostUpdate", ApiVersion = "2024-01-16-preview")]
     public partial class InvokeAzWvdInitiateSessionHostUpdate_PostViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener
     {
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
         /// <summary>Backing field for <see cref="UpdateSessionHostsRequestBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IUpdateSessionHostsRequestBody _updateSessionHostsRequestBody;
+        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IUpdateSessionHostsRequestBody _updateSessionHostsRequestBody;
 
         /// <summary>
         /// Object containing the definition for properties to be used for a sessionHostUpdate operation.
@@ -129,8 +129,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         ReadOnly = false,
         Description = @"Object containing the definition for properties to be used for a sessionHostUpdate operation.",
         SerializedName = @"updateSessionHostsRequestBody",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IUpdateSessionHostsRequestBody) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IUpdateSessionHostsRequestBody UpdateSessionHostsRequestBody { get => this._updateSessionHostsRequestBody; set => this._updateSessionHostsRequestBody = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IUpdateSessionHostsRequestBody) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IUpdateSessionHostsRequestBody UpdateSessionHostsRequestBody { get => this._updateSessionHostsRequestBody; set => this._updateSessionHostsRequestBody = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -186,7 +186,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -383,6 +400,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

@@ -26,11 +26,11 @@ Expand-AzWvdMsixImage -HostPoolName HostPoolName `
           -Uri ImagePathURI
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IMsixImageUri
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IMsixImageUri
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IExpandMsixImage
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IExpandMsixImage
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -60,7 +60,7 @@ MSIXIMAGEURI <IMsixImageUri>: Represents URI referring to MSIX Image
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/expand-azwvdmsiximage
 #>
 function Expand-AzWvdMsixImage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IExpandMsixImage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IExpandMsixImage])]
 [CmdletBinding(DefaultParameterSetName='ExpandExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Expand', Mandatory)]
@@ -97,7 +97,7 @@ param(
     [Parameter(ParameterSetName='Expand', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ExpandViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IMsixImageUri]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IMsixImageUri]
     # Represents URI referring to MSIX Image
     # To construct, see NOTES section for MSIXIMAGEURI properties and create a hash table.
     ${MsixImageUri},
@@ -190,7 +190,13 @@ begin {
             ExpandViaIdentityExpanded = 'Az.DesktopVirtualization.private\Expand-AzWvdMsixImage_ExpandViaIdentityExpanded';
         }
         if (('Expand', 'ExpandExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

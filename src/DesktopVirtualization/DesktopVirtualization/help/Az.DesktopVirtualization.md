@@ -17,6 +17,12 @@ Disconnect a userSession.
 ### [Expand-AzWvdMsixImage](Expand-AzWvdMsixImage.md)
 Expands and Lists MSIX packages in an Image, given the Image Path.
 
+### [Get-AzWvdActiveSessionHostConfiguration](Get-AzWvdActiveSessionHostConfiguration.md)
+Get the ActiveSessionHostConfiguration for the hostPool that is currently being used for update operations.
+
+### [Get-AzWvdAppAttachPackage](Get-AzWvdAppAttachPackage.md)
+Get an app attach package.
+
 ### [Get-AzWvdApplication](Get-AzWvdApplication.md)
 Get an application.
 
@@ -56,6 +62,18 @@ Get a ScalingPlanPooledSchedule.
 ### [Get-AzWvdSessionHost](Get-AzWvdSessionHost.md)
 Get a session host.
 
+### [Get-AzWvdSessionHostConfiguration](Get-AzWvdSessionHostConfiguration.md)
+Get a SessionHostConfiguration.
+
+### [Get-AzWvdSessionHostConfigurationsOperationStatus](Get-AzWvdSessionHostConfigurationsOperationStatus.md)
+Get Operation status for SessionHostManagement
+
+### [Get-AzWvdSessionHostManagement](Get-AzWvdSessionHostManagement.md)
+Get a SessionHostManagement.
+
+### [Get-AzWvdSessionHostManagementsOperationStatus](Get-AzWvdSessionHostManagementsOperationStatus.md)
+Get Operation status for SessionHostManagement
+
 ### [Get-AzWvdStartMenuItem](Get-AzWvdStartMenuItem.md)
 List start menu items in the given application group.
 
@@ -64,6 +82,21 @@ Get a userSession.
 
 ### [Get-AzWvdWorkspace](Get-AzWvdWorkspace.md)
 Get a workspace.
+
+### [Import-AzWvdAppAttachPackageInfo](Import-AzWvdAppAttachPackageInfo.md)
+Gets information from a package given the path to the package.
+
+### [Invoke-AzWvdControlSessionHostUpdate](Invoke-AzWvdControlSessionHostUpdate.md)
+Control update of a hostpool.
+
+### [Invoke-AzWvdInitiateSessionHostUpdate](Invoke-AzWvdInitiateSessionHostUpdate.md)
+Initiates a hostpool update or schedule an update for the future.
+
+### [Invoke-AzWvdRetrySessionHostProvisioning](Invoke-AzWvdRetrySessionHostProvisioning.md)
+Retry provisioning on a SessionHost.
+
+### [New-AzWvdAppAttachPackage](New-AzWvdAppAttachPackage.md)
+Create or update an App Attach package.
 
 ### [New-AzWvdApplication](New-AzWvdApplication.md)
 Create or update an application.
@@ -89,11 +122,20 @@ Create or update a ScalingPlanPersonalSchedule.
 ### [New-AzWvdScalingPlanPooledSchedule](New-AzWvdScalingPlanPooledSchedule.md)
 Create or update a ScalingPlanPooledSchedule.
 
+### [New-AzWvdSessionHostConfiguration](New-AzWvdSessionHostConfiguration.md)
+Create or update a SessionHostConfiguration.
+
+### [New-AzWvdSessionHostManagement](New-AzWvdSessionHostManagement.md)
+Create or update a SessionHostManagement.
+
 ### [New-AzWvdWorkspace](New-AzWvdWorkspace.md)
 Create or update a workspace.
 
 ### [Register-AzWvdApplicationGroup](Register-AzWvdApplicationGroup.md)
 Register a Windows virtual desktop application group.
+
+### [Remove-AzWvdAppAttachPackage](Remove-AzWvdAppAttachPackage.md)
+Remove an App Attach Package.
 
 ### [Remove-AzWvdApplication](Remove-AzWvdApplication.md)
 Remove an application.
@@ -137,6 +179,9 @@ Send a message to a user.
 ### [Unregister-AzWvdApplicationGroup](Unregister-AzWvdApplicationGroup.md)
 Unregister the Windows virtual desktop application group.
 
+### [Update-AzWvdAppAttachPackage](Update-AzWvdAppAttachPackage.md)
+Update an App Attach Package
+
 ### [Update-AzWvdApplication](Update-AzWvdApplication.md)
 Update an application.
 
@@ -163,6 +208,12 @@ Update a ScalingPlanPooledSchedule.
 
 ### [Update-AzWvdSessionHost](Update-AzWvdSessionHost.md)
 Update a session host.
+
+### [Update-AzWvdSessionHostConfiguration](Update-AzWvdSessionHostConfiguration.md)
+Update a SessionHostConfiguration.
+
+### [Update-AzWvdSessionHostManagement](Update-AzWvdSessionHostManagement.md)
+Update a SessionHostManagement.
 
 ### [Update-AzWvdWorkspace](Update-AzWvdWorkspace.md)
 Update a workspace.

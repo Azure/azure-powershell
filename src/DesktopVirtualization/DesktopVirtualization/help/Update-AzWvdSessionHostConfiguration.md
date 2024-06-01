@@ -78,7 +78,7 @@ Update-AzWvdSessionHostConfiguration -ResourceGroupName ResourceGroupName `
 Run the command as a job
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -94,7 +94,7 @@ Value for availability zones to be used by the session host.
 Should be from \[1,2,3\].
 
 ```yaml
-Type: Int32[]
+Type: System.Int32[]
 Parameter Sets: (All)
 Aliases:
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 Whether boot diagnostics should be enabled on the Virtual Machine.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -127,7 +127,7 @@ Uri of the storage account to use for placing the console output and screenshot.
 If storageUri is not specified while enabling boot diagnostics, managed storage will be used.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 The uri to the storage blob containing the arm template to be run on the virtual machine after provisioning.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -157,7 +157,7 @@ Accept wildcard characters: False
 The resource id of the custom image.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -173,7 +173,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -188,7 +188,7 @@ Accept wildcard characters: False
 The disk type used by virtual machine in hostpool session host.
 
 ```yaml
-Type: VirtualMachineDiskType
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.VirtualMachineDiskType
 Parameter Sets: (All)
 Aliases:
 
@@ -203,7 +203,7 @@ Accept wildcard characters: False
 The uri to access the secret that the password is stored in.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -218,7 +218,7 @@ Accept wildcard characters: False
 The uri to access the secret that the username is stored in.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -233,7 +233,7 @@ Accept wildcard characters: False
 Friendly name to describe this version of the SessionHostConfiguration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -248,7 +248,7 @@ Accept wildcard characters: False
 The name of the host pool within the specified resource group
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -263,7 +263,7 @@ Accept wildcard characters: False
 The type of image session hosts use in the hostpool.
 
 ```yaml
-Type: Type
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Type
 Parameter Sets: (All)
 Aliases:
 
@@ -279,7 +279,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: IDesktopVirtualizationIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -294,7 +294,7 @@ Accept wildcard characters: False
 The exact version of the image.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -309,7 +309,7 @@ Accept wildcard characters: False
 The offer of the image.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -324,7 +324,7 @@ Accept wildcard characters: False
 The publisher of the image.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -339,7 +339,7 @@ Accept wildcard characters: False
 The sku of the image.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -355,7 +355,7 @@ The resource ID of the security group.
 Any allowable/open ports should be specified in the NSG.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -370,7 +370,7 @@ Accept wildcard characters: False
 The resource ID of the subnet.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -385,7 +385,7 @@ Accept wildcard characters: False
 Run the command asynchronously
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -400,7 +400,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -416,7 +416,7 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -431,7 +431,7 @@ Accept wildcard characters: False
 Whether to use secureBoot on the virtual machine.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -446,7 +446,7 @@ Accept wildcard characters: False
 The security type used by virtual machine in hostpool session host.
 
 ```yaml
-Type: VirtualMachineSecurityType
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.VirtualMachineSecurityType
 Parameter Sets: (All)
 Aliases:
 
@@ -461,7 +461,7 @@ Accept wildcard characters: False
 Whether to use vTPM on the virtual machine.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -476,7 +476,7 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -491,7 +491,7 @@ Accept wildcard characters: False
 The uri to access the secret that the password is stored in.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -506,7 +506,7 @@ Accept wildcard characters: False
 The uri to access the secret that the username is stored in.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -521,7 +521,7 @@ Accept wildcard characters: False
 The Location for the session host to be created in
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -536,7 +536,7 @@ Accept wildcard characters: False
 The prefix that should be associated with session host names
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -552,7 +552,7 @@ The ResourceGroup for the session hosts to be created in.
 It will default to the ResourceGroup of the hostpool if not provided.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -567,7 +567,7 @@ Accept wildcard characters: False
 The id of the size of a virtual machine connected to a hostpool.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -582,7 +582,7 @@ Accept wildcard characters: False
 Hashtable that lists key/value pair tags to apply to the VMs
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -597,7 +597,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -613,7 +613,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

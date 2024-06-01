@@ -45,7 +45,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 The name of the host pool within the specified resource group
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Retry
 Aliases:
 
@@ -76,7 +76,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: IDesktopVirtualizationIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 Parameter Sets: RetryViaIdentity
 Aliases:
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 Returns true when the command succeeds
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -122,7 +122,7 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Retry
 Aliases:
 
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 The name of the session host within the specified host pool
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Retry
 Aliases:
 
@@ -152,7 +152,7 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Retry
 Aliases:
 
@@ -167,7 +167,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -183,7 +183,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

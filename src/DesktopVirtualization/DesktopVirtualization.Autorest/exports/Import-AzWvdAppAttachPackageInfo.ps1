@@ -26,11 +26,11 @@ Import-AzWvdAppAttachPackageInfo -HostPoolName HostPoolName `
           -Path ImagePathURI
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IImportPackageInfoRequest
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IImportPackageInfoRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IAppAttachPackage
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IAppAttachPackage
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -61,7 +61,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/import-azwvdappattachpackageinfo
 #>
 function Import-AzWvdAppAttachPackageInfo {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IAppAttachPackage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IAppAttachPackage])]
 [CmdletBinding(DefaultParameterSetName='ImportExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Import', Mandatory)]
@@ -98,7 +98,7 @@ param(
     [Parameter(ParameterSetName='Import', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ImportViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IImportPackageInfoRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IImportPackageInfoRequest]
     # Information to import app attach package
     # To construct, see NOTES section for IMPORTPACKAGEINFOREQUEST properties and create a hash table.
     ${ImportPackageInfoRequest},
@@ -199,7 +199,13 @@ begin {
             ImportViaIdentityExpanded = 'Az.DesktopVirtualization.private\Import-AzWvdAppAttachPackageInfo_ImportViaIdentityExpanded';
         }
         if (('Import', 'ImportExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
