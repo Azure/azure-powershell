@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '5.2.0'
+ModuleVersion = '5.2.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,17 +51,17 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.15.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '3.0.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 
                'DesktopVirtualization.Autorest/bin/Az.DesktopVirtualization.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-ScriptsToProcess = @()
+# ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = @()
+# TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 
@@ -138,7 +138,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'DesktopVirtualization'
+        Tags = 'Azure','ResourceManager','ARM','PSModule','DesktopVirtualization'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -150,18 +150,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Generated cmdlets of api version 2023-11-01-preview. Includes support for the following operations:
-- ''Get-ActiveSessionHostConfiguration''
-- ''Create-SessionHostConfiguration''
-- ''Get-SessionHostConfiguration''
-- ''Update-SessionHostConfiguration''
-- ''Get-SessionHostConfigurationOperationStatus''
-- ''Create-SessionHostManagement''
-- ''Get-SessionHostManagement''
-- ''Update-SessionHostManagement''
-- ''Get-SessionHostManagementOperationStatus''
-- ''Invoke-ControlSessionHostUpdate''
-- ''Invoke-InitiateSessionHostUpdate'''
+        ReleaseNotes = '* Upgraded api version to 2024-01-16'
 
         # Prerelease string of this module
         Prerelease = 'preview'
@@ -174,7 +163,7 @@ PrivateData = @{
 
     } # End of PSData hashtable
 
-} # End of PrivateData hashtable
+ } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''
