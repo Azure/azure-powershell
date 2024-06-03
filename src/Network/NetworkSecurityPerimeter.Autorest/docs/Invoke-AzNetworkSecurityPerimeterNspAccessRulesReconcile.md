@@ -86,12 +86,20 @@ Reconcile NSP access rules
 
 ## EXAMPLES
 
-### Example 1: Reconcile NSP access rules
+### Example 1: Invoke Reconcile of NetworkSecurityPerimeterNsp AccessRules
 ```powershell
-
-Invoke-AzNetworkSecurityPerimeterNspAccessRulesReconcile -AccessRuleName accessrule-1 -NetworkSecurityPerimeterName nsp-1 -ProfileName profile1 -ResourceGroupName ResourceGroup-1
-
+Invoke-AzNetworkSecurityPerimeterNspAccessRulesReconcile -AccessRuleName MyAccessRule -ProfileName profile -ResourceGroupName ResourceGroup-1 -NetworkSecurityPerimeterName nsp3
 ```
+
+Invoke Reconcile of NetworkSecurityPerimeterNsp AccessRules
+
+### Example 2: Invoke Reconcile of NetworkSecurityPerimeterNsp AccessRules by identity (using pipe)
+```powershell
+ $GETObj = Get-AzNetworkSecurityPerimeterAccessRule -Name ar3 -ProfileName profile1 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
+ Invoke-AzNetworkSecurityPerimeterNspAccessRulesReconcile -InputObject $GETObj
+```
+
+Invoke Reconcile of NetworkSecurityPerimeterNsp AccessRules by identity (using pipe)
 
 ## PARAMETERS
 
