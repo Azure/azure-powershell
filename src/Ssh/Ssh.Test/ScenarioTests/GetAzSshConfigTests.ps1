@@ -101,7 +101,7 @@ function Test-GetVmConfig
 
         Assert-NotNull $configEntry
         Assert-AreEqual $configEntry.Host "$ResourceGroupName-$VmName"
-        Assert-AreEqual $configEntry.User $username`
+        Assert-AreEqual $configEntry.User $username
         Assert-AreEqual $configEntry.ResourceType "Microsoft.Compute/virtualMachines"
         Assert-AreEqual $configEntry.LoginType "LocalUser"
         Assert-Null $configEntry.CertificateFile
@@ -119,16 +119,16 @@ function Test-GetVmConfig
         Remove-AzResourceGroup -Name $ResourceGroupName -Force
     }
 }
-function Test-ConfigurePortFromRSTags
+function Test-ConfigVMPortFromRSTags
 {
-    $VmName = "TestVM"
-    $ResourceGroupName = "TestResourceGroup"
+    $VmName = Get-AzureVmName
+    $ResourceGroupName = Get-ResourceGroupName
     $SubscriptionId = (Get-AzContext).Subscription.Id
     $TenantId = (Get-AzContext).Tenant.Id
     
     $username = "azuretestuser"
-    $password = "P@ssword123" | ConvertTo-SecureString -AsPlainText -Force
-    $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $username, $password
+    $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+    $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 
     New-AzResourceGroup -Name $ResourceGroupName -Location "eastus" | Out-Null
 
@@ -138,27 +138,67 @@ function Test-ConfigurePortFromRSTags
         "SSHPort" = "2222"
     }
 
+        $domainlabel = "d1" + $ResourceGroupName
     try 
     {
-        $vm = New-AzVM -ResourceGroupName $ResourceGroupName -Name $VmName -Location "eastus" -Credential $cred -Tag $tags
+        $stnd = "Standard";
+        $vm = New-AzVM -ResourceGroupName $ResourceGroupName -Name $VmName -Location "eastus" -Credential $cred -DomainNameLabel $domainlabel -SecurityType $stnd 
+        
+       
         Assert-NotNull $vm
-
+        Update-AzTag -ResourceId $vm.Id -Tag $tags -Operation Merge
+        
         $retrievedVM = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VmName
         $resource = @{
             Tags = $retrievedVM.Tags
         }
 
-        $script = {
-            param ($resource)
-            ConfigurePortNumberFromResourceTag -resource $resource
-        }
+        $configEntry = Export-AzSshConfig -ResourceGroupName $ResourceGroupName -Name $VmName -ConfigFilePath ./config -LocalUser $username
 
-        $Port = Invoke-Command -ScriptBlock $script -ArgumentList $resource
-
-        Assert-AreEqual "2222" $Port
+         
+         Assert-AreEqual "2222" $configEntry.Port
     }
     finally {
         Remove-Item ./config -ErrorAction Ignore -Force
+        Remove-AzResourceGroup -Name $ResourceGroupName -Force
+    }
+}
+
+function Test-ConfigArcPortFromRSTag
+ {
+    $isPlayback = IsPlayback
+
+    if ($IsMacOS) {
+        return
+    }
+    $MachineName = Get-ArcServerName
+    $ResourceGroupName = Get-ResourceGroupName
+    $SubscriptionId = (Get-AzContext).Subscription.Id
+    $TenantId = (Get-AzContext).Tenant.Id
+
+    New-AzResourceGroup -Name $ResourceGroupName -Location "eastus" | Out-Null
+    
+    if (-not $isPlayback) { $agent = installArcAgent }   
+
+    try 
+    {
+        if (-not $isPlayback) { Start-Agent -MachineName $MachineName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -TenantId $TenantId -Agent $agent }
+    
+        Remove-Item ./config -ErrorAction Ignore
+
+        Install-Module Az.Ssh.ArcProxy -Scope CurrentUser -Repository PsGallery -Force -AllowClobber
+
+        $configEntry = Export-AzSshConfig -ResourceGroupName $ResourceGroupName -Name $VmName -ConfigFilePath ./config -LocalUser $username
+
+         
+        Assert-AreEqual "2222" $configEntry.Port
+
+    }
+    finally {
+        Uninstall-Module Az.Ssh.ArcProxy -ErrorAction Ignore
+        Remove-Item ./config -ErrorAction Ignore -Force
+        Remove-Item ./az_ssh_config -ErrorAction Ignore -Force -Recurse
+        if (-not $isPlayback) { Stop-Agent -AgentPath $agent }
         Remove-AzResourceGroup -Name $ResourceGroupName -Force
     }
 }
