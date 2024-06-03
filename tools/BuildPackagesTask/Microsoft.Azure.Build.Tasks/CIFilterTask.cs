@@ -406,7 +406,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
             influencedModuleInfo[TEST_PHASE] = new HashSet<string>(influencedModuleInfo[TEST_PHASE].Where(x => x.EndsWith(".csproj")));
 
-            if (null != SubTasksFilePath && 0 != SubTasksFilePath.Length && FilePathinfluencedModuleInfo.ContainsKey(SUB_TASK_PHASE))
+            if (null != SubTasksFilePath && 0 != SubTasksFilePath.Length && influencedModuleInfo.ContainsKey(SUB_TASK_PHASE))
             {
                 SubTasks = string.Join("; ", influencedModuleInfo[SUB_TASK_PHASE].ToArray());
                 File.WriteAllLines(SubTasksFilePath, influencedModuleInfo[SUB_TASK_PHASE].ToArray());
