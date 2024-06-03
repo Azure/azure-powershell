@@ -13,19 +13,28 @@ namespace Microsoft.Azure.Management.Storage
     public static partial class EncryptionScopesOperationsExtensions
     {
         /// <summary>
-        /// Synchronously creates or updates an encryption scope under the specified storage account. If an encryption scope is already created and a subsequent request is issued with different properties, the encryption scope properties will be updated per the specified request.
+        /// Synchronously creates or updates an encryption scope under the specified
+        /// storage account. If an encryption scope is already created and a subsequent
+        /// request is issued with different properties, the encryption scope
+        /// properties will be updated per the specified request.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='encryptionScopeName'>
-        /// The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the encryption scope within the specified storage account.
+        /// Encryption scope names must be between 3 and 63 characters in length and
+        /// use numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         public static EncryptionScope Put(this IEncryptionScopesOperations operations, string resourceGroupName, string accountName, string encryptionScopeName, EncryptionScope encryptionScope)
         {
@@ -33,19 +42,28 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// Synchronously creates or updates an encryption scope under the specified storage account. If an encryption scope is already created and a subsequent request is issued with different properties, the encryption scope properties will be updated per the specified request.
+        /// Synchronously creates or updates an encryption scope under the specified
+        /// storage account. If an encryption scope is already created and a subsequent
+        /// request is issued with different properties, the encryption scope
+        /// properties will be updated per the specified request.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='encryptionScopeName'>
-        /// The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the encryption scope within the specified storage account.
+        /// Encryption scope names must be between 3 and 63 characters in length and
+        /// use numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -58,19 +76,26 @@ namespace Microsoft.Azure.Management.Storage
             }
         }
         /// <summary>
-        /// Update encryption scope properties as specified in the request body. Update fails if the specified encryption scope does not already exist.
+        /// Update encryption scope properties as specified in the request body. Update
+        /// fails if the specified encryption scope does not already exist.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='encryptionScopeName'>
-        /// The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the encryption scope within the specified storage account.
+        /// Encryption scope names must be between 3 and 63 characters in length and
+        /// use numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         public static EncryptionScope Patch(this IEncryptionScopesOperations operations, string resourceGroupName, string accountName, string encryptionScopeName, EncryptionScope encryptionScope)
         {
@@ -78,19 +103,26 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// Update encryption scope properties as specified in the request body. Update fails if the specified encryption scope does not already exist.
+        /// Update encryption scope properties as specified in the request body. Update
+        /// fails if the specified encryption scope does not already exist.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='encryptionScopeName'>
-        /// The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the encryption scope within the specified storage account.
+        /// Encryption scope names must be between 3 and 63 characters in length and
+        /// use numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -109,13 +141,19 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='encryptionScopeName'>
-        /// The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the encryption scope within the specified storage account.
+        /// Encryption scope names must be between 3 and 63 characters in length and
+        /// use numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         public static EncryptionScope Get(this IEncryptionScopesOperations operations, string resourceGroupName, string accountName, string encryptionScopeName)
         {
@@ -129,13 +167,19 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='encryptionScopeName'>
-        /// The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the encryption scope within the specified storage account.
+        /// Encryption scope names must be between 3 and 63 characters in length and
+        /// use numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -148,25 +192,32 @@ namespace Microsoft.Azure.Management.Storage
             }
         }
         /// <summary>
-        /// Lists all the encryption scopes available under the specified storage account.
+        /// Lists all the encryption scopes available under the specified storage
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='maxpagesize'>
-        /// Optional, specifies the maximum number of encryption scopes that will be included in the list response.
+        /// Optional, specifies the maximum number of encryption scopes that will be
+        /// included in the list response.
         /// </param>
         /// <param name='filter'>
-        /// Optional. When specified, only encryption scope names starting with the filter will be listed.
+        /// Optional. When specified, only encryption scope names starting with the
+        /// filter will be listed.
         /// </param>
         /// <param name='include'>
-        /// Optional, when specified, will list encryption scopes with the specific state. Defaults to All
+        /// Optional, when specified, will list encryption scopes with the specific
+        /// state. Defaults to All
         /// </param>
         public static Microsoft.Rest.Azure.IPage<EncryptionScope> List(this IEncryptionScopesOperations operations, string resourceGroupName, string accountName, int? maxpagesize = default(int?), string filter = default(string), string include = default(string))
         {
@@ -174,25 +225,32 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// Lists all the encryption scopes available under the specified storage account.
+        /// Lists all the encryption scopes available under the specified storage
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='maxpagesize'>
-        /// Optional, specifies the maximum number of encryption scopes that will be included in the list response.
+        /// Optional, specifies the maximum number of encryption scopes that will be
+        /// included in the list response.
         /// </param>
         /// <param name='filter'>
-        /// Optional. When specified, only encryption scope names starting with the filter will be listed.
+        /// Optional. When specified, only encryption scope names starting with the
+        /// filter will be listed.
         /// </param>
         /// <param name='include'>
-        /// Optional, when specified, will list encryption scopes with the specific state. Defaults to All
+        /// Optional, when specified, will list encryption scopes with the specific
+        /// state. Defaults to All
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -205,7 +263,8 @@ namespace Microsoft.Azure.Management.Storage
             }
         }
         /// <summary>
-        /// Lists all the encryption scopes available under the specified storage account.
+        /// Lists all the encryption scopes available under the specified storage
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -219,7 +278,8 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// Lists all the encryption scopes available under the specified storage account.
+        /// Lists all the encryption scopes available under the specified storage
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the private endpoint connection resource.
-        /// Possible values include: 'Succeeded', 'Creating', 'Deleting', 'Failed'</param>
+        /// Possible values include: &#39;Succeeded&#39;, &#39;Creating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
         public PrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState), string provisioningState = default(string))
 
         : base(id, name, type)

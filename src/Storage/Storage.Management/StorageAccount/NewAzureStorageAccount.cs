@@ -876,7 +876,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
             if (sasExpirationPeriod != null)
             {
-                createParameters.SasPolicy = new SasPolicy(sasExpirationPeriod.Value.ToString(@"d\.hh\:mm\:ss"));
+                createParameters.SasPolicy = new SasPolicy(sasExpirationPeriod.Value.ToString(@"d\.hh\:mm\:ss"), "Log");
             }
             if (keyExpirationPeriodInDay != null)
             {
