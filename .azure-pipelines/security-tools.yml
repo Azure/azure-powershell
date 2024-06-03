@@ -28,23 +28,49 @@ jobs:
       pwsh: true
   - task: NodeTool@0
     displayName: Install Node 14.17.1
-    condition: eq(variables.IsGenerateBased, true)
     inputs:
       versionSpec: 14.17.1
 
   - task: PowerShell@2
     displayName: Install autorest
-    condition: eq(variables.IsGenerateBased, true)
     inputs:
       targetType: inline
       script: npm install autorest@latest;$env:NODE_OPTIONS="--max-old-space-size=65536"
+
+  - task: PowerShell@2
+    displayName: Filter changed files
+    condition: eq('${{ Build.Reason }}', 'PullRequest')
+    inputs:
+      targetType: inline
+      pwsh: true
+      script: |
+        $filesChangedOutputPath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'FilesChanged.txt'
+        dotnet msbuild build.proj /t:FilterBuild /p:TriggerType='PullRequest';Trigger="$(System.PullRequest.PullRequestNumber)";FilesChangedOutputPath=$filesChangedOutputPath
+    env:
+        OCTOKITPAT: $(GithubToken)
+
   - task: PowerShell@2
     displayName: Build
     inputs:
       targetType: inline
-      script: dotnet msbuild build.proj /t:"Build;GenerateHelp" /p:"PullRequestNumber=$(System.PullRequest.PullRequestNumber);IsSecurityCheck=true"
-    env:
-      OCTOKITPAT: $(GithubToken)
+      pwsh: true
+      script: |
+        $buildScript = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'BuildModules.ps1'
+        $reason = "$(Build.Reason)"
+        switch ($reason) {
+          'PullRequest' {
+            . $buildScript -CIPlan -RepoRoot "$(Build.SourcesDirectory)"
+            break
+          }
+          { $reason -in @('Manual', 'Schedule') } {
+            . $buildScript
+            break
+          }
+          default {
+            Exit 1
+          }
+        }
+
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@3
     displayName: Run CredScan
     condition: in(variables['system.pullRequest.targetBranch'], 'generation', 'main')
