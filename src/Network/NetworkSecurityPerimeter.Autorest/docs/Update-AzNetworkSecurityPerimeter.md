@@ -53,27 +53,18 @@ Patch Tags for a Network Security Perimeter.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update NSP
 ```powershell
-{{ Add code here }}
+
+Update-AzNetworkSecurityPerimeter -Name nsp-1 -ResourceGroupName rg-1
+
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Etag Name
+---- ----
+     nsp-1
 ```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

@@ -71,27 +71,12 @@ Reconcile NSP association
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Reconcile NSP association
 ```powershell
-{{ Add code here }}
+
+Invoke-AzNetworkSecurityPerimeterNspAssociationReconcile -AssociationName AssociationName-1 -NetworkSecurityPerimeterName nsp-1 -ResourceGroupName ResourceGroupName-1
+
 ```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

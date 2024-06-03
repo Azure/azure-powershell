@@ -86,27 +86,12 @@ Reconcile NSP access rules
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Reconcile NSP access rules
 ```powershell
-{{ Add code here }}
+
+Invoke-AzNetworkSecurityPerimeterNspAccessRulesReconcile -AccessRuleName accessrule-1 -NetworkSecurityPerimeterName nsp-1 -ProfileName profile1 -ResourceGroupName ResourceGroup-1
+
 ```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 
