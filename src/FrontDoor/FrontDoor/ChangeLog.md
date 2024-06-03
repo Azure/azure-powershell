@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.11.0
 * Upgraded to api version 2024-02-01
 * Added log scrubbing support and custom rules group by variable support
 

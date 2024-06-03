@@ -1,0 +1,2 @@
+"Module","Severity","ResourceType","SubResourceType","Command","Description"
+"Az.MySql","1","Microsoft.DBforMySQL","flexibleServers-advancedThreatProtectionSettings","Get-AzMySqlFlexibleServerAdvancedThreatProtectionSetting","advancedThreatProtectionName is defined in path but cannot find in example"
