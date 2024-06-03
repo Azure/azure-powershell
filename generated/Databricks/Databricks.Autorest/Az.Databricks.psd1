@@ -1,5 +1,5 @@
 @{
-  GUID = 'b453c0c1-7867-4fa1-9fd0-0cf8f6c6959c'
+  GUID = '0900476b-cd79-4d4c-ba15-d91bfd0a0aa0'
   RootModule = './Az.Databricks.psm1'
   ModuleVersion = '1.2.0'
   CompatiblePSEditions = 'Core', 'Desktop'
