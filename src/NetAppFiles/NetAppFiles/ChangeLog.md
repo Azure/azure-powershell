@@ -26,18 +26,15 @@
     * Added Parameter `BackupVaultName`  to Backup cmdlets
         - `New-AzNetAppFilesBackup`, `Get-AzNetAppFilesBackup`, `Update-AzNetAppFilesBackup`, `Remove-AzNetAppFilesBackup` and `Restore-AzNetAppFilesBackupFile`
     * Added Parameter `Filter`  to Backup cmdlet `Get-AzNetAppFilesBackup` to get list of backups belonging to specific ANF Volume. This filter accepts ANF Volume ResourceId
-    * Parameters `PoolName` and 'VolumeName' are no longer needed and will be deprecated in Backup cmdlets
+    * Paramters `PoolName` and 'VolumeName' are no longer needed and will be deprecated in Backup cmdlets
         - `New-AzNetAppFilesBackup`, `Get-AzNetAppFilesBackup`, `Update-AzNetAppFilesBackup`, `Remove-AzNetAppFilesBackup` and `Restore-AzNetAppFilesBackupFile`
     * Parameters `PoolName` and 'VolumeName' are no longer mandatory, not needed and will be deprecated in Backup cmdlets
         - `New-AzNetAppFilesBackup`, `Get-AzNetAppFilesBackup`, `Update-AzNetAppFilesBackup`, `Remove-AzNetAppFilesBackup` and `Restore-AzNetAppFilesBackupFile`
     * Added Property `VolumeResourceId ` to PSNetAppFilesBackup
         - `New-AzNetAppFilesBackup`, `Get-AzNetAppFilesBackup`, `Update-AzNetAppFilesBackup`
-    * Added Parameter `BackupVaultId` to `Backup`. object 
+    * Added Paramter `BackupVaultId` to `Backup`. object 
         - `New-AzNetAppFilesVolume`, `Update-AzNetAppFilesVolume`
-    * Added Parameter `ProtocolType` to `Update-AzNetAppFilesVolume`
-    * Updated contraints on Parameter `CoolnessPeriod`  minimum 2, maximum 183
-        - `New-AzNetAppFilesVolume`, `Update-AzNetAppFilesVolume`
-    * Updated help description for parameters `SnaphotId` and `BackupId` to clarify they should now only be used with backup and snapshot resourceId respectively in `New-AzNetAppFilesVolume`
+    * Added Paramter `ProtocolType` to `Update-AzNetAppFilesVolume`
 
 ## Version 0.15.2
 * Upgraded Azure.Core to 1.37.0.
