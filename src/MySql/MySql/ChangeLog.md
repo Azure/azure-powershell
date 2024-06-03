@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cmdlets: `Get-AzMySqlFlexibleServerAdvancedThreatProtectionSetting` and `Update-AzMySqlFlexibleServerAdvancedThreatProtectionSetting`
 
 ## Version 1.1.2
 * Fixed for various docs erroneously pointing to Postgres instead of MySQL
