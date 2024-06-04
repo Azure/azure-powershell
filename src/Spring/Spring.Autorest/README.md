@@ -798,6 +798,10 @@ directive:
       cmdlet-name: New-AzSpringCloudGatewayApiRouteObject
     - model-name: ConfigurationServiceGitRepository
       cmdlet-name: New-AzSpringConfigurationServiceGitObject
+    - model-name: DeploymentSettingsEnvironmentVariables
+      cmdlet-name: New-AzSpringAppDeploymentSettingEnvVariableObject
+    - model-name: DeploymentSettingsAddonConfigs
+      cmdlet-name: New-AzSpringAppDeploymentSettingsAddonConfigObject
     - model-name: GitPatternRepository
       cmdlet-name: New-AzSpringGitPatternObject
     - model-name: ActiveDeploymentCollection

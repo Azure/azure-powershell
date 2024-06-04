@@ -179,8 +179,14 @@ Create an in-memory object for JarUploadedUserSourceInfo.
 ### [New-AzSpringAppDeploymentNetCoreZipUploadedObject](New-AzSpringAppDeploymentNetCoreZipUploadedObject.md)
 Create an in-memory object for NetCoreZipUploadedUserSourceInfo.
 
+### [New-AzSpringAppDeploymentSettingEnvVariableObject](New-AzSpringAppDeploymentSettingEnvVariableObject.md)
+Create an in-memory object for DeploymentSettingsEnvironmentVariables.
+
 ### [New-AzSpringAppDeploymentSettingObject](New-AzSpringAppDeploymentSettingObject.md)
 Create an in-memory object for DeploymentSettings.
+
+### [New-AzSpringAppDeploymentSettingsAddonConfigObject](New-AzSpringAppDeploymentSettingsAddonConfigObject.md)
+Create an in-memory object for DeploymentSettingsAddonConfigs.
 
 ### [New-AzSpringAppDeploymentSourceUploadedObject](New-AzSpringAppDeploymentSourceUploadedObject.md)
 Create an in-memory object for SourceUploadedUserSourceInfo.
