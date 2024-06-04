@@ -1,2 +1,0 @@
-"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Az.Websites","Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots.NewAzureWebAppSlotCmdlet","New-AzWebAppSlot","0","1050","The parameter set '__AllParameterSets' for cmdlet 'New-AzWebAppSlot' has been removed.","Add parameter set '__AllParameterSets' back to cmdlet 'New-AzWebAppSlot'."

@@ -887,5 +887,13 @@
   {
     "module": "Chaos",
     "alias": "Chaos"
+  },
+  {
+    "module": "StorageAction",
+    "alias": "StorageAction"
+  },
+  {
+    "module": "AksArc",
+    "alias": "AksArc"
   }
 ]
