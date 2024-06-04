@@ -58,9 +58,9 @@ directive:
   - where:
       variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
-  # - where:
-  #     variant: ^CreateViaIdentity.*$
-  #   remove: true
+  - where:
+      variant: ^CreateViaIdentity.*$
+    remove: true
   # Follow directive is v3 specific. If you are using v3, uncomment following directive and comments out two directives above
   #- where:
   #    variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
@@ -103,6 +103,11 @@ directive:
     hide: true
 
   - where:
+      verb: New
+      subject: VirtualNetwork
+    hide: true
+
+  - where:
       subject: ProvisionedClusterInstanceUpgradeProfile
     set:
       subject: ClusterUpgrade
@@ -120,6 +125,10 @@ directive:
       subject: ClusterUserKubeconfig
     hide: true
 
+  - where:
+      subject: KubernetesVersion
+    hide: true
+
 # Remove unnecessary cmdlets
   - where:
       subject: KuberneteVersion
@@ -131,6 +140,7 @@ directive:
     remove: true
 
   - where:
+      verb: Update
       subject: VirtualNetwork
     remove: true
 

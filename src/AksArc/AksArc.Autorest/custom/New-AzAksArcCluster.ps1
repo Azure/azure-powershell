@@ -303,12 +303,13 @@ function New-AzAksArcCluster {
         # Edit parameters
         $null = $PSBoundParameters.Add("InfraNetworkProfileVnetSubnetId", @($VnetId))
         $null = $PSBoundParameters.Add("ExtendedLocationType", "CustomLocation")
-        $null = $PSBoundParameters.Add("ExtendedLocationName", $CustomLocationName)
         $null = $PSBoundParameters.Add("NetworkProfileNetworkPolicy", "calico")
         $null = $PSBoundParameters.Remove("Location")
-        $null = $PSBoundParameters.Remove("CustomLocationName")
         $null = $PSBoundParameters.Remove("VnetId")
 
+        $CustomLocationID = ConvertCustomLocationNameToID -CustomLocationName $CustomLocationName -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName
+        $null = $PSBoundParameters.Add("ExtendedLocationName", $CustomLocationID)
+        $null = $PSBoundParameters.Remove("CustomLocationName")
 
         # Create connected cluster parent resource
         if (!$Location) {
