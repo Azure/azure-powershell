@@ -100,6 +100,11 @@ function Start-Agent {
         [Parameter(Mandatory)]
         [string]
         $Agent
+
+        # Arc Machine Resource tags
+        [Parameter(Mandatory=$false)]
+        [string]
+        $Tags
     )
     
     $azcmagentArgs = @(
@@ -116,8 +121,11 @@ function Start-Agent {
         (Get-AzAccessToken)
         '--resource-name'
         $MachineName
-    )
-
+      )
+      if ($Tags){
+          $azcmagentArgs += '--tags'
+          $azcmagentArgs += $Tags
+      }
     Write-Host "Starting Agent..." -ForegroundColor Cyan
     if ($IsLinux) {
         return sudo $Agent @azcmagentArgs 

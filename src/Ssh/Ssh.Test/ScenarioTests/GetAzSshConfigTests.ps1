@@ -147,7 +147,7 @@ function Test-ConfigVMPortFromRSTags
        
         Assert-NotNull $vm
         Update-AzTag -ResourceId $vm.Id -Tag $tags -Operation Merge
-        
+
         $retrievedVM = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VmName
         $resource = @{
             Tags = $retrievedVM.Tags
@@ -182,7 +182,7 @@ function Test-ConfigArcPortFromRSTag
 
     try 
     {
-        if (-not $isPlayback) { Start-Agent -MachineName $MachineName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -TenantId $TenantId -Agent $agent }
+        if (-not $isPlayback) { Start-Agent -MachineName $MachineName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -TenantId $TenantId -Agent $agent -Tags "enviroment=23,SSHPort=2222"}
     
         Remove-Item ./config -ErrorAction Ignore
 
