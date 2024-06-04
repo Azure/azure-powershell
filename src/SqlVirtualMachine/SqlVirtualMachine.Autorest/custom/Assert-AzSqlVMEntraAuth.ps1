@@ -180,7 +180,7 @@ function Assert-AzSqlVMEntraAuth {
             if ($PSCmdlet.ShouldProcess("SQL virtual machine $($sqlvm.Name)", "Assert")) {
                 if ($IdentityType -ne 'SystemAssigned' -and $IdentityType -ne 'UserAssigned') {
                     # If the value is neither 'SystemAssigned' nor 'UserAssigned', throw an error
-                    throw "Error: The IdentityType is invalid. The supported types are 'SystemAssigned,UserAssigned'"
+                    throw "IdentityType is invalid. The supported types are SystemAssigned or UserAssigned."
                 }
                 else { 
                     Assert-All -VmName $sqlvm.Name -ResourceGroup $sqlvm.ResourceGroupName -MsiClientId $ManagedIdentityClientId -IdentityType $IdentityType -SubscriptionId $subId
@@ -239,7 +239,7 @@ function Assert-All {
         Write-Error "Enable Azure Entra authentication with system-assigned managed identity, but the ManagedIdentityClientId is also provided." -ErrorAction Stop
     }
     if ($IdentityType -eq 'UserAssigned' -and ($null -eq $MsiClientId -or $MsiClientId -eq '')) {
-        Write-Error "ManagedIdentityClientId should not be empty or null when using User Assigned type." -ErrorAction Stop
+        Write-Error "ManagedIdentityClientId should not be empty or null when using UserAssigned type." -ErrorAction Stop
     }
 
     # validate the SQL VM supports Azure Entra authentication, i.e. it is on Windows platform and is SQL 2022 or later    
@@ -288,7 +288,7 @@ function Assert-SqlVMversion {
         $sqlVersion = $resourceProviderPluginStatus | Select-Object @{Name = 'SqlVersion'; Expression = { $_.Message | ConvertFrom-Json | Select-Object -ExpandProperty SqlVersion } }
         $osVersion = $resourceProviderPluginStatus | Select-Object @{Name = 'OSVersion'; Expression = { $_.Message | ConvertFrom-Json | Select-Object -ExpandProperty OSVersion } }
     } else {
-        throw "Unable to validate sql version from extension status. Please make sure the VM is up and running."
+        throw "Please make sure the VM is up and running."
     }
 }
 catch {
