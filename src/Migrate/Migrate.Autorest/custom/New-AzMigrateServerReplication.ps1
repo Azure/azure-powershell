@@ -22,7 +22,7 @@ The New-AzMigrateServerReplication cmdlet starts the replication for a particula
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigrateserverreplication
 #>
 function New-AzMigrateServerReplication {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob])]
     [CmdletBinding(DefaultParameterSetName = 'ByIdDefaultUser', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'ByIdDefaultUser', Mandatory)]
@@ -42,7 +42,7 @@ function New-AzMigrateServerReplication {
         [Parameter(ParameterSetName = 'ByIdPowerUser', Mandatory)]
         [Parameter(ParameterSetName = 'ByInputObjectPowerUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtDiskInput[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtDiskInput[]]
         # Specifies the disks on the source server to be included for replication.
         ${DiskToInclude},
 
@@ -141,19 +141,19 @@ function New-AzMigrateServerReplication {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtEnableMigrationInputTargetVmtags]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetVmtags]
         # Specifies the tag to be used for VM creation.
         ${VMTag},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtEnableMigrationInputTargetNicTags]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetNicTags]
         # Specifies the tag to be used for NIC creation.
         ${NicTag},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtEnableMigrationInputTargetDiskTags]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetDiskTags]
         # Specifies the tag to be used for disk creation.
         ${DiskTag},
 
@@ -171,19 +171,39 @@ function New-AzMigrateServerReplication {
 
         [Parameter(ParameterSetName = 'ByIdDefaultUser', Mandatory)]
         [Parameter(ParameterSetName = 'ByInputObjectDefaultUser', Mandatory)]
-        [ValidateSet("Standard_LRS" , "Premium_LRS", "StandardSSD_LRS")]
-        [ArgumentCompleter( { "Standard_LRS" , "Premium_LRS", "StandardSSD_LRS" })]
+        [ValidateSet("Standard_LRS" , "Premium_LRS", "StandardSSD_LRS", "StandardSSD_ZRS", "Premium_ZRS")]
+        [ArgumentCompleter( { "Standard_LRS" , "Premium_LRS", "StandardSSD_LRS", "StandardSSD_ZRS", "Premium_ZRS" })]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the type of disks to be used for the Azure VM.
         ${DiskType},
-        
+
         [Parameter(ParameterSetName = 'ByIdDefaultUser', Mandatory)]
         [Parameter(ParameterSetName = 'ByInputObjectDefaultUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the Operating System disk for the source server to be migrated.
         ${OSDiskID},
+
+        [ValidateSet("Standard" , "ConfidentialVM", "TrustedLaunch")]
+        [ArgumentCompleter( { "Standard" , "ConfidentialVM", "TrustedLaunch" })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the security type for the Azure VM.
+        ${TargetSecurityType},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.Management.Automation.SwitchParameter]
+        # Specifies whether the confidential encryption of OS disks needs to be enabled.
+        ${TargetVMConfidentialEncryptionEnabled},
+
+        [ValidateSet("true" , "false")]
+        [ArgumentCompleter( { "true" , "false" })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies if secure boot needs to be enabled on target VM.
+        ${TargetVMSecureBootEnabled},
 
         [Parameter(ParameterSetName = 'ByIdDefaultUser')]
         [Parameter(ParameterSetName = 'ByInputObjectDefaultUser')]
@@ -261,6 +281,9 @@ function New-AzMigrateServerReplication {
         $HasResync = $PSBoundParameters.ContainsKey('PerformAutoResync')
         $HasDiskEncryptionSetID = $PSBoundParameters.ContainsKey('DiskEncryptionSetID')
         $HasTargetVMSize = $PSBoundParameters.ContainsKey('TargetVMSize')
+        $HasTargetSecurityType = $PSBoundParameters.ContainsKey('TargetSecurityType')
+        $HasTargetVMConfidentialEncryptionEnabled = $PSBoundParameters.ContainsKey('TargetVMConfidentialEncryptionEnabled')
+        $HasTargetVMSecureBootEnabled = $PSBoundParameters.ContainsKey('TargetVMSecureBootEnabled')
 
         $null = $PSBoundParameters.Remove('ReplicationContainerMapping')
         $null = $PSBoundParameters.Remove('VMWarerunasaccountID')
@@ -286,6 +309,9 @@ function New-AzMigrateServerReplication {
         $null = $PSBoundParameters.Remove('SqlServerLicenseType')
         $null = $PSBoundParameters.Remove('LicenseType')
         $null = $PSBoundParameters.Remove('DiskEncryptionSetID')
+        $null = $PSBoundParameters.Remove('TargetSecurityType')
+        $null = $PSBoundParameters.Remove('TargetVMConfidentialEncryptionEnabled')
+        $null = $PSBoundParameters.Remove('TargetVMSecureBootEnabled')
 
         $null = $PSBoundParameters.Remove('MachineId')
         $null = $PSBoundParameters.Remove('InputObject')
@@ -300,7 +326,9 @@ function New-AzMigrateServerReplication {
             $validDiskTypeSpellings = @{ 
                 Standard_LRS    = "Standard_LRS";
                 Premium_LRS     = "Premium_LRS";
-                StandardSSD_LRS = "StandardSSD_LRS"
+                StandardSSD_LRS = "StandardSSD_LRS";
+                StandardSSD_ZRS = "StandardSSD_ZRS";
+                Premium_ZRS     = "Premium_ZRS"
             }
             $DiskType = $validDiskTypeSpellings[$DiskType]
             
@@ -426,7 +454,7 @@ function New-AzMigrateServerReplication {
         if ($FabricName -eq "") {
             throw "Fabric not found for given resource group."
         }
-                
+
         $null = $PSBoundParameters.Add('FabricName', $FabricName)
         $peContainers = Az.Migrate\Get-AzMigrateReplicationProtectionContainer @PSBoundParameters
         $ProtectionContainerName = ""
@@ -533,12 +561,31 @@ public static int hashForArtifact(String artifact)
         $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
         $null = $PSBoundParameters.Add("PolicyId", $PolicyId)
 
-        $ProviderSpecificDetails = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VMwareCbtEnableMigrationInput]::new()
+        $ProviderSpecificDetails = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.VMwareCbtEnableMigrationInput]::new()
         $ProviderSpecificDetails.DataMoverRunAsAccountId = $VMWarerunasaccountID
         $ProviderSpecificDetails.SnapshotRunAsAccountId = $VMWarerunasaccountID
         $ProviderSpecificDetails.InstanceType = 'VMwareCbt'
         $ProviderSpecificDetails.LicenseType = $LicenseType
         $ProviderSpecificDetails.PerformAutoResync = $PerformAutoResync
+        if ($HasTargetVMConfidentialEncryptionEnabled) {
+            $ProviderSpecificDetails.TargetVMSecurityProfileIsTargetVmconfidentialEncryptionEnabled = $TargetVMConfidentialEncryptionEnabled.IsPresent
+        }
+        if ($HasTargetVMSecureBootEnabled) {
+            $ProviderSpecificDetails.TargetVMSecurityProfileIsTargetVmsecureBootEnabled = $TargetVMSecureBootEnabled
+        }
+
+        if ($HasTargetSecurityType -and $TargetSecurityType -ne "Standard") {
+            $ProviderSpecificDetails.TargetVMSecurityProfileTargetVmsecurityType = $TargetSecurityType
+            $ProviderSpecificDetails.TargetVMSecurityProfileIsTargetVmtpmEnabled = $true
+
+            if ($TargetVMSecureBootEnabled -ne $true -and $HasTargetVMConfidentialEncryptionEnabled) {
+                throw "SecureBoot should be enabled when confidential encryption is enabled."
+            }
+        }
+        elseif ($HasTargetVMConfidentialEncryptionEnabled -or $HasTargetVMSecureBootEnabled) {
+            throw "SecureBoot and Confidential encryption is supported only when security type is confidential virtual machines."
+        }
+
         if ($HasTargetAVSet) {
             $ProviderSpecificDetails.TargetAvailabilitySetId = $TargetAvailabilitySet
         }
@@ -639,6 +686,7 @@ public static int hashForArtifact(String artifact)
         }
 
         Import-Module Az.Resources
+        Import-Module Az.Compute
         $vmId = $ProviderSpecificDetails.TargetResourceGroupId + "/providers/Microsoft.Compute/virtualMachines/" + $TargetVMName
         $VMNamePresentinRg = Get-AzResource -ResourceId $vmId -ErrorVariable notPresent -ErrorAction SilentlyContinue
         if ($VMNamePresentinRg) {
@@ -655,22 +703,22 @@ public static int hashForArtifact(String artifact)
         $uniqueDiskUuids = [System.Collections.Generic.HashSet[String]]::new([StringComparer]::InvariantCultureIgnoreCase)
 
         if ($parameterSet -match 'DefaultUser') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtDiskInput[]]$DiskToInclude = @()
+            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtDiskInput[]]$DiskToInclude = @()
             foreach ($onPremDisk in $InputObject.Disk) {
                 if ($onPremDisk.Uuid -ne $OSDiskID) {
-                    $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VMwareCbtDiskInput]::new()
+                    $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.VMwareCbtDiskInput]::new()
                     $DiskObject.DiskId = $onPremDisk.Uuid
                     $DiskObject.DiskType = "Standard_LRS"
                     $DiskObject.IsOSDisk = "false"
                     $DiskObject.LogStorageAccountSasSecretName = $LogStorageAccountSas
                     $DiskObject.LogStorageAccountId = $LogStorageAccountID
-                    if ($HasDiskEncryptionSetID) {
+                    if (!$HasTargetVMConfidentialEncryptionEnabled -and $HasDiskEncryptionSetID) {
                         $DiskObject.DiskEncryptionSetId = $DiskEncryptionSetID
                     }
                     $DiskToInclude += $DiskObject
                 }
             }
-            $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VMwareCbtDiskInput]::new()
+            $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.VMwareCbtDiskInput]::new()
             $DiskObject.DiskId = $OSDiskID
             $DiskObject.DiskType = $DiskType
             $DiskObject.IsOSDisk = "true"
@@ -678,16 +726,61 @@ public static int hashForArtifact(String artifact)
             $DiskObject.LogStorageAccountId = $LogStorageAccountID
             if ($HasDiskEncryptionSetID) {
                 $DiskObject.DiskEncryptionSetId = $DiskEncryptionSetID
+
+                if ($TargetSecurityType -eq "ConfidentialVM")
+                {
+                    $TargetSubscriptionId = $TargetResourceGroupId.Split('/')[2];
+                    $SourceSubscriptionId = (Get-AzContext -ErrorVariable notPresent -ErrorAction SilentlyContinue).Subscription.Id
+                    $context = Set-AzContext -SubscriptionId $TargetSubscriptionId -ErrorVariable notPresent -ErrorAction SilentlyContinue
+                    $DiskEncryptionSetName = $DiskEncryptionSetID.Split("/")[-1];
+                    $DiskEncryptionSetRg = $DiskEncryptionSetID.Split("/")[-5];
+                    $DiskEncryptionSet = Get-AzDiskEncryptionSet -ResourceGroupName $DiskEncryptionSetRg -Name $DiskEncryptionSetName
+
+                    if ($DiskEncryptionSet.EncryptionType -ne $null -and $HasTargetVMConfidentialEncryptionEnabled -and $DiskEncryptionSet.EncryptionType -ne "ConfidentialVmEncryptedWithCustomerKey") {
+                        throw "Disk encryption set should be of type ConfidentialVmEncryptedWithCustomerKey when confidential encryption is enabled."
+                    }
+                    elseif (!$HasTargetVMConfidentialEncryptionEnabled -and $DiskEncryptionSet.EncryptionType -eq "ConfidentialVmEncryptedWithCustomerKey") {
+                        throw "Disk encryption set should be of type ConfidentialVmEncryptedWithCustomerKey when confidential encryption is disabled."
+                    }
+                    $context = Set-AzContext -SubscriptionId $SourceSubscriptionId -ErrorVariable notPresent -ErrorAction SilentlyContinue
+                }
             }
 
             $DiskToInclude += $DiskObject
             $ProviderSpecificDetails.DisksToInclude = $DiskToInclude
         }
         else {
+            $TargetSubscriptionId = $TargetResourceGroupId.Split('/')[2];
+            $SourceSubscriptionId = (Get-AzContext -ErrorVariable notPresent -ErrorAction SilentlyContinue).Subscription.Id
+            $context = Set-AzContext -SubscriptionId $TargetSubscriptionId -ErrorVariable notPresent -ErrorAction SilentlyContinue
+            $DiskEncryptionSetHashset = New-Object System.Collections.Generic.HashSet[string]
             foreach ($DiskObject in $DiskToInclude) {
                 $DiskObject.LogStorageAccountSasSecretName = $LogStorageAccountSas
                 $DiskObject.LogStorageAccountId = $LogStorageAccountID
+                if (![string]::IsNullOrEmpty($DiskObject.DiskEncryptionSetId) -and $TargetSecurityType -eq "ConfidentialVM") {
+                    $DiskEncryptionSetName = $DiskObject.DiskEncryptionSetId.Split("/")[-1];
+                    $DiskEncryptionSetRg = $DiskObject.DiskEncryptionSetId.Split("/")[-5];
+                    if ($DiskObject.IsOSDisk -eq "true") {
+                        $DiskEncryptionSet = Get-AzDiskEncryptionSet -ResourceGroupName $DiskEncryptionSetRg -Name $DiskEncryptionSetName
+                        if ($HasTargetVMConfidentialEncryptionEnabled -and $DiskEncryptionSet.EncryptionType -ne $null -and $DiskEncryptionSet.EncryptionType -ne "ConfidentialVmEncryptedWithCustomerKey") {
+                            throw "Disk encryption set should be of type ConfidentialVmEncryptedWithCustomerKey when confidential encryption is enabled."
+                        }
+                        elseif (!$HasTargetVMConfidentialEncryptionEnabled -and $DiskEncryptionSet.EncryptionType -eq "ConfidentialVmEncryptedWithCustomerKey") {
+                            throw "Disk encryption set should be of type EncryptionAtRestWithCustomerKey when confidential encryption is disabled."
+                        }
+                    }
+                    else {
+                        if (!$DiskEncryptionSetHashset.Contains($DiskObject.DiskEncryptionSetId)) {
+                            $DiskEncryptionSet = Get-AzDiskEncryptionSet -ResourceGroupName $DiskEncryptionSetRg -Name $DiskEncryptionSetName
+                            if ($DiskEncryptionSet.EncryptionType -eq "ConfidentialVmEncryptedWithCustomerKey") {
+                                throw "Disk encryption set should be of type EncryptionAtRestWithCustomerKey for data disks."
+                            }
+                            $var =$DiskEncryptionSetHashset.Add($DiskObject.DiskEncryptionSetId)
+                        }
+                    }
+                }
             }
+            $context = Set-AzContext -SubscriptionId $SourceSubscriptionId -ErrorVariable notPresent -ErrorAction SilentlyContinue
             $ProviderSpecificDetails.DisksToInclude = $DiskToInclude
         }
 
@@ -698,6 +791,11 @@ public static int hashForArtifact(String artifact)
             if ($uniqueDiskUuids.Contains($disk.DiskId)) {
                 throw "The disk uuid '$($disk.DiskId)' is already taken."
             }
+
+            if (-not $HasTargetAVZone -and $disk.DiskType -match "PremiumV2_LRS") {
+                throw "Availability zone has not been provided for the Premium SSD V2 disk."
+            }
+
             $res = $uniqueDiskUuids.Add($disk.DiskId)
         }
 
@@ -719,7 +817,5 @@ public static int hashForArtifact(String artifact)
         $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
         
         return Az.Migrate.internal\Get-AzMigrateReplicationJob @PSBoundParameters
-        
     }
-
-}   
+}
