@@ -977,7 +977,8 @@
     "Az.CodeSigning": {
       "Get-AzCodeSigningCustomerEku": {},
       "Get-AzCodeSigningRootCert": {},
-      "Invoke-AzCodeSigningCIPolicySigning": {}
+      "Invoke-AzCodeSigningCIPolicySigning": {},
+      "Invoke-AzCodeSigningPKCSSigning": {}
     },
     "Az.CognitiveServices": {
       "Add-AzCognitiveServicesAccountNetworkRule": {},

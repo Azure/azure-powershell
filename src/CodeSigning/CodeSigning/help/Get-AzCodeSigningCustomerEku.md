@@ -141,3 +141,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzCodeSigningCustomerEku](./Get-AzCodeSigningCustomerEku.md)
 
 [Invoke-AzCodeSigningCIPolicySigning](./Invoke-AzCodeSigningCIPolicySigning.md)
+
+[Invoke-AzCodeSigningPKCSSigning](./Invoke-AzCodeSigningPKCSSigning.md)

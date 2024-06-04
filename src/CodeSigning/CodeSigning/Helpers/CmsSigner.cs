@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.CodeSigning.Helpers
     {
         public CmsSigner() { }
         public void SignCIPolicy(TokenCredential tokenCred, string accountName, string certProfile,
-            string endpointUrl, string unsignedCIFilePath, string signedCIFilePath, string timeStamperUrl)
+            string endpointUrl, string unsignedCIFilePath, string signedCIFilePath, Oid contentType, bool detached, string timeStamperUrl)
         {
             int retry = 5;
 
@@ -39,8 +39,8 @@ namespace Microsoft.Azure.Commands.CodeSigning.Helpers
                     RSA rsa = new RSAAzCodeSign(context);
 
                     var cipolicy = File.ReadAllBytes(unsignedCIFilePath);
-                    var cmscontent = new ContentInfo(new Oid("1.3.6.1.4.1.311.79.1"), cipolicy);
-                    var cms = new SignedCms(cmscontent, false);
+                    var cmscontent = new ContentInfo(contentType, cipolicy);
+                    var cms = new SignedCms(cmscontent, detached);
 
                     var signer = new System.Security.Cryptography.Pkcs.CmsSigner(SubjectIdentifierType.IssuerAndSerialNumber, cert, rsa);
                     cms.ComputeSignature(signer);

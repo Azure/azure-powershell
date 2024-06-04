@@ -20,3 +20,6 @@ Retrieve Azure.CodeSigning Root Cert.
 ### [Invoke-AzCodeSigningCIPolicySigning](Invoke-AzCodeSigningCIPolicySigning.md)
 Invoke CI Policy signing to Azure.CodeSigning.
 
+### [Invoke-AzCodeSigningPKCSSigning](Invoke-AzCodeSigningPKCSSigning.md)
+Invoke generic signing to Azure.CodeSigning.
+

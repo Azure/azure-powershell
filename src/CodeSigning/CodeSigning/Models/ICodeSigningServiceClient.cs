@@ -31,5 +31,10 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
         void SubmitCIPolicySigning(string metadataPath,
                 string unsignedCIFilePath, string signedCIFilePath, string timeStamperUrl);
 
+        void SubmitPKCSSigning(string metadataPath, string unsignedCIFilePath, string signedCIFilePath,
+            string contentType, bool detached, string timeStamperUrl);
+
+        void SubmitPKCSSigning(string accountName, string profileName, string endpoint, string unsignedCIFilePath, string signedCIFilePath,
+            string contentType, bool detached, string timeStamperUrl);
     }
 }
