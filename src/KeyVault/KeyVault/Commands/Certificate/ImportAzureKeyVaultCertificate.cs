@@ -18,6 +18,8 @@ using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
+using Newtonsoft.Json.Linq;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -25,6 +27,7 @@ using System.IO;
 using System.Management.Automation;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
+using System.Text.RegularExpressions;
 
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
@@ -202,7 +205,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 switch (ParameterSetName)
                 {
                     case ImportCertificateFromFileParameterSet:
-                        byte[] base64Bytes = File.ReadAllBytes(FilePath);
+                        byte[] bytes = File.ReadAllBytes(FilePath);
                         bool doImport = false;
 
                         if (IsPemFile(FilePath))
@@ -227,7 +230,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                                 this.Track2DataClient.ImportCertificate(
                                     VaultName,
                                     Name,
-                                    base64Bytes,
+                                    bytes,
                                     Password,
                                     Tag?.ConvertToDictionary(),
                                     IsPemFile(FilePath) ? Constants.PemContentType : Constants.Pkcs12ContentType,
@@ -235,7 +238,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                                 this.Track2DataClient.MergeCertificate(
                                 VaultName,
                                 Name,
-                                new List<byte[]> { base64Bytes },
+                                GetEnumerableBytes(FilePath),
                                 Tag == null ? null : Tag.ConvertToDictionary());
 
                         break;
@@ -252,6 +255,20 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 this.WriteObject(certBundle);
             }
+        }
+        private IEnumerable<byte[]> GetEnumerableBytes(string filePath)
+        {
+            var bytesList = new List<byte[]>();
+            string texts = File.ReadAllText(filePath);
+            var pattern = @"-----BEGIN CERTIFICATE-----([^-]+)-----END CERTIFICATE-----";
+            Match m = Regex.Match(texts, pattern, RegexOptions.IgnoreCase);
+            while (m.Success)
+            {
+                bytesList.Add(Convert.FromBase64String(m.Groups[1].Value.Replace(Environment.NewLine,"")));
+                m = m.NextMatch();
+            }
+
+            return bytesList;
         }
 
         private bool IsPemFile(string filePath)
