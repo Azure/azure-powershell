@@ -45,8 +45,7 @@ jobs:
       pwsh: true
       script: |
         $filesChangedOutputPath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'FilesChanged.txt'
-        $trigger = "$(System.PullRequest.PullRequestNumber)"
-        dotnet msbuild build.proj /t:FilterBuild /p:TriggerType='PullRequest';Trigger=$trigger;FilesChangedOutputPath=$filesChangedOutputPath
+        dotnet msbuild build.proj /t:FilterBuild /p:TriggerType='PullRequest';Trigger=$(System.PullRequest.PullRequestNumber);FilesChangedOutputPath=$filesChangedOutputPath
     env:
         OCTOKITPAT: $(GithubToken)
 
