@@ -63,7 +63,7 @@ jobs:
             break
           }
           { $reason -in @('Manual', 'Schedule') } {
-            . $buildScript
+            . $buildScript -RepoRoot "$(Build.SourcesDirectory)"
             break
           }
           default {
