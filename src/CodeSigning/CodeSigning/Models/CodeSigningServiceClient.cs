@@ -20,6 +20,7 @@ using Azure.Core;
 using Microsoft.Azure.Commands.CodeSigning.Helpers;
 using Newtonsoft.Json;
 using System.Linq;
+using System.Security.Cryptography;
 
 namespace Microsoft.Azure.Commands.CodeSigning.Models
 {
@@ -123,8 +124,9 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
         public void SubmitCIPolicySigning(string accountName, string profileName, string endpoint,
             string unsignedCIFilePath, string signedCIFilePath, string timeStamperUrl = null)
         {
-           var cipolicySigner = new CmsSigner();
-           cipolicySigner.SignCIPolicy(user_creds, accountName, profileName, endpoint, unsignedCIFilePath, signedCIFilePath, timeStamperUrl);
+            var cipolicySigner = new CmsSigner();
+            var ciPolicyOid = new Oid("1.3.6.1.4.1.311.79.1");
+            cipolicySigner.SignCIPolicy(user_creds, accountName, profileName, endpoint, unsignedCIFilePath, signedCIFilePath, ciPolicyOid, detached: false, timeStamperUrl);
         }
 
         public void SubmitCIPolicySigning(string metadataPath, string unsignedCIFilePath, string signedCIFilePath, string timeStamperUrl)
@@ -137,6 +139,26 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
             var endpoint = Metadata.Endpoint;
 
             SubmitCIPolicySigning(accountName, profileName, endpoint, unsignedCIFilePath, signedCIFilePath, timeStamperUrl);
+        }
+
+        public void SubmitPKCSSigning(string accountName, string profileName, string endpoint,
+            string unsignedCIFilePath, string signedCIFilePath, string contentType, bool detached, string timeStamperUrl = null)
+        {
+            var cmsSigner = new CmsSigner();
+            var contentOid = new Oid(contentType);
+            cmsSigner.SignCIPolicy(user_creds, accountName, profileName, endpoint, unsignedCIFilePath, signedCIFilePath, contentOid, detached, timeStamperUrl);
+        }
+
+        public void SubmitPKCSSigning(string metadataPath, string unsignedCIFilePath, string signedCIFilePath, string contentType, bool detached, string timeStamperUrl)
+        {
+            var rawMetadata = File.ReadAllText(metadataPath);
+            Metadata = JsonConvert.DeserializeObject<Metadata>(rawMetadata);
+
+            var accountName = Metadata.CodeSigningAccountName;
+            var profileName = Metadata.CertificateProfileName;
+            var endpoint = Metadata.Endpoint;
+
+            SubmitPKCSSigning(accountName, profileName, endpoint, unsignedCIFilePath, signedCIFilePath, contentType, detached, timeStamperUrl);
         }
     }
 }
