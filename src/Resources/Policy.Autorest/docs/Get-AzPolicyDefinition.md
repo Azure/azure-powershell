@@ -54,7 +54,7 @@ Get-AzPolicyDefinition -SubscriptionId <String> [-Name <String>] [-BackwardCompa
 ```
 
 ## DESCRIPTION
-The **Get-AzPolicySetDefinition** cmdlet gets a collection of policy set definitions or a specific policy set definition identified by name or ID.
+The **Get-AzPolicyDefinition** cmdlet gets a collection of policy set definitions or a specific policy set definition identified by name or ID.
 
 ## EXAMPLES
 

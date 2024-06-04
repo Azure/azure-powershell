@@ -223,6 +223,41 @@ directive:
       parameter-name: NonComplianceMessageTable
     hide: true
 
+# Formatting directives
+  - where:
+      model-name: PolicyAssignment
+    set:
+      format-table:
+        properties:
+          - Name
+          - Scope
+          - EnforcementMode
+          - DisplayName
+  - where:
+      model-name: PolicyDefinition
+    set:
+      format-table:
+        properties:
+          - Name
+          - PolicyType
+          - DisplayName
+  - where:
+      model-name: PolicyExemption
+    set:
+      format-table:
+        properties:
+          - Name
+          - PolicyAssignmentId
+          - DisplayName
+  - where:
+      model-name: PolicySetDefinition
+    set:
+      format-table:
+        properties:
+          - Name
+          - PolicyType
+          - DisplayName
+
 # Hide parameters that aren't supported.
 # For some reason these can't be hidden by hiding them in
 # the custom folder so we have to do it here.

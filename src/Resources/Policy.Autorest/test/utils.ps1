@@ -215,7 +215,8 @@ function Remove-ResourceGroup
             Write-Output $true
         }
         else {
-            throw ($response.Content | ConvertFrom-Json -Depth 100).error.message
+            $message = "Status: $($response.StatusCode): " + ($response.Content | ConvertFrom-Json -Depth 100).error.message
+            throw $message
         }
     }
 
