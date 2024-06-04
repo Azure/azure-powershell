@@ -13,7 +13,6 @@
 # ----------------------------------------------------------------------------------
 [CmdletBinding(DefaultParameterSetName="AllSet")]
 param (
-    [Parameter(Mandatory=$true)]
     [string]$RepoRoot,
     [string]$Configuration = 'Debug',
     [Parameter(ParameterSetName="AllSet")]
@@ -29,8 +28,9 @@ param (
     [switch]$EnableTestCoverage
 
 )
-$BuildScriptsModulePath = Join-Path $PSScriptRoot "BuildScripts.psm1"
-Import-Module $BuildScriptsModulePath
+if (($null -eq $RepoRoot) -or (0 -eq $RepoRoot.Length)) {
+    $RepoRoot = Join-Path $PSScriptRoot '..' '..'
+}
 
 $notModules = @('lib', 'shared')
 $coreTestModules = @('Compute', 'Network', 'Resources', 'Sql', 'Websites')
@@ -42,6 +42,10 @@ $toolDirectory = Join-Path $RepoRoot "tools"
 $sourceDirectory = Join-Path $RepoRoot "src"
 $generatedDirectory = Join-Path $RepoRoot "generated"
 $isPipeline = $false
+
+$BuildScriptsModulePath = Join-Path $toolDirectory 'BuildScripts' 'BuildScripts.psm1'
+Import-Module $BuildScriptsModulePath
+
 if (-not (Test-Path $sourceDirectory)) {
     Write-Warning "Cannot find source directory: $sourceDirectory"
 } elseif (-not (Test-Path $generatedDirectory)) {
@@ -106,7 +110,7 @@ switch ($PSCmdlet.ParameterSetName) {
 
 $csprojFiles = Get-CsprojFromModule -BuildModuleList $TargetModule -TestModuleList $testModules -RepoRoot $RepoRoot -Configuration $Configuration
 # Prepare autorest based modules
-$prepareScriptPath = Join-Path $PSScriptRoot "PrepareAutorestModule.ps1"
+$prepareScriptPath = Join-Path $toolDirectory 'BuildScripts' 'PrepareAutorestModule.ps1'
 
 foreach ($moduleRootName in $TargetModule) {
     Write-Host "Preparing $moduleRootName ..." -ForegroundColor DarkGreen
