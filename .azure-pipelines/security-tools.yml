@@ -39,7 +39,7 @@ jobs:
 
   - task: PowerShell@2
     displayName: Filter changed files
-    condition: eq('${{ Build.Reason }}', 'PullRequest')
+    condition: eq(variables['Build.Reason'], 'PullRequest')
     inputs:
       targetType: inline
       pwsh: true
