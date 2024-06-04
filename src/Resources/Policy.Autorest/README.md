@@ -140,7 +140,7 @@ directive:
       default:
         name: DefaultExpiresOn
         description: Need a placeholder to keep autorest happy
-        script: '"PlaceholderExpiresOn"'
+        script: '{ "" }'
     hide: true
     clear-alias: true
 
@@ -286,9 +286,9 @@ directive:
       verb: New|Get|Remove|Update
     hide: true
   - where:
-      verb: New|Remove|Update
+      verb: Get|New|Remove|Update
       subject: PolicyDefinitionVersion|PolicySetDefinitionVersion
-    remove: true
+    hide: true
 
 metadata:
   scriptsToProcess:
