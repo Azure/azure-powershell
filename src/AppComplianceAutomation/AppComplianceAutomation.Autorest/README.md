@@ -28,15 +28,15 @@ For information on how to develop for `Az.AppComplianceAutomation`, see [how-to.
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-branch: 0aa9b6503fee76a80890ca769c6dd9e317bfa878
+branch: 12ff37009808948b5c7ed4a0d384181471f3219f
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
-  - https://github.com/qinzhouxu/azure-rest-api-specs-pr/blob/c779b50712014a946e731d0777e87726bec40144/specification/appcomplianceautomation/resource-manager/readme.md
+  - $(repo)/specification/appcomplianceautomation/resource-manager/readme.md
 try-require: 
-  - https://github.com/qinzhouxu/azure-rest-api-specs-pr/blob/c779b50712014a946e731d0777e87726bec40144/specification/appcomplianceautomation/resource-manager/readme.powershell.md
+  - $(repo)/specification/appcomplianceautomation/resource-manager/readme.powershell.md
 input-file:
-  - https://github.com/qinzhouxu/azure-rest-api-specs-pr/blob/c779b50712014a946e731d0777e87726bec40144/specification/appcomplianceautomation/resource-manager/Microsoft.AppComplianceAutomation/stable/2024-06-27/appcomplianceautomation.json
+  - $(repo)/specification/appcomplianceautomation/resource-manager/Microsoft.AppComplianceAutomation/stable/2024-06-27/appcomplianceautomation.json
 
 module-version: 0.1.0
 title: AppComplianceAutomation
