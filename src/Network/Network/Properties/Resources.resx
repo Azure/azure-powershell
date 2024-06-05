@@ -816,4 +816,7 @@
   <data name="BastionTunnelingInvalidValue" xml:space="preserve">
     <value>Toggling tunneling is available on Standard SKU or higher</value>
   </data>
+  <data name="BastionTunnelingAndSessionRecordingNotAllowed" xml:space="preserve">
+    <value>Tunneling and session recording cannot be enabled together</value>
+  </data>
 </root>

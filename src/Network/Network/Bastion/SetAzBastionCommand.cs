@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
         [ValidateSet(
             MNM.BastionHostSkuName.Basic,
             MNM.BastionHostSkuName.Standard,
-            //MNM.BastionHostSkuName.Premium,
+            MNM.BastionHostSkuName.Premium,
             IgnoreCase = false)]
         public string Sku { get; set; }
 

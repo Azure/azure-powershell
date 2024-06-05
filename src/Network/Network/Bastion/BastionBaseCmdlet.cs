@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             psBastion.EnableTunneling = bastion.EnableTunneling;
             psBastion.EnableIpConnect = bastion.EnableIPConnect;
             psBastion.EnableShareableLink = bastion.EnableShareableLink;
-            //psBastion.EnableSessionRecording = bastion.EnableSessionRecording;
+            psBastion.EnableSessionRecording = bastion.EnableSessionRecording;
 
             return psBastion;
         }
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             bastion.EnableTunneling = host.EnableTunneling;
             bastion.EnableIpConnect = host.EnableIPConnect;
             bastion.EnableShareableLink = host.EnableShareableLink;
-            //bastion.EnableSessionRecording = host.EnableSessionRecording;
+            bastion.EnableSessionRecording = host.EnableSessionRecording;
 
             return bastion;
         }
@@ -242,6 +242,14 @@ namespace Microsoft.Azure.Commands.Network.Bastion
                         if (enableSessionRecording != null && enableSessionRecording != false)
                         {
                             throw new ArgumentException(Properties.Resources.BastionSessionRecordingInvalidValue);
+                        }
+                        break;
+                    case PSBastionSku.Premium:
+                        if ((enableTunneling.GetValueOrDefault(false) && enableSessionRecording.GetValueOrDefault(false))
+                            || (bastion.EnableTunneling.GetValueOrDefault(false) && enableSessionRecording.GetValueOrDefault(false))
+                            || (enableTunneling.GetValueOrDefault(false)&& bastion.EnableSessionRecording.GetValueOrDefault(false)))
+                        {
+                            throw new ArgumentException(Properties.Resources.BastionTunnelingAndSessionRecordingNotAllowed);
                         }
                         break;
                     default:

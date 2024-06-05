@@ -376,6 +376,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tunneling and session recording cannot be enabled together.
+        /// </summary>
+        internal static string BastionTunnelingAndSessionRecordingNotAllowed {
+            get {
+                return ResourceManager.GetString("BastionTunnelingAndSessionRecordingNotAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Toggling tunneling is available on Standard SKU or higher.
         /// </summary>
         internal static string BastionTunnelingInvalidValue {

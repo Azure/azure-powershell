@@ -21,13 +21,13 @@ function Test-BastionCRUD {
     # Register-AzResourceProvider -ProviderNamespace "Microsoft.Network"
     # Setup
     $rgname = Get-ResourceGroupName
-    $bastionName = Get-ResourceName
+    $bastionName = "$(Get-ResourceName)-Bastion"
     $resourceTypeParent = "Microsoft.Network/bastionHosts"
     $location = Get-ProviderLocation $resourceTypeParent
 
-    $vnetName = Get-ResourceName
+    $vnetName = "$(Get-ResourceName)-Vnet"
     $subnetName = "AzureBastionSubnet"
-    $publicIpName = Get-ResourceName
+    $publicIpName = "$(Get-ResourceName)-Pip"
     
     try {
         # Create the resource group
@@ -65,6 +65,7 @@ function Test-BastionCRUD {
         Assert-AreEqual $false $bastionObj.EnableTunneling
 		Assert-AreEqual $false $bastionObj.EnableIpConnect
         Assert-AreEqual $false $bastionObj.EnableShareableLink
+        Assert-AreEqual $false $bastionObj.EnableSessionRecording
 
         # Get Bastion by Id
         $bastionObj = Get-AzBastion -ResourceId $bastion.id
@@ -123,15 +124,17 @@ function Test-BastionCreateWithFeatures {
     $resourceTypeParent = "Microsoft.Network/bastionHosts"
     $location = Get-ProviderLocation $resourceTypeParent
     $subnetName = "AzureBastionSubnet"
-    $vnetName1 = Get-ResourceName
-    $publicIpName1 = Get-ResourceName
-    $bastionName1 = Get-ResourceName
-    $vnetName2 = Get-ResourceName
-    $publicIpName2 = Get-ResourceName
-    $bastionName2 = Get-ResourceName
-    $vnetName3 = Get-ResourceName
-    $publicIpName3 = Get-ResourceName
-    $bastionName3 = Get-ResourceName
+    $vnetName1 = "$(Get-ResourceName)-Vnet1"
+    $publicIpName1 = "$(Get-ResourceName)-Pip1"
+    $bastionName1 = "$(Get-ResourceName)-Bastion1"
+    $vnetName2 = "$(Get-ResourceName)-Vnet2"
+    $publicIpName2 = "$(Get-ResourceName)-Pip2"
+    $bastionName2 = "$(Get-ResourceName)-Bastion2"
+    $vnetName3 = "$(Get-ResourceName)-Vnet3"
+    $publicIpName3 = "$(Get-ResourceName)-Pip3"
+    $bastionName3 = "$(Get-ResourceName)-Bastion3"
+    $vnetNameForFailures = "$(Get-ResourceName)-VnetForFailures"
+    $publicIpNameForFailures = "$(Get-ResourceName)-PipForFailures"
     
     try {
         # Create the resource group
@@ -142,29 +145,37 @@ function Test-BastionCreateWithFeatures {
         $vnet1 = New-AzVirtualNetwork -Name $vnetName1 -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         $vnet2 = New-AzVirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         $vnet3 = New-AzVirtualNetwork -Name $vnetName3 -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnetForFailures = New-AzVirtualNetwork -Name $vnetNameForFailures -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        
         # Get full subnet details
         $subnet1 = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet1 -Name $subnetName
         $subnet2 = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet2 -Name $subnetName
+        $subnet3 = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet3 -Name $subnetName
 
         # Create public ip
         $publicip1 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName1 -location $location -AllocationMethod Static -Sku Standard
         $publicip2 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName2 -location $location -AllocationMethod Static -Sku Standard
         $publicip3 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName3 -location $location -AllocationMethod Static -Sku Standard
+        $publicIpForFailures = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpNameForFailures -location $location -AllocationMethod Static -Sku Standard
 
-        # Create Bastion 1 and 2
-        $bastionJob1 = New-AzBastion -Name $bastionName1 -ResourceGroupName $rgname -VirtualNetwork $vnet1 -PublicIpAddress $publicip1 -Sku "Standard" -ScaleUnit 50 -EnableKerberos $true -DisableCopyPaste $true -EnableTunneling $true -EnableIpConnect $true -EnableShareableLink $true -AsJob
-        $bastionJob2 = New-AzBastion -Name $bastionName2 -ResourceGroupName $rgname -VirtualNetwork $vnet2 -PublicIpAddress $publicip2 -Sku "Basic" -ScaleUnit 2 -EnableKerberos $true -DisableCopyPaste $false -EnableTunneling $false -EnableIpConnect $false -EnableShareableLink $false -AsJob
-        $bastionJob3 = New-AzBastion -Name $bastionName2 -ResourceGroupName $rgname -VirtualNetwork $vnet3 -PublicIpAddress $publicip3 -Sku "Premium" -EnableSessionRecording $true -AsJob
+        # Create Bastions
+        $bastionJob1 = New-AzBastion -Name $bastionName1 -ResourceGroupName $rgname -VirtualNetwork $vnet1 -PublicIpAddress $publicip1 -Sku "Standard" -ScaleUnit 5 -EnableKerberos $true -DisableCopyPaste $true -EnableTunneling $true -EnableIpConnect $true -EnableShareableLink $true -AsJob
+        $bastionJob2 = New-AzBastion -Name $bastionName2 -ResourceGroupName $rgname -VirtualNetwork $vnet2 -PublicIpAddress $publicip2 -Sku "Basic" -EnableKerberos $true -DisableCopyPaste $false -EnableTunneling $false -EnableIpConnect $false -EnableShareableLink $false -AsJob
+        $bastionJob3 = New-AzBastion -Name $bastionName3 -ResourceGroupName $rgname -VirtualNetwork $vnet3 -PublicIpAddress $publicip3 -Sku "Premium" -EnableSessionRecording $true -AsJob
+
+        Write-Debug "Started Bastion creations"
 
         # Receive error message
-        Assert-Throws { New-AzBastion -Name Get-ResourceName -ResourceGroupName $rgname -VirtualNetwork $vnet2 -PublicIpAddress $publicip2 -Sku "Basic" -ScaleUnit 2 -EnableKerberos $true -DisableCopyPaste $true -EnableTunneling $false -EnableIpConnect $false -EnableShareableLink $false } "Toggling copy/paste is available on Standard SKU or higher"
-        Assert-Throws { New-AzBastion -Name Get-ResourceName -ResourceGroupName $rgname -VirtualNetwork $vnet2 -PublicIpAddress $publicip2 -Sku "Basic" -ScaleUnit 2 -EnableKerberos $true -DisableCopyPaste $false -EnableTunneling $true -EnableIpConnect $false -EnableShareableLink $false } "Toggling tunneling is available on Standard SKU or higher"
-        Assert-Throws { New-AzBastion -Name Get-ResourceName -ResourceGroupName $rgname -VirtualNetwork $vnet2 -PublicIpAddress $publicip2 -Sku "Basic" -ScaleUnit 2 -EnableKerberos $true -DisableCopyPaste $false -EnableTunneling $false -EnableIpConnect $true -EnableShareableLink $false } "Toggling IP connect is available on Standard SKU or higher"
-        Assert-Throws { New-AzBastion -Name Get-ResourceName -ResourceGroupName $rgname -VirtualNetwork $vnet2 -PublicIpAddress $publicip2 -Sku "Basic" -ScaleUnit 2 -EnableKerberos $true -DisableCopyPaste $false -EnableTunneling $false -EnableIpConnect $false -EnableShareableLink $true } "Toggling shareable link is available on Standard SKU or higher"
-        Assert-Throws { New-AzBastion -Name Get-ResourceName -ResourceGroupName $rgname -VirtualNetwork $vnet2 -PublicIpAddress $publicip2 -Sku "Basic" -ScaleUnit 1 -EnableKerberos $true -DisableCopyPaste $false -EnableTunneling $false -EnableIpConnect $false -EnableShareableLink $false } "Bastion scalable host is available on Standard SKU"
-        Assert-Throws { New-AzBastion -Name Get-ResourceName -ResourceGroupName $rgname -VirtualNetwork $vnet2 -PublicIpAddress $publicip2 -Sku "Basic" -ScaleUnit 2 -EnableTunneling $false -EnableSessionRecording $true } "Toggling session recording is available on Premium SKU"
-        Assert-Throws { New-AzBastion -Name Get-ResourceName -ResourceGroupName $rgname -VirtualNetwork $vnet2 -PublicIpAddress $publicip2 -Sku "Premium" -EnableTunneling $true -EnableSessionRecording $true } "Update error here as session recording and tunneling cannot be enabled together"
-        Assert-Throws { New-AzBastion -Name Get-ResourceName -ResourceGroupName $rgname -VirtualNetwork $vnet2 -PublicIpAddress $publicip2 -Sku "Standard" -ScaleUnit 100 -EnableKerberos $true -DisableCopyPaste $false -EnableTunneling $false -EnableIpConnect $false -EnableShareableLink $false } "Please select scale units value between 2 and 50"
+        Assert-Throws { New-AzBastion -Name Get-ResourceName -ResourceGroupName $rgname -VirtualNetwork $vnetForFailures -PublicIpAddress $publicIpForFailures -Sku "Basic" -ScaleUnit 2 -EnableKerberos $true -DisableCopyPaste $true -EnableTunneling $false -EnableIpConnect $false -EnableShareableLink $false } "Toggling copy/paste is available on Standard SKU or higher"
+        Assert-Throws { New-AzBastion -Name Get-ResourceName -ResourceGroupName $rgname -VirtualNetwork $vnetForFailures -PublicIpAddress $publicIpForFailures -Sku "Basic" -ScaleUnit 2 -EnableKerberos $true -DisableCopyPaste $false -EnableTunneling $true -EnableIpConnect $false -EnableShareableLink $false } "Toggling tunneling is available on Standard SKU or higher"
+        Assert-Throws { New-AzBastion -Name Get-ResourceName -ResourceGroupName $rgname -VirtualNetwork $vnetForFailures -PublicIpAddress $publicIpForFailures -Sku "Basic" -ScaleUnit 2 -EnableKerberos $true -DisableCopyPaste $false -EnableTunneling $false -EnableIpConnect $true -EnableShareableLink $false } "Toggling IP connect is available on Standard SKU or higher"
+        Assert-Throws { New-AzBastion -Name Get-ResourceName -ResourceGroupName $rgname -VirtualNetwork $vnetForFailures -PublicIpAddress $publicIpForFailures -Sku "Basic" -ScaleUnit 2 -EnableKerberos $true -DisableCopyPaste $false -EnableTunneling $false -EnableIpConnect $false -EnableShareableLink $true } "Toggling shareable link is available on Standard SKU or higher"
+        Assert-Throws { New-AzBastion -Name Get-ResourceName -ResourceGroupName $rgname -VirtualNetwork $vnetForFailures -PublicIpAddress $publicIpForFailures -Sku "Basic" -ScaleUnit 1 -EnableKerberos $true -DisableCopyPaste $false -EnableTunneling $false -EnableIpConnect $false -EnableShareableLink $false } "Bastion scalable host is available on Standard SKU or higher"
+        Assert-Throws { New-AzBastion -Name Get-ResourceName -ResourceGroupName $rgname -VirtualNetwork $vnetForFailures -PublicIpAddress $publicIpForFailures -Sku "Basic" -ScaleUnit 2 -EnableTunneling $false -EnableSessionRecording $true } "Toggling session recording is available on Premium SKU"
+        Assert-Throws { New-AzBastion -Name Get-ResourceName -ResourceGroupName $rgname -VirtualNetwork $vnetForFailures -PublicIpAddress $publicIpForFailures -Sku "Premium" -EnableTunneling $true -EnableSessionRecording $true } "Tunneling and session recording cannot be enabled together"
+        Assert-Throws { New-AzBastion -Name Get-ResourceName -ResourceGroupName $rgname -VirtualNetwork $vnetForFailures -PublicIpAddress $publicIpForFailures -Sku "Standard" -ScaleUnit 100 -EnableKerberos $true -DisableCopyPaste $false -EnableTunneling $false -EnableIpConnect $false -EnableShareableLink $false } "Please select scale units value between 2 and 50"
+
+        Write-Debug "Done with expected Bastion failure assertions"
 
         # Wait for Bastion 1 job deployment completion
         $bastionJob1 | Wait-Job
@@ -175,18 +186,22 @@ function Test-BastionCreateWithFeatures {
         Assert-AreEqual $rgName $bastion1.ResourceGroupName
         Assert-AreEqual $bastionName1 $bastion1.Name
         Assert-NotNull $bastion1.Etag
+        Assert-AreEqual "Succeeded" $bastion1.ProvisioningState
         Assert-AreEqual 1 @($bastion1.IpConfigurations).Count
         Assert-NotNull $bastion1.IpConfigurations[0].Subnet.Id
         Assert-NotNull $bastion1.IpConfigurations[0].PublicIpAddress.Id
         Assert-AreEqual $subnet1.Id $bastion1.IpConfigurations[0].Subnet.Id
         Assert-AreEqual $publicip1.Id $bastion1.IpConfigurations[0].PublicIpAddress.Id
         Assert-AreEqual "Standard" $bastion1.Sku.Name
-        Assert-AreEqual 50 $bastion1.ScaleUnit
+        Assert-AreEqual 5 $bastion1.ScaleUnit
         Assert-AreEqual $true $bastion1.EnableKerberos
         Assert-AreEqual $true $bastion1.DisableCopyPaste
         Assert-AreEqual $true $bastion1.EnableTunneling
         Assert-AreEqual $true $bastion1.EnableIpConnect
         Assert-AreEqual $true $bastion1.EnableShareableLink
+        Assert-AreEqual $false $bastion1.EnableSessionRecording
+
+        Write-Debug "Done with Bastion 1 assertions"
 
         # Wait for Bastion 2 job deployment completion
         $bastionJob2 | Wait-Job
@@ -197,6 +212,7 @@ function Test-BastionCreateWithFeatures {
         Assert-AreEqual $rgName $bastion2.ResourceGroupName
         Assert-AreEqual $bastionName2 $bastion2.Name
         Assert-NotNull $bastion2.Etag
+        Assert-AreEqual "Succeeded" $bastion2.ProvisioningState
         Assert-AreEqual 1 @($bastion2.IpConfigurations).Count
         Assert-NotNull $bastion2.IpConfigurations[0].Subnet.Id
         Assert-NotNull $bastion2.IpConfigurations[0].PublicIpAddress.Id
@@ -209,13 +225,25 @@ function Test-BastionCreateWithFeatures {
         Assert-AreEqual $false $bastion2.EnableTunneling
         Assert-AreEqual $false $bastion2.EnableIpConnect
         Assert-AreEqual $false $bastion2.EnableShareableLink
+        Assert-AreEqual $false $bastion2.EnableSessionRecording
+
+        Write-Debug "Done with Bastion 2 assertions"
 
         # Wait for Bastion 3 job deployment completion and assertions
         $bastionJob3 | Wait-Job
         $bastion3 = $bastionJob3 | Receive-Job
         Assert-NotNull $bastion3
-        Assert-AreEqual "Premium" $bastion2.Sku.Name
+        Assert-AreEqual "Succeeded" $bastion3.ProvisioningState
+        Assert-AreEqual $subnet3.Id $bastion3.IpConfigurations[0].Subnet.Id
+        Assert-AreEqual "Premium" $bastion3.Sku.Name
         Assert-AreEqual $true $bastion3.EnableSessionRecording
+
+        # Try enabling tunneling and session recording together
+        Assert-Throws { Set-AzBastion -InputObject $bastion1 -Sku "Premium" -EnableSessionRecording $true -Force } "Tunneling and session recording cannot be enabled together"
+        Assert-Throws { Set-AzBastion -InputObject $bastion2 -Sku "Premium" -EnableTunneling $true -EnableSessionRecording $true -Force } "Tunneling and session recording cannot be enabled together"
+        Assert-Throws { Set-AzBastion -InputObject $bastion3 -EnableTunneling $true -Force } "Tunneling and session recording cannot be enabled together"
+
+        Write-Debug "Done with Bastion 3 assertions"
 
         # Get all Bastions in ResourceGroup
         $bastions = Get-AzBastion -ResourceGroupName $rgName
@@ -230,6 +258,8 @@ function Test-BastionCreateWithFeatures {
         Assert-AreEqual true $delete
 
         # Delete VirtualNetwork
+        $delete = Remove-AzVirtualNetwork -ResourceGroupName $rgname -name $vnetNameForFailures -PassThru -Force
+        Assert-AreEqual true $delete
         $delete = Remove-AzVirtualNetwork -ResourceGroupName $rgname -name $vnetName1 -PassThru -Force
         Assert-AreEqual true $delete
         $delete = Remove-AzVirtualNetwork -ResourceGroupName $rgname -name $vnetName2 -PassThru -Force
@@ -426,98 +456,6 @@ function Test-BastionIpObjectParam {
 
         $list = Get-AzBastion -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
-    }
-    finally {
-        # Clean up
-        Clean-ResourceGroup $rgname
-    }
-}
-
-<#
-Test Bastion Session Recording
-#>
-function Test-BastionSessionRecording {
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $resourceTypeParent = "Microsoft.Network/bastionHosts"
-    $location = Get-ProviderLocation $resourceTypeParent
-    $subnetName = "AzureBastionSubnet"
-    $vnetName = "$(Get-ResourceName)-Vnet"
-    $vnetName2 = "$(Get-ResourceName)-Vnet2"
-    $publicIpName = "$(Get-ResourceName)-Pip"
-    $publicIpName2 = "$(Get-ResourceName)-Pip2"
-    $bastionName = "$(Get-ResourceName)-Bastion"
-    $bastionName2 = "$(Get-ResourceName)-Bastion2"
-
-    try {
-        # Create the resource group
-        New-AzResourceGroup -Name $rgName -Location $location
-
-        # Create the Virtual Network
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
-        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-        $vnet2 = New-AzVirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-
-        # Create Public IP
-        $publicIp = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
-        $publicIp2 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName2 -location $location -AllocationMethod Static -Sku Standard
-
-        # Create Bastion Jobs
-        $createBastionJob = New-AzBastion -Name $bastionName -ResourceGroupName $rgname -VirtualNetwork $vnet -PublicIpAddress $publicIp -EnableShareableLink $true -AsJob
-        $createBastionJob2 = New-AzBastion -Name $bastionName2 -ResourceGroupName $rgname -VirtualNetwork $vnet2 -PublicIpAddress $publicIp2 -Sku Basic -AsJob
-
-        # Generate dummy SAS URL
-        $storageAccountName = "dummystorage"
-        $containerName = "dummycontainer"
-        $startTime = Get-Date
-        $startTime = $startTime.AddMinutes(-15)
-        $expiryTime = $startTime.AddMonths(1)
-        $sasToken = "?sv=2020-08-04&st=$($startTime.ToString("yyyy-MM-ddTHH:mm:ssZ"))&se=$($expiryTime.ToString("yyyy-MM-ddTHH:mm:ssZ"))&sp=rwcl&spr=https&sig=DummySignature"
-        $sasUrl = "https://$storageAccountName.blob.core.windows.net/$containerName$sasToken"
-        Write-Verbose "Using dummy SAS URL: $sasUrl"
-
-        # Validate resource not found
-        $randomName = Get-ResourceName
-        Assert-Throws { Set-AzBastionSessionRecordingSasUrl -ResourceGroupName $rgname -Name $randomName -SasUrl $sasUrl } "Resource '$randomName' not found"
-        Assert-Throws { Get-AzBastionSessionRecordingSasUrl -ResourceGroupName $rgname -Name $randomName } "Resource '$randomName' not found"
-
-        # Wait for Bastion 2 creation
-        $createBastionJob2 | Wait-Job
-        $bastion2 = $createBastionJob2 | Receive-Job
-        Assert-NotNull $bastion2
-
-        # Validate errors for session recording feature not enabled
-        Assert-Throws { Set-AzBastionSessionRecordingSasUrl -ResourceGroupName $rgname -Name $bastionName2 -SasUrl $sasUrl } "Session recording feature is not enabled"
-        Assert-Throws { Set-AzBastionSessionRecordingSasUrl -InputObject $bastion2 -SasUrl $sasUrl } "Session recording feature is not enabled"
-        Assert-Throws { Set-AzBastionSessionRecordingSasUrl -ResourceId $bastion2.Id -SasUrl $sasUrl } "Session recording feature is not enabled"
-        Assert-Throws { Get-AzBastionSessionRecordingSasUrl -ResourceGroupName $rgname -Name $bastionName2 } "Session recording feature is not enabled"
-        Assert-Throws { Get-AzBastionSessionRecordingSasUrl -InputObject $bastion2 } "Session recording feature is not enabled"
-        Assert-Throws { Get-AzBastionSessionRecordingSasUrl -ResourceId $bastion2.Id } "Session recording feature is not enabled"
-
-        # Wait for create Bastion completion
-        $createBastionJob | Wait-Job
-        $bastion = $createBastionJob | Receive-Job
-        Assert-NotNull $bastion
-        Assert-AreEqual $true $bastion.EnableSessionRecording
-
-        # Set session recording SAS URL
-        Set-AzBastionSessionRecordingSasUrl -InputObject $bastion -SasUrl $sasUrl
-
-        # Get session recording SAS URL
-        $getSasUrl = Get-AzBastionSessionRecordingSasUrl -InputObject $bastion
-        Assert-NotNull $getSasUrl
-        Assert-True $sasUrl.Contains($getSasUrl)
-
-        # Set invalid SAS URL
-        $expiryTime = $startTime.AddYears(-1)
-        $sasToken = "?sv=2020-08-04&st=$($startTime.ToString("yyyy-MM-ddTHH:mm:ssZ"))&se=$($expiryTime.ToString("yyyy-MM-ddTHH:mm:ssZ"))&sp=rwcl&spr=https&sig=DummySignature"
-        $sasUrl = "https://$storageAccountName.blob.core.windows.net/$containerName$sasToken"
-        Write-Verbose "Using invalid SAS URL: $sasUrl"
-        Assert-Throws { Set-AzBastionSessionRecordingSasUrl -InputObject $bastion -SasUrl $sasUrl } "Update error here"
-
-        # Disable session recording
-        $bastion = Set-AzBastion -InputObject $bastion -EnableSessionRecording $false
-        Assert-Throws { Get-AzBastionSessionRecordingSasUrl -InputObject $bastion } "Session recording feature is not enabled"
     }
     finally {
         # Clean up
