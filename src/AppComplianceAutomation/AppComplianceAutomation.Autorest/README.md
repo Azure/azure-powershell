@@ -73,5 +73,12 @@ directive:
             "type": "string",
             "in": "header"
           })
+  - from: swagger-document
+    where:
+      - $.paths["/providers/Microsoft.AppComplianceAutomation/reports/{reportName}"].delete.responses
+    transform: >-
+      $["200"] = {
+            "description": "Success. The response indicates the resource has been deleted."
+          }
 
 ```
