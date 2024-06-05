@@ -121,7 +121,7 @@ function Invoke-AzAcatDownloadReport {
         if ($Snapshot.Count -le 0) {
             Write-Error "Your report is being generated. It might take up to 24 hours to generate your first report."
         }
-        $SnapshotName = $Snapshot[0].SnapshotName
+        $SnapshotName = $Snapshot[0].Name
 
         $Content = Az.AppComplianceAutomation.internal\Invoke-AzAppComplianceAutomationDownloadSnapshot `
             -ReportName $Name -SnapshotName $SnapshotName `

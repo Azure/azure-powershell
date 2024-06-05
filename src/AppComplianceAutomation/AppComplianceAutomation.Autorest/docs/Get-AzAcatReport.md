@@ -74,7 +74,7 @@ Get report by report name.
 
 ### Example 4: Select specific property of reports.
 ```powershell
-Get-AzAcatReport -Select "reportName"
+Get-AzAcatReport -Select "name"
 ```
 
 ```output
