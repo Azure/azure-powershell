@@ -14,6 +14,7 @@
   FunctionsToExport = 'Get-AzAcatControlAssessments', 'Get-AzAcatReport', 'Get-AzAcatWebhook', 'Invoke-AzAcatDownloadReport', 'New-AzAcatReport', 'New-AzAcatReportResourceObject', 'New-AzAcatWebhook', 'New-AzAcatWebhookResourceObject', 'Remove-AzAcatReport', 'Remove-AzAcatWebhook', 'Start-AzAcatQuickEvaluation', 'Update-AzAcatReport', 'Update-AzAcatWebhook'
   PrivateData = @{
     PSData = @{
+      Prerelease = 'preview'
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'AppComplianceAutomation'
       LicenseUri = 'https://aka.ms/azps-license'
       ProjectUri = 'https://github.com/Azure/azure-powershell'
