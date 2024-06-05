@@ -8,31 +8,31 @@ schema: 2.0.0
 # New-AzVMwareAuthorization
 
 ## SYNOPSIS
-Create an ExpressRoute Circuit Authorization in a private cloud
+Create a ExpressRouteAuthorization
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
 New-AzVMwareAuthorization -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-ExpressRouteId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzVMwareAuthorization -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVMwareAuthorization -InputObject <IVMwareIdentity> [-ExpressRouteId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityPrivateCloudExpanded
 ```
-New-AzVMwareAuthorization -Name <String> -PrivateCloudInputObject <IVMwareIdentity>
+New-AzVMwareAuthorization -Name <String> -PrivateCloudInputObject <IVMwareIdentity> [-ExpressRouteId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an ExpressRoute Circuit Authorization in a private cloud
+Create a ExpressRouteAuthorization
 
 ## EXAMPLES
 
@@ -82,6 +82,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ExpressRouteId
+The ID of the ExpressRoute Circuit
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 
@@ -98,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the ExpressRoute Circuit Authorization in the private cloud
+Name of the ExpressRoute Circuit Authorization
 
 ```yaml
 Type: System.String
@@ -143,7 +158,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateCloudName
-The name of the private cloud.
+Name of the private cloud
 
 ```yaml
 Type: System.String
@@ -175,6 +190,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

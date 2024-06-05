@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 5.2.1
 * Removed breaking change warning messages for Metric Management Plane
     * Get-AzMetric
     * Get-AzMetricDefinition

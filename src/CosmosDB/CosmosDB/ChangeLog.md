@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.14.3
 * Removed the out-of-date breaking change message for `Get-AzCosmosDBAccountKey`.
 
 ## Version 1.14.2

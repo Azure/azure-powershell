@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
         public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)__scriptExecutionParameter).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)__scriptExecutionParameter).Name = value ; }
 
-        /// <summary>The type of execution parameter</summary>
+        /// <summary>script execution parameter type</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Constant]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
         public string Type { get => "Value"; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)__scriptExecutionParameter).Type = "Value"; }

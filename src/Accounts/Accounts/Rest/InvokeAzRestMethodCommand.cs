@@ -255,6 +255,11 @@ namespace Microsoft.Azure.Commands.Profile.Rest
                 targetResourceIdKey = AzureEnvironment.ExtendedEndpoint.AzureAppConfigurationEndpointResourceId;
                 return env.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.AzureAppConfigurationEndpointResourceId];
             }
+            if (HasSameEndpointSuffix(authority, env.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.AzureCommunicationEmailEndpointSuffix]))
+            {
+                targetResourceIdKey = AzureEnvironment.ExtendedEndpoint.AzureCommunicationEmailEndpointResourceId;
+                return env.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.AzureCommunicationEmailEndpointResourceId];
+            }
             return null;
         }
 

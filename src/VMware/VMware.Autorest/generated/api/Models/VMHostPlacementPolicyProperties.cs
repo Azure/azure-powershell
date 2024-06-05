@@ -62,7 +62,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
         public string State { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicyPropertiesInternal)__placementPolicyProperties).State; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicyPropertiesInternal)__placementPolicyProperties).State = value ?? null; }
 
-        /// <summary>placement policy type</summary>
+        /// <summary>Placement Policy type</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Constant]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
         public string Type { get => "VmHost"; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicyPropertiesInternal)__placementPolicyProperties).Type = "VmHost"; }

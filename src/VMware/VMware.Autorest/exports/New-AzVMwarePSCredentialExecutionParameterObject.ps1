@@ -16,16 +16,17 @@
 
 <#
 .Synopsis
-Create a in-memory object for PSCredentialExecutionParameter
+Create an in-memory object for PSCredentialExecutionParameter.
 .Description
-Create a in-memory object for PSCredentialExecutionParameter
+Create an in-memory object for PSCredentialExecutionParameter.
 .Example
-New-AzVMwarePSCredentialExecutionParameterObject -Name azps_test_credentialvalue -Password "passwordValue" -Username "usernameValue"
+$mypwd = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+New-AzVMwarePSCredentialExecutionParameterObject -Name azps_test_credentialvalue -Password $mypwd -Username "usernameValue"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PsCredentialExecutionParameter
 .Link
-https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwarePSCredentialExecutionParameterObject
+https://learn.microsoft.com/powershell/module/Az.VMware/new-azvmwarepscredentialexecutionparameterobject
 #>
 function New-AzVMwarePSCredentialExecutionParameterObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PSCredentialExecutionParameter])]
@@ -39,7 +40,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [System.String]
+    [System.Security.SecureString]
     # password for login.
     ${Password},
 

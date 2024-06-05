@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Test.ScenarioTests.ScenarioTest
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFrontDoorCrudRedirect()
-        {
+        { 
             TestRunner.RunTestScript("Test-FrontDoorCrudRedirect");
         }
 

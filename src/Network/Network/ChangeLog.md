@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 7.6.0
 * Added cmdlet `New-AzVirtualApplianceNetworkProfile` to build network profile for network virtual appliance and pass as a parameter.
 * Added cmdlet `New-AzVirtualApplianceNetworkInterfaceConfiguration` and `New-AzVirtualApplianceIpConfiguration` to build `New-AzVirtualApplianceNetworkProfile`.
 * Added support for ApplicationGatewaySkuFamily 

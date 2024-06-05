@@ -17,7 +17,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         private string _addressPrefix;
 
         /// <summary>
-        /// The network used for global reach carved out from the original network block provided for the private cloud
+        /// The network used for global reach carved out from the original network block
+        /// provided for the private cloud
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string AddressPrefix { get => this._addressPrefix; }
@@ -26,7 +27,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         private string _authorizationKey;
 
         /// <summary>
-        /// Authorization key from the peer express route used for the global reach connection
+        /// Authorization key from the peer express route used for the global reach
+        /// connection
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string AuthorizationKey { get => this._authorizationKey; set => this._authorizationKey = value; }
@@ -42,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         private string _expressRouteId;
 
         /// <summary>
-        /// The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection
+        /// The ID of the Private Cloud's ExpressRoute Circuit that is participating in the
+        /// global reach connection
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string ExpressRouteId { get => this._expressRouteId; set => this._expressRouteId = value; }
@@ -60,7 +63,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         private string _peerExpressRouteCircuit;
 
         /// <summary>
-        /// Identifier of the ExpressRoute Circuit to peer with in the global reach connection
+        /// Identifier of the ExpressRoute Circuit to peer with in the global reach
+        /// connection
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string PeerExpressRouteCircuit { get => this._peerExpressRouteCircuit; set => this._peerExpressRouteCircuit = value; }
@@ -83,7 +87,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IJsonSerializable
     {
         /// <summary>
-        /// The network used for global reach carved out from the original network block provided for the private cloud
+        /// The network used for global reach carved out from the original network block
+        /// provided for the private cloud
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -91,12 +96,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The network used for global reach carved out from the original network block provided for the private cloud",
+        Description = @"The network used for global reach carved out from the original network block
+        provided for the private cloud",
         SerializedName = @"addressPrefix",
         PossibleTypes = new [] { typeof(string) })]
         string AddressPrefix { get;  }
         /// <summary>
-        /// Authorization key from the peer express route used for the global reach connection
+        /// Authorization key from the peer express route used for the global reach
+        /// connection
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -104,7 +111,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Authorization key from the peer express route used for the global reach connection",
+        Description = @"Authorization key from the peer express route used for the global reach
+        connection",
         SerializedName = @"authorizationKey",
         PossibleTypes = new [] { typeof(string) })]
         string AuthorizationKey { get; set; }
@@ -121,7 +129,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Connected", "Connecting", "Disconnected")]
         string CircuitConnectionStatus { get;  }
         /// <summary>
-        /// The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection
+        /// The ID of the Private Cloud's ExpressRoute Circuit that is participating in the
+        /// global reach connection
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -129,12 +138,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection",
+        Description = @"The ID of the Private Cloud's ExpressRoute Circuit that is participating in the
+        global reach connection",
         SerializedName = @"expressRouteId",
         PossibleTypes = new [] { typeof(string) })]
         string ExpressRouteId { get; set; }
         /// <summary>
-        /// Identifier of the ExpressRoute Circuit to peer with in the global reach connection
+        /// Identifier of the ExpressRoute Circuit to peer with in the global reach
+        /// connection
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -142,7 +153,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Identifier of the ExpressRoute Circuit to peer with in the global reach connection",
+        Description = @"Identifier of the ExpressRoute Circuit to peer with in the global reach
+        connection",
         SerializedName = @"peerExpressRouteCircuit",
         PossibleTypes = new [] { typeof(string) })]
         string PeerExpressRouteCircuit { get; set; }
@@ -156,7 +168,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Description = @"The state of the  ExpressRoute Circuit Authorization provisioning",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Updating", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Updating")]
         string ProvisioningState { get;  }
 
     }
@@ -165,26 +177,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 
     {
         /// <summary>
-        /// The network used for global reach carved out from the original network block provided for the private cloud
+        /// The network used for global reach carved out from the original network block
+        /// provided for the private cloud
         /// </summary>
         string AddressPrefix { get; set; }
         /// <summary>
-        /// Authorization key from the peer express route used for the global reach connection
+        /// Authorization key from the peer express route used for the global reach
+        /// connection
         /// </summary>
         string AuthorizationKey { get; set; }
         /// <summary>The connection status of the global reach connection</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Connected", "Connecting", "Disconnected")]
         string CircuitConnectionStatus { get; set; }
         /// <summary>
-        /// The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection
+        /// The ID of the Private Cloud's ExpressRoute Circuit that is participating in the
+        /// global reach connection
         /// </summary>
         string ExpressRouteId { get; set; }
         /// <summary>
-        /// Identifier of the ExpressRoute Circuit to peer with in the global reach connection
+        /// Identifier of the ExpressRoute Circuit to peer with in the global reach
+        /// connection
         /// </summary>
         string PeerExpressRouteCircuit { get; set; }
         /// <summary>The state of the ExpressRoute Circuit Authorization provisioning</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Updating", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Updating")]
         string ProvisioningState { get; set; }
 
     }

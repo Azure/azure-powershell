@@ -10,16 +10,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a DNS zone by id in a private cloud workload network.</summary>
+    /// <summary>Create a WorkloadNetworkDnsZone</summary>
     /// <remarks>
     /// [OpenAPI] CreateDnsZone=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsZones/{dnsZoneId}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzVMwareWorkloadNetworkDnsZone_CreateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Create a DNS zone by id in a private cloud workload network.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Create a WorkloadNetworkDnsZone")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsZones/{dnsZoneId}", ApiVersion = "2023-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsZones/{dnsZoneId}", ApiVersion = "2023-09-01")]
     public partial class NewAzVMwareWorkloadNetworkDnsZone_CreateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IContext
@@ -110,8 +110,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         ReadOnly = false,
         Description = @"Number of DNS Services using the DNS zone.",
         SerializedName = @"dnsServices",
-        PossibleTypes = new [] { typeof(long) })]
-        public long DnsService { get => _workloadNetworkDnsZoneBody.DnsService ?? default(long); set => _workloadNetworkDnsZoneBody.DnsService = value; }
+        PossibleTypes = new [] { typeof(int) })]
+        public int DnsService { get => _workloadNetworkDnsZoneBody.DnsService ?? default(int); set => _workloadNetworkDnsZoneBody.DnsService = value; }
 
         /// <summary>Domain names of the DNS Zone.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]

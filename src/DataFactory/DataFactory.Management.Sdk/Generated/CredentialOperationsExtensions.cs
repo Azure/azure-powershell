@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.DataFactory
         /// <param name='factoryName'>
         /// The factory name.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<ManagedIdentityCredentialResource> ListByFactory(this ICredentialOperations operations, string resourceGroupName, string factoryName)
+        public static Microsoft.Rest.Azure.IPage<CredentialResource> ListByFactory(this ICredentialOperations operations, string resourceGroupName, string factoryName)
         {
                 return ((ICredentialOperations)operations).ListByFactoryAsync(resourceGroupName, factoryName).GetAwaiter().GetResult();
         }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.DataFactory
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ManagedIdentityCredentialResource>> ListByFactoryAsync(this ICredentialOperations operations, string resourceGroupName, string factoryName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CredentialResource>> ListByFactoryAsync(this ICredentialOperations operations, string resourceGroupName, string factoryName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByFactoryWithHttpMessagesAsync(resourceGroupName, factoryName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.DataFactory
         /// ETag of the credential entity. Should only be specified for update, for
         /// which it should match existing entity or can be * for unconditional update.
         /// </param>
-        public static ManagedIdentityCredentialResource CreateOrUpdate(this ICredentialOperations operations, string resourceGroupName, string factoryName, string credentialName, ManagedIdentityCredential properties, string ifMatch = default(string))
+        public static CredentialResource CreateOrUpdate(this ICredentialOperations operations, string resourceGroupName, string factoryName, string credentialName, Credential properties, string ifMatch = default(string))
         {
                 return ((ICredentialOperations)operations).CreateOrUpdateAsync(resourceGroupName, factoryName, credentialName, properties, ifMatch).GetAwaiter().GetResult();
         }
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.DataFactory
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ManagedIdentityCredentialResource> CreateOrUpdateAsync(this ICredentialOperations operations, string resourceGroupName, string factoryName, string credentialName, ManagedIdentityCredential properties, string ifMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<CredentialResource> CreateOrUpdateAsync(this ICredentialOperations operations, string resourceGroupName, string factoryName, string credentialName, Credential properties, string ifMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, factoryName, credentialName, properties, ifMatch, null, cancellationToken).ConfigureAwait(false))
             {
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.DataFactory
         /// ETag matches the existing entity tag, or if * was provided, then no content
         /// will be returned.
         /// </param>
-        public static ManagedIdentityCredentialResource Get(this ICredentialOperations operations, string resourceGroupName, string factoryName, string credentialName, string ifNoneMatch = default(string))
+        public static CredentialResource Get(this ICredentialOperations operations, string resourceGroupName, string factoryName, string credentialName, string ifNoneMatch = default(string))
         {
                 return ((ICredentialOperations)operations).GetAsync(resourceGroupName, factoryName, credentialName, ifNoneMatch).GetAwaiter().GetResult();
         }
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Management.DataFactory
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ManagedIdentityCredentialResource> GetAsync(this ICredentialOperations operations, string resourceGroupName, string factoryName, string credentialName, string ifNoneMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<CredentialResource> GetAsync(this ICredentialOperations operations, string resourceGroupName, string factoryName, string credentialName, string ifNoneMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, factoryName, credentialName, ifNoneMatch, null, cancellationToken).ConfigureAwait(false))
             {
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Management.DataFactory
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<ManagedIdentityCredentialResource> ListByFactoryNext(this ICredentialOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<CredentialResource> ListByFactoryNext(this ICredentialOperations operations, string nextPageLink)
         {
                 return ((ICredentialOperations)operations).ListByFactoryNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Management.DataFactory
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ManagedIdentityCredentialResource>> ListByFactoryNextAsync(this ICredentialOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CredentialResource>> ListByFactoryNextAsync(this ICredentialOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByFactoryNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
