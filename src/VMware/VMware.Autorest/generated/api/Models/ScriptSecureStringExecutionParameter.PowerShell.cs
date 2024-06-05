@@ -113,15 +113,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             // actually deserialize
             if (content.Contains("SecureValue"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptSecureStringExecutionParameterInternal)this).SecureValue = (string) content.GetValueForProperty("SecureValue",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptSecureStringExecutionParameterInternal)this).SecureValue, global::System.Convert.ToString);
-            }
-            if (content.Contains("Name"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)this).Name, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptSecureStringExecutionParameterInternal)this).SecureValue = (System.Security.SecureString) content.GetValueForProperty("SecureValue",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptSecureStringExecutionParameterInternal)this).SecureValue, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)this).Name, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -142,15 +142,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             // actually deserialize
             if (content.Contains("SecureValue"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptSecureStringExecutionParameterInternal)this).SecureValue = (string) content.GetValueForProperty("SecureValue",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptSecureStringExecutionParameterInternal)this).SecureValue, global::System.Convert.ToString);
-            }
-            if (content.Contains("Name"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)this).Name, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptSecureStringExecutionParameterInternal)this).SecureValue = (System.Security.SecureString) content.GetValueForProperty("SecureValue",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptSecureStringExecutionParameterInternal)this).SecureValue, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)this).Name, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

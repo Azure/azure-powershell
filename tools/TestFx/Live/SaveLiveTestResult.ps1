@@ -1,32 +1,17 @@
-param (
-    [Parameter(Mandatory, Position = 0)]
-    [ValidateNotNullOrEmpty()]
-    [guid] $TenantId,
+$ltResults = Get-ChildItem -Path ${env:DATALOCATION} -Filter "LiveTestAnalysis" -Directory -Recurse -ErrorAction SilentlyContinue | Get-ChildItem -Filter "Raw" -Directory | Get-ChildItem -Filter "*.csv" -File | Select-Object -ExpandProperty FullName
+if ($null -ne $ltResults) {
+    Write-Host "##[group]Start uploading live test results."
 
-    [Parameter(Mandatory, Position = 1)]
-    [ValidateNotNullOrEmpty()]
-    [guid] $ServicePrincipalId,
+    $localDate = [DateTime]::UtcNow.AddHours(8).ToString("yyyy-MM-dd")
+    $context = New-AzStorageContext -StorageAccountName ${env:STORAGEACCOUNTNAME}
+    $ltResults | ForEach-Object {
+        $ltCsv = $_
+        $ltCsvCore = Split-Path -Path $ltCsv -Parent | Split-Path -Parent | Split-Path -Parent | Split-Path -Leaf
+        $ltCsvName = Split-Path -Path $ltCsv -Leaf
+        Set-AzStorageBlobContent -Container ${env:STORAGEBLOBCONTAINERNAME} -Blob "$localDate/$ltCsvCore/$ltCsvName" -File $ltCsv -Context $context -Force
 
-    [Parameter(Mandatory, Position = 2)]
-    [ValidateNotNullOrEmpty()]
-    [string] $ServicePrincipalSecret,
+        Write-Host "##[section]Uploaded live test result $ltCsv."
+    }
 
-    [Parameter(Mandatory, Position = 3)]
-    [ValidateNotNullOrEmpty()]
-    [string] $ClusterName,
-
-    [Parameter(Mandatory, Position = 4)]
-    [ValidateNotNullOrEmpty()]
-    [string] $ClusterRegion
-)
-
-$ltDir = Join-Path -Path ${env:DATALOCATION} -ChildPath "LiveTestAnalysis" | Join-Path -ChildPath "Raw"
-$ltResults = Get-ChildItem -Path $ltDir -Filter "*.csv" -File -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName
-
-if (![string]::IsNullOrEmpty($ltResults)) {
-    Import-Module "./tools/TestFx/Utilities/KustoUtility.psd1" -ArgumentList $TenantId, $ServicePrincipalId, $ServicePrincipalSecret, $ClusterName, $ClusterRegion -Force
-    Add-KustoData -DatabaseName ${env:LIVETESTDATABASENAME} -TableName ${env:LIVETESTTABLENAME} -CsvFile $ltResults
-}
-else {
-    Write-Host "##[warning]No live test data was found."
+    Write-Host "##[endgroup]"
 }

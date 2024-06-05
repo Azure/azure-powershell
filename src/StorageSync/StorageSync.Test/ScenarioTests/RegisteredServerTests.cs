@@ -71,7 +71,6 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewRegisteredServer()
         {
-            var value = HttpMockServer.GetCurrentMode();
             TestRunner.RunTestScript("Test-NewRegisteredServer");
         }
 

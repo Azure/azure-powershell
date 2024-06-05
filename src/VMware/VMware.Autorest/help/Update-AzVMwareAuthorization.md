@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVMwareAuthorization
 
 ## SYNOPSIS
-Update an ExpressRoute Circuit Authorization in a private cloud
+Update a ExpressRouteAuthorization
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Update-AzVMwareAuthorization -Name <String> -PrivateCloudInputObject <IVMwareIde
 ```
 
 ## DESCRIPTION
-Update an ExpressRoute Circuit Authorization in a private cloud
+Update a ExpressRouteAuthorization
 
 ## EXAMPLES
 
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the ExpressRoute Circuit Authorization in the private cloud
+Name of the ExpressRoute Circuit Authorization
 
 ```yaml
 Type: System.String
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateCloudName
-The name of the private cloud.
+Name of the private cloud
 
 ```yaml
 Type: System.String
@@ -180,6 +180,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

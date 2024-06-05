@@ -49,13 +49,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         public string Name { get => this._name; set => this._name = value; }
 
         /// <summary>Backing field for <see cref="Password" /> property.</summary>
-        private string _password;
+        private System.Security.SecureString _password;
 
         /// <summary>
-        /// The password of the Active Directory user with a minimum of read-only access to Base DN for users and groups.
+        /// The password of the Active Directory user with a minimum of read-only access to
+        /// Base DN for users and groups.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
-        public string Password { get => this._password; set => this._password = value; }
+        public System.Security.SecureString Password { get => this._password; set => this._password = value; }
 
         /// <summary>Backing field for <see cref="PrimaryServer" /> property.</summary>
         private string _primaryServer;
@@ -82,7 +83,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         private string _username;
 
         /// <summary>
-        /// The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group
+        /// The ID of an Active Directory user with a minimum of read-only access to Base
+        /// DN for users and group
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string Username { get => this._username; set => this._username = value; }
@@ -153,7 +155,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         PossibleTypes = new [] { typeof(string) })]
         string Name { get; set; }
         /// <summary>
-        /// The password of the Active Directory user with a minimum of read-only access to Base DN for users and groups.
+        /// The password of the Active Directory user with a minimum of read-only access to
+        /// Base DN for users and groups.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -161,10 +164,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The password of the Active Directory user with a minimum of read-only access to Base DN for users and groups.",
+        Description = @"The password of the Active Directory user with a minimum of read-only access to
+        Base DN for users and groups.",
         SerializedName = @"password",
-        PossibleTypes = new [] { typeof(string) })]
-        string Password { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString Password { get; set; }
         /// <summary>Primary server URL</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -200,7 +204,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         string Ssl { get; set; }
         /// <summary>
-        /// The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group
+        /// The ID of an Active Directory user with a minimum of read-only access to Base
+        /// DN for users and group
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -208,7 +213,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group",
+        Description = @"The ID of an Active Directory user with a minimum of read-only access to Base
+        DN for users and group",
         SerializedName = @"username",
         PossibleTypes = new [] { typeof(string) })]
         string Username { get; set; }
@@ -229,9 +235,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>The name of the identity source</summary>
         string Name { get; set; }
         /// <summary>
-        /// The password of the Active Directory user with a minimum of read-only access to Base DN for users and groups.
+        /// The password of the Active Directory user with a minimum of read-only access to
+        /// Base DN for users and groups.
         /// </summary>
-        string Password { get; set; }
+        System.Security.SecureString Password { get; set; }
         /// <summary>Primary server URL</summary>
         string PrimaryServer { get; set; }
         /// <summary>Secondary server URL</summary>
@@ -240,7 +247,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         string Ssl { get; set; }
         /// <summary>
-        /// The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group
+        /// The ID of an Active Directory user with a minimum of read-only access to Base
+        /// DN for users and group
         /// </summary>
         string Username { get; set; }
 

@@ -16,16 +16,17 @@
 
 <#
 .Synopsis
-Create a in-memory object for ScriptSecureStringExecutionParameter
+Create an in-memory object for ScriptSecureStringExecutionParameter.
 .Description
-Create a in-memory object for ScriptSecureStringExecutionParameter
+Create an in-memory object for ScriptSecureStringExecutionParameter.
 .Example
-New-AzVMwareScriptSecureStringExecutionParameterObject -Name azps_test_securevalue -SecureValue "passwordValue"
+$mypwd = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+New-AzVMwareScriptSecureStringExecutionParameterObject -Name azps_test_securevalue -SecureValue $mypwd
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ScriptSecureStringExecutionParameter
 .Link
-https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareScriptSecureStringExecutionParameterObject
+https://learn.microsoft.com/powershell/module/Az.VMware/new-azvmwarescriptsecurestringexecutionparameterobject
 #>
 function New-AzVMwareScriptSecureStringExecutionParameterObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ScriptSecureStringExecutionParameter])]
@@ -39,7 +40,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [System.String]
+    [System.Security.SecureString]
     # A secure value for the passed parameter, not to be stored in logs.
     ${SecureValue}
 )
