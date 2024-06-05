@@ -120,7 +120,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -444,28 +445,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IScheduledQueryRuleResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`CRITERIONALLOF <ICondition[]>`: A list of conditions to evaluate against the specified scopes
-  - `[Dimension <IDimension[]>]`: List of Dimensions conditions
-    - `Name <String>`: Name of the dimension
-    - `Operator <DimensionOperator>`: Operator for dimension values
-    - `Value <String[]>`: List of dimension values
-  - `[FailingPeriodMinFailingPeriodsToAlert <Int64?>]`: The number of violations to trigger an alert. Should be smaller or equal to numberOfEvaluationPeriods. Default value is 1
-  - `[FailingPeriodNumberOfEvaluationPeriod <Int64?>]`: The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (windowSize) and the selected number of aggregated points. Default value is 1
-  - `[MetricMeasureColumn <String>]`: The column containing the metric measure number. Relevant only for rules of the kind LogAlert.
-  - `[MetricName <String>]`: The name of the metric to be sent. Relevant and required only for rules of the kind LogToMetric.
-  - `[Operator <ConditionOperator?>]`: The criteria operator. Relevant and required only for rules of the kind LogAlert.
-  - `[Query <String>]`: Log query alert
-  - `[ResourceIdColumn <String>]`: The column containing the resource id. The content of the column must be a uri formatted as resource id. Relevant only for rules of the kind LogAlert.
-  - `[Threshold <Double?>]`: the criteria threshold value that activates the alert. Relevant and required only for rules of the kind LogAlert.
-  - `[TimeAggregation <TimeAggregation?>]`: Aggregation type. Relevant and required only for rules of the kind LogAlert.
 
 ## RELATED LINKS
 

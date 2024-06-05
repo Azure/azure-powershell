@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the ActionGroup service.
 
 ---
-## Status
-[![Az.ActionGroup](https://img.shields.io/powershellgallery/v/Az.ActionGroup.svg?style=flat-square&label=Az.ActionGroup "Az.ActionGroup")](https://www.powershellgallery.com/packages/Az.ActionGroup/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -46,6 +43,8 @@ namespace: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup
 subject-prefix: ActionGroup
 resourcegroup-append: true
 nested-object-to-string: true
+disable-transform-identity-type: true
+flatten-userassignedidentity: false
 
 use-extension:
   "@autorest/powershell": "4.x"

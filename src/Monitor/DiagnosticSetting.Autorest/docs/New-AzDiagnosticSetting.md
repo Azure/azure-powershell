@@ -52,7 +52,8 @@ Create diagnostic setting for all supported categories
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -279,27 +280,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`LOG <ILogSettings[]>`: The list of logs settings.
-  - `Enabled <Boolean>`: a value indicating whether this log is enabled.
-  - `[Category <String>]`: Name of a Diagnostic Log category for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
-  - `[CategoryGroup <String>]`: Name of a Diagnostic Log category group for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
-  - `[RetentionPolicyDay <Int32?>]`: the number of days for the retention in days. A value of 0 will retain the events indefinitely.
-  - `[RetentionPolicyEnabled <Boolean?>]`: a value indicating whether the retention policy is enabled.
-
-`METRIC <IMetricSettings[]>`: The list of metric settings.
-  - `Enabled <Boolean>`: a value indicating whether this category is enabled.
-  - `[Category <String>]`: Name of a Diagnostic Metric category for a resource type this setting is applied to. To obtain the list of Diagnostic metric categories for a resource, first perform a GET diagnostic settings operation.
-  - `[RetentionPolicyDay <Int32?>]`: the number of days for the retention in days. A value of 0 will retain the events indefinitely.
-  - `[RetentionPolicyEnabled <Boolean?>]`: a value indicating whether the retention policy is enabled.
-  - `[TimeGrain <TimeSpan?>]`: the timegrain of the metric in ISO8601 format.
 
 ## RELATED LINKS
 

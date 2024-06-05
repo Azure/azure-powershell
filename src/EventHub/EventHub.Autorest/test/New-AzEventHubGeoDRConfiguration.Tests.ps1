@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEventHubGeoDRConfigurat
 }
 
 Describe 'New-AzEventHubGeoDRConfiguration' {
-    It 'CreateExpanded'  {
+    It 'CreateExpanded' -skip:$($env.secondaryLocation -eq '') {
         $drConfig = New-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -PartnerNamespace $env.secondaryNamespaceResourceId
         $drConfig.ResourceGroupName | Should -Be $env.resourceGroup
         $drConfig.Name | Should -Be $env.alias
@@ -24,7 +24,9 @@ Describe 'New-AzEventHubGeoDRConfiguration' {
 
         while($drConfig.ProvisioningState -ne "Succeeded"){
             $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
-            Start-TestSleep 10
+            if ($TestMode -ne 'playback') {
+                Start-Sleep 10
+            }
         }
 
         $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace

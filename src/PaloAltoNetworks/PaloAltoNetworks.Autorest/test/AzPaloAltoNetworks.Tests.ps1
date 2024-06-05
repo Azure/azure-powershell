@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzPaloAltoNetworks'))
 Describe 'AzPaloAltoNetworks' {
     It 'CreateLocalRulestack'  {
         {
-            $config = New-AzPaloAltoNetworksLocalRulestack -Name $env.LocalRulestackName -ResourceGroupName $env.resourceGroup -Location $env.location -Description "testing powershell" -DefaultMode 'NONE'
+            $config = New-AzPaloAltoNetworksLocalRulestack -Name $env.LocalRulestackName -ResourceGroupName $env.resourceGroup -Location $env.location -Description "testing powershell" -DefaultMode 'NONE' -EnableSystemAssignedIdentity:$false
             $config.Name | Should -Be $env.LocalRulestackName
         } | Should -Not -Throw
     }
@@ -53,7 +53,7 @@ Describe 'AzPaloAltoNetworks' {
     It 'UpdateViaIdentityLocalRulestack' {
         {
             $config = Get-AzPaloAltoNetworksLocalRulestack -Name $env.LocalRulestackName -ResourceGroupName $env.resourceGroup
-            $config = Update-AzPaloAltoNetworksLocalRulestack -InputObject $config -Tag @{"abc"="123"}
+            $config = Update-AzPaloAltoNetworksLocalRulestack -InputObject $config -Tag @{"abc"="123"} -UserAssignedIdentity $env.managedIdentityId
             $config.Name | Should -Be $env.LocalRulestackName
         } | Should -Not -Throw
     }

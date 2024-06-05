@@ -15,15 +15,15 @@ Updates the NetworkRuleSet of a ServiceBus namespace
 ### SetExpanded (Default)
 ```
 Set-AzServiceBusNetworkRuleSet -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultAction <DefaultAction>] [-IPRule <INwRuleSetIPRules[]>] [-PublicNetworkAccess <PublicNetworkAccess>]
+ [-DefaultAction <String>] [-IPRule <INwRuleSetIPRules[]>] [-PublicNetworkAccess <String>]
  [-TrustedServiceAccessEnabled] [-VirtualNetworkRule <INwRuleSetVirtualNetworkRules[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
 ```
-Set-AzServiceBusNetworkRuleSet -InputObject <IServiceBusIdentity> [-DefaultAction <DefaultAction>]
- [-IPRule <INwRuleSetIPRules[]>] [-PublicNetworkAccess <PublicNetworkAccess>] [-TrustedServiceAccessEnabled]
+Set-AzServiceBusNetworkRuleSet -InputObject <IServiceBusIdentity> [-DefaultAction <String>]
+ [-IPRule <INwRuleSetIPRules[]>] [-PublicNetworkAccess <String>] [-TrustedServiceAccessEnabled]
  [-VirtualNetworkRule <INwRuleSetVirtualNetworkRules[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 Default Action for Network Rule Set
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.DefaultAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -185,10 +185,9 @@ Accept wildcard characters: False
 
 ### -IPRule
 List of IpRules
-To construct, see NOTES section for IPRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.INwRuleSetIPRules[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INwRuleSetIPRules[]
 Parameter Sets: (All)
 Aliases:
 
@@ -235,7 +234,7 @@ By default it is enabled.
 If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.PublicNetworkAccess
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -294,10 +293,9 @@ Accept wildcard characters: False
 
 ### -VirtualNetworkRule
 List of VirtualNetwork Rules
-To construct, see NOTES section for VIRTUALNETWORKRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.INwRuleSetVirtualNetworkRules[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INwRuleSetVirtualNetworkRules[]
 Parameter Sets: (All)
 Aliases:
 
@@ -348,38 +346,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.INetworkRuleSet
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkRuleSet
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IServiceBusIdentity>`: Identity parameter.
-  - `[Alias <String>]`: The Disaster Recovery configuration name
-  - `[AuthorizationRuleName <String>]`: The authorization rule name.
-  - `[ConfigName <MigrationConfigurationName?>]`: The configuration name. Should always be "$default".
-  - `[Id <String>]`: Resource identity path
-  - `[NamespaceName <String>]`: The namespace name
-  - `[PrivateEndpointConnectionName <String>]`: The PrivateEndpointConnection name
-  - `[QueueName <String>]`: The queue name.
-  - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
-  - `[RuleName <String>]`: The rule name.
-  - `[SubscriptionId <String>]`: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-  - `[SubscriptionName <String>]`: The subscription name.
-  - `[TopicName <String>]`: The topic name.
-
-`IPRULE <INwRuleSetIPRules[]>`: List of IpRules
-  - `[Action <NetworkRuleIPAction?>]`: The IP Filter Action
-  - `[IPMask <String>]`: IP Mask
-
-`VIRTUALNETWORKRULE <INwRuleSetVirtualNetworkRules[]>`: List of VirtualNetwork Rules
-  - `[IgnoreMissingVnetServiceEndpoint <Boolean?>]`: Value that indicates whether to ignore missing VNet Service Endpoint
-  - `[SubnetId <String>]`: Resource ID of Virtual Network Subnet
 
 ## RELATED LINKS
 

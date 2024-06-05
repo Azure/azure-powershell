@@ -1,15 +1,15 @@
 {
-  "Invoke-AzSelfHelpCheckNameAvailability+[NoContext]+PostExpanded+$POST+https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/providers/Microsoft.Help/checkNameAvailability?api-version=2023-09-01-preview+1": {
+  "Invoke-AzSelfHelpCheckNameAvailability+[NoContext]+Post+$POST+https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/providers/Microsoft.Help/checkNameAvailability?api-version=2024-03-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/providers/Microsoft.Help/checkNameAvailability?api-version=2023-09-01-preview",
-      "Content": "{\r\n  \"name\": \"helloworld\",\r\n  \"type\": \"solutions\"\r\n}",
+      "RequestUri": "https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/providers/Microsoft.Help/checkNameAvailability?api-version=2024-03-01-preview",
+      "Content": "{\n  \"name\": \"helloworld\",\n  \"type\": \"solutions\"\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "52" ]
+        "Content-Length": [ "49" ]
       }
     },
     "Response": {
@@ -18,16 +18,16 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "3b9e391a-0429-43a9-a454-e8d9ea6b082c" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-request-id": [ "f9632039-7a85-4375-99c1-677c58cc06c9" ],
-        "x-ms-correlation-request-id": [ "f9632039-7a85-4375-99c1-677c58cc06c9" ],
-        "x-ms-routing-request-id": [ "EASTUS:20230929T174139Z:f9632039-7a85-4375-99c1-677c58cc06c9" ],
+        "x-ms-correlation-request-id": [ "3b9e391a-0429-43a9-a454-e8d9ea6b082c" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20240405T204520Z:3b9e391a-0429-43a9-a454-e8d9ea6b082c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: DBFE788829914246B3D4C7EDC79F4D82 Ref B: BN1AA2051014029 Ref C: 2023-09-29T17:41:39Z" ],
-        "Date": [ "Fri, 29 Sep 2023 17:41:38 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 193FA20840844F519657818881FC92D6 Ref B: BN1AA2051015017 Ref C: 2024-04-05T20:45:20Z" ],
+        "Date": [ "Fri, 05 Apr 2024 20:45:19 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "22" ],

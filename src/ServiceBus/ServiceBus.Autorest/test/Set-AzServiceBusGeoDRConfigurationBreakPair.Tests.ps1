@@ -15,13 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzServiceBusGeoDRConfigur
 }
 
 Describe 'Set-AzServiceBusGeoDRConfigurationBreakPair' {
-    It 'Break' {
+    It 'Break' -skip:$($env.secondaryLocation -eq '') {
         Set-AzServiceBusGeoDRConfigurationBreakPair -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -Name $env.alias
-
+        
         while($drConfig.ProvisioningState -ne "Succeeded"){
             $drConfig = Get-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
             if ($TestMode -ne 'playback') {
-                Start-TestSleep 10
+                Start-Sleep 10
             }
         }
 
@@ -31,24 +31,24 @@ Describe 'Set-AzServiceBusGeoDRConfigurationBreakPair' {
         $drConfig.Role | Should -Be "PrimaryNotReplicating"
 
         $drConfig = New-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -PartnerNamespace $env.secondaryNamespaceResourceId
-
+        
         while($drConfig.ProvisioningState -ne "Succeeded"){
             $drConfig = Get-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
             if ($TestMode -ne 'playback') {
-                Start-TestSleep 10
+                Start-Sleep 10
             }
         }
     }
 
-    It 'BreakViaIdentity' {
+    It 'BreakViaIdentity' -skip:$($env.secondaryLocation -eq '') {
         $drConfig = Get-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
 
         Set-AzServiceBusGeoDRConfigurationBreakPair -InputObject $drConfig
-
+        
         do{
             $drConfig = Get-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
             if ($TestMode -ne 'playback') {
-                Start-TestSleep 10
+                Start-Sleep 10
             }
         } while($drConfig.ProvisioningState -ne "Succeeded")
 
@@ -58,11 +58,11 @@ Describe 'Set-AzServiceBusGeoDRConfigurationBreakPair' {
         $drConfig.Role | Should -Be "PrimaryNotReplicating"
 
         $drConfig = New-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -PartnerNamespace $env.secondaryNamespaceResourceId
-
+        
         while($drConfig.ProvisioningState -ne "Succeeded"){
             $drConfig = Get-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
             if ($TestMode -ne 'playback') {
-                Start-TestSleep 10
+                Start-Sleep 10
             }
         }
     }
