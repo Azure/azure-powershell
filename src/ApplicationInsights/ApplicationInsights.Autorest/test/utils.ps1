@@ -55,19 +55,26 @@ function setupEnv() {
     $env.geoLocation02 = 'us-ca-sjc-azr'
     $env.geoLocation03 = 'emea-ru-msa-edge'
     $env.geoLocation04 = 'emea-se-sto-edge'
-    $env.standardWebTest01 = 'standardwebtest-' + (RandomString -allChars $false -len 6) + '-pwsh'
-    $env.standardWebTest02 = 'standardwebtest-' + (RandomString -allChars $false -len 6) + '-pwsh'
-    $env.basicWebTest03 = 'basicwebtest-' + (RandomString -allChars $false -len 6) + '-pwsh'
-    $env.basicWebTest04 = 'basicwebtest-' + (RandomString -allChars $false -len 6) + '-pwsh'
+    $standardWebTest01 = 'standardwebtest-' + (RandomString -allChars $false -len 6) + '-pwsh'
+    $env.AddWithCache("standardWebTest01", $standardWebTest01, $UsePreviousConfigForRecord)
+    $standardWebTest02 = 'standardwebtest-' + (RandomString -allChars $false -len 6) + '-pwsh'
+    $env.AddWithCache("standardWebTest02", $standardWebTest02, $UsePreviousConfigForRecord)
+    $basicWebTest03 = 'basicwebtest-' + (RandomString -allChars $false -len 6) + '-pwsh'
+    $env.AddWithCache("basicWebTest03", $basicWebTest03, $UsePreviousConfigForRecord)
+    $basicWebTest04 = 'basicwebtest-' + (RandomString -allChars $false -len 6) + '-pwsh'
+    $env.AddWithCache("basicWebTest04", $basicWebTest04, $UsePreviousConfigForRecord)
     # Create resource group for test.
-    $env.resourceGroup = 'appInsights-' + (RandomString -allChars $false -len 6) + '-test'
+    $resourceGroupName = 'appInsights-' + (RandomString -allChars $false -len 6) + '-test'
+    $env.AddWithCache("resourceGroup", $resourceGroupName, $UsePreviousConfigForRecord)
     Write-Host -ForegroundColor Green 'Start creating Resource Group for test...'
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
     Write-Host -ForegroundColor Green 'Resource Group created successfully.'
 
     # Create application insights for test
-    $env.appInsights01 = 'appInsights-' + (RandomString -allChars $false -len 6) + '-pwsh'
-    $env.appInsights02 = 'appInsights-' + (RandomString -allChars $false -len 6) + '-pwsh'
+    $appInsightsName01 = 'appInsights-' + (RandomString -allChars $false -len 6) + '-pwsh'
+    $env.AddWithCache("appInsights01", $appInsightsName01, $UsePreviousConfigForRecord)
+    $appInsightsName02 = 'appInsights-' + (RandomString -allChars $false -len 6) + '-pwsh'
+    $env.AddWithCache("appInsights02", $appInsightsName02, $UsePreviousConfigForRecord)
     Write-Host -ForegroundColor Green 'Start creating application insights for test...'
     $appInsights01 = New-AzApplicationInsights -ResourceGroupName $env.resourceGroup -Name $env.appInsights01 -Location $env.location
     $appInsights02 = New-AzApplicationInsights -ResourceGroupName $env.resourceGroup -Name $env.appInsights02 -Location $env.location
@@ -87,8 +94,14 @@ function setupEnv() {
     Write-Host -ForegroundColor Green 'standard web test created successfully.'
 
     #Variables for application insights test
-    $env.component1 = "component" + (RandomString -allChars $false -len 6)
+    $component1 = "component" + (RandomString -allChars $false -len 6)
+    $env.AddWithCache("component1", $component1, $UsePreviousConfigForRecord)
+    $component2 = "component" + (RandomString -allChars $false -len 6)
+    $env.AddWithCache("component2", $component2, $UsePreviousConfigForRecord)
 
+    $env.workbookTemplate01 = '23eb2aa1-0cf5-4f1d-b733-7ccb0ecec467'
+    $env.workbook01 = "7f066122-885c-489b-b5f7-fa594c2775e5"
+    $env.myWorkbook01 = "f48d5ba6-9da7-4dd2-aed4-71edd6e5e517"
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

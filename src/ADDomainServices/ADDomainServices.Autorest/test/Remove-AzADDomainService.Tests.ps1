@@ -21,7 +21,7 @@ Describe 'Remove-AzADDomainService' {
     It 'DeleteViaIdentity' {
         $ReplicaSet = New-AzADDomainServiceReplicaSetObject -Location $env.Location -SubnetId $env.SubnetId
         $NewAdDomain = New-AzADDomainService -name $env.ADdomainName -ResourceGroupName $env.ResourceGroupName -DomainName $env.ADDomainNameCom -ReplicaSet $ReplicaSet
-        # Start-Sleep -s 120
+        Start-TestSleep 120
         $GetADDomainExample = Get-AzADDomainService -ResourceGroupName $env.ResourceGroupName -Name $env.ADdomainName
         Remove-AzADDomainService -InputObject $GetADDomainExample
         $GetADDomainList = Get-AzADDomainService

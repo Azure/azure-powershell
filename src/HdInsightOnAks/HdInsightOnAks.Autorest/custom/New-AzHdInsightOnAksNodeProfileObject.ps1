@@ -28,7 +28,7 @@ https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightO
 #>
 function New-AzHdInsightOnAksNodeProfileObject {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INodeProfile])]
-    [CmdletBinding(DefaultParameterSetName = 'Create', PositionalBinding = $false, SupportsShouldProcess)]
+    [CmdletBinding(DefaultParameterSetName = 'Create', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'Create', Mandatory)]
         [System.String]

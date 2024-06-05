@@ -18,7 +18,7 @@ Describe 'Get-AzFrontDoorCdnSecurityPolicy'  {
     BeforeAll {
         $subId = $env.SubscriptionId
 
-        $endpointName = 'end-pstest010'
+        $endpointName = 'e-clipstest010'
         Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
         $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 

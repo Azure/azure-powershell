@@ -6,12 +6,12 @@
 
 ## Mandatory Checklist
 
-- Please choose the target release of Azure PowerShell
+- Please choose the target release of Azure PowerShell. (⚠️**Target release** is a different concept from **API readiness**. Please click below links for details.)
   - [ ] [General release](../blob/main/CONTRIBUTING.md#target-release-types)
   - [ ] [Public preview](../blob/main/CONTRIBUTING.md#target-release-types)
   - [ ] [Private preview](../blob/main/CONTRIBUTING.md#target-release-types)
   - [ ] [Engineering build](../blob/main/CONTRIBUTING.md#target-release-types)
-  - [ ] N/A
+  - [ ] No need for a release
 
 - [ ] Check this box to confirm: **I have read the [_Submitting Changes_](../blob/main/CONTRIBUTING.md#submitting-changes) section of [`CONTRIBUTING.md`](../blob/main/CONTRIBUTING.md) and reviewed the following information:**
 

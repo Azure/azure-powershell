@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSelfHelpSolution'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzSelfHelpSolution' -Tag 'LiveOnly' {
+Describe 'Update-AzSelfHelpSolution' -Tag 'LiveOnly'{
     It 'UpdateExpanded' {
         { 
             $resourceName = RandomString -allChars $false -len 10
@@ -24,13 +24,12 @@ Describe 'Update-AzSelfHelpSolution' -Tag 'LiveOnly' {
             } 
             $criteria = [ordered]@{ 
                 "name" ="SolutionId" 
-                "value" = "keyvault-lostdeletedkeys-apollo-solution" 
+                "value" = "apollo-cognitve-search-custom-skill" 
             } 
             $parameters = [ordered]@{ 
             
-                "SearchText" = "Can not RDP" 
-               "vault_name" = "DemoKeyvault" 
-           }
+                "SearchText" = "Can not Search" 
+            }
            New-AzSelfHelpSolution -Scope $env.scope -ResourceName $resourceName -TriggerCriterion $criteria -Parameter $parameters 
            Update-AzSelfHelpSolution -Scope $env.scope -ResourceName $resourceName -TriggerCriterion $criteriaReplacementKey -Parameter $parameters
          } | Should -Not -Throw

@@ -65,4 +65,4 @@ steps:
 
 - template: publish-artifacts-steps.yml
   parameters:
-    artifactName: analyze-${{ parameters.testFramework }}
+    artifactName: analyze-${{ parameters.testFramework }}-$(System.JobAttempt)

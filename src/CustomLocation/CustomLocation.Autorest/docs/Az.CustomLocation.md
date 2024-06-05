@@ -39,8 +39,8 @@ Deletes the Custom Location with the specified Resource Name, Resource Group, an
 Deletes the Resource Sync Rule with the specified Resource Sync Rule Name, Custom Location Resource Name, Resource Group, and Subscription Id.
 
 ### [Update-AzCustomLocation](Update-AzCustomLocation.md)
-Updates a Custom Location with the specified Resource Name in the specified Resource Group and Subscription.
+Update a Custom Location in the specified Subscription and Resource Group
 
 ### [Update-AzCustomLocationResourceSyncRule](Update-AzCustomLocationResourceSyncRule.md)
-Updates a Resource Sync Rule with the specified Resource Sync Rule name in the specified Resource Group, Subscription and Custom Location name.
+Update a Resource Sync Rule with the specified Resource Sync Rule name in the specified Resource Group, Subscription and Custom Location name.
 

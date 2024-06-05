@@ -30,20 +30,20 @@ This API requires the Troubleshooter resource name that was created using the Cr
 
 ## EXAMPLES
 
-### Example 1: Get Troubleshooter result
+### Example 1:  Get-AzSelfHelpTroubleshooter by troubleshooter name (GUID)
 ```powershell
-Get-AzSelfHelpTroubleshooter -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba" -Name "02d59989-f8a9-4b69-9919-1ef51df4eff6" 
+Get-AzSelfHelpTroubleshooter -Scope "/subscriptions/<subid>" -Name "02d59989-f8a9-4b69-9919-1ef51df4eff6"
 ```
 
 ```output
-Name                                 SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName 
+Name                                 SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
+----                                 ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
+02d59989-f8a9-4b69-9919-1ef51df4eff6
 
-----                                 ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- ----------------- 
-
-02d59989-f8a9-4b69-9919-1ef51df4eff6 
 ```
 
-Use to get troubleshooter result. It is also used to determine the step status/result of the troubleshooter resource name that is being executed.
+Get Azure SelfHelp Troubleshooter by name.
+The name is the guid of the troubleshooter.
 
 ## PARAMETERS
 
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-This is an extension resource provider and only resource level extension is supported at the moment.
+scope = resourceUri of affected resource.\<br/\> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
 
 ```yaml
 Type: System.String
@@ -118,23 +118,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITroubleshooterResource
+### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ITroubleshooterResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ISelfHelpIdentity>`: Identity Parameter
-  - `[DiagnosticsResourceName <String>]`: Unique resource name for insight resources
-  - `[Id <String>]`: Resource identity path
-  - `[Scope <String>]`: This is an extension resource provider and only resource level extension is supported at the moment.
-  - `[SolutionResourceName <String>]`: Solution resource Name.
-  - `[TroubleshooterName <String>]`: Troubleshooter resource Name.
 
 ## RELATED LINKS
 

@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the EventHub service.
 
 ---
-## Status
-[![Az.EventHub](https://img.shields.io/powershellgallery/v/Az.EventHub.svg?style=flat-square&label=Az.EventHub "Az.EventHub")](https://www.powershellgallery.com/packages/Az.EventHub/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -62,14 +59,13 @@ subject-prefix: $(service-name)
 # uncomment following line to support viaIdentity for these post APIs
 resourcegroup-append: true
 nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
+keep-pec-and-plr: true
+disable-transform-identity-type: true
+flatten-userassignedidentity : false
 
 directive:
   - where:
-      variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^CreateViaJsonFilePath$|^CreateViaJsonString$
     remove: true
   - where:
       variant: ^CreateViaIdentity$
@@ -459,4 +455,5 @@ directive:
       suppress-format: true
 
   - model-cmdlet:
-    - KeyVaultProperties
+    - model-name: KeyVaultProperties
+      cmdlet-name: New-AzEventHubKeyVaultPropertiesObject

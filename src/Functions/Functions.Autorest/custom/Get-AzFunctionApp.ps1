@@ -85,6 +85,8 @@ function Get-AzFunctionApp {
     
     process {
 
+        RegisterFunctionsTabCompleters
+
         $apps = $null
         $locationToUse = $null
         $parameterSetName = $PsCmdlet.ParameterSetName

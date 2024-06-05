@@ -1,0 +1,105 @@
+{
+  "resourceType": "profiles/ruleSets/rules",
+  "apiVersion": "2024-02-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.cdn"
+  },
+  "commands": [
+    {
+      "name": "Get-AzFrontDoorCdnRule",
+      "description": "Gets an existing delivery rule within a rule set.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules/{ruleName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnrule"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ProfileName <String>",
+              "-ResourceGroupName <String>",
+              "-SetName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets an existing delivery rule within a rule set.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.ruleName]"
+            },
+            {
+              "name": "-ProfileName",
+              "value": "[Path.profileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SetName",
+              "value": "[Path.ruleSetName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzFrontDoorCdnRule",
+      "description": "Deletes an existing delivery rule within a rule set.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules/{ruleName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cdn/remove-azfrontdoorcdnrule"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ProfileName <String>",
+              "-ResourceGroupName <String>",
+              "-SetName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes an existing delivery rule within a rule set.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.ruleName]"
+            },
+            {
+              "name": "-ProfileName",
+              "value": "[Path.profileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SetName",
+              "value": "[Path.ruleSetName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

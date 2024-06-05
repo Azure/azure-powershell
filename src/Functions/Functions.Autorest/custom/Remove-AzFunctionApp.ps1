@@ -83,6 +83,9 @@ function Remove-AzFunctionApp {
         ${ProxyUseDefaultCredentials}
     )
     process {
+
+        RegisterFunctionsTabCompleters
+
         # The input object is an ISite. This needs to be transformed into a FunctionsIdentity
         if ($PsCmdlet.ParameterSetName -eq "ByObjectInput")
         {

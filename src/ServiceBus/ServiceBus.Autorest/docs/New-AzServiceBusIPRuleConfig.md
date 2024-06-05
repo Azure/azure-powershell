@@ -13,7 +13,7 @@ Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzService
 ## SYNTAX
 
 ```
-New-AzServiceBusIPRuleConfig -IPMask <String> [-Action <NetworkRuleIPAction>] [<CommonParameters>]
+New-AzServiceBusIPRuleConfig -IPMask <String> [-Action <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +40,7 @@ Please refer examples for Set-AzServiceBusNetworkRuleSet to know more.
 The IP Filter Action
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.NetworkRuleIPAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -73,11 +73,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.INwRuleSetIPRules
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INwRuleSetIPRules
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

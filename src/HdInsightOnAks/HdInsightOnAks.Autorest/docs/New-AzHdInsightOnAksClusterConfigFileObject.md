@@ -13,8 +13,7 @@ Create cluster config file.
 ## SYNTAX
 
 ```
-New-AzHdInsightOnAksClusterConfigFileObject -FileName <String> -Value <Hashtable> [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzHdInsightOnAksClusterConfigFileObject -FileName <String> -Value <Hashtable> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,37 +54,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
