@@ -27,11 +27,10 @@ For information on how to develop for `Az.AppComplianceAutomation`, see [how-to.
 > see https://aka.ms/autorest
 
 ```yaml
-# pin the swagger version by using the commit id instead of branch name
-branch: 12ff37009808948b5c7ed4a0d384181471f3219f
+commit: 12ff37009808948b5c7ed4a0d384181471f3219f
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/appcomplianceautomation/resource-manager/readme.md
 try-require: 
   - $(repo)/specification/appcomplianceautomation/resource-manager/readme.powershell.md
