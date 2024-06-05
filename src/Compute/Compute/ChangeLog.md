@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added new parameter `EncryptionIdentity` to cmdlet `Set-AzVMDiskEncryptionExtension`
 
 ## Version 8.0.0
 * Added new optional parameter `SecureVMGuestStateSAS` to cmdlet `Grant-AzDiskAccess`.
