@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Migrate", "Migrate\Migrate.csproj", "{1847EC8D-87A5-4772-9E75-1DEA1DC531EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Migrate", "..\..\generated\Migrate\Migrate.Autorest\Az.Migrate.csproj", "{C471D334-2CD9-4A19-99AA-E300F5F95705}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Migrate", "..\..\generated\Migrate\Migrate.Autorest\Az.Migrate.csproj", "{2682CD2B-65C5-45D8-9AA7-D5ABC445B669}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{1847EC8D-87A5-4772-9E75-1DEA1DC531EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1847EC8D-87A5-4772-9E75-1DEA1DC531EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1847EC8D-87A5-4772-9E75-1DEA1DC531EE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C471D334-2CD9-4A19-99AA-E300F5F95705}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C471D334-2CD9-4A19-99AA-E300F5F95705}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C471D334-2CD9-4A19-99AA-E300F5F95705}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C471D334-2CD9-4A19-99AA-E300F5F95705}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2682CD2B-65C5-45D8-9AA7-D5ABC445B669}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2682CD2B-65C5-45D8-9AA7-D5ABC445B669}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2682CD2B-65C5-45D8-9AA7-D5ABC445B669}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2682CD2B-65C5-45D8-9AA7-D5ABC445B669}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{395019BE-8D3A-46E4-9CFB-7E298FEEB747} = {2D0176AD-AE30-4235-9D62-17043F0D4CD8}
