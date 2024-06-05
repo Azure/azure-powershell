@@ -488,7 +488,7 @@ The Bastion Sku Tier
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Basic, Standard
+Accepted values: Basic, Standard, Premium
 
 Required: False
 Position: Named
