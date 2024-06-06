@@ -19,9 +19,9 @@ Trigger evaluation for given resourceIds to get quick compliance result.
 Trigger evaluation for given resourceIds to get quick compliance result.
 
 .Link
-https://learn.microsoft.com/powershell/module/az.appComplianceAutomation/start-azacatevaluation
+https://learn.microsoft.com/powershell/module/az.appComplianceAutomation/start-azacatquickevaluation
 #>
-function Start-AzAcatEvaluation {
+function Start-AzAcatQuickEvaluation {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ITriggerEvaluationResponse])]
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(

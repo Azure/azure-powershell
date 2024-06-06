@@ -41,7 +41,7 @@ Delete an AppComplianceAutomation report.
 ### [Remove-AzAcatWebhook](Remove-AzAcatWebhook.md)
 Delete an AppComplianceAutomation webhook.
 
-### [Start-AzAcatEvaluation](Start-AzAcatEvaluation.md)
+### [Start-AzAcatQuickEvaluation](Start-AzAcatQuickEvaluation.md)
 Trigger evaluation for given resourceIds to get quick compliance result.
 
 ### [Update-AzAcatReport](Update-AzAcatReport.md)
