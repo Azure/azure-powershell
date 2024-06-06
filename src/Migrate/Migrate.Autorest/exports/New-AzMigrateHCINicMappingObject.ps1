@@ -38,7 +38,7 @@ param(
     # Specifies the ID of the NIC to be updated.
     ${NicID},
 
-    [Parameter(Mandatory)]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies the logical network ARM ID that the VMs will use.

@@ -16,7 +16,7 @@ Updates the target properties for the replicating server.
 Set-AzMigrateHCIServerReplication -TargetObjectID <String> [-TargetVMName <String>] [-TargetVMCPUCore <Int32>]
  [-IsDynamicMemoryEnabled <String>] [-DynamicMemoryConfig <ProtectedItemDynamicMemoryConfig>]
  [-TargetVMRam <Int64>] [-NicToInclude <AzStackHCINicInput[]>] [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -161,6 +161,21 @@ Specifies the nics on the source server to be included for replication.
 Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCINicInput[]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

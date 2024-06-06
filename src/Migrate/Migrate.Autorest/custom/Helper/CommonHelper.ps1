@@ -177,3 +177,57 @@ function GenerateHashForArtifact {
         return $hashCode
     }
 }
+
+function InvokeAzMigrateGetCommandWithRetries {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory)]
+        [System.String]
+        # Specifies the name of Az.Migrate command.
+        ${CommandName},
+
+        [Parameter(Mandatory)]
+        [System.Collections.Hashtable]
+        # Specifies the parameters for Az.Migrate command.
+        ${Parameters},
+
+        [Parameter()]
+        [System.Int32]
+        # Specifies the maximum number of retries.
+        ${MaxRetryCount} = 3,
+
+        [Parameter()]
+        [System.Int32]
+        # Specifies the delay between retries in seconds.
+        ${RetryDelayInSeconds} = 30,
+
+        [Parameter()]
+        [System.String]
+        # Specifies the error message to throw if command fails.
+        ${ErrorMessage} = "Internal Az.Migrate commands failed to execute."
+    )
+
+    process {
+        for ($i = 0; $i -le $MaxRetryCount; $i++) {
+            try {
+                $result = & $CommandName @Parameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
+
+                if ($null -eq $result) {
+                    throw $ErrorMessage
+                }
+
+                break
+            }
+            catch {
+                if ($i -lt $MaxRetryCount) {
+                    Start-Sleep -Seconds $RetryDelayInSeconds
+                }
+                else {
+                    throw $ErrorMessage
+                }
+            }
+        }
+
+        return $result
+    }
+}
