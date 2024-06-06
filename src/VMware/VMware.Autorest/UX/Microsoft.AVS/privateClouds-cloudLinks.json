@@ -1,13 +1,13 @@
 {
   "resourceType": "privateClouds/cloudLinks",
-  "apiVersion": "2023-03-01",
+  "apiVersion": "2023-09-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.vmware"
   },
   "commands": [
     {
       "name": "Get-AzVMwareCloudLink",
-      "description": "Get an cloud link by name in a private cloud",
+      "description": "Get a CloudLink",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/cloudLinks/{cloudLinkName}",
       "help": {
         "learnMore": {
@@ -26,7 +26,7 @@
       },
       "examples": [
         {
-          "description": "Get an cloud link by name in a private cloud",
+          "description": "Get a CloudLink",
           "parameters": [
             {
               "name": "-Name",
@@ -50,7 +50,7 @@
     },
     {
       "name": "Remove-AzVMwareCloudLink",
-      "description": "Delete a cloud link in a private cloud",
+      "description": "Delete a CloudLink",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/cloudLinks/{cloudLinkName}",
       "help": {
         "learnMore": {
@@ -69,7 +69,7 @@
       },
       "examples": [
         {
-          "description": "Delete a cloud link in a private cloud",
+          "description": "Delete a CloudLink",
           "parameters": [
             {
               "name": "-Name",

@@ -76,13 +76,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ClusterPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Sku"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.SkuTypeConverter.ConvertFrom);
             }
-            if (content.Contains("Property"))
+            if (content.Contains("SystemDataCreatedBy"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ClusterPropertiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.SystemDataTypeConverter.ConvertFrom);
             }
             if (content.Contains("Id"))
             {
@@ -100,6 +128,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).SkuName, global::System.Convert.ToString);
             }
+            if (content.Contains("SkuTier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).SkuTier = (string) content.GetValueForProperty("SkuTier",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).SkuTier, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).SkuSize = (string) content.GetValueForProperty("SkuSize",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).SkuSize, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuFamily"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).SkuFamily = (string) content.GetValueForProperty("SkuFamily",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).SkuFamily, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuCapacity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             if (content.Contains("Size"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).Size = (int?) content.GetValueForProperty("Size",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).Size, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
@@ -115,6 +159,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("Host"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).Host = (System.Collections.Generic.List<string>) content.GetValueForProperty("Host",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).Host, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("VsanDatastoreName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).VsanDatastoreName = (string) content.GetValueForProperty("VsanDatastoreName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).VsanDatastoreName, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -133,13 +181,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ClusterPropertiesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Sku"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.SkuTypeConverter.ConvertFrom);
             }
-            if (content.Contains("Property"))
+            if (content.Contains("SystemDataCreatedBy"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ClusterPropertiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.SystemDataTypeConverter.ConvertFrom);
             }
             if (content.Contains("Id"))
             {
@@ -157,6 +233,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).SkuName, global::System.Convert.ToString);
             }
+            if (content.Contains("SkuTier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).SkuTier = (string) content.GetValueForProperty("SkuTier",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).SkuTier, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).SkuSize = (string) content.GetValueForProperty("SkuSize",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).SkuSize, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuFamily"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).SkuFamily = (string) content.GetValueForProperty("SkuFamily",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).SkuFamily, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuCapacity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             if (content.Contains("Size"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).Size = (int?) content.GetValueForProperty("Size",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).Size, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
@@ -172,6 +264,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("Host"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).Host = (System.Collections.Generic.List<string>) content.GetValueForProperty("Host",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).Host, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("VsanDatastoreName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).VsanDatastoreName = (string) content.GetValueForProperty("VsanDatastoreName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterInternal)this).VsanDatastoreName, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

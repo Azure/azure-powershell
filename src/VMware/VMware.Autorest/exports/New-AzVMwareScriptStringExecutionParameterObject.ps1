@@ -16,16 +16,16 @@
 
 <#
 .Synopsis
-Create a in-memory object for ScriptStringExecutionParameter
+Create an in-memory object for ScriptStringExecutionParameter.
 .Description
-Create a in-memory object for ScriptStringExecutionParameter
+Create an in-memory object for ScriptStringExecutionParameter.
 .Example
 New-AzVMwareScriptStringExecutionParameterObject -Name azps_test_value -Value "passwordValue"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ScriptStringExecutionParameter
 .Link
-https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareScriptStringExecutionParameterObject
+https://learn.microsoft.com/powershell/module/Az.VMware/new-azvmwarescriptstringexecutionparameterobject
 #>
 function New-AzVMwareScriptStringExecutionParameterObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ScriptStringExecutionParameter])]

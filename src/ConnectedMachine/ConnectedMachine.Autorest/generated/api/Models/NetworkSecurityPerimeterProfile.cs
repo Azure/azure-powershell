@@ -21,18 +21,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAccessRule> AccessRule { get => this._accessRule; }
 
         /// <summary>Backing field for <see cref="AccessRulesVersion" /> property.</summary>
-        private string _accessRulesVersion;
+        private int? _accessRulesVersion;
 
         /// <summary>Access rules version number</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
-        public string AccessRulesVersion { get => this._accessRulesVersion; }
+        public int? AccessRulesVersion { get => this._accessRulesVersion; }
 
         /// <summary>Backing field for <see cref="DiagnosticSettingsVersion" /> property.</summary>
-        private string _diagnosticSettingsVersion;
+        private int? _diagnosticSettingsVersion;
 
         /// <summary>Diagnostic settings version number</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
-        public string DiagnosticSettingsVersion { get => this._diagnosticSettingsVersion; }
+        public int? DiagnosticSettingsVersion { get => this._diagnosticSettingsVersion; }
 
         /// <summary>Backing field for <see cref="EnabledLogCategory" /> property.</summary>
         private System.Collections.Generic.List<string> _enabledLogCategory;
@@ -45,10 +45,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAccessRule> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterProfileInternal.AccessRule { get => this._accessRule; set { {_accessRule = value;} } }
 
         /// <summary>Internal Acessors for AccessRulesVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterProfileInternal.AccessRulesVersion { get => this._accessRulesVersion; set { {_accessRulesVersion = value;} } }
+        int? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterProfileInternal.AccessRulesVersion { get => this._accessRulesVersion; set { {_accessRulesVersion = value;} } }
 
         /// <summary>Internal Acessors for DiagnosticSettingsVersion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterProfileInternal.DiagnosticSettingsVersion { get => this._diagnosticSettingsVersion; set { {_diagnosticSettingsVersion = value;} } }
+        int? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterProfileInternal.DiagnosticSettingsVersion { get => this._diagnosticSettingsVersion; set { {_diagnosticSettingsVersion = value;} } }
 
         /// <summary>Internal Acessors for EnabledLogCategory</summary>
         System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterProfileInternal.EnabledLogCategory { get => this._enabledLogCategory; set { {_enabledLogCategory = value;} } }
@@ -93,8 +93,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Update = false,
         Description = @"Access rules version number",
         SerializedName = @"accessRulesVersion",
-        PossibleTypes = new [] { typeof(string) })]
-        string AccessRulesVersion { get;  }
+        PossibleTypes = new [] { typeof(int) })]
+        int? AccessRulesVersion { get;  }
         /// <summary>Diagnostic settings version number</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -104,8 +104,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Update = false,
         Description = @"Diagnostic settings version number",
         SerializedName = @"diagnosticSettingsVersion",
-        PossibleTypes = new [] { typeof(string) })]
-        string DiagnosticSettingsVersion { get;  }
+        PossibleTypes = new [] { typeof(int) })]
+        int? DiagnosticSettingsVersion { get;  }
         /// <summary>Collection of enabled log categories for the profile</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -137,9 +137,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>Collection of access rules for the profile</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAccessRule> AccessRule { get; set; }
         /// <summary>Access rules version number</summary>
-        string AccessRulesVersion { get; set; }
+        int? AccessRulesVersion { get; set; }
         /// <summary>Diagnostic settings version number</summary>
-        string DiagnosticSettingsVersion { get; set; }
+        int? DiagnosticSettingsVersion { get; set; }
         /// <summary>Collection of enabled log categories for the profile</summary>
         System.Collections.Generic.List<string> EnabledLogCategory { get; set; }
         /// <summary>Name of the resource</summary>

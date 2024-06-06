@@ -78,9 +78,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
                 return;
             }
             {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
-            {_accessRulesVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("accessRulesVersion"), out var __jsonAccessRulesVersion) ? (string)__jsonAccessRulesVersion : (string)_accessRulesVersion;}
+            {_accessRulesVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNumber>("accessRulesVersion"), out var __jsonAccessRulesVersion) ? (int?)__jsonAccessRulesVersion : _accessRulesVersion;}
             {_accessRule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonArray>("accessRules"), out var __jsonAccessRules) ? If( __jsonAccessRules as Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAccessRule>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAccessRule) (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.AccessRule.FromJson(__u) )) ))() : null : _accessRule;}
-            {_diagnosticSettingsVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("diagnosticSettingsVersion"), out var __jsonDiagnosticSettingsVersion) ? (string)__jsonDiagnosticSettingsVersion : (string)_diagnosticSettingsVersion;}
+            {_diagnosticSettingsVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNumber>("diagnosticSettingsVersion"), out var __jsonDiagnosticSettingsVersion) ? (int?)__jsonDiagnosticSettingsVersion : _diagnosticSettingsVersion;}
             {_enabledLogCategory = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonArray>("enabledLogCategories"), out var __jsonEnabledLogCategories) ? If( __jsonEnabledLogCategories as Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(string) (__p is Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString __o ? (string)(__o.ToString()) : null)) ))() : null : _enabledLogCategory;}
             AfterFromJson(json);
         }
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeRead))
             {
-                AddIf( null != (((object)this._accessRulesVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString(this._accessRulesVersion.ToString()) : null, "accessRulesVersion" ,container.Add );
+                AddIf( null != this._accessRulesVersion ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNumber((int)this._accessRulesVersion) : null, "accessRulesVersion" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeRead))
             {
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeRead))
             {
-                AddIf( null != (((object)this._diagnosticSettingsVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString(this._diagnosticSettingsVersion.ToString()) : null, "diagnosticSettingsVersion" ,container.Add );
+                AddIf( null != this._diagnosticSettingsVersion ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNumber((int)this._diagnosticSettingsVersion) : null, "diagnosticSettingsVersion" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeRead))
             {
