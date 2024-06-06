@@ -16,20 +16,20 @@ Get a session host.
 ```
 Get-AzWvdSessionHost -HostPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzWvdSessionHost -HostPoolName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzWvdSessionHost -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +37,7 @@ Get a session host.
 
 ## EXAMPLES
 
-### Example 1: Get a Windows Virtual Desktop SessionHost by name
+### Example 1: Get a Azure Virtual Desktop SessionHost by name
 ```powershell
 Get-AzWvdSessionHost -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -Name SessionHostName
 ```
@@ -48,9 +48,9 @@ Name                                               Type
 HostPoolName/SessionHostName Microsoft.DesktopVirtualization/hostpools/sessionhosts
 ```
 
-This command gets a Windows Virtual Desktop SessionHost in a Host Pool.
+This command gets a Azure Virtual Desktop SessionHost in a Host Pool.
 
-### Example 2: List Windows Virtual Desktop SessionHosts
+### Example 2: List Azure Virtual Desktop SessionHosts
 ```powershell
 Get-AzWvdSessionHost -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
 ```
@@ -62,7 +62,7 @@ HostPoolName/SessionHostName1 Microsoft.DesktopVirtualization/hostpools/sessionh
 HostPoolName/SessionHostName2 Microsoft.DesktopVirtualization/hostpools/sessionhosts
 ```
 
-This command lists a Windows Virtual Desktop SessionHosts in a Host Pool.
+This command lists a Azure Virtual Desktop SessionHosts in a Host Pool.
 
 ## PARAMETERS
 
@@ -173,6 +173,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -213,7 +228,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ISessionHost
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.ISessionHost
 
 ## NOTES
 

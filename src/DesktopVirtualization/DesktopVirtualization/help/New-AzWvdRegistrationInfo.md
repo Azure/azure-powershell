@@ -8,18 +8,18 @@ schema: 2.0.0
 # New-AzWvdRegistrationInfo
 
 ## SYNOPSIS
-Create Windows virtual desktop registration info.
+Create Azure Virtual Desktop registration info.
 
 ## SYNTAX
 
 ```
 New-AzWvdRegistrationInfo -ResourceGroupName <String> -HostPoolName <String> -ExpirationTime <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create Windows virtual desktop registration info.
+Create Azure Virtual Desktop registration info.
 
 ## EXAMPLES
 
@@ -77,6 +77,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -151,7 +166,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IRegistrationInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IRegistrationInfo
 
 ## NOTES
 

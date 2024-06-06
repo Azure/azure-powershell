@@ -19,7 +19,7 @@ New-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <Stri
  [-FriendlyName <String>] [-ShowInPortal] [-ApplicationType <RemoteApplicationType>]
  [-CommandLineArgument <String>] [-FilePath <String>] [-IconIndex <Int32>] [-IconPath <String>]
  [-MsixPackageApplicationId <String>] [-MsixPackageFamilyName <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AppAlias
@@ -27,7 +27,7 @@ New-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <Stri
 New-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <String>
  -CommandLineSetting <CommandLineSetting> [-SubscriptionId <String>] [-Description <String>]
  [-FriendlyName <String>] [-ShowInPortal] -AppAlias <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +35,7 @@ Create or update an application.
 
 ## EXAMPLES
 
-### Example 1: Create a Windows Virtual Desktop Application
+### Example 1: Create a Azure Virtual Desktop Application
 ```powershell
 New-AzWvdApplication -ResourceGroupName ResourceGroupName `
                              -GroupName ApplicationGroupName `
@@ -55,7 +55,7 @@ Name                                 Type
 ApplicationGroupName/ApplicationName Microsoft.DesktopVirtualization/applicationgroups/applications
 ```
 
-This command creates a Windows Virtual Desktop Application in an application Group.
+This command creates a Azure Virtual Desktop Application in an application Group.
 
 ## PARAMETERS
 
@@ -270,6 +270,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -354,7 +369,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplication
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IApplication
 
 ## NOTES
 

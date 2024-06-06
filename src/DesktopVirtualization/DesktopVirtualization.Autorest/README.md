@@ -44,13 +44,13 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 50175f111e9c899249e79eb082a75fb8a7aba0e2
+commit: 630537dfcdf4582cdc77721c7472e845f309411e
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 sanitize-names: true
 subject-prefix: 'Wvd'
 input-file:
-- $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/stable/2023-09-05/desktopvirtualization.json
+- $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/preview/2024-01-16-preview/desktopvirtualization.json
 
 module-version: 2.1.0
 title: DesktopVirtualizationClient
@@ -100,4 +100,43 @@ directive:
       parameter-name: Force
     set:
       parameter-description: 'Specify to force userSession deletion.'
+  - where:
+      parameter-name: ProgressSessionHostsInProgress
+    set:
+      parameter-name: SessionHostsInProgress
+  - where:
+      verb: Get
+      subject: AppAttachPackage
+    set:
+      preview-announcement:
+        preview-message: This cmdlet is currently in preview, behavior is subject to change.
+        estimated-ga-date: 2024-04-01
+  - where:
+      verb: Import
+      subject: AppAttachPackageInfo
+    set:
+      preview-announcement:
+        preview-message: This cmdlet is currently in preview, behavior is subject to change.
+        estimated-ga-date: 2024-04-01
+  - where:
+      verb: New
+      subject: AppAttachPackage
+    set:
+      preview-announcement:
+        preview-message: This cmdlet is currently in preview, behavior is subject to change.
+        estimated-ga-date: 2024-04-01
+  - where:
+      verb: Remove
+      subject: AppAttachPackage
+    set:
+      preview-announcement:
+        preview-message: This cmdlet is currently in preview, behavior is subject to change.
+        estimated-ga-date: 2024-04-01
+  - where:
+      verb: Update
+      subject: AppAttachPackage
+    set:
+      preview-announcement:
+        preview-message: This cmdlet is currently in preview, behavior is subject to change.
+        estimated-ga-date: 2024-04-01
 ```
