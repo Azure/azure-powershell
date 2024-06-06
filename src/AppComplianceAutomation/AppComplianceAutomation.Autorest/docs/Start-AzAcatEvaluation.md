@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.AppComplianceAutomation
-online version: https://learn.microsoft.com/powershell/module/az.appComplianceAutomation/start-azacatquickevaluation
+online version: https://learn.microsoft.com/powershell/module/az.appComplianceAutomation/start-azacatevaluation
 schema: 2.0.0
 ---
 
-# Start-AzAcatQuickEvaluation
+# Start-AzAcatEvaluation
 
 ## SYNOPSIS
 Trigger evaluation for given resourceIds to get quick compliance result.
@@ -13,7 +13,7 @@ Trigger evaluation for given resourceIds to get quick compliance result.
 ## SYNTAX
 
 ```
-Start-AzAcatQuickEvaluation -Resources <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+Start-AzAcatEvaluation -Resources <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Trigger evaluation for given resourceIds to get quick compliance result.
 
 ### Example 1: Get resources' quick compliance results.
 ```powershell
-Start-AzAcatQuickEvaluation -Resources @("/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/testrg/providers/Microsoft.Compute/virtualMachines/testvm")
+Start-AzAcatEvaluation -Resources @("/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/testrg/providers/Microsoft.Compute/virtualMachines/testvm")
 ```
 
 ```output

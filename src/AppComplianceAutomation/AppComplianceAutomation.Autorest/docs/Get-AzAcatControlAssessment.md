@@ -22,27 +22,70 @@ Get the AppComplianceAutomation report's control assessments.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get control assessment of a report
 ```powershell
-{{ Add code here }}
+$assessments = Get-AzAcatControlAssessment -ReportName "test-report"
+$assessments.ControlFamily
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                    Status
+----                    ------
+Operational Security    Failed
+Data Security & Privacy Failed
+
+Name                                          Status
+----                                          ------
+Malware Protection - Anti-Virus               Failed
+Malware Protection - Application Control      NotApplicable
+Patch Management - Risk Ranking               NotApplicable
+Patch Management - Patching                   NotApplicable
+Vulnerability Scanning                        NotApplicable
+Firewall - Firewalls                          Failed
+Firewall - WAFs (OPTIONAL)                    Failed
+Change Control                                NotApplicable
+Secure Software Development/Deployment        NotApplicable
+Account Management                            Failed
+Intrusion Detection and Prevention (OPTIONAL) Failed
+Security Event Logging                        Failed
+Reviewing (Logging Data)                      NotApplicable
+Security Event Alerting                       Failed
+Information Security Risk Management          NotApplicable
+Incident Response                             NotApplicable
+Data in Transit                               Failed
+Data At Rest                                  Passed
+Data Retention and Disposal                   NotApplicable
+Data Access Management                        NotApplicable
+GDPR                                          NotApplicable
 ```
 
-{{ Add description here }}
+Get control assessments of a report
 
-### Example 2: {{ Add title here }}
+### Example 2: Get failed control assessment of a report
 ```powershell
-{{ Add code here }}
+$assessments = Get-AzAcatControlAssessment -ReportName "test-report" -ComplianceStatus "Failed"
+$assessments.ControlFamily
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                    Status
+----                    ------
+Operational Security    Failed
+Data Security & Privacy Failed
+
+Name                                          Status
+----                                          ------
+Malware Protection - Anti-Virus               Failed
+Firewall - Firewalls                          Failed
+Firewall - WAFs (OPTIONAL)                    Failed
+Account Management                            Failed
+Intrusion Detection and Prevention (OPTIONAL) Failed
+Security Event Logging                        Failed
+Security Event Alerting                       Failed
+Data in Transit                               Failed
 ```
 
-{{ Add description here }}
+Get failed control assessments of a report
 
 ## PARAMETERS
 
