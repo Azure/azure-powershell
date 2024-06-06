@@ -16,14 +16,14 @@ Update an applicationGroup.
 ```
 Update-AzWvdApplicationGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Description <String>] [-FriendlyName <String>] [-ShowInFeed] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzWvdApplicationGroup -InputObject <IDesktopVirtualizationIdentity> [-Description <String>]
  [-FriendlyName <String>] [-ShowInFeed] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +31,7 @@ Update an applicationGroup.
 
 ## EXAMPLES
 
-### Example 1: Create a Windows Virtual Desktop ApplicationGroup by name
+### Example 1: Create a Azure Virtual Desktop ApplicationGroup by name
 ```powershell
 New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                           -Name ApplicationGroupName `
@@ -46,7 +46,7 @@ Location   Name                 Type
 eastus     ApplicationGroupName Microsoft.DesktopVirtualization/applicationgroups
 ```
 
-This command creates a Windows Virtual Desktop ApplicationGroup in a Resource Group.
+This command creates a Azure Virtual Desktop ApplicationGroup in a Resource Group.
 
 ## PARAMETERS
 
@@ -121,6 +121,21 @@ Parameter Sets: UpdateExpanded
 Aliases: ApplicationGroupName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -228,7 +243,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplicationGroup
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IApplicationGroup
 
 ## NOTES
 

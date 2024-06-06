@@ -15,26 +15,26 @@ Get an application group.
 ### List1 (Default)
 ```
 Get-AzWvdApplicationGroup [-SubscriptionId <String[]>] [-Filter <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzWvdApplicationGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzWvdApplicationGroup -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Filter <String>]
  [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzWvdApplicationGroup -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +42,7 @@ Get an application group.
 
 ## EXAMPLES
 
-### Example 1: Get a Windows Virtual Desktop ApplicationGroup by name
+### Example 1: Get a Azure Virtual Desktop ApplicationGroup by name
 ```powershell
 Get-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName -Name ApplicationGroupName
 ```
@@ -53,9 +53,9 @@ Location   Name                 Type
 eastus     ApplicationGroupName Microsoft.DesktopVirtualization/applicationgroups
 ```
 
-This command gets a Windows Virtual Desktop ApplicationGroup in a Resource Group.
+This command gets a Azure Virtual Desktop ApplicationGroup in a Resource Group.
 
-### Example 2: List Windows Virtual Desktop ApplicationGroups
+### Example 2: List Azure Virtual Desktop ApplicationGroups
 ```powershell
 Get-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName
 ```
@@ -67,7 +67,7 @@ eastus     ApplicationGroupName1 Microsoft.DesktopVirtualization/applicationgrou
 eastus     ApplicationGroupName2 Microsoft.DesktopVirtualization/applicationgroups
 ```
 
-This command lists a Windows Virtual Desktop ApplicationGroups in a Resource Group.
+This command lists a Azure Virtual Desktop ApplicationGroups in a Resource Group.
 
 ## PARAMETERS
 
@@ -179,6 +179,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -219,7 +234,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplicationGroup
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IApplicationGroup
 
 ## NOTES
 
