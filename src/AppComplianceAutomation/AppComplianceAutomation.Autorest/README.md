@@ -37,7 +37,7 @@ try-require:
 input-file:
   - $(repo)/specification/appcomplianceautomation/resource-manager/Microsoft.AppComplianceAutomation/stable/2024-06-27/appcomplianceautomation.json
 
-module-version: 0.1.0-preview
+module-version: 0.1.0
 title: AppComplianceAutomation
 
 directive:
