@@ -211,7 +211,7 @@ Accept wildcard characters: False
 ```
 
 ### -QuotaGiB
-Share Quota in Gibibyte.
+Share Quota in Gibibyte. To set this value to more than 5 TiB capacity, firstly you need to enable support for large file shares on the storage account. 
 
 ```yaml
 Type: System.Int32
