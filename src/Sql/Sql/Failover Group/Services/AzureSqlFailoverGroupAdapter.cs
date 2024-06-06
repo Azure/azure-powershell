@@ -235,6 +235,8 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             var resp = Communicator.PatchUpdateV2(resourceGroupName, serverName, failoverGroupName, new FailoverGroupUpdate()
             {
                 Databases = model.Databases,
+                SecondaryType = model.SecondaryType, 
+                PartnerServers = ConvertPartnerServerList(model.PartnerServers.ToList())
             });
 
             return CreateCurrentFailoverGroupModelFromResponse(resp);
