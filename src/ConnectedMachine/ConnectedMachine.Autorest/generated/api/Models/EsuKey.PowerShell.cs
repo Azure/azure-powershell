@@ -108,7 +108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             }
             if (content.Contains("LicenseStatus"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IEsuKeyInternal)this).LicenseStatus = (string) content.GetValueForProperty("LicenseStatus",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IEsuKeyInternal)this).LicenseStatus, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IEsuKeyInternal)this).LicenseStatus = (int?) content.GetValueForProperty("LicenseStatus",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IEsuKeyInternal)this).LicenseStatus, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             }
             if (content.Contains("LicenseStatus"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IEsuKeyInternal)this).LicenseStatus = (string) content.GetValueForProperty("LicenseStatus",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IEsuKeyInternal)this).LicenseStatus, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IEsuKeyInternal)this).LicenseStatus = (int?) content.GetValueForProperty("LicenseStatus",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IEsuKeyInternal)this).LicenseStatus, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializePSObject(content);
         }

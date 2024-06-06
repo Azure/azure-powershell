@@ -12,6 +12,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal
     {
 
+        /// <summary>Backing field for <see cref="BaseProvider" /> property.</summary>
+        private string _baseProvider;
+
+        /// <summary>The name of the base Resource Provider.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        public string BaseProvider { get => this._baseProvider; set => this._baseProvider = value; }
+
+        /// <summary>Backing field for <see cref="BaseResourceName" /> property.</summary>
+        private string _baseResourceName;
+
+        /// <summary>The name of the base resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        public string BaseResourceName { get => this._baseResourceName; set => this._baseResourceName = value; }
+
+        /// <summary>Backing field for <see cref="BaseResourceType" /> property.</summary>
+        private string _baseResourceType;
+
+        /// <summary>The name of the base Resource Type.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        public string BaseResourceType { get => this._baseResourceType; set => this._baseResourceType = value; }
+
         /// <summary>Backing field for <see cref="ExtensionName" /> property.</summary>
         private string _extensionName;
 
@@ -25,6 +46,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>The extensionType of the Extension being received.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public string ExtensionType { get => this._extensionType; set => this._extensionType = value; }
+
+        /// <summary>Backing field for <see cref="GatewayName" /> property.</summary>
+        private string _gatewayName;
+
+        /// <summary>The name of the Gateway.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        public string GatewayName { get => this._gatewayName; set => this._gatewayName = value; }
 
         /// <summary>Backing field for <see cref="GroupName" /> property.</summary>
         private string _groupName;
@@ -149,6 +177,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public string ScopeName { get => this._scopeName; set => this._scopeName = value; }
 
+        /// <summary>Backing field for <see cref="SettingsResourceName" /> property.</summary>
+        private string _settingsResourceName;
+
+        /// <summary>The name of the settings resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        public string SettingsResourceName { get => this._settingsResourceName; set => this._settingsResourceName = value; }
+
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
@@ -172,6 +207,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
     public partial interface IConnectedMachineIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IJsonSerializable
     {
+        /// <summary>The name of the base Resource Provider.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the base Resource Provider.",
+        SerializedName = @"baseProvider",
+        PossibleTypes = new [] { typeof(string) })]
+        string BaseProvider { get; set; }
+        /// <summary>The name of the base resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the base resource.",
+        SerializedName = @"baseResourceName",
+        PossibleTypes = new [] { typeof(string) })]
+        string BaseResourceName { get; set; }
+        /// <summary>The name of the base Resource Type.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the base Resource Type.",
+        SerializedName = @"baseResourceType",
+        PossibleTypes = new [] { typeof(string) })]
+        string BaseResourceType { get; set; }
         /// <summary>The name of the machine extension.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -194,6 +262,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"extensionType",
         PossibleTypes = new [] { typeof(string) })]
         string ExtensionType { get; set; }
+        /// <summary>The name of the Gateway.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the Gateway.",
+        SerializedName = @"gatewayName",
+        PossibleTypes = new [] { typeof(string) })]
+        string GatewayName { get; set; }
         /// <summary>The name of the private link resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -386,6 +465,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"scopeName",
         PossibleTypes = new [] { typeof(string) })]
         string ScopeName { get; set; }
+        /// <summary>The name of the settings resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the settings resource.",
+        SerializedName = @"settingsResourceName",
+        PossibleTypes = new [] { typeof(string) })]
+        string SettingsResourceName { get; set; }
         /// <summary>The ID of the target subscription.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -413,10 +503,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
     internal partial interface IConnectedMachineIdentityInternal
 
     {
+        /// <summary>The name of the base Resource Provider.</summary>
+        string BaseProvider { get; set; }
+        /// <summary>The name of the base resource.</summary>
+        string BaseResourceName { get; set; }
+        /// <summary>The name of the base Resource Type.</summary>
+        string BaseResourceType { get; set; }
         /// <summary>The name of the machine extension.</summary>
         string ExtensionName { get; set; }
         /// <summary>The extensionType of the Extension being received.</summary>
         string ExtensionType { get; set; }
+        /// <summary>The name of the Gateway.</summary>
+        string GatewayName { get; set; }
         /// <summary>The name of the private link resource.</summary>
         string GroupName { get; set; }
         /// <summary>Resource identity path</summary>
@@ -456,6 +554,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string RunCommandName { get; set; }
         /// <summary>The name of the Azure Arc PrivateLinkScope resource.</summary>
         string ScopeName { get; set; }
+        /// <summary>The name of the settings resource.</summary>
+        string SettingsResourceName { get; set; }
         /// <summary>The ID of the target subscription.</summary>
         string SubscriptionId { get; set; }
         /// <summary>The version of the Extension being received.</summary>
