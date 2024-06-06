@@ -6,44 +6,6 @@
   },
   "commands": [
     {
-      "name": "Invoke-AzWvdControlSessionHostUpdate",
-      "description": "Control update of a hostpool.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostManagements/default/controlSessionHostUpdate",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/invoke-azwvdcontrolsessionhostupdate"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-HostPoolName <String>",
-              "-ResourceGroupName <String>",
-              "[-SubscriptionId <String>]"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Control update of a hostpool.",
-          "parameters": [
-            {
-              "name": "-HostPoolName",
-              "value": "[Path.hostPoolName]"
-            },
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Invoke-AzWvdInitiateSessionHostUpdate",
       "description": "Initiates a hostpool update or schedule an update for the future.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostManagements/default/initiateSessionHostUpdate",
