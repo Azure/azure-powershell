@@ -1,45 +1,81 @@
 ---
 external help file: Az.SqlVirtualMachine-help.xml
 Module Name: Az.SqlVirtualMachine
-online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/invoke-azredeploysqlvm
+online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/Assert-AzSqlVMEntraAuth
 schema: 2.0.0
 ---
 
-# Invoke-AzRedeploySqlVM
+# Assert-AzSqlVMEntraAuth
 
 ## SYNOPSIS
-Uninstalls and reinstalls the SQL IaaS Extension.
+Validates a SQL virtual machine Entra Authentication.
 
 ## SYNTAX
 
-### Redeploy (Default)
+### AssertExpanded (Default)
 ```
-Invoke-AzRedeploySqlVM -ResourceGroupName <String> -SqlVirtualMachineName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Assert-AzSqlVMEntraAuth -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -IdentityType <String> [-ManagedIdentityClientId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RedeployViaIdentity
+### AssertViaIdentity
 ```
-Invoke-AzRedeploySqlVM -InputObject <ISqlVirtualMachineIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Assert-AzSqlVMEntraAuth -InputObject <ISqlVirtualMachineIdentity> -IdentityType <String>
+ [-ManagedIdentityClientId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Uninstalls and reinstalls the SQL IaaS Extension.
+Validates a SQL virtual machine Entra Authentication.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1:
 ```powershell
-Invoke-AzRedeploySqlVM -ResourceGroupName 'ResourceGroup01' -SqlVirtualMachineName 'sqlvm1'
+Assert-AzSqlVMEntraAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -IdentityType 'SystemAssigned'
 ```
 
-### Example 2
-```powershell
-$sqlvm = Get-AzSqlVM -ResourceGroupName 'ResourceGroup01' -GroupName 'sqlvmgroup01'
-$sqlvm | Invoke-AzRedeploySqlVM
+```output
+Sql virtual machine veppala-sqlvm1 is valid for Azure AD authentication.
 ```
+
+Validates system assigned managed identity for enabling Entra authentication on Sql VM
+
+### Example 2:
+```powershell
+Assert-AzSqlVMEntraAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -IdentityType 'UserAssigned' -ManagedIdentityClientId '11111111-2222-3333-4444-555555555555'
+```
+
+```output
+Sql virtual machine veppala-sqlvm1 is valid for Azure AD authentication.
+```
+
+validates user assigned managed identity for enabling Entra authentication on Sql VM
+
+### Example 3:
+```powershell
+$sqlVM = Get-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1'
+$sqlVM | Assert-AzSqlVMEntraAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -IdentityType 'SystemAssigned'
+```
+
+```output
+Sql virtual machine veppala-sqlvm1 is valid for Azure AD authentication.
+```
+
+Validates system assigned managed identity for enabling Entra authentication on Sql VM
+
+### Example 4:
+```powershell
+$sqlVM = Get-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1'
+$sqlVM | Assert-AzSqlVMEntraAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -IdentityType 'UserAssigned' -ManagedIdentityClientId '11111111-2222-3333-4444-555555555555'
+```
+
+```output
+Sql virtual machine veppala-sqlvm1 is valid for Azure AD authentication.
+```
+
+validates user assigned managed identity for enabling Entra authentication on Sql VM
 
 ## PARAMETERS
 
@@ -59,8 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -74,13 +109,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IdentityType
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
-Parameter Sets: RedeployViaIdentity
+Parameter Sets: AssertViaIdentity
 Aliases:
 
 Required: True
@@ -90,11 +140,11 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
+### -ManagedIdentityClientId
+The client Id of the Managed Identity to query Microsoft Graph API.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -105,8 +155,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -Name
+Name of the SQL virtual machine.
+
+```yaml
+Type: System.String
+Parameter Sets: AssertExpanded
+Aliases: SqlVirtualMachineName, SqlVMName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -141,22 +206,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Redeploy
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SqlVirtualMachineName
-Name of the SQL virtual machine.
-
-```yaml
-Type: System.String
-Parameter Sets: Redeploy
+Parameter Sets: AssertExpanded
 Aliases:
 
 Required: True
@@ -171,7 +221,7 @@ Subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Redeploy
+Parameter Sets: AssertExpanded
 Aliases:
 
 Required: False
