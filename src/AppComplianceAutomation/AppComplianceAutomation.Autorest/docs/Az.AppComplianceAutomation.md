@@ -11,7 +11,7 @@ Locale: en-US
 Microsoft Azure PowerShell: AppComplianceAutomation cmdlets
 
 ## Az.AppComplianceAutomation Cmdlets
-### [Get-AzAcatControlAssessments](Get-AzAcatControlAssessments.md)
+### [Get-AzAcatControlAssessment](Get-AzAcatControlAssessment.md)
 Get the AppComplianceAutomation report's control assessments.
 
 ### [Get-AzAcatReport](Get-AzAcatReport.md)

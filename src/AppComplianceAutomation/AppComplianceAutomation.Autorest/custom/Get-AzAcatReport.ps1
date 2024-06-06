@@ -25,7 +25,7 @@ https://learn.microsoft.com/powershell/module/az.appComplianceAutomation/get-aza
 #>
 function Get-AzAcatReport {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResource])]
-    [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
+    [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'Get', Mandatory)]
         [Alias('ReportName')]

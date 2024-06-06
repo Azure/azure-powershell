@@ -19,11 +19,11 @@ Get the AppComplianceAutomation report's control assessments.
 Get the AppComplianceAutomation report's control assessments.
 
 .Link
-https://learn.microsoft.com/powershell/module/az.appComplianceAutomation/get-azacatcontrolassessments
+https://learn.microsoft.com/powershell/module/az.appComplianceAutomation/get-azacatcontrolassessment
 #>
-function Get-AzAcatControlAssessments {
+function Get-AzAcatControlAssessment {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ICategory[]])]
-    [CmdletBinding(PositionalBinding = $false)]
+    [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(Mandatory)]
         [System.String]

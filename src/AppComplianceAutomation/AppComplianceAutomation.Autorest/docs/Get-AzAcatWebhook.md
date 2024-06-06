@@ -15,12 +15,13 @@ Get the AppComplianceAutomation webhook and its properties.
 ### List (Default)
 ```
 Get-AzAcatWebhook -ReportName <String> [-Select <String>] [-SkipToken <String>] [-Top <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzAcatWebhook -Name <String> -ReportName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzAcatWebhook -Name <String> -ReportName <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -173,6 +174,37 @@ Number of elements to return when retrieving results.
 Type: System.Int32
 Parameter Sets: List
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named

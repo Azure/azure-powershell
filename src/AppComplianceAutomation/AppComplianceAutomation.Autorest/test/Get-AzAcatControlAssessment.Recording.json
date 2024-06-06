@@ -1,5 +1,5 @@
 {
-  "Get-AzAcatControlAssessments+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/reports/powershell-test-report/snapshots?api-version=2024-06-27\u0026$skipToken=0\u0026$top=1+1": {
+  "Get-AzAcatControlAssessment+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/reports/powershell-test-report/snapshots?api-version=2024-06-27\u0026$skipToken=0\u0026$top=1+1": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/reports/powershell-test-report/snapshots?api-version=2024-06-27\u0026$skipToken=0\u0026$top=1",
