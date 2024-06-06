@@ -15,25 +15,28 @@ Update the Inbound Security Rule of a Network Virtual Appliance Resource
 ### ResourceNameParameterSet (Default)
 ```
 Update-AzVirtualApplianceInboundSecurityRule -ResourceGroupName <String> -VirtualApplianceName <String>
- -Name <String> -RuleType <String>
- -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundSecurityPropertyRules]>
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Name <String> [-RuleType <String>]
+ -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundSecurityRulesProperty]>
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceObjectParameterSet
 ```
 Update-AzVirtualApplianceInboundSecurityRule -VirtualAppliance <PSNetworkVirtualAppliance> -Name <String>
- -RuleType <String>
- -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundSecurityPropertyRules]>
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RuleType <String>]
+ -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundSecurityRulesProperty]>
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Update-AzVirtualApplianceInboundSecurityRule -VirtualApplianceResourceId <String> -Name <String>
- -RuleType <String>
- -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundSecurityPropertyRules]>
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RuleType <String>]
+ -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundSecurityRulesProperty]>
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,7 +57,6 @@ Update-AzVirtualApplianceInboundSecurityRule -ResourceGroupName InboundRuleRg -V
 ```
 
 The above command creates or updates the Inbound Security rule with the given Rule collection name: ruleCollection2 on the NVA: nva1 with rule type Auto Expire having rules as defined in the rules property. The Inbound Security Rule will created only an NSG rule.
-
 
 ## PARAMETERS
 
@@ -103,6 +105,21 @@ Accept pipeline input: False
 Accept wildcard characters: True
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
@@ -122,7 +139,7 @@ Accept wildcard characters: False
 Individual rule of the Inbound Security
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundSecurityPropertyRules]
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundSecurityRulesProperty]
 Parameter Sets: (All)
 Aliases:
 
@@ -141,7 +158,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

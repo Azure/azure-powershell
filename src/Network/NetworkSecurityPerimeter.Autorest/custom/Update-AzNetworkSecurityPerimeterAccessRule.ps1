@@ -172,6 +172,12 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
         # Phone Numbers
         ${PhoneNumber},
 
+        [Parameter(HelpMessage = "Service Tags")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
+        [System.String[]]
+        # Service Tags
+        ${ServiceTag},
+
         [Parameter(HelpMessage = "Direction")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
         [System.String]
@@ -196,7 +202,7 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
             # 1. GET
 
             # body params and AsJob
-            $bodyParams = 'Tag', 'Location', 'AddressPrefix', 'FullyQualifiedDomainName', 'Direction', 'Subscription', 'EmailAddress', 'PhoneNumber',  'AsJob'
+            $bodyParams = 'Tag', 'Location', 'AddressPrefix', 'FullyQualifiedDomainName', 'Direction', 'Subscription', 'EmailAddress', 'PhoneNumber', 'ServiceTag', 'AsJob'
 
             $bodyParamsMap = @{}
 

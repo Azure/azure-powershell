@@ -13,8 +13,9 @@ Define a Network Virtual Appliance Internet Ingress IPs Property for the resourc
 ## SYNTAX
 
 ```
-New-AzVirtualApplianceInternetIngressIpsProperty -InternetIngressPublicIpId <String> 
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzVirtualApplianceInternetIngressIpsProperty -InternetIngressPublicIpId <String[]>
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,11 +58,26 @@ Accept wildcard characters: False
 The IDs of the Public IPs which can be given as comma separated input.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -110,5 +126,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Network.Models.PSVirtualApplianceInternetIngressIpsProperties
 
 ## NOTES
+
+## RELATED LINKS
 
 ## RELATED LINKS

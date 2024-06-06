@@ -13,9 +13,10 @@ Define Inbound Security Rules Property
 ## SYNTAX
 
 ```
-New-AzVirtualApplianceInboundSecurityRulesProperty -Name <String> [-Protocol <String>]
+New-AzVirtualApplianceInboundSecurityRulesProperty -Name <String> -Protocol <String>
  -SourceAddressPrefix <String> [-DestinationPortRange <Int32>] [-DestinationPortRangeList <String[]>]
- -AppliesOn <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -AppliesOn <String[]> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -115,6 +116,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Protocol
 Rule protocol
 
@@ -122,9 +138,9 @@ Rule protocol
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Tcp, Udp, *
+Accepted values: Tcp, Udp
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

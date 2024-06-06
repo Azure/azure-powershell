@@ -15,19 +15,22 @@ Retrieves the effective routes of a virtual hub resource
 ### ByVirtualHubName (Default)
 ```
 Get-AzVHubEffectiveRoute -ResourceGroupName <String> -VirtualHubName <String> [-ResourceId <String>]
- [-VirtualWanResourceType <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-VirtualWanResourceType <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
 ```
 Get-AzVHubEffectiveRoute -VirtualHubObject <PSVirtualHub> [-ResourceId <String>]
- [-VirtualWanResourceType <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-VirtualWanResourceType <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceId
 ```
 Get-AzVHubEffectiveRoute -VirtualHubResourceId <String> [-ResourceId <String>]
- [-VirtualWanResourceType <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-VirtualWanResourceType <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,6 +77,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

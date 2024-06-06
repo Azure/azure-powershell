@@ -85,6 +85,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
             {_networkSecurityPerimeter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.JsonArray>("networkSecurityPerimeters"), out var __jsonNetworkSecurityPerimeters) ? If( __jsonNetworkSecurityPerimeters as Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterBasedAccessRule>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__g, (__f)=>(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterBasedAccessRule) (Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.PerimeterBasedAccessRule.FromJson(__f) )) ))() : null : _networkSecurityPerimeter;}
             {_emailAddress = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.JsonArray>("emailAddresses"), out var __jsonEmailAddresses) ? If( __jsonEmailAddresses as Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.JsonArray, out var __b) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__b, (__a)=>(string) (__a is Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.JsonString ___z ? (string)(___z.ToString()) : null)) ))() : null : _emailAddress;}
             {_phoneNumber = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.JsonArray>("phoneNumbers"), out var __jsonPhoneNumbers) ? If( __jsonPhoneNumbers as Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.JsonArray, out var ___w) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(___w, (___v)=>(string) (___v is Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.JsonString ___u ? (string)(___u.ToString()) : null)) ))() : null : _phoneNumber;}
+            {_serviceTag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.JsonArray>("serviceTags"), out var __jsonServiceTags) ? If( __jsonServiceTags as Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.JsonArray, out var ___r) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(___r, (___q)=>(string) (___q is Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.JsonString ___p ? (string)(___p.ToString()) : null)) ))() : null : _serviceTag;}
             AfterFromJson(json);
         }
 
@@ -168,6 +169,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
                     AddIf(null != (((object)___y)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.JsonString(___y.ToString()) : null ,___x.Add);
                 }
                 container.Add("phoneNumbers",___x);
+            }
+            if (null != this._serviceTag)
+            {
+                var ___s = new Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.XNodeArray();
+                foreach( var ___t in this._serviceTag )
+                {
+                    AddIf(null != (((object)___t)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Json.JsonString(___t.ToString()) : null ,___s.Add);
+                }
+                container.Add("serviceTags",___s);
             }
             AfterToJson(ref container);
             return container;

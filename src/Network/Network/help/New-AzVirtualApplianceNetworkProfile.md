@@ -15,7 +15,8 @@ Define a Network Profile for virtual appliance.
 ```
 New-AzVirtualApplianceNetworkProfile
  -NetworkInterfaceConfiguration <PSVirtualApplianceNetworkInterfaceConfiguration[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,7 +45,7 @@ Creates a network profile object using two PSVirtualApplianceNetworkInterfaceCon
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -59,7 +60,7 @@ Accept wildcard characters: False
 The network interface configurations of the network profile.
 
 ```yaml
-Type: PSVirtualApplianceNetworkInterfaceConfiguration[]
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualApplianceNetworkInterfaceConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -70,11 +71,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -90,7 +106,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

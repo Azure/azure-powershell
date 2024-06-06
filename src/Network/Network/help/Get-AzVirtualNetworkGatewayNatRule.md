@@ -15,19 +15,19 @@ Gets a Virtual Network Gateway NatRule.
 ### ByVirtualNetworkGatewayName (Default)
 ```
 Get-AzVirtualNetworkGatewayNatRule -ResourceGroupName <String> -ParentResourceName <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByVirtualNetworkGatewayObject
 ```
 Get-AzVirtualNetworkGatewayNatRule -ParentObject <PSVirtualNetworkGateway> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByVirtualNetworkGatewayResourceId
 ```
 Get-AzVirtualNetworkGatewayNatRule -ParentResourceId <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -174,6 +174,21 @@ Parameter Sets: ByVirtualNetworkGatewayName
 Aliases: ParentVirtualNetworkGatewayName, VirtualNetworkGatewayName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

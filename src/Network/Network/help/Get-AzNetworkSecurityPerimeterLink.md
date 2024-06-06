@@ -16,26 +16,27 @@ Gets the specified NSP link resource.
 ```
 Get-AzNetworkSecurityPerimeterLink -ResourceGroupName <String> -SecurityPerimeterName <String>
  [-SubscriptionId <String[]>] [-SkipToken <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityNetworkSecurityPerimeter
 ```
 Get-AzNetworkSecurityPerimeterLink -Name <String>
  -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzNetworkSecurityPerimeterLink -Name <String> -ResourceGroupName <String> -SecurityPerimeterName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzNetworkSecurityPerimeterLink -InputObject <INetworkSecurityPerimeterIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,15 +44,31 @@ Gets the specified NSP link resource.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Lists Network security perimeter links
+```powershell
 Get-AzNetworkSecurityPerimeterLink -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp2
 ```
 
-### EXAMPLE 2
+```output
+Etag Name
+---- ----
+     t-link1
 ```
+
+Lists Network security perimeter links
+
+### Example 2: Get a Network security perimeter link
+```powershell
 Get-AzNetworkSecurityPerimeterLink -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp2 -Name t-link1
 ```
+
+```output
+Etag Name
+---- ----
+     t-link1
+```
+
+Get a Network security perimeter link
 
 ## PARAMETERS
 
@@ -60,7 +77,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -73,10 +90,9 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: INetworkSecurityPerimeterIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -91,7 +107,7 @@ Accept wildcard characters: False
 The name of the NSP link.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetViaIdentityNetworkSecurityPerimeter, Get
 Aliases: LinkName
 
@@ -104,10 +120,9 @@ Accept wildcard characters: False
 
 ### -NetworkSecurityPerimeterInputObject
 Identity Parameter
-To construct, see NOTES section for NETWORKSECURITYPERIMETERINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: INetworkSecurityPerimeterIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
 Parameter Sets: GetViaIdentityNetworkSecurityPerimeter
 Aliases:
 
@@ -118,11 +133,26 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: List, Get
 Aliases:
 
@@ -137,7 +167,7 @@ Accept wildcard characters: False
 The name of the network security perimeter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: List, Get
 Aliases: NetworkSecurityPerimeterName, NSPName
 
@@ -153,7 +183,7 @@ SkipToken is only used if a previous operation returned a partial result.
 If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: List
 Aliases:
 
@@ -169,13 +199,13 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: List, Get
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -184,13 +214,13 @@ Accept wildcard characters: False
 An optional query parameter which specifies the maximum number of records to be returned by the server.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: List
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -201,42 +231,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLink
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<INetworkSecurityPerimeterIdentity\>: Identity Parameter
-  \[AccessRuleName \<String\>\]: The name of the NSP access rule.
-  \[AssociationName \<String\>\]: The name of the NSP association.
-  \[Id \<String\>\]: Resource identity path
-  \[LinkName \<String\>\]: The name of the NSP link.
-  \[LinkReferenceName \<String\>\]: The name of the NSP linkReference.
-  \[Location \<String\>\]: The location of network security perimeter.
-  \[NetworkSecurityPerimeterName \<String\>\]: The name of the network security perimeter.
-  \[ProfileName \<String\>\]: The name of the NSP profile.
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-  \[SubscriptionId \<String\>\]: The subscription credentials which uniquely identify the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
-
-NETWORKSECURITYPERIMETERINPUTOBJECT \<INetworkSecurityPerimeterIdentity\>: Identity Parameter
-  \[AccessRuleName \<String\>\]: The name of the NSP access rule.
-  \[AssociationName \<String\>\]: The name of the NSP association.
-  \[Id \<String\>\]: Resource identity path
-  \[LinkName \<String\>\]: The name of the NSP link.
-  \[LinkReferenceName \<String\>\]: The name of the NSP linkReference.
-  \[Location \<String\>\]: The location of network security perimeter.
-  \[NetworkSecurityPerimeterName \<String\>\]: The name of the network security perimeter.
-  \[ProfileName \<String\>\]: The name of the NSP profile.
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-  \[SubscriptionId \<String\>\]: The subscription credentials which uniquely identify the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.network/get-aznetworksecurityperimeterlink](https://learn.microsoft.com/powershell/module/az.network/get-aznetworksecurityperimeterlink)
-

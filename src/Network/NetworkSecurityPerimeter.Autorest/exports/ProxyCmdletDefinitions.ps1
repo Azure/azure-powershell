@@ -130,21 +130,18 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityNetworkSecurityPerimeter', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for NETWORKSECURITYPERIMETERINPUTOBJECT properties and create a hash table.
     ${NetworkSecurityPerimeterInputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityProfile', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for PROFILEINPUTOBJECT properties and create a hash table.
     ${ProfileInputObject},
 
     [Parameter(ParameterSetName='List')]
@@ -242,7 +239,13 @@ begin {
             List = 'Az.NetworkSecurityPerimeter.private\Get-AzNetworkSecurityPerimeterAccessRule_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -405,7 +408,13 @@ begin {
             List = 'Az.NetworkSecurityPerimeter.private\Get-AzNetworkSecurityPerimeterAssociableResourceType_List';
         }
         if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -551,14 +560,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityNetworkSecurityPerimeter', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for NETWORKSECURITYPERIMETERINPUTOBJECT properties and create a hash table.
     ${NetworkSecurityPerimeterInputObject},
 
     [Parameter(ParameterSetName='List')]
@@ -655,7 +662,13 @@ begin {
             List = 'Az.NetworkSecurityPerimeter.private\Get-AzNetworkSecurityPerimeterAssociation_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -792,14 +805,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityNetworkSecurityPerimeter', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for NETWORKSECURITYPERIMETERINPUTOBJECT properties and create a hash table.
     ${NetworkSecurityPerimeterInputObject},
 
     [Parameter(ParameterSetName='List')]
@@ -896,7 +907,13 @@ begin {
             List = 'Az.NetworkSecurityPerimeter.private\Get-AzNetworkSecurityPerimeterLinkReference_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1033,14 +1050,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityNetworkSecurityPerimeter', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for NETWORKSECURITYPERIMETERINPUTOBJECT properties and create a hash table.
     ${NetworkSecurityPerimeterInputObject},
 
     [Parameter(ParameterSetName='List')]
@@ -1137,7 +1152,13 @@ begin {
             List = 'Az.NetworkSecurityPerimeter.private\Get-AzNetworkSecurityPerimeterLink_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1283,14 +1304,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityNetworkSecurityPerimeter', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for NETWORKSECURITYPERIMETERINPUTOBJECT properties and create a hash table.
     ${NetworkSecurityPerimeterInputObject},
 
     [Parameter(ParameterSetName='List')]
@@ -1387,7 +1406,13 @@ begin {
             List = 'Az.NetworkSecurityPerimeter.private\Get-AzNetworkSecurityPerimeterProfile_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1517,7 +1542,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='List')]
@@ -1616,7 +1640,586 @@ begin {
             List1 = 'Az.NetworkSecurityPerimeter.private\Get-AzNetworkSecurityPerimeter_List1';
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Reconcile NSP access rules
+.Description
+Reconcile NSP access rules
+.Example
+Invoke-AzNetworkSecurityPerimeterNspAccessRulesReconcile -AccessRuleName MyAccessRule -ProfileName profile -ResourceGroupName ResourceGroup-1 -NetworkSecurityPerimeterName nsp3
+.Example
+ $GETObj = Get-AzNetworkSecurityPerimeterAccessRule -Name ar3 -ProfileName profile1 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
+ Invoke-AzNetworkSecurityPerimeterNspAccessRulesReconcile -InputObject $GETObj
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IAny
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IAny
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
+  [AccessRuleName <String>]: The name of the NSP access rule.
+  [AssociationName <String>]: The name of the NSP association.
+  [Id <String>]: Resource identity path
+  [LinkName <String>]: The name of the NSP link.
+  [LinkReferenceName <String>]: The name of the NSP linkReference.
+  [Location <String>]: The location of network security perimeter.
+  [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
+  [ProfileName <String>]: The name of the NSP profile.
+  [ResourceGroupName <String>]: The name of the resource group.
+  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
+  [AccessRuleName <String>]: The name of the NSP access rule.
+  [AssociationName <String>]: The name of the NSP association.
+  [Id <String>]: Resource identity path
+  [LinkName <String>]: The name of the NSP link.
+  [LinkReferenceName <String>]: The name of the NSP linkReference.
+  [Location <String>]: The location of network security perimeter.
+  [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
+  [ProfileName <String>]: The name of the NSP profile.
+  [ResourceGroupName <String>]: The name of the resource group.
+  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+PROFILEINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
+  [AccessRuleName <String>]: The name of the NSP access rule.
+  [AssociationName <String>]: The name of the NSP association.
+  [Id <String>]: Resource identity path
+  [LinkName <String>]: The name of the NSP link.
+  [LinkReferenceName <String>]: The name of the NSP linkReference.
+  [Location <String>]: The location of network security perimeter.
+  [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
+  [ProfileName <String>]: The name of the NSP profile.
+  [ResourceGroupName <String>]: The name of the resource group.
+  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+.Link
+https://learn.microsoft.com/powershell/module/az.network/invoke-aznetworksecurityperimeternspaccessrulesreconcile
+#>
+function Invoke-AzNetworkSecurityPerimeterNspAccessRulesReconcile {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IAny])]
+[CmdletBinding(DefaultParameterSetName='PostExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Post', Mandatory)]
+    [Parameter(ParameterSetName='PostExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PostViaIdentityNetworkSecurityPerimeter', Mandatory)]
+    [Parameter(ParameterSetName='PostViaIdentityNetworkSecurityPerimeterExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PostViaIdentityProfile', Mandatory)]
+    [Parameter(ParameterSetName='PostViaIdentityProfileExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PostViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='PostViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
+    [System.String]
+    # The name of the NSP access rule.
+    ${AccessRuleName},
+
+    [Parameter(ParameterSetName='Post', Mandatory)]
+    [Parameter(ParameterSetName='PostExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PostViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='PostViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
+    [System.String]
+    # The name of the network security perimeter.
+    ${NetworkSecurityPerimeterName},
+
+    [Parameter(ParameterSetName='Post', Mandatory)]
+    [Parameter(ParameterSetName='PostExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PostViaIdentityNetworkSecurityPerimeter', Mandatory)]
+    [Parameter(ParameterSetName='PostViaIdentityNetworkSecurityPerimeterExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PostViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='PostViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
+    [System.String]
+    # The name of the NSP profile.
+    ${ProfileName},
+
+    [Parameter(ParameterSetName='Post', Mandatory)]
+    [Parameter(ParameterSetName='PostExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PostViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='PostViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Post')]
+    [Parameter(ParameterSetName='PostExpanded')]
+    [Parameter(ParameterSetName='PostViaJsonFilePath')]
+    [Parameter(ParameterSetName='PostViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
+    # The subscription ID forms part of the URI for every service call.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='PostViaIdentityNetworkSecurityPerimeter', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PostViaIdentityNetworkSecurityPerimeterExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
+    # Identity Parameter
+    ${NetworkSecurityPerimeterInputObject},
+
+    [Parameter(ParameterSetName='PostViaIdentityProfile', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PostViaIdentityProfileExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
+    # Identity Parameter
+    ${ProfileInputObject},
+
+    [Parameter(ParameterSetName='Post', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PostViaIdentityNetworkSecurityPerimeter', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PostViaIdentityProfile', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IAny]
+    # Anything
+    ${Parameter},
+
+    [Parameter(ParameterSetName='PostViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Post operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='PostViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
+    [System.String]
+    # Json string supplied to the Post operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Post = 'Az.NetworkSecurityPerimeter.private\Invoke-AzNetworkSecurityPerimeterNspAccessRulesReconcile_Post';
+            PostExpanded = 'Az.NetworkSecurityPerimeter.private\Invoke-AzNetworkSecurityPerimeterNspAccessRulesReconcile_PostExpanded';
+            PostViaIdentity = 'Az.NetworkSecurityPerimeter.private\Invoke-AzNetworkSecurityPerimeterNspAccessRulesReconcile_PostViaIdentity';
+            PostViaIdentityExpanded = 'Az.NetworkSecurityPerimeter.private\Invoke-AzNetworkSecurityPerimeterNspAccessRulesReconcile_PostViaIdentityExpanded';
+            PostViaIdentityNetworkSecurityPerimeter = 'Az.NetworkSecurityPerimeter.private\Invoke-AzNetworkSecurityPerimeterNspAccessRulesReconcile_PostViaIdentityNetworkSecurityPerimeter';
+            PostViaIdentityNetworkSecurityPerimeterExpanded = 'Az.NetworkSecurityPerimeter.private\Invoke-AzNetworkSecurityPerimeterNspAccessRulesReconcile_PostViaIdentityNetworkSecurityPerimeterExpanded';
+            PostViaIdentityProfile = 'Az.NetworkSecurityPerimeter.private\Invoke-AzNetworkSecurityPerimeterNspAccessRulesReconcile_PostViaIdentityProfile';
+            PostViaIdentityProfileExpanded = 'Az.NetworkSecurityPerimeter.private\Invoke-AzNetworkSecurityPerimeterNspAccessRulesReconcile_PostViaIdentityProfileExpanded';
+            PostViaJsonFilePath = 'Az.NetworkSecurityPerimeter.private\Invoke-AzNetworkSecurityPerimeterNspAccessRulesReconcile_PostViaJsonFilePath';
+            PostViaJsonString = 'Az.NetworkSecurityPerimeter.private\Invoke-AzNetworkSecurityPerimeterNspAccessRulesReconcile_PostViaJsonString';
+        }
+        if (('Post', 'PostExpanded', 'PostViaJsonFilePath', 'PostViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Reconcile NSP association
+.Description
+Reconcile NSP association
+.Example
+Invoke-AzNetworkSecurityPerimeterNspAssociationReconcile -AssociationName association3 -NetworkSecurityPerimeterName nsp3 -ResourceGroupName ResourceGroup-1 
+.Example
+ $GETObj = Get-AzNetworkSecurityPerimeterAssociation -Name association3 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
+ Invoke-AzNetworkSecurityPerimeterNspAssociationReconcile -InputObject $GETObj
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IAny
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IAny
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
+  [AccessRuleName <String>]: The name of the NSP access rule.
+  [AssociationName <String>]: The name of the NSP association.
+  [Id <String>]: Resource identity path
+  [LinkName <String>]: The name of the NSP link.
+  [LinkReferenceName <String>]: The name of the NSP linkReference.
+  [Location <String>]: The location of network security perimeter.
+  [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
+  [ProfileName <String>]: The name of the NSP profile.
+  [ResourceGroupName <String>]: The name of the resource group.
+  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
+  [AccessRuleName <String>]: The name of the NSP access rule.
+  [AssociationName <String>]: The name of the NSP association.
+  [Id <String>]: Resource identity path
+  [LinkName <String>]: The name of the NSP link.
+  [LinkReferenceName <String>]: The name of the NSP linkReference.
+  [Location <String>]: The location of network security perimeter.
+  [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
+  [ProfileName <String>]: The name of the NSP profile.
+  [ResourceGroupName <String>]: The name of the resource group.
+  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+.Link
+https://learn.microsoft.com/powershell/module/az.network/invoke-aznetworksecurityperimeternspassociationreconcile
+#>
+function Invoke-AzNetworkSecurityPerimeterNspAssociationReconcile {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IAny])]
+[CmdletBinding(DefaultParameterSetName='PostExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Post', Mandatory)]
+    [Parameter(ParameterSetName='PostExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PostViaIdentityNetworkSecurityPerimeter', Mandatory)]
+    [Parameter(ParameterSetName='PostViaIdentityNetworkSecurityPerimeterExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PostViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='PostViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
+    [System.String]
+    # The name of the NSP association.
+    ${AssociationName},
+
+    [Parameter(ParameterSetName='Post', Mandatory)]
+    [Parameter(ParameterSetName='PostExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PostViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='PostViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
+    [System.String]
+    # The name of the network security perimeter.
+    ${NetworkSecurityPerimeterName},
+
+    [Parameter(ParameterSetName='Post', Mandatory)]
+    [Parameter(ParameterSetName='PostExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PostViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='PostViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Post')]
+    [Parameter(ParameterSetName='PostExpanded')]
+    [Parameter(ParameterSetName='PostViaJsonFilePath')]
+    [Parameter(ParameterSetName='PostViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
+    # The subscription ID forms part of the URI for every service call.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='PostViaIdentityNetworkSecurityPerimeter', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PostViaIdentityNetworkSecurityPerimeterExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
+    # Identity Parameter
+    ${NetworkSecurityPerimeterInputObject},
+
+    [Parameter(ParameterSetName='Post', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PostViaIdentityNetworkSecurityPerimeter', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IAny]
+    # Anything
+    ${Parameter},
+
+    [Parameter(ParameterSetName='PostViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Post operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='PostViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
+    [System.String]
+    # Json string supplied to the Post operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Post = 'Az.NetworkSecurityPerimeter.private\Invoke-AzNetworkSecurityPerimeterNspAssociationReconcile_Post';
+            PostExpanded = 'Az.NetworkSecurityPerimeter.private\Invoke-AzNetworkSecurityPerimeterNspAssociationReconcile_PostExpanded';
+            PostViaIdentity = 'Az.NetworkSecurityPerimeter.private\Invoke-AzNetworkSecurityPerimeterNspAssociationReconcile_PostViaIdentity';
+            PostViaIdentityExpanded = 'Az.NetworkSecurityPerimeter.private\Invoke-AzNetworkSecurityPerimeterNspAssociationReconcile_PostViaIdentityExpanded';
+            PostViaIdentityNetworkSecurityPerimeter = 'Az.NetworkSecurityPerimeter.private\Invoke-AzNetworkSecurityPerimeterNspAssociationReconcile_PostViaIdentityNetworkSecurityPerimeter';
+            PostViaIdentityNetworkSecurityPerimeterExpanded = 'Az.NetworkSecurityPerimeter.private\Invoke-AzNetworkSecurityPerimeterNspAssociationReconcile_PostViaIdentityNetworkSecurityPerimeterExpanded';
+            PostViaJsonFilePath = 'Az.NetworkSecurityPerimeter.private\Invoke-AzNetworkSecurityPerimeterNspAssociationReconcile_PostViaJsonFilePath';
+            PostViaJsonString = 'Az.NetworkSecurityPerimeter.private\Invoke-AzNetworkSecurityPerimeterNspAssociationReconcile_PostViaJsonString';
+        }
+        if (('Post', 'PostExpanded', 'PostViaJsonFilePath', 'PostViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1728,6 +2331,7 @@ PARAMETER <INspAccessRule>: The NSP access rule resource
   [EmailAddress <List<String>>]: Outbound rules email address format.
   [FullyQualifiedDomainName <List<String>>]: Outbound rules fully qualified domain name format.
   [PhoneNumber <List<String>>]: Outbound rules phone number format.
+  [ServiceTag <List<String>>]: Inbound rules service tag names.
   [Subscription <List<ISubscriptionId>>]: List of subscription ids
     [Id <String>]: Subscription id in the ARM id format.
 
@@ -1812,7 +2416,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateViaIdentityNetworkSecurityPerimeter', Mandatory, ValueFromPipeline)]
@@ -1820,7 +2423,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for NETWORKSECURITYPERIMETERINPUTOBJECT properties and create a hash table.
     ${NetworkSecurityPerimeterInputObject},
 
     [Parameter(ParameterSetName='CreateViaIdentityProfile', Mandatory, ValueFromPipeline)]
@@ -1828,7 +2430,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for PROFILEINPUTOBJECT properties and create a hash table.
     ${ProfileInputObject},
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
@@ -1837,7 +2438,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRule]
     # The NSP access rule resource
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -1915,9 +2515,18 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
+    [System.String[]]
+    # Inbound rules service tag names.
+    ${ServiceTag},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNetworkSecurityPerimeterExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubscriptionId[]]
     # List of subscription ids
-    # To construct, see NOTES section for SUBSCRIPTION properties and create a hash table.
     ${Subscription},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -2028,7 +2637,13 @@ begin {
             CreateViaJsonString = 'Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeterAccessRule_CreateViaJsonString';
         }
         if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2188,7 +2803,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateViaIdentityNetworkSecurityPerimeter', Mandatory, ValueFromPipeline)]
@@ -2196,7 +2810,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for NETWORKSECURITYPERIMETERINPUTOBJECT properties and create a hash table.
     ${NetworkSecurityPerimeterInputObject},
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
@@ -2204,7 +2817,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociation]
     # The NSP resource association resource
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -2354,7 +2966,13 @@ begin {
             CreateViaJsonString = 'Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeterAssociation_CreateViaJsonString';
         }
         if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2456,8 +3074,8 @@ NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identit
 PARAMETER <INspLink>: The network security perimeter link resource
   [AutoApprovedRemotePerimeterResourceId <String>]: Perimeter ARM Id for the remote NSP with which the link gets created in Auto-approval mode. It should be used when the NSP admin have Microsoft.Network/networkSecurityPerimeters/linkPerimeter/action permission on the remote NSP resource.
   [Description <String>]: A message passed to the owner of the remote NSP link resource with this connection request. In case of Auto-approved flow, it is default to 'Auto Approved'. Restricted to 140 chars.
-  [LocalInboundProfile <List<String>>]: Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. It's default value is ['*'].
-  [RemoteInboundProfile <List<String>>]: Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode. It's default value is ['*'].
+  [LocalInboundProfile <List<String>>]: Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles.
+  [RemoteInboundProfile <List<String>>]: Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode.
 .Link
 https://learn.microsoft.com/powershell/module/az.network/new-aznetworksecurityperimeterlink
 #>
@@ -2511,7 +3129,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateViaIdentityNetworkSecurityPerimeter', Mandatory, ValueFromPipeline)]
@@ -2519,7 +3136,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for NETWORKSECURITYPERIMETERINPUTOBJECT properties and create a hash table.
     ${NetworkSecurityPerimeterInputObject},
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
@@ -2527,7 +3143,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLink]
     # The network security perimeter link resource
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -2557,7 +3172,6 @@ param(
     [System.String[]]
     # Local Inbound profile names to which Inbound is allowed.
     # Use ['*'] to allow inbound to all profiles.
-    # It's default value is ['*'].
     ${LocalInboundProfile},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -2569,7 +3183,6 @@ param(
     # Remote Inbound profile names to which Inbound is allowed.
     # Use ['*'] to allow inbound to all profiles.
     # This property can only be updated in auto-approval mode.
-    # It's default value is ['*'].
     ${RemoteInboundProfile},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
@@ -2668,7 +3281,13 @@ begin {
             CreateViaJsonString = 'Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeterLink_CreateViaJsonString';
         }
         if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2827,7 +3446,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateViaIdentityNetworkSecurityPerimeter', Mandatory, ValueFromPipeline)]
@@ -2835,7 +3453,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for NETWORKSECURITYPERIMETERINPUTOBJECT properties and create a hash table.
     ${NetworkSecurityPerimeterInputObject},
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
@@ -2843,7 +3460,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspProfile]
     # The network security perimeter profile resource
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -2968,7 +3584,13 @@ begin {
             CreateViaJsonString = 'Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeterProfile_CreateViaJsonString';
         }
         if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3103,14 +3725,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter]
     # The Network Security Perimeter resource
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -3230,7 +3850,13 @@ begin {
             CreateViaJsonString = 'Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeter_CreateViaJsonString';
         }
         if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3390,21 +4016,18 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityNetworkSecurityPerimeter', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for NETWORKSECURITYPERIMETERINPUTOBJECT properties and create a hash table.
     ${NetworkSecurityPerimeterInputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityProfile', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for PROFILEINPUTOBJECT properties and create a hash table.
     ${ProfileInputObject},
 
     [Parameter()]
@@ -3494,7 +4117,13 @@ begin {
             DeleteViaIdentityProfile = 'Az.NetworkSecurityPerimeter.private\Remove-AzNetworkSecurityPerimeterAccessRule_DeleteViaIdentityProfile';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3633,14 +4262,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityNetworkSecurityPerimeter', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for NETWORKSECURITYPERIMETERINPUTOBJECT properties and create a hash table.
     ${NetworkSecurityPerimeterInputObject},
 
     [Parameter()]
@@ -3741,7 +4368,13 @@ begin {
             DeleteViaIdentityNetworkSecurityPerimeter = 'Az.NetworkSecurityPerimeter.private\Remove-AzNetworkSecurityPerimeterAssociation_DeleteViaIdentityNetworkSecurityPerimeter';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3876,14 +4509,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityNetworkSecurityPerimeter', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for NETWORKSECURITYPERIMETERINPUTOBJECT properties and create a hash table.
     ${NetworkSecurityPerimeterInputObject},
 
     [Parameter()]
@@ -3984,7 +4615,13 @@ begin {
             DeleteViaIdentityNetworkSecurityPerimeter = 'Az.NetworkSecurityPerimeter.private\Remove-AzNetworkSecurityPerimeterLinkReference_DeleteViaIdentityNetworkSecurityPerimeter';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4119,14 +4756,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityNetworkSecurityPerimeter', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for NETWORKSECURITYPERIMETERINPUTOBJECT properties and create a hash table.
     ${NetworkSecurityPerimeterInputObject},
 
     [Parameter()]
@@ -4227,7 +4862,13 @@ begin {
             DeleteViaIdentityNetworkSecurityPerimeter = 'Az.NetworkSecurityPerimeter.private\Remove-AzNetworkSecurityPerimeterLink_DeleteViaIdentityNetworkSecurityPerimeter';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4366,14 +5007,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityNetworkSecurityPerimeter', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for NETWORKSECURITYPERIMETERINPUTOBJECT properties and create a hash table.
     ${NetworkSecurityPerimeterInputObject},
 
     [Parameter()]
@@ -4462,7 +5101,13 @@ begin {
             DeleteViaIdentityNetworkSecurityPerimeter = 'Az.NetworkSecurityPerimeter.private\Remove-AzNetworkSecurityPerimeterProfile_DeleteViaIdentityNetworkSecurityPerimeter';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4581,7 +5226,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -4669,7 +5313,264 @@ begin {
             DeleteViaIdentity = 'Az.NetworkSecurityPerimeter.private\Remove-AzNetworkSecurityPerimeter_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Patch Tags for a Network Security Perimeter.
+.Description
+Patch Tags for a Network Security Perimeter.
+.Example
+
+Update-AzNetworkSecurityPerimeter -Name nsp3 -ResourceGroupName ResourceGroup-1
+
+.Example
+ $GETObj = Get-AzNetworkSecurityPerimeter -Name nsp3 -ResourceGroupName ResourceGroup-1
+ Update-AzNetworkSecurityPerimeter -InputObject $GETObj
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IUpdateTagsRequest
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
+  [AccessRuleName <String>]: The name of the NSP access rule.
+  [AssociationName <String>]: The name of the NSP association.
+  [Id <String>]: Resource identity path
+  [LinkName <String>]: The name of the NSP link.
+  [LinkReferenceName <String>]: The name of the NSP linkReference.
+  [Location <String>]: The location of network security perimeter.
+  [NetworkSecurityPerimeterName <String>]: The name of the network security perimeter.
+  [ProfileName <String>]: The name of the NSP profile.
+  [ResourceGroupName <String>]: The name of the resource group.
+  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+PARAMETER <IUpdateTagsRequest>: Update tags request.
+  [Tag <IUpdateTagsRequestTags>]: List of tags for Network Security Perimeter
+    [(Any) <String>]: This indicates any property can be added to this object.
+.Link
+https://learn.microsoft.com/powershell/module/az.network/update-aznetworksecurityperimeter
+#>
+function Update-AzNetworkSecurityPerimeter {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeter])]
+[CmdletBinding(DefaultParameterSetName='PatchExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Patch', Mandatory)]
+    [Parameter(ParameterSetName='PatchExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PatchViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='PatchViaJsonString', Mandatory)]
+    [Alias('NetworkSecurityPerimeterName', 'SecurityPerimeterName', 'NSPName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
+    [System.String]
+    # The name of the network security perimeter.
+    ${Name},
+
+    [Parameter(ParameterSetName='Patch', Mandatory)]
+    [Parameter(ParameterSetName='PatchExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PatchViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='PatchViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Patch')]
+    [Parameter(ParameterSetName='PatchExpanded')]
+    [Parameter(ParameterSetName='PatchViaJsonFilePath')]
+    [Parameter(ParameterSetName='PatchViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
+    # The subscription ID forms part of the URI for every service call.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='PatchViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PatchViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Patch', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PatchViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IUpdateTagsRequest]
+    # Update tags request.
+    ${Parameter},
+
+    [Parameter(ParameterSetName='PatchExpanded')]
+    [Parameter(ParameterSetName='PatchViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IUpdateTagsRequestTags]))]
+    [System.Collections.Hashtable]
+    # List of tags for Network Security Perimeter
+    ${Tag},
+
+    [Parameter(ParameterSetName='PatchViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Patch operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='PatchViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
+    [System.String]
+    # Json string supplied to the Patch operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Patch = 'Az.NetworkSecurityPerimeter.private\Update-AzNetworkSecurityPerimeter_Patch';
+            PatchExpanded = 'Az.NetworkSecurityPerimeter.private\Update-AzNetworkSecurityPerimeter_PatchExpanded';
+            PatchViaIdentity = 'Az.NetworkSecurityPerimeter.private\Update-AzNetworkSecurityPerimeter_PatchViaIdentity';
+            PatchViaIdentityExpanded = 'Az.NetworkSecurityPerimeter.private\Update-AzNetworkSecurityPerimeter_PatchViaIdentityExpanded';
+            PatchViaJsonFilePath = 'Az.NetworkSecurityPerimeter.private\Update-AzNetworkSecurityPerimeter_PatchViaJsonFilePath';
+            PatchViaJsonString = 'Az.NetworkSecurityPerimeter.private\Update-AzNetworkSecurityPerimeter_PatchViaJsonString';
+        }
+        if (('Patch', 'PatchExpanded', 'PatchViaJsonFilePath', 'PatchViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4745,7 +5646,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity parameter.
+INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity parameter. To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
   [AccessRuleName <String>]: The name of the NSP access rule.
   [AssociationName <String>]: The name of the NSP association.
   [Id <String>]: Resource identity path
@@ -4846,6 +5747,12 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
+    [System.String[]]
+    # Service Tags
+    ${ServiceTag},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
     [System.String]
     # Direction
     ${Direction},
@@ -4854,7 +5761,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubscriptionId[]]
     # Subscription ids
-    # To construct, see NOTES section for SUBSCRIPTION properties and create a hash table.
     ${Subscription},
 
     [Parameter()]
@@ -4947,7 +5853,13 @@ begin {
             UpdateViaIdentityExpanded = 'Az.NetworkSecurityPerimeter.custom\Update-AzNetworkSecurityPerimeterAccessRule';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -5023,7 +5935,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity parameter.
+INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity parameter. To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
   [AccessRuleName <String>]: The name of the NSP access rule.
   [AssociationName <String>]: The name of the NSP association.
   [Id <String>]: Resource identity path
@@ -5197,7 +6109,13 @@ begin {
             UpdateViaIdentityExpanded = 'Az.NetworkSecurityPerimeter.custom\Update-AzNetworkSecurityPerimeterAssociation';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -5271,7 +6189,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity parameter.
+INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity parameter. To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
   [AccessRuleName <String>]: The name of the NSP access rule.
   [AssociationName <String>]: The name of the NSP association.
   [Id <String>]: Resource identity path
@@ -5445,7 +6363,13 @@ begin {
             UpdateViaIdentityExpanded = 'Az.NetworkSecurityPerimeter.custom\Update-AzNetworkSecurityPerimeterLink';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

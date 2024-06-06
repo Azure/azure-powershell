@@ -16,20 +16,22 @@ Get-AzLoadBalancerBackendAddressInboundNatRulePortMapping retrieves inbound nat 
 ```
 Get-AzLoadBalancerBackendAddressInboundNatRulePortMapping -ResourceGroupName <String>
  -LoadBalancerName <String> [-Name <String>] [-IpAddress <String>]
- [-NetworkInterfaceIpConfigurationId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-NetworkInterfaceIpConfigurationId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByParentObjectParameterSet
 ```
 Get-AzLoadBalancerBackendAddressInboundNatRulePortMapping [-Name <String>] -LoadBalancer <PSLoadBalancer>
  [-IpAddress <String>] [-NetworkInterfaceIpConfigurationId <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByResourceIdParameterSet
 ```
 Get-AzLoadBalancerBackendAddressInboundNatRulePortMapping -ResourceId <String> [-IpAddress <String>]
- [-NetworkInterfaceIpConfigurationId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-NetworkInterfaceIpConfigurationId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -145,6 +147,21 @@ Accept wildcard characters: False
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

@@ -14,8 +14,8 @@ Defines a Interface Configuration for Network Profile of Virtual Appliance.
 
 ```
 New-AzVirtualApplianceNetworkInterfaceConfiguration -NicType <String>
- -IpConfiguration <PSVirtualApplianceIpConfiguration[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -IpConfiguration <PSVirtualApplianceIpConfiguration[]> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,7 +47,7 @@ Creating a new network interface configuration with nicType PrivateNic and IP co
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 The IP configurations of the network interface configuration.
 
 ```yaml
-Type: PSVirtualApplianceIpConfiguration[]
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualApplianceIpConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 The type of the network interface configuration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -88,11 +88,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -108,7 +123,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

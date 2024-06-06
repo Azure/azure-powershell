@@ -16,22 +16,22 @@ Create NSP link resource.
 ```
 New-AzNetworkSecurityPerimeterLink -Name <String> -ResourceGroupName <String> -SecurityPerimeterName <String>
  [-SubscriptionId <String>] [-AutoApprovedRemotePerimeterResourceId <String>] [-Description <String>]
- [-LocalInboundProfile <String[]>] [-RemoteInboundProfile <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-LocalInboundProfile <String[]>] [-RemoteInboundProfile <String[]>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzNetworkSecurityPerimeterLink -Name <String> -ResourceGroupName <String> -SecurityPerimeterName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzNetworkSecurityPerimeterLink -Name <String> -ResourceGroupName <String> -SecurityPerimeterName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNetworkSecurityPerimeterExpanded
@@ -39,28 +39,30 @@ New-AzNetworkSecurityPerimeterLink -Name <String> -ResourceGroupName <String> -S
 New-AzNetworkSecurityPerimeterLink -Name <String>
  -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity>
  [-AutoApprovedRemotePerimeterResourceId <String>] [-Description <String>] [-LocalInboundProfile <String[]>]
- [-RemoteInboundProfile <String[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RemoteInboundProfile <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNetworkSecurityPerimeter
 ```
 New-AzNetworkSecurityPerimeterLink -Name <String>
  -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> -Parameter <INspLink>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzNetworkSecurityPerimeterLink -Name <String> -ResourceGroupName <String> -SecurityPerimeterName <String>
- [-SubscriptionId <String>] -Parameter <INspLink> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] -Parameter <INspLink> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzNetworkSecurityPerimeterLink -InputObject <INetworkSecurityPerimeterIdentity>
  [-AutoApprovedRemotePerimeterResourceId <String>] [-Description <String>] [-LocalInboundProfile <String[]>]
- [-RemoteInboundProfile <String[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RemoteInboundProfile <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,17 +70,33 @@ Create NSP link resource.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
-/resourceGroups/psrg_ex/providers/Microsoft.Network/networkSecurityPerimeters/nsp7"
+### Example 1: Create network security perimeter link
+```powershell
+$remoteNsp = "/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/psrg_ex/providers/Microsoft.Network/networkSecurityPerimeters/nsp7"
 New-AzNetworkSecurityPerimeterLink -Name exlink3 -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp6 -AutoApprovedRemotePerimeterResourceId $remoteNsp  -LocalInboundProfile @('*') -RemoteInboundProfile @('*')
 ```
 
-### EXAMPLE 2
+```output
+Etag Name
+---- ----
+     exlink3
 ```
-/resourceGroups/psrg_ex/providers/Microsoft.Network/networkSecurityPerimeters/nsp7"
+
+Create network security perimeter link
+
+### Example 2: Create network security perimeter link
+```powershell
+$remoteNsp = "/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/psrg_ex/providers/Microsoft.Network/networkSecurityPerimeters/nsp7"
 New-AzNetworkSecurityPerimeterLink -Name exlink4 -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp6 -AutoApprovedRemotePerimeterResourceId $remoteNsp  -LocalInboundProfile @('*') -RemoteInboundProfile @('*')
 ```
+
+```output
+Etag Name
+---- ----
+     exlink4
+```
+
+Create network security perimeter link
 
 ## PARAMETERS
 
@@ -87,7 +105,7 @@ Perimeter ARM Id for the remote NSP with which the link gets created in Auto-app
 It should be used when the NSP admin have Microsoft.Network/networkSecurityPerimeters/linkPerimeter/action permission on the remote NSP resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -103,7 +121,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -120,7 +138,7 @@ In case of Auto-approved flow, it is default to 'Auto Approved'.
 Restricted to 140 chars.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -133,10 +151,9 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: INetworkSecurityPerimeterIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
 Parameter Sets: CreateViaIdentityExpanded
 Aliases:
 
@@ -151,7 +168,7 @@ Accept wildcard characters: False
 Path of Json file supplied to the Create operation
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
@@ -166,7 +183,7 @@ Accept wildcard characters: False
 Json string supplied to the Create operation
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateViaJsonString
 Aliases:
 
@@ -179,11 +196,10 @@ Accept wildcard characters: False
 
 ### -LocalInboundProfile
 Local Inbound profile names to which Inbound is allowed.
-Use \['*'\] to allow inbound to all profiles.
-It's default value is \['*'\].
+Use ['*'] to allow inbound to all profiles.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: CreateExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -198,7 +214,7 @@ Accept wildcard characters: False
 The name of the NSP link.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityNetworkSecurityPerimeter, Create
 Aliases: LinkName
 
@@ -211,10 +227,9 @@ Accept wildcard characters: False
 
 ### -NetworkSecurityPerimeterInputObject
 Identity Parameter
-To construct, see NOTES section for NETWORKSECURITYPERIMETERINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: INetworkSecurityPerimeterIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
 Parameter Sets: CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityNetworkSecurityPerimeter
 Aliases:
 
@@ -227,10 +242,9 @@ Accept wildcard characters: False
 
 ### -Parameter
 The network security perimeter link resource
-To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: INspLink
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLink
 Parameter Sets: CreateViaIdentityNetworkSecurityPerimeter, Create
 Aliases:
 
@@ -241,14 +255,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -RemoteInboundProfile
-Remote Inbound profile names to which Inbound is allowed.
-Use \['*'\] to allow inbound to all profiles.
-This property can only be updated in auto-approval mode.
-It's default value is \['*'\].
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
 ```yaml
-Type: String[]
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RemoteInboundProfile
+Remote Inbound profile names to which Inbound is allowed.
+Use ['*'] to allow inbound to all profiles.
+This property can only be updated in auto-approval mode.
+
+```yaml
+Type: System.String[]
 Parameter Sets: CreateExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -263,7 +291,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
 Aliases:
 
@@ -278,7 +306,7 @@ Accept wildcard characters: False
 The name of the network security perimeter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
 Aliases: NetworkSecurityPerimeterName, NSPName
 
@@ -294,13 +322,13 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -309,7 +337,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -325,7 +353,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -342,57 +370,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
+
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLink
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLink
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<INetworkSecurityPerimeterIdentity\>: Identity Parameter
-  \[AccessRuleName \<String\>\]: The name of the NSP access rule.
-  \[AssociationName \<String\>\]: The name of the NSP association.
-  \[Id \<String\>\]: Resource identity path
-  \[LinkName \<String\>\]: The name of the NSP link.
-  \[LinkReferenceName \<String\>\]: The name of the NSP linkReference.
-  \[Location \<String\>\]: The location of network security perimeter.
-  \[NetworkSecurityPerimeterName \<String\>\]: The name of the network security perimeter.
-  \[ProfileName \<String\>\]: The name of the NSP profile.
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-  \[SubscriptionId \<String\>\]: The subscription credentials which uniquely identify the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
-
-NETWORKSECURITYPERIMETERINPUTOBJECT \<INetworkSecurityPerimeterIdentity\>: Identity Parameter
-  \[AccessRuleName \<String\>\]: The name of the NSP access rule.
-  \[AssociationName \<String\>\]: The name of the NSP association.
-  \[Id \<String\>\]: Resource identity path
-  \[LinkName \<String\>\]: The name of the NSP link.
-  \[LinkReferenceName \<String\>\]: The name of the NSP linkReference.
-  \[Location \<String\>\]: The location of network security perimeter.
-  \[NetworkSecurityPerimeterName \<String\>\]: The name of the network security perimeter.
-  \[ProfileName \<String\>\]: The name of the NSP profile.
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-  \[SubscriptionId \<String\>\]: The subscription credentials which uniquely identify the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
-
-PARAMETER \<INspLink\>: The network security perimeter link resource
-  \[AutoApprovedRemotePerimeterResourceId \<String\>\]: Perimeter ARM Id for the remote NSP with which the link gets created in Auto-approval mode.
-It should be used when the NSP admin have Microsoft.Network/networkSecurityPerimeters/linkPerimeter/action permission on the remote NSP resource.
-  \[Description \<String\>\]: A message passed to the owner of the remote NSP link resource with this connection request.
-In case of Auto-approved flow, it is default to 'Auto Approved'.
-Restricted to 140 chars.
-  \[LocalInboundProfile \<List\<String\>\>\]: Local Inbound profile names to which Inbound is allowed.
-Use \['*'\] to allow inbound to all profiles.
-It's default value is \['*'\].
-  \[RemoteInboundProfile \<List\<String\>\>\]: Remote Inbound profile names to which Inbound is allowed.
-Use \['*'\] to allow inbound to all profiles.
-This property can only be updated in auto-approval mode.
-It's default value is \['*'\].
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.network/new-aznetworksecurityperimeterlink](https://learn.microsoft.com/powershell/module/az.network/new-aznetworksecurityperimeterlink)
-

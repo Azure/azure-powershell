@@ -62,6 +62,7 @@ PARAMETER <INspAccessRule>: The NSP access rule resource
   [EmailAddress <List<String>>]: Outbound rules email address format.
   [FullyQualifiedDomainName <List<String>>]: Outbound rules fully qualified domain name format.
   [PhoneNumber <List<String>>]: Outbound rules phone number format.
+  [ServiceTag <List<String>>]: Inbound rules service tag names.
   [Subscription <List<ISubscriptionId>>]: List of subscription ids
     [Id <String>]: Subscription id in the ARM id format.
 .Link
@@ -75,14 +76,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRule]
     # The NSP access rule resource
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter()]
