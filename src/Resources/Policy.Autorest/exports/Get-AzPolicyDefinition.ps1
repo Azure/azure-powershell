@@ -18,7 +18,7 @@
 .Synopsis
 Gets policy set definitions.
 .Description
-The **Get-AzPolicySetDefinition** cmdlet gets a collection of policy set definitions or a specific policy set definition identified by name or ID.
+The **Get-AzPolicyDefinition** cmdlet gets a collection of policy set definitions or a specific policy set definition identified by name or ID.
 .Example
 Get-AzPolicyDefinition
 .Example
@@ -48,6 +48,8 @@ function Get-AzPolicyDefinition {
 [CmdletBinding(DefaultParameterSetName='Name', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ListVersion', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Version', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
     [Alias('PolicyDefinitionName')]
@@ -56,12 +58,14 @@ param(
     # The name of the policy definition to get.
     ${Name},
 
-    [Parameter(DontShow)]
+    [Parameter(ParameterSetName='ListVersion', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Version', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Id', Mandatory, ValueFromPipelineByPropertyName)]
+    [Alias('ResourceId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
+    [System.String]
+    # The full Id of the policy definition to get.
+    ${Id},
 
     [Parameter(ParameterSetName='SubscriptionId', Mandatory, ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Static', ValueFromPipelineByPropertyName)]
@@ -81,13 +85,6 @@ param(
     # The name of the management group.
     ${ManagementGroupName},
 
-    [Parameter(ParameterSetName='Id', Mandatory, ValueFromPipelineByPropertyName)]
-    [Alias('ResourceId')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [System.String]
-    # The full Id of the policy definition to get.
-    ${Id},
-
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
     [System.String]
@@ -99,6 +96,12 @@ param(
     # Possible policyType values are NotSpecified, Builtin, Custom, and Static.
     # If $filter='category -eq {value}' is provided, the returned list only includes all policy definitions whose category match the {value}.
     ${Filter},
+
+    [Parameter(ParameterSetName='ListVersion', Mandatory, ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
+    [System.Management.Automation.SwitchParameter]
+    # Causes cmdlet to return only custom policy definitions.
+    ${ListVersion},
 
     [Parameter(ParameterSetName='Static', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
@@ -123,6 +126,13 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
     ${BackwardCompatible},
+
+    [Parameter(ParameterSetName='Version', Mandatory, ValueFromPipelineByPropertyName)]
+    [Alias('PolicyDefinitionVersion')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The policy definition version in #.#.# format.
+    ${Version},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -199,6 +209,8 @@ begin {
 
         $mapping = @{
             Name = 'Az.Policy.custom\Get-AzPolicyDefinition';
+            ListVersion = 'Az.Policy.custom\Get-AzPolicyDefinition';
+            Version = 'Az.Policy.custom\Get-AzPolicyDefinition';
             SubscriptionId = 'Az.Policy.custom\Get-AzPolicyDefinition';
             ManagementGroupName = 'Az.Policy.custom\Get-AzPolicyDefinition';
             Id = 'Az.Policy.custom\Get-AzPolicyDefinition';
