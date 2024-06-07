@@ -29,6 +29,7 @@
     * `New-AzPolicyDefinition`
     * `New-AzPolicySetDefinition`
 * Implemented '-Version' and '-ListVersion' parameters on `Get-AzPolicyDefinition` and `Get-AzPolicySetDefinition`
+* Added management groups to deployment stack cmdlet's warning message on update/delete.
 
 ## Version 7.1.0
 * Fixed deployment and deployment stack New/Set cmdlets to fail if template/parameter uri fails to downloads.
