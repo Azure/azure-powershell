@@ -625,7 +625,6 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 this.WriteInformation(message, false);
             }
-
         }
 
         private bool IsWriteInformationIgnored()
