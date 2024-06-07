@@ -68,6 +68,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Owned)]
         public string ProvisioningState { get => this._provisioningState; }
 
+        /// <summary>Backing field for <see cref="ServiceTag" /> property.</summary>
+        private System.Collections.Generic.List<string> _serviceTag;
+
+        /// <summary>Inbound rules service tag names.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> ServiceTag { get => this._serviceTag; set => this._serviceTag = value; }
+
         /// <summary>Backing field for <see cref="Subscription" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubscriptionId> _subscription;
 
@@ -164,6 +171,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PSArgumentCompleterAttribute("Succeeded", "Creating", "Updating", "Deleting", "Accepted", "Failed")]
         string ProvisioningState { get;  }
+        /// <summary>Inbound rules service tag names.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Inbound rules service tag names.",
+        SerializedName = @"serviceTags",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> ServiceTag { get; set; }
         /// <summary>List of subscription ids</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
         Required = false,
@@ -197,6 +215,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         /// <summary>The provisioning state of the scope assignment resource.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PSArgumentCompleterAttribute("Succeeded", "Creating", "Updating", "Deleting", "Accepted", "Failed")]
         string ProvisioningState { get; set; }
+        /// <summary>Inbound rules service tag names.</summary>
+        System.Collections.Generic.List<string> ServiceTag { get; set; }
         /// <summary>List of subscription ids</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubscriptionId> Subscription { get; set; }
 

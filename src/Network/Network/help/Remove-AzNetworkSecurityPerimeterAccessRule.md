@@ -15,28 +15,29 @@ Deletes an NSP access rule.
 ### Delete (Default)
 ```
 Remove-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -ResourceGroupName <String>
- -SecurityPerimeterName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -SecurityPerimeterName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityProfile
 ```
 Remove-AzNetworkSecurityPerimeterAccessRule -Name <String>
- -ProfileInputObject <INetworkSecurityPerimeterIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -ProfileInputObject <INetworkSecurityPerimeterIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityNetworkSecurityPerimeter
 ```
 Remove-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String>
  -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> [-DefaultProfile <PSObject>]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzNetworkSecurityPerimeterAccessRule -InputObject <INetworkSecurityPerimeterIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,16 +45,20 @@ Deletes an NSP access rule.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Deletes a NetworkSecurityPerimeterAccessRule by Name
+```powershell
 Remove-AzNetworkSecurityPerimeterAccessRule -Name ar5 -ProfileName profile4 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp4
 ```
 
-### EXAMPLE 2
-```
+Deletes a NetworkSecurityPerimeterAccessRule by Name
+
+### Example 2: Deletes a NetworkSecurityPerimeterAccessRule by identity (using pipe)
+```powershell
 $accessRuleObj = Get-AzNetworkSecurityPerimeterAccessRule -Name ar6 -ProfileName profile4 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp4
-Remove-AzNetworkSecurityPerimeterAccessRule -InputObject $accessRuleObj
+ Remove-AzNetworkSecurityPerimeterAccessRule -InputObject $accessRuleObj
 ```
+
+Deletes a NetworkSecurityPerimeterAccessRule by identity (using pipe)
 
 ## PARAMETERS
 
@@ -62,7 +67,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -75,10 +80,9 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: INetworkSecurityPerimeterIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
 Parameter Sets: DeleteViaIdentity
 Aliases:
 
@@ -93,7 +97,7 @@ Accept wildcard characters: False
 The name of the NSP access rule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Delete, DeleteViaIdentityProfile, DeleteViaIdentityNetworkSecurityPerimeter
 Aliases: AccessRuleName
 
@@ -106,10 +110,9 @@ Accept wildcard characters: False
 
 ### -NetworkSecurityPerimeterInputObject
 Identity Parameter
-To construct, see NOTES section for NETWORKSECURITYPERIMETERINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: INetworkSecurityPerimeterIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
 Parameter Sets: DeleteViaIdentityNetworkSecurityPerimeter
 Aliases:
 
@@ -124,23 +127,22 @@ Accept wildcard characters: False
 Returns true when the command succeeds
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ProfileInputObject
 Identity Parameter
-To construct, see NOTES section for PROFILEINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: INetworkSecurityPerimeterIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
 Parameter Sets: DeleteViaIdentityProfile
 Aliases:
 
@@ -155,7 +157,7 @@ Accept wildcard characters: False
 The name of the NSP profile.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Delete, DeleteViaIdentityNetworkSecurityPerimeter
 Aliases: SecurityPerimeterProfileName, NSPProfileName
 
@@ -166,11 +168,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Delete
 Aliases:
 
@@ -185,7 +202,7 @@ Accept wildcard characters: False
 The name of the network security perimeter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Delete
 Aliases: NetworkSecurityPerimeterName, NSPName
 
@@ -201,13 +218,13 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -216,7 +233,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -232,7 +249,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -249,55 +266,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
+
 ## OUTPUTS
 
 ### System.Boolean
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<INetworkSecurityPerimeterIdentity\>: Identity Parameter
-  \[AccessRuleName \<String\>\]: The name of the NSP access rule.
-  \[AssociationName \<String\>\]: The name of the NSP association.
-  \[Id \<String\>\]: Resource identity path
-  \[LinkName \<String\>\]: The name of the NSP link.
-  \[LinkReferenceName \<String\>\]: The name of the NSP linkReference.
-  \[Location \<String\>\]: The location of network security perimeter.
-  \[NetworkSecurityPerimeterName \<String\>\]: The name of the network security perimeter.
-  \[ProfileName \<String\>\]: The name of the NSP profile.
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-  \[SubscriptionId \<String\>\]: The subscription credentials which uniquely identify the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
-
-NETWORKSECURITYPERIMETERINPUTOBJECT \<INetworkSecurityPerimeterIdentity\>: Identity Parameter
-  \[AccessRuleName \<String\>\]: The name of the NSP access rule.
-  \[AssociationName \<String\>\]: The name of the NSP association.
-  \[Id \<String\>\]: Resource identity path
-  \[LinkName \<String\>\]: The name of the NSP link.
-  \[LinkReferenceName \<String\>\]: The name of the NSP linkReference.
-  \[Location \<String\>\]: The location of network security perimeter.
-  \[NetworkSecurityPerimeterName \<String\>\]: The name of the network security perimeter.
-  \[ProfileName \<String\>\]: The name of the NSP profile.
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-  \[SubscriptionId \<String\>\]: The subscription credentials which uniquely identify the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
-
-PROFILEINPUTOBJECT \<INetworkSecurityPerimeterIdentity\>: Identity Parameter
-  \[AccessRuleName \<String\>\]: The name of the NSP access rule.
-  \[AssociationName \<String\>\]: The name of the NSP association.
-  \[Id \<String\>\]: Resource identity path
-  \[LinkName \<String\>\]: The name of the NSP link.
-  \[LinkReferenceName \<String\>\]: The name of the NSP linkReference.
-  \[Location \<String\>\]: The location of network security perimeter.
-  \[NetworkSecurityPerimeterName \<String\>\]: The name of the network security perimeter.
-  \[ProfileName \<String\>\]: The name of the NSP profile.
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-  \[SubscriptionId \<String\>\]: The subscription credentials which uniquely identify the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.network/remove-aznetworksecurityperimeteraccessrule](https://learn.microsoft.com/powershell/module/az.network/remove-aznetworksecurityperimeteraccessrule)
-

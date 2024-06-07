@@ -17,16 +17,18 @@ Updates an access rule.
 Update-AzNetworkSecurityPerimeterAccessRule -ResourceGroupName <String> -Name <String>
  -SecurityPerimeterName <String> -ProfileName <String> [-SubscriptionId <String>] [-Tag <Hashtable>]
  [-Location <String>] [-AddressPrefix <String[]>] [-FullyQualifiedDomainName <String[]>]
- [-EmailAddress <String[]>] [-PhoneNumber <String[]>] [-Direction <String>] [-Subscription <ISubscriptionId[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EmailAddress <String[]>] [-PhoneNumber <String[]>] [-ServiceTag <String[]>] [-Direction <String>]
+ [-Subscription <ISubscriptionId[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkSecurityPerimeterAccessRule -InputObject <INetworkSecurityPerimeterIdentity> [-Tag <Hashtable>]
  [-Location <String>] [-AddressPrefix <String[]>] [-FullyQualifiedDomainName <String[]>]
- [-EmailAddress <String[]>] [-PhoneNumber <String[]>] [-Direction <String>] [-Subscription <ISubscriptionId[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EmailAddress <String[]>] [-PhoneNumber <String[]>] [-ServiceTag <String[]>] [-Direction <String>]
+ [-Subscription <ISubscriptionId[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,16 +36,32 @@ Updates an access rule.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Updates a NetworkSecurityPerimeterAccessRule
+```powershell
 Update-AzNetworkSecurityPerimeterAccessRule -Name ar3 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3 -ProfileName profile1  -AddressPrefix @('10.10.0.0/17')
 ```
 
-### EXAMPLE 2
+```output
+Location Name
+-------- ----
+         ar3
 ```
+
+Updates a NetworkSecurityPerimeterAccessRule
+
+### Example 2: Updates a NetworkSecurityPerimeterAccessRule by identity (using pipe)
+```powershell
 $GETObj = Get-AzNetworkSecurityPerimeterAccessRule -Name ar3 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3 -ProfileName profile1
-Update-AzNetworkSecurityPerimeterAccessRule -InputObject $GETObj -AddressPrefix @('10.0.0.0/16')
+ Update-AzNetworkSecurityPerimeterAccessRule -InputObject $GETObj -AddressPrefix @('10.0.0.0/16')
 ```
+
+```output
+Location Name
+-------- ----
+         ar3
+```
+
+Updates a NetworkSecurityPerimeterAccessRule by identity (using pipe)
 
 ## PARAMETERS
 
@@ -51,7 +69,7 @@ Update-AzNetworkSecurityPerimeterAccessRule -InputObject $GETObj -AddressPrefix 
 Address Prefix
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -66,13 +84,13 @@ Accept wildcard characters: False
 Run the command as a job
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -81,7 +99,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -96,7 +114,7 @@ Accept wildcard characters: False
 Direction
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +129,7 @@ Accept wildcard characters: False
 Email Addresses
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -126,7 +144,7 @@ Accept wildcard characters: False
 Fully qualified domain name
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -142,7 +160,7 @@ Identity parameter.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: INetworkSecurityPerimeterIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -157,7 +175,7 @@ Accept wildcard characters: False
 Location of the resource
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -172,7 +190,7 @@ Accept wildcard characters: False
 The name of the access rule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases: AccessRuleName
 
@@ -187,13 +205,13 @@ Accept wildcard characters: False
 Run the command asynchronously
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -202,7 +220,7 @@ Accept wildcard characters: False
 Phone Numbers
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -217,11 +235,26 @@ Accept wildcard characters: False
 The name of the profile
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -233,7 +266,7 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -248,7 +281,7 @@ Accept wildcard characters: False
 The name of the network security perimeter
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases: NetworkSecurityPerimeterName
 
@@ -259,12 +292,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Subscription
-Subscription ids
-To construct, see NOTES section for SUBSCRIPTION properties and create a hash table.
+### -ServiceTag
+Service Tags
 
 ```yaml
-Type: ISubscriptionId[]
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Subscription
+Subscription ids
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubscriptionId[]
 Parameter Sets: (All)
 Aliases:
 
@@ -279,13 +326,13 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -294,7 +341,7 @@ Accept wildcard characters: False
 Resource tags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -309,7 +356,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -325,7 +372,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -342,32 +389,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRule
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<INetworkSecurityPerimeterIdentity\>: Identity parameter.
-  \[AccessRuleName \<String\>\]: The name of the NSP access rule.
-  \[AssociationName \<String\>\]: The name of the NSP association.
-  \[Id \<String\>\]: Resource identity path
-  \[LinkName \<String\>\]: The name of the NSP link.
-  \[LinkReferenceName \<String\>\]: The name of the NSP linkReference.
-  \[Location \<String\>\]: The location of network security perimeter.
-  \[NetworkSecurityPerimeterName \<String\>\]: The name of the network security perimeter.
-  \[ProfileName \<String\>\]: The name of the NSP profile.
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-  \[SubscriptionId \<String\>\]: The subscription credentials which uniquely identify the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
-
-SUBSCRIPTION \<ISubscriptionId\[\]\>: Subscription ids
-  \[Id \<String\>\]: Subscription id in the ARM id format.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.network/update-aznetworksecurityperimeteraccessrule](https://learn.microsoft.com/powershell/module/az.network/update-aznetworksecurityperimeteraccessrule)
-

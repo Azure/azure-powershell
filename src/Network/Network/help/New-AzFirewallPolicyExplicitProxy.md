@@ -15,7 +15,7 @@ Creates a new Explicit Proxy
 ```
 New-AzFirewallPolicyExplicitProxy [-EnableExplicitProxy] [-HttpPort <Int32>] [-HttpsPort <Int32>]
  [-EnablePacFile] [-PacFilePort <Int32>] [-PacFile <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -140,6 +140,21 @@ Port number for firewall to serve PAC file.
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

@@ -15,7 +15,7 @@ These resources can be associated with a network security perimeter
 
 ```
 Get-AzNetworkSecurityPerimeterAssociableResourceType -Location <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,10 +24,28 @@ These resources can be associated with a network security perimeter
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: List Perimeter Associable Resource Types
+```powershell
 Get-AzNetworkSecurityPerimeterAssociableResourceType -Location eastus2euap
 ```
+
+```output
+Location Name
+-------- ----
+         Microsoft.Sql.servers
+         Microsoft.Storage.storageAccounts
+         Microsoft.EventHub.namespaces
+         Microsoft.CognitiveServices.accounts
+         Microsoft.Search.searchServices
+         Microsoft.Purview.accounts
+         Microsoft.ContainerService.managedClusters
+         Microsoft.KeyVault.vaults
+         Microsoft.OperationalInsights.workspaces
+         Microsoft.Insights.dataCollectionEndpoints
+         Microsoft.ServiceBus.namespaces
+```
+
+List Perimeter Associable Resource Types
 
 ## PARAMETERS
 
@@ -36,7 +54,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -51,11 +69,26 @@ Accept wildcard characters: False
 The location of network security perimeter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -67,13 +100,13 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -86,9 +119,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IPerimeterAssociableResource
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.network/get-aznetworksecurityperimeterassociableresourcetype](https://learn.microsoft.com/powershell/module/az.network/get-aznetworksecurityperimeterassociableresourcetype)
-

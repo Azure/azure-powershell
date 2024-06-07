@@ -35,15 +35,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IProxyResourceInternal)__proxyResource).Id; }
 
         /// <summary>
-        /// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. It's default value
-        /// is ['*'].
+        /// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<string> LocalInboundProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLinkReferencePropertiesInternal)Property).LocalInboundProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLinkReferencePropertiesInternal)Property).LocalInboundProfile = value ?? null /* arrayOf */; }
 
         /// <summary>
-        /// Local Outbound profile names from which Outbound is allowed. Use ['*'] to allow outbound from all profiles. It's default
-        /// value is ['*'].
+        /// Local Outbound profile names from which Outbound is allowed. In current version, it is readonly property and it's value
+        /// is set to ['*'] to allow outbound from all profiles. In later version, user will be able to modify it.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<string> LocalOutboundProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLinkReferencePropertiesInternal)Property).LocalOutboundProfile; }
@@ -104,14 +103,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
 
         /// <summary>
         /// Remote Inbound profile names to which Inbound is allowed. ['*'] value implies inbound is allowed to all profiles at remote
-        /// perimeter. This property can only be updated from remote perimeter.
+        /// perimeter. This property can only be updated from corresponding link resource present in remote perimeter.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<string> RemoteInboundProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLinkReferencePropertiesInternal)Property).RemoteInboundProfile; }
 
         /// <summary>
         /// Remote Outbound profile names from which Outbound is allowed. ['*'] value implies outbound is allowed from all profiles
-        /// at remote perimeter. This property can only be updated from remote perimeter.
+        /// at remote perimeter. This property can only be updated from corresponding link resource present in remote perimeter.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<string> RemoteOutboundProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLinkReferencePropertiesInternal)Property).RemoteOutboundProfile; }
@@ -180,8 +179,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         PossibleTypes = new [] { typeof(string) })]
         string Description { get;  }
         /// <summary>
-        /// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. It's default value
-        /// is ['*'].
+        /// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
         Required = false,
@@ -189,13 +187,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. It's default value is ['*'].",
+        Description = @"Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles.",
         SerializedName = @"localInboundProfiles",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> LocalInboundProfile { get; set; }
         /// <summary>
-        /// Local Outbound profile names from which Outbound is allowed. Use ['*'] to allow outbound from all profiles. It's default
-        /// value is ['*'].
+        /// Local Outbound profile names from which Outbound is allowed. In current version, it is readonly property and it's value
+        /// is set to ['*'] to allow outbound from all profiles. In later version, user will be able to modify it.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
         Required = false,
@@ -203,7 +201,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Local Outbound profile names from which Outbound is allowed. Use ['*'] to allow outbound from all profiles. It's default value is ['*'].",
+        Description = @"Local Outbound profile names from which Outbound is allowed. In current version, it is readonly property and it's value is set to ['*'] to allow outbound from all profiles. In later version, user will be able to modify it.",
         SerializedName = @"localOutboundProfiles",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> LocalOutboundProfile { get;  }
@@ -221,7 +219,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         string ProvisioningState { get;  }
         /// <summary>
         /// Remote Inbound profile names to which Inbound is allowed. ['*'] value implies inbound is allowed to all profiles at remote
-        /// perimeter. This property can only be updated from remote perimeter.
+        /// perimeter. This property can only be updated from corresponding link resource present in remote perimeter.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
         Required = false,
@@ -229,13 +227,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Remote Inbound profile names to which Inbound is allowed. ['*'] value implies inbound is allowed to all profiles at remote perimeter. This property can only be updated from remote perimeter.",
+        Description = @"Remote Inbound profile names to which Inbound is allowed. ['*'] value implies inbound is allowed to all profiles at remote perimeter. This property can only be updated from corresponding link resource present in remote perimeter.",
         SerializedName = @"remoteInboundProfiles",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> RemoteInboundProfile { get;  }
         /// <summary>
         /// Remote Outbound profile names from which Outbound is allowed. ['*'] value implies outbound is allowed from all profiles
-        /// at remote perimeter. This property can only be updated from remote perimeter.
+        /// at remote perimeter. This property can only be updated from corresponding link resource present in remote perimeter.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
         Required = false,
@@ -243,7 +241,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Remote Outbound profile names from which Outbound is allowed. ['*'] value implies outbound is allowed from all profiles at remote perimeter. This property can only be updated from remote perimeter.",
+        Description = @"Remote Outbound profile names from which Outbound is allowed. ['*'] value implies outbound is allowed from all profiles at remote perimeter. This property can only be updated from corresponding link resource present in remote perimeter.",
         SerializedName = @"remoteOutboundProfiles",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> RemoteOutboundProfile { get;  }
@@ -306,13 +304,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         /// </summary>
         string Description { get; set; }
         /// <summary>
-        /// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. It's default value
-        /// is ['*'].
+        /// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles.
         /// </summary>
         System.Collections.Generic.List<string> LocalInboundProfile { get; set; }
         /// <summary>
-        /// Local Outbound profile names from which Outbound is allowed. Use ['*'] to allow outbound from all profiles. It's default
-        /// value is ['*'].
+        /// Local Outbound profile names from which Outbound is allowed. In current version, it is readonly property and it's value
+        /// is set to ['*'] to allow outbound from all profiles. In later version, user will be able to modify it.
         /// </summary>
         System.Collections.Generic.List<string> LocalOutboundProfile { get; set; }
         /// <summary>Properties of the network security perimeter linkReference resource.</summary>
@@ -322,12 +319,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         string ProvisioningState { get; set; }
         /// <summary>
         /// Remote Inbound profile names to which Inbound is allowed. ['*'] value implies inbound is allowed to all profiles at remote
-        /// perimeter. This property can only be updated from remote perimeter.
+        /// perimeter. This property can only be updated from corresponding link resource present in remote perimeter.
         /// </summary>
         System.Collections.Generic.List<string> RemoteInboundProfile { get; set; }
         /// <summary>
         /// Remote Outbound profile names from which Outbound is allowed. ['*'] value implies outbound is allowed from all profiles
-        /// at remote perimeter. This property can only be updated from remote perimeter.
+        /// at remote perimeter. This property can only be updated from corresponding link resource present in remote perimeter.
         /// </summary>
         System.Collections.Generic.List<string> RemoteOutboundProfile { get; set; }
         /// <summary>Remote NSP Guid with which the link is created.</summary>

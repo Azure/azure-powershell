@@ -1,6 +1,6 @@
 {
   "resourceType": "networkSecurityPerimeters/profiles/accessRules",
-  "apiVersion": "2023-07-01-preview",
+  "apiVersion": "2023-08-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.network"
   },
@@ -44,6 +44,54 @@
             {
               "name": "-SecurityPerimeterName",
               "value": "[Path.networkSecurityPerimeterName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzNetworkSecurityPerimeterNspAccessRulesReconcile",
+      "description": "Reconcile NSP access rules",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/profiles/{profileName}/accessRules/{accessRuleName}/reconcile",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.network/invoke-aznetworksecurityperimeternspaccessrulesreconcile"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AccessRuleName <String>",
+              "-NetworkSecurityPerimeterName <String>",
+              "-ProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Reconcile NSP access rules",
+          "parameters": [
+            {
+              "name": "-AccessRuleName",
+              "value": "[Path.accessRuleName]"
+            },
+            {
+              "name": "-NetworkSecurityPerimeterName",
+              "value": "[Path.networkSecurityPerimeterName]"
+            },
+            {
+              "name": "-ProfileName",
+              "value": "[Path.profileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
               "name": "-SubscriptionId",

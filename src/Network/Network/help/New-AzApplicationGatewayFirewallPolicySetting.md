@@ -18,8 +18,8 @@ New-AzApplicationGatewayFirewallPolicySetting [-Mode <String>] [-State <String>]
  [-MaxRequestBodySizeInKb <Int32>] [-DisableFileUploadEnforcement <Boolean>] [-MaxFileUploadInMb <Int32>]
  [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>]
  [-LogScrubbing <PSApplicationGatewayFirewallPolicyLogScrubbingConfiguration>]
- [-JSChallengeCookieExpirationInMins <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-JSChallengeCookieExpirationInMins <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -151,6 +151,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JSChallengeCookieExpirationInMins
+Web Application Firewall JavaScript Challenge Cookie Expiration time in minutes.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LogScrubbing
 To scrub sensitive log fields
 
@@ -212,13 +227,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RequestBodyInspectLimitInKB
-Max inspection limit in KB for request body inspection.
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
-Aliases:
+Aliases: proga
 
 Required: False
 Position: Named
@@ -227,8 +242,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JSChallengeCookieExpirationInMins
-Web Application Firewall JavaScript Challenge Cookie Expiration time in minutes.
+### -RequestBodyInspectLimitInKB
+Max inspection limit in KB for request body inspection.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]

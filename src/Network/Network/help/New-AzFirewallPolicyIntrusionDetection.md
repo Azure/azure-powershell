@@ -13,11 +13,11 @@ Creates a new Azure Firewall Policy Intrusion Detection to associate with Firewa
 ## SYNTAX
 
 ```
-New-AzFirewallPolicyIntrusionDetection -Mode <String>
- [-Profile <String>]
+New-AzFirewallPolicyIntrusionDetection -Mode <String> [-Profile <String>]
  [-SignatureOverride <PSAzureFirewallPolicyIntrusionDetectionSignatureOverride[]>]
  [-BypassTraffic <PSAzureFirewallPolicyIntrusionDetectionBypassTrafficSetting[]>] [-PrivateRange <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,7 +59,7 @@ This example creates intrusion detection with bypass traffic setting
 
 ### Example 5: Create firewall policy with intrusion detection profile setting
 ```powershell
-$intrusionDetection = New-AzFirewallPolicyIntrusionDetection -Mode "Deny" -Profile “Advanced”
+$intrusionDetection = New-AzFirewallPolicyIntrusionDetection -Mode "Deny" -Profile ï¿½Advancedï¿½
 New-AzFirewallPolicy -Name fp1 -Location "westus2" -ResourceGroupName TestRg -SkuTier "Premium" -IntrusionDetection $intrusionDetection
 ```
 
@@ -67,73 +67,11 @@ This example creates intrusion detection with Alert and Deny mode and Advanced s
 
 ## PARAMETERS
 
-### -Mode
-Intrusion Detection general state.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: Off, Alert, Deny
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Profile
-Sets IDPS signatures profile.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: Basic, Standard, Advanced
-
-Required: False
-Position: Named
-Default value: For newly created policy the default IDPS profile is “Standard” and for existing policy without IDPS profile setting,  the default is “Advanced”
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SignatureOverride
-List of specific signatures states.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyIntrusionDetectionSignatureOverride[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -BypassTraffic
 List of rules for traffic to bypass.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyIntrusionDetectionBypassTrafficSetting[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PrivateRange
-List of IDPS Private IP ranges.
-
-```yaml
-Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -159,14 +97,74 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+### -Mode
+Intrusion Detection general state.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
-Aliases: wi
+Aliases:
+Accepted values: Off, Alert, Deny
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateRange
+List of IDPS Private IP ranges.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Profile
+Sets IDPS signatures profile.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: For newly created policy the default IDPS profile is ï¿½Standardï¿½ and for existing policy without IDPS profile setting,  the default is ï¿½Advancedï¿½
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SignatureOverride
+List of specific signatures states.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyIntrusionDetectionSignatureOverride[]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -182,6 +180,22 @@ Prompts you for confirmation before running the cmdlet.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named

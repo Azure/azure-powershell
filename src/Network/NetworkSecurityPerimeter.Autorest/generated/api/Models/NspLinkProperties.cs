@@ -39,8 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         private System.Collections.Generic.List<string> _localInboundProfile;
 
         /// <summary>
-        /// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. It's default value
-        /// is ['*'].
+        /// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> LocalInboundProfile { get => this._localInboundProfile; set => this._localInboundProfile = value; }
@@ -85,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
 
         /// <summary>
         /// Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can
-        /// only be updated in auto-approval mode. It's default value is ['*'].
+        /// only be updated in auto-approval mode.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> RemoteInboundProfile { get => this._remoteInboundProfile; set => this._remoteInboundProfile = value; }
@@ -160,8 +159,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         PossibleTypes = new [] { typeof(string) })]
         string Description { get; set; }
         /// <summary>
-        /// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. It's default value
-        /// is ['*'].
+        /// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
         Required = false,
@@ -169,7 +167,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. It's default value is ['*'].",
+        Description = @"Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles.",
         SerializedName = @"localInboundProfiles",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> LocalInboundProfile { get; set; }
@@ -201,7 +199,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         string ProvisioningState { get;  }
         /// <summary>
         /// Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can
-        /// only be updated in auto-approval mode. It's default value is ['*'].
+        /// only be updated in auto-approval mode.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(
         Required = false,
@@ -209,7 +207,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode. It's default value is ['*'].",
+        Description = @"Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode.",
         SerializedName = @"remoteInboundProfiles",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> RemoteInboundProfile { get; set; }
@@ -278,8 +276,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         /// </summary>
         string Description { get; set; }
         /// <summary>
-        /// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. It's default value
-        /// is ['*'].
+        /// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles.
         /// </summary>
         System.Collections.Generic.List<string> LocalInboundProfile { get; set; }
         /// <summary>
@@ -292,7 +289,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
         string ProvisioningState { get; set; }
         /// <summary>
         /// Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can
-        /// only be updated in auto-approval mode. It's default value is ['*'].
+        /// only be updated in auto-approval mode.
         /// </summary>
         System.Collections.Generic.List<string> RemoteInboundProfile { get; set; }
         /// <summary>

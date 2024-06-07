@@ -64,8 +64,8 @@ NETWORKSECURITYPERIMETERINPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identit
 PARAMETER <INspLink>: The network security perimeter link resource
   [AutoApprovedRemotePerimeterResourceId <String>]: Perimeter ARM Id for the remote NSP with which the link gets created in Auto-approval mode. It should be used when the NSP admin have Microsoft.Network/networkSecurityPerimeters/linkPerimeter/action permission on the remote NSP resource.
   [Description <String>]: A message passed to the owner of the remote NSP link resource with this connection request. In case of Auto-approved flow, it is default to 'Auto Approved'. Restricted to 140 chars.
-  [LocalInboundProfile <List<String>>]: Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. It's default value is ['*'].
-  [RemoteInboundProfile <List<String>>]: Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode. It's default value is ['*'].
+  [LocalInboundProfile <List<String>>]: Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles.
+  [RemoteInboundProfile <List<String>>]: Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode.
 .Link
 https://learn.microsoft.com/powershell/module/az.network/new-aznetworksecurityperimeterlink
 #>
@@ -119,7 +119,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateViaIdentityNetworkSecurityPerimeter', Mandatory, ValueFromPipeline)]
@@ -127,7 +126,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for NETWORKSECURITYPERIMETERINPUTOBJECT properties and create a hash table.
     ${NetworkSecurityPerimeterInputObject},
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
@@ -135,7 +133,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLink]
     # The network security perimeter link resource
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -165,7 +162,6 @@ param(
     [System.String[]]
     # Local Inbound profile names to which Inbound is allowed.
     # Use ['*'] to allow inbound to all profiles.
-    # It's default value is ['*'].
     ${LocalInboundProfile},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -177,7 +173,6 @@ param(
     # Remote Inbound profile names to which Inbound is allowed.
     # Use ['*'] to allow inbound to all profiles.
     # This property can only be updated in auto-approval mode.
-    # It's default value is ['*'].
     ${RemoteInboundProfile},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
@@ -276,7 +271,13 @@ begin {
             CreateViaJsonString = 'Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeterLink_CreateViaJsonString';
         }
         if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

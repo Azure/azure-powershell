@@ -167,6 +167,9 @@ Adds a VPN client root certificate.
 ### [Approve-AzPrivateEndpointConnection](Approve-AzPrivateEndpointConnection.md)
 Approves a private endpoint connection.
 
+### [Convert-AzNetworkWatcherClassicConnectionMonitor](Convert-AzNetworkWatcherClassicConnectionMonitor.md)
+Convert a classic connection monitor into connection monitor v2 with specified name. 
+
 ### [Deny-AzPrivateEndpointConnection](Deny-AzPrivateEndpointConnection.md)
 denies a private endpoint connection.
 
@@ -509,6 +512,28 @@ Gets an existing network profile top level resource
 ### [Get-AzNetworkSecurityGroup](Get-AzNetworkSecurityGroup.md)
 Gets a network security group.
 
+### [Get-AzNetworkSecurityPerimeter](Get-AzNetworkSecurityPerimeter.md)
+Gets the specified network security perimeter by the name.
+
+### [Get-AzNetworkSecurityPerimeterAccessRule](Get-AzNetworkSecurityPerimeterAccessRule.md)
+Gets the specified NSP access rule by name.
+
+### [Get-AzNetworkSecurityPerimeterAssociableResourceType](Get-AzNetworkSecurityPerimeterAssociableResourceType.md)
+Gets the list of resources that are onboarded with NSP.
+These resources can be associated with a network security perimeter
+
+### [Get-AzNetworkSecurityPerimeterAssociation](Get-AzNetworkSecurityPerimeterAssociation.md)
+Gets the specified NSP association by name.
+
+### [Get-AzNetworkSecurityPerimeterLink](Get-AzNetworkSecurityPerimeterLink.md)
+Gets the specified NSP link resource.
+
+### [Get-AzNetworkSecurityPerimeterLinkReference](Get-AzNetworkSecurityPerimeterLinkReference.md)
+Gets the specified NSP linkReference resource.
+
+### [Get-AzNetworkSecurityPerimeterProfile](Get-AzNetworkSecurityPerimeterProfile.md)
+Gets the specified NSP profile.
+
 ### [Get-AzNetworkSecurityRuleConfig](Get-AzNetworkSecurityRuleConfig.md)
 Get a network security rule configuration for a network security group.
 
@@ -782,6 +807,15 @@ This is an RM representation of customer branches that are uploaded to Azure for
 ### [Get-AzVpnSiteLinkConnectionIkeSa](Get-AzVpnSiteLinkConnectionIkeSa.md)
 Get IKE Security Associations of VPN Site Link Connections
 
+### [Invoke-AzFirewallPacketCapture](Invoke-AzFirewallPacketCapture.md)
+Invoke Packet Capture on Azure Firewall
+
+### [Invoke-AzNetworkSecurityPerimeterNspAccessRulesReconcile](Invoke-AzNetworkSecurityPerimeterNspAccessRulesReconcile.md)
+Reconcile NSP access rules
+
+### [Invoke-AzNetworkSecurityPerimeterNspAssociationReconcile](Invoke-AzNetworkSecurityPerimeterNspAssociationReconcile.md)
+Reconcile NSP association
+
 ### [Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic](Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic.md)
 Invoke network configuration diagnostic session for specified network profiles on target resource.
 
@@ -877,6 +911,9 @@ Creates a front-end IP configuration for an application gateway.
 
 ### [New-AzApplicationGatewayFrontendPort](New-AzApplicationGatewayFrontendPort.md)
 Creates a front-end port for an application gateway.
+
+### [New-AzApplicationGatewayHeaderValueMatcher](New-AzApplicationGatewayHeaderValueMatcher.md)
+Creates a **HeaderValueMatcher** object configuration to use in **ApplicationGatewayRewriteRuleHeaderConfiguration** for an application gateway.
 
 ### [New-AzApplicationGatewayHttpListener](New-AzApplicationGatewayHttpListener.md)
 Creates an HTTP listener for an application gateway.
@@ -1029,13 +1066,10 @@ Creates a Firewall Network Rule.
 Creates a Azure Firewall Network Collection of Network rules.
 
 ### [New-AzFirewallPacketCaptureParameter](New-AzFirewallPacketCaptureParameter.md)
-Creates a Azure Firewall Packet Capture Parameter.
+Create a Packet Capture Parameter for Azure Firewall
 
 ### [New-AzFirewallPacketCaptureRule](New-AzFirewallPacketCaptureRule.md)
-Creates a Azure Firewall Packet Capture Rule.
-
-### [Invoke-AzFirewallPacketCapture](Invoke-AzFirewallPacketCapture.md)
-Invoke a Packet Capture request on Azure Firewall.
+Creates a Packet Capture Rule for Azure Firewall
 
 ### [New-AzFirewallPolicy](New-AzFirewallPolicy.md)
 Creates a new Azure Firewall Policy
@@ -1205,6 +1239,21 @@ Creates a new network profile.
 ### [New-AzNetworkSecurityGroup](New-AzNetworkSecurityGroup.md)
 Creates a network security group.
 
+### [New-AzNetworkSecurityPerimeter](New-AzNetworkSecurityPerimeter.md)
+Create a Network Security Perimeter.
+
+### [New-AzNetworkSecurityPerimeterAccessRule](New-AzNetworkSecurityPerimeterAccessRule.md)
+Create a network access rule.
+
+### [New-AzNetworkSecurityPerimeterAssociation](New-AzNetworkSecurityPerimeterAssociation.md)
+Create a NSP resource association.
+
+### [New-AzNetworkSecurityPerimeterLink](New-AzNetworkSecurityPerimeterLink.md)
+Create NSP link resource.
+
+### [New-AzNetworkSecurityPerimeterProfile](New-AzNetworkSecurityPerimeterProfile.md)
+Create a network profile.
+
 ### [New-AzNetworkSecurityRuleConfig](New-AzNetworkSecurityRuleConfig.md)
 Creates a network security rule configuration.
 
@@ -1364,6 +1413,21 @@ Creates a hub route table resource associated with a VirtualHub.
 
 ### [New-AzVirtualApplianceAdditionalNicProperty](New-AzVirtualApplianceAdditionalNicProperty.md)
 Define a Network Virtual Appliance Additional Nic Property for the resource.
+
+### [New-AzVirtualApplianceInboundSecurityRulesProperty](New-AzVirtualApplianceInboundSecurityRulesProperty.md)
+Define Inbound Security Rules Property
+
+### [New-AzVirtualApplianceInternetIngressIpsProperty](New-AzVirtualApplianceInternetIngressIpsProperty.md)
+Define a Network Virtual Appliance Internet Ingress IPs Property for the resource.
+
+### [New-AzVirtualApplianceIpConfiguration](New-AzVirtualApplianceIpConfiguration.md)
+Defines an IP configuration for an interface of virtual appliance.
+
+### [New-AzVirtualApplianceNetworkInterfaceConfiguration](New-AzVirtualApplianceNetworkInterfaceConfiguration.md)
+Defines a Interface Configuration for Network Profile of Virtual Appliance.
+
+### [New-AzVirtualApplianceNetworkProfile](New-AzVirtualApplianceNetworkProfile.md)
+Define a Network Profile for virtual appliance.
 
 ### [New-AzVirtualApplianceSite](New-AzVirtualApplianceSite.md)
 Create a site connected to a Network Virtual Appliance.
@@ -1695,6 +1759,24 @@ Removes a network profile.
 
 ### [Remove-AzNetworkSecurityGroup](Remove-AzNetworkSecurityGroup.md)
 Removes a network security group.
+
+### [Remove-AzNetworkSecurityPerimeter](Remove-AzNetworkSecurityPerimeter.md)
+Deletes a network security perimeter.
+
+### [Remove-AzNetworkSecurityPerimeterAccessRule](Remove-AzNetworkSecurityPerimeterAccessRule.md)
+Deletes an NSP access rule.
+
+### [Remove-AzNetworkSecurityPerimeterAssociation](Remove-AzNetworkSecurityPerimeterAssociation.md)
+Deletes an NSP association resource.
+
+### [Remove-AzNetworkSecurityPerimeterLink](Remove-AzNetworkSecurityPerimeterLink.md)
+Deletes an NSP Link resource.
+
+### [Remove-AzNetworkSecurityPerimeterLinkReference](Remove-AzNetworkSecurityPerimeterLinkReference.md)
+Deletes an NSP LinkReference resource.
+
+### [Remove-AzNetworkSecurityPerimeterProfile](Remove-AzNetworkSecurityPerimeterProfile.md)
+Deletes an NSP profile.
 
 ### [Remove-AzNetworkSecurityRuleConfig](Remove-AzNetworkSecurityRuleConfig.md)
 Removes a network security rule from a network security group.
@@ -2236,8 +2318,23 @@ The **Test-AzPrivateLinkServiceVisibility** checks whether a private link servic
 ### [Update-AzCustomIpPrefix](Update-AzCustomIpPrefix.md)
 Updates a CustomIpPrefix
 
+### [Update-AzNetworkSecurityPerimeter](Update-AzNetworkSecurityPerimeter.md)
+Patch Tags for a Network Security Perimeter.
+
+### [Update-AzNetworkSecurityPerimeterAccessRule](Update-AzNetworkSecurityPerimeterAccessRule.md)
+Updates an access rule.
+
+### [Update-AzNetworkSecurityPerimeterAssociation](Update-AzNetworkSecurityPerimeterAssociation.md)
+Updates an association
+
+### [Update-AzNetworkSecurityPerimeterLink](Update-AzNetworkSecurityPerimeterLink.md)
+Updates a NSP Link
+
 ### [Update-AzNetworkVirtualAppliance](Update-AzNetworkVirtualAppliance.md)
 Update or Change a Network Virtual Appliance resource.
+
+### [Update-AzNetworkVirtualApplianceConnection](Update-AzNetworkVirtualApplianceConnection.md)
+Update or Change a Network Virtual Appliance Connection resource.
 
 ### [Update-AzP2sVpnGateway](Update-AzP2sVpnGateway.md)
 Update an existing P2SVpnGateway under VirtualHub for point to site connectivity.
@@ -2253,6 +2350,9 @@ Update a Peer in an Azure RouteServer
 
 ### [Update-AzVHubRouteTable](Update-AzVHubRouteTable.md)
 Delete a hub route table resource associated with a VirtualHub.
+
+### [Update-AzVirtualApplianceInboundSecurityRule](Update-AzVirtualApplianceInboundSecurityRule.md)
+Update the Inbound Security Rule of a Network Virtual Appliance Resource
 
 ### [Update-AzVirtualApplianceSite](Update-AzVirtualApplianceSite.md)
 Change or Modify a Virtual Appliance site connected to a Network Virtual Appliance resource.

@@ -15,14 +15,16 @@ Removes a private endpoint connection.
 ### ByResourceId (Default)
 ```
 Remove-AzPrivateEndpointConnection [-Description <String>] [-Force] [-AsJob] [-PassThru] -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResource
 ```
 Remove-AzPrivateEndpointConnection -Name <String> [-Description <String>] [-Force] [-AsJob] [-PassThru]
- -ResourceGroupName <String> -ServiceName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] -PrivateLinkResourceType <String> [<CommonParameters>]
+ -ResourceGroupName <String> -ServiceName <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] -PrivateLinkResourceType <String>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -143,6 +145,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

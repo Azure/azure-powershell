@@ -165,6 +165,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRuleInternal)this).PhoneNumber = (System.Collections.Generic.List<string>) content.GetValueForProperty("PhoneNumber",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRuleInternal)this).PhoneNumber, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
+            if (content.Contains("ServiceTag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRuleInternal)this).ServiceTag = (System.Collections.Generic.List<string>) content.GetValueForProperty("ServiceTag",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRuleInternal)this).ServiceTag, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -237,6 +241,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models
             if (content.Contains("PhoneNumber"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRuleInternal)this).PhoneNumber = (System.Collections.Generic.List<string>) content.GetValueForProperty("PhoneNumber",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRuleInternal)this).PhoneNumber, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("ServiceTag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRuleInternal)this).ServiceTag = (System.Collections.Generic.List<string>) content.GetValueForProperty("ServiceTag",((Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRuleInternal)this).ServiceTag, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             AfterDeserializePSObject(content);
         }
