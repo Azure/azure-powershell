@@ -18,23 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-    * Added Cmdlets to manage Azure NetAppFiles BackupVaults for backups https://learn.microsoft.com/en-us/azure/azure-netapp-files/backup-introduction 
-        -  `New-AzNetAppFilesBackupVault``, `Get-AzNetAppFilesBackupVault`, `Update-AzNetAppFilesBackupVault`, `Set-AzNetAppFilesBackupVault` and `Remove-AzNetAppFilesBackupVault`
-    * Added Parameter `BackupVaultName`
-        - `New-AzNetAppFilesBackup`, `Get-AzNetAppFilesBackup`, `Update-AzNetAppFilesBackup`, `Remove-AzNetAppFilesBackup` and `Restore-AzNetAppFilesBackupFile`
-    * Added Parameter `VolumeResourceId` to `New-AzNetAppFilesBackup`. ResourceId used to identify the ANF Volume to Backup
-    * Added Parameter `BackupVaultName`  to Backup cmdlets
-        - `New-AzNetAppFilesBackup`, `Get-AzNetAppFilesBackup`, `Update-AzNetAppFilesBackup`, `Remove-AzNetAppFilesBackup` and `Restore-AzNetAppFilesBackupFile`
-    * Added Parameter `Filter`  to Backup cmdlet `Get-AzNetAppFilesBackup` to get list of backups belonging to specific ANF Volume. This filter accepts ANF Volume ResourceId
-    * Paramters `PoolName` and 'VolumeName' are no longer needed and will be deprecated in Backup cmdlets
-        - `New-AzNetAppFilesBackup`, `Get-AzNetAppFilesBackup`, `Update-AzNetAppFilesBackup`, `Remove-AzNetAppFilesBackup` and `Restore-AzNetAppFilesBackupFile`
-    * Parameters `PoolName` and 'VolumeName' are no longer mandatory, not needed and will be deprecated in Backup cmdlets
-        - `New-AzNetAppFilesBackup`, `Get-AzNetAppFilesBackup`, `Update-AzNetAppFilesBackup`, `Remove-AzNetAppFilesBackup` and `Restore-AzNetAppFilesBackupFile`
-    * Added Property `VolumeResourceId ` to PSNetAppFilesBackup
-        - `New-AzNetAppFilesBackup`, `Get-AzNetAppFilesBackup`, `Update-AzNetAppFilesBackup`
-    * Added Paramter `BackupVaultId` to `Backup`. object 
-        - `New-AzNetAppFilesVolume`, `Update-AzNetAppFilesVolume`
-    * Added Paramter `ProtocolType` to `Update-AzNetAppFilesVolume`
+* Updated to api-version 2023-11-01
 
 ## Version 0.15.2
 * Upgraded Azure.Core to 1.37.0.
