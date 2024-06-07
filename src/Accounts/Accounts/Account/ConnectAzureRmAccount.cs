@@ -525,7 +525,7 @@ namespace Microsoft.Azure.Commands.Profile
                     }
 
                     profileClient.WarningLog = (message) => _tasks.Enqueue(new Task(() => this.WriteWarning(message))); 
-                    profileClient.InformationLog = (message) => _tasks.Enqueue(new Task(() => this.WriteInformation(message, false)));
+                    profileClient.InformationLog = (message) => _tasks.Enqueue(new Task(() => WriteInteractiveInformation(message)));
                     profileClient.DebugLog = (message) => _tasks.Enqueue(new Task(() => this.WriteDebugWithTimestamp(message)));
                     profileClient.PromptAndReadLine = (message) =>
                     {
@@ -591,8 +591,8 @@ namespace Microsoft.Azure.Commands.Profile
                     }
                 });
 
-                WriteInformation($"{Resources.AnnouncementsHeader}{System.Environment.NewLine}{Resources.AnnouncementsMessage}{System.Environment.NewLine}");
-                WriteInformation($"{Resources.ReportIssue}{System.Environment.NewLine}");
+                WriteInteractiveInformation($"{Resources.AnnouncementsHeader}{System.Environment.NewLine}{Resources.AnnouncementsMessage}{System.Environment.NewLine}");
+                WriteInteractiveInformation($"{Resources.ReportIssue}{System.Environment.NewLine}");
             }
         }
 
@@ -617,6 +617,15 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 throw new ActionPreferenceStopException(Resources.DoNotIgnoreInformationIfUserDeviceAuth);
             }
+        }
+
+        private void WriteInteractiveInformation(string message)
+        {
+            if (IsInteractiveAuthenticationFlow())
+            {
+                this.WriteInformation(message, false);
+            }
+
         }
 
         private bool IsWriteInformationIgnored()
