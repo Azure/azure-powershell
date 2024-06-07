@@ -14,8 +14,9 @@ Create an in-memory object for NetworkProfile.
 
 ```
 New-AzPaloAltoNetworksProfileObject -EnableEgressNat <String> -NetworkType <String> -PublicIP <IIPAddress[]>
- [-EgressNatIP <IIPAddress[]>] [-VHubAddressSpace <String>] [-VHubResourceId <String>]
- [-VnetAddressSpace <String>] [-VnetConfigurationIPOfTrustSubnetForUdrAddress <String>]
+ [-EgressNatIP <IIPAddress[]>] [-TrustedRange <String[]>] [-VHubAddressSpace <String>]
+ [-VHubResourceId <String>] [-VnetAddressSpace <String>]
+ [-VnetConfigurationIPOfTrustSubnetForUdrAddress <String>]
  [-VnetConfigurationIPOfTrustSubnetForUdrResourceId <String>]
  [-VnetConfigurationTrustSubnetAddressSpace <String>] [-VnetConfigurationTrustSubnetResourceId <String>]
  [-VnetConfigurationUnTrustSubnetAddressSpace <String>] [-VnetConfigurationUnTrustSubnetResourceId <String>]
@@ -50,7 +51,6 @@ Create an in-memory object for NetworkProfile.
 
 ### -EgressNatIP
 Egress nat IP to use.
-To construct, see NOTES section for EGRESSNATIP properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddress[]
@@ -96,7 +96,6 @@ Accept wildcard characters: False
 
 ### -PublicIP
 List of IPs associated with the Firewall.
-To construct, see NOTES section for PUBLICIP properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddress[]
@@ -104,6 +103,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TrustedRange
+Non-RFC 1918 address.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

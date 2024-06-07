@@ -317,8 +317,21 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Enable automatic upgrade of Sql IaaS extension Agent.
-    ${EnableAutomaticUpgrade},
+    ${EnableAutomaticUpgrade},	
+	
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # The client Id of the Managed Identity to query Microsoft Graph API.
+    # An empty string must be used for the system assigned Managed Identity
+    ${ManagedIdentityClientId},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+    ${IdentityType},	
+	
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -420,6 +433,8 @@ process {
         $hasWsfcDomainCredentialsSqlServiceAccountPassword = $PSBoundParameters.Remove('WsfcDomainCredentialsSqlServiceAccountPassword')
         $hasWsfcStaticIP = $PSBoundParameters.Remove('WsfcStaticIP')
         $hasEnableAutomaticUpgrade = $PSBoundParameters.Remove('EnableAutomaticUpgrade')
+        $hasManagedIdentityClientId = $PSBoundParameters.Remove('ManagedIdentityClientId')
+		$hasIdentityType = $PSBoundParameters.Remove('IdentityType')
         
         $hasAsJob = $PSBoundParameters.Remove('AsJob')
         $null = $PSBoundParameters.Remove('WhatIf')
@@ -546,14 +561,24 @@ process {
         if ($hasEnableAutomaticUpgrade) {
             $sqlvm.EnableAutomaticUpgrade=$EnableAutomaticUpgrade
         }
-		
+        if ($hasManagedIdentityClientId) {
+            $sqlvm.AzureAdAuthenticationSettingClientId=$ManagedIdentityClientId
+        }
+		if ($hasIdentityType -and !$hasManagedIdentityClientId) {
+            $sqlvm.AzureAdAuthenticationSettingClientId='' #system assigned MI scenario
+        }
         if ($hasAsJob) {
             $PSBoundParameters.Add('AsJob', $true)
         }
-		
+
+        if ($hasManagedIdentityClientId -or $hasIdentityType)
+        {
+            Assert-AzSqlVMEntraAuth -ResourceGroupName $sqlVM.ResourceGroupName -Name $sqlVM.Name -ManagedIdentityClientId $ManagedIdentityClientId -IdentityType $IdentityType
+        }
         if ($PSCmdlet.ShouldProcess("SQL virtual machine $($sqlvm.Name)", "Update")) {
             Az.SqlVirtualMachine.internal\New-AzSqlVM -InputObject $sqlvm -Parameter $sqlvm @PSBoundParameters
-        }
+        }		
+
 	} catch {
 		throw
 	}

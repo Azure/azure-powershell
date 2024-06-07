@@ -15,29 +15,15 @@ Update a FirewallResource
 ### UpdateExpanded (Default)
 ```
 Update-AzPaloAltoNetworksFirewall -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AssociatedRulestackId <String>] [-AssociatedRulestackLocation <String>]
- [-AssociatedRulestackResourceId <String>] [-DnsSettingDnsServer <IIPAddress[]>]
- [-DnsSettingEnabledDnsType <String>] [-DnsSettingEnableDnsProxy <String>]
- [-FrontEndSetting <IFrontendSetting[]>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-IsPanoramaManaged <String>] [-MarketplaceDetailMarketplaceSubscriptionStatus <String>]
- [-MarketplaceDetailOfferId <String>] [-MarketplaceDetailPublisherId <String>]
- [-NetworkProfile <INetworkProfile>] [-PanEtag <String>] [-PanoramaConfigString <String>]
- [-PlanDataBillingCycle <String>] [-PlanDataPlanId <String>] [-PlanDataUsageType <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzPaloAltoNetworksFirewall -InputObject <IPaloAltoNetworksIdentity> [-AssociatedRulestackId <String>]
- [-AssociatedRulestackLocation <String>] [-AssociatedRulestackResourceId <String>]
- [-DnsSettingDnsServer <IIPAddress[]>] [-DnsSettingEnabledDnsType <String>]
- [-DnsSettingEnableDnsProxy <String>] [-FrontEndSetting <IFrontendSetting[]>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-IsPanoramaManaged <String>]
- [-MarketplaceDetailMarketplaceSubscriptionStatus <String>] [-MarketplaceDetailOfferId <String>]
- [-MarketplaceDetailPublisherId <String>] [-NetworkProfile <INetworkProfile>] [-PanEtag <String>]
- [-PanoramaConfigString <String>] [-PlanDataBillingCycle <String>] [-PlanDataPlanId <String>]
- [-PlanDataUsageType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzPaloAltoNetworksFirewall -InputObject <IPaloAltoNetworksIdentity>
+ [-EnableSystemAssignedIdentity <Boolean?>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,41 +46,11 @@ Update a FirewallResource.
 
 ## PARAMETERS
 
-### -AssociatedRulestackId
-Associated rulestack Id
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AssociatedRulestackLocation
-Rulestack location
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AssociatedRulestackResourceId
-Resource Id
-
-```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -121,88 +77,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsSettingDnsServer
-List of IPs associated with the Firewall
-To construct, see NOTES section for DNSSETTINGDNSSERVER properties and create a hash table.
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddress[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DnsSettingEnabledDnsType
-Enabled DNS proxy type, disabled by default
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DnsSettingEnableDnsProxy
-Enable DNS proxy, disabled by default
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FrontEndSetting
-Frontend settings for Firewall
-To construct, see NOTES section for FRONTENDSETTING properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFrontendSetting[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-The type of managed identity assigned to this resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The identities assigned to this resource by the user.
-
-```yaml
-Type: System.Collections.Hashtable
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 
@@ -215,7 +94,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPaloAltoNetworksIdentity
@@ -226,67 +104,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -IsPanoramaManaged
-Panorama Managed: Default is False.
-Default will be CloudSec managed
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MarketplaceDetailMarketplaceSubscriptionStatus
-Marketplace Subscription Status
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MarketplaceDetailOfferId
-Offer Id
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MarketplaceDetailPublisherId
-Publisher Id
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -305,88 +122,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkProfile
-Network settings
-To construct, see NOTES section for NETWORKPROFILE properties and create a hash table.
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfile
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PanEtag
-panEtag info
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PanoramaConfigString
-Base64 encoded string representing Panorama parameters to be used by Firewall to connect to Panorama.
-This string is generated via azure plugin in Panorama
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PlanDataBillingCycle
-different billing cycles like MONTHLY/WEEKLY
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PlanDataPlanId
-plan id as published by Liftr.PAN
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PlanDataUsageType
-different usage type like PAYG/COMMITTED
-
-```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -433,6 +173,22 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
