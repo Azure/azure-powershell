@@ -20,6 +20,14 @@
 
 ## Upcoming Release
 
+## Version 7.7.0
+* Updated cmdlet `New-AzNetworkSecurityPerimeterAccessRule` to support for Inbound Rule of type 'ServiceTag'.
+* Updated cmdlet `Update-AzNetworkSecurityPerimeterAccessRule' to support for Inbound Rule of type 'ServiceTag'.
+* Added cmdlet 'Invoke-AzNetworkSecurityPerimeterNspAccessRulesReconcile' to Reconcile NetworkSecurityPerimeter access rules.
+* Added cmdlet 'Invoke-AzNetworkSecurityPerimeterNspAssociationReconcile' to Reconcile NetworkSecurityPerimeter association.
+* Added cmdlet 'Update-AzNetworkSecurityPerimeter' to Patch Tags for a NetworkSecurityPerimeter.
+
+
 ## Version 7.6.0
 * Added cmdlet `New-AzVirtualApplianceNetworkProfile` to build network profile for network virtual appliance and pass as a parameter.
 * Added cmdlet `New-AzVirtualApplianceNetworkInterfaceConfiguration` and `New-AzVirtualApplianceIpConfiguration` to build `New-AzVirtualApplianceNetworkProfile`.
