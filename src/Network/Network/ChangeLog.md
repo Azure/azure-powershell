@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 7.7.0
 * Updated cmdlet `New-AzNetworkSecurityPerimeterAccessRule` to support for Inbound Rule of type `ServiceTag`.
 * Updated cmdlet `Update-AzNetworkSecurityPerimeterAccessRule` to support for Inbound Rule of type `ServiceTag`.
 * Added cmdlet `Invoke-AzNetworkSecurityPerimeterNspAccessRulesReconcile` to Reconcile NetworkSecurityPerimeter access rules.
