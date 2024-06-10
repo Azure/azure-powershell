@@ -125,14 +125,15 @@ namespace Microsoft.Azure.Commands.Network
             if (!isIpAddressCorrectlyMaskByNetworkPrefixLength(address, host))
             {
                 uint recommendedAddressBits;
+                string explanation = $"The network prefix for the CIDR string '{ipv4Cidr}' should be masked according to the suffix '{host}'.";
                 if (TryApplyMask(address, host, out recommendedAddressBits))
                 {
                     string recommendation = $"Try using '{uintToIPv4AddressString(recommendedAddressBits)}' instead.";
-                    throw new PSArgumentException($"The network prefix for the CIDR string '{ipv4Cidr}' should be masked according to the suffix '{host}'. {recommendation}");
+                    throw new PSArgumentException($"{explanation} {recommendation}");
                 }
                 else
                 {
-                    throw new PSArgumentException($"The network prefix for the CIDR string '{ipv4Cidr}' should be masked according to the suffix '{host}'.");
+                    throw new PSArgumentException($"{explanation}");
                 }
             }
         }
