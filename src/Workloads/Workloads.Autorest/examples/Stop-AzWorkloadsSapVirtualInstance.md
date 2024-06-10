@@ -46,7 +46,7 @@ Target            :
 
 Stop-AzWorkloadsSapVirtualInstance cmdlet stops the SAP application tier, that is App servers and ASCS instances of the system. In this example, you can see that system can be stopped by providing the VIS Azure resource ID as InputObject to the cmdlet.
 
-### Example 3: Stop an SAP system and its underlying Virtual Machine
+### Example 3: Stop an SAP system and its underlying Virtual Machine(s)
 ```powershell
 Stop-AzWorkloadsSapVirtualInstance -Name DB0 -ResourceGroupName db0-vis-rg -DeallocateVM
 ```
@@ -68,7 +68,7 @@ Status            : Succeeded
 Target            :
 ```
 
-Stop-AzWorkloadsSapVirtualInstance cmdlet stops the SAP application tier and its underlying VIrtual Machine, that is App servers and ASCS instances of the system. In this example, you can see that system can be stopped by passing the VIS name and ResourceGroupName of the VIS as inputs. 
+Stop-AzWorkloadsSapVirtualInstance cmdlet stops the SAP application tier and its underlying VIrtual Machine, that is App servers and ASCS instances of the system. In this example, you can see that SAP application and the VMs can be stopped by passing the VIS name, ResourceGroupName of the VIS, and DeallocateVM parameter as inputs. 
 
 ### Example 4: Soft Stop an SAP system
 ```powershell
@@ -92,4 +92,4 @@ Status            : Succeeded
 Target            :
 ```
 
-Stop-AzWorkloadsSapVirtualInstance cmdlet soft stops the SAP application tier, that is App servers and ASCS instances of the system. In this example, you can see that system can be stopped by passing the VIS name, ResourceGroupName of the VIS and soft stop timeout seconds as inputs. 
+Stop-AzWorkloadsSapVirtualInstance cmdlet soft stops the SAP application tier, that is App servers and ASCS instances of the system. In this example, you can see that system can be soft stopped by passing the VIS name, ResourceGroupName of the VIS and soft stop timeout seconds as inputs. 
