@@ -19,7 +19,6 @@
 -->
 ## Upcoming Release
 
-## Version 2.0.0
 * Added some parameters in the `New-AzDatabricksWorkspace` and `Update-AzDatabricksWorkspace`.
     - `AccessConnectorId`
     - `AccessConnectorIdentityType`
