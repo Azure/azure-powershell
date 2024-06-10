@@ -68,4 +68,4 @@ Status            : Succeeded
 Target            :
 ```
 
-Start-AzWorkloadsSapApplicationInstance cmdlet starts the App server instance of the SAP system and its underlying Virtual Machines represented by the VIS. Currently, start action is supported for ABAP stack. In this example, you can see that instance can be started by passing the App server instance resource name, Resource Group name, VIS name and StartVM parameter as inputs. 
+Start-AzWorkloadsSapApplicationInstance cmdlet starts the App server instance of the SAP system and its underlying Virtual Machines represented by the VIS. Currently, start action is supported for ABAP stack. In this example, you can see that the VMs and instance can be started by passing the App server instance resource name, Resource Group name, VIS name and StartVM parameter as inputs. 
