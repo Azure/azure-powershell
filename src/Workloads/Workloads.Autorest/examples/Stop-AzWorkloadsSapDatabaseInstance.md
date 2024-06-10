@@ -68,7 +68,7 @@ Status            : Succeeded
 Target            :
 ```
 
-Stop-AzWorkloadsSapDatabaseInstance cmdlet stops the Database instance of the SAP system and its underlying Virtual Machine represented by the VIS. Currently stop action is supported for SAP HANA Database only. In this example, you can see that database can be stopped by passing the DB instance resource name, ResourceGroupName, VIS name and DeallocateVM parameter as inputs. 
+Stop-AzWorkloadsSapDatabaseInstance cmdlet stops the Database instance of the SAP system and its underlying Virtual Machine represented by the VIS. Currently stop action is supported for SAP HANA Database only. In this example, you can see that database and its VMs can be stopped by passing the DB instance resource name, ResourceGroupName, VIS name and DeallocateVM parameter as inputs. 
 
 ### Example 1: Soft Stop Database instance of the SAP system
 ```powershell
