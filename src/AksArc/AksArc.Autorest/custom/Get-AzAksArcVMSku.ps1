@@ -16,19 +16,19 @@
 
 <#
 .Synopsis
-Lists the supported kubernetes versions for the specified custom location
+Lists the supported VM skus for the specified custom location
 .Description
-Lists the supported kubernetes versions for the specified custom location
+Lists the supported VM skus for the specified custom location
 .Example
-Get-AzAksArcKubernetesVersion -CustomLocationResourceUri sample_cl
+Get-AzAksArcVMSku -CustomLocationResourceUri sample-cl-id
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IKubernetesVersionProfile
+Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVMSkuProfile
 .Link
-https://learn.microsoft.com/powershell/module/az.aksarc/get-azaksarckubernetesversion
+https://learn.microsoft.com/powershell/module/az.aksarc/get-azaksarcvmsku
 #>
-function Get-AzAksArcKubernetesVersion {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IKubernetesVersionProfile])]
+function Get-AzAksArcVMSku {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVMSkuProfile])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -116,7 +116,7 @@ process {
 
     # Perform Get/Put if does not exist
     try {
-        $config = Az.AksArc.internal\Get-AzAksArcKubernetesVersion @PSBoundParameters
+        $config = Az.AksArc.internal\Get-AzAksArcVMSku @PSBoundParameters
         if ($config.ProvisioningState -ne "Succeeded") {
             $DoCreateDefaultObject = $true
         }
@@ -126,10 +126,12 @@ process {
     }
     
     if ($DoCreateDefaultObject) {
-        $null = Az.AksArc.internal\New-AzAksArcKubernetesVersion -CustomLocationResourceUri $CustomLocationID -ExtendedLocationName $CustomLocationID -ExtendedLocationType "CustomLocation"
+        $null = Az.AksArc.internal\New-AzAksArcVMSku -CustomLocationResourceUri $CustomLocationID -ExtendedLocationName $CustomLocationID -ExtendedLocationType "CustomLocation"
     }
 
     # Call get command
-    Az.AksArc.internal\Get-AzAksArcKubernetesVersion @PSBoundParameters
+    Az.AksArc.internal\Get-AzAksArcVMSku @PSBoundParameters
+
 }
+
 }

@@ -109,17 +109,3 @@ function ConvertCustomLocationNameToID {
 
     return "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/$CustomLocationName"
 }
-
-function ConvertCustomLocationNameToID {
-    param(
-        [System.String] $CustomLocationName,
-        [System.String] $SubscriptionId,
-        [System.String] $ResourceGroupName
-    )
-
-    if ($CustomLocationName -match $armIDRegex) {
-        return $CustomLocationName
-    }
-
-    return "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/$CustomLocationName"
-}

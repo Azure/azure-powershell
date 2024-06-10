@@ -1,7 +1,22 @@
-### Example 1: Get VM SKU's
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzAksArcVMSku -CustomLocationResourceUri sample-cl-id
+{{ Add code here }}
 ```
 
-Lists the supported virtual machine sizes in the specified custom location.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 

@@ -129,6 +129,10 @@ directive:
       subject: KubernetesVersion
     hide: true
 
+  - where:
+      subject: VMSku
+    hide: true
+
 # Remove unnecessary cmdlets
   - where:
       subject: KuberneteVersion
@@ -146,16 +150,6 @@ directive:
 
   - where:
       subject: HybridIdentityMetadata
-    remove: true
-
-  - where:
-      verb: New
-      subject: VMSku
-    remove: true
-
-  - where:
-      verb: New
-      subject: KubernetesVersion
     remove: true
 
   - where:
@@ -180,3 +174,14 @@ directive:
       parameter-name: ExtendedLocationName
     set: 
       parameter-name: CustomLocationID
+
+# VM SKU / Kubernetes Version
+  - where:
+      verb: New
+      subject: VMSku
+    hide: true
+
+  - where:
+      verb: New
+      subject: KubernetesVersion
+    hide: true

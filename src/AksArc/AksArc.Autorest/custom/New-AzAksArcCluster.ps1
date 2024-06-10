@@ -296,9 +296,12 @@ function New-AzAksArcCluster {
             if ($err) {
                 throw $err
             }
-        } else {
-            throw "Could not locate logical network with id: $VnetId"
-        }
+        } 
+
+        # Parameter validations
+
+
+
 
         # Edit parameters
         $null = $PSBoundParameters.Add("InfraNetworkProfileVnetSubnetId", @($VnetId))
