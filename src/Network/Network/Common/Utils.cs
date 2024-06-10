@@ -214,40 +214,6 @@ namespace Microsoft.Azure.Commands.Network
             return true;
         }
 
-        private static bool TryParseIPv4AddressOLD(string address, out uint parsed)
-        {
-            bool isValid = true;
-            parsed = 0;
-            var asStrings = address.Split('.');
-
-            if (asStrings.Length != 4)
-            {
-                return false;
-            }
-
-            uint[] asBits = new uint[4];
-            for (int i = 0; i < 4; i++)
-            {
-                uint bits = 0;
-                if (TryParseIPv4Block(asStrings[i], out bits))
-                {
-                    asBits[i] = bits;
-                }
-                else
-                {
-                    isValid = false;
-                }
-            }
-
-            for (int i = 0; i < 4; i++)
-            {
-                int amountToShift = (8 * (3 - i)); // 24, 16, 8, 0
-                parsed += (asBits[i] << amountToShift);
-            }
-
-            return isValid;
-        }
-
         private static bool TryParseIPv4HostIdentifier(string host, out int parsed)
         {
             return Int32.TryParse(host, out parsed) && isValidHostIdentifier(parsed);
