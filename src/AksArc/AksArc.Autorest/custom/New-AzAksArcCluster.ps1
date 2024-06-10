@@ -289,19 +289,19 @@ function New-AzAksArcCluster {
         $null = $PSBoundParameters.Add("ConnectedClusterResourceUri", $Scope)
 
         # Network Validations
-        $response = Invoke-AzRestMethod -Path "$VnetId/?api-version=2024-01-01" -Method GET
-        if ($response.StatusCode -eq 200) {
-            $lnet = ($response.Content | ConvertFrom-Json)
-            $err = ValidateLogicalNetwork -lnet $lnet -ControlPlaneIP $ControlPlaneEndpointHostIP
-            if ($err) {
-                throw $err
+        # Logical Network
+        if ($VnetId -match $logicalNetworkArmIDRegex) {
+            $response = Invoke-AzRestMethod -Path "$VnetId/?api-version=2024-01-01" -Method GET
+            if ($response.StatusCode -eq 200) {
+                $lnet = ($response.Content | ConvertFrom-Json)
+                $err = ValidateLogicalNetwork -lnet $lnet -ControlPlaneIP $ControlPlaneEndpointHostIP
+                if ($err) {
+                    throw $err
+                }
+            } else {
+                throw "Logical network with ID $VnetId not found."
             }
         } 
-
-        # Parameter validations
-
-
-
 
         # Edit parameters
         $null = $PSBoundParameters.Add("InfraNetworkProfileVnetSubnetId", @($VnetId))
@@ -315,9 +315,14 @@ function New-AzAksArcCluster {
         $null = $PSBoundParameters.Remove("CustomLocationName")
 
         # Create connected cluster parent resource
+        $config = Invoke-AzRestMethod -Path "${CustomLocationID}?api-version=2021-08-31-preview" -Method GET
+        $cllocation = ($config.Content | ConvertFrom-Json).location
         if (!$Location) {
-            $Location = "eastus"
+            $Location = $cllocation
+        } elseif ($Location -ne $cllocation) {
+            throw "Location parameter must be equal to custom location's location $cllocation"
         }
+
         CreateConnectedCluster -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName -Location $Location -AdminGroupObjectID $AdminGroupObjectID
         $null = $PSBoundParameters.Remove("AdminGroupObjectID")
         
