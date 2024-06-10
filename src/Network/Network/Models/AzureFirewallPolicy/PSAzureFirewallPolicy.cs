@@ -91,9 +91,9 @@ namespace Microsoft.Azure.Commands.Network.Models
                     continue;
 
                 if (ip.Contains("/"))
-                    Utilities.CIDR.IPv4.Validate.MaskedIpAddress(ip);
+                    NetworkValidationUtils.ValidateSubnet(ip);
                 else
-                    Utilities.CIDR.IPv4.Validate.IpAddress(ip);
+                    NetworkValidationUtils.ValidateIpAddress(ip);
             }
         }
         #endregion

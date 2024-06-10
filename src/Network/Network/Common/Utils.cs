@@ -86,179 +86,176 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 
-    namespace Utilities.CIDR.IPv4
+    public class NetworkValidationUtils
     {
-        public static class Validate
+        public static void ValidateIpAddress(string ipAddress)
         {
-            public static void IpAddress(string ipAddress)
-            {
-                IPAddress ipVal;
+            IPAddress ipVal;
 
-                if (!IPAddress.TryParse(ipAddress, out ipVal) || ipVal.AddressFamily != System.Net.Sockets.AddressFamily.InterNetwork)
+            if (!IPAddress.TryParse(ipAddress, out ipVal) || ipVal.AddressFamily != System.Net.Sockets.AddressFamily.InterNetwork)
+            {
+                throw new PSArgumentException(String.Format("\'{0}\' is not a valid IPv4 address", ipAddress));
+            }
+        }
+
+        public static void ValidateSubnet(string ipAddress)
+        {
+            ValidateIPv4CidrNotation(ipAddress);
+        }
+
+        private static void ValidateIPv4CidrNotation(string ipv4Cidr)
+        {
+            var subnet = ipv4Cidr.Split('/');
+            if (subnet.Length != 2)
+                throw new PSArgumentException(String.Format("\'{0}\' is not a valid IPv4 subnet", ipv4Cidr)); // Recommend proper format? e.g. 192.168.1.0/24
+
+            uint address;
+            if (!TryParseIPv4Address(subnet[0], out address))
+            {
+                throw new PSArgumentException(String.Format("The network prefix for \'{0}\' is not a valid IPv4 address", ipv4Cidr));
+            }
+
+            int host;
+            if (!TryParseIPv4HostIdentifier(subnet[1], out host))
+            {
+                throw new PSArgumentException(String.Format("\'{0}\' is not a valid IPv4 subnet. The network mask should be an integer from 0 to 32", ipv4Cidr));
+            }
+
+
+            if (!isIpAddressCorrectlyMaskByNetworkPrefixLength(address, host))
+            {
+                uint recommendedAddressBits;
+                if (TryApplyMask(address, host, out recommendedAddressBits))
                 {
-                    throw new PSArgumentException(String.Format("\'{0}\' is not a valid IPv4 address", ipAddress));
+                    string recommendation = $"Try using '{uintToIPv4AddressString(recommendedAddressBits)}' instead.";
+                    throw new PSArgumentException($"The network prefix for the CIDR string '{ipv4Cidr}' should be masked according to the suffix '{host}'. {recommendation}");
+                }
+                else
+                {
+                    throw new PSArgumentException($"The network prefix for the CIDR string '{ipv4Cidr}' should be masked according to the suffix '{host}'.");
+                }
+            }
+        }
+
+        private static string uintToIPv4AddressString(uint address)
+        {
+            var bytes = new byte[4];
+            for (int i = 0; i < 4; i++)
+            {
+                bytes[i] = (byte)(address >> (8 * (3 - i)));
+            }
+
+            return String.Join(".", bytes);
+        }
+
+        private static bool isValidHostIdentifier(int host)
+        {
+            return host >= 0 && host <= 32;
+        }
+
+        private static bool isValidIPv4Block(int block)
+        {
+            return block >= 0 && block <= 255;
+        }
+
+        /// <summary>
+        /// Checks to see if an IP address (192.168.10.0) is correctly masked by the host identifier in IPv4 CIDR notation.
+        /// ex. 192.168.1.0/24 is correctly masked, but 192.168.1.0/23 is not correctly masked
+        /// </summary>
+        /// <param name="ipAddress"></param>
+        /// <param name="networkPrefixLength"></param>
+        /// <returns></returns>
+        private static bool isIpAddressCorrectlyMaskByNetworkPrefixLength(uint ipAddress, int networkPrefixLength)
+        {
+            const uint fullMask = UInt32.MaxValue;
+            if (!isValidHostIdentifier(networkPrefixLength)) return false;
+            if (networkPrefixLength == 32 && ipAddress != fullMask) return false;
+            if (networkPrefixLength == 32 && ipAddress == fullMask) return true;
+
+            return (ipAddress << networkPrefixLength) == 0;
+        }
+
+        /// <summary>
+        /// Tries to mask the non-network bits with 0, according to the prefixLength (if the length is valid).
+        /// ex. 192.168.111.234/16 -> 192.168.0.0
+        /// </summary>
+        /// <param name="address"></param>
+        /// <param name="prefixLength"></param>
+        /// <param name="maskedAddress"></param>
+        /// <returns></returns>
+        private static bool TryApplyMask(uint address, int prefixLength, out uint maskedAddress)
+        {
+            maskedAddress = 0;
+            if (!isValidHostIdentifier(prefixLength)) return false;
+            int shift = (32 - prefixLength);
+            maskedAddress = (address >> shift) << shift;
+
+            return true;
+        }
+
+        /// <summary>
+        /// Try to parse an IPv4 address string into a UInt32
+        /// </summary>
+        /// <param name="address"></param>
+        /// <param name="parsed"></param>
+        /// <returns></returns>
+        private static bool TryParseIPv4Address(string address, out uint parsed)
+        {
+            parsed = 0;
+            if (!IPAddress.TryParse(address, out var addr)) return false;
+            byte[] bytes = addr.GetAddressBytes();
+
+            for (int i = 0; i < 4; i++)
+            {
+                int amountToShift = (8 * (3 - i)); // 24, 16, 8, 0
+                parsed += ((uint)bytes[i] << amountToShift);
+            }
+
+            return true;
+        }
+
+        private static bool TryParseIPv4AddressOLD(string address, out uint parsed)
+        {
+            bool isValid = true;
+            parsed = 0;
+            var asStrings = address.Split('.');
+
+            if (asStrings.Length != 4)
+            {
+                return false;
+            }
+
+            uint[] asBits = new uint[4];
+            for (int i = 0; i < 4; i++)
+            {
+                uint bits = 0;
+                if (TryParseIPv4Block(asStrings[i], out bits))
+                {
+                    asBits[i] = bits;
+                }
+                else
+                {
+                    isValid = false;
                 }
             }
 
-            public static void MaskedIpAddress(string ipAddress)
+            for (int i = 0; i < 4; i++)
             {
-                ValidateIPv4CidrNotation(ipAddress);
+                int amountToShift = (8 * (3 - i)); // 24, 16, 8, 0
+                parsed += (asBits[i] << amountToShift);
             }
 
-            private static void ValidateIPv4CidrNotation(string ipv4Cidr)
-            {
-                var subnet = ipv4Cidr.Split('/');
-                if (subnet.Length != 2)
-                    throw new PSArgumentException(String.Format("\'{0}\' is not a valid IPv4 subnet", ipv4Cidr)); // Recommend proper format? e.g. 192.168.1.0/24
+            return isValid;
+        }
 
-                uint address;
-                if (!TryParseIPv4Address(subnet[0], out address))
-                {
-                    throw new PSArgumentException(String.Format("The network prefix for \'{0}\' is not a valid IPv4 address", ipv4Cidr));
-                }
+        private static bool TryParseIPv4HostIdentifier(string host, out int parsed)
+        {
+            return Int32.TryParse(host, out parsed) && isValidHostIdentifier(parsed);
+        }
 
-                int host;
-                if (!TryParseIPv4HostIdentifier(subnet[1], out host))
-                {
-                    throw new PSArgumentException(String.Format("\'{0}\' is not a valid IPv4 subnet. The network mask should be an integer from 0 to 32", ipv4Cidr));
-                }
-
-
-                if (!isIpAddressCorrectlyMaskByNetworkPrefixLength(address, host))
-                {
-                    uint recommendedAddressBits;
-                    if (TryApplyMask(address, host, out recommendedAddressBits))
-                    {
-                        string recommendation = $"Try using '{uintToIPv4AddressString(recommendedAddressBits)}' instead.";
-                        throw new PSArgumentException($"The network prefix for the CIDR string '{ipv4Cidr}' should be masked according to the suffix '{host}'. {recommendation}");
-                    }
-                    else
-                    {
-                        throw new PSArgumentException($"The network prefix for the CIDR string '{ipv4Cidr}' should be masked according to the suffix '{host}'.");
-                    }
-                }
-            }
-
-            private static string uintToIPv4AddressString(uint address)
-            {
-                var bytes = new byte[4];
-                for (int i = 0; i < 4; i++)
-                {
-                    bytes[i] = (byte)(address >> (8 * (3 - i)));
-                }
-
-                return String.Join(".", bytes);
-            }
-
-            private static bool isValidHostIdentifier(int host)
-            {
-                return host >= 0 && host <= 32;
-            }
-
-            private static bool isValidIPv4Block(int block)
-            {
-                return block >= 0 && block <= 255;
-            }
-
-            /// <summary>
-            /// Checks to see if an IP address (192.168.10.0) is correctly masked by the host identifier in IPv4 CIDR notation.
-            /// ex. 192.168.1.0/24 is correctly masked, but 192.168.1.0/23 is not correctly masked
-            /// </summary>
-            /// <param name="ipAddress"></param>
-            /// <param name="networkPrefixLength"></param>
-            /// <returns></returns>
-            private static bool isIpAddressCorrectlyMaskByNetworkPrefixLength(uint ipAddress, int networkPrefixLength)
-            {
-                const uint fullMask = UInt32.MaxValue;
-                if (!isValidHostIdentifier(networkPrefixLength)) return false;
-                if (networkPrefixLength == 32 && ipAddress != fullMask) return false;
-                if (networkPrefixLength == 32 && ipAddress == fullMask) return true;
-
-                return (ipAddress << networkPrefixLength) == 0;
-            }
-
-            /// <summary>
-            /// Tries to mask the non-network bits with 0, according to the prefixLength (if the length is valid).
-            /// ex. 192.168.111.234/16 -> 192.168.0.0
-            /// </summary>
-            /// <param name="address"></param>
-            /// <param name="prefixLength"></param>
-            /// <param name="maskedAddress"></param>
-            /// <returns></returns>
-            private static bool TryApplyMask(uint address, int prefixLength, out uint maskedAddress)
-            {
-                maskedAddress = 0;
-                if (!isValidHostIdentifier(prefixLength)) return false;
-                int shift = (32 - prefixLength);
-                maskedAddress = (address >> shift) << shift;
-
-                return true;
-            }
-
-            /// <summary>
-            /// Try to parse an IPv4 address string into a UInt32
-            /// </summary>
-            /// <param name="address"></param>
-            /// <param name="parsed"></param>
-            /// <returns></returns>
-            private static bool TryParseIPv4Address(string address, out uint parsed)
-            {
-                parsed = 0;
-                if (!IPAddress.TryParse(address, out var addr)) return false;
-                byte[] bytes = addr.GetAddressBytes();
-
-                for (int i = 0; i < 4; i++)
-                {
-                    int amountToShift = (8 * (3 - i)); // 24, 16, 8, 0
-                    parsed += ((uint)bytes[i] << amountToShift);
-                }
-
-                return true;
-            }
-
-            private static bool TryParseIPv4AddressOLD(string address, out uint parsed)
-            {
-                bool isValid = true;
-                parsed = 0;
-                var asStrings = address.Split('.');
-
-                if (asStrings.Length != 4)
-                {
-                    return false;
-                }
-
-                uint[] asBits = new uint[4];
-                for (int i = 0; i < 4; i++)
-                {
-                    uint bits = 0;
-                    if (TryParseIPv4Block(asStrings[i], out bits))
-                    {
-                        asBits[i] = bits;
-                    }
-                    else
-                    {
-                        isValid = false;
-                    }
-                }
-
-                for (int i = 0; i < 4; i++)
-                {
-                    int amountToShift = (8 * (3 - i)); // 24, 16, 8, 0
-                    parsed += (asBits[i] << amountToShift);
-                }
-
-                return isValid;
-            }
-
-            private static bool TryParseIPv4HostIdentifier(string host, out int parsed)
-            {
-                return Int32.TryParse(host, out parsed) && isValidHostIdentifier(parsed);
-            }
-
-            private static bool TryParseIPv4Block(string block, out uint parsed)
-            {
-                return UInt32.TryParse(block, out parsed) && isValidIPv4Block((int)parsed);
-            }
+        private static bool TryParseIPv4Block(string block, out uint parsed)
+        {
+            return UInt32.TryParse(block, out parsed) && isValidIPv4Block((int)parsed);
         }
     }
 }
