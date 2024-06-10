@@ -46,7 +46,7 @@ Target            :
 
 Start-AzWorkloadsSapVirtualInstance cmdlet starts the SAP application tier, that is ASCS instance and App servers of the system. In this example, you can see that system can be started by providing the VIS Azure resource ID as InputObject to the cmdlet.
 
-### Example 3: Start an SAP system and its underlying Virtual Machine
+### Example 3: Start an SAP system and its underlying Virtual Machine(s)
 ```powershell
 Start-AzWorkloadsSapVirtualInstance -Name DB0 -ResourceGroupName db0-vis-rg -StartVM
 ```
