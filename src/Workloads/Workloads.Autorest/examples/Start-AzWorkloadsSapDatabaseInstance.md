@@ -68,4 +68,4 @@ Status            : Succeeded
 Target            :
 ```
 
-Start-AzWorkloadsSapDatabaseInstance cmdlet starts the Database instance of the SAP system and its underlying Virtual Machine represented by the VIS. Currently start action is supported for SAP HANA Database only. In this example, you can see that database can be started by passing the DB instance resource name, ResourceGroupName, VIS name and VM Operation flag as inputs. 
+Start-AzWorkloadsSapDatabaseInstance cmdlet starts the Database instance of the SAP system and its underlying Virtual Machine represented by the VIS. Currently start action is supported for SAP HANA Database only. In this example, you can see that the VMs and database can be started by passing the DB instance resource name, ResourceGroupName, VIS name and StartVM parameter as inputs. 

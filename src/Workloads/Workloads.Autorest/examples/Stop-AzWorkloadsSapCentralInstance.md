@@ -68,4 +68,4 @@ Status            : Succeeded
 Target            :
 ```
 
-Stop-AzWorkloadsSapCentralInstance cmdlet stops the Central services instance of the SAP system represented by the VIS. Currently, stop action is supported for ABAP central services stack. In this example, you can see that instance can be stopped by passing the Central services instance resource name, Resource Group name and VIS name as inputs. 
+Stop-AzWorkloadsSapCentralInstance cmdlet stops the Central services instance of the SAP system represented by the VIS. Currently, stop action is supported for ABAP central services stack. In this example, you can see that instance and its VMs can be stopped by passing the Central services instance resource name, Resource Group name, VIS name and DeallocateVM parameter as inputs. 

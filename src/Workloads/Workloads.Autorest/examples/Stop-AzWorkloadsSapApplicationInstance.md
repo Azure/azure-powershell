@@ -68,7 +68,7 @@ Status            : Succeeded
 Target            :
 ```
 
-Stop-AzWorkloadsSapApplicationInstance cmdlet stops the App server instance of the SAP system and its underlying Virtual Machine represented by the VIS. Currently, stop action is supported for ABAP stack. In this example, you can see that instance can be stopped by passing the App server instance resource name, Resource Group name, VIS name and VM Operation as inputs. 
+Stop-AzWorkloadsSapApplicationInstance cmdlet stops the App server instance of the SAP system and its underlying Virtual Machine represented by the VIS. Currently, stop action is supported for ABAP stack. In this example, you can see that instance and its VMs can be stopped by passing the App server instance resource name, Resource Group name, VIS name and DeallocateVM parameter as inputs. 
 
 ### Example 4: Soft Stop Application server instance of the SAP system
 ```powershell

@@ -68,4 +68,4 @@ Status            : Succeeded
 Target            :
 ```
 
-Start-AzWorkloadsSapCentralInstance cmdlet starts the Central services instance of the SAP system and its underlying Virtual Machines represented by the VIS. Currently, start action is supported for ABAP central services stack. In this example, you can see that instance can be started by passing the Central services instance resource name, Resource Group name, VIS name and VM Operation flag as inputs.
+Start-AzWorkloadsSapCentralInstance cmdlet starts the Central services instance of the SAP system and its underlying Virtual Machines represented by the VIS. Currently, start action is supported for ABAP central services stack. In this example, you can see that the VMs and instance can be started by passing the Central services instance resource name, Resource Group name, VIS name and StartVM parameter as inputs.
