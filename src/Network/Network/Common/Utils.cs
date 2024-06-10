@@ -153,11 +153,6 @@ namespace Microsoft.Azure.Commands.Network
             return host >= 0 && host <= 32;
         }
 
-        private static bool isValidIPv4Block(int block)
-        {
-            return block >= 0 && block <= 255;
-        }
-
         /// <summary>
         /// Checks to see if an IP address (192.168.10.0) is correctly masked by the host identifier in IPv4 CIDR notation.
         /// ex. 192.168.1.0/24 is correctly masked, but 192.168.1.0/23 is not correctly masked
@@ -217,11 +212,6 @@ namespace Microsoft.Azure.Commands.Network
         private static bool TryParseIPv4HostIdentifier(string host, out int parsed)
         {
             return Int32.TryParse(host, out parsed) && isValidHostIdentifier(parsed);
-        }
-
-        private static bool TryParseIPv4Block(string block, out uint parsed)
-        {
-            return UInt32.TryParse(block, out parsed) && isValidIPv4Block((int)parsed);
         }
     }
 }
