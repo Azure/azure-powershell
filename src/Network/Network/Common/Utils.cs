@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 
-    public class NetworkValidationUtils
+    public static class NetworkValidationUtils
     {
         public static void ValidateIpAddress(string ipAddress)
         {
