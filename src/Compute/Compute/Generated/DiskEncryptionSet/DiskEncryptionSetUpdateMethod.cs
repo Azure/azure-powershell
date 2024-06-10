@@ -1,4 +1,4 @@
-//
+None //
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -153,6 +153,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "The list of user identities associated with the disk encryption set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.")]
         public Hashtable UserAssignedIdentity { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The type of identity used for the disk encryption set. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities.")]
+        public string IdentityType { get; set; }
+
         private DiskEncryptionSetUpdate DiskEncryptionSetUpdate { get; set; }
 
         private void BuildPatchObject()
@@ -166,7 +172,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (this.DiskEncryptionSetUpdate.ActiveKey == null)
                 {
-                    //this.DiskEncryptionSetUpdate.ActiveKey = new KeyVaultAndKeyReference();
                     this.DiskEncryptionSetUpdate.ActiveKey = new KeyForDiskEncryptionSet();
                 }
                 this.DiskEncryptionSetUpdate.ActiveKey.KeyUrl = this.KeyUrl;
@@ -176,7 +181,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (this.DiskEncryptionSetUpdate.ActiveKey == null)
                 {
-                    //this.DiskEncryptionSetUpdate.ActiveKey = new KeyVaultAndKeyReference();
                     this.DiskEncryptionSetUpdate.ActiveKey = new KeyForDiskEncryptionSet();
                 }
                 if (this.DiskEncryptionSetUpdate.ActiveKey.SourceVault == null)
@@ -225,6 +229,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         this.DiskEncryptionSetUpdate.Identity.UserAssignedIdentities.Add(de.Key.ToString(), new UserAssignedIdentitiesValue(principalId, clientId));
                     }
                 }
+            }
+
+            if (this.IsParameterBound(c => c.IdentityType))
+            {
+                if (this.DiskEncryptionSetUpdate.Identity == null)
+                {
+                    this.DiskEncryptionSetUpdate.Identity = new EncryptionSetIdentity();
+                }
+                this.DiskEncryptionSetUpdate.Identity.Type = this.IdentityType;
             }
         }
 
@@ -292,6 +305,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                 }
             }
+
+            if (this.IsParameterBound(c => c.IdentityType))
+            {
+                if (this.InputObject.Identity == null)
+                {
+                    this.InputObject.Identity = new EncryptionSetIdentity();
+                }
+                this.InputObject.Identity.Type = this.IdentityType;
+            }
         }
     }
 }
+
