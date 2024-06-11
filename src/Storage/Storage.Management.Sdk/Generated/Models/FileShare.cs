@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="enabledProtocols">The authentication protocol that is used for the file share. Can only be
         /// specified when creating a share.
-        /// Possible values include: 'SMB', 'NFS'</param>
+        /// Possible values include: &#39;SMB&#39;, &#39;NFS&#39;</param>
 
         /// <param name="version">The version of the share.
         /// </param>
@@ -59,15 +59,15 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </param>
 
         /// <param name="leaseStatus">The lease status of the share.
-        /// Possible values include: 'Locked', 'Unlocked'</param>
+        /// Possible values include: &#39;Locked&#39;, &#39;Unlocked&#39;</param>
 
         /// <param name="leaseState">Lease state of the share.
-        /// Possible values include: 'Available', 'Leased', 'Expired', 'Breaking',
-        /// 'Broken'</param>
+        /// Possible values include: &#39;Available&#39;, &#39;Leased&#39;, &#39;Expired&#39;, &#39;Breaking&#39;,
+        /// &#39;Broken&#39;</param>
 
         /// <param name="leaseDuration">Specifies whether the lease on a share is of infinite or fixed duration,
         /// only when the share is leased.
-        /// Possible values include: 'Infinite', 'Fixed'</param>
+        /// Possible values include: &#39;Infinite&#39;, &#39;Fixed&#39;</param>
 
         /// <param name="signedIdentifiers">List of stored access policies specified on the share.
         /// </param>
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </param>
 
         /// <param name="rootSquash">The property is for NFS share only. The default is NoRootSquash.
-        /// Possible values include: 'NoRootSquash', 'RootSquash', 'AllSquash'</param>
+        /// Possible values include: &#39;NoRootSquash&#39;, &#39;RootSquash&#39;, &#39;AllSquash&#39;</param>
 
         /// <param name="deleted">Indicates whether the share was deleted.
         /// </param>
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="accessTier">Access tier for specific share. GpV2 account can choose between
         /// TransactionOptimized (default), Hot, and Cool. FileStorage account can
         /// choose Premium.
-        /// Possible values include: 'TransactionOptimized', 'Hot', 'Cool', 'Premium'</param>
+        /// Possible values include: &#39;TransactionOptimized&#39;, &#39;Hot&#39;, &#39;Cool&#39;, &#39;Premium&#39;</param>
 
         /// <param name="accessTierChangeTime">Indicates the last modification time for share access tier.
         /// </param>

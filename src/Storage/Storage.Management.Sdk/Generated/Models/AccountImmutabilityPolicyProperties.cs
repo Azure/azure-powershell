@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// Disabled or Unlocked state and can be toggled between the two states. Only
         /// a policy in an Unlocked state can transition to a Locked state which cannot
         /// be reverted.
-        /// Possible values include: 'Unlocked', 'Locked', 'Disabled'</param>
+        /// Possible values include: &#39;Unlocked&#39;, &#39;Locked&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="allowProtectedAppendWrites">This property can only be changed for disabled and unlocked time-based
         /// retention policies. When enabled, new blocks can be written to an append

@@ -26,24 +26,24 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="services">The signed services accessible with the account SAS. Possible values
         /// include: Blob (b), Queue (q), Table (t), File (f).
-        /// Possible values include: 'b', 'q', 't', 'f'</param>
+        /// Possible values include: &#39;b&#39;, &#39;q&#39;, &#39;t&#39;, &#39;f&#39;</param>
 
         /// <param name="resourceTypes">The signed resource types that are accessible with the account SAS. Service
         /// (s): Access to service-level APIs; Container (c): Access to container-level
         /// APIs; Object (o): Access to object-level APIs for blobs, queue messages,
         /// table entities, and files.
-        /// Possible values include: 's', 'c', 'o'</param>
+        /// Possible values include: &#39;s&#39;, &#39;c&#39;, &#39;o&#39;</param>
 
         /// <param name="permissions">The signed permissions for the account SAS. Possible values include: Read
         /// (r), Write (w), Delete (d), List (l), Add (a), Create (c), Update (u) and
         /// Process (p).
-        /// Possible values include: 'r', 'd', 'w', 'l', 'a', 'c', 'u', 'p'</param>
+        /// Possible values include: &#39;r&#39;, &#39;d&#39;, &#39;w&#39;, &#39;l&#39;, &#39;a&#39;, &#39;c&#39;, &#39;u&#39;, &#39;p&#39;</param>
 
         /// <param name="ipAddressOrRange">An IP address or a range of IP addresses from which to accept requests.
         /// </param>
 
         /// <param name="protocols">The protocol permitted for a request made with the account SAS.
-        /// Possible values include: 'https,http', 'https'</param>
+        /// Possible values include: &#39;https,http&#39;, &#39;https&#39;</param>
 
         /// <param name="sharedAccessStartTime">The time at which the SAS becomes valid.
         /// </param>
