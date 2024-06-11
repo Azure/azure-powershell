@@ -76,6 +76,7 @@ $content = Get-Content $resourcesTestCsprojPath
 $content = $content -replace "..\\..\\ManagedServiceIdentity\\ManagedServiceIdentity.Autorest\\Az.ManagedServiceIdentity.csproj", "..\..\..\generated\ManagedServiceIdentity\ManagedServiceIdentity.Autorest\Az.ManagedServiceIdentity.csproj"
 $content = $content -replace "..\\..\\Purview\\Purview.Autorest\\Az.Purview.csproj", "..\..\..\generated\Purview\Purview.Autorest\Az.Purview.csproj"
 $content = $content -replace "..\\..\\Purview\\Purviewdata.Autorest\\Az.Purviewdata.csproj", "..\..\..\generated\Purview\Purviewdata.Autorest\Az.Purviewdata.csproj"
+$content | Set-Content $resourcesTestCsprojPath -force
 
 
 # <#
