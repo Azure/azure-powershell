@@ -253,13 +253,20 @@ namespace Microsoft.Azure.Management.Storage
 
         }
         /// <summary>
-        /// Asynchronously creates a new storage account with the specified parameters. If an account is already created and a subsequent create request is issued with different properties, the account properties will be updated. If an account is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.
+        /// Asynchronously creates a new storage account with the specified parameters.
+        /// If an account is already created and a subsequent create request is issued
+        /// with different properties, the account properties will be updated. If an
+        /// account is already created and a subsequent create or update request is
+        /// issued with the exact same set of properties, the request will succeed.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='parameters'>
         /// The parameters to provide for the created account.
@@ -281,10 +288,13 @@ namespace Microsoft.Azure.Management.Storage
         /// Deletes a storage account in Microsoft Azure.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -504,16 +514,23 @@ namespace Microsoft.Azure.Management.Storage
 
         }
         /// <summary>
-        /// Returns the properties for the specified storage account including but not limited to name, SKU name, location, and account status. The ListKeys operation should be used to retrieve storage keys.
+        /// Returns the properties for the specified storage account including but not
+        /// limited to name, SKU name, location, and account status. The ListKeys
+        /// operation should be used to retrieve storage keys.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='expand'>
-        /// May be used to expand the properties within account&#39;s properties. By default, data is not included when fetching properties. Currently we only support geoReplicationStats and blobRestoreStatus.
+        /// May be used to expand the properties within account&#39;s properties. By
+        /// default, data is not included when fetching properties. Currently we only
+        /// support geoReplicationStats and blobRestoreStatus.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -760,13 +777,25 @@ namespace Microsoft.Azure.Management.Storage
 
         }
         /// <summary>
-        /// The update operation can be used to update the SKU, encryption, access tier, or tags for a storage account. It can also be used to map the account to a custom domain. Only one custom domain is supported per storage account; the replacement/change of custom domain is not supported. In order to replace an old custom domain, the old value must be cleared/unregistered before a new value can be set. The update of multiple properties is supported. This call does not change the storage keys for the account. If you want to change the storage account keys, use the regenerate keys operation. The location and name of the storage account cannot be changed after creation.
+        /// The update operation can be used to update the SKU, encryption, access
+        /// tier, or tags for a storage account. It can also be used to map the account
+        /// to a custom domain. Only one custom domain is supported per storage
+        /// account; the replacement/change of custom domain is not supported. In order
+        /// to replace an old custom domain, the old value must be cleared/unregistered
+        /// before a new value can be set. The update of multiple properties is
+        /// supported. This call does not change the storage keys for the account. If
+        /// you want to change the storage account keys, use the regenerate keys
+        /// operation. The location and name of the storage account cannot be changed
+        /// after creation.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='parameters'>
         /// The parameters to provide for the updated account.
@@ -1021,7 +1050,8 @@ namespace Microsoft.Azure.Management.Storage
 
         }
         /// <summary>
-        /// Lists all the storage accounts available under the subscription. Note that storage keys are not returned; use the ListKeys operation for this.
+        /// Lists all the storage accounts available under the subscription. Note that
+        /// storage keys are not returned; use the ListKeys operation for this.
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1220,10 +1250,13 @@ namespace Microsoft.Azure.Management.Storage
 
         }
         /// <summary>
-        /// Lists all the storage accounts available under the given resource group. Note that storage keys are not returned; use the ListKeys operation for this.
+        /// Lists all the storage accounts available under the given resource group.
+        /// Note that storage keys are not returned; use the ListKeys operation for
+        /// this.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1443,13 +1476,17 @@ namespace Microsoft.Azure.Management.Storage
 
         }
         /// <summary>
-        /// Lists the access keys or Kerberos keys (if active directory enabled) for the specified storage account.
+        /// Lists the access keys or Kerberos keys (if active directory enabled) for
+        /// the specified storage account.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='expand'>
         /// Specifies type of the key to be listed. Possible value is kerb.
@@ -1699,16 +1736,21 @@ namespace Microsoft.Azure.Management.Storage
 
         }
         /// <summary>
-        /// Regenerates one of the access keys or Kerberos keys for the specified storage account.
+        /// Regenerates one of the access keys or Kerberos keys for the specified
+        /// storage account.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='keyName'>
-        /// The name of storage keys that want to be regenerated, possible values are key1, key2, kerb1, kerb2.
+        /// The name of storage keys that want to be regenerated, possible values are
+        /// key1, key2, kerb1, kerb2.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1964,10 +2006,13 @@ namespace Microsoft.Azure.Management.Storage
         /// List SAS credentials of a storage account.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='parameters'>
         /// The parameters to provide to list SAS credentials for the storage account.
@@ -2229,10 +2274,13 @@ namespace Microsoft.Azure.Management.Storage
         /// List service SAS credentials of a specific resource.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='parameters'>
         /// The parameters to provide to list service SAS credentials.
@@ -2491,16 +2539,32 @@ namespace Microsoft.Azure.Management.Storage
 
         }
         /// <summary>
-        /// A failover request can be triggered for a storage account in the event a primary endpoint becomes unavailable for any reason. The failover occurs from the storage account&#39;s primary cluster to the secondary cluster for RA-GRS accounts. The secondary cluster will become primary after failover and the account is converted to LRS. In the case of a Planned Failover, the primary and secondary clusters are swapped after failover and the account remains geo-replicated. Failover should continue to be used in the event of availability issues as Planned failover is only available while the primary and secondary endpoints are available. The primary use case of a Planned Failover is disaster recovery testing drills. This type of failover is invoked by setting FailoverType parameter to &#39;Planned&#39;. Learn more about the failover options here- https://learn.microsoft.com/en-us/azure/storage/common/storage-disaster-recovery-guidance
+        /// A failover request can be triggered for a storage account in the event a
+        /// primary endpoint becomes unavailable for any reason. The failover occurs
+        /// from the storage account&#39;s primary cluster to the secondary cluster for
+        /// RA-GRS accounts. The secondary cluster will become primary after failover
+        /// and the account is converted to LRS. In the case of a Planned Failover, the
+        /// primary and secondary clusters are swapped after failover and the account
+        /// remains geo-replicated. Failover should continue to be used in the event of
+        /// availability issues as Planned failover is only available while the primary
+        /// and secondary endpoints are available. The primary use case of a Planned
+        /// Failover is disaster recovery testing drills. This type of failover is
+        /// invoked by setting FailoverType parameter to &#39;Planned&#39;. Learn more about
+        /// the failover options here-
+        /// https://learn.microsoft.com/en-us/azure/storage/common/storage-disaster-recovery-guidance
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='failoverType'>
-        /// The parameter is set to &#39;Planned&#39; to indicate whether a Planned failover is requested.
+        /// The parameter is set to &#39;Planned&#39; to indicate whether a Planned failover is
+        /// requested.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2519,13 +2583,20 @@ namespace Microsoft.Azure.Management.Storage
         /// Live Migration of storage account to enable Hns
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='requestType'>
-        /// Required. Hierarchical namespace migration type can either be a hierarchical namespace validation request &#39;HnsOnValidationRequest&#39; or a hydration request &#39;HnsOnHydrationRequest&#39;. The validation request will validate the migration whereas the hydration request will migrate the account.
+        /// Required. Hierarchical namespace migration type can either be a
+        /// hierarchical namespace validation request &#39;HnsOnValidationRequest&#39; or a
+        /// hydration request &#39;HnsOnHydrationRequest&#39;. The validation request will
+        /// validate the migration whereas the hydration request will migrate the
+        /// account.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2544,10 +2615,13 @@ namespace Microsoft.Azure.Management.Storage
         /// Abort live Migration of storage account to enable Hns
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2563,13 +2637,21 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// Account Migration request can be triggered for a storage account to change its redundancy level. The migration updates the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and availability. Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability zones in the primary region.
+        /// Account Migration request can be triggered for a storage account to change
+        /// its redundancy level. The migration updates the non-zonal redundant storage
+        /// account to a zonal redundant account or vice-versa in order to have better
+        /// reliability and availability. Zone-redundant storage (ZRS) replicates your
+        /// storage account synchronously across three Azure availability zones in the
+        /// primary region.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='parameters'>
         /// The request parameters required to perform storage account migration.
@@ -2591,10 +2673,13 @@ namespace Microsoft.Azure.Management.Storage
         /// Gets the status of the ongoing migration for the specified storage account.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2836,10 +2921,13 @@ namespace Microsoft.Azure.Management.Storage
         /// Restore blobs in the specified blob ranges
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='timeToRestore'>
         /// Restore blob to the specified time.
@@ -2864,10 +2952,13 @@ namespace Microsoft.Azure.Management.Storage
         /// Revoke user delegation keys.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -3083,13 +3174,20 @@ namespace Microsoft.Azure.Management.Storage
 
         }
         /// <summary>
-        /// Asynchronously creates a new storage account with the specified parameters. If an account is already created and a subsequent create request is issued with different properties, the account properties will be updated. If an account is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.
+        /// Asynchronously creates a new storage account with the specified parameters.
+        /// If an account is already created and a subsequent create request is issued
+        /// with different properties, the account properties will be updated. If an
+        /// account is already created and a subsequent create or update request is
+        /// issued with the exact same set of properties, the request will succeed.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='parameters'>
         /// The parameters to provide for the created account.
@@ -3348,16 +3446,32 @@ namespace Microsoft.Azure.Management.Storage
 
         }
         /// <summary>
-        /// A failover request can be triggered for a storage account in the event a primary endpoint becomes unavailable for any reason. The failover occurs from the storage account&#39;s primary cluster to the secondary cluster for RA-GRS accounts. The secondary cluster will become primary after failover and the account is converted to LRS. In the case of a Planned Failover, the primary and secondary clusters are swapped after failover and the account remains geo-replicated. Failover should continue to be used in the event of availability issues as Planned failover is only available while the primary and secondary endpoints are available. The primary use case of a Planned Failover is disaster recovery testing drills. This type of failover is invoked by setting FailoverType parameter to &#39;Planned&#39;. Learn more about the failover options here- https://learn.microsoft.com/en-us/azure/storage/common/storage-disaster-recovery-guidance
+        /// A failover request can be triggered for a storage account in the event a
+        /// primary endpoint becomes unavailable for any reason. The failover occurs
+        /// from the storage account&#39;s primary cluster to the secondary cluster for
+        /// RA-GRS accounts. The secondary cluster will become primary after failover
+        /// and the account is converted to LRS. In the case of a Planned Failover, the
+        /// primary and secondary clusters are swapped after failover and the account
+        /// remains geo-replicated. Failover should continue to be used in the event of
+        /// availability issues as Planned failover is only available while the primary
+        /// and secondary endpoints are available. The primary use case of a Planned
+        /// Failover is disaster recovery testing drills. This type of failover is
+        /// invoked by setting FailoverType parameter to &#39;Planned&#39;. Learn more about
+        /// the failover options here-
+        /// https://learn.microsoft.com/en-us/azure/storage/common/storage-disaster-recovery-guidance
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='failoverType'>
-        /// The parameter is set to &#39;Planned&#39; to indicate whether a Planned failover is requested.
+        /// The parameter is set to &#39;Planned&#39; to indicate whether a Planned failover is
+        /// requested.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -3586,13 +3700,20 @@ namespace Microsoft.Azure.Management.Storage
         /// Live Migration of storage account to enable Hns
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='requestType'>
-        /// Required. Hierarchical namespace migration type can either be a hierarchical namespace validation request &#39;HnsOnValidationRequest&#39; or a hydration request &#39;HnsOnHydrationRequest&#39;. The validation request will validate the migration whereas the hydration request will migrate the account.
+        /// Required. Hierarchical namespace migration type can either be a
+        /// hierarchical namespace validation request &#39;HnsOnValidationRequest&#39; or a
+        /// hydration request &#39;HnsOnHydrationRequest&#39;. The validation request will
+        /// validate the migration whereas the hydration request will migrate the
+        /// account.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -3820,10 +3941,13 @@ namespace Microsoft.Azure.Management.Storage
         /// Abort live Migration of storage account to enable Hns
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -4038,13 +4162,21 @@ namespace Microsoft.Azure.Management.Storage
 
         }
         /// <summary>
-        /// Account Migration request can be triggered for a storage account to change its redundancy level. The migration updates the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and availability. Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability zones in the primary region.
+        /// Account Migration request can be triggered for a storage account to change
+        /// its redundancy level. The migration updates the non-zonal redundant storage
+        /// account to a zonal redundant account or vice-versa in order to have better
+        /// reliability and availability. Zone-redundant storage (ZRS) replicates your
+        /// storage account synchronously across three Azure availability zones in the
+        /// primary region.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='parameters'>
         /// The request parameters required to perform storage account migration.
@@ -4293,10 +4425,13 @@ namespace Microsoft.Azure.Management.Storage
         /// Restore blobs in the specified blob ranges
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='timeToRestore'>
         /// Restore blob to the specified time.
@@ -4574,7 +4709,8 @@ namespace Microsoft.Azure.Management.Storage
 
         }
         /// <summary>
-        /// Lists all the storage accounts available under the subscription. Note that storage keys are not returned; use the ListKeys operation for this.
+        /// Lists all the storage accounts available under the subscription. Note that
+        /// storage keys are not returned; use the ListKeys operation for this.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -4756,7 +4892,9 @@ namespace Microsoft.Azure.Management.Storage
 
         }
         /// <summary>
-        /// Lists all the storage accounts available under the given resource group. Note that storage keys are not returned; use the ListKeys operation for this.
+        /// Lists all the storage accounts available under the given resource group.
+        /// Note that storage keys are not returned; use the ListKeys operation for
+        /// this.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

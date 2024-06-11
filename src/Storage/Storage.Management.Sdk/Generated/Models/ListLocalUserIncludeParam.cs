@@ -7,15 +7,12 @@ namespace Microsoft.Azure.Management.Storage.Models
 {
 
     /// <summary>
-    /// Defines values for MinimumTlsVersion.
+    /// Defines values for ListLocalUserIncludeParam.
     /// </summary>
 
 
-    public static class MinimumTlsVersion
+    public static class ListLocalUserIncludeParam
     {
-        public const string TLS10 = "TLS1_0";
-        public const string TLS11 = "TLS1_1";
-        public const string TLS12 = "TLS1_2";
-        public const string TLS13 = "TLS1_3";
+        public const string Nfsv3 = "nfsv3";
     }
 }
