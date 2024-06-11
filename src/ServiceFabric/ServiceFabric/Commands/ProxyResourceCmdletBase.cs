@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             WriteVerbose(string.Format("Creating app type version '{0}':{1}.", applicationTypeName, typeVersion));
             ApplicationTypeVersionResource appTypeVersionParams = new ApplicationTypeVersionResource(
-                    packageUrl,
+                    appPackageUrl: packageUrl,
                     name: this.ClusterName,
                     type: applicationTypeName,
                     defaultParameterList: defaultParameters?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string));

@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.7.2'
+ModuleVersion = '0.8.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -57,10 +57,10 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '3.0.0'; })
 RequiredAssemblies = 'ConnectedMachine.Autorest/bin/Az.ConnectedMachine.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-ScriptsToProcess = @()
+# ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = @()
+# TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'ConnectedMachine.Autorest/Az.ConnectedMachine.format.ps1xml'
@@ -113,7 +113,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'ConnectedMachine'
+        Tags = 'Azure','ResourceManager','ARM','PSModule','ConnectedMachine'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -125,7 +125,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Introduced secrets detection feature to safeguard sensitive data.'
+        ReleaseNotes = '* Updated the API version to 2024-03-31-preview.
+* Added cmdlets ''Get-AzConnectedLicense'', ''Get-AzConnectedNetworkSecurityPerimeterConfiguration'', ''New-AzConnectedLicense'', ''New-AzConnectedLicenseDetail'', ''Remove-AzConnectedLicense'' and ''Set-AzConnectedLicense''.'
 
         # Prerelease string of this module
         # Prerelease = ''
@@ -138,7 +139,7 @@ PrivateData = @{
 
     } # End of PSData hashtable
 
-} # End of PrivateData hashtable
+ } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''

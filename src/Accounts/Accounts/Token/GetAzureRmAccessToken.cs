@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Commands.Profile
             SupportedResourceNames.Arm,
             SupportedResourceNames.Attestation,
             SupportedResourceNames.Batch,
+            SupportedResourceNames.CommunicationEmail,
             SupportedResourceNames.DataLake,
             SupportedResourceNames.KeyVault,
             SupportedResourceNames.ManagedHsm,

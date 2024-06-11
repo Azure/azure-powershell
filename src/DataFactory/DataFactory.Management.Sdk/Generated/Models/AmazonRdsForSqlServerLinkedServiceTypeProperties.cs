@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Amazon Rds for SQL Server linked service properties.
     /// </summary>
-    public partial class AmazonRdsForSqlServerLinkedServiceTypeProperties
+    public partial class AmazonRdsForSqlServerLinkedServiceTypeProperties : SqlServerBaseLinkedServiceTypeProperties
     {
         /// <summary>
         /// Initializes a new instance of the AmazonRdsForSqlServerLinkedServiceTypeProperties class.
@@ -24,9 +24,113 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the AmazonRdsForSqlServerLinkedServiceTypeProperties class.
         /// </summary>
 
+        /// <param name="server">The name or network address of the instance of SQL Server to which to
+        /// connect, used by recommended version. Type: string (or Expression with
+        /// resultType string).
+        /// </param>
+
+        /// <param name="database">The name of the database, used by recommended version. Type: string (or
+        /// Expression with resultType string).
+        /// </param>
+
+        /// <param name="encrypt">Indicate whether TLS encryption is required for all data sent between the
+        /// client and server, used by recommended version. Possible values are
+        /// true/yes/mandatory, false/no/optional and strict. Type: string (or
+        /// Expression with resultType string).
+        /// </param>
+
+        /// <param name="trustServerCertificate">Indicate whether the channel will be encrypted while bypassing walking the
+        /// certificate chain to validate trust, used by recommended version. Type:
+        /// Boolean (or Expression with resultType boolean).
+        /// </param>
+
+        /// <param name="hostNameInCertificate">The host name to use when validating the server certificate for the
+        /// connection. When not specified, the server name from the Data Source is
+        /// used for certificate validation, used by recommended version. Type: string
+        /// (or Expression with resultType string).
+        /// </param>
+
+        /// <param name="applicationIntent">The application workload type when connecting to a server, used by
+        /// recommended version. Possible values are ReadOnly and ReadWrite. Type:
+        /// string (or Expression with resultType string).
+        /// </param>
+
+        /// <param name="connectTimeout">The length of time (in seconds) to wait for a connection to the server
+        /// before terminating the attempt and generating an error, used by recommended
+        /// version. Type: integer (or Expression with resultType integer).
+        /// </param>
+
+        /// <param name="connectRetryCount">The number of re-connections attempted after identifying that there was an
+        /// idle connection failure, used by recommended version. This must be an
+        /// integer between 0 and 255. Type: integer (or Expression with resultType
+        /// integer).
+        /// </param>
+
+        /// <param name="connectRetryInterval">The amount of time (in seconds) between each re-connection attempt after
+        /// identifying that there was an idle connection failure, used by recommended
+        /// version. This must be an integer between 1 and 60. Type: integer (or
+        /// Expression with resultType integer).
+        /// </param>
+
+        /// <param name="loadBalanceTimeout">The minimum time, in seconds, for the connection to live in the connection
+        /// pool before being destroyed, used by recommended version. Type: integer (or
+        /// Expression with resultType integer).
+        /// </param>
+
+        /// <param name="commandTimeout">The default wait time (in seconds) before terminating the attempt to
+        /// execute a command and generating an error, used by recommended version.
+        /// Type: integer (or Expression with resultType integer).
+        /// </param>
+
+        /// <param name="integratedSecurity">Indicate whether User ID and Password are specified in the connection (when
+        /// false) or whether the current Windows account credentials are used for
+        /// authentication (when true), used by recommended version. Type: Boolean (or
+        /// Expression with resultType boolean).
+        /// </param>
+
+        /// <param name="failoverPartner">The name or address of the partner server to connect to if the primary
+        /// server is down, used by recommended version. Type: string (or Expression
+        /// with resultType string).
+        /// </param>
+
+        /// <param name="maxPoolSize">The maximum number of connections allowed in the connection pool for this
+        /// specific connection string, used by recommended version. Type: integer (or
+        /// Expression with resultType integer).
+        /// </param>
+
+        /// <param name="minPoolSize">The minimum number of connections allowed in the connection pool for this
+        /// specific connection string, used by recommended version. Type: integer (or
+        /// Expression with resultType integer).
+        /// </param>
+
+        /// <param name="multipleActiveResultSets">When true, an application can maintain multiple active result sets (MARS).
+        /// When false, an application must process or cancel all result sets from one
+        /// batch before it can execute any other batch on that connection, used by
+        /// recommended version. Type: Boolean (or Expression with resultType boolean).
+        /// </param>
+
+        /// <param name="multiSubnetFailover">If your application is connecting to an AlwaysOn availability group (AG) on
+        /// different subnets, setting MultiSubnetFailover=true provides faster
+        /// detection of and connection to the (currently) active server, used by
+        /// recommended version. Type: Boolean (or Expression with resultType boolean).
+        /// </param>
+
+        /// <param name="packetSize">The size in bytes of the network packets used to communicate with an
+        /// instance of server, used by recommended version. Type: integer (or
+        /// Expression with resultType integer).
+        /// </param>
+
+        /// <param name="pooling">Indicate whether the connection will be pooled or explicitly opened every
+        /// time that the connection is requested, used by recommended version. Type:
+        /// Boolean (or Expression with resultType boolean).
+        /// </param>
+
         /// <param name="connectionString">The connection string. Type: string, SecureString or
         /// AzureKeyVaultSecretReference.
         /// </param>
+
+        /// <param name="authenticationType">The type used for authentication. Type: string.
+        /// Possible values include: &#39;SQL&#39;, &#39;Windows&#39;</param>
 
         /// <param name="userName">The on-premises Windows authentication user name. Type: string (or
         /// Expression with resultType string).
@@ -41,10 +145,12 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="alwaysEncryptedSettings">Sql always encrypted properties.
         /// </param>
-        public AmazonRdsForSqlServerLinkedServiceTypeProperties(object connectionString, object userName = default(object), SecretBase password = default(SecretBase), string encryptedCredential = default(string), SqlAlwaysEncryptedProperties alwaysEncryptedSettings = default(SqlAlwaysEncryptedProperties))
+        public AmazonRdsForSqlServerLinkedServiceTypeProperties(object server = default(object), object database = default(object), object encrypt = default(object), object trustServerCertificate = default(object), object hostNameInCertificate = default(object), object applicationIntent = default(object), object connectTimeout = default(object), object connectRetryCount = default(object), object connectRetryInterval = default(object), object loadBalanceTimeout = default(object), object commandTimeout = default(object), object integratedSecurity = default(object), object failoverPartner = default(object), object maxPoolSize = default(object), object minPoolSize = default(object), object multipleActiveResultSets = default(object), object multiSubnetFailover = default(object), object packetSize = default(object), object pooling = default(object), object connectionString = default(object), string authenticationType = default(string), object userName = default(object), SecretBase password = default(SecretBase), string encryptedCredential = default(string), SqlAlwaysEncryptedProperties alwaysEncryptedSettings = default(SqlAlwaysEncryptedProperties))
 
+        : base(server, database, encrypt, trustServerCertificate, hostNameInCertificate, applicationIntent, connectTimeout, connectRetryCount, connectRetryInterval, loadBalanceTimeout, commandTimeout, integratedSecurity, failoverPartner, maxPoolSize, minPoolSize, multipleActiveResultSets, multiSubnetFailover, packetSize, pooling)
         {
             this.ConnectionString = connectionString;
+            this.AuthenticationType = authenticationType;
             this.UserName = userName;
             this.Password = password;
             this.EncryptedCredential = encryptedCredential;
@@ -64,6 +170,12 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "connectionString")]
         public object ConnectionString {get; set; }
+
+        /// <summary>
+        /// Gets or sets the type used for authentication. Type: string. Possible values include: &#39;SQL&#39;, &#39;Windows&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "authenticationType")]
+        public string AuthenticationType {get; set; }
 
         /// <summary>
         /// Gets or sets the on-premises Windows authentication user name. Type: string
@@ -99,10 +211,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (this.ConnectionString == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ConnectionString");
-            }
+
 
 
 

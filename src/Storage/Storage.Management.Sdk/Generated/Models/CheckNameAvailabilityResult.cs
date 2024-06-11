@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="reason">Gets the reason that a storage account name could not be used. The Reason
         /// element is only returned if NameAvailable is false.
-        /// Possible values include: 'AccountNameInvalid', 'AlreadyExists'</param>
+        /// Possible values include: &#39;AccountNameInvalid&#39;, &#39;AlreadyExists&#39;</param>
 
         /// <param name="message">Gets an error message explaining the Reason value in more detail.
         /// </param>

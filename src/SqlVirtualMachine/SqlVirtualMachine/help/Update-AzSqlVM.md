@@ -33,8 +33,9 @@ Update-AzSqlVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <Stri
  [-WsfcDomainCredentialsClusterBootstrapAccountPassword <SecureString>]
  [-WsfcDomainCredentialsClusterOperatorAccountPassword <SecureString>]
  [-WsfcDomainCredentialsSqlServiceAccountPassword <SecureString>] [-WsfcStaticIP <String>]
- [-EnableAutomaticUpgrade] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableAutomaticUpgrade] [-ManagedIdentityClientId <String>] [-IdentityType <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -57,8 +58,9 @@ Update-AzSqlVM -InputObject <ISqlVirtualMachineIdentity> [-LicenseType <SqlServe
  [-WsfcDomainCredentialsClusterBootstrapAccountPassword <SecureString>]
  [-WsfcDomainCredentialsClusterOperatorAccountPassword <SecureString>]
  [-WsfcDomainCredentialsSqlServiceAccountPassword <SecureString>] [-WsfcStaticIP <String>]
- [-EnableAutomaticUpgrade] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableAutomaticUpgrade] [-ManagedIdentityClientId <String>] [-IdentityType <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -208,6 +210,32 @@ eastus		sqlvm1		ResourceGroup01
 ```
 
 Update a SQL virtual machine's tag as a background job.
+
+### Example 11
+```powershell
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -IdentityType 'SystemAssigned'
+```
+
+```output
+Location	Name		ResourceGroupName
+--------	----		-----------------
+eastus		sqlvm1		ResourceGroup01
+```
+
+Update a SQL virtual machine to enable Microsoft Entra authentication using "System-assigned managed identity"
+
+### Example 12
+```powershell
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -IdentityType 'UserAssigned' -ManagedIdentityClientId '11111111-2222-3333-4444-555555555555'
+```
+
+```output
+Location	Name		ResourceGroupName
+--------	----		-----------------
+eastus		sqlvm1		ResourceGroup01
+```
+
+Update a SQL virtual machine to enable Microsoft Entra authentication using "User-assigned managed identity"
 
 ## PARAMETERS
 
@@ -561,6 +589,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IdentityType
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -582,6 +625,22 @@ SQL Server license type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlServerLicenseType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedIdentityClientId
+The client Id of the Managed Identity to query Microsoft Graph API.
+An empty string must be used for the system assigned Managed Identity
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -630,6 +689,21 @@ Examples include SQL2016-WS2016, SQL2017-WS2016.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

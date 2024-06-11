@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// Switch parameter indicating whether this failover operation will try planned before forced failover.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Performs planned failover as first step and if it fails for any reason than forced failover with potential data loss is initiated. "
+            HelpMessage = "Performs planned failover as first step and if it fails for any reason then forced failover with potential data loss is initiated. "
                 + "This will allow the failover to proceed even if a primary database is unavailable.")]
         public SwitchParameter TryPlannedBeforeForcedFailover { get; set; }
 
