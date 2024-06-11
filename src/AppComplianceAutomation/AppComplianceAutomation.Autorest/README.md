@@ -32,8 +32,6 @@ require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/appcomplianceautomation/resource-manager/readme.md
-try-require: 
-  - $(repo)/specification/appcomplianceautomation/resource-manager/readme.powershell.md
 input-file:
   - $(repo)/specification/appcomplianceautomation/resource-manager/Microsoft.AppComplianceAutomation/stable/2024-06-27/appcomplianceautomation.json
 
