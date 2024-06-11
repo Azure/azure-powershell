@@ -19,7 +19,7 @@ Get-AzFirmwareAnalysisCryptoCertificate -FirmwareId <String> -ResourceGroupName 
 ```
 
 ## DESCRIPTION
-Lists cryptographic certificate analysis results found in a firmware.
+Lists cryptographic certificate analysis results found in a firmware. Note that the **Encoding** field will always be empty.
 
 ## EXAMPLES
 
