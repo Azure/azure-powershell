@@ -51,8 +51,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             Position = 2,
-            ValueFromPipelineByPropertyName = true)]
-        [PSArgumentCompleter("SystemAssigned")]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The type of Managed Identity used by the DiskEncryptionSet. Only SystemAssigned is supported for new creations. Disk Encryption Sets can be updated with Identity type None during migration of subscription to a new Azure Active Directory tenant; it will cause the encrypted resources to lose access to the keys.")]
+        [PSArgumentCompleter("SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned")]
         public string IdentityType { get; set; }
 
         [Parameter(
