@@ -15,37 +15,49 @@ Gets policy set definitions.
 ### Name (Default)
 ```
 Get-AzPolicySetDefinition [-Name <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
 Get-AzPolicySetDefinition [-Name <String>] -ManagementGroupName <String> [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
 Get-AzPolicySetDefinition [-Name <String>] -SubscriptionId <String> [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
-### Builtin
+### Version
 ```
-Get-AzPolicySetDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Builtin]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicySetDefinition [-Name <String>] [-Id <String>] [-BackwardCompatible] -Version <String>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
-### Custom
+### ListVersion
 ```
-Get-AzPolicySetDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Custom]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicySetDefinition [-Name <String>] [-Id <String>] [-ListVersion] [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Id
 ```
 Get-AzPolicySetDefinition -Id <String> [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### Builtin
+```
+Get-AzPolicySetDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Builtin]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### Custom
+```
+Get-AzPolicySetDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Custom]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -163,8 +175,35 @@ The full Id of the policy definition to get.
 
 ```yaml
 Type: System.String
+Parameter Sets: Version, ListVersion
+Aliases: ResourceId
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
 Parameter Sets: Id
 Aliases: ResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ListVersion
+Causes cmdlet to return only custom policy definitions.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ListVersion
+Aliases:
 
 Required: True
 Position: Named
@@ -205,13 +244,28 @@ The name of the policy definition to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name, ManagementGroupName, SubscriptionId
+Parameter Sets: Name, ManagementGroupName, SubscriptionId, Version, ListVersion
 Aliases: PolicySetDefinitionName
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -236,6 +290,21 @@ Parameter Sets: Builtin, Custom
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Version
+The policy definition version in #.#.# format.
+
+```yaml
+Type: System.String
+Parameter Sets: Version
+Aliases: PolicySetDefinitionVersion
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

@@ -15,14 +15,14 @@ Stops replication for the migrated server.
 ### ByID (Default)
 ```
 Remove-AzMigrateHCIServerReplication -TargetObjectID <String> [-SubscriptionId <String>]
- [-ForceRemove <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [-ForceRemove <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
 Remove-AzMigrateHCIServerReplication [-SubscriptionId <String>] -InputObject <IMigrateIdentity>
- [-ForceRemove <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [-ForceRemove <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -158,6 +158,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
