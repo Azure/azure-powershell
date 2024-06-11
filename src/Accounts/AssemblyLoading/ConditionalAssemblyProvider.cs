@@ -50,7 +50,7 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
                 CreateAssembly("netstandard2.0", "Microsoft.Identity.Client", "4.61.3.0"),
                 CreateAssembly("netstandard2.0", "Microsoft.Identity.Client.Extensions.Msal", "4.61.3.0"),
                 CreateAssembly("netstandard2.0", "Microsoft.Identity.Client.Broker", "4.61.3.0"),
-                CreateAssembly("netstandard2.0", "Microsoft.Identity.Client.NativeInterop", "0.16.0.0"),
+                CreateAssembly("netstandard2.0", "Microsoft.Identity.Client.NativeInterop", "0.16.2.0"),
                 CreateAssembly("netstandard2.0", "Microsoft.IdentityModel.Abstractions", "6.35.0.0"),
                 CreateAssembly("netstandard2.0", "System.ClientModel", "1.0.0.0"),
                 CreateAssembly("netstandard2.0", "System.Memory.Data", "1.0.2.0"),
