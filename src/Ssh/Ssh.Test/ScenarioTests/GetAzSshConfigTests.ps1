@@ -94,7 +94,7 @@ function Test-GetVmConfig
     {
         $stnd = "Standard";
         $vm = New-AzVM -ResourceGroupName $ResourceGroupName -Name $VmName -Location "eastus" -Credential $cred -DomainNameLabel $domainlabel -SecurityType $stnd
-        Remove-Item ./config -ErrorAction Ignore 
+        Remove-Item ./config -ErrorAction Ignore
 
         Assert-NotNull $vm
         $configEntry = Export-AzSshConfig -ResourceGroupName $ResourceGroupName -Name $VmName -ConfigFilePath ./config -LocalUser $username
@@ -119,7 +119,8 @@ function Test-GetVmConfig
         Remove-AzResourceGroup -Name $ResourceGroupName -Force
     }
 }
-function Test-ConfigVMPortFromRSTags
+
+function Test-ConfigVmPortFromRSTags
 {
     $VmName = Get-AzureVmName
     $ResourceGroupName = Get-ResourceGroupName
@@ -146,7 +147,7 @@ function Test-ConfigVMPortFromRSTags
         
        
         Assert-NotNull $vm
-        Update-AzTag -ResourceId $vm.Id -Tag $tags -Operation Merge
+        Set-AzResource -Name $VmName -ResourceGroupName $ResourceGroupName -ResourceType "Microsoft.Compute/VirtualMachines" -Tag $tags -Force  
 
         $retrievedVM = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VmName
         $resource = @{
@@ -163,38 +164,45 @@ function Test-ConfigVMPortFromRSTags
         Remove-AzResourceGroup -Name $ResourceGroupName -Force
     }
 }
-
-function Test-ConfigArcPortFromRSTag
- {
+function Test-ConfigArcPortFromRSTags {
     $isPlayback = IsPlayback
 
     if ($IsMacOS) {
         return
     }
+
     $MachineName = Get-ArcServerName
     $ResourceGroupName = Get-ResourceGroupName
+
     $SubscriptionId = (Get-AzContext).Subscription.Id
     $TenantId = (Get-AzContext).Tenant.Id
+
+    $username = "azureuser"  
+    
 
     New-AzResourceGroup -Name $ResourceGroupName -Location "eastus" | Out-Null
     
     if (-not $isPlayback) { $agent = installArcAgent }   
 
-    try 
-    {
-        if (-not $isPlayback) { Start-Agent -MachineName $MachineName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -TenantId $TenantId -Agent $agent -Tags "enviroment=23,SSHPort=2222"}
+    try {
+        if (-not $isPlayback) {
+            Start-Agent -MachineName $MachineName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -TenantId $TenantId -Agent $agent -Tags "enviroment=23,SSHPort=2222"
+        }
     
         Remove-Item ./config -ErrorAction Ignore
 
         Install-Module Az.Ssh.ArcProxy -Scope CurrentUser -Repository PsGallery -Force -AllowClobber
 
-        $configEntry = Export-AzSshConfig -ResourceGroupName $ResourceGroupName -Name $VmName -ConfigFilePath ./config -LocalUser $username
+        $configEntry = Export-AzSshConfig -ResourceGroupName $ResourceGroupName -Name $MachineName -ConfigFilePath ./config -LocalUser $username
 
-         
+        Write-Host "configEntry: $configEntry"
+        if (-not $configEntry) {
+            throw "configEntry is not initialized."
+        }
+
         Assert-AreEqual "2222" $configEntry.Port
 
-    }
-    finally {
+    } finally {
         Uninstall-Module Az.Ssh.ArcProxy -ErrorAction Ignore
         Remove-Item ./config -ErrorAction Ignore -Force
         Remove-Item ./az_ssh_config -ErrorAction Ignore -Force -Recurse
@@ -202,3 +210,4 @@ function Test-ConfigArcPortFromRSTag
         Remove-AzResourceGroup -Name $ResourceGroupName -Force
     }
 }
+
