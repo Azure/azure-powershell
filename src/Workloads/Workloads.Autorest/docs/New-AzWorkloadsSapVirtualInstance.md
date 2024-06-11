@@ -12,7 +12,7 @@ Creates a Virtual Instance for SAP solutions (VIS) resource
 
 ## SYNTAX
 
-### Register an existing SAP system as a VIS
+### CreateWithDiscovery (Default)
 ```
 New-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> -CentralServerVmId <String>
  -Environment <SapEnvironmentType> -Location <String> -SapProduct <SapProductType> [-SubscriptionId <String>]
@@ -22,7 +22,7 @@ New-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> -Ce
  [<CommonParameters>]
 ```
 
-### Create Infrastructure for a new SAP system
+### CreateWithJsonTemplatePath
 ```
 New-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> -Configuration <String>
  -Environment <SapEnvironmentType> -Location <String> -SapProduct <SapProductType> [-SubscriptionId <String>]
