@@ -7,7 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Extensions;
 
-    /// <summary>The core properties of ARM resources</summary>
+    /// <summary>
+    /// Common fields that are returned in the response for all Azure Resource Manager resources
+    /// </summary>
     public partial class Resource
     {
 
@@ -75,6 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 return;
             }
+            {_systemData = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonObject>("systemData"), out var __jsonSystemData) ? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.SystemData.FromJson(__jsonSystemData) : _systemData;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
             {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)_type;}
@@ -99,6 +102,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (returnNow)
             {
                 return container;
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._systemData ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) this._systemData.ToJson(null,serializationMode) : null, "systemData" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeRead))
             {

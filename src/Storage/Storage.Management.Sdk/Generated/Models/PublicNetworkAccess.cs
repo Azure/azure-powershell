@@ -15,5 +15,6 @@ namespace Microsoft.Azure.Management.Storage.Models
     {
         public const string Enabled = "Enabled";
         public const string Disabled = "Disabled";
+        public const string SecuredByPerimeter = "SecuredByPerimeter";
     }
 }

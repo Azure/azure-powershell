@@ -25,22 +25,22 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
 
         /// <param name="type">Type of expressions supported by the system. Type: string.
-        /// Possible values include: &#39;Constant&#39;, &#39;Field&#39;, &#39;Unary&#39;, &#39;Binary&#39;</param>
+        /// Possible values include: &#39;Constant&#39;, &#39;Field&#39;, &#39;Unary&#39;, &#39;Binary&#39;, &#39;NAry&#39;</param>
 
         /// <param name="value">Value for Constant/Field Type: string.
         /// </param>
 
-        /// <param name="operatorProperty">Expression operator value Type: string.
+        /// <param name="operators">Expression operator value Type: list of strings.
         /// </param>
 
         /// <param name="operands">List of nested expressions.
         /// </param>
-        public ExpressionV2(string type = default(string), string value = default(string), string operatorProperty = default(string), System.Collections.Generic.IList<ExpressionV2> operands = default(System.Collections.Generic.IList<ExpressionV2>))
+        public ExpressionV2(string type = default(string), string value = default(string), System.Collections.Generic.IList<string> operators = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<ExpressionV2> operands = default(System.Collections.Generic.IList<ExpressionV2>))
 
         {
             this.Type = type;
             this.Value = value;
-            this.OperatorProperty = operatorProperty;
+            this.Operators = operators;
             this.Operands = operands;
             CustomInit();
         }
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
 
         /// <summary>
-        /// Gets or sets type of expressions supported by the system. Type: string. Possible values include: &#39;Constant&#39;, &#39;Field&#39;, &#39;Unary&#39;, &#39;Binary&#39;
+        /// Gets or sets type of expressions supported by the system. Type: string. Possible values include: &#39;Constant&#39;, &#39;Field&#39;, &#39;Unary&#39;, &#39;Binary&#39;, &#39;NAry&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
         public string Type {get; set; }
@@ -64,10 +64,10 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public string Value {get; set; }
 
         /// <summary>
-        /// Gets or sets expression operator value Type: string.
+        /// Gets or sets expression operator value Type: list of strings.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "operator")]
-        public string OperatorProperty {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "operators")]
+        public System.Collections.Generic.IList<string> Operators {get; set; }
 
         /// <summary>
         /// Gets or sets list of nested expressions.

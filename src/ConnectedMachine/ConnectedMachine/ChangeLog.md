@@ -18,7 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Update the synopsis
+
+## Version 0.8.0
+* Updated the API version to 2024-03-31-preview.
+* Added cmdlets `Get-AzConnectedLicense`, `Get-AzConnectedNetworkSecurityPerimeterConfiguration`, `New-AzConnectedLicense`, `New-AzConnectedLicenseDetail`, `Remove-AzConnectedLicense` and `Set-AzConnectedLicense`.
 
 ## Version 0.7.2
 * Introduced secrets detection feature to safeguard sensitive data.

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.4
 * Changed parsing logic in ATC custom cmdlet
 
 ## Version 0.1.3

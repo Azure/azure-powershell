@@ -10,16 +10,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Delete a segment by id in a private cloud workload network.</summary>
+    /// <summary>Delete a WorkloadNetworkSegment</summary>
     /// <remarks>
     /// [OpenAPI] DeleteSegment=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/segments/{segmentId}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzVMwareWorkloadNetworkSegment_DeleteViaIdentityPrivateCloud", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Delete a segment by id in a private cloud workload network.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Delete a WorkloadNetworkSegment")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/segments/{segmentId}", ApiVersion = "2023-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/segments/{segmentId}", ApiVersion = "2023-09-01")]
     public partial class RemoveAzVMwareWorkloadNetworkSegment_DeleteViaIdentityPrivateCloud : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IContext
@@ -149,12 +149,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// <summary>Backing field for <see cref="SegmentName" /> property.</summary>
         private string _segmentName;
 
-        /// <summary>NSX Segment identifier. Generally the same as the Segment's display name</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "NSX Segment identifier. Generally the same as the Segment's display name")]
+        /// <summary>The ID of the NSX Segment</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the NSX Segment")]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"NSX Segment identifier. Generally the same as the Segment's display name",
+        Description = @"The ID of the NSX Segment",
         SerializedName = @"segmentId",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Path)]

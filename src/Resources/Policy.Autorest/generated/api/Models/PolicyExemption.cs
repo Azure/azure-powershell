@@ -15,24 +15,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
 
         /// <summary>The option whether validate the exemption is at or under the assignment scope.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public string AssignmentScopeValidation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionPropertiesInternal)Property).AssignmentScopeValidation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionPropertiesInternal)Property).AssignmentScopeValidation = value ?? null; }
 
         /// <summary>The description of the policy exemption.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public string Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionPropertiesInternal)Property).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionPropertiesInternal)Property).Description = value ?? null; }
 
         /// <summary>The display name of the policy exemption.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.FormatTable(Index = 2)]
         public string DisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionPropertiesInternal)Property).DisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionPropertiesInternal)Property).DisplayName = value ?? null; }
 
         /// <summary>The policy exemption category. Possible values are Waiver and Mitigated.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public string ExemptionCategory { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionPropertiesInternal)Property).ExemptionCategory; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionPropertiesInternal)Property).ExemptionCategory = value ; }
 
         /// <summary>
         /// The expiration date and time (in UTC ISO 8601 format yyyy-MM-ddTHH:mm:ssZ) of the policy exemption.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public global::System.DateTime? ExpiresOn { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionPropertiesInternal)Property).ExpiresOn; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionPropertiesInternal)Property).ExpiresOn = value ?? default(global::System.DateTime); }
 
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
@@ -40,12 +45,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
 
         /// <summary>The ID of the policy exemption.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public string Id { get => this._id; }
 
         /// <summary>
         /// The policy exemption metadata. Metadata is an open ended object and is typically a collection of key value pairs.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionPropertiesMetadata Metadata { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionPropertiesInternal)Property).Metadata; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionPropertiesInternal)Property).Metadata = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Id</summary>
@@ -68,16 +75,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
 
         /// <summary>The name of the policy exemption.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.FormatTable(Index = 0)]
         public string Name { get => this._name; }
 
         /// <summary>The ID of the policy assignment that is being exempted.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.FormatTable(Index = 1)]
         public string PolicyAssignmentId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionPropertiesInternal)Property).PolicyAssignmentId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionPropertiesInternal)Property).PolicyAssignmentId = value ; }
 
         /// <summary>
         /// The policy definition reference ID list when the associated policy assignment is an assignment of a policy set definition.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public System.Collections.Generic.List<string> PolicyDefinitionReferenceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionPropertiesInternal)Property).PolicyDefinitionReferenceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionPropertiesInternal)Property).PolicyDefinitionReferenceId = value ?? null /* arrayOf */; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
@@ -85,10 +95,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
 
         /// <summary>Properties for the policy exemption.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         internal Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.PolicyExemptionProperties()); set => this._property = value; }
 
         /// <summary>The resource selector list to filter policies by resource properties.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector> ResourceSelector { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionPropertiesInternal)Property).ResourceSelector; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionPropertiesInternal)Property).ResourceSelector = value ?? null /* arrayOf */; }
 
         /// <summary>Backing field for <see cref="SystemData" /> property.</summary>
@@ -98,30 +110,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         internal Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemData SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.SystemData()); }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
 
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
@@ -129,6 +148,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
 
         /// <summary>The type of the resource (Microsoft.Authorization/policyExemptions).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public string Type { get => this._type; }
 
         /// <summary>Creates an new <see cref="PolicyExemption" /> instance.</summary>

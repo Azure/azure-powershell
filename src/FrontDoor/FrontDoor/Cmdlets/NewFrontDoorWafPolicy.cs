@@ -24,6 +24,8 @@ using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using System.Collections;
+using System.Collections.Generic;
+using Microsoft.Azure.Management.FrontDoor.Models;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
@@ -112,6 +114,16 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [PSArgumentCompleter("Classic_AzureFrontDoor", "Standard_AzureFrontDoor", "Premium_AzureFrontDoor")]
         public string Sku { get; set; }
 
+        /// Defines rules that scrub sensitive fields in the Web Application Firewall
+        [Parameter(Mandatory = false, HelpMessage = "Defines rules that scrub sensitive fields in the Web Application Firewall.")]
+        public PSFrontDoorWafLogScrubbingSetting LogScrubbingSetting { get; set; }
+
+        /// Defines the JavaScript challenge cookie validity lifetime in minutes. This
+        /// setting is only applicable to Premium_AzureFrontDoor. Value must be an
+        /// integer between 5 and 1440 with the default value being 30.
+        [Parameter(Mandatory = false, HelpMessage = "setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.")]
+        public int? JavascriptChallengeExpirationInMinutes { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var existingPolicy = FrontDoorManagementClient.Policies.List(ResourceGroupName)
@@ -122,6 +134,19 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 throw new PSArgumentException(string.Format(Resources.Error_CreateExistingWebApplicationFirewallPolicy,
                     Name,
                     ResourceGroupName));
+            }
+
+            var scrubbingRule = new List<Management.FrontDoor.Models.WebApplicationFirewallScrubbingRules>();
+            if (LogScrubbingSetting != null && LogScrubbingSetting.ScrubbingRule != null && LogScrubbingSetting.ScrubbingRule.Count() > 0)
+            {
+                foreach (var item in LogScrubbingSetting.ScrubbingRule)
+                {
+                    scrubbingRule.Add(new Management.FrontDoor.Models.WebApplicationFirewallScrubbingRules(
+                        matchVariable: item.MatchVariable,
+                        selectorMatchOperator: item.SelectorMatchOperator,
+                        selector: item.Selector,
+                        state: item.State));
+                }
             }
             var updateParameters = new Management.FrontDoor.Models.WebApplicationFirewallPolicy
             {
@@ -142,10 +167,23 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                     CustomBlockResponseBody = CustomBlockResponseBody == null ? CustomBlockResponseBody : Convert.ToBase64String(Encoding.UTF8.GetBytes(CustomBlockResponseBody)),
                     CustomBlockResponseStatusCode = this.IsParameterBound(c => c.CustomBlockResponseStatusCode) ? CustomBlockResponseStatusCode : (int?)null,
                     RedirectUrl = RedirectUrl,
-                    RequestBodyCheck = this.IsParameterBound(c => c.RequestBodyCheck) ? RequestBodyCheck : PSEnabledState.Enabled.ToString()
+                    RequestBodyCheck = this.IsParameterBound(c => c.RequestBodyCheck) ? RequestBodyCheck : PSEnabledState.Enabled.ToString(),
                 },
-                Sku = this.IsParameterBound(c => c.Sku) ? new Management.FrontDoor.Models.Sku(Sku) : null
+                Sku = this.IsParameterBound(c => c.Sku) ? new Management.FrontDoor.Models.Sku(Sku) : null,
             };
+
+            if (LogScrubbingSetting != null)
+            {
+                updateParameters.PolicySettings.LogScrubbing = new PolicySettingsLogScrubbing();
+                updateParameters.PolicySettings.LogScrubbing.ScrubbingRules = scrubbingRule;
+                updateParameters.PolicySettings.LogScrubbing.State = LogScrubbingSetting.State;
+            }
+
+            if (JavascriptChallengeExpirationInMinutes != null)
+            {
+                updateParameters.PolicySettings.JavascriptChallengeExpirationInMinutes = JavascriptChallengeExpirationInMinutes;
+            }
+
             if (ShouldProcess(Resources.WebApplicationFirewallPolicyTarget, string.Format(Resources.CreateWebApplicationFirewallPolicy, Name)))
             {
                 try

@@ -10,16 +10,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a DNS zone by id in a private cloud workload network.</summary>
+    /// <summary>Update a WorkloadNetworkDnsZone</summary>
     /// <remarks>
     /// [OpenAPI] UpdateDnsZone=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsZones/{dnsZoneId}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzVMwareWorkloadNetworkDnsZone_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Update a DNS zone by id in a private cloud workload network.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Update a WorkloadNetworkDnsZone")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsZones/{dnsZoneId}", ApiVersion = "2023-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsZones/{dnsZoneId}", ApiVersion = "2023-09-01")]
     public partial class UpdateAzVMwareWorkloadNetworkDnsZone_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IContext
@@ -50,8 +50,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// </summary>
         private int _responseSize = 0;
 
-        /// <summary>NSX DNS Zone</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone _workloadNetworkDnsZoneBody = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.WorkloadNetworkDnsZone();
+        /// <summary>NSX DNS Zone update</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZoneUpdate _workloadNetworkDnsZoneBody = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.WorkloadNetworkDnsZoneUpdate();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -110,8 +110,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         ReadOnly = false,
         Description = @"Number of DNS Services using the DNS zone.",
         SerializedName = @"dnsServices",
-        PossibleTypes = new [] { typeof(long) })]
-        public long DnsService { get => _workloadNetworkDnsZoneBody.DnsService ?? default(long); set => _workloadNetworkDnsZoneBody.DnsService = value; }
+        PossibleTypes = new [] { typeof(int) })]
+        public int DnsService { get => _workloadNetworkDnsZoneBody.DnsService ?? default(int); set => _workloadNetworkDnsZoneBody.DnsService = value; }
 
         /// <summary>Domain names of the DNS Zone.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]

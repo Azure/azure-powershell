@@ -25,7 +25,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         public string DiskPoolVolumeLunName { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDiskPoolVolumeInternal)DiskPoolVolume).LunName; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDiskPoolVolumeInternal)DiskPoolVolume).LunName = value ?? null; }
 
         /// <summary>
-        /// Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN
+        /// Mode that describes whether the LUN has to be mounted as a datastore or
+        /// attached as a LUN
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
         public string DiskPoolVolumeMountOption { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDiskPoolVolumeInternal)DiskPoolVolume).MountOption; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDiskPoolVolumeInternal)DiskPoolVolume).MountOption = value ?? null; }
@@ -38,11 +39,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
         public string DiskPoolVolumeTargetId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDiskPoolVolumeInternal)DiskPoolVolume).TargetId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDiskPoolVolumeInternal)DiskPoolVolume).TargetId = value ?? null; }
 
+        /// <summary>Backing field for <see cref="ElasticSanVolume" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IElasticSanVolume _elasticSanVolume;
+
+        /// <summary>An Elastic SAN volume</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IElasticSanVolume ElasticSanVolume { get => (this._elasticSanVolume = this._elasticSanVolume ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ElasticSanVolume()); set => this._elasticSanVolume = value; }
+
+        /// <summary>Azure resource ID of the Elastic SAN Volume</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        public string ElasticSanVolumeTargetId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IElasticSanVolumeInternal)ElasticSanVolume).TargetId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IElasticSanVolumeInternal)ElasticSanVolume).TargetId = value ?? null; }
+
         /// <summary>Internal Acessors for DiskPoolVolume</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDiskPoolVolume Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal.DiskPoolVolume { get => (this._diskPoolVolume = this._diskPoolVolume ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.DiskPoolVolume()); set { {_diskPoolVolume = value;} } }
 
         /// <summary>Internal Acessors for DiskPoolVolumePath</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal.DiskPoolVolumePath { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDiskPoolVolumeInternal)DiskPoolVolume).Path; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDiskPoolVolumeInternal)DiskPoolVolume).Path = value; }
+
+        /// <summary>Internal Acessors for ElasticSanVolume</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IElasticSanVolume Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal.ElasticSanVolume { get => (this._elasticSanVolume = this._elasticSanVolume ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ElasticSanVolume()); set { {_elasticSanVolume = value;} } }
 
         /// <summary>Internal Acessors for NetAppVolume</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.INetAppVolume Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastorePropertiesInternal.NetAppVolume { get => (this._netAppVolume = this._netAppVolume ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.NetAppVolume()); set { {_netAppVolume = value;} } }
@@ -100,7 +115,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         PossibleTypes = new [] { typeof(string) })]
         string DiskPoolVolumeLunName { get; set; }
         /// <summary>
-        /// Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN
+        /// Mode that describes whether the LUN has to be mounted as a datastore or
+        /// attached as a LUN
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -108,7 +124,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN",
+        Description = @"Mode that describes whether the LUN has to be mounted as a datastore or
+        attached as a LUN",
         SerializedName = @"mountOption",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("MOUNT", "ATTACH")]
@@ -135,6 +152,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"targetId",
         PossibleTypes = new [] { typeof(string) })]
         string DiskPoolVolumeTargetId { get; set; }
+        /// <summary>Azure resource ID of the Elastic SAN Volume</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Azure resource ID of the Elastic SAN Volume",
+        SerializedName = @"targetId",
+        PossibleTypes = new [] { typeof(string) })]
+        string ElasticSanVolumeTargetId { get; set; }
         /// <summary>Azure resource ID of the NetApp volume</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -156,7 +184,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Description = @"The state of the datastore provisioning",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Cancelled", "Pending", "Creating", "Updating", "Deleting", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Cancelled", "Pending", "Creating", "Updating", "Deleting")]
         string ProvisioningState { get;  }
         /// <summary>The operational status of the datastore</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
@@ -181,7 +209,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>Name of the LUN to be used for datastore</summary>
         string DiskPoolVolumeLunName { get; set; }
         /// <summary>
-        /// Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN
+        /// Mode that describes whether the LUN has to be mounted as a datastore or
+        /// attached as a LUN
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("MOUNT", "ATTACH")]
         string DiskPoolVolumeMountOption { get; set; }
@@ -189,12 +218,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         string DiskPoolVolumePath { get; set; }
         /// <summary>Azure resource ID of the iSCSI target</summary>
         string DiskPoolVolumeTargetId { get; set; }
+        /// <summary>An Elastic SAN volume</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IElasticSanVolume ElasticSanVolume { get; set; }
+        /// <summary>Azure resource ID of the Elastic SAN Volume</summary>
+        string ElasticSanVolumeTargetId { get; set; }
         /// <summary>An Azure NetApp Files volume</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.INetAppVolume NetAppVolume { get; set; }
         /// <summary>Azure resource ID of the NetApp volume</summary>
         string NetAppVolumeId { get; set; }
         /// <summary>The state of the datastore provisioning</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Cancelled", "Pending", "Creating", "Updating", "Deleting", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Cancelled", "Pending", "Creating", "Updating", "Deleting")]
         string ProvisioningState { get; set; }
         /// <summary>The operational status of the datastore</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Unknown", "Accessible", "Inaccessible", "Attached", "Detached", "LostCommunication", "DeadOrError")]

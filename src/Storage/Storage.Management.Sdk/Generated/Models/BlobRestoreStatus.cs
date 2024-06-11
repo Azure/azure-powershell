@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// Indicates that blob restore is ongoing. - Complete: Indicates that blob
         /// restore has been completed successfully. - Failed: Indicates that blob
         /// restore is failed.
-        /// Possible values include: 'InProgress', 'Complete', 'Failed'</param>
+        /// Possible values include: &#39;InProgress&#39;, &#39;Complete&#39;, &#39;Failed&#39;</param>
 
         /// <param name="failureReason">Failure reason when blob restore is failed.
         /// </param>

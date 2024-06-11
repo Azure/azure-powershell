@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzVMwarePlacementPolicy
 
 ## SYNOPSIS
-Delete a placement policy in a private cloud cluster
+Delete a PlacementPolicy
 
 ## SYNTAX
 
@@ -16,31 +16,31 @@ Delete a placement policy in a private cloud cluster
 ```
 Remove-AzVMwarePlacementPolicy -ClusterName <String> -Name <String> -PrivateCloudName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityPrivateCloud
 ```
 Remove-AzVMwarePlacementPolicy -ClusterName <String> -Name <String> -PrivateCloudInputObject <IVMwareIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityCluster
 ```
 Remove-AzVMwarePlacementPolicy -Name <String> -ClusterInputObject <IVMwareIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzVMwarePlacementPolicy -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a placement policy in a private cloud cluster
+Delete a PlacementPolicy
 
 ## EXAMPLES
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterName
-Name of the cluster in the private cloud
+Name of the cluster
 
 ```yaml
 Type: System.String
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+Name of the placement policy.
 
 ```yaml
 Type: System.String
@@ -211,6 +211,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -229,6 +244,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

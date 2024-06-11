@@ -7,4 +7,5 @@ Update-AzConnectedExtension -ResourceGroupName $env.ResourceGroupName -MachineNa
 ```output
 <None>
 ```
+
 Update an extension in a machine to a specific version

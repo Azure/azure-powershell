@@ -15,13 +15,13 @@ Starts the migration for the replicating server.
 ### ByID (Default)
 ```
 Start-AzMigrateHCIServerMigration -TargetObjectID <String> [-TurnOffSourceServer] [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
 Start-AzMigrateHCIServerMigration [-TurnOffSourceServer] [-SubscriptionId <String>]
- -InputObject <IMigrateIdentity> [-DefaultProfile <PSObject>] [-WhatIf]
+ -InputObject <IMigrateIdentity> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -155,6 +155,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

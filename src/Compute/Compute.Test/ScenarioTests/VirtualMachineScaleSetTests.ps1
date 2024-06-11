@@ -5272,3 +5272,44 @@ function Test-VirtualMachineScaleSetSecurityTypeAndFlexDefaults
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set with explicit Standard securityType.
+Ensures the SecurityProfile is null, and with no other img info,
+defaults to Win2022AE image.
+#>
+function Test-VirtualMachineScaleSetDefaultImgWhenStandard
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmssName = 'vs' + $rgname;
+
+        $domainNameLabel1 = "d1" + $rgname;
+        $enable = $true;
+        $securityTypeST = "Standard";
+        $adminUsername = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
+        $adminPassword = $password | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
+
+        # Requirements for the TrustedLaunch default behavior.
+        $vmss = New-AzVmss -ResourceGroupName $rgname -Credential $cred -VMScaleSetName $vmssName -SecurityType $securityTypeST -DomainNameLabel $domainNameLabel1;
+        
+        Assert-AreEqual $vmss.OrchestrationMode "Flexible";
+        Assert-Null $vmss.SecurityProfile;
+        Assert-AreEqual $vmss.VirtualMachineProfile.StorageProfile.ImageReference.Sku "2022-datacenter-azure-edition";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}

@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.Storage
         public StorageManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Gets the current usage count and the limit for the resources of the location under the subscription.
+        /// Gets the current usage count and the limit for the resources of the
+        /// location under the subscription.
         /// </summary>
         /// <param name='location'>
         /// The location of the Azure Storage resource.

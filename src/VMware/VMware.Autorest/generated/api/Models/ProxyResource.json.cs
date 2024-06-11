@@ -7,7 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Extensions;
 
-    /// <summary>The resource model definition for a ARM proxy resource</summary>
+    /// <summary>
+    /// The resource model definition for a Azure Resource Manager proxy resource. It will not have tags and a location
+    /// </summary>
     public partial class ProxyResource
     {
 

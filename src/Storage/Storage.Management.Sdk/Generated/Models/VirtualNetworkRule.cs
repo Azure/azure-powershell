@@ -29,11 +29,11 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </param>
 
         /// <param name="action">The action of virtual network rule.
-        /// Possible values include: 'Allow'</param>
+        /// Possible values include: &#39;Allow&#39;</param>
 
         /// <param name="state">Gets the state of virtual network rule.
-        /// Possible values include: 'Provisioning', 'Deprovisioning', 'Succeeded',
-        /// 'Failed', 'NetworkSourceDeleted'</param>
+        /// Possible values include: &#39;Provisioning&#39;, &#39;Deprovisioning&#39;, &#39;Succeeded&#39;,
+        /// &#39;Failed&#39;, &#39;NetworkSourceDeleted&#39;</param>
         public VirtualNetworkRule(string virtualNetworkResourceId, Action? action = default(Action?), string state = default(string))
 
         {

@@ -14,11 +14,11 @@ Updates the configs of Azure PowerShell.
 
 ```
 Update-AzConfig [-AppliesTo <String>] [-Scope <ConfigScope>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-CheckForUpgrade <Boolean>]
- [-DefaultSubscriptionForLogin <String>] [-DisableInstanceDiscovery <Boolean>]
- [-DisplayBreakingChangeWarning <Boolean>] [-DisplayRegionIdentified <Boolean>]
- [-DisplaySecretsWarning <Boolean>] [-DisplaySurveyMessage <Boolean>] [-EnableDataCollection <Boolean>]
- [-EnableErrorRecordsPersistence <Boolean>] [-EnableLoginByWam <Boolean>] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-CheckForUpgrade <Boolean>] [-DefaultSubscriptionForLogin <String>]
+ [-DisableInstanceDiscovery <Boolean>] [-DisplayBreakingChangeWarning <Boolean>]
+ [-DisplayRegionIdentified <Boolean>] [-DisplaySecretsWarning <Boolean>] [-DisplaySurveyMessage <Boolean>]
+ [-EnableDataCollection <Boolean>] [-EnableErrorRecordsPersistence <Boolean>] [-EnableLoginByWam <Boolean>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -277,18 +277,19 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
+### -LoginExperienceV2
+Only active when authenticating interactively, allows the user to choose the subscription and tenant used in subsequent commands. Possible values ad 'On' (Default) and 'Off'. 'On' requires user's input. 'Off' will use the first tenant and subscription returned by Azure, can change without notice and lead to command execution in an unwanted context (not recommended).
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
+Type: Microsoft.Azure.Commands.Common.Authentication.Config.Models.LoginExperienceConfig
 Parameter Sets: (All)
-Aliases: proga
+Aliases:
+Accepted values: On, Off
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

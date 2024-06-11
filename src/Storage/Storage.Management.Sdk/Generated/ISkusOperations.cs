@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.Storage
     public partial interface ISkusOperations
     {
         /// <summary>
-        /// Lists the available SKUs supported by Microsoft.Storage for given subscription.
+        /// Lists the available SKUs supported by Microsoft.Storage for given
+        /// subscription.
         /// </summary>
         /// <remarks>
-        /// Lists the available SKUs supported by Microsoft.Storage for given subscription.
+        /// Lists the available SKUs supported by Microsoft.Storage for given
+        /// subscription.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

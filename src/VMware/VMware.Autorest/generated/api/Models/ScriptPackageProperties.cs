@@ -33,11 +33,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>Internal Acessors for Description</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptPackagePropertiesInternal.Description { get => this._description; set { {_description = value;} } }
 
+        /// <summary>Internal Acessors for ProvisioningState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptPackagePropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
+
         /// <summary>Internal Acessors for Uri</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptPackagePropertiesInternal.Uri { get => this._uri; set { {_uri = value;} } }
 
         /// <summary>Internal Acessors for Version</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptPackagePropertiesInternal.Version { get => this._version; set { {_version = value;} } }
+
+        /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
+        private string _provisioningState;
+
+        /// <summary>The provisioning state of the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string ProvisioningState { get => this._provisioningState; }
 
         /// <summary>Backing field for <see cref="Uri" /> property.</summary>
         private string _uri;
@@ -85,6 +95,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"description",
         PossibleTypes = new [] { typeof(string) })]
         string Description { get;  }
+        /// <summary>The provisioning state of the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The provisioning state of the resource.",
+        SerializedName = @"provisioningState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled")]
+        string ProvisioningState { get;  }
         /// <summary>Link to support by the package vendor</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -117,6 +139,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         string Company { get; set; }
         /// <summary>User friendly description of the package</summary>
         string Description { get; set; }
+        /// <summary>The provisioning state of the resource.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled")]
+        string ProvisioningState { get; set; }
         /// <summary>Link to support by the package vendor</summary>
         string Uri { get; set; }
         /// <summary>Module version</summary>

@@ -106,6 +106,8 @@ if ($TargetTestName -and (!$TestName -or ($TestName -eq $TargetTestName))) {
         $invalidPolicyDefinitionReference = $env.invalidPolicyDefinitionReference
         $invalidPolicySetDefinitionRequest = $env.invalidPolicySetDefinitionRequest
         $multiplePolicyDefinitionParams = $env.multiplePolicyDefinitionParams
+        $versionRequiresNameOrId = $env.versionRequiresNameOrId
+        $listVersionsRequiresNameOrId = $env.listVersionsRequiresNameOrId
     }
     catch {
         Write-Host -ForegroundColor Red "Failed setting up environment for [$TargetTestName]: [$_]"

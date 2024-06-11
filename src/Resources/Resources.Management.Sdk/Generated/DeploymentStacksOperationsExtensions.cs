@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Resources
     public static partial class DeploymentStacksOperationsExtensions
     {
         /// <summary>
-        /// Lists all the Deployment Stacks within the specified resource group.
+        /// Lists all the Deployment stacks within the specified Resource Group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Resources
         }
 
         /// <summary>
-        /// Lists all the Deployment Stacks within the specified resource group.
+        /// Lists all the Deployment stacks within the specified Resource Group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Resources
             }
         }
         /// <summary>
-        /// Lists all the Deployment Stacks within the specified subscription.
+        /// Lists all the Deployment stacks within the specified Subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Resources
         }
 
         /// <summary>
-        /// Lists all the Deployment Stacks within the specified subscription.
+        /// Lists all the Deployment stacks within the specified Subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -73,13 +73,13 @@ namespace Microsoft.Azure.Management.Resources
             }
         }
         /// <summary>
-        /// Lists all the Deployment Stacks within the specified management group.
+        /// Lists all the Deployment stacks within the specified Management Group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='managementGroupId'>
-        /// Management Group.
+        /// Management Group id.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<DeploymentStack> ListAtManagementGroup(this IDeploymentStacksOperations operations, string managementGroupId)
         {
@@ -87,13 +87,13 @@ namespace Microsoft.Azure.Management.Resources
         }
 
         /// <summary>
-        /// Lists all the Deployment Stacks within the specified management group.
+        /// Lists all the Deployment stacks within the specified Management Group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='managementGroupId'>
-        /// Management Group.
+        /// Management Group id.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Management.Resources
             }
         }
         /// <summary>
-        /// Creates or updates a Deployment Stack.
+        /// Creates or updates a Deployment stack at Resource Group scope.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.Resources
         }
 
         /// <summary>
-        /// Creates or updates a Deployment Stack.
+        /// Creates or updates a Deployment stack at Resource Group scope.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Management.Resources
             }
         }
         /// <summary>
-        /// Gets a Deployment Stack with a given name.
+        /// Gets a Deployment stack with a given name at Resource Group scope.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Management.Resources
         }
 
         /// <summary>
-        /// Gets a Deployment Stack with a given name.
+        /// Gets a Deployment stack with a given name at Resource Group scope.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -184,8 +184,8 @@ namespace Microsoft.Azure.Management.Resources
             }
         }
         /// <summary>
-        /// Deletes a Deployment Stack by name. When operation completes, status code
-        /// 200 returned without content.
+        /// Deletes a Deployment stack by name at Resource Group scope. When operation
+        /// completes, status code 200 returned without content.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -197,19 +197,26 @@ namespace Microsoft.Azure.Management.Resources
         /// Name of the deployment stack.
         /// </param>
         /// <param name='unmanageActionResources'>
-        /// Flag to indicate delete rather than detach for the resources.
+        /// Flag to indicate delete rather than detach for unmanaged resources.
         /// </param>
         /// <param name='unmanageActionResourceGroups'>
-        /// Flag to indicate delete rather than detach for the resource groups.
+        /// Flag to indicate delete rather than detach for unmanaged resource groups.
         /// </param>
-        public static DeploymentStacksDeleteAtResourceGroupHeaders DeleteAtResourceGroup(this IDeploymentStacksOperations operations, string resourceGroupName, string deploymentStackName, string unmanageActionResources = default(string), string unmanageActionResourceGroups = default(string))
+        /// <param name='unmanageActionManagementGroups'>
+        /// Flag to indicate delete rather than detach for unmanaged management groups.
+        /// </param>
+        /// <param name='bypassStackOutOfSyncError'>
+        /// Flag to bypass service errors that indicate the stack resource list is not
+        /// correctly synchronized.
+        /// </param>
+        public static DeploymentStacksDeleteAtResourceGroupHeaders DeleteAtResourceGroup(this IDeploymentStacksOperations operations, string resourceGroupName, string deploymentStackName, string unmanageActionResources = default(string), string unmanageActionResourceGroups = default(string), string unmanageActionManagementGroups = default(string), bool? bypassStackOutOfSyncError = default(bool?))
         {
-                return ((IDeploymentStacksOperations)operations).DeleteAtResourceGroupAsync(resourceGroupName, deploymentStackName, unmanageActionResources, unmanageActionResourceGroups).GetAwaiter().GetResult();
+                return ((IDeploymentStacksOperations)operations).DeleteAtResourceGroupAsync(resourceGroupName, deploymentStackName, unmanageActionResources, unmanageActionResourceGroups, unmanageActionManagementGroups, bypassStackOutOfSyncError).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes a Deployment Stack by name. When operation completes, status code
-        /// 200 returned without content.
+        /// Deletes a Deployment stack by name at Resource Group scope. When operation
+        /// completes, status code 200 returned without content.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -221,23 +228,30 @@ namespace Microsoft.Azure.Management.Resources
         /// Name of the deployment stack.
         /// </param>
         /// <param name='unmanageActionResources'>
-        /// Flag to indicate delete rather than detach for the resources.
+        /// Flag to indicate delete rather than detach for unmanaged resources.
         /// </param>
         /// <param name='unmanageActionResourceGroups'>
-        /// Flag to indicate delete rather than detach for the resource groups.
+        /// Flag to indicate delete rather than detach for unmanaged resource groups.
+        /// </param>
+        /// <param name='unmanageActionManagementGroups'>
+        /// Flag to indicate delete rather than detach for unmanaged management groups.
+        /// </param>
+        /// <param name='bypassStackOutOfSyncError'>
+        /// Flag to bypass service errors that indicate the stack resource list is not
+        /// correctly synchronized.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DeploymentStacksDeleteAtResourceGroupHeaders> DeleteAtResourceGroupAsync(this IDeploymentStacksOperations operations, string resourceGroupName, string deploymentStackName, string unmanageActionResources = default(string), string unmanageActionResourceGroups = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DeploymentStacksDeleteAtResourceGroupHeaders> DeleteAtResourceGroupAsync(this IDeploymentStacksOperations operations, string resourceGroupName, string deploymentStackName, string unmanageActionResources = default(string), string unmanageActionResourceGroups = default(string), string unmanageActionManagementGroups = default(string), bool? bypassStackOutOfSyncError = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteAtResourceGroupWithHttpMessagesAsync(resourceGroupName, deploymentStackName, unmanageActionResources, unmanageActionResourceGroups, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.DeleteAtResourceGroupWithHttpMessagesAsync(resourceGroupName, deploymentStackName, unmanageActionResources, unmanageActionResourceGroups, unmanageActionManagementGroups, bypassStackOutOfSyncError, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
             }
         }
         /// <summary>
-        /// Creates or updates a Deployment Stack.
+        /// Creates or updates a Deployment stack at Subscription scope.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -251,7 +265,7 @@ namespace Microsoft.Azure.Management.Resources
         }
 
         /// <summary>
-        /// Creates or updates a Deployment Stack.
+        /// Creates or updates a Deployment stack at Subscription scope.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -270,7 +284,7 @@ namespace Microsoft.Azure.Management.Resources
             }
         }
         /// <summary>
-        /// Gets a Deployment Stack with a given name.
+        /// Gets a Deployment stack with a given name at Subscription scope.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -284,7 +298,7 @@ namespace Microsoft.Azure.Management.Resources
         }
 
         /// <summary>
-        /// Gets a Deployment Stack with a given name.
+        /// Gets a Deployment stack with a given name at Subscription scope.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -303,8 +317,8 @@ namespace Microsoft.Azure.Management.Resources
             }
         }
         /// <summary>
-        /// Deletes a Deployment Stack by name. When operation completes, status code
-        /// 200 returned without content.
+        /// Deletes a Deployment stack by name at Subscription scope. When operation
+        /// completes, status code 200 returned without content.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -313,19 +327,26 @@ namespace Microsoft.Azure.Management.Resources
         /// Name of the deployment stack.
         /// </param>
         /// <param name='unmanageActionResources'>
-        /// Flag to indicate delete rather than detach for the resources.
+        /// Flag to indicate delete rather than detach for unmanaged resources.
         /// </param>
         /// <param name='unmanageActionResourceGroups'>
-        /// Flag to indicate delete rather than detach for the resource groups.
+        /// Flag to indicate delete rather than detach for unmanaged resource groups.
         /// </param>
-        public static DeploymentStacksDeleteAtSubscriptionHeaders DeleteAtSubscription(this IDeploymentStacksOperations operations, string deploymentStackName, string unmanageActionResources = default(string), string unmanageActionResourceGroups = default(string))
+        /// <param name='unmanageActionManagementGroups'>
+        /// Flag to indicate delete rather than detach for unmanaged management groups.
+        /// </param>
+        /// <param name='bypassStackOutOfSyncError'>
+        /// Flag to bypass service errors that indicate the stack resource list is not
+        /// correctly synchronized.
+        /// </param>
+        public static DeploymentStacksDeleteAtSubscriptionHeaders DeleteAtSubscription(this IDeploymentStacksOperations operations, string deploymentStackName, string unmanageActionResources = default(string), string unmanageActionResourceGroups = default(string), string unmanageActionManagementGroups = default(string), bool? bypassStackOutOfSyncError = default(bool?))
         {
-                return ((IDeploymentStacksOperations)operations).DeleteAtSubscriptionAsync(deploymentStackName, unmanageActionResources, unmanageActionResourceGroups).GetAwaiter().GetResult();
+                return ((IDeploymentStacksOperations)operations).DeleteAtSubscriptionAsync(deploymentStackName, unmanageActionResources, unmanageActionResourceGroups, unmanageActionManagementGroups, bypassStackOutOfSyncError).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes a Deployment Stack by name. When operation completes, status code
-        /// 200 returned without content.
+        /// Deletes a Deployment stack by name at Subscription scope. When operation
+        /// completes, status code 200 returned without content.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -334,29 +355,36 @@ namespace Microsoft.Azure.Management.Resources
         /// Name of the deployment stack.
         /// </param>
         /// <param name='unmanageActionResources'>
-        /// Flag to indicate delete rather than detach for the resources.
+        /// Flag to indicate delete rather than detach for unmanaged resources.
         /// </param>
         /// <param name='unmanageActionResourceGroups'>
-        /// Flag to indicate delete rather than detach for the resource groups.
+        /// Flag to indicate delete rather than detach for unmanaged resource groups.
+        /// </param>
+        /// <param name='unmanageActionManagementGroups'>
+        /// Flag to indicate delete rather than detach for unmanaged management groups.
+        /// </param>
+        /// <param name='bypassStackOutOfSyncError'>
+        /// Flag to bypass service errors that indicate the stack resource list is not
+        /// correctly synchronized.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DeploymentStacksDeleteAtSubscriptionHeaders> DeleteAtSubscriptionAsync(this IDeploymentStacksOperations operations, string deploymentStackName, string unmanageActionResources = default(string), string unmanageActionResourceGroups = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DeploymentStacksDeleteAtSubscriptionHeaders> DeleteAtSubscriptionAsync(this IDeploymentStacksOperations operations, string deploymentStackName, string unmanageActionResources = default(string), string unmanageActionResourceGroups = default(string), string unmanageActionManagementGroups = default(string), bool? bypassStackOutOfSyncError = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteAtSubscriptionWithHttpMessagesAsync(deploymentStackName, unmanageActionResources, unmanageActionResourceGroups, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.DeleteAtSubscriptionWithHttpMessagesAsync(deploymentStackName, unmanageActionResources, unmanageActionResourceGroups, unmanageActionManagementGroups, bypassStackOutOfSyncError, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
             }
         }
         /// <summary>
-        /// Creates or updates a Deployment Stack.
+        /// Creates or updates a Deployment stack at Management Group scope.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='managementGroupId'>
-        /// Management Group.
+        /// Management Group id.
         /// </param>
         /// <param name='deploymentStackName'>
         /// Name of the deployment stack.
@@ -367,13 +395,13 @@ namespace Microsoft.Azure.Management.Resources
         }
 
         /// <summary>
-        /// Creates or updates a Deployment Stack.
+        /// Creates or updates a Deployment stack at Management Group scope.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='managementGroupId'>
-        /// Management Group.
+        /// Management Group id.
         /// </param>
         /// <param name='deploymentStackName'>
         /// Name of the deployment stack.
@@ -389,13 +417,13 @@ namespace Microsoft.Azure.Management.Resources
             }
         }
         /// <summary>
-        /// Gets a Deployment Stack with a given name.
+        /// Gets a Deployment stack with a given name at Management Group scope.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='managementGroupId'>
-        /// Management Group.
+        /// Management Group id.
         /// </param>
         /// <param name='deploymentStackName'>
         /// Name of the deployment stack.
@@ -406,13 +434,13 @@ namespace Microsoft.Azure.Management.Resources
         }
 
         /// <summary>
-        /// Gets a Deployment Stack with a given name.
+        /// Gets a Deployment stack with a given name at Management Group scope.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='managementGroupId'>
-        /// Management Group.
+        /// Management Group id.
         /// </param>
         /// <param name='deploymentStackName'>
         /// Name of the deployment stack.
@@ -428,66 +456,75 @@ namespace Microsoft.Azure.Management.Resources
             }
         }
         /// <summary>
-        /// Deletes a Deployment Stack by name. When operation completes, status code
-        /// 200 returned without content.
+        /// Deletes a Deployment stack by name at Management Group scope. When
+        /// operation completes, status code 200 returned without content.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='managementGroupId'>
-        /// Management Group.
+        /// Management Group id.
         /// </param>
         /// <param name='deploymentStackName'>
         /// Name of the deployment stack.
         /// </param>
         /// <param name='unmanageActionResources'>
-        /// Flag to indicate delete rather than detach for the resources.
+        /// Flag to indicate delete rather than detach for unmanaged resources.
         /// </param>
         /// <param name='unmanageActionResourceGroups'>
-        /// Flag to indicate delete rather than detach for the resource groups.
+        /// Flag to indicate delete rather than detach for unmanaged resource groups.
         /// </param>
         /// <param name='unmanageActionManagementGroups'>
-        /// Flag to indicate delete rather than detach for the management groups.
+        /// Flag to indicate delete rather than detach for unmanaged management groups.
         /// </param>
-        public static DeploymentStacksDeleteAtManagementGroupHeaders DeleteAtManagementGroup(this IDeploymentStacksOperations operations, string managementGroupId, string deploymentStackName, string unmanageActionResources = default(string), string unmanageActionResourceGroups = default(string), string unmanageActionManagementGroups = default(string))
+        /// <param name='bypassStackOutOfSyncError'>
+        /// Flag to bypass service errors that indicate the stack resource list is not
+        /// correctly synchronized.
+        /// </param>
+        public static DeploymentStacksDeleteAtManagementGroupHeaders DeleteAtManagementGroup(this IDeploymentStacksOperations operations, string managementGroupId, string deploymentStackName, string unmanageActionResources = default(string), string unmanageActionResourceGroups = default(string), string unmanageActionManagementGroups = default(string), bool? bypassStackOutOfSyncError = default(bool?))
         {
-                return ((IDeploymentStacksOperations)operations).DeleteAtManagementGroupAsync(managementGroupId, deploymentStackName, unmanageActionResources, unmanageActionResourceGroups, unmanageActionManagementGroups).GetAwaiter().GetResult();
+                return ((IDeploymentStacksOperations)operations).DeleteAtManagementGroupAsync(managementGroupId, deploymentStackName, unmanageActionResources, unmanageActionResourceGroups, unmanageActionManagementGroups, bypassStackOutOfSyncError).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes a Deployment Stack by name. When operation completes, status code
-        /// 200 returned without content.
+        /// Deletes a Deployment stack by name at Management Group scope. When
+        /// operation completes, status code 200 returned without content.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='managementGroupId'>
-        /// Management Group.
+        /// Management Group id.
         /// </param>
         /// <param name='deploymentStackName'>
         /// Name of the deployment stack.
         /// </param>
         /// <param name='unmanageActionResources'>
-        /// Flag to indicate delete rather than detach for the resources.
+        /// Flag to indicate delete rather than detach for unmanaged resources.
         /// </param>
         /// <param name='unmanageActionResourceGroups'>
-        /// Flag to indicate delete rather than detach for the resource groups.
+        /// Flag to indicate delete rather than detach for unmanaged resource groups.
         /// </param>
         /// <param name='unmanageActionManagementGroups'>
-        /// Flag to indicate delete rather than detach for the management groups.
+        /// Flag to indicate delete rather than detach for unmanaged management groups.
+        /// </param>
+        /// <param name='bypassStackOutOfSyncError'>
+        /// Flag to bypass service errors that indicate the stack resource list is not
+        /// correctly synchronized.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DeploymentStacksDeleteAtManagementGroupHeaders> DeleteAtManagementGroupAsync(this IDeploymentStacksOperations operations, string managementGroupId, string deploymentStackName, string unmanageActionResources = default(string), string unmanageActionResourceGroups = default(string), string unmanageActionManagementGroups = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DeploymentStacksDeleteAtManagementGroupHeaders> DeleteAtManagementGroupAsync(this IDeploymentStacksOperations operations, string managementGroupId, string deploymentStackName, string unmanageActionResources = default(string), string unmanageActionResourceGroups = default(string), string unmanageActionManagementGroups = default(string), bool? bypassStackOutOfSyncError = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteAtManagementGroupWithHttpMessagesAsync(managementGroupId, deploymentStackName, unmanageActionResources, unmanageActionResourceGroups, unmanageActionManagementGroups, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.DeleteAtManagementGroupWithHttpMessagesAsync(managementGroupId, deploymentStackName, unmanageActionResources, unmanageActionResourceGroups, unmanageActionManagementGroups, bypassStackOutOfSyncError, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
             }
         }
         /// <summary>
-        /// Exports the template used to create the deployment stack.
+        /// Exports the template used to create the Deployment stack at Resource Group
+        /// scope.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -504,7 +541,8 @@ namespace Microsoft.Azure.Management.Resources
         }
 
         /// <summary>
-        /// Exports the template used to create the deployment stack.
+        /// Exports the template used to create the Deployment stack at Resource Group
+        /// scope.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -526,7 +564,8 @@ namespace Microsoft.Azure.Management.Resources
             }
         }
         /// <summary>
-        /// Exports the template used to create the deployment stack.
+        /// Exports the template used to create the Deployment stack at Subscription
+        /// scope.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -540,7 +579,8 @@ namespace Microsoft.Azure.Management.Resources
         }
 
         /// <summary>
-        /// Exports the template used to create the deployment stack.
+        /// Exports the template used to create the Deployment stack at Subscription
+        /// scope.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -559,13 +599,14 @@ namespace Microsoft.Azure.Management.Resources
             }
         }
         /// <summary>
-        /// Exports the template used to create the deployment stack.
+        /// Exports the template used to create the Deployment stack at Management
+        /// Group scope.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='managementGroupId'>
-        /// Management Group.
+        /// Management Group id.
         /// </param>
         /// <param name='deploymentStackName'>
         /// Name of the deployment stack.
@@ -576,13 +617,14 @@ namespace Microsoft.Azure.Management.Resources
         }
 
         /// <summary>
-        /// Exports the template used to create the deployment stack.
+        /// Exports the template used to create the Deployment stack at Management
+        /// Group scope.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='managementGroupId'>
-        /// Management Group.
+        /// Management Group id.
         /// </param>
         /// <param name='deploymentStackName'>
         /// Name of the deployment stack.
@@ -598,7 +640,124 @@ namespace Microsoft.Azure.Management.Resources
             }
         }
         /// <summary>
-        /// Creates or updates a Deployment Stack.
+        /// Runs preflight validation on the Resource Group scoped Deployment stack
+        /// template to verify its acceptance to Azure Resource Manager.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='deploymentStackName'>
+        /// Name of the deployment stack.
+        /// </param>
+        public static DeploymentStackValidateResult ValidateStackAtResourceGroup(this IDeploymentStacksOperations operations, string resourceGroupName, string deploymentStackName, DeploymentStack deploymentStack)
+        {
+                return ((IDeploymentStacksOperations)operations).ValidateStackAtResourceGroupAsync(resourceGroupName, deploymentStackName, deploymentStack).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Runs preflight validation on the Resource Group scoped Deployment stack
+        /// template to verify its acceptance to Azure Resource Manager.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='deploymentStackName'>
+        /// Name of the deployment stack.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<DeploymentStackValidateResult> ValidateStackAtResourceGroupAsync(this IDeploymentStacksOperations operations, string resourceGroupName, string deploymentStackName, DeploymentStack deploymentStack, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ValidateStackAtResourceGroupWithHttpMessagesAsync(resourceGroupName, deploymentStackName, deploymentStack, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Runs preflight validation on the Subscription scoped Deployment stack
+        /// template to verify its acceptance to Azure Resource Manager.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='deploymentStackName'>
+        /// Name of the deployment stack.
+        /// </param>
+        public static DeploymentStackValidateResult ValidateStackAtSubscription(this IDeploymentStacksOperations operations, string deploymentStackName, DeploymentStack deploymentStack)
+        {
+                return ((IDeploymentStacksOperations)operations).ValidateStackAtSubscriptionAsync(deploymentStackName, deploymentStack).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Runs preflight validation on the Subscription scoped Deployment stack
+        /// template to verify its acceptance to Azure Resource Manager.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='deploymentStackName'>
+        /// Name of the deployment stack.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<DeploymentStackValidateResult> ValidateStackAtSubscriptionAsync(this IDeploymentStacksOperations operations, string deploymentStackName, DeploymentStack deploymentStack, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ValidateStackAtSubscriptionWithHttpMessagesAsync(deploymentStackName, deploymentStack, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Runs preflight validation on the Management Group scoped Deployment stack
+        /// template to verify its acceptance to Azure Resource Manager.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='managementGroupId'>
+        /// Management Group id.
+        /// </param>
+        /// <param name='deploymentStackName'>
+        /// Name of the deployment stack.
+        /// </param>
+        public static DeploymentStackValidateResult ValidateStackAtManagementGroup(this IDeploymentStacksOperations operations, string managementGroupId, string deploymentStackName, DeploymentStack deploymentStack)
+        {
+                return ((IDeploymentStacksOperations)operations).ValidateStackAtManagementGroupAsync(managementGroupId, deploymentStackName, deploymentStack).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Runs preflight validation on the Management Group scoped Deployment stack
+        /// template to verify its acceptance to Azure Resource Manager.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='managementGroupId'>
+        /// Management Group id.
+        /// </param>
+        /// <param name='deploymentStackName'>
+        /// Name of the deployment stack.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<DeploymentStackValidateResult> ValidateStackAtManagementGroupAsync(this IDeploymentStacksOperations operations, string managementGroupId, string deploymentStackName, DeploymentStack deploymentStack, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ValidateStackAtManagementGroupWithHttpMessagesAsync(managementGroupId, deploymentStackName, deploymentStack, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates a Deployment stack at Resource Group scope.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -615,7 +774,7 @@ namespace Microsoft.Azure.Management.Resources
         }
 
         /// <summary>
-        /// Creates or updates a Deployment Stack.
+        /// Creates or updates a Deployment stack at Resource Group scope.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -637,8 +796,8 @@ namespace Microsoft.Azure.Management.Resources
             }
         }
         /// <summary>
-        /// Deletes a Deployment Stack by name. When operation completes, status code
-        /// 200 returned without content.
+        /// Deletes a Deployment stack by name at Resource Group scope. When operation
+        /// completes, status code 200 returned without content.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -650,19 +809,26 @@ namespace Microsoft.Azure.Management.Resources
         /// Name of the deployment stack.
         /// </param>
         /// <param name='unmanageActionResources'>
-        /// Flag to indicate delete rather than detach for the resources.
+        /// Flag to indicate delete rather than detach for unmanaged resources.
         /// </param>
         /// <param name='unmanageActionResourceGroups'>
-        /// Flag to indicate delete rather than detach for the resource groups.
+        /// Flag to indicate delete rather than detach for unmanaged resource groups.
         /// </param>
-        public static DeploymentStacksDeleteAtResourceGroupHeaders BeginDeleteAtResourceGroup(this IDeploymentStacksOperations operations, string resourceGroupName, string deploymentStackName, string unmanageActionResources = default(string), string unmanageActionResourceGroups = default(string))
+        /// <param name='unmanageActionManagementGroups'>
+        /// Flag to indicate delete rather than detach for unmanaged management groups.
+        /// </param>
+        /// <param name='bypassStackOutOfSyncError'>
+        /// Flag to bypass service errors that indicate the stack resource list is not
+        /// correctly synchronized.
+        /// </param>
+        public static DeploymentStacksDeleteAtResourceGroupHeaders BeginDeleteAtResourceGroup(this IDeploymentStacksOperations operations, string resourceGroupName, string deploymentStackName, string unmanageActionResources = default(string), string unmanageActionResourceGroups = default(string), string unmanageActionManagementGroups = default(string), bool? bypassStackOutOfSyncError = default(bool?))
         {
-                return ((IDeploymentStacksOperations)operations).BeginDeleteAtResourceGroupAsync(resourceGroupName, deploymentStackName, unmanageActionResources, unmanageActionResourceGroups).GetAwaiter().GetResult();
+                return ((IDeploymentStacksOperations)operations).BeginDeleteAtResourceGroupAsync(resourceGroupName, deploymentStackName, unmanageActionResources, unmanageActionResourceGroups, unmanageActionManagementGroups, bypassStackOutOfSyncError).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes a Deployment Stack by name. When operation completes, status code
-        /// 200 returned without content.
+        /// Deletes a Deployment stack by name at Resource Group scope. When operation
+        /// completes, status code 200 returned without content.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -674,23 +840,30 @@ namespace Microsoft.Azure.Management.Resources
         /// Name of the deployment stack.
         /// </param>
         /// <param name='unmanageActionResources'>
-        /// Flag to indicate delete rather than detach for the resources.
+        /// Flag to indicate delete rather than detach for unmanaged resources.
         /// </param>
         /// <param name='unmanageActionResourceGroups'>
-        /// Flag to indicate delete rather than detach for the resource groups.
+        /// Flag to indicate delete rather than detach for unmanaged resource groups.
+        /// </param>
+        /// <param name='unmanageActionManagementGroups'>
+        /// Flag to indicate delete rather than detach for unmanaged management groups.
+        /// </param>
+        /// <param name='bypassStackOutOfSyncError'>
+        /// Flag to bypass service errors that indicate the stack resource list is not
+        /// correctly synchronized.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DeploymentStacksDeleteAtResourceGroupHeaders> BeginDeleteAtResourceGroupAsync(this IDeploymentStacksOperations operations, string resourceGroupName, string deploymentStackName, string unmanageActionResources = default(string), string unmanageActionResourceGroups = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DeploymentStacksDeleteAtResourceGroupHeaders> BeginDeleteAtResourceGroupAsync(this IDeploymentStacksOperations operations, string resourceGroupName, string deploymentStackName, string unmanageActionResources = default(string), string unmanageActionResourceGroups = default(string), string unmanageActionManagementGroups = default(string), bool? bypassStackOutOfSyncError = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteAtResourceGroupWithHttpMessagesAsync(resourceGroupName, deploymentStackName, unmanageActionResources, unmanageActionResourceGroups, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginDeleteAtResourceGroupWithHttpMessagesAsync(resourceGroupName, deploymentStackName, unmanageActionResources, unmanageActionResourceGroups, unmanageActionManagementGroups, bypassStackOutOfSyncError, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
             }
         }
         /// <summary>
-        /// Creates or updates a Deployment Stack.
+        /// Creates or updates a Deployment stack at Subscription scope.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -704,7 +877,7 @@ namespace Microsoft.Azure.Management.Resources
         }
 
         /// <summary>
-        /// Creates or updates a Deployment Stack.
+        /// Creates or updates a Deployment stack at Subscription scope.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -723,8 +896,8 @@ namespace Microsoft.Azure.Management.Resources
             }
         }
         /// <summary>
-        /// Deletes a Deployment Stack by name. When operation completes, status code
-        /// 200 returned without content.
+        /// Deletes a Deployment stack by name at Subscription scope. When operation
+        /// completes, status code 200 returned without content.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -733,19 +906,26 @@ namespace Microsoft.Azure.Management.Resources
         /// Name of the deployment stack.
         /// </param>
         /// <param name='unmanageActionResources'>
-        /// Flag to indicate delete rather than detach for the resources.
+        /// Flag to indicate delete rather than detach for unmanaged resources.
         /// </param>
         /// <param name='unmanageActionResourceGroups'>
-        /// Flag to indicate delete rather than detach for the resource groups.
+        /// Flag to indicate delete rather than detach for unmanaged resource groups.
         /// </param>
-        public static DeploymentStacksDeleteAtSubscriptionHeaders BeginDeleteAtSubscription(this IDeploymentStacksOperations operations, string deploymentStackName, string unmanageActionResources = default(string), string unmanageActionResourceGroups = default(string))
+        /// <param name='unmanageActionManagementGroups'>
+        /// Flag to indicate delete rather than detach for unmanaged management groups.
+        /// </param>
+        /// <param name='bypassStackOutOfSyncError'>
+        /// Flag to bypass service errors that indicate the stack resource list is not
+        /// correctly synchronized.
+        /// </param>
+        public static DeploymentStacksDeleteAtSubscriptionHeaders BeginDeleteAtSubscription(this IDeploymentStacksOperations operations, string deploymentStackName, string unmanageActionResources = default(string), string unmanageActionResourceGroups = default(string), string unmanageActionManagementGroups = default(string), bool? bypassStackOutOfSyncError = default(bool?))
         {
-                return ((IDeploymentStacksOperations)operations).BeginDeleteAtSubscriptionAsync(deploymentStackName, unmanageActionResources, unmanageActionResourceGroups).GetAwaiter().GetResult();
+                return ((IDeploymentStacksOperations)operations).BeginDeleteAtSubscriptionAsync(deploymentStackName, unmanageActionResources, unmanageActionResourceGroups, unmanageActionManagementGroups, bypassStackOutOfSyncError).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes a Deployment Stack by name. When operation completes, status code
-        /// 200 returned without content.
+        /// Deletes a Deployment stack by name at Subscription scope. When operation
+        /// completes, status code 200 returned without content.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -754,29 +934,36 @@ namespace Microsoft.Azure.Management.Resources
         /// Name of the deployment stack.
         /// </param>
         /// <param name='unmanageActionResources'>
-        /// Flag to indicate delete rather than detach for the resources.
+        /// Flag to indicate delete rather than detach for unmanaged resources.
         /// </param>
         /// <param name='unmanageActionResourceGroups'>
-        /// Flag to indicate delete rather than detach for the resource groups.
+        /// Flag to indicate delete rather than detach for unmanaged resource groups.
+        /// </param>
+        /// <param name='unmanageActionManagementGroups'>
+        /// Flag to indicate delete rather than detach for unmanaged management groups.
+        /// </param>
+        /// <param name='bypassStackOutOfSyncError'>
+        /// Flag to bypass service errors that indicate the stack resource list is not
+        /// correctly synchronized.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DeploymentStacksDeleteAtSubscriptionHeaders> BeginDeleteAtSubscriptionAsync(this IDeploymentStacksOperations operations, string deploymentStackName, string unmanageActionResources = default(string), string unmanageActionResourceGroups = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DeploymentStacksDeleteAtSubscriptionHeaders> BeginDeleteAtSubscriptionAsync(this IDeploymentStacksOperations operations, string deploymentStackName, string unmanageActionResources = default(string), string unmanageActionResourceGroups = default(string), string unmanageActionManagementGroups = default(string), bool? bypassStackOutOfSyncError = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteAtSubscriptionWithHttpMessagesAsync(deploymentStackName, unmanageActionResources, unmanageActionResourceGroups, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginDeleteAtSubscriptionWithHttpMessagesAsync(deploymentStackName, unmanageActionResources, unmanageActionResourceGroups, unmanageActionManagementGroups, bypassStackOutOfSyncError, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
             }
         }
         /// <summary>
-        /// Creates or updates a Deployment Stack.
+        /// Creates or updates a Deployment stack at Management Group scope.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='managementGroupId'>
-        /// Management Group.
+        /// Management Group id.
         /// </param>
         /// <param name='deploymentStackName'>
         /// Name of the deployment stack.
@@ -787,13 +974,13 @@ namespace Microsoft.Azure.Management.Resources
         }
 
         /// <summary>
-        /// Creates or updates a Deployment Stack.
+        /// Creates or updates a Deployment stack at Management Group scope.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='managementGroupId'>
-        /// Management Group.
+        /// Management Group id.
         /// </param>
         /// <param name='deploymentStackName'>
         /// Name of the deployment stack.
@@ -809,66 +996,191 @@ namespace Microsoft.Azure.Management.Resources
             }
         }
         /// <summary>
-        /// Deletes a Deployment Stack by name. When operation completes, status code
-        /// 200 returned without content.
+        /// Deletes a Deployment stack by name at Management Group scope. When
+        /// operation completes, status code 200 returned without content.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='managementGroupId'>
-        /// Management Group.
+        /// Management Group id.
         /// </param>
         /// <param name='deploymentStackName'>
         /// Name of the deployment stack.
         /// </param>
         /// <param name='unmanageActionResources'>
-        /// Flag to indicate delete rather than detach for the resources.
+        /// Flag to indicate delete rather than detach for unmanaged resources.
         /// </param>
         /// <param name='unmanageActionResourceGroups'>
-        /// Flag to indicate delete rather than detach for the resource groups.
+        /// Flag to indicate delete rather than detach for unmanaged resource groups.
         /// </param>
         /// <param name='unmanageActionManagementGroups'>
-        /// Flag to indicate delete rather than detach for the management groups.
+        /// Flag to indicate delete rather than detach for unmanaged management groups.
         /// </param>
-        public static DeploymentStacksDeleteAtManagementGroupHeaders BeginDeleteAtManagementGroup(this IDeploymentStacksOperations operations, string managementGroupId, string deploymentStackName, string unmanageActionResources = default(string), string unmanageActionResourceGroups = default(string), string unmanageActionManagementGroups = default(string))
+        /// <param name='bypassStackOutOfSyncError'>
+        /// Flag to bypass service errors that indicate the stack resource list is not
+        /// correctly synchronized.
+        /// </param>
+        public static DeploymentStacksDeleteAtManagementGroupHeaders BeginDeleteAtManagementGroup(this IDeploymentStacksOperations operations, string managementGroupId, string deploymentStackName, string unmanageActionResources = default(string), string unmanageActionResourceGroups = default(string), string unmanageActionManagementGroups = default(string), bool? bypassStackOutOfSyncError = default(bool?))
         {
-                return ((IDeploymentStacksOperations)operations).BeginDeleteAtManagementGroupAsync(managementGroupId, deploymentStackName, unmanageActionResources, unmanageActionResourceGroups, unmanageActionManagementGroups).GetAwaiter().GetResult();
+                return ((IDeploymentStacksOperations)operations).BeginDeleteAtManagementGroupAsync(managementGroupId, deploymentStackName, unmanageActionResources, unmanageActionResourceGroups, unmanageActionManagementGroups, bypassStackOutOfSyncError).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes a Deployment Stack by name. When operation completes, status code
-        /// 200 returned without content.
+        /// Deletes a Deployment stack by name at Management Group scope. When
+        /// operation completes, status code 200 returned without content.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='managementGroupId'>
-        /// Management Group.
+        /// Management Group id.
         /// </param>
         /// <param name='deploymentStackName'>
         /// Name of the deployment stack.
         /// </param>
         /// <param name='unmanageActionResources'>
-        /// Flag to indicate delete rather than detach for the resources.
+        /// Flag to indicate delete rather than detach for unmanaged resources.
         /// </param>
         /// <param name='unmanageActionResourceGroups'>
-        /// Flag to indicate delete rather than detach for the resource groups.
+        /// Flag to indicate delete rather than detach for unmanaged resource groups.
         /// </param>
         /// <param name='unmanageActionManagementGroups'>
-        /// Flag to indicate delete rather than detach for the management groups.
+        /// Flag to indicate delete rather than detach for unmanaged management groups.
+        /// </param>
+        /// <param name='bypassStackOutOfSyncError'>
+        /// Flag to bypass service errors that indicate the stack resource list is not
+        /// correctly synchronized.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DeploymentStacksDeleteAtManagementGroupHeaders> BeginDeleteAtManagementGroupAsync(this IDeploymentStacksOperations operations, string managementGroupId, string deploymentStackName, string unmanageActionResources = default(string), string unmanageActionResourceGroups = default(string), string unmanageActionManagementGroups = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DeploymentStacksDeleteAtManagementGroupHeaders> BeginDeleteAtManagementGroupAsync(this IDeploymentStacksOperations operations, string managementGroupId, string deploymentStackName, string unmanageActionResources = default(string), string unmanageActionResourceGroups = default(string), string unmanageActionManagementGroups = default(string), bool? bypassStackOutOfSyncError = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteAtManagementGroupWithHttpMessagesAsync(managementGroupId, deploymentStackName, unmanageActionResources, unmanageActionResourceGroups, unmanageActionManagementGroups, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginDeleteAtManagementGroupWithHttpMessagesAsync(managementGroupId, deploymentStackName, unmanageActionResources, unmanageActionResourceGroups, unmanageActionManagementGroups, bypassStackOutOfSyncError, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
             }
         }
         /// <summary>
-        /// Lists all the Deployment Stacks within the specified resource group.
+        /// Runs preflight validation on the Resource Group scoped Deployment stack
+        /// template to verify its acceptance to Azure Resource Manager.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='deploymentStackName'>
+        /// Name of the deployment stack.
+        /// </param>
+        public static DeploymentStackValidateResult BeginValidateStackAtResourceGroup(this IDeploymentStacksOperations operations, string resourceGroupName, string deploymentStackName, DeploymentStack deploymentStack)
+        {
+                return ((IDeploymentStacksOperations)operations).BeginValidateStackAtResourceGroupAsync(resourceGroupName, deploymentStackName, deploymentStack).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Runs preflight validation on the Resource Group scoped Deployment stack
+        /// template to verify its acceptance to Azure Resource Manager.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='deploymentStackName'>
+        /// Name of the deployment stack.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<DeploymentStackValidateResult> BeginValidateStackAtResourceGroupAsync(this IDeploymentStacksOperations operations, string resourceGroupName, string deploymentStackName, DeploymentStack deploymentStack, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginValidateStackAtResourceGroupWithHttpMessagesAsync(resourceGroupName, deploymentStackName, deploymentStack, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Runs preflight validation on the Subscription scoped Deployment stack
+        /// template to verify its acceptance to Azure Resource Manager.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='deploymentStackName'>
+        /// Name of the deployment stack.
+        /// </param>
+        public static DeploymentStackValidateResult BeginValidateStackAtSubscription(this IDeploymentStacksOperations operations, string deploymentStackName, DeploymentStack deploymentStack)
+        {
+                return ((IDeploymentStacksOperations)operations).BeginValidateStackAtSubscriptionAsync(deploymentStackName, deploymentStack).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Runs preflight validation on the Subscription scoped Deployment stack
+        /// template to verify its acceptance to Azure Resource Manager.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='deploymentStackName'>
+        /// Name of the deployment stack.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<DeploymentStackValidateResult> BeginValidateStackAtSubscriptionAsync(this IDeploymentStacksOperations operations, string deploymentStackName, DeploymentStack deploymentStack, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginValidateStackAtSubscriptionWithHttpMessagesAsync(deploymentStackName, deploymentStack, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Runs preflight validation on the Management Group scoped Deployment stack
+        /// template to verify its acceptance to Azure Resource Manager.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='managementGroupId'>
+        /// Management Group id.
+        /// </param>
+        /// <param name='deploymentStackName'>
+        /// Name of the deployment stack.
+        /// </param>
+        public static DeploymentStackValidateResult BeginValidateStackAtManagementGroup(this IDeploymentStacksOperations operations, string managementGroupId, string deploymentStackName, DeploymentStack deploymentStack)
+        {
+                return ((IDeploymentStacksOperations)operations).BeginValidateStackAtManagementGroupAsync(managementGroupId, deploymentStackName, deploymentStack).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Runs preflight validation on the Management Group scoped Deployment stack
+        /// template to verify its acceptance to Azure Resource Manager.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='managementGroupId'>
+        /// Management Group id.
+        /// </param>
+        /// <param name='deploymentStackName'>
+        /// Name of the deployment stack.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<DeploymentStackValidateResult> BeginValidateStackAtManagementGroupAsync(this IDeploymentStacksOperations operations, string managementGroupId, string deploymentStackName, DeploymentStack deploymentStack, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginValidateStackAtManagementGroupWithHttpMessagesAsync(managementGroupId, deploymentStackName, deploymentStack, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists all the Deployment stacks within the specified Resource Group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -882,7 +1194,7 @@ namespace Microsoft.Azure.Management.Resources
         }
 
         /// <summary>
-        /// Lists all the Deployment Stacks within the specified resource group.
+        /// Lists all the Deployment stacks within the specified Resource Group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -901,7 +1213,7 @@ namespace Microsoft.Azure.Management.Resources
             }
         }
         /// <summary>
-        /// Lists all the Deployment Stacks within the specified subscription.
+        /// Lists all the Deployment stacks within the specified Subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -915,7 +1227,7 @@ namespace Microsoft.Azure.Management.Resources
         }
 
         /// <summary>
-        /// Lists all the Deployment Stacks within the specified subscription.
+        /// Lists all the Deployment stacks within the specified Subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -934,7 +1246,7 @@ namespace Microsoft.Azure.Management.Resources
             }
         }
         /// <summary>
-        /// Lists all the Deployment Stacks within the specified management group.
+        /// Lists all the Deployment stacks within the specified Management Group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -948,7 +1260,7 @@ namespace Microsoft.Azure.Management.Resources
         }
 
         /// <summary>
-        /// Lists all the Deployment Stacks within the specified management group.
+        /// Lists all the Deployment stacks within the specified Management Group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

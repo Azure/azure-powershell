@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
     [Cmdlet("Save", Common.AzureRMConstants.AzureRMPrefix + "SubscriptionDeploymentStackTemplate",
         DefaultParameterSetName = SaveByNameParameterSetName), OutputType(typeof(PSDeploymentStackTemplateDefinition))]
-    [CmdletPreview("The cmdlet is in preview and under development.")]
     public class SaveAzSubscriptionDeploymentStackTemplate : DeploymentStacksCmdletBase
     {
         #region Cmdlet Parameters and Parameter Set Definitions

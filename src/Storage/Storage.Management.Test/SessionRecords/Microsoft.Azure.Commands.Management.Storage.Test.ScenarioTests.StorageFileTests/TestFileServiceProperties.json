@@ -67,8 +67,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.Storage/checkNameAvailability?api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9jaGVja05hbWVBdmFpbGFiaWxpdHk/YXBpLXZlcnNpb249MjAyMy0wMS0wMQ==",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.Storage/checkNameAvailability?api-version=2023-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9jaGVja05hbWVBdmFpbGFiaWxpdHk/YXBpLXZlcnNpb249MjAyMy0wNS0wMQ==",
       "RequestMethod": "POST",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -136,8 +136,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033?api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMz9hcGktdmVyc2lvbj0yMDIzLTAxLTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033?api-version=2023-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMz9hcGktdmVyc2lvbj0yMDIzLTA1LTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -168,7 +168,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.Storage/locations/centraluseuap/asyncoperations/b259e4e0-9dee-4bed-9191-c22013abc2ea?monitor=true&api-version=2023-01-01"
+          "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.Storage/locations/centraluseuap/asyncoperations/b259e4e0-9dee-4bed-9191-c22013abc2ea?monitor=true&api-version=2023-05-01"
         ],
         "Retry-After": [
           "17"
@@ -211,8 +211,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.Storage/locations/centraluseuap/asyncoperations/b259e4e0-9dee-4bed-9191-c22013abc2ea?monitor=true&api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9sb2NhdGlvbnMvY2VudHJhbHVzZXVhcC9hc3luY29wZXJhdGlvbnMvYjI1OWU0ZTAtOWRlZS00YmVkLTkxOTEtYzIyMDEzYWJjMmVhP21vbml0b3I9dHJ1ZSZhcGktdmVyc2lvbj0yMDIzLTAxLTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.Storage/locations/centraluseuap/asyncoperations/b259e4e0-9dee-4bed-9191-c22013abc2ea?monitor=true&api-version=2023-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9sb2NhdGlvbnMvY2VudHJhbHVzZXVhcC9hc3luY29wZXJhdGlvbnMvYjI1OWU0ZTAtOWRlZS00YmVkLTkxOTEtYzIyMDEzYWJjMmVhP21vbml0b3I9dHJ1ZSZhcGktdmVyc2lvbj0yMDIzLTA1LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -271,8 +271,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033?api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMz9hcGktdmVyc2lvbj0yMDIzLTAxLTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033?api-version=2023-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMz9hcGktdmVyc2lvbj0yMDIzLTA1LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -334,8 +334,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts?api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzP2FwaS12ZXJzaW9uPTIwMjMtMDEtMDE=",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts?api-version=2023-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzP2FwaS12ZXJzaW9uPTIwMjMtMDUtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -397,8 +397,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTAxLTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTA1LTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -466,8 +466,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTAxLTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTA1LTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -535,8 +535,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTAxLTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTA1LTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -604,8 +604,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTAxLTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTA1LTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -673,8 +673,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTAxLTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTA1LTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -742,8 +742,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTAxLTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTA1LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -805,8 +805,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTAxLTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTA1LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -868,8 +868,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTAxLTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTA1LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -931,8 +931,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTAxLTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTA1LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -994,8 +994,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTAxLTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTA1LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -1057,8 +1057,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTAxLTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTA1LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -1120,8 +1120,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTAxLTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTA1LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -1183,8 +1183,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTAxLTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTA1LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -1246,8 +1246,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTAxLTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTA1LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -1309,8 +1309,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTAxLTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033/fileServices/default?api-version=2023-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMy9maWxlU2VydmljZXMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIzLTA1LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -1372,8 +1372,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033?api-version=2023-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMz9hcGktdmVyc2lvbj0yMDIzLTAxLTAx",
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/pstestrg7033/providers/Microsoft.Storage/storageAccounts/stopstestrg7033?api-version=2023-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnNzAzMy9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3N0b3BzdGVzdHJnNzAzMz9hcGktdmVyc2lvbj0yMDIzLTA1LTAx",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "x-ms-client-request-id": [

@@ -10,16 +10,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a segment by id in a private cloud workload network.</summary>
+    /// <summary>Update a WorkloadNetworkSegment</summary>
     /// <remarks>
     /// [OpenAPI] UpdateSegments=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/segments/{segmentId}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzVMwareWorkloadNetworkSegment_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Update a segment by id in a private cloud workload network.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Update a WorkloadNetworkSegment")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/segments/{segmentId}", ApiVersion = "2023-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/segments/{segmentId}", ApiVersion = "2023-09-01")]
     public partial class UpdateAzVMwareWorkloadNetworkSegment_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IContext
@@ -50,8 +50,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// </summary>
         private int _responseSize = 0;
 
-        /// <summary>NSX Segment</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment _workloadNetworkSegmentBody = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.WorkloadNetworkSegment();
+        /// <summary>NSX Segment update</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegmentUpdate _workloadNetworkSegmentBody = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.WorkloadNetworkSegmentUpdate();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]

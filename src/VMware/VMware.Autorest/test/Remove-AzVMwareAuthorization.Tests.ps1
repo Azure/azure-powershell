@@ -19,6 +19,10 @@ Describe 'Remove-AzVMwareAuthorization' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
+    It 'DeleteViaIdentityPrivateCloud' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
     It 'DeleteViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
