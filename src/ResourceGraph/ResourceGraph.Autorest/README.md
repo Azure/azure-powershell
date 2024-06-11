@@ -28,7 +28,7 @@ For information on how to develop for `Az.ResourceGraph`, see [how-to.md](how-to
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: e521d49bb1d1f262bd2131b57eea5c1436047650
+branch: 06012848b4e23694e666b3ae7bfd7ce11e703f80
 require:
   - $(this-folder)/../../../tools/SwaggerCI/readme.azure.noprofile.md
 input-file:
