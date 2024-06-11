@@ -15,8 +15,8 @@ Stop copy operation of a managed database.
 ### MoveCopyManagedDatabaseByNameParameterSet (Default)
 ```
 Stop-AzSqlInstanceDatabaseCopy -DatabaseName <String> -InstanceName <String> -ResourceGroupName <String>
- [-TargetResourceGroupName <String>] -TargetInstanceName <String> [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TargetSubscriptionId <String>] [-TargetResourceGroupName <String>] -TargetInstanceName <String> [-AsJob]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CancelManagedDatabaseCopyByCopyModelObject
@@ -35,7 +35,7 @@ Stop-AzSqlInstanceDatabaseCopy [-DatabaseName <String>] [-InstanceName <String>]
 ### MoveCopyManagedDatabaseByInputObjectParameterSet
 ```
 Stop-AzSqlInstanceDatabaseCopy -InstanceName <String> -ResourceGroupName <String>
- [-TargetResourceGroupName <String>] -TargetInstanceName <String>
+ [-TargetSubscriptionId <String>] [-TargetResourceGroupName <String>] -TargetInstanceName <String>
  -DatabaseObject <AzureSqlManagedDatabaseModel> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -43,8 +43,9 @@ Stop-AzSqlInstanceDatabaseCopy -InstanceName <String> -ResourceGroupName <String
 ### MoveCopyManagedDatabaseByResourceIdParameterSet
 ```
 Stop-AzSqlInstanceDatabaseCopy -InstanceName <String> -ResourceGroupName <String>
- [-TargetResourceGroupName <String>] -TargetInstanceName <String> -ResourceId <String> [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TargetSubscriptionId <String>] [-TargetResourceGroupName <String>] -TargetInstanceName <String>
+ -ResourceId <String> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -295,6 +296,21 @@ Accept wildcard characters: False
 
 ### -TargetResourceGroupName
 Name of the target resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: MoveCopyManagedDatabaseByNameParameterSet, MoveCopyManagedDatabaseByInputObjectParameterSet, MoveCopyManagedDatabaseByResourceIdParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetSubscriptionId
+Id of the target subscription.
 
 ```yaml
 Type: System.String

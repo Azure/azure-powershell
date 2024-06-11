@@ -52,6 +52,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Id of the target subscription.", ParameterSetName = MoveCopyManagedDatabaseByNameParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Id of the target subscription.", ParameterSetName = MoveCopyManagedDatabaseByInputObjectParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Id of the target subscription.", ParameterSetName = MoveCopyManagedDatabaseByResourceIdParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string TargetSubscriptionId { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Name of the target resource group.", ParameterSetName = MoveCopyManagedDatabaseByNameParameterSet)]
         [Parameter(Mandatory = false, HelpMessage = "Name of the target resource group.", ParameterSetName = MoveCopyManagedDatabaseByInputObjectParameterSet)]
         [Parameter(Mandatory = false, HelpMessage = "Name of the target resource group.", ParameterSetName = MoveCopyManagedDatabaseByResourceIdParameterSet)]
@@ -65,12 +71,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", nameof(TargetResourceGroupName))]
         public string TargetInstanceName { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Id of the target subscription.", ParameterSetName = MoveCopyManagedDatabaseByNameParameterSet)]
-        [Parameter(Mandatory = false, HelpMessage = "Id of the target subscription.", ParameterSetName = MoveCopyManagedDatabaseByInputObjectParameterSet)]
-        [Parameter(Mandatory = false, HelpMessage = "Id of the target subscription.", ParameterSetName = MoveCopyManagedDatabaseByResourceIdParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public string TargetSubscriptionId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = MoveCopyManagedDatabaseByInputObjectParameterSet, HelpMessage = "Managed database object.")]
         [ValidateNotNull]
