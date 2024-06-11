@@ -70,6 +70,14 @@ Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse |
     }
 }
 
+# Update references in src/Resources/Resources.Test/Resources.Test.csproj
+$resourcesTestCsprojPath = Join-Path $sourceFolderPath 'Resources' 'Resources.Test' 'Resources.Test.csproj'
+$content = Get-Content $resourcesTestCsprojPath
+$content = $content -replace "..\\..\\ManagedServiceIdentity\\ManagedServiceIdentity.Autorest\\Az.ManagedServiceIdentity.csproj", "..\..\..\generated\ManagedServiceIdentity\ManagedServiceIdentity.Autorest\Az.ManagedServiceIdentity.csproj"
+$content = $content -replace "..\\..\\Purview\\Purview.Autorest\\Az.Purview.csproj", "..\..\..\generated\Purview\Purview.Autorest\Az.Purview.csproj"
+$content = $content -replace "..\\..\\Purview\\Purviewdata.Autorest\\Az.Purviewdata.csproj", "..\..\..\generated\Purview\Purviewdata.Autorest\Az.Purviewdata.csproj"
+
+
 # <#
 #     sync files from eng/archive-test branch to current branch
 # #>
