@@ -70,13 +70,26 @@ Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse |
     }
 }
 
-# Update references in src/Resources/Resources.Test/Resources.Test.csproj
+# Update references in src/Resources/Resources.Test/Resources.Test.csproj and src/Resources/Resources.sln
 $resourcesTestCsprojPath = Join-Path $sourceFolderPath 'Resources' 'Resources.Test' 'Resources.Test.csproj'
 $content = Get-Content $resourcesTestCsprojPath
 $content = $content -replace "..\\..\\ManagedServiceIdentity\\ManagedServiceIdentity.Autorest\\Az.ManagedServiceIdentity.csproj", "..\..\..\generated\ManagedServiceIdentity\ManagedServiceIdentity.Autorest\Az.ManagedServiceIdentity.csproj"
 $content = $content -replace "..\\..\\Purview\\Purview.Autorest\\Az.Purview.csproj", "..\..\..\generated\Purview\Purview.Autorest\Az.Purview.csproj"
 $content = $content -replace "..\\..\\Purview\\Purviewdata.Autorest\\Az.Purviewdata.csproj", "..\..\..\generated\Purview\Purviewdata.Autorest\Az.Purviewdata.csproj"
 $content | Set-Content $resourcesTestCsprojPath -force
+
+$resourceSlnPath = Join-Path $sourceFolderPath 'Resources' 'Resources.sln'
+$content = Get-Content $resourceSlnPath
+$content = $content -replace "..\\ManagedServiceIdentity\\ManagedServiceIdentity.Autorest\\Az.ManagedServiceIdentity.csproj", "..\..\generated\ManagedServiceIdentity\ManagedServiceIdentity.Autorest\Az.ManagedServiceIdentity.csproj"
+$content = $content -replace "..\\Monitor\\ActionGroup.Autorest\\Az.ActionGroup.csproj", "..\..\generated\Monitor\ActionGroup.Autorest\Az.ActionGroup.csproj"
+$content = $content -replace "..\\Monitor\\ActivityLogAlert.Autorest\\Az.ActivityLogAlert.csproj", "..\..\generated\Monitor\ActivityLogAlert.Autorest\Az.ActivityLogAlert.csproj"
+$content = $content -replace "..\\Monitor\\Autoscale.Autorest\\Az.Autoscale.csproj", "..\..\generated\Monitor\Autoscale.Autorest\Az.Autoscale.csproj"
+$content = $content -replace "..\\Monitor\\DataCollectionRule.Autorest\\Az.DataCollectionRule.csproj", "..\..\generated\Monitor\DataCollectionRule.Autorest\Az.DataCollectionRule.csproj"
+$content = $content -replace "..\\Monitor\\DiagnosticSetting.Autorest\\Az.DiagnosticSetting.csproj", "..\..\generated\Monitor\DiagnosticSetting.Autorest\Az.DiagnosticSetting.csproj"
+$content = $content -replace "..\\Monitor\\MonitorWorkspace.Autorest\\Az.MonitorWorkspace.csproj", "..\..\generated\Monitor\MonitorWorkspace.Autorest\Az.MonitorWorkspace.csproj"
+$content = $content -replace "..\\Monitor\\ScheduledQueryRule.Autorest\\Az.ScheduledQueryRule.csproj", "..\..\generated\Monitor\ScheduledQueryRule.Autorest\Az.ScheduledQueryRule.csproj"
+$content = $content -replace "..\\Monitor\\MetricData.Autorest\\Az.Metricdata.csproj", "..\..\generated\Monitor\MetricData.Autorest\Az.Metricdata.csproj"
+$content | Set-Content $resourceSlnPath -force
 
 
 # <#
