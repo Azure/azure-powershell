@@ -172,7 +172,7 @@ function Test-AzMaintenanceConfigurationInGuestPatch
         $maintenanceConfigurationNameInstance = $allMaintenanceConfigInSubscription | ?{ $_.Name -eq $maintenanceConfigurationName}
 
         $maintenanceConfigurationNameInstance.LinuxParameterPackageNameMaskToInclude.Add("package3")
-        $maintenanceConfigurationNameInstance.InstallPatchRebootSetting = "Always"
+        $maintenanceConfigurationNameInstance.InstallPatchRebootSetting = "AlwaysReboot"
 
         # Act
         Update-AzMaintenanceConfiguration -ResourceGroupName $resourceGroupName -Name $maintenanceConfigurationName -Configuration  $maintenanceConfigurationNameInstance
@@ -183,7 +183,7 @@ function Test-AzMaintenanceConfigurationInGuestPatch
         Assert-True { $updatedMRPConfig.LinuxParameterPackageNameMaskToInclude.Contains("apt") }
         Assert-True { $updatedMRPConfig.LinuxParameterPackageNameMaskToInclude.Contains("httpd") }
         Assert-True { $updatedMRPConfig.LinuxParameterPackageNameMaskToInclude.Contains("package3") }
-        Assert-AreEqual $updatedMRPConfig.InstallPatchRebootSetting "Always"
+        Assert-AreEqual $updatedMRPConfig.InstallPatchRebootSetting "AlwaysReboot"
 
         # Default patch config
         $maintenanceConfigurationName2 = Get-RandomMaintenanceConfigurationName
@@ -511,7 +511,7 @@ Test New-AzMaintenanceConfiguration, Get-AzApplyUpdate, Remove-AzMaintenanceConf
 #>
 function Test-AzApplyUpdateCancelConfiguration
 {
-    $actualStartTime = (Get-Date -AsUTC).AddMinutes(12)
+    $actualStartTime = (Get-Date -AsUTC).AddMinutes(16)
 
     $resourceGroupName = Get-RandomResourceGroupName
     $maintenanceConfigurationName = Get-RandomMaintenanceConfigurationName
