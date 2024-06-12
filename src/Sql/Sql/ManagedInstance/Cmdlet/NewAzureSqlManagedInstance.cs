@@ -419,14 +419,23 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// <summary>
         /// Gets or sets whether or not this is a GPv2 variant of General Purpose edition.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Whether or not this is a GPv2 variant of General Purpose edition.")]
+        [Parameter(Mandatory = false,
+            HelpMessage = "Whether or not this is a GPv2 variant of General Purpose edition.",
+            ParameterSetName = NewBySkuNameParameterSet)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "Whether or not this is a GPv2 variant of General Purpose edition.",
+            ParameterSetName = NewByEditionAndComputeGenerationParameterSet)]
         public bool? IsGeneralPurposeV2 { get; set; }
 
         /// <summary>
         /// Gets or sets the Storage IOps for instance
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Determines how much Storage IOps to associate with instance.")]
+            HelpMessage = "Determines how much Storage IOps to associate with instance.",
+            ParameterSetName = NewBySkuNameParameterSet)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "Determines how much Storage IOps to associate with instance.",
+            ParameterSetName = NewByEditionAndComputeGenerationParameterSet)]
         public int StorageIOps { get; set; }
 
         /// <summary>

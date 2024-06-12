@@ -134,7 +134,7 @@ This command creates a new instance by using by using Edition and ComputeGenerat
 
 ### Example 3: Create a new GPv2 instance
 ```powershell
-New-AzSqlInstance -Name "managedInstance3" -ResourceGroupName "ResourceGroup01" -Location "westcentralus" -AdministratorCredential (Get-Credential) -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType "LicenseIncluded" -StorageSizeInGB 1024 -StorageIOps 4000 -VCore 8 -Edition "GeneralPurpose" -ComputeGeneration "Gen5" -IsGeneralPurposeV2 $true
+New-AzSqlInstance -Name "managedInstance3" -ResourceGroupName "ResourceGroup01" -Location "westcentralus" -AdministratorCredential (Get-Credential) -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType "LicenseIncluded" -StorageSizeInGB 1024 -StorageIOps 4000 -VCore 8 -SkuName "GP_Gen5" -IsGeneralPurposeV2 $true
 ```
 
 ```output
@@ -162,7 +162,7 @@ This command creates a new GPv2 instance by using the SkuName parameter.
 
 ### Example 4: Create a new GPv2 instance
 ```powershell
-New-AzSqlInstance -Name "managedInstance4" -ResourceGroupName "ResourceGroup01" -Location "westcentralus" -AdministratorCredential (Get-Credential) -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType "LicenseIncluded" -StorageSizeInGB 1024 -StorageIOps 4000 -VCore 8 -SkuName "GP_Gen5" -IsGeneralPurposeV2 $true
+New-AzSqlInstance -Name "managedInstance4" -ResourceGroupName "ResourceGroup01" -Location "westcentralus" -AdministratorCredential (Get-Credential) -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType "LicenseIncluded" -StorageSizeInGB 1024 -StorageIOps 4000 -VCore 8 -Edition "GeneralPurpose" -ComputeGeneration "Gen5" -IsGeneralPurposeV2 $true
 ```
 
 ```output

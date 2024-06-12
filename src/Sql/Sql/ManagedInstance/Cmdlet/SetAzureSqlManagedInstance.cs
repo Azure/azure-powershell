@@ -287,7 +287,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// <summary>
         /// Gets or sets whether or not this is a GPv2 variant of General Purpose edition.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Whether or not this is a GPv2 variant of General Purpose edition.")]
+        [Parameter(Mandatory = false,
+            HelpMessage = "Whether or not this is a GPv2 variant of General Purpose edition.")]
         public bool? IsGeneralPurposeV2 { get; set; }
 
         /// <summary>
