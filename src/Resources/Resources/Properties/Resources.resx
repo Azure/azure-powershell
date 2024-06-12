@@ -454,14 +454,14 @@
     <value>No AD object was found with the parameters provided please ensure that the display name or GUID is written properly</value>
   </data>
   <data name="NotAuthorizedInGraph" xml:space="preserve">
-    <value>Call to Graph was unsuccesfull, this is likely due to insuficient permissions in Azure AD. Please ensure you have the correct set of permissions.</value>
+    <value>Call to Graph was unsuccessful, this is likely due to insuficient permissions in Azure AD. Please ensure you have the correct set of permissions.</value>
   </data>
   <data name="ServicePrincipalRoleAssignmentCreationFailed" xml:space="preserve">
     <value>The role assignment creation operation failed with the error: '{0}'
 This means the role assignment was not able to be created. Please assign a role manually with help of the Service Principal Id</value>
   </data>
   <data name="SuccessfullRARemove" xml:space="preserve">
-    <value>Succesfully removed role assignment for AD object '{0}' on scope '{1}' with role definition '{2}'</value>
+    <value>Successfully removed role assignment for AD object '{0}' on scope '{1}' with role definition '{2}'</value>
   </data>
   <data name="ScopeAndSubscriptionNeitherProvided" xml:space="preserve">
     <value>No subscription was found in the default profile and no scope was specified. Either specify a scope or use a tenant with a subscription to run the command.</value>
