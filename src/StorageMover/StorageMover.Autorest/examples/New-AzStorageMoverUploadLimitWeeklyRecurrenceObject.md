@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an upload limit weekly recurrence object 
 ```powershell
-{{ Add code here }}
+New-AzStorageMoverUploadLimitWeeklyRecurrenceObject -Day 'Monday','Tuesday','Friday' -LimitInMbps 100 -EndTimeHour 5 -StartTimeHour 1 -StartTimeMinute 30 -EndTimeMinute 0
 ```
 
 ```output
-{{ Add output here }}
+Day                       EndTimeHour EndTimeMinute LimitInMbps StartTimeHour StartTimeMinute
+---                       ----------- ------------- ----------- ------------- ---------------
+{Monday, Tuesday, Friday} 5           0             100         1             30
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command creates an upload limit weekly recurrence object.
