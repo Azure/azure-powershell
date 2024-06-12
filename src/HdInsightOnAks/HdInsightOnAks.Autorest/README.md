@@ -74,28 +74,20 @@ directive:
   - model-cmdlet:
     - model-name: ManagedIdentitySpec
       cmdlet-name: New-AzHdInsightOnAksManagedIdentityObject
-  - model-cmdlet:
     - model-name: ClusterHotfixUpgradeProperties
       cmdlet-name: New-AzHdInsightOnAksClusterHotfixUpgradeObject
-  - model-cmdlet:
     - model-name: ClusterPoolAksPatchVersionUpgradeProperties
       cmdlet-name: New-AzHdInsightOnAksClusterPoolAksPatchVersionUpgradeObject
-  - model-cmdlet:
     - model-name: NodeProfile
       cmdlet-name: New-AzHdInsightOnAksNodeProfileObject
-  - model-cmdlet:
     - model-name: SecretReference
       cmdlet-name: New-AzHdInsightOnAksSecretReferenceObject
-  - model-cmdlet:
     - model-name: HiveCatalogOption
       cmdlet-name: New-AzHdInsightOnAksTrinoHiveCatalogObject
-  - model-cmdlet:
     - model-name: ClusterConfigFile
       cmdlet-name: New-AzHdInsightOnAksClusterConfigFileObject
-  - model-cmdlet:
     - model-name: ClusterServiceConfig
       cmdlet-name: New-AzHdInsightOnAksClusterServiceConfigObject
-  - model-cmdlet:
     - model-name: ClusterServiceConfigsProfile
       cmdlet-name: New-AzHdInsightOnAksClusterServiceConfigsProfileObject
   - from: swagger-document
@@ -149,7 +141,17 @@ directive:
       model-name: ClusterVersion
       property-name: PropertiesClusterVersion
     set:
-      property-name: ClusterVersionValue      
+      property-name: ClusterVersionValue
+  - where:
+      model-name: SecretReference
+      property-name: KeyVaultObjectName
+    set:
+      property-name: SecretName   
+  - where:
+      model-name: ClusterServiceConfig
+      property-name: Component
+    set:
+      property-name: ComponentName  
 # the below is cmdlet part      
   - where:
       verb: New|Set

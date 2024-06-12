@@ -13,7 +13,7 @@ Create an in-memory object for SecretReference.
 ## SYNTAX
 
 ```
-New-AzHdInsightOnAksSecretReferenceObject -KeyVaultObjectName <String> -ReferenceName <String> -Type <String>
+New-AzHdInsightOnAksSecretReferenceObject -ReferenceName <String> -SecretName <String> -Type <String>
  [-Version <String>] [<CommonParameters>]
 ```
 
@@ -28,11 +28,11 @@ $keyVaultResourceId="/subscriptions/00000000-0000-0000-0000-000000000000/resourc
 $secretName="{your secret name}"
 $referenceName="{your secret reference name}";
 
-$secretReference=New-AzHdInsightOnAksSecretReferenceObject -KeyVaultObjectName $secretName -ReferenceName $referenceName -Type Secret
+$secretReference=New-AzHdInsightOnAksSecretReferenceObject -SecretName $secretName -ReferenceName $referenceName -Type Secret
 ```
 
 ```output
-KeyVaultObjectName ReferenceName                Type   Version
+SecretName ReferenceName                Type   Version
 ------------------ -------------                ----   -------
 {your secret name} {your secret reference name} Secret
 ```
@@ -41,8 +41,8 @@ Create a reference to provide a secret to store the password for accessing the d
 
 ## PARAMETERS
 
-### -KeyVaultObjectName
-Object identifier name of the secret in key vault.
+### -ReferenceName
+Reference name of the secret to be used in service configs.
 
 ```yaml
 Type: System.String
@@ -56,8 +56,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ReferenceName
-Reference name of the secret to be used in service configs.
+### -SecretName
+Object identifier name of the secret in key vault.
 
 ```yaml
 Type: System.String

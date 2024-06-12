@@ -13,7 +13,7 @@ Create an in-memory object for ClusterServiceConfig.
 ## SYNTAX
 
 ```
-New-AzHdInsightOnAksClusterServiceConfigObject -Component <String> -File <IClusterConfigFile[]>
+New-AzHdInsightOnAksClusterServiceConfigObject -ComponentName <String> -File <IClusterConfigFile[]>
  [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Create an in-memory object for ClusterServiceConfig.
 ### Example 1: Create a component config.
 ```powershell
 $coreSiteConfigFile=New-AzHdInsightOnAksClusterConfigFileObject -FileName "core-site.xml" -Value @{"fs.defaultFS"="abfs://testcontainer@$teststorage.dfs.core.windows.net"}
-New-AzHdInsightOnAksClusterServiceConfigObject -Component "yarn-config" -File $coreSiteConfigFile
+New-AzHdInsightOnAksClusterServiceConfigObject -ComponentName "yarn-config" -File $coreSiteConfigFile
 ```
 
 ```output
@@ -38,7 +38,7 @@ This cmdlet create the component config of "yarn-config" based the existing conf
 
 ## PARAMETERS
 
-### -Component
+### -ComponentName
 Name of the component the config files should apply to.
 
 ```yaml
