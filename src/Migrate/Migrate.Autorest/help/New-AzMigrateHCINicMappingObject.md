@@ -13,8 +13,8 @@ Creates an object to update NIC properties of a replicating server.
 ## SYNTAX
 
 ```
-New-AzMigrateHCINicMappingObject -NicID <String> -TargetVirtualSwitchId <String> [-CreateAtTarget <String>]
- [-TargetTestVirtualSwitchId <String>] [<CommonParameters>]
+New-AzMigrateHCINicMappingObject -NicID <String> [-CreateAtTarget <String>]
+ [-TargetTestVirtualSwitchId <String>] [-TargetVirtualSwitchId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,7 +92,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

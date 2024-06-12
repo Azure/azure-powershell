@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </param>
 
         /// <param name="accountType">Specifies the Active Directory account type for Azure Storage.
-        /// Possible values include: 'User', 'Computer'</param>
+        /// Possible values include: &#39;User&#39;, &#39;Computer&#39;</param>
         public ActiveDirectoryProperties(string domainName, string domainGuid, string netBiosDomainName = default(string), string forestName = default(string), string domainSid = default(string), string azureStorageSid = default(string), string samAccountName = default(string), string accountType = default(string))
 
         {

@@ -12,6 +12,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models
         Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal
     {
 
+        /// <summary>Backing field for <see cref="AdvancedThreatProtectionName" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.AdvancedThreatProtectionName? _advancedThreatProtectionName;
+
+        /// <summary>The name of the Advanced Threat Protection state.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.AdvancedThreatProtectionName? AdvancedThreatProtectionName { get => this._advancedThreatProtectionName; set => this._advancedThreatProtectionName = value; }
+
         /// <summary>Backing field for <see cref="BackupName" /> property.</summary>
         private string _backupName;
 
@@ -98,6 +105,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models
     public partial interface IMySqlIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IJsonSerializable
     {
+        /// <summary>The name of the Advanced Threat Protection state.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the Advanced Threat Protection state.",
+        SerializedName = @"advancedThreatProtectionName",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.AdvancedThreatProtectionName) })]
+        Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.AdvancedThreatProtectionName? AdvancedThreatProtectionName { get; set; }
         /// <summary>The name of the backup.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(
         Required = false,
@@ -191,6 +206,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models
     internal partial interface IMySqlIdentityInternal
 
     {
+        /// <summary>The name of the Advanced Threat Protection state.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.AdvancedThreatProtectionName? AdvancedThreatProtectionName { get; set; }
         /// <summary>The name of the backup.</summary>
         string BackupName { get; set; }
         /// <summary>The name of the server configuration.</summary>

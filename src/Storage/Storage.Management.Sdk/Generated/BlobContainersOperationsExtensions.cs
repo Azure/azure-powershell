@@ -13,22 +13,28 @@ namespace Microsoft.Azure.Management.Storage
     public static partial class BlobContainersOperationsExtensions
     {
         /// <summary>
-        /// Lists all containers and does not support a prefix like data plane. Also SRP today does not return continuation token.
+        /// Lists all containers and does not support a prefix like data plane. Also
+        /// SRP today does not return continuation token.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='maxpagesize'>
-        /// Optional. Specified maximum number of containers that can be included in the list.
+        /// Optional. Specified maximum number of containers that can be included in
+        /// the list.
         /// </param>
         /// <param name='filter'>
-        /// Optional. When specified, only container names starting with the filter will be listed.
+        /// Optional. When specified, only container names starting with the filter
+        /// will be listed.
         /// </param>
         /// <param name='include'>
         /// Optional, used to include the properties for soft deleted blob containers.
@@ -39,22 +45,28 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// Lists all containers and does not support a prefix like data plane. Also SRP today does not return continuation token.
+        /// Lists all containers and does not support a prefix like data plane. Also
+        /// SRP today does not return continuation token.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='maxpagesize'>
-        /// Optional. Specified maximum number of containers that can be included in the list.
+        /// Optional. Specified maximum number of containers that can be included in
+        /// the list.
         /// </param>
         /// <param name='filter'>
-        /// Optional. When specified, only container names starting with the filter will be listed.
+        /// Optional. When specified, only container names starting with the filter
+        /// will be listed.
         /// </param>
         /// <param name='include'>
         /// Optional, used to include the properties for soft deleted blob containers.
@@ -70,19 +82,28 @@ namespace Microsoft.Azure.Management.Storage
             }
         }
         /// <summary>
-        /// Creates a new container under the specified account as described by request body. The container resource includes metadata and properties for that container. It does not include a list of the blobs contained by the container. 
+        /// Creates a new container under the specified account as described by request
+        /// body. The container resource includes metadata and properties for that
+        /// container. It does not include a list of the blobs contained by the
+        /// container.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         public static BlobContainer Create(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName, BlobContainer blobContainer)
         {
@@ -90,19 +111,28 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// Creates a new container under the specified account as described by request body. The container resource includes metadata and properties for that container. It does not include a list of the blobs contained by the container. 
+        /// Creates a new container under the specified account as described by request
+        /// body. The container resource includes metadata and properties for that
+        /// container. It does not include a list of the blobs contained by the
+        /// container.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -115,19 +145,27 @@ namespace Microsoft.Azure.Management.Storage
             }
         }
         /// <summary>
-        /// Updates container properties as specified in request body. Properties not mentioned in the request will be unchanged. Update fails if the specified container doesn&#39;t already exist. 
+        /// Updates container properties as specified in request body. Properties not
+        /// mentioned in the request will be unchanged. Update fails if the specified
+        /// container doesn&#39;t already exist.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         public static BlobContainer Update(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName, BlobContainer blobContainer)
         {
@@ -135,19 +173,27 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// Updates container properties as specified in request body. Properties not mentioned in the request will be unchanged. Update fails if the specified container doesn&#39;t already exist. 
+        /// Updates container properties as specified in request body. Properties not
+        /// mentioned in the request will be unchanged. Update fails if the specified
+        /// container doesn&#39;t already exist.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -160,19 +206,25 @@ namespace Microsoft.Azure.Management.Storage
             }
         }
         /// <summary>
-        /// Gets properties of a specified container. 
+        /// Gets properties of a specified container.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         public static BlobContainer Get(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName)
         {
@@ -180,19 +232,25 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// Gets properties of a specified container. 
+        /// Gets properties of a specified container.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -211,13 +269,19 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         public static void Delete(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName)
         {
@@ -231,13 +295,19 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -247,19 +317,27 @@ namespace Microsoft.Azure.Management.Storage
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, containerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Sets legal hold tags. Setting the same tag results in an idempotent operation. SetLegalHold follows an append pattern and does not clear out the existing tags that are not specified in the request.
+        /// Sets legal hold tags. Setting the same tag results in an idempotent
+        /// operation. SetLegalHold follows an append pattern and does not clear out
+        /// the existing tags that are not specified in the request.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         public static LegalHold SetLegalHold(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName, System.Collections.Generic.IList<string> tags, bool? allowProtectedAppendWritesAll = default(bool?))
         {
@@ -267,19 +345,27 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// Sets legal hold tags. Setting the same tag results in an idempotent operation. SetLegalHold follows an append pattern and does not clear out the existing tags that are not specified in the request.
+        /// Sets legal hold tags. Setting the same tag results in an idempotent
+        /// operation. SetLegalHold follows an append pattern and does not clear out
+        /// the existing tags that are not specified in the request.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -292,19 +378,27 @@ namespace Microsoft.Azure.Management.Storage
             }
         }
         /// <summary>
-        /// Clears legal hold tags. Clearing the same or non-existent tag results in an idempotent operation. ClearLegalHold clears out only the specified tags in the request.
+        /// Clears legal hold tags. Clearing the same or non-existent tag results in an
+        /// idempotent operation. ClearLegalHold clears out only the specified tags in
+        /// the request.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         public static LegalHold ClearLegalHold(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName, System.Collections.Generic.IList<string> tags, bool? allowProtectedAppendWritesAll = default(bool?))
         {
@@ -312,19 +406,27 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// Clears legal hold tags. Clearing the same or non-existent tag results in an idempotent operation. ClearLegalHold clears out only the specified tags in the request.
+        /// Clears legal hold tags. Clearing the same or non-existent tag results in an
+        /// idempotent operation. ClearLegalHold clears out only the specified tags in
+        /// the request.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -337,22 +439,31 @@ namespace Microsoft.Azure.Management.Storage
             }
         }
         /// <summary>
-        /// Creates or updates an unlocked immutability policy. ETag in If-Match is honored if given but not required for this operation.
+        /// Creates or updates an unlocked immutability policy. ETag in If-Match is
+        /// honored if given but not required for this operation.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the immutability policy to update. A value of &#34;*&#34; can be used to apply the operation only if the immutability policy already exists. If omitted, this operation will always be applied.
+        /// The entity state (ETag) version of the immutability policy to update. A
+        /// value of &#34;*&#34; can be used to apply the operation only if the immutability
+        /// policy already exists. If omitted, this operation will always be applied.
         /// </param>
         public static ImmutabilityPolicy CreateOrUpdateImmutabilityPolicy(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName, string ifMatch = default(string), ImmutabilityPolicy parameters = default(ImmutabilityPolicy))
         {
@@ -360,22 +471,31 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// Creates or updates an unlocked immutability policy. ETag in If-Match is honored if given but not required for this operation.
+        /// Creates or updates an unlocked immutability policy. ETag in If-Match is
+        /// honored if given but not required for this operation.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the immutability policy to update. A value of &#34;*&#34; can be used to apply the operation only if the immutability policy already exists. If omitted, this operation will always be applied.
+        /// The entity state (ETag) version of the immutability policy to update. A
+        /// value of &#34;*&#34; can be used to apply the operation only if the immutability
+        /// policy already exists. If omitted, this operation will always be applied.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -388,22 +508,31 @@ namespace Microsoft.Azure.Management.Storage
             }
         }
         /// <summary>
-        /// Gets the existing immutability policy along with the corresponding ETag in response headers and body.
+        /// Gets the existing immutability policy along with the corresponding ETag in
+        /// response headers and body.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the immutability policy to update. A value of &#34;*&#34; can be used to apply the operation only if the immutability policy already exists. If omitted, this operation will always be applied.
+        /// The entity state (ETag) version of the immutability policy to update. A
+        /// value of &#34;*&#34; can be used to apply the operation only if the immutability
+        /// policy already exists. If omitted, this operation will always be applied.
         /// </param>
         public static ImmutabilityPolicy GetImmutabilityPolicy(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName, string ifMatch = default(string))
         {
@@ -411,22 +540,31 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// Gets the existing immutability policy along with the corresponding ETag in response headers and body.
+        /// Gets the existing immutability policy along with the corresponding ETag in
+        /// response headers and body.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the immutability policy to update. A value of &#34;*&#34; can be used to apply the operation only if the immutability policy already exists. If omitted, this operation will always be applied.
+        /// The entity state (ETag) version of the immutability policy to update. A
+        /// value of &#34;*&#34; can be used to apply the operation only if the immutability
+        /// policy already exists. If omitted, this operation will always be applied.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -439,22 +577,34 @@ namespace Microsoft.Azure.Management.Storage
             }
         }
         /// <summary>
-        /// Aborts an unlocked immutability policy. The response of delete has immutabilityPeriodSinceCreationInDays set to 0. ETag in If-Match is required for this operation. Deleting a locked immutability policy is not allowed, the only way is to delete the container after deleting all expired blobs inside the policy locked container.
+        /// Aborts an unlocked immutability policy. The response of delete has
+        /// immutabilityPeriodSinceCreationInDays set to 0. ETag in If-Match is
+        /// required for this operation. Deleting a locked immutability policy is not
+        /// allowed, the only way is to delete the container after deleting all expired
+        /// blobs inside the policy locked container.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the immutability policy to update. A value of &#34;*&#34; can be used to apply the operation only if the immutability policy already exists. If omitted, this operation will always be applied.
+        /// The entity state (ETag) version of the immutability policy to update. A
+        /// value of &#34;*&#34; can be used to apply the operation only if the immutability
+        /// policy already exists. If omitted, this operation will always be applied.
         /// </param>
         public static ImmutabilityPolicy DeleteImmutabilityPolicy(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName, string ifMatch)
         {
@@ -462,22 +612,34 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// Aborts an unlocked immutability policy. The response of delete has immutabilityPeriodSinceCreationInDays set to 0. ETag in If-Match is required for this operation. Deleting a locked immutability policy is not allowed, the only way is to delete the container after deleting all expired blobs inside the policy locked container.
+        /// Aborts an unlocked immutability policy. The response of delete has
+        /// immutabilityPeriodSinceCreationInDays set to 0. ETag in If-Match is
+        /// required for this operation. Deleting a locked immutability policy is not
+        /// allowed, the only way is to delete the container after deleting all expired
+        /// blobs inside the policy locked container.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the immutability policy to update. A value of &#34;*&#34; can be used to apply the operation only if the immutability policy already exists. If omitted, this operation will always be applied.
+        /// The entity state (ETag) version of the immutability policy to update. A
+        /// value of &#34;*&#34; can be used to apply the operation only if the immutability
+        /// policy already exists. If omitted, this operation will always be applied.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -490,22 +652,32 @@ namespace Microsoft.Azure.Management.Storage
             }
         }
         /// <summary>
-        /// Sets the ImmutabilityPolicy to Locked state. The only action allowed on a Locked policy is ExtendImmutabilityPolicy action. ETag in If-Match is required for this operation.
+        /// Sets the ImmutabilityPolicy to Locked state. The only action allowed on a
+        /// Locked policy is ExtendImmutabilityPolicy action. ETag in If-Match is
+        /// required for this operation.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the immutability policy to update. A value of &#34;*&#34; can be used to apply the operation only if the immutability policy already exists. If omitted, this operation will always be applied.
+        /// The entity state (ETag) version of the immutability policy to update. A
+        /// value of &#34;*&#34; can be used to apply the operation only if the immutability
+        /// policy already exists. If omitted, this operation will always be applied.
         /// </param>
         public static ImmutabilityPolicy LockImmutabilityPolicy(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName, string ifMatch)
         {
@@ -513,22 +685,32 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// Sets the ImmutabilityPolicy to Locked state. The only action allowed on a Locked policy is ExtendImmutabilityPolicy action. ETag in If-Match is required for this operation.
+        /// Sets the ImmutabilityPolicy to Locked state. The only action allowed on a
+        /// Locked policy is ExtendImmutabilityPolicy action. ETag in If-Match is
+        /// required for this operation.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the immutability policy to update. A value of &#34;*&#34; can be used to apply the operation only if the immutability policy already exists. If omitted, this operation will always be applied.
+        /// The entity state (ETag) version of the immutability policy to update. A
+        /// value of &#34;*&#34; can be used to apply the operation only if the immutability
+        /// policy already exists. If omitted, this operation will always be applied.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -541,22 +723,32 @@ namespace Microsoft.Azure.Management.Storage
             }
         }
         /// <summary>
-        /// Extends the immutabilityPeriodSinceCreationInDays of a locked immutabilityPolicy. The only action allowed on a Locked policy will be this action. ETag in If-Match is required for this operation.
+        /// Extends the immutabilityPeriodSinceCreationInDays of a locked
+        /// immutabilityPolicy. The only action allowed on a Locked policy will be this
+        /// action. ETag in If-Match is required for this operation.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the immutability policy to update. A value of &#34;*&#34; can be used to apply the operation only if the immutability policy already exists. If omitted, this operation will always be applied.
+        /// The entity state (ETag) version of the immutability policy to update. A
+        /// value of &#34;*&#34; can be used to apply the operation only if the immutability
+        /// policy already exists. If omitted, this operation will always be applied.
         /// </param>
         public static ImmutabilityPolicy ExtendImmutabilityPolicy(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName, string ifMatch, ImmutabilityPolicy parameters = default(ImmutabilityPolicy))
         {
@@ -564,22 +756,32 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// Extends the immutabilityPeriodSinceCreationInDays of a locked immutabilityPolicy. The only action allowed on a Locked policy will be this action. ETag in If-Match is required for this operation.
+        /// Extends the immutabilityPeriodSinceCreationInDays of a locked
+        /// immutabilityPolicy. The only action allowed on a Locked policy will be this
+        /// action. ETag in If-Match is required for this operation.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='ifMatch'>
-        /// The entity state (ETag) version of the immutability policy to update. A value of &#34;*&#34; can be used to apply the operation only if the immutability policy already exists. If omitted, this operation will always be applied.
+        /// The entity state (ETag) version of the immutability policy to update. A
+        /// value of &#34;*&#34; can be used to apply the operation only if the immutability
+        /// policy already exists. If omitted, this operation will always be applied.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -592,19 +794,27 @@ namespace Microsoft.Azure.Management.Storage
             }
         }
         /// <summary>
-        /// The Lease Container operation establishes and manages a lock on a container for delete operations. The lock duration can be 15 to 60 seconds, or can be infinite.
+        /// The Lease Container operation establishes and manages a lock on a container
+        /// for delete operations. The lock duration can be 15 to 60 seconds, or can be
+        /// infinite.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         public static LeaseContainerResponse Lease(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName, LeaseContainerRequest parameters = default(LeaseContainerRequest))
         {
@@ -612,19 +822,27 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// The Lease Container operation establishes and manages a lock on a container for delete operations. The lock duration can be 15 to 60 seconds, or can be infinite.
+        /// The Lease Container operation establishes and manages a lock on a container
+        /// for delete operations. The lock duration can be 15 to 60 seconds, or can be
+        /// infinite.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -637,19 +855,29 @@ namespace Microsoft.Azure.Management.Storage
             }
         }
         /// <summary>
-        /// This operation migrates a blob container from container level WORM to object level immutability enabled container. Prerequisites require a container level immutability policy either in locked or unlocked state, Account level versioning must be enabled and there should be no Legal hold on the container.
+        /// This operation migrates a blob container from container level WORM to
+        /// object level immutability enabled container. Prerequisites require a
+        /// container level immutability policy either in locked or unlocked state,
+        /// Account level versioning must be enabled and there should be no Legal hold
+        /// on the container.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         public static void ObjectLevelWorm(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName)
         {
@@ -657,19 +885,29 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// This operation migrates a blob container from container level WORM to object level immutability enabled container. Prerequisites require a container level immutability policy either in locked or unlocked state, Account level versioning must be enabled and there should be no Legal hold on the container.
+        /// This operation migrates a blob container from container level WORM to
+        /// object level immutability enabled container. Prerequisites require a
+        /// container level immutability policy either in locked or unlocked state,
+        /// Account level versioning must be enabled and there should be no Legal hold
+        /// on the container.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -679,19 +917,29 @@ namespace Microsoft.Azure.Management.Storage
             (await operations.ObjectLevelWormWithHttpMessagesAsync(resourceGroupName, accountName, containerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// This operation migrates a blob container from container level WORM to object level immutability enabled container. Prerequisites require a container level immutability policy either in locked or unlocked state, Account level versioning must be enabled and there should be no Legal hold on the container.
+        /// This operation migrates a blob container from container level WORM to
+        /// object level immutability enabled container. Prerequisites require a
+        /// container level immutability policy either in locked or unlocked state,
+        /// Account level versioning must be enabled and there should be no Legal hold
+        /// on the container.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         public static void BeginObjectLevelWorm(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName)
         {
@@ -699,19 +947,29 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// This operation migrates a blob container from container level WORM to object level immutability enabled container. Prerequisites require a container level immutability policy either in locked or unlocked state, Account level versioning must be enabled and there should be no Legal hold on the container.
+        /// This operation migrates a blob container from container level WORM to
+        /// object level immutability enabled container. Prerequisites require a
+        /// container level immutability policy either in locked or unlocked state,
+        /// Account level versioning must be enabled and there should be no Legal hold
+        /// on the container.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='containerName'>
-        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the blob container within the specified storage account. Blob
+        /// container names must be between 3 and 63 characters in length and use
+        /// numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -721,7 +979,8 @@ namespace Microsoft.Azure.Management.Storage
             (await operations.BeginObjectLevelWormWithHttpMessagesAsync(resourceGroupName, accountName, containerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Lists all containers and does not support a prefix like data plane. Also SRP today does not return continuation token.
+        /// Lists all containers and does not support a prefix like data plane. Also
+        /// SRP today does not return continuation token.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -735,7 +994,8 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// Lists all containers and does not support a prefix like data plane. Also SRP today does not return continuation token.
+        /// Lists all containers and does not support a prefix like data plane. Also
+        /// SRP today does not return continuation token.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

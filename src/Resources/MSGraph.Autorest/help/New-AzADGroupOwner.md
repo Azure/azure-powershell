@@ -22,14 +22,14 @@ Create new navigation property ref to owners for groups
 
 ## EXAMPLES
 
-### Example 1: Assign a user as onwer of a group
+### Example 1: Assign a user as owner of a group
 ```powershell
 $userId = (Get-AzADUser -DisplayName "John Doe").Id
 $groupId = (Get-AzADGroup -DisplayName "someGroup").Id
 New-AzADGroupOwner -GroupId $groupId -OwnerId $userId
 ```
 
-Assign a user as onwer of a group
+Assign a user as owner of a group
 
 ## PARAMETERS
 
