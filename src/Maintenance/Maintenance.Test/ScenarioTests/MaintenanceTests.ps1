@@ -511,7 +511,7 @@ Test New-AzMaintenanceConfiguration, Get-AzApplyUpdate, Remove-AzMaintenanceConf
 #>
 function Test-AzApplyUpdateCancelConfiguration
 {
-    $actualStartTime = (Get-Date -AsUTC).AddMinutes(16)
+    $actualStartTime = (Get-Date -AsUTC).AddMinutes(12)
 
     $resourceGroupName = Get-RandomResourceGroupName
     $maintenanceConfigurationName = Get-RandomMaintenanceConfigurationName
