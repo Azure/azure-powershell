@@ -1,39 +1,47 @@
 ---
 external help file:
 Module Name: Az.NewRelic
-online version: https://learn.microsoft.com/powershell/module/az.newrelic/get-aznewrelicmonitorlinkedresource
+online version: https://learn.microsoft.com/powershell/module/az.newrelic/get-aznewrelicmonitoredhost
 schema: 2.0.0
 ---
 
-# Get-AzNewRelicMonitorLinkedResource
+# Get-AzNewRelicMonitoredHost
 
 ## SYNOPSIS
-List all Azure resources associated to the same NewRelic organization and account as the target resource.
+List the compute vm resources currently being monitored by the NewRelic resource.
 
 ## SYNTAX
 
+### ListExpanded (Default)
 ```
-Get-AzNewRelicMonitorLinkedResource -MonitorName <String> -ResourceGroupName <String>
+Get-AzNewRelicMonitoredHost -MonitorName <String> -ResourceGroupName <String> -UserEmail <String>
+ [-SubscriptionId <String[]>] [-VMId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### ListViaJsonFilePath
+```
+Get-AzNewRelicMonitoredHost -MonitorName <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ListViaJsonString
+```
+Get-AzNewRelicMonitoredHost -MonitorName <String> -ResourceGroupName <String> -JsonString <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-List all Azure resources associated to the same NewRelic organization and account as the target resource.
+List the compute vm resources currently being monitored by the NewRelic resource.
 
 ## EXAMPLES
 
-### Example 1: List linked Azure resources
+### Example 1: Get specific virtual machines
 ```powershell
-Get-AzNewRelicMonitorLinkedResource -MonitorName test-01 -ResourceGroupName group-test
+Get-AzNewRelicMonitoredHost -MonitorName test-03 -ResourceGroupName ps-test -VMId test-vm-01 -UserEmail user1@outlook.com
 ```
 
-```output
-Id
---
-/SUBSCRIPTIONS/11111111-2222-3333-4444-123456789101/RESOURCEGROUPS/group-TEST/PROVIDERS/NEWRELIC.OBSERVABILITY/MONITORS/TEST-01
-```
-
-This command lists all Azure resources associated to the same NewRelic organization and account as the target resource.
+Get specific compute virtual machine resources currently being monitored by specific NewRelic resource.
 
 ## PARAMETERS
 
@@ -47,6 +55,36 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the List operation
+
+```yaml
+Type: System.String
+Parameter Sets: ListViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the List operation
+
+```yaml
+Type: System.String
+Parameter Sets: ListViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -99,6 +137,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UserEmail
+User Email
+
+```yaml
+Type: System.String
+Parameter Sets: ListExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VMId
+VM resource IDs
+
+```yaml
+Type: System.String[]
+Parameter Sets: ListExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -137,7 +205,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ILinkedResource
+### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IVMInfo
 
 ## NOTES
 

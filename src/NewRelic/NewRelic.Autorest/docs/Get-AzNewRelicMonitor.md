@@ -14,24 +14,26 @@ Get a NewRelicMonitorResource
 
 ### List (Default)
 ```
-Get-AzNewRelicMonitor [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzNewRelicMonitor [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzNewRelicMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-ListLinkedResource] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzNewRelicMonitor -InputObject <INewRelicIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzNewRelicMonitor -InputObject <INewRelicIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzNewRelicMonitor -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -113,6 +115,19 @@ eastus   test-01 6/27/2023 8:30:45 AM user1@outlook.com   User                  
 
 Get specific monitor by name and resource group
 
+### Example 4: List linked Azure resources
+```powershell
+Get-AzNewRelicMonitor -MonitorName test-01 -ResourceGroupName group-test -ListLinkedResource
+```
+
+```output
+Id
+--
+/SUBSCRIPTIONS/11111111-2222-3333-4444-123456789101/RESOURCEGROUPS/group-TEST/PROVIDERS/NEWRELIC.OBSERVABILITY/MONITORS/TEST-01
+```
+
+This command lists all Azure resources associated to the same NewRelic organization and account as the target resource.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -143,6 +158,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ListLinkedResource
+List Linked Resource
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: Get
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -192,6 +222,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -200,6 +261,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentity
 
 ## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ILinkedResource
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource
 

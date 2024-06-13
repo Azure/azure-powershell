@@ -1,5 +1,6 @@
 ### Example 1: Create subscription object
 ```powershell
+$includeFT = New-AzNewRelicFilteringTagObject -Action Include -Name testLogRule1 -Value filteringTag1
 New-AzNewRelicMonitoredSubscriptionObject -LogRuleFilteringTag $includeFT -LogRuleSendAadLog Enabled -LogRuleSendActivityLog Enabled -LogRuleSendSubscriptionLog Enabled -MetricRuleFilteringTag $includeFT -MetricRuleUserEmail test@testing.com -Status Active -SubscriptionId 00000000-0000-0000-0000-000000000000
 ```
 

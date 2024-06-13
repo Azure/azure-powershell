@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzNewRelicMonitorLinkedRe
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzNewRelicMonitorLinkedResource' { #Scenario Test
+Describe 'Get-AzNewRelicMonitorLinkedResource' {
     It 'List' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

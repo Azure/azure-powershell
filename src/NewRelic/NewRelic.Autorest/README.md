@@ -102,14 +102,28 @@ directive:
       subject: MetricRule|MetricStatus
       variant: ^Get$|^GetViaIdentity$
     remove: true
+  # duplicate with Get default config
   - where:
       subject: MonitoredSubscription
       variant: List
-    hide: true
+    remove: true
   # Custom create Monitor
   - where:
       subject: Monitor
       verb: New
+    hide: true
+  # Custom list linked resource
+  - where:
+      subject: MonitorLinkedResource
+      parameter-name: MonitorName
+    set:
+      parameter-name: Name
+  - where:
+      subject: MonitorLinkedResource
+    hide: true
+  - where:
+      subject: Monitor
+      verb: Get
     hide: true
   # Remove the set-* cmdlet
   - where:
@@ -124,11 +138,19 @@ directive:
   - model-cmdlet:
     - model-name: MonitoredSubscription
     - model-name: FilteringTag
-  # rename parameters
+  # rename subjects
   - where:
-      subject: ^TagRule(.*)
+      subject: TagRule
     set:
       subject: MonitorTagRule
+  - where:
+      subject: MonitorHost
+    set:
+      subject: MonitoredHost
+  - where:
+      subject: MonitorAppService
+    set:
+      subject: MonitoredAppService
   # customize the body property and parameter name
   # - from: source-file-csharp
   #   where: $

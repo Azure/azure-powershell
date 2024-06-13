@@ -52,13 +52,13 @@ Describe 'NewRelicObservability' {
     # available test
     It 'AppServiceList' {
         {
-            Get-AzNewRelicMonitorAppService -MonitorName $env.testMonitorName -ResourceGroupName $env.resourceGroup -UserEmail $env.testerEmail -AzureResourceId $env.testApp
+            Get-AzNewRelicMonitoredAppService -MonitorName $env.testMonitorName -ResourceGroupName $env.resourceGroup -UserEmail $env.testerEmail -AzureResourceId $env.testApp
         } | Should -Not -Throw
     }
 
     It 'HostList' {
         {
-            Get-AzNewRelicMonitorHost -MonitorName $env.testMonitorName -ResourceGroupName $env.resourceGroup -VMId $env.testVMName -UserEmail $env.testerEmail
+            Get-AzNewRelicMonitoredHost -MonitorName $env.testMonitorName -ResourceGroupName $env.resourceGroup -VMId $env.testVMName -UserEmail $env.testerEmail
         } | Should -Not -Throw
     }
 
@@ -100,7 +100,7 @@ Describe 'NewRelicObservability' {
 
     It 'ListMonitorLinkedResource' {
         {
-            $LinkedResource = Get-AzNewRelicMonitorLinkedResource -MonitorName $env.testMonitorName -ResourceGroupName $env.resourceGroup
+            $LinkedResource = Get-AzNewRelicMonitor -ListLinkedResource -MonitorName $env.testMonitorName -ResourceGroupName $env.resourceGroup
             $LinkedResource.Count | Should -Be 1
         } | Should -Not -Throw
     }

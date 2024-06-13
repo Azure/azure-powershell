@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.NewRelic
-online version: https://learn.microsoft.com/powershell/module/az.newrelic/get-aznewrelicmonitorappservice
+online version: https://learn.microsoft.com/powershell/module/az.newrelic/get-aznewrelicmonitoredappservice
 schema: 2.0.0
 ---
 
-# Get-AzNewRelicMonitorAppService
+# Get-AzNewRelicMonitoredAppService
 
 ## SYNOPSIS
 List the app service resources currently being monitored by the NewRelic resource.
@@ -14,20 +14,20 @@ List the app service resources currently being monitored by the NewRelic resourc
 
 ### ListExpanded (Default)
 ```
-Get-AzNewRelicMonitorAppService -MonitorName <String> -ResourceGroupName <String> -UserEmail <String>
+Get-AzNewRelicMonitoredAppService -MonitorName <String> -ResourceGroupName <String> -UserEmail <String>
  [-SubscriptionId <String[]>] [-AzureResourceId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### ListViaJsonFilePath
 ```
-Get-AzNewRelicMonitorAppService -MonitorName <String> -ResourceGroupName <String> -JsonFilePath <String>
+Get-AzNewRelicMonitoredAppService -MonitorName <String> -ResourceGroupName <String> -JsonFilePath <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ListViaJsonString
 ```
-Get-AzNewRelicMonitorAppService -MonitorName <String> -ResourceGroupName <String> -JsonString <String>
+Get-AzNewRelicMonitoredAppService -MonitorName <String> -ResourceGroupName <String> -JsonString <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -38,7 +38,7 @@ List the app service resources currently being monitored by the NewRelic resourc
 
 ### Example 1: Get specific App Service
 ```powershell
-Get-AzNewRelicMonitorAppService -MonitorName test-02 -ResourceGroupName ps-test -UserEmail user1@outlook.com -AzureResourceId /SUBSCRIPTIONS/11111111-2222-3333-4444-123456789101/RESOURCEGROUPS/PS-TEST/PROVIDERS/MICROSOFT.WEB/SITES/GROUPTEST
+Get-AzNewRelicMonitoredAppService -MonitorName test-02 -ResourceGroupName ps-test -UserEmail user1@outlook.com -AzureResourceId /SUBSCRIPTIONS/11111111-2222-3333-4444-123456789101/RESOURCEGROUPS/PS-TEST/PROVIDERS/MICROSOFT.WEB/SITES/WEBSITETEST
 ```
 
 Get specified app service information currently being monitored by specified NewRelic resource.

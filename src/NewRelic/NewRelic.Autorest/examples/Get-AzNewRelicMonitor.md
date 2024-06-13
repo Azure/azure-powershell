@@ -71,3 +71,16 @@ eastus   test-01 6/27/2023 8:30:45 AM user1@outlook.com   User                  
 ```
 
 Get specific monitor by name and resource group
+
+### Example 4: List linked Azure resources
+```powershell
+Get-AzNewRelicMonitor -MonitorName test-01 -ResourceGroupName group-test -ListLinkedResource
+```
+
+```output
+Id
+--
+/SUBSCRIPTIONS/11111111-2222-3333-4444-123456789101/RESOURCEGROUPS/group-TEST/PROVIDERS/NEWRELIC.OBSERVABILITY/MONITORS/TEST-01
+```
+
+This command lists all Azure resources associated to the same NewRelic organization and account as the target resource.

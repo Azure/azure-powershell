@@ -23,17 +23,14 @@ List of all active deployments that are associated with the marketplace subscrip
 ### [Get-AzNewRelicMonitor](Get-AzNewRelicMonitor.md)
 Get a NewRelicMonitorResource
 
-### [Get-AzNewRelicMonitorAppService](Get-AzNewRelicMonitorAppService.md)
+### [Get-AzNewRelicMonitoredAppService](Get-AzNewRelicMonitoredAppService.md)
 List the app service resources currently being monitored by the NewRelic resource.
+
+### [Get-AzNewRelicMonitoredHost](Get-AzNewRelicMonitoredHost.md)
+List the compute vm resources currently being monitored by the NewRelic resource.
 
 ### [Get-AzNewRelicMonitoredSubscription](Get-AzNewRelicMonitoredSubscription.md)
 List the subscriptions currently being monitored by the NewRelic monitor resource.
-
-### [Get-AzNewRelicMonitorHost](Get-AzNewRelicMonitorHost.md)
-List the compute vm resources currently being monitored by the NewRelic resource.
-
-### [Get-AzNewRelicMonitorLinkedResource](Get-AzNewRelicMonitorLinkedResource.md)
-List all Azure resources associated to the same NewRelic organization and account as the target resource.
 
 ### [Get-AzNewRelicMonitorMetricRule](Get-AzNewRelicMonitorMetricRule.md)
 Get metric rules
