@@ -256,6 +256,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
            Mandatory = false)]
         public bool? EnableSecureBoot { get; set; } = null;
 
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|latest")]
+        public string SecurityPostureId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "List of virtual machine extensions to exclude when applying the security posture.")]
+        public string[] SecurityPostureExcludeExtension { get; set; }
+
         const int FirstPortRangeStart = 50000;
 
         sealed class Parameters : IParameters<VirtualMachineScaleSet>
@@ -467,6 +481,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     enableAutomaticOSUpgradePolicy:  _cmdlet.EnableAutomaticOSUpgrade == true ? true : (bool?)null,
                     ifMatch: _cmdlet.IfMatch,
                     ifNoneMatch: _cmdlet.IfNoneMatch
+                    
                     );
             }
 

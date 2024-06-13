@@ -421,8 +421,53 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Used to make a request conditional for the GET and HEAD methods. The server will only return the requested resources if none of the listed ETag values match the current entity. Used to make a request conditional for the GET and HEAD methods. The server will only return the requested resources if none of the listed ETag values match the current entity. Set to '*' to allow a new record set to be created, but to prevent updating an existing record set. Other values will result in error from server as they are not supported.")]
         public string IfNoneMatch { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|latest")]
+        public string SecurityPostureId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "List of virtual machine extensions to exclude when applying the security posture.")]
+        public string[] SecurityPostureExcludeExtension { get; set; }
+
         private void BuildPatchObject()
         {
+            if (this.IsParameterBound(c => c.SecurityPostureId)){
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile = new VirtualMachineScaleSetUpdateVMProfile();
+                }
+                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityPostureReference == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityPostureReference = new SecurityPostureReferenceUpdate();
+                }
+                this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityPostureReference.Id = this.SecurityPostureId;
+            }
+
+            if (this.IsParameterBound(c => c.SecurityPostureExcludeExtension))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile = new VirtualMachineScaleSetUpdateVMProfile();
+                }
+                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityPostureReference == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityPostureReference = new SecurityPostureReferenceUpdate();
+                }
+                this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityPostureReference.ExcludeExtensions = this.SecurityPostureExcludeExtension;
+            }
+
             if (this.IsParameterBound(c => c.AutomaticOSUpgrade))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
@@ -1408,6 +1453,32 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void BuildPutObject()
         {
+            if (this.IsParameterBound(c => c.SecurityPostureId))
+            {
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityPostureReference == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityPostureReference = new SecurityPostureReference();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityPostureReference.Id = this.SecurityPostureId;
+            }
+
+            if (this.IsParameterBound(c => c.SecurityPostureExcludeExtension))
+            {
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityPostureReference == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityPostureReference = new SecurityPostureReference();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityPostureReference.ExcludeExtensions = this.SecurityPostureExcludeExtension;
+            }
+
             if (this.IsParameterBound(c => c.AutomaticOSUpgrade))
             {
                 if (this.VirtualMachineScaleSet.UpgradePolicy == null)

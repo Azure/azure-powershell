@@ -78,7 +78,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             bool? enableSecureBoot = null,
             bool? enableAutomaticOSUpgradePolicy = null,
             string ifMatch = null,
-            string ifNoneMatch = null
+            string ifNoneMatch = null,
+            string securityPostureId = null,
+            string[] securityPostureExcludeExtension = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -176,7 +178,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             {
                                 CapacityReservationGroup = new Microsoft.Azure.Management.Compute.Models.SubResource(capacityReservationId)
                             },
-                            UserData = userData
+                            UserData = userData,
+                            SecurityPostureReference = (securityPostureId != null || securityPostureExcludeExtension != null) ? new SecurityPostureReference
+                            {
+                                Id = securityPostureId,
+                                ExcludeExtensions = securityPostureExcludeExtension
+                            } : null
                         },
                         ProximityPlacementGroup = proximityPlacementGroup(engine),
                         HostGroup = hostGroup(engine),
@@ -232,7 +239,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string securityType = null,
             bool? enableAutomaticOSUpgradePolicy = null,
             string ifMatch = null,
-            string ifNoneMatch = null
+            string ifNoneMatch = null,
+            string securityPostureId = null,
+            string[] securityPostureExcludeExtension = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -312,7 +321,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             CapacityReservation = (capacityReservationId == null) ? null : new CapacityReservationProfile
                             {
                                 CapacityReservationGroup = new Microsoft.Azure.Management.Compute.Models.SubResource(capacityReservationId)
-                            }
+                            },
+                            SecurityPostureReference = (securityPostureId != null || securityPostureExcludeExtension != null) ? new SecurityPostureReference
+                            {
+                                Id = securityPostureId,
+                                ExcludeExtensions = securityPostureExcludeExtension
+                            } : null
                         },
                         ProximityPlacementGroup = proximityPlacementGroup(engine),
                         HostGroup = hostGroup(engine),

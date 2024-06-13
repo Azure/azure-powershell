@@ -20,7 +20,7 @@
 
 -->
 ## Upcoming Release
-* Added optional parameters `-SecurityPostureId` and `-SecurityPostureExcludeExtension` to cmdlets `New-AzVmss` and `New-AzVmssConfig`.
+* Added optional parameters `-SecurityPostureId` and `-SecurityPostureExcludeExtension` to cmdlets `Update-AzVmss`, `New-AzVmss` and `New-AzVmssConfig`.
 
 ## Version 8.0.0
 * Added new optional parameter `SecureVMGuestStateSAS` to cmdlet `Grant-AzDiskAccess`.
