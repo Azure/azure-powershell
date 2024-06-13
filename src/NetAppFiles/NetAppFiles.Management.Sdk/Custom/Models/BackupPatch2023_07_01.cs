@@ -8,21 +8,28 @@ namespace Microsoft.Azure.Management.NetApp.Models
     using System.Linq;
 
     /// <summary>
-    /// Backup properties
+    /// Backup patch
     /// </summary>
-    public partial class BackupProperties
+    [Microsoft.Rest.Serialization.JsonTransformation]
+    public partial class BackupPatch2023_07_01
     {
         /// <summary>
-        /// Initializes a new instance of the BackupProperties class.
+        /// Initializes a new instance of the BackupPatch class.
         /// </summary>
-        public BackupProperties()
+        public BackupPatch2023_07_01()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the BackupProperties class.
+        /// Initializes a new instance of the BackupPatch class.
         /// </summary>
+
+        /// <param name="tags">Resource tags
+        /// </param>
+
+        /// <param name="backupType">Type of backup Manual or Scheduled
+        /// Possible values include: 'Manual', 'Scheduled'</param>
 
         /// <param name="backupId">UUID v4 used to identify the Backup
         /// </param>
@@ -39,9 +46,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="label">Label for backup
         /// </param>
 
-        /// <param name="backupType">Type of backup Manual or Scheduled
-        /// Possible values include: 'Manual', 'Scheduled'</param>
-
         /// <param name="failureReason">Failure reason
         /// </param>
 
@@ -51,15 +55,16 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="useExistingSnapshot">Manual backup an already existing snapshot. This will always be false for
         /// scheduled backups and true/false for manual backups
         /// </param>
-        public BackupProperties(string backupId = default(string), System.DateTime? creationDate = default(System.DateTime?), string provisioningState = default(string), long? size = default(long?), string label = default(string), string backupType = default(string), string failureReason = default(string), string volumeName = default(string), bool? useExistingSnapshot = default(bool?))
+        public BackupPatch2023_07_01(System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string backupType = default(string), string backupId = default(string), System.DateTime? creationDate = default(System.DateTime?), string provisioningState = default(string), long? size = default(long?), string label = default(string), string failureReason = default(string), string volumeName = default(string), bool? useExistingSnapshot = default(bool?))
 
         {
+            this.Tags = tags;
+            this.BackupType = backupType;
             this.BackupId = backupId;
             this.CreationDate = creationDate;
             this.ProvisioningState = provisioningState;
             this.Size = size;
             this.Label = label;
-            this.BackupType = backupType;
             this.FailureReason = failureReason;
             this.VolumeName = volumeName;
             this.UseExistingSnapshot = useExistingSnapshot;
@@ -73,58 +78,64 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
 
         /// <summary>
+        /// Gets or sets resource tags
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
+        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
+
+        /// <summary>
+        /// Gets type of backup Manual or Scheduled Possible values include: &#39;Manual&#39;, &#39;Scheduled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.backupType")]
+        public string BackupType {get; private set; }
+
+        /// <summary>
         /// Gets uUID v4 used to identify the Backup
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "backupId")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.backupId")]
         public string BackupId {get; private set; }
 
         /// <summary>
         /// Gets the creation date of the backup
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "creationDate")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.creationDate")]
         public System.DateTime? CreationDate {get; private set; }
 
         /// <summary>
         /// Gets azure lifecycle management
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }
 
         /// <summary>
         /// Gets size of backup
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "size")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.size")]
         public long? Size {get; private set; }
 
         /// <summary>
         /// Gets or sets label for backup
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "label")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.label")]
         public string Label {get; set; }
-
-        /// <summary>
-        /// Gets type of backup Manual or Scheduled Possible values include: &#39;Manual&#39;, &#39;Scheduled&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "backupType")]
-        public string BackupType {get; private set; }
 
         /// <summary>
         /// Gets failure reason
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "failureReason")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.failureReason")]
         public string FailureReason {get; private set; }
 
         /// <summary>
         /// Gets volume name
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "volumeName")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.volumeName")]
         public string VolumeName {get; private set; }
 
         /// <summary>
         /// Gets or sets manual backup an already existing snapshot. This will always
         /// be false for scheduled backups and true/false for manual backups
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "useExistingSnapshot")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.useExistingSnapshot")]
         public bool? UseExistingSnapshot {get; set; }
         /// <summary>
         /// Validate the object.
@@ -134,6 +145,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </exception>
         public virtual void Validate()
         {
+
+
             if (this.BackupId != null)
             {
                 if (this.BackupId.Length > 36)
@@ -149,7 +162,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "BackupId", "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$");
                 }
             }
-
 
 
 

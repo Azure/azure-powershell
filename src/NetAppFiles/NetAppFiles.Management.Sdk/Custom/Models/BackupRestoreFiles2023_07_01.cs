@@ -10,12 +10,12 @@ namespace Microsoft.Azure.Management.NetApp.Models
     /// <summary>
     /// Restore payload for single file backup restore
     /// </summary>
-    public partial class BackupRestoreFiles
+    public partial class BackupRestoreFiles2023_07_01
     {
         /// <summary>
         /// Initializes a new instance of the BackupRestoreFiles class.
         /// </summary>
-        public BackupRestoreFiles()
+        public BackupRestoreFiles2023_07_01()
         {
             CustomInit();
         }
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="destinationVolumeId">Resource Id of the destination volume on which the files need to be
         /// restored
         /// </param>
-        public BackupRestoreFiles(System.Collections.Generic.IList<string> fileList, string destinationVolumeId, string restoreFilePath = default(string))
+        public BackupRestoreFiles2023_07_01(System.Collections.Generic.IList<string> fileList, string destinationVolumeId, string restoreFilePath = default(string))
 
         {
             this.FileList = fileList;

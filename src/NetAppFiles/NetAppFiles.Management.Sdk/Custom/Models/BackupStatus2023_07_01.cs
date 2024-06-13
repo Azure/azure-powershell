@@ -10,12 +10,12 @@ namespace Microsoft.Azure.Management.NetApp.Models
     /// <summary>
     /// Backup status
     /// </summary>
-    public partial class BackupStatus
+    public partial class BackupStatus2023_07_01
     {
         /// <summary>
         /// Initializes a new instance of the BackupStatus class.
         /// </summary>
-        public BackupStatus()
+        public BackupStatus2023_07_01()
         {
             CustomInit();
         }
@@ -47,8 +47,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="totalTransferBytes">Displays the total bytes transferred
         /// </param>
-        public BackupStatus(bool? healthy = default(bool?), string relationshipStatus = default(string), string mirrorState = default(string), string unhealthyReason = default(string), string errorMessage = default(string), long? lastTransferSize = default(long?), string lastTransferType = default(string), long? totalTransferBytes = default(long?))
-
+        public BackupStatus2023_07_01(bool? healthy = default(bool?), string relationshipStatus = default(string), string mirrorState = default(string), string unhealthyReason = default(string), string errorMessage = default(string), long? lastTransferSize = default(long?), string lastTransferType = default(string), long? totalTransferBytes = default(long?))
         {
             this.Healthy = healthy;
             this.RelationshipStatus = relationshipStatus;

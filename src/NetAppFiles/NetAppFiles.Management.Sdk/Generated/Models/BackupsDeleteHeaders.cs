@@ -7,23 +7,23 @@ namespace Microsoft.Azure.Management.NetApp.Models
 {
     using System.Linq;
 
-    public partial class BackupsRestoreFilesHeaders
+    public partial class BackupsDeleteHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the BackupsRestoreFilesHeaders class.
+        /// Initializes a new instance of the BackupsDeleteHeaders class.
         /// </summary>
-        public BackupsRestoreFilesHeaders()
+        public BackupsDeleteHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the BackupsRestoreFilesHeaders class.
+        /// Initializes a new instance of the BackupsDeleteHeaders class.
         /// </summary>
 
         /// <param name="location">
         /// </param>
-        public BackupsRestoreFilesHeaders(string location = default(string))
+        public BackupsDeleteHeaders(string location = default(string))
 
         {
             this.Location = location;

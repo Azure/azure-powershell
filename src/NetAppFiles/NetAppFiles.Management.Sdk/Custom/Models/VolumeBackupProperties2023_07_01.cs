@@ -10,12 +10,12 @@ namespace Microsoft.Azure.Management.NetApp.Models
     /// <summary>
     /// Volume Backup Properties
     /// </summary>
-    public partial class VolumeBackupProperties
+    public partial class VolumeBackupProperties2023_07_01
     {
         /// <summary>
         /// Initializes a new instance of the VolumeBackupProperties class.
         /// </summary>
-        public VolumeBackupProperties()
+        public VolumeBackupProperties2023_07_01()
         {
             CustomInit();
         }
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="backupEnabled">Backup Enabled
         /// </param>
-        public VolumeBackupProperties(string backupPolicyId = default(string), bool? policyEnforced = default(bool?), bool? backupEnabled = default(bool?))
+        public VolumeBackupProperties2023_07_01(string backupPolicyId = default(string), bool? policyEnforced = default(bool?), bool? backupEnabled = default(bool?))
 
         {
             this.BackupPolicyId = backupPolicyId;

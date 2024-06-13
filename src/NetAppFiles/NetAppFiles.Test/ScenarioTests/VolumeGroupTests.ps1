@@ -17,9 +17,10 @@
 Test Volume CRUD operations
 #>
 function Test-VolumeGroupCrud
-{
-	$currentSub = (Get-AzureRmContext).Subscription
-	$subsid = $currentSub.SubscriptionId
+{	
+    $currentSub = (Get-AzureRmContext).Subscription
+    $subsid = $currentSub.SubscriptionId
+    	
     $resourceGroup = Get-ResourceGroupName
     $accName = Get-ResourceName
     $poolName = Get-ResourceName    
