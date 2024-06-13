@@ -159,10 +159,10 @@ function Set-AzMigrateHCIServerReplication {
         $null = $PSBoundParameters.Add("VaultName", $VaultName)
         $null = $PSBoundParameters.Add("Name", $MachineName)
 
-        $ProtectedItem = Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
-        if ($null -eq $ProtectedItem) {
-            throw "Replication item is not found with Id '$TargetObjectID'."
-        }
+        $ProtectedItem = InvokeAzMigrateGetCommandWithRetries `
+            -CommandName 'Az.Migrate.Internal\Get-AzMigrateProtectedItem' `
+            -Parameters $PSBoundParameters `
+            -ErrorMessage "Replication item is not found with Id '$TargetObjectID'."
       
         $null = $PSBoundParameters.Remove("ResourceGroupName")
         $null = $PSBoundParameters.Remove("VaultName")
@@ -173,8 +173,11 @@ function Set-AzMigrateHCIServerReplication {
         $MachineIdArray = $customProperties.FabricDiscoveryMachineId.Split("/")
         $SiteType = $MachineIdArray[7]
        
-        if (!$protectedItemProperties.AllowedJob.Contains('PlannedFailover')) {
-            throw "Set server replication is not allowed for this item '$TargetObjectID'."
+        # No "DisableProtection" means IR has not been initiated
+        # "CommitFailover" means migration has been completed
+        if (!$protectedItemProperties.AllowedJob.Contains('DisableProtection') -or
+            $protectedItemProperties.AllowedJob.Contains('CommitFailover')) {
+            throw "Set server replication is not allowed for this item '$TargetObjectID' at the moment. Please check its status and try again later."
         }
 
         if ($HasTargetVMName) {
@@ -269,17 +272,16 @@ function Set-AzMigrateHCIServerReplication {
                 if ($null -eq $updatedNic){
                     throw "The Nic id '$($nic.NicId)' is not found."
                 }
+
+                if ($nic.SelectionTypeForFailover -eq $VMNicSelection.SelectedByUser -and
+                    [string]::IsNullOrEmpty($nic.TargetNetworkId)) {
+                    throw "TargetVirtualSwitchId is required when the NIC '$($nic.NicId)' is to be CreateAtTarget. Please utilize the New-AzMigrateHCINicMappingObject command to properly create a Nic mapping object."
+                }
                 
                 $updatedNic.TargetNetworkId            = $nic.TargetNetworkId
                 $updatedNic.TestNetworkId              = $nic.TestNetworkId 
                 $updatedNic.SelectionTypeForFailover   = $nic.SelectionTypeForFailover
             }
-        } 
-
-        $selectedNics = $nics | Where-Object { $_.SelectionTypeForFailover -eq "SelectedByUser" }
-        if ($null -eq $selectedNics -or $selectedNics.length -eq 0)
-        {
-            throw "At least one NIC must be selected for creation at target."
         }
 
         # Disks

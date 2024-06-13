@@ -162,58 +162,45 @@ function Get-AzMigrateHCIServerReplication {
             
             # Occasionally, Get Machine Site will not return machine site even when the site exist,
             # hence retry get machine site.
-            $attempts = 4
-            for ($i = 1; $i -le $attempts; $i++) {
-                try {
-                    if ($siteType -eq $SiteTypes.VMwareSites) {
-                        $siteObject = Az.Migrate\Get-AzMigrateSite @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
-                    }
-                    elseif ($siteType -eq $SiteTypes.HyperVSites) {
-                        $siteObject = Az.Migrate.Internal\Get-AzMigrateHyperVSite @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
-                    } 
-
-                    if ($null -eq $siteObject) {
-                        throw "Machine site not found."
-                    }
-                    else {
-                        $ProjectName = $siteObject.DiscoverySolutionId.Split("/")[8]
-                    }
-
-                    break;
-                }
-                catch {
-                    if ($i -lt $attempts)
-                    {
-                        Write-Host "Machine site not found. Retrying in 30 seconds..."
-                        Start-Sleep -Seconds 30
-                    }
-                    else
-                    {
-                        throw "Machine site '$siteName' with Type '$siteType' not found."
-                    }
-                }
+            if ($siteType -eq $SiteTypes.VMwareSites) {
+                $siteObject = InvokeAzMigrateGetCommandWithRetries `
+                    -CommandName 'Az.Migrate\Get-AzMigrateSite' `
+                    -Parameters $PSBoundParameters `
+                    -ErrorMessage "Machine site '$siteName' with Type '$siteType' not found."
+            } elseif ($siteType -eq $SiteTypes.HyperVSites) {
+                $siteObject = InvokeAzMigrateGetCommandWithRetries `
+                    -CommandName 'Az.Migrate.Internal\Get-AzMigrateHyperVSite' `
+                    -Parameters $PSBoundParameters `
+                    -ErrorMessage "Machine site '$siteName' with Type '$siteType' not found."
             }
-                
+
+            # $siteObject is not null or exception would have been thrown
+            $ProjectName = $siteObject.DiscoverySolutionId.Split("/")[8]
+
             $null = $PSBoundParameters.Remove('SiteName')
 
-            $null = $PSBoundParameters.Add("Name", "Servers-Migration-ServerMigration_DataReplication")
+            # Get the migrate solution.
+            $amhSolutionName = "Servers-Migration-ServerMigration_DataReplication"
+            $null = $PSBoundParameters.Add("Name", $amhSolutionName)
             $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
-                    
-            $solution = Az.Migrate\Get-AzMigrateSolution @PSBoundParameters
-            if ($solution -and ($solution.Count -ge 1)) {
-                $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
-            }
-            else {
-                throw "Solution not found."
-            }
+
+            $solution = InvokeAzMigrateGetCommandWithRetries `
+                -CommandName 'Az.Migrate\Get-AzMigrateSolution' `
+                -Parameters $PSBoundParameters `
+                -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found in resource group '$ResourceGroupName' and project '$ProjectName'. Please verify your appliance setup."
 
             $null = $PSBoundParameters.Remove("Name")
             $null = $PSBoundParameters.Remove("MigrateProjectName")
+
+            $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
+            if ([string]::IsNullOrEmpty($VaultName)) {
+                throw "Azure Migrate Project not configured: missing replication vault. Setup Azure Migrate Project and run the Initialize-AzMigrateHCIReplicationInfrastructure script before proceeding."
+            }
     
             $null = $PSBoundParameters.Add("VaultName", $VaultName)
             $null = $PSBoundParameters.Add("Name", $ProtectedItemName)
 
-            return Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
+            return Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters
         }
             
         if (($parameterSet -match 'List') -or ($parameterSet -eq 'GetByMachineName')) {
@@ -234,23 +221,27 @@ function Get-AzMigrateHCIServerReplication {
                 $ProjectName = $projectIdArray[8]
             }
 
+            $amhSolutionName = "Servers-Migration-ServerMigration_DataReplication"
             $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
-            $null = $PSBoundParameters.Add("Name", "Servers-Migration-ServerMigration_DataReplication")
+            $null = $PSBoundParameters.Add("Name", $amhSolutionName)
             $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
-                
-            $solution = Az.Migrate\Get-AzMigrateSolution @PSBoundParameters
-            if ($solution -and ($solution.Count -ge 1)) {
-                $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
-            }
-            else {
-                throw "Solution not found."
-            }
+
+            $solution = InvokeAzMigrateGetCommandWithRetries `
+                -CommandName 'Az.Migrate\Get-AzMigrateSolution' `
+                -Parameters $PSBoundParameters `
+                -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found in resource group '$ResourceGroupName' and project '$ProjectName'. Please verify your appliance setup."
 
             $null = $PSBoundParameters.Remove("Name")
             $null = $PSBoundParameters.Remove("MigrateProjectName")
+
+            $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
+            if ([string]::IsNullOrEmpty($VaultName)) {
+                throw "Azure Migrate Project not configured: missing replication vault. Setup Azure Migrate Project and run the Initialize-AzMigrateHCIReplicationInfrastructure script before proceeding."
+            }
+
             $null = $PSBoundParameters.Add("VaultName", $VaultName)
                 
-            $replicatingItems = Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
+            $replicatingItems = Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters
 
             if ($parameterSet -eq "GetByMachineName") {
                 $replicatingItems = $replicatingItems | Where-Object { $_.Property.FabricObjectName -eq $MachineName }
@@ -274,7 +265,7 @@ function Get-AzMigrateHCIServerReplication {
             $null = $PSBoundParameters.Add("VaultName", $VaultName)
             $null = $PSBoundParameters.Add("Name", $ProtectedItemName)
     
-            return Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
+            return Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters
         }
     }
 }
