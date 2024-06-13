@@ -1,9 +1,9 @@
 {
-  "New/Update-AzStorageMoverSmbEndpoint+[NoContext]+Create and update+$PUT+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1hc715gxy/endpoints/testsmbendpoint1hc715gxy?api-version=2023-10-01+1": {
+  "New/Update-AzStorageMoverSmbEndpoint+[NoContext]+Create and update+$PUT+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/testsmbendpoint1pul1qe2g?api-version=2024-07-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1hc715gxy/endpoints/testsmbendpoint1hc715gxy?api-version=2023-10-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"endpointType\": \"SmbMount\",\r\n    \"description\": \"new smb endpoint\",\r\n    \"credentials\": {\r\n      \"type\": \"AzureKeyVaultSmb\",\r\n      \"usernameUri\": \"https://examples-azureKeyVault.vault.azure.net/secrets/examples-username\",\r\n      \"passwordUri\": \"https://examples-azureKeyVault.vault.azure.net/secrets/examples-password\"\r\n    },\r\n    \"host\": \"10.0.0.1\",\r\n    \"shareName\": \"shareNamehc715gxy\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/testsmbendpoint1pul1qe2g?api-version=2024-07-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"endpointType\": \"SmbMount\",\r\n    \"description\": \"new smb endpoint\",\r\n    \"credentials\": {\r\n      \"type\": \"AzureKeyVaultSmb\",\r\n      \"usernameUri\": \"https://examples-azureKeyVault.vault.azure.net/secrets/examples-username\",\r\n      \"passwordUri\": \"https://examples-azureKeyVault.vault.azure.net/secrets/examples-password\"\r\n    },\r\n    \"host\": \"10.0.0.1\",\r\n    \"shareName\": \"shareNamepul1qe2g\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -17,39 +17,42 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"2d012048-0000-3400-0000-64ba09ab0000\"" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1186" ],
+        "ETag": [ "\"0000c7d3-0000-3400-0000-66692a040000\"" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "mise-correlation-id": [ "d3e6e6e3-8ecf-41c2-99e2-956ecf0b9c12" ],
-        "x-ms-request-id": [ "610219d0-e7dc-429d-8bb5-5b66b1f28b9b" ],
-        "x-ms-correlation-request-id": [ "865b7953-7561-49bf-b2f6-1c9d436b3de1" ],
-        "x-ms-routing-request-id": [ "EASTUS2EUAP:20230721T042931Z:865b7953-7561-49bf-b2f6-1c9d436b3de1" ],
+        "mise-correlation-id": [ "83ee7d19-5ae6-4d8c-9581-75f299df6d65" ],
+        "x-ms-request-id": [ "302506b0-5740-43f9-849b-def4ef371a3f" ],
+        "x-ms-correlation-request-id": [ "87da9676-18ad-4cb7-a1c7-4678d3abe508" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240612T045428Z:87da9676-18ad-4cb7-a1c7-4678d3abe508" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 21 Jul 2023 04:29:30 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D3D40C2533154CF3AD2A40DC499A9566 Ref B: MAA201060516019 Ref C: 2024-06-12T04:54:26Z" ],
+        "Date": [ "Wed, 12 Jun 2024 04:54:28 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "940" ],
+        "Content-Length": [ "902" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1hc715gxy/endpoints/testsmbendpoint1hc715gxy\",\"name\":\"testsmbendpoint1hc715gxy\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"createdAt\":\"2023-07-21T04:29:31.1797491Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-07-21T04:29:31.1797491Z\"},\"properties\":{\"host\":\"10.0.0.1\",\"shareName\":\"shareNamehc715gxy\",\"credentials\":{\"usernameUri\":\"https://examples-azureKeyVault.vault.azure.net/secrets/examples-username\",\"passwordUri\":\"https://examples-azureKeyVault.vault.azure.net/secrets/examples-password\",\"type\":\"AzureKeyVaultSmb\"},\"endpointType\":\"SmbMount\",\"description\":\"new smb endpoint\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/testsmbendpoint1pul1qe2g\",\"name\":\"testsmbendpoint1pul1qe2g\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"placeholder@mail.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-12T04:54:27.3542784Z\",\"lastModifiedBy\":\"placeholder@mail.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-12T04:54:27.3542784Z\"},\"properties\":{\"host\":\"10.0.0.1\",\"shareName\":\"shareNamepul1qe2g\",\"credentials\":{\"usernameUri\":\"https://examples-azureKeyVault.vault.azure.net/secrets/examples-username\",\"passwordUri\":\"https://examples-azureKeyVault.vault.azure.net/secrets/examples-password\",\"type\":\"AzureKeyVaultSmb\"},\"endpointType\":\"SmbMount\",\"description\":\"new smb endpoint\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "New/Update-AzStorageMoverSmbEndpoint+[NoContext]+Create and update+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1hc715gxy/endpoints/testsmbendpoint1hc715gxy?api-version=2023-10-01+2": {
+  "New/Update-AzStorageMoverSmbEndpoint+[NoContext]+Create and update+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/testsmbendpoint1pul1qe2g?api-version=2024-07-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1hc715gxy/endpoints/testsmbendpoint1hc715gxy?api-version=2023-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/testsmbendpoint1pul1qe2g?api-version=2024-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "38" ],
-        "x-ms-client-request-id": [ "95c7ea35-0f0f-4d8f-8843-f81ad8f33777" ],
+        "x-ms-unique-id": [ "42" ],
+        "x-ms-client-request-id": [ "b70f5c80-3baf-4cd0-a6c7-79b65a462c91" ],
         "CommandName": [ "Get-AzStorageMoverEndpoint" ],
         "FullCommandName": [ "Get-AzStorageMoverEndpoint_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.StorageMover/1.0.1" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.StorageMover/1.2.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -60,29 +63,32 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"2d012048-0000-3400-0000-64ba09ab0000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
+        "ETag": [ "\"0000c7d3-0000-3400-0000-66692a040000\"" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "50357129-d489-4638-b16d-808c439f7514" ],
-        "x-ms-correlation-request-id": [ "11dc97dd-060e-449d-9115-70055dfa5b4f" ],
-        "x-ms-routing-request-id": [ "EASTUS2EUAP:20230721T042932Z:11dc97dd-060e-449d-9115-70055dfa5b4f" ],
+        "x-ms-request-id": [ "b9dc0f50-4bfa-4c26-9855-fc988256f71f" ],
+        "x-ms-correlation-request-id": [ "86323328-7d13-4678-aabd-036a470dde1d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240612T045429Z:86323328-7d13-4678-aabd-036a470dde1d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 21 Jul 2023 04:29:32 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4DA75E1C81104DB8BB7EBA6AA0D498AE Ref B: MAA201060516019 Ref C: 2024-06-12T04:54:28Z" ],
+        "Date": [ "Wed, 12 Jun 2024 04:54:29 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "940" ],
+        "Content-Length": [ "902" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1hc715gxy/endpoints/testsmbendpoint1hc715gxy\",\"name\":\"testsmbendpoint1hc715gxy\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"createdAt\":\"2023-07-21T04:29:31.1797491Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-07-21T04:29:31.1797491Z\"},\"properties\":{\"host\":\"10.0.0.1\",\"shareName\":\"shareNamehc715gxy\",\"credentials\":{\"usernameUri\":\"https://examples-azureKeyVault.vault.azure.net/secrets/examples-username\",\"passwordUri\":\"https://examples-azureKeyVault.vault.azure.net/secrets/examples-password\",\"type\":\"AzureKeyVaultSmb\"},\"endpointType\":\"SmbMount\",\"description\":\"new smb endpoint\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/testsmbendpoint1pul1qe2g\",\"name\":\"testsmbendpoint1pul1qe2g\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"placeholder@mail.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-12T04:54:27.3542784Z\",\"lastModifiedBy\":\"placeholder@mail.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-12T04:54:27.3542784Z\"},\"properties\":{\"host\":\"10.0.0.1\",\"shareName\":\"shareNamepul1qe2g\",\"credentials\":{\"usernameUri\":\"https://examples-azureKeyVault.vault.azure.net/secrets/examples-username\",\"passwordUri\":\"https://examples-azureKeyVault.vault.azure.net/secrets/examples-password\",\"type\":\"AzureKeyVaultSmb\"},\"endpointType\":\"SmbMount\",\"description\":\"new smb endpoint\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "New/Update-AzStorageMoverSmbEndpoint+[NoContext]+Create and update+$PATCH+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1hc715gxy/endpoints/testsmbendpoint1hc715gxy?api-version=2023-10-01+3": {
+  "New/Update-AzStorageMoverSmbEndpoint+[NoContext]+Create and update+$PATCH+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/testsmbendpoint1pul1qe2g?api-version=2024-07-01+3": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1hc715gxy/endpoints/testsmbendpoint1hc715gxy?api-version=2023-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/testsmbendpoint1pul1qe2g?api-version=2024-07-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"endpointType\": \"SmbMount\",\r\n    \"description\": \"update smb endpoint\",\r\n    \"credentials\": {\r\n      \"type\": \"AzureKeyVaultSmb\",\r\n      \"usernameUri\": \"https://examples-azureKeyVault.vault.azure.net/secrets/examples-username1\",\r\n      \"passwordUri\": \"https://examples-azureKeyVault.vault.azure.net/secrets/examples-password1\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -97,39 +103,42 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"2d012148-0000-3400-0000-64ba09ad0000\"" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1185" ],
+        "ETag": [ "\"0000c8d3-0000-3400-0000-66692a070000\"" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "mise-correlation-id": [ "0e3f3cd2-ccd7-4252-8012-b74b9b452cc3" ],
-        "x-ms-request-id": [ "51a42ae1-6720-407f-a13f-917e06f9a8c7" ],
-        "x-ms-correlation-request-id": [ "8bee3280-2f6f-4480-a221-5fdd9d668737" ],
-        "x-ms-routing-request-id": [ "EASTUS2EUAP:20230721T042933Z:8bee3280-2f6f-4480-a221-5fdd9d668737" ],
+        "mise-correlation-id": [ "86074c29-aa4b-470f-82d1-2562ee0d0804" ],
+        "x-ms-request-id": [ "084a14eb-fb4a-476b-ba4b-90ad49a56a64" ],
+        "x-ms-correlation-request-id": [ "161ac54c-6d0d-408d-a71d-f5872f1f36d0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240612T045431Z:161ac54c-6d0d-408d-a71d-f5872f1f36d0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 21 Jul 2023 04:29:32 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 01C700B208C24A689E55E5D73B28E2A4 Ref B: MAA201060516019 Ref C: 2024-06-12T04:54:30Z" ],
+        "Date": [ "Wed, 12 Jun 2024 04:54:31 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "945" ],
+        "Content-Length": [ "906" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1hc715gxy/endpoints/testsmbendpoint1hc715gxy\",\"name\":\"testsmbendpoint1hc715gxy\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"createdAt\":\"2023-07-21T04:29:31.1797491Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-07-21T04:29:32.9140685Z\"},\"properties\":{\"host\":\"10.0.0.1\",\"shareName\":\"shareNamehc715gxy\",\"credentials\":{\"usernameUri\":\"https://examples-azureKeyVault.vault.azure.net/secrets/examples-username1\",\"passwordUri\":\"https://examples-azureKeyVault.vault.azure.net/secrets/examples-password1\",\"type\":\"AzureKeyVaultSmb\"},\"endpointType\":\"SmbMount\",\"description\":\"update smb endpoint\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/testsmbendpoint1pul1qe2g\",\"name\":\"testsmbendpoint1pul1qe2g\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"placeholder@mail.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-12T04:54:27.3542784Z\",\"lastModifiedBy\":\"placeholder@mail.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-12T04:54:30.648054Z\"},\"properties\":{\"host\":\"10.0.0.1\",\"shareName\":\"shareNamepul1qe2g\",\"credentials\":{\"usernameUri\":\"https://examples-azureKeyVault.vault.azure.net/secrets/examples-username1\",\"passwordUri\":\"https://examples-azureKeyVault.vault.azure.net/secrets/examples-password1\",\"type\":\"AzureKeyVaultSmb\"},\"endpointType\":\"SmbMount\",\"description\":\"update smb endpoint\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "New/Update-AzStorageMoverSmbEndpoint+[NoContext]+Create and update+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1hc715gxy/endpoints/testsmbendpoint1hc715gxy?api-version=2023-10-01+4": {
+  "New/Update-AzStorageMoverSmbEndpoint+[NoContext]+Create and update+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/testsmbendpoint1pul1qe2g?api-version=2024-07-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1hc715gxy/endpoints/testsmbendpoint1hc715gxy?api-version=2023-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/testsmbendpoint1pul1qe2g?api-version=2024-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "40" ],
-        "x-ms-client-request-id": [ "20e47148-d99b-4f0f-abfd-644d394088a0" ],
+        "x-ms-unique-id": [ "44" ],
+        "x-ms-client-request-id": [ "a8d8b719-630e-45b7-97b7-1a83c1859146" ],
         "CommandName": [ "Get-AzStorageMoverEndpoint" ],
         "FullCommandName": [ "Get-AzStorageMoverEndpoint_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.StorageMover/1.0.1" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.StorageMover/1.2.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -140,29 +149,32 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"2d012148-0000-3400-0000-64ba09ad0000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11977" ],
+        "ETag": [ "\"0000c8d3-0000-3400-0000-66692a070000\"" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "c3950bc9-82cf-4253-a5a8-ace8a780e419" ],
-        "x-ms-correlation-request-id": [ "94c28a2a-31d3-4bc4-9905-0da9a8d80df1" ],
-        "x-ms-routing-request-id": [ "EASTUS2EUAP:20230721T042933Z:94c28a2a-31d3-4bc4-9905-0da9a8d80df1" ],
+        "x-ms-request-id": [ "a483b167-61cf-498c-bfae-3117e0d7618d" ],
+        "x-ms-correlation-request-id": [ "60575b89-1970-43af-b343-0ec65055f8a9" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240612T045432Z:60575b89-1970-43af-b343-0ec65055f8a9" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 21 Jul 2023 04:29:33 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 997F1EE9BD904328BAD5A80E0A047044 Ref B: MAA201060516019 Ref C: 2024-06-12T04:54:31Z" ],
+        "Date": [ "Wed, 12 Jun 2024 04:54:32 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "945" ],
+        "Content-Length": [ "906" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1hc715gxy/endpoints/testsmbendpoint1hc715gxy\",\"name\":\"testsmbendpoint1hc715gxy\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"createdAt\":\"2023-07-21T04:29:31.1797491Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-07-21T04:29:32.9140685Z\"},\"properties\":{\"host\":\"10.0.0.1\",\"shareName\":\"shareNamehc715gxy\",\"credentials\":{\"usernameUri\":\"https://examples-azureKeyVault.vault.azure.net/secrets/examples-username1\",\"passwordUri\":\"https://examples-azureKeyVault.vault.azure.net/secrets/examples-password1\",\"type\":\"AzureKeyVaultSmb\"},\"endpointType\":\"SmbMount\",\"description\":\"update smb endpoint\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/testsmbendpoint1pul1qe2g\",\"name\":\"testsmbendpoint1pul1qe2g\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"placeholder@mail.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-12T04:54:27.3542784Z\",\"lastModifiedBy\":\"placeholder@mail.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-12T04:54:30.648054Z\"},\"properties\":{\"host\":\"10.0.0.1\",\"shareName\":\"shareNamepul1qe2g\",\"credentials\":{\"usernameUri\":\"https://examples-azureKeyVault.vault.azure.net/secrets/examples-username1\",\"passwordUri\":\"https://examples-azureKeyVault.vault.azure.net/secrets/examples-password1\",\"type\":\"AzureKeyVaultSmb\"},\"endpointType\":\"SmbMount\",\"description\":\"update smb endpoint\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "New/Update-AzStorageMoverSmbEndpoint+[NoContext]+Create and update+$PATCH+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1hc715gxy/endpoints/testsmbendpoint1hc715gxy?api-version=2023-10-01+5": {
+  "New/Update-AzStorageMoverSmbEndpoint+[NoContext]+Create and update+$PATCH+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/testsmbendpoint1pul1qe2g?api-version=2024-07-01+5": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1hc715gxy/endpoints/testsmbendpoint1hc715gxy?api-version=2023-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/testsmbendpoint1pul1qe2g?api-version=2024-07-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"endpointType\": \"SmbMount\",\r\n    \"credentials\": {\r\n      \"type\": \"AzureKeyVaultSmb\",\r\n      \"usernameUri\": \"\",\r\n      \"passwordUri\": \"\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -177,23 +189,26 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"2d012448-0000-3400-0000-64ba09ae0000\"" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1184" ],
+        "ETag": [ "\"0000c9d3-0000-3400-0000-66692a0a0000\"" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "mise-correlation-id": [ "12bcb706-634e-4b11-9a64-7563030e7ff3" ],
-        "x-ms-request-id": [ "0b2c5878-d220-470c-9df7-60d56ff2be7f" ],
-        "x-ms-correlation-request-id": [ "faa0d55a-30a5-4460-83fa-c801afaf8205" ],
-        "x-ms-routing-request-id": [ "EASTUS2EUAP:20230721T042934Z:faa0d55a-30a5-4460-83fa-c801afaf8205" ],
+        "mise-correlation-id": [ "d02f0a41-0383-4536-9fde-e4045609c393" ],
+        "x-ms-request-id": [ "5c1f9259-390a-417c-97d1-42406e54b60d" ],
+        "x-ms-correlation-request-id": [ "517468b9-9de3-4a62-9f57-6c7c90cab773" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240612T045434Z:517468b9-9de3-4a62-9f57-6c7c90cab773" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 21 Jul 2023 04:29:33 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 97FA92C26AB24F36A648B9D7E19F98C2 Ref B: MAA201060516019 Ref C: 2024-06-12T04:54:32Z" ],
+        "Date": [ "Wed, 12 Jun 2024 04:54:34 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "799" ],
+        "Content-Length": [ "761" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1hc715gxy/endpoints/testsmbendpoint1hc715gxy\",\"name\":\"testsmbendpoint1hc715gxy\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"createdAt\":\"2023-07-21T04:29:31.1797491Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-07-21T04:29:34.7594547Z\"},\"properties\":{\"host\":\"10.0.0.1\",\"shareName\":\"shareNamehc715gxy\",\"credentials\":{\"usernameUri\":\"\",\"passwordUri\":\"\",\"type\":\"AzureKeyVaultSmb\"},\"endpointType\":\"SmbMount\",\"description\":\"update smb endpoint\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1pul1qe2g/endpoints/testsmbendpoint1pul1qe2g\",\"name\":\"testsmbendpoint1pul1qe2g\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"placeholder@mail.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-12T04:54:27.3542784Z\",\"lastModifiedBy\":\"placeholder@mail.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-12T04:54:33.6266407Z\"},\"properties\":{\"host\":\"10.0.0.1\",\"shareName\":\"shareNamepul1qe2g\",\"credentials\":{\"usernameUri\":\"\",\"passwordUri\":\"\",\"type\":\"AzureKeyVaultSmb\"},\"endpointType\":\"SmbMount\",\"description\":\"update smb endpoint\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   }
