@@ -9,7 +9,6 @@ In this directory, run AutoRest:
 ``` yaml
 isSdkGenerator: true
 powershell: true
-#csharp: true
 clear-output-folder: true
 reflect-api-versions: true
 openapi-type: arm
