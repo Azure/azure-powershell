@@ -21,6 +21,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Security.Policy;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Management.Compute.Models;
 
@@ -80,4 +81,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public double? CompletionPercent { get; set; }
         public bool? OptimizedForFrequentAttach { get; set; }
     }
-}
+
+    public partial class DiskSecurityProfile
+    {
+        public string SecurityType { get; set; }
+        public string SecureVMDiskEncryptionSetId { get; set; }
+        public string Shield { get; set; }
+    }
+}.None
