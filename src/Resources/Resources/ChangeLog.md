@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed deployment stack validation error surfacing.
 * Fixed default formatting for output objects
 * Removed '-InputObject' for
     * `Get-AzPolicyAssignment`

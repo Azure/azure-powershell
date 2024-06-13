@@ -102,7 +102,7 @@ function Test-NewResourceGroupDeploymentStack
 		$badRGname = "badRG114172"
 		$exceptionMessage = "Error: Code=ResourceGroupNotFound; Message=Resource group '$badRGname' could not be found"
 		Assert-ThrowsContains { New-AzResourceGroupDeploymentStack -Name $rname -Description "A Stack" -ResourceGroup $badRGname -TemplateFile blankTemplate.json -DenySettingsMode None -ActionOnUnmanage DetachAll -Force } $exceptionMessage
-
+		
 		# --- ParameterFileTemplateFileParameterSetName ---
 
 		# Test - Success
@@ -113,6 +113,11 @@ function Test-NewResourceGroupDeploymentStack
 		$missingFile = "missingFile145.json"
 		$exceptionMessage = "$missingFile' because it does not exist."
 		Assert-ThrowsContains { New-AzResourceGroupDeploymentStack -Name $rname -Description "A Stack" -ResourceGroup $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile $missingFile -DenySettingsMode None -Force } $exceptionMessage
+
+		# Test - Failure - Deployment Validation Error - Bad Storage Account Name
+		
+		$exceptionMessage = "Storage account name must be between 3 and 24 characters in length"
+		Assert-ThrowsContains { New-AzResourceGroupDeploymentStack -Name $rname -Description "A Stack" -ResourceGroup $rgName -TemplateFile StacksRGBadStorageAccountName.bicep -TemplateParameterFile StacksRGBadStorageAccountName.bicepparam -DenySettingsMode None -ActionOnUnmanage DetachAll -Force } $exceptionMessage
 
 		# --- ParameterObjectTemplateFileParameterSetName ---
 
@@ -693,6 +698,9 @@ function Test-NewSubscriptionDeploymentStack
 		$missingFile = "missingFile145.json"
 		$exceptionMessage = "$missingFile' because it does not exist."
 		Assert-ThrowsContains { New-AzSubscriptionDeploymentStack -Name $rname -Description "A Stack" -TemplateFile StacksSubTemplate.json -TemplateParameterFile $missingFile -Location $location -DenySettingsMode None -ActionOnUnmanage DetachAll -Force } $exceptionMessage
+
+		$exceptionMessage = "The provided resource group name 'test23!!!' has these invalid characters"
+		Assert-ThrowsContains { New-AzSubscriptionDeploymentStack -Name $rname -Description "A Stack" -Location $location -TemplateFile StacksSubBadRGName.bicep -TemplateParameterFile StacksSubBadRGName.bicepparam -DenySettingsMode None -ActionOnUnmanage DetachAll -Force } $exceptionMessage
 
 		# --- ParameterObjectTemplateFileParameterSetName (with BypassStackOutOfSyncError) ---
 
