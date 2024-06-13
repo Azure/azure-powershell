@@ -1,0 +1,88 @@
+{
+  "Get-AzConnectedNetworkSecurityPerimeterConfiguration+[NoContext]+List+$GET+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/adrielk_test/providers/Microsoft.HybridCompute/privateLinkScopes/adrielScope/networkSecurityPerimeterConfigurations?api-version=2024-03-31-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/adrielk_test/providers/Microsoft.HybridCompute/privateLinkScopes/adrielScope/networkSecurityPerimeterConfigurations?api-version=2024-03-31-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "9e58c95e-8ef3-4660-b00b-10b5a27c23b5" ],
+        "CommandName": [ "Get-AzConnectedNetworkSecurityPerimeterConfiguration" ],
+        "FullCommandName": [ "Get-AzConnectedNetworkSecurityPerimeterConfiguration_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.ConnectedMachine/0.5.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "2f4168ad-86d1-4753-8455-76be3bb201a5" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "1f809c0b-4599-4baa-aba0-3973f6ef558a" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20240521T162400Z:1f809c0b-4599-4baa-aba0-3973f6ef558a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1C642A98526143D9BACEBA944A9633FA Ref B: MNZ221060618049 Ref C: 2024-05-21T16:24:00Z" ],
+        "Date": [ "Tue, 21 May 2024 16:24:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1721" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/adrielk_test/providers/Microsoft.HybridCompute/privateLinkScopes/adrielScope/networkSecurityPerimeterConfigurations/fd1289de-e8d3-4f76-8008-de297232dbf6.adrielScope-e1bf45b1-b9a1-4f8b-a76e-3607869aed94\",\"type\":\"Microsoft.HybridCompute/privateLinkScopes/networkSecurityPerimeterConfigurations\",\"name\":\"fd1289de-e8d3-4f76-8008-de297232dbf6.adrielScope-e1bf45b1-b9a1-4f8b-a76e-3607869aed94\",\"properties\":{\"provisioningState\":\"Succeeded\",\"provisioningIssues\":[],\"networkSecurityPerimeter\":{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/adrielk_test/providers/Microsoft.Network/networkSecurityPerimeters/adrielNsp\",\"perimeterGuid\":\"fd1289de-e8d3-4f76-8008-de297232dbf6\",\"location\":\"centraluseuap\"},\"resourceAssociation\":{\"name\":\"adrielScope-e1bf45b1-b9a1-4f8b-a76e-3607869aed94\",\"accessMode\":\"Learning\"},\"profile\":{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/adrielk_test/providers/Microsoft.Network/networkSecurityPerimeters/adrielNsp/profiles/defaultProfile\",\"name\":\"defaultProfile\",\"accessRulesVersion\":0,\"accessRules\":[],\"diagnosticSettingsVersion\":0,\"enabledLogCategories\":[\"NspPublicInboundPerimeterRulesAllowed\",\"NspPublicInboundPerimeterRulesDenied\",\"NspPublicOutboundPerimeterRulesAllowed\",\"NspPublicOutboundPerimeterRulesDenied\",\"NspIntraPerimeterOutboundAllowed\",\"NspPublicInboundResourceRulesAllowed\",\"NspPublicInboundResourceRulesDenied\",\"NspPublicOutboundResourceRulesAllowed\",\"NspPublicOutboundResourceRulesDenied\",\"NspPrivateInboundAllowed\",\"NspIntraPerimeterInboundAllowed\",\"NspOutboundAttempt\",\"NspCrossPerimeterInboundAllowed\",\"NspCrossPerimeterOutboundAllowed\"]}}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzConnectedNetworkSecurityPerimeterConfiguration+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/adrielk_test/providers/Microsoft.HybridCompute/privateLinkScopes/adrielScope/networkSecurityPerimeterConfigurations/fd1289de-e8d3-4f76-8008-de297232dbf6.adrielScope-e1bf45b1-b9a1-4f8b-a76e-3607869aed94?api-version=2024-03-31-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/adrielk_test/providers/Microsoft.HybridCompute/privateLinkScopes/adrielScope/networkSecurityPerimeterConfigurations/fd1289de-e8d3-4f76-8008-de297232dbf6.adrielScope-e1bf45b1-b9a1-4f8b-a76e-3607869aed94?api-version=2024-03-31-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "766c8128-18e1-4532-8616-c4477e8d31da" ],
+        "CommandName": [ "Get-AzConnectedNetworkSecurityPerimeterConfiguration" ],
+        "FullCommandName": [ "Get-AzConnectedNetworkSecurityPerimeterConfiguration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.ConnectedMachine/0.5.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "9c67cca5-e319-4ab6-87c0-29838027255f" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "8afc13d4-e84c-48c3-aa5d-537c9e39ee81" ],
+        "x-ms-routing-request-id": [ "EASTUS:20240521T162401Z:8afc13d4-e84c-48c3-aa5d-537c9e39ee81" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 17196AD73F294D55871CBF133130460F Ref B: MNZ221060618049 Ref C: 2024-05-21T16:24:01Z" ],
+        "Date": [ "Tue, 21 May 2024 16:24:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1709" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/adrielk_test/providers/Microsoft.HybridCompute/privateLinkScopes/adrielScope/networkSecurityPerimeterConfigurations/fd1289de-e8d3-4f76-8008-de297232dbf6.adrielScope-e1bf45b1-b9a1-4f8b-a76e-3607869aed94\",\"type\":\"Microsoft.HybridCompute/privateLinkScopes/networkSecurityPerimeterConfigurations\",\"name\":\"fd1289de-e8d3-4f76-8008-de297232dbf6.adrielScope-e1bf45b1-b9a1-4f8b-a76e-3607869aed94\",\"properties\":{\"provisioningState\":\"Succeeded\",\"provisioningIssues\":[],\"networkSecurityPerimeter\":{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/adrielk_test/providers/Microsoft.Network/networkSecurityPerimeters/adrielNsp\",\"perimeterGuid\":\"fd1289de-e8d3-4f76-8008-de297232dbf6\",\"location\":\"centraluseuap\"},\"resourceAssociation\":{\"name\":\"adrielScope-e1bf45b1-b9a1-4f8b-a76e-3607869aed94\",\"accessMode\":\"Learning\"},\"profile\":{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/adrielk_test/providers/Microsoft.Network/networkSecurityPerimeters/adrielNsp/profiles/defaultProfile\",\"name\":\"defaultProfile\",\"accessRulesVersion\":0,\"accessRules\":[],\"diagnosticSettingsVersion\":0,\"enabledLogCategories\":[\"NspPublicInboundPerimeterRulesAllowed\",\"NspPublicInboundPerimeterRulesDenied\",\"NspPublicOutboundPerimeterRulesAllowed\",\"NspPublicOutboundPerimeterRulesDenied\",\"NspIntraPerimeterOutboundAllowed\",\"NspPublicInboundResourceRulesAllowed\",\"NspPublicInboundResourceRulesDenied\",\"NspPublicOutboundResourceRulesAllowed\",\"NspPublicOutboundResourceRulesDenied\",\"NspPrivateInboundAllowed\",\"NspIntraPerimeterInboundAllowed\",\"NspOutboundAttempt\",\"NspCrossPerimeterInboundAllowed\",\"NspCrossPerimeterOutboundAllowed\"]}}}",
+      "isContentBase64": false
+    }
+  }
+}

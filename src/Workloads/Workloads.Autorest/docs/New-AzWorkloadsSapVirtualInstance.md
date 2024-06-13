@@ -17,17 +17,18 @@ Creates a Virtual Instance for SAP solutions (VIS) resource
 New-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> -CentralServerVmId <String>
  -Environment <SapEnvironmentType> -Location <String> -SapProduct <SapProductType> [-SubscriptionId <String>]
  [-IdentityType <ManagedServiceIdentityType>] [-ManagedResourceGroupName <String>]
- [-ManagedRgStorageAccountName <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ManagedResourcesNetworkAccessType <String>] [-ManagedRgStorageAccountName <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateWithJsonTemplatePath
 ```
 New-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> -Configuration <String>
  -Environment <SapEnvironmentType> -Location <String> -SapProduct <SapProductType> [-SubscriptionId <String>]
- [-IdentityType <ManagedServiceIdentityType>] [-ManagedResourceGroupName <String>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-IdentityType <ManagedServiceIdentityType>] [-ManagedResourceGroupName <String>]
+ [-ManagedResourcesNetworkAccessType <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,7 +66,7 @@ A sample json payload is a linked here:https://go.microsoft.com/fwlink/?linkid=2
 
 ### Example 3: Deploy infrastructure for a three-tier distributed Highly Available (HA) SAP system using Virtual Instances for SAP solutions 
 ```powershell
- New-AzWorkloadsSapVirtualInstance -ResourceGroupName 'PowerShell-CLI-TestRG' -Name SK1 -Location eastus -Environment 'NonProd' -SapProduct 'S4HANA' -Configuration .\CreatePayloadHACustomNames.json -IdentityType 'UserAssigned' -ManagedResourceGroupName "acss-mrg1" -UserAssignedIdentity @{'/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/SAP-E2ETest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/E2E-RBAC-MSI'= @{}}
+ New-AzWorkloadsSapVirtualInstance -ResourceGroupName 'PowerShell-CLI-TestRG' -Name SK1 -Location eastus -Environment 'NonProd' -SapProduct 'S4HANA' -Configuration .\CreatePayloadHACustomNames.json -IdentityType 'UserAssigned' -ManagedResourceGroupName "acss-mrg1" -ManagedResourcesNetworkAccessType 'Private' -UserAssignedIdentity @{'/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/SAP-E2ETest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/E2E-RBAC-MSI'= @{}}
 ```
 
 ```output
@@ -74,11 +75,11 @@ Name ResourceGroupName     Health Environment ProvisioningState SapProduct State
 SK1  PowerShell-CLI-TestRG        NonProd     Succeeded         S4HANA     SoftwareInstallationPending        eastus
 ```
 
-In this example, you Deploy the infrastructure for a three tier distributed Highly Available (HA)  SAP system.
+In this example, you Deploy the infrastructure for a three tier distributed Highly Available (HA)  SAP system. You can use the ManagedResourcesNetworkAccessType parameter to control the managed storage account network settings as per your security requirements. Use private to restrict access to storage account to specific virtual networks and use public to enable access from public networks. 
 
 ### Example 4: Install SAP software on the infrastructure deployed for the three-tier distributed Highly Available (HA) SAP system using Virtual Instances for SAP solutions
 ```powershell
-New-AzWorkloadsSapVirtualInstance -ResourceGroupName 'PowerShell-CLI-TestRG' -Name SK1 -Location eastus -Environment 'NonProd' -SapProduct 'S4HANA' -Configuration .\CreatePayloadHACustomNamesInstall.json -IdentityType 'UserAssigned' -ManagedResourceGroupName "acss-mrg1" -UserAssignedIdentity @{'/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/SAP-E2ETest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/E2E-RBAC-MSI'= @{}}
+New-AzWorkloadsSapVirtualInstance -ResourceGroupName 'PowerShell-CLI-TestRG' -Name SK1 -Location eastus -Environment 'NonProd' -SapProduct 'S4HANA' -Configuration .\CreatePayloadHACustomNamesInstall.json -IdentityType 'UserAssigned' -ManagedResourceGroupName "acss-mrg1" -ManagedResourcesNetworkAccessType 'Private' -UserAssignedIdentity @{'/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/SAP-E2ETest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/E2E-RBAC-MSI'= @{}}
 ```
 
 ```output
@@ -87,11 +88,11 @@ Name ResourceGroupName     Health Environment ProvisioningState SapProduct State
 SK1  PowerShell-CLI-TestRG        NonProd     Succeeded         S4HANA     RegistrationComplete        eastus
 ```
 
-In this example, you Install the SAP software on  the deployed infrastructure for a three tier distributed Highly Availabile SAP system with Transport directory and customized resource naming.
+In this example, you Install the SAP software on  the deployed infrastructure for a three tier distributed Highly Availabile SAP system with Transport directory and customized resource naming. You can use the ManagedResourcesNetworkAccessType parameter to control the managed storage account network settings as per your security requirements. Use private to restrict access to storage account to specific virtual networks and use public to enable access from public networks. 
 
-### Example 5: Register an existing SAP system as a VIS
+### Example 5: Register an existing SAP system as a VIS and ensure managed storage account network access is restricted to specific Virtual Networks
 ```powershell
-New-AzWorkloadsSapVirtualInstance -ResourceGroupName 'TestRG' -Name L46 -Location eastus -Environment 'NonProd' -SapProduct 'S4HANA' -CentralServerVmId '/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/powershell-cli-testrg/providers/microsoft.compute/virtualmachines/l46ascsvm' -Tag @{k1 = "v1"; k2 = "v2"} -ManagedResourceGroupName "L46-rg" -ManagedRgStorageAccountName 'acssstoragel46' -IdentityType 'UserAssigned' -UserAssignedIdentity @{'/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/SAP-E2ETest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/E2E-RBAC-MSI'= @{}}
+New-AzWorkloadsSapVirtualInstance -ResourceGroupName 'TestRG' -Name L46 -Location eastus -Environment 'NonProd' -SapProduct 'S4HANA' -CentralServerVmId '/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/powershell-cli-testrg/providers/microsoft.compute/virtualmachines/l46ascsvm' -Tag @{k1 = "v1"; k2 = "v2"}  -ManagedResourcesNetworkAccessType 'Private' -IdentityType 'UserAssigned' -UserAssignedIdentity @{'/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/SAP-E2ETest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/E2E-RBAC-MSI'= @{}}
 ```
 
 ```output
@@ -101,6 +102,35 @@ L46  PowerShell-CLI-TestRG        NonProd     Succeeded         S4HANA     Regis
 ```
 
 Use the New-AzWorkloadsSapVirtualInstance cmdlet with the suggested input parameters to register an existing SAP system as a Virtual Instance for SAP solutions resource.
+
+### Example 6: Register an existing SAP system as a Virtual Instance for SAP solutions resource (VIS) with a custom Managed Resource Group, Managed Storage Account Name, and Managed Storage Account network access is restricted to specific Virtual Networks
+```powershell
+New-AzWorkloadsSapVirtualInstance -ResourceGroupName 'TestRG' -Name L46 -Location eastus -Environment 'NonProd' -SapProduct 'S4HANA' -CentralServerVmId '/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/powershell-cli-testrg/providers/microsoft.compute/virtualmachines/l46ascsvm' -Tag @{k1 = "v1"; k2 = "v2"} -ManagedResourceGroupName "L46-rg" -ManagedRgStorageAccountName 'acssstoragel46' -ManagedResourcesNetworkAccessType 'Private' -IdentityType 'UserAssigned' -UserAssignedIdentity @{'/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/SAP-E2ETest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/E2E-RBAC-MSI'= @{}}
+```
+
+```output
+Name ResourceGroupName     Health Environment ProvisioningState SapProduct State                Status Location
+---- -----------------     ------ ----------- ----------------- ---------- -----                ------ --------
+L46  PowerShell-CLI-TestRG        NonProd     Succeeded         S4HANA     RegistrationComplete        eastus
+```
+
+Use the New-AzWorkloadsSapVirtualInstance cmdlet with the suggested input parameters to register an existing SAP system as a Virtual Instance for SAP solutions resource with a custom Managed Resource Group and Managed Storage Account Name. You can use the ManagedResourcesNetworkAccessType parameter to control the storage account network settings as per your security requirements. Use private to restrict access to storage account to specific virtual networks and use public to enable access from public networks. 
+
+Learn More: https://go.microsoft.com/fwlink/?linkid=2256933
+
+### Example 7: Deploy infrastructure for a three-tier distributed Highly Available (HA) SAP system with Azure Compute Gallery Image 
+```powershell
+ New-AzWorkloadsSapVirtualInstance -ResourceGroupName 'PowerShell-CLI-TestRG' -Name SK1 -Location eastus -Environment 'NonProd' -SapProduct 'S4HANA' -Configuration .\CreatePayloadHACustomNames.json -IdentityType 'UserAssigned' -ManagedResourceGroupName "acss-mrg1" -UserAssignedIdentity @{'/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/SAP-E2ETest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/E2E-RBAC-MSI'= @{}}
+```
+
+```output
+Name ResourceGroupName     Health Environment ProvisioningState SapProduct State                       Status Location
+---- -----------------     ------ ----------- ----------------- ---------- -----                       ------ --------
+SK1  PowerShell-CLI-TestRG        NonProd     Succeeded         S4HANA     SoftwareInstallationPending        eastus
+```
+
+In this example, you Deploy infrastructure for a three-tier distributed Highly Available (HA) SAP system with Azure Compute Gallery Image.
+See sample json payload here: https://go.microsoft.com/fwlink/?linkid=2263420
 
 ## PARAMETERS
 
@@ -211,6 +241,21 @@ Accept wildcard characters: False
 
 ### -ManagedResourceGroupName
 Managed resource group name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedResourcesNetworkAccessType
+Managed resource Network Access Type
 
 ```yaml
 Type: System.String
@@ -390,8 +435,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapVirtualInstance
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 
