@@ -26,6 +26,18 @@ Describe 'New-AzWorkloadsSapVirtualInstance' {
         $createResponse.provisioningState | Should -Be $env.ProvisioningState 
     }
 
+    It 'CreateWithDiscoveryTrusted' {
+        $configPath = Join-Path $PSScriptRoot $env.ConfigPath
+        $createResponse = New-AzWorkloadsSapVirtualInstance -Name $env.DiscoverSVI -ResourceGroupName $env.DiscoverRG -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -CentralServerVmId $env.CentralServerVmId -ManagedResourcesNetworkAccessType $env.MrgNetAccTyp -IdentityType $env.IdentityType -UserAssignedIdentity @{'/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/SAP-E2ETest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/E2E-RBAC-MSI'= @{}}
+        $createResponse.provisioningState | Should -Be $env.ProvisioningState 
+    }
+
+    It 'CreateWithConfigurationCustom' {
+        $configPath = Join-Path $PSScriptRoot $env.ConfigPath
+        $createResponse = New-AzWorkloadsSapVirtualInstance -Name $env.CreateSVI -ResourceGroupName $env.ResourceGroupCreateSVI -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -Configuration $configPath -ManagedResourceGroupName $env.MrgRGName -ManagedResourcesNetworkAccessType $env.MrgNetAccTyp -IdentityType $env.IdentityType -UserAssignedIdentity @{'/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/SAP-E2ETest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/E2E-RBAC-MSI'= @{}}
+        $createResponse.provisioningState | Should -Be $env.ProvisioningState 
+    }
+
     It 'CreateWithJsonString' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

@@ -72,8 +72,16 @@ function setupEnv() {
     $env.ResourceGroupCreateSVI = "PS_CLI_TF_RG"
     $env.CreateSVI = "PS2"
     $env.ConfigPath = "CreateSVIConfig.json"
+    $env.IdentityName = @{
+        '/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/SAP-E2ETest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/E2E-RBAC-MSI'= @{}
+    }
+    $env.IdentityType = "UserAssigned"
+    $env.MSIPath = "msi.json"
     $env.DiscoverSVI = "PS1"
     $env.DiscoverRG = "PS_CLI_TF_RG"
+    $env.MrgRGName = "PS2-rg"
+    $env.MrgSAName = "acssstoragel46"
+    $env.MrgNetAccTyp = "Private"
     $env.CentralServerVmId = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/PS_CLI_TF_RG/providers/Microsoft.Compute/virtualMachines/ps1ascsvm"
     $env.MonitorRg = "suha-0802-rg1"
     $env.HaMonitorSubnetRg = "nitin-agarwal-scale-test"
