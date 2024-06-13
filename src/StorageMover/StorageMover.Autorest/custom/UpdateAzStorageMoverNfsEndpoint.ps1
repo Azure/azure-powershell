@@ -25,11 +25,11 @@ Properties not specified in the request body will be unchanged.
 Update-AzStorageMoverNfsEndpoint -Name myEndpointName -ResourceGroupName myResourceGroupName -StorageMoverName myStorageMover -Description "Update Description"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpointBaseUpdateParameters
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpointBaseUpdateParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -54,7 +54,7 @@ INPUTOBJECT<IStorageMoverIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemovernfsendpoint
 #>
 function Update-AzStorageMoverNfsEndpoint {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint])]
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding =$false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -146,7 +146,7 @@ function Update-AzStorageMoverNfsEndpoint {
     )
 
     process {
-        $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.NfsMountEndpointUpdateProperties]::New()
+        $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.NfsMountEndpointUpdateProperties]::New()
         $Properties.EndpointType = 'NfsMount'
 
         if ($PSBoundParameters.ContainsKey('Description')) {

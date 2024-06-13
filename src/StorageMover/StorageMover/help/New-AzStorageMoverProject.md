@@ -16,14 +16,14 @@ Creates or updates a Project resource, which is a logical grouping of related jo
 ```
 New-AzStorageMoverProject -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
  [-SubscriptionId <String>] [-Description <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzStorageMoverProject -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
  [-SubscriptionId <String>] -Project <IProject> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -101,12 +101,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Project
 The Project resource.
 To construct, see NOTES section for PROJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProject
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject
 Parameter Sets: Create
 Aliases:
 
@@ -199,11 +214,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProject
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProject
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject
 
 ## NOTES
 

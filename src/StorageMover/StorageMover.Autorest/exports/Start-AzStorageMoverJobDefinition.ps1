@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Requests an Agent to start a new instance of this Job Definition, generating a new Job Run resource.
+Creates a new Job Run resource for the specified Job Definition and passes it to the Agent for execution.
 .Description
-Requests an Agent to start a new instance of this Job Definition, generating a new Job Run resource.
+Creates a new Job Run resource for the specified Job Definition and passes it to the Agent for execution.
 .Example
 New-AzStorageMoverProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Name myProject -Description "description"
 
