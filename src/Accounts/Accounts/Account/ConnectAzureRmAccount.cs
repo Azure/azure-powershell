@@ -516,7 +516,7 @@ namespace Microsoft.Azure.Commands.Profile
                 IHttpOperationsFactory httpClientFactory = null;
                 AzureSession.Instance.TryGetComponent(HttpClientOperationsFactory.Name, out httpClientFactory);
 
-                SetContextWithOverwritePrompt((localProfile, profileClient, name) =>
+                SetContextWithOverwritePrompt((localProfile, profileClient, contextName) =>
                 {
                     bool shouldPopulateContextList = true;
                     if (this.IsParameterBound(c => c.SkipContextPopulation))
@@ -544,7 +544,7 @@ namespace Microsoft.Azure.Commands.Profile
                         SkipValidation,
                         new OpenIDConfiguration(Tenant, baseUri: _environment.ActiveDirectoryAuthority, httpClientFactory: httpClientFactory),
                         WriteWarningEvent, //Could not use WriteWarning directly because it may be in worker thread
-                        name,
+                        contextName,
                         shouldPopulateContextList,
                         MaxContextPopulation,
                         resourceId,
@@ -705,10 +705,10 @@ namespace Microsoft.Azure.Commands.Profile
 
         private void SetContextWithOverwritePrompt(Action<AzureRmProfile, RMProfileClient, string> setContextAction)
         {
-            string name = null;
+            string contextName = null;
             if (MyInvocation.BoundParameters.ContainsKey(nameof(ContextName)))
             {
-                name = ContextName;
+                contextName = ContextName;
             }
 
             AzureRmProfile profile = null;
@@ -721,12 +721,12 @@ namespace Microsoft.Azure.Commands.Profile
                     originalShouldRefreshContextsFromCache = profile.ShouldRefreshContextsFromCache;
                     profile.ShouldRefreshContextsFromCache = false;
                 }
-                if (!CheckForExistingContext(profile, name)
+                if (!CheckForExistingContext(profile, contextName)
                     || Force.IsPresent
-                    || ShouldContinue(string.Format(Resources.ReplaceContextQuery, name),
-                    string.Format(Resources.ReplaceContextCaption, name)))
+                    || ShouldContinue(string.Format(Resources.ReplaceContextQuery, contextName),
+                    string.Format(Resources.ReplaceContextCaption, contextName)))
                 {
-                    ModifyContext((prof, client) => setContextAction(prof, client, name));
+                    ModifyContext((prof, client) => setContextAction(prof, client, contextName));
                 }
             }
             finally
