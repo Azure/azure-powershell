@@ -3,6 +3,7 @@ using Commands.StorageSync.Interop.Interfaces;
 using Hyak.Common;
 using Microsoft.Azure.Commands.StorageSync.Interop.Enums;
 using Microsoft.Azure.Commands.StorageSync.Interop.Exceptions;
+using Microsoft.Azure.Commands.StorageSync.Interop.Interfaces;
 using System;
 using System.Diagnostics.Tracing;
 using System.Threading.Tasks;
