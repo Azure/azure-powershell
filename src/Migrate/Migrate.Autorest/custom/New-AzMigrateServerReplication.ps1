@@ -211,6 +211,12 @@ function New-AzMigrateServerReplication {
         [System.String]
         # Specifies the disk encyption set to be used.
         ${DiskEncryptionSetID},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.Management.Automation.SwitchParameter]
+        # Specifies whether bulk SQL RP registration to be done.
+        ${PerformSqlBulkRegistration},
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -284,6 +290,12 @@ function New-AzMigrateServerReplication {
         $HasTargetSecurityType = $PSBoundParameters.ContainsKey('TargetSecurityType')
         $HasTargetVMConfidentialEncryptionEnabled = $PSBoundParameters.ContainsKey('TargetVMConfidentialEncryptionEnabled')
         $HasTargetVMSecureBootEnabled = $PSBoundParameters.ContainsKey('TargetVMSecureBootEnabled')
+        if ($PerformSqlBulkRegistration.IsPresent) {
+            $PerformSqlBulkRegistrationValue = "true"
+        }
+        else {
+            $PerformSqlBulkRegistrationValue = "false"
+        }
 
         $null = $PSBoundParameters.Remove('ReplicationContainerMapping')
         $null = $PSBoundParameters.Remove('VMWarerunasaccountID')
@@ -312,9 +324,9 @@ function New-AzMigrateServerReplication {
         $null = $PSBoundParameters.Remove('TargetSecurityType')
         $null = $PSBoundParameters.Remove('TargetVMConfidentialEncryptionEnabled')
         $null = $PSBoundParameters.Remove('TargetVMSecureBootEnabled')
-
         $null = $PSBoundParameters.Remove('MachineId')
         $null = $PSBoundParameters.Remove('InputObject')
+        $null = $PSBoundParameters.Remove('PerformSqlBulkRegistration')
 
         $validLicenseSpellings = @{ 
             NoLicenseType = "NoLicenseType";
@@ -567,6 +579,8 @@ public static int hashForArtifact(String artifact)
         $ProviderSpecificDetails.InstanceType = 'VMwareCbt'
         $ProviderSpecificDetails.LicenseType = $LicenseType
         $ProviderSpecificDetails.PerformAutoResync = $PerformAutoResync
+        $ProviderSpecificDetails.PerformSqlBulkRegistration = $PerformSqlBulkRegistrationValue
+
         if ($HasTargetVMConfidentialEncryptionEnabled) {
             $ProviderSpecificDetails.TargetVMSecurityProfileIsTargetVmconfidentialEncryptionEnabled = $TargetVMConfidentialEncryptionEnabled.IsPresent
         }

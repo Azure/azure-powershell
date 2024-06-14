@@ -18,10 +18,11 @@ New-AzMigrateServerReplication -DiskType <String> -LicenseType <String> -Machine
  -TargetNetworkId <String> -TargetResourceGroupId <String> -TargetSubnetName <String> -TargetVMName <String>
  [-DiskEncryptionSetID <String>] [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>]
  [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-PerformAutoResync <String>]
- [-SqlServerLicenseType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>]
+ [-PerformSqlBulkRegistration] [-SqlServerLicenseType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>]
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
- [-TestSubnetName <String>] [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetSecurityType <String>]
+ [-TargetVMConfidentialEncryptionEnabled] [-TargetVMSecureBootEnabled <String>] [-TargetVMSize <String>]
+ [-TestNetworkId <String>] [-TestSubnetName <String>] [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>]
  [-VMWarerunasaccountID <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -31,10 +32,11 @@ New-AzMigrateServerReplication -DiskToInclude <IVMwareCbtDiskInput[]> -LicenseTy
  -MachineId <String> -TargetNetworkId <String> -TargetResourceGroupId <String> -TargetSubnetName <String>
  -TargetVMName <String> [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>]
  [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-PerformAutoResync <String>]
- [-SqlServerLicenseType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>]
+ [-PerformSqlBulkRegistration] [-SqlServerLicenseType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>]
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
- [-TestSubnetName <String>] [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetSecurityType <String>]
+ [-TargetVMConfidentialEncryptionEnabled] [-TargetVMSecureBootEnabled <String>] [-TargetVMSize <String>]
+ [-TestNetworkId <String>] [-TestSubnetName <String>] [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>]
  [-VMWarerunasaccountID <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -45,10 +47,11 @@ New-AzMigrateServerReplication -DiskType <String> -InputObject <IVMwareMachine> 
  -TargetVMName <String> [-DiskEncryptionSetID <String>]
  [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>]
  [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-PerformAutoResync <String>]
- [-SqlServerLicenseType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>]
+ [-PerformSqlBulkRegistration] [-SqlServerLicenseType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>]
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
- [-TestSubnetName <String>] [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetSecurityType <String>]
+ [-TargetVMConfidentialEncryptionEnabled] [-TargetVMSecureBootEnabled <String>] [-TargetVMSize <String>]
+ [-TestNetworkId <String>] [-TestSubnetName <String>] [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>]
  [-VMWarerunasaccountID <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -58,10 +61,11 @@ New-AzMigrateServerReplication -DiskToInclude <IVMwareCbtDiskInput[]> -InputObje
  -LicenseType <String> -TargetNetworkId <String> -TargetResourceGroupId <String> -TargetSubnetName <String>
  -TargetVMName <String> [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>]
  [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-PerformAutoResync <String>]
- [-SqlServerLicenseType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>]
+ [-PerformSqlBulkRegistration] [-SqlServerLicenseType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>]
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
- [-TestSubnetName <String>] [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetSecurityType <String>]
+ [-TargetVMConfidentialEncryptionEnabled] [-TargetVMSecureBootEnabled <String>] [-TargetVMSize <String>]
+ [-TestNetworkId <String>] [-TestSubnetName <String>] [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>]
  [-VMWarerunasaccountID <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -306,6 +310,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PerformSqlBulkRegistration
+Specifies whether bulk SQL RP registration to be done.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SqlServerLicenseType
 Specifies if Azure Hybrid benefit for SQL Server is applicable for the server to be migrated.
 
@@ -426,6 +445,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TargetSecurityType
+Specifies the security type for the Azure VM.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -TargetSubnetName
 Specifies the Subnet name within the destination Virtual Network to which the server needs to be migrated.
 
@@ -441,6 +475,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TargetVMConfidentialEncryptionEnabled
+Specifies whether the confidential encryption of OS disks needs to be enabled.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -TargetVMName
 Specifies the name of the Azure VM to be created.
 
@@ -450,6 +499,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetVMSecureBootEnabled
+Specifies if secure boot needs to be enabled on target VM.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
