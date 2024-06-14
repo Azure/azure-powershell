@@ -1,20 +1,10 @@
-﻿using Azure.Core;
-using Commands.StorageSync.Interop.DataObjects;
+﻿using Commands.StorageSync.Interop.DataObjects;
 using Commands.StorageSync.Interop.Interfaces;
 using Hyak.Common;
-using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Interop.Enums;
 using Microsoft.Azure.Commands.StorageSync.Interop.Exceptions;
-using Microsoft.Azure.Commands.StorageSync.Interop.Interfaces;
-using Microsoft.Azure.Management.StorageSync.Models;
-using Microsoft.Rest;
-using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics.Tracing;
-using System.Net;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
