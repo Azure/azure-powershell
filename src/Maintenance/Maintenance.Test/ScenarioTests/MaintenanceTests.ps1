@@ -172,6 +172,7 @@ function Test-AzMaintenanceConfigurationInGuestPatch
         $maintenanceConfigurationNameInstance = $allMaintenanceConfigInSubscription | ?{ $_.Name -eq $maintenanceConfigurationName}
 
         $maintenanceConfigurationNameInstance.LinuxParameterPackageNameMaskToInclude.Add("package3")
+        $maintenanceConfigurationNameInstance.InstallPatchRebootSetting = "AlwaysReboot"
 
         # Act
         Update-AzMaintenanceConfiguration -ResourceGroupName $resourceGroupName -Name $maintenanceConfigurationName -Configuration  $maintenanceConfigurationNameInstance
@@ -182,6 +183,7 @@ function Test-AzMaintenanceConfigurationInGuestPatch
         Assert-True { $updatedMRPConfig.LinuxParameterPackageNameMaskToInclude.Contains("apt") }
         Assert-True { $updatedMRPConfig.LinuxParameterPackageNameMaskToInclude.Contains("httpd") }
         Assert-True { $updatedMRPConfig.LinuxParameterPackageNameMaskToInclude.Contains("package3") }
+        Assert-AreEqual $updatedMRPConfig.InstallPatchRebootSetting "AlwaysReboot"
 
         # Default patch config
         $maintenanceConfigurationName2 = Get-RandomMaintenanceConfigurationName
