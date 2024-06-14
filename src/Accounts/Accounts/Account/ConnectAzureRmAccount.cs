@@ -548,7 +548,6 @@ namespace Microsoft.Azure.Commands.Profile
                         shouldPopulateContextList,
                         MaxContextPopulation,
                         resourceId,
-                        IsInteractiveAuthenticationFlow(),
                         IsInteractiveContextSelectionEnabled()));
                     task.Start();
                     while (!task.IsCompleted)
@@ -599,11 +598,6 @@ namespace Microsoft.Azure.Commands.Profile
         private bool IsInteractiveContextSelectionEnabled()
         {
             return AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out IConfigManager configManager) ? configManager.GetConfigValue<LoginExperienceConfig>(ConfigKeys.LoginExperienceV2).Equals(LoginExperienceConfig.On) : true;
-        }
-
-        private bool IsInteractiveAuthenticationFlow()
-        {
-            return ParameterSetName.Equals(UserParameterSet);
         }
 
         private bool IsPopUpInteractiveAuthenticationFlow()
