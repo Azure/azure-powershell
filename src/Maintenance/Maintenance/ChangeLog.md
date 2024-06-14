@@ -19,7 +19,6 @@
 -->
 
 ## Upcoming Release
-
 * Fixed bug where rebootSettings property wasn't updating.
 
 ## Version 1.4.1
