@@ -14,10 +14,17 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
+using System;
+
 namespace Microsoft.Azure.Commands.Profile.ContextSelectStrategy
 {
     public abstract class ContextSelectStrategy
     {
-        public abstract IAzureContext GetAzureRMContextCommand();
+
+        public Action<string> OutputAction;
+
+        public abstract (IAzureTenant, IAzureSubscription) GetDefaultTenantAndSubscription();
+
+        public abstract IAzureContext GetDefaultContext(IAzureAccount account, IAzureEnvironment environment);
     }
 }

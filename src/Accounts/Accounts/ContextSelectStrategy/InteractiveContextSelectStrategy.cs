@@ -16,17 +16,31 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Profile.ContextSelectStrategy
 {
     public class InteractiveContextSelectStrategy : ContextSelectStrategy
     {
-        public InteractiveContextSelectStrategy() { }
+        IAzureTenant Tenant;
+        IList<IAzureSubscription> Subscriptions;
 
-        public override IAzureContext GetAzureRMContextCommand()
+        public InteractiveContextSelectStrategy(IAzureTenant tenant, IList<IAzureSubscription> subscriptions) {
+            Tenant = tenant;
+            Subscriptions = subscriptions;
+        }
+
+        public override IAzureContext GetDefaultContext(IAzureAccount account, IAzureEnvironment environment)
         {
             throw new NotImplementedException();
+        }
+
+        public override (IAzureTenant, IAzureSubscription) GetDefaultTenantAndSubscription()
+        {
+            OutputAction("To override which subscription Connect-AzAccount selects by default, " +
+                "use `Update-AzConfig -DefaultSubscriptionForLogin 00000000-0000-0000-0000-000000000000`. " +
+                "Go to https://go.microsoft.com/fwlink/?linkid=2200610 for more information.");
+            return (Tenant, Subscriptions?.First());
         }
     }
 }

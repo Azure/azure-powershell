@@ -2,6 +2,7 @@
 using Microsoft.Identity.Client;
 using Microsoft.Identity.Client.NativeInterop;
 
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.ContextSelectStrategy
@@ -19,7 +20,14 @@ namespace Microsoft.Azure.Commands.Profile.ContextSelectStrategy
             this._accountId = accountId;
         }
 
-        public override IAzureContext GetAzureRMContextCommand()
+        public override IAzureContext GetDefaultContext(IAzureAccount account, IAzureEnvironment environment)
+        {
+            var (defaultTenant, defaultSubscription) = GetDefaultTenantAndSubscription();
+            // to be finished
+            return new AzureContext(account, environment, defaultTenant);
+        }
+
+        public override (IAzureTenant, IAzureSubscription) GetDefaultTenantAndSubscription()
         {
             var defaultSubscription = new AzureSubscription
             {
@@ -33,8 +41,7 @@ namespace Microsoft.Azure.Commands.Profile.ContextSelectStrategy
             {
                 Id = _tenantId
             };
-
-            return new AzureContext();
+            return (defaultTenant, defaultSubscription);
         }
     }
 }
