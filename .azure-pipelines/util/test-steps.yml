@@ -24,8 +24,9 @@ steps:
     targetType: filePath
     filePath: ./tools/TestFx/Utilities/CommonUtility.ps1
 
-- pwsh:|
+- pwsh: 
    az bicep upgrade
+  displayName: Update bicep version
 
 - task: DotNetCoreCLI@2
   displayName: Test
