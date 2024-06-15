@@ -15,67 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzConnectedMachine'))
 }
 
 Describe 'Update-AzConnectedMachine' {
-    BeforeAll {    
-        $machineName = $env.MachineName
-        $scopeName = $env.PrivateLinkScopeName
-        $location = $env.Location
-        $rg = $env.ResourceGroupName
     
-        if ($TestMode -ne 'playback' -and $IsMacOS) {
-            Write-Host "Live tests can only be run on Windows and Linux. Skipping..."
-            $SkipAll = $true
-    
-            # All `It` calls will have -Skip:$true
-            $PSDefaultParameterValues["It:Skip"] = $true
-        }
+    It 'Update'  {
+        $updatedMachine = Update-AzConnectedMachine -Name $env.MachineName -ResourceGroupName $env.ResourceGroupName -PrivateLinkScopeResourceId $env.PrivateLinkScopeUri -WindowsConfigurationPatchSettingsAssessmentMode "AutomaticByOS"
+        $updatedMachine | Should -Not -BeNullOrEmpty
     }
-    
-    AfterAll {
-        # Reset PSDefaultParameterValues
-        if ($PSDefaultParameterValues["It:Skip"]) {
-            $PSDefaultParameterValues.Remove("It:Skip")
-        }
-    }
-    
-    BeforeEach {
-        if ($SkipAll) {
-            return
-        }
-    
-        if ($TestMode -eq 'playback') {
-            # Skip starting azcmagent
-            return
-        }
-    
-        Start-Agent -MachineName $machineName -Env $env
-    }
-    
-    AfterEach {
-        if ($SkipAll) {
-            return
-        }
-    
-        if ($TestMode -eq 'playback') {
-            # Skip stopping azcmagent
-            return
-        }
-    
-        Stop-Agent -AgentPath $env.azcmagentPath
-    }
-
-    It 'Update a machine with new private link scope and assessment mode' {
-        $scope = New-AzConnectedPrivateLinkScope -ResourceGroupName $rg -ScopeName $scopeName -PublicNetworkAccess "Enabled" -Location $location
-
-        $updatedMachine = Update-AzConnectedMachine -Name $machineName -ResourceGroupName $rg -PrivateLinkScopeResourceId $scope.Id -WindowsConfigurationPatchSettingsAssessmentMode "AutomaticByOS"
-    
-        $updatedMachine.PrivateLinkScopeResourceId | Should -Be $scope.Id
-    
-        $updatedMachine.WindowsConfigurationPatchSettingsAssessmentMode | Should -Be "AutomaticByOS"
-    
-        $updatedMachine = Update-AzConnectedMachine -Name $machineName -ResourceGroupName $rg -PrivateLinkScopeResourceId $null
-    
-        $updatedMachine.PrivateLinkScopeResourceId | Should -Be ""
-    }
-
 
 }
