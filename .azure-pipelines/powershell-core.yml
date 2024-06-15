@@ -84,13 +84,7 @@ jobs:
     vmImage: $(agentPoolVMImage)
 
   steps:
-  - task: AzurePowerShell@5
-    name: BicelPlan
-    displayName: Bicep Plan
-    inputs:
-      scriptLocation: 'inlineScript'
-      azurePowerShellVersion: 'LatestVersion'
-      inlineScript: |
+  - pwsh: |
         az bicep upgrade
   - template: util/test-steps.yml
     parameters:
