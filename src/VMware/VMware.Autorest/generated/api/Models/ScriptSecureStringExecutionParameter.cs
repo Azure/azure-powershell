@@ -24,13 +24,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)__scriptExecutionParameter).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)__scriptExecutionParameter).Name = value ; }
 
         /// <summary>Backing field for <see cref="SecureValue" /> property.</summary>
-        private string _secureValue;
+        private System.Security.SecureString _secureValue;
 
         /// <summary>A secure value for the passed parameter, not to be stored in logs</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
-        public string SecureValue { get => this._secureValue; set => this._secureValue = value; }
+        public System.Security.SecureString SecureValue { get => this._secureValue; set => this._secureValue = value; }
 
-        /// <summary>The type of execution parameter</summary>
+        /// <summary>script execution parameter type</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Constant]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
         public string Type { get => "SecureValue"; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal)__scriptExecutionParameter).Type = "SecureValue"; }
@@ -67,8 +67,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Update = true,
         Description = @"A secure value for the passed parameter, not to be stored in logs",
         SerializedName = @"secureValue",
-        PossibleTypes = new [] { typeof(string) })]
-        string SecureValue { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString SecureValue { get; set; }
 
     }
     /// a plain text value execution parameter
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameterInternal
     {
         /// <summary>A secure value for the passed parameter, not to be stored in logs</summary>
-        string SecureValue { get; set; }
+        System.Security.SecureString SecureValue { get; set; }
 
     }
 }

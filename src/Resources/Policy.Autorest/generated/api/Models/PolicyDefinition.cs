@@ -15,10 +15,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
 
         /// <summary>The policy definition description.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public string Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)Property).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)Property).Description = value ?? null; }
 
         /// <summary>The display name of the policy definition.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.FormatTable(Index = 2)]
         public string DisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)Property).DisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)Property).DisplayName = value ?? null; }
 
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
@@ -26,12 +28,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
 
         /// <summary>The ID of the policy definition.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public string Id { get => this._id; }
 
         /// <summary>
         /// The policy definition metadata. Metadata is an open ended object and is typically a collection of key value pairs.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesMetadata Metadata { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)Property).Metadata; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)Property).Metadata = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Id</summary>
@@ -53,6 +57,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         /// The policy definition mode. Some examples are All, Indexed, Microsoft.KeyVault.Data.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public string Mode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)Property).Mode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)Property).Mode = value ?? null; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
@@ -60,22 +65,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
 
         /// <summary>The name of the policy definition.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.FormatTable(Index = 0)]
         public string Name { get => this._name; }
 
         /// <summary>
         /// The parameter definitions for parameters used in the policy rule. The keys are the parameter names.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IParameterDefinitions Parameter { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)Property).Parameter; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)Property).Parameter = value ?? null /* model class */; }
 
         /// <summary>The policy rule.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesPolicyRule PolicyRule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)Property).PolicyRule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)Property).PolicyRule = value ?? null /* model class */; }
 
         /// <summary>
         /// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.FormatTable(Index = 1)]
         public string PolicyType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)Property).PolicyType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)Property).PolicyType = value ?? null; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
@@ -83,6 +92,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
 
         /// <summary>The policy definition properties.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         internal Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.PolicyDefinitionProperties()); set => this._property = value; }
 
         /// <summary>Backing field for <see cref="SystemData" /> property.</summary>
@@ -90,30 +100,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
 
         /// <summary>The system metadata relating to this resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         internal Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemData SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.SystemData()); }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).CreatedByType = value ?? null; }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ISystemDataInternal)SystemData).LastModifiedByType = value ?? null; }
 
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
@@ -121,14 +138,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
 
         /// <summary>The type of the resource (Microsoft.Authorization/policyDefinitions).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public string Type { get => this._type; }
 
         /// <summary>The policy definition version in #.#.# format.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public string Version { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)Property).Version; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)Property).Version = value ?? null; }
 
         /// <summary>A list of available versions for this policy definition.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotFormat]
         public System.Collections.Generic.List<string> Versions { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)Property).Versions; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionPropertiesInternal)Property).Versions = value ?? null /* arrayOf */; }
 
         /// <summary>Creates an new <see cref="PolicyDefinition" /> instance.</summary>

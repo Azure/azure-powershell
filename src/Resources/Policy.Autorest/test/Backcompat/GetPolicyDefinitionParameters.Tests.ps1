@@ -2,7 +2,7 @@
 . (Join-Path $PSScriptRoot 'Common.ps1') 'Backcompat-GetPolicyDefinitionParameters'
 
 # $$$ add -Static to existing combinations
-Describe 'Backcompat-GetPolicyDefinitionParameters' {
+Describe 'Backcompat-GetPolicyDefinitionParameters' -Tag 'LiveOnly' {
 
     BeforeAll {
         $goodScope = "/subscriptions/$subscriptionId"

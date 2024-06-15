@@ -239,16 +239,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 snapshot.SnapshotPolicyId = DataProtection.Snapshot.SnapshotPolicyId;
                 psDataProtection.Snapshot = snapshot;
             }
-            //if (DataProtection.Backup != null)
-            //{
-            //    var psBackupProps = new PSNetAppFilesVolumeBackupProperties()
-            //    {
-            //        BackupEnabled = DataProtection.Backup.BackupEnabled,
-            //        BackupPolicyId = DataProtection.Backup.BackupPolicyId,
-            //        PolicyEnforced = DataProtection.Backup.PolicyEnforced
-            //    };
-            //    psDataProtection.Backup = psBackupProps;
-            //}
+            if (DataProtection.Backup != null)
+            {
+                var psBackupProps = new PSNetAppFilesVolumeBackupProperties()
+                {                    
+                    BackupPolicyId = DataProtection.Backup.BackupPolicyId,
+                    PolicyEnforced = DataProtection.Backup.PolicyEnforced,
+                    BackupVaultId = DataProtection.Backup.BackupVaultId
+                };
+                psDataProtection.Backup = psBackupProps;
+            }
             if (DataProtection.VolumeRelocation != null)
             {
                 var volumeRelocation = DataProtection.VolumeRelocation.ConvertToPs();
@@ -279,14 +279,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 dataProtection.Snapshot = snapshot;
             }
 
-            //if (psDataProtection.Backup != null)
-            //{
-            //    var backup = new VolumeBackupProperties();
-            //    backup.BackupEnabled = psDataProtection.Backup.BackupEnabled;
-            //    backup.BackupPolicyId = psDataProtection.Backup.BackupPolicyId;
-            //    backup.PolicyEnforced = psDataProtection.Backup.PolicyEnforced;
-            //    dataProtection.Backup = backup;
-            //}
+            if (psDataProtection.Backup != null)
+            {
+                var backup = new VolumeBackupProperties();                
+                backup.BackupPolicyId = psDataProtection.Backup.BackupPolicyId;
+                backup.PolicyEnforced = psDataProtection.Backup.PolicyEnforced;
+                backup.BackupVaultId = psDataProtection.Backup.BackupVaultId;
+                dataProtection.Backup = backup;
+            }
             return dataProtection;
         }
 
@@ -314,8 +314,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
 
             if (psDataProtection.Backup != null)
             {
-                var backup = new VolumeBackupProperties();
-                backup.BackupEnabled = psDataProtection.Backup.BackupEnabled;
+                var backup = new VolumeBackupProperties();                
                 backup.BackupPolicyId = psDataProtection.Backup.BackupPolicyId;
                 backup.PolicyEnforced = psDataProtection.Backup.PolicyEnforced;
                 dataProtection.Backup = backup;
@@ -346,7 +345,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
             {
                 var psBackupProps = new PSNetAppFilesVolumeBackupProperties()
                 {
-                    BackupEnabled = DataProtection.Backup.BackupEnabled,
                     BackupPolicyId = DataProtection.Backup.BackupPolicyId,
                     PolicyEnforced = DataProtection.Backup.PolicyEnforced
                 };
@@ -372,11 +370,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
             }
             if (psDataProtection.Backup != null)
             {
-                //var backup = new VolumeBackupProperties();
-                //backup.BackupEnabled = psDataProtection.Backup.BackupEnabled;
-                //backup.BackupPolicyId = psDataProtection.Backup.BackupPolicyId;
-                //backup.PolicyEnforced = psDataProtection.Backup.PolicyEnforced;
-                //dataProtection.Backup = backup;
+                var backup = new VolumeBackupProperties();                
+                backup.BackupPolicyId = psDataProtection.Backup.BackupPolicyId;
+                backup.PolicyEnforced = psDataProtection.Backup.PolicyEnforced;
+                backup.BackupVaultId = psDataProtection.Backup.BackupVaultId;
+                dataProtection.Backup = backup;
             }
             return dataProtection;
         }
@@ -393,7 +391,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
             if (psDataProtection.Backup != null)
             {
                 var backup = new VolumeBackupProperties();
-                backup.BackupEnabled = psDataProtection.Backup.BackupEnabled;
                 backup.BackupPolicyId = psDataProtection.Backup.BackupPolicyId;
                 backup.PolicyEnforced = psDataProtection.Backup.PolicyEnforced;
                 dataProtection.Backup = backup;
@@ -413,7 +410,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
             if (psDataProtection.Backup != null)
             {
                 var backup = new VolumeBackupProperties();
-                backup.BackupEnabled = psDataProtection.Backup.BackupEnabled;
                 backup.BackupPolicyId = psDataProtection.Backup.BackupPolicyId;
                 backup.PolicyEnforced = psDataProtection.Backup.PolicyEnforced;
                 dataProtection.Backup = backup;

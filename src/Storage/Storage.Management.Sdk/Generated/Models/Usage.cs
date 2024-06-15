@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
 
         /// <param name="unit">Gets the unit of measurement.
-        /// Possible values include: 'Count', 'Bytes', 'Seconds', 'Percent',
-        /// 'CountsPerSecond', 'BytesPerSecond'</param>
+        /// Possible values include: &#39;Count&#39;, &#39;Bytes&#39;, &#39;Seconds&#39;, &#39;Percent&#39;,
+        /// &#39;CountsPerSecond&#39;, &#39;BytesPerSecond&#39;</param>
 
         /// <param name="currentValue">Gets the current count of the allocated resources in the subscription.
         /// </param>

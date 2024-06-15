@@ -82,10 +82,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// AzureKeyVaultSecretReference.
         /// </param>
 
+        /// <param name="credential">The credential reference containing authentication information.
+        /// </param>
+
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public DynamicsCrmLinkedServiceTypeProperties(object deploymentType, object authenticationType, object hostName = default(object), object port = default(object), object serviceUri = default(object), object organizationName = default(object), object username = default(object), SecretBase password = default(SecretBase), object servicePrincipalId = default(object), object servicePrincipalCredentialType = default(object), SecretBase servicePrincipalCredential = default(SecretBase), string encryptedCredential = default(string))
+        public DynamicsCrmLinkedServiceTypeProperties(object deploymentType, object authenticationType, object hostName = default(object), object port = default(object), object serviceUri = default(object), object organizationName = default(object), object username = default(object), SecretBase password = default(SecretBase), object servicePrincipalId = default(object), object servicePrincipalCredentialType = default(object), SecretBase servicePrincipalCredential = default(SecretBase), CredentialReference credential = default(CredentialReference), string encryptedCredential = default(string))
 
         {
             this.DeploymentType = deploymentType;
@@ -99,6 +102,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             this.ServicePrincipalId = servicePrincipalId;
             this.ServicePrincipalCredentialType = servicePrincipalCredentialType;
             this.ServicePrincipalCredential = servicePrincipalCredential;
+            this.Credential = credential;
             this.EncryptedCredential = encryptedCredential;
             CustomInit();
         }
@@ -201,6 +205,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public SecretBase ServicePrincipalCredential {get; set; }
 
         /// <summary>
+        /// Gets or sets the credential reference containing authentication
+        /// information.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "credential")]
+        public CredentialReference Credential {get; set; }
+
+        /// <summary>
         /// Gets or sets the encrypted credential used for authentication. Credentials
         /// are encrypted using the integration runtime credential manager. Type:
         /// string.
@@ -234,6 +245,10 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
 
 
+            if (this.Credential != null)
+            {
+                this.Credential.Validate();
+            }
 
         }
     }

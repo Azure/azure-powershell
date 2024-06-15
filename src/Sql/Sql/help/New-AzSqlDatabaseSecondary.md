@@ -395,7 +395,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecondaryType
-The secondary type of the database if it is a secondary.  Valid values are Geo and Named.
+The secondary type of the database if it is a secondary. Valid values are Geo, Named and Standby.
 
 ```yaml
 Type: System.String

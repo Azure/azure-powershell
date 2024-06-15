@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
         private string _type;
 
-        /// <summary>The type of execution parameter</summary>
+        /// <summary>script execution parameter type</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string Type { get => this._type; set => this._type = value; }
 
@@ -48,14 +48,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string Name { get; set; }
-        /// <summary>The type of execution parameter</summary>
+        /// <summary>script execution parameter type</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The type of execution parameter",
+        Description = @"script execution parameter type",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Value", "SecureValue", "Credential")]
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
     {
         /// <summary>The parameter name</summary>
         string Name { get; set; }
-        /// <summary>The type of execution parameter</summary>
+        /// <summary>script execution parameter type</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Value", "SecureValue", "Credential")]
         string Type { get; set; }
 

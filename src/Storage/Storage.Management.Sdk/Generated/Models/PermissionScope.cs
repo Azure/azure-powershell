@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
 
         /// <param name="permissions">The permissions for the local user. Possible values include: Read (r),
-        /// Write (w), Delete (d), List (l), and Create (c).
+        /// Write (w), Delete (d), List (l), Create (c), Modify Ownership (o), and
+        /// Modify Permissions (p).
         /// </param>
 
         /// <param name="service">The service used by the local user, e.g. blob, file.
@@ -48,7 +49,8 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <summary>
         /// Gets or sets the permissions for the local user. Possible values include:
-        /// Read (r), Write (w), Delete (d), List (l), and Create (c).
+        /// Read (r), Write (w), Delete (d), List (l), Create (c), Modify Ownership
+        /// (o), and Modify Permissions (p).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "permissions")]
         public string Permissions {get; set; }

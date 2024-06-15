@@ -76,9 +76,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Sku"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.SkuTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Property"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ClusterUpdatePropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SkuName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal)this).SkuName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuTier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal)this).SkuTier = (string) content.GetValueForProperty("SkuTier",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal)this).SkuTier, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal)this).SkuSize = (string) content.GetValueForProperty("SkuSize",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal)this).SkuSize, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuFamily"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal)this).SkuFamily = (string) content.GetValueForProperty("SkuFamily",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal)this).SkuFamily, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuCapacity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("ClusterSize"))
             {
@@ -105,9 +129,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Sku"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.SkuTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Property"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ClusterUpdatePropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SkuName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal)this).SkuName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuTier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal)this).SkuTier = (string) content.GetValueForProperty("SkuTier",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal)this).SkuTier, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal)this).SkuSize = (string) content.GetValueForProperty("SkuSize",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal)this).SkuSize, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuFamily"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal)this).SkuFamily = (string) content.GetValueForProperty("SkuFamily",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal)this).SkuFamily, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuCapacity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("ClusterSize"))
             {

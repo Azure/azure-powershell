@@ -19,6 +19,17 @@
 -->
 
 ## Upcoming Release
+* Fixed deployment stack validation error surfacing.
+* Fixed default formatting for output objects
+* Removed '-InputObject' for
+    * `Get-AzPolicyAssignment`
+    * `Get-AzPolicyDefinition`
+    * `Get-AzPolicyExemption`
+    * `Get-AzPolicySetDefinition`
+    * `New-AzPolicyAssignment`
+    * `New-AzPolicyDefinition`
+    * `New-AzPolicySetDefinition`
+* Implemented '-Version' and '-ListVersion' parameters on `Get-AzPolicyDefinition` and `Get-AzPolicySetDefinition`
 
 ## Version 7.1.0
 * Fixed deployment and deployment stack New/Set cmdlets to fail if template/parameter uri fails to downloads.

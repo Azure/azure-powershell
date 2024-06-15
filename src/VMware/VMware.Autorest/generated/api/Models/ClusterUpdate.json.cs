@@ -65,6 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 return;
             }
+            {_sku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonObject>("sku"), out var __jsonSku) ? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Sku.FromJson(__jsonSku) : _sku;}
             {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ClusterUpdateProperties.FromJson(__jsonProperties) : _property;}
             AfterFromJson(json);
         }
@@ -98,6 +99,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 return container;
             }
+            AddIf( null != this._sku ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) this._sku.ToJson(null,serializationMode) : null, "sku" ,container.Add );
             AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
             AfterToJson(ref container);
             return container;

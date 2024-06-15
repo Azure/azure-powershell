@@ -24,12 +24,52 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ClusterUpdateProperties()); set { {_property = value;} } }
 
+        /// <summary>Internal Acessors for Sku</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISku Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateInternal.Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Sku()); set { {_sku = value;} } }
+
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateProperties _property;
 
         /// <summary>The properties of a cluster resource that may be updated</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ClusterUpdateProperties()); set => this._property = value; }
+
+        /// <summary>Backing field for <see cref="Sku" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISku _sku;
+
+        /// <summary>The SKU (Stock Keeping Unit) assigned to this resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISku Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Sku()); set => this._sku = value; }
+
+        /// <summary>
+        /// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the
+        /// resource this may be omitted.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        public int? SkuCapacity { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)Sku).Capacity; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)Sku).Capacity = value ?? default(int); }
+
+        /// <summary>
+        /// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        public string SkuFamily { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)Sku).Family; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)Sku).Family = value ?? null; }
+
+        /// <summary>The name of the SKU. E.g. P3. It is typically a letter+number code</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        public string SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)Sku).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)Sku).Name = value ?? null; }
+
+        /// <summary>
+        /// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        public string SkuSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)Sku).Size; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)Sku).Size = value ?? null; }
+
+        /// <summary>
+        /// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required
+        /// on a PUT.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        public string SkuTier { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)Sku).Tier; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISkuInternal)Sku).Tier = value ?? null; }
 
         /// <summary>Creates an new <see cref="ClusterUpdate" /> instance.</summary>
         public ClusterUpdate()
@@ -63,6 +103,72 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"hosts",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> Host { get; set; }
+        /// <summary>
+        /// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the
+        /// resource this may be omitted.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.",
+        SerializedName = @"capacity",
+        PossibleTypes = new [] { typeof(int) })]
+        int? SkuCapacity { get; set; }
+        /// <summary>
+        /// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"If the service has different generations of hardware, for the same SKU, then that can be captured here.",
+        SerializedName = @"family",
+        PossibleTypes = new [] { typeof(string) })]
+        string SkuFamily { get; set; }
+        /// <summary>The name of the SKU. E.g. P3. It is typically a letter+number code</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the SKU. E.g. P3. It is typically a letter+number code",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        string SkuName { get; set; }
+        /// <summary>
+        /// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. ",
+        SerializedName = @"size",
+        PossibleTypes = new [] { typeof(string) })]
+        string SkuSize { get; set; }
+        /// <summary>
+        /// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required
+        /// on a PUT.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.",
+        SerializedName = @"tier",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Free", "Basic", "Standard", "Premium")]
+        string SkuTier { get; set; }
 
     }
     /// An update of a cluster resource
@@ -75,6 +181,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         System.Collections.Generic.List<string> Host { get; set; }
         /// <summary>The properties of a cluster resource that may be updated</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterUpdateProperties Property { get; set; }
+        /// <summary>The SKU (Stock Keeping Unit) assigned to this resource.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISku Sku { get; set; }
+        /// <summary>
+        /// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the
+        /// resource this may be omitted.
+        /// </summary>
+        int? SkuCapacity { get; set; }
+        /// <summary>
+        /// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+        /// </summary>
+        string SkuFamily { get; set; }
+        /// <summary>The name of the SKU. E.g. P3. It is typically a letter+number code</summary>
+        string SkuName { get; set; }
+        /// <summary>
+        /// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+        /// </summary>
+        string SkuSize { get; set; }
+        /// <summary>
+        /// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required
+        /// on a PUT.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Free", "Basic", "Standard", "Premium")]
+        string SkuTier { get; set; }
 
     }
 }

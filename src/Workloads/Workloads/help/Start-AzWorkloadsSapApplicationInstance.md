@@ -16,27 +16,27 @@ Starts the SAP Application Server Instance.
 ```
 Start-AzWorkloadsSapApplicationInstance -Name <String> -ResourceGroupName <String>
  -SapVirtualInstanceName <String> [-SubscriptionId <String>] [-StartVM] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Start
 ```
 Start-AzWorkloadsSapApplicationInstance -Name <String> -ResourceGroupName <String>
  -SapVirtualInstanceName <String> [-SubscriptionId <String>] -Body <IStartRequest> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StartViaIdentityExpanded
 ```
 Start-AzWorkloadsSapApplicationInstance -InputObject <IWorkloadsIdentity> [-StartVM]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### StartViaIdentity
 ```
 Start-AzWorkloadsSapApplicationInstance -InputObject <IWorkloadsIdentity> -Body <IStartRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -96,6 +96,32 @@ Target            :
 Start-AzWorkloadsSapApplicationInstance cmdlet starts the App server instance of the SAP system represented by the VIS.
 Currently, start action is supported for ABAP stack.
 In this example, you can see that instance can be started by passing the App server instance Azure resource ID as InputObject to the cmdlet.
+
+### Example 3: Start Application server instance of the SAP system and its underlying Virtual Machine
+```powershell
+Start-AzWorkloadsSapApplicationInstance -Name app0 -ResourceGroupName db0-vis-rg -SapVirtualInstanceName DB0 -StartVM
+```
+
+```output
+AdditionalInfo    :
+Code              :
+Detail            :
+EndTime           : 15-03-2023 08:21:31
+Id                : /subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/CENTRALUSEUAP/operationStatuses/58527855-a695-48a5-ac11-fbc
+                    74b836859*DF20ACAC495F17B1D0D9182C3A4C44BC6EDFF718387348FAE17F19BCB5DE687C
+Message           :
+Name              : 58527855-a695-48a5-ac11-fbc74b836859*DF20ACAC495F17B1D0D9182C3A4C44BC6EDFF718387348FAE17F19BCB5DE687C
+Operation         :
+PercentComplete   :
+ResourceGroupName :
+StartTime         : 15-03-2023 08:18:22
+Status            : Succeeded
+Target            :
+```
+
+Start-AzWorkloadsSapApplicationInstance cmdlet starts the App server instance of the SAP system and its underlying Virtual Machines represented by the VIS.
+Currently, start action is supported for ABAP stack.
+In this example, you can see that the VMs and instance can be started by passing the App server instance resource name, Resource Group name, VIS name and StartVM parameter as inputs.
 
 ## PARAMETERS
 
@@ -184,6 +210,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
