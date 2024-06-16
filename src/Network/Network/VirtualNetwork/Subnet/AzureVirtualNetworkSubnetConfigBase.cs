@@ -94,6 +94,12 @@ namespace Microsoft.Azure.Commands.Network
             "Microsoft.ServiceBus"
         )]
         public string[] ServiceEndpoint { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Service Endpoint's NetworkIdentifier Value")]
+        public string NetworkIdentifier { get; set; }
 
         [Parameter(
             Mandatory = false,
