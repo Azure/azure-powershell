@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Compute
             // At this time, it is impossible to set SecurityType to Standard ("") as it is a mandatory property on the backend.
             // If Standard is used, then there should be no securityProfile at all for now.
             if (SecurityType.ToLower() != ConstantValues.StandardSecurityType)
-            {
+            { }
                 if (this.Disk.SecurityProfile == null)
                 {
                     this.Disk.SecurityProfile = new DiskSecurityProfile();
