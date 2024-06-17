@@ -39,16 +39,25 @@ namespace Microsoft.Azure.Management.Storage
         public StorageManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Synchronously creates or updates an encryption scope under the specified storage account. If an encryption scope is already created and a subsequent request is issued with different properties, the encryption scope properties will be updated per the specified request.
+        /// Synchronously creates or updates an encryption scope under the specified
+        /// storage account. If an encryption scope is already created and a subsequent
+        /// request is issued with different properties, the encryption scope
+        /// properties will be updated per the specified request.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='encryptionScopeName'>
-        /// The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the encryption scope within the specified storage account.
+        /// Encryption scope names must be between 3 and 63 characters in length and
+        /// use numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='encryptionScope'>
         /// Encryption scope properties to be used for the create or update.
@@ -334,16 +343,23 @@ namespace Microsoft.Azure.Management.Storage
 
         }
         /// <summary>
-        /// Update encryption scope properties as specified in the request body. Update fails if the specified encryption scope does not already exist.
+        /// Update encryption scope properties as specified in the request body. Update
+        /// fails if the specified encryption scope does not already exist.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='encryptionScopeName'>
-        /// The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the encryption scope within the specified storage account.
+        /// Encryption scope names must be between 3 and 63 characters in length and
+        /// use numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='encryptionScope'>
         /// Encryption scope properties to be used for the update.
@@ -613,13 +629,19 @@ namespace Microsoft.Azure.Management.Storage
         /// Returns the properties for the specified encryption scope.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='encryptionScopeName'>
-        /// The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the encryption scope within the specified storage account.
+        /// Encryption scope names must be between 3 and 63 characters in length and
+        /// use numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -872,22 +894,29 @@ namespace Microsoft.Azure.Management.Storage
 
         }
         /// <summary>
-        /// Lists all the encryption scopes available under the specified storage account.
+        /// Lists all the encryption scopes available under the specified storage
+        /// account.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='maxpagesize'>
-        /// Optional, specifies the maximum number of encryption scopes that will be included in the list response.
+        /// Optional, specifies the maximum number of encryption scopes that will be
+        /// included in the list response.
         /// </param>
         /// <param name='filter'>
-        /// Optional. When specified, only encryption scope names starting with the filter will be listed.
+        /// Optional. When specified, only encryption scope names starting with the
+        /// filter will be listed.
         /// </param>
         /// <param name='include'>
-        /// Optional, when specified, will list encryption scopes with the specific state. Defaults to All
+        /// Optional, when specified, will list encryption scopes with the specific
+        /// state. Defaults to All
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1156,7 +1185,8 @@ namespace Microsoft.Azure.Management.Storage
 
         }
         /// <summary>
-        /// Lists all the encryption scopes available under the specified storage account.
+        /// Lists all the encryption scopes available under the specified storage
+        /// account.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

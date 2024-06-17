@@ -18,6 +18,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobRunStatus Failed = @"Failed";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobRunStatus PausedByBandwidthManagement = @"PausedByBandwidthManagement";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobRunStatus Queued = @"Queued";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.JobRunStatus Running = @"Running";

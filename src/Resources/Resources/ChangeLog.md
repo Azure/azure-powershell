@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+* Supported `ServiceManagementReference` of Entra App
+    * `Get-AzADApplication`
+    * `New-AzADApplication`
+    * `Update-AzADApplication`
+* Fixed deployment stack validation error surfacing.
 * Fixed default formatting for output objects
 * Removed '-InputObject' for
     * `Get-AzPolicyAssignment`

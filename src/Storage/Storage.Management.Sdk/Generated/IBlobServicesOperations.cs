@@ -14,16 +14,21 @@ namespace Microsoft.Azure.Management.Storage
     public partial interface IBlobServicesOperations
     {
         /// <summary>
-        /// List blob services of storage account. It returns a collection of one object named default.
+        /// List blob services of storage account. It returns a collection of one
+        /// object named default.
         /// </summary>
         /// <remarks>
-        /// List blob services of storage account. It returns a collection of one object named default.
+        /// List blob services of storage account. It returns a collection of one
+        /// object named default.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -40,19 +45,27 @@ namespace Microsoft.Azure.Management.Storage
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<BlobServiceProperties>>> ListWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Sets the properties of a storage account’s Blob service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules. 
+        /// Sets the properties of a storage account’s Blob service, including
+        /// properties for Storage Analytics and CORS (Cross-Origin Resource Sharing)
+        /// rules.
         /// </summary>
         /// <remarks>
-        /// Sets the properties of a storage account’s Blob service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules. 
+        /// Sets the properties of a storage account’s Blob service, including
+        /// properties for Storage Analytics and CORS (Cross-Origin Resource Sharing)
+        /// rules.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='parameters'>
-        /// The properties of a storage account’s Blob service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.
+        /// The properties of a storage account’s Blob service, including properties
+        /// for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -69,16 +82,23 @@ namespace Microsoft.Azure.Management.Storage
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BlobServiceProperties>> SetServicePropertiesWithHttpMessagesAsync(string resourceGroupName, string accountName, BlobServiceProperties parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the properties of a storage account’s Blob service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.
+        /// Gets the properties of a storage account’s Blob service, including
+        /// properties for Storage Analytics and CORS (Cross-Origin Resource Sharing)
+        /// rules.
         /// </summary>
         /// <remarks>
-        /// Gets the properties of a storage account’s Blob service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.
+        /// Gets the properties of a storage account’s Blob service, including
+        /// properties for Storage Analytics and CORS (Cross-Origin Resource Sharing)
+        /// rules.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

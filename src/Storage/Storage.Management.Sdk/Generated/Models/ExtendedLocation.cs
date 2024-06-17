@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </param>
 
         /// <param name="type">The type of the extended location.
-        /// Possible values include: 'EdgeZone'</param>
+        /// Possible values include: &#39;EdgeZone&#39;</param>
         public ExtendedLocation(string name = default(string), string type = default(string))
 
         {

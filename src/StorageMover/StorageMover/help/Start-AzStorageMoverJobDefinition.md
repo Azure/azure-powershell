@@ -8,7 +8,7 @@ schema: 2.0.0
 # Start-AzStorageMoverJobDefinition
 
 ## SYNOPSIS
-Requests an Agent to start a new instance of this Job Definition, generating a new Job Run resource.
+Creates a new Job Run resource for the specified Job Definition and passes it to the Agent for execution.
 
 ## SYNTAX
 
@@ -16,17 +16,17 @@ Requests an Agent to start a new instance of this Job Definition, generating a n
 ```
 Start-AzStorageMoverJobDefinition -JobDefinitionName <String> -ProjectName <String> -ResourceGroupName <String>
  -StorageMoverName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StartViaIdentity
 ```
 Start-AzStorageMoverJobDefinition -InputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Requests an Agent to start a new instance of this Job Definition, generating a new Job Run resource.
+Creates a new Job Run resource for the specified Job Definition and passes it to the Agent for execution.
 
 ## EXAMPLES
 
@@ -90,6 +90,21 @@ Parameter Sets: Start
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -42,10 +42,13 @@ namespace Microsoft.Azure.Management.Storage
         /// List all file services in storage accounts
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -286,16 +289,21 @@ namespace Microsoft.Azure.Management.Storage
 
         }
         /// <summary>
-        /// Sets the properties of file services in storage accounts, including CORS (Cross-Origin Resource Sharing) rules. 
+        /// Sets the properties of file services in storage accounts, including CORS
+        /// (Cross-Origin Resource Sharing) rules.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='parameters'>
-        /// The properties of file services in storage accounts, including CORS (Cross-Origin Resource Sharing) rules.
+        /// The properties of file services in storage accounts, including CORS
+        /// (Cross-Origin Resource Sharing) rules.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -554,13 +562,17 @@ namespace Microsoft.Azure.Management.Storage
 
         }
         /// <summary>
-        /// Gets the properties of file services in storage accounts, including CORS (Cross-Origin Resource Sharing) rules.
+        /// Gets the properties of file services in storage accounts, including CORS
+        /// (Cross-Origin Resource Sharing) rules.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
