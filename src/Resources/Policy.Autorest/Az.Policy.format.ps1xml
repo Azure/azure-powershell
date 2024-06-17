@@ -55,12 +55,18 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>DefinitionVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>PolicyDefinitionId</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DefinitionVersion</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PolicyDefinitionId</PropertyName>
               </TableColumnItem>
@@ -349,6 +355,9 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>DefinitionVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Description</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -367,6 +376,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DefinitionVersion</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Description</PropertyName>
               </TableColumnItem>
