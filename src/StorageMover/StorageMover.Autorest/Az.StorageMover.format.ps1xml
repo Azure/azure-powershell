@@ -356,9 +356,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.AzureKeyVaultSmbCredentials</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.AzureKeyVaultSmbCredentials</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.AzureKeyVaultSmbCredentials</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.AzureKeyVaultSmbCredentials</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -384,9 +384,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.StorageMoverUpdateParametersTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.StorageMoverUpdateParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.StorageMoverUpdateParametersTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.StorageMoverUpdateParametersTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -399,6 +399,154 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.Time</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.Time</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Hour</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Minute</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Hour</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Minute</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.UploadLimit</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.UploadLimit</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>LimitInMbps</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>LimitInMbps</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.UploadLimitWeeklyRecurrence</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.UploadLimitWeeklyRecurrence</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Day</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EndTimeHour</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EndTimeMinute</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LimitInMbps</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTimeHour</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTimeMinute</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Day</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EndTimeHour</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EndTimeMinute</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LimitInMbps</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTimeHour</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTimeMinute</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.WeeklyRecurrence</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.WeeklyRecurrence</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EndTimeHour</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EndTimeMinute</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTimeHour</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTimeMinute</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Day</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EndTimeHour</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EndTimeMinute</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTimeHour</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTimeMinute</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Day</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cross-subscription support for `Copy-AzSqlInstanceDatabase`, `Move-AzSqlInstanceDatabase`
 * Added new parameter SecondaryType to `Add-AzSqlDatabaseFromFailoverGroup`
 
 ## Version 5.0.0

@@ -57,7 +57,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
             {
                 BackupsCount = volumeBackup.BackupsCount,
                 PolicyEnabled = volumeBackup.PolicyEnabled,
-                VolumeName = volumeBackup.VolumeName
+                VolumeName = volumeBackup.VolumeName,
+                VolumeResourceId = volumeBackup.VolumeResourceId
             };
             return psVolumeBackup;
         }

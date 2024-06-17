@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
 
         /// <param name="action">Specifies the lease action. Can be one of the available actions.
-        /// Possible values include: 'Acquire', 'Renew', 'Change', 'Release', 'Break'</param>
+        /// Possible values include: &#39;Acquire&#39;, &#39;Renew&#39;, &#39;Change&#39;, &#39;Release&#39;, &#39;Break&#39;</param>
 
         /// <param name="leaseId">Identifies the lease. Can be specified in any valid GUID string format.
         /// </param>

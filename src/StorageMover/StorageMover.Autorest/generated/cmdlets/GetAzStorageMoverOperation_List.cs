@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IOperation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Description(@"Lists all the supported operations for the Azure Storage Mover REST API.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.HttpPath(Path = "/providers/Microsoft.StorageMover/operations", ApiVersion = "2023-10-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageMover.HttpPath(Path = "/providers/Microsoft.StorageMover/operations", ApiVersion = "2024-07-01")]
     public partial class GetAzStorageMoverOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener
     {

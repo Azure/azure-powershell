@@ -14,16 +14,21 @@ namespace Microsoft.Azure.Management.Storage
     public partial interface IPrivateLinkResourcesOperations
     {
         /// <summary>
-        /// Gets the private link resources that need to be created for a storage account.
+        /// Gets the private link resources that need to be created for a storage
+        /// account.
         /// </summary>
         /// <remarks>
-        /// Gets the private link resources that need to be created for a storage account.
+        /// Gets the private link resources that need to be created for a storage
+        /// account.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

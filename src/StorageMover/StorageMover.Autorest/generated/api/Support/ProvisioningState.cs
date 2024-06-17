@@ -6,10 +6,16 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support
 {
 
-    /// <summary>The provisioning state of this resource.</summary>
+    /// <summary>The provisioning state of a resource.</summary>
     public partial struct ProvisioningState :
         System.IEquatable<ProvisioningState>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ProvisioningState Canceled = @"Canceled";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ProvisioningState Deleting = @"Deleting";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ProvisioningState Failed = @"Failed";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.ProvisioningState Succeeded = @"Succeeded";
 
         /// <summary>the value for an instance of the <see cref="ProvisioningState" /> Enum.</summary>

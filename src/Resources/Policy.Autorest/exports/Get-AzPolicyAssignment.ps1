@@ -46,13 +46,6 @@ function Get-AzPolicyAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment])]
 [CmdletBinding(DefaultParameterSetName='Default', PositionalBinding=$false)]
 param(
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
     [Parameter(ParameterSetName='Name', Mandatory, ValueFromPipelineByPropertyName)]
     [Alias('PolicyAssignmentName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
