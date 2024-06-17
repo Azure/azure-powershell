@@ -20,14 +20,8 @@ namespace Microsoft.Azure.Commands.Profile.ContextSelectStrategy
             this._accountId = accountId;
         }
 
-        public override IAzureContext GetDefaultContext(IAzureAccount account, IAzureEnvironment environment)
-        {
-            var (defaultTenant, defaultSubscription) = GetDefaultTenantAndSubscription();
-            // to be finished
-            return new AzureContext(account, environment, defaultTenant);
-        }
 
-        public override (IAzureTenant, IAzureSubscription) GetDefaultTenantAndSubscription()
+        public override (IAzureTenant, IAzureSubscription) GetDefaultTenantAndSubscription(ContextSelectParameter selectParameter)
         {
             var defaultSubscription = new AzureSubscription
             {

@@ -12,7 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Profile.Utilities;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Identity.Client;
 
 using System;
 using System.Collections.Generic;
@@ -22,25 +27,28 @@ namespace Microsoft.Azure.Commands.Profile.ContextSelectStrategy
 {
     public class InteractiveContextSelectStrategy : ContextSelectStrategy
     {
-        IAzureTenant Tenant;
-        IList<IAzureSubscription> Subscriptions;
-
-        public InteractiveContextSelectStrategy(IAzureTenant tenant, IList<IAzureSubscription> subscriptions) {
-            Tenant = tenant;
-            Subscriptions = subscriptions;
+        RMProfileClient ProfileClient;
+        
+        public InteractiveContextSelectStrategy(RMProfileClient profileClient) {
+            ProfileClient = profileClient;
         }
 
-        public override IAzureContext GetDefaultContext(IAzureAccount account, IAzureEnvironment environment)
+        public override (IAzureTenant, IAzureSubscription) GetDefaultTenantAndSubscription(ContextSelectParameter selectParameter)
         {
-            throw new NotImplementedException();
+            IAzureTenant defaultTenant = null;
+            IAzureSubscription defaultSubscription = null;
+
+            InteractiveContextSelectionHelper.SelectContextFromList(
+                selectParameter.PopulatedSubscriptions, selectParameter.QueriedTenants, selectParameter.TenantIdOrName, selectParameter.TenantName, selectParameter.LastUsedSubscription,
+                Prompt, WriteInformationMessage,
+                ref defaultSubscription, ref defaultTenant);
+            return (defaultTenant, defaultSubscription);
         }
 
-        public override (IAzureTenant, IAzureSubscription) GetDefaultTenantAndSubscription()
-        {
-            OutputAction("To override which subscription Connect-AzAccount selects by default, " +
-                "use `Update-AzConfig -DefaultSubscriptionForLogin 00000000-0000-0000-0000-000000000000`. " +
-                "Go to https://go.microsoft.com/fwlink/?linkid=2200610 for more information.");
-            return (Tenant, Subscriptions?.First());
-        }
+        private string Prompt(string message) => ProfileClient.Prompt(message);
+        private void WriteDebugMessage(string message) => ProfileClient.WriteDebugMessage(message);
+        private void WriteWarningMessage(string message) => ProfileClient.WriteWarningMessage(message);
+        private void WriteInformationMessage(string message) => ProfileClient.WriteInformationMessage(message);
+
     }
 }

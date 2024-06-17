@@ -20,11 +20,6 @@ namespace Microsoft.Azure.Commands.Profile.ContextSelectStrategy
 {
     public abstract class ContextSelectStrategy
     {
-
-        public Action<string> OutputAction;
-
-        public abstract (IAzureTenant, IAzureSubscription) GetDefaultTenantAndSubscription();
-
-        public abstract IAzureContext GetDefaultContext(IAzureAccount account, IAzureEnvironment environment);
+        public abstract (IAzureTenant, IAzureSubscription) GetDefaultTenantAndSubscription(ContextSelectParameter selectParameter);
     }
 }

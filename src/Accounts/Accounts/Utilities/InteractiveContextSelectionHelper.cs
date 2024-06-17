@@ -25,69 +25,83 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Profile.Utilities
 {
-    internal static class InteractiveSubscriptionSelectionHelper
+    internal static class InteractiveContextSelectionHelper
     {
         private static string DefaultSubscriptionMark = $"{PSStyle.ForegroundColor.White}*{PSStyle.Reset}";
 
-        internal static void SelectSubscriptionFromList(IEnumerable<IAzureSubscription> subscriptions, List<AzureTenant> queriedTenants, string tenantId, string tenantName, IAzureSubscription lastUsedSubscription,
+        internal static void SelectContextFromList(IEnumerable<IAzureSubscription> subscriptions, List<AzureTenant> queriedTenants, string tenantId, string tenantName, IAzureSubscription lastUsedSubscription,
             Func<string, string> prompt, Action<string> outputAction,
             ref IAzureSubscription defaultSubscription, ref IAzureTenant defaultTenant)
         {
-            subscriptions = subscriptions?.OrderBy(s => GetDetailedTenantFromQueryHistory(queriedTenants, s.GetProperty(AzureSubscription.Property.Tenants))?.GetProperty(AzureTenant.Property.DisplayName))?.ThenBy(s => s.Name)?.ToList();
-
-            var markDefaultSubscription = lastUsedSubscription != null;
+            if (null == subscriptions || 0 == subscriptions.Count())
+            {
+                return;
+            }
 
             // to do: calculate column width dynamically based terminal width --bez
             const int columnNoWidth = 4, columnSubNameWidth = 36, columnSubIdWidth = 40, columnTenantWidth = 26, columnIndentsWidth = 4;
 
-            WriteSubscriptionSelectionTable(subscriptions, queriedTenants,
-                outputAction, columnNoWidth, columnSubNameWidth, columnSubIdWidth, columnTenantWidth, columnIndentsWidth,
-                lastUsedSubscription?.Id, markDefaultSubscription, tenantName);
+            if (1 == subscriptions.Count())
+            {
+                defaultSubscription = subscriptions.FirstOrDefault();
+            }
+            else
+            {
+                subscriptions = subscriptions?.OrderBy(s => GetDetailedTenantFromQueryHistory(queriedTenants, s.GetProperty(AzureSubscription.Property.Tenants))?.GetProperty(AzureTenant.Property.DisplayName))?.ThenBy(s => s.Name)?.ToList();
 
-            if (markDefaultSubscription)
-            {
-                outputAction($"{Environment.NewLine}The default is marked with an {DefaultSubscriptionMark}; " +
-                    $"the default tenant is '{GetDetailedTenantFromQueryHistory(queriedTenants, lastUsedSubscription?.GetProperty(AzureSubscription.Property.Tenants))?.GetProperty(AzureTenant.Property.DisplayName)}' " +
-                    $"and subscription is '{lastUsedSubscription?.Name} ({lastUsedSubscription?.Id})'.");
-            }
+                var markDefaultSubscription = lastUsedSubscription != null;
 
-            string input = markDefaultSubscription ? prompt($"{Environment.NewLine}{Resources.SelectTenantAndSubscriptionWithDefaultValue}") : prompt($"{Environment.NewLine}{Resources.SelectTenantAndSubscription}");
-            int selectedSubIndex = -1;
-            try
-            {
-                if (!string.IsNullOrEmpty(input))
+                WriteSubscriptionSelectionTable(subscriptions, queriedTenants,
+                    outputAction, columnNoWidth, columnSubNameWidth, columnSubIdWidth, columnTenantWidth, columnIndentsWidth,
+                    lastUsedSubscription?.Id, markDefaultSubscription, tenantName);
+
+                if (markDefaultSubscription)
                 {
-                    selectedSubIndex = Convert.ToInt32(input);
+                    outputAction($"{Environment.NewLine}The default is marked with an {DefaultSubscriptionMark}; " +
+                        $"the default tenant is '{GetDetailedTenantFromQueryHistory(queriedTenants, lastUsedSubscription?.GetProperty(AzureSubscription.Property.Tenants))?.GetProperty(AzureTenant.Property.DisplayName)}' " +
+                        $"and subscription is '{lastUsedSubscription?.Name} ({lastUsedSubscription?.Id})'.");
                 }
-                if (selectedSubIndex != -1)
+
+                string input = markDefaultSubscription ? prompt($"{Environment.NewLine}{Resources.SelectTenantAndSubscriptionWithDefaultValue}") : prompt($"{Environment.NewLine}{Resources.SelectTenantAndSubscription}");
+                int selectedSubIndex = -1;
+                try
                 {
-                    defaultSubscription = subscriptions.ElementAt(selectedSubIndex - 1);
+                    if (!string.IsNullOrEmpty(input))
+                    {
+                        selectedSubIndex = Convert.ToInt32(input);
+                    }
+                    if (selectedSubIndex != -1)
+                    {
+                        defaultSubscription = subscriptions.ElementAt(selectedSubIndex - 1);
+                    }
+                    else if (selectedSubIndex == -1 && lastUsedSubscription != null)
+                    {
+                        defaultSubscription = lastUsedSubscription;
+                    }
+                    else if (selectedSubIndex == -1 && lastUsedSubscription == null)
+                    {
+                        throw new AzPSException(Resources.PleaseSelectSubscription, ErrorKind.UserError);
+                    }
+                   
                 }
-                else if (selectedSubIndex == -1 && lastUsedSubscription != null)
+                catch (ArgumentOutOfRangeException)
                 {
-                    defaultSubscription = lastUsedSubscription;
+                    throw new AzPSException(Resources.SelectedSubscriptionOutOfRange, ErrorKind.UserError);
                 }
-                else if (selectedSubIndex == -1 && lastUsedSubscription == null)
+                catch (FormatException)
                 {
-                    throw new AzPSException(Resources.PleaseSelectSubscription, ErrorKind.UserError);
+                    throw new AzPSException(Resources.TypedSubscriptionNotNumber, ErrorKind.UserError);
                 }
-                defaultTenant = GetDetailedTenantFromQueryHistory(queriedTenants, defaultSubscription?.GetProperty(AzureSubscription.Property.Tenants)) ?? new AzureTenant { Id = tenantId };
-                if (!string.IsNullOrEmpty(tenantName))
-                {
-                    defaultTenant.ExtendedProperties.Add(AzureTenant.Property.DisplayName, tenantName);
-                }
-                WriteSelectedSubscriptionTable(defaultSubscription?.Name ?? defaultSubscription?.Id, 
-                    defaultTenant?.GetProperty(AzureTenant.Property.DisplayName) ?? tenantName ?? defaultTenant?.Id,
-                    outputAction, columnSubNameWidth, columnTenantWidth, columnIndentsWidth);
+
             }
-            catch (ArgumentOutOfRangeException)
+            defaultTenant = GetDetailedTenantFromQueryHistory(queriedTenants, defaultSubscription?.GetProperty(AzureSubscription.Property.Tenants)) ?? new AzureTenant { Id = tenantId };
+            if (!string.IsNullOrEmpty(tenantName))
             {
-                throw new AzPSException(Resources.SelectedSubscriptionOutOfRange, ErrorKind.UserError);
+                defaultTenant.ExtendedProperties.Add(AzureTenant.Property.DisplayName, tenantName);
             }
-            catch (FormatException)
-            {
-                throw new AzPSException(Resources.TypedSubscriptionNotNumber, ErrorKind.UserError);
-            }
+            WriteSelectedSubscriptionTable(defaultSubscription?.Name ?? defaultSubscription?.Id,
+                defaultTenant?.GetProperty(AzureTenant.Property.DisplayName) ?? tenantName ?? defaultTenant?.Id,
+                outputAction, columnSubNameWidth, columnTenantWidth, columnIndentsWidth);
         }
 
 
