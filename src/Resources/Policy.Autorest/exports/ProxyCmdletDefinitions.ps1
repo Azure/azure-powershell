@@ -1540,6 +1540,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 POLICYASSIGNMENT <PSObject>: The policy assignment id filter.
+  [DefinitionVersion <String>]: The version of the policy definition to use.
   [Description <String>]: This message will be part of response in case of policy violation.
   [DisplayName <String>]: The display name of the policy assignment.
   [EnforcementMode <String>]: The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
@@ -3031,6 +3032,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IPolicyAssignment>: 
+  [DefinitionVersion <String>]: The version of the policy definition to use.
   [Description <String>]: This message will be part of response in case of policy violation.
   [DisplayName <String>]: The display name of the policy assignment.
   [EnforcementMode <String>]: The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
@@ -3893,6 +3895,7 @@ INPUTOBJECT <IPolicySetDefinition>:
     [(Any) <Object>]: This indicates any property can be added to this object.
   [PolicyDefinition <List<IPolicyDefinitionReference>>]: An array of policy definition references.
     PolicyDefinitionId <String>: The ID of the policy definition or policy set definition.
+    [DefinitionVersion <String>]: The version of the policy definition to use.
     [GroupName <List<String>>]: The name of the groups that this policy definition reference belongs to.
     [Id <String>]: A unique id (within the policy set definition) for this policy definition reference.
     [Parameter <IParameterValues>]: The parameter values for the referenced policy rule. The keys are the parameter names.
