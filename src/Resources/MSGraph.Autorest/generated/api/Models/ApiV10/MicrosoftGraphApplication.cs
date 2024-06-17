@@ -381,6 +381,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.DoNotFormat]
         public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphRequiredResourceAccess[] RequiredResourceAccess { get => this._requiredResourceAccess; set => this._requiredResourceAccess = value; }
 
+        /// <summary>Backing field for <see cref="ServiceManagementReference" /> property.</summary>
+        private string _serviceManagementReference;
+
+        /// <summary>
+        /// References application or service contact information from a Service or Asset Management database. Nullable.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.DoNotFormat]
+        public string ServiceManagementReference { get => this._serviceManagementReference; set => this._serviceManagementReference = value; }
+
         /// <summary>Backing field for <see cref="SignInAudience" /> property.</summary>
         private string _signInAudience;
 
@@ -874,6 +884,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphRequiredResourceAccess) })]
         Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphRequiredResourceAccess[] RequiredResourceAccess { get; set; }
         /// <summary>
+        /// References application or service contact information from a Service or Asset Management database. Nullable.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"References application or service contact information from a Service or Asset Management database. Nullable.",
+        SerializedName = @"serviceManagementReference",
+        PossibleTypes = new [] { typeof(string) })]
+        string ServiceManagementReference { get; set; }
+        /// <summary>
         /// Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs,
         /// AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
         /// </summary>
@@ -1086,6 +1109,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// drives the consent experience. Not nullable. Supports $filter (eq, NOT, ge, le).
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphRequiredResourceAccess[] RequiredResourceAccess { get; set; }
+        /// <summary>
+        /// References application or service contact information from a Service or Asset Management database. Nullable.
+        /// </summary>
+        string ServiceManagementReference { get; set; }
         /// <summary>
         /// Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs,
         /// AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
