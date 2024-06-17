@@ -810,12 +810,6 @@ Get IKE Security Associations of VPN Site Link Connections
 ### [Invoke-AzFirewallPacketCapture](Invoke-AzFirewallPacketCapture.md)
 Invoke Packet Capture on Azure Firewall
 
-### [Invoke-AzNetworkSecurityPerimeterNspAccessRulesReconcile](Invoke-AzNetworkSecurityPerimeterNspAccessRulesReconcile.md)
-Reconcile NSP access rules
-
-### [Invoke-AzNetworkSecurityPerimeterNspAssociationReconcile](Invoke-AzNetworkSecurityPerimeterNspAssociationReconcile.md)
-Reconcile NSP association
-
 ### [Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic](Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic.md)
 Invoke network configuration diagnostic session for specified network profiles on target resource.
 
