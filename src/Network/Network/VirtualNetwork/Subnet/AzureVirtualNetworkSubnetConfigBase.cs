@@ -98,8 +98,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Service Endpoint's NetworkIdentifier Value")]
-        public string NetworkIdentifier { get; set; }
+            HelpMessage = "Service Endpoint with NetworkIdentifier Value")]
+        public PSServiceEndpoint[] SENetworkIdentifier { get; set; }
 
         [Parameter(
             Mandatory = false,

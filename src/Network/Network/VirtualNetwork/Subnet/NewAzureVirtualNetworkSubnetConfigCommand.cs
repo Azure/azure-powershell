@@ -89,13 +89,14 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     var service = new PSServiceEndpoint();
                     service.Service = item;
-                    if (this.NetworkIdentifier != null)
-                    {
-                        service.NetworkIdentifier = new PSPublicIpAddress();
-                        service.NetworkIdentifier.Id = this.NetworkIdentifier;
-                    }
                     subnet.ServiceEndpoints.Add(service);
                 }
+            }
+
+            if (this.SENetworkIdentifier != null)
+            {
+                subnet.ServiceEndpoints = this.ServiceEndpoint == null ? new List<PSServiceEndpoint>() : subnet.ServiceEndpoints;
+                subnet.ServiceEndpoints.AddRange(this.SENetworkIdentifier?.ToList());
             }
 
             if (this.ServiceEndpointPolicy != null)
