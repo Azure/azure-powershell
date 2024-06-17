@@ -47,6 +47,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+# TEST-1
 version: "3.9.5"
 use-extension:
   "@autorest/powershell": "4.0.0-dev.12"

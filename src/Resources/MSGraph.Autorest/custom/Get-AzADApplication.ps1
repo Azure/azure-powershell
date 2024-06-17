@@ -177,6 +177,7 @@ param(
 )
 
 process {
+    # Test-1
     if ($PSBoundParameters['AppendSelected'] -and $PSBoundParameters['Select']) {
         $PSBoundParameters['Select'] += @('DisplayName', 'Id', 'DeletedDateTime', 'IdentifierUris', 'Web', 'AppId', 'SignInAudience')
         $null = $PSBoundParameters.Remove('AppendSelected')

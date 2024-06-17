@@ -26,6 +26,7 @@ For information on how to develop for `Az.DiagnosticSetting`, see [how-to.md](ho
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
+# Test-1
 commit: e94b0da0c7f80e2986af90c1dd7e9c8f4c336c61
 require:
 # readme.azure.noprofile.md is the common configuration file
