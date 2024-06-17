@@ -17,8 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{97F41786-D7B7-42E8-B9AF-6E67EB6ED319}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Marketplace", "Marketplace.Autorest\Az.Marketplace.csproj", "{7FC23BD5-5EA8-4DE7-B537-F083750034F9}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{E2AFE775-9330-4955-B7E6-45C52566CB48}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketplace.Test", "Marketplace.Test\Marketplace.Test.csproj", "{CC255CC3-582B-4E84-91A6-9F596B75DBC9}"
@@ -26,6 +24,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketplace", "Marketplace\Marketplace.csproj", "{E85AA2EB-11D0-4A8D-B04A-85267DE7C273}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{874EAA39-034D-4232-A1F3-B5584ED20E07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Marketplace", "..\..\generated\Marketplace\Marketplace.Autorest\Az.Marketplace.csproj", "{234CC449-D44A-4BC3-A835-EE7CA1306877}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,10 +60,6 @@ Global
 		{97F41786-D7B7-42E8-B9AF-6E67EB6ED319}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97F41786-D7B7-42E8-B9AF-6E67EB6ED319}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97F41786-D7B7-42E8-B9AF-6E67EB6ED319}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7FC23BD5-5EA8-4DE7-B537-F083750034F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7FC23BD5-5EA8-4DE7-B537-F083750034F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7FC23BD5-5EA8-4DE7-B537-F083750034F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7FC23BD5-5EA8-4DE7-B537-F083750034F9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CC255CC3-582B-4E84-91A6-9F596B75DBC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CC255CC3-582B-4E84-91A6-9F596B75DBC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC255CC3-582B-4E84-91A6-9F596B75DBC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -76,6 +72,10 @@ Global
 		{874EAA39-034D-4232-A1F3-B5584ED20E07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{874EAA39-034D-4232-A1F3-B5584ED20E07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{874EAA39-034D-4232-A1F3-B5584ED20E07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{234CC449-D44A-4BC3-A835-EE7CA1306877}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{234CC449-D44A-4BC3-A835-EE7CA1306877}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{234CC449-D44A-4BC3-A835-EE7CA1306877}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{234CC449-D44A-4BC3-A835-EE7CA1306877}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BBBDB6E5-48B9-471A-8BC6-BEF3FC8D283D} = {8093C7F1-B506-4873-B0CC-515F3DADAD74}
