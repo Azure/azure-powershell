@@ -19,6 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
 {
+    // Test-1
     /// <summary>
     /// Defines the Get-AzSqlServerFirewallRule cmdlet
     /// </summary>
