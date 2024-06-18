@@ -2352,25 +2352,8 @@ function GetManagedEnvironment
         [Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
         [String]
-        $ResourceGroupName,
-
-        $SubscriptionId,
-        $HttpPipelineAppend,
-        $HttpPipelinePrepend
+        $ResourceGroupName
     )
-
-    $paramsToRemove = @(
-        "Environment",
-        "ResourceGroupName"
-    )
-
-    foreach ($paramName in $paramsToRemove)
-    {
-        if ($PSBoundParameters.ContainsKey($paramName))
-        {
-            $PSBoundParameters.Remove($paramName)  | Out-Null
-        }
-    }
 
     $azAppModuleName = "Az.App"
     if (-not (Get-Module -ListAvailable -Name $azAppModuleName))
@@ -2387,8 +2370,7 @@ function GetManagedEnvironment
 
     $managedEnv = Get-AzContainerAppManagedEnv -Name $Environment `
                                                -ResourceGroupName $ResourceGroupName `
-                                               -ErrorAction SilentlyContinue `
-                                               @PSBoundParameters
+                                               -ErrorAction SilentlyContinue
 
     if (-not $managedEnv)
     {

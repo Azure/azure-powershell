@@ -506,8 +506,8 @@ function New-AzFunctionApp {
             {
                 $siteConfig.FunctionAppScaleLimit = $MaxReplicas
             }
-
-            $managedEnvironment = GetManagedEnvironment -Environment $Environment -ResourceGroupName $ResourceGroupName @params
+            
+            $managedEnvironment = GetManagedEnvironment -Environment $Environment -ResourceGroupName $ResourceGroupName
             $functionAppDef.Location = $managedEnvironment.Location
             $functionAppDef.ManagedEnvironmentId = $managedEnvironment.Id
         }
