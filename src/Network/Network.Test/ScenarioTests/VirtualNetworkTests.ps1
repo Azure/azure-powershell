@@ -1218,17 +1218,23 @@ function Test-VirtualNetworkSubnetServiceEndpointWithNetworkIdentifier
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/virtualNetworks"
     $location = Get-ProviderLocation $resourceTypeParent
-    $ServiceEndpointServiceName = "Microsoft.Storage"
-    $PublicIPAddressName = "PublicIPAddressName";
-    $PublicIPAddressAllocationMethod = "Static";
-
+    $publicIPAddressName = "PublicIPAddressName";
+    $publicIPAddressAllocationMethod = "Static";
+    $serviceEndpoint = "Microsoft.Storage"
+    
     try
     {
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" };
 
+        # Create the publicip
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIPAddressName -location $location -AllocationMethod $publicIPAddressAllocationMethod    
+
+        # Create the $networkIdentifier
+        $networkIdentifier = @{ Id = $publicip.Id };
+        
         # Create the Virtual Network
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -ServiceEndpoint $serviceEndpoint;
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -ServiceEndpoint $serviceEndpoint -NetworkIdentifier $networkIdentifier ;
         New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet;
         $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname;
 
@@ -1237,12 +1243,65 @@ function Test-VirtualNetworkSubnetServiceEndpointWithNetworkIdentifier
 
         $subnet = $vnet.Subnets[0];
         Assert-AreEqual $serviceEndpoint $subnet.serviceEndpoints[0].Service;
+        Assert-AreEqual $networkIdentifier.Id $subnet.serviceEndpoints[0].networkIdentifier.Id;
 
-        $PublicIPAddress = New-AzPublicIPAddress -ResourceGroupName $rgname -Location $location -Name $PublicIPAddressName -AllocationMethod $PublicIPAddressAllocationMethod;
-        $NetworkIdentifier = @{ Id = $PublicIPAddress.Id};
-        $ServiceEndpointConfig = @( @{Service = $ServiceEndpointServiceName; NetworkIdentifier = $NetworkIdentifier }) 
+        
+        Set-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet -AddressPrefix 10.0.1.0/24 -ServiceEndpoint $null;
+        $vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet;
+        $subnet = $vnet.Subnets[0];
+
+        Assert-Null $subnet.serviceEndpoints;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests checking Virtual Network Subnet Service Endpoint feature With NetworkIdentifier using ServiceEndpointConfig .
+#>
+function Test-VirtualNetworkSubnetServiceEndpointConfig
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $location = Get-ProviderLocation $resourceTypeParent
+    $publicIPAddressName = "PublicIPAddressName";
+    $publicIPAddressAllocationMethod = "Static";
+    $serviceEndpoint = "Microsoft.Storage"
     
-        Set-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet -AddressPrefix 10.0.1.0/24 -ServiceEndpointConfig $ServiceEndpointConfig;
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" };
+
+        # Create the publicip
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIPAddressName -location $location -AllocationMethod $publicIPAddressAllocationMethod    
+
+        # Create the $networkIdentifier
+        $networkIdentifier = @{ Id = $publicip.Id };
+        $serviceEndpointConfig = @( @{ Service = $ServiceEndpointServiceName; NetworkIdentifier = $NetworkIdentifier }) 
+    
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -ServiceEndpointConfig $serviceEndpointConfig -NetworkIdentifier $networkIdentifier ;
+        New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname;
+
+        Assert-NotNull $vnet;
+        Assert-NotNull $vnet.Subnets;
+
+        $subnet = $vnet.Subnets[0];
+        Assert-AreEqual $serviceEndpoint $subnet.serviceEndpoints[0].Service;
+        Assert-AreEqual $networkIdentifier.Id $subnet.serviceEndpoints[0].networkIdentifier.Id;
+
+        
+        Set-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet -AddressPrefix 10.0.1.0/24 -ServiceEndpoint $null;
         $vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet;
         $subnet = $vnet.Subnets[0];
 
