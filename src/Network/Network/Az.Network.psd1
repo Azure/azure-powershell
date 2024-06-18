@@ -733,7 +733,7 @@ PrivateData = @{
 * Added cmdlet ''Update-AzNetworkSecurityPerimeter'' to Patch Tags for a NetworkSecurityPerimeter.'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
