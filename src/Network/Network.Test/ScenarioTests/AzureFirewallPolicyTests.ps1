@@ -1517,6 +1517,7 @@ function Test-AzureFirewallPolicyPrivateRangeCRUD {
     $privateRange2 = @("IANAPrivateRanges", "0.0.0.0/0", "66.92.0.0/16")
     $privateRange1 = @("3.3.0.0/24", "98.0.0.0/8","10.227.16.0/20")
     $privateRange2Translated = @("0.0.0.0/0", "66.92.0.0/16", "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16", "100.64.0.0/10")
+    $privateRange3 = @("255.255.255.255/32")
 
     try {
 
@@ -1541,6 +1542,12 @@ function Test-AzureFirewallPolicyPrivateRangeCRUD {
         Set-AzFirewallPolicy -InputObject $azureFirewallPolicy
         $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
         Assert-AreEqualArray $privateRange2Translated $getAzureFirewallPolicy.PrivateRange
+
+        # Test Always SNAT
+        $azureFirewallPolicy.PrivateRange = $privateRange3
+        Set-AzFirewallPolicy -InputObject $azureFirewallPolicy
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+        Assert-AreEqualArray $privateRange3 $getAzureFirewallPolicy.PrivateRange
     }
     finally {
         # Cleanup

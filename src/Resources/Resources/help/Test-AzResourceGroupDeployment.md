@@ -18,7 +18,7 @@ Validates a resource group deployment.
 Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>] [-RollbackToLastDeployment]
  [-RollBackDeploymentName <String>] [-QueryString <String>] -TemplateFile <String>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterObject
@@ -26,7 +26,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMod
 Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>] [-RollbackToLastDeployment]
  [-RollBackDeploymentName <String>] [-QueryString <String>] -TemplateParameterObject <Hashtable>
  -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateFileAndParameterObject
@@ -34,7 +34,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMod
 Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>] [-RollbackToLastDeployment]
  [-RollBackDeploymentName <String>] [-QueryString <String>] -TemplateParameterObject <Hashtable>
  -TemplateFile <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriAndParameterObject
@@ -42,7 +42,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMod
 Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>] [-RollbackToLastDeployment]
  [-RollBackDeploymentName <String>] [-QueryString <String>] -TemplateParameterObject <Hashtable>
  -TemplateUri <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateSpecResourceIdAndParamsObject
@@ -50,7 +50,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMod
 Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>] [-RollbackToLastDeployment]
  [-RollBackDeploymentName <String>] [-QueryString <String>] -TemplateParameterObject <Hashtable>
  -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterFile
@@ -58,7 +58,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMod
 Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>] [-RollbackToLastDeployment]
  [-RollBackDeploymentName <String>] [-QueryString <String>] -TemplateParameterFile <String>
  -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateFileAndParameterFile
@@ -66,7 +66,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMod
 Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>] [-RollbackToLastDeployment]
  [-RollBackDeploymentName <String>] [-QueryString <String>] -TemplateParameterFile <String>
  -TemplateFile <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriAndParameterFile
@@ -74,7 +74,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMod
 Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>] [-RollbackToLastDeployment]
  [-RollBackDeploymentName <String>] [-QueryString <String>] -TemplateParameterFile <String>
  -TemplateUri <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateSpecResourceIdAndParams
@@ -82,7 +82,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMod
 Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>] [-RollbackToLastDeployment]
  [-RollBackDeploymentName <String>] [-QueryString <String>] -TemplateParameterFile <String>
  -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByParameterFileWithNoTemplate
@@ -90,7 +90,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMod
 Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>] [-RollbackToLastDeployment]
  [-RollBackDeploymentName <String>] [-QueryString <String>] -TemplateParameterFile <String>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterUri
@@ -98,7 +98,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMod
 Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>] [-RollbackToLastDeployment]
  [-RollBackDeploymentName <String>] [-QueryString <String>] -TemplateParameterUri <String>
  -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateFileAndParameterUri
@@ -106,7 +106,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMod
 Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>] [-RollbackToLastDeployment]
  [-RollBackDeploymentName <String>] [-QueryString <String>] -TemplateParameterUri <String>
  -TemplateFile <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriAndParameterUri
@@ -114,7 +114,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMod
 Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>] [-RollbackToLastDeployment]
  [-RollBackDeploymentName <String>] [-QueryString <String>] -TemplateParameterUri <String>
  -TemplateUri <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateSpecResourceIdAndParamsUri
@@ -122,7 +122,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMod
 Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>] [-RollbackToLastDeployment]
  [-RollBackDeploymentName <String>] [-QueryString <String>] -TemplateParameterUri <String>
  -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectWithNoParameters
@@ -130,7 +130,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMod
 Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>] [-RollbackToLastDeployment]
  [-RollBackDeploymentName <String>] [-QueryString <String>] -TemplateObject <Hashtable>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriWithNoParameters
@@ -138,7 +138,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMod
 Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>] [-RollbackToLastDeployment]
  [-RollBackDeploymentName <String>] [-QueryString <String>] -TemplateUri <String>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateSpecResourceId
@@ -146,7 +146,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMod
 Test-AzResourceGroupDeployment -ResourceGroupName <String> [-Mode <DeploymentMode>] [-RollbackToLastDeployment]
  [-RollBackDeploymentName <String>] [-QueryString <String>] -TemplateSpecId <String>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -223,6 +223,21 @@ Indicates that this cmdlet considers pre-release API versions when it automatica
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

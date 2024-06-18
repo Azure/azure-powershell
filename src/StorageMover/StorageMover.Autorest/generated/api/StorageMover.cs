@@ -30,9 +30,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AgentsCreateOrUpdate(string subscriptionId, string resourceGroupName, string storageMoverName, string agentName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IAgent body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IAgent>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AgentsCreateOrUpdate(string subscriptionId, string resourceGroupName, string storageMoverName, string agentName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -80,9 +80,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AgentsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IAgent body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IAgent>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AgentsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AgentsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IAgent>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AgentsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.Agent.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.Agent.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AgentsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string storageMoverName, string agentName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IAgent body, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task AgentsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string storageMoverName, string agentName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent body, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// </returns>
         public async global::System.Threading.Tasks.Task AgentsDelete(string subscriptionId, string resourceGroupName, string storageMoverName, string agentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// </returns>
         public async global::System.Threading.Tasks.Task AgentsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -504,9 +504,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AgentsGet(string subscriptionId, string resourceGroupName, string storageMoverName, string agentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IAgent>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AgentsGet(string subscriptionId, string resourceGroupName, string storageMoverName, string agentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -547,9 +547,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AgentsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IAgent>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AgentsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -603,7 +603,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AgentsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IAgent>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AgentsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -621,7 +621,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.Agent.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.Agent.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -680,9 +680,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AgentsList(string subscriptionId, string resourceGroupName, string storageMoverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IAgentList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AgentsList(string subscriptionId, string resourceGroupName, string storageMoverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgentList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -722,9 +722,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AgentsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IAgentList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AgentsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgentList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -776,7 +776,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AgentsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IAgentList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AgentsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgentList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -794,7 +794,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.AgentList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.AgentList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -853,9 +853,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AgentsUpdate(string subscriptionId, string resourceGroupName, string storageMoverName, string agentName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IAgentUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IAgent>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AgentsUpdate(string subscriptionId, string resourceGroupName, string storageMoverName, string agentName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgentUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -901,9 +901,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AgentsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IAgentUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IAgent>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AgentsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgentUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -961,7 +961,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AgentsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IAgent>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AgentsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -979,7 +979,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.Agent.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.Agent.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -1013,7 +1013,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AgentsUpdate_Validate(string subscriptionId, string resourceGroupName, string storageMoverName, string agentName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IAgentUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task AgentsUpdate_Validate(string subscriptionId, string resourceGroupName, string storageMoverName, string agentName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgentUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1045,9 +1045,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsCreateOrUpdate(string subscriptionId, string resourceGroupName, string storageMoverName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsCreateOrUpdate(string subscriptionId, string resourceGroupName, string storageMoverName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1095,9 +1095,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1155,7 +1155,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EndpointsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task EndpointsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1173,7 +1173,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.Endpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.Endpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -1207,7 +1207,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EndpointsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string storageMoverName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint body, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task EndpointsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string storageMoverName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint body, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1239,7 +1239,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsDelete(string subscriptionId, string resourceGroupName, string storageMoverName, string endpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1283,7 +1283,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// </returns>
         public async global::System.Threading.Tasks.Task EndpointsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1519,9 +1519,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsGet(string subscriptionId, string resourceGroupName, string storageMoverName, string endpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsGet(string subscriptionId, string resourceGroupName, string storageMoverName, string endpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1562,9 +1562,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1618,7 +1618,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EndpointsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task EndpointsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1636,7 +1636,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.Endpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.Endpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -1695,9 +1695,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsList(string subscriptionId, string resourceGroupName, string storageMoverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpointList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsList(string subscriptionId, string resourceGroupName, string storageMoverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpointList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1737,9 +1737,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpointList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpointList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1791,7 +1791,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EndpointsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpointList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task EndpointsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpointList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1809,7 +1809,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.EndpointList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.EndpointList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -1870,9 +1870,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsUpdate(string subscriptionId, string resourceGroupName, string storageMoverName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpointBaseUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsUpdate(string subscriptionId, string resourceGroupName, string storageMoverName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpointBaseUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1920,9 +1920,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpointBaseUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpointBaseUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1980,7 +1980,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EndpointsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task EndpointsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1998,7 +1998,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.Endpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.Endpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -2032,7 +2032,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EndpointsUpdate_Validate(string subscriptionId, string resourceGroupName, string storageMoverName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpointBaseUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task EndpointsUpdate_Validate(string subscriptionId, string resourceGroupName, string storageMoverName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpointBaseUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -2065,9 +2065,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobDefinitionsCreateOrUpdate(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, string jobDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobDefinitionsCreateOrUpdate(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, string jobDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2117,9 +2117,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobDefinitionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobDefinitionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2180,7 +2180,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task JobDefinitionsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task JobDefinitionsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2198,7 +2198,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.JobDefinition.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.JobDefinition.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -2233,7 +2233,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task JobDefinitionsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, string jobDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobDefinition body, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task JobDefinitionsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, string jobDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition body, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -2267,7 +2267,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// </returns>
         public async global::System.Threading.Tasks.Task JobDefinitionsDelete(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, string jobDefinitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2313,7 +2313,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// </returns>
         public async global::System.Threading.Tasks.Task JobDefinitionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2555,9 +2555,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobDefinitionsGet(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, string jobDefinitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobDefinitionsGet(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, string jobDefinitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2600,9 +2600,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobDefinitionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobDefinitionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2659,7 +2659,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task JobDefinitionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task JobDefinitionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2677,7 +2677,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.JobDefinition.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.JobDefinition.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -2739,9 +2739,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobDefinitionsList(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobDefinitionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobDefinitionsList(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinitionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2783,9 +2783,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobDefinitionsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobDefinitionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobDefinitionsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinitionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2840,7 +2840,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task JobDefinitionsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobDefinitionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task JobDefinitionsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinitionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2858,7 +2858,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.JobDefinitionList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.JobDefinitionList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -2906,7 +2906,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         }
 
         /// <summary>
-        /// Requests an Agent to start a new instance of this Job Definition, generating a new Job Run resource.
+        /// Creates a new Job Run resource for the specified Job Definition and passes it to the Agent for execution.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -2921,9 +2921,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobDefinitionsStartJob(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, string jobDefinitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobRunResourceId>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobDefinitionsStartJob(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, string jobDefinitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobRunResourceId>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2958,7 +2958,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         }
 
         /// <summary>
-        /// Requests an Agent to start a new instance of this Job Definition, generating a new Job Run resource.
+        /// Creates a new Job Run resource for the specified Job Definition and passes it to the Agent for execution.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2969,9 +2969,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobDefinitionsStartJobViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobRunResourceId>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobDefinitionsStartJobViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobRunResourceId>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3029,7 +3029,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task JobDefinitionsStartJob_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobRunResourceId>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task JobDefinitionsStartJob_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobRunResourceId>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3047,7 +3047,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.JobRunResourceId.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.JobRunResourceId.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -3110,9 +3110,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobDefinitionsStopJob(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, string jobDefinitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobRunResourceId>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobDefinitionsStopJob(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, string jobDefinitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobRunResourceId>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3156,9 +3156,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobDefinitionsStopJobViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobRunResourceId>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobDefinitionsStopJobViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobRunResourceId>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3216,7 +3216,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task JobDefinitionsStopJob_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobRunResourceId>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task JobDefinitionsStopJob_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobRunResourceId>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3234,7 +3234,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.JobRunResourceId.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.JobRunResourceId.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -3300,9 +3300,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobDefinitionsUpdate(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, string jobDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobDefinitionUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobDefinitionsUpdate(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, string jobDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinitionUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3352,9 +3352,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobDefinitionsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobDefinitionUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobDefinitionsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinitionUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3415,7 +3415,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task JobDefinitionsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task JobDefinitionsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3433,7 +3433,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.JobDefinition.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.JobDefinition.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -3468,7 +3468,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task JobDefinitionsUpdate_Validate(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, string jobDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobDefinitionUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task JobDefinitionsUpdate_Validate(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, string jobDefinitionName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinitionUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -3500,9 +3500,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobRunsGet(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, string jobDefinitionName, string jobRunName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobRun>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobRunsGet(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, string jobDefinitionName, string jobRunName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobRun>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3547,9 +3547,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobRunsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobRun>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobRunsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobRun>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3609,7 +3609,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task JobRunsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobRun>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task JobRunsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobRun>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3627,7 +3627,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.JobRun.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.JobRun.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -3692,9 +3692,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobRunsList(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, string jobDefinitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobRunList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobRunsList(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, string jobDefinitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobRunList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3738,9 +3738,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task JobRunsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobRunList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task JobRunsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobRunList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3798,7 +3798,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task JobRunsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobRunList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task JobRunsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobRunList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3816,7 +3816,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.JobRunList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.JobRunList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -3876,7 +3876,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3912,7 +3912,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4026,9 +4026,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProjectsCreateOrUpdate(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProject body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProject>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProjectsCreateOrUpdate(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4076,9 +4076,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProjectsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProject body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProject>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProjectsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4136,7 +4136,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ProjectsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProject>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ProjectsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4154,7 +4154,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.Project.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.Project.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -4188,7 +4188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ProjectsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProject body, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ProjectsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject body, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -4220,7 +4220,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// </returns>
         public async global::System.Threading.Tasks.Task ProjectsDelete(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4264,7 +4264,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// </returns>
         public async global::System.Threading.Tasks.Task ProjectsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4500,9 +4500,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProjectsGet(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProject>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProjectsGet(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4543,9 +4543,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProjectsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProject>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProjectsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4599,7 +4599,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ProjectsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProject>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ProjectsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4617,7 +4617,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.Project.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.Project.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -4676,9 +4676,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProjectsList(string subscriptionId, string resourceGroupName, string storageMoverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProjectList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProjectsList(string subscriptionId, string resourceGroupName, string storageMoverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProjectList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4718,9 +4718,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProjectsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProjectList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProjectsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProjectList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4772,7 +4772,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ProjectsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProjectList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ProjectsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProjectList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4790,7 +4790,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.ProjectList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.ProjectList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -4851,9 +4851,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProjectsUpdate(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProjectUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProject>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProjectsUpdate(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProjectUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4901,9 +4901,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProjectsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProjectUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProject>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProjectsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProjectUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4961,7 +4961,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ProjectsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProject>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ProjectsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4979,7 +4979,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.Project.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.Project.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -5013,7 +5013,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ProjectsUpdate_Validate(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProjectUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ProjectsUpdate_Validate(string subscriptionId, string resourceGroupName, string storageMoverName, string projectName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProjectUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -5042,9 +5042,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task StorageMoversCreateOrUpdate(string subscriptionId, string resourceGroupName, string storageMoverName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMover body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMover>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task StorageMoversCreateOrUpdate(string subscriptionId, string resourceGroupName, string storageMoverName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5088,9 +5088,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task StorageMoversCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMover body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMover>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task StorageMoversCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5145,7 +5145,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task StorageMoversCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMover>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task StorageMoversCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5163,7 +5163,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.StorageMover.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.StorageMover.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -5196,7 +5196,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task StorageMoversCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string storageMoverName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMover body, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task StorageMoversCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string storageMoverName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover body, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -5226,7 +5226,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageMoversDelete(string subscriptionId, string resourceGroupName, string storageMoverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5268,7 +5268,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageMoversDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5498,9 +5498,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task StorageMoversGet(string subscriptionId, string resourceGroupName, string storageMoverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMover>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task StorageMoversGet(string subscriptionId, string resourceGroupName, string storageMoverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5539,9 +5539,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task StorageMoversGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMover>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task StorageMoversGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5592,7 +5592,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task StorageMoversGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMover>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task StorageMoversGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5610,7 +5610,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.StorageMover.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.StorageMover.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -5666,9 +5666,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task StorageMoversList(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMoverList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task StorageMoversList(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMoverList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5706,9 +5706,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task StorageMoversListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMoverList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task StorageMoversListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMoverList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5744,9 +5744,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task StorageMoversListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMoverList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task StorageMoversListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMoverList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5792,7 +5792,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task StorageMoversListBySubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMoverList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task StorageMoversListBySubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMoverList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5810,7 +5810,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.StorageMoverList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.StorageMoverList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -5859,9 +5859,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task StorageMoversListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMoverList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task StorageMoversListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMoverList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5910,7 +5910,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task StorageMoversList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMoverList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task StorageMoversList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMoverList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5928,7 +5928,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.StorageMoverList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.StorageMoverList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -5986,9 +5986,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task StorageMoversUpdate(string subscriptionId, string resourceGroupName, string storageMoverName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMoverUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMover>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task StorageMoversUpdate(string subscriptionId, string resourceGroupName, string storageMoverName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMoverUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6034,9 +6034,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task StorageMoversUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMoverUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMover>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task StorageMoversUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMoverUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-10-01";
+            var apiVersion = @"2024-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6091,7 +6091,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task StorageMoversUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMover>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task StorageMoversUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMover>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6109,7 +6109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.StorageMover.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.StorageMover.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -6142,7 +6142,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task StorageMoversUpdate_Validate(string subscriptionId, string resourceGroupName, string storageMoverName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMoverUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task StorageMoversUpdate_Validate(string subscriptionId, string resourceGroupName, string storageMoverName, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IStorageMoverUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {

@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// <summary>
         /// Gets or sets Volume name
         /// </summary>
-        public string VolumeName { get; set; }
+        public string VolumeResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets UseExistingSnapshot

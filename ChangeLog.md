@@ -129,6 +129,7 @@
 
 #### Az.ServiceFabric 3.3.3
 * Updated location of nodeType to use cluster location in stead of resource group location
+* Fixed New-AzServiceFabricApplicationTypeVersion cmdlet to send packageUrl 
 
 #### Az.Sql 5.0.0
 * Added multi-secondary support for 'Get-AzSqlDatabaseFailoverGroup', 'Remove-AzSqlDatabaseFromFailoverGroup' and 'Add-AzSqlDatabaseFromFailoverGroup'

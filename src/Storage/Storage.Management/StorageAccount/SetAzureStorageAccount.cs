@@ -415,6 +415,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateSet(StorageModels.MinimumTlsVersion.TLS10,
             StorageModels.MinimumTlsVersion.TLS11,
             StorageModels.MinimumTlsVersion.TLS12,
+            StorageModels.MinimumTlsVersion.TLS13,
             IgnoreCase = true)]
         public string MinimumTlsVersion
         {
@@ -896,7 +897,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     }
                     if (sasExpirationPeriod != null)
                     {
-                        updateParameters.SasPolicy = new SasPolicy(sasExpirationPeriod.Value.ToString(@"d\.hh\:mm\:ss"));
+                        updateParameters.SasPolicy = new SasPolicy(sasExpirationPeriod.Value.ToString(@"d\.hh\:mm\:ss"), "Log");
                     }
                     if (keyExpirationPeriodInDay != null)
                     {

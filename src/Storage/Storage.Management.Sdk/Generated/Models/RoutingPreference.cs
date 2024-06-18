@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
 
         /// <param name="routingChoice">Routing Choice defines the kind of network routing opted by the user.
-        /// Possible values include: 'MicrosoftRouting', 'InternetRouting'</param>
+        /// Possible values include: &#39;MicrosoftRouting&#39;, &#39;InternetRouting&#39;</param>
 
         /// <param name="publishMicrosoftEndpoints">A boolean flag which indicates whether microsoft routing storage endpoints
         /// are to be published

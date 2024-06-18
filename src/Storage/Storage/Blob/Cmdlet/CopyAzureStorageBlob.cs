@@ -237,6 +237,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
+            if (AsJob.IsPresent)
+            {
+                if (ParameterSetName == UriParameterSet)
+                {
+                    skipSourceChannelInit = true;
+                }
+                DoBeginProcessing();
+            }
+
             IStorageBlobManagement destChannel = GetDestinationChannel();
             IStorageBlobManagement srcChannel = Channel;
 
@@ -268,6 +277,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             if (copyAction != null && ShouldProcess(target, VerbsCommon.Copy))
             {
                 copyAction();
+            }
+
+            if (AsJob.IsPresent)
+            {
+                DoEndProcessing();
             }
         }
 

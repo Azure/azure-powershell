@@ -26,18 +26,18 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="sasExpirationPeriod">The SAS expiration period, DD.HH:MM:SS.
         /// </param>
-        public SasPolicy(string sasExpirationPeriod)
+
+        /// <param name="expirationAction">The SAS Expiration Action defines the action to be performed when
+        /// sasPolicy.sasExpirationPeriod is violated. The &#39;Log&#39; action can be used for
+        /// audit purposes and the &#39;Block&#39; action can be used to block and deny the
+        /// usage of SAS tokens that do not adhere to the sas policy expiration period.
+        /// Possible values include: &#39;Log&#39;, &#39;Block&#39;</param>
+        public SasPolicy(string sasExpirationPeriod, string expirationAction)
 
         {
             this.SasExpirationPeriod = sasExpirationPeriod;
+            this.ExpirationAction = expirationAction;
             CustomInit();
-        }
-        /// <summary>
-        /// Static constructor for SasPolicy class.
-        /// </summary>
-        static SasPolicy()
-        {
-            ExpirationAction = "Log";
         }
 
         /// <summary>
@@ -51,11 +51,16 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sasExpirationPeriod")]
         public string SasExpirationPeriod {get; set; }
+
         /// <summary>
-        /// Gets or sets the SAS expiration action. Can only be Log.
+        /// Gets or sets the SAS Expiration Action defines the action to be performed
+        /// when sasPolicy.sasExpirationPeriod is violated. The &#39;Log&#39; action can be
+        /// used for audit purposes and the &#39;Block&#39; action can be used to block and
+        /// deny the usage of SAS tokens that do not adhere to the sas policy
+        /// expiration period. Possible values include: &#39;Log&#39;, &#39;Block&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "expirationAction")]
-        public static string ExpirationAction {get; private set; }
+        public string ExpirationAction {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -67,6 +72,10 @@ namespace Microsoft.Azure.Management.Storage.Models
             if (this.SasExpirationPeriod == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "SasExpirationPeriod");
+            }
+            if (this.ExpirationAction == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ExpirationAction");
             }
 
 
