@@ -25,7 +25,9 @@ param (
     [string[]]$TargetModule,
     [switch]$ForceRegenerate,
     [switch]$GenerateDocumentationFile,
-    [switch]$EnableTestCoverage
+    [switch]$EnableTestCoverage,
+    [string]$Scope = 'Netcore',
+    [boolean]$CodeSign = $false
 
 )
 if (($null -eq $RepoRoot) -or (0 -eq $RepoRoot.Length)) {
@@ -147,3 +149,9 @@ if ($EnableTestCoverage -eq "true")
     $buildCmdResult += " -p:TestCoverage=TESTCOVERAGE"
 }
 Invoke-Expression -Command $buildCmdResult
+
+$removeScriptPath = Join-Path $toolDirectory 'BuildScripts' 'RemoveUnwantedFiles.ps1'
+. $removeScriptPath -RootPath (Join-Path $RepoArtifacts $Configuration) -CodeSign $CodeSign
+
+$updateModuleScriptPath = Join-Path $toolDirectory 'UpdateModules.ps1'
+. $updateModuleScriptPath -BuildConfig $Configuration -Scope $Scope
