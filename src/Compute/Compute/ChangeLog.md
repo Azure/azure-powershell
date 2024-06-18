@@ -20,7 +20,7 @@
 
 -->
 ## Upcoming Release
-* Added parameters `-SourceResourceId` and `-CreateOption` to `Add-AzVMDataDisk` cmdlet.
+* Added parameter `-SourceResourceId` to cmdlet `Add-AzVMDataDisk`.
 * Added parameter `-IdentityType` to cmdlet `Update-AzDiskEncryptionSet`. 
 
 ## Version 8.0.0
