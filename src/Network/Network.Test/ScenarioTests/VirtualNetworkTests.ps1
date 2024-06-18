@@ -1207,6 +1207,56 @@ function Test-VirtualNetworkSubnetServiceEndpoint
 
 <#
 .SYNOPSIS
+Tests checking Virtual Network Subnet Service Endpoint feature With NetworkIdentifier.
+#>
+function Test-VirtualNetworkSubnetServiceEndpointWithNetworkIdentifier
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $location = Get-ProviderLocation $resourceTypeParent
+    $ServiceEndpointServiceName = "Microsoft.Storage"
+    $PublicIPAddressName = "PublicIPAddressName";
+    $PublicIPAddressAllocationMethod = "Static";
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" };
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -ServiceEndpoint $serviceEndpoint;
+        New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname;
+
+        Assert-NotNull $vnet;
+        Assert-NotNull $vnet.Subnets;
+
+        $subnet = $vnet.Subnets[0];
+        Assert-AreEqual $serviceEndpoint $subnet.serviceEndpoints[0].Service;
+
+        $PublicIPAddress = New-AzPublicIPAddress -ResourceGroupName $rgname -Location $location -Name $PublicIPAddressName -AllocationMethod $PublicIPAddressAllocationMethod;
+        $NetworkIdentifier = @{ Id = $PublicIPAddress.Id};
+        $ServiceEndpointConfig = @( @{Service = $ServiceEndpointServiceName; NetworkIdentifier = $NetworkIdentifier }) 
+    
+        Set-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet -AddressPrefix 10.0.1.0/24 -ServiceEndpointConfig $ServiceEndpointConfig;
+        $vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet;
+        $subnet = $vnet.Subnets[0];
+
+        Assert-Null $subnet.serviceEndpoints;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests checking Virtual Network Subnet Service Endpoint Policies.
 #>
 function Test-VirtualNetworkSubnetServiceEndpointPolicies
