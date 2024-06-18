@@ -46,13 +46,6 @@ function Get-AzPolicyAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment])]
 [CmdletBinding(DefaultParameterSetName='Default', PositionalBinding=$false)]
 param(
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
     [Parameter(ParameterSetName='Name', Mandatory, ValueFromPipelineByPropertyName)]
     [Alias('PolicyAssignmentName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
@@ -243,7 +236,7 @@ end {
 .Synopsis
 Gets policy set definitions.
 .Description
-The **Get-AzPolicySetDefinition** cmdlet gets a collection of policy set definitions or a specific policy set definition identified by name or ID.
+The **Get-AzPolicyDefinition** cmdlet gets a collection of policy set definitions or a specific policy set definition identified by name or ID.
 .Example
 Get-AzPolicyDefinition
 .Example
@@ -273,6 +266,8 @@ function Get-AzPolicyDefinition {
 [CmdletBinding(DefaultParameterSetName='Name', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ListVersion', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Version', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
     [Alias('PolicyDefinitionName')]
@@ -281,12 +276,14 @@ param(
     # The name of the policy definition to get.
     ${Name},
 
-    [Parameter(DontShow)]
+    [Parameter(ParameterSetName='ListVersion', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Version', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Id', Mandatory, ValueFromPipelineByPropertyName)]
+    [Alias('ResourceId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
+    [System.String]
+    # The full Id of the policy definition to get.
+    ${Id},
 
     [Parameter(ParameterSetName='SubscriptionId', Mandatory, ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Static', ValueFromPipelineByPropertyName)]
@@ -306,13 +303,6 @@ param(
     # The name of the management group.
     ${ManagementGroupName},
 
-    [Parameter(ParameterSetName='Id', Mandatory, ValueFromPipelineByPropertyName)]
-    [Alias('ResourceId')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [System.String]
-    # The full Id of the policy definition to get.
-    ${Id},
-
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
     [System.String]
@@ -324,6 +314,12 @@ param(
     # Possible policyType values are NotSpecified, Builtin, Custom, and Static.
     # If $filter='category -eq {value}' is provided, the returned list only includes all policy definitions whose category match the {value}.
     ${Filter},
+
+    [Parameter(ParameterSetName='ListVersion', Mandatory, ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
+    [System.Management.Automation.SwitchParameter]
+    # Causes cmdlet to return only custom policy definitions.
+    ${ListVersion},
 
     [Parameter(ParameterSetName='Static', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
@@ -348,6 +344,13 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
     ${BackwardCompatible},
+
+    [Parameter(ParameterSetName='Version', Mandatory, ValueFromPipelineByPropertyName)]
+    [Alias('PolicyDefinitionVersion')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The policy definition version in #.#.# format.
+    ${Version},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -424,6 +427,8 @@ begin {
 
         $mapping = @{
             Name = 'Az.Policy.custom\Get-AzPolicyDefinition';
+            ListVersion = 'Az.Policy.custom\Get-AzPolicyDefinition';
+            Version = 'Az.Policy.custom\Get-AzPolicyDefinition';
             SubscriptionId = 'Az.Policy.custom\Get-AzPolicyDefinition';
             ManagementGroupName = 'Az.Policy.custom\Get-AzPolicyDefinition';
             Id = 'Az.Policy.custom\Get-AzPolicyDefinition';
@@ -529,13 +534,6 @@ param(
     [System.String]
     # The policy assignment id filter.
     ${PolicyAssignmentIdFilter},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
 
     [Parameter(ParameterSetName='IncludeDescendent', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
@@ -731,6 +729,8 @@ function Get-AzPolicySetDefinition {
 [CmdletBinding(DefaultParameterSetName='Name', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ListVersion', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Version', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
     [Alias('PolicySetDefinitionName')]
@@ -739,12 +739,14 @@ param(
     # The name of the policy definition to get.
     ${Name},
 
-    [Parameter(DontShow)]
+    [Parameter(ParameterSetName='ListVersion', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Version', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Id', Mandatory, ValueFromPipelineByPropertyName)]
+    [Alias('ResourceId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
+    [System.String]
+    # The full Id of the policy definition to get.
+    ${Id},
 
     [Parameter(ParameterSetName='SubscriptionId', Mandatory, ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Custom', ValueFromPipelineByPropertyName)]
@@ -762,13 +764,6 @@ param(
     # The name of the management group.
     ${ManagementGroupName},
 
-    [Parameter(ParameterSetName='Id', Mandatory, ValueFromPipelineByPropertyName)]
-    [Alias('ResourceId')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [System.String]
-    # The full Id of the policy definition to get.
-    ${Id},
-
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
     [System.String]
@@ -780,6 +775,12 @@ param(
     # Possible policyType values are NotSpecified, Builtin, Custom, and Static.
     # If $filter='category -eq {value}' is provided, the returned list only includes all policy set definitions whose category match the {value}.
     ${Filter},
+
+    [Parameter(ParameterSetName='ListVersion', Mandatory, ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
+    [System.Management.Automation.SwitchParameter]
+    # Causes cmdlet to return only custom policy definitions.
+    ${ListVersion},
 
     [Parameter(ParameterSetName='Custom', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
@@ -798,6 +799,13 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
     ${BackwardCompatible},
+
+    [Parameter(ParameterSetName='Version', Mandatory, ValueFromPipelineByPropertyName)]
+    [Alias('PolicySetDefinitionVersion')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The policy definition version in #.#.# format.
+    ${Version},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -875,6 +883,8 @@ begin {
 
         $mapping = @{
             Name = 'Az.Policy.custom\Get-AzPolicySetDefinition';
+            ListVersion = 'Az.Policy.custom\Get-AzPolicySetDefinition';
+            Version = 'Az.Policy.custom\Get-AzPolicySetDefinition';
             SubscriptionId = 'Az.Policy.custom\Get-AzPolicySetDefinition';
             ManagementGroupName = 'Az.Policy.custom\Get-AzPolicySetDefinition';
             Id = 'Az.Policy.custom\Get-AzPolicySetDefinition';
@@ -1312,16 +1322,6 @@ param(
     # The name of the policy definition to create.
     ${Name},
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity]
-    # This parameter is generated by autorest, but not yet supported.
-    # Fully implementing it is beyond the scope of
-    # the initial port to autorest: we are hiding this for now and will implement it in a future PR.
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
     [Parameter(ParameterSetName='ManagementGroupName', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
@@ -1540,6 +1540,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 POLICYASSIGNMENT <PSObject>: The policy assignment id filter.
+  [DefinitionVersion <String>]: The version of the policy definition to use.
   [Description <String>]: This message will be part of response in case of policy violation.
   [DisplayName <String>]: The display name of the policy assignment.
   [EnforcementMode <String>]: The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
@@ -1847,16 +1848,6 @@ param(
     # The name of the policy set definition to create.
     ${Name},
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity]
-    # This parameter is generated by autorest, but not yet supported.
-    # Fully implementing it is beyond the scope of
-    # the initial port to autorest: we are hiding this for now and will implement it in a future PR.
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
     [Parameter(ParameterSetName='ManagementGroupName', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
@@ -1871,6 +1862,7 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionReference[]]))]
     [System.String]
     # The policy definition array in JSON string form.
     ${PolicyDefinition},
@@ -3040,6 +3032,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IPolicyAssignment>: 
+  [DefinitionVersion <String>]: The version of the policy definition to use.
   [Description <String>]: This message will be part of response in case of policy violation.
   [DisplayName <String>]: The display name of the policy assignment.
   [EnforcementMode <String>]: The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
@@ -3902,6 +3895,7 @@ INPUTOBJECT <IPolicySetDefinition>:
     [(Any) <Object>]: This indicates any property can be added to this object.
   [PolicyDefinition <List<IPolicyDefinitionReference>>]: An array of policy definition references.
     PolicyDefinitionId <String>: The ID of the policy definition or policy set definition.
+    [DefinitionVersion <String>]: The version of the policy definition to use.
     [GroupName <List<String>>]: The name of the groups that this policy definition reference belongs to.
     [Id <String>]: A unique id (within the policy set definition) for this policy definition reference.
     [Parameter <IParameterValues>]: The parameter values for the referenced policy rule. The keys are the parameter names.

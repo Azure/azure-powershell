@@ -24,10 +24,70 @@ This operation retrieves the policy definition version in the given subscription
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersion
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionListResult
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IPolicyIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ManagementGroupId <String>]: The ID of the management group.
+  [ManagementGroupName <String>]: The name of the management group. The name is case insensitive.
+  [ParentResourcePath <String>]: The parent resource path. Use empty string if there is none.
+  [PolicyAssignmentId <String>]: The ID of the policy assignment to delete. Use the format '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
+  [PolicyAssignmentName <String>]: The name of the policy assignment to delete.
+  [PolicyDefinitionName <String>]: The name of the policy definition to create.
+  [PolicyDefinitionVersion <String>]: The policy definition version.  The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number
+  [PolicyExemptionName <String>]: The name of the policy exemption to delete.
+  [PolicySetDefinitionName <String>]: The name of the policy set definition to create.
+  [ResourceGroupName <String>]: The name of the resource group that contains policy assignments.
+  [ResourceName <String>]: The name of the resource.
+  [ResourceProviderNamespace <String>]: The namespace of the resource provider. For example, the namespace of a virtual machine is Microsoft.Compute (from Microsoft.Compute/virtualMachines)
+  [ResourceType <String>]: The resource type name. For example the type name of a web app is 'sites' (from Microsoft.Web/sites).
+  [Scope <String>]: The scope of the policy assignment. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+
+POLICYDEFINITION1INPUTOBJECT <IPolicyIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ManagementGroupId <String>]: The ID of the management group.
+  [ManagementGroupName <String>]: The name of the management group. The name is case insensitive.
+  [ParentResourcePath <String>]: The parent resource path. Use empty string if there is none.
+  [PolicyAssignmentId <String>]: The ID of the policy assignment to delete. Use the format '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
+  [PolicyAssignmentName <String>]: The name of the policy assignment to delete.
+  [PolicyDefinitionName <String>]: The name of the policy definition to create.
+  [PolicyDefinitionVersion <String>]: The policy definition version.  The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number
+  [PolicyExemptionName <String>]: The name of the policy exemption to delete.
+  [PolicySetDefinitionName <String>]: The name of the policy set definition to create.
+  [ResourceGroupName <String>]: The name of the resource group that contains policy assignments.
+  [ResourceName <String>]: The name of the resource.
+  [ResourceProviderNamespace <String>]: The namespace of the resource provider. For example, the namespace of a virtual machine is Microsoft.Compute (from Microsoft.Compute/virtualMachines)
+  [ResourceType <String>]: The resource type name. For example the type name of a web app is 'sites' (from Microsoft.Web/sites).
+  [Scope <String>]: The scope of the policy assignment. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+
+POLICYDEFINITIONINPUTOBJECT <IPolicyIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ManagementGroupId <String>]: The ID of the management group.
+  [ManagementGroupName <String>]: The name of the management group. The name is case insensitive.
+  [ParentResourcePath <String>]: The parent resource path. Use empty string if there is none.
+  [PolicyAssignmentId <String>]: The ID of the policy assignment to delete. Use the format '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
+  [PolicyAssignmentName <String>]: The name of the policy assignment to delete.
+  [PolicyDefinitionName <String>]: The name of the policy definition to create.
+  [PolicyDefinitionVersion <String>]: The policy definition version.  The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number
+  [PolicyExemptionName <String>]: The name of the policy exemption to delete.
+  [PolicySetDefinitionName <String>]: The name of the policy set definition to create.
+  [ResourceGroupName <String>]: The name of the resource group that contains policy assignments.
+  [ResourceName <String>]: The name of the resource.
+  [ResourceProviderNamespace <String>]: The namespace of the resource provider. For example, the namespace of a virtual machine is Microsoft.Compute (from Microsoft.Compute/virtualMachines)
+  [ResourceType <String>]: The resource type name. For example the type name of a web app is 'sites' (from Microsoft.Web/sites).
+  [Scope <String>]: The scope of the policy assignment. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.resources/get-azpolicydefinitionversion
 #>
@@ -46,6 +106,8 @@ param(
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='Get1', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityPolicyDefinition', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityPolicyDefinition1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The policy definition version.
@@ -70,6 +132,25 @@ param(
     # The name of the management group.
     # The name is case insensitive.
     ${ManagementGroupName},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaIdentity1', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityPolicyDefinition', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity]
+    # Identity Parameter
+    ${PolicyDefinitionInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityPolicyDefinition1', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity]
+    # Identity Parameter
+    ${PolicyDefinition1InputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -131,6 +212,10 @@ begin {
         $mapping = @{
             Get = 'Az.Policy.private\Get-AzPolicyDefinitionVersion_Get';
             Get1 = 'Az.Policy.private\Get-AzPolicyDefinitionVersion_Get1';
+            GetViaIdentity = 'Az.Policy.private\Get-AzPolicyDefinitionVersion_GetViaIdentity';
+            GetViaIdentity1 = 'Az.Policy.private\Get-AzPolicyDefinitionVersion_GetViaIdentity1';
+            GetViaIdentityPolicyDefinition = 'Az.Policy.private\Get-AzPolicyDefinitionVersion_GetViaIdentityPolicyDefinition';
+            GetViaIdentityPolicyDefinition1 = 'Az.Policy.private\Get-AzPolicyDefinitionVersion_GetViaIdentityPolicyDefinition1';
             List = 'Az.Policy.private\Get-AzPolicyDefinitionVersion_List';
             List1 = 'Az.Policy.private\Get-AzPolicyDefinitionVersion_List1';
             List2 = 'Az.Policy.private\Get-AzPolicyDefinitionVersion_List2';

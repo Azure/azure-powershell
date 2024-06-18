@@ -89,6 +89,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 
             switch ( json.StringProperty("addonType") )
             {
+                case "Arc":
+                {
+                    return new AddonArcProperties(json);
+                }
+                case "HCX":
+                {
+                    return new AddonHcxProperties(json);
+                }
                 case "SRM":
                 {
                     return new AddonSrmProperties(json);
@@ -96,14 +104,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
                 case "VR":
                 {
                     return new AddonVrProperties(json);
-                }
-                case "HCX":
-                {
-                    return new AddonHcxProperties(json);
-                }
-                case "Arc":
-                {
-                    return new AddonArcProperties(json);
                 }
             }
             return new AddonProperties(json);

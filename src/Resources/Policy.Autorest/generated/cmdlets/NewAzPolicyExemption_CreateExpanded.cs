@@ -138,7 +138,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.DefaultInfo(
         Name = @"DefaultExpiresOn",
         Description =@"Need a placeholder to keep autorest happy",
-        Script = @"""PlaceholderExpiresOn""",
+        Script = @"{ """" }",
         SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExport]
         public global::System.DateTime ExpiresOnInternal { get => _parametersBody.ExpiresOn ?? default(global::System.DateTime); set => _parametersBody.ExpiresOn = value; }

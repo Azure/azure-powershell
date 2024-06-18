@@ -7,7 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
-    /// <summary>A REST API operation</summary>
+    /// <summary>
+    /// Details of a REST API operation, returned from the Resource Provider Operations API
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(OperationTypeConverter))]
     public partial class Operation
     {
@@ -113,10 +115,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).Display = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationDisplay) content.GetValueForProperty("Display",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).Display, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.OperationDisplayTypeConverter.ConvertFrom);
             }
-            if (content.Contains("Property"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.OperationPropertiesTypeConverter.ConvertFrom);
-            }
             if (content.Contains("Name"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).Name, global::System.Convert.ToString);
@@ -129,9 +127,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).Origin = (string) content.GetValueForProperty("Origin",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).Origin, global::System.Convert.ToString);
             }
-            if (content.Contains("ServiceSpecification"))
+            if (content.Contains("ActionType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).ServiceSpecification = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IServiceSpecification) content.GetValueForProperty("ServiceSpecification",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).ServiceSpecification, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ServiceSpecificationTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).ActionType = (string) content.GetValueForProperty("ActionType",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).ActionType, global::System.Convert.ToString);
             }
             if (content.Contains("DisplayProvider"))
             {
@@ -148,14 +146,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("DisplayDescription"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).DisplayDescription = (string) content.GetValueForProperty("DisplayDescription",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).DisplayDescription, global::System.Convert.ToString);
-            }
-            if (content.Contains("ServiceSpecificationLogSpecification"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).ServiceSpecificationLogSpecification = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ILogSpecification>) content.GetValueForProperty("ServiceSpecificationLogSpecification",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).ServiceSpecificationLogSpecification, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ILogSpecification>(__y, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.LogSpecificationTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("ServiceSpecificationMetricSpecification"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).ServiceSpecificationMetricSpecification = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IMetricSpecification>) content.GetValueForProperty("ServiceSpecificationMetricSpecification",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).ServiceSpecificationMetricSpecification, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IMetricSpecification>(__y, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.MetricSpecificationTypeConverter.ConvertFrom));
             }
             AfterDeserializeDictionary(content);
         }
@@ -178,10 +168,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).Display = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationDisplay) content.GetValueForProperty("Display",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).Display, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.OperationDisplayTypeConverter.ConvertFrom);
             }
-            if (content.Contains("Property"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.OperationPropertiesTypeConverter.ConvertFrom);
-            }
             if (content.Contains("Name"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).Name, global::System.Convert.ToString);
@@ -194,9 +180,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).Origin = (string) content.GetValueForProperty("Origin",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).Origin, global::System.Convert.ToString);
             }
-            if (content.Contains("ServiceSpecification"))
+            if (content.Contains("ActionType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).ServiceSpecification = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IServiceSpecification) content.GetValueForProperty("ServiceSpecification",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).ServiceSpecification, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ServiceSpecificationTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).ActionType = (string) content.GetValueForProperty("ActionType",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).ActionType, global::System.Convert.ToString);
             }
             if (content.Contains("DisplayProvider"))
             {
@@ -213,14 +199,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("DisplayDescription"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).DisplayDescription = (string) content.GetValueForProperty("DisplayDescription",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).DisplayDescription, global::System.Convert.ToString);
-            }
-            if (content.Contains("ServiceSpecificationLogSpecification"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).ServiceSpecificationLogSpecification = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ILogSpecification>) content.GetValueForProperty("ServiceSpecificationLogSpecification",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).ServiceSpecificationLogSpecification, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ILogSpecification>(__y, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.LogSpecificationTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("ServiceSpecificationMetricSpecification"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).ServiceSpecificationMetricSpecification = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IMetricSpecification>) content.GetValueForProperty("ServiceSpecificationMetricSpecification",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal)this).ServiceSpecificationMetricSpecification, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IMetricSpecification>(__y, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.MetricSpecificationTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }
@@ -242,7 +220,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             return ToJsonString();
         }
     }
-    /// A REST API operation
+    /// Details of a REST API operation, returned from the Resource Provider Operations API
     [System.ComponentModel.TypeConverter(typeof(OperationTypeConverter))]
     public partial interface IOperation
 

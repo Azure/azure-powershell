@@ -515,17 +515,28 @@
                 <PropertyName>provisioningState</PropertyName>
               </ListItem>
 						  <ListItem>
-							  <Label>ResourcesCleanupAction</Label>
+							  <Label>resourcesCleanupAction</Label>
                 <PropertyName>resourcesCleanupAction</PropertyName>
 						  </ListItem>
               <ListItem>
-                <Label>ResourceGroupsCleanupAction</Label>
+                <Label>resourceGroupsCleanupAction</Label>
                 <PropertyName>resourceGroupsCleanupAction</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>managementGroupsCleanupAction</Label>
+                <PropertyName>managementGroupsCleanupAction</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>CorrelationId</Label>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.CorrelationId -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
+                <ScriptBlock>$_.CorrelationId</ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>DenySettingsMode</Label>
                 <ItemSelectionCondition>
-                  <ScriptBlock>$_.DenySettings -ne $null -And $_.  DenySettings.Mode -ne $null</ScriptBlock>
+                  <ScriptBlock>$_.DenySettings -ne $null -And $_.DenySettings.Mode -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
                 <ScriptBlock>$_.DenySettings.Mode</ScriptBlock>
               </ListItem>

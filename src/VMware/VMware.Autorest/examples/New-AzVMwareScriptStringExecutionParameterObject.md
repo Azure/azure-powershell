@@ -3,9 +3,9 @@
 New-AzVMwareScriptStringExecutionParameterObject -Name azps_test_value -Value "passwordValue"
 ```
 ```output
-Name                  Value
-----                  -----------
-azps_test_value passwordValue
+Name            Type  Value
+----            ----  -----
+azps_test_value Value passwordValue
 ```
 
 Create a local Script String Execution object

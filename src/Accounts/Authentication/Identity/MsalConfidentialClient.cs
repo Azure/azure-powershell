@@ -173,7 +173,11 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Identity
 
             if (!string.IsNullOrEmpty(tenantId))
             {
-                builder.WithAuthority(AuthorityHost.AbsoluteUri, tenantId);
+                var uriBuilder = new UriBuilder(AuthorityHost.AbsoluteUri)
+                {
+                    Path = tenantId
+                };
+                builder.WithTenantIdFromAuthority(uriBuilder.Uri);
             }
             return await builder
                 .ExecuteAsync(async, cancellationToken)
@@ -208,7 +212,11 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Identity
             var builder = client.AcquireTokenSilent(scopes, account);
             if (!string.IsNullOrEmpty(tenantId))
             {
-                builder.WithAuthority(AuthorityHost.AbsoluteUri, tenantId);
+                var uriBuilder = new UriBuilder(AuthorityHost.AbsoluteUri)
+                {
+                    Path = tenantId
+                };
+                builder.WithTenantIdFromAuthority(uriBuilder.Uri);
             }
             return await builder
                 .ExecuteAsync(async, cancellationToken)
@@ -244,7 +252,11 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Identity
 
             if (!string.IsNullOrEmpty(tenantId))
             {
-                builder.WithAuthority(AuthorityHost.AbsoluteUri, tenantId);
+                var uriBuilder = new UriBuilder(AuthorityHost.AbsoluteUri)
+                {
+                    Path = tenantId
+                };
+                builder.WithTenantIdFromAuthority(uriBuilder.Uri);
             }
             return await builder
                 .ExecuteAsync(async, cancellationToken)
@@ -280,7 +292,11 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Identity
 
             if (!string.IsNullOrEmpty(tenantId))
             {
-                builder.WithAuthority(AuthorityHost.AbsoluteUri, tenantId);
+                var uriBuilder = new UriBuilder(AuthorityHost.AbsoluteUri)
+                {
+                    Path = tenantId
+                };
+                builder.WithTenantIdFromAuthority(uriBuilder.Uri);
             }
             return await builder
                 .ExecuteAsync(async, cancellationToken)
