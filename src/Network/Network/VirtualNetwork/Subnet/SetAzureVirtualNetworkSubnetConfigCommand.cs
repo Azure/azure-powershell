@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.Network.VirtualNetwork.Subnet;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -100,42 +101,11 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.ServiceEndpoint != null || this.ServiceEndpointConfig != null)
             {
-                subnet.ServiceEndpoints = new List<PSServiceEndpoint>();
-                if (this.ServiceEndpoint != null)
-                {
-                    foreach (var item in this.ServiceEndpoint)
-                    {
-                        var service = new PSServiceEndpoint();
-                        service.Service = item;
-                        if (this.NetworkIdentifier != null)
-                        {
-                            service.NetworkIdentifier = new PSResourceId();
-                            service.NetworkIdentifier = this.NetworkIdentifier;
-                        }
-                        subnet.ServiceEndpoints.Add(service);
-                    }
-                }
-
-                if (this.ServiceEndpointConfig != null)
-                {
-                    foreach (var item in this.ServiceEndpointConfig)
-                    {
-                        var service = new PSServiceEndpoint();
-                        service.Service = item.Service;
-                        if (item.NetworkIdentifier != null)
-                        {
-                            //delete any existing Service with the same name but without NetworkIdentier
-                            var existingService = subnet.ServiceEndpoints.FirstOrDefault(s => s.Service == item.Service && s.NetworkIdentifier == null);
-                            if(existingService != null)
-                            {
-                                subnet.ServiceEndpoints.Remove(existingService);
-                            }
-                            service.NetworkIdentifier = new PSResourceId();
-                            service.NetworkIdentifier = item.NetworkIdentifier;
-                        }
-                        subnet.ServiceEndpoints.Add(service);
-                    }
-                }
+                AzureVirtualNetworkSubnetConfigHelper helper = new AzureVirtualNetworkSubnetConfigHelper();
+                if (helper.MultipleNetworkIdentifierExists(this.ServiceEndpointConfig)) 
+                    throw new ArgumentException("Multiple Service Endpoints with different Network Identifiers are not allowed");
+                
+                helper.ConfigureServiceEndpoint(this.ServiceEndpoint, this.NetworkIdentifier, this.ServiceEndpointConfig, subnet);
             }
             else
             {
@@ -160,7 +130,7 @@ namespace Microsoft.Azure.Commands.Network
                 subnet.Delegations = null;
             }
 
-            if(!string.IsNullOrEmpty(this.PrivateEndpointNetworkPoliciesFlag))
+            if (!string.IsNullOrEmpty(this.PrivateEndpointNetworkPoliciesFlag))
             {
                 subnet.PrivateEndpointNetworkPolicies = this.PrivateEndpointNetworkPoliciesFlag;
             }
