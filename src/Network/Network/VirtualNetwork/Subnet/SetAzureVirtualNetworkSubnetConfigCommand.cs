@@ -98,24 +98,46 @@ namespace Microsoft.Azure.Commands.Network
                 subnet.RouteTable = null;
             }
 
-            if (this.ServiceEndpoint != null)
+            if (this.ServiceEndpoint != null || this.ServiceEndpointConfig != null)
             {
                 subnet.ServiceEndpoints = new List<PSServiceEndpoint>();
-                foreach (var item in this.ServiceEndpoint)
+                if (this.ServiceEndpoint != null)
                 {
-                    var service = new PSServiceEndpoint();
-                    service.Service = item;
-                    subnet.ServiceEndpoints.Add(service);
+                    foreach (var item in this.ServiceEndpoint)
+                    {
+                        var service = new PSServiceEndpoint();
+                        service.Service = item;
+                        if (this.NetworkIdentifier != null)
+                        {
+                            service.NetworkIdentifier = new PSResourceId();
+                            service.NetworkIdentifier = this.NetworkIdentifier;
+                        }
+                        subnet.ServiceEndpoints.Add(service);
+                    }
+                }
+
+                if (this.ServiceEndpointConfig != null)
+                {
+                    foreach (var item in this.ServiceEndpointConfig)
+                    {
+                        var service = new PSServiceEndpoint();
+                        service.Service = item.Service;
+                        if (item.NetworkIdentifier != null)
+                        {
+                            //delete any existing Service with the same name but without NetworkIdentier
+                            var existingService = subnet.ServiceEndpoints.FirstOrDefault(s => s.Service == item.Service && s.NetworkIdentifier == null);
+                            if(existingService != null)
+                            {
+                                subnet.ServiceEndpoints.Remove(existingService);
+                            }
+                            service.NetworkIdentifier = new PSResourceId();
+                            service.NetworkIdentifier = item.NetworkIdentifier;
+                        }
+                        subnet.ServiceEndpoints.Add(service);
+                    }
                 }
             }
-            
-            if (this.SENetworkIdentifier != null)
-            {
-                subnet.ServiceEndpoints = this.ServiceEndpoint == null ? new List<PSServiceEndpoint>() : subnet.ServiceEndpoints;
-                subnet.ServiceEndpoints.AddRange(this.SENetworkIdentifier?.ToList());
-            }
-            
-            if (this.ServiceEndpoint == null && this.SENetworkIdentifier == null)
+            else
             {
                 subnet.ServiceEndpoints = null;
             }

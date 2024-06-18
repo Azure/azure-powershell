@@ -23,6 +23,6 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
-        public PSPublicIpAddress NetworkIdentifier { get; set; }
+        public PSResourceId NetworkIdentifier { get; set; }
     }
 }
