@@ -155,13 +155,6 @@
 
     <!-- Build version controller -->
     <Exec Command="dotnet build $(RepoTools)VersionController/VersionController.Netcore.csproj -c $(Configuration)" />
-    <!-- Delete powershell runtime files & .deps.json files -->
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)BuildScripts/RemoveUnwantedFiles.ps1 -RootPath $(RepoArtifacts)$(Configuration) -CodeSign $(CodeSign)&quot;"/>
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope)&quot;"/>
-    
-    <!--TODO: script to build tools-->
-    <CallTarget Targets="AzToolsPredictor" Condition="$(SubTasks.Contains('Predictor')) OR $(SubTasks.Contains('all'))" />
-    <CallTarget Targets="AzToolsInstaller" Condition="$(SubTasks.Contains('Installer')) OR $(SubTasks.Contains('all'))" />
   </Target>
 
   <Target Name="BuildNormalModules">
