@@ -49,7 +49,7 @@ function Test-LoadBalancerCRUD-Public
         # Create LoadBalancer
         $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $publicip
         $backendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
-        $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2 -ProbeThreshold 2 -NoHealthyBackendsBehavior "AllProbedUp"
+        $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2 -ProbeThreshold 2
         $inboundNatRule = New-AzLoadBalancerInboundNatRuleConfig -Name $inboundNatRuleName -FrontendIPConfiguration $frontend -Protocol Tcp -FrontendPort 3389 -BackendPort 3389 -IdleTimeoutInMinutes 15 -EnableFloatingIP
         $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -EnableFloatingIP -LoadDistribution SourceIP
         $job = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -InboundNatRule $inboundNatRule -LoadBalancingRule $lbrule -AsJob
@@ -76,7 +76,6 @@ function Test-LoadBalancerCRUD-Public
         Assert-AreEqual $probe.RequestPath $expectedLb.Probes[0].RequestPath
         Assert-AreEqual $probe.ProbeCount $expectedLb.Probes[0].ProbeCount
         Assert-AreEqual $probe.ProbeThreshold $expectedLb.Probes[0].ProbeThreshold
-        Assert-AreEqual $probe.NoHealthyBackendsBehavior $expectedLb.Probes[0].NoHealthyBackendsBehavior
 
         Assert-AreEqual $inboundNatRuleName $expectedLb.InboundNatRules[0].Name
         Assert-AreEqual $expectedLb.FrontendIPConfigurations[0].Id $expectedLb.InboundNatRules[0].FrontendIPConfiguration.Id
@@ -1004,21 +1003,19 @@ function Test-LoadBalancerChildResource
 
         # Test Probe cmdlets
         $probeName2 = Get-ResourceName
-        $lb =  Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Add-AzLoadBalancerProbeConfig -Name $probeName2 -RequestPath healthcheck2.aspx -Protocol http -Port 81 -IntervalInSeconds 16 -ProbeCount 3 -ProbeThreshold 3 -NoHealthyBackendsBehavior "AllProbedUp"| Set-AzLoadBalancer
+        $lb =  Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Add-AzLoadBalancerProbeConfig -Name $probeName2 -RequestPath healthcheck2.aspx -Protocol http -Port 81 -IntervalInSeconds 16 -ProbeCount 3 -ProbeThreshold 3 | Set-AzLoadBalancer
 
         Assert-AreEqual 2 @($lb.Probes).Count
         Assert-AreEqual $probeName2 $lb.Probes[1].Name
         Assert-AreEqual 3 $lb.Probes[1].ProbeThreshold
         Assert-AreEqual "healthcheck2.aspx" $lb.Probes[1].RequestPath
         Assert-AreEqual 81 $lb.Probes[1].Port
-        Assert-AreEqual "AllProbedUp" $lb.Probes[1].NoHealthyBackendsBehavior
 
-        $lb =  Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Set-AzLoadBalancerProbeConfig -Name $probeName2 -RequestPath healthcheck2.aspx -Protocol http -Port 85 -IntervalInSeconds 16 -ProbeCount 3 -ProbeThreshold 3 -NoHealthyBackendsBehavior "AllProbedDown"| Set-AzLoadBalancer
+        $lb =  Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Set-AzLoadBalancerProbeConfig -Name $probeName2 -RequestPath healthcheck2.aspx -Protocol http -Port 85 -IntervalInSeconds 16 -ProbeCount 3 -ProbeThreshold 3 | Set-AzLoadBalancer
         Assert-AreEqual 2 @($lb.Probes).Count
         Assert-AreEqual $probeName2 $lb.Probes[1].Name
         Assert-AreEqual "healthcheck2.aspx" $lb.Probes[1].RequestPath
         Assert-AreEqual 85 $lb.Probes[1].Port
-        Assert-AreEqual "AllProbedDown" $lb.Probes[1].Assert-AreEqual "AllProbedUp" $lb.Probes[1].NoHealthyBackendsBehavior
 
         $probeConfig = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Get-AzLoadBalancerProbeConfig -Name $probeName2
         $probeConfigList = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname | Get-AzLoadBalancerProbeConfig
