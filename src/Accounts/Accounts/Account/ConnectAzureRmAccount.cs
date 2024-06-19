@@ -602,6 +602,7 @@ namespace Microsoft.Azure.Commands.Profile
         {
             var loginExperienceV2 = AzConfigReader.GetAzConfig(ConfigKeys.LoginExperienceV2, LoginExperienceConfig.On);
             // add telemetry when read config
+            if(_qosEvent.ConfigMetrics)
             _qosEvent.ConfigMetrics.Add(new ConfigMetrics(ConfigKeys.LoginExperienceV2,
                Enum.GetName(typeof(LoginExperienceConfig), loginExperienceV2)));
 
