@@ -16,13 +16,10 @@ The operation to update a hybrid machine.
 ```
 Update-AzConnectedMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AgentUpgradeCorrelationId <String>] [-AgentUpgradeDesiredVersion <String>] [-AgentUpgradeEnableAutomatic]
- [-IdentityType <String>] [-Kind <String>] [-LinuxConfigurationPatchSettingsAssessmentMode <String>]
- [-LinuxConfigurationPatchSettingsPatchMode <String>] [-LocationDataCity <String>]
+ [-IdentityType <String>] [-Kind <String>] [-LocationDataCity <String>]
  [-LocationDataCountryOrRegion <String>] [-LocationDataDistrict <String>] [-LocationDataName <String>]
- [-ParentClusterResourceId <String>] [-PrivateLinkScopeResourceId <String>] [-Tag <Hashtable>]
- [-WindowsConfigurationPatchSettingsAssessmentMode <String>]
- [-WindowsConfigurationPatchSettingsPatchMode <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-OSProfile <IOSProfile>] [-ParentClusterResourceId <String>] [-PrivateLinkScopeResourceId <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -41,13 +38,10 @@ Update-AzConnectedMachine -InputObject <IConnectedMachineIdentity> -Parameter <I
 ```
 Update-AzConnectedMachine -InputObject <IConnectedMachineIdentity> [-AgentUpgradeCorrelationId <String>]
  [-AgentUpgradeDesiredVersion <String>] [-AgentUpgradeEnableAutomatic] [-IdentityType <String>]
- [-Kind <String>] [-LinuxConfigurationPatchSettingsAssessmentMode <String>]
- [-LinuxConfigurationPatchSettingsPatchMode <String>] [-LocationDataCity <String>]
- [-LocationDataCountryOrRegion <String>] [-LocationDataDistrict <String>] [-LocationDataName <String>]
+ [-Kind <String>] [-LocationDataCity <String>] [-LocationDataCountryOrRegion <String>]
+ [-LocationDataDistrict <String>] [-LocationDataName <String>] [-OSProfile <IOSProfile>]
  [-ParentClusterResourceId <String>] [-PrivateLinkScopeResourceId <String>] [-Tag <Hashtable>]
- [-WindowsConfigurationPatchSettingsAssessmentMode <String>]
- [-WindowsConfigurationPatchSettingsPatchMode <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -232,36 +226,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LinuxConfigurationPatchSettingsAssessmentMode
-Specifies the assessment mode.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LinuxConfigurationPatchSettingsPatchMode
-Specifies the patch mode.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -LocationDataCity
 The city or locality where the resource is located.
 
@@ -331,6 +295,22 @@ Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonStri
 Aliases: MachineName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OSProfile
+Specifies the operating system settings for the hybrid machine.
+To construct, see NOTES section for OSPROFILE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfile
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -419,36 +399,6 @@ Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WindowsConfigurationPatchSettingsAssessmentMode
-Specifies the assessment mode.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WindowsConfigurationPatchSettingsPatchMode
-Specifies the patch mode.
-
-```yaml
-Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
