@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated signed 3rd party assembly NLog.dll to PSGallery
 
 ## Version 1.3.1
 * Removed the outdated deps.json file.
