@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Updated the reference of Azure PowerShell Common to 1.3.97-preview.
+* Updated the reference of Azure PowerShell Common to 1.3.98-preview.
 * Limited promotional message to interactive scenarios only
 
 ## Version 3.0.0
