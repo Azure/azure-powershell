@@ -32,6 +32,10 @@
 * Added new cmdlet `New-AzVirtualApplianceInboundSecurityRulesProperty` to support for the property 'rules' of Inbound Security Rules
 * Added AdminState parameter to Load Balancer Backend Address
     - `New-AzLoadBalancerBackendAddressConfig`
+* Added NoHealthyBackendsBehavior to PSProbe, and updated corresponding cmdlets.
+	- `New-AzLoadBalancerProbeConfig`
+	- `Add-AzLoadBalancerProbeConfig`
+	- `Set-AzLoadBalancerProbeConfig`
 * Updated PS SDK to older SDK removing identity field
 
 ## Version 7.5.0
