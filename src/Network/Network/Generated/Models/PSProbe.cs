@@ -53,6 +53,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string RequestPath { get; set; }
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
+        public string NoHealthyBackendsBehavior { get; set; }
+        [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
         [JsonProperty(Order = 1)]
         public List<PSResourceId> LoadBalancingRules { get; set; }

@@ -18,9 +18,13 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<ExpressRouteCrossConnection> List(this IExpressRouteCrossConnectionsOperations operations)
+        /// <param name='filter'>
+        /// The filter to apply on the operation. For example, you can use $filter=name
+        /// eq &#39;{circuitServiceKey}&#39;.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ExpressRouteCrossConnection> List(this IExpressRouteCrossConnectionsOperations operations, string filter = default(string))
         {
-                return ((IExpressRouteCrossConnectionsOperations)operations).ListAsync().GetAwaiter().GetResult();
+                return ((IExpressRouteCrossConnectionsOperations)operations).ListAsync(filter).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -29,12 +33,16 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='filter'>
+        /// The filter to apply on the operation. For example, you can use $filter=name
+        /// eq &#39;{circuitServiceKey}&#39;.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ExpressRouteCrossConnection>> ListAsync(this IExpressRouteCrossConnectionsOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ExpressRouteCrossConnection>> ListAsync(this IExpressRouteCrossConnectionsOperations operations, string filter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(filter, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

@@ -16,5 +16,6 @@ namespace Microsoft.Azure.Management.Network.Models
         public const string Basic = "Basic";
         public const string Standard = "Standard";
         public const string Developer = "Developer";
+        public const string Premium = "Premium";
     }
 }

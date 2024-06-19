@@ -46,7 +46,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="authorizationUseStatus">The authorization use status.
         /// Possible values include: &#39;Available&#39;, &#39;InUse&#39;</param>
-        public ExpressRouteCircuitAuthorization(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), string authorizationKey = default(string), string authorizationUseStatus = default(string))
+
+        /// <param name="connectionResourceUri">The reference to the ExpressRoute connection resource using the
+        /// authorization.
+        /// </param>
+        public ExpressRouteCircuitAuthorization(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), string authorizationKey = default(string), string authorizationUseStatus = default(string), string connectionResourceUri = default(string))
 
         : base(id)
         {
@@ -56,6 +60,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.ProvisioningState = provisioningState;
             this.AuthorizationKey = authorizationKey;
             this.AuthorizationUseStatus = authorizationUseStatus;
+            this.ConnectionResourceUri = connectionResourceUri;
             CustomInit();
         }
 
@@ -102,5 +107,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.authorizationUseStatus")]
         public string AuthorizationUseStatus {get; set; }
+
+        /// <summary>
+        /// Gets the reference to the ExpressRoute connection resource using the
+        /// authorization.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.connectionResourceUri")]
+        public string ConnectionResourceUri {get; private set; }
     }
 }
