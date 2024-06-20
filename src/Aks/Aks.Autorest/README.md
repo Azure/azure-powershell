@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Aks service.
 
 ---
-## Status
-[![Az.Aks](https://img.shields.io/powershellgallery/v/Az.Aks.svg?style=flat-square&label=Az.Aks "Az.Aks")](https://www.powershellgallery.com/packages/Az.Aks/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -41,10 +38,11 @@ title: Aks
 module-version: 0.1.0
 subject-prefix: $(service-name)
 identity-correction-for-post: true
+add-api-version-in-model-namespace: true
 
 # For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
+# use-extension:
+#   "@autorest/powershell": "3.x"
 
 directive:
   - where:
@@ -55,8 +53,11 @@ directive:
       verb: Get|New|Set|Remove
     remove: true
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Run$|^RunViaIdentity$
+      variant: ^(Create|Update|Run)(?!.*?Expanded)
       subject: ^MaintenanceConfiguration$|^Snapshot$|^ManagedClusterCommand$|^SnapshotTag$
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity.*$
     remove: true
   - where:  
       subject: ^MaintenanceConfiguration$|^Snapshot$
@@ -68,8 +69,8 @@ directive:
       verb: Update
     remove: true
   - model-cmdlet:
-    - TimeSpan
-    - TimeInWeek
+    - model-name: TimeSpan
+    - model-name: TimeInWeek
   - where:
       subject: ^ManagedCluster$
       parameter-name: ResourceName
