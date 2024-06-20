@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 1.11.0
+* Upgraded to api version 2024-02-01
+* Added log scrubbing support and custom rules group by variable support
+
+## Version 1.10.1
+* Removed the outdated deps.json file.
+
 ## Version 1.10.0
 * Fixed New-AzFrontDoorWafPolicy cmdlet to support adding Tags for the Azure Frontdoor waf policy
 

@@ -141,6 +141,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).PrivateCloudName = (string) content.GetValueForProperty("PrivateCloudName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).PrivateCloudName, global::System.Convert.ToString);
             }
+            if (content.Contains("AddonName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).AddonName = (string) content.GetValueForProperty("AddonName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).AddonName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthorizationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).AuthorizationName = (string) content.GetValueForProperty("AuthorizationName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).AuthorizationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CloudLinkName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).CloudLinkName = (string) content.GetValueForProperty("CloudLinkName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).CloudLinkName, global::System.Convert.ToString);
+            }
             if (content.Contains("ClusterName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).ClusterName = (string) content.GetValueForProperty("ClusterName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).ClusterName, global::System.Convert.ToString);
@@ -149,69 +161,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).DatastoreName = (string) content.GetValueForProperty("DatastoreName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).DatastoreName, global::System.Convert.ToString);
             }
-            if (content.Contains("HcxEnterpriseSiteName"))
+            if (content.Contains("PlacementPolicyName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).HcxEnterpriseSiteName = (string) content.GetValueForProperty("HcxEnterpriseSiteName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).HcxEnterpriseSiteName, global::System.Convert.ToString);
-            }
-            if (content.Contains("AuthorizationName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).AuthorizationName = (string) content.GetValueForProperty("AuthorizationName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).AuthorizationName, global::System.Convert.ToString);
-            }
-            if (content.Contains("GlobalReachConnectionName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).GlobalReachConnectionName = (string) content.GetValueForProperty("GlobalReachConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).GlobalReachConnectionName, global::System.Convert.ToString);
-            }
-            if (content.Contains("WorkloadNetworkName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).WorkloadNetworkName = (string) content.GetValueForProperty("WorkloadNetworkName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).WorkloadNetworkName, global::System.Convert.ToString);
-            }
-            if (content.Contains("SegmentId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).SegmentId = (string) content.GetValueForProperty("SegmentId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).SegmentId, global::System.Convert.ToString);
-            }
-            if (content.Contains("DhcpId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).DhcpId = (string) content.GetValueForProperty("DhcpId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).DhcpId, global::System.Convert.ToString);
-            }
-            if (content.Contains("GatewayId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).GatewayId = (string) content.GetValueForProperty("GatewayId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).GatewayId, global::System.Convert.ToString);
-            }
-            if (content.Contains("PortMirroringId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).PortMirroringId = (string) content.GetValueForProperty("PortMirroringId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).PortMirroringId, global::System.Convert.ToString);
-            }
-            if (content.Contains("VMGroupId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).VMGroupId = (string) content.GetValueForProperty("VMGroupId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).VMGroupId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).PlacementPolicyName = (string) content.GetValueForProperty("PlacementPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).PlacementPolicyName, global::System.Convert.ToString);
             }
             if (content.Contains("VirtualMachineId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).VirtualMachineId = (string) content.GetValueForProperty("VirtualMachineId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).VirtualMachineId, global::System.Convert.ToString);
             }
-            if (content.Contains("DnsServiceId"))
+            if (content.Contains("GlobalReachConnectionName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).DnsServiceId = (string) content.GetValueForProperty("DnsServiceId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).DnsServiceId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).GlobalReachConnectionName = (string) content.GetValueForProperty("GlobalReachConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).GlobalReachConnectionName, global::System.Convert.ToString);
             }
-            if (content.Contains("DnsZoneId"))
+            if (content.Contains("HcxEnterpriseSiteName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).DnsZoneId = (string) content.GetValueForProperty("DnsZoneId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).DnsZoneId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).HcxEnterpriseSiteName = (string) content.GetValueForProperty("HcxEnterpriseSiteName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).HcxEnterpriseSiteName, global::System.Convert.ToString);
             }
-            if (content.Contains("PublicIPId"))
+            if (content.Contains("ScriptExecutionName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).PublicIPId = (string) content.GetValueForProperty("PublicIPId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).PublicIPId, global::System.Convert.ToString);
-            }
-            if (content.Contains("CloudLinkName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).CloudLinkName = (string) content.GetValueForProperty("CloudLinkName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).CloudLinkName, global::System.Convert.ToString);
-            }
-            if (content.Contains("AddonName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).AddonName = (string) content.GetValueForProperty("AddonName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).AddonName, global::System.Convert.ToString);
-            }
-            if (content.Contains("PlacementPolicyName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).PlacementPolicyName = (string) content.GetValueForProperty("PlacementPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).PlacementPolicyName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).ScriptExecutionName = (string) content.GetValueForProperty("ScriptExecutionName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).ScriptExecutionName, global::System.Convert.ToString);
             }
             if (content.Contains("ScriptPackageName"))
             {
@@ -221,9 +189,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).ScriptCmdletName = (string) content.GetValueForProperty("ScriptCmdletName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).ScriptCmdletName, global::System.Convert.ToString);
             }
-            if (content.Contains("ScriptExecutionName"))
+            if (content.Contains("DhcpId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).ScriptExecutionName = (string) content.GetValueForProperty("ScriptExecutionName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).ScriptExecutionName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).DhcpId = (string) content.GetValueForProperty("DhcpId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).DhcpId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DnsServiceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).DnsServiceId = (string) content.GetValueForProperty("DnsServiceId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).DnsServiceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DnsZoneId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).DnsZoneId = (string) content.GetValueForProperty("DnsZoneId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).DnsZoneId, global::System.Convert.ToString);
+            }
+            if (content.Contains("GatewayId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).GatewayId = (string) content.GetValueForProperty("GatewayId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).GatewayId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PortMirroringId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).PortMirroringId = (string) content.GetValueForProperty("PortMirroringId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).PortMirroringId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PublicIPId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).PublicIPId = (string) content.GetValueForProperty("PublicIPId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).PublicIPId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SegmentId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).SegmentId = (string) content.GetValueForProperty("SegmentId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).SegmentId, global::System.Convert.ToString);
+            }
+            if (content.Contains("VMGroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).VMGroupId = (string) content.GetValueForProperty("VMGroupId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).VMGroupId, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
@@ -262,6 +258,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).PrivateCloudName = (string) content.GetValueForProperty("PrivateCloudName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).PrivateCloudName, global::System.Convert.ToString);
             }
+            if (content.Contains("AddonName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).AddonName = (string) content.GetValueForProperty("AddonName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).AddonName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthorizationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).AuthorizationName = (string) content.GetValueForProperty("AuthorizationName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).AuthorizationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CloudLinkName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).CloudLinkName = (string) content.GetValueForProperty("CloudLinkName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).CloudLinkName, global::System.Convert.ToString);
+            }
             if (content.Contains("ClusterName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).ClusterName = (string) content.GetValueForProperty("ClusterName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).ClusterName, global::System.Convert.ToString);
@@ -270,69 +278,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).DatastoreName = (string) content.GetValueForProperty("DatastoreName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).DatastoreName, global::System.Convert.ToString);
             }
-            if (content.Contains("HcxEnterpriseSiteName"))
+            if (content.Contains("PlacementPolicyName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).HcxEnterpriseSiteName = (string) content.GetValueForProperty("HcxEnterpriseSiteName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).HcxEnterpriseSiteName, global::System.Convert.ToString);
-            }
-            if (content.Contains("AuthorizationName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).AuthorizationName = (string) content.GetValueForProperty("AuthorizationName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).AuthorizationName, global::System.Convert.ToString);
-            }
-            if (content.Contains("GlobalReachConnectionName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).GlobalReachConnectionName = (string) content.GetValueForProperty("GlobalReachConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).GlobalReachConnectionName, global::System.Convert.ToString);
-            }
-            if (content.Contains("WorkloadNetworkName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).WorkloadNetworkName = (string) content.GetValueForProperty("WorkloadNetworkName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).WorkloadNetworkName, global::System.Convert.ToString);
-            }
-            if (content.Contains("SegmentId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).SegmentId = (string) content.GetValueForProperty("SegmentId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).SegmentId, global::System.Convert.ToString);
-            }
-            if (content.Contains("DhcpId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).DhcpId = (string) content.GetValueForProperty("DhcpId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).DhcpId, global::System.Convert.ToString);
-            }
-            if (content.Contains("GatewayId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).GatewayId = (string) content.GetValueForProperty("GatewayId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).GatewayId, global::System.Convert.ToString);
-            }
-            if (content.Contains("PortMirroringId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).PortMirroringId = (string) content.GetValueForProperty("PortMirroringId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).PortMirroringId, global::System.Convert.ToString);
-            }
-            if (content.Contains("VMGroupId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).VMGroupId = (string) content.GetValueForProperty("VMGroupId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).VMGroupId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).PlacementPolicyName = (string) content.GetValueForProperty("PlacementPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).PlacementPolicyName, global::System.Convert.ToString);
             }
             if (content.Contains("VirtualMachineId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).VirtualMachineId = (string) content.GetValueForProperty("VirtualMachineId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).VirtualMachineId, global::System.Convert.ToString);
             }
-            if (content.Contains("DnsServiceId"))
+            if (content.Contains("GlobalReachConnectionName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).DnsServiceId = (string) content.GetValueForProperty("DnsServiceId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).DnsServiceId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).GlobalReachConnectionName = (string) content.GetValueForProperty("GlobalReachConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).GlobalReachConnectionName, global::System.Convert.ToString);
             }
-            if (content.Contains("DnsZoneId"))
+            if (content.Contains("HcxEnterpriseSiteName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).DnsZoneId = (string) content.GetValueForProperty("DnsZoneId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).DnsZoneId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).HcxEnterpriseSiteName = (string) content.GetValueForProperty("HcxEnterpriseSiteName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).HcxEnterpriseSiteName, global::System.Convert.ToString);
             }
-            if (content.Contains("PublicIPId"))
+            if (content.Contains("ScriptExecutionName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).PublicIPId = (string) content.GetValueForProperty("PublicIPId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).PublicIPId, global::System.Convert.ToString);
-            }
-            if (content.Contains("CloudLinkName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).CloudLinkName = (string) content.GetValueForProperty("CloudLinkName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).CloudLinkName, global::System.Convert.ToString);
-            }
-            if (content.Contains("AddonName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).AddonName = (string) content.GetValueForProperty("AddonName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).AddonName, global::System.Convert.ToString);
-            }
-            if (content.Contains("PlacementPolicyName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).PlacementPolicyName = (string) content.GetValueForProperty("PlacementPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).PlacementPolicyName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).ScriptExecutionName = (string) content.GetValueForProperty("ScriptExecutionName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).ScriptExecutionName, global::System.Convert.ToString);
             }
             if (content.Contains("ScriptPackageName"))
             {
@@ -342,9 +306,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).ScriptCmdletName = (string) content.GetValueForProperty("ScriptCmdletName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).ScriptCmdletName, global::System.Convert.ToString);
             }
-            if (content.Contains("ScriptExecutionName"))
+            if (content.Contains("DhcpId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).ScriptExecutionName = (string) content.GetValueForProperty("ScriptExecutionName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).ScriptExecutionName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).DhcpId = (string) content.GetValueForProperty("DhcpId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).DhcpId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DnsServiceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).DnsServiceId = (string) content.GetValueForProperty("DnsServiceId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).DnsServiceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DnsZoneId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).DnsZoneId = (string) content.GetValueForProperty("DnsZoneId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).DnsZoneId, global::System.Convert.ToString);
+            }
+            if (content.Contains("GatewayId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).GatewayId = (string) content.GetValueForProperty("GatewayId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).GatewayId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PortMirroringId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).PortMirroringId = (string) content.GetValueForProperty("PortMirroringId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).PortMirroringId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PublicIPId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).PublicIPId = (string) content.GetValueForProperty("PublicIPId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).PublicIPId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SegmentId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).SegmentId = (string) content.GetValueForProperty("SegmentId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).SegmentId, global::System.Convert.ToString);
+            }
+            if (content.Contains("VMGroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).VMGroupId = (string) content.GetValueForProperty("VMGroupId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).VMGroupId, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

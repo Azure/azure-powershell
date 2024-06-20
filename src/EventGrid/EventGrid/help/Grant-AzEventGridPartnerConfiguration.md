@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
+external help file: Az.EventGrid-help.xml
 Module Name: Az.EventGrid
 online version: https://learn.microsoft.com/powershell/module/az.eventgrid/grant-azeventgridpartnerconfiguration
 schema: 2.0.0
@@ -8,65 +8,69 @@ schema: 2.0.0
 # Grant-AzEventGridPartnerConfiguration
 
 ## SYNOPSIS
-Grants access to a partner for the specified partner configuration.
+Authorize a single partner either by partner registration immutable Id or by partner name.
 
 ## SYNTAX
 
-### ResourceGroupNameParameterSet (Default)
+### AuthorizeExpanded (Default)
 ```
-Grant-AzEventGridPartnerConfiguration [-ResourceGroupName] <String> [[-PartnerRegistrationImmutableId] <Guid>]
- [[-PartnerName] <String>] [[-AuthorizationExpirationTime] <DateTime>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Grant-AzEventGridPartnerConfiguration -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-AuthorizationExpirationTimeInUtc <DateTime>] [-PartnerName <String>]
+ [-PartnerRegistrationImmutableId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### PartnerConfigurationInputObjectParameterSet
+### Authorize
 ```
-Grant-AzEventGridPartnerConfiguration [-InputObject] <PSPartnerConfiguration>
- [[-PartnerRegistrationImmutableId] <Guid>] [[-PartnerName] <String>]
- [[-AuthorizationExpirationTime] <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Grant-AzEventGridPartnerConfiguration -ResourceGroupName <String> [-SubscriptionId <String>]
+ -PartnerInfo <IPartner> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AuthorizeViaJsonFilePath
+```
+Grant-AzEventGridPartnerConfiguration -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### AuthorizeViaJsonString
+```
+Grant-AzEventGridPartnerConfiguration -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Grant-AzEventGridPartnerConfiguration cmdlet grants access to a partner for the specific partner configuration based on either the partner registration immutable ID or the partner name.
-At least one of the partner registration immutable ID and the partner name is required.
+Authorize a single partner either by partner registration immutable Id or by partner name.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Authorize a single partner either by partner registration immutable Id or by partner name.
 ```powershell
-Grant-AzEventGridPartnerConfiguration -ResourceGroup MyResourceGroupName -PartnerRegistrationImmutableId 23e0092b-f336-4833-9ab3-9353a15650fc
+$partnerRegistration = Get-AzEventGridPartnerRegistration -ResourceGroupName azps_test_group_eventgrid -Name azps-registration
+Grant-AzEventGridPartnerConfiguration -ResourceGroupName azps_test_group_eventgrid -AuthorizationExpirationTimeInUtc "2024-01-09T09:31:42.521Z" -PartnerName default -PartnerRegistrationImmutableId $partnerRegistration.ImmutableId
 ```
 
-Grants access to a partner based on the partner ID for the partner configuration in resource group \`MyResourceGroupName\`.
+```output
+Name    Location ResourceGroupName
+----    -------- -----------------
+default global   azps_test_group_eventgrid
+```
+
+Authorize a single partner either by partner registration immutable Id or by partner name.
 
 ## PARAMETERS
 
-### -AuthorizationExpirationTime
+### -AuthorizationExpirationTimeInUtc
 Expiration time of the partner authorization.
-If this timer expires, any request from this partner to create, update or delete resources in subscriber's context will fail.
-If specified, the allowed values are between 1 to the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration.
-If not specified, the default value will be the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration or 7 if this value is not specified.
+If this timer expires, any request from this partner to create, update or delete resources in subscriber'scontext will fail.
+If specified, the allowed values are between 1 to the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration.If not specified, the default value will be the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration or 7 if this value is not specified.
 
 ```yaml
-Type: System.Nullable`1[System.DateTime]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Type: System.DateTime
+Parameter Sets: AuthorizeExpanded
+Aliases: AuthorizationExpirationTime
 
 Required: False
 Position: Named
@@ -75,63 +79,140 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-PartnerConfiguration object.
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.EventGrid.Models.PSPartnerConfiguration
-Parameter Sets: PartnerConfigurationInputObjectParameterSet
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Authorize operation
+
+```yaml
+Type: System.String
+Parameter Sets: AuthorizeViaJsonFilePath
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Authorize operation
+
+```yaml
+Type: System.String
+Parameter Sets: AuthorizeViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PartnerInfo
+Information about the partner.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartner
+Parameter Sets: Authorize
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -PartnerName
-Parter name.
+The partner name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AuthorizeExpanded
 Aliases:
 
 Required: False
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PartnerRegistrationImmutableId
-Immutable id of the corresponding partner registration
+The immutableId of the corresponding partner registration.
 
 ```yaml
-Type: System.Nullable`1[System.Guid]
+Type: System.String
+Parameter Sets: AuthorizeExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupNameParameterSet
+Parameter Sets: (All)
 Aliases: ResourceGroup
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -171,17 +252,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.EventGrid.Models.PSPartnerConfiguration
-
-### System.Nullable`1[[System.Guid, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-
-### System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartner
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventGrid.Models.PSPartnerConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerConfiguration
 
 ## NOTES
 

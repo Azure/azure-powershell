@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-The operation to Update a storage container.
+The operation to create or update a storage container.
 Please note some properties can be set only during storage container creation.
 .Description
-The operation to Update a storage container.
+The operation to create or update a storage container.
 Please note some properties can be set only during storage container creation.
 .Example
 {{ Add code here }}

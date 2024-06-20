@@ -52,6 +52,10 @@ Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' `
 Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -SqlVirtualMachineGroupResourceId ''
 .Example
 Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1'  -Tag @{'newkey'='newvalue'} -AsJob
+.Example
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -IdentityType 'SystemAssigned'
+.Example
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -IdentityType 'UserAssigned' -ManagedIdentityClientId '11111111-2222-3333-4444-555555555555'
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
@@ -346,6 +350,19 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Enable automatic upgrade of Sql IaaS extension Agent.
     ${EnableAutomaticUpgrade},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # The client Id of the Managed Identity to query Microsoft Graph API.
+    # An empty string must be used for the system assigned Managed Identity
+    ${ManagedIdentityClientId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+    ${IdentityType},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

@@ -49,17 +49,27 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// objects).
         /// </param>
 
-        /// <param name="soqlQuery">Database query. Type: string (or Expression with resultType string).
+        /// <param name="soqlQuery">Deprecating, please use &#39;query&#39; property instead. Type: string (or
+        /// Expression with resultType string).
+        /// </param>
+
+        /// <param name="query">You can only use Salesforce Object Query Language (SOQL) query with
+        /// limitations. For SOQL limitations, see this article:
+        /// https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/queries.htm#SOQL%20Considerations.
+        /// If query is not specified, all the data of the Salesforce object specified
+        /// in ObjectApiName/reportId in dataset will be retrieved. Type: string (or
+        /// Expression with resultType string).
         /// </param>
 
         /// <param name="includeDeletedObjects">This property control whether query result contains Deleted objects.
         /// Default is false. Type: boolean (or Expression with resultType boolean).
         /// </param>
-        public SalesforceV2Source(object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object queryTimeout = default(object), object additionalColumns = default(object), object soqlQuery = default(object), object includeDeletedObjects = default(object))
+        public SalesforceV2Source(object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object queryTimeout = default(object), object additionalColumns = default(object), object soqlQuery = default(object), object query = default(object), object includeDeletedObjects = default(object))
 
         : base(sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection, queryTimeout, additionalColumns)
         {
             this.SoqlQuery = soqlQuery;
+            this.Query = query;
             this.IncludeDeletedObjects = includeDeletedObjects;
             CustomInit();
         }
@@ -71,11 +81,22 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
 
         /// <summary>
-        /// Gets or sets database query. Type: string (or Expression with resultType
-        /// string).
+        /// Gets or sets deprecating, please use &#39;query&#39; property instead. Type: string
+        /// (or Expression with resultType string).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "SOQLQuery")]
         public object SoqlQuery {get; set; }
+
+        /// <summary>
+        /// Gets or sets you can only use Salesforce Object Query Language (SOQL) query
+        /// with limitations. For SOQL limitations, see this article:
+        /// https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/queries.htm#SOQL%20Considerations.
+        /// If query is not specified, all the data of the Salesforce object specified
+        /// in ObjectApiName/reportId in dataset will be retrieved. Type: string (or
+        /// Expression with resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "query")]
+        public object Query {get; set; }
 
         /// <summary>
         /// Gets or sets this property control whether query result contains Deleted

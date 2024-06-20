@@ -713,7 +713,7 @@ function Test-SetAzureStorageAccountStorageV2
         Assert-AreEqual $kind $sto.Kind;        
                     
         $kind = 'StorageV2'
-        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -UpgradeToStorageV2;
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -UpgradeToStorageV2 -Force;
         $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
@@ -947,7 +947,7 @@ function Test-PipingNewUpdateAccount
         Assert-AreEqual $sto.Location $sto2.Location;
         Assert-AreNotEqual $sto.StorageAccountName $sto2.StorageAccountName;
         
-        Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname | set-AzStorageAccount -UpgradeToStorageV2
+        Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname | set-AzStorageAccount -UpgradeToStorageV2 -Force
         $global:sto = $sto | set-AzStorageAccount -EnableHttpsTrafficOnly $true
         Assert-AreEqual 'StorageV2' $sto.Kind;
         Assert-AreEqual $true $sto.EnableHttpsTrafficOnly;
@@ -1293,7 +1293,7 @@ function Test-NewSetAzureStorageAccount_LargeFileShare
         Assert-AreEqual "Enabled" $sto.LargeFileSharesState;
         
         #update Account
-        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableLargeFileShare -SkuName $stotype -UpgradeToStorageV2;
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableLargeFileShare -SkuName $stotype -UpgradeToStorageV2 -Force;
         
         Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
         Assert-AreEqual $stoname $sto.StorageAccountName;

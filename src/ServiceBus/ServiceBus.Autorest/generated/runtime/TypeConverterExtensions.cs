@@ -62,6 +62,56 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PowerShell
             return result.ToArray();
         }
 
+        internal static System.Collections.Generic.List<T> SelectToList<T>(object source, System.Func<object, object> converter)
+        {
+            // null begets null
+            if (source == null)
+            {
+                return null;
+            }
+
+            // single values and strings are just encapsulated in the array.
+            if (source is string || !(source is System.Collections.IEnumerable))
+            {
+                try
+                {
+                    return new T[] { (T)converter(source) }.ToList();
+                }
+#if DEBUG
+                catch (System.Exception E)
+                {
+                    System.Console.Error.WriteLine($"{E.GetType().Name}/{E.Message}/{E.StackTrace}");
+                }
+#else
+                catch
+                {
+                    // silent conversion fail
+                }
+#endif
+                return new T[0].ToList(); // empty result if couldn't convert.
+            }
+
+            var result = new System.Collections.Generic.List<T>();
+            foreach (var each in (System.Collections.IEnumerable)source)
+            {
+                try
+                {
+                    result.Add((T)converter(each));
+                }
+#if DEBUG
+                catch (System.Exception E)
+                {
+                    System.Console.Error.WriteLine($"{E.GetType().Name}/{E.Message}/{E.StackTrace}");
+                }
+#else
+                catch
+                {
+                    // silent conversion fail
+                }
+#endif
+            }
+            return result;
+        }
         internal static System.Collections.Generic.IEnumerable<object> GetPropertyKeys<K, V>(this System.Collections.Generic.IDictionary<K, V> dictionary)
         {
             if (null != dictionary)

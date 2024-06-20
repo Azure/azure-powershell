@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a private cloud</summary>
+    /// <summary>Update a PrivateCloud</summary>
     /// <remarks>
-    /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}"
+    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}"
+    /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzVMwarePrivateCloud_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Update a private cloud")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Update a PrivateCloud")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}", ApiVersion = "2023-03-01")]
     public partial class UpdateAzVMwarePrivateCloud_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IContext
@@ -43,8 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// <summary>A buffer to record first returned object in response.</summary>
         private object _firstResponse = null;
 
-        /// <summary>An update to a private cloud resource</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdate _privateCloudUpdateBody = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PrivateCloudUpdate();
+        /// <summary>A private cloud resource</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud _privateCloudBody = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PrivateCloud();
 
         /// <summary>
         /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
@@ -78,33 +78,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
-        /// <summary>Status of customer managed encryption key</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Status of customer managed encryption key")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Status of customer managed encryption key",
-        SerializedName = @"status",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Enabled", "Disabled")]
-        public string EncryptionStatus { get => _privateCloudUpdateBody.EncryptionStatus ?? null; set => _privateCloudUpdateBody.EncryptionStatus = value; }
-
-        /// <summary>
-        /// Array of additional networks noncontiguous with networkBlock. Networks must be unique and non-overlapping across VNet
-        /// in your subscription, on-premise, and this privateCloud networkBlock attribute. Make sure the CIDR format conforms to
-        /// (A.B.C.D/X).
-        /// </summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Array of additional networks noncontiguous with networkBlock. Networks must be unique and non-overlapping across VNet in your subscription, on-premise, and this privateCloud networkBlock attribute. Make sure the CIDR format conforms to (A.B.C.D/X).")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Array of additional networks noncontiguous with networkBlock. Networks must be unique and non-overlapping across VNet in your subscription, on-premise, and this privateCloud networkBlock attribute. Make sure the CIDR format conforms to (A.B.C.D/X).",
-        SerializedName = @"extendedNetworkBlocks",
-        PossibleTypes = new [] { typeof(string) })]
-        public string[] ExtendedNetworkBlock { get => _privateCloudUpdateBody.ExtendedNetworkBlock?.ToArray() ?? null /* fixedArrayOf */; set => _privateCloudUpdateBody.ExtendedNetworkBlock = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
+        /// <summary>Decides if enable a system assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Decides if enable a system assigned identity for the resource.")]
+        public System.Boolean? EnableSystemAssignedIdentity { get; set; }
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
@@ -121,103 +97,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
-        /// <summary>vCenter Single Sign On Identity Sources</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "vCenter Single Sign On Identity Sources")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"vCenter Single Sign On Identity Sources",
-        SerializedName = @"identitySources",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource[] IdentitySource { get => _privateCloudUpdateBody.IdentitySource?.ToArray() ?? null /* fixedArrayOf */; set => _privateCloudUpdateBody.IdentitySource = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource>(value) : null); }
-
-        /// <summary>
-        /// The type of identity used for the private cloud. The type 'SystemAssigned' refers to an implicitly created identity. The
-        /// type 'None' will remove any identities from the Private Cloud.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of identity used for the private cloud. The type 'SystemAssigned' refers to an implicitly created identity. The type 'None' will remove any identities from the Private Cloud.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The type of identity used for the private cloud. The type 'SystemAssigned' refers to an implicitly created identity. The type 'None' will remove any identities from the Private Cloud.",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("SystemAssigned", "None")]
-        public string IdentityType { get => _privateCloudUpdateBody.IdentityType ?? null; set => _privateCloudUpdateBody.IdentityType = value; }
-
-        /// <summary>Connectivity to internet is enabled or disabled</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Connectivity to internet is enabled or disabled")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Connectivity to internet is enabled or disabled",
-        SerializedName = @"internet",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Enabled", "Disabled")]
-        public string Internet { get => _privateCloudUpdateBody.Internet ?? null; set => _privateCloudUpdateBody.Internet = value; }
-
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
-
-        /// <summary>The name of the key.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of the key.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The name of the key.",
-        SerializedName = @"keyName",
-        PossibleTypes = new [] { typeof(string) })]
-        public string KeyVaultPropertyKeyName { get => _privateCloudUpdateBody.KeyVaultPropertyKeyName ?? null; set => _privateCloudUpdateBody.KeyVaultPropertyKeyName = value; }
-
-        /// <summary>The URL of the vault.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The URL of the vault.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The URL of the vault.",
-        SerializedName = @"keyVaultUrl",
-        PossibleTypes = new [] { typeof(string) })]
-        public string KeyVaultPropertyKeyVaultUrl { get => _privateCloudUpdateBody.KeyVaultPropertyKeyVaultUrl ?? null; set => _privateCloudUpdateBody.KeyVaultPropertyKeyVaultUrl = value; }
-
-        /// <summary>The version of the key.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The version of the key.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The version of the key.",
-        SerializedName = @"keyVersion",
-        PossibleTypes = new [] { typeof(string) })]
-        public string KeyVaultPropertyKeyVersion { get => _privateCloudUpdateBody.KeyVaultPropertyKeyVersion ?? null; set => _privateCloudUpdateBody.KeyVaultPropertyKeyVersion = value; }
-
-        /// <summary>The hosts</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The hosts")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The hosts",
-        SerializedName = @"hosts",
-        PossibleTypes = new [] { typeof(string) })]
-        public string[] ManagementClusterHost { get => _privateCloudUpdateBody.ManagementClusterHost?.ToArray() ?? null /* fixedArrayOf */; set => _privateCloudUpdateBody.ManagementClusterHost = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
-
-        /// <summary>The cluster size</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The cluster size")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The cluster size",
-        SerializedName = @"clusterSize",
-        PossibleTypes = new [] { typeof(int) })]
-        public int ManagementClusterSize { get => _privateCloudUpdateBody.ManagementClusterSize ?? default(int); set => _privateCloudUpdateBody.ManagementClusterSize = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -285,15 +166,81 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
+        /// <summary>
+        /// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the
+        /// resource this may be omitted.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.",
+        SerializedName = @"capacity",
+        PossibleTypes = new [] { typeof(int) })]
+        public int SkuCapacity { get => _privateCloudBody.SkuCapacity ?? default(int); set => _privateCloudBody.SkuCapacity = value; }
+
+        /// <summary>
+        /// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "If the service has different generations of hardware, for the same SKU, then that can be captured here.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"If the service has different generations of hardware, for the same SKU, then that can be captured here.",
+        SerializedName = @"family",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SkuFamily { get => _privateCloudBody.SkuFamily ?? null; set => _privateCloudBody.SkuFamily = value; }
+
+        /// <summary>The name of the SKU. E.g. P3. It is typically a letter+number code</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of the SKU. E.g. P3. It is typically a letter+number code")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the SKU. E.g. P3. It is typically a letter+number code",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SkuName { get => _privateCloudBody.SkuName ?? null; set => _privateCloudBody.SkuName = value; }
+
+        /// <summary>
+        /// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. ")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. ",
+        SerializedName = @"size",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SkuSize { get => _privateCloudBody.SkuSize ?? null; set => _privateCloudBody.SkuSize = value; }
+
+        /// <summary>
+        /// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required
+        /// on a PUT.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.",
+        SerializedName = @"tier",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Free", "Basic", "Standard", "Premium")]
+        public string SkuTier { get => _privateCloudBody.SkuTier ?? null; set => _privateCloudBody.SkuTier = value; }
+
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>The ID of the target subscription.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription.")]
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription. The value must be an UUID.")]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The ID of the target subscription.",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.DefaultInfo(
@@ -304,17 +251,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
-        /// <summary>Resource tags</summary>
+        /// <summary>Resource tags.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Resource tags",
+        Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceTags Tag { get => _privateCloudUpdateBody.Tag ?? null /* object */; set => _privateCloudUpdateBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceTags Tag { get => _privateCloudBody.Tag ?? null /* object */; set => _privateCloudBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -375,7 +322,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone._privateCloudUpdateBody = this._privateCloudUpdateBody;
+            clone._privateCloudBody = this._privateCloudBody;
             clone.SubscriptionId = this.SubscriptionId;
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.Name = this.Name;
@@ -523,6 +470,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
             }
         }
 
+        private void PreProcessManagedIdentityParametersWithGetResult()
+        {
+            bool supportsSystemAssignedIdentity = (true == this.EnableSystemAssignedIdentity || null == this.EnableSystemAssignedIdentity && true == _privateCloudBody?.IdentityType?.Contains("SystemAssigned"));
+            bool supportsUserAssignedIdentity = false;
+            // calculate IdentityType
+            if ((supportsUserAssignedIdentity && supportsSystemAssignedIdentity))
+            {
+                _privateCloudBody.IdentityType = "SystemAssigned,UserAssigned";
+            }
+            else if ((supportsUserAssignedIdentity && !supportsSystemAssignedIdentity))
+            {
+                _privateCloudBody.IdentityType = "UserAssigned";
+            }
+            else if ((!supportsUserAssignedIdentity && supportsSystemAssignedIdentity))
+            {
+                _privateCloudBody.IdentityType = "SystemAssigned";
+            }
+            else
+            {
+                _privateCloudBody.IdentityType = "None";
+            }
+        }
+
         /// <summary>Performs execution of the command.</summary>
         protected override void ProcessRecord()
         {
@@ -531,7 +501,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'PrivateCloudsUpdate' operation"))
+                if (ShouldProcess($"Call remote 'PrivateCloudsCreateOrUpdate' operation"))
                 {
                     if (true == MyInvocation?.BoundParameters?.ContainsKey("AsJob"))
                     {
@@ -595,7 +565,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.PrivateCloudsUpdate(SubscriptionId, ResourceGroupName, Name, _privateCloudUpdateBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate);
+                    _privateCloudBody = await this.Client.PrivateCloudsGetWithResult(SubscriptionId, ResourceGroupName, Name, this, Pipeline);
+                    this.PreProcessManagedIdentityParametersWithGetResult();
+                    this.Update_privateCloudBody();
+                    await this.Client.PrivateCloudsCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, _privateCloudBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.UndeclaredResponseException urexception)
@@ -625,6 +598,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         public UpdateAzVMwarePrivateCloud_UpdateExpanded()
         {
 
+        }
+
+        private void Update_privateCloudBody()
+        {
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Tag")))
+            {
+                this.Tag = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceTags)(this.MyInvocation?.BoundParameters["Tag"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("SkuName")))
+            {
+                this.SkuName = (string)(this.MyInvocation?.BoundParameters["SkuName"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("SkuTier")))
+            {
+                this.SkuTier = (string)(this.MyInvocation?.BoundParameters["SkuTier"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("SkuSize")))
+            {
+                this.SkuSize = (string)(this.MyInvocation?.BoundParameters["SkuSize"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("SkuFamily")))
+            {
+                this.SkuFamily = (string)(this.MyInvocation?.BoundParameters["SkuFamily"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("SkuCapacity")))
+            {
+                this.SkuCapacity = (int)(this.MyInvocation?.BoundParameters["SkuCapacity"]);
+            }
         }
 
         /// <param name="sendToPipeline"></param>

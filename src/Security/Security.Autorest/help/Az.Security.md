@@ -76,7 +76,7 @@ Create an in-memory object for AzureDevOpsScopeEnvironment.
 
 ### [New-AzSecurityConnector](New-AzSecurityConnector.md)
 Create a security connector.
-If a security connector is already Created and a subsequent request is issued for the same security connector id, then it will be Created.
+If a security connector is already created and a subsequent request is issued for the same security connector id, then it will be updated.
 
 ### [New-AzSecurityConnectorActionableRemediationObject](New-AzSecurityConnectorActionableRemediationObject.md)
 Create an in-memory object for ActionableRemediation.

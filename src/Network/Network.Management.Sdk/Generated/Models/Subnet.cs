@@ -44,6 +44,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the subnet resource.
         /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
 
+        /// <param name="sharingScope">Set this property to Tenant to allow sharing subnet with other
+        /// subscriptions in your AAD tenant. This property can only be set if
+        /// defaultOutboundAccess is set to false, both properties can only be set if
+        /// subnet is empty.
+        /// Possible values include: &#39;Tenant&#39;, &#39;DelegatedServices&#39;</param>
+
         /// <param name="addressPrefix">The address prefix for the subnet.
         /// </param>
 
@@ -104,7 +110,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// VMs in the subnet. This property can only be set at the time of subnet
         /// creation and cannot be updated for an existing subnet.
         /// </param>
-        public Subnet(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), RouteTable routeTable = default(RouteTable), string provisioningState = default(string), string addressPrefix = default(string), System.Collections.Generic.IList<string> addressPrefixes = default(System.Collections.Generic.IList<string>), NetworkSecurityGroup networkSecurityGroup = default(NetworkSecurityGroup), SubResource natGateway = default(SubResource), System.Collections.Generic.IList<ServiceEndpointPropertiesFormat> serviceEndpoints = default(System.Collections.Generic.IList<ServiceEndpointPropertiesFormat>), System.Collections.Generic.IList<ServiceEndpointPolicy> serviceEndpointPolicies = default(System.Collections.Generic.IList<ServiceEndpointPolicy>), System.Collections.Generic.IList<PrivateEndpoint> privateEndpoints = default(System.Collections.Generic.IList<PrivateEndpoint>), System.Collections.Generic.IList<IPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<IPConfiguration>), System.Collections.Generic.IList<IPConfigurationProfile> ipConfigurationProfiles = default(System.Collections.Generic.IList<IPConfigurationProfile>), System.Collections.Generic.IList<SubResource> ipAllocations = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<ResourceNavigationLink> resourceNavigationLinks = default(System.Collections.Generic.IList<ResourceNavigationLink>), System.Collections.Generic.IList<ServiceAssociationLink> serviceAssociationLinks = default(System.Collections.Generic.IList<ServiceAssociationLink>), System.Collections.Generic.IList<Delegation> delegations = default(System.Collections.Generic.IList<Delegation>), string purpose = default(string), string privateEndpointNetworkPolicies = default(string), string privateLinkServiceNetworkPolicies = default(string), System.Collections.Generic.IList<ApplicationGatewayIPConfiguration> applicationGatewayIPConfigurations = default(System.Collections.Generic.IList<ApplicationGatewayIPConfiguration>), bool? defaultOutboundAccess = default(bool?))
+        public Subnet(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), RouteTable routeTable = default(RouteTable), string provisioningState = default(string), string sharingScope = default(string), string addressPrefix = default(string), System.Collections.Generic.IList<string> addressPrefixes = default(System.Collections.Generic.IList<string>), NetworkSecurityGroup networkSecurityGroup = default(NetworkSecurityGroup), SubResource natGateway = default(SubResource), System.Collections.Generic.IList<ServiceEndpointPropertiesFormat> serviceEndpoints = default(System.Collections.Generic.IList<ServiceEndpointPropertiesFormat>), System.Collections.Generic.IList<ServiceEndpointPolicy> serviceEndpointPolicies = default(System.Collections.Generic.IList<ServiceEndpointPolicy>), System.Collections.Generic.IList<PrivateEndpoint> privateEndpoints = default(System.Collections.Generic.IList<PrivateEndpoint>), System.Collections.Generic.IList<IPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<IPConfiguration>), System.Collections.Generic.IList<IPConfigurationProfile> ipConfigurationProfiles = default(System.Collections.Generic.IList<IPConfigurationProfile>), System.Collections.Generic.IList<SubResource> ipAllocations = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<ResourceNavigationLink> resourceNavigationLinks = default(System.Collections.Generic.IList<ResourceNavigationLink>), System.Collections.Generic.IList<ServiceAssociationLink> serviceAssociationLinks = default(System.Collections.Generic.IList<ServiceAssociationLink>), System.Collections.Generic.IList<Delegation> delegations = default(System.Collections.Generic.IList<Delegation>), string purpose = default(string), string privateEndpointNetworkPolicies = default(string), string privateLinkServiceNetworkPolicies = default(string), System.Collections.Generic.IList<ApplicationGatewayIPConfiguration> applicationGatewayIPConfigurations = default(System.Collections.Generic.IList<ApplicationGatewayIPConfiguration>), bool? defaultOutboundAccess = default(bool?))
 
         : base(id)
         {
@@ -113,6 +119,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.Type = type;
             this.RouteTable = routeTable;
             this.ProvisioningState = provisioningState;
+            this.SharingScope = sharingScope;
             this.AddressPrefix = addressPrefix;
             this.AddressPrefixes = addressPrefixes;
             this.NetworkSecurityGroup = networkSecurityGroup;
@@ -171,6 +178,15 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }
+
+        /// <summary>
+        /// Gets or sets set this property to Tenant to allow sharing subnet with other
+        /// subscriptions in your AAD tenant. This property can only be set if
+        /// defaultOutboundAccess is set to false, both properties can only be set if
+        /// subnet is empty. Possible values include: &#39;Tenant&#39;, &#39;DelegatedServices&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.sharingScope")]
+        public string SharingScope {get; set; }
 
         /// <summary>
         /// Gets or sets the address prefix for the subnet.

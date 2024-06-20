@@ -137,6 +137,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseDetailsInternal)this).ImmutableId = (string) content.GetValueForProperty("ImmutableId",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseDetailsInternal)this).ImmutableId, global::System.Convert.ToString);
             }
+            if (content.Contains("VolumeLicenseDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseDetailsInternal)this).VolumeLicenseDetail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IVolumeLicenseDetails>) content.GetValueForProperty("VolumeLicenseDetail",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseDetailsInternal)this).VolumeLicenseDetail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IVolumeLicenseDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.VolumeLicenseDetailsTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -181,6 +185,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("ImmutableId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseDetailsInternal)this).ImmutableId = (string) content.GetValueForProperty("ImmutableId",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseDetailsInternal)this).ImmutableId, global::System.Convert.ToString);
+            }
+            if (content.Contains("VolumeLicenseDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseDetailsInternal)this).VolumeLicenseDetail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IVolumeLicenseDetails>) content.GetValueForProperty("VolumeLicenseDetail",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseDetailsInternal)this).VolumeLicenseDetail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IVolumeLicenseDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.VolumeLicenseDetailsTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }

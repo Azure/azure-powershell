@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Operation to Update an existing EmailService.
+Operation to update an existing EmailService.
 .Description
-Operation to Update an existing EmailService.
+Operation to update an existing EmailService.
 .Example
 Update-AzEmailService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -Tag @{ExampleKey1="UpdatedTagValue"}
 

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 5.0.0
+* Moved cmdlets to V4
+
 ## Version 4.2.2
 * Introduced secrets detection feature to safeguard sensitive data.
 

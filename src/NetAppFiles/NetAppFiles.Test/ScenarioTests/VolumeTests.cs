@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         }
 
         //---Note This test will be added to the next (2019-11-01) version ---
+        //[Fact(Skip = "Doesn't work at the moment due to service side issue")]
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVolumeReplication()
@@ -78,6 +79,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         public void TestUpdateSnapshotPolicyId()
         {
             TestRunner.RunTestScript("TestUpdate-SnapshotPolicyId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateProtocolType()
+        {
+            TestRunner.RunTestScript("TestUpdate-ProtocolType");
         }
     }
 }

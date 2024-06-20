@@ -19,6 +19,23 @@
 --->
 
 ## Upcoming Release
+* Updated the Azure Firewall and Azure Firewall Policy setter for their respective Private Range properties
+  - Fixed a bug that prevented using /32 in private ranges on classic Azure Firewalls
+  - Updated the error message to provide a suggested private range when the supplied range is not correctly masked by the host identifier
+
+## Version 7.6.0
+* Added cmdlet `New-AzVirtualApplianceNetworkProfile` to build network profile for network virtual appliance and pass as a parameter.
+* Added cmdlet `New-AzVirtualApplianceNetworkInterfaceConfiguration` and `New-AzVirtualApplianceIpConfiguration` to build `New-AzVirtualApplianceNetworkProfile`.
+* Added support for ApplicationGatewaySkuFamily 
+* Updated cmdlet to add the property of JSChallengeCookieExpirationInMins
+    - `New-AzApplicationGatewayFirewallPolicySetting`
+* Added optional property `HeaderValueMatcher` to `New-AzApplicationGatewayRewriteRuleHeaderConfiguration`
+* Added new cmdlet `New-AzApplicationGatewayHeaderValueMatcher` to support for the new property `HeaderValueMatcher`
+* Added new cmdlet `Update-AzVirtualApplianceInboundSecurityRule` to support Inbound Security Rule for Network Virtual Appliance
+* Added new cmdlet `New-AzVirtualApplianceInboundSecurityRulesProperty` to support for the property 'rules' of Inbound Security Rules
+* Added AdminState parameter to Load Balancer Backend Address
+    - `New-AzLoadBalancerBackendAddressConfig`
+* Updated PS SDK to older SDK removing identity field
 
 ## Version 7.5.0
 * Added cmdlet `Convert-AzNetworkWatcherClassicConnectionMonitor` for converting a classic connection monitor to V2 connection monitor.

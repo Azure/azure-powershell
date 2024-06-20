@@ -1,0 +1,80 @@
+{
+  "resourceType": "supportTickets/chatTranscripts",
+  "apiVersion": "2024-04-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.support"
+  },
+  "commands": [
+    {
+      "name": "Get-AzSupportChatTranscriptsNoSubscription",
+      "description": "Returns chatTranscript details for a no subscription support ticket.",
+      "path": "/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts/{chatTranscriptName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.support/get-azsupportchattranscriptsnosubscription"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ChatTranscriptName <String>",
+              "-SupportTicketName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Returns chatTranscript details for a no subscription support ticket.",
+          "parameters": [
+            {
+              "name": "-ChatTranscriptName",
+              "value": "[Path.chatTranscriptName]"
+            },
+            {
+              "name": "-SupportTicketName",
+              "value": "[Path.supportTicketName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzSupportChatTranscript",
+      "description": "Returns chatTranscript details for a support ticket under a subscription.",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts/{chatTranscriptName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.support/get-azsupportchattranscript"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "[-SubscriptionId <String[]>]",
+              "-SupportTicketName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Returns chatTranscript details for a support ticket under a subscription.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.chatTranscriptName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-SupportTicketName",
+              "value": "[Path.supportTicketName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

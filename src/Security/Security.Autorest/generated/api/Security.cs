@@ -14724,8 +14724,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
         }
 
         /// <summary>
-        /// Update a security connector. If a security connector is already Updated and a subsequent request is issued for the same
-        /// security connector id, then it will be Updated.
+        /// Update a security connector. If a security connector is already created and a subsequent request is issued for the same
+        /// security connector id, then it will be updated.
         /// </summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
@@ -14777,8 +14777,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
         }
 
         /// <summary>
-        /// Update a security connector. If a security connector is already Updated and a subsequent request is issued for the same
-        /// security connector id, then it will be Updated.
+        /// Update a security connector. If a security connector is already created and a subsequent request is issued for the same
+        /// security connector id, then it will be updated.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The security connector resource</param>
@@ -14840,8 +14840,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
         }
 
         /// <summary>
-        /// Update a security connector. If a security connector is already Updated and a subsequent request is issued for the same
-        /// security connector id, then it will be Updated.
+        /// Update a security connector. If a security connector is already created and a subsequent request is issued for the same
+        /// security connector id, then it will be updated.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The security connector resource</param>
@@ -14900,8 +14900,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
         }
 
         /// <summary>
-        /// Update a security connector. If a security connector is already Updated and a subsequent request is issued for the same
-        /// security connector id, then it will be Updated.
+        /// Update a security connector. If a security connector is already created and a subsequent request is issued for the same
+        /// security connector id, then it will be updated.
         /// </summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
@@ -14952,8 +14952,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
         }
 
         /// <summary>
-        /// Update a security connector. If a security connector is already Updated and a subsequent request is issued for the same
-        /// security connector id, then it will be Updated.
+        /// Update a security connector. If a security connector is already created and a subsequent request is issued for the same
+        /// security connector id, then it will be updated.
         /// </summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
@@ -15001,8 +15001,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
         }
 
         /// <summary>
-        /// Update a security connector. If a security connector is already Updated and a subsequent request is issued for the same
-        /// security connector id, then it will be Updated.
+        /// Update a security connector. If a security connector is already created and a subsequent request is issued for the same
+        /// security connector id, then it will be updated.
         /// </summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>

@@ -78,7 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
                 return;
             }
             __scriptExecutionParameter = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ScriptExecutionParameter(json);
-            {_secureValue = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("secureValue"), out var __jsonSecureValue) ? (string)__jsonSecureValue : (string)_secureValue;}
+            {_secureValue = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("secureValue"), out var __jsonSecureValue) ? new System.Net.NetworkCredential("",(string)__jsonSecureValue).SecurePassword : _secureValue;}
             AfterFromJson(json);
         }
 
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
                 return container;
             }
             __scriptExecutionParameter?.ToJson(container, serializationMode);
-            AddIf( null != (((object)this._secureValue)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._secureValue.ToString()) : null, "secureValue" ,container.Add );
+            AddIf( null != (((object)this._secureValue)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(System.Runtime.InteropServices.Marshal.PtrToStringBSTR(System.Runtime.InteropServices.Marshal.SecureStringToBSTR(this._secureValue))) : null, "secureValue" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

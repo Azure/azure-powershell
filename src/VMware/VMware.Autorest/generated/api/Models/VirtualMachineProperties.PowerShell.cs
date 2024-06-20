@@ -126,6 +126,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVirtualMachinePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVirtualMachinePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
             if (content.Contains("DisplayName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVirtualMachinePropertiesInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVirtualMachinePropertiesInternal)this).DisplayName, global::System.Convert.ToString);
@@ -159,6 +163,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVirtualMachinePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVirtualMachinePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
             if (content.Contains("DisplayName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVirtualMachinePropertiesInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVirtualMachinePropertiesInternal)this).DisplayName, global::System.Convert.ToString);

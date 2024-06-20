@@ -72,13 +72,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 
             switch ( json.StringProperty("type") )
             {
-                case "VmVm":
-                {
-                    return new VMPlacementPolicyProperties(json);
-                }
                 case "VmHost":
                 {
                     return new VMHostPlacementPolicyProperties(json);
+                }
+                case "VmVm":
+                {
+                    return new VMPlacementPolicyProperties(json);
                 }
             }
             return new PlacementPolicyProperties(json);

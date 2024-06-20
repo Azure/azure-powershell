@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Cmdlets
     using System;
 
     /// <summary>
-    /// Account Migration request can be triggered for a storage account to change its redundancy level. The migration Customer
+    /// Account Migration request can be triggered for a storage account to change its redundancy level. The migration updates
     /// the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability
     /// and availability. Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability
     /// zones in the primary region.
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Cmdlets
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Start, @"AzStorageAccountMigration_CustomerExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.Description(@"Account Migration request can be triggered for a storage account to change its redundancy level. The migration Customer the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and availability. Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability zones in the primary region.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.Description(@"Account Migration request can be triggered for a storage account to change its redundancy level. The migration updates the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and availability. Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability zones in the primary region.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/startAccountMigration", ApiVersion = "2023-01-01")]
     public partial class StartAzStorageAccountMigration_CustomerExpanded : global::System.Management.Automation.PSCmdlet,

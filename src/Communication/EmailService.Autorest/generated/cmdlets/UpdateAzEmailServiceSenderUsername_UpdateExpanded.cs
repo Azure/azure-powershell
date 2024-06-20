@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Cmdlets
     using System;
 
     /// <summary>
-    /// Add a new SenderUsername resource under the parent Domains resource or Update an existing SenderUsername resource.
+    /// Add a new SenderUsername resource under the parent Domains resource or update an existing SenderUsername resource.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/senderUsernames/{senderUsername}"
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Cmdlets
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzEmailServiceSenderUsername_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.ISenderUsernameResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.Description(@"Add a new SenderUsername resource under the parent Domains resource or Update an existing SenderUsername resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.Description(@"Add a new SenderUsername resource under the parent Domains resource or update an existing SenderUsername resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.Generated]
     public partial class UpdateAzEmailServiceSenderUsername_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener,
