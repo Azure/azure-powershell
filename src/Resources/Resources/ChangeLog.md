@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Supported get and assig versioned policy definitions and sets
+* Supported get and assign versioned policy definitions and sets
 * Fixed syntax incompatible with windows powershell [#24971]
 * Fixed bug with `Get-AzPolicyExemption` requesting 'ParentResourcePath'
 * Supported `ServiceManagementReference` of Entra App
