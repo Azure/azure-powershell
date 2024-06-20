@@ -112,6 +112,13 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPublishWebAppZipDeploy()
+        {
+            TestRunner.RunTestScript("Test-PublishAzureWebAppZipDeploy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCloneNewWebApp()
         {
             TestRunner.RunTestScript("Test-CloneNewWebApp");
