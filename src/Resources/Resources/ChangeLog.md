@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 7.2.0
 * Supported get and assign versioned policy definitions and sets
 * Fixed syntax incompatible with windows powershell [#24971]
 * Fixed bug with `Get-AzPolicyExemption` requesting 'ParentResourcePath'
