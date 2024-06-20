@@ -81,14 +81,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
 
         internal T GetConfigValueInternal<T>(string key, InternalInvocationInfo invocation) => (T)GetConfigValueInternal(key, invocation);
 
-        internal object GetConfigValueInternal(string key, InternalInvocationInfo invocation)
+        internal virtual object GetConfigValueInternal(string key, InternalInvocationInfo invocation)
         {
             _ = key ?? throw new AzPSArgumentNullException($"{nameof(key)} cannot be null.", nameof(key));
             if (!_configDefinitionMap.TryGetValue(key, out ConfigDefinition definition) || definition == null)
             {
                 throw new AzPSArgumentException($"Config with key [{key}] was not registered.", nameof(key));
             }
-
+            
             foreach (var path in ConfigPathHelper.EnumerateConfigPaths(key, invocation))
             {
                 IConfigurationSection section = _root.GetSection(path);
@@ -202,5 +202,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
         {
             WriteMessage(message, AzureRMCmdlet.WriteWarningKey);
         }
+
     }
 }

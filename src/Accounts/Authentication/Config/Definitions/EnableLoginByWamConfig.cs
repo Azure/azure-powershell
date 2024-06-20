@@ -35,6 +35,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Definitions
 
         public override IReadOnlyCollection<AppliesTo> CanApplyTo => new[] { AppliesTo.Az };
 
+        internal override bool ShouldTrackedInTelemetry => true;
+
         protected override void ApplyTyped(bool value)
         {
             base.ApplyTyped(value);

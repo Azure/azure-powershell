@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Config;
 using Microsoft.Azure.Commands.Common.Authentication.Config.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
@@ -293,6 +294,12 @@ namespace Microsoft.Azure.Commands.Profile
             AzureSession.Instance.UnregisterComponent<EventHandler<StreamEventArgs>>(WriteInformationKey);
             AzureSession.Instance.RegisterComponent(WriteInformationKey, () => _writeInformationEvent);
 
+            // attach config read event handler to add config telemetry
+            AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var configManager);
+/*            if (configManager is ConfigManagerWithEventHandler cm) {
+                cm. += ConfigReadSender;
+            }*/
+
             // todo: ideally cancellation token should be passed to authentication factory as a parameter
             // however AuthenticationFactory.Authenticate does not support it
             // so I store it in AzureSession.Instance as a global variable
@@ -306,6 +313,14 @@ namespace Microsoft.Azure.Commands.Profile
 
         private event EventHandler<StreamEventArgs> _writeInformationEvent;
         private event EventHandler<StreamEventArgs> _originalWriteInformation;
+
+        private void ConfigReadSender(object sender, ConfigReadEventArgs args)
+        {
+            if (!_qosEvent.ConfigMetrics.ContainsKey(args.ConfigKey))
+            {
+                _qosEvent.ConfigMetrics[args.ConfigKey] = new ConfigMetrics(args.ConfigTelemetryKey, args.ConfigValue.ToString());
+            }
+        }
 
         private void WriteWarningSender(object sender, StreamEventArgs args)
         {
@@ -602,8 +617,8 @@ namespace Microsoft.Azure.Commands.Profile
         {
             var loginExperienceV2 = AzConfigReader.GetAzConfig(ConfigKeys.LoginExperienceV2, LoginExperienceConfig.On);
             // add telemetry when read config
-            if(_qosEvent.ConfigMetrics)
-            _qosEvent.ConfigMetrics.Add(new ConfigMetrics(ConfigKeys.LoginExperienceV2,
+            if(!_qosEvent.ConfigMetrics.ContainsKey(ConfigKeys.LoginExperienceV2))
+            _qosEvent.ConfigMetrics.Add(ConfigKeys.LoginExperienceV2, new ConfigMetrics(ConfigKeys.LoginExperienceV2, "LoginExperienceVTwo",
                Enum.GetName(typeof(LoginExperienceConfig), loginExperienceV2)));
 
             return loginExperienceV2.Equals(LoginExperienceConfig.On);

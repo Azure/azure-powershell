@@ -27,21 +27,32 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
         private readonly string _helpMessage;
         private readonly TValue _defaultValue;
         private readonly string _environmentVariable;
+        private readonly string _telemetryKey;
         private readonly IReadOnlyCollection<AppliesTo> _canApplyTo = null;
+        private readonly bool _shouldTrackedInTelemetry;
 
         public SimpleTypedConfig(string key, string helpMessage, TValue defaultValue, string environmentVariable = null, IReadOnlyCollection<AppliesTo> canApplyTo = null)
+            : this(key, key, helpMessage, defaultValue,  environmentVariable, canApplyTo, false)
+        {
+        }
+
+        public SimpleTypedConfig(string key, string telemetryKey, string helpMessage, TValue defaultValue, string environmentVariable = null, IReadOnlyCollection<AppliesTo> canApplyTo = null, bool shouldTrackedInTelemetry = false)
         {
             _key = key;
+            _telemetryKey = telemetryKey;
             _helpMessage = helpMessage;
             _defaultValue = defaultValue;
             _environmentVariable = environmentVariable;
             _canApplyTo = canApplyTo;
+            _shouldTrackedInTelemetry = shouldTrackedInTelemetry;
         }
 
         public override string Key => _key;
+        internal override string TelemetryKey => _telemetryKey;
         public override string HelpMessage => _helpMessage;
         public override object DefaultValue => _defaultValue;
         protected override string EnvironmentVariableName => _environmentVariable;
+        internal override bool ShouldTrackedInTelemetry => _shouldTrackedInTelemetry;
         public override IReadOnlyCollection<AppliesTo> CanApplyTo
         {
             get { return _canApplyTo ?? base.CanApplyTo; }
