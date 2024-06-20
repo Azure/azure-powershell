@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
     public static partial class ApplicationTypesOperationsExtensions
     {
         /// <summary>
-        /// Get a Service Fabric application type name resource created or in the process of being created in the Service Fabric cluster resource.
+        /// Get a Service Fabric application type name resource created or in the
+        /// process of being created in the Service Fabric cluster resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -33,7 +34,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         }
 
         /// <summary>
-        /// Get a Service Fabric application type name resource created or in the process of being created in the Service Fabric cluster resource.
+        /// Get a Service Fabric application type name resource created or in the
+        /// process of being created in the Service Fabric cluster resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -58,7 +60,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
             }
         }
         /// <summary>
-        /// Create or update a Service Fabric application type name resource with the specified name.
+        /// Create or update a Service Fabric application type name resource with the
+        /// specified name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -72,13 +75,14 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// <param name='applicationTypeName'>
         /// The name of the application type name resource.
         /// </param>
-        public static ApplicationTypeResource CreateOrUpdate(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName, string applicationTypeName, string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
+        public static ApplicationTypeResource CreateOrUpdate(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName, string applicationTypeName, ApplicationTypeResource parameters)
         {
-                return ((IApplicationTypesOperations)operations).CreateOrUpdateAsync(resourceGroupName, clusterName, applicationTypeName, location, tags).GetAwaiter().GetResult();
+                return ((IApplicationTypesOperations)operations).CreateOrUpdateAsync(resourceGroupName, clusterName, applicationTypeName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Create or update a Service Fabric application type name resource with the specified name.
+        /// Create or update a Service Fabric application type name resource with the
+        /// specified name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -95,15 +99,16 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ApplicationTypeResource> CreateOrUpdateAsync(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName, string applicationTypeName, string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ApplicationTypeResource> CreateOrUpdateAsync(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName, string applicationTypeName, ApplicationTypeResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, clusterName, applicationTypeName, location, tags, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, clusterName, applicationTypeName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Delete a Service Fabric application type name resource with the specified name.
+        /// Delete a Service Fabric application type name resource with the specified
+        /// name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -123,7 +128,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         }
 
         /// <summary>
-        /// Delete a Service Fabric application type name resource with the specified name.
+        /// Delete a Service Fabric application type name resource with the specified
+        /// name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -145,7 +151,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, clusterName, applicationTypeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Gets all application type name resources created or in the process of being created in the Service Fabric cluster resource.
+        /// Gets all application type name resources created or in the process of being
+        /// created in the Service Fabric cluster resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -162,7 +169,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         }
 
         /// <summary>
-        /// Gets all application type name resources created or in the process of being created in the Service Fabric cluster resource.
+        /// Gets all application type name resources created or in the process of being
+        /// created in the Service Fabric cluster resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -184,7 +192,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
             }
         }
         /// <summary>
-        /// Delete a Service Fabric application type name resource with the specified name.
+        /// Delete a Service Fabric application type name resource with the specified
+        /// name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -204,7 +213,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         }
 
         /// <summary>
-        /// Delete a Service Fabric application type name resource with the specified name.
+        /// Delete a Service Fabric application type name resource with the specified
+        /// name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -226,7 +236,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
             (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, clusterName, applicationTypeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Gets all application type name resources created or in the process of being created in the Service Fabric cluster resource.
+        /// Gets all application type name resources created or in the process of being
+        /// created in the Service Fabric cluster resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -240,7 +251,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         }
 
         /// <summary>
-        /// Gets all application type name resources created or in the process of being created in the Service Fabric cluster resource.
+        /// Gets all application type name resources created or in the process of being
+        /// created in the Service Fabric cluster resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

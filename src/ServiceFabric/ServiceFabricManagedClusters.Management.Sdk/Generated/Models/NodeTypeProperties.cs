@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
         /// <param name="dataDiskType">Managed data disk type. Specifies the storage account type for the managed
         /// disk
-        /// Possible values include: 'Standard_LRS', 'StandardSSD_LRS', 'Premium_LRS'</param>
+        /// Possible values include: &#39;Standard_LRS&#39;, &#39;StandardSSD_LRS&#39;, &#39;Premium_LRS&#39;</param>
 
         /// <param name="dataDiskLetter">Managed data disk letter. It can not use the reserved letter C or D and it
         /// can not change after created.
@@ -120,8 +120,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the node type resource.
-        /// Possible values include: 'None', 'Creating', 'Created', 'Updating',
-        /// 'Succeeded', 'Failed', 'Canceled', 'Deleting', 'Deleted', 'Other'</param>
+        /// Possible values include: &#39;None&#39;, &#39;Creating&#39;, &#39;Created&#39;, &#39;Updating&#39;,
+        /// &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;Deleting&#39;, &#39;Deleted&#39;, &#39;Other&#39;</param>
 
         /// <param name="enableAcceleratedNetworking">Specifies whether the network interface is accelerated networking-enabled.
         /// </param>
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
         /// <param name="evictionPolicy">Specifies the eviction policy for virtual machines in a SPOT node type.
         /// Default is Delete.
-        /// Possible values include: 'Delete', 'Deallocate'</param>
+        /// Possible values include: &#39;Delete&#39;, &#39;Deallocate&#39;</param>
 
         /// <param name="vmImageResourceId">Indicates the resource id of the vm image. This parameter is used for
         /// custom vm image.
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
         /// <param name="securityType">Specifies the security type of the nodeType. Only TrustedLaunch is
         /// currently supported
-        /// Possible values include: 'TrustedLaunch'</param>
+        /// Possible values include: &#39;TrustedLaunch&#39;</param>
 
         /// <param name="secureBootEnabled">Specifies whether secure boot should be enabled on the nodeType. Can only
         /// be used with TrustedLaunch SecurityType

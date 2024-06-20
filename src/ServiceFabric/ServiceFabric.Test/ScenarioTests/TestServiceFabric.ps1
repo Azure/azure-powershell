@@ -73,7 +73,7 @@ function Test-RemoveAzureRmServiceFabricClientCertificate
 
 function Test-NewAzureRmServiceFabricCluster
 {
-    $clusterName = "azurermsfclustertptest"
+    $clusterName = "azurermsfclustertptest2"
     $resourceGroupName = "azurermsfrgTP"
     $keyvaulturi = Get-SecretUrl
     $vmPassword = Get-RandomPwd | ConvertTo-SecureString -Force -AsPlainText

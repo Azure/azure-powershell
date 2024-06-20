@@ -50,8 +50,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </param>
 
         /// <param name="clusterState">The current state of the cluster.
-        /// Possible values include: 'WaitingForNodes', 'Deploying', 'BaselineUpgrade',
-        /// 'Upgrading', 'UpgradeFailed', 'Ready'</param>
+        /// Possible values include: &#39;WaitingForNodes&#39;, &#39;Deploying&#39;, &#39;BaselineUpgrade&#39;,
+        /// &#39;Upgrading&#39;, &#39;UpgradeFailed&#39;, &#39;Ready&#39;</param>
 
         /// <param name="dnsName">The cluster dns name.
         /// </param>
@@ -104,8 +104,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the managed cluster resource.
-        /// Possible values include: 'None', 'Creating', 'Created', 'Updating',
-        /// 'Succeeded', 'Failed', 'Canceled', 'Deleting', 'Deleted', 'Other'</param>
+        /// Possible values include: &#39;None&#39;, &#39;Creating&#39;, &#39;Created&#39;, &#39;Updating&#39;,
+        /// &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;Deleting&#39;, &#39;Deleted&#39;, &#39;Other&#39;</param>
 
         /// <param name="clusterCodeVersion">The Service Fabric runtime version of the cluster. This property is
         /// required when **clusterUpgradeMode** is set to &#39;Manual&#39;. To get list of
@@ -116,12 +116,12 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
         /// <param name="clusterUpgradeMode">The upgrade mode of the cluster when new Service Fabric runtime version is
         /// available.
-        /// Possible values include: 'Automatic', 'Manual'</param>
+        /// Possible values include: &#39;Automatic&#39;, &#39;Manual&#39;</param>
 
         /// <param name="clusterUpgradeCadence">Indicates when new cluster runtime version upgrades will be applied after
         /// they are released. By default is Wave0. Only applies when
         /// **clusterUpgradeMode** is set to &#39;Automatic&#39;.
-        /// Possible values include: 'Wave0', 'Wave1', 'Wave2'</param>
+        /// Possible values include: &#39;Wave0&#39;, &#39;Wave1&#39;, &#39;Wave2&#39;</param>
 
         /// <param name="addonFeatures">List of add-on features to enable on the cluster.
         /// </param>
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </param>
 
         /// <param name="zonalUpdateMode">Indicates the update mode for Cross Az clusters.
-        /// Possible values include: 'Standard', 'Fast'</param>
+        /// Possible values include: &#39;Standard&#39;, &#39;Fast&#39;</param>
 
         /// <param name="useCustomVnet">For new clusters, this parameter indicates that it uses Bring your own
         /// VNet, but the subnet is specified at node type level; and for such

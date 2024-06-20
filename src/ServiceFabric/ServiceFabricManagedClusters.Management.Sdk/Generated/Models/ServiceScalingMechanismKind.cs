@@ -14,11 +14,13 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
     public static class ServiceScalingMechanismKind
     {
         /// <summary>
-        /// Represents a scaling mechanism for adding or removing instances of stateless service partition. The value is 0.
+        /// Represents a scaling mechanism for adding or removing instances of
+        /// stateless service partition. The value is 0.
         /// </summary>
         public const string ScalePartitionInstanceCount = "ScalePartitionInstanceCount";
         /// <summary>
-        /// Represents a scaling mechanism for adding or removing named partitions of a stateless service. The value is 1.
+        /// Represents a scaling mechanism for adding or removing named partitions of a
+        /// stateless service. The value is 1.
         /// </summary>
         public const string AddRemoveIncrementalNamedPartition = "AddRemoveIncrementalNamedPartition";
     }

@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// </param>
 
         /// <param name="defaultMoveCost">Specifies the move cost for the service.
-        /// Possible values include: 'Zero', 'Low', 'Medium', 'High'</param>
+        /// Possible values include: &#39;Zero&#39;, &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;</param>
 
         /// <param name="provisioningState">The current deployment or provisioning state, which only appears in the
         /// response
@@ -78,10 +78,15 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// </param>
 
         /// <param name="servicePackageActivationMode">The activation Mode of the service package
-        /// Possible values include: 'SharedProcess', 'ExclusiveProcess'</param>
+        /// Possible values include: &#39;SharedProcess&#39;, &#39;ExclusiveProcess&#39;</param>
 
-        /// <param name="serviceDnsName">Dns name used for the service. If this is specified, then the service can
-        /// be accessed via its DNS name instead of service name.
+        /// <param name="serviceDnsName">Dns name used for the service. If this is specified, then the DNS name can
+        /// be used to return the IP addresses of service endpoints for application
+        /// layer protocols (e.g., HTTP).
+        /// When updating serviceDnsName, old name may be temporarily resolvable.
+        /// However, rely on new name.
+        /// When removing serviceDnsName, removed name may temporarily be resolvable.
+        /// Do not rely on the name being unresolvable.
         /// </param>
         public ServiceResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), SystemData systemData = default(SystemData), string placementConstraints = default(string), System.Collections.Generic.IList<ServiceCorrelationDescription> correlationScheme = default(System.Collections.Generic.IList<ServiceCorrelationDescription>), System.Collections.Generic.IList<ServiceLoadMetricDescription> serviceLoadMetrics = default(System.Collections.Generic.IList<ServiceLoadMetricDescription>), System.Collections.Generic.IList<ServicePlacementPolicyDescription> servicePlacementPolicies = default(System.Collections.Generic.IList<ServicePlacementPolicyDescription>), string defaultMoveCost = default(string), string provisioningState = default(string), string serviceTypeName = default(string), PartitionSchemeDescription partitionDescription = default(PartitionSchemeDescription), string servicePackageActivationMode = default(string), string serviceDnsName = default(string))
 
@@ -170,7 +175,12 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
 
         /// <summary>
         /// Gets or sets dns name used for the service. If this is specified, then the
-        /// service can be accessed via its DNS name instead of service name.
+        /// DNS name can be used to return the IP addresses of service endpoints for
+        /// application layer protocols (e.g., HTTP).
+        /// When updating serviceDnsName, old name may be temporarily resolvable.
+        /// However, rely on new name.
+        /// When removing serviceDnsName, removed name may temporarily be resolvable.
+        /// Do not rely on the name being unresolvable.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.serviceDnsName")]
         public string ServiceDnsName {get; set; }

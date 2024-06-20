@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
     public partial interface IManagedClustersOperations
     {
         /// <summary>
-        /// Gets all Service Fabric cluster resources created or in the process of being created in the resource group.
+        /// Gets all Service Fabric cluster resources created or in the process of
+        /// being created in the resource group.
         /// </summary>
         /// <remarks>
-        /// Gets all Service Fabric cluster resources created or in the process of being created in the resource group.
+        /// Gets all Service Fabric cluster resources created or in the process of
+        /// being created in the resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -37,10 +39,12 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ManagedCluster>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets all Service Fabric cluster resources created or in the process of being created in the subscription.
+        /// Gets all Service Fabric cluster resources created or in the process of
+        /// being created in the subscription.
         /// </summary>
         /// <remarks>
-        /// Gets all Service Fabric cluster resources created or in the process of being created in the subscription.
+        /// Gets all Service Fabric cluster resources created or in the process of
+        /// being created in the subscription.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -57,10 +61,12 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ManagedCluster>>> ListBySubscriptionWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get a Service Fabric managed cluster resource created or in the process of being created in the specified resource group.
+        /// Get a Service Fabric managed cluster resource created or in the process of
+        /// being created in the specified resource group.
         /// </summary>
         /// <remarks>
-        /// Get a Service Fabric managed cluster resource created or in the process of being created in the specified resource group.
+        /// Get a Service Fabric managed cluster resource created or in the process of
+        /// being created in the specified resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -83,10 +89,12 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedCluster>> GetWithHttpMessagesAsync(string resourceGroupName, string clusterName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Create or update a Service Fabric managed cluster resource with the specified name.
+        /// Create or update a Service Fabric managed cluster resource with the
+        /// specified name.
         /// </summary>
         /// <remarks>
-        /// Create or update a Service Fabric managed cluster resource with the specified name.
+        /// Create or update a Service Fabric managed cluster resource with the
+        /// specified name.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -112,10 +120,12 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedCluster>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, ManagedCluster parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Update the tags of of a Service Fabric managed cluster resource with the specified name.
+        /// Update the tags of of a Service Fabric managed cluster resource with the
+        /// specified name.
         /// </summary>
         /// <remarks>
-        /// Update the tags of of a Service Fabric managed cluster resource with the specified name.
+        /// Update the tags of of a Service Fabric managed cluster resource with the
+        /// specified name.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -164,10 +174,12 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string clusterName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Create or update a Service Fabric managed cluster resource with the specified name.
+        /// Create or update a Service Fabric managed cluster resource with the
+        /// specified name.
         /// </summary>
         /// <remarks>
-        /// Create or update a Service Fabric managed cluster resource with the specified name.
+        /// Create or update a Service Fabric managed cluster resource with the
+        /// specified name.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -216,10 +228,12 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string clusterName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets all Service Fabric cluster resources created or in the process of being created in the resource group.
+        /// Gets all Service Fabric cluster resources created or in the process of
+        /// being created in the resource group.
         /// </summary>
         /// <remarks>
-        /// Gets all Service Fabric cluster resources created or in the process of being created in the resource group.
+        /// Gets all Service Fabric cluster resources created or in the process of
+        /// being created in the resource group.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -239,10 +253,12 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ManagedCluster>>> ListByResourceGroupNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets all Service Fabric cluster resources created or in the process of being created in the subscription.
+        /// Gets all Service Fabric cluster resources created or in the process of
+        /// being created in the subscription.
         /// </summary>
         /// <remarks>
-        /// Gets all Service Fabric cluster resources created or in the process of being created in the subscription.
+        /// Gets all Service Fabric cluster resources created or in the process of
+        /// being created in the subscription.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

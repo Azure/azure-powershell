@@ -14,19 +14,23 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
     public static class PartitionScheme
     {
         /// <summary>
-        /// Indicates the partition kind is invalid. All Service Fabric enumerations have the invalid type. The value is zero.
+        /// Indicates the partition kind is invalid. All Service Fabric enumerations
+        /// have the invalid type. The value is zero.
         /// </summary>
         public const string Invalid = "Invalid";
         /// <summary>
-        /// Indicates that the partition is based on string names, and is a SingletonPartitionSchemeDescription object, The value is 1.
+        /// Indicates that the partition is based on string names, and is a
+        /// SingletonPartitionSchemeDescription object, The value is 1.
         /// </summary>
         public const string Singleton = "Singleton";
         /// <summary>
-        /// Indicates that the partition is based on Int64 key ranges, and is a UniformInt64RangePartitionSchemeDescription object. The value is 2.
+        /// Indicates that the partition is based on Int64 key ranges, and is a
+        /// UniformInt64RangePartitionSchemeDescription object. The value is 2.
         /// </summary>
         public const string UniformInt64Range = "UniformInt64Range";
         /// <summary>
-        /// Indicates that the partition is based on string names, and is a NamedPartitionSchemeDescription object. The value is 3
+        /// Indicates that the partition is based on string names, and is a
+        /// NamedPartitionSchemeDescription object. The value is 3
         /// </summary>
         public const string Named = "Named";
     }

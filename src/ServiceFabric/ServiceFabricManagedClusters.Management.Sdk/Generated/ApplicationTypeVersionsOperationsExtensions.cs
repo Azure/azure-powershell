@@ -13,7 +13,9 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
     public static partial class ApplicationTypeVersionsOperationsExtensions
     {
         /// <summary>
-        /// Get a Service Fabric managed application type version resource created or in the process of being created in the Service Fabric managed application type name resource.
+        /// Get a Service Fabric managed application type version resource created or
+        /// in the process of being created in the Service Fabric managed application
+        /// type name resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -36,7 +38,9 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Get a Service Fabric managed application type version resource created or in the process of being created in the Service Fabric managed application type name resource.
+        /// Get a Service Fabric managed application type version resource created or
+        /// in the process of being created in the Service Fabric managed application
+        /// type name resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -64,7 +68,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
-        /// Create or update a Service Fabric managed application type version resource with the specified name.
+        /// Create or update a Service Fabric managed application type version resource
+        /// with the specified name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -87,7 +92,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Create or update a Service Fabric managed application type version resource with the specified name.
+        /// Create or update a Service Fabric managed application type version resource
+        /// with the specified name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -115,7 +121,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
-        /// Updates the tags of an application type version resource of a given managed cluster.
+        /// Updates the tags of an application type version resource of a given managed
+        /// cluster.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -138,7 +145,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Updates the tags of an application type version resource of a given managed cluster.
+        /// Updates the tags of an application type version resource of a given managed
+        /// cluster.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -166,7 +174,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
-        /// Delete a Service Fabric managed application type version resource with the specified name.
+        /// Delete a Service Fabric managed application type version resource with the
+        /// specified name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -189,7 +198,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Delete a Service Fabric managed application type version resource with the specified name.
+        /// Delete a Service Fabric managed application type version resource with the
+        /// specified name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -214,7 +224,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, clusterName, applicationTypeName, version, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Gets all application type version resources created or in the process of being created in the Service Fabric managed application type name resource.
+        /// Gets all application type version resources created or in the process of
+        /// being created in the Service Fabric managed application type name resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -234,7 +245,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Gets all application type version resources created or in the process of being created in the Service Fabric managed application type name resource.
+        /// Gets all application type version resources created or in the process of
+        /// being created in the Service Fabric managed application type name resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -259,7 +271,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
-        /// Create or update a Service Fabric managed application type version resource with the specified name.
+        /// Create or update a Service Fabric managed application type version resource
+        /// with the specified name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -282,7 +295,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Create or update a Service Fabric managed application type version resource with the specified name.
+        /// Create or update a Service Fabric managed application type version resource
+        /// with the specified name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -310,7 +324,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
-        /// Delete a Service Fabric managed application type version resource with the specified name.
+        /// Delete a Service Fabric managed application type version resource with the
+        /// specified name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -333,7 +348,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Delete a Service Fabric managed application type version resource with the specified name.
+        /// Delete a Service Fabric managed application type version resource with the
+        /// specified name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -358,7 +374,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, clusterName, applicationTypeName, version, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Gets all application type version resources created or in the process of being created in the Service Fabric managed application type name resource.
+        /// Gets all application type version resources created or in the process of
+        /// being created in the Service Fabric managed application type name resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -372,7 +389,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Gets all application type version resources created or in the process of being created in the Service Fabric managed application type name resource.
+        /// Gets all application type version resources created or in the process of
+        /// being created in the Service Fabric managed application type name resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
