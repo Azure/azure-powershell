@@ -30,7 +30,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
 
         public static ISanitizerProviderResolver Instance => _instance;
 
-        public ISanitizerService Service => new DefaultSanitizerService();
+        private static readonly ISanitizerService _service = new DefaultSanitizerService();
+
+        public ISanitizerService Service => _service;
 
         private DefaultProviderResolver()
         {
