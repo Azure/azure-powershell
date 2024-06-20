@@ -731,7 +731,9 @@ namespace Microsoft.Azure.Management.NetApp
         }
 
         /// <summary>
-        /// Renew identity credentials that are used to authenticate to key vault, for customer-managed key encryption. If encryption.identity.principalId does not match identity.principalId, running this operation will fix it.
+        /// Renew identity credentials that are used to authenticate to key vault, for
+        /// customer-managed key encryption. If encryption.identity.principalId does
+        /// not match identity.principalId, running this operation will fix it.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

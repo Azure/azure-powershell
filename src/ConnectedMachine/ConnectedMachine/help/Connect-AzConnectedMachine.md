@@ -34,7 +34,7 @@ Connect-AzConnectedMachine -ResourceGroupName contoso-connected-machines -Name l
 time="2020-08-07T13:13:25-07:00" level=info msg="Onboarding Machine. It usually takes a few minutes to complete. Sometimes it may take longer depending on network and server load status."
 time="2020-08-07T13:13:25-07:00" level=info msg="Check network connectivity to all endpoints..."
 time="2020-08-07T13:13:29-07:00" level=info msg="All endpoints are available... continue onboarding"
-time="2020-08-07T13:13:50-07:00" level=info msg="Successfully Onboarded Resource to Azure" VM Id=978ab182-6cf0-4de3-a58b-53c8d0a3235e
+time="2020-08-07T13:13:50-07:00" level=info msg="Successfully Onboarded Resource to Azure" VM Id=********-****-****-****-**********
 
 Name             Location OSName   Status     ProvisioningState
 ----             -------- ------   ------     -----------------
@@ -55,7 +55,8 @@ Connect-AzConnectedMachine -ResourceGroupName contoso-rg -Name win_eastus1_1 -Lo
 time="2020-08-07T13:13:25-07:00" level=info msg="Onboarding Machine. It usually takes a few minutes to complete. Sometimes it may take longer depending on network and server load status."
 time="2020-08-07T13:13:25-07:00" level=info msg="Check network connectivity to all endpoints..."
 time="2020-08-07T13:13:29-07:00" level=info msg="All endpoints are available... continue onboarding"
-time="2020-08-07T13:13:50-07:00" level=info msg="Successfully Onboarded Resource to Azure" VM Id=978ab182-6cf0-4de3-a58b-53c8d0a3236a
+time="2020-08-07T13:13:50-07:00" level=info msg="Successfully Onboarded Resource to Azure" VM Id=********-****-****-****-**********
+
 
 Name           Location OSName   Status     ProvisioningState
 ----           -------- ------   ------     -----------------

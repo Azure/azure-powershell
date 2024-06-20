@@ -109,6 +109,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdletPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdletPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
             if (content.Contains("Description"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdletPropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdletPropertiesInternal)this).Description, global::System.Convert.ToString);
@@ -116,6 +120,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("Timeout"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdletPropertiesInternal)this).Timeout = (string) content.GetValueForProperty("Timeout",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdletPropertiesInternal)this).Timeout, global::System.Convert.ToString);
+            }
+            if (content.Contains("Audience"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdletPropertiesInternal)this).Audience = (string) content.GetValueForProperty("Audience",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdletPropertiesInternal)this).Audience, global::System.Convert.ToString);
             }
             if (content.Contains("Parameter"))
             {
@@ -138,6 +146,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdletPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdletPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
             if (content.Contains("Description"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdletPropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdletPropertiesInternal)this).Description, global::System.Convert.ToString);
@@ -145,6 +157,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("Timeout"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdletPropertiesInternal)this).Timeout = (string) content.GetValueForProperty("Timeout",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdletPropertiesInternal)this).Timeout, global::System.Convert.ToString);
+            }
+            if (content.Contains("Audience"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdletPropertiesInternal)this).Audience = (string) content.GetValueForProperty("Audience",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdletPropertiesInternal)this).Audience, global::System.Convert.ToString);
             }
             if (content.Contains("Parameter"))
             {

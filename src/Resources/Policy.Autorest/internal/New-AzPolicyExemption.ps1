@@ -161,7 +161,7 @@ begin {
             CreateExpanded = 'Az.Policy.private\New-AzPolicyExemption_CreateExpanded';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('ExpiresOnInternal') ) {
-            $PSBoundParameters['ExpiresOnInternal'] = "PlaceholderExpiresOn"
+            $PSBoundParameters['ExpiresOnInternal'] = { "" }
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('PolicyAssignmentId') ) {
             $PSBoundParameters['PolicyAssignmentId'] = { "" }

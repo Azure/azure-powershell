@@ -53,21 +53,21 @@ jobs:
       outputFormat: sarif
       scanFolder: SecurityTmp
       suppressionsFile: tools/SecurityTools/CredScanSuppressions.json
-
+  
   - task: PowerShell@2
-    displayName: Copy PDB for BinSkim
+    displayName: Generate a response text file for BinSkim
     inputs:
-      targetType: inline
-      script: ./src/lib/pdb/CopyPdbToArtifacts.ps1
+      targetType: 'inline'
+      script: |
+        New-Item $(Build.SourcesDirectory)/artifacts/FilesToScan.rsp -ItemType File -Force
+        (Get-ChildItem -Path .\artifacts\Debug -Include *.dll,*.exe -Exclude msalruntime.dll,msalruntime_arm64.dll,msalruntime_x86.dll -Recurse).FullName > $(Build.SourcesDirectory)/artifacts/FilesToScan.rsp
       pwsh: true
-
+  
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-binskim.BinSkim@3
     displayName: Run BinSkim
     inputs:
-      InputType: 'Basic'
-      Function: 'analyze'
-      AnalyzeTarget: '$(Build.SourcesDirectory)/artifacts/Debug/*.dll;$(Build.SourcesDirectory)/artifacts/*.exe'
-      AnalyzeStatistics: true
+      InputType: 'CommandLine'
+      arguments: 'analyze @$(Build.SourcesDirectory)/artifacts/FilesToScan.rsp --config default --recurse --statistics'
 
   - task: PowerShell@2
     displayName: Cleanup Build
@@ -88,4 +88,3 @@ jobs:
     inputs:
       artifactName: artifacts
       targetPath: artifacts
-...

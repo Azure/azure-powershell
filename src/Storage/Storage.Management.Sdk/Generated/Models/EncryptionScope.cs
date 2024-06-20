@@ -41,11 +41,11 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="source">The provider for the encryption scope. Possible values (case-insensitive): 
         /// Microsoft.Storage, Microsoft.KeyVault.
-        /// Possible values include: 'Microsoft.Storage', 'Microsoft.KeyVault'</param>
+        /// Possible values include: &#39;Microsoft.Storage&#39;, &#39;Microsoft.KeyVault&#39;</param>
 
         /// <param name="state">The state of the encryption scope. Possible values (case-insensitive): 
         /// Enabled, Disabled.
-        /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="lastModifiedTime">Gets the last modification date and time of the encryption scope in UTC.
         /// </param>

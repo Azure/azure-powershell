@@ -1,3 +1,0 @@
-"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Az.Compute","Microsoft.Azure.Commands.Compute.Automation.GetAzureRmVmss","Get-AzVmss","0","2090","The ValidateNotNullOrEmpty attribute has been added to parameter 'ResourceGroupName' for cmdlet 'Get-AzVmss'.","Remove the ValidateNotNullOrEmpty attribute from parameter 'ResourceGroupName'."
-"Az.Compute","Microsoft.Azure.Commands.Compute.Automation.GetAzureRmVmss","Get-AzVmss","0","2090","The ValidateNotNullOrEmpty attribute has been added to parameter 'VMScaleSetName' for cmdlet 'Get-AzVmss'.","Remove the ValidateNotNullOrEmpty attribute from parameter 'VMScaleSetName'."

@@ -19,19 +19,26 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='maxpagesize'>
-        /// Optional. Specified maximum number of shares that can be included in the list.
+        /// Optional. Specified maximum number of shares that can be included in the
+        /// list.
         /// </param>
         /// <param name='filter'>
-        /// Optional. When specified, only share names starting with the filter will be listed.
+        /// Optional. When specified, only share names starting with the filter will be
+        /// listed.
         /// </param>
         /// <param name='expand'>
-        /// Optional, used to expand the properties within share&#39;s properties. Valid values are: deleted, snapshots. Should be passed as a string with delimiter &#39;,&#39;
+        /// Optional, used to expand the properties within share&#39;s properties. Valid
+        /// values are: deleted, snapshots. Should be passed as a string with delimiter
+        /// &#39;,&#39;
         /// </param>
         public static Microsoft.Rest.Azure.IPage<FileShareItem> List(this IFileSharesOperations operations, string resourceGroupName, string accountName, string maxpagesize = default(string), string filter = default(string), string expand = default(string))
         {
@@ -45,19 +52,26 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='maxpagesize'>
-        /// Optional. Specified maximum number of shares that can be included in the list.
+        /// Optional. Specified maximum number of shares that can be included in the
+        /// list.
         /// </param>
         /// <param name='filter'>
-        /// Optional. When specified, only share names starting with the filter will be listed.
+        /// Optional. When specified, only share names starting with the filter will be
+        /// listed.
         /// </param>
         /// <param name='expand'>
-        /// Optional, used to expand the properties within share&#39;s properties. Valid values are: deleted, snapshots. Should be passed as a string with delimiter &#39;,&#39;
+        /// Optional, used to expand the properties within share&#39;s properties. Valid
+        /// values are: deleted, snapshots. Should be passed as a string with delimiter
+        /// &#39;,&#39;
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -70,22 +84,31 @@ namespace Microsoft.Azure.Management.Storage
             }
         }
         /// <summary>
-        /// Creates a new share under the specified account as described by request body. The share resource includes metadata and properties for that share. It does not include a list of the files contained by the share. 
+        /// Creates a new share under the specified account as described by request
+        /// body. The share resource includes metadata and properties for that share.
+        /// It does not include a list of the files contained by the share.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='shareName'>
-        /// The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the file share within the specified storage account. File share
+        /// names must be between 3 and 63 characters in length and use numbers,
+        /// lower-case letters and dash (-) only. Every dash (-) character must be
+        /// immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='expand'>
-        /// Optional, used to expand the properties within share&#39;s properties. Valid values are: snapshots. Should be passed as a string with delimiter &#39;,&#39;
+        /// Optional, used to expand the properties within share&#39;s properties. Valid
+        /// values are: snapshots. Should be passed as a string with delimiter &#39;,&#39;
         /// </param>
         public static FileShare Create(this IFileSharesOperations operations, string resourceGroupName, string accountName, string shareName, FileShare fileShare, string expand = default(string))
         {
@@ -93,22 +116,31 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// Creates a new share under the specified account as described by request body. The share resource includes metadata and properties for that share. It does not include a list of the files contained by the share. 
+        /// Creates a new share under the specified account as described by request
+        /// body. The share resource includes metadata and properties for that share.
+        /// It does not include a list of the files contained by the share.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='shareName'>
-        /// The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the file share within the specified storage account. File share
+        /// names must be between 3 and 63 characters in length and use numbers,
+        /// lower-case letters and dash (-) only. Every dash (-) character must be
+        /// immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='expand'>
-        /// Optional, used to expand the properties within share&#39;s properties. Valid values are: snapshots. Should be passed as a string with delimiter &#39;,&#39;
+        /// Optional, used to expand the properties within share&#39;s properties. Valid
+        /// values are: snapshots. Should be passed as a string with delimiter &#39;,&#39;
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -121,19 +153,27 @@ namespace Microsoft.Azure.Management.Storage
             }
         }
         /// <summary>
-        /// Updates share properties as specified in request body. Properties not mentioned in the request will not be changed. Update fails if the specified share does not already exist. 
+        /// Updates share properties as specified in request body. Properties not
+        /// mentioned in the request will not be changed. Update fails if the specified
+        /// share does not already exist.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='shareName'>
-        /// The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the file share within the specified storage account. File share
+        /// names must be between 3 and 63 characters in length and use numbers,
+        /// lower-case letters and dash (-) only. Every dash (-) character must be
+        /// immediately preceded and followed by a letter or number.
         /// </param>
         public static FileShare Update(this IFileSharesOperations operations, string resourceGroupName, string accountName, string shareName, FileShare fileShare)
         {
@@ -141,19 +181,27 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// Updates share properties as specified in request body. Properties not mentioned in the request will not be changed. Update fails if the specified share does not already exist. 
+        /// Updates share properties as specified in request body. Properties not
+        /// mentioned in the request will not be changed. Update fails if the specified
+        /// share does not already exist.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='shareName'>
-        /// The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the file share within the specified storage account. File share
+        /// names must be between 3 and 63 characters in length and use numbers,
+        /// lower-case letters and dash (-) only. Every dash (-) character must be
+        /// immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -172,16 +220,23 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='shareName'>
-        /// The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the file share within the specified storage account. File share
+        /// names must be between 3 and 63 characters in length and use numbers,
+        /// lower-case letters and dash (-) only. Every dash (-) character must be
+        /// immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='expand'>
-        /// Optional, used to expand the properties within share&#39;s properties. Valid values are: stats. Should be passed as a string with delimiter &#39;,&#39;.
+        /// Optional, used to expand the properties within share&#39;s properties. Valid
+        /// values are: stats. Should be passed as a string with delimiter &#39;,&#39;.
         /// </param>
         /// <param name='xMsSnapshot'>
         /// Optional, used to retrieve properties of a snapshot.
@@ -198,16 +253,23 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='shareName'>
-        /// The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the file share within the specified storage account. File share
+        /// names must be between 3 and 63 characters in length and use numbers,
+        /// lower-case letters and dash (-) only. Every dash (-) character must be
+        /// immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='expand'>
-        /// Optional, used to expand the properties within share&#39;s properties. Valid values are: stats. Should be passed as a string with delimiter &#39;,&#39;.
+        /// Optional, used to expand the properties within share&#39;s properties. Valid
+        /// values are: stats. Should be passed as a string with delimiter &#39;,&#39;.
         /// </param>
         /// <param name='xMsSnapshot'>
         /// Optional, used to retrieve properties of a snapshot.
@@ -229,19 +291,32 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='shareName'>
-        /// The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the file share within the specified storage account. File share
+        /// names must be between 3 and 63 characters in length and use numbers,
+        /// lower-case letters and dash (-) only. Every dash (-) character must be
+        /// immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='xMsSnapshot'>
         /// Optional, used to delete a snapshot.
         /// </param>
         /// <param name='include'>
-        /// Optional. Valid values are: snapshots, leased-snapshots, none. The default value is snapshots. For &#39;snapshots&#39;, the file share is deleted including all of its file share snapshots. If the file share contains leased-snapshots, the deletion fails. For &#39;leased-snapshots&#39;, the file share is deleted included all of its file share snapshots (leased/unleased). For &#39;none&#39;, the file share is deleted if it has no share snapshots. If the file share contains any snapshots (leased or unleased), the deletion fails.
+        /// Optional. Valid values are: snapshots, leased-snapshots, none. The default
+        /// value is snapshots. For &#39;snapshots&#39;, the file share is deleted including
+        /// all of its file share snapshots. If the file share contains
+        /// leased-snapshots, the deletion fails. For &#39;leased-snapshots&#39;, the file
+        /// share is deleted included all of its file share snapshots
+        /// (leased/unleased). For &#39;none&#39;, the file share is deleted if it has no share
+        /// snapshots. If the file share contains any snapshots (leased or unleased),
+        /// the deletion fails.
         /// </param>
         public static void Delete(this IFileSharesOperations operations, string resourceGroupName, string accountName, string shareName, string xMsSnapshot = default(string), string include = default(string))
         {
@@ -255,19 +330,32 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='shareName'>
-        /// The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the file share within the specified storage account. File share
+        /// names must be between 3 and 63 characters in length and use numbers,
+        /// lower-case letters and dash (-) only. Every dash (-) character must be
+        /// immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='xMsSnapshot'>
         /// Optional, used to delete a snapshot.
         /// </param>
         /// <param name='include'>
-        /// Optional. Valid values are: snapshots, leased-snapshots, none. The default value is snapshots. For &#39;snapshots&#39;, the file share is deleted including all of its file share snapshots. If the file share contains leased-snapshots, the deletion fails. For &#39;leased-snapshots&#39;, the file share is deleted included all of its file share snapshots (leased/unleased). For &#39;none&#39;, the file share is deleted if it has no share snapshots. If the file share contains any snapshots (leased or unleased), the deletion fails.
+        /// Optional. Valid values are: snapshots, leased-snapshots, none. The default
+        /// value is snapshots. For &#39;snapshots&#39;, the file share is deleted including
+        /// all of its file share snapshots. If the file share contains
+        /// leased-snapshots, the deletion fails. For &#39;leased-snapshots&#39;, the file
+        /// share is deleted included all of its file share snapshots
+        /// (leased/unleased). For &#39;none&#39;, the file share is deleted if it has no share
+        /// snapshots. If the file share contains any snapshots (leased or unleased),
+        /// the deletion fails.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -277,19 +365,26 @@ namespace Microsoft.Azure.Management.Storage
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, shareName, xMsSnapshot, include, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Restore a file share within a valid retention days if share soft delete is enabled
+        /// Restore a file share within a valid retention days if share soft delete is
+        /// enabled
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='shareName'>
-        /// The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the file share within the specified storage account. File share
+        /// names must be between 3 and 63 characters in length and use numbers,
+        /// lower-case letters and dash (-) only. Every dash (-) character must be
+        /// immediately preceded and followed by a letter or number.
         /// </param>
         public static void Restore(this IFileSharesOperations operations, string resourceGroupName, string accountName, string shareName, string deletedShareName, string deletedShareVersion)
         {
@@ -297,19 +392,26 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// Restore a file share within a valid retention days if share soft delete is enabled
+        /// Restore a file share within a valid retention days if share soft delete is
+        /// enabled
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='shareName'>
-        /// The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the file share within the specified storage account. File share
+        /// names must be between 3 and 63 characters in length and use numbers,
+        /// lower-case letters and dash (-) only. Every dash (-) character must be
+        /// immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -319,19 +421,27 @@ namespace Microsoft.Azure.Management.Storage
             (await operations.RestoreWithHttpMessagesAsync(resourceGroupName, accountName, shareName, deletedShareName, deletedShareVersion, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// The Lease Share operation establishes and manages a lock on a share for delete operations. The lock duration can be 15 to 60 seconds, or can be infinite.
+        /// The Lease Share operation establishes and manages a lock on a share for
+        /// delete operations. The lock duration can be 15 to 60 seconds, or can be
+        /// infinite.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='shareName'>
-        /// The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the file share within the specified storage account. File share
+        /// names must be between 3 and 63 characters in length and use numbers,
+        /// lower-case letters and dash (-) only. Every dash (-) character must be
+        /// immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='xMsSnapshot'>
         /// Optional. Specify the snapshot time to lease a snapshot.
@@ -342,19 +452,27 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// The Lease Share operation establishes and manages a lock on a share for delete operations. The lock duration can be 15 to 60 seconds, or can be infinite.
+        /// The Lease Share operation establishes and manages a lock on a share for
+        /// delete operations. The lock duration can be 15 to 60 seconds, or can be
+        /// infinite.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='shareName'>
-        /// The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+        /// The name of the file share within the specified storage account. File share
+        /// names must be between 3 and 63 characters in length and use numbers,
+        /// lower-case letters and dash (-) only. Every dash (-) character must be
+        /// immediately preceded and followed by a letter or number.
         /// </param>
         /// <param name='xMsSnapshot'>
         /// Optional. Specify the snapshot time to lease a snapshot.

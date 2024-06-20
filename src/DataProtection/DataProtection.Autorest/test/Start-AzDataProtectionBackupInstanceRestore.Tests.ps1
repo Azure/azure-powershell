@@ -21,12 +21,12 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
         $backupInstanceName = $env.TestPGFlexRestore.BackupInstanceName
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
-        
+
         $instance  =  Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $backupInstanceName }
-        
+
         ($instance -ne $null) | Should be $true
 
-        # Trigger Backup         
+        # Trigger Backup
         $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $subId -VaultName $vaultName -ResourceGroupName $resourceGroupName -Name $policyName
 
         $backupJob = Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName $instance.Name -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName -BackupRuleOptionRuleName $policy.Property.PolicyRule[0].Name -TriggerOptionRetentionTagOverride $policy.Property.PolicyRule[0].Trigger.TaggingCriterion[0].TagInfoTagName
@@ -35,15 +35,15 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
         $jobstatus = "InProgress"
         while($jobstatus -eq "InProgress")
         {
-            Start-Sleep -Seconds 10
+            Start-TestSleep -Seconds 10
             $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
             $jobstatus = $currentjob.Status
         }
         $jobstatus | Should be "Completed"
 
-        Start-Sleep -Seconds 5
+        Start-TestSleep -Seconds 5
 
-        # Database restore 
+        # Database restore
         $rps = Get-AzDataProtectionRecoveryPoint -BackupInstanceName $instance.BackupInstanceName -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName
 
         $pgFlexRestoreReqFiles = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDatabaseForPGFlexServer -SourceDataStore VaultStore -RestoreLocation $vault.Location -RestoreType RestoreAsFiles -RecoveryPoint $rps[0].Property.RecoveryPointId -TargetContainerURI $targetContainerURI
@@ -53,7 +53,7 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
         $operationRequests = $proxy.ResourceGuardOperationDetail.DefaultResourceRequest
         $resourceGuardOperationRequest = $operationRequests | Where-Object { $_ -match "dppTriggerRestoreRequests" }
 
-        $restoreFilesJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName  -VaultName $VaultName -BackupInstanceName $instance.BackupInstanceName -Parameter $pgFlexRestoreReqFiles -ResourceGuardOperationRequest $resourceGuardOperationRequest       
+        $restoreFilesJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName  -VaultName $VaultName -BackupInstanceName $instance.BackupInstanceName -Parameter $pgFlexRestoreReqFiles -ResourceGuardOperationRequest $resourceGuardOperationRequest
 
         $jobid = $restoreFilesJob.JobId.Split("/")[-1]
         ($jobid -ne $null) | Should be $true
@@ -61,7 +61,7 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
         $jobstatus = "InProgress"
         while($jobstatus -eq "InProgress")
         {
-            Start-Sleep -Seconds 10
+            Start-TestSleep -Seconds 10
             $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
             $jobstatus = $currentjob.Status
         }
@@ -77,12 +77,12 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
         $backupInstanceName = $env.TestMySQLRestore.BackupInstanceName
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
-        
+
         $instance  =  Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $backupInstanceName }
-        
+
         ($instance -ne $null) | Should be $true
 
-        # Trigger Backup         
+        # Trigger Backup
         $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $subId -VaultName $vaultName -ResourceGroupName $resourceGroupName -Name $policyName
 
         $backupJob = Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName $instance.Name -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName -BackupRuleOptionRuleName $policy.Property.PolicyRule[1].Name -TriggerOptionRetentionTagOverride $policy.Property.PolicyRule[1].Trigger.TaggingCriterion[0].TagInfoTagName
@@ -91,20 +91,20 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
         $jobstatus = "InProgress"
         while($jobstatus -eq "InProgress")
         {
-            Start-Sleep -Seconds 10
+            Start-TestSleep -Seconds 10
             $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
             $jobstatus = $currentjob.Status
         }
         $jobstatus | Should be "Completed"
 
-        Start-Sleep -Seconds 5
+        Start-TestSleep -Seconds 5
 
-        # Database restore 
+        # Database restore
         $rps = Get-AzDataProtectionRecoveryPoint -BackupInstanceName $instance.BackupInstanceName -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName
 
         $mySQLRestoreReqFiles = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDatabaseForMySQL -SourceDataStore VaultStore -RestoreLocation $vault.Location -RestoreType RestoreAsFiles -RecoveryPoint $rps[0].Property.RecoveryPointId -TargetContainerURI $targetContainerURI
 
-        $restoreFilesJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName  -VaultName $VaultName -BackupInstanceName $instance.BackupInstanceName -Parameter $mySQLRestoreReqFiles        
+        $restoreFilesJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName  -VaultName $VaultName -BackupInstanceName $instance.BackupInstanceName -Parameter $mySQLRestoreReqFiles
 
         $jobid = $restoreFilesJob.JobId.Split("/")[-1]
         ($jobid -ne $null) | Should be $true
@@ -112,7 +112,7 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
         $jobstatus = "InProgress"
         while($jobstatus -eq "InProgress")
         {
-            Start-Sleep -Seconds 10
+            Start-TestSleep -Seconds 10
             $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
             $jobstatus = $currentjob.Status
         }
@@ -311,7 +311,7 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
             $jobstatus = $currentjob.Status
         }
         $jobstatus | Should be "Completed"
-    }    
+    }
 
     It 'TriggerExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw

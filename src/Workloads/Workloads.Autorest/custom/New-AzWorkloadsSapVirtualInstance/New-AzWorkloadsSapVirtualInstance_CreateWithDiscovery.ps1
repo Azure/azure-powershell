@@ -105,6 +105,12 @@ function New-AzWorkloadsSapVirtualInstance {
       [System.String]
       # Managed resource group name
       ${ManagedResourceGroupName},
+
+      [Parameter()]
+      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Body')]
+      [System.String]
+      # Managed resource Network Access Type
+      ${ManagedResourcesNetworkAccessType},
   
       [Parameter()]
       [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Body')]

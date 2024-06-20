@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// the secondary location is in progress.This typically occurs when
         /// replication is first enabled. - Unavailable: Indicates that the secondary
         /// location is temporarily unavailable.
-        /// Possible values include: 'Live', 'Bootstrap', 'Unavailable'</param>
+        /// Possible values include: &#39;Live&#39;, &#39;Bootstrap&#39;, &#39;Unavailable&#39;</param>
 
         /// <param name="lastSyncTime">All primary writes preceding this UTC date/time value are guaranteed to be
         /// available for read operations. Primary writes following this point in time
@@ -50,12 +50,12 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </param>
 
         /// <param name="postFailoverRedundancy">The redundancy type of the account after an account failover is performed.
-        /// Possible values include: 'Standard_LRS', 'Standard_ZRS'</param>
+        /// Possible values include: &#39;Standard_LRS&#39;, &#39;Standard_ZRS&#39;</param>
 
         /// <param name="postPlannedFailoverRedundancy">The redundancy type of the account after a planned account failover is
         /// performed.
-        /// Possible values include: 'Standard_GRS', 'Standard_GZRS', 'Standard_RAGRS',
-        /// 'Standard_RAGZRS'</param>
+        /// Possible values include: &#39;Standard_GRS&#39;, &#39;Standard_GZRS&#39;, &#39;Standard_RAGRS&#39;,
+        /// &#39;Standard_RAGZRS&#39;</param>
         public GeoReplicationStats(string status = default(string), System.DateTime? lastSyncTime = default(System.DateTime?), bool? canFailover = default(bool?), bool? canPlannedFailover = default(bool?), string postFailoverRedundancy = default(string), string postPlannedFailoverRedundancy = default(string))
 
         {
