@@ -121,12 +121,14 @@ function New-AzElasticSanVolumeGroup {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned")]
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ParameterBreakingChange("IdentityType", "12.0.0", "2.0.0", "2024/05/21", ChangeDescription="IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.")]
         [System.String]
         # The identity type.
         ${IdentityType},
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ParameterBreakingChange("IdentityUserAssignedIdentityId", "12.0.0", "2.0.0", "2024/05/21", ChangeDescription="IdentityUserAssignedIdentityId will be renamed to UserAssignedIdentity.")]
         [System.String]
         # Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this volume group.
         # The key is the ARM resource identifier of the identity.
