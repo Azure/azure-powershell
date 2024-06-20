@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 3.3.4
+Update ServiceFabric.Management.Sdk and ServiceFabricManagedClusters.Sdk
+
 ## Version 3.3.3
 * Updated location of nodeType to use cluster location in stead of resource group location
 
