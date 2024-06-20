@@ -713,10 +713,10 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<BackupsRestoreFilesHeaders>> RestoreFilesWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, string backupName, BackupRestoreFiles body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<BackupsRestoreFilesHeaders2023_07_01>> RestoreFilesWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, string backupName, BackupRestoreFiles body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // Send Request
-            Microsoft.Rest.Azure.AzureOperationHeaderResponse<BackupsRestoreFilesHeaders> _response = await BeginRestoreFilesWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, backupName, body, customHeaders, cancellationToken).ConfigureAwait(false);
+            Microsoft.Rest.Azure.AzureOperationHeaderResponse<BackupsRestoreFilesHeaders2023_07_01> _response = await BeginRestoreFilesWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, backupName, body, customHeaders, cancellationToken).ConfigureAwait(false);
             return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -760,7 +760,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<BackupsRestoreFilesHeaders>> BeginRestoreFilesWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, string backupName, BackupRestoreFiles body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<BackupsRestoreFilesHeaders2023_07_01>> BeginRestoreFilesWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, string backupName, BackupRestoreFiles body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -998,7 +998,7 @@ namespace Microsoft.Azure.Management.NetApp
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationHeaderResponse<BackupsRestoreFilesHeaders>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationHeaderResponse<BackupsRestoreFilesHeaders2023_07_01>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
 
@@ -1008,7 +1008,7 @@ namespace Microsoft.Azure.Management.NetApp
             }
             try
             {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<BackupsRestoreFilesHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<BackupsRestoreFilesHeaders2023_07_01>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
             }
             catch (Newtonsoft.Json.JsonException ex)
             {

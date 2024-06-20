@@ -50,7 +50,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         private string _type;
 
         /// <summary>
-        /// The type of parameter the script is expecting. psCredential is a PSCredentialObject
+        /// The type of parameter the script is expecting. psCredential is a
+        /// PSCredentialObject
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string Type { get => this._type; }
@@ -59,7 +60,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         private string _visibility;
 
         /// <summary>
-        /// Should this parameter be visible to arm and passed in the parameters argument when executing
+        /// Should this parameter be visible to arm and passed in the parameters argument
+        /// when executing
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string Visibility { get => this._visibility; }
@@ -109,7 +111,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Optional", "Required")]
         string Optional { get;  }
         /// <summary>
-        /// The type of parameter the script is expecting. psCredential is a PSCredentialObject
+        /// The type of parameter the script is expecting. psCredential is a
+        /// PSCredentialObject
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -117,13 +120,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The type of parameter the script is expecting. psCredential is a PSCredentialObject",
+        Description = @"The type of parameter the script is expecting. psCredential is a
+        PSCredentialObject",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("String", "SecureString", "Credential", "Int", "Bool", "Float")]
         string Type { get;  }
         /// <summary>
-        /// Should this parameter be visible to arm and passed in the parameters argument when executing
+        /// Should this parameter be visible to arm and passed in the parameters argument
+        /// when executing
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -131,7 +136,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Should this parameter be visible to arm and passed in the parameters argument when executing",
+        Description = @"Should this parameter be visible to arm and passed in the parameters argument
+        when executing",
         SerializedName = @"visibility",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Visible", "Hidden")]
@@ -150,12 +156,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Optional", "Required")]
         string Optional { get; set; }
         /// <summary>
-        /// The type of parameter the script is expecting. psCredential is a PSCredentialObject
+        /// The type of parameter the script is expecting. psCredential is a
+        /// PSCredentialObject
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("String", "SecureString", "Credential", "Int", "Bool", "Float")]
         string Type { get; set; }
         /// <summary>
-        /// Should this parameter be visible to arm and passed in the parameters argument when executing
+        /// Should this parameter be visible to arm and passed in the parameters argument
+        /// when executing
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Visible", "Hidden")]
         string Visibility { get; set; }

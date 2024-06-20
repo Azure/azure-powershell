@@ -109,6 +109,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("ManagementCluster"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ManagementCluster = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementCluster) content.GetValueForProperty("ManagementCluster",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ManagementCluster, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ManagementClusterTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Availability"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).Availability = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAvailabilityProperties) content.GetValueForProperty("Availability",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).Availability, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.AvailabilityPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Encryption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).Encryption = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryption) content.GetValueForProperty("Encryption",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).Encryption, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.EncryptionTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Circuit"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).Circuit = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuit) content.GetValueForProperty("Circuit",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).Circuit, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.CircuitTypeConverter.ConvertFrom);
@@ -120,6 +132,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("SecondaryCircuit"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).SecondaryCircuit = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuit) content.GetValueForProperty("SecondaryCircuit",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).SecondaryCircuit, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.CircuitTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Internet"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).Internet = (string) content.GetValueForProperty("Internet",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).Internet, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentitySource"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).IdentitySource = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource>) content.GetValueForProperty("IdentitySource",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).IdentitySource, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource>(__y, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IdentitySourceTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ExtendedNetworkBlock"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ExtendedNetworkBlock = (System.Collections.Generic.List<string>) content.GetValueForProperty("ExtendedNetworkBlock",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ExtendedNetworkBlock, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("ProvisioningState"))
             {
@@ -143,11 +167,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             }
             if (content.Contains("VcenterPassword"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).VcenterPassword = (string) content.GetValueForProperty("VcenterPassword",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).VcenterPassword, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).VcenterPassword = (System.Security.SecureString) content.GetValueForProperty("VcenterPassword",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).VcenterPassword, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("NsxtPassword"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).NsxtPassword = (string) content.GetValueForProperty("NsxtPassword",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).NsxtPassword, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).NsxtPassword = (System.Security.SecureString) content.GetValueForProperty("NsxtPassword",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).NsxtPassword, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("VcenterCertificateThumbprint"))
             {
@@ -165,89 +189,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).NsxPublicIPQuotaRaised = (string) content.GetValueForProperty("NsxPublicIPQuotaRaised",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).NsxPublicIPQuotaRaised, global::System.Convert.ToString);
             }
-            if (content.Contains("AvailabilityStrategy"))
+            if (content.Contains("VirtualNetworkId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).AvailabilityStrategy = (string) content.GetValueForProperty("AvailabilityStrategy",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).AvailabilityStrategy, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).VirtualNetworkId = (string) content.GetValueForProperty("VirtualNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).VirtualNetworkId, global::System.Convert.ToString);
             }
-            if (content.Contains("ManagementClusterSize"))
+            if (content.Contains("DnsZoneType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterSize = (int?) content.GetValueForProperty("ManagementClusterSize",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterSize, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("ManagementClusterProvisioningState"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterProvisioningState = (string) content.GetValueForProperty("ManagementClusterProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterProvisioningState, global::System.Convert.ToString);
-            }
-            if (content.Contains("ManagementClusterId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterId = (int?) content.GetValueForProperty("ManagementClusterId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).DnsZoneType = (string) content.GetValueForProperty("DnsZoneType",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).DnsZoneType, global::System.Convert.ToString);
             }
             if (content.Contains("ManagementClusterHost"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterHost = (System.Collections.Generic.List<string>) content.GetValueForProperty("ManagementClusterHost",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterHost, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ManagementClusterHost = (System.Collections.Generic.List<string>) content.GetValueForProperty("ManagementClusterHost",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ManagementClusterHost, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
-            if (content.Contains("AvailabilityZone"))
+            if (content.Contains("AvailabilityStrategy"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).AvailabilityZone = (int?) content.GetValueForProperty("AvailabilityZone",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).AvailabilityZone, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("AvailabilitySecondaryZone"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).AvailabilitySecondaryZone = (int?) content.GetValueForProperty("AvailabilitySecondaryZone",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).AvailabilitySecondaryZone, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("EncryptionKeyVaultProperty"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).EncryptionKeyVaultProperty = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionKeyVaultProperties) content.GetValueForProperty("EncryptionKeyVaultProperty",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).EncryptionKeyVaultProperty, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.EncryptionKeyVaultPropertiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("EncryptionStatus"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).EncryptionStatus = (string) content.GetValueForProperty("EncryptionStatus",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).EncryptionStatus, global::System.Convert.ToString);
-            }
-            if (content.Contains("KeyVaultPropertyKeyName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).KeyVaultPropertyKeyName = (string) content.GetValueForProperty("KeyVaultPropertyKeyName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).KeyVaultPropertyKeyName, global::System.Convert.ToString);
-            }
-            if (content.Contains("KeyVaultPropertyKeyVersion"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).KeyVaultPropertyKeyVersion = (string) content.GetValueForProperty("KeyVaultPropertyKeyVersion",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).KeyVaultPropertyKeyVersion, global::System.Convert.ToString);
-            }
-            if (content.Contains("KeyVaultPropertyAutoDetectedKeyVersion"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).KeyVaultPropertyAutoDetectedKeyVersion = (string) content.GetValueForProperty("KeyVaultPropertyAutoDetectedKeyVersion",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).KeyVaultPropertyAutoDetectedKeyVersion, global::System.Convert.ToString);
-            }
-            if (content.Contains("KeyVaultPropertyKeyVaultUrl"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).KeyVaultPropertyKeyVaultUrl = (string) content.GetValueForProperty("KeyVaultPropertyKeyVaultUrl",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).KeyVaultPropertyKeyVaultUrl, global::System.Convert.ToString);
-            }
-            if (content.Contains("KeyVaultPropertyKeyState"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).KeyVaultPropertyKeyState = (string) content.GetValueForProperty("KeyVaultPropertyKeyState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).KeyVaultPropertyKeyState, global::System.Convert.ToString);
-            }
-            if (content.Contains("KeyVaultPropertyVersionType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).KeyVaultPropertyVersionType = (string) content.GetValueForProperty("KeyVaultPropertyVersionType",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).KeyVaultPropertyVersionType, global::System.Convert.ToString);
-            }
-            if (content.Contains("ManagementCluster"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementCluster = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementCluster) content.GetValueForProperty("ManagementCluster",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementCluster, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ManagementClusterTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Availability"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).Availability = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAvailabilityProperties) content.GetValueForProperty("Availability",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).Availability, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.AvailabilityPropertiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Encryption"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).Encryption = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryption) content.GetValueForProperty("Encryption",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).Encryption, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.EncryptionTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Internet"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).Internet = (string) content.GetValueForProperty("Internet",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).Internet, global::System.Convert.ToString);
-            }
-            if (content.Contains("IdentitySource"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).IdentitySource = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource>) content.GetValueForProperty("IdentitySource",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).IdentitySource, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource>(__y, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IdentitySourceTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("ExtendedNetworkBlock"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ExtendedNetworkBlock = (System.Collections.Generic.List<string>) content.GetValueForProperty("ExtendedNetworkBlock",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ExtendedNetworkBlock, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).AvailabilityStrategy = (string) content.GetValueForProperty("AvailabilityStrategy",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).AvailabilityStrategy, global::System.Convert.ToString);
             }
             if (content.Contains("CircuitPrimarySubnet"))
             {
@@ -265,6 +221,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).EndpointVcsa = (string) content.GetValueForProperty("EndpointVcsa",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).EndpointVcsa, global::System.Convert.ToString);
             }
+            if (content.Contains("EndpointVcenterIP"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).EndpointVcenterIP = (string) content.GetValueForProperty("EndpointVcenterIP",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).EndpointVcenterIP, global::System.Convert.ToString);
+            }
+            if (content.Contains("ManagementClusterSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ManagementClusterSize = (int?) content.GetValueForProperty("ManagementClusterSize",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ManagementClusterSize, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ManagementClusterProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ManagementClusterProvisioningState = (string) content.GetValueForProperty("ManagementClusterProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ManagementClusterProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("ManagementClusterId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ManagementClusterId = (int?) content.GetValueForProperty("ManagementClusterId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ManagementClusterId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ManagementClusterVsanDatastoreName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ManagementClusterVsanDatastoreName = (string) content.GetValueForProperty("ManagementClusterVsanDatastoreName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ManagementClusterVsanDatastoreName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AvailabilityZone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).AvailabilityZone = (int?) content.GetValueForProperty("AvailabilityZone",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).AvailabilityZone, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("AvailabilitySecondaryZone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).AvailabilitySecondaryZone = (int?) content.GetValueForProperty("AvailabilitySecondaryZone",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).AvailabilitySecondaryZone, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("EncryptionKeyVaultProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).EncryptionKeyVaultProperty = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionKeyVaultProperties) content.GetValueForProperty("EncryptionKeyVaultProperty",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).EncryptionKeyVaultProperty, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.EncryptionKeyVaultPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("EncryptionStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).EncryptionStatus = (string) content.GetValueForProperty("EncryptionStatus",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).EncryptionStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("KeyVaultPropertyKeyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).KeyVaultPropertyKeyName = (string) content.GetValueForProperty("KeyVaultPropertyKeyName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).KeyVaultPropertyKeyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("KeyVaultPropertyKeyVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).KeyVaultPropertyKeyVersion = (string) content.GetValueForProperty("KeyVaultPropertyKeyVersion",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).KeyVaultPropertyKeyVersion, global::System.Convert.ToString);
+            }
             if (content.Contains("CircuitExpressRouteId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).CircuitExpressRouteId = (string) content.GetValueForProperty("CircuitExpressRouteId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).CircuitExpressRouteId, global::System.Convert.ToString);
@@ -276,6 +276,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("EndpointHcxCloudManager"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).EndpointHcxCloudManager = (string) content.GetValueForProperty("EndpointHcxCloudManager",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).EndpointHcxCloudManager, global::System.Convert.ToString);
+            }
+            if (content.Contains("EndpointNsxtManagerIP"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).EndpointNsxtManagerIP = (string) content.GetValueForProperty("EndpointNsxtManagerIP",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).EndpointNsxtManagerIP, global::System.Convert.ToString);
+            }
+            if (content.Contains("EndpointHcxCloudManagerIP"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).EndpointHcxCloudManagerIP = (string) content.GetValueForProperty("EndpointHcxCloudManagerIP",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).EndpointHcxCloudManagerIP, global::System.Convert.ToString);
             }
             if (content.Contains("SecondaryCircuitPrimarySubnet"))
             {
@@ -292,6 +300,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("SecondaryCircuitExpressRoutePrivatePeeringId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).SecondaryCircuitExpressRoutePrivatePeeringId = (string) content.GetValueForProperty("SecondaryCircuitExpressRoutePrivatePeeringId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).SecondaryCircuitExpressRoutePrivatePeeringId, global::System.Convert.ToString);
+            }
+            if (content.Contains("KeyVaultPropertyAutoDetectedKeyVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).KeyVaultPropertyAutoDetectedKeyVersion = (string) content.GetValueForProperty("KeyVaultPropertyAutoDetectedKeyVersion",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).KeyVaultPropertyAutoDetectedKeyVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("KeyVaultPropertyKeyVaultUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).KeyVaultPropertyKeyVaultUrl = (string) content.GetValueForProperty("KeyVaultPropertyKeyVaultUrl",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).KeyVaultPropertyKeyVaultUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("KeyVaultPropertyKeyState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).KeyVaultPropertyKeyState = (string) content.GetValueForProperty("KeyVaultPropertyKeyState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).KeyVaultPropertyKeyState, global::System.Convert.ToString);
+            }
+            if (content.Contains("KeyVaultPropertyVersionType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).KeyVaultPropertyVersionType = (string) content.GetValueForProperty("KeyVaultPropertyVersionType",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).KeyVaultPropertyVersionType, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -310,6 +334,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("ManagementCluster"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ManagementCluster = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementCluster) content.GetValueForProperty("ManagementCluster",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ManagementCluster, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ManagementClusterTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Availability"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).Availability = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAvailabilityProperties) content.GetValueForProperty("Availability",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).Availability, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.AvailabilityPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Encryption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).Encryption = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryption) content.GetValueForProperty("Encryption",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).Encryption, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.EncryptionTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Circuit"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).Circuit = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuit) content.GetValueForProperty("Circuit",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).Circuit, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.CircuitTypeConverter.ConvertFrom);
@@ -321,6 +357,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("SecondaryCircuit"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).SecondaryCircuit = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuit) content.GetValueForProperty("SecondaryCircuit",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).SecondaryCircuit, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.CircuitTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Internet"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).Internet = (string) content.GetValueForProperty("Internet",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).Internet, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentitySource"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).IdentitySource = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource>) content.GetValueForProperty("IdentitySource",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).IdentitySource, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource>(__y, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IdentitySourceTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ExtendedNetworkBlock"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ExtendedNetworkBlock = (System.Collections.Generic.List<string>) content.GetValueForProperty("ExtendedNetworkBlock",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ExtendedNetworkBlock, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("ProvisioningState"))
             {
@@ -344,11 +392,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             }
             if (content.Contains("VcenterPassword"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).VcenterPassword = (string) content.GetValueForProperty("VcenterPassword",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).VcenterPassword, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).VcenterPassword = (System.Security.SecureString) content.GetValueForProperty("VcenterPassword",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).VcenterPassword, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("NsxtPassword"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).NsxtPassword = (string) content.GetValueForProperty("NsxtPassword",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).NsxtPassword, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).NsxtPassword = (System.Security.SecureString) content.GetValueForProperty("NsxtPassword",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).NsxtPassword, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("VcenterCertificateThumbprint"))
             {
@@ -366,89 +414,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).NsxPublicIPQuotaRaised = (string) content.GetValueForProperty("NsxPublicIPQuotaRaised",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).NsxPublicIPQuotaRaised, global::System.Convert.ToString);
             }
-            if (content.Contains("AvailabilityStrategy"))
+            if (content.Contains("VirtualNetworkId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).AvailabilityStrategy = (string) content.GetValueForProperty("AvailabilityStrategy",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).AvailabilityStrategy, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).VirtualNetworkId = (string) content.GetValueForProperty("VirtualNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).VirtualNetworkId, global::System.Convert.ToString);
             }
-            if (content.Contains("ManagementClusterSize"))
+            if (content.Contains("DnsZoneType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterSize = (int?) content.GetValueForProperty("ManagementClusterSize",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterSize, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("ManagementClusterProvisioningState"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterProvisioningState = (string) content.GetValueForProperty("ManagementClusterProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterProvisioningState, global::System.Convert.ToString);
-            }
-            if (content.Contains("ManagementClusterId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterId = (int?) content.GetValueForProperty("ManagementClusterId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).DnsZoneType = (string) content.GetValueForProperty("DnsZoneType",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).DnsZoneType, global::System.Convert.ToString);
             }
             if (content.Contains("ManagementClusterHost"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterHost = (System.Collections.Generic.List<string>) content.GetValueForProperty("ManagementClusterHost",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementClusterHost, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ManagementClusterHost = (System.Collections.Generic.List<string>) content.GetValueForProperty("ManagementClusterHost",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ManagementClusterHost, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
-            if (content.Contains("AvailabilityZone"))
+            if (content.Contains("AvailabilityStrategy"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).AvailabilityZone = (int?) content.GetValueForProperty("AvailabilityZone",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).AvailabilityZone, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("AvailabilitySecondaryZone"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).AvailabilitySecondaryZone = (int?) content.GetValueForProperty("AvailabilitySecondaryZone",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).AvailabilitySecondaryZone, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
-            if (content.Contains("EncryptionKeyVaultProperty"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).EncryptionKeyVaultProperty = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionKeyVaultProperties) content.GetValueForProperty("EncryptionKeyVaultProperty",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).EncryptionKeyVaultProperty, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.EncryptionKeyVaultPropertiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("EncryptionStatus"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).EncryptionStatus = (string) content.GetValueForProperty("EncryptionStatus",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).EncryptionStatus, global::System.Convert.ToString);
-            }
-            if (content.Contains("KeyVaultPropertyKeyName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).KeyVaultPropertyKeyName = (string) content.GetValueForProperty("KeyVaultPropertyKeyName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).KeyVaultPropertyKeyName, global::System.Convert.ToString);
-            }
-            if (content.Contains("KeyVaultPropertyKeyVersion"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).KeyVaultPropertyKeyVersion = (string) content.GetValueForProperty("KeyVaultPropertyKeyVersion",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).KeyVaultPropertyKeyVersion, global::System.Convert.ToString);
-            }
-            if (content.Contains("KeyVaultPropertyAutoDetectedKeyVersion"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).KeyVaultPropertyAutoDetectedKeyVersion = (string) content.GetValueForProperty("KeyVaultPropertyAutoDetectedKeyVersion",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).KeyVaultPropertyAutoDetectedKeyVersion, global::System.Convert.ToString);
-            }
-            if (content.Contains("KeyVaultPropertyKeyVaultUrl"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).KeyVaultPropertyKeyVaultUrl = (string) content.GetValueForProperty("KeyVaultPropertyKeyVaultUrl",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).KeyVaultPropertyKeyVaultUrl, global::System.Convert.ToString);
-            }
-            if (content.Contains("KeyVaultPropertyKeyState"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).KeyVaultPropertyKeyState = (string) content.GetValueForProperty("KeyVaultPropertyKeyState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).KeyVaultPropertyKeyState, global::System.Convert.ToString);
-            }
-            if (content.Contains("KeyVaultPropertyVersionType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).KeyVaultPropertyVersionType = (string) content.GetValueForProperty("KeyVaultPropertyVersionType",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).KeyVaultPropertyVersionType, global::System.Convert.ToString);
-            }
-            if (content.Contains("ManagementCluster"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementCluster = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IManagementCluster) content.GetValueForProperty("ManagementCluster",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ManagementCluster, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ManagementClusterTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Availability"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).Availability = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAvailabilityProperties) content.GetValueForProperty("Availability",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).Availability, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.AvailabilityPropertiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Encryption"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).Encryption = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryption) content.GetValueForProperty("Encryption",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).Encryption, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.EncryptionTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("Internet"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).Internet = (string) content.GetValueForProperty("Internet",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).Internet, global::System.Convert.ToString);
-            }
-            if (content.Contains("IdentitySource"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).IdentitySource = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource>) content.GetValueForProperty("IdentitySource",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).IdentitySource, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource>(__y, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IdentitySourceTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("ExtendedNetworkBlock"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ExtendedNetworkBlock = (System.Collections.Generic.List<string>) content.GetValueForProperty("ExtendedNetworkBlock",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudUpdatePropertiesInternal)this).ExtendedNetworkBlock, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).AvailabilityStrategy = (string) content.GetValueForProperty("AvailabilityStrategy",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).AvailabilityStrategy, global::System.Convert.ToString);
             }
             if (content.Contains("CircuitPrimarySubnet"))
             {
@@ -466,6 +446,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).EndpointVcsa = (string) content.GetValueForProperty("EndpointVcsa",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).EndpointVcsa, global::System.Convert.ToString);
             }
+            if (content.Contains("EndpointVcenterIP"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).EndpointVcenterIP = (string) content.GetValueForProperty("EndpointVcenterIP",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).EndpointVcenterIP, global::System.Convert.ToString);
+            }
+            if (content.Contains("ManagementClusterSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ManagementClusterSize = (int?) content.GetValueForProperty("ManagementClusterSize",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ManagementClusterSize, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ManagementClusterProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ManagementClusterProvisioningState = (string) content.GetValueForProperty("ManagementClusterProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ManagementClusterProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("ManagementClusterId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ManagementClusterId = (int?) content.GetValueForProperty("ManagementClusterId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ManagementClusterId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ManagementClusterVsanDatastoreName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ManagementClusterVsanDatastoreName = (string) content.GetValueForProperty("ManagementClusterVsanDatastoreName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).ManagementClusterVsanDatastoreName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AvailabilityZone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).AvailabilityZone = (int?) content.GetValueForProperty("AvailabilityZone",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).AvailabilityZone, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("AvailabilitySecondaryZone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).AvailabilitySecondaryZone = (int?) content.GetValueForProperty("AvailabilitySecondaryZone",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).AvailabilitySecondaryZone, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("EncryptionKeyVaultProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).EncryptionKeyVaultProperty = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEncryptionKeyVaultProperties) content.GetValueForProperty("EncryptionKeyVaultProperty",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).EncryptionKeyVaultProperty, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.EncryptionKeyVaultPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("EncryptionStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).EncryptionStatus = (string) content.GetValueForProperty("EncryptionStatus",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).EncryptionStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("KeyVaultPropertyKeyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).KeyVaultPropertyKeyName = (string) content.GetValueForProperty("KeyVaultPropertyKeyName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).KeyVaultPropertyKeyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("KeyVaultPropertyKeyVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).KeyVaultPropertyKeyVersion = (string) content.GetValueForProperty("KeyVaultPropertyKeyVersion",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).KeyVaultPropertyKeyVersion, global::System.Convert.ToString);
+            }
             if (content.Contains("CircuitExpressRouteId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).CircuitExpressRouteId = (string) content.GetValueForProperty("CircuitExpressRouteId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).CircuitExpressRouteId, global::System.Convert.ToString);
@@ -477,6 +501,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("EndpointHcxCloudManager"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).EndpointHcxCloudManager = (string) content.GetValueForProperty("EndpointHcxCloudManager",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).EndpointHcxCloudManager, global::System.Convert.ToString);
+            }
+            if (content.Contains("EndpointNsxtManagerIP"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).EndpointNsxtManagerIP = (string) content.GetValueForProperty("EndpointNsxtManagerIP",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).EndpointNsxtManagerIP, global::System.Convert.ToString);
+            }
+            if (content.Contains("EndpointHcxCloudManagerIP"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).EndpointHcxCloudManagerIP = (string) content.GetValueForProperty("EndpointHcxCloudManagerIP",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).EndpointHcxCloudManagerIP, global::System.Convert.ToString);
             }
             if (content.Contains("SecondaryCircuitPrimarySubnet"))
             {
@@ -493,6 +525,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("SecondaryCircuitExpressRoutePrivatePeeringId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).SecondaryCircuitExpressRoutePrivatePeeringId = (string) content.GetValueForProperty("SecondaryCircuitExpressRoutePrivatePeeringId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).SecondaryCircuitExpressRoutePrivatePeeringId, global::System.Convert.ToString);
+            }
+            if (content.Contains("KeyVaultPropertyAutoDetectedKeyVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).KeyVaultPropertyAutoDetectedKeyVersion = (string) content.GetValueForProperty("KeyVaultPropertyAutoDetectedKeyVersion",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).KeyVaultPropertyAutoDetectedKeyVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("KeyVaultPropertyKeyVaultUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).KeyVaultPropertyKeyVaultUrl = (string) content.GetValueForProperty("KeyVaultPropertyKeyVaultUrl",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).KeyVaultPropertyKeyVaultUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("KeyVaultPropertyKeyState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).KeyVaultPropertyKeyState = (string) content.GetValueForProperty("KeyVaultPropertyKeyState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).KeyVaultPropertyKeyState, global::System.Convert.ToString);
+            }
+            if (content.Contains("KeyVaultPropertyVersionType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).KeyVaultPropertyVersionType = (string) content.GetValueForProperty("KeyVaultPropertyVersionType",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudPropertiesInternal)this).KeyVaultPropertyVersionType, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

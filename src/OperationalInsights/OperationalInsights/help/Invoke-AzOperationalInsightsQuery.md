@@ -168,7 +168,7 @@ Accept wildcard characters: False
 ```
 
 ### -Wait
-Puts an upper bound on the amount of time the server will spend processing the query.
+Puts an upper bound on the amount of time the server will spend processing the query. See: https://learn.microsoft.com/azure/azure-monitor/logs/api/timeouts
 
 ```yaml
 Type: System.Nullable`1[System.Int32]

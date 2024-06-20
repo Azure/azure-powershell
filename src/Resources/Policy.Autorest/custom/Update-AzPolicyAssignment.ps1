@@ -293,7 +293,7 @@ process {
 
     # supply required parameters and remove custom parameters
     $calledParameters.Name = $resolved.Name
-    $calledParameters.Scope = $resolved.FullScope
+    $calledParameters.Scope = $resolved.Scope
     $null = $calledParameters.Remove('Id')
     $null = $calledParameters.Remove('InputObject')
 

@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </param>
 
         /// <param name="createdByType">The type of identity that created the resource.
-        /// Possible values include: 'User', 'Application', 'ManagedIdentity', 'Key'</param>
+        /// Possible values include: &#39;User&#39;, &#39;Application&#39;, &#39;ManagedIdentity&#39;, &#39;Key&#39;</param>
 
         /// <param name="createdAt">The timestamp of resource creation (UTC).
         /// </param>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </param>
 
         /// <param name="lastModifiedByType">The type of identity that last modified the resource.
-        /// Possible values include: 'User', 'Application', 'ManagedIdentity', 'Key'</param>
+        /// Possible values include: &#39;User&#39;, &#39;Application&#39;, &#39;ManagedIdentity&#39;, &#39;Key&#39;</param>
 
         /// <param name="lastModifiedAt">The timestamp of resource last modification (UTC)
         /// </param>

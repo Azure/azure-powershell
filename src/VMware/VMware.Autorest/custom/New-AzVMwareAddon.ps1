@@ -20,7 +20,7 @@ Create or update a addon in a private cloud
 .Description
 Create or update a addon in a private cloud
 .Example
-PS C:\> $data = New-AzVMwareAddonVrPropertiesObject -VrsCount 2
+PS C:\> $data = New-AzVMwareAddonVrPropertyObject -VrsCount 2
 PS C:\> New-AzVMwareAddon -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -Property $data
 
 Name Type                               ResourceGroupName

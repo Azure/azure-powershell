@@ -29,11 +29,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         public string DisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpEntityInternal)__workloadNetworkDhcpEntity).DisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpEntityInternal)__workloadNetworkDhcpEntity).DisplayName = value ?? null; }
 
         /// <summary>Backing field for <see cref="LeaseTime" /> property.</summary>
-        private long? _leaseTime;
+        private int? _leaseTime;
 
         /// <summary>DHCP Server Lease Time.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
-        public long? LeaseTime { get => this._leaseTime; set => this._leaseTime = value; }
+        public int? LeaseTime { get => this._leaseTime; set => this._leaseTime = value; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpEntityInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpEntityInternal)__workloadNetworkDhcpEntity).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpEntityInternal)__workloadNetworkDhcpEntity).ProvisioningState = value; }
@@ -92,8 +92,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Update = true,
         Description = @"DHCP Server Lease Time.",
         SerializedName = @"leaseTime",
-        PossibleTypes = new [] { typeof(long) })]
-        long? LeaseTime { get; set; }
+        PossibleTypes = new [] { typeof(int) })]
+        int? LeaseTime { get; set; }
         /// <summary>DHCP Server Address.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpEntityInternal
     {
         /// <summary>DHCP Server Lease Time.</summary>
-        long? LeaseTime { get; set; }
+        int? LeaseTime { get; set; }
         /// <summary>DHCP Server Address.</summary>
         string ServerAddress { get; set; }
 
