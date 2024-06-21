@@ -17,7 +17,7 @@
     <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <!-- Suppress known NuGet package vulnerabilities to unblock build as we track this kind of security issues internally. -->
-    <WarningsNotAsErrors>NU1901;NU1902;NU1903;NU1904</WarningsNotAsErrors>
+    <WarningsNotAsErrors>NU1901;NU1902;NU1903;NU1904,NU3018</WarningsNotAsErrors>
     <WarningsAsErrors />
   </PropertyGroup>
 
