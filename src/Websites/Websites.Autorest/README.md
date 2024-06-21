@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Websites service.
 
 ---
-## Status
-[![Az.Websites](https://img.shields.io/powershellgallery/v/Az.Websites.svg?style=flat-square&label=Az.Websites "Az.Websites")](https://www.powershellgallery.com/packages/Az.Websites/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -45,8 +42,9 @@ resourcegroup-append: true
 nested-object-to-string: true
 
 # For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
+add-api-version-in-model-namespace: true
+disable-transform-identity-type: true
+flatten-userassignedidentity: true
 
 directive:
   #Modify operationId
@@ -214,7 +212,14 @@ directive:
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^CreateViaIdentityExpanded$|^Create$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?Expanded)
+      # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
+      # CreateExpanded variant, because the only parameters are all in URL rather than request body
+      subject: CustomDomain
+
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity.*$
       # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
       # CreateExpanded variant, because the only parameters are all in URL rather than request body
       subject: CustomDomain
@@ -222,42 +227,42 @@ directive:
     remove: true
   - where:
       verb: Test
-      variant: ^Validate$|^ValidateViaIdentity$
+      variant: ^(Validate)(?!.*?Expanded)
       # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
       # CreateExpanded variant, because the only parameters are all in URL rather than request body
       subject: CustomDomain
     remove: true
 
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?Expanded)
       # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
       # CreateExpanded variant, because the only parameters are all in URL rather than request body
       subject: BuildAppSetting
     remove: true
 
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?Expanded)
       # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
       # CreateExpanded variant, because the only parameters are all in URL rather than request body
       subject: FunctionAppSetting
     remove: true
 
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?Expanded)
       # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
       # CreateExpanded variant, because the only parameters are all in URL rather than request body
       subject: Setting
     remove: true
 
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?Expanded)
       # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
       # CreateExpanded variant, because the only parameters are all in URL rather than request body
       subject: BuildFunctionAppSetting
     remove: true
 
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?Expanded)
       # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
       # CreateExpanded variant, because the only parameters are all in URL rather than request body
       subject: UserRoleInvitationLink
@@ -266,25 +271,37 @@ directive:
   - where:
       verb: New
       subject: ^$
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+      variant: ^CreateViaIdentity.*$
+    remove: true
+
+  - where:
+      verb: New
+      subject: ^$
+      variant: ^(Create)(?!.*?Expanded)
     remove: true
 
   - where:
       verb: Update
       subjet: null
-      variant: ^Update$|^UpdateViaIdentity$
+      variant: ^(Update)(?!.*?Expanded)
     remove: true
 
   - where:
       verb: Reset
       subject: ApiKey
-      variant: ^Reset$|^ResetViaIdentity$
+      variant: ^(Reset)(?!.*?Expanded)
     remove: true
 
   - where:
       verb: Register
       subject: UserProvidedFunctionApp
-      variant: ^Register$|^Register1$|^RegisterViaIdentity$|^RegisterViaIdentity1$|^RegisterViaIdentityExpanded$|^RegisterViaIdentityExpanded1$
+      variant: ^RegisterViaIdentity.*$
+    remove: true
+
+  - where:
+      verb: Register
+      subject: UserProvidedFunctionApp
+      variant: ^(Register)(?!.*?Expanded)
     remove: true
 
 # Rename parameters

@@ -122,7 +122,7 @@ function Restore-AzPostgreSqlServer_GeoRestore {
           $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ServerForCreate]::new()
 
           $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ServerPropertiesForGeoRestore]::new()
-          $Parameter.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreateMode]::GeoRestore
+          $Parameter.CreateMode = "GeoRestore"
           $null = $PSBoundParameters.Remove('UseGeoRestore')
 
           $server = $PSBoundParameters['InputObject']

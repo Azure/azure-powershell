@@ -74,9 +74,9 @@ function New-AzWebPubSubKey
         ${InputObject},
 
         [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.PSArgumentCompleterAttribute("Primary", "Secondary", "Salt")]
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType]
+        [System.String]
         # The keyType to regenerate.
         # Must be either 'primary', 'secondary' or 'salt'(case-insensitive).
         ${KeyType},
