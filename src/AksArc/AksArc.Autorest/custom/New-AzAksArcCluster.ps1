@@ -87,7 +87,7 @@ function New-AzAksArcCluster {
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
         [System.String]
         # IP address of the Kubernetes API server
-        ${ControlPlaneEndpointHostIP},
+        ${ControlPlaneIP},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
@@ -105,7 +105,7 @@ function New-AzAksArcCluster {
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
         [System.String]
         # IP Address or CIDR for SSH access to VMs in the provisioned cluster
-        ${ClusterVMAccessProfileAuthorizedIprange},
+        ${SshAuthIp},
 
         [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
@@ -138,13 +138,13 @@ function New-AzAksArcCluster {
         [System.Int32]
         # Number of HA Proxy load balancer VMs.
         # The default value is 0.
-        ${LoadBalancerProfileCount},
+        ${LoadBalancerCount},
     
         [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
         [System.String]
         # A CIDR notation IP Address range from which to assign pod IPs.
-        ${NetworkProfilePodCidr},
+        ${PodCidr},
     
         [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
@@ -294,7 +294,7 @@ function New-AzAksArcCluster {
             $response = Invoke-AzRestMethod -Path "$VnetId/?api-version=2024-01-01" -Method GET
             if ($response.StatusCode -eq 200) {
                 $lnet = ($response.Content | ConvertFrom-Json)
-                $err = ValidateLogicalNetwork -lnet $lnet -ControlPlaneIP $ControlPlaneEndpointHostIP
+                $err = ValidateLogicalNetwork -lnet $lnet -ControlPlaneIP $ControlPlaneIP
                 if ($err) {
                     throw $err
                 }

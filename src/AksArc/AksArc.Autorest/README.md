@@ -175,6 +175,43 @@ directive:
     set: 
       parameter-name: CustomLocationID
 
+# Clusters
+  - where: 
+      parameter-name: ControlPlaneEndpointHostIP
+    set: 
+      parameter-name: ControlPlaneIP
+
+  - where: 
+      parameter-name: NetworkProfilePodCidr
+    set: 
+      parameter-name: PodCidr
+
+  - where: 
+      parameter-name: LoadBalancerProfileCount
+    set: 
+      parameter-name: LoadBalancerCount
+
+  - where: 
+      parameter-name: ClusterVMAccessProfileAuthorizedIprange
+    set: 
+      parameter-name: SshAuthIp
+  
+# Networks
+  - where: 
+      parameter-name: HciMocGroup
+    set: 
+      parameter-name: MocGroup
+
+  - where: 
+      parameter-name: HciMocLocation
+    set: 
+      parameter-name: MocLocation
+
+  - where: 
+      parameter-name: HciMocVnetName
+    set: 
+      parameter-name: MocVnetName
+
 # VM SKU / Kubernetes Version
   - where:
       verb: New

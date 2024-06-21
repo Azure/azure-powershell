@@ -15,9 +15,9 @@ Create the virtual network resource
 ### CreateExpanded (Default)
 ```
 New-AzAksArcVirtualNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-CustomLocationName <String>] [-HciMocGroup <String>] [-HciMocLocation <String>] [-HciMocVnetName <String>]
- [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-CustomLocationName <String>] [-Location <String>] [-MocGroup <String>] [-MocLocation <String>]
+ [-MocVnetName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -94,51 +94,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HciMocGroup
-Group in MOC(Microsoft On-premises Cloud)
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HciMocLocation
-Location in MOC(Microsoft On-premises Cloud)
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HciMocVnetName
-Virtual Network name in MOC(Microsoft On-premises Cloud)
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -JsonFilePath
 Path of Json file supplied to the Create operation
 
@@ -171,6 +126,51 @@ Accept wildcard characters: False
 
 ### -Location
 The geo-location where the resource lives
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MocGroup
+Group in MOC(Microsoft On-premises Cloud)
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MocLocation
+Location in MOC(Microsoft On-premises Cloud)
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MocVnetName
+Virtual Network name in MOC(Microsoft On-premises Cloud)
 
 ```yaml
 Type: System.String

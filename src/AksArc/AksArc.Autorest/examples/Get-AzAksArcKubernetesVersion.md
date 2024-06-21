@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get supported kubernetes versions
 ```powershell
-{{ Add code here }}
+Get-AzAksArcKubernetesVersion -CustomLocationResourceUri sample_cl
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+This command lists the supported kubernetes versions in the custom location.

@@ -38,6 +38,9 @@ Lists the virtual networks in the specified resource group
 ### [Get-AzAksArcVMSku](Get-AzAksArcVMSku.md)
 Lists the supported VM skus for the specified custom location
 
+### [Invoke-AzAksArcClusterUpgrade](Invoke-AzAksArcClusterUpgrade.md)
+Update the provisioned cluster instance
+
 ### [New-AzAksArcCluster](New-AzAksArcCluster.md)
 Create the provisioned cluster instance
 

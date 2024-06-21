@@ -94,18 +94,6 @@ param(
     # The default value is true.
     ${EnableAutoScaling},
 
-    [Parameter(ParameterSetName='Upgrade', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
-    [System.String]
-    # The version of Kubernetes in use by the provisioned cluster.
-    ${KubernetesVersion},
-
-    [Parameter(ParameterSetName='Upgrade2', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Upgrade the provisioned cluster
-    ${Upgrade},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.Management.Automation.SwitchParameter]
@@ -233,29 +221,6 @@ process {
     }
 
     # Update Provisioned Cluster
-    if ($PSBoundParameters.ContainsKey("KubernetesVersion"))
-    {   
-        $Upgrades = Get-AzAksArcClusterUpgrade -ClusterName $ClusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
-        if ($upgrades.ControlPlaneProfileUpgrade.KubernetesVersion -contains $KubernetesVersion) {
-            continue
-        } else {
-            throw "Kubernetes Version $KubernetesVersion is not a valid upgradable version."
-        }
-    }
-    if ($PSBoundParameters.ContainsKey("Upgrade"))
-    {
-        $Upgrades = Get-AzAksArcClusterUpgrade -ClusterName $ClusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
-        $UpgradeListLength = $upgrades.ControlPlaneProfileUpgrade.KubernetesVersion.Length
-        if ($UpgradeListLength -eq 0) {
-            Write-Error "Already on latest kubernetes version."
-            return
-        }
-        $LatestUpgrade = $upgrades.ControlPlaneProfileUpgrade[$UpgradeListLength-1].KubernetesVersion
-
-        $null = $PSBoundParameters.Add("KubernetesVersion", $LatestUpgrade)
-        $null = $PSBoundParameters.Remove("Upgrade")
-    }
-
     if ($EnableAzureHybridBenefit) {
         $null = $PSBoundParameters.Add("LicenseProfileAzureHybridBenefit", $true)
     } else {

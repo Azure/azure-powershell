@@ -20,9 +20,7 @@ Create the virtual network resource
 .Description
 Create the virtual network resource
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzAksArcVirtualNetwork -Name "test-vnet-static" -ResourceGroupName "test-arcappliance-resgrp" -CustomLocationName "testcustomlocation" -HciMocVnetName "test-vnet"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetwork
@@ -82,19 +80,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.String]
     # Group in MOC(Microsoft On-premises Cloud)
-    ${HciMocGroup},
+    ${MocGroup},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.String]
     # Location in MOC(Microsoft On-premises Cloud)
-    ${HciMocLocation},
+    ${MocLocation},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.String]
     # Virtual Network name in MOC(Microsoft On-premises Cloud)
-    ${HciMocVnetName},
+    ${MocVnetName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]

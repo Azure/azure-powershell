@@ -27,21 +27,6 @@ Update-AzAksArcCluster -ClusterName <String> -MaxCount <Int32> -MinCount <Int32>
  [-WhatIf] [<CommonParameters>]
 ```
 
-### Upgrade
-```
-Update-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -KubernetesVersion <String>
- [-SubscriptionId <String>] [-AdminGroupObjectID <String[]>] [-ControlPlaneCount <Int32>]
- [-EnableAzureHybridBenefit] [-NfCsiDriverEnabled] [-SmbCsiDriverEnabled] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### Upgrade2
-```
-Update-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -Upgrade [-SubscriptionId <String>]
- [-AdminGroupObjectID <String[]>] [-ControlPlaneCount <Int32>] [-EnableAzureHybridBenefit]
- [-NfCsiDriverEnabled] [-SmbCsiDriverEnabled] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Update the provisioned cluster instance
 
@@ -116,20 +101,6 @@ Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_te
 ```
 
 Update aad admin GUIDS.
-
-### Example 11: Upgrade kubernetes version to latest possible
-```powershell
-Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Upgrade
-```
-
-Upgrade cluster to latest kubernetes version.
-
-### Example 12: Upgrade kubernetes version to specified version
-```powershell
-Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -KubernetesVersion "1.28.5"
-```
-
-Upgrade cluster to the specified kubernetes version.
 
 ## PARAMETERS
 
@@ -220,21 +191,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -KubernetesVersion
-The version of Kubernetes in use by the provisioned cluster.
-
-```yaml
-Type: System.String
-Parameter Sets: Upgrade
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -345,21 +301,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Upgrade
-Upgrade the provisioned cluster
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Upgrade2
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
