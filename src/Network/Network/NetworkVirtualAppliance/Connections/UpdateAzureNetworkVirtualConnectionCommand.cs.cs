@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (this.RoutingConfiguration.OutboundRouteMap != null)
                 {
-                    nvaConnectionToModify.RoutingConfiguration.InboundRouteMap.Id = this.RoutingConfiguration.OutboundRouteMap.Id;
+                    nvaConnectionToModify.RoutingConfiguration.OutboundRouteMap.Id = this.RoutingConfiguration.OutboundRouteMap.Id;
                 }
                 else if (this.RoutingConfiguration.OutboundRouteMap == null)
                 {
