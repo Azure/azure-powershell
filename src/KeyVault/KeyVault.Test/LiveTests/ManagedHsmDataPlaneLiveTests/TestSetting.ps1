@@ -1,10 +1,17 @@
+function Get-RotatedLocation
+{
+    $regions = @("eastus", "westus", "japaneast", "japanwest", "eastasia", "southeastasia", "brazilsouth", "eastus2")
+    $index = (Get-Date).Day % 8
+    return $regions[$index]
+}
+
 Invoke-LiveTestScenario -Name "Get and update key vault setting in a MSHM" -Description "Get and update a key vault setting in a MSHM" -Platform Linux -PowerShellVersion Latest -ScenarioScript `
 {
     param ($rg)
 
     $rgName = $rg.ResourceGroupName
     $hsmName = "bezmhsm" + (New-LiveTestRandomName -Option AllNumbers)
-    $hsmLocation = 'eastasia'
+    $hsmLocation = Get-RotatedLocation
     $appId = (Get-AzContext).Account.Id
     $adminId = (Get-AzADServicePrincipal -ApplicationId $appId).Id
     $hsmObject = New-AzKeyVaultManagedHsm -HsmName $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $adminId -SoftDeleteRetentionInDays 7
