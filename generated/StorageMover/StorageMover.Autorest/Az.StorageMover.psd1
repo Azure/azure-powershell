@@ -1,5 +1,5 @@
 @{
-  GUID = 'd6053d97-1a9b-4fc6-9bd2-09c5b23b34db'
+  GUID = '8edd1f4e-819c-4167-b734-ccf5e8c5dc9d'
   RootModule = './Az.StorageMover.psm1'
   ModuleVersion = '1.2.0'
   CompatiblePSEditions = 'Core', 'Desktop'
