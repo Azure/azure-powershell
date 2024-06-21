@@ -434,6 +434,7 @@ function GetRuntime
         $Settings,
 
         [Parameter(Mandatory=$false)]
+        [String]
         $AppKind
     )
 
@@ -480,7 +481,7 @@ function AddFunctionAppSettings
         $PSBoundParameters.Remove("App") | Out-Null
     }
 
-    if ($App.kind.ToLower() -match "azurecontainerapps")
+    if ($App.kind.ToString() -match "azurecontainerapps")
     {
         if ($App.ManagedEnvironmentId)
         {
@@ -492,7 +493,7 @@ function AddFunctionAppSettings
         $App.AppServicePlan = ($App.ServerFarmId -split "/")[-1]
     }
 
-    $App.OSType = if ($App.kind.ToLower().Contains("linux")){ "Linux" } else { "Windows" }
+    $App.OSType = if ($App.kind.ToString() -match "linux"){ "Linux" } else { "Windows" }
 
     if ($App.Type -eq "Microsoft.Web/sites/slots")
     {
@@ -540,7 +541,7 @@ function AddFunctionAppSettings
 
     # Add application settings and runtime
     $App.ApplicationSettings = ConvertWebAppApplicationSettingToHashtable -ApplicationSetting $settings -RedactAppSettings
-    $App.Runtime = GetRuntime -Settings $settings -AppKind $App.kind.ToLower()
+    $App.Runtime = GetRuntime -Settings $settings -AppKind $App.kind
 
     # Get the app site config
     $config = GetAzWebAppConfig -Name $App.Name -ResourceGroupName $App.ResourceGroup @PSBoundParameters
@@ -604,7 +605,7 @@ function GetFunctionApps
         $status = "Complete: $($index + 1)/$($Apps.Count) function apps processed."
         Write-Progress -Activity "Getting function apps" -Status $status -PercentComplete $percentageCompleted
         
-        if ($app.kind.ToLower().Contains("functionapp"))
+        if ($app.kind -match "functionapp")
         {
             if ($Location)
             {
