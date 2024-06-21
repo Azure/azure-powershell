@@ -18,8 +18,6 @@ using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
-using Newtonsoft.Json.Linq;
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -256,18 +254,32 @@ namespace Microsoft.Azure.Commands.KeyVault
                 this.WriteObject(certBundle);
             }
         }
+
+        /// <summary>
+        /// Read cert data between cert header and footer and convert it to bytes list
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        /// <exception cref="AzPSException"></exception>
         private IEnumerable<byte[]> GetEnumerableBytes(string filePath)
         {
             var bytesList = new List<byte[]>();
-            string texts = File.ReadAllText(filePath);
-            var pattern = @"-----BEGIN CERTIFICATE-----([^-]+)-----END CERTIFICATE-----";
-            Match m = Regex.Match(texts, pattern, RegexOptions.IgnoreCase);
-            while (m.Success)
+            try
             {
-                bytesList.Add(Convert.FromBase64String(m.Groups[1].Value.Replace(Environment.NewLine,"")));
-                m = m.NextMatch();
+                string texts = File.ReadAllText(filePath);
+                // Match cert data between cert header and footer and convert it to bytes
+                var pattern = @"-----BEGIN CERTIFICATE-----([^-]+)-----END CERTIFICATE-----";
+                Match m = Regex.Match(texts, pattern, RegexOptions.IgnoreCase);
+                while (m.Success)
+                {
+                    bytesList.Add(Convert.FromBase64String(m.Groups[1].Value.Replace(Environment.NewLine, "")));
+                    m = m.NextMatch();
+                }
             }
-
+            catch (Exception ex)
+            {
+                throw new AzPSException(string.Format("Exception happens when processing certificate, please check your certificate at '{0}'. See detailed error: {1}", filePath, ex.Message), Common.ErrorKind.UserError);
+            }
             return bytesList;
         }
 
