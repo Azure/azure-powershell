@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         [Parameter(
             ParameterSetName = FieldsParameterSet,
             Mandatory = false,
-            HelpMessage = "Create volume from a snapshot. UUID v4 or resource identifier used to identify the Snapshot")]
+            HelpMessage = "Create volume from a snapshot. Resource identifier used to identify the Snapshot")]
         [ValidateNotNullOrEmpty]        
         public string SnapshotId { get; set; }
 
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         [Parameter(
             ParameterSetName = FieldsParameterSet,
             Mandatory = false,
-            HelpMessage = "Backup ID. UUID v4 or resource identifier used to identify the Backup.")]        
+            HelpMessage = "Backup ID. Resource identifier used to identify the Backup.")]        
         public string BackupId { get; set; }
 
         [Parameter(
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,            
-            HelpMessage = "Specifies the number of days after which data that is not accessed by clients will be tiered (minimum 7, maximum 63).")]
+            HelpMessage = "Specifies the number of days after which data that is not accessed by clients will be tiered (minimum 2, maximum 183).")]
         public int? CoolnessPeriod { get; set; }
 
         [Parameter(
@@ -366,12 +366,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 PoolName = NameParts[1];
             }
 
-            if (Backup != null)
-            {
-                ExecuteCmdlet_2022_11_01(tagPairs);
-            }
-            else
-            {
+            //if (Backup != null)
+            //{
+            //    ExecuteCmdlet_2022_11_01(tagPairs);
+            //}
+            //else
+            //{
                 PSNetAppFilesVolumeDataProtection dataProtection = null;
                 if (ReplicationObject != null || !string.IsNullOrWhiteSpace(SnapshotPolicyId) || Backup != null)
                 {
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                     var anfVolume = AzureNetAppFilesManagementClient.Volumes.CreateOrUpdate(ResourceGroupName, AccountName, PoolName, Name, volumeBody);
                     WriteObject(anfVolume.ToPsNetAppFilesVolume());
                 }
-            }
+            //}
         }
 
         private void ExecuteCmdlet_2022_11_01(IDictionary<string, string> tagPairs)

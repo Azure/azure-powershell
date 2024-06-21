@@ -55,13 +55,18 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// at the root level.
         /// </param>
 
+        /// <param name="typePropertiesSchema">The schema name of Microsoft Fabric LakeHouse Table. Type: string (or
+        /// Expression with resultType string).
+        /// </param>
+
         /// <param name="table">The name of Microsoft Fabric LakeHouse Table. Type: string (or Expression
         /// with resultType string).
         /// </param>
-        public LakeHouseTableDataset(LinkedServiceReference linkedServiceName, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string description = default(string), object structure = default(object), object schema = default(object), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), DatasetFolder folder = default(DatasetFolder), object table = default(object))
+        public LakeHouseTableDataset(LinkedServiceReference linkedServiceName, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string description = default(string), object structure = default(object), object schema = default(object), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), DatasetFolder folder = default(DatasetFolder), object typePropertiesSchema = default(object), object table = default(object))
 
         : base(linkedServiceName, additionalProperties, description, structure, schema, parameters, annotations, folder)
         {
+            this.TypePropertiesSchema = typePropertiesSchema;
             this.Table = table;
             CustomInit();
         }
@@ -71,6 +76,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets the schema name of Microsoft Fabric LakeHouse Table. Type:
+        /// string (or Expression with resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.schema")]
+        public object TypePropertiesSchema {get; set; }
 
         /// <summary>
         /// Gets or sets the name of Microsoft Fabric LakeHouse Table. Type: string (or
@@ -87,6 +99,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public override void Validate()
         {
             base.Validate();
+
 
         }
     }

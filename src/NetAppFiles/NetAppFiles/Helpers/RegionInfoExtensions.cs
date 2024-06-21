@@ -30,5 +30,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
             };
             return psGetGroupIdListForLDAPUser;
         }
+
+        public static PSRegionInfo ConvertToPs(this Management.NetApp.Models.RegionInfoResource regionInfo)
+        {
+            var psGetGroupIdListForLDAPUser = new PSRegionInfo()
+            {
+                StorageToNetworkProximity = regionInfo.StorageToNetworkProximity,
+                AvailabilityZoneMappings = regionInfo.AvailabilityZoneMappings
+            };
+            return psGetGroupIdListForLDAPUser;
+        }
     }
 }

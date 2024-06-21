@@ -20,6 +20,8 @@
 
 
 ## Upcoming Release
+
+## Version 1.1.1
 * Removed the outdated deps.json file.
 
 ## Version 1.1.0

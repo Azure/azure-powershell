@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonProperties __addonProperties = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.AddonProperties();
 
-        /// <summary>The type of private cloud addon</summary>
+        /// <summary>Addon type</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Constant]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
         public string AddonType { get => "Arc"; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonPropertiesInternal)__addonProperties).AddonType = "Arc"; }

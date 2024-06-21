@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cross-subscription support for `Copy-AzSqlInstanceDatabase`, `Move-AzSqlInstanceDatabase`
+* Added new parameter SecondaryType to `Add-AzSqlDatabaseFromFailoverGroup`
+
+## Version 5.0.0
 * Added multi-secondary support for `Get-AzSqlDatabaseFailoverGroup`, `Remove-AzSqlDatabaseFromFailoverGroup` and `Add-AzSqlDatabaseFromFailoverGroup`
 * Changed default FailoverPolicy value for `New-AzSqlDatabaseFailoverGroup`, `Set-AzSqlDatabaseFailoverGroup` from `Automatic` to `Manual`
 * Added `ManualCutover` and `PerformCutover` parameters to `Set-AzSqlInstance` for Azure Sql Sterling database to Azure Sql Hyperscale database

@@ -19,7 +19,7 @@ New-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String
  [-DestinationName <String>] [-Encoding <String>] [-IdentityType <String>] [-IntervalInSeconds <Int32>]
  [-PartitionCount <Int64>] [-RetentionTimeInHour <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive]
  [-Status <String>] [-StorageAccountResourceId <String>] [-TombstoneRetentionTimeInHour <Int32>]
- [-UserAssignedIdentityId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-UserAssignedIdentityId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -30,14 +30,14 @@ New-AzEventHub -Name <String> -NamespaceInputObject <IEventHubIdentity> [-Archiv
  [-Encoding <String>] [-IdentityType <String>] [-IntervalInSeconds <Int32>] [-PartitionCount <Int64>]
  [-RetentionTimeInHour <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <String>]
  [-StorageAccountResourceId <String>] [-TombstoneRetentionTimeInHour <Int32>]
- [-UserAssignedIdentityId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-UserAssignedIdentityId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNamespace
 ```
 New-AzEventHub -Name <String> -NamespaceInputObject <IEventHubIdentity> -Parameter <IEventhub>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -369,21 +369,6 @@ Number of partitions created for the Event Hub, allowed values are from 1 to 32 
 Type: System.Int64
 Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added trusted access parameter in Create and Register VIS.
 
 ## Version 0.1.2
 * Introduced secrets detection feature to safeguard sensitive data.

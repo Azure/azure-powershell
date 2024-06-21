@@ -539,7 +539,8 @@ namespace Microsoft.Azure.Management.NetApp
         }
 
         /// <summary>
-        /// Delete the specified volume group only if there are no volumes under volume group.
+        /// Delete the specified volume group only if there are no volumes under volume
+        /// group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

@@ -214,7 +214,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT `<IMicrosoftGraphApplication>`: The application object, could be used as pipeline input.
+INPUTOBJECT <IMicrosoftGraphApplication>: The application object, could be used as pipeline input.
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[DeletedDateTime <DateTime?>]`: 
   - `[DisplayName <String>]`: The name displayed in directory
@@ -459,5 +459,14 @@ INPUTOBJECT `<IMicrosoftGraphApplication>`: The application object, could be use
   - `[Web <IMicrosoftGraphWebApplication>]`: webApplication
 
 ## RELATED LINKS
+
+## RELATED LINKS
+
+
+## RELATED LINKS
+
+
+## RELATED LINKS
+
 
 ## RELATED LINKS

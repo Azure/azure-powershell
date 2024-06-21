@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Extensions;
 
-    /// <summary>Contains the localized display information for this operation</summary>
+    /// <summary>Localized display information for this particular operation.</summary>
     public partial class OperationDisplay
     {
 

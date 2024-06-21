@@ -20,10 +20,13 @@ namespace Microsoft.Azure.Management.Storage
         /// List all file services in storage accounts
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -40,19 +43,25 @@ namespace Microsoft.Azure.Management.Storage
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FileServiceItems>> ListWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Sets the properties of file services in storage accounts, including CORS (Cross-Origin Resource Sharing) rules. 
+        /// Sets the properties of file services in storage accounts, including CORS
+        /// (Cross-Origin Resource Sharing) rules.
         /// </summary>
         /// <remarks>
-        /// Sets the properties of file services in storage accounts, including CORS (Cross-Origin Resource Sharing) rules. 
+        /// Sets the properties of file services in storage accounts, including CORS
+        /// (Cross-Origin Resource Sharing) rules.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='parameters'>
-        /// The properties of file services in storage accounts, including CORS (Cross-Origin Resource Sharing) rules.
+        /// The properties of file services in storage accounts, including CORS
+        /// (Cross-Origin Resource Sharing) rules.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -69,16 +78,21 @@ namespace Microsoft.Azure.Management.Storage
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FileServiceProperties>> SetServicePropertiesWithHttpMessagesAsync(string resourceGroupName, string accountName, FileServiceProperties parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the properties of file services in storage accounts, including CORS (Cross-Origin Resource Sharing) rules.
+        /// Gets the properties of file services in storage accounts, including CORS
+        /// (Cross-Origin Resource Sharing) rules.
         /// </summary>
         /// <remarks>
-        /// Gets the properties of file services in storage accounts, including CORS (Cross-Origin Resource Sharing) rules.
+        /// Gets the properties of file services in storage accounts, including CORS
+        /// (Cross-Origin Resource Sharing) rules.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

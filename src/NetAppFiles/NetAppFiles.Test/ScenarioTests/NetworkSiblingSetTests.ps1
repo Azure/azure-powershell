@@ -35,7 +35,7 @@ function Test-NetworkSiblingSet
         $doubleUsage = 2 * $usageThreshold
         #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus2euap" -UseCanonical
         #$resourceLocation = "eastus2euap"
-        $resourceLocation = "eastus"
+        $resourceLocation = "westus2"
 
         $subnetName = "default"
         $standardPoolSize = 4398046511104
