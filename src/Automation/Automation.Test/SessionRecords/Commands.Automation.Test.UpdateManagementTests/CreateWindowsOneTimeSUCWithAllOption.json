@@ -1,33 +1,33 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurations/mo-onetime-03?api-version=2019-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzgzZmQ2NTItNjRmMy00NjgwLTgxZTktMGI5NzhjNTQyMDA1L3Jlc291cmNlR3JvdXBzL21vLXJlc291cmNlcy1ldXMvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRvbWF0aW9uL2F1dG9tYXRpb25BY2NvdW50cy9tby1hYWEtZXVzMi9zb2Z0d2FyZVVwZGF0ZUNvbmZpZ3VyYXRpb25zL21vLW9uZXRpbWUtMDM/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestUri": "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/powershell-record-tests/providers/Microsoft.Automation/automationAccounts/record-tests-aa/softwareUpdateConfigurations/mo-onetime-03?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzgzZmQ2NTItNjRmMy00NjgwLTgxZTktMGI5NzhjNTQyMDA1L3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGwtcmVjb3JkLXRlc3RzL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvcmVjb3JkLXRlc3RzLWFhL3NvZnR3YXJlVXBkYXRlQ29uZmlndXJhdGlvbnMvbW8tb25ldGltZS0wMz9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "be6b8560-5b00-4ccb-b72a-4418add60be3"
+          "d5489f25-4846-4b79-a68b-2a07ef8c9bc4"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.47601",
+          "FxVersion/6.0.2523.51912",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Automation.AutomationClient/1.8.0"
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.Automation.AutomationClient/1.9.1"
         ],
         "x-ms-activity-id": [
-          "ead78701-da98-4312-b376-11a2652b4e67"
+          "f3035616-d396-4b3a-9bb8-4571ef61953f"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "1258"
+          "1286"
         ]
       },
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"updateConfiguration\": {\r\n      \"operatingSystem\": \"Windows\",\r\n      \"windows\": {\r\n        \"includedUpdateClassifications\": \"Security,UpdateRollup\",\r\n        \"excludedKbNumbers\": [\r\n          \"KB01\",\r\n          \"KB02\"\r\n        ],\r\n        \"includedKbNumbers\": [\r\n          \"KB100\"\r\n        ],\r\n        \"rebootSetting\": \"IfRequired\"\r\n      },\r\n      \"duration\": \"PT2H\",\r\n      \"azureVirtualMachines\": [\r\n        \"/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-w-01\",\r\n        \"/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-w-02\"\r\n      ],\r\n      \"nonAzureComputerNames\": [\r\n        \"server-01\"\r\n      ]\r\n    },\r\n    \"scheduleInfo\": {\r\n      \"startTime\": \"2022-10-27T16:59:04.6348004+05:30\",\r\n      \"expiryTime\": \"9999-12-31T23:59:59.9999999+05:30\",\r\n      \"expiryTimeOffsetMinutes\": 0.0,\r\n      \"isEnabled\": true,\r\n      \"nextRunOffsetMinutes\": 0.0,\r\n      \"frequency\": \"Onetime\",\r\n      \"creationTime\": \"0001-01-01T05:30:00+05:30\",\r\n      \"lastModifiedTime\": \"0001-01-01T05:30:00+05:30\",\r\n      \"description\": \"test-OneTime\"\r\n    },\r\n    \"tasks\": {}\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"updateConfiguration\": {\r\n      \"operatingSystem\": \"Windows\",\r\n      \"windows\": {\r\n        \"includedUpdateClassifications\": \"Security,UpdateRollup\",\r\n        \"excludedKbNumbers\": [\r\n          \"KB01\",\r\n          \"KB02\"\r\n        ],\r\n        \"includedKbNumbers\": [\r\n          \"KB100\"\r\n        ],\r\n        \"rebootSetting\": \"IfRequired\"\r\n      },\r\n      \"duration\": \"PT2H\",\r\n      \"azureVirtualMachines\": [\r\n        \"/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/powershell-record-tests/providers/Microsoft.Compute/virtualMachines/record-test-win-1\",\r\n        \"/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/powershell-record-tests/providers/Microsoft.Compute/virtualMachines/record-test-win-2\"\r\n      ],\r\n      \"nonAzureComputerNames\": [\r\n        \"server-01\"\r\n      ]\r\n    },\r\n    \"scheduleInfo\": {\r\n      \"startTime\": \"2023-11-24T18:08:43.9024987+05:30\",\r\n      \"expiryTime\": \"9999-12-31T23:59:59.9999999+05:30\",\r\n      \"expiryTimeOffsetMinutes\": 0.0,\r\n      \"isEnabled\": true,\r\n      \"nextRunOffsetMinutes\": 0.0,\r\n      \"frequency\": \"Onetime\",\r\n      \"creationTime\": \"0001-01-01T05:30:00+05:30\",\r\n      \"lastModifiedTime\": \"0001-01-01T05:30:00+05:30\",\r\n      \"description\": \"test-OneTime\"\r\n    },\r\n    \"tasks\": {}\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -36,10 +36,10 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurations/mo-onetime-03?api-version=2019-06-01"
+          "https://management.azure.com/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/powershell-record-tests/providers/Microsoft.Automation/automationAccounts/record-tests-aa/softwareUpdateConfigurations/mo-onetime-03?api-version=2019-06-01"
         ],
         "x-ms-request-id": [
-          "ead78701-da98-4312-b376-11a2652b4e67"
+          "f3035616-d396-4b3a-9bb8-4571ef61953f"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -48,10 +48,10 @@
           "99"
         ],
         "x-ms-correlation-request-id": [
-          "8e747a13-ef01-462c-a8ab-6363412c5986"
+          "19336557-154d-44be-9822-41717cdb624e"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20221027T111908Z:8e747a13-ef01-462c-a8ab-6363412c5986"
+          "WESTINDIA:20231124T122848Z:19336557-154d-44be-9822-41717cdb624e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -60,10 +60,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 27 Oct 2022 11:19:07 GMT"
+          "Fri, 24 Nov 2023 12:28:48 GMT"
         ],
         "Content-Length": [
-          "1547"
+          "1592"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -72,28 +72,28 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurations/mo-onetime-03\",\r\n  \"name\": \"mo-onetime-03\",\r\n  \"type\": null,\r\n  \"properties\": {\r\n    \"updateConfiguration\": {\r\n      \"operatingSystem\": \"Windows\",\r\n      \"windows\": {\r\n        \"includedUpdateClassifications\": \"Security, UpdateRollup\",\r\n        \"excludedKbNumbers\": [\r\n          \"KB01\",\r\n          \"KB02\"\r\n        ],\r\n        \"includedKbNumbers\": [\r\n          \"KB100\"\r\n        ],\r\n        \"rebootSetting\": \"IfRequired\"\r\n      },\r\n      \"linux\": null,\r\n      \"targets\": null,\r\n      \"duration\": \"PT2H\",\r\n      \"azureVirtualMachines\": [\r\n        \"/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-w-01\",\r\n        \"/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-w-02\"\r\n      ],\r\n      \"nonAzureComputerNames\": [\r\n        \"server-01\"\r\n      ]\r\n    },\r\n    \"scheduleInfo\": {\r\n      \"description\": \"test-OneTime\",\r\n      \"startTime\": \"2022-10-27T22:29:00+05:30\",\r\n      \"startTimeOffsetMinutes\": 0.0,\r\n      \"expiryTime\": \"2022-10-27T22:29:00+05:30\",\r\n      \"expiryTimeOffsetMinutes\": 0.0,\r\n      \"isEnabled\": true,\r\n      \"nextRun\": \"2022-10-27T22:29:00+05:30\",\r\n      \"nextRunOffsetMinutes\": 0.0,\r\n      \"interval\": null,\r\n      \"frequency\": \"OneTime\",\r\n      \"creationTime\": \"2022-10-27T16:49:07.9833333+05:30\",\r\n      \"lastModifiedTime\": \"2022-10-27T16:49:07.9833333+05:30\",\r\n      \"timeZone\": \"Etc/UTC\",\r\n      \"advancedSchedule\": null\r\n    },\r\n    \"provisioningState\": \"Provisioning\",\r\n    \"createdBy\": \"{scrubbed}\",\r\n    \"error\": null,\r\n    \"tasks\": {\r\n      \"preTask\": null,\r\n      \"postTask\": null\r\n    },\r\n    \"creationTime\": \"2022-10-20T15:29:21.1066667+05:30\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2022-10-27T16:49:08.1+05:30\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/powershell-record-tests/providers/Microsoft.Automation/automationAccounts/record-tests-aa/softwareUpdateConfigurations/mo-onetime-03\",\r\n  \"name\": \"mo-onetime-03\",\r\n  \"type\": null,\r\n  \"properties\": {\r\n    \"updateConfiguration\": {\r\n      \"operatingSystem\": \"Windows\",\r\n      \"windows\": {\r\n        \"includedUpdateClassifications\": \"Security, UpdateRollup\",\r\n        \"excludedKbNumbers\": [\r\n          \"KB01\",\r\n          \"KB02\"\r\n        ],\r\n        \"includedKbNumbers\": [\r\n          \"KB100\"\r\n        ],\r\n        \"rebootSetting\": \"IfRequired\"\r\n      },\r\n      \"linux\": null,\r\n      \"targets\": null,\r\n      \"duration\": \"PT2H\",\r\n      \"azureVirtualMachines\": [\r\n        \"/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/powershell-record-tests/providers/Microsoft.Compute/virtualMachines/record-test-win-1\",\r\n        \"/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/powershell-record-tests/providers/Microsoft.Compute/virtualMachines/record-test-win-2\"\r\n      ],\r\n      \"nonAzureComputerNames\": [\r\n        \"server-01\"\r\n      ]\r\n    },\r\n    \"scheduleInfo\": {\r\n      \"description\": \"test-OneTime\",\r\n      \"startTime\": \"2023-11-24T23:38:00+05:30\",\r\n      \"startTimeOffsetMinutes\": 0.0,\r\n      \"expiryTime\": \"2023-11-24T23:38:00+05:30\",\r\n      \"expiryTimeOffsetMinutes\": 0.0,\r\n      \"isEnabled\": true,\r\n      \"nextRun\": \"2023-11-24T23:38:00+05:30\",\r\n      \"nextRunOffsetMinutes\": 0.0,\r\n      \"interval\": null,\r\n      \"frequency\": \"OneTime\",\r\n      \"creationTime\": \"2023-11-24T17:58:48.6533333+05:30\",\r\n      \"lastModifiedTime\": \"2023-11-24T17:58:48.6533333+05:30\",\r\n      \"timeZone\": \"Etc/UTC\",\r\n      \"advancedSchedule\": null\r\n    },\r\n    \"provisioningState\": \"Provisioning\",\r\n    \"createdBy\": \"{scrubbed}\",\r\n    \"error\": null,\r\n    \"tasks\": {\r\n      \"preTask\": null,\r\n      \"postTask\": null\r\n    },\r\n    \"creationTime\": \"2023-11-24T17:58:48.7666667+05:30\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2023-11-24T17:58:48.7666667+05:30\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurations/mo-onetime-03?api-version=2019-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzgzZmQ2NTItNjRmMy00NjgwLTgxZTktMGI5NzhjNTQyMDA1L3Jlc291cmNlR3JvdXBzL21vLXJlc291cmNlcy1ldXMvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRvbWF0aW9uL2F1dG9tYXRpb25BY2NvdW50cy9tby1hYWEtZXVzMi9zb2Z0d2FyZVVwZGF0ZUNvbmZpZ3VyYXRpb25zL21vLW9uZXRpbWUtMDM/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestUri": "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/powershell-record-tests/providers/Microsoft.Automation/automationAccounts/record-tests-aa/softwareUpdateConfigurations/mo-onetime-03?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzgzZmQ2NTItNjRmMy00NjgwLTgxZTktMGI5NzhjNTQyMDA1L3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGwtcmVjb3JkLXRlc3RzL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvcmVjb3JkLXRlc3RzLWFhL3NvZnR3YXJlVXBkYXRlQ29uZmlndXJhdGlvbnMvbW8tb25ldGltZS0wMz9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "dd086320-d811-47dc-b6c7-6e7c4f9848ac"
+          "c9e8512e-236d-40e1-925e-81915007e3a8"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.47601",
+          "FxVersion/6.0.2523.51912",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Automation.AutomationClient/1.8.0"
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.Automation.AutomationClient/1.9.1"
         ],
         "x-ms-activity-id": [
-          "b3a0cec1-64d3-4479-914a-98319d59cd44"
+          "9a68b172-2b0d-4a2e-a338-1c62ceca841b"
         ]
       },
       "RequestBody": "",
@@ -105,7 +105,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "b3a0cec1-64d3-4479-914a-98319d59cd44"
+          "9a68b172-2b0d-4a2e-a338-1c62ceca841b"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -114,10 +114,10 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "5c8760a4-a856-4ea7-b975-39038b946bca"
+          "323ed530-475b-4b02-86eb-c32ce95f5201"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20221027T111910Z:5c8760a4-a856-4ea7-b975-39038b946bca"
+          "WESTINDIA:20231124T122850Z:323ed530-475b-4b02-86eb-c32ce95f5201"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -126,10 +126,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 27 Oct 2022 11:19:10 GMT"
+          "Fri, 24 Nov 2023 12:28:50 GMT"
         ],
         "Content-Length": [
-          "1747"
+          "1954"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -138,7 +138,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurations/mo-onetime-03\",\r\n  \"name\": \"mo-onetime-03\",\r\n  \"type\": null,\r\n  \"properties\": {\r\n    \"updateConfiguration\": {\r\n      \"operatingSystem\": \"Windows\",\r\n      \"windows\": {\r\n        \"includedUpdateClassifications\": \"Security, UpdateRollup\",\r\n        \"excludedKbNumbers\": [\r\n          \"KB01\",\r\n          \"KB02\"\r\n        ],\r\n        \"includedKbNumbers\": [\r\n          \"KB100\"\r\n        ],\r\n        \"rebootSetting\": \"IfRequired\"\r\n      },\r\n      \"linux\": null,\r\n      \"targets\": null,\r\n      \"duration\": \"PT2H\",\r\n      \"azureVirtualMachines\": [\r\n        \"/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-w-01\",\r\n        \"/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-w-02\"\r\n      ],\r\n      \"nonAzureComputerNames\": [\r\n        \"server-01\"\r\n      ]\r\n    },\r\n    \"scheduleInfo\": {\r\n      \"description\": \"test-OneTime\",\r\n      \"startTime\": \"2022-10-20T21:09:00+05:30\",\r\n      \"startTimeOffsetMinutes\": 0.0,\r\n      \"expiryTime\": \"2022-10-20T21:09:00+05:30\",\r\n      \"expiryTimeOffsetMinutes\": 0.0,\r\n      \"isEnabled\": true,\r\n      \"nextRun\": null,\r\n      \"nextRunOffsetMinutes\": 0.0,\r\n      \"interval\": null,\r\n      \"frequency\": \"OneTime\",\r\n      \"creationTime\": \"2022-10-20T15:29:18.39+05:30\",\r\n      \"lastModifiedTime\": \"2022-10-20T15:29:18.39+05:30\",\r\n      \"timeZone\": \"Etc/UTC\",\r\n      \"advancedSchedule\": null\r\n    },\r\n    \"provisioningState\": \"Failed\",\r\n    \"createdBy\": \"{scrubbed}\",\r\n    \"error\": {\r\n      \"code\": null,\r\n      \"message\": \"You have requested to create an update configuration on a machine that is not registered for Update Management.  Assure that the machine is registered for Update Management.  Machine Name(s) or Id(s): server-01.\"\r\n    },\r\n    \"tasks\": {\r\n      \"preTask\": null,\r\n      \"postTask\": null\r\n    },\r\n    \"creationTime\": \"2022-10-20T15:29:21.1066667+05:30\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2022-10-27T16:49:09.2566667+05:30\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/powershell-record-tests/providers/Microsoft.Automation/automationAccounts/record-tests-aa/softwareUpdateConfigurations/mo-onetime-03\",\r\n  \"name\": \"mo-onetime-03\",\r\n  \"type\": null,\r\n  \"properties\": {\r\n    \"updateConfiguration\": {\r\n      \"operatingSystem\": \"Windows\",\r\n      \"windows\": {\r\n        \"includedUpdateClassifications\": \"Security, UpdateRollup\",\r\n        \"excludedKbNumbers\": [\r\n          \"KB01\",\r\n          \"KB02\"\r\n        ],\r\n        \"includedKbNumbers\": [\r\n          \"KB100\"\r\n        ],\r\n        \"rebootSetting\": \"IfRequired\"\r\n      },\r\n      \"linux\": null,\r\n      \"targets\": null,\r\n      \"duration\": \"PT2H\",\r\n      \"azureVirtualMachines\": [\r\n        \"/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/powershell-record-tests/providers/Microsoft.Compute/virtualMachines/record-test-win-1\",\r\n        \"/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/powershell-record-tests/providers/Microsoft.Compute/virtualMachines/record-test-win-2\"\r\n      ],\r\n      \"nonAzureComputerNames\": [\r\n        \"server-01\"\r\n      ]\r\n    },\r\n    \"scheduleInfo\": {\r\n      \"description\": \"test-OneTime\",\r\n      \"startTime\": \"2023-11-24T23:38:00+05:30\",\r\n      \"startTimeOffsetMinutes\": 0.0,\r\n      \"expiryTime\": \"2023-11-24T23:38:00+05:30\",\r\n      \"expiryTimeOffsetMinutes\": 0.0,\r\n      \"isEnabled\": true,\r\n      \"nextRun\": \"2023-11-24T23:38:00+05:30\",\r\n      \"nextRunOffsetMinutes\": 0.0,\r\n      \"interval\": null,\r\n      \"frequency\": \"OneTime\",\r\n      \"creationTime\": \"2023-11-24T17:58:48.6533333+05:30\",\r\n      \"lastModifiedTime\": \"2023-11-24T17:58:48.6533333+05:30\",\r\n      \"timeZone\": \"Etc/UTC\",\r\n      \"advancedSchedule\": null\r\n    },\r\n    \"provisioningState\": \"Failed\",\r\n    \"createdBy\": \"{scrubbed}\",\r\n    \"error\": {\r\n      \"code\": null,\r\n      \"message\": \"You have requested to create an update configuration on a machine that is not registered for Update Management.  Assure that the machine is registered for Update Management.  Machine Name(s) or Id(s): server-01. Please run troubleshooter (https://learn.microsoft.com/azure/automation/troubleshoot/update-agent-issues) to get more detailed errors.\"\r\n    },\r\n    \"tasks\": {\r\n      \"preTask\": null,\r\n      \"postTask\": null\r\n    },\r\n    \"creationTime\": \"2023-11-24T17:58:48.7666667+05:30\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2023-11-24T17:58:49.5633333+05:30\"\r\n  }\r\n}",
       "StatusCode": 200
     }
   ],
