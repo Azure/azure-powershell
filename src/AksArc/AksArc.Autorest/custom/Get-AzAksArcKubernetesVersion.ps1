@@ -16,28 +16,28 @@
 
 <#
 .Synopsis
-Gets the provisioned cluster instance
+Lists the supported kubernetes versions for the specified custom location
 .Description
-Gets the provisioned cluster instance
+Lists the supported kubernetes versions for the specified custom location
 .Example
-Get-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group
+Get-AzAksArcKubernetesVersion -CustomLocationResourceUri sample_cl
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedCluster
+Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IKubernetesVersionProfile
 .Link
-https://learn.microsoft.com/powershell/module/az.aksarc/get-azaksarccluster
+https://learn.microsoft.com/powershell/module/az.aksarc/get-azaksarckubernetesversion
 #>
-function Get-AzAksArcCluster {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedCluster])]
+function Get-AzAksArcKubernetesVersion {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IKubernetesVersionProfile])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [System.String]
-    # The name of the Kubernetes cluster on which get is called.
-    ${ClusterName},
+    # The name or id of the custom location.
+    ${CustomLocationName},
 
-    [Parameter(Mandatory)]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -101,12 +101,35 @@ param(
 )
 
 process {
-    $Scope = GetConnectedClusterResourceURI -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName
-    $null = $PSBoundParameters.Remove("SubscriptionId")
+    # Format custom location
+    $CustomLocationID = ConvertCustomLocationNameToID -CustomLocationName $CustomLocationName -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName
+    if ($CustomLocationName -ne $CustomLocationID) {
+        if (!$ResourceGroupName) {
+            throw "ResourceGroupName parameter is required."
+        }
+    }
+
+    $null = $PSBoundParameters.Add("CustomLocationResourceUri", $CustomLocationID)
+    $null = $PSBoundParameters.Remove("CustomLocationName")
     $null = $PSBoundParameters.Remove("ResourceGroupName")
-    $null = $PSBoundParameters.Remove("ClusterName")
-    $null = $PSBoundParameters.Add("ConnectedClusterResourceUri", $Scope)
-    Az.AksArc.internal\Get-AzAksArcCluster @PSBoundParameters
+    $null = $PSBoundParameters.Remove("SubscriptionId")
+
+    # Perform Get/Put if does not exist
+    try {
+        $config = Az.AksArc.internal\Get-AzAksArcKubernetesVersion @PSBoundParameters
+        if ($config.ProvisioningState -ne "Succeeded") {
+            $DoCreateDefaultObject = $true
+        }
+    }
+    catch {
+        $DoCreateDefaultObject = $true
+    }
+    
+    if ($DoCreateDefaultObject) {
+        $null = Az.AksArc.internal\New-AzAksArcKubernetesVersion -CustomLocationResourceUri $CustomLocationID -ExtendedLocationName $CustomLocationID -ExtendedLocationType "CustomLocation"
+    }
+
+    # Call get command
+    Az.AksArc.internal\Get-AzAksArcKubernetesVersion @PSBoundParameters
 }
- 
 }

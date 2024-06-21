@@ -87,7 +87,7 @@ function New-AzAksArcCluster {
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
         [System.String]
         # IP address of the Kubernetes API server
-        ${ControlPlaneEndpointHostIP},
+        ${ControlPlaneIP},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
@@ -105,7 +105,7 @@ function New-AzAksArcCluster {
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
         [System.String]
         # IP Address or CIDR for SSH access to VMs in the provisioned cluster
-        ${ClusterVMAccessProfileAuthorizedIprange},
+        ${SshAuthIp},
 
         [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
@@ -138,13 +138,13 @@ function New-AzAksArcCluster {
         [System.Int32]
         # Number of HA Proxy load balancer VMs.
         # The default value is 0.
-        ${LoadBalancerProfileCount},
+        ${LoadBalancerCount},
     
         [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
         [System.String]
         # A CIDR notation IP Address range from which to assign pod IPs.
-        ${NetworkProfilePodCidr},
+        ${PodCidr},
     
         [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
@@ -289,31 +289,40 @@ function New-AzAksArcCluster {
         $null = $PSBoundParameters.Add("ConnectedClusterResourceUri", $Scope)
 
         # Network Validations
-        $response = Invoke-AzRestMethod -Path "$VnetId/?api-version=2024-01-01" -Method GET
-        if ($response.StatusCode -eq 200) {
-            $lnet = ($response.Content | ConvertFrom-Json)
-            $err = ValidateLogicalNetwork -lnet $lnet -ControlPlaneIP $ControlPlaneEndpointHostIP
-            if ($err) {
-                throw $err
+        # Logical Network
+        if ($VnetId -match $logicalNetworkArmIDRegex) {
+            $response = Invoke-AzRestMethod -Path "$VnetId/?api-version=2024-01-01" -Method GET
+            if ($response.StatusCode -eq 200) {
+                $lnet = ($response.Content | ConvertFrom-Json)
+                $err = ValidateLogicalNetwork -lnet $lnet -ControlPlaneIP $ControlPlaneIP
+                if ($err) {
+                    throw $err
+                }
+            } else {
+                throw "Logical network with ID $VnetId not found."
             }
-        } else {
-            throw "Could not locate logical network with id: $VnetId"
-        }
+        } 
 
         # Edit parameters
         $null = $PSBoundParameters.Add("InfraNetworkProfileVnetSubnetId", @($VnetId))
         $null = $PSBoundParameters.Add("ExtendedLocationType", "CustomLocation")
-        $null = $PSBoundParameters.Add("ExtendedLocationName", $CustomLocationName)
         $null = $PSBoundParameters.Add("NetworkProfileNetworkPolicy", "calico")
         $null = $PSBoundParameters.Remove("Location")
-        $null = $PSBoundParameters.Remove("CustomLocationName")
         $null = $PSBoundParameters.Remove("VnetId")
 
+        $CustomLocationID = ConvertCustomLocationNameToID -CustomLocationName $CustomLocationName -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName
+        $null = $PSBoundParameters.Add("ExtendedLocationName", $CustomLocationID)
+        $null = $PSBoundParameters.Remove("CustomLocationName")
 
         # Create connected cluster parent resource
+        $config = Invoke-AzRestMethod -Path "${CustomLocationID}?api-version=2021-08-31-preview" -Method GET
+        $cllocation = ($config.Content | ConvertFrom-Json).location
         if (!$Location) {
-            $Location = "eastus"
+            $Location = $cllocation
+        } elseif ($Location -ne $cllocation) {
+            throw "Location parameter must be equal to custom location's location $cllocation"
         }
+
         CreateConnectedCluster -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName -Location $Location -AdminGroupObjectID $AdminGroupObjectID
         $null = $PSBoundParameters.Remove("AdminGroupObjectID")
         

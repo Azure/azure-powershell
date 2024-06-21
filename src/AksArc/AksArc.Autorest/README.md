@@ -58,9 +58,9 @@ directive:
   - where:
       variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
-  # - where:
-  #     variant: ^CreateViaIdentity.*$
-  #   remove: true
+  - where:
+      variant: ^CreateViaIdentity.*$
+    remove: true
   # Follow directive is v3 specific. If you are using v3, uncomment following directive and comments out two directives above
   #- where:
   #    variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
@@ -103,6 +103,11 @@ directive:
     hide: true
 
   - where:
+      verb: New
+      subject: VirtualNetwork
+    hide: true
+
+  - where:
       subject: ProvisionedClusterInstanceUpgradeProfile
     set:
       subject: ClusterUpgrade
@@ -120,6 +125,14 @@ directive:
       subject: ClusterUserKubeconfig
     hide: true
 
+  - where:
+      subject: KubernetesVersion
+    hide: true
+
+  - where:
+      subject: VMSku
+    hide: true
+
 # Remove unnecessary cmdlets
   - where:
       subject: KuberneteVersion
@@ -131,21 +144,12 @@ directive:
     remove: true
 
   - where:
+      verb: Update
       subject: VirtualNetwork
     remove: true
 
   - where:
       subject: HybridIdentityMetadata
-    remove: true
-
-  - where:
-      verb: New
-      subject: VMSku
-    remove: true
-
-  - where:
-      verb: New
-      subject: KubernetesVersion
     remove: true
 
   - where:
@@ -170,3 +174,51 @@ directive:
       parameter-name: ExtendedLocationName
     set: 
       parameter-name: CustomLocationID
+
+# Clusters
+  - where: 
+      parameter-name: ControlPlaneEndpointHostIP
+    set: 
+      parameter-name: ControlPlaneIP
+
+  - where: 
+      parameter-name: NetworkProfilePodCidr
+    set: 
+      parameter-name: PodCidr
+
+  - where: 
+      parameter-name: LoadBalancerProfileCount
+    set: 
+      parameter-name: LoadBalancerCount
+
+  - where: 
+      parameter-name: ClusterVMAccessProfileAuthorizedIprange
+    set: 
+      parameter-name: SshAuthIp
+  
+# Networks
+  - where: 
+      parameter-name: HciMocGroup
+    set: 
+      parameter-name: MocGroup
+
+  - where: 
+      parameter-name: HciMocLocation
+    set: 
+      parameter-name: MocLocation
+
+  - where: 
+      parameter-name: HciMocVnetName
+    set: 
+      parameter-name: MocVnetName
+
+# VM SKU / Kubernetes Version
+  - where:
+      verb: New
+      subject: VMSku
+    hide: true
+
+  - where:
+      verb: New
+      subject: KubernetesVersion
+    hide: true

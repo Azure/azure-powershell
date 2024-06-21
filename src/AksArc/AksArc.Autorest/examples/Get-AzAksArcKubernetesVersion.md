@@ -4,4 +4,3 @@ Get-AzAksArcKubernetesVersion -CustomLocationResourceUri sample_cl
 ```
 
 This command lists the supported kubernetes versions in the custom location.
-

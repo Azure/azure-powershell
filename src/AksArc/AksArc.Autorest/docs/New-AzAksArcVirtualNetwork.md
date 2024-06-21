@@ -1,65 +1,50 @@
 ---
 external help file:
 Module Name: Az.AksArc
-online version: https://learn.microsoft.com/powershell/module/az.aksarc/update-azaksarcnodepool
+online version: https://learn.microsoft.com/powershell/module/az.aksarc/new-azaksarcvirtualnetwork
 schema: 2.0.0
 ---
 
-# Update-AzAksArcNodepool
+# New-AzAksArcVirtualNetwork
 
 ## SYNOPSIS
-Update the agent pool in the provisioned cluster
+Create the virtual network resource
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### CreateExpanded (Default)
 ```
-Update-AzAksArcNodepool -ClusterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Count <Int32>] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>]
- [-Tag <Hashtable>] [-VMSize <String>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzAksArcVirtualNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-CustomLocationName <String>] [-Location <String>] [-MocGroup <String>] [-MocLocation <String>]
+ [-MocVnetName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
-### AutoScaling
+### CreateViaJsonFilePath
 ```
-Update-AzAksArcNodepool -ClusterName <String> -Name <String> -ResourceGroupName <String> -EnableAutoScaling
- -MaxCount <Int32> -MinCount <Int32> [-SubscriptionId <String>] [-Count <Int32>] [-NodeLabel <Hashtable>]
- [-NodeTaint <String[]>] [-Tag <Hashtable>] [-VMSize <String>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzAksArcVirtualNetwork -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded
+### CreateViaJsonString
 ```
-Update-AzAksArcNodepool -ClusterName <String> -InputObject <IAksArcIdentity> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-Count <Int32>] [-NodeLabel <Hashtable>]
- [-NodeTaint <String[]>] [-Tag <Hashtable>] [-VMSize <String>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzAksArcVirtualNetwork -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update the agent pool in the provisioned cluster
+Create the virtual network resource
 
 ## EXAMPLES
 
-### Example 1: Scale up nodes in provisioned cluster nodepool. 
+### Example 1: Create an AksArc virtual network
 ```powershell
-Update-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Name azps_test_nodepool_example -Count 3
+New-AzAksArcVirtualNetwork -Name "test-vnet-static" -ResourceGroupName "test-arcappliance-resgrp" -CustomLocationName "testcustomlocation" -HciMocVnetName "test-vnet"
 ```
 
-Scales up the number of nodes in the provisioned cluster nodepool.
-
-### Example 2: Update tags in nodepool
-```powershell
-Update-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Name azps_test_nodepool_example -Tag @{'key1'= 1; 'key2'= 2}
-```
-
-Adds the specified tags to the nodepool resource.
-
-### Example 3: Enable autoscaling in nodepool
-```powershell
-Update-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Name azps_test_nodepool_example -EnableAutoScaling -MinCount 1 -MaxCount 5
-```
-
-Enables autoscaling in the nodepool with specified MinCount and MaxCount.
+Create an AksArc virtual network from a moc network.
 
 ## PARAMETERS
 
@@ -78,28 +63,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClusterName
-The name of the Kubernetes cluster on which get is called.
+### -CustomLocationName
+ARM Id of the extended location.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Count
-Number of nodes in the agent pool.
-The default value is 1.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -109,13 +78,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableAutoScaling
-Whether to enable auto-scaler.
-Default value is false
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AutoScaling
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -125,27 +109,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
+### -JsonString
+Json string supplied to the Create operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAksArcIdentity
-Parameter Sets: CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -MaxCount
-The maximum number of nodes for auto-scaling
-
-```yaml
-Type: System.Int32
-Parameter Sets: AutoScaling
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -155,15 +124,60 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MinCount
-The minimum number of nodes for auto-scaling
+### -Location
+The geo-location where the resource lives
 
 ```yaml
-Type: System.Int32
-Parameter Sets: AutoScaling
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MocGroup
+Group in MOC(Microsoft On-premises Cloud)
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MocLocation
+Location in MOC(Microsoft On-premises Cloud)
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MocVnetName
+Virtual Network name in MOC(Microsoft On-premises Cloud)
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -171,7 +185,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Parameter for the name of the agent pool in the provisioned cluster.
+Parameter for the name of the virtual network
 
 ```yaml
 Type: System.String
@@ -179,37 +193,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NodeLabel
-The node labels to be persisted across all nodes in agent pool.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NodeTaint
-Taints added to new nodes during node pool create and scale.
-For example, key=value:NoSchedule.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -249,6 +232,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -263,26 +247,11 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VMSize
-The VM sku size of the agent pool node VMs.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -328,11 +297,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAksArcIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPool
+### Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetwork
 
 ## NOTES
 

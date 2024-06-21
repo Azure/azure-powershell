@@ -14,13 +14,12 @@ Create the provisioned cluster instance
 
 ### CreateExpanded (Default)
 ```
-New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -ControlPlaneEndpointHostIP <String>
+New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -ControlPlaneIP <String>
  -CustomLocationName <String> -VnetId <String> [-MaxCount <Int32>] [-MaxPod <Int32>] [-MinCount <Int32>]
- [-SubscriptionId <String>] [-AdminGroupObjectID <String[]>]
- [-ClusterVMAccessProfileAuthorizedIprange <String>] [-ControlPlaneCount <Int32>]
+ [-SubscriptionId <String>] [-AdminGroupObjectID <String[]>] [-ControlPlaneCount <Int32>]
  [-ControlPlaneVMSize <String>] [-EnableAutoScaling] [-EnableAzureHybridBenefit] [-KubernetesVersion <String>]
- [-LoadBalancerProfileCount <Int32>] [-Location <String>] [-NetworkProfilePodCidr <String>]
- [-NfCsiDriverEnabled] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>] [-SmbCsiDriverEnabled]
+ [-LoadBalancerCount <Int32>] [-Location <String>] [-NfCsiDriverEnabled] [-NodeLabel <Hashtable>]
+ [-NodeTaint <String[]>] [-PodCidr <String>] [-SmbCsiDriverEnabled] [-SshAuthIp <String>]
  [-SshKeyValue <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -28,15 +27,15 @@ New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -ControlPl
 ### AutoScaling
 ```
 New-AzAksArcCluster -ClusterName <String> -MaxCount <Int32> -MaxPod <Int32> -MinCount <Int32>
- -ResourceGroupName <String> -ControlPlaneEndpointHostIP <String> -CustomLocationName <String>
- -EnableAutoScaling -VnetId <String> [-SubscriptionId <String>] [-AdminGroupObjectID <String[]>]
- [-EnableAzureHybridBenefit] [-Location <String>] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> -ControlPlaneIP <String> -CustomLocationName <String> -EnableAutoScaling
+ -VnetId <String> [-SubscriptionId <String>] [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit]
+ [-Location <String>] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -ControlPlaneEndpointHostIP <String>
+New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -ControlPlaneIP <String>
  -CustomLocationName <String> -JsonFilePath <String> -VnetId <String> [-SubscriptionId <String>]
  [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit] [-Location <String>] [-NodeLabel <Hashtable>]
  [-NodeTaint <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
@@ -45,7 +44,7 @@ New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -ControlPl
 
 ### CreateViaJsonString
 ```
-New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -ControlPlaneEndpointHostIP <String>
+New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -ControlPlaneIP <String>
  -CustomLocationName <String> -JsonString <String> -VnetId <String> [-SubscriptionId <String>]
  [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit] [-Location <String>] [-NodeLabel <Hashtable>]
  [-NodeTaint <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
@@ -174,21 +173,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClusterVMAccessProfileAuthorizedIprange
-IP Address or CIDR for SSH access to VMs in the provisioned cluster
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ControlPlaneCount
 Number of control plane nodes.
 The default value is 1, and the count should be an odd number
@@ -205,7 +189,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ControlPlaneEndpointHostIP
+### -ControlPlaneIP
 IP address of the Kubernetes API server
 
 ```yaml
@@ -343,7 +327,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LoadBalancerProfileCount
+### -LoadBalancerCount
 Number of HA Proxy load balancer VMs.
 The default value is 0.
 
@@ -419,21 +403,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkProfilePodCidr
-A CIDR notation IP Address range from which to assign pod IPs.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NfCsiDriverEnabled
 Indicates whether to enable NFS CSI Driver.
 The default value is true.
@@ -496,6 +465,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PodCidr
+A CIDR notation IP Address range from which to assign pod IPs.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -518,6 +502,21 @@ The default value is true.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SshAuthIp
+IP Address or CIDR for SSH access to VMs in the provisioned cluster
+
+```yaml
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 

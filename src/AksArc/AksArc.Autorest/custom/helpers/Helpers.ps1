@@ -82,11 +82,30 @@ function GenerateSSHKey {
     $filename = $ClusterName + "_" + $suffix
     $sshkeydir = $HOME + "\.ssh\" + $filename
 
-    ssh-keygen -b 2048 -t rsa -f $sshkeydir -q -N ''
+    if ($PSVersionTable.PSVersion.Major -eq 7) {
+        ssh-keygen -b 2048 -t rsa -f $sshkeydir -q -N ''
+    } else {
+        ssh-keygen -b 2048 -t rsa -f $sshkeydir -q -N '""'
+    }
     
     $publickeyfile = $sshkeydir + ".pub"
     $publicKey = Get-Content -Path $publickeyfile
     
     $SshPublicKeyObj.KeyData = $publicKey
     return $SshPublicKeyObj
+}
+
+function ConvertCustomLocationNameToID {
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.DoNotExportAttribute()]
+    param(
+        [System.String] $CustomLocationName,
+        [System.String] $SubscriptionId,
+        [System.String] $ResourceGroupName
+    )
+
+    if ($CustomLocationName -match $armIDRegex) {
+        return $CustomLocationName
+    }
+
+    return "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/$CustomLocationName"
 }
