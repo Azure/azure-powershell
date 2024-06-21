@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public bool MultipleNetworkIdentifierExists(PSServiceEndpoint[] serviceEndpointConfig)
         {
-            return serviceEndpointConfig?.Select(s => s.NetworkIdentifier).Where(id => id != null).Distinct().Count() > 1;
+            return serviceEndpointConfig?.Select(s => s.NetworkIdentifier).Where(id => id != null).GroupBy(p => p.Id).Count() > 1;
         }
 
         private void RemoveExistingServiceWithoutIdentifier(PSSubnet subnet, PSServiceEndpoint item)
