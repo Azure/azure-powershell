@@ -258,8 +258,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// Read cert data between cert header and footer and convert it to bytes list
         /// </summary>
-        /// <param name="filePath"></param>
-        /// <returns></returns>
+        /// <param name="filePath"> The full path to cert</param>
+        /// <returns>Bytes list for cert data</returns>
         /// <exception cref="AzPSException"></exception>
         private IEnumerable<byte[]> GetEnumerableBytes(string filePath)
         {
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
             catch (Exception ex)
             {
-                throw new AzPSException(string.Format("Exception happens when processing certificate, please check your certificate at '{0}'. See detailed error: {1}", filePath, ex.Message), Common.ErrorKind.UserError);
+                throw new AzPSException(string.Format(Resources.ProcessingCertError, filePath, ex.Message), Common.ErrorKind.UserError);
             }
             return bytesList;
         }
