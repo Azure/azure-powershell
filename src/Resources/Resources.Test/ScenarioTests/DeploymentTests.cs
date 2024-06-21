@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExtensibleResourceDeployment()
         {
             TestRunner.RunTestScript("Test-ExtensibleResourceDeployment");
