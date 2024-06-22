@@ -1,0 +1,47 @@
+{
+  "resourceType": "locations/autonomousDatabaseCharacterSets",
+  "apiVersion": "2023-09-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.oracledatabaseresourcemanager"
+  },
+  "commands": [
+    {
+      "name": "Get-AzOracleDatabaseResourceManagerAutonomousDatabaseCharacterSet",
+      "description": "Get a AutonomousDatabaseCharacterSet",
+      "path": "/subscriptions/{subscriptionId}/providers/Oracle.Database/locations/{location}/autonomousDatabaseCharacterSets/{adbscharsetname}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.oracledatabaseresourcemanager/get-azoracledatabaseresourcemanagerautonomousdatabasecharacterset"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Adbscharsetname <String>",
+              "-Location <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a AutonomousDatabaseCharacterSet",
+          "parameters": [
+            {
+              "name": "-Adbscharsetname",
+              "value": "[Path.adbscharsetname]"
+            },
+            {
+              "name": "-Location",
+              "value": "[Path.location]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "resourceType": "cloudVmClusters/virtualNetworkAddresses",
+  "apiVersion": "2023-09-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.oracledatabaseresourcemanager"
+  },
+  "commands": [
+    {
+      "name": "Get-AzOracleDatabaseResourceManagerVirtualNetworkAddress",
+      "description": "Get a VirtualNetworkAddress",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/cloudVmClusters/{cloudvmclustername}/virtualNetworkAddresses/{virtualnetworkaddressname}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.oracledatabaseresourcemanager/get-azoracledatabaseresourcemanagervirtualnetworkaddress"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Cloudvmclustername <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a VirtualNetworkAddress",
+          "parameters": [
+            {
+              "name": "-Cloudvmclustername",
+              "value": "[Path.cloudvmclustername]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.virtualnetworkaddressname]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzOracleDatabaseResourceManagerVirtualNetworkAddress",
+      "description": "Delete a VirtualNetworkAddress",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/cloudVmClusters/{cloudvmclustername}/virtualNetworkAddresses/{virtualnetworkaddressname}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.oracledatabaseresourcemanager/remove-azoracledatabaseresourcemanagervirtualnetworkaddress"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Cloudvmclustername <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a VirtualNetworkAddress",
+          "parameters": [
+            {
+              "name": "-Cloudvmclustername",
+              "value": "[Path.cloudvmclustername]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.virtualnetworkaddressname]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
