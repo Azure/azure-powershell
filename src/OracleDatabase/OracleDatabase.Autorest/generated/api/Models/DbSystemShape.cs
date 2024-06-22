@@ -85,7 +85,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.OracleDatabaseResourceManager.Model
         public int? MaximumNodeCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.OracleDatabaseResourceManager.Models.IDbSystemShapePropertiesInternal)Property).MaximumNodeCount; }
 
         /// <summary>Internal Acessors for AvailableCoreCount</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.OracleDatabaseResourceManager.Models.IDbSystemShapeInternal.AvailableCoreCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.OracleDatabaseResourceManager.Models.IDbSystemShapePropertiesInternal)Property).AvailableCoreCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.OracleDatabaseResourceManager.Models.IDbSystemShapePropertiesInternal)Property).AvailableCoreCount = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.OracleDatabaseResourceManager.Models.IDbSystemShapeInternal.AvailableCoreCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.OracleDatabaseResourceManager.Models.IDbSystemShapePropertiesInternal)Property).AvailableCoreCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.OracleDatabaseResourceManager.Models.IDbSystemShapePropertiesInternal)Property).AvailableCoreCount = (int)value; }
 
         /// <summary>Internal Acessors for AvailableCoreCountPerNode</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.OracleDatabaseResourceManager.Models.IDbSystemShapeInternal.AvailableCoreCountPerNode { get => ((Microsoft.Azure.PowerShell.Cmdlets.OracleDatabaseResourceManager.Models.IDbSystemShapePropertiesInternal)Property).AvailableCoreCountPerNode; set => ((Microsoft.Azure.PowerShell.Cmdlets.OracleDatabaseResourceManager.Models.IDbSystemShapePropertiesInternal)Property).AvailableCoreCountPerNode = value; }
