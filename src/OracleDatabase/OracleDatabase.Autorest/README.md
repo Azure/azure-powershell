@@ -8,5 +8,5 @@ require:
   - $(repo)/specification/oracle/resource-manager/readme.md
 
 try-require: 
-  - $(repo)/specification/oracle/resource-manager/Oracle.Database/preview/2023-09-01-preview/openapi.json
+  - $(repo)/specification/oracle/resource-manager/readme.md
 ```
