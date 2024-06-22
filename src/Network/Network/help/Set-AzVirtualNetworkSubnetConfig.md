@@ -17,7 +17,7 @@ Updates a subnet configuration for a virtual network.
 ```
 Set-AzVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String[]>
  [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>] [-InputObject <PSNatGateway>]
- [-ServiceEndpoint <String[]>] [-NetworkIdentifier <PSResourceId>] [-ServiceEndpointConfig <PSServiceEndpoint[]>] [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>]
+ [-ServiceEndpoint <String[]>]  [-NetworkIdentifier <PSResourceId>] [-ServiceEndpointConfig <PSServiceEndpoint[]>] [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>]
  [-Delegation <PSDelegation[]>] [-PrivateEndpointNetworkPoliciesFlag <String>]
  [-PrivateLinkServiceNetworkPoliciesFlag <String>] [-IpAllocation <PSIpAllocation[]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
