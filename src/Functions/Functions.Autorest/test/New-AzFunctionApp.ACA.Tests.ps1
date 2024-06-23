@@ -81,8 +81,8 @@ Describe 'New-AzFunctionApp ACA Tests' -Tags 'LiveOnly' {
                               -Environment $environmentACAName `
                               -WorkloadProfileName $workloadProfile.Name `
                               -ResourceCpu 1 `
-                              -MinReplicas 1 `
-                              -MaxReplicas 3 `
+                              -ScaleMinReplica 1 `
+                              -ScaleMaxReplica 3 `
                               -WhatIf
         }
 
@@ -98,8 +98,8 @@ Describe 'New-AzFunctionApp ACA Tests' -Tags 'LiveOnly' {
                               -Environment $environmentACAName `
                               -WorkloadProfileName $workloadProfile.Name `
                               -ResourceMemory 2.0Gi `
-                              -MinReplicas 1 `
-                              -MaxReplicas 3 `
+                              -ScaleMinReplica 1 `
+                              -ScaleMaxReplica 3 `
                               -WhatIf
         }
         
@@ -116,8 +116,8 @@ Describe 'New-AzFunctionApp ACA Tests' -Tags 'LiveOnly' {
                               -WorkloadProfileName $workloadProfile.Name `
                               -ResourceCpu 1 `
                               -ResourceMemory 2.0 `
-                              -MinReplicas 1 `
-                              -MaxReplicas 3 `
+                              -ScaleMinReplica 1 `
+                              -ScaleMaxReplica 3 `
                               -WhatIf
         }
 
@@ -158,8 +158,8 @@ Describe 'New-AzFunctionApp ACA Tests' -Tags 'LiveOnly' {
         $expectedLinuxFxVersion = "DOCKER|mcr.microsoft.com/azure-functions/dotnet8-quickstart-demo:1.0"
         $resourceCpu = 1
         $resourceMemory = "2.0Gi"
-        $minReplicas = 1
-        $maxReplicas = 3
+        $scaleMinReplica = 1
+        $scaleMaxReplica = 3
 
         $expectedResourceConfigMemory = ([double]::Parse($resourceMemory.Substring(0, $resourceMemory.Length - 2))).ToString() + "Gi"
 
@@ -172,8 +172,8 @@ Describe 'New-AzFunctionApp ACA Tests' -Tags 'LiveOnly' {
                               -WorkloadProfileName $workloadProfile.Name `
                               -ResourceCpu $resourceCpu `
                               -ResourceMemory $resourceMemory `
-                              -MinReplicas $minReplicas `
-                              -MaxReplicas $maxReplicas
+                              -ScaleMinReplica $scaleMinReplica `
+                              -ScaleMaxReplica $scaleMaxReplica
 
             $functionApp = Get-AzFunctionApp -Name $functionAppACAName -ResourceGroupName $resourceGroupNameACA
             $functionApp.OSType | Should -Be "Linux"
@@ -185,8 +185,8 @@ Describe 'New-AzFunctionApp ACA Tests' -Tags 'LiveOnly' {
             $functionApp.ResourceConfigCpu | Should -match $resourceCpu
             $functionApp.ResourceConfigMemory | Should -match $expectedResourceConfigMemory
 
-            $functionApp.SiteConfig.MinimumElasticInstanceCount | Should -match $minReplicas
-            $functionApp.SiteConfig.FunctionAppScaleLimit  | Should -match $maxReplicas
+            $functionApp.SiteConfig.MinimumElasticInstanceCount | Should -match $scaleMinReplica
+            $functionApp.SiteConfig.FunctionAppScaleLimit  | Should -match $scaleMaxReplica
         }
         finally
         {
