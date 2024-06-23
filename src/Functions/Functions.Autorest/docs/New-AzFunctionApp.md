@@ -47,10 +47,11 @@ New-AzFunctionApp -Image <String> -Name <String> -PlanName <String> -ResourceGro
 New-AzFunctionApp -Environment <String> -Name <String> -ResourceGroupName <String>
  -StorageAccountName <String> [-ApplicationInsightsKey <String>] [-ApplicationInsightsName <String>]
  [-AppSetting <Hashtable>] [-DisableApplicationInsights] [-IdentityID <String[]>]
- [-IdentityType <ManagedServiceIdentityType>] [-Image <String>] [-MaxReplicas <Int32>] [-MinReplicas <Int32>]
- [-PassThru] [-RegistryCredential <PSCredential>] [-RegistryServer <String>] [-ResourceCpu <Double>]
- [-ResourceMemory <String>] [-SubscriptionId <String>] [-Tag <Hashtable>] [-WorkloadProfileName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IdentityType <ManagedServiceIdentityType>] [-Image <String>] [-PassThru]
+ [-RegistryCredential <PSCredential>] [-RegistryServer <String>] [-ResourceCpu <Double>]
+ [-ResourceMemory <String>] [-ScaleMaxReplica <Int32>] [-ScaleMinReplica <Int32>] [-SubscriptionId <String>]
+ [-Tag <Hashtable>] [-WorkloadProfileName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -290,36 +291,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MaxReplicas
-The maximum number of replicas when creating a function app on container app.
-
-```yaml
-Type: System.Int32
-Parameter Sets: EnvironmentForContainerApp
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MinReplicas
-The minimum number of replicas when create function app on container app.
-
-```yaml
-Type: System.Int32
-Parameter Sets: EnvironmentForContainerApp
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the function app.
 
@@ -496,6 +467,36 @@ The function runtime.
 ```yaml
 Type: System.String
 Parameter Sets: ByAppServicePlan, Consumption
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScaleMaxReplica
+The maximum number of replicas when creating a function app on container app.
+
+```yaml
+Type: System.Int32
+Parameter Sets: EnvironmentForContainerApp
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScaleMinReplica
+The minimum number of replicas when create function app on container app.
+
+```yaml
+Type: System.Int32
+Parameter Sets: EnvironmentForContainerApp
 Aliases:
 
 Required: False
