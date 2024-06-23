@@ -22,27 +22,12 @@ Lists the supported VM skus for the specified custom location
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get VM SKU's
 ```powershell
-{{ Add code here }}
+Get-AzAksArcVMSku -CustomLocationResourceUri sample-cl-id
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Lists the supported virtual machine sizes in the specified custom location.
 
 ## PARAMETERS
 

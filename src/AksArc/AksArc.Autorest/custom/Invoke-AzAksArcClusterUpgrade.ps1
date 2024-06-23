@@ -26,7 +26,7 @@ Invoke-AzAksArcClusterUpgrade -ClusterName azps_test_cluster -ResourceGroupName 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedCluster
 .Link
-https://learn.microsoft.com/powershell/module/az.aksarc/update-azaksarccluster
+https://learn.microsoft.com/powershell/module/az.aksarc/invoke-azaksarcclusterupgrade
 #>
 function Invoke-AzAksArcClusterUpgrade {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedCluster])]
@@ -136,8 +136,6 @@ function Invoke-AzAksArcClusterUpgrade {
             $LatestUpgrade = $upgrades.ControlPlaneProfileUpgrade[$UpgradeListLength-1].KubernetesVersion
     
             $null = $PSBoundParameters.Add("KubernetesVersion", $LatestUpgrade)
-            $null = $PSBoundParameters.Remove("Upgrade")
-
         }
     
         Az.AksArc.internal\Update-AzAksArcCluster @PSBoundParameters
