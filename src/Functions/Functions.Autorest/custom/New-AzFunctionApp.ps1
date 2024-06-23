@@ -203,12 +203,12 @@ function New-AzFunctionApp {
         [Parameter(Mandatory=$false, ParameterSetName="EnvironmentForContainerApp", HelpMessage='The maximum number of replicas when creating a function app on container app.')]
         [ValidateScript({$_ -gt 0})]
         [Int]
-        ${MaxReplicas},
+        ${ScaleMaxReplica},
 
         [Parameter(Mandatory=$false, ParameterSetName="EnvironmentForContainerApp", HelpMessage='The minimum number of replicas when create function app on container app.')]
         [ValidateScript({$_ -gt 0})]
         [Int]
-        ${MinReplicas},
+        ${ScaleMinReplica},
 
         [Parameter(Mandatory=$false, ParameterSetName="EnvironmentForContainerApp", HelpMessage='The container registry server hostname, e.g. myregistry.azurecr.io.')]
         [ValidateNotNullOrEmpty()]
@@ -288,8 +288,8 @@ function New-AzFunctionApp {
             "WorkloadProfileName",
             "ResourceCpu",
             "ResourceMemory",
-            "MaxReplicas",
-            "MinReplicas"
+            "ScaleMaxReplica",
+            "ScaleMinReplica"
         )
         foreach ($paramName in $paramsToRemove)
         {
@@ -497,14 +497,14 @@ function New-AzFunctionApp {
             $siteConfig.Http20Enabled = $null
             $siteConfig.LocalMySqlEnabled = $null
 
-            if ($MinReplicas)
+            if ($ScaleMinReplica)
             {
-                $siteConfig.MinimumElasticInstanceCount = $MinReplicas
+                $siteConfig.MinimumElasticInstanceCount = $ScaleMinReplica
             }
 
-            if ($MaxReplicas)
+            if ($ScaleMaxReplica)
             {
-                $siteConfig.FunctionAppScaleLimit = $MaxReplicas
+                $siteConfig.FunctionAppScaleLimit = $ScaleMaxReplica
             }
             
             $managedEnvironment = GetManagedEnvironment -Environment $Environment -ResourceGroupName $ResourceGroupName
