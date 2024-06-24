@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Added NoHealthyBackendsBehavior to PSProbe, and updated corresponding cmdlets.
+	- `New-AzLoadBalancerProbeConfig`
+	- `Add-AzLoadBalancerProbeConfig`
+	- `Set-AzLoadBalancerProbeConfig`
 * Added cmdlet `Restart-AzNetworkVirtualAppliance` for allowing a restart of Network Virtual Appliance instances from the customer subscription.
 * Fixed a bug in `Update-AzNetworkVirtualApplianceConnection`
 * Added cmdlet `New-AzVirtualApplianceNetworkProfile` to build network profile for network virtual appliance and pass as a parameter.
@@ -32,10 +36,6 @@
 * Added new cmdlet `New-AzVirtualApplianceInboundSecurityRulesProperty` to support for the property 'rules' of Inbound Security Rules
 * Added AdminState parameter to Load Balancer Backend Address
     - `New-AzLoadBalancerBackendAddressConfig`
-* Added NoHealthyBackendsBehavior to PSProbe, and updated corresponding cmdlets.
-	- `New-AzLoadBalancerProbeConfig`
-	- `Add-AzLoadBalancerProbeConfig`
-	- `Set-AzLoadBalancerProbeConfig`
 * Updated PS SDK to older SDK removing identity field
 
 ## Version 7.5.0
