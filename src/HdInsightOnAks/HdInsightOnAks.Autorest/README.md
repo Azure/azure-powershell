@@ -46,8 +46,8 @@ In this directory, run AutoRest:
 ### General settings
 > Values
 ``` yaml
-tag: package-2024-05
-commit: e5e14501b7aef4ba7a58a8a463b7192a2f9b0fe4
+tag: package-preview-2024-05
+commit: c766bb559e93067acf5a852e63f7edcee75a2f5b
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/hdinsight/resource-manager/Microsoft.HDInsight/HDInsightOnAks/readme.md
