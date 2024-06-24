@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-This is to allow calling via powershell and ARM template.
+Description for This is to allow calling via powershell and ARM template.
 .Description
-This is to allow calling via powershell and ARM template.
+Description for This is to allow calling via powershell and ARM template.
 .Example
 {{ Add code here }}
 .Example
