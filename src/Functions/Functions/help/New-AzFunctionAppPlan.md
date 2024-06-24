@@ -15,7 +15,7 @@ Creates a function app service plan.
 ```
 New-AzFunctionAppPlan -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  -Sku <String> [-MaximumWorkerCount <Int32>] [-MinimumWorkerCount <Int32>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] -WorkerType <String> [-NoWait] [-AsJob]
+ [-DefaultProfile <PSObject>] -WorkerType <String> [-NoWait] [-AsJob] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -143,6 +143,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Name of the resource group to which the resource belongs.
 
@@ -258,7 +273,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan
 
 ## NOTES
 

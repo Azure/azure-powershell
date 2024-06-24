@@ -10,6 +10,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
     public partial struct ValidateResourceTypes :
         System.IEquatable<ValidateResourceTypes>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ValidateResourceTypes MicrosoftWebHostingEnvironments = @"Microsoft.Web/hostingEnvironments";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ValidateResourceTypes ServerFarm = @"ServerFarm";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ValidateResourceTypes Site = @"Site";

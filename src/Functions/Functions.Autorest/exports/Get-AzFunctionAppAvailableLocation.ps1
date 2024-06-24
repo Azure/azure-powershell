@@ -27,12 +27,12 @@ Get-AzFunctionAppAvailableLocation -PlanType Premium -OSType Linux
 Get-AzFunctionAppAvailableLocation -PlanType Consumption -OSType Windows
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IGeoRegion
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/get-azfunctionappavailablelocation
 #>
 function Get-AzFunctionAppAvailableLocation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IGeoRegion])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Position=0)]

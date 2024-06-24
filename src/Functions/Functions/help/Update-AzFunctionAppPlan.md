@@ -16,7 +16,7 @@ Updates a function app service plan.
 ```
 Update-AzFunctionAppPlan -ResourceGroupName <String> -Name <String> [-SubscriptionId <String>] [-Sku <String>]
  [-MaximumWorkerCount <Int32>] [-MinimumWorkerCount <Int32>] [-Force] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-NoWait] [-AsJob] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-NoWait] [-AsJob] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Update-AzFunctionAppPlan -ResourceGroupName <String> -Name <String> [-Subscripti
 ```
 Update-AzFunctionAppPlan [-Sku <String>] [-MaximumWorkerCount <Int32>] [-MinimumWorkerCount <Int32>] [-Force]
  [-Tag <Hashtable>] -InputObject <IAppServicePlan> [-DefaultProfile <PSObject>] [-NoWait] [-AsJob]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan
+Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan
 Parameter Sets: ByObjectInput
 Aliases:
 
@@ -156,6 +156,21 @@ Run the command asynchronously.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -261,11 +276,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan
 
 ## NOTES
 

@@ -46,6 +46,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'RequestHash'", "RequestHash", global::System.Management.Automation.CompletionResultType.ParameterValue, "RequestHash");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "PerSiteRoundRobin".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'PerSiteRoundRobin'", "PerSiteRoundRobin", global::System.Management.Automation.CompletionResultType.ParameterValue, "PerSiteRoundRobin");
+            }
         }
     }
 }
