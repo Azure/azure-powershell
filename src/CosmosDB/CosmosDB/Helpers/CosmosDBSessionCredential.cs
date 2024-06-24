@@ -47,24 +47,28 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
 
         public override AccessToken GetToken(TokenRequestContext requestContext, CancellationToken cancellationToken)
         {
-            AccessToken token;
-            this.accessToken.AuthorizeRequest((tokenType, tokenValue) =>
+            DateTimeOffset expiresOn;
+            string token = string.Empty;
+            accessToken.AuthorizeRequest((tokenType, tokenValue) =>
             {
-                token = new AccessToken(tokenValue, DateTimeOffset.UtcNow);
+                token = tokenValue;
+                expiresOn = DateTimeOffset.UtcNow;
             });
 
-            return token;
+            return new AccessToken(token, expiresOn);
         }
 
         public override ValueTask<AccessToken> GetTokenAsync(TokenRequestContext requestContext, CancellationToken cancellationToken)
         {
-            AccessToken token;
-            this.accessToken.AuthorizeRequest((tokenType, tokenValue) =>
+            DateTimeOffset expiresOn;
+            string token = string.Empty;
+            accessToken.AuthorizeRequest((tokenType, tokenValue) =>
             {
-                token = new AccessToken(tokenValue, DateTimeOffset.UtcNow);
+                token = tokenValue;
+                expiresOn = DateTimeOffset.UtcNow;
             });
 
-            return new ValueTask<AccessToken>(token);
+            return new ValueTask<AccessToken>(new AccessToken(token, expiresOn));
         }        
     }
 }
