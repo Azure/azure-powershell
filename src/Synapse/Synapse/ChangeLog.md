@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 3.0.9
+* Updated Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.20
+
 ## Version 3.0.8
 * Upgraded `Microsoft.DataTransfer.Gateway.Encryption` to `5.29.8499.2`
 
