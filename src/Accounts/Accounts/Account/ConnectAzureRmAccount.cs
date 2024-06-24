@@ -17,11 +17,14 @@ using Azure.Identity;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Config;
 using Microsoft.Azure.Commands.Common.Authentication.Config.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Sanitizer;
+using Microsoft.Azure.Commands.Common.Authentication.Utilities;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Models.Core;
@@ -30,6 +33,7 @@ using Microsoft.Azure.Commands.Profile.Utilities;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Shared.Config;
+using Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01.Models;
 using Microsoft.Azure.PowerShell.Authenticators;
 using Microsoft.Azure.PowerShell.Authenticators.Factories;
 using Microsoft.Azure.PowerShell.Common.Config;
@@ -291,6 +295,14 @@ namespace Microsoft.Azure.Commands.Profile
             AzureSession.Instance.UnregisterComponent<EventHandler<StreamEventArgs>>(WriteInformationKey);
             AzureSession.Instance.RegisterComponent(WriteInformationKey, () => _writeInformationEvent);
 
+            // attach config read event handler to add config telemetry
+            AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var configManager);
+            _configReadedEvent += OnEvent;
+            if (configManager is IConfigManagerWithEventHandler cm)
+            {
+                cm.RegisterHandler(_configReadedEvent);
+            }
+
             // todo: ideally cancellation token should be passed to authentication factory as a parameter
             // however AuthenticationFactory.Authenticate does not support it
             // so I store it in AzureSession.Instance as a global variable
@@ -299,11 +311,20 @@ namespace Microsoft.Azure.Commands.Profile
             AzureSession.Instance.RegisterComponent("LoginCancellationToken", () => new CancellationTokenSource(), true);
         }
 
+        private event EventHandler<ConfigEventArgs> _configReadedEvent;
         private event EventHandler<StreamEventArgs> _writeWarningEvent;
         private event EventHandler<StreamEventArgs> _originalWriteWarning;
 
         private event EventHandler<StreamEventArgs> _writeInformationEvent;
         private event EventHandler<StreamEventArgs> _originalWriteInformation;
+
+        private void OnEvent(object sender, ConfigEventArgs args)
+        {
+            if (!_qosEvent.ConfigMetrics.ContainsKey(args.ConfigKey) && args is ConfigReadEventArgs readEventArgs)
+            {
+                _qosEvent.ConfigMetrics[readEventArgs.ConfigKey] = new ConfigMetrics(readEventArgs.ConfigTelemetryKey, readEventArgs.ConfigValue.ToString());
+            }
+        }
 
         private void WriteWarningSender(object sender, StreamEventArgs args)
         {
@@ -598,7 +619,13 @@ namespace Microsoft.Azure.Commands.Profile
 
         private bool IsInteractiveContextSelectionEnabled()
         {
-            return AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out IConfigManager configManager) ? configManager.GetConfigValue<LoginExperienceConfig>(ConfigKeys.LoginExperienceV2).Equals(LoginExperienceConfig.On) : true;
+            var loginExperienceV2 = AzConfigReader.GetAzConfig(ConfigKeys.LoginExperienceV2, LoginExperienceConfig.On);
+          /*  // add telemetry when read config
+            if(!_qosEvent.ConfigMetrics.ContainsKey(ConfigKeys.LoginExperienceV2))
+            _qosEvent.ConfigMetrics.Add(ConfigKeys.LoginExperienceV2, new ConfigMetrics(ConfigKeys.LoginExperienceV2, "LoginExperienceVTwo",
+               Enum.GetName(typeof(LoginExperienceConfig), loginExperienceV2)));*/
+
+            return loginExperienceV2.Equals(LoginExperienceConfig.On);
         }
 
         private bool IsInteractiveAuthenticationFlow()

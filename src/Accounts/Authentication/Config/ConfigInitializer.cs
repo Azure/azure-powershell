@@ -175,7 +175,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                 }
             }
         }
-
         private void RegisterConfigs(IConfigManager configManager)
         {
             // simple configs
@@ -211,10 +210,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                 new[] { AppliesTo.Az }));
             configManager.RegisterConfig(new SimpleTypedConfig<LoginExperienceConfig>(
                 ConfigKeys.LoginExperienceV2,
+                ConfigTelemetryKeys.LoginExperienceV2,
                 Resources.HelpMessageOfLoginExperienceV2,
                 LoginExperienceConfig.On,
                 string.Format("AzPS{0}", ConfigKeys.LoginExperienceV2),
-                new[] { AppliesTo.Az }));
+                new[] { AppliesTo.Az },
+                true));
 #if DEBUG || TESTCOVERAGE
             configManager.RegisterConfig(new SimpleTypedConfig<bool>(
                 ConfigKeys.EnableTestCoverage,

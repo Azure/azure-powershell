@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.PowerShell.Common.Config;
 using System;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Config
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
     /// Base class for configs that have a typed value.
     /// </summary>
     /// <typeparam name="TValue">The type of the config value.</typeparam>
-    internal abstract class TypedConfig<TValue> : ConfigDefinition
+    internal abstract class TypedConfig<TValue> : TrackedConfigDefinition
     {
         protected TypedConfig()
         {

@@ -39,4 +39,9 @@ namespace Microsoft.Azure.Commands.Shared.Config
         public const string DisplaySecretsWarning = "DisplaySecretsWarning";
         public const string LoginExperienceV2 = "LoginExperienceV2";
     }
+
+    internal static class ConfigTelemetryKeys
+    {
+        public const string LoginExperienceV2 = "LoginExperienceVTwo";
+    }
 }
