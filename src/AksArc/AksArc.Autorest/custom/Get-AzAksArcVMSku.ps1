@@ -20,7 +20,7 @@ Lists the supported VM skus for the specified custom location
 .Description
 Lists the supported VM skus for the specified custom location
 .Example
-Get-AzAksArcVMSku -CustomLocationResourceUri sample-cl-id
+Get-AzAksArcVMSku -CustomLocationName sample-cl-id
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVMSkuProfile

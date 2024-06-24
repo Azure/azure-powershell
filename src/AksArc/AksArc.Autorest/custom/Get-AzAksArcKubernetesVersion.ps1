@@ -20,7 +20,7 @@ Lists the supported kubernetes versions for the specified custom location
 .Description
 Lists the supported kubernetes versions for the specified custom location
 .Example
-Get-AzAksArcKubernetesVersion -CustomLocationResourceUri sample_cl
+Get-AzAksArcKubernetesVersion -CustomLocationName sample_cl
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IKubernetesVersionProfile

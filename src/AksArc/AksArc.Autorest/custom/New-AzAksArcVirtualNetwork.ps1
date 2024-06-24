@@ -20,7 +20,7 @@ Create the virtual network resource
 .Description
 Create the virtual network resource
 .Example
-New-AzAksArcVirtualNetwork -Name "test-vnet-static" -ResourceGroupName "test-arcappliance-resgrp" -CustomLocationName "testcustomlocation" -HciMocVnetName "test-vnet"
+New-AzAksArcVirtualNetwork -Name "test-vnet-static" -ResourceGroupName "test-arcappliance-resgrp" -CustomLocationName "testcustomlocation" -MocVnetName "test-vnet"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetwork
