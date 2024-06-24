@@ -62,6 +62,17 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string UserName { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "The maximum number of local users that will be included in the list response")]
+        [ValidateNotNullOrEmpty]
+        public int? MaxPageSize { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The filter of username. When specified, only usernames starting with the filter will be listed. The filter must be in format: startswith(name, <prefix>)")]
+        [ValidateNotNullOrEmpty]
+        public string Filter { get; set; }
+
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -81,7 +92,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 var users = this.StorageClient.LocalUsers.List(
                         this.ResourceGroupName,
-                        this.StorageAccountName);
+                        this.StorageAccountName, this.MaxPageSize, this.Filter);
                
                 if (users != null)
                 {

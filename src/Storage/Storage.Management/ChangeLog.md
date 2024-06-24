@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported local user ACL and list local user paging/filtering 
+    - `Set-AzStorageLocalUser`
+    - `Get-AzStorageLocalUser`
 * Supported TLS1_3 when creating and updating a storage account 
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`
