@@ -18,9 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 1.11.1
-* fix a not converting from string to base in CustomBlockResponseBody bug in updating waf policy
+* Fixed a not converting from string to base in CustomBlockResponseBody bug in updating waf policy
 
 ## Version 1.11.0
 * Upgraded to api version 2024-02-01
