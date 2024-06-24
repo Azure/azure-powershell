@@ -4,7 +4,7 @@
         <View>
             <Name>FunctionApp</Name>
             <ViewSelectedBy>
-                <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.Site</TypeName>
+                <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.Site</TypeName>
             </ViewSelectedBy>
             <TableControl>
                 <TableHeaders>
@@ -36,7 +36,7 @@
         <View>
             <Name>FunctionAppPlan</Name>
             <ViewSelectedBy>
-                <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AppServicePlan</TypeName>
+                <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.AppServicePlan</TypeName>
             </ViewSelectedBy>
             <TableControl>
                 <TableHeaders>

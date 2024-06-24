@@ -1,60 +1,52 @@
 ---
 external help file:
 Module Name: Az.Functions
-online version: https://learn.microsoft.com/powershell/module/az.functions/remove-azfunctionappsetting
+online version: https://learn.microsoft.com/powershell/module/az.functions/start-azfunctionapp
 schema: 2.0.0
 ---
 
-# Remove-AzFunctionAppSetting
+# Start-AzFunctionApp
 
 ## SYNOPSIS
-Removes app settings from a function app.
+Starts a function app.
 
 ## SYNTAX
 
-### ByName (Default)
+### StartByName (Default)
 ```
-Remove-AzFunctionAppSetting -Name <String> -ResourceGroupName <String> -AppSettingName <String[]>
- [-SubscriptionId <String>] [-Force] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Start-AzFunctionApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByObjectInput
 ```
-Remove-AzFunctionAppSetting -AppSettingName <String[]> -InputObject <ISite> [-Force]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Start-AzFunctionApp -InputObject <ISite> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Removes app settings from a function app.
+Starts a function app.
 
 ## EXAMPLES
 
-### Example 1: Remove app settings in a function app.
+### Example 1: Get a function app by name and start it.
 ```powershell
-Remove-AzFunctionAppSetting -Name MyAppName -ResourceGroupName MyResourceGroupName -AppSettingName "MyAppSetting1", "MyAppSetting2"
+Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Start-AzFunctionApp
 ```
 
-This command removes app settings in a function app.
+This command gets a function app by name and starts it.
+
+### Example 2: Start a function app by name.
+```powershell
+Start-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName
+```
+
+This command starts a function app by name.
 
 ## PARAMETERS
 
-### -AppSettingName
-List of function app settings to be removed from the function app.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
-
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -68,8 +60,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Forces the cmdlet to remove function app setting without prompting for confirmation.
+### -InputObject
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
+Parameter Sets: ByObjectInput
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of function app.
+
+```yaml
+Type: System.String
+Parameter Sets: StartByName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -83,42 +105,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
-Parameter Sets: ByObjectInput
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-Name of the function app.
-
-```yaml
-Type: System.String
-Parameter Sets: ByName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
-Name of the resource group to which the resource belongs.
+
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: StartByName
 Aliases:
 
 Required: True
@@ -133,7 +125,7 @@ The Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: StartByName
 Aliases:
 
 Required: False
@@ -179,11 +171,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary
+### System.Boolean
 
 ## NOTES
 

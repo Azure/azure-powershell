@@ -1,52 +1,45 @@
 ---
 external help file:
 Module Name: Az.Functions
-online version: https://learn.microsoft.com/powershell/module/az.functions/stop-azfunctionapp
+online version: https://learn.microsoft.com/powershell/module/az.functions/get-azfunctionappsetting
 schema: 2.0.0
 ---
 
-# Stop-AzFunctionApp
+# Get-AzFunctionAppSetting
 
 ## SYNOPSIS
-Stops a function app.
+Gets app settings for a function app.
 
 ## SYNTAX
 
-### StopByName (Default)
+### ByName (Default)
 ```
-Stop-AzFunctionApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Force]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzFunctionAppSetting -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByObjectInput
 ```
-Stop-AzFunctionApp -InputObject <ISite> [-Force] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+Get-AzFunctionAppSetting -InputObject <ISite> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Stops a function app.
+Gets app settings for a function app.
 
 ## EXAMPLES
 
-### Example 1: Get a function app by name and stop it.
+### Example 1: Get the app settings of a function app.
 ```powershell
-Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Stop-AzFunctionApp -Force
+Get-AzFunctionAppSetting -Name MyAppName -ResourceGroupName MyResourceGroupName
 ```
 
-This command gets a function app by name and stops it.
-
-### Example 2: Stop a function app by name.
-```powershell
-Stop-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
-```
-
-This command stops a function app by name.
+This command gets the app settings of a function app.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -60,26 +53,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Forces the cmdlet to stop the function app without prompting for confirmation.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
+Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
 Parameter Sets: ByObjectInput
 Aliases:
 
@@ -91,11 +69,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of function app.
+Name of the function app.
 
 ```yaml
 Type: System.String
-Parameter Sets: StopByName
+Parameter Sets: ByName
 Aliases:
 
 Required: True
@@ -105,27 +83,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
-
+Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: StopByName
+Parameter Sets: ByName
 Aliases:
 
 Required: True
@@ -139,8 +102,8 @@ Accept wildcard characters: False
 The Azure subscription ID.
 
 ```yaml
-Type: System.String
-Parameter Sets: StopByName
+Type: System.String[]
+Parameter Sets: ByName
 Aliases:
 
 Required: False
@@ -186,11 +149,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStringDictionary
 
 ## NOTES
 

@@ -36,3 +36,15 @@ New-AzFunctionApp -Name MyUniqueFunctionAppName `
 ```
 
 This command creates a function app using a using a private ACR image.
+
+### Example 4: Create a function app on container app.
+
+```powershell
+New-AzFunctionApp -Name MyUniqueFunctionAppName `
+                  -ResourceGroupName MyResourceGroupName `
+                  -StorageAccountName MyStorageAccountName `
+                  -Environment MyEnvironment `
+                  -WorkloadProfileName MyWorkloadProfileName
+```
+
+This command create a function app on container app using the default .Net image.

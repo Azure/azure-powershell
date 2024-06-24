@@ -1,49 +1,48 @@
 ---
 external help file:
 Module Name: Az.Functions
-online version: https://learn.microsoft.com/powershell/module/az.functions/update-azfunctionappsetting
+online version: https://learn.microsoft.com/powershell/module/az.functions/remove-azfunctionappsetting
 schema: 2.0.0
 ---
 
-# Update-AzFunctionAppSetting
+# Remove-AzFunctionAppSetting
 
 ## SYNOPSIS
-Adds or updates app settings in a function app.
+Removes app settings from a function app.
 
 ## SYNTAX
 
 ### ByName (Default)
 ```
-Update-AzFunctionAppSetting -Name <String> -ResourceGroupName <String> -AppSetting <Hashtable>
+Remove-AzFunctionAppSetting -Name <String> -ResourceGroupName <String> -AppSettingName <String[]>
  [-SubscriptionId <String>] [-Force] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByObjectInput
 ```
-Update-AzFunctionAppSetting -AppSetting <Hashtable> -InputObject <ISite> [-Force] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzFunctionAppSetting -AppSettingName <String[]> -InputObject <ISite> [-Force]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Adds or updates app settings in a function app.
+Removes app settings from a function app.
 
 ## EXAMPLES
 
-### Example 1: Add a new app setting in a function app.
+### Example 1: Remove app settings in a function app.
 ```powershell
-Update-AzFunctionAppSetting -Name MyAppName -ResourceGroupName MyResourceGroupName -AppSetting @{"Name1" = "Value1"}
+Remove-AzFunctionAppSetting -Name MyAppName -ResourceGroupName MyResourceGroupName -AppSettingName "MyAppSetting1", "MyAppSetting2"
 ```
 
-This command adds a new app setting in a function app.
+This command removes app settings in a function app.
 
 ## PARAMETERS
 
-### -AppSetting
-Hashtable with keys and values describe the app settings to be added or updated in the function app.
-For example: @{"myappsetting"="123"}
+### -AppSettingName
+List of function app settings to be removed from the function app.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -70,7 +69,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Forces the cmdlet to update function app setting without prompting for confirmation.
+Forces the cmdlet to remove function app setting without prompting for confirmation.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -88,7 +87,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
+Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
 Parameter Sets: ByObjectInput
 Aliases:
 
@@ -180,11 +179,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStringDictionary
 
 ## NOTES
 

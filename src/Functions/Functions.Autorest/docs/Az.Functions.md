@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Functions
-Module Guid: eafced71-8742-4a2c-5afd-13117428dd90
+Module Guid: e31706ec-6830-40ef-be29-138aeb744910
 Download Help Link: https://learn.microsoft.com/powershell/module/az.functions
 Help Version: 1.0.0.0
 Locale: en-US

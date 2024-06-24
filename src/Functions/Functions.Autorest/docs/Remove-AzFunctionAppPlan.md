@@ -1,47 +1,47 @@
 ---
 external help file:
 Module Name: Az.Functions
-online version: https://learn.microsoft.com/powershell/module/az.functions/start-azfunctionapp
+online version: https://learn.microsoft.com/powershell/module/az.functions/remove-azfunctionappplan
 schema: 2.0.0
 ---
 
-# Start-AzFunctionApp
+# Remove-AzFunctionAppPlan
 
 ## SYNOPSIS
-Starts a function app.
+Deletes a function app plan.
 
 ## SYNTAX
 
-### StartByName (Default)
+### ByName (Default)
 ```
-Start-AzFunctionApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzFunctionAppPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Force]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByObjectInput
 ```
-Start-AzFunctionApp -InputObject <ISite> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzFunctionAppPlan -InputObject <IAppServicePlan> [-Force] [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Starts a function app.
+Deletes a function app plan.
 
 ## EXAMPLES
 
-### Example 1: Get a function app by name and start it.
+### Example 1: Get a function app plan by name and delete it.
 ```powershell
-Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Start-AzFunctionApp
+Get-AzFunctionAppPlan -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionAppPlan -Force
 ```
 
-This command gets a function app by name and starts it.
+This command gets a function app plan by name and deletes it.
 
-### Example 2: Start a function app by name.
+### Example 2: Delete a function app plan by name.
 ```powershell
-Start-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName
+Remove-AzFunctionAppPlan -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
 ```
 
-This command starts a function app by name.
+This command deletes a function app plan by name.
 
 ## PARAMETERS
 
@@ -60,11 +60,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Force
+Forces the cmdlet to remove the function app plan without prompting for confirmation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
+Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan
 Parameter Sets: ByObjectInput
 Aliases:
 
@@ -80,7 +95,7 @@ The name of function app.
 
 ```yaml
 Type: System.String
-Parameter Sets: StartByName
+Parameter Sets: ByName
 Aliases:
 
 Required: True
@@ -110,7 +125,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: StartByName
+Parameter Sets: ByName
 Aliases:
 
 Required: True
@@ -125,7 +140,7 @@ The Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: StartByName
+Parameter Sets: ByName
 Aliases:
 
 Required: False
@@ -171,7 +186,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan
 
 ## OUTPUTS
 

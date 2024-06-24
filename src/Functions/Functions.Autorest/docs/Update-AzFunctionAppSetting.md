@@ -1,52 +1,61 @@
 ---
 external help file:
 Module Name: Az.Functions
-online version: https://learn.microsoft.com/powershell/module/az.functions/restart-azfunctionapp
+online version: https://learn.microsoft.com/powershell/module/az.functions/update-azfunctionappsetting
 schema: 2.0.0
 ---
 
-# Restart-AzFunctionApp
+# Update-AzFunctionAppSetting
 
 ## SYNOPSIS
-Restarts a function app.
+Adds or updates app settings in a function app.
 
 ## SYNTAX
 
-### RestartByName (Default)
+### ByName (Default)
 ```
-Restart-AzFunctionApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Force]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzFunctionAppSetting -Name <String> -ResourceGroupName <String> -AppSetting <Hashtable>
+ [-SubscriptionId <String>] [-Force] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByObjectInput
 ```
-Restart-AzFunctionApp -InputObject <ISite> [-Force] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzFunctionAppSetting -AppSetting <Hashtable> -InputObject <ISite> [-Force] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Restarts a function app.
+Adds or updates app settings in a function app.
 
 ## EXAMPLES
 
-### Example 1: Get a function app by name and restart it.
+### Example 1: Add a new app setting in a function app.
 ```powershell
-Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Restart-AzFunctionApp -Force
+Update-AzFunctionAppSetting -Name MyAppName -ResourceGroupName MyResourceGroupName -AppSetting @{"Name1" = "Value1"}
 ```
 
-This command gets a function app by name and restarts it.
-
-### Example 2: Restart a function app by name.
-```powershell
-Restart-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
-```
-
-This command restarts a function app by name.
+This command adds a new app setting in a function app.
 
 ## PARAMETERS
 
+### -AppSetting
+Hashtable with keys and values describe the app settings to be added or updated in the function app.
+For example: @{"myappsetting"="123"}
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -61,7 +70,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Forces the cmdlet to restart the function app without prompting for confirmation.
+Forces the cmdlet to update function app setting without prompting for confirmation.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -79,7 +88,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
+Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
 Parameter Sets: ByObjectInput
 Aliases:
 
@@ -91,11 +100,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of function app.
+Name of the function app.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartByName
+Parameter Sets: ByName
 Aliases:
 
 Required: True
@@ -105,27 +114,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
-
+Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartByName
+Parameter Sets: ByName
 Aliases:
 
 Required: True
@@ -140,7 +134,7 @@ The Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestartByName
+Parameter Sets: ByName
 Aliases:
 
 Required: False
@@ -186,11 +180,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStringDictionary
 
 ## NOTES
 
