@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported local user ACL and list local user paging/filtering 
+    - `Set-AzStorageLocalUser`
+    - `Get-AzStorageLocalUser`
 
 ## Version 7.1.0
 * Fixed the issue that Azure.Core.AccessToken is used before assigned.
