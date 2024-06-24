@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Types>
     <Type>
-    <Name>Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.Site</Name>
+    <Name>Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.Site</Name>
         <Members>
             <AliasProperty>
                 <Name>Status</Name>
@@ -13,12 +13,21 @@
             </AliasProperty>
             <ScriptProperty>
             <Name>SubscriptionId</Name>
-            <GetScriptBlock>($this.ServerFarmId -split "/")[2]</GetScriptBlock>
+            <GetScriptBlock>
+            if ($this.ManagedEnvironmentId)
+            {
+                ($this.ManagedEnvironmentId -split "/")[2]
+            }
+            else
+            {
+                ($this.ServerFarmId -split "/")[2]
+            }
+            </GetScriptBlock>
         </ScriptProperty>
         </Members>
     </Type>
     <Type>
-    <Name>Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AppServicePlan</Name>
+    <Name>Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.AppServicePlan</Name>
         <Members>
             <AliasProperty>
                 <Name>ResourceGroupName</Name>
