@@ -19,8 +19,8 @@ param (
     [string]$TestsToRun = 'All',
     [Parameter(ParameterSetName="CIPlanSet", Mandatory=$true)]
     [switch]$CIPlan,
-    [Parameter(ParameterSetName="ModifiedBuildSet", Mandatory=$true)]
-    [switch]$ModifiedModuleBuild,
+    [Parameter(ParameterSetName="ModifiedModuleSet", Mandatory=$true)]
+    [switch]$ModifiedModule,
 	[Parameter(ParameterSetName="TargetModuleSet", Mandatory=$true)]
     [string[]]$TargetModule,
     [switch]$ForceRegenerate,
@@ -83,7 +83,7 @@ switch ($PSCmdlet.ParameterSetName) {
         $isPipeline = $true
         Write-Host "----------Start building modules from $CIPlanPath----------`r`n$($TargetModule | Join-String -Separator "`r`n")" -ForegroundColor DarkYellow
     }
-    'ModifiedBuildSet' {
+    'ModifiedModuleSet' {
         $changelogPath = Join-Path $RepoRoot "tools" "Azpreview" "changelog.md"
         if (Test-Path $changelogPath) {
             $content = Get-Content -Path $changelogPath
