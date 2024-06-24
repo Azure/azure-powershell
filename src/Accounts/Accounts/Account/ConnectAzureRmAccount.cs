@@ -858,17 +858,23 @@ namespace Microsoft.Azure.Commands.Profile
 
         private void AddConfigTelemetry()
         {
-
-            if (!_qosEvent.ConfigMetrics.ContainsKey(ConfigKeys.LoginExperienceV2))
+            try
             {
-                _qosEvent.ConfigMetrics[ConfigKeys.LoginExperienceV2] = new ConfigMetrics(ConfigKeys.LoginExperienceV2,
-                   Enum.GetName(typeof(LoginExperienceConfig), AzConfigReader.GetAzConfig(ConfigKeys.LoginExperienceV2, LoginExperienceConfig.On)));
+                if (!_qosEvent.ConfigMetrics.ContainsKey(ConfigKeys.LoginExperienceV2))
+                {
+                    _qosEvent.ConfigMetrics[ConfigKeys.LoginExperienceV2] = new ConfigMetrics(ConfigKeys.LoginExperienceV2,
+                       Enum.GetName(typeof(LoginExperienceConfig), AzConfigReader.GetAzConfig(ConfigKeys.LoginExperienceV2, LoginExperienceConfig.On)));
+                }
+
+                if (!_qosEvent.ConfigMetrics.ContainsKey(ConfigKeys.EnableLoginByWam))
+                {
+                    _qosEvent.ConfigMetrics[ConfigKeys.EnableLoginByWam] = new ConfigMetrics(ConfigKeys.EnableLoginByWam,
+                       AzConfigReader.GetAzConfig(ConfigKeys.EnableLoginByWam, true).ToString());
+                }
             }
-
-            if (!_qosEvent.ConfigMetrics.ContainsKey(ConfigKeys.EnableLoginByWam))
+            catch(Exception ex)
             {
-                _qosEvent.ConfigMetrics[ConfigKeys.EnableLoginByWam] = new ConfigMetrics(ConfigKeys.EnableLoginByWam,
-                   AzConfigReader.GetAzConfig(ConfigKeys.EnableLoginByWam, true).ToString());
+                WriteDebug(string.Format("Failed to add telemtry for config as {0}", ex.Message));
             }
         }
 
