@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
             return GetConfigValueInternal<T>(key, new InvocationInfoAdapter((InvocationInfo)invocation));
         }
 
-        internal T GetConfigValueInternal<T>(string key, InternalInvocationInfo invocation) => (T)GetConfigValueInternal(key, invocation);
+        internal virtual T GetConfigValueInternal<T>(string key, InternalInvocationInfo invocation) => (T)GetConfigValueInternal(key, invocation);
 
         internal virtual object GetConfigValueInternal(string key, InternalInvocationInfo invocation)
         {
