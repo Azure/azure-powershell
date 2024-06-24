@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Updated Network.Management SDK to consume newer Swagger version
+* Updated cmdlet to add 'Premium' as a valid value for 'Sku' parameter and 'enableSessionRecording' feature for Bastion resources
+    - `New-AzBastion`
+    - `Set-AzBastion`
 * Added cmdlet `Restart-AzNetworkVirtualAppliance` for allowing a restart of Network Virtual Appliance instances from the customer subscription.
 * Fixed a bug in `Update-AzNetworkVirtualApplianceConnection`
 * Added cmdlet `New-AzVirtualApplianceNetworkProfile` to build network profile for network virtual appliance and pass as a parameter.
@@ -33,10 +37,6 @@
 * Added AdminState parameter to Load Balancer Backend Address
     - `New-AzLoadBalancerBackendAddressConfig`
 * Updated PS SDK to older SDK removing identity field
-* Updated Network.Management SDK to consume newer Swagger version
-* Updated cmdlet to add 'Premium' as a valid value for 'Sku' parameter and 'enableSessionRecording' feature for Bastion resources
-    - `New-AzBastion`
-    - `Set-AzBastion`
 
 ## Version 7.5.0
 * Added cmdlet `Convert-AzNetworkWatcherClassicConnectionMonitor` for converting a classic connection monitor to V2 connection monitor.
