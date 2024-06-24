@@ -20,6 +20,25 @@
 
 ## Upcoming Release
 * Introduced validation of MG scoped deployment stack during New/Set cmdlet execution.
+* Updated Remove/New stack cmdlets with warnings for management groups ActionOnUnmanage and removed DeleteResourcesAndResourceGroups as valid ActionOnUnmanage value.
+* Supported get and assign versioned policy definitions and sets
+* Fixed syntax incompatible with windows powershell [#24971]
+* Fixed bug with `Get-AzPolicyExemption` requesting 'ParentResourcePath'
+* Supported `ServiceManagementReference` of Entra App
+    * `Get-AzADApplication`
+    * `New-AzADApplication`
+    * `Update-AzADApplication`
+* Fixed deployment stack validation error surfacing.
+* Fixed default formatting for output objects
+* Removed '-InputObject' for
+    * `Get-AzPolicyAssignment`
+    * `Get-AzPolicyDefinition`
+    * `Get-AzPolicyExemption`
+    * `Get-AzPolicySetDefinition`
+    * `New-AzPolicyAssignment`
+    * `New-AzPolicyDefinition`
+    * `New-AzPolicySetDefinition`
+* Implemented '-Version' and '-ListVersion' parameters on `Get-AzPolicyDefinition` and `Get-AzPolicySetDefinition`
 
 ## Version 7.1.0
 * Fixed deployment and deployment stack New/Set cmdlets to fail if template/parameter uri fails to downloads.

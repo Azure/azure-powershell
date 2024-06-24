@@ -19,6 +19,10 @@ Describe 'Get-AzVMwareGlobalReachConnection' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
+    It 'GetViaIdentityPrivateCloud' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
     It 'Get' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

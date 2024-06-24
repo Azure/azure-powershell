@@ -1,13 +1,13 @@
 {
   "resourceType": "privateClouds/clusters",
-  "apiVersion": "2023-03-01",
+  "apiVersion": "2023-09-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.vmware"
   },
   "commands": [
     {
       "name": "Get-AzVMwareCluster",
-      "description": "Get a cluster by name in a private cloud",
+      "description": "Get a Cluster",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}",
       "help": {
         "learnMore": {
@@ -26,7 +26,7 @@
       },
       "examples": [
         {
-          "description": "Get a cluster by name in a private cloud",
+          "description": "Get a Cluster",
           "parameters": [
             {
               "name": "-Name",
@@ -50,7 +50,7 @@
     },
     {
       "name": "Remove-AzVMwareCluster",
-      "description": "Delete a cluster in a private cloud",
+      "description": "Delete a Cluster",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}",
       "help": {
         "learnMore": {
@@ -69,7 +69,7 @@
       },
       "examples": [
         {
-          "description": "Delete a cluster in a private cloud",
+          "description": "Delete a Cluster",
           "parameters": [
             {
               "name": "-Name",

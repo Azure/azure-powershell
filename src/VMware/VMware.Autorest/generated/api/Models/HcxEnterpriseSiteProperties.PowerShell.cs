@@ -109,6 +109,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSitePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSitePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
             if (content.Contains("ActivationKey"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSitePropertiesInternal)this).ActivationKey = (string) content.GetValueForProperty("ActivationKey",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSitePropertiesInternal)this).ActivationKey, global::System.Convert.ToString);
@@ -134,6 +138,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSitePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSitePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
             if (content.Contains("ActivationKey"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSitePropertiesInternal)this).ActivationKey = (string) content.GetValueForProperty("ActivationKey",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSitePropertiesInternal)this).ActivationKey, global::System.Convert.ToString);

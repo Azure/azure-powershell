@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support
 {
 
-    /// <summary>The provisioning state of this resource.</summary>
+    /// <summary>The provisioning state of a resource.</summary>
     public partial class ProvisioningStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

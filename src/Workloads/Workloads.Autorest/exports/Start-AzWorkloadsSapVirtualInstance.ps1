@@ -23,6 +23,8 @@ Starts the SAP application, that is the Central Services instance and Applicatio
 Start-AzWorkloadsSapVirtualInstance -Name DB0 -ResourceGroupName db0-vis-rg
 .Example
 Start-AzWorkloadsSapVirtualInstance -InputObject /subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/db0-vis-rg/providers/Microsoft.Workloads/sapVirtualInstances/DB0
+.Example
+Start-AzWorkloadsSapVirtualInstance -Name DB0 -ResourceGroupName db0-vis-rg -StartVM
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.IStartRequest

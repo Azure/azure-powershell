@@ -112,6 +112,12 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
+    # The version of the policy definition to use.
+    ${DefinitionVersion},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
     # This message will be part of response in case of policy violation.
     ${Description},
 

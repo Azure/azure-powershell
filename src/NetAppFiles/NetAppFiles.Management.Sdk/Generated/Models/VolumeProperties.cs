@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="provisioningState">Azure lifecycle management
         /// </param>
 
-        /// <param name="snapshotId">UUID v4 or resource identifier used to identify the Snapshot.
+        /// <param name="snapshotId">Resource identifier used to identify the Snapshot.
         /// </param>
 
         /// <param name="deleteBaseSnapshot">If enabled (true) the snapshot the volume was created from will be
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Defaults to false
         /// </param>
 
-        /// <param name="backupId">UUID v4 or resource identifier used to identify the Backup.
+        /// <param name="backupId">Resource identifier used to identify the Backup.
         /// </param>
 
         /// <param name="baremetalTenantId">Unique Baremetal Tenant Identifier.
@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public string ProvisioningState {get; private set; }
 
         /// <summary>
-        /// Gets or sets uUID v4 or resource identifier used to identify the Snapshot.
+        /// Gets or sets resource identifier used to identify the Snapshot.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "snapshotId")]
         public string SnapshotId {get; set; }
@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public bool? DeleteBaseSnapshot {get; set; }
 
         /// <summary>
-        /// Gets or sets uUID v4 or resource identifier used to identify the Backup.
+        /// Gets or sets resource identifier used to identify the Backup.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "backupId")]
         public string BackupId {get; set; }
@@ -783,9 +783,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "CoolnessPeriod", 183);
                 }
-                if (this.CoolnessPeriod < 7)
+                if (this.CoolnessPeriod < 2)
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "CoolnessPeriod", 7);
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "CoolnessPeriod", 2);
                 }
             }
 

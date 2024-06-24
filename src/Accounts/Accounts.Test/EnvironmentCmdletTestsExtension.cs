@@ -79,6 +79,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             env.SetProperty("AzureAppConfigurationEndpointSuffix", "azconfig.io");
             env.SetProperty("AzureAppConfigurationEndpointResourceId", "https://azconfig.io");
             env.SetProperty("ContainerRegistryEndpointResourceId", "https://management.azure.com");
+            env.SetProperty("AzureCommunicationEmailEndpointSuffix", "communication.azure.com");
+            env.SetProperty("AzureCommunicationEmailEndpointResourceId", "https://communication.azure.com");
             return env;
         }
 

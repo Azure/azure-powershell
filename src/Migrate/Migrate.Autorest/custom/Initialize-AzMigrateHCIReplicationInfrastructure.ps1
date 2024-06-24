@@ -137,14 +137,14 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
                 throw "Please login to Azure to select a subscription."
             }
         }
-        Write-Host "*Selected Subscription Id: '$($SubscriptionId)'."
+        Write-Host "*Selected Subscription Id: '$($SubscriptionId)'"
     
         # Get resource group
         $resourceGroup = Get-AzResourceGroup -Name $ResourceGroupName -ErrorVariable notPresent -ErrorAction SilentlyContinue
         if ($null -eq $resourceGroup) {
             throw "Resource group '$($ResourceGroupName)' does not exist in the subscription. Please create the resource group and try again."
         }
-        Write-Host "*Selected Resource Group: '$($ResourceGroupName)'."
+        Write-Host "*Selected Resource Group: '$($ResourceGroupName)'"
 
         # Verify user validity
         $userObject = Get-AzADUser -UserPrincipalName $context.Subscription.ExtendedProperties.Account
@@ -169,27 +169,17 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
         }
 
         # Get Migrate Project
-        $migrateProject = Az.Migrate\Get-AzMigrateProject `
-            -Name $ProjectName `
-            -ResourceGroupName $ResourceGroupName `
-            -ErrorVariable notPresent `
-            -ErrorAction SilentlyContinue
-        if ($null -eq $migrateProject) {
-            throw "Migrate project '$($ProjectName)' not found."
-        }
+        $migrateProject = InvokeAzMigrateGetCommandWithRetries `
+            -CommandName "Az.Migrate\Get-AzMigrateProject" `
+            -Parameters @{"Name" = $ProjectName; "ResourceGroupName" = $ResourceGroupName} `
+            -ErrorMessage "Migrate project '$($ProjectName)' not found."
 
         # Access Discovery Service
         $discoverySolutionName = "Servers-Discovery-ServerDiscovery"
-        $discoverySolution = Az.Migrate\Get-AzMigrateSolution `
-            -SubscriptionId $SubscriptionId `
-            -ResourceGroupName $ResourceGroupName `
-            -MigrateProjectName $ProjectName `
-            -Name $discoverySolutionName `
-            -ErrorVariable notPresent `
-            -ErrorAction SilentlyContinue
-        if ($discoverySolution.Name -ne $discoverySolutionName) {
-            throw "Server Discovery Solution not found."
-        }
+        $discoverySolution = InvokeAzMigrateGetCommandWithRetries `
+            -CommandName "Az.Migrate\Get-AzMigrateSolution" `
+            -Parameters @{"SubscriptionId" = $SubscriptionId; "ResourceGroupName" = $ResourceGroupName; "MigrateProjectName" = $ProjectName; "Name" = $discoverySolutionName} `
+            -ErrorMessage "Server Discovery Solution '$discoverySolutionName' not found."
 
         # Get Appliances Mapping
         $appMap = @{}
@@ -231,16 +221,11 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
         }
 
         # Get Data Replication Service, or the AMH solution
-        $amhSolution = Az.Migrate\Get-AzMigrateSolution `
-            -ResourceGroupName $ResourceGroupName `
-            -MigrateProjectName $ProjectName `
-            -Name "Servers-Migration-ServerMigration_DataReplication" `
-            -SubscriptionId $SubscriptionId `
-            -ErrorVariable notPresent `
-            -ErrorAction SilentlyContinue
-        if ($null -eq $amhSolution) {
-            throw "No Data Replication Service Solution found. Please verify your appliance setup."
-        }
+        $amhSolutionName = "Servers-Migration-ServerMigration_DataReplication"
+        $amhSolution = InvokeAzMigrateGetCommandWithRetries `
+            -CommandName "Az.Migrate\Get-AzMigrateSolution" `
+            -Parameters @{"SubscriptionId" = $SubscriptionId; "ResourceGroupName" = $ResourceGroupName; "MigrateProjectName" = $ProjectName; "Name" = $amhSolutionName} `
+            -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found. Please verify your appliance setup."
 
         # Get Source and Target Fabrics
         $allFabrics = Az.Migrate\Get-AzMigrateHCIReplicationFabric -ResourceGroupName $ResourceGroupName
@@ -267,46 +252,38 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
         }
 
         if ($null -eq $sourceFabric) {
-            throw "Source Fabric not found. Please verify your appliance setup."
+            throw "No source Fabric found. Please verify your appliance setup."
         }
-        Write-Host "*Selected Source Fabric: '$($sourceFabric.Name)'."
+        Write-Host "*Selected Source Fabric: '$($sourceFabric.Name)'"
 
         if ($null -eq $targetFabric) {
-            throw "Target Fabric not found. Please verify your appliance setup."
+            throw "No target Fabric found. Please verify your appliance setup."
         }
-        Write-Host "*Selected Target Fabric: '$($targetFabric.Name)'."
+        Write-Host "*Selected Target Fabric: '$($targetFabric.Name)'"
 
         # Get Source and Target Dras from Fabrics
-        $sourceDras = Az.Migrate.Internal\Get-AzMigrateDra `
-            -FabricName $sourceFabric.Name `
-            -ResourceGroupName $ResourceGroupName `
-            -ErrorVariable notPresent `
-            -ErrorAction SilentlyContinue
-        if ($null -eq $sourceDras) {
-            throw "Source Dra found. Please verify your appliance setup."
-        }
-        $sourceDra = $sourceDras[0]
-        Write-Host "*Selected Source Dra: '$($sourceDra.Name)'."
+        $sourceDras = InvokeAzMigrateGetCommandWithRetries `
+            -CommandName "Az.Migrate.Internal\Get-AzMigrateDra" `
+            -Parameters @{"FabricName" = $sourceFabric.Name; "ResourceGroupName" = $ResourceGroupName} `
+            -ErrorMessage "No source Fabric Agent (DRA) found. Please verify your appliance setup."
 
-        $targetDras = Az.Migrate.Internal\Get-AzMigrateDra `
-            -FabricName $targetFabric.Name `
-            -ResourceGroupName $ResourceGroupName `
-            -ErrorVariable notPresent `
-            -ErrorAction SilentlyContinue
-        if ($null -eq $targetDras) {
-            throw "Source Dra found. Please verify your appliance setup."
-        }
+        $sourceDra = $sourceDras[0]
+        Write-Host "*Selected Source Dra: '$($sourceDra.Name)'"
+
+        $targetDras = InvokeAzMigrateGetCommandWithRetries `
+            -CommandName "Az.Migrate.Internal\Get-AzMigrateDra" `
+            -Parameters @{"FabricName" = $targetFabric.Name; "ResourceGroupName" = $ResourceGroupName} `
+            -ErrorMessage "No target Fabric Agent (DRA) found. Please verify your appliance setup."
+
         $targetDra = $targetDras[0]
-        Write-Host "*Selected Target Dra: '$($targetDra.Name)'."
+        Write-Host "*Selected Target Dra: '$($targetDra.Name)'"
         
         # Get Replication Vault
         $replicationVaultName = $amhSolution.DetailExtendedDetail["vaultId"].Split("/")[8]
-        $replicationVault = Az.Migrate.Internal\Get-AzMigrateVault `
-            -ResourceGroupName $ResourceGroupName `
-            -Name $replicationVaultName
-        if ($null -eq $replicationVault) {
-            throw "No Replication Vault found in Resource Group '$($ResourceGroupName)'."
-        }
+        $replicationVault = InvokeAzMigrateGetCommandWithRetries `
+            -CommandName "Az.Migrate.Internal\Get-AzMigrateVault" `
+            -Parameters @{"ResourceGroupName" = $ResourceGroupName; "Name" = $replicationVaultName} `
+            -ErrorMessage "No Replication Vault '$replicationVaultName' found in Resource Group '$ResourceGroupName'."
 
         # Put Policy
         $policyName = $replicationVault.Name + $instanceType + "policy"
@@ -504,7 +481,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
             throw "Policy '$($policyName)' has an unexpected Provisioning State of '$($policy.Property.ProvisioningState)'. Please re-run this command or contact support if help needed."
         }
         else {
-            Write-Host "*Selected Policy: '$($policyName)'."
+            Write-Host "*Selected Policy: '$($policyName)'"
         }
 
         # Put Cache Storage Account
@@ -789,7 +766,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
 
         # Give time for role assignments to be created. Times out after 2min
         $rsaPermissionGranted = $false
-        for ($i = 0; $i -lt 4; $i++) {
+        for ($i = 0; $i -lt 3; $i++) {
             # Check Source Dra AAD App access to Cache Storage Account as "Contributor"
             $hasAadAppAccess = Get-AzRoleAssignment `
                 -ObjectId $params.sourceAppAadId `
@@ -864,7 +841,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
                 -DetailExtendedDetail $amhSolution.DetailExtendedDetail.AdditionalProperties | Out-Null
         }
 
-        Write-Host "*Selected Cache Storage Account: '$($cacheStorageAccount.StorageAccountName)' in Resource Group '$($ResourceGroupName)' at Location '$($cacheStorageAccount.Location)' for Migrate Project '$($migrateProject.Name)'."
+        Write-Host "*Selected Cache Storage Account: '$($cacheStorageAccount.StorageAccountName)' in Resource Group '$($ResourceGroupName)' at Location '$($cacheStorageAccount.Location)' for Migrate Project '$($migrateProject.Name)'"
 
         # Put replication extension
         $replicationExtensionName = ($sourceFabric.Id -split '/')[-1] + "-" + ($targetFabric.Id -split '/')[-1] + "-MigReplicationExtn"
@@ -1098,7 +1075,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
             throw "Replication Extension '$($replicationExtensionName)' has an unexpected Provisioning State of '$($replicationExtension.Property.ProvisioningState)'. Please re-run this command or contact support if help needed."
         }
         else {
-            Write-Host "*Selected Replication Extension: '$($replicationExtensionName)'."
+            Write-Host "*Selected Replication Extension: '$($replicationExtensionName)'"
         }
 
         if ($PassThru) {

@@ -27,15 +27,19 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="volumeName">Volume name
         /// </param>
 
+        /// <param name="volumeResourceId">ResourceId used to identify the Volume
+        /// </param>
+
         /// <param name="backupsCount">Total count of backups for volume
         /// </param>
 
         /// <param name="policyEnabled">Policy enabled
         /// </param>
-        public VolumeBackups(string volumeName = default(string), int? backupsCount = default(int?), bool? policyEnabled = default(bool?))
+        public VolumeBackups(string volumeName = default(string), string volumeResourceId = default(string), int? backupsCount = default(int?), bool? policyEnabled = default(bool?))
 
         {
             this.VolumeName = volumeName;
+            this.VolumeResourceId = volumeResourceId;
             this.BackupsCount = backupsCount;
             this.PolicyEnabled = policyEnabled;
             CustomInit();
@@ -52,6 +56,12 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "volumeName")]
         public string VolumeName {get; set; }
+
+        /// <summary>
+        /// Gets or sets resourceId used to identify the Volume
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "volumeResourceId")]
+        public string VolumeResourceId {get; set; }
 
         /// <summary>
         /// Gets or sets total count of backups for volume
