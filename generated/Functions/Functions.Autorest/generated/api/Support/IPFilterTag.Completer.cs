@@ -36,6 +36,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'XffProxy'", "XffProxy", global::System.Management.Automation.CompletionResultType.ParameterValue, "XffProxy");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ServiceTag".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ServiceTag'", "ServiceTag", global::System.Management.Automation.CompletionResultType.ParameterValue, "ServiceTag");
+            }
         }
     }
 }

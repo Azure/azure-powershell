@@ -62,6 +62,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'OtherReasons'", "OtherReasons", global::System.Management.Automation.CompletionResultType.ParameterValue, "OtherReasons");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "FetchTimedOut".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'FetchTimedOut'", "FetchTimedOut", global::System.Management.Automation.CompletionResultType.ParameterValue, "FetchTimedOut");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "UnauthorizedClient".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'UnauthorizedClient'", "UnauthorizedClient", global::System.Management.Automation.CompletionResultType.ParameterValue, "UnauthorizedClient");
+            }
         }
     }
 }

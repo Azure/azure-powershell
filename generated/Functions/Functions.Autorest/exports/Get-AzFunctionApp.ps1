@@ -31,12 +31,12 @@ Get-AzFunctionApp -SubscriptionId fe16564a-d943-4bf8-8c28-cf01708c3f8b
 Get-AzFunctionApp -Location "Central US"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/get-azfunctionapp
 #>
 function Get-AzFunctionApp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite])]
 [CmdletBinding(DefaultParameterSetName='GetAll', PositionalBinding=$false)]
 param(
     [Parameter()]
