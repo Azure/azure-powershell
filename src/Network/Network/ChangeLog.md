@@ -19,6 +19,17 @@
 --->
 
 ## Upcoming Release
+* Added new cmdlets to support Save & Commit (AzureFirewallPolicy draft)
+    - `New-AzFirewallPolicyDraft`
+    - `New-AzFirewallPolicyRuleCollectionGroupDraft`
+    - `Get-AzFirewallPolicyDraft`
+    - `Get-AzFirewallPolicyRuleCollectionGroupDraft`
+    - `Set-AzFirewallPolicyDraft`
+    - `Set-AzFirewallPolicyRuleCollectionGroupDraft`
+    - `Remove-AzFirewallPolicyDraft`
+    - `Remove-AzFirewallPolicyRuleCollectionGroupDraft`
+    - `Deploy-AzFirewallPolicy`
+
 * Updated the Azure Firewall and Azure Firewall Policy setter for their respective Private Range properties
   - Fixed a bug that prevented using /32 in private ranges on classic Azure Firewalls
   - Updated the error message to provide a suggested private range when the supplied range is not correctly masked by the host identifier

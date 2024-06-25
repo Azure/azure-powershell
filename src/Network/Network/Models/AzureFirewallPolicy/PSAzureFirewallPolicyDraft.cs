@@ -13,38 +13,24 @@
 // limitations under the License.
 //
 
-using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSAzureFirewallPolicy : PSTopLevelResource
+    public class PSAzureFirewallPolicyDraft : PSChildResource
     {
-        public PSManagedServiceIdentity Identity { get; set; }
-
         public string ThreatIntelMode { get; set; }
 
         public PSAzureFirewallPolicyThreatIntelWhitelist ThreatIntelWhitelist { get; set; }
 
-        public Microsoft.Azure.Management.Network.Models.SubResource BasePolicy { get; set; }
-
-        public string ProvisioningState { get; set; }
-
-        public string Size { get; set; }
-
-        [JsonProperty("ruleCollectionGroups")]
-        public List<Microsoft.Azure.Management.Network.Models.SubResource> RuleCollectionGroups { get; set; }
+        public Management.Network.Models.SubResource BasePolicy { get; set; }
 
         public PSAzureFirewallPolicyDnsSettings DnsSettings { get; set; }
 
         public PSAzureFirewallPolicySqlSetting SqlSetting { get; set; }
 
         public PSAzureFirewallPolicyIntrusionDetection IntrusionDetection { get; set; }
-
-        public PSAzureFirewallPolicyTransportSecurity TransportSecurity { get; set; }
-
-        public PSAzureFirewallPolicySku Sku { get; set; }
 
         public PSAzureFirewallPolicySNAT Snat { get; set; }
 
@@ -65,7 +51,5 @@ namespace Microsoft.Azure.Commands.Network.Models
                 }
             }
         }
-
-       
     }
 }
