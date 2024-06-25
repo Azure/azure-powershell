@@ -2,10 +2,10 @@
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Config
 {
-    internal abstract class TrackedConfigDefinition : ConfigDefinition
+    internal abstract class ConfigDefinitionWithTelemetryInfo : ConfigDefinition
     {
         /// <summary>
-        /// Define the telemetry key for the config
+        /// Define additional telemetry info for a config
         /// </summary>
         internal virtual string TelemetryKey => Key;
 

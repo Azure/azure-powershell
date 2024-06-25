@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
     /// Base class for configs that have a typed value.
     /// </summary>
     /// <typeparam name="TValue">The type of the config value.</typeparam>
-    internal abstract class TypedConfig<TValue> : TrackedConfigDefinition
+    internal abstract class TypedConfig<TValue> : ConfigDefinitionWithTelemetryInfo
     {
         protected TypedConfig()
         {
