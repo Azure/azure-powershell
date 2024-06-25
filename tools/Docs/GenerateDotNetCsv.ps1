@@ -37,7 +37,7 @@ for ($index = 0; $index -lt $modules.Count; $index++){
     $dotnetCsvLine = ""
     switch ($SourceType) {
         "sa" { 
-            $dotnetCsvLine = "pac$index,[ps=true;customSource=$CustomSource/$moduleName.$moduleVersion.nupkg;sourceType=$SourceType]$moduleName,$moduleVersion`n"
+            $dotnetCsvLine = "pac$index,[ps=true;customSource=$CustomSource/$moduleName.$moduleVersion.zip;sourceType=$SourceType]$moduleName,$moduleVersion`n"
             break
         }
         Default {

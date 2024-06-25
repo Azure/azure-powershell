@@ -244,7 +244,7 @@ DynamicParam
                 if ($typeString -eq 'array') {
                     $dp.ParameterType = [string[]]
                 }
-                        
+
                 # Dynamic parameter should not be mandatory if it has a default value
                 $pa = [System.Management.Automation.ParameterAttribute]@{
                     ParameterSetName = 'Default';
@@ -279,7 +279,6 @@ begin {
     $mapping = @{
         CreateExpanded = 'Az.Policy.private\New-AzPolicyAssignment_CreateExpanded';
         CreateExpanded1 = 'Az.Policy.private\New-AzPolicyAssignment_CreateExpanded1';
-        CreateViaIdentityExpanded1 = 'Az.Policy.private\New-AzPolicyAssignment_CreateViaIdentityExpanded1';
     }
 }
 
@@ -301,8 +300,16 @@ process {
     $calledParameters.Scope = $Scope
 
     # route the input policy id to the correct place
-    if ($CalledParameters.ContainsKey('PolicyDefinition')) {
-        $calledParameters.PolicyDefinitionId = $PolicyDefinition.Id
+    if ($calledParameters.ContainsKey('PolicyDefinition')) {
+
+        # parse the definition Id to determine the format (policy [set] definition and versioned or not)
+        $parsedPolicyId = parsePolicyId $PolicyDefinition.Id
+        if ($parsedPolicyId.ArtifactRef) {
+            # handle versioned policy [set] references
+            $calledParameters.DefinitionVersion = $parsedPolicyId.VersionRef
+        }
+
+        $calledParameters.PolicyDefinitionId = $parsedPolicyId.Artifact
         $null = $calledParameters.Remove('PolicyDefinition')
     }
     else {
@@ -425,5 +432,5 @@ process {
 }
 
 end {
-} 
+}
 }

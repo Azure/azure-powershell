@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added input parameter validation set for UploadLimitWeeklyRecurrenceObject
 * Supported Uploaded Limit Schedule
 
 ## Version 1.3.1

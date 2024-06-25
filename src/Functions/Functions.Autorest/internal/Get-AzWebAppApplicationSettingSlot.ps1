@@ -16,21 +16,21 @@
 
 <#
 .Synopsis
-Gets the application settings of an app.
+Description for Gets the application settings of an app.
 .Description
-Gets the application settings of an app.
+Description for Gets the application settings of an app.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStringDictionary
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/get-azwebappapplicationsettingslot
 #>
 function Get-AzWebAppApplicationSettingSlot {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStringDictionary])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

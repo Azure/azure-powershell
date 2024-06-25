@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-Gets a list of web app configuration snapshots identifiers.
+Description for Gets a list of web app configuration snapshots identifiers.
 Each element of the list contains a timestamp and the ID of the snapshot.
 .Description
-Gets a list of web app configuration snapshots identifiers.
+Description for Gets a list of web app configuration snapshots identifiers.
 Each element of the list contains a timestamp and the ID of the snapshot.
 .Example
 {{ Add code here }}
@@ -27,12 +27,12 @@ Each element of the list contains a timestamp and the ID of the snapshot.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigurationSnapshotInfo
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigurationSnapshotInfo
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationsnapshotinfo
 #>
 function Get-AzWebAppConfigurationSnapshotInfo {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigurationSnapshotInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigurationSnapshotInfo])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
