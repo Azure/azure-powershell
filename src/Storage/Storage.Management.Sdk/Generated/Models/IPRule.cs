@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </param>
 
         /// <param name="action">The action of IP ACL rule.
-        /// Possible values include: 'Allow'</param>
+        /// Possible values include: &#39;Allow&#39;</param>
         public IPRule(string ipAddressOrRange, Action? action = default(Action?))
 
         {

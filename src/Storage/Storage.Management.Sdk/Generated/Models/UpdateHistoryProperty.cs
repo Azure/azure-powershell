@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="update">The ImmutabilityPolicy update type of a blob container, possible values
         /// include: put, lock and extend.
-        /// Possible values include: 'put', 'lock', 'extend'</param>
+        /// Possible values include: &#39;put&#39;, &#39;lock&#39;, &#39;extend&#39;</param>
 
         /// <param name="immutabilityPeriodSinceCreationInDays">The immutability period for the blobs in the container since the policy
         /// creation, in days.

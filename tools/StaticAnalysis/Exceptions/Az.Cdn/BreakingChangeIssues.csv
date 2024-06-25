@@ -1,2 +1,0 @@
-"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Az.Cdn","Start-AzFrontDoorCdnProfilePrepareMigration","Start-AzFrontDoorCdnProfilePrepareMigration","0","1020","The cmdlet 'Start-AzFrontDoorCdnProfilePrepareMigration' no longer has output type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IMigrateResult'.","Make cmdlet 'Start-AzFrontDoorCdnProfilePrepareMigration' return type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IMigrateResult'."

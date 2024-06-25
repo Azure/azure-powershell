@@ -84,6 +84,11 @@ namespace Microsoft.Azure.Management.NetApp
         INetAppResourceQuotaLimitsOperations NetAppResourceQuotaLimits { get; }
 
         /// <summary>
+        /// Gets the INetAppResourceRegionInfosOperations
+        /// </summary>
+        INetAppResourceRegionInfosOperations NetAppResourceRegionInfos { get; }
+
+        /// <summary>
         /// Gets the IAccountsOperations
         /// </summary>
         IAccountsOperations Accounts { get; }
@@ -109,11 +114,6 @@ namespace Microsoft.Azure.Management.NetApp
         ISnapshotPoliciesOperations SnapshotPolicies { get; }
 
         /// <summary>
-        /// Gets the IBackupsOperations
-        /// </summary>
-        IBackupsOperations Backups { get; }
-
-        /// <summary>
         /// Gets the IBackupPoliciesOperations
         /// </summary>
         IBackupPoliciesOperations BackupPolicies { get; }
@@ -132,6 +132,31 @@ namespace Microsoft.Azure.Management.NetApp
         /// Gets the ISubvolumesOperations
         /// </summary>
         ISubvolumesOperations Subvolumes { get; }
+
+        /// <summary>
+        /// Gets the IBackupsOperations
+        /// </summary>
+        IBackupsOperations Backups { get; }
+
+        /// <summary>
+        /// Gets the IBackupVaultsOperations
+        /// </summary>
+        IBackupVaultsOperations BackupVaults { get; }
+
+        /// <summary>
+        /// Gets the IBackupsUnderBackupVaultOperations
+        /// </summary>
+        IBackupsUnderBackupVaultOperations BackupsUnderBackupVault { get; }
+
+        /// <summary>
+        /// Gets the IBackupsUnderVolumeOperations
+        /// </summary>
+        IBackupsUnderVolumeOperations BackupsUnderVolume { get; }
+
+        /// <summary>
+        /// Gets the IBackupsUnderAccountOperations
+        /// </summary>
+        IBackupsUnderAccountOperations BackupsUnderAccount { get; }
 
     }
 }

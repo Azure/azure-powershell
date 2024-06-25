@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="keySource">The encryption keySource (provider). Possible values (case-insensitive): 
         /// Microsoft.Storage, Microsoft.Keyvault
-        /// Possible values include: 'Microsoft.Storage', 'Microsoft.Keyvault'</param>
+        /// Possible values include: &#39;Microsoft.Storage&#39;, &#39;Microsoft.Keyvault&#39;</param>
 
         /// <param name="requireInfrastructureEncryption">A boolean indicating whether or not the service applies a secondary layer
         /// of encryption with platform managed keys for data at rest.

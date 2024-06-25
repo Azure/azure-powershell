@@ -1,3 +1,0 @@
-"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Az.SqlVirtualMachine","New-AzSqlVM","New-AzSqlVM","0","2000","The cmdlet 'New-AzSqlVM' no longer supports the parameter 'VirtualMachineResourceId' and no alias was found for the original parameter name.","Add the parameter 'VirtualMachineResourceId' back to the cmdlet 'New-AzSqlVM', or add an alias to the original parameter name."
-"Az.SqlVirtualMachine","New-AzSqlVM","New-AzSqlVM","0","1050","The parameter set '__AllParameterSets' for cmdlet 'New-AzSqlVM' has been removed.","Add parameter set '__AllParameterSets' back to cmdlet 'New-AzSqlVM'."

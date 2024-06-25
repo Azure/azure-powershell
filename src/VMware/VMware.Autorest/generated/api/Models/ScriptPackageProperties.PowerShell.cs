@@ -109,6 +109,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptPackagePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptPackagePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
             if (content.Contains("Description"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptPackagePropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptPackagePropertiesInternal)this).Description, global::System.Convert.ToString);
@@ -142,6 +146,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptPackagePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptPackagePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
             if (content.Contains("Description"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptPackagePropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptPackagePropertiesInternal)this).Description, global::System.Convert.ToString);

@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         public System.Collections.Generic.List<string> DnsServerIP { get => this._dnsServerIP; set => this._dnsServerIP = value; }
 
         /// <summary>Backing field for <see cref="DnsService" /> property.</summary>
-        private long? _dnsService;
+        private int? _dnsService;
 
         /// <summary>Number of DNS Services using the DNS zone.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
-        public long? DnsService { get => this._dnsService; set => this._dnsService = value; }
+        public int? DnsService { get => this._dnsService; set => this._dnsService = value; }
 
         /// <summary>Backing field for <see cref="Domain" /> property.</summary>
         private System.Collections.Generic.List<string> _domain;
@@ -106,8 +106,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Update = true,
         Description = @"Number of DNS Services using the DNS zone.",
         SerializedName = @"dnsServices",
-        PossibleTypes = new [] { typeof(long) })]
-        long? DnsService { get; set; }
+        PossibleTypes = new [] { typeof(int) })]
+        int? DnsService { get; set; }
         /// <summary>Domain names of the DNS Zone.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         Description = @"The provisioning state",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Building", "Deleting", "Updating", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Building", "Deleting", "Updating")]
         string ProvisioningState { get;  }
         /// <summary>NSX revision number.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
@@ -164,11 +164,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>DNS Server IP array of the DNS Zone.</summary>
         System.Collections.Generic.List<string> DnsServerIP { get; set; }
         /// <summary>Number of DNS Services using the DNS zone.</summary>
-        long? DnsService { get; set; }
+        int? DnsService { get; set; }
         /// <summary>Domain names of the DNS Zone.</summary>
         System.Collections.Generic.List<string> Domain { get; set; }
         /// <summary>The provisioning state</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Building", "Deleting", "Updating", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Building", "Deleting", "Updating")]
         string ProvisioningState { get; set; }
         /// <summary>NSX revision number.</summary>
         long? Revision { get; set; }

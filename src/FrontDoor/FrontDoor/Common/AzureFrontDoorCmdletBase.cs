@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Common
     /// </summary>
     public class AzureFrontDoorCmdletBase : AzureRMCmdlet
     {
-        private IFrontDoorManagementClient _frontDoorManagementClient;
+        private IFrontDoor _frontDoorManagementClient;
 
         private Dictionary<string, List<string>> _defaultRequestHeaders;
 
@@ -48,13 +48,13 @@ namespace Microsoft.Azure.Commands.FrontDoor.Common
         /// <summary>
         /// Gets or sets the Front Door management client.
         /// </summary>
-        public IFrontDoorManagementClient FrontDoorManagementClient
+        public IFrontDoor FrontDoorManagementClient
         {
             get
             {
                 return _frontDoorManagementClient ??
                        (_frontDoorManagementClient =
-                           AzureSession.Instance.ClientFactory.CreateArmClient<FrontDoorManagementClient>(DefaultProfile.DefaultContext,
+                           AzureSession.Instance.ClientFactory.CreateArmClient<Management.FrontDoor.FrontDoor>(DefaultProfile.DefaultContext,
                                AzureEnvironment.Endpoint.ResourceManager));
             }
             set { _frontDoorManagementClient = value; }

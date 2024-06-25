@@ -136,6 +136,99 @@ function Test-ManagedDatabaseMove
 	}
 }
 
+function Test-CrossSubscriptionManagedDatabaseMove
+{
+	$sourceRGName = "source-rg-name"
+	$targetRGName = "target-rg-name"
+	$sourceInstanceName = "source-mi-name"
+	$targetInstanceName = "target-mi-name"
+	$targetSubscriptionId = "0000-0000-0000-0000"
+	$managedDatabaseName = "database-name"
+
+	try
+	{
+		Move-AzSqlInstanceDatabase `
+			-ResourceGroupName $sourceRGName `
+			-InstanceName $sourceInstanceName `
+			-Name $managedDatabaseName `
+			-TargetSubscriptionId $targetSubscriptionId `
+			-TargetInstanceName $targetInstanceName `
+			-TargetResourceGroupName $targetRGName
+
+		$moveOperation = Get-AzSqlInstanceDatabaseMoveOperation `
+			-ResourceGroupName $sourceRGName `
+			-InstanceName $sourceInstanceName `
+			-Name $managedDatabaseName `
+			-OnlyLatestPerDatabase
+
+		Assert-NotNull $moveOperation
+		Assert-AreEqual $moveOperation.TargetManagedInstanceName $targetInstanceName
+		Assert-AreEqual $moveOperation.SourceManagedInstanceName $sourceInstanceName
+		Assert-AreEqual $moveOperation.SourceDatabaseName $managedDatabaseName
+		Assert-AreEqual $moveOperation.OperationMode "Move"
+
+		while ($moveOperation.isCancellable -eq $false) {
+			Start-TestSleep -Seconds 30
+
+			$moveOperation = Get-AzSqlInstanceDatabaseMoveOperation `
+				-ResourceGroupName $sourceRGName `
+				-InstanceName $sourceInstanceName `
+				-Name $managedDatabaseName `
+				-OnlyLatestPerDatabase
+		}
+
+		Stop-AzSqlInstanceDatabaseMove `
+			-ResourceGroupName $sourceRGName `
+			-InstanceName $sourceInstanceName `
+			-Name $managedDatabaseName `
+			-TargetSubscriptionId $targetSubscriptionId `
+			-TargetInstanceName $targetInstanceName `
+			-TargetResourceGroupName $targetRGName
+
+		Wait-ForOperationToSucceed `
+			-rgName $sourceRGName `
+			-InstanceName $sourceInstanceName `
+			-databaseName $managedDatabaseName
+
+		Move-AzSqlInstanceDatabase `
+			-ResourceGroupName $sourceRGName `
+			-InstanceName $sourceInstanceName `
+			-Name $managedDatabaseName `
+			-TargetSubscriptionId $targetSubscriptionId `
+			-TargetInstanceName $targetInstanceName `
+			-TargetResourceGroupName $targetRGName
+
+		Wait-ForOperationToSucceed `
+			-rgName $sourceRGName `
+			-InstanceName $sourceInstanceName `
+			-databaseName $managedDatabaseName
+
+		Complete-AzSqlInstanceDatabaseMove `
+			-ResourceGroupName $sourceRGName `
+			-InstanceName $sourceInstanceName `
+			-Name $managedDatabaseName `
+			-TargetSubscriptionId $targetSubscriptionId `
+			-TargetInstanceName $targetInstanceName `
+			-TargetResourceGroupName $targetRGName `
+			-Force
+				
+		Wait-ForOperationToSucceed `
+			-rgName $sourceRGName `
+			-InstanceName $sourceInstanceName `
+			-databaseName $managedDatabaseName
+
+		Assert-Throws { 
+			Get-AzSqlInstanceDatabase `
+				-ResourceGroupName $sourceRGName `
+				-InstanceName $sourceInstanceName `
+				-Name $managedDatabaseName
+		}
+	}
+	finally
+	{
+	}
+}
+
 function Test-ManagedDatabaseMovePiping
 {
 	$sourceRg = Create-ResourceGroupForTest
@@ -475,6 +568,99 @@ function Test-ManagedDatabaseCopy
 		} catch {
 			# Ignore exception on clean up
 		}
+	}
+}
+
+function Test-CrossSubscriptionManagedDatabaseCopy
+{
+	$sourceRGName = "source-rg-name"
+	$targetRGName = "target-rg-name"
+	$sourceInstanceName = "source-mi-name"
+	$targetInstanceName = "target-mi-name"
+	$targetSubscriptionId = "0000-0000-0000-0000"
+	$managedDatabaseName = "database-name"
+
+	try
+	{
+		Copy-AzSqlInstanceDatabase `
+			-ResourceGroupName $sourceRGName `
+			-InstanceName $sourceInstanceName `
+			-Name $managedDatabaseName `
+			-TargetSubscriptionId $targetSubscriptionId `
+			-TargetInstanceName $targetInstanceName `
+			-TargetResourceGroupName $targetRGName
+
+		$CopyOperation = Get-AzSqlInstanceDatabaseCopyOperation `
+			-ResourceGroupName $sourceRGName `
+			-InstanceName $sourceInstanceName `
+			-Name $managedDatabaseName `
+			-OnlyLatestPerDatabase
+
+		Assert-NotNull $CopyOperation
+		Assert-AreEqual $CopyOperation.TargetManagedInstanceName $targetInstanceName
+		Assert-AreEqual $CopyOperation.SourceManagedInstanceName $sourceInstanceName
+		Assert-AreEqual $CopyOperation.SourceDatabaseName $managedDatabaseName
+		Assert-AreEqual $CopyOperation.OperationMode "Copy"
+
+		while ($CopyOperation.isCancellable -eq $false) {
+			Start-TestSleep -Seconds 30
+
+			$CopyOperation = Get-AzSqlInstanceDatabaseCopyOperation `
+				-ResourceGroupName $sourceRGName `
+				-InstanceName $sourceInstanceName `
+				-Name $managedDatabaseName `
+				-OnlyLatestPerDatabase
+		}
+
+		Stop-AzSqlInstanceDatabaseCopy `
+			-ResourceGroupName $sourceRGName `
+			-InstanceName $sourceInstanceName `
+			-Name $managedDatabaseName `
+			-TargetSubscriptionId $targetSubscriptionId `
+			-TargetInstanceName $targetInstanceName `
+			-TargetResourceGroupName $targetRGName
+
+		Wait-ForCopyOperationToSucceed `
+			-rgName $sourceRGName `
+			-instanceName $sourceInstanceName `
+			-databaseName $managedDatabaseName
+
+		Copy-AzSqlInstanceDatabase `
+			-ResourceGroupName $sourceRGName `
+			-InstanceName $sourceInstanceName `
+			-Name $managedDatabaseName `
+			-TargetSubscriptionId $targetSubscriptionId `
+			-TargetInstanceName $targetInstanceName `
+			-TargetResourceGroupName $targetRGName
+
+		Wait-ForCopyOperationToSucceed `
+			-rgName $sourceRGName `
+			-instanceName $sourceInstanceName `
+			-databaseName $managedDatabaseName
+
+		Complete-AzSqlInstanceDatabaseCopy `
+			-ResourceGroupName $sourceRGName `
+			-InstanceName $sourceInstanceName `
+			-Name $managedDatabaseName `
+			-TargetSubscriptionId $targetSubscriptionId `
+			-TargetInstanceName $targetInstanceName `
+			-TargetResourceGroupName $targetRGName
+				
+		Wait-ForCopyOperationToSucceed `
+			-rgName $sourceRGName `
+			-instanceName $sourceInstanceName `
+			-databaseName $managedDatabaseName
+
+		$dbOnSource = Get-AzSqlInstanceDatabase `
+			-ResourceGroupName $sourceRGName `
+			-InstanceName $sourceInstanceName `
+			-Name $managedDatabaseName
+
+		Assert-NotNull $dbOnSource
+
+	}
+	finally
+	{
 	}
 }
 

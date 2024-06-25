@@ -7,41 +7,67 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Extensions;
 
-    /// <summary>A REST API operation</summary>
+    /// <summary>
+    /// Details of a REST API operation, returned from the Resource Provider Operations API
+    /// </summary>
     public partial class Operation :
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperation,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal
     {
 
+        /// <summary>Backing field for <see cref="ActionType" /> property.</summary>
+        private string _actionType;
+
+        /// <summary>
+        /// Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string ActionType { get => this._actionType; }
+
         /// <summary>Backing field for <see cref="Display" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationDisplay _display;
 
-        /// <summary>Contains the localized display information for this operation</summary>
+        /// <summary>Localized display information for this particular operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationDisplay Display { get => (this._display = this._display ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.OperationDisplay()); }
+        internal Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationDisplay Display { get => (this._display = this._display ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.OperationDisplay()); set => this._display = value; }
 
-        /// <summary>Localized friendly description for the operation</summary>
+        /// <summary>
+        /// The short, localized friendly description of the operation; suitable for tool tips and detailed views.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
         public string DisplayDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationDisplayInternal)Display).Description; }
 
-        /// <summary>Localized friendly name for the operation</summary>
+        /// <summary>
+        /// The concise, localized friendly name for the operation; suitable for dropdowns. E.g. "Create or Update Virtual Machine",
+        /// "Restart Virtual Machine".
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
         public string DisplayOperation { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationDisplayInternal)Display).Operation; }
 
-        /// <summary>Localized friendly form of the resource provider name</summary>
+        /// <summary>
+        /// The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute".
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
         public string DisplayProvider { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationDisplayInternal)Display).Provider; }
 
-        /// <summary>Localized friendly form of the resource type related to this operation</summary>
+        /// <summary>
+        /// The localized friendly name of the resource type related to this operation. E.g. "Virtual Machines" or "Job Schedule Collections".
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
         public string DisplayResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationDisplayInternal)Display).Resource; }
 
         /// <summary>Backing field for <see cref="IsDataAction" /> property.</summary>
         private bool? _isDataAction;
 
-        /// <summary>Gets or sets a value indicating whether the operation is a data action or not</summary>
+        /// <summary>
+        /// Whether the operation applies to data-plane. This is "true" for data-plane operations and "false" for ARM/control-plane
+        /// operations.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
-        public bool? IsDataAction { get => this._isDataAction; set => this._isDataAction = value; }
+        public bool? IsDataAction { get => this._isDataAction; }
+
+        /// <summary>Internal Acessors for ActionType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal.ActionType { get => this._actionType; set { {_actionType = value;} } }
 
         /// <summary>Internal Acessors for Display</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationDisplay Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal.Display { get => (this._display = this._display ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.OperationDisplay()); set { {_display = value;} } }
@@ -58,43 +84,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>Internal Acessors for DisplayResource</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal.DisplayResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationDisplayInternal)Display).Resource; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationDisplayInternal)Display).Resource = value; }
 
+        /// <summary>Internal Acessors for IsDataAction</summary>
+        bool? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal.IsDataAction { get => this._isDataAction; set { {_isDataAction = value;} } }
+
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal.Name { get => this._name; set { {_name = value;} } }
 
-        /// <summary>Internal Acessors for Property</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationProperties Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.OperationProperties()); set { {_property = value;} } }
-
-        /// <summary>Internal Acessors for ServiceSpecification</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IServiceSpecification Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal.ServiceSpecification { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationPropertiesInternal)Property).ServiceSpecification; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationPropertiesInternal)Property).ServiceSpecification = value; }
+        /// <summary>Internal Acessors for Origin</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationInternal.Origin { get => this._origin; set { {_origin = value;} } }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
 
-        /// <summary>Name of the operation being performed on this object</summary>
+        /// <summary>
+        /// The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write",
+        /// "Microsoft.Compute/virtualMachines/capture/action"
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string Name { get => this._name; }
 
         /// <summary>Backing field for <see cref="Origin" /> property.</summary>
         private string _origin;
 
-        /// <summary>Origin of the operation</summary>
+        /// <summary>
+        /// The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is
+        /// "user,system"
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
-        public string Origin { get => this._origin; set => this._origin = value; }
-
-        /// <summary>Backing field for <see cref="Property" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationProperties _property;
-
-        /// <summary>Properties of the operation</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.OperationProperties()); set => this._property = value; }
-
-        /// <summary>Specifications of the Log for Azure Monitoring</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ILogSpecification> ServiceSpecificationLogSpecification { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationPropertiesInternal)Property).ServiceSpecificationLogSpecification; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationPropertiesInternal)Property).ServiceSpecificationLogSpecification = value ?? null /* arrayOf */; }
-
-        /// <summary>Specifications of the Metrics for Azure Monitoring</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IMetricSpecification> ServiceSpecificationMetricSpecification { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationPropertiesInternal)Property).ServiceSpecificationMetricSpecification; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationPropertiesInternal)Property).ServiceSpecificationMetricSpecification = value ?? null /* arrayOf */; }
+        public string Origin { get => this._origin; }
 
         /// <summary>Creates an new <see cref="Operation" /> instance.</summary>
         public Operation()
@@ -102,139 +119,166 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 
         }
     }
-    /// A REST API operation
+    /// Details of a REST API operation, returned from the Resource Provider Operations API
     public partial interface IOperation :
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IJsonSerializable
     {
-        /// <summary>Localized friendly description for the operation</summary>
+        /// <summary>
+        /// Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Localized friendly description for the operation",
+        Description = @"Enum. Indicates the action type. ""Internal"" refers to actions that are for internal only APIs.",
+        SerializedName = @"actionType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Internal")]
+        string ActionType { get;  }
+        /// <summary>
+        /// The short, localized friendly description of the operation; suitable for tool tips and detailed views.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The short, localized friendly description of the operation; suitable for tool tips and detailed views.",
         SerializedName = @"description",
         PossibleTypes = new [] { typeof(string) })]
         string DisplayDescription { get;  }
-        /// <summary>Localized friendly name for the operation</summary>
+        /// <summary>
+        /// The concise, localized friendly name for the operation; suitable for dropdowns. E.g. "Create or Update Virtual Machine",
+        /// "Restart Virtual Machine".
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Localized friendly name for the operation",
+        Description = @"The concise, localized friendly name for the operation; suitable for dropdowns. E.g. ""Create or Update Virtual Machine"", ""Restart Virtual Machine"".",
         SerializedName = @"operation",
         PossibleTypes = new [] { typeof(string) })]
         string DisplayOperation { get;  }
-        /// <summary>Localized friendly form of the resource provider name</summary>
+        /// <summary>
+        /// The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute".
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Localized friendly form of the resource provider name",
+        Description = @"The localized friendly form of the resource provider name, e.g. ""Microsoft Monitoring Insights"" or ""Microsoft Compute"".",
         SerializedName = @"provider",
         PossibleTypes = new [] { typeof(string) })]
         string DisplayProvider { get;  }
-        /// <summary>Localized friendly form of the resource type related to this operation</summary>
+        /// <summary>
+        /// The localized friendly name of the resource type related to this operation. E.g. "Virtual Machines" or "Job Schedule Collections".
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Localized friendly form of the resource type related to this operation",
+        Description = @"The localized friendly name of the resource type related to this operation. E.g. ""Virtual Machines"" or ""Job Schedule Collections"".",
         SerializedName = @"resource",
         PossibleTypes = new [] { typeof(string) })]
         string DisplayResource { get;  }
-        /// <summary>Gets or sets a value indicating whether the operation is a data action or not</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Gets or sets a value indicating whether the operation is a data action or not",
-        SerializedName = @"isDataAction",
-        PossibleTypes = new [] { typeof(bool) })]
-        bool? IsDataAction { get; set; }
-        /// <summary>Name of the operation being performed on this object</summary>
+        /// <summary>
+        /// Whether the operation applies to data-plane. This is "true" for data-plane operations and "false" for ARM/control-plane
+        /// operations.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Name of the operation being performed on this object",
+        Description = @"Whether the operation applies to data-plane. This is ""true"" for data-plane operations and ""false"" for ARM/control-plane operations.",
+        SerializedName = @"isDataAction",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? IsDataAction { get;  }
+        /// <summary>
+        /// The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write",
+        /// "Microsoft.Compute/virtualMachines/capture/action"
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The name of the operation, as per Resource-Based Access Control (RBAC). Examples: ""Microsoft.Compute/virtualMachines/write"", ""Microsoft.Compute/virtualMachines/capture/action""",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string Name { get;  }
-        /// <summary>Origin of the operation</summary>
+        /// <summary>
+        /// The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is
+        /// "user,system"
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
-        ReadOnly = false,
+        ReadOnly = true,
         Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Origin of the operation",
+        Create = false,
+        Update = false,
+        Description = @"The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is ""user,system""",
         SerializedName = @"origin",
         PossibleTypes = new [] { typeof(string) })]
-        string Origin { get; set; }
-        /// <summary>Specifications of the Log for Azure Monitoring</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Specifications of the Log for Azure Monitoring",
-        SerializedName = @"logSpecifications",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ILogSpecification) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ILogSpecification> ServiceSpecificationLogSpecification { get; set; }
-        /// <summary>Specifications of the Metrics for Azure Monitoring</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Specifications of the Metrics for Azure Monitoring",
-        SerializedName = @"metricSpecifications",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IMetricSpecification) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IMetricSpecification> ServiceSpecificationMetricSpecification { get; set; }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("user", "system", "user,system")]
+        string Origin { get;  }
 
     }
-    /// A REST API operation
+    /// Details of a REST API operation, returned from the Resource Provider Operations API
     internal partial interface IOperationInternal
 
     {
-        /// <summary>Contains the localized display information for this operation</summary>
+        /// <summary>
+        /// Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Internal")]
+        string ActionType { get; set; }
+        /// <summary>Localized display information for this particular operation.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationDisplay Display { get; set; }
-        /// <summary>Localized friendly description for the operation</summary>
+        /// <summary>
+        /// The short, localized friendly description of the operation; suitable for tool tips and detailed views.
+        /// </summary>
         string DisplayDescription { get; set; }
-        /// <summary>Localized friendly name for the operation</summary>
+        /// <summary>
+        /// The concise, localized friendly name for the operation; suitable for dropdowns. E.g. "Create or Update Virtual Machine",
+        /// "Restart Virtual Machine".
+        /// </summary>
         string DisplayOperation { get; set; }
-        /// <summary>Localized friendly form of the resource provider name</summary>
+        /// <summary>
+        /// The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute".
+        /// </summary>
         string DisplayProvider { get; set; }
-        /// <summary>Localized friendly form of the resource type related to this operation</summary>
+        /// <summary>
+        /// The localized friendly name of the resource type related to this operation. E.g. "Virtual Machines" or "Job Schedule Collections".
+        /// </summary>
         string DisplayResource { get; set; }
-        /// <summary>Gets or sets a value indicating whether the operation is a data action or not</summary>
+        /// <summary>
+        /// Whether the operation applies to data-plane. This is "true" for data-plane operations and "false" for ARM/control-plane
+        /// operations.
+        /// </summary>
         bool? IsDataAction { get; set; }
-        /// <summary>Name of the operation being performed on this object</summary>
+        /// <summary>
+        /// The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write",
+        /// "Microsoft.Compute/virtualMachines/capture/action"
+        /// </summary>
         string Name { get; set; }
-        /// <summary>Origin of the operation</summary>
+        /// <summary>
+        /// The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is
+        /// "user,system"
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("user", "system", "user,system")]
         string Origin { get; set; }
-        /// <summary>Properties of the operation</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperationProperties Property { get; set; }
-        /// <summary>Service specifications of the operation</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IServiceSpecification ServiceSpecification { get; set; }
-        /// <summary>Specifications of the Log for Azure Monitoring</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ILogSpecification> ServiceSpecificationLogSpecification { get; set; }
-        /// <summary>Specifications of the Metrics for Azure Monitoring</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IMetricSpecification> ServiceSpecificationMetricSpecification { get; set; }
 
     }
 }

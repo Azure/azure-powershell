@@ -17,7 +17,7 @@ Describe 'AzVMwarePlacementPolicy' {
             $config = New-AzVMwareCluster -Name $env.rstr1 -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1 -ClusterSize 3 -SkuName av20
             $config.Name | Should -Be "cluster1"
             
-            $config = New-AzVMwareVMPlacementPolicyPropertiesObject -AffinityType 'Affinity' -Type 'VmVm' -VMMember @{"abc"="123"}
+            $config = New-AzVMwareVMPlacementPolicyPropertyObject -AffinityType 'Affinity' -VMMember @{"abc"="123"}
             $config = New-AzVMwarePlacementPolicy -ClusterName $env.rstr1 -Name $env.policy1 -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1 -Property $config
             $config.Name | Should -Be "policy1"
         } | Should -Not -Throw

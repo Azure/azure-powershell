@@ -59,7 +59,6 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [GenericBreakingChangeWithVersionAttribute("Starting in May 2024 the \"New-AzVM\" cmdlet will deploy with the image 'Windows Server 2022 Azure Edition' by default. This will make migrating to Trusted Launch easier in the future. To know more about Trusted Launch, please visit https://docs.microsoft.com/en-us/azure/virtual-machines/trusted-launch", "12.0.0", "8.0.0")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", SupportsShouldProcess = true, DefaultParameterSetName = "SimpleParameterSet")]
     [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachine))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
@@ -781,9 +780,15 @@ namespace Microsoft.Azure.Commands.Compute
                     this.EnableVtpm = this.EnableVtpm ?? true;
                     this.EnableSecureBoot = this.EnableSecureBoot ?? true;
                 }
+                // Default in TL Image to ease later migration. 
                 else if (this.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
                 {
-                    this.SecurityType = this.SecurityType;
+                    if (!this.IsParameterBound(c => c.Image)
+                    && !this.IsParameterBound(c => c.ImageReferenceId)
+                    && !this.IsParameterBound(c => c.SharedGalleryImageId))
+                    {
+                        this.Image = ConstantValues.TrustedLaunchDefaultImageAlias;
+                    }
                 }
                 
             }
@@ -1031,6 +1036,20 @@ namespace Microsoft.Azure.Commands.Compute
                         {
                             WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
                         }
+                    }
+                }
+                else if (this.VM.StorageProfile?.ImageReference?.SharedGalleryImageId != null) {
+                    // do nothing, send message to use TrustedLaunch.
+                    if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
+                    {
+                        WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
+                    }
+                }
+                else if (this.VM.StorageProfile?.ImageReference?.CommunityGalleryImageId != null) {
+                    // do nothing, send message to use TrustedLaunch.
+                    if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
+                    {
+                        WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
                     }
                 }
                 else

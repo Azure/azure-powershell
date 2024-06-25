@@ -8,7 +8,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Extensions;
 
     /// <summary>
-    /// Base class for WorkloadNetworkDhcpServer and WorkloadNetworkDhcpRelay to inherit from
+    /// Base class for WorkloadNetworkDhcpServer and WorkloadNetworkDhcpRelay to
+    /// inherit from
     /// </summary>
     public partial class WorkloadNetworkDhcpEntity
     {
@@ -74,13 +75,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 
             switch ( json.StringProperty("dhcpType") )
             {
-                case "SERVER":
-                {
-                    return new WorkloadNetworkDhcpServer(json);
-                }
                 case "RELAY":
                 {
                     return new WorkloadNetworkDhcpRelay(json);
+                }
+                case "SERVER":
+                {
+                    return new WorkloadNetworkDhcpServer(json);
                 }
             }
             return new WorkloadNetworkDhcpEntity(json);

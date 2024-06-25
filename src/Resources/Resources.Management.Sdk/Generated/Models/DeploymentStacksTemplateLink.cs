@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// not both.
         /// </param>
 
-        /// <param name="id">The resource id of a Template Spec. Use either the id or uri property, but
+        /// <param name="id">The resourceId of a Template Spec. Use either the id or uri property, but
         /// not both.
         /// </param>
 
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// location relative to the parent. If the parent template was linked with a
         /// TemplateSpec, this will reference an artifact in the TemplateSpec.  If the
         /// parent was linked with a URI, the child deployment will be a combination of
-        /// the parent and relativePath URIs
+        /// the parent and relativePath URIs.
         /// </param>
 
         /// <param name="queryString">The query string (for example, a SAS token) to be used with the
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Resources.Models
         public string Uri {get; set; }
 
         /// <summary>
-        /// Gets or sets the resource id of a Template Spec. Use either the id or uri
+        /// Gets or sets the resourceId of a Template Spec. Use either the id or uri
         /// property, but not both.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// template at a location relative to the parent. If the parent template was
         /// linked with a TemplateSpec, this will reference an artifact in the
         /// TemplateSpec.  If the parent was linked with a URI, the child deployment
-        /// will be a combination of the parent and relativePath URIs
+        /// will be a combination of the parent and relativePath URIs.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "relativePath")]
         public string RelativePath {get; set; }

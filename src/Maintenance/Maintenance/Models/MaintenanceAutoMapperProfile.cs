@@ -87,7 +87,6 @@ namespace Microsoft.Azure.Commands.Maintenance.Models
                     .ForMember(dest => dest.WindowParameterExcludeKbRequiringReboot, opt => opt.MapFrom(src => src.InstallPatches.WindowsParameters.ExcludeKbsRequiringReboot))
                     .ForMember(dest => dest.WindowParameterKbNumberToExclude, opt => opt.MapFrom(src => src.InstallPatches.WindowsParameters.KbNumbersToExclude))
                     .ForMember(dest => dest.WindowParameterKbNumberToInclude, opt => opt.MapFrom(src => src.InstallPatches.WindowsParameters.KbNumbersToInclude))
-                    .ForMember(dest => dest.InstallPatchRebootSetting, opt => opt.MapFrom(src => src.InstallPatches.RebootSetting))
                     .ForMember(dest => dest.PreTask, opt => opt.Ignore())
                     .ForMember(dest => dest.PostTask, opt => opt.Ignore())
                     .ForSourceMember(src => src.SystemData, s => s.Ignore());
@@ -99,6 +98,7 @@ namespace Microsoft.Azure.Commands.Maintenance.Models
                     .ForPath(dest => dest.InstallPatches.WindowsParameters.ExcludeKbsRequiringReboot, src => src.MapFrom(o => o.WindowParameterExcludeKbRequiringReboot))
                     .ForPath(dest => dest.InstallPatches.WindowsParameters.KbNumbersToExclude, src => src.MapFrom(o => o.WindowParameterKbNumberToExclude))
                     .ForPath(dest => dest.InstallPatches.WindowsParameters.KbNumbersToInclude, src => src.MapFrom(o => o.WindowParameterKbNumberToInclude))
+                    .ForPath(dest => dest.InstallPatches.RebootSetting, src => src.MapFrom(o => o.InstallPatchRebootSetting))
                     .AfterMap((src, dst) => {
                         if (string.IsNullOrEmpty(src.InstallPatchRebootSetting) &&
                             !src.WindowParameterExcludeKbRequiringReboot.HasValue &&

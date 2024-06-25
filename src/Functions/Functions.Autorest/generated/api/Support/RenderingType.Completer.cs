@@ -42,6 +42,90 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'TimeSeriesPerInstance'", "TimeSeriesPerInstance", global::System.Management.Automation.CompletionResultType.ParameterValue, "TimeSeriesPerInstance");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "PieChart".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'PieChart'", "PieChart", global::System.Management.Automation.CompletionResultType.ParameterValue, "PieChart");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "DataSummary".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'DataSummary'", "DataSummary", global::System.Management.Automation.CompletionResultType.ParameterValue, "DataSummary");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Email".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Email'", "Email", global::System.Management.Automation.CompletionResultType.ParameterValue, "Email");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Insights".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Insights'", "Insights", global::System.Management.Automation.CompletionResultType.ParameterValue, "Insights");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "DynamicInsight".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'DynamicInsight'", "DynamicInsight", global::System.Management.Automation.CompletionResultType.ParameterValue, "DynamicInsight");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Markdown".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Markdown'", "Markdown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Markdown");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Detector".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Detector'", "Detector", global::System.Management.Automation.CompletionResultType.ParameterValue, "Detector");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "DropDown".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'DropDown'", "DropDown", global::System.Management.Automation.CompletionResultType.ParameterValue, "DropDown");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Card".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Card'", "Card", global::System.Management.Automation.CompletionResultType.ParameterValue, "Card");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Solution".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Solution'", "Solution", global::System.Management.Automation.CompletionResultType.ParameterValue, "Solution");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Guage".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Guage'", "Guage", global::System.Management.Automation.CompletionResultType.ParameterValue, "Guage");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Form".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Form'", "Form", global::System.Management.Automation.CompletionResultType.ParameterValue, "Form");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ChangeSets".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ChangeSets'", "ChangeSets", global::System.Management.Automation.CompletionResultType.ParameterValue, "ChangeSets");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ChangeAnalysisOnboarding".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ChangeAnalysisOnboarding'", "ChangeAnalysisOnboarding", global::System.Management.Automation.CompletionResultType.ParameterValue, "ChangeAnalysisOnboarding");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ChangesView".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ChangesView'", "ChangesView", global::System.Management.Automation.CompletionResultType.ParameterValue, "ChangesView");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AppInsight".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AppInsight'", "AppInsight", global::System.Management.Automation.CompletionResultType.ParameterValue, "AppInsight");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "DependencyGraph".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'DependencyGraph'", "DependencyGraph", global::System.Management.Automation.CompletionResultType.ParameterValue, "DependencyGraph");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "DownTime".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'DownTime'", "DownTime", global::System.Management.Automation.CompletionResultType.ParameterValue, "DownTime");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "SummaryCard".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'SummaryCard'", "SummaryCard", global::System.Management.Automation.CompletionResultType.ParameterValue, "SummaryCard");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "SearchComponent".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'SearchComponent'", "SearchComponent", global::System.Management.Automation.CompletionResultType.ParameterValue, "SearchComponent");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AppInsightEnablement".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AppInsightEnablement'", "AppInsightEnablement", global::System.Management.Automation.CompletionResultType.ParameterValue, "AppInsightEnablement");
+            }
         }
     }
 }
