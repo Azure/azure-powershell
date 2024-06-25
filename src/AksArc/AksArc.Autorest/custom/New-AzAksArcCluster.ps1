@@ -331,7 +331,6 @@ function New-AzAksArcCluster {
         }
 
         CreateConnectedCluster -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName -Location $Location -AdminGroupObjectID $AdminGroupObjectID -EnableAzureRbac:$EnableAzureRbac
-        return
         $null = $PSBoundParameters.Remove("AdminGroupObjectID")
         
         # Generate public ssh key if one is not provided
