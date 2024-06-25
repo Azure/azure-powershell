@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Upgraded to Microsoft.Web API version 2023-12-01 [#25347]
-* Added support for creating function apps on container [#22736]
+* Added support for creating function apps on container app [#22736]
 
 ## Version 4.0.8
 * Updated logic to populate tab completers and cache in the New-AzFunctionApp cmdlet
