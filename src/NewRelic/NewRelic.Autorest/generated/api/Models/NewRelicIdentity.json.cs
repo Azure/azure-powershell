@@ -76,11 +76,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_monitorName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString>("monitorName"), out var __jsonMonitorName) ? (string)__jsonMonitorName : (string)MonitorName;}
-            {_ruleSetName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString>("ruleSetName"), out var __jsonRuleSetName) ? (string)__jsonRuleSetName : (string)RuleSetName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_monitorName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString>("monitorName"), out var __jsonMonitorName) ? (string)__jsonMonitorName : (string)_monitorName;}
+            {_ruleSetName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString>("ruleSetName"), out var __jsonRuleSetName) ? (string)__jsonRuleSetName : (string)_ruleSetName;}
+            {_configurationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString>("configurationName"), out var __jsonConfigurationName) ? (string)__jsonConfigurationName : (string)_configurationName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 
@@ -107,6 +108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
             AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
             AddIf( null != (((object)this._monitorName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString(this._monitorName.ToString()) : null, "monitorName" ,container.Add );
             AddIf( null != (((object)this._ruleSetName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString(this._ruleSetName.ToString()) : null, "ruleSetName" ,container.Add );
+            AddIf( null != (((object)this._configurationName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString(this._configurationName.ToString()) : null, "configurationName" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);
             return container;
