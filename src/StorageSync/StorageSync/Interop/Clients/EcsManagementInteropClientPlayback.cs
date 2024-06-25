@@ -656,7 +656,7 @@ namespace Commands.StorageSync.Interop.Clients
         public int StableVersionsDeepGC([In, MarshalAs(UnmanagedType.BStr)] string Path, [In, MarshalAs(UnmanagedType.U4)] uint cookie, [In, MarshalAs(UnmanagedType.Struct), Out] ref STABLEVERSION_DEEP_GC_STATS StableVersionDeepGCStats) => 0;
         public int GetMIConfigurationStatus([MarshalAs(UnmanagedType.U4), Out] out uint serverType, [MarshalAs(UnmanagedType.U4), Out] out uint serverAuthType)
         {
-            serverType = (int)ServerType.Azure;
+            serverType = (int)LocalServerType.AzureVirtualMachineServer;
             serverAuthType = (int)RegisteredServerAuthType.Certificate;
             return 0;
         }

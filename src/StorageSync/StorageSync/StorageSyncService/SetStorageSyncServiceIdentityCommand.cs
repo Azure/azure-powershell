@@ -30,6 +30,7 @@ using Azure;
 using System.Management.Automation.Remoting;
 using System.Linq;
 using System.Threading;
+using Microsoft.Azure.Commands.StorageSync.InternalObjects;
 
 namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
 {
@@ -151,17 +152,28 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                 if (ShouldProcess(Target, ActionMessage))
                 {
                     StorageSyncModels.StorageSyncService storageSyncService = StorageSyncClientWrapper.StorageSyncManagementClient.StorageSyncServices.Get(resourceGroupName, resourceName);
-
                     // 1. Check if any server available for migration
                     IEnumerable<StorageSyncModels.RegisteredServer> registeredServers = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.ListByStorageSyncService(resourceGroupName, resourceName);
                     var candidateServersLookup = new Dictionary<string, StorageSyncModels.RegisteredServer>(StringComparer.InvariantCultureIgnoreCase);
+                    var clusterNameServersLookup = new Dictionary<string, StorageSyncModels.RegisteredServer>(StringComparer.InvariantCultureIgnoreCase);
                     foreach (var registeredServer in registeredServers)
                     {
                         // Scenario : Server is running in certificate mode
                         if((registeredServer.ActiveAuthType == StorageSyncModels.ServerAuthType.Certificate && !string.IsNullOrEmpty(registeredServer.ApplicationId) && registeredServer.ApplicationId != Guid.Empty.ToString())
                             || (Guid.TryParse(registeredServer.LatestApplicationId, out Guid latestApplicationId)))
                         {
+                            StorageSyncClientWrapper.VerboseLogger.Invoke($"Server :  {registeredServer.ServerName ?? registeredServer.ServerId} ({registeredServer.ServerRole})");
                             candidateServersLookup.Add(registeredServer.Id, registeredServer);
+
+                            if(registeredServer.ServerRole == ServerRoleType.ClusterNode.ToString())
+                            {
+                                var clusterNameServer = registeredServers.SingleOrDefault(s => s.ServerId == registeredServer.ClusterId);
+                                if(clusterNameServer != null)
+                                {
+                                    throw new PSArgumentException($"Cluster Name Server {clusterNameServer.ServerName} is not found for Cluster Node {registeredServer.ServerName}");
+                                }
+                                clusterNameServersLookup.Add(clusterNameServer.Id, registeredServer);
+                            }
                         }
                     }
 
@@ -224,12 +236,24 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                         IEnumerable<StorageSyncModels.ServerEndpoint> serverEndpoints = StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.ListBySyncGroup(resourceGroupName, resourceName, syncGroup.Name);
                         foreach (var serverEndpoint in serverEndpoints)
                         {
+                            RegisteredServer associatedServer = null;
+
                             // It is expected that multiple migration script might have caused to have role assignment already in the system. We are fault tolerant to existing role assignment.
                             if (candidateServersLookup.ContainsKey(serverEndpoint.ServerResourceId))
                             {
-                                if (!Guid.TryParse(candidateServersLookup[serverEndpoint.ServerResourceId].LatestApplicationId, out Guid applicationGuid))
+                                // Standalone Server scenario
+                                associatedServer = candidateServersLookup[serverEndpoint.ServerResourceId];
+                            }
+                            else if (clusterNameServersLookup.ContainsKey(serverEndpoint.ServerResourceId))
+                            {
+                                // ClusterNode Server scenario
+                                associatedServer = clusterNameServersLookup[serverEndpoint.ServerResourceId];
+                            }
+                            if (associatedServer != null)
+                            {
+                                if (!Guid.TryParse(associatedServer.LatestApplicationId, out Guid applicationGuid))
                                 {
-                                    applicationGuid = Guid.Parse(candidateServersLookup[serverEndpoint.ServerResourceId].ApplicationId);
+                                    applicationGuid = Guid.Parse(associatedServer.ApplicationId);
                                 }
                                 // Identity , RoleDef, Scope
                                 scope = $"{cloudEndpoint.StorageAccountResourceId}/fileServices/default/fileshares/{cloudEndpoint.AzureFileShareName}";
@@ -255,10 +279,13 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                     // 5. Patch all servers which were having latest application id.
                     foreach(var serverKvp in candidateServersLookup)
                     {
-                        StorageSyncModels.RegisteredServer registeredServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Update(resourceGroupName, resourceName, serverKvp.Value.ServerId, identity: true);
-                        if(!registeredServer.Identity.GetValueOrDefault(false))
+                        if (serverKvp.Value.ServerRole != ServerRoleType.ClusterName.ToString())
                         {
-                            throw new PSArgumentException($"Not able to set Identity on to server {serverKvp.Key}. Please reach out to administrator for further troubleshooting");
+                            StorageSyncModels.RegisteredServer registeredServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Update(resourceGroupName, resourceName, serverKvp.Value.ServerId, identity: true);
+                            if (!registeredServer.Identity.GetValueOrDefault(false))
+                            {
+                                throw new PSArgumentException($"Not able to set Identity on to server {serverKvp.Key}. Please reach out to administrator for further troubleshooting");
+                            }
                         }
                     }
 

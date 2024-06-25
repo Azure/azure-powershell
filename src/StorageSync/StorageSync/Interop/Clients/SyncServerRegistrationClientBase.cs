@@ -36,7 +36,7 @@ namespace Commands.StorageSync.Interop.Clients
     /// <seealso cref="Commands.StorageSync.Interop.Interfaces.ISyncServerRegistration" />
     public abstract class SyncServerRegistrationClientBase : ISyncServerRegistration
     {
-        public bool EnableMIChecking { get; protected set; } = false; // enable it in v19 azure file sync agent
+        public bool EnableMIChecking { get; protected set; } = true;
 
         /// <summary>
         /// The m is disposed
@@ -70,6 +70,7 @@ namespace Commands.StorageSync.Interop.Clients
         public abstract bool Validate(Uri managementEndpointUri, Guid subscriptionId, string storageSyncService, string resourceGroupName, string monitoringDataPath);
 
         /// <summary>
+        /// Setup for registration with Certificate.
         /// This function processes the registration and perform following steps
         /// 1. EnsureSyncServerCertificate
         /// 2. GetSyncServerCertificate
@@ -84,10 +85,10 @@ namespace Commands.StorageSync.Interop.Clients
         /// <param name="certificateProviderName">Certificate Provider Name</param>
         /// <param name="certificateHashAlgorithm">Certificate Hash Algorithm</param>
         /// <param name="certificateKeyLength">Certificate Key Length</param>
-        /// <param name="applicationId">Server Identity Id</param>
+        /// <param name="applicationId">Server's Application (Managed Identity) ID</param>
         /// <param name="monitoringDataPath">Monitoring data path</param>
         /// <param name="agentVersion">Agent Version</param>
-        /// <param name="serverMachineName">Server machine name.</param>
+        /// <param name="serverMachineName">Server Machine Name</param>
         /// <returns>Registered Server resource</returns>
         public abstract ServerRegistrationData Setup(
             Uri managementEndpointUri,
@@ -97,13 +98,13 @@ namespace Commands.StorageSync.Interop.Clients
             string certificateProviderName,
             string certificateHashAlgorithm,
             uint certificateKeyLength,
-            Guid applicationId,
+            Guid? applicationId,
             string monitoringDataPath,
             string agentVersion,
             string serverMachineName);
 
         /// <summary>
-        /// Persisting the register server resource from clooud to the local service.
+        /// Persisting the register server resource from cloud to the local service.
         /// </summary>
         /// <param name="registeredServerResource">Registered Server Resource</param>
         /// <param name="subscriptionId">Subscription Id</param>
@@ -112,6 +113,12 @@ namespace Commands.StorageSync.Interop.Clients
         /// <param name="monitoringDataPath">Monitoring data path</param>
         /// <returns>success status</returns>
         public abstract bool Persist(RegisteredServer registeredServerResource, Guid subscriptionId, string storageSyncServiceName, string resourceGroupName, string monitoringDataPath);
+
+        /// <summary>
+        /// This function will return the application id of the server if it is available.
+        /// </summary>
+        /// <returns>Application Id or null</returns>
+        public abstract Guid? GetApplicationIdOrNull();
 
         /// <summary>
         /// Dispose method for cleaning Interop client object.
@@ -131,12 +138,11 @@ namespace Commands.StorageSync.Interop.Clients
         }
 
         /// <summary>
-        /// This function processes the registration and perform following steps
-        /// 1. EnsureSyncServerCertificate
-        /// 2. GetSyncServerCertificate
-        /// 3. GetSyncServerId
-        /// 4. Get ClusterInfo
-        /// 5. Populate RegistrationServerResource
+        /// This function processes the registration and performs the following steps:
+        /// 1. Validates Sync Server Registration Information
+        /// 2. Sets up ServerRegistrationData
+        /// 3. Calls RegisterOnline callback to make ARM call (from caller context)
+        /// 4. Persists registered server resource from cloud to local FileSyncSvc service
         /// </summary>
         /// <param name="managementEndpointUri">Management endpoint Uri</param>
         /// <param name="subscriptionId">Subscription Id</param>
@@ -147,12 +153,9 @@ namespace Commands.StorageSync.Interop.Clients
         /// <param name="certificateKeyLength">Certificate Key Length</param>
         /// <param name="monitoringDataPath">Monitoring data path</param>
         /// <param name="agentVersion">Agent Version</param>
-        /// <param name="serverMachineName">Server machine name.</param>
+        /// <param name="serverMachineName">Server Machine Name</param>
         /// <param name="registerOnlineCallback">Register Online Callback</param>
         /// <returns>Registered Server Resource</returns>
-        /// <exception cref="Commands.StorageSync.Interop.Exceptions.ServerRegistrationException">
-        /// </exception>
-        /// <exception cref="ServerRegistrationException"></exception>
         public RegisteredServer Register(
             Uri managementEndpointUri,
             Guid subscriptionId,
@@ -166,12 +169,16 @@ namespace Commands.StorageSync.Interop.Clients
             string serverMachineName,
             Func<string,string,ServerRegistrationData, RegisteredServer> registerOnlineCallback)
         {
-            // Get ApplicationId
-            Guid applicationId = GetServerApplicationIdOrEmpty();
+            // Discover the server type , Get the application id, 
+            Guid? applicationId = GetApplicationIdOrNull();
 
+            // Honor identity if present
+            bool isCertificateRegistration = applicationId.GetValueOrDefault(Guid.Empty) == Guid.Empty;
+
+            // Set the registry key for ServerAuthType
             RegistryUtility.WriteValue(StorageSyncConstants.ServerAuthRegistryKeyName,
                        StorageSyncConstants.AfsAgentRegistryKey,
-                      ((applicationId == Guid.Empty) ? RegisteredServerAuthType.Certificate : RegisteredServerAuthType.ManagedIdentity).ToString(),
+                      (isCertificateRegistration ? RegisteredServerAuthType.Certificate : RegisteredServerAuthType.ManagedIdentity).ToString(),
                        RegistryValueKind.String,
                        true);
 
@@ -192,9 +199,11 @@ namespace Commands.StorageSync.Interop.Clients
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.RegisterOnlineSyncRegistrationFailed);
             }
 
-            // Setting ServerCertificate from request resource to response resource so that it can be used by Monitoring pipeline
-            resultantRegisteredServerResource.ServerCertificate = Convert.ToBase64String(serverRegistrationData.ServerCertificate);
-
+            if (isCertificateRegistration)
+            {
+                // Setting ServerCertificate from request resource to response resource so that it can be used by Monitoring pipeline
+                resultantRegisteredServerResource.ServerCertificate = Convert.ToBase64String(serverRegistrationData.ServerCertificate);
+            }
             if (!Persist(resultantRegisteredServerResource, subscriptionId, storageSyncServiceName, resourceGroupName, monitoringDataPath))
             {
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.PersistSyncServerRegistrationFailed);
@@ -213,50 +222,5 @@ namespace Commands.StorageSync.Interop.Clients
         {
             EcsManagementInteropClient.ResetSyncServerConfiguration(cleanClusterRegistration);
         }
-
-        private Guid GetServerApplicationIdOrEmpty()
-        {
-            if (!this.EnableMIChecking)
-            {
-                return Guid.Empty;
-            }
-
-            ManagedIdentityConfigurationInfo managedIdentityConfigurationInfo;
-            try
-            {
-                managedIdentityConfigurationInfo = GetManagedIdentityConfigurationStatus();
-            }
-            catch (Exception)
-            {
-                throw new ServerRegistrationException(ServerRegistrationErrorCode.GetServerTypeFailed, ErrorCategory.MetadataError);
-            }
-
-            using (var serverMITokenProvider = new ServerManagedIdentityTokenProvider(managedIdentityConfigurationInfo.ServerType))
-            {
-                var token = Task.Run(() => serverMITokenProvider.GetManagedIdentityAccessToken(resource: "https://afs.azure.net/")).GetAwaiter().GetResult();
-
-                if (string.IsNullOrEmpty(token))
-                {
-                    throw new ArgumentException("serverInfo");
-                }
-
-                return ServerManagedIdentityTokenHelper.GetTokenOid(token);
-            }
-        }
-        private ManagedIdentityConfigurationInfo GetManagedIdentityConfigurationStatus()
-        {
-            ManagedIdentityConfigurationInfo serverInfo;
-            int hresult = this.EcsManagementInteropClient.GetMIConfigurationStatus(out uint serverTypeUint, out uint serverAuthTypeUint);
-            if (HResult.Succeeded(hresult))
-            {
-                serverInfo = new ManagedIdentityConfigurationInfo((ServerType)serverTypeUint, (RegisteredServerAuthType)serverAuthTypeUint);
-            }
-            else
-            {
-                throw new System.Runtime.InteropServices.COMException("GetManagedIdentityConfigurationStatus", hresult);
-            }
-            return serverInfo;
-        }
-
     }
 }

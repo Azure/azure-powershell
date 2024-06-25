@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity;
 
-namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
+namespace Microsoft.Azure.Commands.StorageSync.Interop.Interfaces
 {
     /// <summary>
     /// Provider class to generate the managed identity token from Azure IMDS/HIMDS endpoint

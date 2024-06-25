@@ -711,15 +711,14 @@ namespace Commands.StorageSync.Interop.Interfaces
             uint cookie,
             [In, Out, MarshalAs(UnmanagedType.Struct)]
             ref STABLEVERSION_DEEP_GC_STATS StableVersionDeepGCStats);
-
-        int GetMIConfigurationStatus(
-            [Out, MarshalAs(UnmanagedType.U4)]
-            out uint serverType,
-            [Out, MarshalAs(UnmanagedType.U4)]
-            out uint serverAuthType);
-
         IConnectionPoint GetScrubbingEngineConnectionPoint();
 
         IConnectionPoint GetStableVersionDeepGcConnectionPoint();
+
+        int GetMIConfigurationStatus(
+           [Out, MarshalAs(UnmanagedType.U4)]
+            out uint serverType,
+           [Out, MarshalAs(UnmanagedType.U4)]
+            out uint serverAuthType);
     }
 }

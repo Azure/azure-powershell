@@ -18,6 +18,8 @@ using Commands.StorageSync.Interop.Interfaces;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
 using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Interfaces;
+using Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity;
+using Microsoft.Azure.Commands.StorageSync.Test.Common;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System;
@@ -92,10 +94,17 @@ namespace StorageSync.Test.Common
         public IEcsManagement CreateEcsManagement() => IsPlaybackMode ? new MockEcsManagementInteropClient() as IEcsManagement : new EcsManagementInteropClient();
 
         /// <summary>
+        /// Create Server Managed Identity Provider
+        /// </summary>
+        /// <returns>ServerManagedIdentityProvider interface</returns>
+        public IServerManagedIdentityProvider CreateServerManagedIdentityProvider() => IsPlaybackMode ? new MockServerManagedIdentityProvider() : new ServerManagedIdentityProvider();
+
+        /// <summary>
         /// Creates the Sync Server Registration management.
         /// </summary>
         /// <returns>IEcsManagement.</returns>
-        public ISyncServerRegistration CreateSyncServerManagement() => IsPlaybackMode ? new MockSyncServerRegistrationClient(CreateEcsManagement()) as ISyncServerRegistration : new SyncServerRegistrationClient(CreateEcsManagement());
+        public ISyncServerRegistration CreateSyncServerManagement() => IsPlaybackMode ? new MockSyncServerRegistrationClient(CreateEcsManagement()) as ISyncServerRegistration :
+            new SyncServerRegistrationClient(CreateEcsManagement(),CreateServerManagedIdentityProvider());
 
         /// <summary>
         /// Gets the unique identifier.

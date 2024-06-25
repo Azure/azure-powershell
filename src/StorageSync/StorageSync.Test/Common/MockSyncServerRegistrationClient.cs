@@ -114,7 +114,7 @@ namespace Commands.StorageSync.Interop.Clients
             string certificateProviderName,
             string certificateHashAlgorithm,
             uint certificateKeyLength,
-            Guid applicationId,
+            Guid? applicationId,
             string monitoringDataPath,
             string agentVersion,
             string serverMachineName)
@@ -313,25 +313,29 @@ namespace Commands.StorageSync.Interop.Clients
             {
                 monitoringConfiguration = JsonConvert.DeserializeObject<HybridMonitoringConfigurationResource>(registeredServerResource.MonitoringConfiguration);
             }
-            var registrationInfo = new ServerRegistrationInformation(
-                serviceEndpoint: registeredServerResource.MonitoringEndpointUri ?? registeredServerResource.ManagementEndpointUri,
-                subscriptionId: subscriptionId,
-                resourceGroupName: resourceGroupName,
-                storageSyncServiceName: storageSyncServiceName,
-                storageSyncServiceUid: storageSyncServiceUid,
-                clusterName: registeredServerResource.ClusterName ?? string.Empty,
-                clusterId: clusterId,
-                monitoringConfiguration: monitoringConfiguration,
-                serverCertificate: registeredServerResource.ServerCertificate.ToBase64Bytes(),
-                resourceLocation: registeredServerResource.ResourceLocation
-                );
+
+            var registrationInfo = new ServerRegistrationInformation() {
+                ServiceEndpoint = registeredServerResource.MonitoringEndpointUri ?? registeredServerResource.ManagementEndpointUri,
+                SubscriptionId = subscriptionId,
+                ResourceGroupName = resourceGroupName,
+                StorageSyncServiceName = storageSyncServiceName,
+                StorageSyncServiceUid = storageSyncServiceUid,
+                ClusterName = registeredServerResource.ClusterName ?? string.Empty,
+                ClusterId = clusterId,
+                MonitoringConfiguration = monitoringConfiguration,
+                ServerCertificate = registeredServerResource.ServerCertificate.ToBase64Bytes(),
+                ResourceLocation = registeredServerResource.ResourceLocation
+            };
+
+            if (Guid.TryParse(registeredServerResource.ApplicationId,out Guid applicationGuid))
+            {
+                registrationInfo.ApplicationId = applicationGuid;
+            }
 
             // We try to register monitoring agent but do not gurantee it to succeed.
-            hr = EcsManagementInteropClient.RegisterMonitoringAgent(
-               JsonConvert.SerializeObject(registrationInfo),
-                monitoringDataPath);
-            success = hr == 0;
+            hr = EcsManagementInteropClient.RegisterMonitoringAgent(JsonConvert.SerializeObject(registrationInfo), monitoringDataPath);
 
+            success = hr == 0;
             if (!success)
             {
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.RegisterMonitoringAgentFailed, hr, ErrorCategory.InvalidResult);
@@ -358,6 +362,11 @@ namespace Commands.StorageSync.Interop.Clients
             {
             }
             return false;
+        }
+
+        public override Guid? GetApplicationIdOrNull()
+        {
+            return null;
         }
     }
 }

@@ -124,6 +124,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            StorageSyncClientWrapper.VerboseLogger.Invoke($"RegisterServerCommand.ExecuteCmdlet() called");
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
@@ -227,6 +228,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 ClusterId = serverRegistrationData.ClusterId.ToString(),
                 ClusterName = serverRegistrationData.ClusterName,
                 AgentVersion = serverRegistrationData.AgentVersion,
+                ApplicationId = serverRegistrationData.ApplicationId.HasValue ? serverRegistrationData.ApplicationId.Value.ToString() : null,
                 ServerCertificate = Convert.ToBase64String(serverRegistrationData.ServerCertificate),
                 ServerOSVersion = serverRegistrationData.ServerOSVersion,
                 ServerRole = serverRegistrationData.ServerRole.ToString(),

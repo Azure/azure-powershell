@@ -59,6 +59,12 @@ namespace Commands.StorageSync.Interop.Clients
         }
 
         /// <summary>
+        /// This function will return the application id of the server if it is available.
+        /// </summary>
+        /// <returns>Application Id or null</returns>
+        public abstract Guid? GetApplicationIdOrNull();
+
+        /// <summary>
         /// Validate sync server registration.
         /// </summary>
         /// <param name="managementEndpointUri">Management Endpoint Uri</param>
@@ -97,7 +103,7 @@ namespace Commands.StorageSync.Interop.Clients
             string certificateProviderName,
             string certificateHashAlgorithm,
             uint certificateKeyLength,
-            Guid applicationId,
+            Guid? applicationId,
             string monitoringDataPath,
             string agentVersion,
             string serverMachineName);
@@ -167,14 +173,15 @@ namespace Commands.StorageSync.Interop.Clients
             Func<string, string, ServerRegistrationData, RegisteredServer> registerOnlineCallback)
         {
             // Get ApplicationId
-            Guid applicationId = GetServerApplicationIdOrEmpty();
+            Guid? applicationId = GetApplicationIdOrNull();
 
-            // Only supported on Windows. Test pipeline automation has to support MacOS and Linux.
-            //RegistryUtility.WriteValue(StorageSyncConstants.ServerAuthRegistryKeyName,
-            //           StorageSyncConstants.AfsAgentRegistryKey,
-            //          ((applicationId == Guid.Empty) ? RegisteredServerAuthType.Certificate : RegisteredServerAuthType.ManagedIdentity).ToString(),
-            //           RegistryValueKind.String,
-            //           true);
+#pragma warning disable CA1416 // Validate platform compatibility
+            RegistryUtility.WriteValue(StorageSyncConstants.ServerAuthRegistryKeyName,
+                       StorageSyncConstants.AfsAgentRegistryKey,
+                      ((applicationId == Guid.Empty) ? RegisteredServerAuthType.Certificate : RegisteredServerAuthType.ManagedIdentity).ToString(),
+                       RegistryValueKind.String,
+                       true);
+#pragma warning restore CA1416 // Validate platform compatibility
 
             if (!Validate(managementEndpointUri, subscriptionId, storageSyncServiceName, resourceGroupName, monitoringDataPath))
             {
@@ -213,50 +220,6 @@ namespace Commands.StorageSync.Interop.Clients
         public void ResetSyncServerConfiguration(bool cleanClusterRegistration)
         {
             EcsManagementInteropClient.ResetSyncServerConfiguration(cleanClusterRegistration);
-        }
-
-        private Guid GetServerApplicationIdOrEmpty()
-        {
-            if (!this.EnableMIChecking)
-            {
-                return Guid.Empty;
-            }
-
-            ManagedIdentityConfigurationInfo managedIdentityConfigurationInfo;
-            try
-            {
-                managedIdentityConfigurationInfo = GetManagedIdentityConfigurationStatus();
-            }
-            catch (Exception)
-            {
-                throw new ServerRegistrationException(ServerRegistrationErrorCode.GetServerTypeFailed, ErrorCategory.MetadataError);
-            }
-
-            using (var serverMITokenProvider = new ServerManagedIdentityTokenProvider(managedIdentityConfigurationInfo.ServerType))
-            {
-                var token = Task.Run(() => serverMITokenProvider.GetManagedIdentityAccessToken(resource: "https://afs.azure.net/")).GetAwaiter().GetResult();
-
-                if (string.IsNullOrEmpty(token))
-                {
-                    throw new ArgumentException("serverInfo");
-                }
-
-                return ServerManagedIdentityTokenHelper.GetTokenOid(token);
-            }
-        }
-        private ManagedIdentityConfigurationInfo GetManagedIdentityConfigurationStatus()
-        {
-            ManagedIdentityConfigurationInfo serverInfo;
-            int hresult = this.EcsManagementInteropClient.GetMIConfigurationStatus(out uint serverTypeUint, out uint serverAuthTypeUint);
-            if (HResult.Succeeded(hresult))
-            {
-                serverInfo = new ManagedIdentityConfigurationInfo((ServerType)serverTypeUint, (RegisteredServerAuthType)serverAuthTypeUint);
-            }
-            else
-            {
-                throw new System.Runtime.InteropServices.COMException("GetManagedIdentityConfigurationStatus", hresult);
-            }
-            return serverInfo;
         }
 
     }
