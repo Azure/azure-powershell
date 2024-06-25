@@ -89,9 +89,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Isolated'", "Isolated", global::System.Management.Automation.CompletionResultType.ParameterValue, "Isolated");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "IsolatedV2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'IsolatedV2'", "IsolatedV2", global::System.Management.Automation.CompletionResultType.ParameterValue, "IsolatedV2");
+            }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "PremiumV2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'PremiumV2'", "PremiumV2", global::System.Management.Automation.CompletionResultType.ParameterValue, "PremiumV2");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "PremiumV3".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'PremiumV3'", "PremiumV3", global::System.Management.Automation.CompletionResultType.ParameterValue, "PremiumV3");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "PremiumContainer".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'PremiumContainer'", "PremiumContainer", global::System.Management.Automation.CompletionResultType.ParameterValue, "PremiumContainer");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ElasticPremium".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
@@ -100,6 +112,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ElasticIsolated".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'ElasticIsolated'", "ElasticIsolated", global::System.Management.Automation.CompletionResultType.ParameterValue, "ElasticIsolated");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "FlexConsumption".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'FlexConsumption'", "FlexConsumption", global::System.Management.Automation.CompletionResultType.ParameterValue, "FlexConsumption");
             }
         }
     }
