@@ -146,8 +146,54 @@ AvailabilityZone IsQuotaAvailable Region         Score                     Sku
                  True             centralus      RestrictedSkuNotAvailable Standard_D2_v2
                  True             centralus      RestrictedSkuNotAvailable Standard_D4_v3
 ```
-
 Returns regionally scoped spot placement scores for the input.
+
+### Example 4: Zonally scoped Spot Placement scores using SpotPlacementScoresInput parameter as argument
+```powershell
+$resourceSku1 = @{sku = "Standard_D2_v3"}
+$resourceSku2 = @{sku = "Standard_D2_v2"}
+$resourceSku3 = @{sku = "Standard_D4_v3"}
+$desiredSizes = $resourceSku1,$resourceSku2,$resourceSku3
+$desiredLocations = 'japaneast','southcentralus','centralus'
+$desiredCount = 1
+$spotPlacementScoresInput = @{desiredLocation = $desiredLocations; desiredSize = $desiredSizes; desiredCount = $desiredCount; availabilityZone = $true}
+$response = Invoke-AzSpotPlacementScore -Location eastus -SpotPlacementScoresInput $spotPlacementScoresInput
+$response.PlacementScore
+```
+
+```output
+AvailabilityZone IsQuotaAvailable Region         Score Sku
+---------------- ---------------- ------         ----- ---
+1                True             japaneast      High  Standard_D2_v3
+2                True             japaneast      High  Standard_D2_v3
+3                True             japaneast      High  Standard_D2_v3
+1                True             japaneast      High  Standard_D2_v2
+2                True             japaneast      High  Standard_D2_v2
+3                True             japaneast      High  Standard_D2_v2
+1                True             japaneast      High  Standard_D4_v3
+2                True             japaneast      High  Standard_D4_v3
+3                True             japaneast      High  Standard_D4_v3
+1                True             southcentralus High  Standard_D2_v3
+2                True             southcentralus High  Standard_D2_v3
+3                True             southcentralus High  Standard_D2_v3
+1                True             southcentralus High  Standard_D2_v2
+2                True             southcentralus High  Standard_D2_v2
+3                True             southcentralus High  Standard_D2_v2
+1                True             southcentralus High  Standard_D4_v3
+2                True             southcentralus High  Standard_D4_v3
+3                True             southcentralus High  Standard_D4_v3
+1                True             centralus      High  Standard_D2_v3
+2                True             centralus      High  Standard_D2_v3
+3                True             centralus      High  Standard_D2_v3
+1                True             centralus      High  Standard_D2_v2
+2                True             centralus      High  Standard_D2_v2
+3                True             centralus      High  Standard_D2_v2
+1                True             centralus      High  Standard_D4_v3
+2                True             centralus      High  Standard_D4_v3
+3                True             centralus      High  Standard_D4_v3
+```
+
+Returns zonally scoped spot placement scores for the input.
 
 ## PARAMETERS
 
