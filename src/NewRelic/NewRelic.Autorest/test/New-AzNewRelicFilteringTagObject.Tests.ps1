@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Get-AzNewRelicMonitorHost'))
+if(($null -eq $TestName) -or ($TestName -contains 'New-AzNewRelicFilteringTagObject'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzNewRelicMonitorHost.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzNewRelicFilteringTagObject.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,12 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzNewRelicMonitorHost'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzNewRelicMonitorHost' {
-    It 'ListExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'List' -skip {
+Describe 'New-AzNewRelicFilteringTagObject' { #Object
+    It '__AllParameterSets' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

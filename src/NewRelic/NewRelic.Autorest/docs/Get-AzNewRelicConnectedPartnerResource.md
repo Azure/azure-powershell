@@ -1,34 +1,39 @@
 ---
 external help file:
 Module Name: Az.NewRelic
-online version: https://learn.microsoft.com/powershell/module/az.newrelic/get-aznewrelicmonitorhost
+online version: https://learn.microsoft.com/powershell/module/az.newrelic/get-aznewrelicconnectedpartnerresource
 schema: 2.0.0
 ---
 
-# Get-AzNewRelicMonitorHost
+# Get-AzNewRelicConnectedPartnerResource
 
 ## SYNOPSIS
-List the compute vm resources currently being monitored by the NewRelic resource.
+List of all active deployments that are associated with the marketplace subscription linked to the given monitor.
 
 ## SYNTAX
 
 ```
-Get-AzNewRelicMonitorHost -MonitorName <String> -ResourceGroupName <String> -UserEmail <String>
- [-SubscriptionId <String[]>] [-VMId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzNewRelicConnectedPartnerResource -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-List the compute vm resources currently being monitored by the NewRelic resource.
+List of all active deployments that are associated with the marketplace subscription linked to the given monitor.
 
 ## EXAMPLES
 
-### Example 1: Get specific virtual machines
+### Example 1: List of all active deployments linked to the given monitor
 ```powershell
-Get-AzNewRelicMonitorHost -MonitorName test-03 -ResourceGroupName ps-test -VMId saurg-vm-01 -UserEmail v-jiaji@outlook.com
+Get-AzNewRelicConnectedPartnerResource -MonitorName test-01 -ResourceGroupName group-test
 ```
 
-Get specific compute virtual machine resources currently being monitored by specific NewRelic resource.
+```output
+AccountId AccountName     AzureResourceId                                                                                                                 Location
+--------- -----------     ---------------                                                                                                                 --------
+4404219   Account 4404219 /SUBSCRIPTIONS/11111111-2222-3333-4444-123456789101/RESOURCEGROUPS/GROUP-TEST/PROVIDERS/NEWRELIC.OBSERVABILITY/MONITORS/TEST-01 eastus
+```
+
+This command list of all active deployments that are associated with the marketplace subscription linked to the given monitor.
 
 ## PARAMETERS
 
@@ -94,36 +99,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UserEmail
-User Email
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VMId
-VM resource IDs
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -162,11 +137,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.IVMInfo
+### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IConnectedPartnerResourcesListFormat
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 
