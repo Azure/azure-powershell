@@ -48,6 +48,11 @@ function CreateConnectedCluster {
         $AdminGroupObjectIDArr = '"' + $AdminGroupObjectIDArr + '"'
     }
 
+    $EnableAzureRbacStr = "false"
+    if ($EnableAzureRbac) {
+        $EnableAzureRbacStr = "true"
+    } 
+
     $APIVersion = "2024-01-01"
     $json = 
 @"
@@ -64,13 +69,13 @@ function CreateConnectedCluster {
             "agentAutoUpgrade": "Enabled"
         },
         "aadProfile": {
-            "enableAzureRBAC": $EnableAzureRbac, 
+            "enableAzureRBAC": $EnableAzureRbacStr, 
             "adminGroupObjectIDs": [$AdminGroupObjectIDArr]
         }
     }
 }
 "@  
-    $null = Invoke-AzRestMethod -Path "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Kubernetes/connectedClusters/$ClusterName/?api-version=$APIVersion" -Method PUT -payload $json
+    Invoke-AzRestMethod -Path "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Kubernetes/connectedClusters/$ClusterName/?api-version=$APIVersion" -Method PUT -payload $json
 }
 
 function UpdateConnectedCluster {
