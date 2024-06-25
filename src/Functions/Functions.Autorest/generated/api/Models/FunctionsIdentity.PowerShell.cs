@@ -164,6 +164,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).AppSettingKey = (string) content.GetValueForProperty("AppSettingKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).AppSettingKey, global::System.Convert.ToString);
             }
+            if (content.Contains("ConnectionStringKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ConnectionStringKey = (string) content.GetValueForProperty("ConnectionStringKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ConnectionStringKey, global::System.Convert.ToString);
+            }
             if (content.Contains("SnapshotId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).SnapshotId = (string) content.GetValueForProperty("SnapshotId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).SnapshotId, global::System.Convert.ToString);
@@ -232,17 +236,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).PremierAddOnName = (string) content.GetValueForProperty("PremierAddOnName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).PremierAddOnName, global::System.Convert.ToString);
             }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+            }
             if (content.Contains("PublicCertificateName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).PublicCertificateName = (string) content.GetValueForProperty("PublicCertificateName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).PublicCertificateName, global::System.Convert.ToString);
             }
+            if (content.Contains("ContainerName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ContainerName = (string) content.GetValueForProperty("ContainerName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ContainerName, global::System.Convert.ToString);
+            }
             if (content.Contains("SiteExtensionId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).SiteExtensionId = (string) content.GetValueForProperty("SiteExtensionId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).SiteExtensionId, global::System.Convert.ToString);
-            }
-            if (content.Contains("PrivateEndpointConnectionName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
             }
             if (content.Contains("VnetName"))
             {
@@ -252,6 +260,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).GatewayName = (string) content.GetValueForProperty("GatewayName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).GatewayName, global::System.Convert.ToString);
             }
+            if (content.Contains("WorkflowName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).WorkflowName = (string) content.GetValueForProperty("WorkflowName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).WorkflowName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RunName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).RunName = (string) content.GetValueForProperty("RunName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).RunName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ActionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ActionName = (string) content.GetValueForProperty("ActionName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ActionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RepetitionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).RepetitionName = (string) content.GetValueForProperty("RepetitionName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).RepetitionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RequestHistoryName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).RequestHistoryName = (string) content.GetValueForProperty("RequestHistoryName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).RequestHistoryName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TriggerName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).TriggerName = (string) content.GetValueForProperty("TriggerName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).TriggerName, global::System.Convert.ToString);
+            }
+            if (content.Contains("HistoryName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).HistoryName = (string) content.GetValueForProperty("HistoryName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).HistoryName, global::System.Convert.ToString);
+            }
+            if (content.Contains("VersionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).VersionId = (string) content.GetValueForProperty("VersionId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).VersionId, global::System.Convert.ToString);
+            }
             if (content.Contains("Authprovider"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).Authprovider = (string) content.GetValueForProperty("Authprovider",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).Authprovider, global::System.Convert.ToString);
@@ -260,9 +300,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).Userid = (string) content.GetValueForProperty("Userid",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).Userid, global::System.Convert.ToString);
             }
-            if (content.Contains("PrId"))
+            if (content.Contains("EnvironmentName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).PrId = (string) content.GetValueForProperty("PrId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).PrId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).EnvironmentName = (string) content.GetValueForProperty("EnvironmentName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).EnvironmentName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DatabaseConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).DatabaseConnectionName = (string) content.GetValueForProperty("DatabaseConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).DatabaseConnectionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("FunctionAppName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).FunctionAppName = (string) content.GetValueForProperty("FunctionAppName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).FunctionAppName, global::System.Convert.ToString);
+            }
+            if (content.Contains("BasicAuthName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).BasicAuthName = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BasicAuthName?) content.GetValueForProperty("BasicAuthName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).BasicAuthName, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BasicAuthName.CreateFrom);
+            }
+            if (content.Contains("LinkedBackendName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).LinkedBackendName = (string) content.GetValueForProperty("LinkedBackendName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).LinkedBackendName, global::System.Convert.ToString);
             }
             if (content.Contains("DiagnosticsName"))
             {
@@ -295,10 +351,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
             if (content.Contains("BlobServicesName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).BlobServicesName = (string) content.GetValueForProperty("BlobServicesName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).BlobServicesName, global::System.Convert.ToString);
-            }
-            if (content.Contains("ContainerName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ContainerName = (string) content.GetValueForProperty("ContainerName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ContainerName, global::System.Convert.ToString);
             }
             if (content.Contains("ImmutabilityPolicyName"))
             {
@@ -405,6 +457,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).AppSettingKey = (string) content.GetValueForProperty("AppSettingKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).AppSettingKey, global::System.Convert.ToString);
             }
+            if (content.Contains("ConnectionStringKey"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ConnectionStringKey = (string) content.GetValueForProperty("ConnectionStringKey",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ConnectionStringKey, global::System.Convert.ToString);
+            }
             if (content.Contains("SnapshotId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).SnapshotId = (string) content.GetValueForProperty("SnapshotId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).SnapshotId, global::System.Convert.ToString);
@@ -473,17 +529,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).PremierAddOnName = (string) content.GetValueForProperty("PremierAddOnName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).PremierAddOnName, global::System.Convert.ToString);
             }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+            }
             if (content.Contains("PublicCertificateName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).PublicCertificateName = (string) content.GetValueForProperty("PublicCertificateName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).PublicCertificateName, global::System.Convert.ToString);
             }
+            if (content.Contains("ContainerName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ContainerName = (string) content.GetValueForProperty("ContainerName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ContainerName, global::System.Convert.ToString);
+            }
             if (content.Contains("SiteExtensionId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).SiteExtensionId = (string) content.GetValueForProperty("SiteExtensionId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).SiteExtensionId, global::System.Convert.ToString);
-            }
-            if (content.Contains("PrivateEndpointConnectionName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
             }
             if (content.Contains("VnetName"))
             {
@@ -493,6 +553,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).GatewayName = (string) content.GetValueForProperty("GatewayName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).GatewayName, global::System.Convert.ToString);
             }
+            if (content.Contains("WorkflowName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).WorkflowName = (string) content.GetValueForProperty("WorkflowName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).WorkflowName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RunName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).RunName = (string) content.GetValueForProperty("RunName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).RunName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ActionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ActionName = (string) content.GetValueForProperty("ActionName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ActionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RepetitionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).RepetitionName = (string) content.GetValueForProperty("RepetitionName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).RepetitionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RequestHistoryName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).RequestHistoryName = (string) content.GetValueForProperty("RequestHistoryName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).RequestHistoryName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TriggerName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).TriggerName = (string) content.GetValueForProperty("TriggerName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).TriggerName, global::System.Convert.ToString);
+            }
+            if (content.Contains("HistoryName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).HistoryName = (string) content.GetValueForProperty("HistoryName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).HistoryName, global::System.Convert.ToString);
+            }
+            if (content.Contains("VersionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).VersionId = (string) content.GetValueForProperty("VersionId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).VersionId, global::System.Convert.ToString);
+            }
             if (content.Contains("Authprovider"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).Authprovider = (string) content.GetValueForProperty("Authprovider",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).Authprovider, global::System.Convert.ToString);
@@ -501,9 +593,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).Userid = (string) content.GetValueForProperty("Userid",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).Userid, global::System.Convert.ToString);
             }
-            if (content.Contains("PrId"))
+            if (content.Contains("EnvironmentName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).PrId = (string) content.GetValueForProperty("PrId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).PrId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).EnvironmentName = (string) content.GetValueForProperty("EnvironmentName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).EnvironmentName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DatabaseConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).DatabaseConnectionName = (string) content.GetValueForProperty("DatabaseConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).DatabaseConnectionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("FunctionAppName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).FunctionAppName = (string) content.GetValueForProperty("FunctionAppName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).FunctionAppName, global::System.Convert.ToString);
+            }
+            if (content.Contains("BasicAuthName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).BasicAuthName = (Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BasicAuthName?) content.GetValueForProperty("BasicAuthName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).BasicAuthName, Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BasicAuthName.CreateFrom);
+            }
+            if (content.Contains("LinkedBackendName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).LinkedBackendName = (string) content.GetValueForProperty("LinkedBackendName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).LinkedBackendName, global::System.Convert.ToString);
             }
             if (content.Contains("DiagnosticsName"))
             {
@@ -536,10 +644,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
             if (content.Contains("BlobServicesName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).BlobServicesName = (string) content.GetValueForProperty("BlobServicesName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).BlobServicesName, global::System.Convert.ToString);
-            }
-            if (content.Contains("ContainerName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ContainerName = (string) content.GetValueForProperty("ContainerName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ContainerName, global::System.Convert.ToString);
             }
             if (content.Contains("ImmutabilityPolicyName"))
             {
