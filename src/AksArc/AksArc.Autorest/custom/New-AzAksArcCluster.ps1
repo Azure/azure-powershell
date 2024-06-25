@@ -132,6 +132,13 @@ function New-AzAksArcCluster {
         # Indicates whether Azure Hybrid Benefit is opted in.
         # Default value is false
         ${EnableAzureHybridBenefit},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # Indicates whether azure rbac is enabled.
+        # Default value is false
+        ${EnableAzureRbac},
     
         [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
@@ -323,7 +330,7 @@ function New-AzAksArcCluster {
             throw "Location parameter must be equal to custom location's location $cllocation"
         }
 
-        CreateConnectedCluster -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName -Location $Location -AdminGroupObjectID $AdminGroupObjectID
+        CreateConnectedCluster -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName -Location $Location -AdminGroupObjectID $AdminGroupObjectID -EnableAzureRbac:$EnableAzureRbac
         $null = $PSBoundParameters.Remove("AdminGroupObjectID")
         
         # Generate public ssh key if one is not provided

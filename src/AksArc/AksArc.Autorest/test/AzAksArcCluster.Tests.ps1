@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzAksArcCluster'))
 Describe 'AzAksArc' {
     It 'CreateCluster' -skip {
         { 
-            $config = New-AzAksArcCluster -ClusterName $env.clusterName1 -ResourceGroupName $env.ResourceGroupName1 -CustomLocationName $env.customLocationId1 -VnetId $env.lnetId1 -ControlPlaneIP $env.controlPlaneIP1
+            $config = New-AzAksArcCluster -ClusterName $env.clusterName1 -ResourceGroupName $env.ResourceGroupName1 -CustomLocationName $env.customLocationId1 -VnetId $env.lnetId1 -ControlPlaneIP $env.controlPlaneIP1 -KubernetesVersion 1.28.3
             $config.ProvisioningState | Should -Be 'Succeeded'
         } | Should -Not -Throw
     }
@@ -25,6 +25,13 @@ Describe 'AzAksArc' {
     It 'GetCluster' {
         { 
             $config = Get-AzAksArcCluster -ClusterName $env.clusterName1 -ResourceGroupName $env.ResourceGroupName1
+            $config.ProvisioningState | Should -Be 'Succeeded'
+        } | Should -Not -Throw
+    }
+
+    It 'UpgradeCluster' -skip {
+        { 
+            $config = Invoke-AzAksArcClusterUpgrade -ClusterName $env.clusterName1 -ResourceGroupName $env.ResourceGroupName1
             $config.ProvisioningState | Should -Be 'Succeeded'
         } | Should -Not -Throw
     }
@@ -92,12 +99,6 @@ Describe 'AzAksArc' {
             $config = Update-AzAksArcNodepool -ClusterName $env.clusterName1 -ResourceGroupName $env.ResourceGroupName1 -Name $env.NodepoolName1 -Count 3
             $config.ProvisioningState | Should -Be 'Succeeded'
             $config.Count | Should -Be 3
-        } | Should -Not -Throw
-    }
-
-    It 'RemoveNodepool' -skip {
-        { 
-            $config = Remove-AzAksArcNodepool -ClusterName $env.clusterName1 -ResourceGroupName $env.ResourceGroupName1 -Name $env.NodepoolName1 
         } | Should -Not -Throw
     }
 

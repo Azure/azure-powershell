@@ -187,7 +187,7 @@ process {
     }
 
     if ($ShouldUpdateConnectedCluster) {
-        CreateConnectedCluster -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName -Location "eastus" -AdminGroupObjectID $AdminGroupObjectID
+        UpdateConnectedCluster -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName -AdminGroupObjectID $AdminGroupObjectID
     }
 
     # Update Default Nodepool

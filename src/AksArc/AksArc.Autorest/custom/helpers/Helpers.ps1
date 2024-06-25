@@ -27,7 +27,8 @@ function CreateConnectedCluster {
         [System.String] $ResourceGroupName,
         [System.String] $ClusterName, 
         [System.String] $Location,
-        [System.String[]] ${AdminGroupObjectID}
+        [System.String[]] ${AdminGroupObjectID}, 
+        [System.Management.Automation.SwitchParameter] $EnableAzureRbac
     )
 
     # Validate GUIDS
@@ -63,13 +64,32 @@ function CreateConnectedCluster {
             "agentAutoUpgrade": "Enabled"
         },
         "aadProfile": {
-            "enableAzureRBAC": false, 
+            "enableAzureRBAC": $EnableAzureRbac, 
             "adminGroupObjectIDs": [$AdminGroupObjectIDArr]
         }
     }
 }
 "@  
     $null = Invoke-AzRestMethod -Path "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Kubernetes/connectedClusters/$ClusterName/?api-version=$APIVersion" -Method PUT -payload $json
+}
+
+function UpdateConnectedCluster {
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.DoNotExportAttribute()]
+    param(
+        [System.String] $SubscriptionId,
+        [System.String] $ResourceGroupName,
+        [System.String] $ClusterName, 
+        [System.String[]] ${AdminGroupObjectID}
+    )
+
+
+    $APIVersion = "2024-01-01"
+    $ConnectedClusterResource = Invoke-AzRestMethod -Path "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Kubernetes/connectedClusters/$ClusterName/?api-version=$APIVersion" -Method GET
+
+    $Location = ($ConnectedClusterResource.Content | ConvertFrom-Json).location
+    $EnableAzureRbac = ($ConnectedClusterResource.Content | ConvertFrom-Json).properties.aadProfile.enableAzureRBAC
+
+    CreateConnectedCluster -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName -Location $Location -AdminGroupObjectID $AdminGroupObjectID -EnableAzureRbac:$EnableAzureRbac
 }
 
 function GenerateSSHKey {

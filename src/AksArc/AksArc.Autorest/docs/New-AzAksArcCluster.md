@@ -17,11 +17,11 @@ Create the provisioned cluster instance
 New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -ControlPlaneIP <String>
  -CustomLocationName <String> -VnetId <String> [-MaxCount <Int32>] [-MaxPod <Int32>] [-MinCount <Int32>]
  [-SubscriptionId <String>] [-AdminGroupObjectID <String[]>] [-ControlPlaneCount <Int32>]
- [-ControlPlaneVMSize <String>] [-EnableAutoScaling] [-EnableAzureHybridBenefit] [-KubernetesVersion <String>]
- [-LoadBalancerCount <Int32>] [-Location <String>] [-NfCsiDriverEnabled] [-NodeLabel <Hashtable>]
- [-NodeTaint <String[]>] [-PodCidr <String>] [-SmbCsiDriverEnabled] [-SshAuthIp <String>]
- [-SshKeyValue <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ControlPlaneVMSize <String>] [-EnableAutoScaling] [-EnableAzureHybridBenefit] [-EnableAzureRbac]
+ [-KubernetesVersion <String>] [-LoadBalancerCount <Int32>] [-Location <String>] [-NfCsiDriverEnabled]
+ [-NodeLabel <Hashtable>] [-NodeTaint <String[]>] [-PodCidr <String>] [-SmbCsiDriverEnabled]
+ [-SshAuthIp <String>] [-SshKeyValue <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### AutoScaling
@@ -29,26 +29,26 @@ New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -ControlPl
 New-AzAksArcCluster -ClusterName <String> -MaxCount <Int32> -MaxPod <Int32> -MinCount <Int32>
  -ResourceGroupName <String> -ControlPlaneIP <String> -CustomLocationName <String> -EnableAutoScaling
  -VnetId <String> [-SubscriptionId <String>] [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit]
- [-Location <String>] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EnableAzureRbac] [-Location <String>] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -ControlPlaneIP <String>
  -CustomLocationName <String> -JsonFilePath <String> -VnetId <String> [-SubscriptionId <String>]
- [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit] [-Location <String>] [-NodeLabel <Hashtable>]
- [-NodeTaint <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit] [-EnableAzureRbac] [-Location <String>]
+ [-NodeLabel <Hashtable>] [-NodeTaint <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> -ControlPlaneIP <String>
  -CustomLocationName <String> -JsonString <String> -VnetId <String> [-SubscriptionId <String>]
- [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit] [-Location <String>] [-NodeLabel <Hashtable>]
- [-NodeTaint <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit] [-EnableAzureRbac] [-Location <String>]
+ [-NodeLabel <Hashtable>] [-NodeTaint <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -268,6 +268,22 @@ Accept wildcard characters: False
 
 ### -EnableAzureHybridBenefit
 Indicates whether Azure Hybrid Benefit is opted in.
+Default value is false
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAzureRbac
+Indicates whether azure rbac is enabled.
 Default value is false
 
 ```yaml
