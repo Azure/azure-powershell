@@ -25,6 +25,8 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 using System;
 using System.Linq;
+using Microsoft.Azure.Commands.StorageSync.InternalObjects;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
@@ -288,24 +290,38 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     throw new PSArgumentException(StorageSyncResources.MissingServerResourceIdErrorMessage);
                 }
 
-                StorageSyncClientWrapper.VerboseLogger.Invoke($"Registered Server Auth Type : {registeredServer.ActiveAuthType}");
+                // Handle cluster name server scenario where the rbac needs to be applied on all the nodes.
+                StorageSyncClientWrapper.VerboseLogger.Invoke($"Registered Server Auth Type : {registeredServer.ActiveAuthType} with ServerRole {registeredServer.ServerRole}");
 
-                if (registeredServer.ActiveAuthType == StorageSyncModels.ServerAuthType.ManagedIdentity &&
-                    !String.IsNullOrEmpty(registeredServer.ApplicationId) && Guid.TryParse(registeredServer.ApplicationId, out Guid serverIdentityGuid)
-                    && serverIdentityGuid != Guid.Empty)
+                IEnumerable<StorageSyncModels.RegisteredServer> impactedRegisteredServers;
+                if (registeredServer.ServerRole == ServerRoleType.ClusterName.ToString())
                 {
-                    StorageSyncModels.CloudEndpoint cloudEndpoint = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.ListBySyncGroup(resourceGroupName, storageSyncServiceName, syncGroupName).FirstOrDefault();
+                    impactedRegisteredServers = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.ListByStorageSyncService(resourceGroupName, storageSyncServiceName);
+                }
+                else
+                {
+                    impactedRegisteredServers = new List<StorageSyncModels.RegisteredServer> { registeredServer };
+                }
 
-                    if (cloudEndpoint == null)
+                foreach (var impactedRegisteredServer in impactedRegisteredServers)
+                {
+                    if (impactedRegisteredServer.ActiveAuthType == StorageSyncModels.ServerAuthType.ManagedIdentity &&
+                        !String.IsNullOrEmpty(impactedRegisteredServer.ApplicationId) && Guid.TryParse(impactedRegisteredServer.ApplicationId, out Guid serverIdentityGuid)
+                        && serverIdentityGuid != Guid.Empty)
                     {
-                        throw new PSArgumentException(StorageSyncResources.MissingParentResourceIdErrorMessage);
+                        StorageSyncModels.CloudEndpoint cloudEndpoint = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.ListBySyncGroup(resourceGroupName, storageSyncServiceName, syncGroupName).FirstOrDefault();
+
+                        if (cloudEndpoint == null)
+                        {
+                            throw new PSArgumentException(StorageSyncResources.MissingParentResourceIdErrorMessage);
+                        }
+                        var storageAccountResourceIdentifier = new ResourceIdentifier(cloudEndpoint.StorageAccountResourceId);
+                        var scope = $"{cloudEndpoint.StorageAccountResourceId}/fileServices/default/fileshares/{cloudEndpoint.AzureFileShareName}";
+                        var identityRoleAssignmentForFilsShareScope = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
+                           serverIdentityGuid,
+                           Common.StorageSyncClientWrapper.StorageFileDataPrivilegedContributorRoleDefinitionId,
+                           scope);
                     }
-                    var storageAccountResourceIdentifier = new ResourceIdentifier(cloudEndpoint.StorageAccountResourceId);
-                    var scope = $"{cloudEndpoint.StorageAccountResourceId}/fileServices/default/fileshares/{cloudEndpoint.AzureFileShareName}";
-                    var identityRoleAssignmentForFilsShareScope = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
-                       serverIdentityGuid,
-                       Common.StorageSyncClientWrapper.StorageFileDataPrivilegedContributorRoleDefinitionId,
-                       scope);
                 }
 
                 Target = string.Join("/", resourceGroupName, storageSyncServiceName, syncGroupName, Name);
