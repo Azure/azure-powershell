@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Added NoHealthyBackendsBehavior to PSProbe, and updated corresponding cmdlets.
+	- `New-AzLoadBalancerProbeConfig`
+	- `Add-AzLoadBalancerProbeConfig`
+	- `Set-AzLoadBalancerProbeConfig`
 * Updated Network.Management SDK to consume newer Swagger version
 * Updated cmdlet to add 'Premium' as a valid value for 'Sku' parameter and 'enableSessionRecording' feature for Bastion resources
     - `New-AzBastion`
