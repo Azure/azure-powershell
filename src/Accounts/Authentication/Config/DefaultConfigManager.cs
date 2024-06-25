@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
     /// <summary>
     /// Default implementation of <see cref="IConfigManager"/>, providing full CRUD abilities and all of the config providers.
     /// </summary>
-    internal class DefaultConfigManager : ConfigManagerWithEventHandler
+    internal class DefaultConfigManager : ConfigManagerWithEvents
     {
         /// <inheritdoc/>
         public override string ConfigFilePath { get; protected set; }

@@ -295,14 +295,6 @@ namespace Microsoft.Azure.Commands.Profile
             AzureSession.Instance.UnregisterComponent<EventHandler<StreamEventArgs>>(WriteInformationKey);
             AzureSession.Instance.RegisterComponent(WriteInformationKey, () => _writeInformationEvent);
 
-            // attach config read event handler to add config telemetry
-            AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var configManager);
-            _configReadedEvent += OnEvent;
-            if (configManager is IConfigManagerWithEventHandler cm)
-            {
-                cm.RegisterHandler(_configReadedEvent);
-            }
-
             // todo: ideally cancellation token should be passed to authentication factory as a parameter
             // however AuthenticationFactory.Authenticate does not support it
             // so I store it in AzureSession.Instance as a global variable
@@ -311,20 +303,11 @@ namespace Microsoft.Azure.Commands.Profile
             AzureSession.Instance.RegisterComponent("LoginCancellationToken", () => new CancellationTokenSource(), true);
         }
 
-        private event EventHandler<ConfigEventArgs> _configReadedEvent;
         private event EventHandler<StreamEventArgs> _writeWarningEvent;
         private event EventHandler<StreamEventArgs> _originalWriteWarning;
 
         private event EventHandler<StreamEventArgs> _writeInformationEvent;
         private event EventHandler<StreamEventArgs> _originalWriteInformation;
-
-        private void OnEvent(object sender, ConfigEventArgs args)
-        {
-            if (!_qosEvent.ConfigMetrics.ContainsKey(args.ConfigKey) && args is ConfigReadEventArgs readEventArgs)
-            {
-                _qosEvent.ConfigMetrics[readEventArgs.ConfigKey] = new ConfigMetrics(readEventArgs.ConfigTelemetryKey, readEventArgs.ConfigValue.ToString());
-            }
-        }
 
         private void WriteWarningSender(object sender, StreamEventArgs args)
         {

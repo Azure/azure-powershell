@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
     /// <remarks>
     /// No config providers are added, so updating configs and listing configs with a non-default scope are both not supported.
     /// </remarks>
-    internal class SafeConfigManager : ConfigManagerWithEventHandler
+    internal class SafeConfigManager : ConfigManagerWithEvents
     {
         private string _notSupported = "[SafeConfigManager] ConfigManager was initialized in safe mode. {0} is not supported.";
 
