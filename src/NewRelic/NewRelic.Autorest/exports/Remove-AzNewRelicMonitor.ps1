@@ -20,7 +20,7 @@ Delete a NewRelicMonitorResource
 .Description
 Delete a NewRelicMonitorResource
 .Example
-Remove-AzNewRelicMonitor -Name test-03 -ResourceGroupName ps-test -UserEmail v-jiaji@outlook.com
+Remove-AzNewRelicMonitor -Name test-03 -ResourceGroupName ps-test -UserEmail user1@outlook.com
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentity
@@ -32,6 +32,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <INewRelicIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [MonitorName <String>]: Name of the Monitors resource
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -69,7 +70,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(Mandatory)]
@@ -174,7 +174,7 @@ begin {
             Delete = 'Az.NewRelic.private\Remove-AzNewRelicMonitor_Delete';
             DeleteViaIdentity = 'Az.NewRelic.private\Remove-AzNewRelicMonitor_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {

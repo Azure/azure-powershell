@@ -23,12 +23,12 @@ List the resources currently being monitored by the NewRelic monitor resource.
 Get-AzNewRelicMonitorMonitoredResource -MonitorName test-03 -ResourceGroupName ps-test | Format-List
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.IMonitoredResource
+Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredResource
 .Link
 https://learn.microsoft.com/powershell/module/az.newrelic/get-aznewrelicmonitormonitoredresource
 #>
 function Get-AzNewRelicMonitorMonitoredResource {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.IMonitoredResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -128,7 +128,7 @@ begin {
         $mapping = @{
             List = 'Az.NewRelic.private\Get-AzNewRelicMonitorMonitoredResource_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
