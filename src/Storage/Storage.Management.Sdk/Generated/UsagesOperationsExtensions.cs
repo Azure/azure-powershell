@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.Storage
     public static partial class UsagesOperationsExtensions
     {
         /// <summary>
-        /// Gets the current usage count and the limit for the resources of the location under the subscription.
+        /// Gets the current usage count and the limit for the resources of the
+        /// location under the subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -27,7 +28,8 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// Gets the current usage count and the limit for the resources of the location under the subscription.
+        /// Gets the current usage count and the limit for the resources of the
+        /// location under the subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

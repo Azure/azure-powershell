@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="bypass">Specifies whether traffic is bypassed for Logging/Metrics/AzureServices.
         /// Possible values are any combination of Logging|Metrics|AzureServices (For
         /// example, &#34;Logging, Metrics&#34;), or None to bypass none of those traffics.
-        /// Possible values include: 'None', 'Logging', 'Metrics', 'AzureServices'</param>
+        /// Possible values include: &#39;None&#39;, &#39;Logging&#39;, &#39;Metrics&#39;, &#39;AzureServices&#39;</param>
 
         /// <param name="resourceAccessRules">Sets the resource access rules
         /// </param>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </param>
 
         /// <param name="defaultAction">Specifies the default action of allow or deny when no other rules match.
-        /// Possible values include: 'Allow', 'Deny'</param>
+        /// Possible values include: &#39;Allow&#39;, &#39;Deny&#39;</param>
         public NetworkRuleSet(DefaultAction defaultAction, string bypass = default(string), System.Collections.Generic.IList<ResourceAccessRule> resourceAccessRules = default(System.Collections.Generic.IList<ResourceAccessRule>), System.Collections.Generic.IList<VirtualNetworkRule> virtualNetworkRules = default(System.Collections.Generic.IList<VirtualNetworkRule>), System.Collections.Generic.IList<IPRule> ipRules = default(System.Collections.Generic.IList<IPRule>))
 
         {

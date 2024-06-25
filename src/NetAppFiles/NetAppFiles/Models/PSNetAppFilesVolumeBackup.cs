@@ -40,5 +40,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Policy enabled
         /// </remarks>
         public bool? PolicyEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets VolumeResourceId
+        /// </summary>
+        /// <remarks>
+        /// ResourceId used to identify the Volume
+        /// </remarks>
+        public string VolumeResourceId { get; set; }
     }
 }

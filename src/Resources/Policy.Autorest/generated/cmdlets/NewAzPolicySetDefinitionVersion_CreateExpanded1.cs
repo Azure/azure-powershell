@@ -205,14 +205,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         private string _policyDefinitionVersion;
 
         /// <summary>
-        /// The policy definition version. The format is x.y.z where x is the major version number, y is the minor version number,
+        /// The policy set definition version. The format is x.y.z where x is the major version number, y is the minor version number,
         /// and z is the patch number
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The policy definition version. The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The policy set definition version. The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number")]
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The policy definition version. The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number",
+        Description = @"The policy set definition version. The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number",
         SerializedName = @"policyDefinitionVersion",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExport]

@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// </summary>
         /// <remarks>
         /// Vault Resource ID
-        /// </remarks>        
+        /// </remarks>
         public string VaultId { get; set; }
 
         /// <summary>
@@ -47,5 +47,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Backup Enabled
         /// </remarks>
         public bool? BackupEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets BackupVaultId
+        /// </summary>
+        /// <remarks>
+        /// Vault Resource ID
+        /// </remarks>
+        public string BackupVaultId { get; set; }
+
+ 
     }
 }

@@ -26,13 +26,13 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
 
         /// <param name="skuConversionStatus">This property indicates the current sku conversion status.
-        /// Possible values include: 'InProgress', 'Succeeded', 'Failed'</param>
+        /// Possible values include: &#39;InProgress&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;</param>
 
         /// <param name="targetSkuName">This property represents the target sku name to which the account sku is
         /// being converted asynchronously.
-        /// Possible values include: 'Standard_LRS', 'Standard_GRS', 'Standard_RAGRS',
-        /// 'Standard_ZRS', 'Premium_LRS', 'Premium_ZRS', 'Standard_GZRS',
-        /// 'Standard_RAGZRS'</param>
+        /// Possible values include: &#39;Standard_LRS&#39;, &#39;Standard_GRS&#39;, &#39;Standard_RAGRS&#39;,
+        /// &#39;Standard_ZRS&#39;, &#39;Premium_LRS&#39;, &#39;Premium_ZRS&#39;, &#39;Standard_GZRS&#39;,
+        /// &#39;Standard_RAGZRS&#39;</param>
 
         /// <param name="startTime">This property represents the sku conversion start time.
         /// </param>

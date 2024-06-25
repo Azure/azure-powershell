@@ -28,7 +28,7 @@ For information on how to develop for `Az.Policy`, see [how-to.md](how-to.md).
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-commit: 33da947dfea91e16a4e62c663a13de4f0fa72251
+commit: 412364b282e52b50eadc3cd88d56d283b6c8712a
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md

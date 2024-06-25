@@ -32,7 +32,7 @@ function Test-SnapshotCrud
     $doubleUsage = 2 * $usageThreshold
     #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus2euap" -UseCanonical
     #$resourceLocation = "eastus2euap"
-    $resourceLocation = "eastus"
+    $resourceLocation = "westus2"
 
     $subnetName = "default"
     $standardPoolSize = 4398046511104
@@ -121,7 +121,7 @@ function Test-SnapshotPipelines
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
     #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
-    $resourceLocation = "eastus"
+    $resourceLocation = "westus2"
     #$resourceLocation = "eastus2euap"
     $subnetName = "default"
     $poolSize = 4398046511104
@@ -186,7 +186,7 @@ function Test-CreateVolumeFromSnapshot
     $doubleUsage = 2 * $usageThreshold
     #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
     #$resourceLocation = "eastus2euap"
-    $resourceLocation = "eastus"
+    $resourceLocation = "westus2"
     $subnetName = "default"
     $standardPoolSize = 4398046511104
     $serviceLevel = "Premium"
@@ -231,7 +231,7 @@ function Test-CreateVolumeFromSnapshot
         Assert-AreEqual "$accName/$poolName/$volName/$snName1" $retrievedSnapshotById.Name
 
         # Create volume from snapshot
-        $restoredNewVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName2 -CreationToken $volName2 -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -SnapshotId $retrievedSnapshot.SnapshotId
+        $restoredNewVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName2 -CreationToken $volName2 -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -SnapshotId $retrievedSnapshot.Id
         Assert-NotNull $restoredNewVolume
         Assert-AreEqual "$accName/$poolName/$volName2" $restoredNewVolume.Name
     }
@@ -262,7 +262,7 @@ function Test-RestoreVolumeFromSnapshot
     $doubleUsage = 2 * $usageThreshold
     #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
     #$resourceLocation = "eastus2euap"
-    $resourceLocation = "eastus"
+    $resourceLocation = "westus2"
     $subnetName = "default"
     $standardPoolSize = 4398046511104
     $serviceLevel = "Premium"
@@ -307,7 +307,7 @@ function Test-RestoreVolumeFromSnapshot
         Assert-AreEqual "$accName/$poolName/$volName/$snName1" $retrievedSnapshotById.Name
 
         # Restore the volume from snapshot
-        $restoredVolume = Restore-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotId $retrievedSnapshot.SnapshotId                
+        $restoredVolume = Restore-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotId $retrievedSnapshot.Id
     }
     finally
     {
