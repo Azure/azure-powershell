@@ -23,6 +23,11 @@
 	- `New-AzLoadBalancerProbeConfig`
 	- `Add-AzLoadBalancerProbeConfig`
 	- `Set-AzLoadBalancerProbeConfig`
+* Updated Network.Management SDK to consume newer Swagger version
+* Updated cmdlet to add 'Premium' as a valid value for 'Sku' parameter and 'enableSessionRecording' feature for Bastion resources
+    - `New-AzBastion`
+    - `Set-AzBastion`
+* Updated cmdlet `Add-AzVirtualNetworkSubnetConfig`, `Set-AzVirtualNetworkSubnetConfig` and `New-AzVirtualNetworkSubnetConfig` to support Network Identifier for Subnet Service Endpoint.
 * Added cmdlet `Restart-AzNetworkVirtualAppliance` for allowing a restart of Network Virtual Appliance instances from the customer subscription.
 * Fixed a bug in `Update-AzNetworkVirtualApplianceConnection`
 * Added cmdlet `New-AzVirtualApplianceNetworkProfile` to build network profile for network virtual appliance and pass as a parameter.

@@ -295,6 +295,105 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Toggling copy/paste is available on Standard SKU or higher.
+        /// </summary>
+        internal static string BastionCopyPasteInvalidValue {
+            get {
+                return ResourceManager.GetString("BastionCopyPasteInvalidValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggling IP connect is available on Standard SKU or higher.
+        /// </summary>
+        internal static string BastionIpConnectInvalidValue {
+            get {
+                return ResourceManager.GetString("BastionIpConnectInvalidValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select scale units value between {0} and {1}.
+        /// </summary>
+        internal static string BastionScaleUnitOutOfRange {
+            get {
+                return ResourceManager.GetString("BastionScaleUnitOutOfRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bastion scalable host is available on Standard SKU or higher.
+        /// </summary>
+        internal static string BastionScaleUnitUpdateNotAllowedOnBasic {
+            get {
+                return ResourceManager.GetString("BastionScaleUnitUpdateNotAllowedOnBasic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggling session recording is available on Premium SKU.
+        /// </summary>
+        internal static string BastionSessionRecordingInvalidValue {
+            get {
+                return ResourceManager.GetString("BastionSessionRecordingInvalidValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Session recording feature is not enabled.
+        /// </summary>
+        internal static string BastionSessionRecordingNotEnabled {
+            get {
+                return ResourceManager.GetString("BastionSessionRecordingNotEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggling shareable link is available on Standard SKU or higher.
+        /// </summary>
+        internal static string BastionShareableLinkInvalidValue {
+            get {
+                return ResourceManager.GetString("BastionShareableLinkInvalidValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Downgrading Sku is not allowed.
+        /// </summary>
+        internal static string BastionSkuDowngradeNotAllowed {
+            get {
+                return ResourceManager.GetString("BastionSkuDowngradeNotAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid value for Bastion SKU.
+        /// </summary>
+        internal static string BastionSkuInvalidValue {
+            get {
+                return ResourceManager.GetString("BastionSkuInvalidValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tunneling and session recording cannot be enabled together.
+        /// </summary>
+        internal static string BastionTunnelingAndSessionRecordingNotAllowed {
+            get {
+                return ResourceManager.GetString("BastionTunnelingAndSessionRecordingNotAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggling tunneling is available on Standard SKU or higher.
+        /// </summary>
+        internal static string BastionTunnelingInvalidValue {
+            get {
+                return ResourceManager.GetString("BastionTunnelingInvalidValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Checks failed percent for success threshold in test configuration should be between 0-100%. The specified value is out of range..
         /// </summary>
         internal static string ChecksFailedPercentIsOutOfRange {
@@ -671,9 +770,9 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("InvalidAutoScaleConfiguration", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   MinScaleUnit and MaxScaleUnit must be between 1 and 40, inclusive..
+        ///   Looks up a localized string similar to MinScaleUnit and MaxScaleUnit must be between 1 and 40, inclusive. .
         /// </summary>
         internal static string InvalidAutoScaleConfigurationBounds {
             get {

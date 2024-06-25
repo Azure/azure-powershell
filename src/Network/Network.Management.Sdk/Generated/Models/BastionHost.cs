@@ -86,7 +86,10 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="enableKerberos">Enable/Disable Kerberos feature of the Bastion Host resource.
         /// </param>
-        public BastionHost(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), string etag = default(string), Sku sku = default(Sku), string provisioningState = default(string), System.Collections.Generic.IList<BastionHostIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<BastionHostIPConfiguration>), string dnsName = default(string), SubResource virtualNetwork = default(SubResource), BastionHostPropertiesFormatNetworkAcls networkAcls = default(BastionHostPropertiesFormatNetworkAcls), int? scaleUnits = default(int?), bool? disableCopyPaste = default(bool?), bool? enableFileCopy = default(bool?), bool? enableIPConnect = default(bool?), bool? enableShareableLink = default(bool?), bool? enableTunneling = default(bool?), bool? enableKerberos = default(bool?))
+
+        /// <param name="enableSessionRecording">Enable/Disable Session Recording feature of the Bastion Host resource.
+        /// </param>
+        public BastionHost(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), string etag = default(string), Sku sku = default(Sku), string provisioningState = default(string), System.Collections.Generic.IList<BastionHostIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<BastionHostIPConfiguration>), string dnsName = default(string), SubResource virtualNetwork = default(SubResource), BastionHostPropertiesFormatNetworkAcls networkAcls = default(BastionHostPropertiesFormatNetworkAcls), int? scaleUnits = default(int?), bool? disableCopyPaste = default(bool?), bool? enableFileCopy = default(bool?), bool? enableIPConnect = default(bool?), bool? enableShareableLink = default(bool?), bool? enableTunneling = default(bool?), bool? enableKerberos = default(bool?), bool? enableSessionRecording = default(bool?))
 
         : base(id, name, type, location, tags)
         {
@@ -105,6 +108,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.EnableShareableLink = enableShareableLink;
             this.EnableTunneling = enableTunneling;
             this.EnableKerberos = enableKerberos;
+            this.EnableSessionRecording = enableSessionRecording;
             CustomInit();
         }
 
@@ -208,6 +212,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableKerberos")]
         public bool? EnableKerberos {get; set; }
+
+        /// <summary>
+        /// Gets or sets enable/Disable Session Recording feature of the Bastion Host
+        /// resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableSessionRecording")]
+        public bool? EnableSessionRecording {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
