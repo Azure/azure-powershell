@@ -233,7 +233,7 @@ directive:
       subject: VMRunCommand|VmssVMRunCommand
       verb: Get
     remove: true
-  ### Remove All Diagnostic cmdlets aside from Invoke Spot Placement Recommender - generate ONLY SpotPlacementRecommender cmdlets
+  ### Remove All Diagnostic cmdlets aside from Invoke Spot Placement Recommender - generate ONLY SpotPlacementScore cmdlets
   - where:
       verb: Get
       subject: Diagnostic
@@ -260,6 +260,14 @@ directive:
     remove: true
   - where:
       verb: Get
+      subject: SpotPlacementRecommender
+    remove: true
+  - where:
+      verb: Get
+      subject: SpotPlacementScore
+    remove: true
+  - where:
+      verb: Invoke
       subject: SpotPlacementRecommender
     remove: true
 ```
