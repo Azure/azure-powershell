@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 7.2.0
 * Introduced validation of MG scoped deployment stack during New/Set cmdlet execution.
 * Updated Remove/New stack cmdlets with warnings for management groups ActionOnUnmanage and removed DeleteResourcesAndResourceGroups as valid ActionOnUnmanage value.
 * Supported get and assign versioned policy definitions and sets

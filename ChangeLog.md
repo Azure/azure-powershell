@@ -1,3 +1,97 @@
+## 12.1.0 - July 2024
+#### Az.Accounts 3.0.1
+* Fixed [CVE-2024-35255](https://github.com/advisories/GHSA-m5vv-6r4h-3vj9)
+* Updated 'Microsoft.Identity.Client.NativeInterop' to fix the WAM pop window issue in elevated mode [#24967]
+* Updated the reference of Azure PowerShell Common to 1.3.98-preview.
+* Limited promotional message to interactive scenarios only
+
+#### Az.Batch 3.6.2
+* Fixed a bug where 'New-AzBatchApplicationPackage' wouldn't work if the application 'AllowUpdates' parameter was set to 'False'.
+
+#### Az.Compute 8.1.0
+* Added parameter '-SourceResourceId' to cmdlet 'Add-AzVMDataDisk'.
+* Added parameter '-IdentityType' to cmdlet 'Update-AzDiskEncryptionSet'. 
+
+#### Az.CosmosDB 1.14.4
+* Fixed the issue that Azure.Core.AccessToken is used before assigned.
+
+#### Az.DataFactory 1.18.5
+* Added UAMI in DynamicsCrm LinkedService
+
+#### Az.DataLakeStore 1.3.2
+* Updated signed 3rd party assembly NLog.dll to PSGallery
+
+#### Az.FrontDoor 1.11.1
+* Fixed a not converting from string to base in CustomBlockResponseBody bug in updating waf policy
+
+#### Az.Functions 4.1.0
+* Upgraded to Microsoft.Web API version 2023-12-01 [#25347]
+* Added support for creating function apps on container app [#22736]
+
+#### Az.KeyVault 6.0.1
+* Fixed an issue during merging certificate process. [#24323]
+
+#### Az.Maintenance 1.4.2
+* Fixed bug where rebootSettings property wasn't updating.
+
+#### Az.Migrate 2.4.0
+* Removed 'at lease one NIC needs to be user selected' constrain when creating/updating server replication (protected item)
+* Added retries for calls to internal Get commands
+
+#### Az.MySql 1.2.0
+* Added cmdlets: 'Get-AzMySqlFlexibleServerAdvancedThreatProtectionSetting' and 'Update-AzMySqlFlexibleServerAdvancedThreatProtectionSetting'
+
+#### Az.Network 7.8.0
+* Updated the Azure Firewall and Azure Firewall Policy setter for their respective Private Range properties
+  - Fixed a bug that prevented using /32 in private ranges on classic Azure Firewalls
+  - Updated the error message to provide a suggested private range when the supplied range is not correctly masked by the host identifier
+  - Fixed a bug that caused firewalls and policies to lose their private range property value when using their 'Get' cmdlets
+
+#### Az.Resources 7.2.0
+* Introduced validation of MG scoped deployment stack during New/Set cmdlet execution.
+* Updated Remove/New stack cmdlets with warnings for management groups ActionOnUnmanage and removed DeleteResourcesAndResourceGroups as valid ActionOnUnmanage value.
+* Supported get and assign versioned policy definitions and sets
+* Fixed syntax incompatible with windows powershell [#24971]
+* Fixed bug with 'Get-AzPolicyExemption' requesting 'ParentResourcePath'
+* Supported 'ServiceManagementReference' of Entra App
+    * 'Get-AzADApplication'
+    * 'New-AzADApplication'
+    * 'Update-AzADApplication'
+* Fixed deployment stack validation error surfacing.
+* Fixed default formatting for output objects
+* Removed '-InputObject' for
+    * 'Get-AzPolicyAssignment'
+    * 'Get-AzPolicyDefinition'
+    * 'Get-AzPolicyExemption'
+    * 'Get-AzPolicySetDefinition'
+    * 'New-AzPolicyAssignment'
+    * 'New-AzPolicyDefinition'
+    * 'New-AzPolicySetDefinition'
+* Implemented '-Version' and '-ListVersion' parameters on 'Get-AzPolicyDefinition' and 'Get-AzPolicySetDefinition'
+
+#### Az.Sql 5.1.0
+* Added cross-subscription support for 'Copy-AzSqlInstanceDatabase', 'Move-AzSqlInstanceDatabase'
+* Added new parameter SecondaryType to 'Add-AzSqlDatabaseFromFailoverGroup'
+
+#### Az.SqlVirtualMachine 2.3.0
+* Enabled Microsoft entra id on SQL VM.
+
+#### Az.Storage 7.1.0
+* Fixed the issue that Azure.Core.AccessToken is used before assigned.
+* Supported TLS1_3 when creating and updating a storage account 
+    - 'New-AzStorageAccount'
+    - 'Set-AzStorageAccount'
+* Fixed sync copy blob issue with -AsJob is specified [#25105]
+    - 'Copy-AzStorageBlob'
+* Updated Storage.Management.Sdk to support API version 2023-05-01
+
+#### Az.StorageMover 1.4.0
+* Added input parameter validation set for UploadLimitWeeklyRecurrenceObject
+* Supported Uploaded Limit Schedule
+
+#### Az.Synapse 3.0.9
+* Fixed the issue that Azure.Core.AccessToken is used before assigned.
+
 ## 12.0.0 - May 2024
 #### General
 * Fixed CVE-2024-29992.

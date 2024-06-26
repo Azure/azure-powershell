@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.1.0
 * Upgraded to Microsoft.Web API version 2023-12-01 [#25347]
 * Added support for creating function apps on container app [#22736]
 
