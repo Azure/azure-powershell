@@ -112,11 +112,11 @@ function Invoke-SubModuleGeneration {
     param (
         [string]$GenerateDirectory,
         [string]$GenerateLog,
-        [switch]$Pipeline
+        [switch]$IsInvokedByPipeline
     )
     Write-Host "----------Start code generation for $GenerateDirectory----------" -ForegroundColor DarkGreen
     Set-Location -Path $GenerateDirectory
-    if ($Pipeline) {
+    if ($IsInvokedByPipeline) {
         npx autorest --max-memory-size=8192 >> $GenerateLog
     } else {
         autorest --max-memory-size=8192 >> $GenerateLog
@@ -139,7 +139,7 @@ function Update-GeneratedSubModule {
         [string]$SourceDirectory,
         [string]$GeneratedDirectory,
         [string]$GenerateLog,
-        [switch]$Pipeline
+        [boolean]$IsInvokedByPipeline
     )
     $SourceDirectory = Join-Path $SourceDirectory $ModuleRootName $SubModuleName
     $GeneratedDirectory = Join-Path $GeneratedDirectory $ModuleRootName $SubModuleName
@@ -154,7 +154,7 @@ function Update-GeneratedSubModule {
     $generateInfoPath = Join-Path $SourceDirectory "generate-info.json"
     Copy-Item -Path $generateInfoPath -Destination $GeneratedDirectory -Force
 
-    if (-not (Invoke-SubModuleGeneration -GenerateDirectory $SourceDirectory -GenerateLog $GenerateLog -Pipeline:$Pipeline)) {
+    if (-not (Invoke-SubModuleGeneration -GenerateDirectory $SourceDirectory -GenerateLog $GenerateLog -IsInvokedByPipeline $IsInvokedByPipeline)) {
         return $false;
     }
     # remove $sourceDirectory/generated/modules

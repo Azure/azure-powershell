@@ -24,6 +24,7 @@ param (
 	[Parameter(ParameterSetName="TargetModuleSet", Mandatory=$true)]
     [string[]]$TargetModule,
     [switch]$ForceRegenerate,
+    [switch]$InvokedByPipeline,
     [switch]$GenerateDocumentationFile,
     [switch]$EnableTestCoverage,
     [string]$Scope = 'Netcore',
@@ -43,7 +44,6 @@ $testModules = @()
 $toolDirectory = Join-Path $RepoRoot "tools"
 $sourceDirectory = Join-Path $RepoRoot "src"
 $generatedDirectory = Join-Path $RepoRoot "generated"
-$isPipeline = $false
 
 $BuildScriptsModulePath = Join-Path $toolDirectory 'BuildScripts' 'BuildScripts.psm1'
 Import-Module $BuildScriptsModulePath
@@ -80,7 +80,6 @@ switch ($PSCmdlet.ParameterSetName) {
             $TargetModule = $CIPlanContent.build
             $testModules = $CIPlanContent.test
         }
-        $isPipeline = $true
         Write-Host "----------Start building modules from $CIPlanPath----------`r`n$($TargetModule | Join-String -Separator "`r`n")" -ForegroundColor DarkYellow
     }
     'ModifiedModuleSet' {
@@ -114,9 +113,13 @@ $csprojFiles = Get-CsprojFromModule -BuildModuleList $TargetModule -TestModuleLi
 # Prepare autorest based modules
 $prepareScriptPath = Join-Path $toolDirectory 'BuildScripts' 'PrepareAutorestModule.ps1'
 
+$isInvokedByPipeline = $false
+if ($InvokedByPipeline) {
+    $isInvokedByPipeline = $true
+}
 foreach ($moduleRootName in $TargetModule) {
     Write-Host "Preparing $moduleRootName ..." -ForegroundColor DarkGreen
-    . $prepareScriptPath -ModuleRootName $moduleRootName -RepoRoot $RepoRoot -ForceRegenerate:$ForceRegenerate -Pipeline:$isPipeline
+    . $prepareScriptPath -ModuleRootName $moduleRootName -RepoRoot $RepoRoot -ForceRegenerate:$ForceRegenerate -InvokedByPipeline:$isInvokedByPipeline
 }
 
 Set-Location $RepoRoot

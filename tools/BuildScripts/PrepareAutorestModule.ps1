@@ -18,7 +18,7 @@ param (
     [Parameter(ParameterSetName="ModuleNameSet", Mandatory=$true)]
     [string]$ModuleRootName,
     [switch]$ForceRegenerate,
-    [switch]$Pipeline
+    [switch]$InvokedByPipeline
 )
 <#
     for:
@@ -39,6 +39,11 @@ if (-not (Test-Path $sourceDirectory)) {
     Write-Warning "Cannot find generated directory: $generatedDirectory"
 }
 
+$isInvokedByPipeline = $false
+if ($InvokedByPipeline) {
+    $isInvokedByPipeline = $true
+}
+
 $AutorestOutputDir = Join-Path $RepoRoot "artifacts" "autorest"
 New-Item -ItemType Directory -Force -Path $AutorestOutputDir
 $moduleRootSource = Join-Path $sourceDirectory $ModuleRootName
@@ -51,7 +56,7 @@ foreach ($subModuleName in $outdatedSubModule) {
         Remove-Item -Path $generateLog -Recurse -Force
     }
     New-Item -ItemType File -Force -Path $generateLog
-    if (-not (Update-GeneratedSubModule -ModuleRootName $ModuleRootName -SubModuleName $subModuleName -SourceDirectory $sourceDirectory -GeneratedDirectory $generatedDirectory -GenerateLog $generateLog -Pipeline:$Pipeline)) {
+    if (-not (Update-GeneratedSubModule -ModuleRootName $ModuleRootName -SubModuleName $subModuleName -SourceDirectory $sourceDirectory -GeneratedDirectory $generatedDirectory -GenerateLog $generateLog -IsInvokedByPipeline $isInvokedByPipeline)) {
         Write-Error "Failed to generate code for module: $ModuleRootName, $subModuleName"
         Write-Error "========= Start of error log for $ModuleRootName, $subModuleName ========="
         Write-Error "log can be found at $generateLog"

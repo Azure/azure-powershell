@@ -174,9 +174,9 @@ steps:
     script: |
       $buildScript = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'BuildModules.ps1'
       if ('Manual' -eq "$(Build.Reason)" -and ('true' -eq '${{ parameters.ForceRegenerate }}')) {
-        . $buildScript -CIPlan -RepoRoot "$(Build.SourcesDirectory)" -Configuration ${{ parameters.configuration }} -ForceRegenerate
+        . $buildScript -CIPlan -RepoRoot "$(Build.SourcesDirectory)" -Configuration ${{ parameters.configuration }} -ForceRegenerate -InvokedByPipeline
       } else {
-        . $buildScript -CIPlan -RepoRoot "$(Build.SourcesDirectory)" -Configuration ${{ parameters.configuration }}
+        . $buildScript -CIPlan -RepoRoot "$(Build.SourcesDirectory)" -Configuration ${{ parameters.configuration }} -InvokedByPipeline
       }
 - task: PowerShell@2
   displayName: 'Write pipeline result'

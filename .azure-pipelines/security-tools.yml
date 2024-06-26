@@ -59,11 +59,11 @@ jobs:
         $reason = "$(Build.Reason)"
         switch ($reason) {
           'PullRequest' {
-            . $buildScript -CIPlan -RepoRoot "$(Build.SourcesDirectory)"
+            . $buildScript -CIPlan -RepoRoot "$(Build.SourcesDirectory)" -InvokedByPipeline
             break
           }
           { $reason -in @('Manual', 'Schedule') } {
-            . $buildScript -RepoRoot "$(Build.SourcesDirectory)"
+            . $buildScript -RepoRoot "$(Build.SourcesDirectory)" -InvokedByPipeline
             break
           }
           default {
