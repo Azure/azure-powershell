@@ -17,8 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{0ED5C7C6-C608-4561-8EB6-3C39A9F95526}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EventHub", "EventHub.Autorest\Az.EventHub.csproj", "{15898158-F87B-4634-88C9-C57C7FE598E8}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{D94225FA-0346-4CD2-B852-1E3F32C8858B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventHub.Test", "EventHub.Test\EventHub.Test.csproj", "{001FB691-4379-4FBB-8580-A911D65AAB70}"
@@ -38,6 +36,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network", "..\Network\Network\Network.csproj", "{87625BDE-101C-4505-972F-B390084FAEE3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{69DCFD0E-0992-401F-AECD-80BBAECEDA11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EventHub", "..\..\generated\EventHub\EventHub.Autorest\Az.EventHub.csproj", "{0D30F94F-643B-4C93-87EA-DA4067F4C437}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,10 +72,6 @@ Global
 		{0ED5C7C6-C608-4561-8EB6-3C39A9F95526}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0ED5C7C6-C608-4561-8EB6-3C39A9F95526}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0ED5C7C6-C608-4561-8EB6-3C39A9F95526}.Release|Any CPU.Build.0 = Release|Any CPU
-		{15898158-F87B-4634-88C9-C57C7FE598E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{15898158-F87B-4634-88C9-C57C7FE598E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{15898158-F87B-4634-88C9-C57C7FE598E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{15898158-F87B-4634-88C9-C57C7FE598E8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{001FB691-4379-4FBB-8580-A911D65AAB70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{001FB691-4379-4FBB-8580-A911D65AAB70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{001FB691-4379-4FBB-8580-A911D65AAB70}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -108,6 +104,10 @@ Global
 		{69DCFD0E-0992-401F-AECD-80BBAECEDA11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69DCFD0E-0992-401F-AECD-80BBAECEDA11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69DCFD0E-0992-401F-AECD-80BBAECEDA11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D30F94F-643B-4C93-87EA-DA4067F4C437}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D30F94F-643B-4C93-87EA-DA4067F4C437}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D30F94F-643B-4C93-87EA-DA4067F4C437}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D30F94F-643B-4C93-87EA-DA4067F4C437}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E15418C9-62F3-488E-9AA4-19840253C462} = {0097A527-1431-4BD5-B2F6-124E19C55E37}
