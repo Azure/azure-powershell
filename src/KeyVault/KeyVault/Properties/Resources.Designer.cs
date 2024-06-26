@@ -874,6 +874,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error happens when processing certificate &apos;{0}&apos;. See detailed error: {1}.
+        /// </summary>
+        internal static string ProcessingCertError {
+            get {
+                return ResourceManager.GetString("ProcessingCertError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Public key saved at &apos;{0}&apos;..
         /// </summary>
         internal static string PublicKeySavedAt {

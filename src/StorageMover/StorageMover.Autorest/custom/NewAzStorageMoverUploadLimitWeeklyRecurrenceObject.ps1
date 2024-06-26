@@ -33,12 +33,15 @@ function New-AzStorageMoverUploadLimitWeeklyRecurrenceObject {
         [Parameter(Mandatory, HelpMessage="The set of days of week for the schedule recurrence. A day must not be specified more than once in a recurrence.")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.DayOfWeek])]
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.DayOfWeek[]]
+        [ValidateSet("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", IgnoreCase = $true)]
         $Day,
         [Parameter(Mandatory, HelpMessage="The WAN-link upload bandwidth (maximum data transfer rate) in megabits per second. Value of 0 indicates no throughput is allowed and any running migration job is effectively paused for the duration of this recurrence. Only data plane operations are governed by this limit. Control plane operations ensure seamless functionality. The agent may exceed this limit with control messages, if necessary.")]
         [int]
+        [ValidateRange(0, 2147483647)]
         $LimitInMbps,
         [Parameter(Mandatory, HelpMessage="The hour element of the time. Allowed values range from 0 (start of the selected day) to 24 (end of the selected day). Hour value 24 cannot be combined with any other minute value but 0.")]
         [int]
+        [ValidateRange(0, 24)]
         $EndTimeHour,
         [Parameter(HelpMessage="The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0.")]
         [ArgumentCompleter({0, 30})]
@@ -47,6 +50,7 @@ function New-AzStorageMoverUploadLimitWeeklyRecurrenceObject {
         $EndTimeMinute,
         [Parameter(Mandatory, HelpMessage="The hour element of the time. Allowed values range from 0 (start of the selected day) to 24 (end of the selected day). Hour value 24 cannot be combined with any other minute value but 0.")]
         [int]
+        [ValidateRange(0, 24)]
         $StartTimeHour,
         [Parameter(HelpMessage="The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0.")]
         [ArgumentCompleter({0, 30})]

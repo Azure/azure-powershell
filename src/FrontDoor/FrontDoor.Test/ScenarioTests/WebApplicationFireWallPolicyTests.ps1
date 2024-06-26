@@ -174,3 +174,35 @@ function Test-PolicyAction
     Assert-True { $removed }
     Assert-ThrowsContains { Get-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName } "does not exist."
 }
+
+function Test-CustomBlockResponseBody
+{
+    $Name = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+    $resourceGroupName = $resourceGroup.ResourceGroupName
+    $tags = @{"tag1" = "value1"; "tag2" = "value2"}
+    $matchCondition1 = New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "UserAgent" -MatchValue "WINDOWS" -Transform "Uppercase"
+    $customRule1 = New-AzFrontDoorWafCustomRuleObject -Name "Rule1" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Block -Priority 2
+
+    # Create exclusion objects
+    $exclusionRule = New-AzFrontDoorWafManagedRuleExclusionObject -Variable QueryStringArgNames -Operator Equals -Selector "ExcludeInRule"
+    $exclusionGroup = New-AzFrontDoorWafManagedRuleExclusionObject -Variable QueryStringArgNames -Operator Equals -Selector "ExcludeInGroup"
+    $exclusionSet = New-AzFrontDoorWafManagedRuleExclusionObject -Variable QueryStringArgNames -Operator Equals -Selector "ExcludeInSet"
+
+    $ruleOverride = New-AzFrontDoorWafManagedRuleOverrideObject -RuleId "942100" -Action Log -Exclusion $exclusionRule
+    $override1 = New-AzFrontDoorWafRuleGroupOverrideObject -RuleGroupName SQLI -ManagedRuleOverride $ruleOverride -Exclusion $exclusionGroup
+    $managedRule1 = New-AzFrontDoorWafManagedRuleObject -Type DefaultRuleSet -Version "1.0" -RuleGroupOverride $override1 -Exclusion $exclusionSet
+    $managedRule2 = New-AzFrontDoorWafManagedRuleObject -Type BotProtection -Version "preview-0.1"
+
+    New-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Sku Premium_AzureFrontDoor -Customrule $customRule1 -ManagedRule $managedRule1,$managedRule2 -EnabledState Enabled -Mode Prevention -RequestBodyCheck Disabled -CustomBlockResponseBody "<html><head><title>WAF Demo1</title></head><bodybgcolor=`"#FFB29Z`"><p><h1><strong>WAF Custom Response Page</strong></h1></p><p>Please contact us with the below reference ID: {{azure-ref}}<br></p></body></html>"
+
+    $afdWafPolicy = Get-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName
+    Assert-AreEqual $afdWafPolicy.CustomBlockResponseBody "<html><head><title>WAF Demo1</title></head><bodybgcolor=`"#FFB29Z`"><p><h1><strong>WAF Custom Response Page</strong></h1></p><p>Please contact us with the below reference ID: {{azure-ref}}<br></p></body></html>"
+
+    $afdWafPolicy.CustomBlockResponseBody = "<html><head><title>WAF Demo2</title></head><bodybgcolor=`"#FFB29Z`"><p><h1><strong>WAF Custom Response Page</strong></h1></p><p>Please contact us with the below reference ID: {{azure-ref}}<br></p></body></html>"
+    $afdWafPolicy | Update-AzFrontDoorWafPolicy
+
+    $retrievedPolicy = Get-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName
+
+    Assert-AreEqual $retrievedPolicy.CustomBlockResponseBody "<html><head><title>WAF Demo2</title></head><bodybgcolor=`"#FFB29Z`"><p><h1><strong>WAF Custom Response Page</strong></h1></p><p>Please contact us with the below reference ID: {{azure-ref}}<br></p></body></html>"
+}
