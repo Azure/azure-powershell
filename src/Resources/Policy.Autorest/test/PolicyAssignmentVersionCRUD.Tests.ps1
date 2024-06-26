@@ -109,6 +109,94 @@ Describe 'PolicyAssignmentVersionCRUD' {
         $expected.DefinitionVersion | Should -Be $actual.DefinitionVersion
     }
 
+    It 'Make and validate a policy definition assignment using string ID with version reference at RG scope' {
+        # make a policy assignment of versioned definition
+        $expected = New-AzPolicyAssignment -Name $testPA1 -PolicyDefinition $otherDefinition.Id -Scope $rgScope -PolicyParameterObject @{ tagName_V1 = 'some definition V1 tag'; tagName = 'some definition tag' } -Description $description
+
+        # ensure it's present in the resource group scope listing
+        $list1 = Get-AzPolicyAssignment -Scope $rgScope | ?{ $_.Name -eq $testPA1 }
+        $list1.Count | Should -Be 1
+
+        # ensure it's not present in default listing (at subscription)
+        $list2 = Get-AzPolicyAssignment | ?{ $_.Name -eq $testPA1 }
+        $list2.Count | Should -Be 0
+
+        # get it back and validate it's the right one
+        $actual = Get-AzPolicyAssignment -Name $testPA1 -Scope $rgScope
+        $actual.Name | Should -Be $testPA1
+        $actual.PolicyDefinitionId | Should -Be $baseDefinition.Id
+        $actual.DefinitionVersion | Should -Be $otherDefMinor
+        $expected.Name | Should -Be $actual.Name
+        $expected.PolicyDefinitionId | Should -Be $actual.PolicyDefinitionId
+        $expected.DefinitionVersion | Should -Be $actual.DefinitionVersion
+    }
+
+    It 'Make and validate a policy set definition assignment using string ID with version reference at RG scope' {
+        # make a policy assignment of versioned definition
+        $expected = New-AzPolicyAssignment -Name $testPA2 -PolicyDefinition "$($baseSetDefinition.Id)/versions/$($otherSetMinor)" -Scope $rgScope -PolicyParameterObject @{ tagName_V1 = 'some V1 set definition tag' } -Description $description
+
+        # ensure it's present in the resource group scope listing
+        $list1 = Get-AzPolicyAssignment -Scope $rgScope | ?{ $_.Name -eq $testPA2 }
+        $list1.Count | Should -Be 1
+
+        # ensure it's not present in default listing (at subscription)
+        $list2 = Get-AzPolicyAssignment | ?{ $_.Name -eq $testPA2 }
+        $list2.Count | Should -Be 0
+
+        # get it back and validate it's the right one
+        $actual = Get-AzPolicyAssignment -Name $testPA2 -Scope $rgScope
+        $actual.Name | Should -Be $testPA2
+        $actual.PolicyDefinitionId | Should -Be $baseSetDefinition.Id
+        $actual.DefinitionVersion | Should -Be $otherSetMinor
+        $expected.Name | Should -Be $actual.Name
+        $expected.PolicyDefinitionId | Should -Be $actual.PolicyDefinitionId
+        $expected.DefinitionVersion | Should -Be $actual.DefinitionVersion
+    }
+
+    It 'Make and validate a policy definition assignment using version parameter at RG scope' {
+        # make a policy assignment of versioned definition
+        $expected = New-AzPolicyAssignment -Name $testPA1 -PolicyDefinition $baseDefinition -DefinitionVersion $otherDefMinor -Scope $rgScope -PolicyParameterObject @{ tagName_V1 = 'some definition V1 tag'; tagName = 'some definition tag' } -Description $description
+
+        # ensure it's present in the resource group scope listing
+        $list1 = Get-AzPolicyAssignment -Scope $rgScope | ?{ $_.Name -eq $testPA1 }
+        $list1.Count | Should -Be 1
+
+        # ensure it's not present in default listing (at subscription)
+        $list2 = Get-AzPolicyAssignment | ?{ $_.Name -eq $testPA1 }
+        $list2.Count | Should -Be 0
+
+        # get it back and validate it's the right one
+        $actual = Get-AzPolicyAssignment -Name $testPA1 -Scope $rgScope
+        $actual.Name | Should -Be $testPA1
+        $actual.PolicyDefinitionId | Should -Be $baseDefinition.Id
+        $actual.DefinitionVersion | Should -Be $otherDefMinor
+        $expected.Name | Should -Be $actual.Name
+        $expected.PolicyDefinitionId | Should -Be $actual.PolicyDefinitionId
+        $expected.DefinitionVersion | Should -Be $actual.DefinitionVersion
+    }
+
+    It 'Make and validate a policy set definition assignment using version parameter at RG scope' {
+        # make a policy assignment of versioned definition
+        $expected = New-AzPolicyAssignment -Name $testPA2 -PolicyDefinition $baseSetDefinition -DefinitionVersion $otherDefMinor -Scope $rgScope -PolicyParameterObject @{ tagName_V1 = 'some set definition V1 tag'; tagName = 'some set definition tag' } -Description $description
+
+        # ensure it's present in the resource group scope listing
+        $list1 = Get-AzPolicyAssignment -Scope $rgScope | ?{ $_.Name -eq $testPA2 }
+        $list1.Count | Should -Be 1
+
+        # ensure it's not present in default listing (at subscription)
+        $list2 = Get-AzPolicyAssignment | ?{ $_.Name -eq $testPA2 }
+        $list2.Count | Should -Be 0
+
+        # get it back and validate it's the right one
+        $actual = Get-AzPolicyAssignment -Name $testPA2 -Scope $rgScope
+        $actual.Name | Should -Be $testPA2
+        $actual.PolicyDefinitionId | Should -Be $baseSetDefinition.Id
+        $actual.DefinitionVersion | Should -Be $otherSetMinor
+        $expected.Name | Should -Be $actual.Name
+        $expected.PolicyDefinitionId | Should -Be $actual.PolicyDefinitionId
+        $expected.DefinitionVersion | Should -Be $actual.DefinitionVersion
+    }
+
     It 'Make and validate a custom policy set with version references at RG scope' {
 
         $policyDefinition = 
