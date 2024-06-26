@@ -31,6 +31,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
             }
         }
 
+        public static T GetAzConfig<T>(string key, T defaultValue = default(T))
+        {
+            return Session.TryGetComponent<IConfigManager>(nameof(IConfigManager), out IConfigManager configManager) ? configManager.GetConfigValue<T>(key) : defaultValue;
+        }
+
         static public bool IsWamEnabled(string authority)
         {
             if (!string.IsNullOrEmpty(authority) && Session.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var config))

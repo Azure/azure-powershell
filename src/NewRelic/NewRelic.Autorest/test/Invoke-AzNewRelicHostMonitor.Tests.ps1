@@ -14,11 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzNewRelicHostMonitor'
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Invoke-AzNewRelicHostMonitor' {
-    It 'Host' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
+Describe 'Invoke-AzNewRelicHostMonitor' { #Scenario Test
     It 'HostViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

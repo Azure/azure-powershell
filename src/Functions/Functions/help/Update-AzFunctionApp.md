@@ -17,7 +17,7 @@ Updates a function app.
 Update-AzFunctionApp -ResourceGroupName <String> -Name <String> [-SubscriptionId <String>] [-PlanName <String>]
  [-Force] [-ApplicationInsightsName <String>] [-ApplicationInsightsKey <String>] [-Tag <Hashtable>]
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityID <String[]>] [-DefaultProfile <PSObject>] [-NoWait]
- [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectInput
@@ -25,7 +25,7 @@ Update-AzFunctionApp -ResourceGroupName <String> -Name <String> [-SubscriptionId
 Update-AzFunctionApp [-PlanName <String>] [-Force] [-ApplicationInsightsName <String>]
  [-ApplicationInsightsKey <String>] [-Tag <Hashtable>] [-IdentityType <ManagedServiceIdentityType>]
  [-IdentityID <String[]>] -InputObject <ISite> [-DefaultProfile <PSObject>] [-NoWait] [-AsJob]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -178,7 +178,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
+Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
 Parameter Sets: ByObjectInput
 Aliases:
 
@@ -227,6 +227,21 @@ The name of the service plan.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -316,11 +331,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
 
 ## NOTES
 

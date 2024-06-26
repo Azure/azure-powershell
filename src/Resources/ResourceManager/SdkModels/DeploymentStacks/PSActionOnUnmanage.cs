@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentS
     {
         DetachAll = 0,
         DeleteResources,
-        DeleteResourcesAndResourceGroups,
         DeleteAll
     }
 }

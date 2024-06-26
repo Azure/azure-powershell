@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Updated Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.20.
+* Fixed the issue that Azure.Core.AccessToken is used before assigned.
 
 ## Version 3.0.8
 * Upgraded `Microsoft.DataTransfer.Gateway.Encryption` to `5.29.8499.2`

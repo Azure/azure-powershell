@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the issue that Azure.Core.AccessToken is used before assigned.
 * Supported TLS1_3 when creating and updating a storage account 
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`
