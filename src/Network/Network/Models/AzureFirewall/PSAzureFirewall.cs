@@ -150,6 +150,39 @@ namespace Microsoft.Azure.Commands.Network.Models
                 throw new ArgumentException($"Hub firewall allocation attempted on a Non-hub firewall. Firewall name = {this.Name}, Sku name = {this.Sku.Name}");
             }
         }
+        public void Allocate(Management.Network.Models.SubResource virtualHub, PSPublicIpAddress[] publicIpAddresses)
+        {
+            if (this.Sku.Name.Equals("AZFW_Hub", StringComparison.OrdinalIgnoreCase))
+            {
+                this.VirtualHub = virtualHub;
+            }
+            else
+            {
+                throw new ArgumentException($"Hub firewall allocation attempted on a Non-hub firewall. Firewall name = {this.Name}, Sku name = {this.Sku.Name}");
+            }
+
+            this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>();
+
+            if (publicIpAddresses != null && publicIpAddresses.Count() > 0)
+            {
+                for (var i = 0; i < publicIpAddresses.Count(); i++)
+                {
+                    this.IpConfigurations.Add(
+                        new PSAzureFirewallIpConfiguration
+                        {
+                            Name = $"{AzureFirewallIpConfigurationName}{i}",
+                            PublicIpAddress = new PSResourceId { Id = publicIpAddresses[i].Id }
+                        });
+                }
+            }
+            else
+            {
+                this.IpConfigurations.Add(new PSAzureFirewallIpConfiguration { Name = $"{AzureFirewallIpConfigurationName}{0}" });
+            }
+
+            // Making HubIpAddresses property null because it is an allocate for Byopip Hub firewall, where HubIpAddress should be kept null
+            this.HubIPAddresses = null;
+        }          
 
         public void Allocate(PSVirtualNetwork virtualNetwork, PSPublicIpAddress[] publicIpAddresses, PSPublicIpAddress ManagementPublicIpAddress = null)
         {
