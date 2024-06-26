@@ -1,0 +1,123 @@
+{
+  "resourceType": "cloudExadataInfrastructures",
+  "apiVersion": "2023-09-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.oracledatabaseresourcemanager"
+  },
+  "commands": [
+    {
+      "name": "Add-AzOracleDatabaseResourceManagerCloudExadataInfrastructureStorageCapacity",
+      "description": "Perform add storage capacity on exadata infra",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/cloudExadataInfrastructures/{cloudexadatainfrastructurename}/addStorageCapacity",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.oracledatabaseresourcemanager/add-azoracledatabaseresourcemanagercloudexadatainfrastructurestoragecapacity"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Cloudexadatainfrastructurename <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Perform add storage capacity on exadata infra",
+          "parameters": [
+            {
+              "name": "-Cloudexadatainfrastructurename",
+              "value": "[Path.cloudexadatainfrastructurename]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzOracleDatabaseResourceManagerCloudExadataInfrastructure",
+      "description": "Get a CloudExadataInfrastructure",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/cloudExadataInfrastructures/{cloudexadatainfrastructurename}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.oracledatabaseresourcemanager/get-azoracledatabaseresourcemanagercloudexadatainfrastructure"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a CloudExadataInfrastructure",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.cloudexadatainfrastructurename]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzOracleDatabaseResourceManagerCloudExadataInfrastructure",
+      "description": "Delete a CloudExadataInfrastructure",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/cloudExadataInfrastructures/{cloudexadatainfrastructurename}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.oracledatabaseresourcemanager/remove-azoracledatabaseresourcemanagercloudexadatainfrastructure"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a CloudExadataInfrastructure",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.cloudexadatainfrastructurename]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
