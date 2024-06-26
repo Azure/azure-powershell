@@ -23,7 +23,7 @@
     - `New-AzLoadBalancerProbeConfig`
     - `Add-AzLoadBalancerProbeConfig`
     - `Set-AzLoadBalancerProbeConfig`
-* Updated Network.Management SDK to consume newer Swagger version
+* Updated Network.Management SDK to consume `2024-01-01` Swagger version
 * Updated cmdlet to add 'Premium' as a valid value for 'Sku' parameter and 'enableSessionRecording' feature for Bastion resources
     - `New-AzBastion`
     - `Set-AzBastion`
