@@ -32,8 +32,8 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2024-02-01/afdx.json
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2024-02-01/cdn.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/preview/2024-05-01-preview/afdx.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/preview/2024-05-01-preview/cdn.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 
@@ -42,7 +42,7 @@ module-version: 0.1.0
 # Normally, title is the service name
 title: Cdn
 subject-prefix: $(service-name)
-commit: 186970d644b0d6249772290fedfb4a288f433cc3
+commit: a83c34348fbd25ad79a05e36816b91da0122b583
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
@@ -107,7 +107,7 @@ directive:
     # CDN content
     - PurgeParameters
     - LoadParameters
-    
+
     # AFDX profile LogScrubbing, need to rename the memory ojects, not sure how to rename a memory object currently.
     # - ProfileLogScrubbing
     # - ProfileScrubbingRules
@@ -117,6 +117,11 @@ directive:
     # Upgrade sku
     # - ProfileUpgradeParameters
     # - ProfileChangeSkuWafMapping
+
+  # rename CdnProfiles_CdnMigrateToAfd to avoid conflict with Profiles_Migrate
+  - from: swagger-document
+    where: $.paths..operationId
+    transform: return $.replace(/^CdnProfiles_CdnMigrateToAfd$/g, "CdnProfilesToAfd_CdnMigrateToAfd")
 
   - where:
       model-name: .*
@@ -244,6 +249,10 @@ directive:
       subject: ResourceUsage
     set:
       subject: SubscriptionResourceUsage
+  - where:
+      subject: CdnProfileTo
+    set:
+      subject: CdnProfileToAFD
 
   # https://github.com/Azure/autorest.powershell/issues/906
   - where:
