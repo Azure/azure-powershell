@@ -23,27 +23,28 @@ New-AzPolicyAssignment -Name <String> [-Scope <String>] [-BackwardCompatible] [-
 ### ParameterObject
 ```
 New-AzPolicyAssignment -Name <String> -PolicyParameterObject <Hashtable> [-Scope <String>]
- [-BackwardCompatible] [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>]
- [-IdentityId <String>] [-IdentityType <String>] [-Location <String>] [-Metadata <String>]
- [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-PolicyDefinition <PSObject>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-BackwardCompatible] [-DefinitionVersion <String>] [-Description <String>] [-DisplayName <String>]
+ [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>] [-Location <String>]
+ [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
+ [-PolicyDefinition <PSObject>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ParameterString
 ```
 New-AzPolicyAssignment -Name <String> -PolicyParameter <String> [-Scope <String>] [-BackwardCompatible]
- [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>]
- [-IdentityType <String>] [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>]
- [-NotScope <String[]>] [-PolicyDefinition <PSObject>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-DefinitionVersion <String>] [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>]
+ [-IdentityId <String>] [-IdentityType <String>] [-Location <String>] [-Metadata <String>]
+ [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-PolicyDefinition <PSObject>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PolicyDefinitionOrPolicySetDefinition
 ```
 New-AzPolicyAssignment -Name <String> -PolicyDefinition <PSObject> [-Scope <String>] [-BackwardCompatible]
- [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>]
- [-IdentityType <String>] [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>]
- [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefinitionVersion <String>] [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>]
+ [-IdentityId <String>] [-IdentityType <String>] [-Location <String>] [-Metadata <String>]
+ [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -230,6 +231,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefinitionVersion
+Indicate version of policy definition or policy set definition
+
+```yaml
+Type: System.String
+Parameter Sets: ParameterObject, ParameterString, PolicyDefinitionOrPolicySetDefinition
+Aliases:
 
 Required: False
 Position: Named
