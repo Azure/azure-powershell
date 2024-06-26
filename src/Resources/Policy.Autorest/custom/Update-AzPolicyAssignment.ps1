@@ -337,6 +337,24 @@ process {
         }
     }
 
+    if (!$DisplayName) {
+        if ($_.DisplayName) {
+            $calledParameters.DisplayName = $_.DisplayName
+        }
+        elseif ($existing.DisplayName) {
+            $calledParameters.DisplayName = $existing.DisplayName
+        }
+    }
+
+    if (!$Description) {
+        if ($_.Description) {
+            $calledParameters.Description = $_.Description
+        }
+        elseif ($existing.Description) {
+            $calledParameters.Description = $existing.Description
+        }
+    }
+
     if ($BackwardCompatible) {
         $calledParameters.BackwardCompatible = $true
     }
