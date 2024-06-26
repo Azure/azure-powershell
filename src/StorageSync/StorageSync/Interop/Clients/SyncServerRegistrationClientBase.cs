@@ -199,7 +199,7 @@ namespace Commands.StorageSync.Interop.Clients
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.RegisterOnlineSyncRegistrationFailed);
             }
 
-            if (isCertificateRegistration)
+            //if (isCertificateRegistration)
             {
                 // Setting ServerCertificate from request resource to response resource so that it can be used by Monitoring pipeline
                 resultantRegisteredServerResource.ServerCertificate = Convert.ToBase64String(serverRegistrationData.ServerCertificate);

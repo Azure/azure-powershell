@@ -125,13 +125,14 @@ namespace Commands.StorageSync.Interop.Clients
             string agentVersion,
             string serverMachineName)
         {
-            bool isCertificateRegistration = applicationId == Guid.Empty;
+
+            bool isCertificateRegistration = applicationId.GetValueOrDefault(Guid.Empty) == Guid.Empty;
             string syncServerCertificate = default;
 
             int hr;
             bool success;
 
-            if (isCertificateRegistration)
+            //if (isCertificateRegistration)
             {
                 hr = this.EcsManagementInteropClient.EnsureSyncServerCertificate(managementEndpointUri.OriginalString,
                     subscriptionId.ToString(),
@@ -346,13 +347,13 @@ namespace Commands.StorageSync.Interop.Clients
                 ResourceLocation = registeredServerResource.ResourceLocation
             };
 
-            bool isCertificateRegistration = !string.IsNullOrEmpty(registeredServerResource.ApplicationId);
+            bool isCertificateRegistration = string.IsNullOrEmpty(registeredServerResource.ApplicationId);
 
-            if (isCertificateRegistration)
+            if (registeredServerResource.ServerCertificate != null)
             {
                 registrationInfo.ServerCertificate = registeredServerResource.ServerCertificate.ToBase64Bytes(); // use certificate
             }
-            else
+            if (!string.IsNullOrEmpty(registeredServerResource.ApplicationId))
             {
                 registrationInfo.ApplicationId = Guid.Parse(registeredServerResource.ApplicationId); // use Managed Identity ID
             }
