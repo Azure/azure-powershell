@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </param>
 
         /// <param name="permissions">Permissions for the key -- read-only or full permissions.
-        /// Possible values include: 'Read', 'Full'</param>
+        /// Possible values include: &#39;Read&#39;, &#39;Full&#39;</param>
 
         /// <param name="creationTime">Creation time of the key, in round trip date format.
         /// </param>

@@ -502,7 +502,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Call to Graph was unsuccesfull, this is likely due to insuficient permissions in Azure AD. Please ensure you have the correct set of permissions..
+        ///   Looks up a localized string similar to Call to Graph was unsuccessful, this is likely due to insuficient permissions in Azure AD. Please ensure you have the correct set of permissions..
         /// </summary>
         internal static string NotAuthorizedInGraph {
             get {
@@ -1034,7 +1034,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Succesfully removed role assignment for AD object &apos;{0}&apos; on scope &apos;{1}&apos; with role definition &apos;{2}&apos;.
+        ///   Looks up a localized string similar to Successfully removed role assignment for AD object &apos;{0}&apos; on scope &apos;{1}&apos; with role definition &apos;{2}&apos;.
         /// </summary>
         internal static string SuccessfullRARemove {
             get {

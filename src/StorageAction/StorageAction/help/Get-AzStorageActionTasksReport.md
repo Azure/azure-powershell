@@ -15,7 +15,7 @@ Fetch the storage tasks run report summary for each assignment.
 ```
 Get-AzStorageActionTasksReport -ResourceGroupName <String> -StorageTaskName <String>
  [-SubscriptionId <String[]>] [-Filter <String>] [-Maxpagesize <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -121,21 +121,6 @@ Optional, specifies the maximum number of Storage Task Assignment Resource IDs t
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

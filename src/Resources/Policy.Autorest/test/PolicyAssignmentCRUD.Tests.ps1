@@ -7,7 +7,6 @@ Describe 'PolicyAssignmentCRUD' {
         # setup
         $rgName = $env.rgName
         $rgScope = $env.rgScope
-        $policyName = Get-ResourceName
         $policySetDefName = Get-ResourceName
         $policyDefName1 = Get-ResourceName
         $policyDefName2 = Get-ResourceName

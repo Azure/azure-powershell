@@ -23,8 +23,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>Internal Acessors for ActivationKey</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSitePropertiesInternal.ActivationKey { get => this._activationKey; set { {_activationKey = value;} } }
 
+        /// <summary>Internal Acessors for ProvisioningState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSitePropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
+
         /// <summary>Internal Acessors for Status</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IHcxEnterpriseSitePropertiesInternal.Status { get => this._status; set { {_status = value;} } }
+
+        /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
+        private string _provisioningState;
+
+        /// <summary>The provisioning state of the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string ProvisioningState { get => this._provisioningState; }
 
         /// <summary>Backing field for <see cref="Status" /> property.</summary>
         private string _status;
@@ -54,6 +64,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"activationKey",
         PossibleTypes = new [] { typeof(string) })]
         string ActivationKey { get;  }
+        /// <summary>The provisioning state of the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The provisioning state of the resource.",
+        SerializedName = @"provisioningState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled")]
+        string ProvisioningState { get;  }
         /// <summary>The status of the HCX Enterprise Site</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -74,6 +96,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
     {
         /// <summary>The activation key</summary>
         string ActivationKey { get; set; }
+        /// <summary>The provisioning state of the resource.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled")]
+        string ProvisioningState { get; set; }
         /// <summary>The status of the HCX Enterprise Site</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Available", "Consumed", "Deactivated", "Deleted")]
         string Status { get; set; }

@@ -28,7 +28,7 @@ For information on how to develop for `Az.Policy`, see [how-to.md](how-to.md).
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-commit: 33da947dfea91e16a4e62c663a13de4f0fa72251
+commit: 412364b282e52b50eadc3cd88d56d283b6c8712a
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -140,7 +140,7 @@ directive:
       default:
         name: DefaultExpiresOn
         description: Need a placeholder to keep autorest happy
-        script: '"PlaceholderExpiresOn"'
+        script: '{ "" }'
     hide: true
     clear-alias: true
 
@@ -223,6 +223,41 @@ directive:
       parameter-name: NonComplianceMessageTable
     hide: true
 
+# Formatting directives
+  - where:
+      model-name: PolicyAssignment
+    set:
+      format-table:
+        properties:
+          - Name
+          - Scope
+          - EnforcementMode
+          - DisplayName
+  - where:
+      model-name: PolicyDefinition
+    set:
+      format-table:
+        properties:
+          - Name
+          - PolicyType
+          - DisplayName
+  - where:
+      model-name: PolicyExemption
+    set:
+      format-table:
+        properties:
+          - Name
+          - PolicyAssignmentId
+          - DisplayName
+  - where:
+      model-name: PolicySetDefinition
+    set:
+      format-table:
+        properties:
+          - Name
+          - PolicyType
+          - DisplayName
+
 # Hide parameters that aren't supported.
 # For some reason these can't be hidden by hiding them in
 # the custom folder so we have to do it here.
@@ -251,9 +286,9 @@ directive:
       verb: New|Get|Remove|Update
     hide: true
   - where:
-      verb: New|Remove|Update
+      verb: Get|New|Remove|Update
       subject: PolicyDefinitionVersion|PolicySetDefinitionVersion
-    remove: true
+    hide: true
 
 metadata:
   scriptsToProcess:

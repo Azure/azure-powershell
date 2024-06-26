@@ -15,27 +15,17 @@ Update a LocalRulestackResource
 ### UpdateExpanded (Default)
 ```
 Update-AzPaloAltoNetworksLocalRulestack -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AssociatedSubscription <String[]>] [-DefaultMode <String>] [-Description <String>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-MinAppIdVersion <String>] [-PanEtag <String>]
- [-PanLocation <String>] [-Scope <String>] [-SecurityServiceAntiSpywareProfile <String>]
- [-SecurityServiceAntiVirusProfile <String>] [-SecurityServiceDnsSubscription <String>]
- [-SecurityServiceFileBlockingProfile <String>] [-SecurityServiceOutboundTrustCertificate <String>]
- [-SecurityServiceOutboundUnTrustCertificate <String>] [-SecurityServiceUrlFilteringProfile <String>]
- [-SecurityServiceVulnerabilityProfile <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableSystemAssignedIdentity <Boolean>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzPaloAltoNetworksLocalRulestack -InputObject <IPaloAltoNetworksIdentity>
- [-AssociatedSubscription <String[]>] [-DefaultMode <String>] [-Description <String>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-MinAppIdVersion <String>] [-PanEtag <String>]
- [-PanLocation <String>] [-Scope <String>] [-SecurityServiceAntiSpywareProfile <String>]
- [-SecurityServiceAntiVirusProfile <String>] [-SecurityServiceDnsSubscription <String>]
- [-SecurityServiceFileBlockingProfile <String>] [-SecurityServiceOutboundTrustCertificate <String>]
- [-SecurityServiceOutboundUnTrustCertificate <String>] [-SecurityServiceUrlFilteringProfile <String>]
- [-SecurityServiceVulnerabilityProfile <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableSystemAssignedIdentity <Boolean>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,26 +48,11 @@ Update a LocalRulestackResource.
 
 ## PARAMETERS
 
-### -AssociatedSubscription
-subscription scope of global rulestack
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultMode
-Mode for default rules creation
-
-```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -104,41 +79,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Description
-rulestack description
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-The type of managed identity assigned to this resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The identities assigned to this resource by the user.
-
-```yaml
-Type: System.Collections.Hashtable
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -164,21 +109,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -MinAppIdVersion
-minimum version
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 LocalRulestack resource name
 
@@ -194,11 +124,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PanEtag
-PanEtag info
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -209,13 +139,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PanLocation
-Rulestack Location, Required for GlobalRulestacks, Not for LocalRulestacks
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
-Aliases:
+Aliases: proga
 
 Required: False
 Position: Named
@@ -234,141 +164,6 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Scope
-Rulestack Type
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityServiceAntiSpywareProfile
-Anti spyware Profile data
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityServiceAntiVirusProfile
-anti virus profile data
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityServiceDnsSubscription
-DNS Subscription profile data
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityServiceFileBlockingProfile
-File blocking profile data
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityServiceOutboundTrustCertificate
-Trusted Egress Decryption profile data
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityServiceOutboundUnTrustCertificate
-Untrusted Egress Decryption profile data
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityServiceUrlFilteringProfile
-URL filtering profile data
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityServiceVulnerabilityProfile
-IPs Vulnerability Profile Data
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -395,6 +190,22 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

@@ -127,14 +127,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     string confirmationMessage = $"The DeploymentStack '{Name}' you're trying to create already exists in ResourceGroup '{ResourceGroupName}'. " +
                         $"Do you want to overwrite it?\n" +
                         $"The following actions will be applied to any resources the are no longer managed by the deployment stack after the template is applied:" +
-                        (shouldDeleteResources || shouldDeleteResourceGroups ? "\nDeleting: " : "") +
+                        // Deleting
+                        (shouldDeleteResources || shouldDeleteResourceGroups || shouldDeleteManagementGroups ? "\nDeleting: " : "") +
                         (shouldDeleteResources ? "resources" : "") +
                         (shouldDeleteResources && shouldDeleteResourceGroups ? ", " : "") +
                         (shouldDeleteResourceGroups ? "resourceGroups" : "") +
-                        (!shouldDeleteResources || !shouldDeleteResourceGroups ? "\nDetaching: " : "") +
+                        (shouldDeleteResourceGroups && shouldDeleteManagementGroups ? ", " : "") +
+                        (shouldDeleteManagementGroups ? "managementGroups" : "") +
+                        // Detaching
+                        (!shouldDeleteResources || !shouldDeleteResourceGroups || !shouldDeleteManagementGroups ? "\nDetaching: " : "") +
                         (!shouldDeleteResources ? "resources" : "") +
                         (!shouldDeleteResources && !shouldDeleteResourceGroups ? ", " : "") +
-                        (!shouldDeleteResourceGroups ? "resourceGroups" : "");
+                        (!shouldDeleteResourceGroups ? "resourceGroups" : "") +
+                        (!shouldDeleteResourceGroups && !shouldDeleteManagementGroups ? ", " : "") +
+                        (!shouldDeleteManagementGroups ? "managementGroups" : "");
 
                     ConfirmAction(
                         Force.IsPresent,

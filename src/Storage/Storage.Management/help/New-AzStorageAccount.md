@@ -29,7 +29,7 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-EdgeZone <String>]
  [-PublicNetworkAccess <String>] [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>]
  [-ImmutabilityPolicyState <String>] [-AllowedCopyScope <String>] [-DnsEndpointType <String>]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-ProgressAction <ActionPreference>]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
  [<CommonParameters>]
 ```
 
@@ -50,7 +50,7 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-DefaultSharePermission <String>] [-EdgeZone <String>] [-PublicNetworkAccess <String>]
  [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>]
  [-AllowedCopyScope <String>] [-DnsEndpointType <String>] [-DefaultProfile <IAzureContextContainer>]
- [-RoutingChoice <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -73,7 +73,7 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-DefaultSharePermission <String>] [-EdgeZone <String>] [-PublicNetworkAccess <String>]
  [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>]
  [-AllowedCopyScope <String>] [-DnsEndpointType <String>] [-DefaultProfile <IAzureContextContainer>]
- [-RoutingChoice <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,7 +83,7 @@ The **New-AzStorageAccount** cmdlet creates an Azure Storage account.
 
 ### Example 1: Create a Storage account
 ```powershell
-New-AzStorageAccount -ResourceGroupName MyResourceGroup -Name mystorageaccount -Location westus -SkuName Standard_GRS
+New-AzStorageAccount -ResourceGroupName MyResourceGroup -Name mystorageaccount -Location westus -SkuName Standard_GRS -MinimumTlsVersion TLS1_2
 ```
 
 This command creates a Storage account for the resource group name MyResourceGroup.
@@ -177,10 +177,10 @@ Then get the Storage account properties, and view the encryption keytype of Queu
 
 
 ```
-$account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2 -MinimumTlsVersion TLS1_1 -AllowBlobPublicAccess $false -AllowSharedKeyAccess $false
+$account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2 -MinimumTlsVersion TLS1_2 -AllowBlobPublicAccess $false -AllowSharedKeyAccess $false
 
 $account.MinimumTlsVersion
-TLS1_1
+TLS1_2
 
 $account.AllowBlobPublicAccess
 False
@@ -1097,21 +1097,6 @@ NetworkRuleSet is used to define a set of configuration rules for firewalls and 
 Type: Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

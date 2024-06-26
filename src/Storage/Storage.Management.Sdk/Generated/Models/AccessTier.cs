@@ -19,7 +19,9 @@ namespace Microsoft.Azure.Management.Storage.Models
         [System.Runtime.Serialization.EnumMember(Value = "Cool")]
         Cool,
         [System.Runtime.Serialization.EnumMember(Value = "Premium")]
-        Premium
+        Premium,
+        [System.Runtime.Serialization.EnumMember(Value = "Cold")]
+        Cold
     }
     internal static class AccessTierEnumExtension
     {
@@ -37,6 +39,8 @@ namespace Microsoft.Azure.Management.Storage.Models
                     return "Cool";
                 case AccessTier.Premium:
                     return "Premium";
+                case AccessTier.Cold:
+                    return "Cold";
             }
             return null;
         }
@@ -50,6 +54,8 @@ namespace Microsoft.Azure.Management.Storage.Models
                     return AccessTier.Cool;
                 case "Premium":
                     return AccessTier.Premium;
+                case "Cold":
+                    return AccessTier.Cold;
             }
             return null;
         }

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="status">Indicates whether the connection has been Approved/Rejected/Removed by the
         /// owner of the service.
-        /// Possible values include: 'Pending', 'Approved', 'Rejected'</param>
+        /// Possible values include: &#39;Pending&#39;, &#39;Approved&#39;, &#39;Rejected&#39;</param>
 
         /// <param name="description">The reason for approval/rejection of the connection.
         /// </param>

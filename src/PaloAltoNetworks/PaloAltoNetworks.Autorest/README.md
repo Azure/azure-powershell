@@ -36,8 +36,6 @@ input-file:
 title: PaloAltoNetworks
 module-version: 0.2.0
 subject-prefix: $(service-name)
-disable-transform-identity-type: true
-flatten-userassignedidentity: false
 
 directive:
   - from: swagger-document
@@ -86,14 +84,13 @@ directive:
   - where:
       verb: Set
     remove: true
-# # Some of the parameters are of type Object and need to be expanded into a command for the convenience of the user
-# # The following are commented out and their generated cmdlets may be renamed and custom logic
-# # Do not delete this code
-#   - model-cmdlet:
-#       - IPAddress
-#       - FrontendSetting
-#       - NetworkProfile
-#       - TagInfo
+
+  - model-cmdlet:
+      - model-name: IPAddress
+      - model-name: FrontendSetting
+      - model-name: NetworkProfile
+        cmdlet-name: New-AzPaloAltoNetworksProfileObject
+      - model-name: TagInfo
 
   - where:
       subject: PostRule

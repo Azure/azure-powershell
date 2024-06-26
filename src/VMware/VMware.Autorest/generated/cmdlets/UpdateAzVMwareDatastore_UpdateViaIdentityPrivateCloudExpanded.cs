@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a datastore in a private cloud cluster</summary>
+    /// <summary>Update a Datastore</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores/{datastoreName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores/{datastoreName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzVMwareDatastore_UpdateViaIdentityPrivateCloudExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastore))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Update a datastore in a private cloud cluster")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Update a Datastore")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Generated]
     public partial class UpdateAzVMwareDatastore_UpdateViaIdentityPrivateCloudExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener,
@@ -71,12 +71,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// <summary>Backing field for <see cref="ClusterName" /> property.</summary>
         private string _clusterName;
 
-        /// <summary>Name of the cluster in the private cloud</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the cluster in the private cloud")]
+        /// <summary>Name of the cluster</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the cluster")]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Name of the cluster in the private cloud",
+        Description = @"Name of the cluster",
         SerializedName = @"clusterName",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Path)]
@@ -91,42 +91,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
-
-        /// <summary>Name of the LUN to be used for datastore</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of the LUN to be used for datastore")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Name of the LUN to be used for datastore",
-        SerializedName = @"lunName",
-        PossibleTypes = new [] { typeof(string) })]
-        public string DiskPoolVolumeLunName { get => _datastoreBody.DiskPoolVolumeLunName ?? null; set => _datastoreBody.DiskPoolVolumeLunName = value; }
-
-        /// <summary>
-        /// Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN",
-        SerializedName = @"mountOption",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("MOUNT", "ATTACH")]
-        public string DiskPoolVolumeMountOption { get => _datastoreBody.DiskPoolVolumeMountOption ?? null; set => _datastoreBody.DiskPoolVolumeMountOption = value; }
-
-        /// <summary>Azure resource ID of the iSCSI target</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Azure resource ID of the iSCSI target")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Azure resource ID of the iSCSI target",
-        SerializedName = @"targetId",
-        PossibleTypes = new [] { typeof(string) })]
-        public string DiskPoolVolumeTargetId { get => _datastoreBody.DiskPoolVolumeTargetId ?? null; set => _datastoreBody.DiskPoolVolumeTargetId = value; }
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
@@ -157,28 +121,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
 
-        /// <summary>Name of the datastore in the private cloud cluster</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the datastore in the private cloud cluster")]
+        /// <summary>Name of the datastore</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the datastore")]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Name of the datastore in the private cloud cluster",
+        Description = @"Name of the datastore",
         SerializedName = @"datastoreName",
         PossibleTypes = new [] { typeof(string) })]
         [global::System.Management.Automation.Alias("DatastoreName")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Path)]
         public string Name { get => this._name; set => this._name = value; }
-
-        /// <summary>Azure resource ID of the NetApp volume</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Azure resource ID of the NetApp volume")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Azure resource ID of the NetApp volume",
-        SerializedName = @"id",
-        PossibleTypes = new [] { typeof(string) })]
-        public string NetAppVolumeId { get => _datastoreBody.NetAppVolumeId ?? null; set => _datastoreBody.NetAppVolumeId = value; }
 
         /// <summary>
         /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
@@ -557,22 +510,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
 
         private void Update_datastoreBody()
         {
-            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("NetAppVolumeId")))
-            {
-                this.NetAppVolumeId = (string)(this.MyInvocation?.BoundParameters["NetAppVolumeId"]);
-            }
-            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DiskPoolVolumeTargetId")))
-            {
-                this.DiskPoolVolumeTargetId = (string)(this.MyInvocation?.BoundParameters["DiskPoolVolumeTargetId"]);
-            }
-            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DiskPoolVolumeLunName")))
-            {
-                this.DiskPoolVolumeLunName = (string)(this.MyInvocation?.BoundParameters["DiskPoolVolumeLunName"]);
-            }
-            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DiskPoolVolumeMountOption")))
-            {
-                this.DiskPoolVolumeMountOption = (string)(this.MyInvocation?.BoundParameters["DiskPoolVolumeMountOption"]);
-            }
+
         }
 
         /// <param name="sendToPipeline"></param>

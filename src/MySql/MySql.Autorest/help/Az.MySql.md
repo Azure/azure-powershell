@@ -23,6 +23,9 @@ Gets information about a server firewall rule.
 ### [Get-AzMySqlFlexibleServer](Get-AzMySqlFlexibleServer.md)
 Gets information about a server.
 
+### [Get-AzMySqlFlexibleServerAdvancedThreatProtectionSetting](Get-AzMySqlFlexibleServerAdvancedThreatProtectionSetting.md)
+Get a server's Advanced Threat Protection state
+
 ### [Get-AzMySqlFlexibleServerConfiguration](Get-AzMySqlFlexibleServerConfiguration.md)
 Gets information about a configuration of server.
 
@@ -124,6 +127,9 @@ Creates a new firewall rule or updates an existing firewall rule.
 Updates an existing MySQL flexible server.
 The request body can contain one to many of the properties present in the normal server definition.
 Use Update-AzMySqlFlexibleServerConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
+
+### [Update-AzMySqlFlexibleServerAdvancedThreatProtectionSetting](Update-AzMySqlFlexibleServerAdvancedThreatProtectionSetting.md)
+Updates a server's Advanced Threat Protection state.
 
 ### [Update-AzMySqlFlexibleServerConfiguration](Update-AzMySqlFlexibleServerConfiguration.md)
 Updates information about a configuration of a MySQL flexible server.

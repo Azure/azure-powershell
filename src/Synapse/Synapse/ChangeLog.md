@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Fixed the issue that Azure.Core.AccessToken is used before assigned.
+
+## Version 3.0.8
 * Upgraded `Microsoft.DataTransfer.Gateway.Encryption` to `5.29.8499.2`
 
 ## Version 3.0.7

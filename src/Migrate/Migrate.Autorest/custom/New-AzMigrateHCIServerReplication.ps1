@@ -203,47 +203,55 @@ function New-AzMigrateHCIServerReplication {
         
         if ($SiteType -eq $SiteTypes.HyperVSites) {
             $instanceType = $AzStackHCIInstanceTypes.HyperVToAzStackHCI
-            $machine = Az.Migrate.Internal\Get-AzMigrateHyperVMachine @PSBoundParameters
-            
+            $machine = InvokeAzMigrateGetCommandWithRetries `
+                -CommandName 'Az.Migrate.Internal\Get-AzMigrateHyperVMachine' `
+                -Parameters $PSBoundParameters `
+                -ErrorMessage "Machine '$MachineName' not found in resource group '$ResourceGroupName' and site '$SiteName'."
+
             $null = $PSBoundParameters.Remove('MachineName')
-            $siteObject = Az.Migrate.Internal\Get-AzMigrateHyperVSite @PSBoundParameters
+
+            $siteObject = InvokeAzMigrateGetCommandWithRetries `
+                -CommandName 'Az.Migrate.Internal\Get-AzMigrateHyperVSite' `
+                -Parameters $PSBoundParameters `
+                -ErrorMessage "Machine site '$SiteName' with Type '$SiteType' not found."
         }
         elseif ($SiteType -eq $SiteTypes.VMwareSites) {
             $instanceType = $AzStackHCIInstanceTypes.VMwareToAzStackHCI
-            $machine = Az.Migrate.Internal\Get-AzMigrateMachine @PSBoundParameters
+            $machine = InvokeAzMigrateGetCommandWithRetries `
+                -CommandName 'Az.Migrate.Internal\Get-AzMigrateMachine' `
+                -Parameters $PSBoundParameters `
+                -ErrorMessage "Machine '$MachineName' not found in resource group '$ResourceGroupName' and site '$SiteName'."
 
             $null = $PSBoundParameters.Remove('MachineName')
-            $siteObject = Az.Migrate\Get-AzMigrateSite @PSBoundParameters
+
+            $siteObject = InvokeAzMigrateGetCommandWithRetries `
+                -CommandName 'Az.Migrate\Get-AzMigrateSite' `
+                -Parameters $PSBoundParameters `
+                -ErrorMessage "Machine site '$SiteName' with Type '$SiteType' not found."
         }
 
-        $null = $PSBoundParameters.Remove('ResourceGroupName')
+        # $siteObject is not null or exception would have been thrown
+        $ProjectName = $siteObject.DiscoverySolutionId.Split("/")[8]
+
         $null = $PSBoundParameters.Remove('SiteName')
 
-        if ($null -eq $machine) {
-            throw "No machine '$MachineName' found in resource group '$ResourceGroupName' and site '$SiteName'."
-        }
-
-        if ($siteObject -and ($siteObject.Count -ge 1)) {
-            $ProjectName = $siteObject.DiscoverySolutionId.Split("/")[8]
-        }
-        else {
-            throw "No site '$SiteName' found in resource group '$ResourceGroupName'"
-        }
-
         # Get the migrate solution.
-        $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
-        $null = $PSBoundParameters.Add("Name", "Servers-Migration-ServerMigration_DataReplication")
+        $amhSolutionName = "Servers-Migration-ServerMigration_DataReplication"
+        $null = $PSBoundParameters.Add("Name", $amhSolutionName)
         $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
-        
-        $solution = Az.Migrate\Get-AzMigrateSolution @PSBoundParameters
-        $vaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
 
+        $solution = InvokeAzMigrateGetCommandWithRetries `
+            -CommandName 'Az.Migrate\Get-AzMigrateSolution' `
+            -Parameters $PSBoundParameters `
+            -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found in resource group '$ResourceGroupName' and project '$ProjectName'. Please verify your appliance setup."
+        
         $null = $PSBoundParameters.Remove('ResourceGroupName')
         $null = $PSBoundParameters.Remove("Name")
         $null = $PSBoundParameters.Remove("MigrateProjectName")
-
-        if (($null -eq $solution) -or [string]::IsNullOrEmpty($vaultName)) {
-            throw 'Azure Migrate Project not configured. Setup Azure Migrate Project and run the Initialize-AzMigrateHCIReplicationInfrastructure script before proceeding.'
+        
+        $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
+        if ([string]::IsNullOrEmpty($VaultName)) {
+            throw "Azure Migrate Project not configured: missing replication vault. Setup Azure Migrate Project and run the Initialize-AzMigrateHCIReplicationInfrastructure script before proceeding."
         }
         
         # Get fabrics and appliances in the project
@@ -269,57 +277,37 @@ function New-AzMigrateHCIServerReplication {
         }
 
         if ($null -eq $targetFabric) {
-            throw "A target appliance is not available for the target cluster. Deploy and configure a new appliance for the cluster, or select a different cluster.."
+            throw "A target appliance is not available for the target cluster. Deploy and configure a new appliance for the cluster, or select a different cluster."
         }
 
         # Get Source and Target Dras
-        $sourceDras = Az.Migrate.Internal\Get-AzMigrateDra `
-            -FabricName $sourceFabric.Name `
-            -ResourceGroupName $ResourceGroupName `
-            -ErrorVariable notPresent `
-            -ErrorAction SilentlyContinue
-        if ($null -eq $sourceDras) {
-            throw "No connected source appliances are found. Kindly deploy an appliance by completing the Discover step of the migration jounery on the source cluster."
-        }
+        $sourceDras = InvokeAzMigrateGetCommandWithRetries `
+            -CommandName 'Az.Migrate.Internal\Get-AzMigrateDra' `
+            -Parameters @{ FabricName = $sourceFabric.Name; ResourceGroupName = $ResourceGroupName } `
+            -ErrorMessage "No connected source appliances are found. Kindly deploy an appliance by completing the Discover step of the migration jounery on the source cluster."
+
         $sourceDra = $sourceDras[0]
 
-        $targetDras = Az.Migrate.Internal\Get-AzMigrateDra `
-            -FabricName $targetFabric.Name `
-            -ResourceGroupName $ResourceGroupName `
-            -ErrorVariable notPresent `
-            -ErrorAction SilentlyContinue
-        if ($null -eq $targetDras) {
-            throw "A target appliance is not available for the target cluster. Deploy and configure a new appliance for the cluster, or select a different cluster.."
-        }
+        $targetDras = InvokeAzMigrateGetCommandWithRetries `
+            -CommandName 'Az.Migrate.Internal\Get-AzMigrateDra' `
+            -Parameters @{ FabricName = $targetFabric.Name; ResourceGroupName = $ResourceGroupName } `
+            -ErrorMessage "No connected target appliances are found. Deploy and configure a new appliance for the target cluster, or select a different cluster."
+
         $targetDra = $targetDras[0]
 
         # Validate Policy
         $policyName = $vaultName + $instanceType + "policy"
-        $policyObj = Az.Migrate.Internal\Get-AzMigratePolicy `
-            -ResourceGroupName $ResourceGroupName `
-            -Name $policyName `
-            -VaultName $vaultName `
-            -SubscriptionId $SubscriptionId `
-            -ErrorVariable notPresent `
-            -ErrorAction SilentlyContinue
-
-        if ($null -eq $policyObj) {
-            throw "The replication infrastructure is not initialized. Run the Initialize-AzMigrateHCIReplicationInfrastructure script again."
-        }
+        $policy = InvokeAzMigrateGetCommandWithRetries `
+            -CommandName 'Az.Migrate.Internal\Get-AzMigratePolicy' `
+            -Parameters @{ ResourceGroupName = $ResourceGroupName; Name = $policyName; VaultName = $vaultName; SubscriptionId = $SubscriptionId } `
+            -ErrorMessage "The replication policy '$policyName' not found. The replication infrastructure is not initialized. Run the Initialize-AzMigrateHCIReplicationInfrastructure script again."
 
         # Validate Replication Extension
         $replicationExtensionName = ($sourceFabric.Id -split '/')[-1] + "-" + ($targetFabric.Id -split '/')[-1] + "-MigReplicationExtn"
-        $replicationExtension = Az.Migrate.Internal\Get-AzMigrateReplicationExtension `
-            -ResourceGroupName $ResourceGroupName `
-            -Name $replicationExtensionName `
-            -VaultName $vaultName `
-            -SubscriptionId $SubscriptionId `
-            -ErrorVariable notPresent `
-            -ErrorAction SilentlyContinue
-
-        if ($null -eq $replicationExtension) {
-            throw "The replication infrastructure is not initialized. Run the Initialize-AzMigrateHCIReplicationInfrastructure script again."
-        }
+        $replicationExtension = InvokeAzMigrateGetCommandWithRetries `
+            -CommandName 'Az.Migrate.Internal\Get-AzMigrateReplicationExtension' `
+            -Parameters @{ ResourceGroupName = $ResourceGroupName; Name = $replicationExtensionName; VaultName = $vaultName; SubscriptionId = $SubscriptionId } `
+            -ErrorMessage "The replication extension '$replicationExtensionName' not found. The replication infrastructure is not initialized. Run the Initialize-AzMigrateHCIReplicationInfrastructure script again."
         
         $targetClusterId = $targetFabric.Property.CustomProperty.Cluster.ResourceName
         $targetClusterIdArray = $targetClusterId.Split("/")
@@ -334,28 +322,27 @@ function New-AzMigrateHCIServerReplication {
             
         # Get source appliance RunAsAccount
         if ($SiteType -eq $SiteTypes.HyperVSites) {
-            $runAsAccounts = Az.Migrate.Internal\Get-AzMigrateHyperVRunAsAccount `
-                -ResourceGroupName $ResourceGroupName `
-                -SiteName $SiteName `
-                -SubscriptionId $SubscriptionId
+            $runAsAccounts = InvokeAzMigrateGetCommandWithRetries `
+                -CommandName 'Az.Migrate.Internal\Get-AzMigrateHyperVRunAsAccount' `
+                -Parameters @{ ResourceGroupName = $ResourceGroupName; SiteName = $SiteName; SubscriptionId = $SubscriptionId } `
+                -ErrorMessage "No run as account found for site '$SiteName'."
+
             $runAsAccount = $runAsAccounts | Where-Object { $_.CredentialType -eq $RunAsAccountCredentialTypes.HyperVFabric }
         }
-        elseif ($SiteType -eq $SiteTypes.VMwareSites) {  
-            $runAsAccounts = Az.Migrate\Get-AzMigrateRunAsAccount `
-                -ResourceGroupName $ResourceGroupName `
-                -SiteName $SiteName `
-                -SubscriptionId $SubscriptionId
+        elseif ($SiteType -eq $SiteTypes.VMwareSites) {
+            $runAsAccounts = InvokeAzMigrateGetCommandWithRetries `
+                -CommandName 'Az.Migrate\Get-AzMigrateRunAsAccount' `
+                -Parameters @{ ResourceGroupName = $ResourceGroupName; SiteName = $SiteName; SubscriptionId = $SubscriptionId } `
+                -ErrorMessage "No run as account found for site '$SiteName'."
+
             $runAsAccount = $runAsAccounts | Where-Object { $_.CredentialType -eq $RunAsAccountCredentialTypes.VMwareFabric }
-        }
-            
-        if ($null -eq $runAsAccount) {
-            throw "No run as account found for site '$SiteName'."
         }
 
         # Validate TargetVMName
         if ($TargetVMName.length -gt 64 -or $TargetVMName.length -eq 0) {
             throw "The target virtual machine name must be between 1 and 64 characters long."
         }
+
         Import-Module Az.Resources
         $vmId = $customProperties.TargetResourceGroupId + "/providers/Microsoft.Compute/virtualMachines/" + $TargetVMName
         $VMNamePresentInRg = Get-AzResource -ResourceId $vmId -ErrorVariable notPresent -ErrorAction SilentlyContinue
@@ -468,30 +455,22 @@ function New-AzMigrateHCIServerReplication {
                     NicId                    = $sourceNic.NicId
                     TargetNetworkId          = $TargetVirtualSwitchId
                     TestNetworkId            = if ($HasTargetTestVirtualSwitchId) { $TargetTestVirtualSwitchId } else { $TargetVirtualSwitchId }
-                    SelectionTypeForFailover = "SelectedByUser"
+                    SelectionTypeForFailover = $VMNicSelection.SelectedByUser
                 }
                 $nics += $NicObject
             }
         }
-        else {
+        else
+        {
+            # PowerUser
             if ($null -eq $DiskToInclude -or $DiskToInclude.length -eq 0) {
                 throw "Invalid DiskToInclude. At least one disk is required."
-            }
-
-            if ($null -eq $NicToInclude -or $NicToInclude.length -eq 0) {
-                throw "Invalid NicToInclude. At least one NIC is required."
             }
 
             # Validate OSDisk is set.
             $osDisk = $DiskToInclude | Where-Object { $_.IsOSDisk }
             if (($null -eq $osDisk) -or ($osDisk.length -ne 1)) {
                 throw "Invalid DiskToInclude. One and only one disk must be set as OS Disk."
-            }
-
-            # Validate at least one NIC is selected by user.
-            $selectedNics = $NicToInclude | Where-Object { $_.SelectionTypeForFailover -eq "SelectedByUser"}
-            if ($null -eq $selectedNics -or $selectedNics.length -eq 0) {
-                throw "Invalid NicToInclude. At least one NIC is required to be marked as to be created at target."
             }
             
             # Validate DiskToInclude
@@ -534,26 +513,20 @@ function New-AzMigrateHCIServerReplication {
                 }
 
                 if ($uniqueNics.Contains($nic.NicId)) {
-                    throw "The Nic id '$($nic.NicId)' is already taken."
+                    throw "The Nic id '$($nic.NicId)' is already included. Please remove the duplicate entry and try again."
                 }
+
                 $uniqueNics += $nic.NicId
                 
                 $htNic = @{}
                 $nic.PSObject.Properties | ForEach-Object { $htNic[$_.Name] = $_.Value }
-                $nics += [PSCustomObject]$htNic
-            }
 
-            # Include Nics not added by user as 'NotSelected'
-            $userGivenNicIds = $nics | Select-Object -ExpandProperty NicId
-            $remainingNics = $machine.NetworkAdapter | Where-Object { $_.NicId -notin $userGivenNicIds }
-            foreach ($remainingNic in $remainingNics) {
-                $NicObject = [PSCustomObject]@{
-                    NicId                    = $remainingNic.NicId
-                    TargetNetworkId          = $nics[0].TargetNetworkId
-                    TestNetworkId            = $nics[0].TestNetworkId
-                    SelectionTypeForFailover = "NotSelected"
+                if ($htNic.SelectionTypeForFailover -eq $VMNicSelection.SelectedByUser -and
+                    [string]::IsNullOrEmpty($htNic.TargetNetworkId)) {
+                    throw "TargetVirtualSwitchId is required when the NIC '$($htNic.NicId)' is to be CreateAtTarget. Please utilize the New-AzMigrateHCINicMappingObject command to properly create a Nic mapping object."
                 }
-                $nics += $NicObject
+
+                $nics += [PSCustomObject]$htNic
             }
         }
 

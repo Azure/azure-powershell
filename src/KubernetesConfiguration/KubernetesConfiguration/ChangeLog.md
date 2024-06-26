@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.7.2
 * Fixed issue that `New-AzKubernetesExtension` installing Flux fails with error "Failed to perform resource identity operation" [#22455]
 
 ## Version 0.7.1

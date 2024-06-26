@@ -15,25 +15,25 @@ Get function apps plans in a subscription.
 ### GetAll (Default)
 ```
 Get-AzFunctionAppPlan [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByLocation
 ```
 Get-AzFunctionAppPlan [-SubscriptionId <String[]>] -Location <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Get-AzFunctionAppPlan [-SubscriptionId <String[]>] -ResourceGroupName <String> -Name <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByResourceGroupName
 ```
 Get-AzFunctionAppPlan [-SubscriptionId <String[]>] [-ResourceGroupName <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -148,6 +148,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -197,7 +212,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan
 
 ## NOTES
 

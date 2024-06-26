@@ -30,7 +30,7 @@ function Test-ExportPolicy
     $doubleUsage = 2 * $usageThreshold
     #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
     #$resourceLocation = "eastus2euap"
-    $resourceLocation = "eastus"
+    $resourceLocation = "westus2"
 
     $subnetName = "default"
     $poolSize = 4398046511104
