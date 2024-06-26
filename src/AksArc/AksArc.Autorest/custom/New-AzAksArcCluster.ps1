@@ -215,6 +215,127 @@ function New-AzAksArcCluster {
         # For example, key=value:NoSchedule.
         ${NodeTaint},
 
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+        [System.String]
+        # Valid values are 'true' and 'false'
+        ${AutoScalerProfileBalanceSimilarNodeGroup},
+    
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.PSArgumentCompleterAttribute("least-waste", "most-pods", "priority", "random")]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+        [System.String]
+        # If not specified, the default is 'random'.
+        # See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.
+        ${AutoScalerProfileExpander},
+    
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+        [System.String]
+        # The default is 10.
+        ${AutoScalerProfileMaxEmptyBulkDelete},
+    
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+        [System.String]
+        # The default is 600.
+        ${AutoScalerProfileMaxGracefulTerminationSec},
+    
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+        [System.String]
+        # The default is '15m'.
+        # Values must be an integer followed by an 'm'.
+        # No unit of time other than minutes (m) is supported.
+        ${AutoScalerProfileMaxNodeProvisionTime},
+    
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+        [System.String]
+        # The default is 45.
+        # The maximum is 100 and the minimum is 0.
+        ${AutoScalerProfileMaxTotalUnreadyPercentage},
+    
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+        [System.String]
+        # For scenarios like burst/batch scale where you don't want CA to act before the kubernetes scheduler could schedule all the pods, you can tell CA to ignore unscheduled pods before they're a certain age.
+        # The default is '0s'.
+        # Values must be an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h' for hours, etc).
+        ${AutoScalerProfileNewPodScaleUpDelay},
+    
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+        [System.String]
+        # This must be an integer.
+        # The default is 3.
+        ${AutoScalerProfileOkTotalUnreadyCount},
+    
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+        [System.String]
+        # The default is '10m'.
+        # Values must be an integer followed by an 'm'.
+        # No unit of time other than minutes (m) is supported.
+        ${AutoScalerProfileScaleDownDelayAfterAdd},
+    
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+        [System.String]
+        # The default is the scan-interval.
+        # Values must be an integer followed by an 'm'.
+        # No unit of time other than minutes (m) is supported.
+        ${AutoScalerProfileScaleDownDelayAfterDelete},
+    
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+        [System.String]
+        # The default is '3m'.
+        # Values must be an integer followed by an 'm'.
+        # No unit of time other than minutes (m) is supported.
+        ${AutoScalerProfileScaleDownDelayAfterFailure},
+    
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+        [System.String]
+        # The default is '10m'.
+        # Values must be an integer followed by an 'm'.
+        # No unit of time other than minutes (m) is supported.
+        ${AutoScalerProfileScaleDownUnneededTime},
+    
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+        [System.String]
+        # The default is '20m'.
+        # Values must be an integer followed by an 'm'.
+        # No unit of time other than minutes (m) is supported.
+        ${AutoScalerProfileScaleDownUnreadyTime},
+    
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+        [System.String]
+        # The default is '0.5'.
+        ${AutoScalerProfileScaleDownUtilizationThreshold},
+    
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+        [System.String]
+        # The default is '10'.
+        # Values must be an integer number of seconds.
+        ${AutoScalerProfileScanInterval},
+    
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+        [System.String]
+        # The default is true.
+        ${AutoScalerProfileSkipNodesWithLocalStorage},
+    
+        [Parameter(ParameterSetName='CreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+        [System.String]
+        # The default is true.
+        ${AutoScalerProfileSkipNodesWithSystemPod},
+
         [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
         [System.String]
