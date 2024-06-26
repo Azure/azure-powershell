@@ -166,7 +166,8 @@ function Test-GetStorageSyncService
 {
     # Setup
     $resourceGroupName = Get-ResourceGroupName
-    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
+    Write-Verbose "RecordMode : $(
+)"
     try
     {
         # Test
