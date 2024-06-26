@@ -28,7 +28,6 @@
 * Updated 2 help examples of create storage account cmdlet, with MinimumTlsVersion as TLS1_2.
     - `New-AzStorageAccount`
 
-
 ## Version 7.0.0
 * Added a prompt that needs confirmation when upgrading a storage account from StorageV1 or BlobStorage to StorageV2. Can be suppressed with -Force.
     - `Set-AzStorageAccount`
