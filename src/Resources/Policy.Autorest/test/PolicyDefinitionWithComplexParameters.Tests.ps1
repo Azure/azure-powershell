@@ -245,8 +245,9 @@ $definitionParameter = @"
         $remove = Remove-AzPolicyAssignment -Name $testAssignment -PassThru
         $remove | Should -Be $true
 
-        # delete the policy definition
+        # delete the policy definitions
         $remove = Remove-AzPolicyDefinition -Name $testPDWCP -Force -PassThru
+        $remove = Remove-AzPolicyDefinition -Name $testPDWNV -Force -PassThru
         $remove | Should -Be $true
 
         Write-Host -ForegroundColor Magenta "Cleanup complete."
