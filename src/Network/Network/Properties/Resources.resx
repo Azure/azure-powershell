@@ -786,4 +786,37 @@
   <data name="ConfirmMessage" xml:space="preserve">
     <value>Confirm</value>
   </data>
+  <data name="BastionCopyPasteInvalidValue" xml:space="preserve">
+    <value>Toggling copy/paste is available on Standard SKU or higher</value>
+  </data>
+  <data name="BastionIpConnectInvalidValue" xml:space="preserve">
+    <value>Toggling IP connect is available on Standard SKU or higher</value>
+  </data>
+  <data name="BastionScaleUnitOutOfRange" xml:space="preserve">
+    <value>Please select scale units value between {0} and {1}</value>
+  </data>
+  <data name="BastionScaleUnitUpdateNotAllowedOnBasic" xml:space="preserve">
+    <value>Bastion scalable host is available on Standard SKU or higher</value>
+  </data>
+  <data name="BastionSessionRecordingInvalidValue" xml:space="preserve">
+    <value>Toggling session recording is available on Premium SKU</value>
+  </data>
+  <data name="BastionSessionRecordingNotEnabled" xml:space="preserve">
+    <value>Session recording feature is not enabled</value>
+  </data>
+  <data name="BastionShareableLinkInvalidValue" xml:space="preserve">
+    <value>Toggling shareable link is available on Standard SKU or higher</value>
+  </data>
+  <data name="BastionSkuDowngradeNotAllowed" xml:space="preserve">
+    <value>Downgrading Sku is not allowed</value>
+  </data>
+  <data name="BastionSkuInvalidValue" xml:space="preserve">
+    <value>Please enter a valid value for Bastion SKU</value>
+  </data>
+  <data name="BastionTunnelingInvalidValue" xml:space="preserve">
+    <value>Toggling tunneling is available on Standard SKU or higher</value>
+  </data>
+  <data name="BastionTunnelingAndSessionRecordingNotAllowed" xml:space="preserve">
+    <value>Tunneling and session recording cannot be enabled together</value>
+  </data>
 </root>
