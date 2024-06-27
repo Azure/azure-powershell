@@ -1,6 +1,6 @@
 {
   "resourceType": "workspaces/virtualNetworkPeerings",
-  "apiVersion": "2023-02-01",
+  "apiVersion": "2024-05-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.databricks"
   },
