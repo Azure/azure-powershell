@@ -1,48 +1,61 @@
 ---
 external help file:
 Module Name: Az.Databricks
-online version: https://learn.microsoft.com/powershell/module/az.databricks/remove-azdatabricksvnetpeering
+online version: https://learn.microsoft.com/powershell/module/az.databricks/update-azdatabricksaccessconnector
 schema: 2.0.0
 ---
 
-# Remove-AzDatabricksVNetPeering
+# Update-AzDatabricksAccessConnector
 
 ## SYNOPSIS
-Deletes the workspace vNetPeering.
+Updates an Azure Databricks Access Connector.
 
 ## SYNTAX
 
-### Delete (Default)
+### UpdateExpanded (Default)
 ```
-Remove-AzDatabricksVNetPeering -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzDatabricksAccessConnector -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### UpdateViaIdentityExpanded
 ```
-Remove-AzDatabricksVNetPeering -InputObject <IDatabricksIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDatabricksAccessConnector -InputObject <IDatabricksIdentity>
+ [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes the workspace vNetPeering.
+Updates an Azure Databricks Access Connector.
 
 ## EXAMPLES
 
-### Example 1: Remove a vnet peering of databricks by name.
+### Example 1: Updates an azure databricks accessConnector.
 ```powershell
-Remove-AzDatabricksVNetPeering -Name vnet-peering-t1 -WorkspaceName azps-databricks-workspace-t1 -ResourceGroupName azps_test_gp_db 
+Update-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db -Name azps-databricks-accessconnector -Tag @{'key'='value'}
 ```
 
-This command removes a vnet peering of databricks by name.
-
-### Example 2: Remove a vnet peering of databricks by object.
-```powershell
-Get-AzDatabricksVNetPeering -Name vnet-peering-t1 -WorkspaceName azps-databricks-workspace-t1 -ResourceGroupName azps_test_gp_db  | Remove-AzDatabricksVNetPeering
+```output
+Location Name                            ResourceGroupName
+-------- ----                            -----------------
+eastus   azps-databricks-accessconnector azps_test_gp_db
 ```
 
-This command removes a vnet peering of databricks by object.
+This command updates an azure databricks accessConnector.
+
+### Example 2: Updates an azure databricks accessConnector by pipeline.
+```powershell
+Get-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db -Name azps-databricks-accessconnector | Update-AzDatabricksAccessConnector  -Tag @{'key'='value'}
+```
+
+```output
+Location Name                            ResourceGroupName
+-------- ----                            -----------------
+eastus   azps-databricks-accessconnector azps_test_gp_db
+```
+
+This command updates an azure databricks accessConnector by pipeline.
 
 ## PARAMETERS
 
@@ -77,13 +90,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IdentityType
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ManagedServiceIdentityType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityUserAssignedIdentity
+The set of user assigned identities associated with the resource.
+The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+The dictionary values can be empty objects ({}) in requests.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -94,11 +139,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the workspace vNet peering.
+The name of the Azure Databricks Access Connector.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -123,28 +168,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -156,10 +186,11 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -169,15 +200,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WorkspaceName
-The name of the workspace.
+### -Tag
+Resource tags.
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -224,7 +255,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IAccessConnector
 
 ## NOTES
 

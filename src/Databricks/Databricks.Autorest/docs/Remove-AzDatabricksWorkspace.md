@@ -1,41 +1,48 @@
 ---
 external help file:
 Module Name: Az.Databricks
-online version: https://learn.microsoft.com/powershell/module/az.databricks/new-azdatabricksaccessconnector
+online version: https://learn.microsoft.com/powershell/module/az.databricks/remove-azdatabricksworkspace
 schema: 2.0.0
 ---
 
-# New-AzDatabricksAccessConnector
+# Remove-AzDatabricksWorkspace
 
 ## SYNOPSIS
-Creates or updates azure databricks accessConnector.
+Deletes the workspace.
 
 ## SYNTAX
 
+### Delete (Default)
 ```
-New-AzDatabricksAccessConnector -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-IdentityType <ManagedServiceIdentityType>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Remove-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-ForceDeletion] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
+### DeleteViaIdentity
+```
+Remove-AzDatabricksWorkspace -InputObject <IDatabricksIdentity> [-ForceDeletion] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates or updates azure databricks accessConnector.
+Deletes the workspace.
 
 ## EXAMPLES
 
-### Example 1: Creates or updates azure databricks accessConnector.
+### Example 1: Remove a Databricks workspace.
 ```powershell
-New-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db -Name azps-databricks-accessconnector -Location eastus -IdentityType 'SystemAssigned'
+Remove-AzDatabricksWorkspace -Name azps-databricks-workspace -ResourceGroupName azps_test_gp_db
 ```
 
-```output
-Location Name                            ResourceGroupName
--------- ----                            -----------------
-eastus   azps-databricks-accessconnector azps_test_gp_db
+This command removes a Databricks workspace from a resource group.
+
+### Example 2: Remove a Databricks workspace by object.
+```powershell
+Get-AzDatabricksWorkspace -ResourceGroupName azps_test_gp_db -Name azps-databricks-workspace-t3 | Remove-AzDatabricksWorkspace
 ```
 
-This command creates or updates azure databricks accessConnector.
+This command removes a Databricks workspace from a resource group.
 
 ## PARAMETERS
 
@@ -70,11 +77,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+### -ForceDeletion
+Optional parameter to retain default unity catalog data.
+By default the data will retained if Uc is enabled on the workspace.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ManagedServiceIdentityType
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -85,28 +93,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-The geo-location where the resource lives
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the azure databricks accessConnector.
+The name of the workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: Delete
+Aliases: WorkspaceName
 
 Required: True
 Position: Named
@@ -130,13 +139,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -148,47 +172,16 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -229,9 +222,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector
+### System.Boolean
 
 ## NOTES
 

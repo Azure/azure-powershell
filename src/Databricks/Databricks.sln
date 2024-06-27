@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Databricks", "Databricks\Databricks.csproj", "{78057EB6-1C85-4118-94B4-8021CCD6902E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Databricks", "..\..\generated\Databricks\Databricks.Autorest\Az.Databricks.csproj", "{0CC8C83F-358F-4949-AB38-AA104292FC3E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Databricks", "..\..\generated\Databricks\Databricks.Autorest\Az.Databricks.csproj", "{0FE8D83A-389A-4B05-A971-A6D16A5E3C95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{78057EB6-1C85-4118-94B4-8021CCD6902E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78057EB6-1C85-4118-94B4-8021CCD6902E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78057EB6-1C85-4118-94B4-8021CCD6902E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0CC8C83F-358F-4949-AB38-AA104292FC3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0CC8C83F-358F-4949-AB38-AA104292FC3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0CC8C83F-358F-4949-AB38-AA104292FC3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0CC8C83F-358F-4949-AB38-AA104292FC3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FE8D83A-389A-4B05-A971-A6D16A5E3C95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FE8D83A-389A-4B05-A971-A6D16A5E3C95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FE8D83A-389A-4B05-A971-A6D16A5E3C95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FE8D83A-389A-4B05-A971-A6D16A5E3C95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3ED3369F-295E-40BC-8A77-4DAC220DF427} = {745C122A-4486-4B24-B64A-1E5E814E81F9}
