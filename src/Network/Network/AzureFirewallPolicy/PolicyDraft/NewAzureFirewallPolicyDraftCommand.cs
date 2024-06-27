@@ -105,6 +105,10 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNull]
         public PSAzureFirewallPolicyIntrusionDetection IntrusionDetection { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The private IP ranges to which traffic won't be SNAT'ed"
+        )]
         public string[] PrivateRange { get; set; }
 
         [Parameter(

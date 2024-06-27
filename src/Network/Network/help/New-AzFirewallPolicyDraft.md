@@ -61,7 +61,7 @@ This example creates an azure firewall policy draft with the same properties as 
 
 ### Example 4: Create policy with intrusion detection
 ```powershell
-$bypass = New-AzFirewallPolicyIntrusionDetectionBypassTraffic -AzureFirewallPolicyName "bypass-setting" -Protocol "TCP" -DestinationPort "80" -SourceAddress "10.0.0.0" -DestinationAddress "*"
+$bypass = New-AzFirewallPolicyIntrusionDetectionBypassTraffic -Name "bypass-setting" -Protocol "TCP" -DestinationPort "80" -SourceAddress "10.0.0.0" -DestinationAddress "*"
 $signatureOverride = New-AzFirewallPolicyIntrusionDetectionSignatureOverride -Id "123456798" -Mode "Deny"
 $intrusionDetection = New-AzFirewallPolicyIntrusionDetection -Mode "Alert" -SignatureOverride $signatureOverride -BypassTraffic $bypass
 New-AzFirewallPolicyDraft -AzureFirewallPolicyName fp1 -ResourceGroupName TestRg -IntrusionDetection $intrusionDetection 

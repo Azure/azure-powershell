@@ -14,7 +14,7 @@ saves a modified azure firewall policy rule collection group draft
 
 ### SetByNameParameterSet (Default)
 ```
-Set-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName <String> -ResourceGroupName <String> -FirewallPolicyName <String>
+Set-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName <String> -ResourceGroupName <String> -AzureFirewallPolicyName <String>
  -Priority <UInt32> [-RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
