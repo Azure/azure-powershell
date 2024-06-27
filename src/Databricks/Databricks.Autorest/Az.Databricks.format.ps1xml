@@ -168,9 +168,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.AccessConnector</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.AccessConnector</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.AccessConnector</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.AccessConnector</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -202,9 +202,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.AccessConnectorListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.AccessConnectorListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.AccessConnectorListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.AccessConnectorListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -224,14 +224,17 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.AccessConnectorProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.AccessConnectorProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.AccessConnectorProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.AccessConnectorProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ReferedBy</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -240,15 +243,18 @@
               <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ReferedBy</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.AccessConnectorUpdateTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.AccessConnectorUpdateTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.AccessConnectorUpdateTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.AccessConnectorUpdateTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -268,9 +274,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.AddressSpace</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.AddressSpace</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.AddressSpace</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.AddressSpace</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -290,9 +296,59 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.CreatedBy</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.AutomaticClusterUpdateDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.CreatedBy</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.AutomaticClusterUpdateDefinition</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Value</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Value</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.ComplianceSecurityProfileDefinition</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.ComplianceSecurityProfileDefinition</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ComplianceStandard</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Value</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ComplianceStandard</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Value</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.CreatedBy</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.CreatedBy</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -324,9 +380,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.Encryption</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.DefaultCatalogProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.Encryption</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.DefaultCatalogProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>InitialName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>InitialType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>InitialName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>InitialType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.Encryption</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.Encryption</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -364,9 +448,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.EncryptionV2</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.EncryptionV2</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.EncryptionV2</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.EncryptionV2</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -386,9 +470,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.EncryptionV2KeyVaultProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.EncryptionV2KeyVaultProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.EncryptionV2KeyVaultProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.EncryptionV2KeyVaultProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -420,9 +504,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.EndpointDependency</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.EndpointDependency</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.EndpointDependency</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.EndpointDependency</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -442,9 +526,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.EndpointDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.EndpointDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.EndpointDetail</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.EndpointDetail</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -482,9 +566,31 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.GroupIdInformation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.EnhancedSecurityMonitoringDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.GroupIdInformation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.EnhancedSecurityMonitoringDefinition</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Value</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Value</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.GroupIdInformation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.GroupIdInformation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -510,9 +616,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.GroupIdInformationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.GroupIdInformationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.GroupIdInformationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.GroupIdInformationProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -544,9 +650,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.ManagedDiskEncryption</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.ManagedDiskEncryption</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.ManagedDiskEncryption</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.ManagedDiskEncryption</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -572,9 +678,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.ManagedDiskEncryptionKeyVaultProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.ManagedDiskEncryptionKeyVaultProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.ManagedDiskEncryptionKeyVaultProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.ManagedDiskEncryptionKeyVaultProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -606,9 +712,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.ManagedIdentityConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.ManagedIdentityConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.ManagedIdentityConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.ManagedIdentityConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -634,9 +740,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.Operation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.Operation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.Operation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.Operation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -656,9 +762,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.OperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.OperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.OperationDisplay</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -696,9 +802,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.OperationListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.OperationListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.OperationListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.OperationListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -718,9 +824,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.OutboundEnvironmentEndpoint</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.OutboundEnvironmentEndpoint</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.OutboundEnvironmentEndpoint</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.OutboundEnvironmentEndpoint</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -740,9 +846,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.PrivateEndpointConnection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.PrivateEndpointConnection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.PrivateEndpointConnection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.PrivateEndpointConnection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -768,9 +874,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.PrivateEndpointConnectionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.PrivateEndpointConnectionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.PrivateEndpointConnectionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.PrivateEndpointConnectionProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -796,9 +902,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.PrivateEndpointConnectionsList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.PrivateEndpointConnectionsList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.PrivateEndpointConnectionsList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.PrivateEndpointConnectionsList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -818,9 +924,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.PrivateLinkResourcesList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.PrivateLinkResourcesList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.PrivateLinkResourcesList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.PrivateLinkResourcesList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -840,9 +946,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.PrivateLinkServiceConnectionState</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.PrivateLinkServiceConnectionState</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.PrivateLinkServiceConnectionState</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.PrivateLinkServiceConnectionState</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -874,9 +980,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.Sku</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.Sku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.Sku</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.Sku</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -902,9 +1008,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.VirtualNetworkPeering</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.VirtualNetworkPeering</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.VirtualNetworkPeering</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.VirtualNetworkPeering</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -930,9 +1036,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.VirtualNetworkPeeringList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.VirtualNetworkPeeringList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.VirtualNetworkPeeringList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.VirtualNetworkPeeringList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -952,9 +1058,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.VirtualNetworkPeeringPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.VirtualNetworkPeeringPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.VirtualNetworkPeeringPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.VirtualNetworkPeeringPropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1004,9 +1110,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.Workspace</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.Workspace</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.Workspace</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.Workspace</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1044,9 +1150,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.WorkspaceCustomBooleanParameter</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.WorkspaceCustomBooleanParameter</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.WorkspaceCustomBooleanParameter</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.WorkspaceCustomBooleanParameter</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1066,9 +1172,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.WorkspaceCustomStringParameter</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.WorkspaceCustomStringParameter</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.WorkspaceCustomStringParameter</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.WorkspaceCustomStringParameter</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1088,9 +1194,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.WorkspaceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.WorkspaceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.WorkspaceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.WorkspaceListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1110,9 +1216,31 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.WorkspaceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.WorkspaceNoPublicIPBooleanParameter</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.WorkspaceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.WorkspaceNoPublicIPBooleanParameter</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Value</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Value</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.WorkspaceProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.WorkspaceProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1120,7 +1248,13 @@
             <Label>CreatedDateTime</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>DefaultStorageFirewall</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>DiskEncryptionSetId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsUcEnabled</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ManagedResourceGroupId</Label>
@@ -1151,7 +1285,13 @@
                 <PropertyName>CreatedDateTime</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>DefaultStorageFirewall</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>DiskEncryptionSetId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsUcEnabled</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ManagedResourceGroupId</PropertyName>
@@ -1180,9 +1320,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.WorkspaceProviderAuthorization</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.WorkspacePropertiesAccessConnector</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.WorkspaceProviderAuthorization</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.WorkspacePropertiesAccessConnector</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>IdentityType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UserAssignedIdentityId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>IdentityType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UserAssignedIdentityId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.WorkspaceProviderAuthorization</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.WorkspaceProviderAuthorization</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1208,9 +1376,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.WorkspaceUpdateTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.WorkspaceUpdateTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.WorkspaceUpdateTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.WorkspaceUpdateTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
