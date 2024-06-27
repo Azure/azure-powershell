@@ -20,7 +20,7 @@ Deletes the provisioned cluster instance
 .Description
 Deletes the provisioned cluster instance
 .Example
-Remove-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroup azps_test_group
+Remove-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group
 
 .Outputs
 System.Boolean

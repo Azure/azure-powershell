@@ -10,17 +10,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create the agent pool in the provisioned cluster</summary>
+    /// <summary>
+    /// Puts the default VM skus resource type (one time operation, before listing the VM skus)
+    /// </summary>
     /// <remarks>
-    /// [OpenAPI] CreateOrUpdate=>PUT:"/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/agentPools/{agentPoolName}"
+    /// [OpenAPI] Create=>PUT:"/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/skus/default"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.InternalExport]
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzAksArcNodepool_CreateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPool))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Description(@"Create the agent pool in the provisioned cluster")]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzAksArcVMSku_CreateViaJsonString", SupportsShouldProcess = true)]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVMSkuProfile))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Description(@"Puts the default VM skus resource type (one time operation, before listing the VM skus)")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.HttpPath(Path = "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/agentPools/{agentPoolName}", ApiVersion = "2024-01-01")]
-    public partial class NewAzAksArcNodepool_CreateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.HttpPath(Path = "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/skus/default", ApiVersion = "2024-01-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.NotSuggestDefaultParameterSet]
+    public partial class NewAzAksArcVMSku_CreateViaJsonString : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.IContext
     {
@@ -32,9 +35,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
 
         /// <summary>A unique id generatd for the this cmdlet when ProcessRecord() is called.</summary>
         private string __processRecordId;
-
-        /// <summary>The agentPool resource definition</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPool _agentPoolBody = new Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.AgentPool();
 
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
@@ -69,16 +69,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.AksArc.AksArc Client => Microsoft.Azure.PowerShell.Cmdlets.AksArc.Module.Instance.ClientAPI;
 
-        /// <summary>Number of nodes in the agent pool. The default value is 1.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Number of nodes in the agent pool. The default value is 1.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ParameterCategory.Body)]
+        /// <summary>Backing field for <see cref="CustomLocationResourceUri" /> property.</summary>
+        private string _customLocationResourceUri;
+
+        /// <summary>
+        /// The fully qualified Azure Resource Manager identifier of the custom location resource.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The fully qualified Azure Resource Manager identifier of the custom location resource.")]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
-        Description = @"Number of nodes in the agent pool. The default value is 1.",
-        SerializedName = @"count",
-        PossibleTypes = new [] { typeof(int) })]
-        public int Count { get => _agentPoolBody.Count ?? default(int); set => _agentPoolBody.Count = value; }
+        Description = @"The fully qualified Azure Resource Manager identifier of the custom location resource.",
+        SerializedName = @"customLocationResourceUri",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ParameterCategory.Path)]
+        public string CustomLocationResourceUri { get => this._customLocationResourceUri; set => this._customLocationResourceUri = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -89,40 +94,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
-
-        /// <summary>Whether to enable auto-scaler. Default value is false</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Whether to enable auto-scaler. Default value is false")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Whether to enable auto-scaler. Default value is false",
-        SerializedName = @"enableAutoScaling",
-        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter EnableAutoScaling { get => _agentPoolBody.EnableAutoScaling ?? default(global::System.Management.Automation.SwitchParameter); set => _agentPoolBody.EnableAutoScaling = value; }
-
-        /// <summary>ARM Id of the extended location.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "ARM Id of the extended location.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"ARM Id of the extended location.",
-        SerializedName = @"name",
-        PossibleTypes = new [] { typeof(string) })]
-        public string ExtendedLocationName { get => _agentPoolBody.ExtendedLocationName ?? null; set => _agentPoolBody.ExtendedLocationName = value; }
-
-        /// <summary>The extended location type. Allowed value: 'CustomLocation'</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The extended location type. Allowed value: 'CustomLocation'")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The extended location type. Allowed value: 'CustomLocation'",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.PSArgumentCompleterAttribute("CustomLocation")]
-        public string ExtendedLocationType { get => _agentPoolBody.ExtendedLocationType ?? null; set => _agentPoolBody.ExtendedLocationType = value; }
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
@@ -139,38 +110,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
-        /// <summary>Backing field for <see cref="InputObject" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAksArcIdentity _inputObject;
-
-        /// <summary>Identity Parameter</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Identity Parameter", ValueFromPipeline = true)]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ParameterCategory.Path)]
-        public Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAksArcIdentity InputObject { get => this._inputObject; set => this._inputObject = value; }
-
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
-        /// <summary>The maximum number of nodes for auto-scaling</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The maximum number of nodes for auto-scaling")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The maximum number of nodes for auto-scaling",
-        SerializedName = @"maxCount",
-        PossibleTypes = new [] { typeof(int) })]
-        public int MaxCount { get => _agentPoolBody.MaxCount ?? default(int); set => _agentPoolBody.MaxCount = value; }
+        /// <summary>Backing field for <see cref="JsonString" /> property.</summary>
+        private string _jsonString;
 
-        /// <summary>The maximum number of pods that can run on a node.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The maximum number of pods that can run on a node.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ParameterCategory.Body)]
+        /// <summary>Json string supplied to the Create operation</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Json string supplied to the Create operation")]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
-        Description = @"The maximum number of pods that can run on a node.",
-        SerializedName = @"maxPods",
-        PossibleTypes = new [] { typeof(int) })]
-        public int MaxPod { get => _agentPoolBody.MaxPod ?? default(int); set => _agentPoolBody.MaxPod = value; }
+        Description = @"Json string supplied to the Create operation",
+        SerializedName = @"JsonString",
+        PossibleTypes = new [] { typeof(string) })]
+        public string JsonString { get => this._jsonString; set => this._jsonString = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -180,17 +134,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
-        /// <summary>The minimum number of nodes for auto-scaling</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The minimum number of nodes for auto-scaling")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The minimum number of nodes for auto-scaling",
-        SerializedName = @"minCount",
-        PossibleTypes = new [] { typeof(int) })]
-        public int MinCount { get => _agentPoolBody.MinCount ?? default(int); set => _agentPoolBody.MinCount = value; }
-
         /// <summary>
         /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
         /// asynchronously.
@@ -198,59 +141,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command asynchronously")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
-
-        /// <summary>The node labels to be persisted across all nodes in agent pool.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The node labels to be persisted across all nodes in agent pool.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The node labels to be persisted across all nodes in agent pool.",
-        SerializedName = @"nodeLabels",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolProfileNodeLabels) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolProfileNodeLabels NodeLabel { get => _agentPoolBody.NodeLabel ?? null /* object */; set => _agentPoolBody.NodeLabel = value; }
-
-        /// <summary>
-        /// Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule.
-        /// </summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule.",
-        SerializedName = @"nodeTaints",
-        PossibleTypes = new [] { typeof(string) })]
-        public string[] NodeTaint { get => _agentPoolBody.NodeTaint?.ToArray() ?? null /* fixedArrayOf */; set => _agentPoolBody.NodeTaint = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
-
-        /// <summary>
-        /// Specifies the OS SKU used by the agent pool. The default is CBLMariner if OSType is Linux. The default is Windows2019
-        /// when OSType is Windows.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the OS SKU used by the agent pool. The default is CBLMariner if OSType is Linux. The default is Windows2019 when OSType is Windows.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Specifies the OS SKU used by the agent pool. The default is CBLMariner if OSType is Linux. The default is Windows2019 when OSType is Windows.",
-        SerializedName = @"osSKU",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.PSArgumentCompleterAttribute("CBLMariner", "Windows2019", "Windows2022")]
-        public string OSSku { get => _agentPoolBody.OSSku ?? null; set => _agentPoolBody.OSSku = value; }
-
-        /// <summary>The particular KubernetesVersion Image OS Type (Linux, Windows)</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The particular KubernetesVersion Image OS Type (Linux, Windows)")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The particular KubernetesVersion Image OS Type (Linux, Windows)",
-        SerializedName = @"osType",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.PSArgumentCompleterAttribute("Windows", "Linux")]
-        public string OSType { get => _agentPoolBody.OSType ?? null; set => _agentPoolBody.OSType = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.HttpPipeline" /> that the remote call will use.
@@ -273,52 +163,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
-        /// <summary>Error messages during an agent pool operation or steady state.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Error messages during an agent pool operation or steady state.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Error messages during an agent pool operation or steady state.",
-        SerializedName = @"errorMessage",
-        PossibleTypes = new [] { typeof(string) })]
-        public string StatusErrorMessage { get => _agentPoolBody.StatusErrorMessage ?? null; set => _agentPoolBody.StatusErrorMessage = value; }
-
-        /// <summary>.</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @".",
-        SerializedName = @"readyReplicas",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolUpdateProfile) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolUpdateProfile[] StatusReadyReplica { get => _agentPoolBody.StatusReadyReplica?.ToArray() ?? null /* fixedArrayOf */; set => _agentPoolBody.StatusReadyReplica = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolUpdateProfile>(value) : null); }
-
-        /// <summary>Resource tags</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Resource tags",
-        SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolTags Tag { get => _agentPoolBody.Tag ?? null /* object */; set => _agentPoolBody.Tag = value; }
-
-        /// <summary>The VM sku size of the agent pool node VMs.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The VM sku size of the agent pool node VMs.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The VM sku size of the agent pool node VMs.",
-        SerializedName = @"vmSize",
-        PossibleTypes = new [] { typeof(string) })]
-        public string VMSize { get => _agentPoolBody.VMSize ?? null; set => _agentPoolBody.VMSize = value; }
-
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
@@ -336,12 +180,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPool">Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPool</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVMSkuProfile">Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVMSkuProfile</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPool> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVMSkuProfile> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -362,10 +206,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
         }
 
         /// <summary>Creates a duplicate instance of this cmdlet (via JSON serialization).</summary>
-        /// <returns>a duplicate instance of NewAzAksArcNodepool_CreateViaIdentityExpanded</returns>
-        public Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets.NewAzAksArcNodepool_CreateViaIdentityExpanded Clone()
+        /// <returns>a duplicate instance of NewAzAksArcVMSku_CreateViaJsonString</returns>
+        public Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets.NewAzAksArcVMSku_CreateViaJsonString Clone()
         {
-            var clone = new NewAzAksArcNodepool_CreateViaIdentityExpanded();
+            var clone = new NewAzAksArcVMSku_CreateViaJsonString();
             clone.__correlationId = this.__correlationId;
             clone.__processRecordId = this.__processRecordId;
             clone.DefaultProfile = this.DefaultProfile;
@@ -378,7 +222,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone._agentPoolBody = this._agentPoolBody;
+            clone.CustomLocationResourceUri = this.CustomLocationResourceUri;
+            clone.JsonString = this.JsonString;
             return clone;
         }
 
@@ -524,9 +369,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NewAzAksArcNodepool_CreateViaIdentityExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="NewAzAksArcVMSku_CreateViaJsonString" /> cmdlet class.
         /// </summary>
-        public NewAzAksArcNodepool_CreateViaIdentityExpanded()
+        public NewAzAksArcVMSku_CreateViaJsonString()
         {
 
         }
@@ -539,7 +384,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'AgentPoolCreateOrUpdate' operation"))
+                if (ShouldProcess($"Call remote 'VMSkusCreate' operation"))
                 {
                     if (true == MyInvocation?.BoundParameters?.ContainsKey("AsJob"))
                     {
@@ -603,28 +448,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    if (InputObject?.Id != null)
-                    {
-                        await this.Client.AgentPoolCreateOrUpdateViaIdentity(InputObject.Id, _agentPoolBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.SerializationMode.IncludeCreate);
-                    }
-                    else
-                    {
-                        // try to call with PATH parameters from Input Object
-                        if (null == InputObject.ConnectedClusterResourceUri)
-                        {
-                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ConnectedClusterResourceUri"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
-                        }
-                        if (null == InputObject.AgentPoolName)
-                        {
-                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.AgentPoolName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
-                        }
-                        await this.Client.AgentPoolCreateOrUpdate(InputObject.ConnectedClusterResourceUri ?? null, InputObject.AgentPoolName ?? null, _agentPoolBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.SerializationMode.IncludeCreate);
-                    }
+                    await this.Client.VMSkusCreateViaJsonString(CustomLocationResourceUri, _jsonString, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { })
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { CustomLocationResourceUri=CustomLocationResourceUri})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -702,12 +531,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPool">Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPool</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVMSkuProfile">Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVMSkuProfile</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPool> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVMSkuProfile> response)
         {
             using( NoSynchronizationContext )
             {
@@ -719,7 +548,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPool
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVMSkuProfile
                 var result = (await response);
                 if (null != result)
                 {
