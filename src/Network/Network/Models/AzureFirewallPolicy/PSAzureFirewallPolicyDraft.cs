@@ -51,5 +51,11 @@ namespace Microsoft.Azure.Commands.Network.Models
                 }
             }
         }
+
+        [JsonIgnore]
+        public string PrivateRangeText
+        {
+            get { return JsonConvert.SerializeObject(PrivateRange, Formatting.Indented); }
+        }
     }
 }

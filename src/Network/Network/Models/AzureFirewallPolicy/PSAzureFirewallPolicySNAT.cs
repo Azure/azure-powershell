@@ -26,12 +26,6 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         private const string IANAPrivateRanges = "IANAPrivateRanges";
 
-        [JsonIgnore]
-        public string PrivateRangeText
-        {
-            get { return JsonConvert.SerializeObject(PrivateRanges, Formatting.Indented); }
-        }
-
         #region Private Range Validation
         public void ValidatePrivateRange()
         {
