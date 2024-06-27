@@ -16,46 +16,38 @@
 
 <#
 .Synopsis
-Update the agent pool in the provisioned cluster
+Create the virtual network resource
 .Description
-Update the agent pool in the provisioned cluster
+Create the virtual network resource
 .Example
-Update-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Name azps_test_nodepool_example -Count 3
-.Example
-Update-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Name azps_test_nodepool_example -Tag @{'key1'= 1; 'key2'= 2}
-.Example
-Update-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Name azps_test_nodepool_example -EnableAutoScaling -MinCount 1 -MaxCount 5
+New-AzAksArcVirtualNetwork -Name "test-vnet-static" -ResourceGroupName "test-arcappliance-resgrp" -CustomLocationName "testcustomlocation" -MocVnetName "test-vnet"
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAksArcIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPool
+Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetwork
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IAksArcIdentity>: Identity Parameter
-  [AgentPoolName <String>]: Parameter for the name of the agent pool in the provisioned cluster.
-  [ConnectedClusterResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the connected cluster resource.
-  [CustomLocationResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the custom location resource.
-  [Id <String>]: Resource identity path
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VirtualNetworkName <String>]: Parameter for the name of the virtual network
-.Link
-https://learn.microsoft.com/powershell/module/az.aksarc/update-azaksarcnodepool
-#>
-function Update-AzAksArcNodepool {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPool])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
+VIPPOOL <IVirtualNetworkPropertiesVipPoolItem[]>: Range of IP Addresses for Kubernetes API Server and services if using HA Proxy load balancer
+  [EndIP <String>]: Ending IP address for the IP Pool
+  [StartIP <String>]: Starting IP address for the IP Pool
 
+VMIPPOOL <IVirtualNetworkPropertiesVmipPoolItem[]>: Range of IP Addresses for Kubernetes node VMs
+  [EndIP <String>]: Ending IP address for the IP Pool
+  [StartIP <String>]: Starting IP address for the IP Pool
+.Link
+https://learn.microsoft.com/powershell/module/az.aksarc/new-azaksarcvirtualnetwork
+#>
+function New-AzAksArcVirtualNetwork {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetwork])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [System.String]
-    # The name of the Kubernetes cluster on which get is called.
-    ${ClusterName},
+    # Parameter for the name of the virtual network
+    ${Name},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
@@ -69,73 +61,66 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
-    [System.String]
-    # Parameter for the name of the agent pool in the provisioned cluster.
-    ${Name},
-
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAksArcIdentity]
-    # Identity Parameter
-    ${InputObject},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
-    [System.Int32]
-    # Number of nodes in the agent pool.
-    # The default value is 1.
-    ${Count},
-
-    [Parameter(ParameterSetName='AutoScaling', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Whether to enable auto-scaler.
-    # Default value is false
-    ${EnableAutoScaling},
-
-    [Parameter(ParameterSetName='AutoScaling', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
-    [System.Int32]
-    # The maximum number of nodes for auto-scaling
-    ${MaxCount},
-
-    [Parameter(ParameterSetName='AutoScaling', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
-    [System.Int32]
-    # The minimum number of nodes for auto-scaling
-    ${MinCount},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolProfileNodeLabels]))]
-    [System.Collections.Hashtable]
-    # The node labels to be persisted across all nodes in agent pool.
-    ${NodeLabel},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
-    [System.String[]]
-    # Taints added to new nodes during node pool create and scale.
-    # For example, key=value:NoSchedule.
-    ${NodeTaint},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.String]
-    # The VM sku size of the agent pool node VMs.
-    ${VMSize},
+    # The geo-location where the resource lives
+    ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolTags]))]
+    [System.String]
+    # ARM Id of the extended location.
+    ${CustomLocationName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+    [System.String]
+    # Group in MOC(Microsoft On-premises Cloud)
+    ${MocGroup},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+    [System.String]
+    # Location in MOC(Microsoft On-premises Cloud)
+    ${MocLocation},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+    [System.String]
+    # Virtual Network name in MOC(Microsoft On-premises Cloud)
+    ${MocVnetName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
-    # Resource tags
+    # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Runtime')]
@@ -190,14 +175,12 @@ param(
 )
 
 process {
+    # Format custom location
+    $CustomLocationID = ConvertCustomLocationNameToID -CustomLocationName $CustomLocationName -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName
+    $null = $PSBoundParameters.Add("ExtendedLocationType", "CustomLocation")
+    $null = $PSBoundParameters.Add("ExtendedLocationName", $CustomLocationID)
+    $null = $PSBoundParameters.Remove("CustomLocationName")
 
-    $Scope = GetConnectedClusterResourceURI -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName
-    $null = $PSBoundParameters.Remove("SubscriptionId")
-    $null = $PSBoundParameters.Remove("ResourceGroupName")
-    $null = $PSBoundParameters.Remove("ClusterName")
-    $null = $PSBoundParameters.Add("ConnectedClusterResourceUri", $Scope)
-
-    Az.AksArc.internal\Update-AzAksArcNodepool @PSBoundParameters
+    Az.AksArc.internal\New-AzAksArcVirtualNetwork @PSBoundParameters
 }
-
 }
