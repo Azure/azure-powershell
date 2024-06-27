@@ -47,7 +47,7 @@ The **Set-AzFirewallPolicyRuleCollectionGroupDraft** cmdlet updates a rule colle
 
 ### Example 1
 ```powershell
-Set-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName rg1 -ResourceGroupName TestRg -Priority 200 -RuleCollection $filterRule1 -FirewallPolicyName "firewallPolicy"
+Set-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName rg1 -ResourceGroupName TestRg -Priority 200 -RuleCollection $filterRule1 -AzureFirewallPolicyName "firewallPolicy"
 ```
 
 This example updates a rule collection group draft in the firewall policy $fp
@@ -60,7 +60,7 @@ saves a modified azure firewall policy rule collection group draft. (autogenerat
 
 
 ```powershell
-Set-AzFirewallPolicyRuleCollectionGroupDraft -FirewallPolicyName <String> -AzureFirewallPolicyRuleCollectionGroupName rg1 -Priority 200 -ResourceGroupName TestRg -RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]>
+Set-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyName <String> -AzureFirewallPolicyRuleCollectionGroupName rg1 -Priority 200 -ResourceGroupName TestRg -RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]>
 ```
 
 ## PARAMETERS
