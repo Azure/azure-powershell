@@ -332,10 +332,9 @@ function setupEnv() {
     $env['versionRequiresNameOrId'] = 'Version is only allowed if Name or Id  are provided.'
     $env['listVersionsRequiresNameOrId'] = 'ListVersions is only allowed if Name or Id  are provided.'
 
-    # get some test objects
-    $env['customSubDefinition'] = Get-AzPolicyDefinition -Custom | ?{ $_.Id -like '/sub*' } | select -Last 1
-    $env['customSubSetDefinition'] = Get-AzPolicySetDefinition -SubscriptionId $env.subscriptionId -Custom | select -Last 1
-
+    # create a couple of test objects
+    $env['customSubDefinition'] = New-AzPolicyDefinition -Name (Get-ResourceName) -Policy '{ "if": { "field": "location", "equals": "westus" }, "then": { "effect": "audit" } }'
+    $env['customSubSetDefinition'] = New-AzPolicySetDefinition -Name (Get-ResourceName) -PolicyDefinition ("[{""policyDefinitionId"":""" + $($env.customSubDefinition).Id + """}]")
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -346,6 +345,8 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    $env['customSubSetDefinition'] | Remove-AzPolicySetDefinition -Confirm:$false
+    $env['customSubDefinition'] | Remove-AzPolicyDefinition -Confirm:$false
     $null = Remove-AzUserAssignedIdentity -ResourceGroupName $env.rgName -Name $env.userAssignedIdentityName
     $null = Remove-ResourceGroup -Name $env.rgName
 }
