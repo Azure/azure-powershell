@@ -3,6 +3,176 @@
   "ModuleVersion": "1.7.2",
   "Cmdlets": [
     {
+      "VerbName": "New",
+      "NounName": "AzDatabricksWorkspaceProviderAuthorizationObject",
+      "Name": "New-AzDatabricksWorkspaceProviderAuthorizationObject",
+      "ClassName": "New-AzDatabricksWorkspaceProviderAuthorizationObject",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 0,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.WorkspaceProviderAuthorization",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.WorkspaceProviderAuthorization, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "PrincipalId": "System.String",
+              "RoleDefinitionId": "System.String"
+            },
+            "Methods": [
+              {
+                "Name": "FromJson",
+                "Parameters": [
+                  {
+                    "Name": "node",
+                    "Type": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization"
+              },
+              {
+                "Name": "ToJson",
+                "Parameters": [
+                  {
+                    "Name": "container",
+                    "Type": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonObject"
+                  },
+                  {
+                    "Name": "serializationMode",
+                    "Type": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SerializationMode"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode"
+              },
+              {
+                "Name": "DeserializeFromDictionary",
+                "Parameters": [
+                  {
+                    "Name": "content",
+                    "Type": "System.Collections.IDictionary"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization"
+              },
+              {
+                "Name": "DeserializeFromPSObject",
+                "Parameters": [
+                  {
+                    "Name": "content",
+                    "Type": "System.Management.Automation.PSObject"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization"
+              },
+              {
+                "Name": "FromJsonString",
+                "Parameters": [
+                  {
+                    "Name": "jsonText",
+                    "Type": "System.String"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization"
+              },
+              {
+                "Name": "ToJsonString",
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "ToString",
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "GetType",
+                "ReturnType": "System.Type"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Object"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "ReturnType": "System.Int32"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": ""
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "PrincipalId",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "RoleDefinitionId",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "PrincipalId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "RoleDefinitionId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ]
+    },
+    {
       "VerbName": "Get",
       "NounName": "AzDatabricksAccessConnector",
       "Name": "Get-AzDatabricksAccessConnector",
