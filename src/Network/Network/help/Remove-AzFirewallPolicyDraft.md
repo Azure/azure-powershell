@@ -51,7 +51,7 @@ This example removes the firewall policy draft by the resource Id.
 
 ### Example 3
 ```powershell
-Remove-AzFirewallPolicyDraft -PSAzureFirewallPolicyDraft $fp
+Remove-AzFirewallPolicyDraft -FirewallPolicyObject $fp
 ```
 
 This example removes the firewall policy draft associated with the firewall policy $fp

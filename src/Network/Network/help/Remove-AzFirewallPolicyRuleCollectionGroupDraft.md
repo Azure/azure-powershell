@@ -46,14 +46,14 @@ The **Remove-AzFirewallPolicyRuleCollectionGroupDraft** cmdlet removes a rule co
 
 ### Example 1
 ```powershell
-Remove-AzFirewallPolicyRuleCollectionGroupDraft AzureFirewallPolicyRuleCollectionGroupName testRcGroup -FirewallPolicyObject $fp
+Remove-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName testRcGroup -FirewallPolicyObject $fp
 ```
 
 This example removes the firewall policy rule collection group draft named "testRcGroup" in the firewall policy object $fp
 
 ### Example 2
 ```powershell
-Remove-AzFirewallPolicyRuleCollectionGroupDraft AzureFirewallPolicyRuleCollectionGroupName testRcGroup -ResourceGroupName testRg -AzureFirewallPolicyName fpName
+Remove-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName testRcGroup -ResourceGroupName testRg -AzureFirewallPolicyName fpName
 ```
 
 This example removes the firewall policy rule collection group draft named "testRcGroup" in the firewall named "fpName" from the resource group named "testRg"

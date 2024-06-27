@@ -12,11 +12,22 @@ Creates a new Azure Firewall Policy draft.
 
 ## SYNTAX
 
+### SetByNameParameterSet (Default)
 ```
 New-AzFirewallPolicyDraft -AzureFirewallPolicyName <String> -ResourceGroupName <String> -Location <String> [-ThreatIntelMode <String>]
  [-ThreatIntelWhitelist <PSAzureFirewallPolicyThreatIntelWhitelist>] [-BasePolicy <String>]
  [-DnsSetting <PSAzureFirewallPolicyDnsSettings>] [-SqlSetting <PSAzureFirewallPolicySqlSetting>]
  [-Tag <Hashtable>] [-Force] [-AsJob] [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>]
+ [-PrivateRange <String[]>] [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>] [-Snat <PSAzureFirewallPolicySNAT>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetByParentInputObjectParameterSet
+```
+Set-AzFirewallPolicyDraft [-AzureFirewallPolicyName <String>] -FirewallPolicyObject <PSAzureFirewallPolicy> [-AsJob] [-ThreatIntelMode <String>]
+ [-ThreatIntelWhitelist <PSAzureFirewallPolicyThreatIntelWhitelist>] [-BasePolicy <String>]
+ [-DnsSetting <PSAzureFirewallPolicyDnsSettings>] [-SqlSetting <PSAzureFirewallPolicySqlSetting>]
+ [-Tag <Hashtable>] [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>] [-TransportSecurityName <String>]
  [-PrivateRange <String[]>] [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>] [-Snat <PSAzureFirewallPolicySNAT>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -42,7 +53,7 @@ This example creates an azure firewall policy draft with the same properties as 
 
 ### Example 3: Create a policy draft with ThreatIntelWhitelist
 ```powershell
-$threatIntelWhitelist = New-AzFirewallPolicyDraftThreatIntelWhitelist -IpAddress 23.46.72.91,192.79.236.79 -FQDN microsoft.com
+$threatIntelWhitelist = New-AzFirewallPolicyThreatIntelWhitelist -IpAddress 23.46.72.91,192.79.236.79 -FQDN microsoft.com
 New-AzFirewallPolicyDraft -AzureFirewallPolicyName fp1 -ResourceGroupName TestRg -ThreatIntelWhitelist $threatIntelWhitelist
 ```
 
@@ -51,9 +62,9 @@ This example creates an azure firewall policy draft with the same properties as 
 ### Example 4: Create policy with intrusion detection
 ```powershell
 $bypass = New-AzFirewallPolicyIntrusionDetectionBypassTraffic -AzureFirewallPolicyName "bypass-setting" -Protocol "TCP" -DestinationPort "80" -SourceAddress "10.0.0.0" -DestinationAddress "*"
-$signatureOverride = New-AzFirewallPolicyDraftIntrusionDetectionSignatureOverride -Id "123456798" -Mode "Deny"
-$intrusionDetection = New-AzFirewallPolicyDraftIntrusionDetection -Mode "Alert" -SignatureOverride $signatureOverride -BypassTraffic $bypass
-New-AzFirewallPolicyDraft -AzureFirewallPolicyName fp1 -Location "westus2" -ResourceGroupName TestRg -IntrusionDetection $intrusionDetection 
+$signatureOverride = New-AzFirewallPolicyIntrusionDetectionSignatureOverride -Id "123456798" -Mode "Deny"
+$intrusionDetection = New-AzFirewallPolicyIntrusionDetection -Mode "Alert" -SignatureOverride $signatureOverride -BypassTraffic $bypass
+New-AzFirewallPolicyDraft -AzureFirewallPolicyName fp1 -ResourceGroupName TestRg -IntrusionDetection $intrusionDetection 
 ```
 
 This example creates an azure firewall policy draft with the same properties as the parent policy except that the intrusion detection in mode is set to alert
@@ -67,7 +78,7 @@ This example creates a Firewall that treats "99.99.99.0/24" and "66.66.0.0/16" a
 
 ### Example 6: Create an empty Firewall Policy with Explicit Proxy Settings
 ```powershell
-$exProxy = New-AzFirewallPolicyDraftExplicitProxy -EnableExplicitProxy  -HttpPort 100 -HttpsPort 101 -EnablePacFile  -PacFilePort 130 -PacFile "sampleurlfortesting.blob.core.windowsnet/nothing"
+$exProxy = New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy  -HttpPort 100 -HttpsPort 101 -EnablePacFile  -PacFilePort 130 -PacFile "sampleurlfortesting.blob.core.windowsnet/nothing"
 New-AzFirewallPolicyDraft -AzureFirewallPolicyName fp1 -ResourceGroupName TestRg -ExplicitProxy $exProxy
 ```
 
@@ -223,6 +234,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -FirewallPolicyObject
+The AzureFirewall Policy associated with the draft
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicy
+Parameter Sets: SetByParentInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

@@ -20,7 +20,7 @@ Get-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionG
 
 ### GetByParentInputObjectParameterSet
 ```
-Get-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName <String> -AzureFirewallPolicy <PSAzureFirewallPolicy>
+Get-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName <String> -FirewallPolicyObject <PSAzureFirewallPolicy>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ The **Get-AzFirewallPolicyRuleCollectionGroupDraft** cmdlet gets the RuleCollect
 
 ### Example 1
 ```powershell
-Get-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName rg1 -AzureFirewallPolicy $fp
+Get-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName rg1 -FirewallPolicyObject $fp
 ```
 
 This example get the rule collection group draft associated with rule collection group rg1 in the firewall policy $fp
@@ -55,7 +55,7 @@ Get-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyName fpName -Az
 
 ## PARAMETERS
 
-### -AzureFirewallPolicy
+### -FirewallPolicyObject
 Firewall Policy.
 
 ```yaml
@@ -164,7 +164,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicy
+### Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyDraft
 
 ## OUTPUTS
 

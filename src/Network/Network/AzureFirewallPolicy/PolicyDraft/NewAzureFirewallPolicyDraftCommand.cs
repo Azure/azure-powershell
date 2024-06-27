@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyDraft", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPolicyDraft))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyDraft", DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPolicyDraft))]
     public class NewAzureFirewallPolicyDraftCommand : AzureFirewallPolicyDraftCmdlet
     {
         private const string SetByNameParameterSet = "SetByNameParameterSet";
