@@ -35,7 +35,7 @@ function Test-ServerEndpoint2
 
         $azureFileShareName = "testfs" #Get-ResourceName("fs")
         $storageAccountName = Get-ResourceName("sa")
-        $storageAccountTenantId = (Get-Azcontext).Tenant.Id
+        $storageAccountTenantId = Get-TenantId
         # NOTE: Check the local server drives where we are performing registration.
         $serverLocalPath = "D:\" + $serverEndpointName
         $tierFilesOlderThanDays = 10
@@ -187,7 +187,7 @@ function Test-ServerEndpoint
 
         $azureFileShareName = "testfs" #Get-ResourceName("fs")
         $storageAccountName = Get-ResourceName("sa")
-        $storageAccountTenantId = (Get-Azcontext).Tenant.Id
+        $storageAccountTenantId = Get-TenantId
         # NOTE: Check the local server drives where we are performing registration.
         $serverLocalPath = "D:\" + $serverEndpointName
         $tierFilesOlderThanDays = 10
