@@ -112,6 +112,10 @@ Abort the migration to Azure Frontdoor Premium/Standard.
 ### [Invoke-AzCdnCanCdnProfile](Invoke-AzCdnCanCdnProfile.md)
 Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
 
+### [Move-AzFrontDoorCdnCdnProfileToAFD](Move-AzFrontDoorCdnCdnProfileToAFD.md)
+Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
+This step prepares the profile for migration and will be followed by Commit to finalize the migration.
+
 ### [New-AzCdnCustomDomain](New-AzCdnCustomDomain.md)
 Creates a new custom domain within an endpoint.
 

@@ -124,6 +124,22 @@ function Move-AzFrontDoorCdnCdnProfileToAFD {
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName]
         # Name of the pricing tier.
         ${SkuName},
+
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType]
+        # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        ${IdentityType},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api40.IUserAssignedIdentities]))]
+        [System.Collections.Hashtable]
+        # The set of user assigned identities associated with the resource.
+        # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        # The dictionary values can be empty objects ({}) in requests.
+        ${IdentityUserAssignedIdentity},
     
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -183,43 +199,31 @@ function Move-AzFrontDoorCdnCdnProfileToAFD {
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
-        ${ProxyUseDefaultCredentials},
-
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType]
-        # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-        ${IdentityType},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api40.IUserAssignedIdentities]))]
-        [System.Collections.Hashtable]
-        # The set of user assigned identities associated with the resource.
-        # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-        # The dictionary values can be empty objects ({}) in requests.
-        ${IdentityUserAssignedIdentity}
+        ${ProxyUseDefaultCredentials}
     )
     process {
         ValidateIdentityType
         Write-Host("Start the initial progress of migration of CDN profile to Azure Front Door.")
 
-        $identityTypeTmp = $IdentityType
-        $IdentityUserAssignedIdentityTmp = $IdentityUserAssignedIdentity
-
-        $PSBoundParameters.Remove("IdentityType")
-        $PSBoundParameters.Remove("IdentityUserAssignedIdentity")
+        [void]$PSBoundParameters.Remove("IdentityType")
+        [void]$PSBoundParameters.Remove("IdentityUserAssignedIdentity")
 
         Az.Cdn.internal\Move-AzFrontDoorCdnCdnProfileToAFD @PSBoundParameters
 
-        Write-Host("Migration of endpoint completed")
+        Write-Host("Migration of endpoint completed.")
 
         if (${IdentityType}) {
-            Write-Host("now enabling managed identity.")
+            Write-Host("Now enabling managed identity.")
+
+            [void]$PSBoundParameters.Remove("MigrationParameter")
+            [void]$PSBoundParameters.Remove("MigrationEndpointMapping")
+            [void]$PSBoundParameters.Remove("SkuName")
+            
+            [void]$PSBoundParameters.Add("IdentityType", ${IdentityType})
+            [void]$PSBoundParameters.Add("IdentityUserAssignedIdentity", ${IdentityUserAssignedIdentity})
 
             try {
-                Update-AzCdnProfile -ResourceGroupName ${ResourceGroupName} -ProfileName ${ProfileName} -IdentityType ${identityTypeTmp} -IdentityUserAssignedIdentity ${IdentityUserAssignedIdentityTmp}
+                Az.Cdn.internal\Update-AzCdnProfile @PSBoundParameters
             }
             catch {
                 Write-Host("Enabling managed identity failed, please check the error message.")
