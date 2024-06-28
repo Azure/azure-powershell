@@ -193,7 +193,8 @@ directive:
       subject: CommitProfileMigration
     hide: true
   - where:
-      subject: MigrateCdnProfileToAFD
+      subject: CdnProfileToAFD
+      verb: Move
     hide: true
   # Hide UpgradeSku command and customize
   - where:
