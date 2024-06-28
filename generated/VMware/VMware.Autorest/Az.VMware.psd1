@@ -1,5 +1,5 @@
 @{
-  GUID = '6ced3ed2-fb86-4a72-aca7-369161b12fea'
+  GUID = 'fb5779c4-51c5-4a70-b734-8de6c16ea5f4'
   RootModule = './Az.VMware.psm1'
   ModuleVersion = '0.4.0'
   CompatiblePSEditions = 'Core', 'Desktop'
