@@ -46,6 +46,25 @@ Describe 'PolicySetDefinitionCRUD' {
         $actual.Metadata.$metadataName | Should -Be $metadataValue
     }
 
+    It 'Validate parameter round-trip' {
+        # get the set definition, do an update with no changes, validate nothing is changed in response or backend
+        $expected = Get-AzPolicySetDefinition -Name $policySetDefName
+        $response = Update-AzPolicySetDefinition -Name $policySetDefName
+        $response.DisplayName | Should -Be $expected.DisplayName
+        $response.Description | Should -Be $expected.Description
+        $response.Metadata.$metadataName | Should -Be $expected.Metadata.$metadataName
+        $response.PolicyRule | Should -BeLike $expected.PolicyRule
+        $response.Parameter | Should -BeLike $expected.Parameter
+        $response.PolicyDefinitionGroup | Should -BeLike $expected.PolicyDefinitionGroup
+        $actual = Get-AzPolicySetDefinition -Name $policySetDefName
+        $actual.DisplayName | Should -Be $expected.DisplayName
+        $actual.Description | Should -Be $expected.Description
+        $actual.Metadata.$metadataName | Should -Be $expected.Metadata.$metadataName
+        $actual.PolicyRule | Should -BeLike $expected.PolicyRule
+        $actual.Parameter | Should -BeLike $expected.Parameter
+        $actual.PolicyDefinitionGroup | Should -BeLike $expected.PolicyDefinitionGroup
+    }
+
     It 'List builtin and custom' {
         # ensure that only custom set definitions are returned using the custom flag
         $list = Get-AzPolicySetDefinition -Custom
