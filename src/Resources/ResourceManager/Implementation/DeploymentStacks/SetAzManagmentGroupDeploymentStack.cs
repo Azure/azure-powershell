@@ -19,7 +19,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStacks;
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.Resources.Models;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using System;
     using System.Collections;
     using System.Management.Automation;
