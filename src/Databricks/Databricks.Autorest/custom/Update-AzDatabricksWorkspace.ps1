@@ -486,6 +486,10 @@ function Update-AzDatabricksWorkspace {
             {
                 $workspace.ComplianceSecurityProfileValue = $ComplianceSecurityProfileValue
             }
+            if ($hasDefaultStorageFirewall)
+            {
+                $workspace.DefaultStorageFirewall = $DefaultStorageFirewall
+            }
             if ($hasAsJob) {
                 $PSBoundParameters.Add('AsJob', $true)
             }
