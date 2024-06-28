@@ -319,13 +319,8 @@ process {
         }
     }
 
-    if (!$NotScope) {
-        if ($_.NotScope) {
-            $calledParameters.NotScope = $_.NotScope
-        }
-        elseif ($existing.NotScope) {
-            $calledParameters.NotScope = $existing.NotScope
-        }
+    if (!$NotScope -and !($NotScope -is [array])) {
+        $calledParameters.NotScope = $existing.NotScope
     }
 
     if (!$Location) {
@@ -337,22 +332,20 @@ process {
         }
     }
 
-    if (!$DisplayName) {
-        if ($_.DisplayName) {
-            $calledParameters.DisplayName = $_.DisplayName
-        }
-        elseif ($existing.DisplayName) {
-            $calledParameters.DisplayName = $existing.DisplayName
-        }
+    if (!$calledParameters.DisplayName) {
+        $calledParameters.DisplayName = $existing.DisplayName
     }
 
-    if (!$Description) {
-        if ($_.Description) {
-            $calledParameters.Description = $_.Description
-        }
-        elseif ($existing.Description) {
-            $calledParameters.Description = $existing.Description
-        }
+    if (!$calledParameters.Description) {
+        $calledParameters.Description = $existing.Description
+    }
+
+    if (!$calledParameters.Metadata) {
+        $calledParameters.Metadata = $existing.Metadata
+    }
+
+    if (!$calledParameters.EnforcementMode -and $calledParameters.EnforcementMode) {
+        $calledParameters.EnforcementMode = $existing.EnforcementMode
     }
 
     if ($BackwardCompatible) {

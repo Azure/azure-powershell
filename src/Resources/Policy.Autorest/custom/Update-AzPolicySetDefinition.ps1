@@ -256,6 +256,18 @@ process {
         $calledParameters.PolicyDefinitionGroup = ConvertTo-Json -Depth 100 $existing.PolicyDefinitionGroup
     }
 
+    if (!$calledParameters.DisplayName) {
+        $calledParameters.DisplayName = $existing.DisplayName
+    }
+
+    if (!$calledParameters.Description) {
+        $calledParameters.Description = $existing.Description
+    }
+
+    if (!$calledParameters.Metadata) {
+        $calledParameters.Metadata = $existing.Metadata
+    }
+
     if ($BackwardCompatible) {
         $calledParameters.BackwardCompatible = $true
     }
