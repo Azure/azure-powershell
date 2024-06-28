@@ -56,7 +56,7 @@ $RuntimeDllsExcludeList = @(
     'System.Text.Json.dll',
     'System.Threading.Tasks.Extensions.dll',
     'System.IO.Hashing.dll',
-    'System.ClientModel'
+    'System.ClientModel.dll'
 )
 
 $toRemove = Get-ChildItem -Path $RootPath -Recurse -Include $RuntimeDllsIncludeList -Exclude $RuntimeDllsExcludeList
