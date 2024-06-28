@@ -55,7 +55,7 @@ Action to take on resources that become unmanaged on deletion or update of the d
 Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStacks.PSActionOnUnmanage
 Parameter Sets: (All)
 Aliases:
-Accepted values: DetachAll, DeleteResources, DeleteResourcesAndResourceGroups, DeleteAll
+Accepted values: DetachAll, DeleteResources, DeleteAll
 
 Required: True
 Position: Named

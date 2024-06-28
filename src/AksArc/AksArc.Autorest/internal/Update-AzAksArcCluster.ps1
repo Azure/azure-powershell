@@ -39,10 +39,6 @@ Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_te
 Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SmbCsiDriverEnabled:$false
 .Example
 Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -AdminGroupObjectID @("2e00cb64-66d8-4c9c-92d8-6462caf99e33", "1b28ff4f-f7c5-4aaa-aa79-ba8b775ab443")
-.Example
-Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Upgrade
-.Example
-Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -KubernetesVersion "1.28.5"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedCluster
@@ -210,12 +206,6 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
-    [System.String]
-    # IP Address or CIDR for SSH access to VMs in the provisioned cluster
-    ${ClusterVMAccessProfileAuthorizedIprange},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.Int32]
     # Number of control plane nodes.
     # The default value is 1, and the count should be an odd number
@@ -225,7 +215,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.String]
     # IP address of the Kubernetes API server
-    ${ControlPlaneEndpointHostIP},
+    ${ControlPlaneIP},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
@@ -274,7 +264,7 @@ param(
     [System.Int32]
     # Number of HA Proxy load balancer VMs.
     # The default value is 0.
-    ${LoadBalancerProfileCount},
+    ${LoadBalancerCount},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.PSArgumentCompleterAttribute("calico")]
@@ -286,12 +276,6 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
-    [System.String]
-    # A CIDR notation IP Address range from which to assign pod IPs.
-    ${NetworkProfilePodCidr},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Indicates whether to enable NFS CSI Driver.
     # The default value is true.
@@ -299,10 +283,22 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+    [System.String]
+    # A CIDR notation IP Address range from which to assign pod IPs.
+    ${PodCidr},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Indicates whether to enable SMB CSI Driver.
     # The default value is true.
     ${SmbCsiDriverEnabled},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+    [System.String]
+    # IP Address or CIDR for SSH access to VMs in the provisioned cluster
+    ${SshAuthIp},
 
     [Parameter()]
     [AllowEmptyCollection()]

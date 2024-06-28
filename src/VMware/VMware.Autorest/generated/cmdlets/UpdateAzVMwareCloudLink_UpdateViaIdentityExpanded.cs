@@ -104,6 +104,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
+        /// <summary>Identifier of the other private cloud participating in the link.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Identifier of the other private cloud participating in the link.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Identifier of the other private cloud participating in the link.",
+        SerializedName = @"linkedCloud",
+        PossibleTypes = new [] { typeof(string) })]
+        public string LinkedCloud { get => _cloudLinkBody.LinkedCloud ?? null; set => _cloudLinkBody.LinkedCloud = value; }
+
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
@@ -479,7 +490,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
 
         private void Update_cloudLinkBody()
         {
-
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("LinkedCloud")))
+            {
+                this.LinkedCloud = (string)(this.MyInvocation?.BoundParameters["LinkedCloud"]);
+            }
         }
 
         /// <param name="sendToPipeline"></param>

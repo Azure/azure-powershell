@@ -21,15 +21,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SkuName ElasticPremium = @"ElasticPremium";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SkuName FlexConsumption = @"FlexConsumption";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SkuName Free = @"Free";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SkuName Isolated = @"Isolated";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SkuName IsolatedV2 = @"IsolatedV2";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SkuName Premium = @"Premium";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SkuName PremiumContainer = @"PremiumContainer";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SkuName PremiumLrs = @"Premium_LRS";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SkuName PremiumV2 = @"PremiumV2";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SkuName PremiumV3 = @"PremiumV3";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SkuName PremiumZrs = @"Premium_ZRS";
 

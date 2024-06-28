@@ -111,6 +111,12 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
+    [System.Int32]
+    # The maximum number of pods that can run on a node.
+    ${MaxPod},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolProfileNodeLabels]))]
     [System.Collections.Hashtable]
     # The node labels to be persisted across all nodes in agent pool.

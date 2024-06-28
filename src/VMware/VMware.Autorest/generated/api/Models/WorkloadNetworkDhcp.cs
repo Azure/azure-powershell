@@ -145,7 +145,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Type of DHCP: SERVER or RELAY.",
         SerializedName = @"dhcpType",
         PossibleTypes = new [] { typeof(string) })]
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Display name of the DHCP entity.",
         SerializedName = @"displayName",
         PossibleTypes = new [] { typeof(string) })]
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"NSX revision number.",
         SerializedName = @"revision",
         PossibleTypes = new [] { typeof(long) })]

@@ -19,7 +19,10 @@
 -->
 
 ## Upcoming Release
-* Supported get and assig versioned policy definitions and sets
+* Addressed a rare case where a service principal does not have AppId
+* Introduced validation of MG scoped deployment stack during New/Set cmdlet execution.
+* Updated Remove/New stack cmdlets with warnings for management groups ActionOnUnmanage and removed DeleteResourcesAndResourceGroups as valid ActionOnUnmanage value.
+* Supported get and assign versioned policy definitions and sets
 * Fixed syntax incompatible with windows powershell [#24971]
 * Fixed bug with `Get-AzPolicyExemption` requesting 'ParentResourcePath'
 * Supported `ServiceManagementReference` of Entra App

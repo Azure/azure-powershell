@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Updated to api-version 2023-11-01
+* Fixed some minor issues
 
 ## Version 0.15.2
 * Upgraded Azure.Core to 1.37.0.

@@ -157,7 +157,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Default DNS zone of the DNS Service.",
         SerializedName = @"defaultDnsZone",
         PossibleTypes = new [] { typeof(string) })]
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Display name of the DNS Service.",
         SerializedName = @"displayName",
         PossibleTypes = new [] { typeof(string) })]
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"DNS service IP of the DNS Service.",
         SerializedName = @"dnsServiceIp",
         PossibleTypes = new [] { typeof(string) })]
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"FQDN zones of the DNS Service.",
         SerializedName = @"fqdnZones",
         PossibleTypes = new [] { typeof(string) })]
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"DNS Service log level.",
         SerializedName = @"logLevel",
         PossibleTypes = new [] { typeof(string) })]
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"NSX revision number.",
         SerializedName = @"revision",
         PossibleTypes = new [] { typeof(long) })]

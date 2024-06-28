@@ -75,6 +75,15 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true)]
         public string RequestPath { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Determines how new connections are handled by the load balancer when all backend instances are probed down.",
+            ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter(
+            "AllProbedDown",
+            "AllProbedUp"
+        )]
+        public string NoHealthyBackendsBehavior { get; set; }
 
         public override void Execute()
         {
@@ -86,6 +95,7 @@ namespace Microsoft.Azure.Commands.Network
             vProbes.NumberOfProbes = this.ProbeCount;
             vProbes.ProbeThreshold = this.ProbeThreshold;
             vProbes.RequestPath = this.RequestPath;
+            vProbes.NoHealthyBackendsBehavior = this.NoHealthyBackendsBehavior;
             vProbes.Name = this.Name;
             var generatedId = string.Format(
                 "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/{3}/{4}",
