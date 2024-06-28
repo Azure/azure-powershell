@@ -266,8 +266,4 @@ directive:
       verb: Get
       subject: SpotPlacementScore
     remove: true
-  - where:
-      verb: Invoke
-      subject: SpotPlacementRecommender
-    remove: true
 ```
