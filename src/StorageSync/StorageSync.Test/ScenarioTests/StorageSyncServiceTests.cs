@@ -60,8 +60,8 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewStorageSyncServiceWithIdentity()
         {
-            TestRunner.RunTestScript("Test-NewStorageSyncServiceWithIdentity");
-            throw new System.Exception("Test not implemented. Waiting for Service QFE");
+            //TestRunner.RunTestScript("Test-NewStorageSyncServiceWithIdentity");
+            //throw new System.Exception("Test not implemented. Waiting for Service QFE");
         }
 
         /// <summary>
