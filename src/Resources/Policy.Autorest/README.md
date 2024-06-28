@@ -174,6 +174,29 @@ directive:
     where: $.definitions.PolicySetDefinitionProperties.properties.policyDefinition.groupNames
     transform: $['additionalProperties'] = true;
 
+  # versioning serialization
+  - from: swagger-document
+    where: $.definitions.PolicyDefinitionVersionProperties.properties.policyRule
+    transform: $['additionalProperties'] = true
+  - from: swagger-document
+    where: $.definitions.PolicyDefinitionVersionProperties.properties.metadata
+    transform: $['additionalProperties'] = true
+  - from: swagger-document
+    where: $.definitions.PolicySetDefinitionVersionProperties.properties.metadata
+    transform: $['additionalProperties'] = true;
+  - from: swagger-document
+    where: $.definitions.PolicySetDefinitionVersionProperties.properties.policyDefinition.policyDefinitionId
+    transform: $['additionalProperties'] = true;
+  - from: swagger-document
+    where: $.definitions.PolicySetDefinitionVersionProperties.properties.policyDefinition.parameters
+    transform: $['additionalProperties'] = true;
+  - from: swagger-document
+    where: $.definitions.PolicySetDefinitionVersionProperties.properties.policyDefinition.policyDefinitionReferenceId
+    transform: $['additionalProperties'] = true;
+  - from: swagger-document
+    where: $.definitions.PolicySetDefinitionVersionProperties.properties.policyDefinition.groupNames
+    transform: $['additionalProperties'] = true;
+
   # previous approach that partially supported "any type" serialization
   - from: swagger-document
     where: $.definitions.ParameterDefinitionsValue.properties.allowedValues.items

@@ -1,5 +1,5 @@
 ---
-external help file: Az.Resources-help.xml
+external help file:
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/new-azpolicyexemption
 schema: 2.0.0
@@ -13,10 +13,10 @@ Creates or updates a policy exemption.
 ## SYNTAX
 
 ```
-New-AzPolicyExemption -Name <String> -ExemptionCategory <String> -PolicyAssignment <PSObject> [-Scope <String>]
- [-PolicyDefinitionReferenceId <String[]>] [-AssignmentScopeValidation <String>] [-DisplayName <String>]
- [-Description <String>] [-ExpiresOn <DateTime>] [-Metadata <String>] [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzPolicyExemption -ExemptionCategory <String> -Name <String> -PolicyAssignment <PSObject>
+ [-PolicyDefinitionReferenceId <String[]>] [-Scope <String>] [-AssignmentScopeValidation <String>]
+ [-BackwardCompatible] [-Description <String>] [-DisplayName <String>] [-ExpiresOn <DateTime?>]
+ [-Metadata <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,6 +45,28 @@ New-AzPolicyExemption -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $
 The first command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet and stores it in the $ResourceGroup variable.
 The second command gets the policy assignment named VirtualMachinePolicyAssignment by using the Get-AzPolicyAssignment cmdlet and stores it in the $Assignment variable.
 The final command exempts the policy assignment in $Assignment at the level of the resource group identified by the **ResourceId** property of $ResourceGroup.
+
+### Example 3: Policy exemption at management group level
+```powershell
+$ManagementGroup = Get-AzManagementGroup -GroupName 'AManagementGroup'
+$Assignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment'
+New-AzPolicyExemption -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $Assignment -Scope $ManagementGroup.Id -ExemptionCategory Mitigated
+```
+
+The first command gets a management group named AManagementGroup by using the Get-AzManagementGroup cmdlet and stores it in the $ManagementGroup variable.
+The second command gets the policy assignment named VirtualMachinePolicyAssignment by using the Get-AzPolicyAssignment cmdlet and stores it in the $Assignment variable.
+The final command exempts the policy assignment in $Assignment at the level of the management group identified by the **Id** property of $ManagementGroup.
+
+### Example 4: Policy exemption at resource level
+```powershell
+$VM = Get-AzVM -Name 'SpecialVM'
+$Assignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment'
+New-AzPolicyExemption -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $Assignment -Scope $SpecialVM.Id -ExemptionCategory Waiver
+```
+
+The first command gets a VM named SpecialVM by using the Get-AzVM cmdlet and stores it in the $VM variable.
+The second command gets the policy assignment named VirtualMachinePolicyAssignment by using the Get-AzPolicyAssignment cmdlet and stores it in the $Assignment variable.
+The final command exempts the resource identified by the **Id** property of $VM from the policy assignment in $Assignment.
 
 ## PARAMETERS
 
@@ -143,7 +165,7 @@ Accept wildcard characters: False
 The expiration date and time (in UTC ISO 8601 format yyyy-MM-ddTHH:mm:ssZ) of the policy exemption.
 
 ```yaml
-Type: System.Nullable`1[System.DateTime]
+Type: System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 
@@ -196,7 +218,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: True (ByValue, ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -212,21 +234,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -297,3 +304,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

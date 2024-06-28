@@ -1,5 +1,5 @@
 ---
-external help file: Az.Resources-help.xml
+external help file:
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/update-azpolicyassignment
 schema: 2.0.0
@@ -16,62 +16,59 @@ For example, when you assign a policy at resource group scope, that policy appli
 
 ### Name (Default)
 ```
-Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
- [-Description <String>] [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>]
- [-IdentityType <String>] [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### NameParameterObject
-```
-Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
- [-Description <String>] [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>]
- [-IdentityType <String>] [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-BackwardCompatible]
- -PolicyParameterObject <PSObject> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### NameParameterString
-```
-Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [-DisplayName <String>]
- [-Description <String>] [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>]
- [-IdentityType <String>] [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-BackwardCompatible]
- -PolicyParameter <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-BackwardCompatible] [-Description <String>]
+ [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>]
+ [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Id
 ```
-Update-AzPolicyAssignment -Id <String> [-NotScope <String[]>] [-DisplayName <String>] [-Description <String>]
- [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>] [-IdentityType <String>]
- [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzPolicyAssignment -Id <String> [-BackwardCompatible] [-Description <String>] [-DisplayName <String>]
+ [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>] [-Location <String>]
+ [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### IdParameterObject
 ```
-Update-AzPolicyAssignment -Id <String> [-NotScope <String[]>] [-DisplayName <String>] [-Description <String>]
- [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>] [-IdentityType <String>]
- [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-BackwardCompatible]
- -PolicyParameterObject <PSObject> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzPolicyAssignment -Id <String> -PolicyParameterObject <PSObject> [-BackwardCompatible]
+ [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>]
+ [-IdentityType <String>] [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>]
+ [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### IdParameterString
 ```
-Update-AzPolicyAssignment -Id <String> [-NotScope <String[]>] [-DisplayName <String>] [-Description <String>]
- [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>] [-IdentityType <String>]
- [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-BackwardCompatible] -PolicyParameter <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzPolicyAssignment -Id <String> -PolicyParameter <String> [-BackwardCompatible] [-Description <String>]
+ [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>]
+ [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Update-AzPolicyAssignment [-NotScope <String[]>] [-DisplayName <String>] [-Description <String>]
- [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>] [-IdentityType <String>]
- [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-BackwardCompatible]
- -InputObject <IPolicyAssignment> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzPolicyAssignment -InputObject <IPolicyAssignment> [-BackwardCompatible] [-Description <String>]
+ [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>]
+ [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### NameParameterObject
+```
+Update-AzPolicyAssignment -Name <String> -PolicyParameterObject <PSObject> [-Scope <String>]
+ [-BackwardCompatible] [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>]
+ [-IdentityId <String>] [-IdentityType <String>] [-Location <String>] [-Metadata <String>]
+ [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### NameParameterString
+```
+Update-AzPolicyAssignment -Name <String> -PolicyParameter <String> [-Scope <String>] [-BackwardCompatible]
+ [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>]
+ [-IdentityType <String>] [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>]
+ [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -312,6 +309,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 
+
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment
 Parameter Sets: InputObject
@@ -320,7 +318,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: True (ByValue, ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -408,7 +406,7 @@ The keys are the parameter names.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParameterString, IdParameterString
+Parameter Sets: IdParameterString, NameParameterString
 Aliases:
 
 Required: True
@@ -424,25 +422,10 @@ The keys are the parameter names.
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: NameParameterObject, IdParameterObject
+Parameter Sets: IdParameterObject, NameParameterObject
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -520,3 +503,4 @@ ALIASES
 Set-AzPolicyAssignment
 
 ## RELATED LINKS
+

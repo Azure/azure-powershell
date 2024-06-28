@@ -1,5 +1,5 @@
 ---
-external help file: Az.Resources-help.xml
+external help file:
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/get-azpolicyassignment
 schema: 2.0.0
@@ -14,38 +14,35 @@ Gets policy assignments.
 
 ### Default (Default)
 ```
-Get-AzPolicyAssignment [-BackwardCompatible] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+Get-AzPolicyAssignment [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Id
+```
+Get-AzPolicyAssignment -Id <String> [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### IncludeDescendent
+```
+Get-AzPolicyAssignment -IncludeDescendent [-Scope <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Name
 ```
 Get-AzPolicyAssignment -Name <String> [-Scope <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### PolicyDefinitionId
 ```
-Get-AzPolicyAssignment [-Scope <String>] -PolicyDefinitionId <String> [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
-```
-
-### IncludeDescendent
-```
-Get-AzPolicyAssignment [-Scope <String>] [-IncludeDescendent] [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-AzPolicyAssignment -PolicyDefinitionId <String> [-Scope <String>] [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Scope
 ```
-Get-AzPolicyAssignment -Scope <String> [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
-```
-
-### Id
-```
-Get-AzPolicyAssignment -Id <String> [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-AzPolicyAssignment -Scope <String> [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -189,40 +186,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Scope
 The scope of the policy assignment.
 Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
 
 ```yaml
 Type: System.String
-Parameter Sets: Name, PolicyDefinitionId, IncludeDescendent
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: Scope
+Parameter Sets: IncludeDescendent, Name, PolicyDefinitionId, Scope
 Aliases:
 
 Required: True
@@ -248,3 +218,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

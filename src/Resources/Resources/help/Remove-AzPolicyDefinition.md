@@ -1,5 +1,5 @@
 ---
-external help file: Az.Resources-help.xml
+external help file:
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azpolicydefinition
 schema: 2.0.0
@@ -14,35 +14,32 @@ This operation deletes the policy definition in the given subscription with the 
 
 ### Name (Default)
 ```
-Remove-AzPolicyDefinition -Name <String> [-Force] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ManagementGroupName
-```
-Remove-AzPolicyDefinition -Name <String> -ManagementGroupName <String> [-Force] [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### SubscriptionId
-```
-Remove-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-Force] [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzPolicyDefinition -Name <String> [-BackwardCompatible] [-Force] [-DefaultProfile <PSObject>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Id
 ```
-Remove-AzPolicyDefinition -Id <String> [-Force] [-BackwardCompatible] [-DefaultProfile <PSObject>] [-PassThru]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzPolicyDefinition -Id <String> [-BackwardCompatible] [-Force] [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Remove-AzPolicyDefinition -InputObject <IPolicyIdentity> [-Force] [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzPolicyDefinition -InputObject <IPolicyIdentity> [-BackwardCompatible] [-Force]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ManagementGroupName
+```
+Remove-AzPolicyDefinition -ManagementGroupName <String> -Name <String> [-BackwardCompatible] [-Force]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### SubscriptionId
+```
+Remove-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-BackwardCompatible] [-Force]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -149,7 +146,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: True (ByValue, ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -173,19 +170,7 @@ The name of the policy definition to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name
-Aliases: PolicyDefinitionName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ManagementGroupName, SubscriptionId
+Parameter Sets: ManagementGroupName, Name, SubscriptionId
 Aliases: PolicyDefinitionName
 
 Required: True
@@ -202,21 +187,6 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -287,3 +257,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

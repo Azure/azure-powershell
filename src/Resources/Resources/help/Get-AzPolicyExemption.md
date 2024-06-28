@@ -1,5 +1,5 @@
 ---
-external help file: Az.Resources-help.xml
+external help file:
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/get-azpolicyexemption
 schema: 2.0.0
@@ -14,20 +14,20 @@ Gets policy exemptions.
 
 ### Name (Default)
 ```
-Get-AzPolicyExemption [-Name <String>] [-Scope <String>] [-PolicyAssignmentIdFilter <String>]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
-```
-
-### IncludeDescendent
-```
-Get-AzPolicyExemption [-Scope <String>] [-IncludeDescendent] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-AzPolicyExemption [-Name <String>] [-PolicyAssignmentIdFilter <String>] [-Scope <String>]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Id
 ```
-Get-AzPolicyExemption [-PolicyAssignmentIdFilter <String>] -Id <String> [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-AzPolicyExemption -Id <String> [-PolicyAssignmentIdFilter <String>] [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### IncludeDescendent
+```
+Get-AzPolicyExemption -IncludeDescendent [-Scope <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -144,7 +144,7 @@ The policy assignment id filter.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name, Id
+Parameter Sets: Id, Name
 Aliases:
 
 Required: False
@@ -154,28 +154,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Scope
 The scope of the policy exemption.
 Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
 
 ```yaml
 Type: System.String
-Parameter Sets: Name, IncludeDescendent
+Parameter Sets: IncludeDescendent, Name
 Aliases:
 
 Required: False
@@ -201,3 +186,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

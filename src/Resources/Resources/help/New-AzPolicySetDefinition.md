@@ -1,5 +1,5 @@
 ---
-external help file: Az.Resources-help.xml
+external help file:
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/new-azpolicysetdefinition
 schema: 2.0.0
@@ -14,26 +14,25 @@ Creates or updates a policy set definition.
 
 ### Name (Default)
 ```
-New-AzPolicySetDefinition -Name <String> -PolicyDefinition <String> [-DisplayName <String>]
- [-Description <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzPolicySetDefinition -Name <String> -PolicyDefinition <String> [-BackwardCompatible]
+ [-Description <String>] [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>]
+ [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
-New-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> -PolicyDefinition <String>
- [-DisplayName <String>] [-Description <String>] [-Metadata <String>] [-Parameter <String>]
- [-PolicyDefinitionGroup <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzPolicySetDefinition -ManagementGroupName <String> -Name <String> -PolicyDefinition <String>
+ [-BackwardCompatible] [-Description <String>] [-DisplayName <String>] [-Metadata <String>]
+ [-Parameter <String>] [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
 New-AzPolicySetDefinition -Name <String> -SubscriptionId <String> -PolicyDefinition <String>
- [-DisplayName <String>] [-Description <String>] [-Metadata <String>] [-Parameter <String>]
- [-PolicyDefinitionGroup <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-BackwardCompatible] [-Description <String>] [-DisplayName <String>] [-Metadata <String>]
+ [-Parameter <String>] [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -267,21 +266,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
 
@@ -342,3 +326,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
