@@ -61,7 +61,6 @@ namespace StorageSyncTests
         public void TestNewStorageSyncServiceWithIdentity()
         {
             //TestRunner.RunTestScript("Test-NewStorageSyncServiceWithIdentity");
-            //throw new System.Exception("Test not implemented. Waiting for Service QFE");
         }
 
         /// <summary>

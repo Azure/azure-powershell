@@ -173,7 +173,7 @@ namespace Commands.StorageSync.Interop.Clients
             Guid? applicationId = GetApplicationIdOrNull();
 
             // Honor identity if present
-            bool isCertificateRegistration = applicationId.GetValueOrDefault(Guid.Empty) == Guid.Empty;
+            bool isCertificateRegistration = true;// applicationId.GetValueOrDefault(Guid.Empty) == Guid.Empty;
 
             // Set the registry key for ServerAuthType
             RegistryUtility.WriteValue(StorageSyncConstants.ServerAuthRegistryKeyName,

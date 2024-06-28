@@ -237,7 +237,7 @@ namespace Commands.StorageSync.Interop.Clients
             {
                 Id = resourceId,
                 ServerId = serverGuid,
-                ServerCertificate = isCertificateRegistration ? syncServerCertificate.ToBase64Bytes(throwException: true): null,
+                ServerCertificate = syncServerCertificate != null ? syncServerCertificate.ToBase64Bytes(throwException: true): null,
                 ServerRole = isInCluster ? ServerRoleType.ClusterNode : ServerRoleType.Standalone,
                 ServerOSVersion = osVersion,
                 ApplicationId = applicationId,
