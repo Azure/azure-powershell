@@ -50,8 +50,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// </summary>
         private int _responseSize = 0;
 
-        /// <summary>NSX Segment update</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegmentUpdate _workloadNetworkSegmentBody = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.WorkloadNetworkSegmentUpdate();
+        /// <summary>NSX Segment</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment _workloadNetworkSegmentBody = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.WorkloadNetworkSegment();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]

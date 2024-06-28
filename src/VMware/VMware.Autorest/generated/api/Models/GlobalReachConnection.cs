@@ -182,7 +182,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Authorization key from the peer express route used for the global reach
         connection",
         SerializedName = @"authorizationKey",
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"The ID of the Private Cloud's ExpressRoute Circuit that is participating in the
         global reach connection",
         SerializedName = @"expressRouteId",
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Identifier of the ExpressRoute Circuit to peer with in the global reach
         connection",
         SerializedName = @"peerExpressRouteCircuit",

@@ -50,8 +50,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// </summary>
         private int _responseSize = 0;
 
-        /// <summary>NSX DNS Service update</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsServiceUpdate _workloadNetworkDnsServiceBody = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.WorkloadNetworkDnsServiceUpdate();
+        /// <summary>NSX DNS Service</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService _workloadNetworkDnsServiceBody = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.WorkloadNetworkDnsService();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
