@@ -1,6 +1,6 @@
 ---
 Module Name: Az.VMware
-Module Guid: 78d2fac8-ec90-47ad-b8aa-a27106b158f5
+Module Guid: fb5779c4-51c5-4a70-b734-8de6c16ea5f4
 Download Help Link: https://learn.microsoft.com/powershell/module/az.vmware
 Help Version: 1.0.0.0
 Locale: en-US
@@ -8,7 +8,7 @@ Locale: en-US
 
 # Az.VMware Module
 ## Description
-Microsoft Azure PowerShell: Azure VMware Solution cmdlets
+Microsoft Azure PowerShell: VMware cmdlets
 
 ## Az.VMware Cmdlets
 ### [Get-AzVMwareAddon](Get-AzVMwareAddon.md)

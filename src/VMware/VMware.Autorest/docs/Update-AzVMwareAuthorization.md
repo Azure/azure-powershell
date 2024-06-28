@@ -1,53 +1,59 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwarecloudlink
+online version: https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwareauthorization
 schema: 2.0.0
 ---
 
-# Update-AzVMwareCloudLink
+# Update-AzVMwareAuthorization
 
 ## SYNOPSIS
-Update a CloudLink
+Update a ExpressRouteAuthorization
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzVMwareCloudLink -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzVMwareAuthorization -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-ExpressRouteId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzVMwareCloudLink -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzVMwareAuthorization -InputObject <IVMwareIdentity> [-ExpressRouteId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityPrivateCloudExpanded
 ```
-Update-AzVMwareCloudLink -Name <String> -PrivateCloudInputObject <IVMwareIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzVMwareAuthorization -Name <String> -PrivateCloudInputObject <IVMwareIdentity>
+ [-ExpressRouteId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a CloudLink
+Update a ExpressRouteAuthorization
 
 ## EXAMPLES
 
-### Example 1: Update a cloud link in a private cloud
+### Example 1: Update an ExpressRoute Circuit Authorization in a private cloud
 ```powershell
-Update-AzVMwareCloudLink -Name azps_test_cloudlink -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
+Update-AzVMwareAuthorization -Name azps_test_authorization -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
 ```
 
 ```output
-Name                Type                                   ResourceGroupName
-----                ----                                   -----------------
-azps_test_cloudlink Microsoft.AVS/privateClouds/cloudLinks azps_test_group
+ExpressRouteAuthorizationId : ExpressRouteURI
+ExpressRouteId              : ExpressRouteId
+Id                          : Id
+Key                         : GUID
+Name                        : azps_test_authorization
+ProvisioningState           : Succeeded
+ResourceGroupName           : azps_test_group
+Type                        : Microsoft.AVS/privateClouds/authorizations
 ```
 
-Update a cloud link in a private cloud
+Update an ExpressRoute Circuit Authorization in a private cloud
 
 ## PARAMETERS
 
@@ -82,6 +88,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ExpressRouteId
+The ID of the ExpressRoute Circuit
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 
@@ -98,12 +119,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the cloud link.
+Name of the ExpressRoute Circuit Authorization
 
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityPrivateCloudExpanded
-Aliases: CloudLinkName
+Aliases: AuthorizationName
 
 Required: True
 Position: Named
@@ -229,7 +250,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICloudLink
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IExpressRouteAuthorization
 
 ## NOTES
 
