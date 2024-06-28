@@ -137,7 +137,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Identifier of the other private cloud participating in the link.",
         SerializedName = @"linkedCloud",
         PossibleTypes = new [] { typeof(string) })]

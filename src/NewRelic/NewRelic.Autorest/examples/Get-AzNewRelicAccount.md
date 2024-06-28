@@ -1,6 +1,6 @@
 ### Example 1: Get specific monitor account with specified location
 ```powershell
-Get-AzNewRelicAccount -Location eastus -UserEmail v-jiaji@outlook.com
+Get-AzNewRelicAccount -Location eastus -UserEmail user1@outlook.com
 ```
 
 ```output

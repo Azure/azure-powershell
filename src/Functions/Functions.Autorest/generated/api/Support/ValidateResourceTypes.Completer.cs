@@ -34,6 +34,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Site'", "Site", global::System.Management.Automation.CompletionResultType.ParameterValue, "Site");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Microsoft.Web/hostingEnvironments".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Microsoft.Web/hostingEnvironments'", "Microsoft.Web/hostingEnvironments", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Web/hostingEnvironments");
+            }
         }
     }
 }

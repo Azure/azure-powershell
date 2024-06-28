@@ -23,7 +23,8 @@
 # .\RemoveRuntimeAssemblies.ps1 -RootPath "C:\repo\azure-powershell\artifacts\Debug\" -CodeSign
 # This example removes the runtime assemblies and the runtimes folder
 # .NOTES
-# It's unclear whether removing the runtimes folder is still necessary because the folder doesn't seem to exist in the build process.
+# 1. It's unclear whether removing the runtimes folder is still necessary because the folder doesn't seem to exist in the build process.
+# 2. Whenever a new "System" dependency is introduced, and it's not in PowerShell's runtime by default, add it to $RuntimeDllsExcludeList
 #>
 
 param(
@@ -54,7 +55,8 @@ $RuntimeDllsExcludeList = @(
     'System.Management.dll',
     'System.Text.Json.dll',
     'System.Threading.Tasks.Extensions.dll',
-    'System.IO.Hashing.dll'
+    'System.IO.Hashing.dll',
+    'System.ClientModel.dll'
 )
 
 $toRemove = Get-ChildItem -Path $RootPath -Recurse -Include $RuntimeDllsIncludeList -Exclude $RuntimeDllsExcludeList

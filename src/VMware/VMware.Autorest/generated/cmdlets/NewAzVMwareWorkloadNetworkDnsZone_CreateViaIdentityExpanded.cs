@@ -110,8 +110,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         ReadOnly = false,
         Description = @"Number of DNS Services using the DNS zone.",
         SerializedName = @"dnsServices",
-        PossibleTypes = new [] { typeof(int) })]
-        public int DnsService { get => _workloadNetworkDnsZoneBody.DnsService ?? default(int); set => _workloadNetworkDnsZoneBody.DnsService = value; }
+        PossibleTypes = new [] { typeof(long) })]
+        public long DnsService { get => _workloadNetworkDnsZoneBody.DnsService ?? default(long); set => _workloadNetworkDnsZoneBody.DnsService = value; }
 
         /// <summary>Domain names of the DNS Zone.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]

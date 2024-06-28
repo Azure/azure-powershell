@@ -46,6 +46,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'BlockBlobStorage'", "BlockBlobStorage", global::System.Management.Automation.CompletionResultType.ParameterValue, "BlockBlobStorage");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Stateful".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Stateful'", "Stateful", global::System.Management.Automation.CompletionResultType.ParameterValue, "Stateful");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Stateless".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Stateless'", "Stateless", global::System.Management.Automation.CompletionResultType.ParameterValue, "Stateless");
+            }
         }
     }
 }

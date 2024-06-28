@@ -1,11 +1,11 @@
 function Get-RotatedLocation
 {
-    $regions = @("eastus", "westus", "japaneast", "japanwest", "eastasia", "southeastasia", "brazilsouth", "eastus2")
+    $regions = @("southindia", "westindia", "japaneast", "japanwest", "eastasia", "southeastasia", "brazilsouth", "koreasouth")
     $index = (Get-Date).Day % 8
     return $regions[$index]
 }
 
-Invoke-LiveTestScenario -Name "Get and update key vault setting in a MSHM" -Description "Get and update a key vault setting in a MSHM" -Platform Linux -PowerShellVersion Latest -ScenarioScript `
+Invoke-LiveTestScenario -Name "Get and update key vault setting in a MHSM" -Description "Get and update a key vault setting in a MHSM" -Platform Linux -PowerShellVersion Latest -ScenarioScript `
 {
     param ($rg)
 

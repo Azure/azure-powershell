@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Fixed [CVE-2024-35255](https://github.com/advisories/GHSA-m5vv-6r4h-3vj9)
+* Updated `Microsoft.Identity.Client.NativeInterop` to fix the WAM pop window issue in elevated mode [#24967]
 * Updated the reference of Azure PowerShell Common to 1.3.98-preview.
 * Limited promotional message to interactive scenarios only
 
