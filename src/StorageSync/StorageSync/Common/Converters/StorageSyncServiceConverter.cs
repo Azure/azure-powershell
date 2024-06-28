@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
             StorageSyncConstants.StorageSyncServiceType,
             new SystemDataConverter().Convert(source.SystemData),
             source.Tags,
+            null,
             source.IncomingTrafficPolicy);
 
         /// <summary>

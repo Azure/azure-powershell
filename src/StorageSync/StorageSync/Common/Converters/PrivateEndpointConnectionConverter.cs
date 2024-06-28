@@ -39,13 +39,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// <param name="source">The source.</param>
         /// <returns>StorageSyncModels.PrivateEndpointConnection.</returns>
         protected override StorageSyncModels.PrivateEndpointConnection Transform(PSPrivateEndpointConnection source) => new StorageSyncModels.PrivateEndpointConnection(
-            new PrivateLinkServiceConnectionStateConverter().Convert(source.PrivateLinkServiceConnectionState),
             source.ResourceId,
             source.PrivateEndpointConnectionName,
             source.Type,
             new SystemDataConverter().Convert(source.SystemData),
+            new PrivateEndpointConverter().Convert(source.PrivateEndpoint), 
             source.GroupIds,
-            new PrivateEndpointConverter().Convert(source.PrivateEndpoint),
+            new PrivateLinkServiceConnectionStateConverter().Convert(source.PrivateLinkServiceConnectionState),
             source.ProvisioningState);
 
         /// <summary>
