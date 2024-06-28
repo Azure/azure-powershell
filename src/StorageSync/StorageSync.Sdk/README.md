@@ -5,15 +5,14 @@ This directory contains management plane service clients of Az.StorageSync modul
 In this directory, run AutoRest:
 ```
 autorest --reset
-autorest --use:@autorest/powershell@4.x
+autorest --use:@microsoft.azure/autorest.csharp@2.0.4421
 autorest.cmd README.md --version=v2
 ```
 
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-isSdkGenerator: true
-powershell: true
+csharp: true
 clear-output-folder: true
 reflect-api-versions: true
 openapi-type: arm
