@@ -21,12 +21,12 @@ Create an in-memory object for AFDDomainHttpsParameters.
 Create an in-memory object for AFDDomainHttpsParameters.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AFDDomainHttpsParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AFDDomainHttpsParameters
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnCustomDomainTlsSettingParametersObject
 #>
 function New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AFDDomainHttpsParameters')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AFDDomainHttpsParameters')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -39,12 +39,12 @@ function New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject {
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.AfdMinimumTlsVersion]
         $MinimumTlsVersion,
         [Parameter(HelpMessage="Resource reference to the secret. ie. subs/rg/profile/secret.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourceReference]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IResourceReference]
         $Secret
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AFDDomainHttpsParameters]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.AFDDomainHttpsParameters]::New()
 
         if ($PSBoundParameters.ContainsKey('CertificateType')) {
             $Object.CertificateType = $CertificateType

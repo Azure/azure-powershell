@@ -21,12 +21,12 @@ Create an in-memory object for DeliveryRuleRequestMethodCondition.
 Create an in-memory object for DeliveryRuleRequestMethodCondition.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestMethodCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleRequestMethodCondition
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleRequestMethodConditionObject
 #>
 function New-AzCdnDeliveryRuleRequestMethodConditionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestMethodCondition')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleRequestMethodCondition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -47,7 +47,7 @@ function New-AzCdnDeliveryRuleRequestMethodConditionObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestMethodCondition]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleRequestMethodCondition]::New()
 
         if ($PSBoundParameters.ContainsKey('ParameterMatchValue')) {
             $Object.ParameterMatchValue = $ParameterMatchValue

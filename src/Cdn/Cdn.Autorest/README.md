@@ -117,6 +117,9 @@ directive:
     # Upgrade sku
     # - ProfileUpgradeParameters
     # - ProfileChangeSkuWafMapping
+    - model-cmdlet:
+      - model-name: MigrationEndpointMapping
+        cmdlet-name: Move-AzFrontDoorCdnCdnProfileToAFD
 
   # rename CdnProfiles_CdnMigrateToAfd to avoid conflict with Profiles_Migrate
   - from: swagger-document
@@ -188,6 +191,9 @@ directive:
     hide: true
   - where:
       subject: CommitProfileMigration
+    hide: true
+  - where:
+      subject: MigrateCdnProfileToAFD
     hide: true
   # Hide UpgradeSku command and customize
   - where:

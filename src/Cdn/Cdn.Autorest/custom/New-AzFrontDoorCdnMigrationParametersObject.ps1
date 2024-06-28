@@ -21,12 +21,12 @@ Create an in-memory object for MigrationParameters.
 Create an in-memory object for MigrationParameters.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.MigrationParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.MigrationParameters
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnMigrationParametersObject
 #>
 function New-AzFrontDoorCdnMigrationParametersObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.MigrationParameters')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.MigrationParameters')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -34,7 +34,7 @@ function New-AzFrontDoorCdnMigrationParametersObject {
         [string]
         $ClassicResourceReferenceId,
         [Parameter(HelpMessage="Waf mapping for the migrated profile.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IMigrationWebApplicationFirewallMapping[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IMigrationWebApplicationFirewallMapping[]]
         $MigrationWebApplicationFirewallMapping,
         [Parameter(Mandatory, HelpMessage="Name of the new profile that need to be created.")]
         [string]
@@ -46,7 +46,7 @@ function New-AzFrontDoorCdnMigrationParametersObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.MigrationParameters]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.MigrationParameters]::New()
 
         if ($PSBoundParameters.ContainsKey('ClassicResourceReferenceId')) {
             $Object.ClassicResourceReferenceId = $ClassicResourceReferenceId

@@ -21,12 +21,12 @@ Create an in-memory object for DeliveryRuleRequestHeaderCondition.
 Create an in-memory object for DeliveryRuleRequestHeaderCondition.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestHeaderCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleRequestHeaderCondition
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRequestHeaderConditionObject
 #>
 function New-AzFrontDoorCdnRuleRequestHeaderConditionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestHeaderCondition')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleRequestHeaderCondition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -54,7 +54,7 @@ function New-AzFrontDoorCdnRuleRequestHeaderConditionObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRequestHeaderCondition]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.DeliveryRuleRequestHeaderCondition]::New()
 
         if ($PSBoundParameters.ContainsKey('ParameterMatchValue')) {
             $Object.ParameterMatchValue = $ParameterMatchValue

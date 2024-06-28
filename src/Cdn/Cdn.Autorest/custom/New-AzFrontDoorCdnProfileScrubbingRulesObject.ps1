@@ -21,12 +21,12 @@ Create an in-memory object for ProfileScrubbingRules.
 Create an in-memory object for ProfileScrubbingRules.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileScrubbingRules
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProfileScrubbingRules
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnProfileScrubbingRulesObject
 #>
 function New-AzFrontDoorCdnProfileScrubbingRulesObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileScrubbingRules')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProfileScrubbingRules')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -44,7 +44,7 @@ function New-AzFrontDoorCdnProfileScrubbingRulesObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileScrubbingRules]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ProfileScrubbingRules]::New()
 
         if ($PSBoundParameters.ContainsKey('MatchVariable')) {
             $Object.MatchVariable = $MatchVariable
