@@ -22,7 +22,7 @@ This step prepares the profile for migration and will be followed by Commit to f
 Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
 This step prepares the profile for migration and will be followed by Commit to finalize the migration.
 .Example
-Move-AzFrontDoorCdnCdnProfileToAFD -ProfileName cli-test-profile -ResourceGroupName cli-test-rg -Sku Premium_AzureFrontDoor
+{{ Add code here }}
 .Example
 {{ Add code here }}
 
@@ -191,7 +191,7 @@ function Move-AzFrontDoorCdnCdnProfileToAFD {
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType]
         # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
         ${IdentityType},
-    
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api40.IUserAssignedIdentities]))]
@@ -199,47 +199,49 @@ function Move-AzFrontDoorCdnCdnProfileToAFD {
         # The set of user assigned identities associated with the resource.
         # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
         # The dictionary values can be empty objects ({}) in requests.
-        ${IdentityUserAssignedIdentity}    
+        ${IdentityUserAssignedIdentity}
     )
-    
     process {
         ValidateIdentityType
-        Write-Host("Starting Migration...")
-        
+        Write-Host("Start the initial progress of migration of CDN profile to Azure Front Door.")
+
         Az.Cdn.internal\Move-AzFrontDoorCdnCdnProfileToAFD @PSBoundParameters
 
-        Write-Host("New AFD profile created successfully, now enabling managed identities...")
+        Write-Host("Migration of endpoint completed")
 
-        Write-Host("Enabling managed identities...")
-        try
-        {
-            Update-AzFrontDoorCdnProfile -ProfileName $ProfileName -ResourceGroupName $ResourceGroupName -IdentityType $IdentityType -IdentityUserAssignedIdentity $IdentityUserAssignedIdentity
-        }
-        catch
-        {
-            Write-Error $_.Exception.Message
+        if (${IdentityType}) {
+            Write-Host("now enabling managed identity.")
+
+            try {
+                Update-AzCdnProfile -ResourceGroupName ${ResourceGroupName} -ProfileName ${ProfileName} -IdentityType ${IdentityType} -IdentityUserAssignedIdentity ${IdentityUserAssignedIdentity}
+            }
+            catch {
+                Write-Host("Enabling managed identity failed, please check the error message.")
+    
+                Write-Error $_.Exception.Message
+            }
         }
 
-        Write-Host("Now you can commit the migration...")
+        Write-Host("Now you can commit the migration to finalize the migration process.")
     }
     }
     
-    function ValidateIdentityType {
-        if (${IdentityType}) {
-            $identityTypeArray =  ${IdentityType}.ToString().split(",")
-            if (($identityTypeArray.Count -gt 2)) {
+function ValidateIdentityType {
+    if (${IdentityType}) {
+        $identityTypeArray =  ${IdentityType}.ToString().split(",")
+        if (($identityTypeArray.Count -gt 2)) {
+            throw "The IdentityType is invalid. The supported types are 'SystemAssigned,UserAssigned' when the front door has Customer Certificates during migration."
+        }
+        foreach($identity in $identityTypeArray) {
+            $id = $identity.Trim().ToLower()
+            if (($id -ne "userassigned") -and ($id -ne "systemassigned")) {
                 throw "The IdentityType is invalid. The supported types are 'SystemAssigned,UserAssigned' when the front door has Customer Certificates during migration."
             }
-            foreach($identity in $identityTypeArray) {
-                $id = $identity.Trim().ToLower()
-                if (($id -ne "userassigned") -and ($id -ne "systemassigned")) {
-                    throw "The IdentityType is invalid. The supported types are 'SystemAssigned,UserAssigned' when the front door has Customer Certificates during migration."
-                }
-                if ($id -eq "userassigned") {
-                    if (${IdentityUserAssignedIdentity}.count -eq 0) {
-                        throw "Identities should not be empty or null to be assigned when using User Assigned type."
-                    }
+            if ($id -eq "userassigned") {
+                if (${IdentityUserAssignedIdentity}.count -eq 0) {
+                    throw "Identities should not be empty or null to be assigned when using User Assigned type."
                 }
             }
         }
     }
+}

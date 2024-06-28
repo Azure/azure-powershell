@@ -80,44 +80,6 @@
           ]
         }
       ]
-    },
-    {
-      "name": "Move-AzFrontDoorCdnCdnProfileToAFD",
-      "description": "Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.\nThis step prepares the profile for migration and will be followed by Commit to finalize the migration.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/cdnMigrateToAfd",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.cdn/move-azfrontdoorcdncdnprofiletoafd"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-ProfileName <String>",
-              "-ResourceGroupName <String>",
-              "[-SubscriptionId <String>]"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile. This step prepares the profile for migration and will be followed by Commit to finalize the migration.",
-          "parameters": [
-            {
-              "name": "-ProfileName",
-              "value": "[Path.profileName]"
-            },
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            }
-          ]
-        }
-      ]
     }
   ]
 }
