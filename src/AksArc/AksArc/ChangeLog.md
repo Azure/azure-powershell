@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cmdlets for virtual networks
+* Improved Error Checking
+* Renamed Parameters to make more consistent with Azure CLI
+* Added new cmdlet for upgrading clusters
 
 ## Version 0.1.0
 * First preview release for module Az.AksArc

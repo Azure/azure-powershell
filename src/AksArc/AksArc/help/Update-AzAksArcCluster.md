@@ -16,31 +16,32 @@ Update the provisioned cluster instance
 ```
 Update-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit] [-ControlPlaneCount <Int32>]
- [-NfCsiDriverEnabled] [-SmbCsiDriverEnabled] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-NfCsiDriverEnabled] [-SmbCsiDriverEnabled] [-AutoScalerProfileBalanceSimilarNodeGroup <String>]
+ [-AutoScalerProfileExpander <String>] [-AutoScalerProfileMaxEmptyBulkDelete <String>]
+ [-AutoScalerProfileMaxGracefulTerminationSec <String>] [-AutoScalerProfileMaxNodeProvisionTime <String>]
+ [-AutoScalerProfileMaxTotalUnreadyPercentage <String>] [-AutoScalerProfileNewPodScaleUpDelay <String>]
+ [-AutoScalerProfileOkTotalUnreadyCount <String>] [-AutoScalerProfileScaleDownDelayAfterAdd <String>]
+ [-AutoScalerProfileScaleDownDelayAfterDelete <String>] [-AutoScalerProfileScaleDownDelayAfterFailure <String>]
+ [-AutoScalerProfileScaleDownUnneededTime <String>] [-AutoScalerProfileScaleDownUnreadyTime <String>]
+ [-AutoScalerProfileScaleDownUtilizationThreshold <String>] [-AutoScalerProfileScanInterval <String>]
+ [-AutoScalerProfileSkipNodesWithLocalStorage <String>] [-AutoScalerProfileSkipNodesWithSystemPod <String>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AutoScaling
 ```
 Update-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -MinCount <Int32> -MaxCount <Int32> [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit]
- [-ControlPlaneCount <Int32>] [-NfCsiDriverEnabled] [-SmbCsiDriverEnabled] [-EnableAutoScaling] [-AsJob]
- [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Upgrade
-```
-Update-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit] [-ControlPlaneCount <Int32>]
- [-NfCsiDriverEnabled] [-SmbCsiDriverEnabled] -KubernetesVersion <String> [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Upgrade2
-```
-Update-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit] [-ControlPlaneCount <Int32>]
- [-NfCsiDriverEnabled] [-SmbCsiDriverEnabled] [-Upgrade] [-AsJob] [-NoWait]
+ [-ControlPlaneCount <Int32>] [-NfCsiDriverEnabled] [-SmbCsiDriverEnabled]
+ [-AutoScalerProfileBalanceSimilarNodeGroup <String>] [-AutoScalerProfileExpander <String>]
+ [-AutoScalerProfileMaxEmptyBulkDelete <String>] [-AutoScalerProfileMaxGracefulTerminationSec <String>]
+ [-AutoScalerProfileMaxNodeProvisionTime <String>] [-AutoScalerProfileMaxTotalUnreadyPercentage <String>]
+ [-AutoScalerProfileNewPodScaleUpDelay <String>] [-AutoScalerProfileOkTotalUnreadyCount <String>]
+ [-AutoScalerProfileScaleDownDelayAfterAdd <String>] [-AutoScalerProfileScaleDownDelayAfterDelete <String>]
+ [-AutoScalerProfileScaleDownDelayAfterFailure <String>] [-AutoScalerProfileScaleDownUnneededTime <String>]
+ [-AutoScalerProfileScaleDownUnreadyTime <String>] [-AutoScalerProfileScaleDownUtilizationThreshold <String>]
+ [-AutoScalerProfileScanInterval <String>] [-AutoScalerProfileSkipNodesWithLocalStorage <String>]
+ [-AutoScalerProfileSkipNodesWithSystemPod <String>] [-EnableAutoScaling] [-AsJob] [-NoWait]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -119,20 +120,6 @@ Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_te
 
 Update aad admin GUIDS.
 
-### Example 11: Upgrade kubernetes version to latest possible
-```powershell
-Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Upgrade
-```
-
-Upgrade cluster to latest kubernetes version.
-
-### Example 12: Upgrade kubernetes version to specified version
-```powershell
-Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -KubernetesVersion "1.28.5"
-```
-
-Upgrade cluster to the specified kubernetes version.
-
 ## PARAMETERS
 
 ### -AdminGroupObjectID
@@ -154,6 +141,279 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileBalanceSimilarNodeGroup
+Valid values are 'true' and 'false'
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileExpander
+If not specified, the default is 'random'.
+See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileMaxEmptyBulkDelete
+The default is 10.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileMaxGracefulTerminationSec
+The default is 600.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileMaxNodeProvisionTime
+The default is '15m'.
+Values must be an integer followed by an 'm'.
+No unit of time other than minutes (m) is supported.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileMaxTotalUnreadyPercentage
+The default is 45.
+The maximum is 100 and the minimum is 0.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileNewPodScaleUpDelay
+For scenarios like burst/batch scale where you don't want CA to act before the kubernetes scheduler could schedule all the pods, you can tell CA to ignore unscheduled pods before they're a certain age.
+The default is '0s'.
+Values must be an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h' for hours, etc).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileOkTotalUnreadyCount
+This must be an integer.
+The default is 3.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileScaleDownDelayAfterAdd
+The default is '10m'.
+Values must be an integer followed by an 'm'.
+No unit of time other than minutes (m) is supported.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileScaleDownDelayAfterDelete
+The default is the scan-interval.
+Values must be an integer followed by an 'm'.
+No unit of time other than minutes (m) is supported.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileScaleDownDelayAfterFailure
+The default is '3m'.
+Values must be an integer followed by an 'm'.
+No unit of time other than minutes (m) is supported.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileScaleDownUnneededTime
+The default is '10m'.
+Values must be an integer followed by an 'm'.
+No unit of time other than minutes (m) is supported.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileScaleDownUnreadyTime
+The default is '20m'.
+Values must be an integer followed by an 'm'.
+No unit of time other than minutes (m) is supported.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileScaleDownUtilizationThreshold
+The default is '0.5'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileScanInterval
+The default is '10'.
+Values must be an integer number of seconds.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileSkipNodesWithLocalStorage
+The default is true.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfileSkipNodesWithSystemPod
+The default is true.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -221,21 +481,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -KubernetesVersion
-The version of Kubernetes in use by the provisioned cluster.
-
-```yaml
-Type: System.String
-Parameter Sets: Upgrade
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -361,21 +606,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Upgrade
-Upgrade the provisioned cluster
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Upgrade2
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
