@@ -22,7 +22,7 @@ The final command exempts the policy assignment in $Assignment at the level of t
 
 ### Example 3: Policy exemption at management group level
 ```powershell
-$ManagementGroup = Get-AzManagementGroup -Name 'AManagementGroup'
+$ManagementGroup = Get-AzManagementGroup -GroupName 'AManagementGroup'
 $Assignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment'
 New-AzPolicyExemption -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $Assignment -Scope $ManagementGroup.Id -ExemptionCategory Mitigated
 ```
