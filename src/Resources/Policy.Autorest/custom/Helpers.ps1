@@ -43,52 +43,12 @@ function ParsePolicyId {
     $parts = $resourceId -split $mark
     $scope = $parts[0]
     $name = ''
-    $version = ''
-    $major = ''
-    $minor = ''
-    $patch = ''
-    $suffix = ''
-    $versionRef = ''
-    $versionMajorRef = ''
-    $versionMinorRef = ''
 
     if ($parts.Length -gt 1) {
         $parts = $parts[1] -split '/'
         $name = $parts[0]
         if (($parts.Length -gt 2) -and ($parts[1] -eq 'versions')) {
-            $version = $parts[2]
-            $parts = $version -split '\.'
-            $major = $parts[0]
-            if ($parts.Length -gt 1) {
-                $minor = $parts[1]
-            }
-            if ($parts.Length -gt 2) {
-                $parts = $parts[2] -split '-'
-                $patch = $parts[0]
-                if ($parts.Length -gt 1) {
-                    $suffix = $parts[1]
-                }
-            }
-
-            $versionMajorRef = @($major,'*','*') -join '.'
-            if ($minor -ne '*') {
-                $versionMinorRef = @($major,$minor,'*') -join '.'
-            }
-
-            if ($suffix) {
-                if ($versionMinorRef) {
-                    $versionMinorRef = $versionMinorRef + '-' + $suffix
-                }
-
-                $versionMajorRef = $versionMajorRef + '-' + $suffix
-            }
-
-            if ($versionMinorRef) {
-                $versionRef = $versionMinorRef
-            }
-            else {
-                $versionRef = $versionMajorRef
-            }
+            $parsedVersion = ParsePolicyVersion $parts[2]
         }
     }
 
@@ -139,8 +99,8 @@ function ParsePolicyId {
     $artifactRef = ''
 
     $artifact = $scope + $mark + $name
-    if ($versionRef) {
-        $artifactRef = "$artifact/versions/$versionRef"
+    if ($parsedVersion.VersionRef) {
+        $artifactRef = "$artifact/versions/$($parsedVersion.VersionRef)"
     }
 
     return @{
@@ -155,13 +115,70 @@ function ParsePolicyId {
         ResourceType = $resType
         ResourceName = $resName
         Name = $name
+        Artifact = $artifact
+        ArtifactRef = $artifactRef
+        Version = $parsedVersion.Version
+        Major = $parsedVersion.Major
+        Minor = $parsedVersion.Minor
+        Patch = $parsedVersion.Patch
+        Suffix = $parsedVersion.Suffix
+        VersionRef = $parsedVersion.VersionRef
+        VersionMajorRef = $parsedVersion.VersionMajorRef
+        VersionMinorRef = $parsedVersion.VersionMinorRef
+    }
+}
+
+# parse policy version with format: (ddd|*).(ddd|*).(ddd|*)[-suffix]
+function ParsePolicyVersion {
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
+    # the resource Id of a policy definition
+    param($version)
+
+    $parts = $version -split '\.'
+    $major = $parts[0]
+    $minor = ''
+    if ($parts.Length -gt 1) {
+        $minor = $parts[1]
+    }
+
+    $patch = ''
+    $suffix = ''
+    if ($parts.Length -gt 2) {
+        $parts = $parts[2] -split '-'
+        $patch = $parts[0]
+        if ($parts.Length -gt 1) {
+            $suffix = $parts[1]
+        }
+    }
+
+    $versionMinorRef = ''
+    $versionMajorRef = @($major,'*','*') -join '.'
+    if ($minor -ne '*') {
+        $versionMinorRef = @($major,$minor,'*') -join '.'
+    }
+
+    if ($suffix) {
+        if ($versionMinorRef) {
+            $versionMinorRef = $versionMinorRef + '-' + $suffix
+        }
+
+        $versionMajorRef = $versionMajorRef + '-' + $suffix
+    }
+
+    $versionRef = ''
+    if ($versionMinorRef) {
+        $versionRef = $versionMinorRef
+    }
+    else {
+        $versionRef = $versionMajorRef
+    }
+
+    return @{
         Version = $version
         Major = $major
         Minor = $minor
         Patch = $patch
         Suffix = $suffix
-        Artifact = $artifact
-        ArtifactRef = $artifactRef
         VersionRef = $versionRef
         VersionMajorRef = $versionMajorRef
         VersionMinorRef = $versionMinorRef

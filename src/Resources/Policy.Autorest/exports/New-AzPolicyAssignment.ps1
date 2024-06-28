@@ -198,6 +198,14 @@ param(
     # Accept policy definition or policy set definition object
     ${PolicyDefinition},
 
+    [Parameter(ParameterSetName='PolicyDefinitionOrPolicySetDefinition')]
+    [Parameter(ParameterSetName='ParameterString')]
+    [Parameter(ParameterSetName='ParameterObject')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # Indicate version of policy definition or policy set definition
+    ${DefinitionVersion},
+
     [Parameter(ParameterSetName='ParameterString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
