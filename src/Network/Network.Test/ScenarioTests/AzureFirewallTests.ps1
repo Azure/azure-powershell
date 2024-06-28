@@ -2181,7 +2181,7 @@ function Test-InvokeAzureByopipHubFirewall {
     $rgname = Get-ResourceGroupName
     $azureFirewallName = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
-    $location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
+    $location = Get-ProviderLocation $resourceTypeParent "westcentralus"
     $azureFirewallPolicyName = Get-ResourceName
     $skuName = "AZFW_Hub"
     $skuTier = "Standard"
