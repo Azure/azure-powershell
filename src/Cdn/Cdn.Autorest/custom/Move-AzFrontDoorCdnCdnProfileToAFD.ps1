@@ -205,6 +205,12 @@ function Move-AzFrontDoorCdnCdnProfileToAFD {
         ValidateIdentityType
         Write-Host("Start the initial progress of migration of CDN profile to Azure Front Door.")
 
+        $identityTypeTmp = $IdentityType
+        $IdentityUserAssignedIdentityTmp = $IdentityUserAssignedIdentity
+
+        $PSBoundParameters.Remove("IdentityType")
+        $PSBoundParameters.Remove("IdentityUserAssignedIdentity")
+
         Az.Cdn.internal\Move-AzFrontDoorCdnCdnProfileToAFD @PSBoundParameters
 
         Write-Host("Migration of endpoint completed")
@@ -213,7 +219,7 @@ function Move-AzFrontDoorCdnCdnProfileToAFD {
             Write-Host("now enabling managed identity.")
 
             try {
-                Update-AzCdnProfile -ResourceGroupName ${ResourceGroupName} -ProfileName ${ProfileName} -IdentityType ${IdentityType} -IdentityUserAssignedIdentity ${IdentityUserAssignedIdentity}
+                Update-AzCdnProfile -ResourceGroupName ${ResourceGroupName} -ProfileName ${ProfileName} -IdentityType ${identityTypeTmp} -IdentityUserAssignedIdentity ${IdentityUserAssignedIdentityTmp}
             }
             catch {
                 Write-Host("Enabling managed identity failed, please check the error message.")
