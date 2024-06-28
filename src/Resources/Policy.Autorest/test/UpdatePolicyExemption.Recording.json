@@ -1,139 +1,13 @@
 {
-  "UpdatePolicyExemption+[NoContext]+Update-AzPolicyExemption -Name+$GET+https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview+1": {
+  "UpdatePolicyExemption+[NoContext]+Update-AzPolicyExemption -Name+$GET+https://management.azure.com//subscriptions/597b2066-8f6f-4236-9c61-6d4e9891eef8/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview",
+      "RequestUri": "https://management.azure.com//subscriptions/597b2066-8f6f-4236-9c61-6d4e9891eef8/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "946" ],
-        "x-ms-client-request-id": [ "9243778c-216a-42d6-9f80-7d9d917fa960" ],
-        "CommandName": [ "\u0026" ],
-        "FullCommandName": [ "Get-AzPolicyExemption_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.3", "Az.Policy/0.1.1" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 404,
-      "Headers": {
-        "Cache-Control": [ "no-store, no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
-        "x-ms-request-id": [ "3583bc42-55bd-4387-9dfd-0e26964ca8e3" ],
-        "x-ms-correlation-request-id": [ "3583bc42-55bd-4387-9dfd-0e26964ca8e3" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240627T041736Z:3583bc42-55bd-4387-9dfd-0e26964ca8e3" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D3B67780660F430E84683D50799E0B76 Ref B: CO6AA3150218011 Ref C: 2024-06-27T04:17:36Z" ],
-        "Date": [ "Thu, 27 Jun 2024 04:17:35 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "108" ],
-        "Content-Type": [ "application/json" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"error\":{\"code\":\"PolicyExemptionNotFound\",\"message\":\"The policy exemption \u0027someName\u0027 could not be found.\"}}",
-      "isContentBase64": false
-    }
-  },
-  "UpdatePolicyExemption+[NoContext]+Update-AzPolicyExemption -Name -Scope+$GET+https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "947" ],
-        "x-ms-client-request-id": [ "3fedf313-3890-4fc7-a7cb-6dcef55303ea" ],
-        "CommandName": [ "\u0026" ],
-        "FullCommandName": [ "Get-AzPolicyExemption_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.3", "Az.Policy/0.1.1" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 404,
-      "Headers": {
-        "Cache-Control": [ "no-store, no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
-        "x-ms-request-id": [ "3d7978f1-f827-4787-9d06-f5592db24e1e" ],
-        "x-ms-correlation-request-id": [ "3d7978f1-f827-4787-9d06-f5592db24e1e" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240627T041737Z:3d7978f1-f827-4787-9d06-f5592db24e1e" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 3EF5D1CB4DDA43DF8EED79623325F024 Ref B: CO6AA3150218011 Ref C: 2024-06-27T04:17:37Z" ],
-        "Date": [ "Thu, 27 Jun 2024 04:17:36 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "108" ],
-        "Content-Type": [ "application/json" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"error\":{\"code\":\"PolicyExemptionNotFound\",\"message\":\"The policy exemption \u0027someName\u0027 could not be found.\"}}",
-      "isContentBase64": false
-    }
-  },
-  "UpdatePolicyExemption+[NoContext]+Update-AzPolicyExemption -Name -DisplayName+$GET+https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "948" ],
-        "x-ms-client-request-id": [ "effcbd56-926c-41d1-a6da-d304c3ebc19e" ],
-        "CommandName": [ "\u0026" ],
-        "FullCommandName": [ "Get-AzPolicyExemption_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.3", "Az.Policy/0.1.1" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 404,
-      "Headers": {
-        "Cache-Control": [ "no-store, no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
-        "x-ms-request-id": [ "2e69e705-a58d-4c7f-bb15-76522e4f6e75" ],
-        "x-ms-correlation-request-id": [ "2e69e705-a58d-4c7f-bb15-76522e4f6e75" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240627T041738Z:2e69e705-a58d-4c7f-bb15-76522e4f6e75" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: DC3137FC8F50473CA388B14896EEDCD2 Ref B: CO6AA3150218011 Ref C: 2024-06-27T04:17:38Z" ],
-        "Date": [ "Thu, 27 Jun 2024 04:17:37 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "108" ],
-        "Content-Type": [ "application/json" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"error\":{\"code\":\"PolicyExemptionNotFound\",\"message\":\"The policy exemption \u0027someName\u0027 could not be found.\"}}",
-      "isContentBase64": false
-    }
-  },
-  "UpdatePolicyExemption+[NoContext]+Update-AzPolicyExemption -Name -Description+$GET+https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "949" ],
-        "x-ms-client-request-id": [ "d1a89818-d678-4482-8654-fd7506f2f73b" ],
+        "x-ms-unique-id": [ "958" ],
+        "x-ms-client-request-id": [ "4b61ac2e-4f4e-4e80-8638-e717106751ee" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyExemption_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -149,14 +23,14 @@
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
-        "x-ms-request-id": [ "d182f7aa-ee5d-46e1-94ca-0a9a14a52a79" ],
-        "x-ms-correlation-request-id": [ "d182f7aa-ee5d-46e1-94ca-0a9a14a52a79" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240627T041739Z:d182f7aa-ee5d-46e1-94ca-0a9a14a52a79" ],
+        "x-ms-request-id": [ "63d8af1c-2b38-4724-9635-21824893f6df" ],
+        "x-ms-correlation-request-id": [ "63d8af1c-2b38-4724-9635-21824893f6df" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240628T050125Z:63d8af1c-2b38-4724-9635-21824893f6df" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 6DB3AA2D8CFD4A1C875FCFF5DB974FE7 Ref B: CO6AA3150218011 Ref C: 2024-06-27T04:17:39Z" ],
-        "Date": [ "Thu, 27 Jun 2024 04:17:38 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 2D34FC27D7694670B7D86DFBCC4D2C21 Ref B: CO6AA3150218009 Ref C: 2024-06-28T05:01:25Z" ],
+        "Date": [ "Fri, 28 Jun 2024 05:01:25 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "108" ],
@@ -167,15 +41,15 @@
       "isContentBase64": false
     }
   },
-  "UpdatePolicyExemption+[NoContext]+Update-AzPolicyExemption -Name -Metadata+$GET+https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview+1": {
+  "UpdatePolicyExemption+[NoContext]+Update-AzPolicyExemption -Name -Scope+$GET+https://management.azure.com//subscriptions/597b2066-8f6f-4236-9c61-6d4e9891eef8/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview",
+      "RequestUri": "https://management.azure.com//subscriptions/597b2066-8f6f-4236-9c61-6d4e9891eef8/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "950" ],
-        "x-ms-client-request-id": [ "caf17944-a002-4ec9-a3d4-6e01312121e4" ],
+        "x-ms-unique-id": [ "959" ],
+        "x-ms-client-request-id": [ "5570e07c-2c4b-4d45-9d43-c4414ea448f7" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyExemption_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -190,15 +64,15 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
-        "x-ms-request-id": [ "2fcf6b49-4a3e-4963-9a97-4ac0126d1e6a" ],
-        "x-ms-correlation-request-id": [ "2fcf6b49-4a3e-4963-9a97-4ac0126d1e6a" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240627T041740Z:2fcf6b49-4a3e-4963-9a97-4ac0126d1e6a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-request-id": [ "629e9820-31fc-4143-af32-b59a87355460" ],
+        "x-ms-correlation-request-id": [ "629e9820-31fc-4143-af32-b59a87355460" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240628T050126Z:629e9820-31fc-4143-af32-b59a87355460" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 888E0AE22CF34BFA96A0C2BBE49242B2 Ref B: CO6AA3150218011 Ref C: 2024-06-27T04:17:40Z" ],
-        "Date": [ "Thu, 27 Jun 2024 04:17:39 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: E56182A4401D466E921A2826F33F6392 Ref B: CO6AA3150218009 Ref C: 2024-06-28T05:01:26Z" ],
+        "Date": [ "Fri, 28 Jun 2024 05:01:26 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "108" ],
@@ -209,15 +83,15 @@
       "isContentBase64": false
     }
   },
-  "UpdatePolicyExemption+[NoContext]+Update-AzPolicyExemption -Id+$GET+https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview+1": {
+  "UpdatePolicyExemption+[NoContext]+Update-AzPolicyExemption -Name -DisplayName+$GET+https://management.azure.com//subscriptions/597b2066-8f6f-4236-9c61-6d4e9891eef8/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview",
+      "RequestUri": "https://management.azure.com//subscriptions/597b2066-8f6f-4236-9c61-6d4e9891eef8/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "951" ],
-        "x-ms-client-request-id": [ "15b53795-8d59-4f4a-a201-6749969f3fbb" ],
+        "x-ms-unique-id": [ "960" ],
+        "x-ms-client-request-id": [ "700877b2-d830-4d48-b7ce-ddb2f7171dc3" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyExemption_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -232,15 +106,141 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
-        "x-ms-request-id": [ "d9ca082d-c9a2-4d07-bf3d-e5764365005d" ],
-        "x-ms-correlation-request-id": [ "d9ca082d-c9a2-4d07-bf3d-e5764365005d" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240627T041741Z:d9ca082d-c9a2-4d07-bf3d-e5764365005d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "x-ms-request-id": [ "b48b2e47-f4cc-41a2-8351-2b5e0d577bd1" ],
+        "x-ms-correlation-request-id": [ "b48b2e47-f4cc-41a2-8351-2b5e0d577bd1" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240628T050127Z:b48b2e47-f4cc-41a2-8351-2b5e0d577bd1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: DF5FEC24C57E47B7AE52A6DFAF8ABA5F Ref B: CO6AA3150218011 Ref C: 2024-06-27T04:17:41Z" ],
-        "Date": [ "Thu, 27 Jun 2024 04:17:40 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 02C1F79FE302458E867EA7FC2F202E53 Ref B: CO6AA3150218009 Ref C: 2024-06-28T05:01:27Z" ],
+        "Date": [ "Fri, 28 Jun 2024 05:01:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"PolicyExemptionNotFound\",\"message\":\"The policy exemption \u0027someName\u0027 could not be found.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "UpdatePolicyExemption+[NoContext]+Update-AzPolicyExemption -Name -Description+$GET+https://management.azure.com//subscriptions/597b2066-8f6f-4236-9c61-6d4e9891eef8/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/597b2066-8f6f-4236-9c61-6d4e9891eef8/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "961" ],
+        "x-ms-client-request-id": [ "c691bae3-a398-4af3-b190-80150a2a714d" ],
+        "CommandName": [ "\u0026" ],
+        "FullCommandName": [ "Get-AzPolicyExemption_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.3", "Az.Policy/0.1.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
+        "x-ms-request-id": [ "78e7aad2-f55f-4327-8bdb-d9ca56bfa91e" ],
+        "x-ms-correlation-request-id": [ "78e7aad2-f55f-4327-8bdb-d9ca56bfa91e" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240628T050128Z:78e7aad2-f55f-4327-8bdb-d9ca56bfa91e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 944AB34C62714382A5F4E25A256B2EC8 Ref B: CO6AA3150218009 Ref C: 2024-06-28T05:01:28Z" ],
+        "Date": [ "Fri, 28 Jun 2024 05:01:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"PolicyExemptionNotFound\",\"message\":\"The policy exemption \u0027someName\u0027 could not be found.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "UpdatePolicyExemption+[NoContext]+Update-AzPolicyExemption -Name -Metadata+$GET+https://management.azure.com//subscriptions/597b2066-8f6f-4236-9c61-6d4e9891eef8/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/597b2066-8f6f-4236-9c61-6d4e9891eef8/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "962" ],
+        "x-ms-client-request-id": [ "fcf699a4-9943-46b2-9982-6a01887784bb" ],
+        "CommandName": [ "\u0026" ],
+        "FullCommandName": [ "Get-AzPolicyExemption_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.3", "Az.Policy/0.1.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "x-ms-request-id": [ "154e611a-2633-4a94-831c-f186472674d3" ],
+        "x-ms-correlation-request-id": [ "154e611a-2633-4a94-831c-f186472674d3" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240628T050129Z:154e611a-2633-4a94-831c-f186472674d3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6303943B49B84CA4A01D3BB72B744504 Ref B: CO6AA3150218009 Ref C: 2024-06-28T05:01:29Z" ],
+        "Date": [ "Fri, 28 Jun 2024 05:01:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"PolicyExemptionNotFound\",\"message\":\"The policy exemption \u0027someName\u0027 could not be found.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "UpdatePolicyExemption+[NoContext]+Update-AzPolicyExemption -Id+$GET+https://management.azure.com//subscriptions/597b2066-8f6f-4236-9c61-6d4e9891eef8/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/597b2066-8f6f-4236-9c61-6d4e9891eef8/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "963" ],
+        "x-ms-client-request-id": [ "54faf2d5-052c-478c-a2e8-303c13a3aef6" ],
+        "CommandName": [ "\u0026" ],
+        "FullCommandName": [ "Get-AzPolicyExemption_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.3", "Az.Policy/0.1.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "x-ms-request-id": [ "3879c73a-4f69-4039-8d1a-e32580637ffb" ],
+        "x-ms-correlation-request-id": [ "3879c73a-4f69-4039-8d1a-e32580637ffb" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240628T050130Z:3879c73a-4f69-4039-8d1a-e32580637ffb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E6037C3B593040209A3F734F123F8B88 Ref B: CO6AA3150218009 Ref C: 2024-06-28T05:01:30Z" ],
+        "Date": [ "Fri, 28 Jun 2024 05:01:30 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "108" ],
