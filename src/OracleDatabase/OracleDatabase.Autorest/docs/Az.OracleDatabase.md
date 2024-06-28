@@ -1,6 +1,6 @@
 ---
 Module Name: Az.OracleDatabase
-Module Guid: 90c709e9-0e18-4f07-9659-36539502abe1
+Module Guid: 76b7e2e9-0771-487e-98bb-37083f285a20
 Download Help Link: https://learn.microsoft.com/powershell/module/az.oracledatabase
 Help Version: 1.0.0.0
 Locale: en-US

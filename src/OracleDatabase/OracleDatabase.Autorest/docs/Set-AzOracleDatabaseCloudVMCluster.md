@@ -23,8 +23,8 @@ Set-AzOracleDatabaseCloudVMCluster -Name <String> -ResourceGroupName <String> -L
  [-IsLocalBackupEnabled] [-IsSparseDiskgroupEnabled] [-LicenseModel <String>] [-MemorySizeInGb <Int32>]
  [-NsgCidr <INsgCidr[]>] [-OcpuCount <Single>] [-ScanListenerPortTcp <Int32>]
  [-ScanListenerPortTcpSsl <Int32>] [-SshPublicKey <String[]>] [-SubnetId <String>] [-SystemVersion <String>]
- [-Tag <Hashtable>] [-TimeCreated <DateTime>] [-TimeZone <String>] [-VnetId <String>] [-ZoneId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-TimeZone <String>] [-VnetId <String>] [-ZoneId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -639,21 +639,6 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TimeCreated
-The date and time that the cloud VM cluster was created.
-
-```yaml
-Type: System.DateTime
 Parameter Sets: UpdateExpanded
 Aliases:
 

@@ -1,5 +1,5 @@
 @{
-  GUID = '90c709e9-0e18-4f07-9659-36539502abe1'
+  GUID = '76b7e2e9-0771-487e-98bb-37083f285a20'
   RootModule = './Az.OracleDatabase.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'

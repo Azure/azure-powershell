@@ -22,8 +22,7 @@ New-AzOracleDatabaseCloudExadataInfrastructure -Name <String> -ResourceGroupName
  [-MaintenanceWindowLeadTimeInWeek <Int32>] [-MaintenanceWindowMonth <IMonth[]>]
  [-MaintenanceWindowPatchingMode <String>] [-MaintenanceWindowPreference <String>]
  [-MaintenanceWindowWeeksOfMonth <Int32[]>] [-Shape <String>] [-StorageCount <Int32>] [-Tag <Hashtable>]
- [-TimeCreated <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
@@ -49,8 +48,8 @@ New-AzOracleDatabaseCloudExadataInfrastructure -InputObject <IOracleDatabaseIden
  [-MaintenanceWindowIsMonthlyPatchingEnabled] [-MaintenanceWindowLeadTimeInWeek <Int32>]
  [-MaintenanceWindowMonth <IMonth[]>] [-MaintenanceWindowPatchingMode <String>]
  [-MaintenanceWindowPreference <String>] [-MaintenanceWindowWeeksOfMonth <Int32[]>] [-Shape <String>]
- [-StorageCount <Int32>] [-Tag <Hashtable>] [-TimeCreated <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-StorageCount <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -505,21 +504,6 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TimeCreated
-The date and time the cloud Exadata infrastructure resource was created.
-
-```yaml
-Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 

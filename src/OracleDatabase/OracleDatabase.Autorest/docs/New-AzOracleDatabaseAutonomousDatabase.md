@@ -24,9 +24,9 @@ New-AzOracleDatabaseAutonomousDatabase -Name <String> -ResourceGroupName <String
  [-IsLocalDataGuardEnabled] [-IsMtlsConnectionRequired] [-IsPreviewVersionWithServiceTermsAccepted]
  [-LicenseModel <String>] [-NcharacterSet <String>] [-PrivateEndpointIP <String>]
  [-PrivateEndpointLabel <String>] [-ScheduledOperationScheduledStartTime <String>]
- [-ScheduledOperationScheduledStopTime <String>] [-SubnetId <String>] [-Tag <Hashtable>]
- [-TimeCreated <DateTime>] [-VnetId <String>] [-WhitelistedIP <String[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ScheduledOperationScheduledStopTime <String>] [-SubnetId <String>] [-Tag <Hashtable>] [-VnetId <String>]
+ [-WhitelistedIP <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Create
@@ -54,9 +54,9 @@ New-AzOracleDatabaseAutonomousDatabase -InputObject <IOracleDatabaseIdentity> -L
  [-IsLocalDataGuardEnabled] [-IsMtlsConnectionRequired] [-IsPreviewVersionWithServiceTermsAccepted]
  [-LicenseModel <String>] [-NcharacterSet <String>] [-PrivateEndpointIP <String>]
  [-PrivateEndpointLabel <String>] [-ScheduledOperationScheduledStartTime <String>]
- [-ScheduledOperationScheduledStopTime <String>] [-SubnetId <String>] [-Tag <Hashtable>]
- [-TimeCreated <DateTime>] [-VnetId <String>] [-WhitelistedIP <String[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ScheduledOperationScheduledStopTime <String>] [-SubnetId <String>] [-Tag <Hashtable>] [-VnetId <String>]
+ [-WhitelistedIP <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -713,21 +713,6 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TimeCreated
-The date and time that the database was created.
-
-```yaml
-Type: System.DateTime
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 

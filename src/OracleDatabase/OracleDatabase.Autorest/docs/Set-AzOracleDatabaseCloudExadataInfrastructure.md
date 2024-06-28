@@ -22,8 +22,7 @@ Set-AzOracleDatabaseCloudExadataInfrastructure -Name <String> -ResourceGroupName
  [-MaintenanceWindowLeadTimeInWeek <Int32>] [-MaintenanceWindowMonth <IMonth[]>]
  [-MaintenanceWindowPatchingMode <String>] [-MaintenanceWindowPreference <String>]
  [-MaintenanceWindowWeeksOfMonth <Int32[]>] [-Shape <String>] [-StorageCount <Int32>] [-Tag <Hashtable>]
- [-TimeCreated <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -470,21 +469,6 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TimeCreated
-The date and time the cloud Exadata infrastructure resource was created.
-
-```yaml
-Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 

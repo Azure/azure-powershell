@@ -27,7 +27,7 @@ For information on how to develop for `Az.OracleDatabase`, see [how-to.md](how-t
 > see https://aka.ms/autorest
 
 ```yaml
-commit: c858811c29ee22362eafd8be94ad0ff808fe7cf9
+commit: eabbc8ab2cc98dc0753ae6eebffc5b4ba5def1ec
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/oracle/resource-manager/readme.md
@@ -43,21 +43,4 @@ inlining-threshold: 100
 resourcegroup-append: true
 nested-object-to-string: true
 identity-correction-for-post: true
- 
-directive:
-  - from: swagger-document
-    where: $.definitions..isProtected
-    transform: $.readOnly = false
-  - from: swagger-document
-    where: $.definitions..serial
-    transform: $.readOnly = false
-  - from: swagger-document
-    where: $.definitions..timeCreated
-    transform: $.readOnly = false
-  - from: swagger-document
-    where: $.definitions..availableCoreCount
-    transform: $.readOnly = false
-  - from: swagger-document
-    where: $.definitions..timeUpdated
-    transform: $.readOnly = false
 ```
