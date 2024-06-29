@@ -43,6 +43,24 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
+
+    $resourceGroup = "PowerShellTestRg"
+    $env.Add("resourceGroup", $resourceGroup)
+
+    $location = "eastus"
+    $env.Add("location", $location)
+
+    $zone = @("2")
+    $env.Add("zone", $zone)
+
+    $vnetName = "PowerShellTestVnet"
+    $vnetId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($resourceGroup)/providers/Microsoft.Network/virtualNetworks/$($vnetName)"
+    $env.Add("vnetId", $vnetId)
+
+    $subnetName = "delegated"
+    $subnetId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($resourceGroup)/providers/Microsoft.Network/virtualNetworks/$($vnetName)/subnets/$($subnetName)"
+    $env.Add("subnetId", $subnetId)
+
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
