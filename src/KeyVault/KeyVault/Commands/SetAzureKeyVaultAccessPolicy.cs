@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = ResourceIdByEmailAddress,
             HelpMessage = "Specifies key operation permissions to grant to a user or service principal.")]
-        [PSArgumentCompleter("all", "decrypt", "encrypt", "unwrapKey", "wrapKey", "verify", "sign", "get", "list", "update", "create", "import", "delete", "backup", "restore", "recover", "purge", "rotate")]
+        [PSArgumentCompleter("all", "decrypt", "encrypt", "unwrapKey", "wrapKey", "verify", "sign", "get", "list", "update", "create", "import", "delete", "backup", "restore", "recover", "purge", "rotate", "setrotationpolicy", "getrotationpolicy")]
         public string[] PermissionsToKeys { get; set; }
 
         /// <summary>
