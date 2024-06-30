@@ -32,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         /// The policy set definition metadata. Metadata is an open ended object and is typically a collection of key value pairs.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny Metadata { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionPropertiesInternal)Property).Metadata; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionPropertiesInternal)Property).Metadata = value ?? null /* model class */; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionPropertiesMetadata Metadata { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionPropertiesInternal)Property).Metadata; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionPropertiesInternal)Property).Metadata = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionInternal.Id { get => this._id; set { {_id = value;} } }
@@ -183,8 +183,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         Update = true,
         Description = @"The policy set definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.",
         SerializedName = @"metadata",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny Metadata { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionPropertiesMetadata) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionPropertiesMetadata Metadata { get; set; }
         /// <summary>The name of the policy set definition version.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
         Required = false,
@@ -354,7 +354,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         /// <summary>
         /// The policy set definition metadata. Metadata is an open ended object and is typically a collection of key value pairs.
         /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny Metadata { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionPropertiesMetadata Metadata { get; set; }
         /// <summary>The name of the policy set definition version.</summary>
         string Name { get; set; }
         /// <summary>

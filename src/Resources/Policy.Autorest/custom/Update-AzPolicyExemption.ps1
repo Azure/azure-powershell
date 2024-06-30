@@ -254,6 +254,26 @@ process {
         $null = $calledParameters.Remove('ClearExpiration')
     }
 
+    if (!$calledParameters.DisplayName) {
+        $calledParameters.DisplayName = $existing.DisplayName
+    }
+
+    if (!$calledParameters.Description) {
+        $calledParameters.Description = $existing.Description
+    }
+
+    if (!$calledParameters.PolicyDefinitionReferenceId -and !($calledParameters.PolicyDefinitionReferenceId -is [array])) {
+        $calledParameters.PolicyDefinitionReferenceId = $existing.PolicyDefinitionReferenceId
+    }
+
+    if (!$calledParameters.Metadata) {
+        $calledParameters.Metadata = $existing.Metadata
+    }
+
+    if (!$calledParameters.AssignmentScopeValidation -and $existing.AssignmentScopeValidation) {
+        $calledParameters.AssignmentScopeValidation = $existing.AssignmentScopeValidation
+    }
+
     if ($BackwardCompatible) {
         $calledParameters.BackwardCompatible = $true
     }
