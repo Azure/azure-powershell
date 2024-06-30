@@ -1,61 +1,79 @@
 ---
 external help file:
 Module Name: Az.StackHCI
-online version: https://learn.microsoft.com/powershell/module/az.stackhci/update-azstackhcicluster
+online version: https://learn.microsoft.com/powershell/module/az.stackhci/start-azstackhciclusterlogcollection
 schema: 2.0.0
 ---
 
-# Update-AzStackHciCluster
+# Start-AzStackHciClusterLogCollection
 
 ## SYNOPSIS
-Update an HCI cluster.
+Trigger Log Collection on a cluster
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### TriggerExpanded (Default)
 ```
-Update-AzStackHciCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AadTenantId <String>] [-CloudManagementEndpoint <String>]
- [-DesiredPropertyDiagnosticLevel <DiagnosticLevel>]
- [-DesiredPropertyWindowsServerSubscription <WindowsServerSubscription>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Start-AzStackHciClusterLogCollection -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-FromDate <DateTime>] [-ToDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### Trigger
 ```
-Update-AzStackHciCluster -InputObject <IStackHciIdentity> [-AadTenantId <String>]
- [-CloudManagementEndpoint <String>] [-DesiredPropertyDiagnosticLevel <DiagnosticLevel>]
- [-DesiredPropertyWindowsServerSubscription <WindowsServerSubscription>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Start-AzStackHciClusterLogCollection -ClusterName <String> -ResourceGroupName <String>
+ -LogCollectionRequest <ILogCollectionRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### TriggerViaIdentity
+```
+Start-AzStackHciClusterLogCollection -InputObject <IStackHciIdentity>
+ -LogCollectionRequest <ILogCollectionRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### TriggerViaIdentityExpanded
+```
+Start-AzStackHciClusterLogCollection -InputObject <IStackHciIdentity> [-FromDate <DateTime>]
+ [-ToDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update an HCI cluster.
+Trigger Log Collection on a cluster
 
 ## EXAMPLES
 
-### Example 1: 
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzStackHciCluster -ResourceGroupName test-rg -Name myCluster3 -DesiredPropertyDiagnosticLevel Enhanced -DesiredPropertyWindowsServerSubscription Disabled
+{{ Add code here }}
 ```
 
 ```output
-Location Name       Resource Group
--------- ----       -----------------
-eastus   myCluster3 test-rg
+{{ Add output here }}
 ```
 
-Updating DiagnosticLevel and WindowsServerSubscription values for a cluster.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
-### -AadTenantId
-Tenant id of cluster AAD identity.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -66,15 +84,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CloudManagementEndpoint
-Endpoint configured for management from the Azure portal
+### -ClusterName
+The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Trigger, TriggerExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -97,59 +115,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DesiredPropertyDiagnosticLevel
-Desired level of diagnostic data emitted by the cluster.
+### -FromDate
+From DateTimeStamp from when logs need to be connected
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DesiredPropertyWindowsServerSubscription
-Desired state of Windows Server Subscription.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: System.DateTime
+Parameter Sets: TriggerExpanded, TriggerViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -165,7 +136,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: TriggerViaIdentity, TriggerViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -175,15 +146,31 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the cluster.
+### -LogCollectionRequest
+Log Collection Request
+To construct, see NOTES section for LOGCOLLECTIONREQUEST properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: ClusterName
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ILogCollectionRequest
+Parameter Sets: Trigger, TriggerViaIdentity
+Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -196,7 +183,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Trigger, TriggerExpanded
 Aliases:
 
 Required: True
@@ -212,7 +199,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Trigger, TriggerExpanded
 Aliases:
 
 Required: False
@@ -222,12 +209,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Resource tags.
+### -ToDate
+To DateTimeStamp till when logs need to be connected
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: System.DateTime
+Parameter Sets: TriggerExpanded, TriggerViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -273,6 +260,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ILogCollectionRequest
+
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
 
 ## OUTPUTS
@@ -295,6 +284,10 @@ To create the parameters described below, construct a hash table containing the 
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
+
+`LOGCOLLECTIONREQUEST <ILogCollectionRequest>`: Log Collection Request
+  - `[FromDate <DateTime?>]`: From DateTimeStamp from when logs need to be connected
+  - `[ToDate <DateTime?>]`: To DateTimeStamp till when logs need to be connected
 
 ## RELATED LINKS
 
