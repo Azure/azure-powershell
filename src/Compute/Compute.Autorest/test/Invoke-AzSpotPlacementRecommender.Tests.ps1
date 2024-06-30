@@ -27,11 +27,11 @@ Describe 'Invoke-AzSpotPlacementRecommender' {
     It 'PostExpanded' {
         {
             # Zonal
-            $response = Invoke-AzSpotPlacementRecommender -Location eastus -DesiredCount $desiredCount -DesiredLocation $desiredLocations -DesiredSize $desiredSizes
+            $response = Invoke-AzSpotPlacementRecommender -Location southcentralus -DesiredCount $desiredCount -DesiredLocation $desiredLocations -DesiredSize $desiredSizes
             $response.PlacementScore | Should -Not -BeNullOrEmpty -ErrorAction Stop
 
             # Regional
-            $response = Invoke-AzSpotPlacementRecommender -Location eastus -DesiredCount $desiredCount -DesiredLocation $desiredLocations -DesiredSize $desiredSizes -AvailabilityZone
+            $response = Invoke-AzSpotPlacementRecommender -Location southcentralus -DesiredCount $desiredCount -DesiredLocation $desiredLocations -DesiredSize $desiredSizes -AvailabilityZone
             $response.PlacementScore | Should -Not -BeNullOrEmpty -ErrorAction Stop
         } | Should -Not -Throw
     }
@@ -46,7 +46,7 @@ Describe 'Invoke-AzSpotPlacementRecommender' {
                 desiredLocation = $desiredLocations;
                 availabilityZone = $true
             }
-            $response = Invoke-AzSpotPlacementRecommender -Location eastus -SpotPlacementRecommenderInput $spotPlacementRecommenderInput
+            $response = Invoke-AzSpotPlacementRecommender -Location southcentralus -SpotPlacementRecommenderInput $spotPlacementRecommenderInput
             $response.PlacementScore | Should -Not -BeNullOrEmpty -ErrorAction Stop
 
             # Regional
@@ -57,7 +57,7 @@ Describe 'Invoke-AzSpotPlacementRecommender' {
                 desiredLocation = $desiredLocations;
                 availabilityZone = $false
             }
-            $response = Invoke-AzSpotPlacementRecommender -Location eastus -SpotPlacementRecommenderInput $spotPlacementRecommenderInput
+            $response = Invoke-AzSpotPlacementRecommender -Location southcentralus -SpotPlacementRecommenderInput $spotPlacementRecommenderInput
             $response.PlacementScore | Should -Not -BeNullOrEmpty -ErrorAction Stop
         } | Should -Not -Throw
     }

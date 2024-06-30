@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzSpotPlacementRecommender
 
 ## SYNOPSIS
-[SOON TO BE DEPRECATED. PLEASE USE 'Invoke-AzSpotPlacementScore' INSTEAD] Generates placement scores for Spot VM skus.
+[SOON TO BE DEPRECATED] Generates placement scores for Spot VM skus.
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ Invoke-AzSpotPlacementRecommender -InputObject <IComputeIdentity> [-Availability
 ```
 
 ## DESCRIPTION
-[SOON TO BE DEPRECATED. PLEASE USE 'Invoke-AzSpotPlacementScore' INSTEAD] Generates placement scores for Spot VM skus.
+[SOON TO BE DEPRECATED] Generates placement scores for Spot VM skus.
 
 ## EXAMPLES
 
