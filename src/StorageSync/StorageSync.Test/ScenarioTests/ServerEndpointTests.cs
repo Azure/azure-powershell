@@ -60,7 +60,7 @@ namespace StorageSyncTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerEndpointAfterIdentityMigration()
         {
-            //TestRunner.RunTestScript("Test-ServerEndpointAfterIdentityMigration");
+            TestRunner.RunTestScript("Test-ServerEndpointAfterIdentityMigration");
         }
     }
 }
