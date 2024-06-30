@@ -15,6 +15,7 @@ Update the NGINX deployment
 ### UpdateExpanded (Default)
 ```
 Update-AzNginxDeployment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-AutoScaleSettingProfile <IScaleProfile[]>] [-AutoUpgradeProfileUpgradeChannel <String>]
  [-EnableDiagnosticsSupport] [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
  [-Location <String>] [-ScalingPropertyCapacity <Int32>] [-SkuName <String>]
  [-StorageAccountContainerName <String>] [-StorageAccountName <String>] [-Tag <Hashtable>]
@@ -24,11 +25,12 @@ Update-AzNginxDeployment -Name <String> -ResourceGroupName <String> [-Subscripti
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzNginxDeployment -InputObject <INginxIdentity> [-EnableDiagnosticsSupport]
- [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>]
- [-ScalingPropertyCapacity <Int32>] [-SkuName <String>] [-StorageAccountContainerName <String>]
- [-StorageAccountName <String>] [-Tag <Hashtable>] [-UserProfilePreferredEmail <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzNginxDeployment -InputObject <INginxIdentity> [-AutoScaleSettingProfile <IScaleProfile[]>]
+ [-AutoUpgradeProfileUpgradeChannel <String>] [-EnableDiagnosticsSupport] [-IdentityType <IdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>] [-ScalingPropertyCapacity <Int32>]
+ [-SkuName <String>] [-StorageAccountContainerName <String>] [-StorageAccountName <String>] [-Tag <Hashtable>]
+ [-UserProfilePreferredEmail <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,6 +71,37 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScaleSettingProfile
+.
+To construct, see NOTES section for AUTOSCALESETTINGPROFILE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IScaleProfile[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoUpgradeProfileUpgradeChannel
+Channel used for autoupgrade.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -363,7 +396,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeployment
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxDeployment
 
 ## NOTES
 

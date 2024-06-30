@@ -20,6 +20,9 @@ Get the NGINX configuration of given NGINX deployment
 ### [Get-AzNginxDeployment](Get-AzNginxDeployment.md)
 Get the NGINX deployment
 
+### [Invoke-AzNginxAnalysisConfiguration](Invoke-AzNginxAnalysisConfiguration.md)
+Analyze an NGINX configuration without applying it to the NGINXaaS deployment
+
 ### [New-AzNginxCertificate](New-AzNginxCertificate.md)
 Create or update the NGINX certificates for given NGINX deployment
 
