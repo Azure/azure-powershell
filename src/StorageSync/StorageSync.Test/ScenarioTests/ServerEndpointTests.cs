@@ -54,7 +54,7 @@ namespace StorageSyncTests
         }
 
         /// <summary>
-        /// Defines the test method ServerEndpointAfterIdentityMigration.
+        /// Defines the test method ServerEndpoint After Identity Migration.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

@@ -279,7 +279,7 @@ function Test-ServerEndpointWithIdentityMigration
 
         $azureFileShareName = "testfs" #Get-ResourceName("fs")
         $storageAccountName = Get-ResourceName("sa")
-        $storageAccountTenantId = (Get-Azcontext).Tenant.Id
+        $storageAccountTenantId = Get-TenantId
         # NOTE: Check the local server drives where we are performing registration.
         $serverLocalPath = "D:\" + $serverEndpointName
         $tierFilesOlderThanDays = 10
@@ -339,7 +339,7 @@ function Test-ServerEndpointWithIdentityMigration
         Write-Verbose "Removing SyncGroup: $syncGroupName"
         Remove-AzStorageSyncGroup -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName -AsJob | Wait-Job
 
-        Start-Sleep -Seconds 300
+        #Start-Sleep -Seconds 300
         Write-Verbose "Removing StorageSyncService: $storageSyncServiceName"
         Remove-AzStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName -AsJob | Wait-Job
 
@@ -377,7 +377,7 @@ function Test-ServerEndpointAfterIdentityMigration
 
         $azureFileShareName = "testfs" #Get-ResourceName("fs")
         $storageAccountName = Get-ResourceName("sa")
-        $storageAccountTenantId = (Get-Azcontext).Tenant.Id
+        $storageAccountTenantId = Get-TenantId
         # NOTE: Check the local server drives where we are performing registration.
         $serverLocalPath = "D:\" + $serverEndpointName
         $tierFilesOlderThanDays = 10
@@ -410,6 +410,7 @@ function Test-ServerEndpointAfterIdentityMigration
         $job | Wait-Job
         $registeredServer = get-job -Id $job.Id | receive-job -Keep
 
+        # Waiting on 9530 event to show up
         Start-Sleep -Seconds 60
         # Ensure that arc is installed onto the server /subscriptions/e29c162a-d1d4-4cc3-8295-80057c1f4bd9/resourceGroups/ankushbrg/providers/Microsoft.HybridCompute/machines/miMachine
         Write-Verbose "Migrating StorageSyncService : $storageSyncServiceName"
@@ -439,7 +440,7 @@ function Test-ServerEndpointAfterIdentityMigration
         Write-Verbose "Removing SyncGroup: $syncGroupName"
         Remove-AzStorageSyncGroup -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName -AsJob | Wait-Job
 
-        Start-Sleep -Seconds 300
+        #Start-Sleep -Seconds 300
         Write-Verbose "Removing StorageSyncService: $storageSyncServiceName"
         Remove-AzStorageSyncService -Force -ResourceGroupName $resourceGroupName -Name $storageSyncServiceName -AsJob | Wait-Job
 
