@@ -66,7 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
                 return;
             }
             {_sku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("sku"), out var __jsonSku) ? (string)__jsonSku : (string)_sku;}
-            {_licenseStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("licenseStatus"), out var __jsonLicenseStatus) ? (string)__jsonLicenseStatus : (string)_licenseStatus;}
+            {_licenseStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNumber>("licenseStatus"), out var __jsonLicenseStatus) ? (int?)__jsonLicenseStatus : _licenseStatus;}
             AfterFromJson(json);
         }
 
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
                 return container;
             }
             AddIf( null != (((object)this._sku)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString(this._sku.ToString()) : null, "sku" ,container.Add );
-            AddIf( null != (((object)this._licenseStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString(this._licenseStatus.ToString()) : null, "licenseStatus" ,container.Add );
+            AddIf( null != this._licenseStatus ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNumber((int)this._licenseStatus) : null, "licenseStatus" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

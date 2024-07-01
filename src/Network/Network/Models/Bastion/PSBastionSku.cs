@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.Network.Models.Bastion
 
         public const string Basic = "Basic";
         public const string Standard = "Standard";
+        public const string Premium = "Premium";
 
         public PSBastionSku(string skuName = null)
         {
@@ -41,6 +42,7 @@ namespace Microsoft.Azure.Commands.Network.Models.Bastion
         {
             yield return Basic;
             yield return Standard;
+            yield return Premium;
         }
 
         public static bool TryGetSkuTier(string skuTier, out string skuTierValue)
@@ -54,6 +56,11 @@ namespace Microsoft.Azure.Commands.Network.Models.Bastion
             if (string.Equals(skuTier, Standard, StringComparison.OrdinalIgnoreCase))
             {
                 skuTierValue = Standard;
+                return true;
+            }
+            if (string.Equals(skuTier, Premium, StringComparison.OrdinalIgnoreCase))
+            {
+                skuTierValue = Premium;
                 return true;
             }
             return false;

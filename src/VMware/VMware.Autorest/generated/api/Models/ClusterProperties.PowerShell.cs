@@ -78,19 +78,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             // actually deserialize
             if (content.Contains("ClusterSize"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)this).ClusterSize = (int?) content.GetValueForProperty("ClusterSize",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)this).ClusterSize, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterPropertiesInternal)this).ClusterSize = (int?) content.GetValueForProperty("ClusterSize",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterPropertiesInternal)this).ClusterSize, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("ProvisioningState"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
             if (content.Contains("ClusterId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)this).ClusterId = (int?) content.GetValueForProperty("ClusterId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)this).ClusterId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterPropertiesInternal)this).ClusterId = (int?) content.GetValueForProperty("ClusterId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterPropertiesInternal)this).ClusterId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("Host"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)this).Host = (System.Collections.Generic.List<string>) content.GetValueForProperty("Host",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)this).Host, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterPropertiesInternal)this).Host = (System.Collections.Generic.List<string>) content.GetValueForProperty("Host",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterPropertiesInternal)this).Host, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("VsanDatastoreName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterPropertiesInternal)this).VsanDatastoreName = (string) content.GetValueForProperty("VsanDatastoreName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterPropertiesInternal)this).VsanDatastoreName, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -111,19 +115,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             // actually deserialize
             if (content.Contains("ClusterSize"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)this).ClusterSize = (int?) content.GetValueForProperty("ClusterSize",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)this).ClusterSize, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterPropertiesInternal)this).ClusterSize = (int?) content.GetValueForProperty("ClusterSize",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterPropertiesInternal)this).ClusterSize, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("ProvisioningState"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
             if (content.Contains("ClusterId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)this).ClusterId = (int?) content.GetValueForProperty("ClusterId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)this).ClusterId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterPropertiesInternal)this).ClusterId = (int?) content.GetValueForProperty("ClusterId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterPropertiesInternal)this).ClusterId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("Host"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)this).Host = (System.Collections.Generic.List<string>) content.GetValueForProperty("Host",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICommonClusterPropertiesInternal)this).Host, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterPropertiesInternal)this).Host = (System.Collections.Generic.List<string>) content.GetValueForProperty("Host",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterPropertiesInternal)this).Host, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("VsanDatastoreName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterPropertiesInternal)this).VsanDatastoreName = (string) content.GetValueForProperty("VsanDatastoreName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterPropertiesInternal)this).VsanDatastoreName, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

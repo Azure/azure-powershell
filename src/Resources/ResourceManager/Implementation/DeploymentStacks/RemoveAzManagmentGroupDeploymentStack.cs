@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStacks;
     using Microsoft.Azure.Management.Resources.Models;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using System;
@@ -23,7 +24,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
     [Cmdlet("Remove", Common.AzureRMConstants.AzureRMPrefix + "ManagementGroupDeploymentStack",
         SupportsShouldProcess = true, DefaultParameterSetName = RemoveByNameAndManagementGroupIdParameterSetName), OutputType(typeof(bool))]
-    [CmdletPreview("The cmdlet is in preview and under development.")]
     public class RemoveAzManagementGroupDeploymentStack : DeploymentStacksCmdletBase
     {
         #region Cmdlet Parameters and Parameter Set Definitions
@@ -54,20 +54,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public PSDeploymentStack InputObjet { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Signal to delete both unmanaged Resources and ResourceGroups after updating stack.")]
-        public SwitchParameter DeleteAll { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Signal to delete unmanaged stack Resources after updating stack.")]
-        public SwitchParameter DeleteResources { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Signal to delete unmanaged stack ResourceGroups after updating stack.")]
-        public SwitchParameter DeleteResourceGroups { get; set; }
+        [Parameter(Mandatory = true, HelpMessage = "Action to take on resources that become unmanaged on deletion or update of the deployment stack. Possible values include: " +
+            "'detachAll' (do not delete any unmanaged resources), 'deleteResources' (delete all unmanaged resources that are not RGs or MGs)," +
+            " and 'deleteAll' (delete every unmanaged resource).")]
+        public PSActionOnUnmanage ActionOnUnmanage { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "If set, a boolean will be returned with value dependent on cmdlet success.")]
         public SwitchParameter PassThru { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Bypass errors for the stack being out of sync when running the operation. If the stack is out of sync and this parameter " +
+            "is not set, the operation will fail. Only include this parameter if instructed to do so on a failed stack operation.")]
+        public SwitchParameter BypassStackOutOfSyncError { get; set; }
 
         #endregion
 
@@ -77,8 +77,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             try
             {
-                var shouldDeleteResources = (DeleteAll.ToBool() || DeleteResources.ToBool()) ? true : false;
-                var shouldDeleteResourceGroups = (DeleteAll.ToBool() || DeleteResourceGroups.ToBool()) ? true : false;
+                var shouldDeleteResources = (ActionOnUnmanage is PSActionOnUnmanage.DeleteAll || ActionOnUnmanage is PSActionOnUnmanage.DeleteResources) ? true : false;
+                var shouldDeleteResourceGroups = (ActionOnUnmanage is PSActionOnUnmanage.DeleteAll) ? true : false;
+                var shouldDeleteManagementGroups = (ActionOnUnmanage is PSActionOnUnmanage.DeleteAll) ? true : false;
 
                 if (InputObjet != null)
                 {
@@ -99,14 +100,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
                 string confirmationMessage = $"Are you sure you want to remove ManagementGroup scoped DeploymentStack '{Name}' " +
                     $"in ManagementGroup '{ManagementGroupId}' with the following actions?" +
-                    (!shouldDeleteResources || !shouldDeleteResourceGroups ? "\nDetaching: " : "") +
+                    // Deleting
+                    (shouldDeleteResources || shouldDeleteResourceGroups || shouldDeleteManagementGroups ? "\nDeleting: " : "") +
+                    (shouldDeleteResources ? "resources" : "") +
+                    (shouldDeleteResources && shouldDeleteResourceGroups ? ", " : "") +
+                    (shouldDeleteResourceGroups ? "resourceGroups" : "") +
+                    (shouldDeleteResourceGroups && shouldDeleteManagementGroups ? ", " : "") +
+                    (shouldDeleteManagementGroups ? "managementGroups" : "") +
+                    // Detaching
+                    (!shouldDeleteResources || !shouldDeleteResourceGroups || !shouldDeleteManagementGroups ? "\nDetaching: " : "") +
                     (!shouldDeleteResources ? "resources" : "") +
                     (!shouldDeleteResources && !shouldDeleteResourceGroups ? ", " : "") +
                     (!shouldDeleteResourceGroups ? "resourceGroups" : "") +
-                    (shouldDeleteResources || shouldDeleteResourceGroups ? "\nDeleting: " : "") +
-                    (shouldDeleteResources ? "resources" : "") +
-                    (shouldDeleteResources && shouldDeleteResourceGroups ? ", " : "") +
-                    (shouldDeleteResourceGroups ? "resourceGroups" : "");
+                    (!shouldDeleteResourceGroups && !shouldDeleteManagementGroups ? ", " : "") +
+                    (!shouldDeleteManagementGroups ? "managementGroups" : "");
 
                 ConfirmAction(
                     Force.IsPresent,
@@ -119,7 +126,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             Name,
                             ManagementGroupId,
                             resourcesCleanupAction: shouldDeleteResources ? "delete" : "detach",
-                            resourceGroupsCleanupAction: shouldDeleteResourceGroups ? "delete" : "detach"
+                            resourceGroupsCleanupAction: shouldDeleteResourceGroups ? "delete" : "detach",
+                            managementGroupsCleanupAction: shouldDeleteManagementGroups ? "delete" : "detach",
+                            bypassStackOutOfSyncError: BypassStackOutOfSyncError.IsPresent
                         );
                         if (PassThru.IsPresent)
                         {

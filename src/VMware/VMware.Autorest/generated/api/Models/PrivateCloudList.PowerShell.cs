@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
-    /// <summary>A paged list of private clouds</summary>
+    /// <summary>The response of a PrivateCloud list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(PrivateCloudListTypeConverter))]
     public partial class PrivateCloudList
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             return ToJsonString();
         }
     }
-    /// A paged list of private clouds
+    /// The response of a PrivateCloud list operation.
     [System.ComponentModel.TypeConverter(typeof(PrivateCloudListTypeConverter))]
     public partial interface IPrivateCloudList
 

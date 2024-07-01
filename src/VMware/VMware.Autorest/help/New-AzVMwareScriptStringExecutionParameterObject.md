@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareScriptStringExecutionParameterObject
+online version: https://learn.microsoft.com/powershell/module/Az.VMware/new-azvmwarescriptstringexecutionparameterobject
 schema: 2.0.0
 ---
 
 # New-AzVMwareScriptStringExecutionParameterObject
 
 ## SYNOPSIS
-Create a in-memory object for ScriptStringExecutionParameter
+Create an in-memory object for ScriptStringExecutionParameter.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ New-AzVMwareScriptStringExecutionParameterObject -Name <String> [-Value <String>
 ```
 
 ## DESCRIPTION
-Create a in-memory object for ScriptStringExecutionParameter
+Create an in-memory object for ScriptStringExecutionParameter.
 
 ## EXAMPLES
 
@@ -27,9 +27,9 @@ New-AzVMwareScriptStringExecutionParameterObject -Name azps_test_value -Value "p
 ```
 
 ```output
-Name                  Value
-----                  -----------
-azps_test_value passwordValue
+Name            Type  Value
+----            ----  -----
+azps_test_value Value passwordValue
 ```
 
 Create a local Script String Execution object

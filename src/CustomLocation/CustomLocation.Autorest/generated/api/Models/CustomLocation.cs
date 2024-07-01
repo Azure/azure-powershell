@@ -34,7 +34,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Origin(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.DoNotFormat]
-        public System.Collections.Generic.List<string> ClusterExtensionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesInternal)Property).ClusterExtensionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesInternal)Property).ClusterExtensionId = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<string> ClusterExtensionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesInternal)Property).ClusterExtensionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesInternal)Property).ClusterExtensionId = value ; }
 
         /// <summary>Display name for the Custom Locations location.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Origin(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.PropertyOrigin.Inlined)]
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Origin(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.DoNotFormat]
-        public string HostResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesInternal)Property).HostResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesInternal)Property).HostResourceId = value ?? null; }
+        public string HostResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesInternal)Property).HostResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesInternal)Property).HostResourceId = value ; }
 
         /// <summary>Type of host the Custom Locations is referencing (Kubernetes, etc...).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Origin(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.PropertyOrigin.Inlined)]
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models
         /// <summary>Kubernetes namespace that will be created on the specified cluster.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Origin(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.FormatTable(Index = 2)]
-        public string Namespace { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesInternal)Property).Namespace; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesInternal)Property).Namespace = value ?? null; }
+        public string Namespace { get => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesInternal)Property).Namespace; set => ((Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationPropertiesInternal)Property).Namespace = value ; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationProperties _property;
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models
         /// Contains the reference to the add-on that contains charts to deploy CRDs and operators.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models
         /// Connected Cluster or AKS Cluster. The Custom Locations RP will perform a checkAccess API for listAdminCredentials permissions.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models
         string IdentityType { get; set; }
         /// <summary>Kubernetes namespace that will be created on the specified cluster.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,

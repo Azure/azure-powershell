@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
-    /// <summary>A list of NSX DNS Services</summary>
+    /// <summary>The response of a WorkloadNetworkDnsService list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(WorkloadNetworkDnsServicesListTypeConverter))]
     public partial class WorkloadNetworkDnsServicesList
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             AfterDeserializePSObject(content);
         }
     }
-    /// A list of NSX DNS Services
+    /// The response of a WorkloadNetworkDnsService list operation.
     [System.ComponentModel.TypeConverter(typeof(WorkloadNetworkDnsServicesListTypeConverter))]
     public partial interface IWorkloadNetworkDnsServicesList
 

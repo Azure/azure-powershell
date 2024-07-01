@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-The operation to Update a storage container.
+The operation to update a storage container.
 .Description
-The operation to Update a storage container.
+The operation to update a storage container.
 .Example
 Update-AzStackHCIVMStoragePath  -Name "testVhd" -ResourceGroupName "test-rg" -Tag @{"tagname" = "tagvalue"}
 

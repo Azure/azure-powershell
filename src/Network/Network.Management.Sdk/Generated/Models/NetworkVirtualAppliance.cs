@@ -77,6 +77,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="virtualApplianceNics">List of Virtual Appliance Network Interfaces.
         /// </param>
 
+        /// <param name="networkProfile">Network Profile containing configurations for Public and Private NIC.
+        /// </param>
+
         /// <param name="additionalNics">Details required for Additional Network Interface.
         /// </param>
 
@@ -100,7 +103,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="partnerManagedResource">The delegation for the Virtual Appliance
         /// </param>
-        public NetworkVirtualAppliance(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string etag = default(string), string provisioningState = default(string), VirtualApplianceSkuProperties nvaSku = default(VirtualApplianceSkuProperties), string addressPrefix = default(string), System.Collections.Generic.IList<string> bootStrapConfigurationBlobs = default(System.Collections.Generic.IList<string>), SubResource virtualHub = default(SubResource), System.Collections.Generic.IList<string> cloudInitConfigurationBlobs = default(System.Collections.Generic.IList<string>), string cloudInitConfiguration = default(string), long? virtualApplianceAsn = default(long?), string sshPublicKey = default(string), System.Collections.Generic.IList<VirtualApplianceNicProperties> virtualApplianceNics = default(System.Collections.Generic.IList<VirtualApplianceNicProperties>), System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties> additionalNics = default(System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties>), System.Collections.Generic.IList<InternetIngressPublicIpsProperties> internetIngressPublicIps = default(System.Collections.Generic.IList<InternetIngressPublicIpsProperties>), System.Collections.Generic.IList<SubResource> virtualApplianceSites = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> virtualApplianceConnections = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> inboundSecurityRules = default(System.Collections.Generic.IList<SubResource>), string deploymentType = default(string), DelegationProperties delegation = default(DelegationProperties), PartnerManagedResourceProperties partnerManagedResource = default(PartnerManagedResourceProperties))
+        public NetworkVirtualAppliance(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string etag = default(string), string provisioningState = default(string), VirtualApplianceSkuProperties nvaSku = default(VirtualApplianceSkuProperties), string addressPrefix = default(string), System.Collections.Generic.IList<string> bootStrapConfigurationBlobs = default(System.Collections.Generic.IList<string>), SubResource virtualHub = default(SubResource), System.Collections.Generic.IList<string> cloudInitConfigurationBlobs = default(System.Collections.Generic.IList<string>), string cloudInitConfiguration = default(string), long? virtualApplianceAsn = default(long?), string sshPublicKey = default(string), System.Collections.Generic.IList<VirtualApplianceNicProperties> virtualApplianceNics = default(System.Collections.Generic.IList<VirtualApplianceNicProperties>), NetworkVirtualAppliancePropertiesFormatNetworkProfile networkProfile = default(NetworkVirtualAppliancePropertiesFormatNetworkProfile), System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties> additionalNics = default(System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties>), System.Collections.Generic.IList<InternetIngressPublicIpsProperties> internetIngressPublicIps = default(System.Collections.Generic.IList<InternetIngressPublicIpsProperties>), System.Collections.Generic.IList<SubResource> virtualApplianceSites = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> virtualApplianceConnections = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> inboundSecurityRules = default(System.Collections.Generic.IList<SubResource>), string deploymentType = default(string), DelegationProperties delegation = default(DelegationProperties), PartnerManagedResourceProperties partnerManagedResource = default(PartnerManagedResourceProperties))
 
         : base(id, name, type, location, tags)
         {
@@ -116,6 +119,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.VirtualApplianceAsn = virtualApplianceAsn;
             this.SshPublicKey = sshPublicKey;
             this.VirtualApplianceNics = virtualApplianceNics;
+            this.NetworkProfile = networkProfile;
             this.AdditionalNics = additionalNics;
             this.InternetIngressPublicIps = internetIngressPublicIps;
             this.VirtualApplianceSites = virtualApplianceSites;
@@ -210,6 +214,13 @@ namespace Microsoft.Azure.Management.Network.Models
         public System.Collections.Generic.IList<VirtualApplianceNicProperties> VirtualApplianceNics {get; private set; }
 
         /// <summary>
+        /// Gets or sets network Profile containing configurations for Public and
+        /// Private NIC.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.networkProfile")]
+        public NetworkVirtualAppliancePropertiesFormatNetworkProfile NetworkProfile {get; set; }
+
+        /// <summary>
         /// Gets or sets details required for Additional Network Interface.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.additionalNics")]
@@ -285,6 +296,7 @@ namespace Microsoft.Azure.Management.Network.Models
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "VirtualApplianceAsn", 0);
                 }
             }
+
 
 
 

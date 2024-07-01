@@ -22,7 +22,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
     [Cmdlet("Get", Common.AzureRMConstants.AzureRMPrefix + "SubscriptionDeploymentStack",
         DefaultParameterSetName = ListParameterSetname), OutputType(typeof(PSDeploymentStack))]
-    [CmdletPreview("The cmdlet is in preview and under development.")]
     public class GetAzSubscriptionDeploymentStack : DeploymentStacksCmdletBase
     {
         #region Cmdlet Parameters and Parameter Set Definitions

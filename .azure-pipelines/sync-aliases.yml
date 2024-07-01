@@ -6,10 +6,20 @@ schedules:
     include:
     - main
 
+# The 'resources' and 'uses' below are used to resolve the error 'Repository associated with wiki ID <WikiId> does not exist or you do not have permissions for the operation you are attempting.'
+resources:
+  repositories:
+  - repository: ServiceContactList
+    type: git
+    name: internal.wiki
+
 jobs:
 - job: UpdateYaml
   displayName: Update resourceManagement.yml
   pool: pool-windows-2019
+  uses:
+    repositories:
+    - ServiceContactList
 
   steps:
   - task: UseDotNet@2
@@ -17,7 +27,6 @@ jobs:
     inputs:
       packageType: sdk
       version: 8.0.x
-  - template: util/get-github-pat-steps.yml
 
   - pwsh: |
       dotnet --version
@@ -25,15 +34,10 @@ jobs:
       dotnet tool install powershell --version 7.4.*
     displayName: Install PowerShell 7.4.x
 
-  - template: util/get-keyvault-secret-steps.yml
-    parameters:
-      serviceConnectionName: $(AzureSubscription)
-      keyVaultName: $(KeyVaultName)
-      secretName: $(ADOTokenName)
-      outVar: 'ADOToken'
-
   - pwsh: |
-      dotnet tool run pwsh -NoLogo -NoProfile -NonInteractive -File "./tools/Github/ParseServiceContactsList.ps1 -ADOToken $(ADOToken)"
+      dotnet tool run pwsh -NoLogo -NoProfile -NonInteractive -File ./tools/Github/ParseServiceContactsList.ps1 -AccessToken $env:SYSTEM_ACCESSTOKEN
+    env:
+      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
     displayName: Update resourceManagement.yml file locally
 
   - pwsh: |
@@ -46,6 +50,8 @@ jobs:
           Write-Host "##vso[task.setvariable variable=ChangesDetected]true"
       }
     displayName: Check if Wiki table has any changes
+
+  - template: util/get-github-pat-steps.yml
 
   - pwsh: |
       git config --global user.email "65331932+azure-powershell-bot@users.noreply.github.com"

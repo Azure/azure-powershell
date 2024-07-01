@@ -35,7 +35,10 @@ function Test-PolicyCrud
     $managedRule1 = New-AzFrontDoorWafManagedRuleObject -Type DefaultRuleSet -Version "1.0" -RuleGroupOverride $override1 -Exclusion $exclusionSet
     $managedRule2 = New-AzFrontDoorWafManagedRuleObject -Type BotProtection -Version "preview-0.1"
 
-    New-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule1 -ManagedRule $managedRule1,$managedRule2 -EnabledState Enabled -Mode Prevention -RequestBodyCheck Disabled
+    $LogScrubbingRule = New-AzFrontDoorWafLogScrubbingRuleObject -MatchVariable "RequestHeaderNames" -SelectorMatchOperator "EqualsAny" -State "Enabled"
+    $logscrubbingSetting = New-AzFrontDoorWafLogScrubbingSettingObject -State Enabled -ScrubbingRule @($LogScrubbingRule)
+
+    New-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Sku Premium_AzureFrontDoor -Customrule $customRule1 -ManagedRule $managedRule1,$managedRule2 -EnabledState Enabled -Mode Prevention -RequestBodyCheck Disabled -LogScrubbingSetting $logscrubbingSetting -JavascriptChallengeExpirationInMinutes 30  
 	
     $retrievedPolicy = Get-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName 
     Assert-NotNull $retrievedPolicy
@@ -58,15 +61,17 @@ function Test-PolicyCrud
     Assert-AreEqual $managedRule1.RuleSetVersion $retrievedPolicy.ManagedRules[0].RuleSetVersion
     Assert-AreEqual $managedRule2.RuleSetType $retrievedPolicy.ManagedRules[1].RuleSetType
     Assert-AreEqual $managedRule2.RuleSetVersion $retrievedPolicy.ManagedRules[1].RuleSetVersion
-
+    Assert-AreEqual "Enabled" $retrievedPolicy.LogScrubbing.State
+    
     $customRule2 = New-AzFrontDoorWafCustomRuleObject -Name "Rule2" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Log -Priority 2
-    $updatedPolicy = Update-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule2
+    $updatedPolicy = Update-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule2 -LogScrubbingSetting @{}
     Assert-NotNull $updatedPolicy
     Assert-AreEqual $Name $updatedPolicy.Name
     Assert-AreEqual $customRule2.Name $updatedPolicy.CustomRules[0].Name
     Assert-AreEqual $customRule2.Action $updatedPolicy.CustomRules[0].Action
     Assert-AreEqual $customRule2.Priority $updatedPolicy.CustomRules[0].Priority
     Assert-AreEqual $managedRule1.RuleGroupOverrides[0].ManagedRuleOverrides[0].Action $updatedPolicy.ManagedRules[0].RuleGroupOverrides[0].ManagedRuleOverrides[0].Action
+    Assert-Null $updatedPolicy.LogScrubbing
 
     $customRule3 = New-AzFrontDoorWafCustomRuleObject -Name "Rule3" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Log -Priority 3 -EnabledState Disabled
     $updatedPolicy = Update-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule3
@@ -125,26 +130,26 @@ WAF managed rule set definitions retrieval
 function Test-ManagedRuleSetDefinition
 {
     $definitions = Get-AzFrontDoorWafManagedRuleSetDefinition
-    Assert-AreEqual $definitions.Count 5
+    Assert-AreEqual $definitions.Count 9
     Assert-AreEqual $definitions[0].RuleSetType "Microsoft_DefaultRuleSet"
-    Assert-AreEqual $definitions[0].RuleSetVersion "1.1"
-    Assert-AreEqual $definitions[0].RuleGroups.Count 13
+    Assert-AreEqual $definitions[0].RuleSetVersion "2.0"
+    Assert-AreEqual $definitions[0].RuleGroups.Count 17
 
-    Assert-AreEqual $definitions[1].RuleSetType "DefaultRuleSet"
-    Assert-AreEqual $definitions[1].RuleSetVersion "1.0"
-    Assert-AreEqual $definitions[1].RuleGroups.Count 9
+    Assert-AreEqual $definitions[1].RuleSetType "Microsoft_DefaultRuleSet"
+    Assert-AreEqual $definitions[1].RuleSetVersion "2.1"
+    Assert-AreEqual $definitions[1].RuleGroups.Count 17
 
     Assert-AreEqual $definitions[2].RuleSetType "Microsoft_BotManagerRuleSet"
-    Assert-AreEqual $definitions[2].RuleSetVersion "1.0"
+    Assert-AreEqual $definitions[2].RuleSetVersion "1.1"
     Assert-AreEqual $definitions[2].RuleGroups.Count 3
 
-    Assert-AreEqual $definitions[3].RuleSetType "DefaultRuleSet"
-    Assert-AreEqual $definitions[3].RuleSetVersion "preview-0.1"
-    Assert-AreEqual $definitions[3].RuleGroups.Count 8
+    Assert-AreEqual $definitions[3].RuleSetType "Microsoft_DefaultRuleSet"
+    Assert-AreEqual $definitions[3].RuleSetVersion "1.2"
+    Assert-AreEqual $definitions[3].RuleGroups.Count 13
 
-    Assert-AreEqual $definitions[4].RuleSetType "BotProtection"
-    Assert-AreEqual $definitions[4].RuleSetVersion "preview-0.1"
-    Assert-AreEqual $definitions[4].RuleGroups.Count 1
+    Assert-AreEqual $definitions[4].RuleSetType "Microsoft_DefaultRuleSet"
+    Assert-AreEqual $definitions[4].RuleSetVersion "1.1"
+    Assert-AreEqual $definitions[4].RuleGroups.Count 13
 }
 
 <#
@@ -156,7 +161,7 @@ function Test-PolicyAction
     $Name = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceGroupName = $resourceGroup.ResourceGroupName
-    $managedSet = New-AzFrontDoorWafManagedRuleObject -Type Microsoft_DefaultRuleSet -Version 1.1 -RuleGroupOverride $ruleGroupOverride -Action Block # Should use v2.0 but it's not enabled for all subscriptions
+    $managedSet = New-AzFrontDoorWafManagedRuleObject -Type Microsoft_DefaultRuleSet -Version 2.0 -RuleGroupOverride $ruleGroupOverride -Action Block # Should use v2.0 but it's not enabled for all subscriptions
     New-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -ManagedRule $managedSet -EnabledState Enabled -Mode Prevention -Sku Premium_AzureFrontDoor
     $retrievedPolicy = Get-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName
 
@@ -168,4 +173,36 @@ function Test-PolicyAction
     $removed = Remove-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -PassThru
     Assert-True { $removed }
     Assert-ThrowsContains { Get-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName } "does not exist."
+}
+
+function Test-CustomBlockResponseBody
+{
+    $Name = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+    $resourceGroupName = $resourceGroup.ResourceGroupName
+    $tags = @{"tag1" = "value1"; "tag2" = "value2"}
+    $matchCondition1 = New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "UserAgent" -MatchValue "WINDOWS" -Transform "Uppercase"
+    $customRule1 = New-AzFrontDoorWafCustomRuleObject -Name "Rule1" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Block -Priority 2
+
+    # Create exclusion objects
+    $exclusionRule = New-AzFrontDoorWafManagedRuleExclusionObject -Variable QueryStringArgNames -Operator Equals -Selector "ExcludeInRule"
+    $exclusionGroup = New-AzFrontDoorWafManagedRuleExclusionObject -Variable QueryStringArgNames -Operator Equals -Selector "ExcludeInGroup"
+    $exclusionSet = New-AzFrontDoorWafManagedRuleExclusionObject -Variable QueryStringArgNames -Operator Equals -Selector "ExcludeInSet"
+
+    $ruleOverride = New-AzFrontDoorWafManagedRuleOverrideObject -RuleId "942100" -Action Log -Exclusion $exclusionRule
+    $override1 = New-AzFrontDoorWafRuleGroupOverrideObject -RuleGroupName SQLI -ManagedRuleOverride $ruleOverride -Exclusion $exclusionGroup
+    $managedRule1 = New-AzFrontDoorWafManagedRuleObject -Type DefaultRuleSet -Version "1.0" -RuleGroupOverride $override1 -Exclusion $exclusionSet
+    $managedRule2 = New-AzFrontDoorWafManagedRuleObject -Type BotProtection -Version "preview-0.1"
+
+    New-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Sku Premium_AzureFrontDoor -Customrule $customRule1 -ManagedRule $managedRule1,$managedRule2 -EnabledState Enabled -Mode Prevention -RequestBodyCheck Disabled -CustomBlockResponseBody "<html><head><title>WAF Demo1</title></head><bodybgcolor=`"#FFB29Z`"><p><h1><strong>WAF Custom Response Page</strong></h1></p><p>Please contact us with the below reference ID: {{azure-ref}}<br></p></body></html>"
+
+    $afdWafPolicy = Get-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName
+    Assert-AreEqual $afdWafPolicy.CustomBlockResponseBody "<html><head><title>WAF Demo1</title></head><bodybgcolor=`"#FFB29Z`"><p><h1><strong>WAF Custom Response Page</strong></h1></p><p>Please contact us with the below reference ID: {{azure-ref}}<br></p></body></html>"
+
+    $afdWafPolicy.CustomBlockResponseBody = "<html><head><title>WAF Demo2</title></head><bodybgcolor=`"#FFB29Z`"><p><h1><strong>WAF Custom Response Page</strong></h1></p><p>Please contact us with the below reference ID: {{azure-ref}}<br></p></body></html>"
+    $afdWafPolicy | Update-AzFrontDoorWafPolicy
+
+    $retrievedPolicy = Get-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName
+
+    Assert-AreEqual $retrievedPolicy.CustomBlockResponseBody "<html><head><title>WAF Demo2</title></head><bodybgcolor=`"#FFB29Z`"><p><h1><strong>WAF Custom Response Page</strong></h1></p><p>Please contact us with the below reference ID: {{azure-ref}}<br></p></body></html>"
 }

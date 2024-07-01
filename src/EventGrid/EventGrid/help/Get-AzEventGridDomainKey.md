@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
+external help file: Az.EventGrid-help.xml
 Module Name: Az.EventGrid
 online version: https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgriddomainkey
 schema: 2.0.0
@@ -8,70 +8,44 @@ schema: 2.0.0
 # Get-AzEventGridDomainKey
 
 ## SYNOPSIS
-Gets the shared access keys used to publish events to an Event Grid domain.
+List the two keys used to publish to a domain.
 
 ## SYNTAX
 
-### DomainNameParameterSet (Default)
 ```
-Get-AzEventGridDomainKey [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### DomainInputObjectParameterSet
-```
-Get-AzEventGridDomainKey [-DomainObject] <PSDomain> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ResourceIdEventSubscriptionParameterSet
-```
-Get-AzEventGridDomainKey [-DomainResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzEventGridDomainKey -DomainName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the shared access keys used to publish events to an Event Grid domain.
+List the two keys used to publish to a domain.
 
 ## EXAMPLES
 
-### Example 1
-
-Gets the shared access keys of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
-
+### Example 1: List the two keys used to publish to a domain.
 ```powershell
-Get-AzEventGridDomainKey -ResourceGroup MyResourceGroupName -Name Domain1
+Get-AzEventGridDomainKey -DomainName azps-domain -ResourceGroupName azps_test_group_eventgrid
 ```
 
 ```output
-Key1                                         Key2
-----                                         ----
-<Key1 value>                                <Key 2 value>
+Key1        Key2
+----        ----
+JF0co*****= BG*****=
 ```
 
-### Example 2
-
-Gets the shared access keys of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
-
-```powershell
-Get-AzEventGridDomain -ResourceGroup MyResourceGroupName -Name Domain1 | Get-AzEventGridDomainKey
-```
-
-```output
-Key1                                         Key2
-----                                         ----
-<Key1 value>                                <Key 2 value>
-```
+List the two keys used to publish to a domain.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -80,63 +54,95 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DomainObject
-EventGrid Domain object.
-
-```yaml
-Type: Microsoft.Azure.Commands.EventGrid.Models.PSDomain
-Parameter Sets: DomainInputObjectParameterSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -DomainResourceId
-Resource Identifier representing the Event Grid Domain.
+### -DomainName
+Name of the domain.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceIdEventSubscriptionParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-EventGrid domain name.
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: System.String
-Parameter Sets: DomainNameParameterSet
-Aliases: DomainName
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: DomainNameParameterSet
+Parameter Sets: (All)
 Aliases: ResourceGroup
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -145,13 +151,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.EventGrid.Models.PSDomain
-
 ## OUTPUTS
 
-### Microsoft.Azure.Management.EventGrid.Models.DomainSharedAccessKeys
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IDomainSharedAccessKeys
 
 ## NOTES
 

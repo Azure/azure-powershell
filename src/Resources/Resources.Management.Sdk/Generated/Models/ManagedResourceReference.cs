@@ -28,12 +28,11 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// </param>
 
         /// <param name="status">Current management state of the resource in the deployment stack.
-        /// Possible values include: &#39;Managed&#39;, &#39;removeDenyFailed&#39;, &#39;deleteFailed&#39;,
-        /// &#39;None&#39;</param>
+        /// Possible values include: &#39;managed&#39;, &#39;removeDenyFailed&#39;, &#39;deleteFailed&#39;</param>
 
         /// <param name="denyStatus">denyAssignment settings applied to the resource.
         /// Possible values include: &#39;denyDelete&#39;, &#39;notSupported&#39;, &#39;inapplicable&#39;,
-        /// &#39;denyWriteAndDelete&#39;, &#39;removedBySystem&#39;, &#39;None&#39;</param>
+        /// &#39;denyWriteAndDelete&#39;, &#39;removedBySystem&#39;, &#39;none&#39;</param>
         public ManagedResourceReference(string id = default(string), string status = default(string), string denyStatus = default(string))
 
         : base(id)
@@ -51,13 +50,13 @@ namespace Microsoft.Azure.Management.Resources.Models
 
         /// <summary>
         /// Gets or sets current management state of the resource in the deployment
-        /// stack. Possible values include: &#39;Managed&#39;, &#39;removeDenyFailed&#39;, &#39;deleteFailed&#39;, &#39;None&#39;
+        /// stack. Possible values include: &#39;managed&#39;, &#39;removeDenyFailed&#39;, &#39;deleteFailed&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "status")]
         public string Status {get; set; }
 
         /// <summary>
-        /// Gets or sets denyAssignment settings applied to the resource. Possible values include: &#39;denyDelete&#39;, &#39;notSupported&#39;, &#39;inapplicable&#39;, &#39;denyWriteAndDelete&#39;, &#39;removedBySystem&#39;, &#39;None&#39;
+        /// Gets or sets denyAssignment settings applied to the resource. Possible values include: &#39;denyDelete&#39;, &#39;notSupported&#39;, &#39;inapplicable&#39;, &#39;denyWriteAndDelete&#39;, &#39;removedBySystem&#39;, &#39;none&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "denyStatus")]
         public string DenyStatus {get; set; }

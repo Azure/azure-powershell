@@ -303,7 +303,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             HelpMessage = "Use free limit on this database.")]
         public SwitchParameter UseFreeLimit { get; set; }
 
-
         /// <summary>
         /// Gets or sets the exhaustion behavior of database if free limit is selected
         /// </summary>
@@ -313,6 +312,22 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             "AutoPause",
             "BillOverUsage")]
         public string FreeLimitExhaustionBehavior { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether or not customer controlled manual cutover needs to be
+        /// done during Update Database operation to Hyperscale tier.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Use Manual Cutover for migrating to Hyperscale.")]
+        public SwitchParameter ManualCutover { get; set; }
+
+        /// <summary>
+        /// Gets or sets to trigger customer controlled manual cutover during the wait
+        /// state while Scaling operation is in progress.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Trigger Cutover for migrating to Hyperscale.")]
+        public SwitchParameter PerformCutover { get; set; }
 
 
         /// <summary>
@@ -379,7 +394,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 FederatedClientId = this.FederatedClientId ?? model.FirstOrDefault().FederatedClientId,
                 EncryptionProtectorAutoRotation = this.IsParameterBound(p => p.EncryptionProtectorAutoRotation) ? EncryptionProtectorAutoRotation.ToBool() : (bool?)null,
                 UseFreeLimit = this.IsParameterBound(p => p.UseFreeLimit) ? UseFreeLimit.ToBool() : (bool?)null,
-                FreeLimitExhaustionBehavior = this.FreeLimitExhaustionBehavior
+                FreeLimitExhaustionBehavior = this.FreeLimitExhaustionBehavior,
+                ManualCutover = this.IsParameterBound(p => p.ManualCutover) ? ManualCutover.ToBool() : (bool?)null,
+                PerformCutover = this.IsParameterBound(p => p.PerformCutover) ? PerformCutover.ToBool() : (bool?)null
             };
 
             var database = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);

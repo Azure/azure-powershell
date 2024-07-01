@@ -7,31 +7,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Extensions;
 
-    /// <summary>A paged list of clusters</summary>
+    /// <summary>The response of a Cluster list operation.</summary>
     public partial class ClusterList :
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterList,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterListInternal
     {
 
-        /// <summary>Internal Acessors for NextLink</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterListInternal.NextLink { get => this._nextLink; set { {_nextLink = value;} } }
-
-        /// <summary>Internal Acessors for Value</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICluster> Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterListInternal.Value { get => this._value; set { {_value = value;} } }
-
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>URL to get the next page if any</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
-        public string NextLink { get => this._nextLink; }
+        public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICluster> _value;
 
-        /// <summary>The items on a page</summary>
+        /// <summary>The Cluster items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICluster> Value { get => this._value; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICluster> Value { get => this._value; set => this._value = value; }
 
         /// <summary>Creates an new <see cref="ClusterList" /> instance.</summary>
         public ClusterList()
@@ -39,41 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 
         }
     }
-    /// A paged list of clusters
+    /// The response of a Cluster list operation.
     public partial interface IClusterList :
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IJsonSerializable
     {
-        /// <summary>URL to get the next page if any</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"URL to get the next page if any",
+        Create = true,
+        Update = true,
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
-        string NextLink { get;  }
-        /// <summary>The items on a page</summary>
+        string NextLink { get; set; }
+        /// <summary>The Cluster items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
+        Required = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The items on a page",
+        Create = true,
+        Update = true,
+        Description = @"The Cluster items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICluster) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICluster> Value { get;  }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICluster> Value { get; set; }
 
     }
-    /// A paged list of clusters
+    /// The response of a Cluster list operation.
     internal partial interface IClusterListInternal
 
     {
-        /// <summary>URL to get the next page if any</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>The items on a page</summary>
+        /// <summary>The Cluster items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICluster> Value { get; set; }
 
     }

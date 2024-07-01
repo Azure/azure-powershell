@@ -16,9 +16,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
 {
     using global::Azure.Storage.Queues;
     using global::Azure.Storage.Queues.Models;
-    using Microsoft.Azure.Storage.Queue;
-    using Microsoft.Azure.Storage.Queue.Protocol;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using System;
@@ -28,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
     using System.Security.Permissions;
     using System.Threading.Tasks;
 
-    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageQueueStoredAccessPolicy"), OutputType(typeof(SharedAccessQueuePolicy))]
+    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageQueueStoredAccessPolicy"), OutputType(typeof(PSObject))]
     public class GetAzureStorageQueueStoredAccessPolicyCommand : StorageQueueBaseCmdlet
     {
         [Alias("N", "Name")]
@@ -61,7 +58,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
             Channel = channel;
         }
 
-        internal async Task GetAzureQueueStoredAccessPolicyAsync(IStorageQueueManagement localChannel, long taskId, string queueName, string policyName)
+        internal async Task GetAzureQueueStoredAccessPolicyAsync(long taskId, string queueName, string policyName)
         {
 
             QueueClient queueClient = Util.GetTrack2QueueClient(queueName, (AzureStorageContext)this.Context, this.ClientOptions);
@@ -95,13 +92,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
             }
         }
 
-        internal async Task<SharedAccessQueuePolicies> GetPoliciesAsync(IStorageQueueManagement localChannel, string queueName, string policyName)
-        {
-            CloudQueue queue = localChannel.GetQueueReference(queueName);
-            QueuePermissions queuePermissions = await localChannel.GetPermissionsAsync(queue, null, OperationContext).ConfigureAwait(false);
-            return queuePermissions.SharedAccessPolicies;
-        }
-
         /// <summary>
         /// Execute command
         /// </summary>
@@ -109,10 +99,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
         public override void ExecuteCmdlet()
         {
             if (String.IsNullOrEmpty(Queue)) return;
-            Task taskGenerator(long taskId) => GetAzureQueueStoredAccessPolicyAsync(Channel, taskId, Queue, Policy);
+            Task taskGenerator(long taskId) => GetAzureQueueStoredAccessPolicyAsync(taskId, Queue, Policy);
             RunTask(taskGenerator);
-
-
         }
     }
 }

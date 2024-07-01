@@ -7,31 +7,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Extensions;
 
-    /// <summary>A list of NSX Public IP Blocks</summary>
+    /// <summary>The response of a WorkloadNetworkPublicIP list operation.</summary>
     public partial class WorkloadNetworkPublicIPsList :
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIPsList,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIPsListInternal
     {
 
-        /// <summary>Internal Acessors for NextLink</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIPsListInternal.NextLink { get => this._nextLink; set { {_nextLink = value;} } }
-
-        /// <summary>Internal Acessors for Value</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIP> Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIPsListInternal.Value { get => this._value; set { {_value = value;} } }
-
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>URL to get the next page if any</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
-        public string NextLink { get => this._nextLink; }
+        public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIP> _value;
 
-        /// <summary>The items on the page</summary>
+        /// <summary>The WorkloadNetworkPublicIP items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIP> Value { get => this._value; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIP> Value { get => this._value; set => this._value = value; }
 
         /// <summary>Creates an new <see cref="WorkloadNetworkPublicIPsList" /> instance.</summary>
         public WorkloadNetworkPublicIPsList()
@@ -39,41 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 
         }
     }
-    /// A list of NSX Public IP Blocks
+    /// The response of a WorkloadNetworkPublicIP list operation.
     public partial interface IWorkloadNetworkPublicIPsList :
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IJsonSerializable
     {
-        /// <summary>URL to get the next page if any</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"URL to get the next page if any",
+        Create = true,
+        Update = true,
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
-        string NextLink { get;  }
-        /// <summary>The items on the page</summary>
+        string NextLink { get; set; }
+        /// <summary>The WorkloadNetworkPublicIP items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
+        Required = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The items on the page",
+        Create = true,
+        Update = true,
+        Description = @"The WorkloadNetworkPublicIP items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIP) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIP> Value { get;  }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIP> Value { get; set; }
 
     }
-    /// A list of NSX Public IP Blocks
+    /// The response of a WorkloadNetworkPublicIP list operation.
     internal partial interface IWorkloadNetworkPublicIPsListInternal
 
     {
-        /// <summary>URL to get the next page if any</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>The items on the page</summary>
+        /// <summary>The WorkloadNetworkPublicIP items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIP> Value { get; set; }
 
     }

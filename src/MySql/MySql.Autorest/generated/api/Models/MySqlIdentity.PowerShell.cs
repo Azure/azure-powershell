@@ -140,6 +140,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).BackupName = (string) content.GetValueForProperty("BackupName",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).BackupName, global::System.Convert.ToString);
             }
+            if (content.Contains("AdvancedThreatProtectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).AdvancedThreatProtectionName = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.AdvancedThreatProtectionName?) content.GetValueForProperty("AdvancedThreatProtectionName",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).AdvancedThreatProtectionName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.AdvancedThreatProtectionName.CreateFrom);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -200,6 +204,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models
             if (content.Contains("BackupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).BackupName = (string) content.GetValueForProperty("BackupName",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).BackupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AdvancedThreatProtectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).AdvancedThreatProtectionName = (Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.AdvancedThreatProtectionName?) content.GetValueForProperty("AdvancedThreatProtectionName",((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentityInternal)this).AdvancedThreatProtectionName, Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.AdvancedThreatProtectionName.CreateFrom);
             }
             if (content.Contains("Id"))
             {

@@ -1867,6 +1867,9 @@ Reset a VPN Site Link Connection
 ### [Resize-AzVirtualNetworkGateway](Resize-AzVirtualNetworkGateway.md)
 Resizes an existing virtual network gateway.
 
+### [Restart-AzNetworkVirtualAppliance](Restart-AzNetworkVirtualAppliance.md)
+Restarts a virtual machine instance in the Network Virtual Appliance or all the instances in a Network Virtual Appliance.
+
 ### [Set-AzApplicationGateway](Set-AzApplicationGateway.md)
 Updates an application gateway.
 

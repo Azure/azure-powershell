@@ -18,6 +18,7 @@ New-AzApplicationGatewayFirewallPolicySetting [-Mode <String>] [-State <String>]
  [-MaxRequestBodySizeInKb <Int32>] [-DisableFileUploadEnforcement <Boolean>] [-MaxFileUploadInMb <Int32>]
  [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>]
  [-LogScrubbing <PSApplicationGatewayFirewallPolicyLogScrubbingConfiguration>]
+ [-JSChallengeCookieExpirationInMins <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -31,7 +32,7 @@ The **New-AzApplicationGatewayFirewallPolicySetting** creates a policy settings 
 $condition = New-AzApplicationGatewayFirewallPolicySetting -State $enabledState -Mode $enabledMode -DisableRequestBodyCheck -MaxFileUploadInMb $fileUploadLimitInMb -MaxRequestBodySizeInKb $maxRequestBodySizeInKb
 ```
 
-The command creates a policy setting with state as $enabledState, mode as $enabledMode, RequestBodyCheck as false, FileUploadLimitInMb as $fileUploadLimitInMb and MaxRequestBodySizeInKb as $$maxRequestBodySizeInKb.
+The command creates a policy setting with state as $enabledState, mode as $enabledMode, RequestBodyCheck as false, FileUploadLimitInMb as $fileUploadLimitInMb and MaxRequestBodySizeInKb as $maxRequestBodySizeInKb.
 The new policySettings is stored to $condition.
 
 ### Example 2
@@ -39,7 +40,7 @@ The new policySettings is stored to $condition.
 $condition = New-AzApplicationGatewayFirewallPolicySetting -State $enabledState -Mode $enabledMode -DisableRequestBodyCheck -MaxFileUploadInMb $fileUploadLimitInMb -MaxRequestBodySizeInKb $maxRequestBodySizeInKb -LogScrubbing $logScrubbingRuleConfig
 ```
 
-The command creates a policy setting with state as $enabledState, mode as $enabledMode, RequestBodyCheck as false, FileUploadLimitInMb as $fileUploadLimitInMb and MaxRequestBodySizeInKb as $$maxRequestBodySizeInKb with a scrubbing rule as $logScrubbingRuleConfig.
+The command creates a policy setting with state as $enabledState, mode as $enabledMode, RequestBodyCheck as false, FileUploadLimitInMb as $fileUploadLimitInMb and MaxRequestBodySizeInKb as $maxRequestBodySizeInKb with a scrubbing rule as $logScrubbingRuleConfig.
 The new policySettings is stored to $condition.
 
 ### Example 3
@@ -47,7 +48,16 @@ The new policySettings is stored to $condition.
 $condition = New-AzApplicationGatewayFirewallPolicySetting -State $enabledState -Mode $enabledMode -DisableRequestBodyEnforcement true -RequestBodyInspectLimitInKB 2000 -DisableRequestBodyCheck -MaxFileUploadInMb $fileUploadLimitInMb -DisableFileUploadEnforcement true -MaxRequestBodySizeInKb $maxRequestBodySizeInKb
 ```
 
-The command creates a policy setting with state as $enabledState, mode as $enabledMode, RequestBodyEnforcement as false, RequestBodyInspectLimitInKB as 2000, RequestBodyCheck as false, FileUploadLimitInMb as $fileUploadLimitInMb, FileUploadEnforcement as false and MaxRequestBodySizeInKb as $$maxRequestBodySizeInKb.
+The command creates a policy setting with state as $enabledState, mode as $enabledMode, RequestBodyEnforcement as false, RequestBodyInspectLimitInKB as 2000, RequestBodyCheck as false, FileUploadLimitInMb as $fileUploadLimitInMb, FileUploadEnforcement as false and MaxRequestBodySizeInKb as $maxRequestBodySizeInKb.
+The new policySettings is stored to $condition.
+
+### Example 4
+```powershell
+$condition = New-AzApplicationGatewayFirewallPolicySetting -State $enabledState -Mode $enabledMode -DisableRequestBodyCheck -MaxFileUploadInMb $fileUploadLimitInMb -MaxRequestBodySizeInKb $maxRequestBodySizeInKb -JSChallengeCookieExpirationInMins $jsChallengeCookieExpirationInMins
+```
+
+The command creates a policy setting with state as $enabledState, mode as $enabledMode, RequestBodyCheck as false, FileUploadLimitInMb as $fileUploadLimitInMb and MaxRequestBodySizeInKb as $maxRequestBodySizeInKb, JSChallengeCookieExpirationInMins as $jsChallengeCookieExpirationInMins.
+The new policySettings is stored to $condition.
 
 ## PARAMETERS
 
@@ -204,6 +214,21 @@ Accept wildcard characters: False
 
 ### -RequestBodyInspectLimitInKB
 Max inspection limit in KB for request body inspection.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JSChallengeCookieExpirationInMins
+Web Application Firewall JavaScript Challenge Cookie Expiration time in minutes.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]

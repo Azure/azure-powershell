@@ -1,76 +1,83 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Support.dll-Help.xml
+external help file: Az.Support-help.xml
 Module Name: Az.Support
-online version:https://learn.microsoft.com/powershell/module/az.support/get-azsupportservice
+online version: https://learn.microsoft.com/powershell/module/az.support/get-azsupportservice
 schema: 2.0.0
 ---
 
 # Get-AzSupportService
 
 ## SYNOPSIS
-Get services for which support is available. 
+Gets a specific Azure service for support ticket creation.
 
 ## SYNTAX
 
-### ListParameterSet (Default)
+### List (Default)
 ```
-Get-AzSupportService [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSupportService [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetByNameParameterSet
+### Get
 ```
-Get-AzSupportService -Id <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSupportService -Name <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzSupportService -InputObject <ISupportIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the current list of Azure services for which support is available. Each service may contain one or more Azure resource manager (ARM) resource type information. Resource types (example: 'microsoft.compute/virtualmachines') can be useful to map the right product and ARM resource when creating a technical support ticket. Each Azure service has its own set of categories called problem classification. Get the current list of problem classification for a service using Get-AzSupportProblemClassification. You can use the service and problem classification GUID to create a new support ticket using New-AzSupportTicket.
-
-Always use the service and problem classification GUIDs obtained programmatically. This practice ensures that you have the most recent set of service and problem classification GUIDs for support ticket creation.
+Gets a specific Azure service for support ticket creation.
 
 ## EXAMPLES
 
-### Example 1: Get all services available for support
+### Example 1: List Azure Support Services
 ```powershell
 Get-AzSupportService
 ```
+
 ```output
-Name                                 DisplayName
-----                                 -----------
-484e2236-bc6d-b1bb-76d2-7d09278cf9ea Activity Logs
-809e8afe-489e-08b0-95f2-08f835a383e8 Advanced Threat Protection - Azure
-6859f4e8-4a1d-13e4-f276-6d055007e83d Advanced Threat Protection - Microsoft Defender
-94332e54-73b0-b8e3-306e-db3ad13d950b Advanced Threat Protection - O365
-26d8424b-0a41-4443-cbc6-0309ea8708d0 Advisor
-8f1ddc5f-0c5e-50c7-9810-e01a8d1da925 AKS Engine on Azure Stack
-c1840ac9-309f-f235-c0ae-4782f283b698 Alerts and Action Groups
-e8fe7c6f-d883-c57f-6576-cf801ca30653 Analysis Services
-07651e65-958a-0877-36f3-61bbba85d783 API for FHIR
-b4d0e877-0166-0474-9a76-b5be30ba40e4 API Management Service
-e14f616b-42c5-4515-3d7c-67935eece51a App Configuration
-445c0905-55e2-4f42-d853-ec9e17a5180e App Service Certificates
-b7d2f8b7-7d20-cf2f-ddd5-5543ada54bd2 App Service Domains
-101732bb-31af-ee61-7c16-d4ad77c86a50 Application Gateway
+DisplayName                                                  Name                                 ResourceType
+-----------                                                  ----                                 ------------
+Activity Logs                                                484e2236-bc6d-b1bb-76d2-7d09278cf9ea {}
+Advisor                                                      26d8424b-0a41-4443-cbc6-0309ea8708d0 {}
+AKS Edge Essentials                                          1232100c-42c0-f626-2b4f-8c8a4877acad {Microsoft.Kubernetes/connectedClusters}
 ```
 
-### Example 2: Get details of a single service by id available for support
+Lists all the Azure services available for support ticket creation.
+For **Technical** issues, select the Service Id that maps to the Azure service/product as displayed in the **Services** drop-down list on the Azure portal's [New support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) page.
+Always use the service and its corresponding problem classification(s) obtained programmatically for support ticket creation.
+This practice ensures that you always have the most recent set of service and problem classification Ids.
+
+### Example 2: Get Azure Support Service
 ```powershell
-Get-AzSupportService -Id "484e2236-bc6d-b1bb-76d2-7d09278cf9ea"
+Get-AzSupportService -Name "484e2236-bc6d-b1bb-76d2-7d09278cf9ea"
 ```
+
 ```output
-Name                                 DisplayName
-----                                 -----------
-484e2236-bc6d-b1bb-76d2-7d09278cf9ea Activity Logs
+DisplayName       : Activity Logs
+Id                : /providers/Microsoft.Support/services/484e2236-bc6d-b1bb-76d2-7d09278cf9ea
+Name              : 484e2236-bc6d-b1bb-76d2-7d09278cf9ea
+ResourceGroupName :
+ResourceType      : {}
+Type              : Microsoft.Support/services
 ```
+
+Gets a specific Azure service for support ticket creation.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -79,13 +86,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-Service id.
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Azure service.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByNameParameterSet
-Aliases: Name
+Parameter Sets: Get
+Aliases: ServiceName
 
 Required: True
 Position: Named
@@ -99,11 +121,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Support.Models.PSSupportService
+### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IService
 
 ## NOTES
 

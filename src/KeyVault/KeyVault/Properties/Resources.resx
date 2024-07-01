@@ -612,9 +612,6 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="RecoverHsm" xml:space="preserve">
     <value>Recover HSM?</value>
   </data>
-  <data name="FetchDefaultCVMPolicyFromLocal" xml:space="preserve">
-    <value>Fetching default CVM policy from remote failed because {0}. Trying to fetch default CVM policy from local backup copy.</value>
-  </data>
   <data name="UpdateKeyVaultSetting" xml:space="preserve">
     <value>Update vault setting</value>
   </data>
@@ -626,5 +623,11 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   </data>
   <data name="UseManagedIdentityAndSasTokenNeitherExist" xml:space="preserve">
     <value>Please choose either SasToken or UseUserManagedIdentity as authentication method.</value>
+  </data>
+  <data name="NoVaultWithGivenNameFound" xml:space="preserve">
+    <value>Vault '{0}' does not exist in current subscription.  If this vault exists in your tenant, please switch to the correct subscription.</value>
+  </data>
+  <data name="ProcessingCertError" xml:space="preserve">
+    <value>Error happens when processing certificate '{0}'. See detailed error: {1}</value>
   </data>
 </root>

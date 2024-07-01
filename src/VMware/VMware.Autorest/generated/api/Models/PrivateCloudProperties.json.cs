@@ -77,21 +77,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 return;
             }
-            __privateCloudUpdateProperties = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PrivateCloudUpdateProperties(json);
+            {_managementCluster = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonObject>("managementCluster"), out var __jsonManagementCluster) ? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ManagementCluster.FromJson(__jsonManagementCluster) : _managementCluster;}
+            {_availability = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonObject>("availability"), out var __jsonAvailability) ? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.AvailabilityProperties.FromJson(__jsonAvailability) : _availability;}
+            {_encryption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonObject>("encryption"), out var __jsonEncryption) ? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Encryption.FromJson(__jsonEncryption) : _encryption;}
             {_circuit = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonObject>("circuit"), out var __jsonCircuit) ? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Circuit.FromJson(__jsonCircuit) : _circuit;}
             {_endpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonObject>("endpoints"), out var __jsonEndpoints) ? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Endpoints.FromJson(__jsonEndpoints) : _endpoint;}
             {_secondaryCircuit = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonObject>("secondaryCircuit"), out var __jsonSecondaryCircuit) ? Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Circuit.FromJson(__jsonSecondaryCircuit) : _secondaryCircuit;}
+            {_internet = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("internet"), out var __jsonInternet) ? (string)__jsonInternet : (string)_internet;}
+            {_identitySource = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonArray>("identitySources"), out var __jsonIdentitySources) ? If( __jsonIdentitySources as Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource) (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IdentitySource.FromJson(__u) )) ))() : null : _identitySource;}
+            {_extendedNetworkBlock = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonArray>("extendedNetworkBlocks"), out var __jsonExtendedNetworkBlocks) ? If( __jsonExtendedNetworkBlocks as Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(string) (__p is Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString __o ? (string)(__o.ToString()) : null)) ))() : null : _extendedNetworkBlock;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             {_networkBlock = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("networkBlock"), out var __jsonNetworkBlock) ? (string)__jsonNetworkBlock : (string)_networkBlock;}
             {_managementNetwork = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("managementNetwork"), out var __jsonManagementNetwork) ? (string)__jsonManagementNetwork : (string)_managementNetwork;}
             {_provisioningNetwork = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("provisioningNetwork"), out var __jsonProvisioningNetwork) ? (string)__jsonProvisioningNetwork : (string)_provisioningNetwork;}
             {_vmotionNetwork = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("vmotionNetwork"), out var __jsonVmotionNetwork) ? (string)__jsonVmotionNetwork : (string)_vmotionNetwork;}
-            {_vcenterPassword = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("vcenterPassword"), out var __jsonVcenterPassword) ? (string)__jsonVcenterPassword : (string)_vcenterPassword;}
-            {_nsxtPassword = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("nsxtPassword"), out var __jsonNsxtPassword) ? (string)__jsonNsxtPassword : (string)_nsxtPassword;}
+            {_vcenterPassword = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("vcenterPassword"), out var __jsonVcenterPassword) ? new System.Net.NetworkCredential("",(string)__jsonVcenterPassword).SecurePassword : _vcenterPassword;}
+            {_nsxtPassword = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("nsxtPassword"), out var __jsonNsxtPassword) ? new System.Net.NetworkCredential("",(string)__jsonNsxtPassword).SecurePassword : _nsxtPassword;}
             {_vcenterCertificateThumbprint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("vcenterCertificateThumbprint"), out var __jsonVcenterCertificateThumbprint) ? (string)__jsonVcenterCertificateThumbprint : (string)_vcenterCertificateThumbprint;}
             {_nsxtCertificateThumbprint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("nsxtCertificateThumbprint"), out var __jsonNsxtCertificateThumbprint) ? (string)__jsonNsxtCertificateThumbprint : (string)_nsxtCertificateThumbprint;}
-            {_externalCloudLink = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonArray>("externalCloudLinks"), out var __jsonExternalCloudLinks) ? If( __jsonExternalCloudLinks as Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _externalCloudLink;}
+            {_externalCloudLink = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonArray>("externalCloudLinks"), out var __jsonExternalCloudLinks) ? If( __jsonExternalCloudLinks as Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(string) (__k is Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString __j ? (string)(__j.ToString()) : null)) ))() : null : _externalCloudLink;}
             {_nsxPublicIPQuotaRaised = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("nsxPublicIpQuotaRaised"), out var __jsonNsxPublicIPQuotaRaised) ? (string)__jsonNsxPublicIPQuotaRaised : (string)_nsxPublicIPQuotaRaised;}
+            {_virtualNetworkId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("virtualNetworkId"), out var __jsonVirtualNetworkId) ? (string)__jsonVirtualNetworkId : (string)_virtualNetworkId;}
+            {_dnsZoneType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString>("dnsZoneType"), out var __jsonDnsZoneType) ? (string)__jsonDnsZoneType : (string)_dnsZoneType;}
             AfterFromJson(json);
         }
 
@@ -114,21 +121,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 return container;
             }
-            __privateCloudUpdateProperties?.ToJson(container, serializationMode);
+            AddIf( null != this._managementCluster ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) this._managementCluster.ToJson(null,serializationMode) : null, "managementCluster" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate))
+            {
+                AddIf( null != this._availability ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) this._availability.ToJson(null,serializationMode) : null, "availability" ,container.Add );
+            }
+            AddIf( null != this._encryption ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) this._encryption.ToJson(null,serializationMode) : null, "encryption" ,container.Add );
             AddIf( null != this._circuit ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) this._circuit.ToJson(null,serializationMode) : null, "circuit" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != this._endpoint ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) this._endpoint.ToJson(null,serializationMode) : null, "endpoints" ,container.Add );
             }
             AddIf( null != this._secondaryCircuit ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) this._secondaryCircuit.ToJson(null,serializationMode) : null, "secondaryCircuit" ,container.Add );
+            AddIf( null != (((object)this._internet)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._internet.ToString()) : null, "internet" ,container.Add );
+            if (null != this._identitySource)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.XNodeArray();
+                foreach( var __x in this._identitySource )
+                {
+                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                }
+                container.Add("identitySources",__w);
+            }
+            if (null != this._extendedNetworkBlock)
+            {
+                var __r = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.XNodeArray();
+                foreach( var __s in this._extendedNetworkBlock )
+                {
+                    AddIf(null != (((object)__s)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(__s.ToString()) : null ,__r.Add);
+                }
+                container.Add("extendedNetworkBlocks",__r);
+            }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate))
-            {
-                AddIf( null != (((object)this._networkBlock)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._networkBlock.ToString()) : null, "networkBlock" ,container.Add );
-            }
+            AddIf( null != (((object)this._networkBlock)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._networkBlock.ToString()) : null, "networkBlock" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._managementNetwork)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._managementNetwork.ToString()) : null, "managementNetwork" ,container.Add );
@@ -141,8 +169,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 AddIf( null != (((object)this._vmotionNetwork)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._vmotionNetwork.ToString()) : null, "vmotionNetwork" ,container.Add );
             }
-            AddIf( null != (((object)this._vcenterPassword)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._vcenterPassword.ToString()) : null, "vcenterPassword" ,container.Add );
-            AddIf( null != (((object)this._nsxtPassword)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._nsxtPassword.ToString()) : null, "nsxtPassword" ,container.Add );
+            AddIf( null != (((object)this._vcenterPassword)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(System.Runtime.InteropServices.Marshal.PtrToStringBSTR(System.Runtime.InteropServices.Marshal.SecureStringToBSTR(this._vcenterPassword))) : null, "vcenterPassword" ,container.Add );
+            AddIf( null != (((object)this._nsxtPassword)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(System.Runtime.InteropServices.Marshal.PtrToStringBSTR(System.Runtime.InteropServices.Marshal.SecureStringToBSTR(this._nsxtPassword))) : null, "nsxtPassword" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._vcenterCertificateThumbprint)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._vcenterCertificateThumbprint.ToString()) : null, "vcenterCertificateThumbprint" ,container.Add );
@@ -155,18 +183,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 if (null != this._externalCloudLink)
                 {
-                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.XNodeArray();
-                    foreach( var __x in this._externalCloudLink )
+                    var __m = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.XNodeArray();
+                    foreach( var __n in this._externalCloudLink )
                     {
-                        AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                        AddIf(null != (((object)__n)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(__n.ToString()) : null ,__m.Add);
                     }
-                    container.Add("externalCloudLinks",__w);
+                    container.Add("externalCloudLinks",__m);
                 }
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._nsxPublicIPQuotaRaised)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._nsxPublicIPQuotaRaised.ToString()) : null, "nsxPublicIpQuotaRaised" ,container.Add );
             }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate))
+            {
+                AddIf( null != (((object)this._virtualNetworkId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._virtualNetworkId.ToString()) : null, "virtualNetworkId" ,container.Add );
+            }
+            AddIf( null != (((object)this._dnsZoneType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._dnsZoneType.ToString()) : null, "dnsZoneType" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -14,7 +14,7 @@ List all the existing accounts
 
 ```
 Get-AzNewRelicAccount [-SubscriptionId <String[]>] -Location <String> -UserEmail <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ List all the existing accounts
 
 ### Example 1: Get specific monitor account with specified location
 ```powershell
-Get-AzNewRelicAccount -Location eastus -UserEmail v-jiaji@outlook.com
+Get-AzNewRelicAccount -Location eastus -UserEmail user1@outlook.com
 ```
 
 ```output
@@ -74,6 +74,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 
@@ -111,7 +126,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.IAccountResource
+### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IAccountResource
 
 ## NOTES
 

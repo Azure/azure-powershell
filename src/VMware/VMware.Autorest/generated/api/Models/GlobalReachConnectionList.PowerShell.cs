@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
-    /// <summary>A paged list of global reach connections</summary>
+    /// <summary>The response of a GlobalReachConnection list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(GlobalReachConnectionListTypeConverter))]
     public partial class GlobalReachConnectionList
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             return ToJsonString();
         }
     }
-    /// A paged list of global reach connections
+    /// The response of a GlobalReachConnection list operation.
     [System.ComponentModel.TypeConverter(typeof(GlobalReachConnectionListTypeConverter))]
     public partial interface IGlobalReachConnectionList
 

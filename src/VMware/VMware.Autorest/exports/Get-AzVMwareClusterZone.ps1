@@ -34,7 +34,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
-    # Name of the cluster in the private cloud
+    # Name of the cluster
     ${ClusterName},
 
     [Parameter(Mandatory)]
@@ -55,6 +55,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter()]

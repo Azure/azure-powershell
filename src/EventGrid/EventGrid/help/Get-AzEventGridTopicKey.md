@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
+external help file: Az.EventGrid-help.xml
 Module Name: Az.EventGrid
 online version: https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridtopickey
 schema: 2.0.0
@@ -8,55 +8,44 @@ schema: 2.0.0
 # Get-AzEventGridTopicKey
 
 ## SYNOPSIS
-Gets the shared access keys used to publish events to an Event Grid topic.
+List the two keys used to publish to a topic.
 
 ## SYNTAX
 
-### TopicNameParameterSet (Default)
 ```
-Get-AzEventGridTopicKey [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### TopicInputObjectParameterSet
-```
-Get-AzEventGridTopicKey [-InputObject] <PSTopic> [-DefaultProfile <IAzureContextContainer>]
+Get-AzEventGridTopicKey -ResourceGroupName <String> -TopicName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### ResourceIdEventSubscriptionParameterSet
-```
-Get-AzEventGridTopicKey [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Gets the shared access keys used to publish events to an Event Grid topic.
+List the two keys used to publish to a topic.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: List the two keys used to publish to a topic.
 ```powershell
-Get-AzEventGridTopicKey -ResourceGroup MyResourceGroupName -Name Topic1
+Get-AzEventGridTopicKey -ResourceGroupName azps_test_group_eventgrid -TopicName azps-topic
 ```
 
-Gets the shared access keys of Event Grid topic \`Topic1\` in resource group \`MyResourceGroupName\`.
-
-### Example 2
-```powershell
-Get-AzEventGridTopic -ResourceGroup MyResourceGroupName -Name Topic1 | Get-AzEventGridTopicKey
+```output
+Key1        Key2
+----        ----
+JF0co*****= BG*****=
 ```
 
-Gets the shared access keys of Event Grid topic \`Topic1\` in resource group \`MyResourceGroupName\`.
+List the two keys used to publish to a topic.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -65,63 +54,95 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-EventGrid Topic object.
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: Microsoft.Azure.Commands.EventGrid.Models.PSTopic
-Parameter Sets: TopicInputObjectParameterSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-EventGrid Topic Name.
-
-```yaml
-Type: System.String
-Parameter Sets: TopicNameParameterSet
-Aliases: TopicName
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: TopicNameParameterSet
+Parameter Sets: (All)
 Aliases: ResourceGroup
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Resource Identifier representing the Event Grid Topic.
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TopicName
+Name of the topic.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceIdEventSubscriptionParameterSet
-Aliases:
+Parameter Sets: (All)
+Aliases: Name
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -130,13 +151,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.EventGrid.Models.PSTopic
-
 ## OUTPUTS
 
-### Microsoft.Azure.Management.EventGrid.Models.TopicSharedAccessKeys
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ITopicSharedAccessKeys
 
 ## NOTES
 

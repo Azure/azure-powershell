@@ -67,7 +67,7 @@ Save-AzPaloAltoNetworksFirewallLogProfile -FirewallName <String> -ResourceGroupN
  [-TrafficLogDestinationStorageConfigurationsAccountName <String>]
  [-TrafficLogDestinationStorageConfigurationsId <String>]
  [-TrafficLogDestinationStorageConfigurationsSubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SaveViaIdentityExpanded
@@ -125,7 +125,7 @@ Save-AzPaloAltoNetworksFirewallLogProfile -InputObject <IPaloAltoNetworksIdentit
  [-TrafficLogDestinationStorageConfigurationsAccountName <String>]
  [-TrafficLogDestinationStorageConfigurationsId <String>]
  [-TrafficLogDestinationStorageConfigurationsSubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -649,6 +649,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
