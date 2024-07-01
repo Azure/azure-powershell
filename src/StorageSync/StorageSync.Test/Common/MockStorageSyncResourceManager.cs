@@ -171,6 +171,6 @@ namespace StorageSync.Test.Common
         /// Get Service Principal Or Null
         /// </summary>
         /// <returns>MicrosoftGraphServicePrincipal</returns>
-        public MicrosoftGraphServicePrincipal GetServicePrincipalOrNull() => new MicrosoftGraphServicePrincipal() { Id = "384dab06-7a70-4ecf-a04e-284602199124" }; // Change Object ID if we are using some other tenant
+        public MicrosoftGraphServicePrincipal GetServicePrincipalOrNull() => new() { Id = "384dab06-7a70-4ecf-a04e-284602199124" }; // Change Object ID if we are using some other tenant
     }
 }

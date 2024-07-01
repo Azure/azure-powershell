@@ -176,11 +176,11 @@ namespace Commands.StorageSync.Interop.Clients
             Guid? applicationId = GetApplicationIdOrNull();
 
 #pragma warning disable CA1416 // Validate platform compatibility
-            RegistryUtility.WriteValue(StorageSyncConstants.ServerAuthRegistryKeyName,
-                       StorageSyncConstants.AfsAgentRegistryKey,
-                      ((applicationId == Guid.Empty) ? RegisteredServerAuthType.Certificate : RegisteredServerAuthType.ManagedIdentity).ToString(),
-                       RegistryValueKind.String,
-                       true);
+            //RegistryUtility.WriteValue(StorageSyncConstants.ServerAuthRegistryKeyName,
+            //           StorageSyncConstants.AfsAgentRegistryKey,
+            //          ((applicationId == Guid.Empty) ? RegisteredServerAuthType.Certificate : RegisteredServerAuthType.ManagedIdentity).ToString(),
+            //           RegistryValueKind.String,
+            //           true);
 #pragma warning restore CA1416 // Validate platform compatibility
 
             if (!Validate(managementEndpointUri, subscriptionId, storageSyncServiceName, resourceGroupName, monitoringDataPath))
