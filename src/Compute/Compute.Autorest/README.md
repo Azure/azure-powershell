@@ -277,4 +277,8 @@ directive:
       subject: SpotPlacementScore
     set:
       alias: Invoke-AzSpotPlacementRecommender
+  - where:
+      parameter-name: SpotPlacementScoresInput
+    set:
+      alias: SpotPlacementRecommenderInput
 ```
