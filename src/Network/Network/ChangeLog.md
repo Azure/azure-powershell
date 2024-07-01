@@ -43,6 +43,7 @@
 * Updated the Azure Firewall and Azure Firewall Policy setter for their respective Private Range properties
   - Fixed a bug that prevented using /32 in private ranges on classic Azure Firewalls
   - Updated the error message to provide a suggested private range when the supplied range is not correctly masked by the host identifier
+  - Added a new Allocate function for Azure Firewall that allows allocating customer public ip address to the firewall
   - Fixed a bug that caused firewalls and policies to lose their private range property value when using their 'Get' cmdlets
 
 ## Version 7.6.0
