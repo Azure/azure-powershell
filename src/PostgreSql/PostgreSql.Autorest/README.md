@@ -59,7 +59,7 @@ subject-prefix: 'PostgreSQL'
 identity-correction-for-post: false
 add-api-version-in-model-namespace: true
 disable-transform-identity-type: true
-flatten-userassignedidentity: true
+flatten-userassignedidentity: false
 disable-getput: true
 
 # For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option

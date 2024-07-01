@@ -54,7 +54,7 @@ commit: 492cf91751be945ceae53cfdd53b1ff2fb878703
 identity-correction-for-post: true
 add-api-version-in-model-namespace: true
 disable-transform-identity-type: true
-flatten-userassignedidentity: true
+flatten-userassignedidentity: false
 
 # For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
 # use-extension:
