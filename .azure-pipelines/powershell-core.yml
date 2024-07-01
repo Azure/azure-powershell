@@ -36,12 +36,12 @@ variables:
 trigger:
   branches:
     include:
-      - eng/archive-test
+      - future
 
 pr:
   branches:
     include:
-      - eng/archive-test
+      - future
 
 jobs:
 - job: Build
