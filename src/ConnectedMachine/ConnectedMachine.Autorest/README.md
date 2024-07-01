@@ -41,12 +41,12 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
  
 ``` yaml
-commit: 9c51b17f1c544eea0f6a67c01a6b763995521f52
+commit: 432838208e52bdf6267b8a566331ba10893c2076
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-03-31-preview/HybridCompute.json
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-03-31-preview/privateLinkScopes.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-05-20-preview/HybridCompute.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-05-20-preview/privateLinkScopes.json
  
 module-version: 0.5.0
 title: ConnectedMachine
@@ -359,11 +359,11 @@ directive:
       subject: NetworkConfiguration
     remove: true
 
-  # Remove when this API is fixed
-  - where:
-      subject: ReconcileNetworkSecurityPerimeterConfiguration$
-      verb: Invoke
-    remove: true
+  # # Remove when this API is fixed
+  # - where:
+  #     subject: ReconcileNetworkSecurityPerimeterConfiguration$
+  #     verb: Invoke
+  #   remove: true
 
   # Removing non-expand commands
   - where:
