@@ -24,12 +24,18 @@ namespace Microsoft.Azure.Commands.Sql.Common
         public const string LicenseTypeLicenseIncluded = "LicenseIncluded";
         public const string GeneralPurposeGen4 = "GP_Gen4";
         public const string GeneralPurposeGen5 = "GP_Gen5";
+        public const string GeneralPurposeG8IH = "GP_G8IH";
+        public const string GeneralPurposeG8IM = "GP_G8IM";
         public const string BusinessCriticalGen4 = "BC_Gen4";
         public const string BusinessCriticalGen5 = "BC_Gen5";
+        public const string BusinessCriticalG8IH = "BC_G8IH";
+        public const string BusinessCriticalG8IM = "BC_G8IM";
         public const string BusinessCriticalEdition = "BusinessCritical";
         public const string GeneralPurposeEdition = "GeneralPurpose";
         public const string ComputeGenerationGen4 = "Gen4";
         public const string ComputeGenerationGen5 = "Gen5";
+        public const string ComputeGenerationG8IH = "G8IH";
+        public const string ComputeGenerationG8IM = "G8IM";
         public const string CollationSqlLatin1 = "SQL_Latin1_General_CP1_CI_AS";
         public const string CollationLatin1 = "Latin1_General_100_CS_AS_SC";
     }

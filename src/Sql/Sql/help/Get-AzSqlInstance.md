@@ -61,6 +61,7 @@ ManagedInstanceName      : managedInstance1
 Tags                     :
 Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
 Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2       :
 FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
 AdministratorLogin       : adminLogin1
 AdministratorPassword    :
@@ -68,6 +69,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+StorageIOps              :
 ZoneRedundant            : false
 
 Location                 : westcentralus
@@ -77,6 +79,7 @@ ManagedInstanceName      : managedInstance2
 Tags                     :
 Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
 Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2       :
 FullyQualifiedDomainName : managedInstance2.wcusxxxxxxxxxxxxx.database.windows.net
 AdministratorLogin       : adminLogin2
 AdministratorPassword    :
@@ -84,13 +87,14 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+StorageIOps              :
 DnsZone                  : ad35cna0mw
 ZoneRedundant            : false
 ```
 
 This command gets information about all instances assigned to the resource group ResourceGroup01.
 
-### Example 2: Get information about an  instance
+### Example 2: Get information about an instance
 ```powershell
 Get-AzSqlInstance -Name "managedInstance1" -ResourceGroupName "ResourceGroup01"
 ```
@@ -103,6 +107,7 @@ ManagedInstanceName      : managedInstance1
 Tags                     :
 Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
 Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2       :
 FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
 AdministratorLogin       : adminLogin1
 AdministratorPassword    :
@@ -110,6 +115,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+StorageIOps              :
 DnsZone                  : ad35cna0mw
 ZoneRedundant            : false
 ```
@@ -129,6 +135,7 @@ ManagedInstanceName      : managedInstance1
 Tags                     :
 Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
 Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2       :
 FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
 AdministratorLogin       : adminLogin1
 AdministratorPassword    :
@@ -136,6 +143,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+StorageIOps              :
 DnsZone                  : ad35cna0mw
 ZoneRedundant            : false
 
@@ -146,6 +154,7 @@ ManagedInstanceName      : managedInstance2
 Tags                     :
 Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
 Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2       :
 FullyQualifiedDomainName : managedInstance2.wcusxxxxxxxxxxxxx.database.windows.net
 AdministratorLogin       : adminLogin2
 AdministratorPassword    :
@@ -153,6 +162,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+StorageIOps              :
 DnsZone                  : ad35cna0mw
 ZoneRedundant            : false
 ```
@@ -308,6 +318,7 @@ ManagedInstanceName      : managedInstance1
 Tags                     :
 Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
 Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2       :
 FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
 AdministratorLogin       : adminLogin1
 AdministratorPassword    :
@@ -315,6 +326,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+StorageIOps              :
 DnsZone                  : ad35cna0mw
 InstancePoolName         :
 ZoneRedundant            : false
@@ -334,6 +346,7 @@ ManagedInstanceName      : managedInstance1
 Tags                     :
 Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
 Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2       :
 FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
 AdministratorLogin       : adminLogin1
 AdministratorPassword    :
@@ -341,6 +354,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+StorageIOps              :
 Administrators           : Microsoft.Azure.Management.Sql.Models.ManagedInstanceExternalAdministrator
 ZoneRedundant            : false
 
@@ -351,6 +365,7 @@ ManagedInstanceName      : managedInstance2
 Tags                     :
 Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
 Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2       :
 FullyQualifiedDomainName : managedInstance2.wcusxxxxxxxxxxxxx.database.windows.net
 AdministratorLogin       : adminLogin2
 AdministratorPassword    :
@@ -358,6 +373,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+StorageIOps              :
 DnsZone                  : ad35cna0mw
 Administrators           : Microsoft.Azure.Management.Sql.Models.ManagedInstanceExternalAdministrator
 ZoneRedundant            : false
@@ -392,6 +408,7 @@ ManagedInstanceName      : managedInstance1
 Tags                     :
 Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
 Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+IsGeneralPurposeV2       :
 FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
 AdministratorLogin       : adminLogin1
 AdministratorPassword    :
@@ -399,6 +416,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+StorageIOps              :
 DnsZone                  : ad35cna0mw
 Administrators           : Microsoft.Azure.Management.Sql.Models.ManagedInstanceExternalAdministrator
 ZoneRedundant            : false
