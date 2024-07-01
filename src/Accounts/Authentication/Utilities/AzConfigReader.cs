@@ -53,19 +53,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
             return Instance != null ? Instance.GetConfigValue<T>(key) : defaultValue;
         }
 
-        public static void DisableWam()
-        {
-            cachedWamConfigValue = false;
-            Instance?.UpdateConfig(ConfigKeys.EnableLoginByWam, false, ConfigScope.CurrentUser);
-        }
-
         static public bool IsWamEnabled(string authority)
         {
-            if (cachedWamConfigValue != null)
-            {
-                return (bool)cachedWamConfigValue;
-            }
-
             if (!string.IsNullOrEmpty(authority) && Instance != null)
             {
                 try
@@ -83,7 +72,5 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
             }
             return false;
         }
-
-        private static bool? cachedWamConfigValue = null;
     }
 }

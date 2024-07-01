@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Commands.Profile
 
             if (ParameterSetName.Equals(UserParameterSet) && UseDeviceAuthentication == true || ParameterSetName.Equals(UserWithCredentialParameterSet))
             {
-                AzConfigReader.DisableWam();
+                AzConfigReader.Instance?.UpdateConfig(ConfigKeys.EnableLoginByWam, false, ConfigScope.CurrentUser);
             }
 
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Subscription)))
