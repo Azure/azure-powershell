@@ -270,7 +270,7 @@ directive:
   ## Add Alias for Invoke-AzSpotPlacementRecommender
   - where:
       verb: Invoke
-      subject: SpotPlacementRecommender
+      subject: SpotPlacementScore
     set:
-      alias: Invoke-AzSpotPlacementScore
+      alias: Invoke-AzSpotPlacementRecommender
 ```
