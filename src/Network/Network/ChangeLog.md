@@ -29,12 +29,11 @@
     - `Remove-AzFirewallPolicyDraft`
     - `Remove-AzFirewallPolicyRuleCollectionGroupDraft`
     - `Deploy-AzFirewallPolicy`
-
-* Added NoHealthyBackendsBehavior to PSProbe, and updated corresponding cmdlets.
+* Added 'NoHealthyBackendsBehavior' to 'PSProbe', and updated corresponding cmdlets.
     - `New-AzLoadBalancerProbeConfig`
     - `Add-AzLoadBalancerProbeConfig`
     - `Set-AzLoadBalancerProbeConfig`
-* Updated Network.Management SDK to consume `2024-01-01` Swagger version
+* Upgraded API version to `2024-01-01`
 * Updated cmdlet to add 'Premium' as a valid value for 'Sku' parameter and 'enableSessionRecording' feature for Bastion resources
     - `New-AzBastion`
     - `Set-AzBastion`
