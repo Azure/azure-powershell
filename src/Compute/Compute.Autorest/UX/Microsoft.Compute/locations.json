@@ -7,7 +7,7 @@
   "commands": [
     {
       "name": "Invoke-AzSpotPlacementRecommender",
-      "description": "[SOON TO BE DEPRECATED] Generates placement scores for Spot VM skus.",
+      "description": "",
       "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/diagnostics/spotPlacementRecommender/generate",
       "help": {
         "learnMore": {
@@ -40,7 +40,7 @@
     },
     {
       "name": "Invoke-AzSpotPlacementScore",
-      "description": "",
+      "description": "Generates placement scores for Spot VM skus.",
       "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/placementScores/spot/generate",
       "help": {
         "learnMore": {
