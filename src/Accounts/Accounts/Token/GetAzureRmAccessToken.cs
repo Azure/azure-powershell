@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.PowerShell.Authenticators;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 using System;
@@ -28,6 +29,7 @@ using System.Text.Json;
 
 namespace Microsoft.Azure.Commands.Profile
 {
+    [GenericBreakingChangeWithVersion("The output type of this command will be changed to SecureString.", "13.0.0", "2.0.0")]
     [Cmdlet(VerbsCommon.Get, AzureRMConstants.AzureRMPrefix + "AccessToken", DefaultParameterSetName = KnownResourceNameParameterSet)]
     [OutputType(typeof(PSAccessToken), typeof(PSSecureAccessToken))]
     public class GetAzureRmAccessTokenCommand : AzureRMCmdlet
