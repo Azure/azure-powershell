@@ -19,6 +19,17 @@
 --->
 
 ## Upcoming Release
+* Added new cmdlets to support Save & Commit (AzureFirewallPolicy draft)
+    - `New-AzFirewallPolicyDraft`
+    - `New-AzFirewallPolicyRuleCollectionGroupDraft`
+    - `Get-AzFirewallPolicyDraft`
+    - `Get-AzFirewallPolicyRuleCollectionGroupDraft`
+    - `Set-AzFirewallPolicyDraft`
+    - `Set-AzFirewallPolicyRuleCollectionGroupDraft`
+    - `Remove-AzFirewallPolicyDraft`
+    - `Remove-AzFirewallPolicyRuleCollectionGroupDraft`
+    - `Deploy-AzFirewallPolicy`
+
 * Added NoHealthyBackendsBehavior to PSProbe, and updated corresponding cmdlets.
     - `New-AzLoadBalancerProbeConfig`
     - `Add-AzLoadBalancerProbeConfig`
