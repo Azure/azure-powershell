@@ -39,6 +39,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.HasSshPassword = user.HasSshPassword;
             this.SshAuthorizedKeys = PSSshPublicKey.GetPSSshPublicKeys(user.SshAuthorizedKeys);
             this.PermissionScopes = PSPermissionScope.GetPSPermissionScopes(user.PermissionScopes);
+            this.GroupId = user.GroupId;
+            this.AllowAclAuthorization = user.AllowAclAuthorization;
+            this.UserId = user.UserId;
         }
 
 
@@ -52,6 +55,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             user.HasSshPassword = this.HasSshPassword;
             user.SshAuthorizedKeys = PSSshPublicKey.ParseSshPublicKeyss(this.SshAuthorizedKeys);
             user.PermissionScopes = PSPermissionScope.ParsePermissionScopes(this.PermissionScopes);
+            user.GroupId = this.GroupId;
+            user.AllowAclAuthorization = this.AllowAclAuthorization;
             return user;
         }
 
@@ -77,6 +82,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public bool? HasSshPassword { get; set; }
         public PSSshPublicKey[] SshAuthorizedKeys { get; set; }
         public PSPermissionScope[] PermissionScopes { get; set; }
+        public int? GroupId {  get; set; }
+        public bool? AllowAclAuthorization {  get; set; }
+        public int? UserId {  get; set; }
     }
 
     //wrapper of SshPublicKey

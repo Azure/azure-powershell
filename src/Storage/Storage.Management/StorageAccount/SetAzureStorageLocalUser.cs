@@ -128,6 +128,18 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? hasSshPassword = null;
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "An identifier for associating a group of users.")]
+        [ValidateNotNullOrEmpty]
+        public int? GroupId {  get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Indicates whether ACL authorization is allowed for this user. Set it to false to disallow using ACL authorization.")]
+        [ValidateNotNullOrEmpty]
+        public bool? AllowAclAuthorization {  get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -152,7 +164,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     HasSshKey = this.hasSshKey,
                     HasSshPassword = this.hasSshPassword,
                     PermissionScopes = this.PermissionScope,
-                    SshAuthorizedKeys = this.SshAuthorizedKey
+                    SshAuthorizedKeys = this.SshAuthorizedKey,
+                    GroupId = this.GroupId,
+                    AllowAclAuthorization = this.AllowAclAuthorization,
                 };
 
                 LocalUser localUser = this.StorageClient.LocalUsers.CreateOrUpdate(
