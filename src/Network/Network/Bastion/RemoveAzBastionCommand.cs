@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
     using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Remove,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + Constants.BastionResourceName,
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Bastion",
         DefaultParameterSetName = BastionParameterSetNames.ByResourceGroupName,
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             ParameterSetName = BastionParameterSetNames.ByResourceGroupName,
             Mandatory = true,
             HelpMessage = "The bastion resource name to be deleted.")]
-        [ResourceNameCompleter(Constants.BastionResourceType, "ResourceGroupName")]
+        [ResourceNameCompleter("Microsoft.Network/bastionHosts", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure resource ID for the Bastion to be deleted.")]
         [ValidateNotNullOrEmpty]
-        [ResourceIdCompleter(Constants.BastionResourceType)]
+        [ResourceIdCompleter("Microsoft.Network/bastionHosts")]
         public string ResourceId { get; set; }
 
         [Parameter(

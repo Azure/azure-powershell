@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.Network.VirtualNetwork.Subnet;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -99,13 +98,15 @@ namespace Microsoft.Azure.Commands.Network
                 subnet.RouteTable = null;
             }
 
-            if (this.ServiceEndpoint != null || this.ServiceEndpointConfig != null)
+            if (this.ServiceEndpoint != null)
             {
-                AzureVirtualNetworkSubnetConfigHelper helper = new AzureVirtualNetworkSubnetConfigHelper();
-                if (helper.MultipleNetworkIdentifierExists(this.ServiceEndpointConfig)) 
-                    throw new ArgumentException("Multiple Service Endpoints with different Network Identifiers are not allowed");
-                
-                helper.ConfigureServiceEndpoint(this.ServiceEndpoint, this.NetworkIdentifier, this.ServiceEndpointConfig, subnet);
+                subnet.ServiceEndpoints = new List<PSServiceEndpoint>();
+                foreach (var item in this.ServiceEndpoint)
+                {
+                    var service = new PSServiceEndpoint();
+                    service.Service = item;
+                    subnet.ServiceEndpoints.Add(service);
+                }
             }
             else
             {
@@ -130,7 +131,7 @@ namespace Microsoft.Azure.Commands.Network
                 subnet.Delegations = null;
             }
 
-            if (!string.IsNullOrEmpty(this.PrivateEndpointNetworkPoliciesFlag))
+            if(!string.IsNullOrEmpty(this.PrivateEndpointNetworkPoliciesFlag))
             {
                 subnet.PrivateEndpointNetworkPolicies = this.PrivateEndpointNetworkPoliciesFlag;
             }

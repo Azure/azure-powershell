@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
     using Microsoft.Azure.Management.Network.Models;
 
     [Cmdlet(VerbsCommon.Get,
-         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + Constants.BastionResourceName,
+         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Bastion",
          DefaultParameterSetName = BastionParameterSetNames.ListBySubscription,
          SupportsShouldProcess = true),
          OutputType(typeof(PSBastion), typeof(IEnumerable<PSBastion>))]
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             Mandatory = true,
             ParameterSetName = BastionParameterSetNames.ByResourceGroupName + BastionParameterSetNames.ByName,
             HelpMessage = "The bastion resource name.")]
-        [ResourceNameCompleter(Constants.BastionResourceType, "ResourceGroupName")]
+        [ResourceNameCompleter("Microsoft.Network/bastionHosts", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

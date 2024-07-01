@@ -149,22 +149,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.wanrpdev_subset1)]
-        public void TestVirtualNetworkSubnetServiceEndpointWithNetworkIdentifier()
-        {
-            TestRunner.RunTestScript("Test-VirtualNetworkSubnetServiceEndpointWithNetworkIdentifier");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.wanrpdev_subset1)]
-        public void TestVirtualNetworkSubnetServiceEndpointConfig()
-        {
-            TestRunner.RunTestScript("Test-VirtualNetworkSubnetServiceEndpointConfig");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.wanrpdev_subset1)]
         public void TestVirtualNetworkSubnetServiceEndpointPolicies()
         {
             TestRunner.RunTestScript("Test-VirtualNetworkSubnetServiceEndpointPolicies");
