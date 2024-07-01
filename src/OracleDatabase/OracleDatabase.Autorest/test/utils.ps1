@@ -79,7 +79,7 @@ function setupEnv() {
     # VM Cluster Properties
 
     $rstr2 = RandomString -allChars $false -len 4
-    $vmClusterName = "OFake_PowerShellTestVmVluster" + $rstr2
+    $vmClusterName = "OFake_PowerShellTestVmCluster" + $rstr2
     $env.Add("vmClusterName", $vmClusterName)
 
     $vmClusterHostName = "powershell-test"
