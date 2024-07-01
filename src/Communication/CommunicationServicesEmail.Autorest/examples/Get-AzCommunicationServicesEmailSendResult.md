@@ -1,22 +1,19 @@
-### Example 1: {{ Add title here }}
+### Example 1: Gets the status and operation id of the email send operation.
 ```powershell
-{{ Add code here }}
+get-AzCommunicationServicesemailSendResult -Endpoint "https://contoso.unitedstates.communications.azure.com" -OperationId 8540c0de-899f-5cce-acb5-3ec493af3800
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+AdditionalInfo    :
+Code              :
+Detail            :
+Id                : 8540c0de-899f-5cce-acb5-3ec493af3800
+Message           :
+ResourceGroupName :
+RetryAfter        :
+Status            : Succeeded
+Target            : 
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Returns a status and operation id of the email send operation.
 
