@@ -101,6 +101,12 @@ Create a CloudExadataInfrastructure
 ### [New-AzOracleDatabaseCloudVMCluster](New-AzOracleDatabaseCloudVMCluster.md)
 Create a CloudVmCluster
 
+### [New-AzOracleDatabaseCustomerContactObject](New-AzOracleDatabaseCustomerContactObject.md)
+Create an in-memory object for CustomerContact.
+
+### [New-AzOracleDatabaseNsgCidrObject](New-AzOracleDatabaseNsgCidrObject.md)
+Create an in-memory object for NsgCidr.
+
 ### [New-AzOracleDatabaseOracleSubscription](New-AzOracleDatabaseOracleSubscription.md)
 Create a OracleSubscription
 

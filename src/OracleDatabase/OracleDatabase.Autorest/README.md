@@ -43,4 +43,10 @@ inlining-threshold: 100
 resourcegroup-append: true
 nested-object-to-string: true
 identity-correction-for-post: true
+
+directive:
+  - model-cmdlet:
+    - model-name: CustomerContact
+  - model-cmdlet:
+    - model-name: NsgCidr
 ```
