@@ -213,6 +213,11 @@ directive:
       verb: Test
     hide: true
 
+  # Hide key group api for 2024-05-01-preview
+  - where:
+      subject: KeyGroup
+    hide: true
+
   # Rename
   - where:
       subject: Afd(.*)
@@ -260,6 +265,10 @@ directive:
       subject: CdnProfileTo
     set:
       subject: CdnProfileToAFD
+  - where:
+      subject: CanCdnProfile
+    set:
+      subject: CanCdnProfileToAFD
 
   # https://github.com/Azure/autorest.powershell/issues/906
   - where:
