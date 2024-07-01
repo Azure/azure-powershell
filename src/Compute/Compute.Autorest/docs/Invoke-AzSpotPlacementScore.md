@@ -384,5 +384,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+ALIASES
+
+Invoke-AzSpotPlacementRecommender
+
 ## RELATED LINKS
 
