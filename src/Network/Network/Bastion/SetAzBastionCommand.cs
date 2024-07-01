@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
     using MNM = Management.Network.Models;
 
     [Cmdlet(VerbsCommon.Set,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + Constants.BastionResourceName,
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Bastion",
         DefaultParameterSetName = BastionParameterSetNames.ByBastionObject,
         SupportsShouldProcess = true),
         OutputType(typeof(PSBastion))]
@@ -43,11 +43,10 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             Mandatory = false,
             ValueFromPipeline = true,
             HelpMessage = "Bastion Sku")]
-        [PSArgumentCompleter(PSBastionSku.Basic, PSBastionSku.Standard, PSBastionSku.Premium)]
+        [PSArgumentCompleter("Basic", "Standard")]
         [ValidateSet(
             MNM.BastionHostSkuName.Basic,
             MNM.BastionHostSkuName.Standard,
-            MNM.BastionHostSkuName.Premium,
             IgnoreCase = false)]
         public string Sku { get; set; }
 
@@ -88,12 +87,6 @@ namespace Microsoft.Azure.Commands.Network.Bastion
         public bool? EnableShareableLink { get; set; }
 
         [Parameter(
-           Mandatory = false,
-           ValueFromPipeline = true,
-           HelpMessage = "Session Recording")]
-        public bool? EnableSessionRecording { get; set; }
-
-        [Parameter(
             Mandatory = false,
             ValueFromPipeline = true,
             HelpMessage = "A hashtable which represents resource tags.")]
@@ -129,7 +122,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
                             // Check if InputObject Sku is being downgraded
                             if (IsSkuDowngrade(this.InputObject, this.Sku))
                             {
-                                throw new ArgumentException(Properties.Resources.BastionSkuDowngradeNotAllowed);
+                                throw new ArgumentException("Downgrading Sku is not allowed");
                             }
 
                             this.InputObject.Sku = new PSBastionSku(this.Sku);
@@ -140,7 +133,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
                             // Check if getBastionHost Sku is being downgraded from InputObject by setting InputObject.Sku.Name
                             if (IsSkuDowngrade(getBastionHost, this.InputObject.Sku.Name))
                             {
-                                throw new ArgumentException(Properties.Resources.BastionSkuDowngradeNotAllowed);
+                                throw new ArgumentException("Downgrading Sku is not allowed");
                             }
 
                             this.InputObject.Sku = new PSBastionSku(getBastionHost.Sku.Name);
@@ -148,7 +141,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
                         #endregion
 
                         #region Feature validations and updates
-                        ValidateFeatures(this.InputObject, this.DisableCopyPaste, this.EnableTunneling, this.EnableIpConnect, this.EnableShareableLink, this.EnableSessionRecording);
+                        ValidateFeatures(this.InputObject, this.DisableCopyPaste, this.EnableTunneling, this.EnableIpConnect, this.EnableShareableLink);
                         if (this.EnableKerberos.HasValue)
                         {
                             this.InputObject.EnableKerberos = this.EnableKerberos.Value;
@@ -168,10 +161,6 @@ namespace Microsoft.Azure.Commands.Network.Bastion
                         if (this.EnableShareableLink.HasValue)
                         {
                             this.InputObject.EnableShareableLink = this.EnableShareableLink.Value;
-                        }
-                        if (this.EnableSessionRecording.HasValue)
-                        {
-                            this.InputObject.EnableSessionRecording = this.EnableSessionRecording.Value;
                         }
                         #endregion
 

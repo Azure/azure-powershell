@@ -102,7 +102,6 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             psBastion.EnableTunneling = bastion.EnableTunneling;
             psBastion.EnableIpConnect = bastion.EnableIPConnect;
             psBastion.EnableShareableLink = bastion.EnableShareableLink;
-            psBastion.EnableSessionRecording = bastion.EnableSessionRecording;
 
             return psBastion;
         }
@@ -118,7 +117,6 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             bastion.EnableTunneling = host.EnableTunneling;
             bastion.EnableIpConnect = host.EnableIPConnect;
             bastion.EnableShareableLink = host.EnableShareableLink;
-            bastion.EnableSessionRecording = host.EnableSessionRecording;
 
             return bastion;
         }
@@ -159,13 +157,6 @@ namespace Microsoft.Azure.Commands.Network.Bastion
                             return true;
                         }
                         return false;
-                    // Premium -> Basic or Standard
-                    case PSBastionSku.Premium:
-                        if (newSkuTier == PSBastionSku.Basic || newSkuTier == PSBastionSku.Standard)
-                        {
-                            return true;
-                        }
-                        return false;
                     default:
                         return true;
                 }
@@ -174,34 +165,32 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             return true;
         }
 
-        public void ValidateScaleUnits(PSBastion bastion, int? scaleUnits = Constants.MinimumScaleUnits)
+        public void ValidateScaleUnits(PSBastion bastion, int? scaleUnits = 2)
         {
-            if (!scaleUnits.HasValue) return;
-
             if (PSBastionSku.TryGetSkuTier(bastion.Sku.Name, out string skuTierValue))
             {
                 switch (skuTierValue)
                 {
                     case PSBastionSku.Basic:
-                        if (scaleUnits != Constants.MinimumScaleUnits)
+                        if (scaleUnits != PSBastion.MinimumScaleUnits)
                         {
-                            throw new ArgumentException(Properties.Resources.BastionScaleUnitUpdateNotAllowedOnBasic);
+                            throw new ArgumentException($"Bastion scalable host is available on Standard SKU");
                         }
                         break;
                     case PSBastionSku.Standard:
-                        if (scaleUnits < Constants.MinimumScaleUnits
-                            || scaleUnits > Constants.MaximumScaleUnits)
+                        if (scaleUnits < PSBastion.MinimumScaleUnits
+                            || scaleUnits > PSBastion.MaximumScaleUnits)
                         {
-                            throw new ArgumentException(string.Format(Properties.Resources.BastionScaleUnitOutOfRange, Constants.MinimumScaleUnits, Constants.MaximumScaleUnits));
+                            throw new ArgumentException($"Please select scale units value between {PSBastion.MinimumScaleUnits} and {PSBastion.MaximumScaleUnits}");
                         }
                         break;
                     default:
-                        throw new ArgumentException(Properties.Resources.BastionSkuInvalidValue);
+                        throw new ArgumentException($"Please enter a valid value for Bastion SKU");
                 }
             }
             else
             {
-                throw new ArgumentException(Properties.Resources.BastionSkuInvalidValue);
+                throw new ArgumentException($"Please enter a valid value for Bastion SKU");
             }
         }
 
@@ -209,8 +198,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             bool? disableCopyPaste = false,
             bool? enableTunneling = false,
             bool? enableIpConnect = false,
-            bool? enableShareableLink = false,
-            bool? enableSessionRecording = false)
+            bool? enableShareableLink = false)
         {
             if (PSBastionSku.TryGetSkuTier(bastion.Sku.Name, out string skuTierValue))
             {
@@ -219,46 +207,30 @@ namespace Microsoft.Azure.Commands.Network.Bastion
                     case PSBastionSku.Basic:
                         if (disableCopyPaste != null && disableCopyPaste != false)
                         {
-                            throw new ArgumentException(Properties.Resources.BastionCopyPasteInvalidValue);
+                            throw new ArgumentException($"Toggling copy/paste is available on Standard SKU or higher");
                         }
                         if (enableTunneling != null && enableTunneling != false)
                         {
-                            throw new ArgumentException(Properties.Resources.BastionTunnelingInvalidValue);
+                            throw new ArgumentException($"Toggling tunneling is available on Standard SKU or higher");
                         }
                         if (enableIpConnect != null && enableIpConnect != false)
                         {
-                            throw new ArgumentException(Properties.Resources.BastionIpConnectInvalidValue);
+                            throw new ArgumentException($"Toggling IP connect is available on Standard SKU or higher");
                         }
                         if (enableShareableLink != null && enableShareableLink != false)
                         {
-                            throw new ArgumentException(Properties.Resources.BastionShareableLinkInvalidValue);
-                        }
-                        if (enableSessionRecording != null && enableSessionRecording != false)
-                        {
-                            throw new ArgumentException(Properties.Resources.BastionSessionRecordingInvalidValue);
+                            throw new ArgumentException($"Toggling shareable link is available on Standard SKU or higher");
                         }
                         break;
                     case PSBastionSku.Standard:
-                        if (enableSessionRecording != null && enableSessionRecording != false)
-                        {
-                            throw new ArgumentException(Properties.Resources.BastionSessionRecordingInvalidValue);
-                        }
-                        break;
-                    case PSBastionSku.Premium:
-                        if ((enableTunneling.GetValueOrDefault(false) && enableSessionRecording.GetValueOrDefault(false))
-                            || (bastion.EnableTunneling.GetValueOrDefault(false) && enableSessionRecording.GetValueOrDefault(false))
-                            || (enableTunneling.GetValueOrDefault(false)&& bastion.EnableSessionRecording.GetValueOrDefault(false)))
-                        {
-                            throw new ArgumentException(Properties.Resources.BastionTunnelingAndSessionRecordingNotAllowed);
-                        }
                         break;
                     default:
-                        throw new ArgumentException(Properties.Resources.BastionSkuInvalidValue);
+                        throw new ArgumentException($"Please enter a valid value for Bastion SKU");
                 }
             }
             else
             {
-                throw new ArgumentException(Properties.Resources.BastionSkuInvalidValue);
+                throw new ArgumentException($"Please enter a valid value for Bastion SKU");
             }
         }
     }
