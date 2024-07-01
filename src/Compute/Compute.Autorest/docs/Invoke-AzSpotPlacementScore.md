@@ -40,7 +40,7 @@ Invoke-AzSpotPlacementScore -InputObject <IComputeIdentity> [-AvailabilityZone] 
 ```
 
 ## DESCRIPTION
-Generates placement scores for Spot VM skus.
+Generates placement scores for Spot VM skus. This cmdlet calls the Spot Placement Scores API which is in preview. More information about this API can be found [here](https://learn.microsoft.com/rest/api/compute/spot-placement-scores/post).
 
 ## EXAMPLES
 
