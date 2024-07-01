@@ -61,6 +61,93 @@ function setupEnv() {
     $subnetId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($resourceGroup)/providers/Microsoft.Network/virtualNetworks/$($vnetName)/subnets/$($subnetName)"
     $env.Add("subnetId", $subnetId)
 
+    # Exadata Infra Properties
+
+    $rstr1 = RandomString -allChars $false -len 4
+    $exaInfraName = "OFake_PowerShellTestExaInfra" + $rstr1
+    $env.Add("exaInfraName", $exaInfraName)
+
+    $exaInfraShape = "Exadata.X9M"
+    $env.Add("exaInfraShape", $exaInfraShape)
+
+    $exaInfraComputeCount = 2
+    $env.Add("exaInfraComputeCount", $exaInfraComputeCount)
+
+    $exaInfraStorageCount = 3
+    $env.Add("exaInfraStorageCount", $exaInfraStorageCount)
+
+    # VM Cluster Properties
+
+    $rstr2 = RandomString -allChars $false -len 4
+    $vmClusterName = "OFake_PowerShellTestVmVluster" + $rstr2
+    $env.Add("vmClusterName", $vmClusterName)
+
+    $vmClusterHostName = "powershell-test"
+    $env.Add("vmClusterHostName", $vmClusterHostName)
+
+    $vmClusterCpuCoreCount = 4
+    $env.Add("vmClusterCpuCoreCount", $vmClusterCpuCoreCount)
+
+    $sshPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDBGTHtPeOBRuHNkW6GF0xKMFA79EuOGoCRuzsE1I9v/kUl9oElGgCpUoSLDsvRl4ZzmTBaJDgG020Qy+6SoVnQkSztGvyXxQJm5obkKhNjutheDpJ3ozQysHqWybyRt8dga7TvhTS5HXHJ2pwbFmYjlIdhxviP3qwzqpIYf0kQde1RXlnvOKyVlOfTDr6ovJ9J+fWle5mwE9ywm2anYPpIgydap3oFTaj8RoFW7G6m5kJAu2U4J9jShrp2vTOjFx8JIuy35quclPZ3UzdiMALmXIR7gA/9bwsog0nQDz6YLpz9r3PxZuo4mGEzNyj1yn5USROBcgLOVKruij53uWiT5RgZzhZSheJryNE54mFCHaaw4C3CZfI+m7DFuEXmOvqTbxlwV8/r2jNzpobtExXm4KowmFTYvVuts6jy58zZ/WSizb0oxqJI8TgO/C5mujN1D/NMibxOWLEnyncHRPm+wGUhnNpl8dnST6a1Dsf694q+OBnMWJWQPU4NR/eZ8JU= generated-by-azure"
+    $env.Add("sshPublicKey", $sshPublicKey)
+
+    $vmClusterGiVersion = "19.0.0.0"
+    $env.Add("vmClusterGiVersion", $vmClusterGiVersion)
+
+    $vmClusterLicenseModel = "LicenseIncluded"
+    $env.Add("vmClusterLicenseModel", $vmClusterLicenseModel)
+
+    $vmClusterCusterName = "TestVmClust"
+    $env.Add("vmClusterCusterName", $vmClusterCusterName)
+
+    $vmClusterMemorySizeInGb = 90
+    $env.Add("vmClusterMemorySizeInGb", $vmClusterMemorySizeInGb)
+
+    $vmClusterDbNodeStorageSizeInGb = 180
+    $env.Add("vmClusterDbNodeStorageSizeInGb", $vmClusterDbNodeStorageSizeInGb)
+
+    $vmClusterDataStorageSizeInTb = 2.0
+    $env.Add("vmClusterDataStorageSizeInTb", $vmClusterDataStorageSizeInTb)
+
+    $vmClusterDataStoragePercentage = 80
+    $env.Add("vmClusterDataStoragePercentage", $vmClusterDataStoragePercentage)
+
+    $vmClusterIsLocalBackupEnabled = $false
+    $env.Add("vmClusterIsLocalBackupEnabled", $vmClusterIsLocalBackupEnabled)
+
+    $vmClusterIsSparseDiskgroupEnabled = $false
+    $env.Add("vmClusterIsSparseDiskgroupEnabled", $vmClusterIsSparseDiskgroupEnabled)
+
+    $vmClusterTimeZone = "UTC"
+    $env.Add("vmClusterTimeZone", $vmClusterTimeZone)
+
+    # ADBS Properties
+
+    $rstr3 = RandomString -allChars $false -len 4
+    $adbsName = "OFakePowerShellTestAdbs" + $rstr3
+    $env.Add("adbsName", $adbsName)
+
+    $adbsDbWorkload = "DW"
+    $env.Add("adbsDbWorkload", $adbsDbWorkload)
+
+    $adbsComputeCount = 2.0
+    $env.Add("adbsComputeCount", $adbsComputeCount)
+
+    $adbsComputeModel = "ECPU"
+    $env.Add("adbsComputeModel", $adbsComputeModel)
+
+    $adbsDbVersion = "19c"
+    $env.Add("adbsDbVersion", $adbsDbVersion)
+
+    $adbsDataStorageInTb = 2
+    $env.Add("adbsDataStorageInTb", $adbsDataStorageInTb)
+
+    $adbsLicenseModel = "LicenseIncluded"
+    $env.Add("adbsLicenseModel", $adbsLicenseModel)
+
+    $adbsDatabaseType = "Regular"
+    $env.Add("adbsDatabaseType", $adbsDatabaseType)
+
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

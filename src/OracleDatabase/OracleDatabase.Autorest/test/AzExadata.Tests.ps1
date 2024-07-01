@@ -18,7 +18,15 @@ Describe 'AzExadata' {
     # TODO
     It 'CreateExaInfra' {
         {
-
+            $exaInfra = New-AzOracleDatabaseCloudExadataInfrastructure -Name $env.exaInfraName -ResourceGroupName $env.resourceGroup -Location $env.location -Zone $env.zone -Shape $env.exaInfraShape -ComputeCount $env.exaInfraComputeCount -StorageCount $env.exaInfraStorageCount -DisplayName $env.exaInfraName
+            $exaInfra.Name | Should -Be $env.exaInfraName
+        } | Should -Not -Throw
+    }
+    It 'DeleteExaInfra' {
+        {
+            Remove-AzOracleDatabaseCloudExadataInfrastructure -Name $env.exaInfraName -ResourceGroupName $env.resourceGroup
+            $exaInfraList = Get-AzOracleDatabaseCloudExadataInfrastructure
+            $exaInfraList.Name | Should -Not -Contain $env.exaInfraName
         } | Should -Not -Throw
     }
 }
