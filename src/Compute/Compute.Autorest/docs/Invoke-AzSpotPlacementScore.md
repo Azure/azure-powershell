@@ -313,7 +313,7 @@ To construct, see NOTES section for SPOTPLACEMENTSCORESINPUT properties and crea
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresInput
 Parameter Sets: Post, PostViaIdentity
-Aliases:
+Aliases: SpotPlacementRecommenderInput
 
 Required: True
 Position: Named
