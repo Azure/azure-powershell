@@ -78,6 +78,14 @@ param(
     # Accept policy definition or policy set definition object
     ${PolicyDefinition},
 
+    [Parameter(ParameterSetName='ParameterObject')]
+    [Parameter(ParameterSetName='ParameterString')]
+    [Parameter(ParameterSetName='PolicyDefinitionOrPolicySetDefinition')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # Indicate version of policy definition or policy set definition
+    ${DefinitionVersion},
+
     [Parameter(ParameterSetName='ParameterObject', Mandatory)]
     [ValidateNotNullOrEmpty()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
@@ -302,11 +310,29 @@ process {
     # route the input policy id to the correct place
     if ($calledParameters.ContainsKey('PolicyDefinition')) {
 
+        $definitionId = $PolicyDefinition
+        if ($PolicyDefinition.Id) {
+            $definitionId = $PolicyDefinition.Id
+        }
+
         # parse the definition Id to determine the format (policy [set] definition and versioned or not)
-        $parsedPolicyId = parsePolicyId $PolicyDefinition.Id
+        $parsedPolicyId = ParsePolicyId $definitionId
         if ($parsedPolicyId.ArtifactRef) {
-            # handle versioned policy [set] references
-            $calledParameters.DefinitionVersion = $parsedPolicyId.VersionRef
+            if ($DefinitionVersion) {
+                $parsedVersion = ParsePolicyVersion $DefinitionVersion
+
+                if ($writeln) {
+                    Write-Host -ForegroundColor Cyan "Artifact: $($parsedPolicyId.Artifact), VersionRef: $($parsedVersion.VersionRef)."
+                }
+
+                if ($parsedPolicyId.VersionRef -ne $parsedVersion.VersionRef) {
+                   throw "Definition version is ambiguous. PolicyDefinition version resolved to $($parsedPolicyId.VersionRef), but DefinitionVersion was $DefinitionVersion."
+                }
+            }
+            else {
+                # handle versioned policy [set] references
+                $calledParameters.DefinitionVersion = $parsedPolicyId.VersionRef
+            }
         }
 
         $calledParameters.PolicyDefinitionId = $parsedPolicyId.Artifact
