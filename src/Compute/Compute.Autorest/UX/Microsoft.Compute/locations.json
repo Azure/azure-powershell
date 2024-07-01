@@ -40,7 +40,7 @@
     },
     {
       "name": "Invoke-AzSpotPlacementScore",
-      "description": "Generates placement scores for Spot VM skus.",
+      "description": "",
       "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/placementScores/spot/generate",
       "help": {
         "learnMore": {

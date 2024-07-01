@@ -12,7 +12,7 @@
   RequiredAssemblies = './bin/Az.Compute.private.dll'
   FormatsToProcess = './Az.Compute.format.ps1xml'
   FunctionsToExport = 'Get-AzGalleryApplication', 'Get-AzGalleryApplicationVersion', 'Invoke-AzSpotPlacementRecommender', 'Invoke-AzSpotPlacementScore', 'New-AzGalleryApplication', 'New-AzGalleryApplicationVersion', 'Remove-AzGalleryApplication', 'Remove-AzGalleryApplicationVersion', 'Remove-AzVMRunCommand', 'Remove-AzVmssVMRunCommand', 'Set-AzVMRunCommand', 'Set-AzVmssVMRunCommand', 'Update-AzGalleryApplication', 'Update-AzGalleryApplicationVersion', '*'
-  AliasesToExport = '*'
+  AliasesToExport = 'Invoke-AzSpotPlacementScore', '*'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Compute'
