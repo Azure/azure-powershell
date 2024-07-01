@@ -36,11 +36,11 @@ if (($null -eq $RepoRoot) -or (0 -eq $RepoRoot.Length)) {
 }
 
 $notModules = @('lib', 'shared')
-$coreTestModules = @('Compute', 'Network', 'Resources', 'Sql', 'Websites')
+$coreTestModule = @('Compute', 'Network', 'Resources', 'Sql', 'Websites')
 $RepoArtifacts = Join-Path $RepoRoot "Artifacts"
 
 $csprojFiles = @()
-$testModules = @()
+$testModule = @()
 $toolDirectory = Join-Path $RepoRoot "tools"
 $sourceDirectory = Join-Path $RepoRoot "src"
 $generatedDirectory = Join-Path $RepoRoot "generated"
@@ -54,6 +54,10 @@ if (-not (Test-Path $sourceDirectory)) {
     Write-Warning "Cannot find generated directory: $generatedDirectory"
 }
 
+# Add Accounts to target module by default, this is to ensure accounts is always built when target/modified module parameter sets
+$TargetModule += 'Accounts'
+$testModule += 'Accounts'
+
 switch ($PSCmdlet.ParameterSetName) {
     'AllSet' {
         Write-Host "----------Start building all modules----------" -ForegroundColor DarkYellow
@@ -66,11 +70,11 @@ switch ($PSCmdlet.ParameterSetName) {
             Write-Host "$moduleName" -ForegroundColor DarkYellow
         }
         if ('Core' -eq $TestsToRun) {
-            $testModules = $coreTestModules
+            $testModule = $coreTestModule
         } elseif ('NonCore') {
-            $testModules = $TargetModule | Where-Object { $_ -notin $coreTestModules}
+            $testModule = $TargetModule | Where-Object { $_ -notin $coreTestModule}
         } else {
-            $testModules = $TargetModule
+            $testModule = $TargetModule
         }
     }
     'CIPlanSet' {
@@ -78,7 +82,7 @@ switch ($PSCmdlet.ParameterSetName) {
         If (Test-Path $CIPlanPath) {
             $CIPlanContent = Get-Content $CIPlanPath | ConvertFrom-Json
             $TargetModule = $CIPlanContent.build
-            $testModules = $CIPlanContent.test
+            $testModule = $CIPlanContent.test
         }
         Write-Host "----------Start building modules from $CIPlanPath----------`r`n$($TargetModule | Join-String -Separator "`r`n")" -ForegroundColor DarkYellow
     }
@@ -100,16 +104,19 @@ switch ($PSCmdlet.ParameterSetName) {
                 }
             }
         }
-        $testModules = $TargetModule
+        $testModule = $TargetModule
         Write-Host  "----------Start building modified modules----------`r`n$($TargetModule | Join-String -Separator "`r`n")" -ForegroundColor DarkYellow
     }
     'TargetModuleSet' {
-        $testModules = $TargetModule
+        $testModule = $TargetModule
         Write-Host  "----------Start building target modules----------`r`n$($TargetModule | Join-String -Separator "`r`n")" -ForegroundColor DarkYellow
     }
 }
 
-$csprojFiles = Get-CsprojFromModule -BuildModuleList $TargetModule -TestModuleList $testModules -RepoRoot $RepoRoot -Configuration $Configuration
+$TargetModule = $TargetModule | Select-Object -Unique
+$testModule = $testModule | Select-Object -Unique
+
+$csprojFiles = Get-CsprojFromModule -BuildModuleList $TargetModule -TestModuleList $testModule -RepoRoot $RepoRoot -Configuration $Configuration
 # Prepare autorest based modules
 $prepareScriptPath = Join-Path $toolDirectory 'BuildScripts' 'PrepareAutorestModule.ps1'
 
