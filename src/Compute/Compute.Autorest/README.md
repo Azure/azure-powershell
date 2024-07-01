@@ -267,7 +267,11 @@ directive:
       subject: SpotPlacementScore
     remove: true
 
-  ## Add Alias for Invoke-AzSpotPlacementRecommender
+  ## Add Alias for Invoke-AzSpotPlacementScore
+  - where:
+      verb: Invoke
+      subject: SpotPlacementRecommender
+    remove: true
   - where:
       verb: Invoke
       subject: SpotPlacementScore
