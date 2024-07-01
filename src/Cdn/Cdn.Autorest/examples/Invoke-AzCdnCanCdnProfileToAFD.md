@@ -1,6 +1,6 @@
 ### Example 1: Check the feasibility of given profile which is going to be migrated
 ```powershell
-Invoke-AzCdnCanCdnProfile  -ProfileName cli-test-profile -ResourceGroupName cli-test-rg
+Invoke-AzCdnCanCdnProfileToAFD  -ProfileName cli-test-profile -ResourceGroupName cli-test-rg
 ```
 
 ```output

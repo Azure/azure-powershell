@@ -63,9 +63,9 @@ MIGRATIONPARAMETER <ICdnMigrationToAfdParameters>: Request body for Migrate oper
     [MigratedTo <String>]: The name for the new endpoint.
   [SkuName <SkuName?>]: Name of the pricing tier.
 .Link
-https://learn.microsoft.com/powershell/module/az.cdn/move-azfrontdoorcdncdnprofiletoafd
+https://learn.microsoft.com/powershell/module/az.cdn/move-azcdnprofiletoafd
 #>
-function Move-AzFrontDoorCdnCdnProfileToAFD {
+function Move-AzCdnProfileToAFD {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.IMigrateResult])]
     [CmdletBinding(DefaultParameterSetName='MigrateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(

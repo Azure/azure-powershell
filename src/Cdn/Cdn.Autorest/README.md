@@ -192,7 +192,9 @@ directive:
   - where:
       subject: CommitProfileMigration
     hide: true
+  # Hide classicCdn migrate command and customize
   - where:
+      subject-prefix: FrontDoorCdn
       subject: CdnProfileToAFD
       verb: Move
     hide: true
@@ -216,6 +218,9 @@ directive:
   # Hide key group api for 2024-05-01-preview
   - where:
       subject: KeyGroup
+    hide: true
+  - where:
+      subject: KeyGroupUpdate
     hide: true
 
   # Rename
@@ -269,6 +274,10 @@ directive:
       subject: CanCdnProfile
     set:
       subject: CanCdnProfileToAFD
+  - where:
+      subject: AbortProfileMigration
+    set:
+      subject: AbortProfileToAFDMigration
 
   # https://github.com/Azure/autorest.powershell/issues/906
   - where:

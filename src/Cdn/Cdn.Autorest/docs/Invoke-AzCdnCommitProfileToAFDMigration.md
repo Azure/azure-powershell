@@ -1,56 +1,41 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/az.cdn/remove-azcdnkeygroup
+online version: https://learn.microsoft.com/powershell/module/az.cdn/invoke-azcdncommitprofiletoafdmigration
 schema: 2.0.0
 ---
 
-# Remove-AzCdnKeyGroup
+# Invoke-AzCdnCommitProfileToAFDMigration
 
 ## SYNOPSIS
-Deletes an existing KeyGroup within profile.
+Commit the migrated Azure Front Door(Standard/Premium) profile..
 
 ## SYNTAX
 
-### Delete (Default)
 ```
-Remove-AzCdnKeyGroup -Name <String> -ProfileName <String> -ResourceGroupName <String>
+Invoke-AzCdnCommitProfileToAFDMigration -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
-```
-Remove-AzCdnKeyGroup -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Deletes an existing KeyGroup within profile.
+Commit the migrated Azure Front Door(Standard/Premium) profile..
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Commit the Migration
 ```powershell
-{{ Add code here }}
+Invoke-AzCdnCommitProfileToAFDMigration -ProfileName name-migrated -ResourceGroupName rgName
 ```
 
-```output
-{{ Add output here }}
-```
+Commit the Migration
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Commit the migrated Azure Front Door(Standard/Premium) profile, when the subscription of the profile is different from the local subscrition
 ```powershell
-{{ Add code here }}
+Invoke-AzCdnCommitProfileToAFDMigration -ProfileName name-migrated -ResourceGroupName rgName -SubscriptionId testSubId01
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Commit the migrated Azure Front Door(Standard/Premium) profile, when the subscription of the profile is different from the local subscrition
 
 ## PARAMETERS
 
@@ -70,8 +55,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -79,37 +63,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: DeleteViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-Name of the KeyGroup under the profile.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: KeyGroupName
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -147,11 +100,11 @@ Accept wildcard characters: False
 ```
 
 ### -ProfileName
-Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
+Name of the CDN profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -162,12 +115,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -178,11 +130,11 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Azure Subscription ID.
+The subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -227,8 +179,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 
 ## OUTPUTS
 

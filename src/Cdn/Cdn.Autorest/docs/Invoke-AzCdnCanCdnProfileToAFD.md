@@ -1,45 +1,46 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/az.cdn/invoke-azcdnabortprofilemigration
+online version: https://learn.microsoft.com/powershell/module/az.cdn/invoke-azcdncancdnprofiletoafd
 schema: 2.0.0
 ---
 
-# Invoke-AzCdnAbortProfileMigration
+# Invoke-AzCdnCanCdnProfileToAFD
 
 ## SYNOPSIS
-Abort the migration to Azure Frontdoor Premium/Standard.
+Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
 
 ## SYNTAX
 
-### Abort (Default)
+### Can (Default)
 ```
-Invoke-AzCdnAbortProfileMigration -ProfileName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Invoke-AzCdnCanCdnProfileToAFD -ProfileName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### AbortViaIdentity
+### CanViaIdentity
 ```
-Invoke-AzCdnAbortProfileMigration -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Invoke-AzCdnCanCdnProfileToAFD -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Abort the migration to Azure Frontdoor Premium/Standard.
+Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
 
 ## EXAMPLES
 
-### Example 1: Abort the Migration
+### Example 1: Check the feasibility of given profile which is going to be migrated
 ```powershell
-Invoke-AzCdnAbortProfileMigration -ProfileName cli-test-profile -ResourceGroupName cli-test-rg
+Invoke-AzCdnCanCdnProfileToAFD  -ProfileName cli-test-profile -ResourceGroupName cli-test-rg
 ```
 
 ```output
-{
-}
+CanMigrate DefaultSku              Error
+---------- ----------              -----
+True       Standard_AzureFrontDoor {}
 ```
 
-Abort the Migration
+check whether this profile can be migrated to AFDX
 
 ## PARAMETERS
 
@@ -80,7 +81,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: AbortViaIdentity
+Parameter Sets: CanViaIdentity
 Aliases:
 
 Required: True
@@ -110,7 +111,7 @@ Name of the Azure Front Door Standard or Azure Front Door Premium which is uniqu
 
 ```yaml
 Type: System.String
-Parameter Sets: Abort
+Parameter Sets: Can
 Aliases:
 
 Required: True
@@ -126,7 +127,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Abort
+Parameter Sets: Can
 Aliases:
 
 Required: True
@@ -141,7 +142,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Abort
+Parameter Sets: Can
 Aliases:
 
 Required: False
@@ -191,7 +192,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAny
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240501Preview.ICanMigrateResult
 
 ## NOTES
 

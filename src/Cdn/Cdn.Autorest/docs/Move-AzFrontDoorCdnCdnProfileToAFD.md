@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/az.cdn/move-azcdnprofiletoafd
+online version: https://learn.microsoft.com/powershell/module/az.cdn/move-azfrontdoorcdncdnprofiletoafd
 schema: 2.0.0
 ---
 
-# Move-AzCdnProfileToAFD
+# Move-AzFrontDoorCdnCdnProfileToAFD
 
 ## SYNOPSIS
 Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
@@ -15,33 +15,30 @@ This step prepares the profile for migration and will be followed by Commit to f
 
 ### MigrateExpanded (Default)
 ```
-Move-AzCdnProfileToAFD -ProfileName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-MigrationEndpointMapping <IMigrationEndpointMapping[]>] [-SkuName <SkuName>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Move-AzFrontDoorCdnCdnProfileToAFD -ProfileName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-MigrationEndpointMapping <IMigrationEndpointMapping[]>] [-SkuName <SkuName>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Migrate
 ```
-Move-AzCdnProfileToAFD -ProfileName <String> -ResourceGroupName <String>
- -MigrationParameter <ICdnMigrationToAfdParameters> [-SubscriptionId <String>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Move-AzFrontDoorCdnCdnProfileToAFD -ProfileName <String> -ResourceGroupName <String>
+ -MigrationParameter <ICdnMigrationToAfdParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### MigrateViaIdentity
 ```
-Move-AzCdnProfileToAFD -InputObject <ICdnIdentity> -MigrationParameter <ICdnMigrationToAfdParameters>
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Move-AzFrontDoorCdnCdnProfileToAFD -InputObject <ICdnIdentity>
+ -MigrationParameter <ICdnMigrationToAfdParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### MigrateViaIdentityExpanded
 ```
-Move-AzCdnProfileToAFD -InputObject <ICdnIdentity> [-IdentityType <ManagedServiceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-MigrationEndpointMapping <IMigrationEndpointMapping[]>]
- [-SkuName <SkuName>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Move-AzFrontDoorCdnCdnProfileToAFD -InputObject <ICdnIdentity>
+ [-MigrationEndpointMapping <IMigrationEndpointMapping[]>] [-SkuName <SkuName>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,19 +47,27 @@ This step prepares the profile for migration and will be followed by Commit to f
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: {{ Add title here }}
 ```powershell
 {{ Add code here }}
 ```
 
+```output
+{{ Add output here }}
+```
 
+{{ Add description here }}
 
-### -------------------------- EXAMPLE 2 --------------------------
+### Example 2: {{ Add title here }}
 ```powershell
 {{ Add code here }}
 ```
 
+```output
+{{ Add output here }}
+```
 
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -89,38 +94,6 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named

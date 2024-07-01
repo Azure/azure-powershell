@@ -38,9 +38,6 @@ Gets an existing CDN endpoint with the specified endpoint name under the specifi
 ### [Get-AzCdnEndpointResourceUsage](Get-AzCdnEndpointResourceUsage.md)
 Checks the quota and usage of geo filters and custom domains under the given endpoint.
 
-### [Get-AzCdnKeyGroup](Get-AzCdnKeyGroup.md)
-Gets an existing KeyGroup within a profile.
-
 ### [Get-AzCdnOrigin](Get-AzCdnOrigin.md)
 Gets an existing origin within an endpoint.
 
@@ -106,11 +103,18 @@ Gets an existing security policy within a profile.
 Pre-loads a content to CDN.
 Available for Verizon Profiles.
 
-### [Invoke-AzCdnAbortProfileMigration](Invoke-AzCdnAbortProfileMigration.md)
+### [Invoke-AzCdnAbortProfileToAFDMigration](Invoke-AzCdnAbortProfileToAFDMigration.md)
 Abort the migration to Azure Frontdoor Premium/Standard.
 
-### [Invoke-AzCdnCanCdnProfile](Invoke-AzCdnCanCdnProfile.md)
+### [Invoke-AzCdnCanCdnProfileToAFD](Invoke-AzCdnCanCdnProfileToAFD.md)
 Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
+
+### [Invoke-AzCdnCommitProfileToAFDMigration](Invoke-AzCdnCommitProfileToAFDMigration.md)
+Commit the migrated Azure Front Door(Standard/Premium) profile..
+
+### [Move-AzCdnProfileToAFD](Move-AzCdnProfileToAFD.md)
+Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
+This step prepares the profile for migration and will be followed by Commit to finalize the migration.
 
 ### [Move-AzFrontDoorCdnCdnProfileToAFD](Move-AzFrontDoorCdnCdnProfileToAFD.md)
 Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
@@ -181,9 +185,6 @@ Creates a new CDN endpoint with the specified endpoint name under the specified 
 
 ### [New-AzCdnHealthProbeParametersObject](New-AzCdnHealthProbeParametersObject.md)
 Create an in-memory object for HealthProbeParameters.
-
-### [New-AzCdnKeyGroupUpdate](New-AzCdnKeyGroupUpdate.md)
-Creates or updates a new KeyGroup within the specified profile.
 
 ### [New-AzCdnLoadParametersObject](New-AzCdnLoadParametersObject.md)
 Create an in-memory object for LoadParameters.
@@ -385,9 +386,6 @@ Deletes an existing custom domain within an endpoint.
 
 ### [Remove-AzCdnEndpoint](Remove-AzCdnEndpoint.md)
 Deletes an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
-
-### [Remove-AzCdnKeyGroup](Remove-AzCdnKeyGroup.md)
-Deletes an existing KeyGroup within profile.
 
 ### [Remove-AzCdnOrigin](Remove-AzCdnOrigin.md)
 Deletes an existing origin within an endpoint.

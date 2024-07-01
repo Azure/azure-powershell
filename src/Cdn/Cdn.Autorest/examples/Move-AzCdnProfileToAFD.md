@@ -1,6 +1,6 @@
 ### Example 1: Start a migration
 ```powershell
-Move-AzFrontDoorCdnCdnProfileToAFD -ProfileName cli-test-profile -ResourceGroupName cli-test-rg -Sku Premium_AzureFrontDoor -MigrationEndpointMapping @(@{"migrated-from"="maxtestendpointcli-test-profile1.azureedge.net";"migrated-to"="maxtestendpointcli-test-profile2"})
+Move-AzCdnProfileToAFD -ProfileName cli-test-profile -ResourceGroupName cli-test-rg -Sku Premium_AzureFrontDoor -MigrationEndpointMapping @(@{"migrated-from"="maxtestendpointcli-test-profile1.azureedge.net";"migrated-to"="maxtestendpointcli-test-profile2"})
 ```
 
 ```output
@@ -19,7 +19,7 @@ The MigrationEndpointMapping parameter used in situation that users want to migr
 
 ### Example 2: Start a migration with managed identity settings.
 ```powershell
-Move-AzFrontDoorCdnCdnProfileToAFD -ProfileName cli-test-profile -ResourceGroupName cli-test-rg -Sku Premium_AzureFrontDoor -MigrationEndpointMapping @(@{"migrated-from"="maxtestendpointcli-test-profile1.azureedge.net";"migrated-to"="maxtestendpointcli-test-profile2"}) -IdentityType "SystemAssigned"
+Move-AzCdnProfileToAFD -ProfileName cli-test-profile -ResourceGroupName cli-test-rg -Sku Premium_AzureFrontDoor -MigrationEndpointMapping @(@{"migrated-from"="maxtestendpointcli-test-profile1.azureedge.net";"migrated-to"="maxtestendpointcli-test-profile2"}) -IdentityType "SystemAssigned"
 ```
 
 ```output
