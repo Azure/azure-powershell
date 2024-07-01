@@ -66,27 +66,27 @@ directive:
 ```
 
 ``` yaml
-commit: 78eac0bd58633028293cb1ec1709baa200bed9e2
+commit: d9f06f3de6cb00796a91b86b622dcf50340952a2
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/web/resource-manager/Microsoft.CertificateRegistration/stable/2019-08-01/AppServiceCertificateOrders.json
-  - $(repo)/specification/web/resource-manager/Microsoft.CertificateRegistration/stable/2019-08-01/CertificateRegistrationProvider.json
-  - $(repo)/specification/web/resource-manager/Microsoft.DomainRegistration/stable/2019-08-01/Domains.json
-  - $(repo)/specification/web/resource-manager/Microsoft.DomainRegistration/stable/2019-08-01/TopLevelDomains.json
-  - $(repo)/specification/web/resource-manager/Microsoft.DomainRegistration/stable/2019-08-01/DomainRegistrationProvider.json
-  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/Certificates.json
-  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/CommonDefinitions.json
-  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/DeletedWebApps.json
-  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/Diagnostics.json
-  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/Provider.json
-  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/Recommendations.json
-  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/ResourceProvider.json
-  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/WebApps.json
-  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/StaticSites.json
-  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/AppServiceEnvironments.json
-  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/AppServicePlans.json
-  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2019-08-01/ResourceHealthMetadata.json
+  - $(repo)/specification/web/resource-manager/Microsoft.CertificateRegistration/stable/2023-12-01/AppServiceCertificateOrders.json
+  - $(repo)/specification/web/resource-manager/Microsoft.CertificateRegistration/stable/2023-12-01/CertificateRegistrationProvider.json
+  - $(repo)/specification/web/resource-manager/Microsoft.DomainRegistration/stable/2023-12-01/Domains.json
+  - $(repo)/specification/web/resource-manager/Microsoft.DomainRegistration/stable/2023-12-01/TopLevelDomains.json
+  - $(repo)/specification/web/resource-manager/Microsoft.DomainRegistration/stable/2023-12-01/DomainRegistrationProvider.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/Certificates.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/CommonDefinitions.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/DeletedWebApps.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/Diagnostics.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/Provider.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/Recommendations.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/ResourceProvider.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/WebApps.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/StaticSites.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/AppServiceEnvironments.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/AppServicePlans.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/ResourceHealthMetadata.json
 module-version: 1.0.1
 title: Functions
 subject-prefix: ''
@@ -123,6 +123,9 @@ metadata:
     - Update-AzFunctionAppSetting
 
 directive:
+  - remove-operation: WebApps_GetProductionSiteDeploymentStatus
+  - remove-operation: WebApps_GetSlotSiteDeploymentStatusSlot
+  - remove-operation: Workflows_RegenerateAccessKey
   - from: WebApps.json
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateEndpointConnections/{privateEndpointConnectionName}"].delete.responses.200
     transform: delete $.schema
@@ -216,16 +219,16 @@ directive:
       subject: SystemAssignedIdentity(.*)
     hide: true
   - where:
-      subject: WebAppBasicPublishingCredentialsPolicy
+      subject: (.*)BasicPublishingCredentialsPolicy(.*)
     hide: true
   - where:
       subject: WebAppFunctionKey(.*)
     hide: true
   - where:
-      subject: WebAppScmAllowed
+      subject: (.*)ScmAllowed(.*)
     hide: true
   - where:
-      subject: WebAppSettingKeyVaultReference
+      subject: WebAppSettingKeyVaultReference(.*)
     hide: true
   - where:
       subject: WebAppSyncStatus(.*)
@@ -242,7 +245,7 @@ directive:
     hide: true
 # Cmdlets to remove
   - where:
-      subject: WebAppFtpAllowed
+      subject: (.*)WebAppFtpAllowed(.*)
     remove: true
   - where:
       subject: WebAppPremierAddOn(.*)
@@ -440,7 +443,7 @@ directive:
       subject: (.*)WebAppTriggered(.*)
     remove: true
   - where:
-      subject: (.*)WebAppUsage(.*)
+      subject: (.*)Usage(.*)
     remove: true
   - where:
       subject: (.*)AzWebAppWeb(.*)
@@ -458,7 +461,7 @@ directive:
       subject: (.*)Connection(.*)
     remove: true
   - where:
-      subject: (.*)WebAppDeployment(.*)
+      subject: (.*)OneDeploy(.*)
     remove: true
   - where:
       subject: (.*)WebAppHost(.*)
@@ -509,7 +512,7 @@ directive:
       subject: (.*)WebAppClone(.*)
     remove: true
   - where:
-      subject: Move(.*)
+      subject: (.*)Move(.*)
     remove: true
   - where:
       subject: (.*)WebAppRepository(.*)
@@ -534,6 +537,21 @@ directive:
     remove: true
   - where:
       subject: (.*)StaticSite(.*)
+    remove: true
+  - where:
+      subject: (.*)Backup(.*)
+    remove: true
+  - where:
+      subject: (.*)CustomName(.*)
+    remove: true
+  - where:
+      subject: (.*)CustomHostName(.*)
+    remove: true
+  - where:
+      subject: (.*)Workflow(.*)
+    remove: true
+  - where:
+      subject: (.*)AseRegion(.*)
     remove: true
   - from: source-file-csharp
     where: $

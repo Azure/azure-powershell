@@ -21,6 +21,9 @@
 * Supported local user ACL and list local user paging/filtering 
     - `Set-AzStorageLocalUser`
     - `Get-AzStorageLocalUser`
+* Fixed the issue that Azure.Core.AccessToken is used before assigned.
+    - `Set-AzStorageLocalUser`
+    - `Get-AzStorageLocalUser`
 * Supported TLS1_3 when creating and updating a storage account 
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`

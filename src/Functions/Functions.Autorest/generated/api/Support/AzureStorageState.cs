@@ -14,6 +14,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureStorageState InvalidShare = @"InvalidShare";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureStorageState NotValidated = @"NotValidated";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AzureStorageState Ok = @"Ok";
 
         /// <summary>the value for an instance of the <see cref="AzureStorageState" /> Enum.</summary>

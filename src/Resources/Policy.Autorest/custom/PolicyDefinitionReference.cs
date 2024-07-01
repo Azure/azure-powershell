@@ -52,22 +52,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
                 ((IPolicyDefinitionReferenceInternal)this).PolicyDefinitionId = content.GetValueForProperty(keyValuePair.Key.ToString(), ((IPolicyDefinitionReferenceInternal)this).PolicyDefinitionId, Convert.ToString);
             }
 
+            keyValuePair = content.Cast<System.Collections.DictionaryEntry>().FirstOrDefault((kvp) => "DefinitionVersion".Equals(kvp.Key.ToString(), StringComparison.OrdinalIgnoreCase));
+            if (keyValuePair.Key != null)
+            {
+                ((IPolicyDefinitionReferenceInternal)this).DefinitionVersion = content.GetValueForProperty(keyValuePair.Key.ToString(), ((IPolicyDefinitionReferenceInternal)this).DefinitionVersion, Convert.ToString);
+            }
+
             keyValuePair = content.Cast<System.Collections.DictionaryEntry>().FirstOrDefault((kvp) => "Parameters".Equals(kvp.Key.ToString(), StringComparison.OrdinalIgnoreCase));
             if (keyValuePair.Key != null)
             {
-                ((IPolicyDefinitionReferenceInternal)this).Parameter = content.GetValueForProperty("Parameters", ((IPolicyDefinitionReferenceInternal)this).Parameter, ParameterValuesTypeConverter.ConvertFrom);
+                ((IPolicyDefinitionReferenceInternal)this).Parameter = content.GetValueForProperty(keyValuePair.Key.ToString(), ((IPolicyDefinitionReferenceInternal)this).Parameter, ParameterValuesTypeConverter.ConvertFrom);
             }
 
             keyValuePair = content.Cast<System.Collections.DictionaryEntry>().FirstOrDefault((kvp) => "Id".Equals(kvp.Key.ToString(), StringComparison.OrdinalIgnoreCase));
             if (keyValuePair.Key != null)
             {
-                ((IPolicyDefinitionReferenceInternal)this).Id = content.GetValueForProperty("Id", ((IPolicyDefinitionReferenceInternal)this).Id, Convert.ToString);
+                ((IPolicyDefinitionReferenceInternal)this).Id = content.GetValueForProperty(keyValuePair.Key.ToString(), ((IPolicyDefinitionReferenceInternal)this).Id, Convert.ToString);
             }
 
             keyValuePair = content.Cast<System.Collections.DictionaryEntry>().FirstOrDefault((kvp) => "GroupNames".Equals(kvp.Key.ToString(), StringComparison.OrdinalIgnoreCase));
             if (keyValuePair.Key != null)
             {
-                ((IPolicyDefinitionReferenceInternal)this).GroupName = content.GetValueForProperty("GroupNames", ((IPolicyDefinitionReferenceInternal)this).GroupName, __y => TypeConverterExtensions.SelectToList<string>(__y, Convert.ToString));
+                ((IPolicyDefinitionReferenceInternal)this).GroupName = content.GetValueForProperty(keyValuePair.Key.ToString(), ((IPolicyDefinitionReferenceInternal)this).GroupName, __y => TypeConverterExtensions.SelectToList<string>(__y, Convert.ToString));
             }
 
             returnNow = true;

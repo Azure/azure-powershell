@@ -19,7 +19,7 @@ New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName
  [-ApplicationInsightsKey <String>] [-OSType <String>] [-RuntimeVersion <String>] [-FunctionsVersion <String>]
  [-DisableApplicationInsights] [-PassThru] [-Tag <Hashtable>] [-AppSetting <Hashtable>]
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityID <String[]>] [-DefaultProfile <PSObject>] [-NoWait]
- [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByAppServicePlan
@@ -29,7 +29,19 @@ New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName
  [-OSType <String>] [-RuntimeVersion <String>] [-FunctionsVersion <String>] [-DisableApplicationInsights]
  [-PassThru] [-Tag <Hashtable>] [-AppSetting <Hashtable>] [-IdentityType <ManagedServiceIdentityType>]
  [-IdentityID <String[]>] -PlanName <String> [-DefaultProfile <PSObject>] [-NoWait] [-AsJob]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### EnvironmentForContainerApp
+```
+New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName <String>
+ [-SubscriptionId <String>] [-ApplicationInsightsName <String>] [-ApplicationInsightsKey <String>]
+ [-DisableApplicationInsights] [-PassThru] [-Tag <Hashtable>] [-AppSetting <Hashtable>]
+ [-IdentityType <ManagedServiceIdentityType>] [-IdentityID <String[]>] -Environment <String> [-Image <String>]
+ [-RegistryCredential <PSCredential>] [-WorkloadProfileName <String>] [-ResourceCpu <Double>]
+ [-ResourceMemory <String>] [-ScaleMaxReplica <Int32>] [-ScaleMinReplica <Int32>] [-RegistryServer <String>]
+ [-DefaultProfile <PSObject>] [-NoWait] [-AsJob] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CustomDockerImage
@@ -37,9 +49,9 @@ New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName
 New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName <String>
  [-SubscriptionId <String>] [-ApplicationInsightsName <String>] [-ApplicationInsightsKey <String>]
  [-DisableApplicationInsights] [-PassThru] [-Tag <Hashtable>] [-AppSetting <Hashtable>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityID <String[]>] -PlanName <String>
- -DockerImageName <String> [-DockerRegistryCredential <PSCredential>] [-DefaultProfile <PSObject>] [-NoWait]
- [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IdentityType <ManagedServiceIdentityType>] [-IdentityID <String[]>] -Image <String>
+ [-RegistryCredential <PSCredential>] -PlanName <String> [-DefaultProfile <PSObject>] [-NoWait] [-AsJob]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,6 +91,17 @@ New-AzFunctionApp -Name MyUniqueFunctionAppName `
 ```
 
 This command creates a function app using a using a private ACR image.
+
+### Example 4: Create a function app on container app.
+```powershell
+New-AzFunctionApp -Name MyUniqueFunctionAppName `
+                  -ResourceGroupName MyResourceGroupName `
+                  -StorageAccountName MyStorageAccountName `
+                  -Environment MyEnvironment `
+                  -WorkloadProfileName MyWorkloadProfileName
+```
+
+This command create a function app on container app using the default .Net image.
 
 ## PARAMETERS
 
@@ -172,33 +195,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DockerImageName
-Linux only.
-Container image name from Docker Registry, e.g.
-publisher/image-name:tag.
+### -Environment
+Name of the container app environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: CustomDockerImage
+Parameter Sets: EnvironmentForContainerApp
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DockerRegistryCredential
-The container registry user name and password.
-Required for private registries.
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: CustomDockerImage
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -249,6 +254,33 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Image
+Container image name, e.g., publisher/image-name:tag.
+
+```yaml
+Type: System.String
+Parameter Sets: EnvironmentForContainerApp
+Aliases: DockerImageName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: CustomDockerImage
+Aliases: DockerImageName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -346,6 +378,69 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RegistryCredential
+The container registry username and password.
+Required for private registries.
+
+```yaml
+Type: System.Management.Automation.PSCredential
+Parameter Sets: EnvironmentForContainerApp, CustomDockerImage
+Aliases: DockerRegistryCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RegistryServer
+The container registry server hostname, e.g.
+myregistry.azurecr.io.
+
+```yaml
+Type: System.String
+Parameter Sets: EnvironmentForContainerApp
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceCpu
+The CPU in cores of the container app.
+e.g., 0.75.
+
+```yaml
+Type: System.Double
+Parameter Sets: EnvironmentForContainerApp
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -355,6 +450,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceMemory
+The memory size of the container app.
+e.g., 1.0Gi.
+
+```yaml
+Type: System.String
+Parameter Sets: EnvironmentForContainerApp
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -382,6 +493,36 @@ The function runtime.
 ```yaml
 Type: System.String
 Parameter Sets: Consumption, ByAppServicePlan
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScaleMaxReplica
+The maximum number of replicas when creating a function app on container app.
+
+```yaml
+Type: System.Int32
+Parameter Sets: EnvironmentForContainerApp
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScaleMinReplica
+The minimum number of replicas when create function app on container app.
+
+```yaml
+Type: System.Int32
+Parameter Sets: EnvironmentForContainerApp
 Aliases:
 
 Required: False
@@ -436,6 +577,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WorkloadProfileName
+The workload profile name to run the container app on.
+
+```yaml
+Type: System.String
+Parameter Sets: EnvironmentForContainerApp
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -474,7 +630,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
 
 ## NOTES
 

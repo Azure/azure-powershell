@@ -25,6 +25,7 @@ using System.IO;
 using System.Management.Automation;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
+using System.Text.RegularExpressions;
 
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
@@ -202,7 +203,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 switch (ParameterSetName)
                 {
                     case ImportCertificateFromFileParameterSet:
-                        byte[] base64Bytes = File.ReadAllBytes(FilePath);
+                        byte[] bytes = File.ReadAllBytes(FilePath);
                         bool doImport = false;
 
                         if (IsPemFile(FilePath))
@@ -227,7 +228,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                                 this.Track2DataClient.ImportCertificate(
                                     VaultName,
                                     Name,
-                                    base64Bytes,
+                                    bytes,
                                     Password,
                                     Tag?.ConvertToDictionary(),
                                     IsPemFile(FilePath) ? Constants.PemContentType : Constants.Pkcs12ContentType,
@@ -235,7 +236,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                                 this.Track2DataClient.MergeCertificate(
                                 VaultName,
                                 Name,
-                                new List<byte[]> { base64Bytes },
+                                GetEnumerableBytes(FilePath),
                                 Tag == null ? null : Tag.ConvertToDictionary());
 
                         break;
@@ -252,6 +253,34 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 this.WriteObject(certBundle);
             }
+        }
+
+        /// <summary>
+        /// Read cert data between cert header and footer and convert it to bytes list
+        /// </summary>
+        /// <param name="filePath"> The full path to cert</param>
+        /// <returns>Bytes list for cert data</returns>
+        /// <exception cref="AzPSException"></exception>
+        private IEnumerable<byte[]> GetEnumerableBytes(string filePath)
+        {
+            var bytesList = new List<byte[]>();
+            try
+            {
+                string texts = File.ReadAllText(filePath);
+                // Match cert data between cert header and footer and convert it to bytes
+                var pattern = @"-----BEGIN CERTIFICATE-----([^-]+)-----END CERTIFICATE-----";
+                Match m = Regex.Match(texts, pattern, RegexOptions.IgnoreCase);
+                while (m.Success)
+                {
+                    bytesList.Add(Convert.FromBase64String(m.Groups[1].Value.Replace(Environment.NewLine, "")));
+                    m = m.NextMatch();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new AzPSException(string.Format(Resources.ProcessingCertError, filePath, ex.Message), Common.ErrorKind.UserError);
+            }
+            return bytesList;
         }
 
         private bool IsPemFile(string filePath)

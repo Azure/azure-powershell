@@ -1,0 +1,84 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/providers/Microsoft.Compute/virtualMachines?api-version=2024-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTM3NTEwZDctMzNiNi00Njc2LTg4NmYtZWU3NWJjYzAxODcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXM/YXBpLXZlcnNpb249MjAyNC0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c6d08848-d048-4554-8338-94c5a51ef7e9"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3124.26714",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/8.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/HighCostGetSubscriptionMaximum;899"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "22ce7d2d-8c95-475a-9743-fe7f09be5dd8"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "a36c1c16-f7ba-4820-9fba-48595d30af95"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2:20240620T192308Z:a36c1c16-f7ba-4820-9fba-48595d30af95"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 45D0144D49294FC29023018DF3C79DC7 Ref B: BL2AA2030103049 Ref C: 2024-06-20T19:23:07Z"
+        ],
+        "Date": [
+          "Thu, 20 Jun 2024 19:23:08 GMT"
+        ],
+        "Content-Length": [
+          "2366"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"mytestvm\",\r\n      \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/MYRESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/mytestvm\",\r\n      \"type\": \"Microsoft.Compute/virtualMachines\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"azsecpack\": \"nonprod\",\r\n        \"platformsettings.host_environment.service.platform_optedin_for_rootcerts\": \"true\"\r\n      },\r\n      \"properties\": {\r\n        \"hardwareProfile\": {\r\n          \"vmSize\": \"Standard_D2s_v3\"\r\n        },\r\n        \"provisioningState\": \"Failed\",\r\n        \"vmId\": \"ae6bfd4e-41aa-4f96-b779-6734400206d8\",\r\n        \"storageProfile\": {\r\n          \"imageReference\": {\r\n            \"publisher\": \"kinvolk\",\r\n            \"offer\": \"flatcar-container-linux-free\",\r\n            \"sku\": \"stable-gen2\",\r\n            \"version\": \"latest\",\r\n            \"exactVersion\": \"3815.2.2\"\r\n          },\r\n          \"osDisk\": {\r\n            \"osType\": \"Linux\",\r\n            \"name\": \"mytestvm_OsDisk_1_07c20fb9eb8e43dd9c76f9c5b7ad7f1c\",\r\n            \"createOption\": \"FromImage\",\r\n            \"caching\": \"ReadWrite\",\r\n            \"managedDisk\": {\r\n              \"storageAccountType\": \"Premium_LRS\",\r\n              \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/mytestvm_OsDisk_1_07c20fb9eb8e43dd9c76f9c5b7ad7f1c\"\r\n            },\r\n            \"deleteOption\": \"Detach\",\r\n            \"diskSizeGB\": 30\r\n          },\r\n          \"dataDisks\": [],\r\n          \"diskControllerType\": \"SCSI\"\r\n        },\r\n        \"osProfile\": {\r\n          \"computerName\": \"mytestvm\",\r\n          \"adminUsername\": \"usertest\",\r\n          \"linuxConfiguration\": {\r\n            \"disablePasswordAuthentication\": false,\r\n            \"provisionVMAgent\": true,\r\n            \"patchSettings\": {\r\n              \"patchMode\": \"ImageDefault\",\r\n              \"assessmentMode\": \"ImageDefault\"\r\n            }\r\n          },\r\n          \"secrets\": [],\r\n          \"allowExtensionOperations\": true,\r\n          \"requireGuestProvisionSignal\": true\r\n        },\r\n        \"networkProfile\": {\r\n          \"networkInterfaces\": [\r\n            {\r\n              \"id\": \"/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/MyResourceGroup/providers/Microsoft.Network/networkInterfaces/mytestvm\"\r\n            }\r\n          ]\r\n        },\r\n        \"timeCreated\": \"2024-05-21T10:23:00.9788091-04:00\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-AddVMDataDisk": [
+      "crptestps9113"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "e37510d7-33b6-4676-886f-ee75bcc01871"
+  }
+}

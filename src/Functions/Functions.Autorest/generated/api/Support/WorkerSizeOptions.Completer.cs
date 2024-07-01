@@ -50,9 +50,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'D3'", "D3", global::System.Management.Automation.CompletionResultType.ParameterValue, "D3");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "SmallV3".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'SmallV3'", "SmallV3", global::System.Management.Automation.CompletionResultType.ParameterValue, "SmallV3");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "MediumV3".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'MediumV3'", "MediumV3", global::System.Management.Automation.CompletionResultType.ParameterValue, "MediumV3");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "LargeV3".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'LargeV3'", "LargeV3", global::System.Management.Automation.CompletionResultType.ParameterValue, "LargeV3");
+            }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NestedSmall".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'NestedSmall'", "NestedSmall", global::System.Management.Automation.CompletionResultType.ParameterValue, "NestedSmall");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "NestedSmallLinux".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'NestedSmallLinux'", "NestedSmallLinux", global::System.Management.Automation.CompletionResultType.ParameterValue, "NestedSmallLinux");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Default".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
