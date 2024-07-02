@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Compute
-online version: https://learn.microsoft.com/powershell/module/az.compute/invoke-azspotplacementrecommender
+online version: https://learn.microsoft.com/powershell/module/az.compute/invoke-azspotplacementscore
 schema: 2.0.0
 ---
 
-# Invoke-AzSpotPlacementRecommender
+# Invoke-AzSpotPlacementScore
 
 ## SYNOPSIS
 Generates placement scores for Spot VM skus.
@@ -14,28 +14,27 @@ Generates placement scores for Spot VM skus.
 
 ### PostExpanded (Default)
 ```
-Invoke-AzSpotPlacementRecommender -Location <String> [-SubscriptionId <String>] [-AvailabilityZone]
+Invoke-AzSpotPlacementScore -Location <String> [-SubscriptionId <String>] [-AvailabilityZone]
  [-DesiredCount <Int32>] [-DesiredLocation <String[]>] [-DesiredSize <IResourceSize[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Post
 ```
-Invoke-AzSpotPlacementRecommender -Location <String>
- -SpotPlacementRecommenderInput <ISpotPlacementRecommenderInput> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzSpotPlacementScore -Location <String> -SpotPlacementScoresInput <ISpotPlacementScoresInput>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PostViaIdentity
 ```
-Invoke-AzSpotPlacementRecommender -InputObject <IComputeIdentity>
- -SpotPlacementRecommenderInput <ISpotPlacementRecommenderInput> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Invoke-AzSpotPlacementScore -InputObject <IComputeIdentity>
+ -SpotPlacementScoresInput <ISpotPlacementScoresInput> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### PostViaIdentityExpanded
 ```
-Invoke-AzSpotPlacementRecommender -InputObject <IComputeIdentity> [-AvailabilityZone] [-DesiredCount <Int32>]
+Invoke-AzSpotPlacementScore -InputObject <IComputeIdentity> [-AvailabilityZone] [-DesiredCount <Int32>]
  [-DesiredLocation <String[]>] [-DesiredSize <IResourceSize[]>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -45,7 +44,7 @@ Generates placement scores for Spot VM skus.
 
 ## EXAMPLES
 
-### Example 1: Regionally scoped Spot Placement Recommender scores
+### Example 1: Regionally scoped Spot Placement scores
 ```powershell
 $resourceSku1 = @{sku = "Standard_D2_v3"}
 $resourceSku2 = @{sku = "Standard_D2_v2"}
@@ -53,7 +52,7 @@ $resourceSku3 = @{sku = "Standard_D4_v3"}
 $desiredSizes = $resourceSku1,$resourceSku2,$resourceSku3
 $desiredLocations = 'japaneast','southcentralus','centralus'
 
-$response = Invoke-AzSpotPlacementRecommender -Location eastus -DesiredCount 1 -DesiredLocation $desiredLocations -DesiredSize $desiredSizes
+$response = Invoke-AzSpotPlacementScore -Location eastus -DesiredCount 1 -DesiredLocation $desiredLocations -DesiredSize $desiredSizes
 $response.PlacementScore
 ```
 
@@ -71,9 +70,9 @@ AvailabilityZone IsQuotaAvailable Region         Score                     Sku
                  True             centralus      RestrictedSkuNotAvailable Standard_D4_v3
 ```
 
-Returns regionally scoped spot placement recommender scores for the input.
+Returns regionally scoped spot placement scores for the input.
 
-### Example 2: Zonally scoped Spot Placement Recommender scores
+### Example 2: Zonally scoped Spot Placement Scores
 ```powershell
 $resourceSku1 = @{sku = "Standard_D2_v3"}
 $resourceSku2 = @{sku = "Standard_D2_v2"}
@@ -81,7 +80,7 @@ $resourceSku3 = @{sku = "Standard_D4_v3"}
 $desiredSizes = $resourceSku1,$resourceSku2,$resourceSku3
 $desiredLocations = 'japaneast','southcentralus','centralus'
 
-$response = Invoke-AzSpotPlacementRecommender -Location eastus -DesiredCount 1 -DesiredLocation $desiredLocations -DesiredSize $desiredSizes -AvailabilityZone
+$response = Invoke-AzSpotPlacementScore -Location eastus -DesiredCount 1 -DesiredLocation $desiredLocations -DesiredSize $desiredSizes -AvailabilityZone
 $response.PlacementScore
 ```
 
@@ -117,9 +116,9 @@ AvailabilityZone IsQuotaAvailable Region         Score               Sku
 3                True             centralus      High                Standard_D4_v3
 ```
 
-Returns zonally scoped spot placement recommender scores for the input.
+Returns zonally scoped spot placement scores for the input.
 
-### Example 3: Regionally scoped Spot Placement Recommender scores using SpotPlacementRecommenderInput parameter as argument
+### Example 3: Regionally scoped Spot Placement Scores using SpotPlacementScoresInput parameter as argument
 ```powershell
 $resourceSku1 = @{sku = "Standard_D2_v3"}
 $resourceSku2 = @{sku = "Standard_D2_v2"}
@@ -128,9 +127,9 @@ $desiredSizes = $resourceSku1,$resourceSku2,$resourceSku3
 $desiredLocations = 'japaneast','southcentralus','centralus'
 $desiredCount = 1
 
-$spotPlacementRecommenderInput = @{desiredLocation = $desiredLocations; desiredSize = $desiredSizes; desiredCount = $desiredCount; availabilityZone = $false}
+$spotPlacementScoresInput = @{desiredLocation = $desiredLocations; desiredSize = $desiredSizes; desiredCount = $desiredCount; availabilityZone = $false}
 
-$response = Invoke-AzSpotPlacementRecommender -Location eastus -SpotPlacementRecommenderInput $spotPlacementRecommenderInput
+$response = Invoke-AzSpotPlacementScore -Location eastus -SpotPlacementScoresInput $spotPlacementScoresInput
 $response.PlacementScore
 ```
 
@@ -148,9 +147,9 @@ AvailabilityZone IsQuotaAvailable Region         Score                     Sku
                  True             centralus      RestrictedSkuNotAvailable Standard_D4_v3
 ```
 
-Returns regionally scoped spot placement recommender scores for the input.
+Returns regionally scoped spot placement scores for the input.
 
-### Example 2: Zonally scoped Spot Placement Recommender scores using SpotPlacementRecommenderInput parameter as argument
+### Example 4: Zonally scoped Spot Placement scores using SpotPlacementScoresInput parameter as argument
 ```powershell
 $resourceSku1 = @{sku = "Standard_D2_v3"}
 $resourceSku2 = @{sku = "Standard_D2_v2"}
@@ -158,10 +157,8 @@ $resourceSku3 = @{sku = "Standard_D4_v3"}
 $desiredSizes = $resourceSku1,$resourceSku2,$resourceSku3
 $desiredLocations = 'japaneast','southcentralus','centralus'
 $desiredCount = 1
-
-$spotPlacementRecommenderInput = @{desiredLocation = $desiredLocations; desiredSize = $desiredSizes; desiredCount = $desiredCount; availabilityZone = $true}
-
-$response = Invoke-AzSpotPlacementRecommender -Location eastus -SpotPlacementRecommenderInput $spotPlacementRecommenderInput
+$spotPlacementScoresInput = @{desiredLocation = $desiredLocations; desiredSize = $desiredSizes; desiredCount = $desiredCount; availabilityZone = $true}
+$response = Invoke-AzSpotPlacementScore -Location eastus -SpotPlacementScoresInput $spotPlacementScoresInput
 $response.PlacementScore
 ```
 
@@ -197,7 +194,7 @@ AvailabilityZone IsQuotaAvailable Region         Score Sku
 3                True             centralus      High  Standard_D4_v3
 ```
 
-Returns zonally scoped spot placement recommender scores for the input.
+Returns zonally scoped spot placement scores for the input.
 
 ## PARAMETERS
 
@@ -267,7 +264,7 @@ The desired resource SKUs.
 To construct, see NOTES section for DESIREDSIZE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240301Preview.IResourceSize[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.IResourceSize[]
 Parameter Sets: PostExpanded, PostViaIdentityExpanded
 Aliases:
 
@@ -309,14 +306,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SpotPlacementRecommenderInput
-SpotPlacementRecommender API Input.
-To construct, see NOTES section for SPOTPLACEMENTRECOMMENDERINPUT properties and create a hash table.
+### -SpotPlacementScoresInput
+SpotPlacementScores API Input.
+To construct, see NOTES section for SPOTPLACEMENTSCORESINPUT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240301Preview.ISpotPlacementRecommenderInput
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresInput
 Parameter Sets: Post, PostViaIdentity
-Aliases:
+Aliases: SpotPlacementRecommenderInput
 
 Required: True
 Position: Named
@@ -377,15 +374,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240301Preview.ISpotPlacementRecommenderInput
+### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresInput
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240301Preview.ISpotPlacementRecommenderResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20240601Preview.ISpotPlacementScoresResponse
 
 ## NOTES
+
+ALIASES
+
+Invoke-AzSpotPlacementRecommender
 
 ## RELATED LINKS
 

@@ -1,5 +1,5 @@
 ---
-external help file: Az.Compute-help.xml
+external help file:
 Module Name: Az.Compute
 online version: https://learn.microsoft.com/powershell/module/az.compute/set-azvmssvmruncommand
 schema: 2.0.0
@@ -15,7 +15,7 @@ The operation to create or update the VMSS VM run command.
 ### UpdateExpanded (Default)
 ```
 Set-AzVmssVMRunCommand -InstanceId <String> -ResourceGroupName <String> -RunCommandName <String>
- -VMScaleSetName <String> [-SubscriptionId <String>] -Location <String> [-AsyncExecution]
+ -VMScaleSetName <String> -Location <String> [-SubscriptionId <String>] [-AsyncExecution]
  [-ErrorBlobManagedIdentityClientId <String>] [-ErrorBlobManagedIdentityObjectId <String>]
  [-ErrorBlobUri <String>] [-OutputBlobManagedIdentityClientId <String>]
  [-OutputBlobManagedIdentityObjectId <String>] [-OutputBlobUri <String>]
@@ -23,22 +23,21 @@ Set-AzVmssVMRunCommand -InstanceId <String> -ResourceGroupName <String> -RunComm
  [-RunAsPassword <String>] [-RunAsUser <String>] [-ScriptUriManagedIdentityClientId <String>]
  [-ScriptUriManagedIdentityObjectId <String>] [-SourceCommandId <String>] [-SourceScript <String>]
  [-SourceScriptUri <String>] [-Tag <Hashtable>] [-TimeoutInSecond <Int32>] [-TreatFailureAsDeploymentFailure]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ScriptLocalPath
 ```
 Set-AzVmssVMRunCommand -InstanceId <String> -ResourceGroupName <String> -RunCommandName <String>
- -VMScaleSetName <String> [-SubscriptionId <String>] -Location <String> [-AsyncExecution]
- [-ErrorBlobManagedIdentityClientId <String>] [-ErrorBlobManagedIdentityObjectId <String>]
+ -VMScaleSetName <String> -Location <String> -ScriptLocalPath <String> [-SubscriptionId <String>]
+ [-AsyncExecution] [-ErrorBlobManagedIdentityClientId <String>] [-ErrorBlobManagedIdentityObjectId <String>]
  [-ErrorBlobUri <String>] [-OutputBlobManagedIdentityClientId <String>]
  [-OutputBlobManagedIdentityObjectId <String>] [-OutputBlobUri <String>]
  [-Parameter <IRunCommandInputParameter[]>] [-ProtectedParameter <IRunCommandInputParameter[]>]
  [-RunAsPassword <String>] [-RunAsUser <String>] [-ScriptUriManagedIdentityClientId <String>]
  [-ScriptUriManagedIdentityObjectId <String>] [-Tag <Hashtable>] [-TimeoutInSecond <Int32>]
- [-TreatFailureAsDeploymentFailure] -ScriptLocalPath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TreatFailureAsDeploymentFailure] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -422,6 +421,7 @@ Accept wildcard characters: False
 
 ### -ScriptLocalPath
 
+
 ```yaml
 Type: System.String
 Parameter Sets: ScriptLocalPath
@@ -634,3 +634,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

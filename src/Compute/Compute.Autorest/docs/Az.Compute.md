@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Compute
-Module Guid: 64d81db2-280c-4cff-a9f8-9e3ef386b229
+Module Guid: 7a7de149-561d-4765-80dd-4ab0f48c1085
 Download Help Link: https://learn.microsoft.com/powershell/module/az.compute
 Help Version: 1.0.0.0
 Locale: en-US
@@ -17,7 +17,7 @@ Retrieves information about a gallery Application Definition.
 ### [Get-AzGalleryApplicationVersion](Get-AzGalleryApplicationVersion.md)
 Retrieves information about a gallery Application Version.
 
-### [Invoke-AzSpotPlacementRecommender](Invoke-AzSpotPlacementRecommender.md)
+### [Invoke-AzSpotPlacementScore](Invoke-AzSpotPlacementScore.md)
 Generates placement scores for Spot VM skus.
 
 ### [New-AzGalleryApplication](New-AzGalleryApplication.md)

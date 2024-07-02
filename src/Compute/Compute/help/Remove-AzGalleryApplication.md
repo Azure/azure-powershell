@@ -1,5 +1,5 @@
 ---
-external help file: Az.Compute-help.xml
+external help file:
 Module Name: Az.Compute
 online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azgalleryapplication
 schema: 2.0.0
@@ -15,14 +15,14 @@ Delete a gallery Application.
 ### Delete (Default)
 ```
 Remove-AzGalleryApplication -GalleryName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzGalleryApplication -InputObject <IComputeIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,7 +30,7 @@ Delete a gallery Application.
 
 ## EXAMPLES
 
-### Example 1: Remove a Gallery Application
+### Example 1: Remove a Gallery Application 
 ```powershell
 Remove-AzGalleryApplication -ResourceGroupName $rgNmae -GalleryName $galleryName -Name $name
 ```
@@ -222,3 +222,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

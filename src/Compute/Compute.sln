@@ -47,7 +47,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network", "..\Network\Netwo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{F45CEC09-0408-43D6-A679-5149715D9904}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Compute", "..\..\generated\Compute\Compute.Autorest\Az.Compute.csproj", "{83D6EA7D-4E3A-4C54-823F-3A9820E27103}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Compute", "Compute.Autorest\Az.Compute.csproj", "{C6124D48-95BA-4FC8-AC4C-929675D82A62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -134,10 +134,10 @@ Global
 		{F45CEC09-0408-43D6-A679-5149715D9904}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F45CEC09-0408-43D6-A679-5149715D9904}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F45CEC09-0408-43D6-A679-5149715D9904}.Release|Any CPU.Build.0 = Release|Any CPU
-		{83D6EA7D-4E3A-4C54-823F-3A9820E27103}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{83D6EA7D-4E3A-4C54-823F-3A9820E27103}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{83D6EA7D-4E3A-4C54-823F-3A9820E27103}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{83D6EA7D-4E3A-4C54-823F-3A9820E27103}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6124D48-95BA-4FC8-AC4C-929675D82A62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6124D48-95BA-4FC8-AC4C-929675D82A62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6124D48-95BA-4FC8-AC4C-929675D82A62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6124D48-95BA-4FC8-AC4C-929675D82A62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2FBCF816-C140-488F-B4D7-B1B0056DE8A7} = {83FADAE0-1F01-467B-9D7B-620B180DFA63}
