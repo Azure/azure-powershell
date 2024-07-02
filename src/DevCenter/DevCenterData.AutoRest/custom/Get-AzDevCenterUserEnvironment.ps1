@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Gets an environment
+Gets an environment.
 .Description
-Gets an environment
+Gets an environment.
 .Example
 {{ Add code here }}
 .Example
@@ -27,28 +27,33 @@ Gets an environment
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
-  [Name <String>]: The name of an action that will take place on a Dev Box.
-  [CatalogName <String>]: The name of the catalog
-  [DefinitionName <String>]: The name of the environment definition
-  [DevBoxName <String>]: The name of a Dev Box.
-  [EnvironmentName <String>]: The name of the environment.
+  [ActionName <String>]: The name of the action.
+  [CatalogName <String>]: Name of the catalog.
+  [CustomizationGroupName <String>]: Name of the customization group.
+  [CustomizationTaskId <String>]: A customization task ID.
+  [DefinitionName <String>]: Name of the environment definition.
+  [DevBoxName <String>]: Display name for the Dev Box.
+  [EnvironmentName <String>]: Environment name.
+  [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
-  [PoolName <String>]: The name of a pool of Dev Boxes.
-  [ProjectName <String>]: The DevCenter Project upon which to execute operations.
-  [ScheduleName <String>]: The name of a schedule.
+  [OperationId <String>]: Unique identifier for the Dev Box operation.
+  [PoolName <String>]: Pool name.
+  [ProjectName <String>]: Name of the project.
+  [ScheduleName <String>]: Display name for the Schedule.
+  [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironment
+https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserenvironment
 #>
 function Get-AzDevCenterUserEnvironment {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment])]
     [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='Get', Mandatory)]
@@ -59,7 +64,7 @@ function Get-AzDevCenterUserEnvironment {
         [System.String]
         # The DevCenter-specific URI to operate on.
         ${Endpoint},
-    
+
         [Parameter(ParameterSetName='GetViaIdentityByDevCenter', Mandatory)]
         [Parameter(ParameterSetName='List1ByDevCenter', Mandatory)]
         [Parameter(ParameterSetName='ListByDevCenter', Mandatory)]
@@ -75,7 +80,7 @@ function Get-AzDevCenterUserEnvironment {
         [Alias('EnvironmentName')]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
         [System.String]
-        # The name of the environment.
+        # Environment name.
         ${Name},
     
         [Parameter(ParameterSetName='Get', Mandatory)]
@@ -86,7 +91,7 @@ function Get-AzDevCenterUserEnvironment {
         [Parameter(ParameterSetName='GetByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
         [System.String]
-        # The DevCenter Project upon which to execute operations.
+        # Name of the project.
         ${ProjectName},
     
         [Parameter(ParameterSetName='Get', Mandatory)]
