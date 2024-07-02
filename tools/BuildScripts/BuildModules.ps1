@@ -164,4 +164,4 @@ $removeScriptPath = Join-Path $toolDirectory 'BuildScripts' 'RemoveUnwantedFiles
 . $removeScriptPath -RootPath (Join-Path $RepoArtifacts $Configuration) -CodeSign $CodeSign
 
 $updateModuleScriptPath = Join-Path $toolDirectory 'UpdateModules.ps1'
-. $updateModuleScriptPath -BuildConfig $Configuration -Scope $Scope
+pwsh $updateModuleScriptPath -BuildConfig $Configuration -Scope $Scope
