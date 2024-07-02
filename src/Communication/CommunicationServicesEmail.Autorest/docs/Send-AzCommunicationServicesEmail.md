@@ -88,7 +88,7 @@ $emailRecipientTo = @(
    @{
         Address = "abc@contoso.com"
         DisplayName = "abc"
-    }
+    },
    @{
         Address = "def@contoso.com"
         DisplayName = "def"
@@ -122,8 +122,7 @@ $emailRecipientCc = @(
    @{
         Address = "abc@contoso.com"
         DisplayName = "abc"
-    },
-
+    }
 )
 
 $emailRecipientReplyTo = @(
