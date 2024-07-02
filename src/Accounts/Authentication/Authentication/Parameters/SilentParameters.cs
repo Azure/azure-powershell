@@ -22,6 +22,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public string HomeAccountId { get; set; }
 
+        public bool UseWam { get; set; }
+
         public SilentParameters(
             PowerShellTokenCacheProvider tokenCacheProvider,
             IAzureEnvironment environment,
@@ -29,10 +31,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             string tenantId,
             string resourceId,
             string userId,
-            string homeAccountId) : base(tokenCacheProvider, environment, tokenCache, tenantId, resourceId)
+            string homeAccountId,
+            bool useWAM) : base(tokenCacheProvider, environment, tokenCache, tenantId, resourceId)
         {
             UserId = userId;
             HomeAccountId = homeAccountId;
+            UseWam = useWAM;
         }
     }
 }

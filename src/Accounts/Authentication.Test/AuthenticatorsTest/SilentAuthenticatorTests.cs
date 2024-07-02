@@ -82,7 +82,8 @@ namespace Common.Authenticators.Test
                 TestTenantId,
                 TestResourceId,
                 account.Id,
-                accountId);
+                accountId,
+                false);
 
             //Run
             var authenticator = new SilentAuthenticator();
