@@ -25,9 +25,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlertsManagement.Test", "Al
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlertsManagement", "AlertsManagement\AlertsManagement.csproj", "{43D0D91E-6F74-4259-A38A-8CEE881E5E2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.PrometheusRuleGroups", "PrometheusRuleGroups.Autorest\Az.PrometheusRuleGroups.csproj", "{1C48E1B7-38E4-46A5-8086-DA38851E3663}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{7C710008-8CE2-478D-A8C8-66395BDAD9B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.PrometheusRuleGroups", "..\..\generated\AlertsManagement\PrometheusRuleGroups.Autorest\Az.PrometheusRuleGroups.csproj", "{557FC6D5-E2AE-4B20-BED9-0776107A443C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,14 +74,14 @@ Global
 		{43D0D91E-6F74-4259-A38A-8CEE881E5E2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43D0D91E-6F74-4259-A38A-8CEE881E5E2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43D0D91E-6F74-4259-A38A-8CEE881E5E2F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1C48E1B7-38E4-46A5-8086-DA38851E3663}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1C48E1B7-38E4-46A5-8086-DA38851E3663}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1C48E1B7-38E4-46A5-8086-DA38851E3663}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1C48E1B7-38E4-46A5-8086-DA38851E3663}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7C710008-8CE2-478D-A8C8-66395BDAD9B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7C710008-8CE2-478D-A8C8-66395BDAD9B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C710008-8CE2-478D-A8C8-66395BDAD9B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C710008-8CE2-478D-A8C8-66395BDAD9B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{557FC6D5-E2AE-4B20-BED9-0776107A443C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{557FC6D5-E2AE-4B20-BED9-0776107A443C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{557FC6D5-E2AE-4B20-BED9-0776107A443C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{557FC6D5-E2AE-4B20-BED9-0776107A443C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{52D2A007-3D32-4546-8B3F-1D44A7D63606} = {B87E9415-9C6C-4C79-B5F2-8EFF71B3C153}
