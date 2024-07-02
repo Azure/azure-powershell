@@ -107,6 +107,7 @@ directive:
     # CDN content
     - PurgeParameters
     - LoadParameters
+    - MigrationEndpointMapping
 
     # AFDX profile LogScrubbing, need to rename the memory ojects, not sure how to rename a memory object currently.
     # - ProfileLogScrubbing
@@ -117,9 +118,6 @@ directive:
     # Upgrade sku
     # - ProfileUpgradeParameters
     # - ProfileChangeSkuWafMapping
-    - model-cmdlet:
-      - model-name: MigrationEndpointMapping
-        cmdlet-name: Move-AzFrontDoorCdnCdnProfileToAFD
 
   # rename CdnProfiles_CdnMigrateToAfd to avoid conflict with Profiles_Migrate
   - from: swagger-document

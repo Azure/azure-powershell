@@ -192,6 +192,9 @@ Create an in-memory object for LoadParameters.
 ### [New-AzCdnManagedHttpsParametersObject](New-AzCdnManagedHttpsParametersObject.md)
 Create an in-memory object for CdnManagedHttpsParameters.
 
+### [New-AzCdnMigrationEndpointMappingObject](New-AzCdnMigrationEndpointMappingObject.md)
+Create an in-memory object for MigrationEndpointMapping.
+
 ### [New-AzCdnOrigin](New-AzCdnOrigin.md)
 Creates a new origin within the specified endpoint.
 
