@@ -18,8 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Onboarding Service Api version 2022-09-01
-* Enable ManagedIdentity Feature (Preview)
+* Onboarded Service Api version 2022-09-01
+* Enabled ManagedIdentity Feature (Preview)
   
 ## Version 2.1.1
 * Updated dataset limit from 5 Tb to 100 Tib.
