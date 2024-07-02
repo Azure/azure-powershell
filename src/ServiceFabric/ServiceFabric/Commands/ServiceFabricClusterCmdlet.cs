@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         protected VmImageKind GetVmImage(Cluster cluster)
         {
-            var vmImage = cluster.VmImage;
+            var vmImage = cluster.VMImage;
             VmImageKind vmImageKind;
             if (Enum.TryParse(vmImage, out vmImageKind))
             {

@@ -13,13 +13,15 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
     public static partial class ManagedClusterVersionOperationsExtensions
     {
         /// <summary>
-        /// Gets information about an available Service Fabric managed cluster code version.
+        /// Gets information about an available Service Fabric managed cluster code
+        /// version.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
         /// </param>
         /// <param name='clusterVersion'>
         /// The cluster code version.
@@ -30,13 +32,15 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Gets information about an available Service Fabric managed cluster code version.
+        /// Gets information about an available Service Fabric managed cluster code
+        /// version.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
         /// </param>
         /// <param name='clusterVersion'>
         /// The cluster code version.
@@ -52,13 +56,15 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
-        /// Gets information about an available Service Fabric cluster code version by environment.
+        /// Gets information about an available Service Fabric cluster code version by
+        /// environment.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
         /// </param>
         /// <param name='clusterVersion'>
         /// The cluster code version.
@@ -69,13 +75,15 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Gets information about an available Service Fabric cluster code version by environment.
+        /// Gets information about an available Service Fabric cluster code version by
+        /// environment.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
         /// </param>
         /// <param name='clusterVersion'>
         /// The cluster code version.
@@ -91,13 +99,15 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
-        /// Gets all available code versions for Service Fabric cluster resources by location.
+        /// Gets all available code versions for Service Fabric cluster resources by
+        /// location.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
         /// </param>
         public static System.Collections.Generic.IList<ManagedClusterCodeVersionResult> List(this IManagedClusterVersionOperations operations, string location)
         {
@@ -105,13 +115,15 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Gets all available code versions for Service Fabric cluster resources by location.
+        /// Gets all available code versions for Service Fabric cluster resources by
+        /// location.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -124,13 +136,15 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
-        /// Gets all available code versions for Service Fabric cluster resources by environment.
+        /// Gets all available code versions for Service Fabric cluster resources by
+        /// environment.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
         /// </param>
         public static System.Collections.Generic.IList<ManagedClusterCodeVersionResult> ListByEnvironment(this IManagedClusterVersionOperations operations, string location)
         {
@@ -138,13 +152,15 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Gets all available code versions for Service Fabric cluster resources by environment.
+        /// Gets all available code versions for Service Fabric cluster resources by
+        /// environment.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
