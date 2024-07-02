@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 }
                 else
                 {
-                    currentNodeType.VmInstanceCount = this.InstanceCount.Value;
+                    currentNodeType.VMInstanceCount = this.InstanceCount.Value;
                 }
             }
 

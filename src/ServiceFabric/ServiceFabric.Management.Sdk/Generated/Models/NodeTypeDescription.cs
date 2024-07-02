@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// - Gold - The infrastructure jobs can be paused for a duration of 2 hours
         /// per UD. Gold durability can be enabled only on full node VM skus like
         /// D15_V2, G5 etc.
-        /// Possible values include: 'Bronze', 'Silver', 'Gold'</param>
+        /// Possible values include: &#39;Bronze&#39;, &#39;Silver&#39;, &#39;Gold&#39;</param>
 
         /// <param name="applicationPorts">The range of ports from which cluster assigned port to Service Fabric
         /// applications.
@@ -82,7 +82,11 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
 
         /// <param name="multipleAvailabilityZones">Indicates if the node type is enabled to support multiple zones.
         /// </param>
-        public NodeTypeDescription(string name, int clientConnectionEndpointPort, int httpGatewayEndpointPort, bool isPrimary, int vmInstanceCount, System.Collections.Generic.IDictionary<string, string> placementProperties = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> capacities = default(System.Collections.Generic.IDictionary<string, string>), string durabilityLevel = default(string), EndpointRangeDescription applicationPorts = default(EndpointRangeDescription), EndpointRangeDescription ephemeralPorts = default(EndpointRangeDescription), int? reverseProxyEndpointPort = default(int?), bool? isStateless = default(bool?), bool? multipleAvailabilityZones = default(bool?))
+
+        /// <param name="httpGatewayTokenAuthEndpointPort">The port used for token-auth based HTTPS connections to the cluster. Cannot
+        /// be set to the same port as HttpGatewayEndpoint.
+        /// </param>
+        public NodeTypeDescription(string name, int clientConnectionEndpointPort, int httpGatewayEndpointPort, bool isPrimary, int vmInstanceCount, System.Collections.Generic.IDictionary<string, string> placementProperties = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> capacities = default(System.Collections.Generic.IDictionary<string, string>), string durabilityLevel = default(string), EndpointRangeDescription applicationPorts = default(EndpointRangeDescription), EndpointRangeDescription ephemeralPorts = default(EndpointRangeDescription), int? reverseProxyEndpointPort = default(int?), bool? isStateless = default(bool?), bool? multipleAvailabilityZones = default(bool?), int? httpGatewayTokenAuthEndpointPort = default(int?))
 
         {
             this.Name = name;
@@ -94,10 +98,11 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
             this.ApplicationPorts = applicationPorts;
             this.EphemeralPorts = ephemeralPorts;
             this.IsPrimary = isPrimary;
-            this.VmInstanceCount = vmInstanceCount;
+            this.VMInstanceCount = vmInstanceCount;
             this.ReverseProxyEndpointPort = reverseProxyEndpointPort;
             this.IsStateless = isStateless;
             this.MultipleAvailabilityZones = multipleAvailabilityZones;
+            this.HttpGatewayTokenAuthEndpointPort = httpGatewayTokenAuthEndpointPort;
             CustomInit();
         }
 
@@ -184,7 +189,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// for the initial cluster size computation.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vmInstanceCount")]
-        public int VmInstanceCount {get; set; }
+        public int VMInstanceCount {get; set; }
 
         /// <summary>
         /// Gets or sets the endpoint used by reverse proxy.
@@ -204,6 +209,13 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "multipleAvailabilityZones")]
         public bool? MultipleAvailabilityZones {get; set; }
+
+        /// <summary>
+        /// Gets or sets the port used for token-auth based HTTPS connections to the
+        /// cluster. Cannot be set to the same port as HttpGatewayEndpoint.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "httpGatewayTokenAuthEndpointPort")]
+        public int? HttpGatewayTokenAuthEndpointPort {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -228,11 +240,11 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
             {
                 this.EphemeralPorts.Validate();
             }
-            if (this.VmInstanceCount > 2147483647)
+            if (this.VMInstanceCount > 2147483647)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "VMInstanceCount", 2147483647);
             }
-            if (this.VmInstanceCount < 0)
+            if (this.VMInstanceCount < 0)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "VMInstanceCount", 0);
             }

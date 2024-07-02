@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     }
                 }
 
-                primaryNodeType.VmInstanceCount = Convert.ToInt32(primaryVmss.Sku.Capacity);
+                primaryNodeType.VMInstanceCount = Convert.ToInt32(primaryVmss.Sku.Capacity);
                 var request = new ClusterUpdateParameters
                 {
                     ReliabilityLevel = this.ReliabilityLevel.ToString(),

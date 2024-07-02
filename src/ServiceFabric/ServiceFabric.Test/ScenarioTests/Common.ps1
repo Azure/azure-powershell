@@ -47,28 +47,28 @@ function Get-ResourceGroupName
 
 function Get-ClusterName
 {
-    return "azurermsfclustertest";
+    return "azurermsfclustertest4";
 }
 
 function Get-NodeTypeName
 {
-    return "nt1vm";
+    return "Type476";
 }
 
 function Get-KeyVaultName
 {
-    return "pstestkv2";
+    return "pstestkv3";
 }
 
 function Get-NewCertName
 {
-    return "AzureRMSFTestCert2"
+    return "AzureRMSFTestCert3"
 }
 
 function Get-SecretUrl
 {
     # Thumbprint for this cert should be specified in TestServiceFabric.cs in ServiceFabricCmdletBase.TestThumbprint
-    return "https://gumakv1.vault.azure.net/secrets/gumacert/bc05af76fa894a38a0f9f47804bacc42"
+    return "https://pstestkv2.vault.azure.net/secrets/AzureRMSFTestCert3/77bec8f5e3e14363b0f2d3d353c35650"
 }
 
 function Get-InitialThumbprint
@@ -91,7 +91,7 @@ function Get-CertAppSecretUrl
 function Get-CertAppThumbprint
 {
     # Change the thumbprint in the TestServiceFabric.cs file as well in ServiceFabricCmdletBase.TestThumbprintAppCert
-    return "50EA76B5EC4B588CC25CB4C38CC13666A0CA0BB3"
+    return "1C1A149ABE9FB943BBACC452B0B8022FEA769B3C"
 }
 
 function Get-CACertCommonName
@@ -101,12 +101,12 @@ function Get-CACertCommonName
 
 function Get-CACertIssuerThumbprint
 {
-	return "23EACB87421FB794AA9B68A31DB194BCDFEB34CF"
+	return "EE33C51F5694274B4668D679AC8236A2600B492E"
 }
 
 function Get-CACertSecretUrl
 {
-	return "https://gumakv1.vault.azure.net/secrets/pstestcert2/9f35b712392c4a9cacd50b76582ee017"
+	return "https://sfmccnpwkv.vault.azure.net/secrets/pstestcert/092228298fee4f5db31c03332104aee9"
 }
 
 function Get-CertWUSecretUrl
@@ -335,32 +335,32 @@ function Assert-AreEqualObjectPropertiesExcept
 
 function Get-AppTypeName
 {
-    return "VotingType"
+    return "CalcServiceApp"
 }
 
 function Get-AppTypeV1Name
 {
-    return "1.0.0"
+    return "1.0"
 }
 
 function Get-AppTypeV2Name
 {
-    return "2.0.0"
+    return "1.1"
 }
 
 function Get-AppPackageV1
 {
-    return "https://azsfapptest.blob.core.windows.net/azsfapptest/CalcApp_1.0.sfpkg"
+    return "https://clisftestsa.blob.core.windows.net/calappcontainer/CalcApp_1.0.sfpkg?sp=racwdyti&st=2024-05-22T23:20:16Z&se=2024-06-08T07:20:16Z&sv=2022-11-02&sr=b&sig=jFcokw2HE%2FG6%2BdB8V7opOOdL8QeOimpntcjqW92LXHU%3D"
 }
 
 function Get-AppPackageV2
 {
-    return "https://azsfapptest.blob.core.windows.net/azsfapptest/CalcApp_1.1.sfpkg"
+    return "https://clisftestsa.blob.core.windows.net/calappcontainer/CalcApp_1.1.sfpkg?sp=racwdyti&st=2024-05-22T23:20:51Z&se=2024-06-08T07:20:51Z&sv=2022-11-02&sr=b&sig=9CjziHFL3vpxp%2FqrBWf7yTKTavZjj141SIarjCH8slc%3D"
 }
 
 function Get-ServiceTypeName
 {
-    return "VotingWebType"
+    return "CalcServiceType"
 }
 
 # Managed Application functions
@@ -382,12 +382,12 @@ function Get-ManagedAppTypeV2Name
 
 function Get-ManagedAppPackageV1
 {
-    return "https://sfmcsttest.blob.core.windows.net/sfmc-ps/Voting.sfpkg?sp=r&st=2023-09-21T03:04:25Z&se=2023-11-01T11:04:25Z&spr=https&sv=2022-11-02&sr=b&sig=BTFecBFf5%2Bzm5eLH0XjqBt1r%2FknbbaAniftETWddh8A%3D"
+    return "https://sfmcpstest.blob.core.windows.net/powcontainer/Voting.sfpkg?sp=racwdyti&st=2024-05-03T20:27:35Z&se=2024-05-10T04:27:35Z&sv=2022-11-02&sr=b&sig=%2F4HcteYvwfiDU0vPRfA5N2Pkz7civ5Qw0BBfMtKbyWA%3D"
 }
 
 function Get-ManagedAppPackageV2
 {
-    return "https://sfmcsttest.blob.core.windows.net/sfmc-ps/Voting.2.0.0.sfpkg?sp=r&st=2023-09-21T21:45:34Z&se=2023-11-01T05:45:34Z&spr=https&sv=2022-11-02&sr=b&sig=K0NUrFC47kR3OTwVG5rANy88I0eVP9hQ%2F7MXUSDAtsA%3D"
+    return "https://sfmcpstest.blob.core.windows.net/powcontainer/Voting.2.0.0.sfpkg?sp=racwdyti&st=2024-05-03T20:28:38Z&se=2024-05-10T04:28:38Z&sv=2022-11-02&sr=b&sig=JF0wGUOMWDV38HaDifwuGou8zKRFtganAlnEo43P0dE%3D"
 }
 
 function Get-ManagedStatelessServiceTypeName
