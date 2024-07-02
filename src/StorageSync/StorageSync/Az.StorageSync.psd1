@@ -55,7 +55,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.15.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.PowerShell.StorageSync.Sdk.dll', 
-               'System.CodeDom.dll', 'System.Management.dll'
+               'System.CodeDom.dll', 'System.Management.dll', 'Microsoft.Azure.Management.Authorization.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -78,12 +78,15 @@ CmdletsToExport = 'Get-AzStorageSyncCloudEndpoint', 'Get-AzStorageSyncGroup',
                'Get-AzStorageSyncService', 'Invoke-AzStorageSyncChangeDetection', 
                'Invoke-AzStorageSyncCompatibilityCheck', 
                'New-AzStorageSyncCloudEndpoint', 'New-AzStorageSyncGroup', 
-               'New-AzStorageSyncServerEndpoint', 'New-AzStorageSyncService', 
-               'Register-AzStorageSyncServer', 'Remove-AzStorageSyncCloudEndpoint', 
-               'Remove-AzStorageSyncGroup', 'Remove-AzStorageSyncServerEndpoint', 
-               'Remove-AzStorageSyncService', 
+               'New-AzStorageSyncServerEndpoint', 'New-AzStorageSyncService',
+               'Register-AzStorageSyncServer', 'Remove-AzStorageSyncCloudEndpoint',
+               'Remove-AzStorageSyncGroup',
+               'Remove-AzStorageSyncServerEndpoint', 'Remove-AzStorageSyncServerEndpointPermission',
+               'Remove-AzStorageSyncService',
                'Reset-AzStorageSyncServerCertificate', 
-               'Set-AzStorageSyncServerEndpoint', 'Set-AzStorageSyncService', 
+               'Set-AzStorageSyncCloudEndpointPermission', 'Set-AzStorageSyncServer',
+               'Set-AzStorageSyncServerEndpoint', 'Set-AzStorageSyncServerEndpointPermission',
+               'Set-AzStorageSyncService', 'Set-AzStorageSyncServiceIdentity',
                'Unregister-AzStorageSyncServer'
 
 # Variables to export from this module
