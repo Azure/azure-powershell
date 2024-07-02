@@ -68,7 +68,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: A customization task name.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/deploy-azdevcenteruserenvironment
+https://learn.microsoft.com/powershell/module/az.devcenter/deploy-azdevcenteruserenvironment
 #>
 function Deploy-AzDevCenterUserEnvironment {
   [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment])]

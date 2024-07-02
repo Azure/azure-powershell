@@ -22,3 +22,4 @@ This command gets the logs of the customization task "91835dc0-ef5a-4f58-9e3a-09
 $customizationTaskLogInput = @{"CustomizationGroupName" = "Provisioning"; "TaskName" = "choco"; "ProjectName" = "DevProject"; "TaskName" = "choco"; "DevBoxName" = "MyDevBox"; "UserId" = "786a823c-8037-48ab-89b8-8599901e67d0"; "CustomizationTaskId" = "91835dc0-ef5a-4f58-9e3a-099aea8481f4" }
 Get-AzDevCenterUserDevBoxCustomizationTaskLog -DevCenterName Contoso -InputObject $customizationTaskInput 
 ```
+This command gets the logs of the customization task "91835dc0-ef5a-4f58-9e3a-099aea8481f4" for the customization group "Provsioning" in the dev box "MyDevBox".
