@@ -16,14 +16,14 @@ Updates the Dedicated Host.
 ```
 Update-AzHost [-ResourceGroupName] <String> [-HostGroupName] <String> [-Name] <String> [-Sku <String>]
  [-AutoReplaceOnFailure <Boolean>] [-LicenseType <DedicatedHostLicenseTypes>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
 ```
 Update-AzHost [-Sku <String>] [-AutoReplaceOnFailure <Boolean>] [-LicenseType <DedicatedHostLicenseTypes>]
- [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -129,21 +129,6 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

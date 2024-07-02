@@ -18,7 +18,7 @@ New-AzFrontDoorWafPolicy -ResourceGroupName <String> -Name <String> [-EnabledSta
  [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>] [-Tag <Hashtable>]
  [-RequestBodyCheck <String>] [-Sku <String>] [-LogScrubbingSetting <PSFrontDoorWafLogScrubbingSetting>]
  [-JavascriptChallengeExpirationInMinutes <Int32>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
