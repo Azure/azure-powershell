@@ -63,8 +63,7 @@ function setupEnv() {
 
     # Exadata Infra Properties
 
-    $rstr1 = RandomString -allChars $false -len 4
-    $exaInfraName = "OFake_PowerShellTestExaInfra" + $rstr1
+    $exaInfraName = "OFake_PowerShellTestExaInfra"
     $env.Add("exaInfraName", $exaInfraName)
 
     $exaInfraShape = "Exadata.X9M"
@@ -78,8 +77,7 @@ function setupEnv() {
 
     # VM Cluster Properties
 
-    $rstr2 = RandomString -allChars $false -len 4
-    $vmClusterName = "OFake_PowerShellTestVmCluster" + $rstr2
+    $vmClusterName = "OFake_PowerShellTestVmCluster"
     $env.Add("vmClusterName", $vmClusterName)
 
     $vmClusterHostName = "powershell-test"
@@ -123,8 +121,7 @@ function setupEnv() {
 
     # ADBS Properties
 
-    $rstr3 = RandomString -allChars $false -len 4
-    $adbsName = "OFakePowerShellTestAdbs" + $rstr3
+    $adbsName = "OFakePowerShellTestAdbs"
     $env.Add("adbsName", $adbsName)
 
     $adbsDbWorkload = "DW"
