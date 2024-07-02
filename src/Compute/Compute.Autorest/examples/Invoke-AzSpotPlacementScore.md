@@ -1,4 +1,4 @@
-### Example 1: Regionally scoped Spot Placement Recommender scores
+### Example 1: Regionally scoped Spot Placement scores
 ```powershell
 $resourceSku1 = @{sku = "Standard_D2_v3"}
 $resourceSku2 = @{sku = "Standard_D2_v2"}
@@ -6,7 +6,7 @@ $resourceSku3 = @{sku = "Standard_D4_v3"}
 $desiredSizes = $resourceSku1,$resourceSku2,$resourceSku3
 $desiredLocations = 'japaneast','southcentralus','centralus'
 
-$response = Invoke-AzSpotPlacementRecommender -Location eastus -DesiredCount 1 -DesiredLocation $desiredLocations -DesiredSize $desiredSizes
+$response = Invoke-AzSpotPlacementScore -Location eastus -DesiredCount 1 -DesiredLocation $desiredLocations -DesiredSize $desiredSizes
 $response.PlacementScore
 ```
 
@@ -24,9 +24,9 @@ AvailabilityZone IsQuotaAvailable Region         Score                     Sku
                  True             centralus      RestrictedSkuNotAvailable Standard_D4_v3
 ```
 
-Returns regionally scoped spot placement recommender scores for the input.
+Returns regionally scoped spot placement scores for the input.
 
-### Example 2: Zonally scoped Spot Placement Recommender scores
+### Example 2: Zonally scoped Spot Placement Scores
 ```powershell
 $resourceSku1 = @{sku = "Standard_D2_v3"}
 $resourceSku2 = @{sku = "Standard_D2_v2"}
@@ -34,7 +34,7 @@ $resourceSku3 = @{sku = "Standard_D4_v3"}
 $desiredSizes = $resourceSku1,$resourceSku2,$resourceSku3
 $desiredLocations = 'japaneast','southcentralus','centralus'
 
-$response = Invoke-AzSpotPlacementRecommender -Location eastus -DesiredCount 1 -DesiredLocation $desiredLocations -DesiredSize $desiredSizes -AvailabilityZone
+$response = Invoke-AzSpotPlacementScore -Location eastus -DesiredCount 1 -DesiredLocation $desiredLocations -DesiredSize $desiredSizes -AvailabilityZone
 $response.PlacementScore
 ```
 
@@ -70,9 +70,9 @@ AvailabilityZone IsQuotaAvailable Region         Score               Sku
 3                True             centralus      High                Standard_D4_v3
 ```
 
-Returns zonally scoped spot placement recommender scores for the input.
+Returns zonally scoped spot placement scores for the input.
 
-### Example 3: Regionally scoped Spot Placement Recommender scores using SpotPlacementRecommenderInput parameter as argument
+### Example 3: Regionally scoped Spot Placement Scores using SpotPlacementScoresInput parameter as argument
 ```powershell
 $resourceSku1 = @{sku = "Standard_D2_v3"}
 $resourceSku2 = @{sku = "Standard_D2_v2"}
@@ -81,9 +81,9 @@ $desiredSizes = $resourceSku1,$resourceSku2,$resourceSku3
 $desiredLocations = 'japaneast','southcentralus','centralus'
 $desiredCount = 1
 
-$spotPlacementRecommenderInput = @{desiredLocation = $desiredLocations; desiredSize = $desiredSizes; desiredCount = $desiredCount; availabilityZone = $false}
+$spotPlacementScoresInput = @{desiredLocation = $desiredLocations; desiredSize = $desiredSizes; desiredCount = $desiredCount; availabilityZone = $false}
 
-$response = Invoke-AzSpotPlacementRecommender -Location eastus -SpotPlacementRecommenderInput $spotPlacementRecommenderInput
+$response = Invoke-AzSpotPlacementScore -Location eastus -SpotPlacementScoresInput $spotPlacementScoresInput
 $response.PlacementScore
 ```
 
@@ -101,9 +101,9 @@ AvailabilityZone IsQuotaAvailable Region         Score                     Sku
                  True             centralus      RestrictedSkuNotAvailable Standard_D4_v3
 ```
 
-Returns regionally scoped spot placement recommender scores for the input.
+Returns regionally scoped spot placement scores for the input.
 
-### Example 2: Zonally scoped Spot Placement Recommender scores using SpotPlacementRecommenderInput parameter as argument
+### Example 4: Zonally scoped Spot Placement scores using SpotPlacementScoresInput parameter as argument
 ```powershell
 $resourceSku1 = @{sku = "Standard_D2_v3"}
 $resourceSku2 = @{sku = "Standard_D2_v2"}
@@ -111,10 +111,8 @@ $resourceSku3 = @{sku = "Standard_D4_v3"}
 $desiredSizes = $resourceSku1,$resourceSku2,$resourceSku3
 $desiredLocations = 'japaneast','southcentralus','centralus'
 $desiredCount = 1
-
-$spotPlacementRecommenderInput = @{desiredLocation = $desiredLocations; desiredSize = $desiredSizes; desiredCount = $desiredCount; availabilityZone = $true}
-
-$response = Invoke-AzSpotPlacementRecommender -Location eastus -SpotPlacementRecommenderInput $spotPlacementRecommenderInput
+$spotPlacementScoresInput = @{desiredLocation = $desiredLocations; desiredSize = $desiredSizes; desiredCount = $desiredCount; availabilityZone = $true}
+$response = Invoke-AzSpotPlacementScore -Location eastus -SpotPlacementScoresInput $spotPlacementScoresInput
 $response.PlacementScore
 ```
 
@@ -150,4 +148,4 @@ AvailabilityZone IsQuotaAvailable Region         Score Sku
 3                True             centralus      High  Standard_D4_v3
 ```
 
-Returns zonally scoped spot placement recommender scores for the input.
+Returns zonally scoped spot placement scores for the input.
