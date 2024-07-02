@@ -8,28 +8,28 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
     using System.Linq;
 
     /// <summary>
-    /// IPTag associated with the object.
+    /// The IP tag associated with the public IP address.
     /// </summary>
-    public partial class IPTag
+    public partial class IpTag
     {
         /// <summary>
-        /// Initializes a new instance of the IPTag class.
+        /// Initializes a new instance of the IpTag class.
         /// </summary>
-        public IPTag()
+        public IpTag()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the IPTag class.
+        /// Initializes a new instance of the IpTag class.
         /// </summary>
 
-        /// <param name="ipTagType">The IP tag type.
+        /// <param name="ipTagType">IP tag type. Example: FirstPartyUsage.
         /// </param>
 
-        /// <param name="tag">The value of the IP tag.
+        /// <param name="tag">IP tag associated with the public IP. Example: SQL, Storage etc.
         /// </param>
-        public IPTag(string ipTagType, string tag)
+        public IpTag(string ipTagType, string tag)
 
         {
             this.IPTagType = ipTagType;
@@ -44,13 +44,14 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
 
         /// <summary>
-        /// Gets or sets the IP tag type.
+        /// Gets or sets iP tag type. Example: FirstPartyUsage.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ipTagType")]
         public string IPTagType {get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the IP tag.
+        /// Gets or sets iP tag associated with the public IP. Example: SQL, Storage
+        /// etc.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tag")]
         public string Tag {get; set; }

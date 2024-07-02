@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
         /// <param name="ipAddressType">The IP address type of this frontend configuration. If omitted the default
         /// value is IPv4.
-        /// Possible values include: 'IPv4', 'IPv6'</param>
+        /// Possible values include: &#39;IPv4&#39;, &#39;IPv6&#39;</param>
 
         /// <param name="loadBalancerBackendAddressPoolId">The resource Id of the Load Balancer backend address pool that the VM
         /// instances of the node type are associated with. The format of the resource

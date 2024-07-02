@@ -12,8 +12,8 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$clusterName = Get-ClusterName
-$resourceGroupName = Get-ResourceGroupName
+$clusterName = "sfrptestclusterps1"
+$resourceGroupName = "sfrptestrg"
 $appTypeName = Get-AppTypeName
 $v1 = Get-AppTypeV1Name
 $v2 = Get-AppTypeV2Name

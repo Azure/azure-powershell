@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
     public static partial class ServicesOperationsExtensions
     {
         /// <summary>
-        /// Get a Service Fabric service resource created or in the process of being created in the Service Fabric application resource.
+        /// Get a Service Fabric service resource created or in the process of being
+        /// created in the Service Fabric application resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -28,7 +29,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         public static ServiceResource Get(this IServicesOperations operations, string resourceGroupName, string clusterName, string applicationName, string serviceName)
         {
@@ -36,7 +38,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         }
 
         /// <summary>
-        /// Get a Service Fabric service resource created or in the process of being created in the Service Fabric application resource.
+        /// Get a Service Fabric service resource created or in the process of being
+        /// created in the Service Fabric application resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -51,7 +54,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -79,7 +83,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         public static ServiceResource CreateOrUpdate(this IServicesOperations operations, string resourceGroupName, string clusterName, string applicationName, string serviceName, ServiceResource parameters)
         {
@@ -102,7 +107,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -130,7 +136,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         public static ServiceResource Update(this IServicesOperations operations, string resourceGroupName, string clusterName, string applicationName, string serviceName, ServiceResourceUpdate parameters)
         {
@@ -153,7 +160,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -181,7 +189,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         public static void Delete(this IServicesOperations operations, string resourceGroupName, string clusterName, string applicationName, string serviceName)
         {
@@ -204,7 +213,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -214,7 +224,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, clusterName, applicationName, serviceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Gets all service resources created or in the process of being created in the Service Fabric application resource.
+        /// Gets all service resources created or in the process of being created in
+        /// the Service Fabric application resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -234,7 +245,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         }
 
         /// <summary>
-        /// Gets all service resources created or in the process of being created in the Service Fabric application resource.
+        /// Gets all service resources created or in the process of being created in
+        /// the Service Fabric application resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -274,7 +286,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         public static ServiceResource BeginCreateOrUpdate(this IServicesOperations operations, string resourceGroupName, string clusterName, string applicationName, string serviceName, ServiceResource parameters)
         {
@@ -297,7 +310,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -325,7 +339,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         public static ServiceResource BeginUpdate(this IServicesOperations operations, string resourceGroupName, string clusterName, string applicationName, string serviceName, ServiceResourceUpdate parameters)
         {
@@ -348,7 +363,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -376,7 +392,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         public static void BeginDelete(this IServicesOperations operations, string resourceGroupName, string clusterName, string applicationName, string serviceName)
         {
@@ -399,7 +416,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -409,7 +427,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
             (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, clusterName, applicationName, serviceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Gets all service resources created or in the process of being created in the Service Fabric application resource.
+        /// Gets all service resources created or in the process of being created in
+        /// the Service Fabric application resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -423,7 +442,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         }
 
         /// <summary>
-        /// Gets all service resources created or in the process of being created in the Service Fabric application resource.
+        /// Gets all service resources created or in the process of being created in
+        /// the Service Fabric application resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

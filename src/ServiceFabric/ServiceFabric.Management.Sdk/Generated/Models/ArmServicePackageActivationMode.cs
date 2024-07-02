@@ -18,7 +18,8 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// </summary>
         public const string SharedProcess = "SharedProcess";
         /// <summary>
-        /// Indicates the application package activation mode will use exclusive process.
+        /// Indicates the application package activation mode will use exclusive
+        /// process.
         /// </summary>
         public const string ExclusiveProcess = "ExclusiveProcess";
     }

@@ -14,11 +14,11 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
     public static class FailureAction
     {
         /// <summary>
-        /// Indicates that a rollback of the upgrade will be performed by Service Fabric if the upgrade fails.
+        /// The upgrade will start rolling back automatically. The value is 0
         /// </summary>
         public const string Rollback = "Rollback";
         /// <summary>
-        /// Indicates that a manual repair will need to be performed by the administrator if the upgrade fails. Service Fabric will not proceed to the next upgrade domain automatically.
+        /// The upgrade will switch to UnmonitoredManual upgrade mode. The value is 1
         /// </summary>
         public const string Manual = "Manual";
     }

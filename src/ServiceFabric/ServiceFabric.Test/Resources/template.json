@@ -172,7 +172,7 @@
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
     "overProvision": "false",
     "vmssApiVersion": "2017-03-30",
-    "sfrpApiVersion": "2017-07-01-preview",
+    "sfrpApiVersion": "2023-11-01-preview",
     "lbApiVersion": "2015-06-15",
     "vNetApiVersion": "2015-06-15",
     "storageApiVersion": "2016-01-01",
