@@ -1,0 +1,105 @@
+{
+  "resourceType": "Spring/applicationAccelerators/customizedAccelerators",
+  "apiVersion": "2023-12-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.springapps"
+  },
+  "commands": [
+    {
+      "name": "Get-AzSpringCustomizedAccelerator",
+      "description": "Get the customized accelerator.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators/{customizedAcceleratorName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.springapps/get-azspringcustomizedaccelerator"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ApplicationAcceleratorName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-ServiceName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the customized accelerator.",
+          "parameters": [
+            {
+              "name": "-ApplicationAcceleratorName",
+              "value": "[Path.applicationAcceleratorName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.customizedAcceleratorName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServiceName",
+              "value": "[Path.serviceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzSpringCustomizedAccelerator",
+      "description": "Delete the customized accelerator.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators/{customizedAcceleratorName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.springapps/remove-azspringcustomizedaccelerator"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ApplicationAcceleratorName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-ServiceName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete the customized accelerator.",
+          "parameters": [
+            {
+              "name": "-ApplicationAcceleratorName",
+              "value": "[Path.applicationAcceleratorName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.customizedAcceleratorName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServiceName",
+              "value": "[Path.serviceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

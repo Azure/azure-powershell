@@ -1,0 +1,153 @@
+{
+  "resourceType": "Spring/applicationAccelerators/predefinedAccelerators",
+  "apiVersion": "2023-12-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.springapps"
+  },
+  "commands": [
+    {
+      "name": "Disable-AzSpringPredefinedAccelerator",
+      "description": "Disable predefined accelerator.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators/{predefinedAcceleratorName}/disable",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.springapps/disable-azspringpredefinedaccelerator"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ApplicationAcceleratorName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-ServiceName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Disable predefined accelerator.",
+          "parameters": [
+            {
+              "name": "-ApplicationAcceleratorName",
+              "value": "[Path.applicationAcceleratorName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.predefinedAcceleratorName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServiceName",
+              "value": "[Path.serviceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Enable-AzSpringPredefinedAccelerator",
+      "description": "Enable predefined accelerator.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators/{predefinedAcceleratorName}/enable",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.springapps/enable-azspringpredefinedaccelerator"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ApplicationAcceleratorName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-ServiceName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Enable predefined accelerator.",
+          "parameters": [
+            {
+              "name": "-ApplicationAcceleratorName",
+              "value": "[Path.applicationAcceleratorName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.predefinedAcceleratorName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServiceName",
+              "value": "[Path.serviceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzSpringPredefinedAccelerator",
+      "description": "Get the predefined accelerator.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators/{predefinedAcceleratorName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.springapps/get-azspringpredefinedaccelerator"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ApplicationAcceleratorName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-ServiceName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the predefined accelerator.",
+          "parameters": [
+            {
+              "name": "-ApplicationAcceleratorName",
+              "value": "[Path.applicationAcceleratorName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.predefinedAcceleratorName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServiceName",
+              "value": "[Path.serviceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
