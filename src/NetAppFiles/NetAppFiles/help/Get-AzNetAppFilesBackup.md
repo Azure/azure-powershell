@@ -16,26 +16,26 @@ Gets details of an Azure NetApp Files (ANF) Backup.
 ```
 Get-AzNetAppFilesBackup -ResourceGroupName <String> -AccountName <String> [-PoolName <String>]
  [-VolumeName <String>] [-BackupVaultName <String>] [-Name <String>] [-Filter <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByAccountBackupFieldsParameterSet
 ```
 Get-AzNetAppFilesBackup -ResourceGroupName <String> -AccountName <String> [-AccountBackupName <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Get-AzNetAppFilesBackup [-Name <String>] [-AccountBackupName <String>] [-VolumeObject <PSNetAppFilesVolume>]
  -BackupVaultObject <PSNetAppFilesBackupVault> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Get-AzNetAppFilesBackup -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -171,21 +171,6 @@ The name of the ANF pool
 Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

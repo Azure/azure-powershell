@@ -23,7 +23,7 @@ Set-AzVmssStorageProfile [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>
  [-DiskEncryptionSetId <String>] [-DataDisk <VirtualMachineScaleSetDataDisk[]>] [-OSDiskSizeGB <Int32>]
  [-DiskControllerType <String>] [-SecurityEncryptionType <String>] [-SecureVMDiskEncryptionSet <String>]
  [-SharedGalleryImageId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -356,21 +356,6 @@ Specifies whether WriteAccelerator should be enabled or disabled on the OS disk.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

@@ -17,7 +17,7 @@ This operation updates a policy exemption with the given scope and name.
 Update-AzPolicyExemption -Name <String> [-Scope <String>] [-ExemptionCategory <String>]
  [-PolicyDefinitionReferenceId <String[]>] [-DisplayName <String>] [-Description <String>]
  [-ExpiresOn <DateTime>] [-ClearExpiration] [-Metadata <String>] [-BackwardCompatible]
- [-AssignmentScopeValidation <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-AssignmentScopeValidation <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Update-AzPolicyExemption -Name <String> [-Scope <String>] [-ExemptionCategory <S
 Update-AzPolicyExemption [-ExemptionCategory <String>] [-PolicyDefinitionReferenceId <String[]>] -Id <String>
  [-DisplayName <String>] [-Description <String>] [-ExpiresOn <DateTime>] [-ClearExpiration]
  [-Metadata <String>] [-BackwardCompatible] [-AssignmentScopeValidation <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
@@ -34,7 +34,7 @@ Update-AzPolicyExemption [-ExemptionCategory <String>] [-PolicyDefinitionReferen
 Update-AzPolicyExemption [-ExemptionCategory <String>] [-PolicyDefinitionReferenceId <String[]>]
  [-DisplayName <String>] [-Description <String>] [-ExpiresOn <DateTime>] [-ClearExpiration]
  [-Metadata <String>] [-BackwardCompatible] [-AssignmentScopeValidation <String>]
- -InputObject <IPolicyExemption> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ -InputObject <IPolicyExemption> [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -304,21 +304,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

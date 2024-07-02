@@ -16,7 +16,7 @@ Run command on the Virtual Machine Scale Set VM.
 ```
 Invoke-AzVmssVMRunCommand [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-InstanceId] <String>
  -CommandId <String> [-ScriptPath <String>] [-ScriptString <String>] [-Parameter <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,14 +24,14 @@ Invoke-AzVmssVMRunCommand [-ResourceGroupName] <String> [-VMScaleSetName] <Strin
 ```
 Invoke-AzVmssVMRunCommand -CommandId <String> [-ScriptPath <String>] [-ScriptString <String>]
  [-Parameter <Hashtable>] [-ResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectParameter
 ```
 Invoke-AzVmssVMRunCommand -CommandId <String> [-ScriptPath <String>] [-ScriptString <String>]
  [-Parameter <Hashtable>] [-VirtualMachineScaleSetVM] <PSVirtualMachineScaleSetVM> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -124,21 +124,6 @@ The run command parameters.
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

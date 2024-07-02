@@ -15,7 +15,7 @@ Creates a configuration object for automatic patching on a virtual machine.
 
 ```
 New-AzVMSqlServerAutoPatchingConfig [-Enable] [-DayOfWeek <String>] [-MaintenanceWindowStartingHour <Int32>]
- [-MaintenanceWindowDuration <Int32>] [-PatchCategory <String>] [-ProgressAction <ActionPreference>]
+ [-MaintenanceWindowDuration <Int32>] [-PatchCategory <String>]
  [<CommonParameters>]
 ```
 
@@ -128,21 +128,6 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Important
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
