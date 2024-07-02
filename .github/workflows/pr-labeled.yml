@@ -3,6 +3,7 @@ run-name: Triggered by pr label
 env:
   GH_TOKEN: ${{ github.token }}
   PR: ${{ github.event.pull_request.html_url }}
+  LABEL: ${{ github.event.label.name }}
 on:
   pull_request_target:
     types:
@@ -20,6 +21,4 @@ jobs:
           .github
     - name: process label
       shell: pwsh
-      env:
-        LABEL: ${{ github.event.label.name }}
-      run: .github/workflows/script/PrLabeled.ps1 -LabelName "$env:LABEL" -PrUrl $env:PR
+      run: .github/workflows/script/PrLabeled.ps1 -LabelName $env:LABEL -PrUrl $env:PR
