@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.6.2
 * Fixed a bug where `New-AzBatchApplicationPackage` wouldn't work if the application `AllowUpdates` parameter was set to `$false`.
 
 ## Version 3.6.1

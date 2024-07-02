@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.18.5
 * Added UAMI in DynamicsCrm LinkedService
 
 ## Version 1.18.4

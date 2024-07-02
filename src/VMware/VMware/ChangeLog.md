@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.7.0
 * Updated the AVS VMware cmdlets api version to `2023-09-01`. 
 
 ## Version 0.6.2

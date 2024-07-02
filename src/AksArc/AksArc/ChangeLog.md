@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.0
 * Added cmdlets for virtual networks
 * Improved Error Checking
 * Renamed Parameters to make more consistent with Azure CLI

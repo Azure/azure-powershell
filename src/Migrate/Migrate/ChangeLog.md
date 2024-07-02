@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.4.0
 * Removed "at lease one NIC needs to be user selected" constrain when creating/updating server replication (protected item)
 * Added retries for calls to internal Get commands
 

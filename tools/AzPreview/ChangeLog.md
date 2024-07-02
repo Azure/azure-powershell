@@ -1,3 +1,178 @@
+## 12.1.0 - July 2024
+#### Az.Accounts 3.0.1
+* Disable WAM when the customers login with device code flow or username password (ROPC) flow to prevent a potential issue with token cache.
+* Fixed [CVE-2024-35255](https://github.com/advisories/GHSA-m5vv-6r4h-3vj9)
+* Updated 'Microsoft.Identity.Client.NativeInterop' to fix the WAM pop window issue in elevated mode [#24967]
+* Updated the reference of Azure PowerShell Common to 1.3.98-preview.
+* Limited promotional message to interactive scenarios only
+
+#### Az.AksArc 0.1.0
+* First preview release for module Az.AksArc
+
+#### Az.AppComplianceAutomation 0.1.0
+* First preview release for module Az.AppComplianceAutomation
+
+#### Az.Batch 3.6.2
+* Fixed a bug where 'New-AzBatchApplicationPackage' wouldn't work if the application 'AllowUpdates' parameter was set to 'False'.
+
+#### Az.CodeSigning 0.1.2
+* Updated signed 3rd party assembly Polly.dll to PSGallery
+
+#### Az.Compute 8.1.0
+* Added parameter '-SourceResourceId' to cmdlet 'Add-AzVMDataDisk'.
+* Added parameter '-IdentityType' to cmdlet 'Update-AzDiskEncryptionSet'.
+* Added 'Invoke-AzSpotPlacementScore' cmdlet, which calls the latest Spot Placement Score API. Set the original 'Invoke-AzSpotPlacementRecommender' as alias to avoid breaking changes.
+
+#### Az.ConnectedMachine 0.8.0
+* Updated the API version to 2024-03-31-preview.
+* Added cmdlets 'Get-AzConnectedLicense', 'Get-AzConnectedNetworkSecurityPerimeterConfiguration', 'New-AzConnectedLicense', 'New-AzConnectedLicenseDetail', 'Remove-AzConnectedLicense' and 'Set-AzConnectedLicense'.
+
+#### Az.CosmosDB 1.14.4
+* Fixed the issue that Azure.Core.AccessToken is used before assigned.
+
+#### Az.Databricks 1.8.0
+* Updated the Az Databricks cmdlets to 2024-05-01 api version.
+
+#### Az.DataFactory 1.18.5
+* Added UAMI in DynamicsCrm LinkedService
+
+#### Az.DataLakeStore 1.3.2
+* Updated signed 3rd party assembly NLog.dll to PSGallery
+
+#### Az.FrontDoor 1.11.1
+* Fixed a not converting from string to base in CustomBlockResponseBody bug in updating waf policy
+
+#### Az.Functions 4.1.0
+* Upgraded to Microsoft.Web API version 2023-12-01 [#25347]
+* Added support for creating function apps on container app [#22736]
+
+#### Az.KeyVault 6.0.1
+* Fixed an issue during merging certificate process. [#24323]
+
+#### Az.Maintenance 1.4.2
+* Fixed bug where rebootSettings property wasn't updating.
+
+#### Az.Migrate 2.4.0
+* Removed 'at lease one NIC needs to be user selected' constrain when creating/updating server replication (protected item)
+* Added retries for calls to internal Get commands
+
+#### Az.MySql 1.2.0
+* Added cmdlets: 'Get-AzMySqlFlexibleServerAdvancedThreatProtectionSetting' and 'Update-AzMySqlFlexibleServerAdvancedThreatProtectionSetting'
+
+#### Az.NetAppFiles 0.16.0
+* Updated to api-version 2023-11-01
+* Fixed some minor issues
+
+#### Az.Network 7.8.0
+* Added new cmdlets to support Save & Commit (AzureFirewallPolicy draft)
+    - 'New-AzFirewallPolicyDraft'
+    - 'New-AzFirewallPolicyRuleCollectionGroupDraft'
+    - 'Get-AzFirewallPolicyDraft'
+    - 'Get-AzFirewallPolicyRuleCollectionGroupDraft'
+    - 'Set-AzFirewallPolicyDraft'
+    - 'Set-AzFirewallPolicyRuleCollectionGroupDraft'
+    - 'Remove-AzFirewallPolicyDraft'
+    - 'Remove-AzFirewallPolicyRuleCollectionGroupDraft'
+    - 'Deploy-AzFirewallPolicy'
+* Added 'NoHealthyBackendsBehavior' to 'PSProbe', and updated corresponding cmdlets.
+    - 'New-AzLoadBalancerProbeConfig'
+    - 'Add-AzLoadBalancerProbeConfig'
+    - 'Set-AzLoadBalancerProbeConfig'
+* Upgraded API version to '2024-01-01'
+* Updated cmdlet to add 'Premium' as a valid value for 'Sku' parameter and 'enableSessionRecording' feature for Bastion resources
+    - 'New-AzBastion'
+    - 'Set-AzBastion'
+* Updated cmdlet 'Add-AzVirtualNetworkSubnetConfig', 'Set-AzVirtualNetworkSubnetConfig' and 'New-AzVirtualNetworkSubnetConfig' to support Network Identifier for Subnet Service Endpoint.
+* Added cmdlet 'Restart-AzNetworkVirtualAppliance' for allowing a restart of Network Virtual Appliance instances from the customer subscription.
+* Fixed a bug in 'Update-AzNetworkVirtualApplianceConnection'
+* Updated the Azure Firewall and Azure Firewall Policy setter for their respective Private Range properties
+  - Fixed a bug that prevented using /32 in private ranges on classic Azure Firewalls
+  - Updated the error message to provide a suggested private range when the supplied range is not correctly masked by the host identifier
+  - Added a new Allocate function for Azure Firewall that allows allocating customer public ip address to the firewall
+  - Fixed a bug that caused firewalls and policies to lose their private range property value when using their 'Get' cmdlets
+
+#### Az.NewRelic 0.2.0
+* Updated API version from 2022-07-01 to 2024-01-01.
+* Added cmdlets:
+    - Get-AzNewRelicBillingInfo
+    - Get-AzNewRelicConnectedPartnerResource
+    - New-AzNewRelicFilteringTagObject
+    - New-AzNewRelicMonitoredSubscription
+    - Get-AzNewRelicMonitoredSubscription
+    - Remove-AzNewRelicMonitoredSubscription
+    - Update-AzNewRelicMonitoredSubscription
+    - New-AzNewRelicMonitoredSubscriptionObject
+    - Get-AzNewRelicMonitorLinkedResource
+* Renamed cmdlet Get-AzNewRelicMonitorAppService to Get-AzNewRelicConnectedPartnerResource.
+* Renamed cmdlet Get-AzNewRelicMonitorAppService to Get-AzNewRelicMonitoredAppService.
+* Renamed cmdlet Get-AzNewRelicMonitorHost to Get-AzNewRelicMonitoredHost.
+* Updated manage identity design.
+
+#### Az.PaloAltoNetworks 0.3.0
+* Upgraded managed identity parameters.
+* Updated example for new managed identity.
+
+#### Az.Resources 7.2.0
+* Fixed 'Set-AzPolicyAssignment' loses description and Display Name [#25362]
+* Fixed 'New-AzPolicyAssignment' string ID value handling for parameter '-PolicyDefinition'
+* Fixed policy import issue with OP (requires serialization of null values)
+* Fixed '-Scope' parameter handling at resource instance level
+* Fixed error 'Get-AzPolicySetDefinition'cannot find matched parameter '-Name' [#25334]
+* Fixed serialization issue with empty arrays in PolicyParameterObject
+* Addressed a rare case where a service principal does not have AppId
+* Introduced validation of MG scoped deployment stack during New/Set cmdlet execution.
+* Updated Remove/New stack cmdlets with warnings for management groups ActionOnUnmanage and removed DeleteResourcesAndResourceGroups as valid ActionOnUnmanage value.
+* Supported get and assign versioned policy definitions and sets
+* Fixed syntax incompatible with windows powershell [#24971]
+* Fixed bug with 'Get-AzPolicyExemption' requesting 'ParentResourcePath'
+* Supported 'ServiceManagementReference' of Entra App
+    * 'Get-AzADApplication'
+    * 'New-AzADApplication'
+    * 'Update-AzADApplication'
+* Fixed deployment stack validation error surfacing.
+* Fixed default formatting for output objects
+* Removed '-InputObject' for
+    * 'Get-AzPolicyAssignment'
+    * 'Get-AzPolicyDefinition'
+    * 'Get-AzPolicyExemption'
+    * 'Get-AzPolicySetDefinition'
+    * 'New-AzPolicyAssignment'
+    * 'New-AzPolicyDefinition'
+    * 'New-AzPolicySetDefinition'
+* Implemented '-Version' and '-ListVersion' parameters on 'Get-AzPolicyDefinition' and 'Get-AzPolicySetDefinition'
+
+#### Az.Sql 5.1.0
+* Added cross-subscription support for 'Copy-AzSqlInstanceDatabase', 'Move-AzSqlInstanceDatabase'
+* Added new parameter SecondaryType to 'Add-AzSqlDatabaseFromFailoverGroup'
+
+#### Az.SqlVirtualMachine 2.3.0
+* Enabled Microsoft entra id on SQL VM.
+
+#### Az.Storage 7.1.0
+* Fixed the issue that Azure.Core.AccessToken is used before assigned.
+* Supported TLS1_3 when creating and updating a storage account 
+    - 'New-AzStorageAccount'
+    - 'Set-AzStorageAccount'
+* Fixed sync copy blob issue with -AsJob is specified [#25105]
+    - 'Copy-AzStorageBlob'
+* Updated Storage.Management.Sdk to support API version 2023-05-01
+* Updated 2 help examples of create storage account cmdlet, with MinimumTlsVersion as TLS1_2.
+    - 'New-AzStorageAccount'
+
+#### Az.StorageMover 1.4.0
+* Added input parameter validation set for UploadLimitWeeklyRecurrenceObject
+* Supported Uploaded Limit Schedule
+
+#### Az.Synapse 3.0.9
+* Updated Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.20.
+* Fixed the issue that Azure.Core.AccessToken is used before assigned.
+
+#### Az.VMware 0.7.0
+* Updated the AVS VMware cmdlets api version to '2023-09-01'. 
+
+#### Az.Workloads 0.2.0
+* Added trusted access parameter in Create and Register VIS.
+
 ## 12.0.0 - May 2024
 #### Az.Accounts 3.0.0
 * Web Account Manager (WAM) was set the default experience of interactive login. For more details please refer to https://go.microsoft.com/fwlink/?linkid=2272007
