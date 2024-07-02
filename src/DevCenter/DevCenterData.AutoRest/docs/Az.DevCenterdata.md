@@ -15,22 +15,31 @@ Microsoft Azure PowerShell: DevCenterdata cmdlets
 Creates or updates an environment.
 
 ### [Get-AzDevCenterUserCatalog](Get-AzDevCenterUserCatalog.md)
-Gets the specified catalog within the project
+Gets the specified catalog within the project.
 
 ### [Get-AzDevCenterUserDevBox](Get-AzDevCenterUserDevBox.md)
-Gets a Dev Box
+Gets a Dev Box.
 
 ### [Get-AzDevCenterUserDevBoxAction](Get-AzDevCenterUserDevBoxAction.md)
 Gets an action.
+
+### [Get-AzDevCenterUserDevBoxCustomizationGroup](Get-AzDevCenterUserDevBoxCustomizationGroup.md)
+Gets a customization group.
+
+### [Get-AzDevCenterUserDevBoxCustomizationTaskDefinition](Get-AzDevCenterUserDevBoxCustomizationTaskDefinition.md)
+Gets a customization task.
+
+### [Get-AzDevCenterUserDevBoxCustomizationTaskLog](Get-AzDevCenterUserDevBoxCustomizationTaskLog.md)
+Gets the log for a customization task.
 
 ### [Get-AzDevCenterUserDevBoxOperation](Get-AzDevCenterUserDevBoxOperation.md)
 Gets an operation on a Dev Box.
 
 ### [Get-AzDevCenterUserDevBoxRemoteConnection](Get-AzDevCenterUserDevBoxRemoteConnection.md)
-Gets RDP Connection info
+Gets RDP Connection info.
 
 ### [Get-AzDevCenterUserEnvironment](Get-AzDevCenterUserEnvironment.md)
-Gets an environment
+Gets an environment.
 
 ### [Get-AzDevCenterUserEnvironmentAction](Get-AzDevCenterUserEnvironmentAction.md)
 Retrieve a specific environment action.
@@ -45,13 +54,13 @@ Gets the logs for an operation on an environment.
 Gets an environment action result.
 
 ### [Get-AzDevCenterUserEnvironmentOutput](Get-AzDevCenterUserEnvironmentOutput.md)
-Gets Outputs from the environment
+Gets Outputs from the environment.
 
 ### [Get-AzDevCenterUserEnvironmentType](Get-AzDevCenterUserEnvironmentType.md)
-Lists all environment types configured for a project.
+Get an environment type configured for a project.
 
 ### [Get-AzDevCenterUserPool](Get-AzDevCenterUserPool.md)
-Gets a pool
+Gets a pool.
 
 ### [Get-AzDevCenterUserProject](Get-AzDevCenterUserProject.md)
 Gets a project.
@@ -68,6 +77,9 @@ Delays the occurrence of an action.
 ### [New-AzDevCenterUserDevBox](New-AzDevCenterUserDevBox.md)
 Creates or replaces a Dev Box.
 
+### [New-AzDevCenterUserDevBoxCustomizationGroup](New-AzDevCenterUserDevBoxCustomizationGroup.md)
+Applies customizations to the Dev Box.
+
 ### [New-AzDevCenterUserEnvironment](New-AzDevCenterUserEnvironment.md)
 Creates or updates an environment.
 
@@ -82,7 +94,7 @@ Attempts automated repair steps to resolve common problems on a Dev Box.
 The Dev Box may restart during this operation.
 
 ### [Restart-AzDevCenterUserDevBox](Restart-AzDevCenterUserDevBox.md)
-Restarts a Dev Box
+Restarts a Dev Box.
 
 ### [Skip-AzDevCenterUserDevBoxAction](Skip-AzDevCenterUserDevBoxAction.md)
 Skips an occurrence of an action.
@@ -91,11 +103,14 @@ Skips an occurrence of an action.
 Skips an occurrence of an action.
 
 ### [Start-AzDevCenterUserDevBox](Start-AzDevCenterUserDevBox.md)
-Starts a Dev Box
+Starts a Dev Box.
 
 ### [Stop-AzDevCenterUserDevBox](Stop-AzDevCenterUserDevBox.md)
-Stops a Dev Box
+Stops a Dev Box.
+
+### [Test-AzDevCenterUserDevBoxCustomizationTaskAction](Test-AzDevCenterUserDevBoxCustomizationTaskAction.md)
+Validates a list of customization tasks.
 
 ### [Update-AzDevCenterUserEnvironment](Update-AzDevCenterUserEnvironment.md)
-Partially updates an environment
+Partially updates an environment.
 
