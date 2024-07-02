@@ -94,7 +94,7 @@ function Invoke-AzDevCenterUserDelayEnvironmentAction {
         ${ProjectName},
     
         [Parameter(ParameterSetName='Delay')]
-        [Parameter(ParameterSetName = 'DelayByDevCenter', Mandatory)]
+        [Parameter(ParameterSetName = 'DelayByDevCenter')]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script='"me"')]
         [System.String]

@@ -106,7 +106,7 @@ function New-AzDevCenterUserEnvironment {
       ${ProjectName},
   
       [Parameter(ParameterSetName='CreateExpanded')]
-      [Parameter(ParameterSetName = 'CreateExpandedByDevCenter', Mandatory)]
+      [Parameter(ParameterSetName = 'CreateExpandedByDevCenter')]
       [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
       [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script='"me"')]
       [System.String]

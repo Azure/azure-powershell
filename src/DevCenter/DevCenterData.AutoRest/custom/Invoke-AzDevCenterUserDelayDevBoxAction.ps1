@@ -69,13 +69,13 @@ function Invoke-AzDevCenterUserDelayDevBoxAction {
       # The DevCenter-specific URI to operate on.
       ${Endpoint},
 
-    [Parameter(ParameterSetName = 'Delay1ByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'DelayByDevCenter', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
-    [Alias('DevCenter')]
-    [System.String]
-    # The DevCenter upon which to execute operations.
-    ${DevCenterName},
+      [Parameter(ParameterSetName = 'Delay1ByDevCenter', Mandatory)]
+      [Parameter(ParameterSetName = 'DelayByDevCenter', Mandatory)]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
+      [Alias('DevCenter')]
+      [System.String]
+      # The DevCenter upon which to execute operations.
+      ${DevCenterName},
   
       [Parameter(Mandatory)]
       [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
@@ -108,8 +108,8 @@ function Invoke-AzDevCenterUserDelayDevBoxAction {
       [Parameter(Mandatory)]
       [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Query')]
       [System.TimeSpan]
-    # The delayed timespan from the scheduled action time. Format HH:MM.
-    ${DelayTime},
+      # The delayed timespan from the scheduled action time. Format HH:MM.
+      ${DelayTime},
   
       [Parameter()]
       [Alias('AzureRMContext', 'AzureCredential')]
