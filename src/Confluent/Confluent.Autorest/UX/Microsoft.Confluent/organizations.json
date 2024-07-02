@@ -1,6 +1,6 @@
 {
   "resourceType": "organizations",
-  "apiVersion": "2020-03-01",
+  "apiVersion": "2024-02-13",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.confluent"
   },
@@ -29,6 +29,44 @@
           "parameters": [
             {
               "name": "-Name",
+              "value": "[Path.organizationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzConfluentInviteAccessUser",
+      "description": "Invite user to the organization",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/access/default/createInvitation",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.confluent/invoke-azconfluentinviteaccessuser"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-OrganizationName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Invite user to the organization",
+          "parameters": [
+            {
+              "name": "-OrganizationName",
               "value": "[Path.organizationName]"
             },
             {
