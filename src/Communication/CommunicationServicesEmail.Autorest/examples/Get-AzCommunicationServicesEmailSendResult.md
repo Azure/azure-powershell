@@ -1,6 +1,6 @@
 ### Example 1: Gets the status and operation id of the email send operation.
 ```powershell
-get-AzCommunicationServicesemailSendResult -Endpoint "https://contoso.unitedstates.communications.azure.com" -OperationId 8540c0de-899f-5cce-acb5-3ec493af3800
+Get-AzCommunicationServicesEmailSendResult -Endpoint "https://contoso.unitedstates.communications.azure.com" -OperationId 8540c0de-899f-5cce-acb5-3ec493af3800
 ```
 
 ```output

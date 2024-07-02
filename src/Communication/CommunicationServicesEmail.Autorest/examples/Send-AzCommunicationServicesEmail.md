@@ -14,7 +14,7 @@ $message = @{
 	ContentPlainText = "This is the first email from ACS - HTML"	
 }
 
-send-AzCommunicationServicesEmail -Message $Message -endpoint "https://contoso.unitedstates.communications.azure.com"
+Send-AzCommunicationServicesEmail -Message $Message -endpoint "https://contoso.unitedstates.communications.azure.com"
 ```
 
 ```output
@@ -97,7 +97,7 @@ $message = @{
 	UserEngagementTrackingDisabled = $true
 }
 
-send-AzCommunicationServicesEmail -Message $Message -endpoint "https://contoso.unitedstates.communications.azure.com"
+Send-AzCommunicationServicesEmail -Message $Message -endpoint "https://contoso.unitedstates.communications.azure.com"
 ```
 
 ```output
