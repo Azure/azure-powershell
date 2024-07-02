@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                 {
                     roleAssignment = AuthorizationManagementClient.RoleAssignments.Delete(roleAssignmentScope, roleAssignment.Name);
                     StorageSyncResourceManager.Wait();
-                    VerboseLogger.Invoke($"Successfully created role assignment {roleAssignment.Id}");
+                    VerboseLogger.Invoke($"Successfully deleted role assignment {roleAssignment.Id}");
                     return true;
                 }
             }
