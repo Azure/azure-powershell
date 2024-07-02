@@ -144,8 +144,8 @@ directive:
       parameter-name: Name
       alias: ActionName
   - where:
-      verb: New
-      variant: ^Create$|^CreateViaIdentity$|^Validate$|^ValidateViaIdentity$|
+      verb: New|Test
+      variant: ^Create$|^CreateViaIdentity$|^Validate$|^ValidateViaIdentity$
     remove: true
   - where:
       subject: ^(.*)
