@@ -53,7 +53,7 @@ For more information on installing Azure PowerShell, see the
 ### Log into Azure
 
 To connect to Azure, use the [`Connect-AzAccount`][ConnectAzAccount] cmdlet:
-
+ 
 ```powershell
 # Opens a new browser window to log into your Azure account.
 Connect-AzAccount
