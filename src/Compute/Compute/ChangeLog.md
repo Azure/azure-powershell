@@ -21,7 +21,9 @@
 -->
 ## Upcoming Release
 * Added parameter `-SourceResourceId` to cmdlet `Add-AzVMDataDisk`.
-* Added parameter `-IdentityType` to cmdlet `Update-AzDiskEncryptionSet`. 
+* Added parameter `-IdentityType` to cmdlet `Update-AzDiskEncryptionSet`.
+* Added `Invoke-AzSpotPlacementScore` cmdlet, which calls the latest Spot Placement Score API.
+* Removed the `Invoke-AzSpotPlacementRecommender` cmdlet. This cmdlet calls the soon to be deprecated Spot Placement Recommender API.
 
 ## Version 8.0.0
 * Added new optional parameter `SecureVMGuestStateSAS` to cmdlet `Grant-AzDiskAccess`.
