@@ -339,7 +339,8 @@ namespace Microsoft.Azure.Commands.Profile
 
             if (ParameterSetName.Equals(UserWithCredentialParameterSet))
             {
-                WriteWarning("Authentication with a username and password at the command line is strongly discouraged. Use one of the recommended authentication methods based on your requirements. For additional information, visit https://go.microsoft.com/fwlink/?linkid=2276971.");
+                string warningMessage = "Authentication with a username and password at the command line is strongly discouraged. Use one of the recommended authentication methods based on your requirements. For additional information, visit https://go.microsoft.com/fwlink/?linkid=2276971.";
+                WriteWarning(warningMessage);
             }
 
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Subscription)))
