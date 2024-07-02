@@ -19,7 +19,7 @@ jobs:
         sparse-checkout: |
           .github
     - name: process label
+      shell: pwsh
       env:
         LABEL: ${{ github.event.label.name }}
-      shell: pwsh
       run: .github/workflows/script/PrLabeled.ps1 -LabelName $env:LABEL -PrUrl $env:PR
