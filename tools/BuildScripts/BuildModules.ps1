@@ -160,6 +160,9 @@ if ($EnableTestCoverage -eq "true")
 }
 Invoke-Expression -Command $buildCmdResult
 
+$versionControllerCsprojPath = Join-Path $toolDirectory 'VersionController' 'VersionController.Netcore.csproj'
+dotnet build $versionControllerCsprojPath -c $Configuration
+
 $removeScriptPath = Join-Path $toolDirectory 'BuildScripts' 'RemoveUnwantedFiles.ps1'
 . $removeScriptPath -RootPath (Join-Path $RepoArtifacts $Configuration) -CodeSign $CodeSign
 
