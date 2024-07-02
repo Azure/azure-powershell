@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 if ($UsePreviousConfigForRecord) {
     $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
@@ -45,7 +70,7 @@ function setupEnv() {
     New-AzElasticTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.elasticName01
     New-AzElasticTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.elasticName02
 
-    # Create 
+    # Create
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'

@@ -1,0 +1,52 @@
+{
+  "resourceType": "securityConnectors/azureDevOpsOrgs",
+  "apiVersion": "2023-09-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.security"
+  },
+  "commands": [
+    {
+      "name": "Get-AzSecurityConnectorAzureDevOpsOrg",
+      "description": "Returns a monitored Azure DevOps organization resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName}/devops/default/azureDevOpsOrgs/{orgName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.security/get-azsecurityconnectorazuredevopsorg"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-OrgName <String>",
+              "-ResourceGroupName <String>",
+              "-SecurityConnectorName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Returns a monitored Azure DevOps organization resource.",
+          "parameters": [
+            {
+              "name": "-OrgName",
+              "value": "[Path.orgName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SecurityConnectorName",
+              "value": "[Path.securityConnectorName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

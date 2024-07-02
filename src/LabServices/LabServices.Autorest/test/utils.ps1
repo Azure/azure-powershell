@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
@@ -22,8 +47,8 @@ function setupEnv() {
     Write-Host "Sub: $($ENV:SubscriptionId)"
 }
 function cleanupEnv() {
-    # Clean resources you create for testing    
+    # Clean resources you create for testing
     #Remove-AzResourceGroup -Name $ENV:ResourceGroupName -Force
-      
+
 }
 

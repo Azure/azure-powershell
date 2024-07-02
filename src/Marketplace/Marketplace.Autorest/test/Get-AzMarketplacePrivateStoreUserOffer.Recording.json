@@ -1,0 +1,47 @@
+{
+  "Get-AzMarketplacePrivateStoreUserOffer+[NoContext]+QueryExpanded+$POST+https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/queryUserOffers?api-version=2023-01-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/queryUserOffers?api-version=2023-01-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"offerIds\": [ \"aumatics.azure_managedservices\" ],\r\n    \"subscriptionIds\": [ \"1f58b5dd-313c-42ed-84fc-f1e351bba7fb\" ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "150" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=80c7a5f90186ed67b1a22b2d6ba64306a36f909c848093374b79f8b04109a233;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=80c7a5f90186ed67b1a22b2d6ba64306a36f909c848093374b79f8b04109a233;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1194" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-version": [ "6.0.02586.90-5c77bed2" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-azure-ref": [ "20240206T121507Z-8f6r3xskwh4btc8yq2qh5g5fz40000000950000000007at8" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "5a6ee7a7-a32e-4a3c-97c3-33e252f4b1d9" ],
+        "x-ms-correlation-request-id": [ "5a6ee7a7-a32e-4a3c-97c3-33e252f4b1d9" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240206T121509Z:5a6ee7a7-a32e-4a3c-97c3-33e252f4b1d9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-MSEdge-Ref": [ "Ref A: B102CFD12D2D443BB82DA25EC67A589A Ref B: MRS211050313051 Ref C: 2024-02-06T12:15:06Z" ],
+        "Date": [ "Tue, 06 Feb 2024 12:15:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "274" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"uniqueOfferId\":\"aumatics.azure_managedservices\",\"specificPlanIdsLimitation\":[\"azure_managedservices_professional\"],\"eTag\":\"\\\"c303ee7f-0000-0100-0000-65c0b1020000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false}]}",
+      "isContentBase64": false
+    }
+  }
+}

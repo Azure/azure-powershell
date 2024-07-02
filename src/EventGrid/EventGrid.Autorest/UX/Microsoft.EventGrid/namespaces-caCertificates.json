@@ -1,0 +1,95 @@
+{
+  "resourceType": "namespaces/caCertificates",
+  "apiVersion": "2023-06-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.eventgrid"
+  },
+  "commands": [
+    {
+      "name": "Get-AzEventGridCaCertificate",
+      "description": "Get properties of a CA certificate.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/caCertificates/{caCertificateName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridcacertificate"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-NamespaceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get properties of a CA certificate.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.caCertificateName]"
+            },
+            {
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzEventGridCaCertificate",
+      "description": "Delete an existing CA certificate.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/caCertificates/{caCertificateName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/remove-azeventgridcacertificate"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-NamespaceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete an existing CA certificate.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.caCertificateName]"
+            },
+            {
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

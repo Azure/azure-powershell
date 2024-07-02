@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 if ($UsePreviousConfigForRecord) {
     $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
@@ -52,7 +77,7 @@ function setupEnv() {
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
 
     write-host "2. az aks create..."
-    az aks create --name $env.k8sName1 --resource-group $env.resourceGroup --kubernetes-version 1.25.5 --vm-set-type AvailabilitySet
+    az aks create --name $env.k8sName1 --resource-group $env.resourceGroup --kubernetes-version 1.29.2 --vm-set-type AvailabilitySet
 
     write-host "3. az aks get-credentials..."
     az aks get-credentials --name $env.k8sName1 --resource-group $env.resourceGroup

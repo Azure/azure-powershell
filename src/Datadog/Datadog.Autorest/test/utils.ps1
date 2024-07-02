@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
@@ -28,11 +53,11 @@ function setupEnv() {
     Write-Host -ForegroundColor Green "Create two $($env.monitorName01) and $($env.monitorName02) for test."
     New-AzDatadogMonitor -ResourceGroupName $env.resourceGroup -Name $env.monitorName01 -SkuName 'drawdown_testing_20200904_Monthly' -Location 'eastus2euap' -UserInfoEmailAddress 'user@microsoft.com' -UserInfoName 'user' -UserInfoPhoneNumber '11111111111' -IdentityType SystemAssigned
     New-AzDatadogMonitor -ResourceGroupName $env.resourceGroup -Name $env.monitorName02 -SkuName 'drawdown_testing_20200904_Monthly' -Location 'eastus2euap' -UserInfoEmailAddress 'user@microsoft.com' -UserInfoName 'user' -UserInfoPhoneNumber '11111111111' -IdentityType SystemAssigned
-    
-    # Eable SSO 
+
+    # Eable SSO
     Write-Host -ForegroundColor Green "Enable SSO for $($env.monitorName01) monitor."
     New-AzDatadogSingleSignOnConfiguration -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01 -Name 'default' -SingleSignOnState Enable -EnterpriseAppId $env.enterpriseAppId
-    
+
     # Create tag rules
     Write-Host -ForegroundColor Green "Create default tag rule $($env.monitorName01) monitor."
     $ftobjArray = @()

@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="3.17.3-preview" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.3.7" />
     <PackageReference Include="xunit" Version="2.4.2" />
   </ItemGroup>
 
@@ -40,7 +39,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="3.19.2" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
   </ItemGroup>
 </Project>

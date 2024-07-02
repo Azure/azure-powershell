@@ -14,7 +14,7 @@ Create a service config profile.
 
 ```
 New-AzHdInsightOnAksClusterServiceConfigsProfileObject -Config <IClusterServiceConfig[]> -ServiceName <String>
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +35,6 @@ This cmdlet creates the service config profile of "yarn-service" with the compon
 
 ### -Config
 List of service configs.
-To construct, see NOTES section for CONFIG properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfig[]
@@ -58,37 +57,6 @@ Parameter Sets: (All)
 Aliases: Name
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

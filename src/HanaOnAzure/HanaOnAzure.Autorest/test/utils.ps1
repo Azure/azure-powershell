@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
@@ -55,9 +80,9 @@ function setupEnv() {
     #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     $hanaDbPasswordSecret = Set-AzKeyVaultSecret -VaultName $kvName -Name 'hanaPassword' -SecretValue (ConvertTo-SecureString "Manager1" -AsPlainText -Force)
     $env.hanaDbPasswordKvResourceId = $keyValut.ResourceId
-    $env.hanaDbPasswordSecretId = $hanaDbPasswordSecret.Id 
+    $env.hanaDbPasswordSecretId = $hanaDbPasswordSecret.Id
     Write-Host -ForegroundColor Green 'The key valut deployed successfully'
-    
+
     # Virtual network
     # HANA Vm subnet
     $env.MonitorSubnet = "/subscriptions/c4106f40-4f28-442e-b67f-a24d892bf7ad/resourceGroups/tniek-all/providers/Microsoft.Network/virtualNetworks/vnet-all/subnets/sapmon"

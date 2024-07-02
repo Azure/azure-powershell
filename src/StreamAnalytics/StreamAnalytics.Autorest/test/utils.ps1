@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 
 <# Pre-Step:
@@ -56,13 +81,13 @@ function setupEnv() {
     $env.trnasf03 = 'transf' + (RandomString -allChars $false -len 6)
 
     $env.storageAccount00 = 'storageaccount' + (RandomString -allChars $false -len 6)
-    
+
     $env.iothub00 = 'iothub' + (RandomString -allChars $false -len 6)
 
     # Create resource group
     Write-Host -ForegroundColor Green "Create resource group for test."
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
-    
+
     # Deploy storage account and Iot hub
     Write-Host -ForegroundColor Green "Deploy storage account for test."
     $storageAccountParam = Get-Content .\test\deployment-templates\storage-account\parameters.json | ConvertFrom-Json
@@ -103,17 +128,17 @@ function setupEnv() {
     Write-Host -ForegroundColor Green "Create completed"
 
     Write-Host -ForegroundColor Green "Create job, input, output, function, transformation for test"
-    New-AzStreamAnalyticsJob -ResourceGroupName $env.resourceGroup -Name $env.job01 -Location $env.location -SkuName 'Standard' -ClusterId $cluster00.Id 
+    New-AzStreamAnalyticsJob -ResourceGroupName $env.resourceGroup -Name $env.job01 -Location $env.location -SkuName 'Standard' -ClusterId $cluster00.Id
     New-AzStreamAnalyticsJob -ResourceGroupName $env.resourceGroup -Name $env.job02 -Location $env.location -SkuName 'Standard' -ClusterId $cluster00.Id
-    
+
     New-AzStreamAnalyticsInput -ResourceGroupName $env.resourceGroup -JobName $env.job01 -Name $env.input01 -File .\test\template-json\IotHub.json
     New-AzStreamAnalyticsOutput -ResourceGroupName $env.resourceGroup -JobName $env.job01 -Name $env.output01 -File .\test\template-json\StroageAccount.json
-    
+
     New-AzStreamAnalyticsFunction -ResourceGroupName $env.resourceGroup -JobName $env.job01 -Name $env.function01 -File .\test\template-json\Function_JavascriptUdf.json
     New-AzStreamAnalyticsFunction -ResourceGroupName $env.resourceGroup -JobName $env.job01 -Name $env.mlsfunction -File .\test\template-json\MachineLearningServices.json
 
     New-AzStreamAnalyticsTransformation -ResourceGroupName $env.resourceGroup -JobName $env.job01 -Name $env.trnasf01 -StreamingUnit 6 -Query "SELECT * INTO $($env.output01) FROM $($env.input01) HAVING Temperature > 27"
-    
+
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

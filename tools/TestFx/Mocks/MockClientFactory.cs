@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -28,9 +27,10 @@ using System.Net.Http.Headers;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.TestFx.DelegatingHandlers;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
+
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 #endif
@@ -81,9 +81,16 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
 
         public TClient CreateCustomArmClient<TClient>(params object[] parameters) where TClient : Microsoft.Rest.ServiceClient<TClient>
         {
-            if (!(_serviceClients.FirstOrDefault(o => o is TClient) is TClient client))
+            if (_serviceClients.FirstOrDefault(o => o is TClient) is not TClient client)
             {
-                client = _mockContext?.GetServiceClient<TClient>();
+                if (typeof(TClient) == typeof(MicrosoftGraphClient))
+                {
+                    client = _mockContext?.GetGraphServiceClient<TClient>();
+                }
+                else
+                {
+                    client = _mockContext?.GetServiceClient<TClient>();
+                }
             }
 
             if (client == null)
@@ -95,7 +102,7 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
                 client = realClientFactory.CreateCustomArmClient<TClient>(newParameters);
             }
 
-            if (TestMockSupport.RunningMocked && HttpMockServer.GetCurrentMode() != HttpRecorderMode.Record)
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
                 if (client is IAzureClient azureClient)
                 {

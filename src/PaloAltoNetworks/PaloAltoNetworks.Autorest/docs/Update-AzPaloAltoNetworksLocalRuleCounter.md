@@ -25,6 +25,13 @@ Update-AzPaloAltoNetworksLocalRuleCounter -InputObject <IPaloAltoNetworksIdentit
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### RefreshViaIdentityLocalRulestack
+```
+Update-AzPaloAltoNetworksLocalRuleCounter -LocalRulestackInputObject <IPaloAltoNetworksIdentity>
+ -Priority <String> [-FirewallName <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Refresh counters
 
@@ -76,11 +83,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPaloAltoNetworksIdentity
 Parameter Sets: RefreshViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -LocalRulestackInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPaloAltoNetworksIdentity
+Parameter Sets: RefreshViaIdentityLocalRulestack
 Aliases:
 
 Required: True
@@ -125,7 +146,7 @@ Local Rule priority
 
 ```yaml
 Type: System.String
-Parameter Sets: Refresh
+Parameter Sets: Refresh, RefreshViaIdentityLocalRulestack
 Aliases:
 
 Required: True
@@ -209,23 +230,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IPaloAltoNetworksIdentity>`: Identity Parameter
-  - `[FirewallName <String>]`: Firewall resource name
-  - `[GlobalRulestackName <String>]`: GlobalRulestack resource name
-  - `[Id <String>]`: Resource identity path
-  - `[LocalRulestackName <String>]`: LocalRulestack resource name
-  - `[Name <String>]`: certificate name
-  - `[Priority <String>]`: Post Rule priority
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

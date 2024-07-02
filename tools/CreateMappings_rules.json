@@ -489,10 +489,6 @@
     "alias": "Blueprint"
   },
   {
-    "regex": "DeploymentManager",
-    "alias": "Deployment Manager"
-  },
-  {
     "regex": "Peering",
     "group": "Peering",
     "alias": "Peering"
@@ -859,5 +855,49 @@
   {
     "module": "NetworkAnalytics",
     "alias": "NetworkAnalytics"
+  },
+  {
+    "module": "Fleet",
+    "alias": "Fleet"
+  },
+  {
+    "module": "ManagedNetworkFabric",
+    "alias": "Managed Network Fabric"
+  },
+  {
+    "module": "CodeSigning",
+    "alias": "Code Signing"
+  },
+  {
+    "module": "FirmwareAnalysis",
+    "alias": "FirmwareAnalysis"
+  },
+  {
+    "module": "EdgeZones",
+    "alias": "EdgeZones"
+  },
+  {
+    "alias": "Sphere",
+    "module": "Sphere"
+  },
+  {
+    "module": "StandbyPool",
+    "alias": "StandbyPool"
+  },
+  {
+    "module": "Chaos",
+    "alias": "Chaos"
+  },
+  {
+    "module": "StorageAction",
+    "alias": "StorageAction"
+  },
+  {
+    "module": "AksArc",
+    "alias": "AksArc"
+  },
+  {
+    "module": "AppComplianceAutomation",
+    "alias": "AppComplianceAutomation"
   }
 ]

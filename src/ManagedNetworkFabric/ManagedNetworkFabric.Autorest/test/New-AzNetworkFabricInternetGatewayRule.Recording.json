@@ -1,0 +1,124 @@
+{
+  "New-AzNetworkFabricInternetGatewayRule+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules/InternetGatewayRuleName?api-version=2023-06-15+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules/InternetGatewayRuleName?api-version=2023-06-15",
+      "Content": "{\n  \"location\": \"eastus\",\n  \"properties\": {\n    \"ruleProperties\": {\n      \"action\": \"Allow\",\n      \"addressList\": [ \"10.10.10.10\" ]\n    }\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "143" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"8e0149ba-0000-0100-0000-650d20360000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "947171b1-8dff-4a01-a5a8-2e91bc1c7946" ],
+        "x-ms-request-id": [ "b203f13a-ffec-419a-87b0-3a4e180a6791" ],
+        "x-ms-correlation-request-id": [ "0efe18e1-512c-4e26-870e-3220b0ec1a3c" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/ba733d27-55c4-4ac1-bc1e-d04b4e8d8775*4045566F3B9CF83800518E1BC3CED4ACE78942345B453D1DAD03B2C6C68B635C?api-version=2023-06-15" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230922T050350Z:0efe18e1-512c-4e26-870e-3220b0ec1a3c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 22 Sep 2023 05:03:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "689" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules/InternetGatewayRuleName\",\"name\":\"InternetGatewayRuleName\",\"type\":\"microsoft.managednetworkfabric/internetgatewayrules\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-rmarimuthu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-09-22T05:03:48.5734191Z\",\"lastModifiedBy\":\"v-rmarimuthu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-09-22T05:03:48.5734191Z\"},\"properties\":{\"ruleProperties\":{\"action\":\"Allow\",\"addressList\":[\"10.10.10.10\"]},\"internetGatewayIds\":null,\"provisioningState\":\"Accepted\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkFabricInternetGatewayRule+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/ba733d27-55c4-4ac1-bc1e-d04b4e8d8775*4045566F3B9CF83800518E1BC3CED4ACE78942345B453D1DAD03B2C6C68B635C?api-version=2023-06-15+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/ba733d27-55c4-4ac1-bc1e-d04b4e8d8775*4045566F3B9CF83800518E1BC3CED4ACE78942345B453D1DAD03B2C6C68B635C?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "7788c6c6-4eaa-41a3-8169-1057a1f5ec37" ],
+        "CommandName": [ "New-AzNetworkFabricInternetGatewayRule" ],
+        "FullCommandName": [ "New-AzNetworkFabricInternetGatewayRule_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"a101f83f-0000-0100-0000-650d20380000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "b92549dd-f1dd-4578-8035-e0baf56184a5" ],
+        "x-ms-correlation-request-id": [ "c007b2e7-1b08-42c7-a1ce-ff0ff97b42f4" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230922T050421Z:c007b2e7-1b08-42c7-a1ce-ff0ff97b42f4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 22 Sep 2023 05:04:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "696" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/ba733d27-55c4-4ac1-bc1e-d04b4e8d8775*4045566F3B9CF83800518E1BC3CED4ACE78942345B453D1DAD03B2C6C68B635C\",\"name\":\"ba733d27-55c4-4ac1-bc1e-d04b4e8d8775*4045566F3B9CF83800518E1BC3CED4ACE78942345B453D1DAD03B2C6C68B635C\",\"resourceId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules/InternetGatewayRuleName\",\"status\":\"Succeeded\",\"startTime\":\"2023-09-22T05:03:49.6092555Z\",\"endTime\":\"2023-09-22T05:03:52.2454023Z\",\"percentComplete\":100.0,\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkFabricInternetGatewayRule+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules/InternetGatewayRuleName?api-version=2023-06-15+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules/InternetGatewayRuleName?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "7788c6c6-4eaa-41a3-8169-1057a1f5ec37" ],
+        "CommandName": [ "New-AzNetworkFabricInternetGatewayRule" ],
+        "FullCommandName": [ "New-AzNetworkFabricInternetGatewayRule_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"8e0163ba-0000-0100-0000-650d20380000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "2a6e02d6-e3a4-45a3-8a22-150bd0eb5612" ],
+        "x-ms-correlation-request-id": [ "9b6deff0-c452-4a27-b984-074625300031" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230922T050422Z:9b6deff0-c452-4a27-b984-074625300031" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 22 Sep 2023 05:04:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "690" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules/InternetGatewayRuleName\",\"name\":\"InternetGatewayRuleName\",\"type\":\"microsoft.managednetworkfabric/internetgatewayrules\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-rmarimuthu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-09-22T05:03:48.5734191Z\",\"lastModifiedBy\":\"v-rmarimuthu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-09-22T05:03:48.5734191Z\"},\"properties\":{\"ruleProperties\":{\"action\":\"Allow\",\"addressList\":[\"10.10.10.10\"]},\"internetGatewayIds\":null,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
   "resourceType": "localRulestacks/localRules",
-  "apiVersion": "2022-08-29",
+  "apiVersion": "2023-09-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.paloaltonetworks"
   },

@@ -12,19 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Identity.Client;
+using Microsoft.Identity.Client.Extensions.Msal;
 using Microsoft.Rest;
-using Microsoft.Rest.Azure.Authentication;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.TestFx
 {
@@ -32,35 +34,49 @@ namespace Microsoft.Azure.Commands.TestFx
     {
         private const string DummyTenantId = "395544B0-BF41-429D-921F-E1CA2252FCF4";
 
+        private const string MicrosoftLoginUrl = "https://login.microsoftonline.com";
+
+        private const string MicrosoftGraphUrl = "https://graph.microsoft.com";
+
         /// <summary>
         /// Base Uri used by the Test Environment
         /// </summary>
-        public Uri BaseUri { get; set; }
+        public Uri BaseUri { get; private set; }
 
         /// <summary>
         /// Base Azure Graph Uri used by the Test Environment
         /// </summary>
-        public Uri GraphUri { get; set; }
+        public Uri GraphUri { get; private set; }
 
         /// <summary>
-        /// UserName used by the Test Environment
+        /// Tenant Id used by the Test Environment
         /// </summary>
-        public string UserName { get; set; }
-
-        /// <summary>
-        /// Tenant used by the Test Environment
-        /// </summary>
-        public string TenantId { get; set; }
+        public string TenantId { get; private set; }
 
         /// <summary>
         /// Subscription Id used by the Test Environment
         /// </summary>
-        public string SubscriptionId { get; set; }
+        public string SubscriptionId { get; private set; }
+
+        /// <summary>
+        /// Service principal client id used by the Test Environment
+        /// </summary>
+        public string ServicePrincipalClientId { get; private set; }
+
+        /// <summary>
+        /// Service principal secret used by the Test Environment
+        /// </summary>
+        public string ServicePrincipalSecret { get; private set; }
+
+        /// <summary>
+        /// UserName used by the Test Environment
+        /// </summary>
+        public string UserId { get; private set; }
 
         /// <summary>
         /// Active TestEndpoint being used by the Test Environment
         /// </summary>
-        public TestEndpoints Endpoints { get; set; }
+        public TestEndpoints Endpoints { get; private set; }
 
         /// <summary>
         /// Holds default endpoints for all the supported environments
@@ -87,10 +103,17 @@ namespace Microsoft.Azure.Commands.TestFx
 
             SubscriptionId = ConnectionString.GetValue(ConnectionStringKeys.SubscriptionIdKey);
             TenantId = ConnectionString.GetValue(ConnectionStringKeys.TenantIdKey);
-            UserName = ConnectionString.GetValue(ConnectionStringKeys.UserIdKey);
+            UserId = ConnectionString.GetValue(ConnectionStringKeys.UserIdKey);
+            ServicePrincipalClientId = ConnectionString.GetValue(ConnectionStringKeys.ServicePrincipalKey);
+            ServicePrincipalSecret = ConnectionString.GetValue(ConnectionStringKeys.ServicePrincipalSecretKey);
             OptimizeRecordedFile = ConnectionString.GetValue<bool>(ConnectionStringKeys.OptimizeRecordedFileKey);
 
-            if (string.IsNullOrEmpty(ConnectionString.GetValue(ConnectionStringKeys.BaseUriKey)))
+            if (string.IsNullOrWhiteSpace(ServicePrincipalClientId) && string.IsNullOrWhiteSpace(UserId))
+            {
+                UserId = "fakeuser";
+            }
+
+            if (string.IsNullOrWhiteSpace(ConnectionString.GetValue(ConnectionStringKeys.BaseUriKey)))
             {
                 BaseUri = Endpoints.ResourceManagementUri;
             }
@@ -103,13 +126,12 @@ namespace Microsoft.Azure.Commands.TestFx
             {
                 GraphUri = Endpoints.GraphUri;
             }
-            else if (!string.IsNullOrWhiteSpace(ConnectionString.GetValue(ConnectionStringKeys.GraphUriKey)))
+            else
             {
                 GraphUri = new Uri(ConnectionString.GetValue(ConnectionStringKeys.GraphUriKey));
             }
 
-            InitTokenDictionary();
-            SetupHttpRecorderMode();
+            SetupTokenDictionary();
         }
 
         private void InitTestEndPoints()
@@ -127,145 +149,117 @@ namespace Microsoft.Azure.Commands.TestFx
 
         private void LoadDefaultEnvironmentEndpoints()
         {
-            if (EnvEndpoints == null)
+            EnvEndpoints ??= new Dictionary<TestEnvironmentName, TestEndpoints>()
             {
-                EnvEndpoints = new Dictionary<TestEnvironmentName, TestEndpoints>()
-                {
-                    { TestEnvironmentName.Prod, new TestEndpoints(TestEnvironmentName.Prod) },
-                    { TestEnvironmentName.Dogfood, new TestEndpoints(TestEnvironmentName.Dogfood) },
-                    { TestEnvironmentName.Next, new TestEndpoints(TestEnvironmentName.Next) },
-                    { TestEnvironmentName.Current, new TestEndpoints(TestEnvironmentName.Current) },
-                    { TestEnvironmentName.Custom, new TestEndpoints(TestEnvironmentName.Custom) }
-                };
-            }
+                { TestEnvironmentName.Prod, new TestEndpoints(TestEnvironmentName.Prod) },
+                { TestEnvironmentName.Dogfood, new TestEndpoints(TestEnvironmentName.Dogfood) },
+                { TestEnvironmentName.Next, new TestEndpoints(TestEnvironmentName.Next) },
+                { TestEnvironmentName.Current, new TestEndpoints(TestEnvironmentName.Current) },
+                { TestEnvironmentName.Custom, new TestEndpoints(TestEnvironmentName.Custom) }
+            };
         }
 
-        private void InitTokenDictionary()
+        private void SetupTokenDictionary()
         {
             TokenInfo = new Dictionary<TokenAudience, TokenCredentials>();
-
-            ConnectionString.KeyValuePairs.TryGetValue(ConnectionStringKeys.RawTokenKey, out string rawToken);
-            ConnectionString.KeyValuePairs.TryGetValue(ConnectionStringKeys.RawGraphTokenKey, out string rawGraphToken);
-
-            // We need TokenInfo to be non-empty as there are cases where have taken dependency on non-empty TokenInfo in MockContext
-            if (string.IsNullOrEmpty(rawToken))
+            UpdateTokenInfo(TokenAudience.Management, new[] { "https://management.core.windows.net/.default" });
+            UpdateTokenInfo(TokenAudience.Graph, new[] { "https://graph.microsoft.com/.default" });
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
-                rawToken = ConnectionStringKeys.RawTokenKey;
-            }
-
-            if (string.IsNullOrEmpty(rawGraphToken))
-            {
-                rawGraphToken = ConnectionStringKeys.RawGraphTokenKey;
-            }
-
-            TokenInfo[TokenAudience.Management] = new TokenCredentials(rawToken);
-            TokenInfo[TokenAudience.Graph] = new TokenCredentials(rawGraphToken);
-        }
-
-        private void SetupHttpRecorderMode()
-        {
-            string testMode = Environment.GetEnvironmentVariable(ConnectionStringKeys.AZURE_TEST_MODE_ENVKEY);
-
-            if (string.IsNullOrEmpty(testMode))
-            {
-                testMode = ConnectionString.GetValue(ConnectionStringKeys.HttpRecorderModeKey);
-            }
-
-            // Ideally we should be throwing when incompatible environment (e.g. Environment=Foo) is provided in connection string
-            // But currently we do not throw
-            if (Enum.TryParse(testMode, out HttpRecorderMode recorderMode))
-            {
-                HttpMockServer.Mode = recorderMode;
-            }
-            else
-            {
-                // Log incompatible recorder mode
-                // Currently we set Playback as default recorder mode
-                HttpMockServer.Mode = HttpRecorderMode.Playback;
+                VerifyAuthTokens();
             }
         }
 
-        private void Login()
+        private void UpdateTokenInfo(TokenAudience audience, IEnumerable<string> scopes, string cloudInstanceUri = null)
         {
-            string userPassword = ConnectionString.GetValue(ConnectionStringKeys.PasswordKey);
-            string spnClientId = ConnectionString.GetValue(ConnectionStringKeys.ServicePrincipalKey);
-            string spnClientSecret = ConnectionString.GetValue(ConnectionStringKeys.ServicePrincipalSecretKey);
-            //We use this because when login silently using userTokenProvider, we need to provide a well known ClientId for an app that has delegating permissions.
-            //All first party app have that permissions, so we use PowerShell app ClientId
-#if net452
-            string PowerShellClientId = "1950a258-227b-4e31-a9cf-717495945fc2";
-#endif
-           /*
-            * Currently we prioritize login as below:
-            * 1) ServicePrincipal/ServicePrincipal Secret Key
-            * 2) UserName / Password combination
-            * 3) Interactive Login (where user will be presented with prompt to login)
-            */
-
-            ActiveDirectoryServiceSettings aadServiceSettings = new ActiveDirectoryServiceSettings()
+            string tokenKey = string.Empty;
+            switch (audience)
             {
-                AuthenticationEndpoint = new Uri(Endpoints.AADAuthUri.ToString() + ConnectionString.GetValue(ConnectionStringKeys.TenantIdKey)),
-                TokenAudience = Endpoints.AADTokenAudienceUri
-            };
-
-            ActiveDirectoryServiceSettings graphAADServiceSettings = new ActiveDirectoryServiceSettings()
-            {
-                AuthenticationEndpoint = new Uri(Endpoints.AADAuthUri.ToString() + ConnectionString.GetValue(ConnectionStringKeys.TenantIdKey)),
-                TokenAudience = Endpoints.GraphTokenAudienceUri
-            };
-
-            if ((!string.IsNullOrEmpty(spnClientId)) && (!string.IsNullOrEmpty(spnClientSecret)))
-            {
-                Task<TokenCredentials> mgmAuthResult = Task.Run(async () => (TokenCredentials)await ApplicationTokenProvider.LoginSilentAsync(TenantId, spnClientId, spnClientSecret, aadServiceSettings).ConfigureAwait(false));
-                TokenInfo[TokenAudience.Management] = mgmAuthResult.Result;
-                UpdateTokenInfoWithGraphToken(graphAADServiceSettings, spnClientId: spnClientId, spnClientSecret: spnClientSecret);
+                case TokenAudience.Management:
+                    tokenKey = ConnectionStringKeys.RawTokenKey;
+                    break;
+                case TokenAudience.Graph:
+                    tokenKey = ConnectionStringKeys.RawGraphTokenKey;
+                    break;
             }
-            else if ((!string.IsNullOrEmpty(UserName)) && (!string.IsNullOrEmpty(userPassword)))
+
+            if (!ConnectionString.KeyValuePairs.TryGetValue(tokenKey, out var token) || string.IsNullOrWhiteSpace(token))
             {
-                //#if FullNetFx
-#if net452
-                Task<TokenCredentials> mgmAuthResult = Task.Run(async () => (TokenCredentials)await UserTokenProvider.LoginSilentAsync(PowerShellClientId, TenantId, UserName, userPassword, aadServiceSettings).ConfigureAwait(false));
-                this.TokenInfo[TokenAudience.Management] = mgmAuthResult.Result;
-                UpdateTokenInfoWithGraphToken(graphAADServiceSettings, userName: UserName, password: userPassword, psClientId: PowerShellClientId);
-#else
-                throw new NotSupportedException("Username/Password login is supported only in NET452 and above projects");
-#endif
+                token = GetAccessToken(scopes, cloudInstanceUri) ?? tokenKey;
             }
-            else
-            {
-                //#if FullNetFx
-#if net452
-                InteractiveLogin(TenantId, PowerShellClientId, aadServiceSettings, graphAADServiceSettings);
-#else
-                throw new NotSupportedException("Interactive Login is supported only in NET452 and above projects");
-#endif
-            }
+
+            TokenInfo[audience] = new TokenCredentials(token);
         }
 
-        private void UpdateTokenInfoWithGraphToken(ActiveDirectoryServiceSettings graphAADServiceSettings, string spnClientId = "", string spnClientSecret = "", string userName = "", string password = "", string psClientId = "")
+        public string GetAccessToken(IEnumerable<string> scopes, string cloudInstanceUri = null)
         {
-            Task<TokenCredentials> graphAuthResult = null;
+            string accessToken = null;
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                if (ConnectionString.KeyValuePairs.ContainsKey(ConnectionStringKeys.UserIdKey))
+                {
+                    accessToken = GetUserAccessToken(scopes, cloudInstanceUri);
+                }
+                else if (ConnectionString.KeyValuePairs.ContainsKey(ConnectionStringKeys.ServicePrincipalKey))
+                {
+                    accessToken = GetServicePrincipalAccessToken(scopes, cloudInstanceUri);
+                }
+            }
+
+            return accessToken;
+        }
+
+        private string GetUserAccessToken(IEnumerable<string> scopes, string cloudInstanceUri = null)
+        {
+            if (string.IsNullOrWhiteSpace(cloudInstanceUri))
+            {
+                cloudInstanceUri = MicrosoftLoginUrl;
+            }
+
+            var pubApp = PublicClientApplicationBuilder.Create(Constants.PowerShellClientId)
+                .WithAuthority(cloudInstanceUri, TenantId)
+                .WithDefaultRedirectUri()
+                .Build();
+            RegisterTokenCache(pubApp.UserTokenCache);
+
+            AuthenticationResult authResult;
             try
             {
-                if (!string.IsNullOrWhiteSpace(userName) && !string.IsNullOrWhiteSpace(password))
-                {
-                    //#if FullNetFx
-#if net452
-                    graphAuthResult = Task.Run(async () => (TokenCredentials)await UserTokenProvider.LoginSilentAsync(psClientId, TenantId, userName, password, graphAADServiceSettings).ConfigureAwait(false));
-#endif
-                }
-                else if (!string.IsNullOrWhiteSpace(spnClientId) && !string.IsNullOrWhiteSpace(spnClientSecret))
-                {
-                    graphAuthResult = Task.Run(async () => (TokenCredentials)await ApplicationTokenProvider.LoginSilentAsync(TenantId, spnClientId, spnClientSecret, graphAADServiceSettings).ConfigureAwait(false));
-                }
-
-                TokenInfo[TokenAudience.Graph] = graphAuthResult?.Result;
+                var userAccounts = pubApp.GetAccountsAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+                var userAccount = userAccounts.FirstOrDefault();
+                authResult = pubApp.AcquireTokenSilent(scopes, userAccount).ExecuteAsync().ConfigureAwait(false).GetAwaiter().GetResult();
             }
-            catch (Exception ex)
+            catch (MsalUiRequiredException)
             {
-                Debug.WriteLine($"Error while acquiring Graph Token: '{ex}'");
-                // Not all accounts are registered to have access to Graph endpoints. 
+                authResult = pubApp.AcquireTokenInteractive(scopes).ExecuteAsync().ConfigureAwait(false).GetAwaiter().GetResult();
             }
+            return authResult.AccessToken;
+        }
+
+        private string GetServicePrincipalAccessToken(IEnumerable<string> scopes, string cloudInstanceUri = null)
+        {
+            if (string.IsNullOrWhiteSpace(cloudInstanceUri))
+            {
+                cloudInstanceUri = MicrosoftLoginUrl;
+            }
+
+            var confApp = ConfidentialClientApplicationBuilder
+                .Create(ServicePrincipalClientId)
+                .WithClientSecret(ServicePrincipalSecret)
+                .WithAuthority(cloudInstanceUri, TenantId)
+                .Build();
+            RegisterTokenCache(confApp.AppTokenCache);
+
+            var authResult = confApp.AcquireTokenForClient(scopes).ExecuteAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+            return authResult.AccessToken;
+        }
+
+        private void RegisterTokenCache(ITokenCache tokenCache)
+        {
+            var msalCacheFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), ".IdentityService", "msal.cache.plaintext");
+            var options = new StorageCreationPropertiesBuilder(Path.GetFileName(msalCacheFile), Path.GetDirectoryName(msalCacheFile)).WithUnprotectedFile().Build();
+            var helper = MsalCacheHelper.CreateAsync(options).ConfigureAwait(false).GetAwaiter().GetResult();
+            helper.RegisterCache(tokenCache);
         }
 
         private void VerifyAuthTokens()
@@ -318,7 +312,7 @@ namespace Microsoft.Azure.Commands.TestFx
                 // we then check if the retrieved subscription list has exactly 1 subscription, if yes we will just use that one.
                 if (string.IsNullOrEmpty(SubscriptionId))
                 {
-                    if (subscriptionList.Count() == 1)
+                    if (subscriptionList.Count == 1)
                     {
                         ConnectionString.KeyValuePairs[ConnectionStringKeys.SubscriptionIdKey] = subscriptionList.First().SubscriptionId;
                     }
@@ -400,15 +394,6 @@ namespace Microsoft.Azure.Commands.TestFx
                 {
                     HttpMockServer.Variables.Add(ConnectionStringKeys.SubscriptionIdKey, SubscriptionId);
                 }
-
-                // If User has provided Access Token in RawToken/GraphToken Key-Value, we don't need to authenticate
-                // We currently only check for RawToken and do not check if GraphToken is provided
-                if (string.IsNullOrEmpty(ConnectionString.GetValue(ConnectionStringKeys.RawTokenKey)))
-                {
-                    Login();
-                }
-
-                VerifyAuthTokens();
             }
             else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {

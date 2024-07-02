@@ -8,19 +8,23 @@ schema: 2.0.0
 # New-AzVMwarePrivateCloud
 
 ## SYNOPSIS
-Create or update a private cloud
+Create a private cloud
 
 ## SYNTAX
 
 ```
 New-AzVMwarePrivateCloud -Name <String> -ResourceGroupName <String> -Location <String>
  -ManagementClusterSize <Int32> -NetworkBlock <String> -Sku <String> [-SubscriptionId <String>] [-AcceptEULA]
- [-Internet <InternetEnum>] [-NsxtPassword <String>] [-Tag <Hashtable>] [-VcenterPassword <String>]
+ [-AvailabilitySecondaryZone <Int32>] [-AvailabilityStrategy <String>] [-AvailabilityZone <Int32>]
+ [-EncryptionStatus <String>] [-ExtendedNetworkBlock <String[]>] [-IdentitySource <IIdentitySource[]>]
+ [-IdentityType <String>] [-Internet <String>] [-KeyVaultPropertyKeyName <String>]
+ [-KeyVaultPropertyKeyVaultUrl <String>] [-KeyVaultPropertyKeyVersion <String>]
+ [-ManagementClusterHost <String[]>] [-NsxtPassword <String>] [-Tag <Hashtable>] [-VcenterPassword <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update a private cloud
+Create a private cloud
 
 ## EXAMPLES
 
@@ -69,8 +73,54 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AvailabilitySecondaryZone
+The secondary availability zone for the private cloud
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AvailabilityStrategy
+The availability strategy for the private cloud
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AvailabilityZone
+The primary availability zone for the private cloud
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -84,11 +134,121 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EncryptionStatus
+Status of customer managed encryption key
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExtendedNetworkBlock
+Array of additional networks noncontiguous with networkBlock.
+Networks must be unique and non-overlapping across VNet in your subscription, on-premise, and this privateCloud networkBlock attribute.
+Make sure the CIDR format conforms to (A.B.C.D/X).
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentitySource
+vCenter Single Sign On Identity Sources
+To construct, see NOTES section for IDENTITYSOURCE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+The type of identity used for the private cloud.
+The type 'SystemAssigned' refers to an implicitly created identity.
+The type 'None' will remove any identities from the Private Cloud.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Internet
 Connectivity to internet is enabled or disabled
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultPropertyKeyName
+The name of the key.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultPropertyKeyVaultUrl
+The URL of the vault.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultPropertyKeyVersion
+The version of the key.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -108,6 +268,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagementClusterHost
+The hosts
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -302,13 +477,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

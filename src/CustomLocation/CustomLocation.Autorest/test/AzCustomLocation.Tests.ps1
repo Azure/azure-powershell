@@ -14,11 +14,11 @@ while (-not $mockingPath) {
 Describe 'AzCustomLocation' {
     It 'Create' {
         {
-            $config = New-AzCustomLocation -ResourceGroupName $env.resourceGroup -Name $env.clusterLocationName -Location $env.location -ClusterExtensionId $env.ClusterExtensionId -HostResourceId $env.HostResourceId -DisplayName $env.clusterLocationName -Namespace arc
-            $config.Type | Should -Be "Microsoft.ExtendedLocation/customLocations"
+            $config = New-AzCustomLocation -ResourceGroupName $env.resourceGroup -Name $env.clusterLocationName1 -Location $env.location -ClusterExtensionId $env.ClusterExtensionId -HostResourceId $env.HostResourceId -DisplayName $env.clusterLocationName1 -Namespace azps2
+            $config.Name | Should -Be $env.clusterLocationName1
 
-            $config = New-AzCustomLocation -ResourceGroupName $env.resourceGroup -Name $env.clusterLocationName2 -Location $env.location -ClusterExtensionId $env.ClusterExtensionId -HostResourceId $env.HostResourceId -DisplayName $env.clusterLocationName -Namespace arctwo
-            $config.Type | Should -Be "Microsoft.ExtendedLocation/customLocations"
+            $config = New-AzCustomLocation -ResourceGroupName $env.resourceGroup -Name $env.clusterLocationName2 -Location $env.location -ClusterExtensionId $env.ClusterExtensionId -HostResourceId $env.HostResourceId -DisplayName $env.clusterLocationName2 -Namespace azps3
+            $config.Name | Should -Be $env.clusterLocationName2
         } | Should -Not -Throw
     }
 
@@ -38,22 +38,22 @@ Describe 'AzCustomLocation' {
 
     It 'Get' {
         {
-            $config = Get-AzCustomLocation -ResourceGroupName $env.resourceGroup -Name $env.clusterLocationName
-            $config.Name | Should -Be $env.clusterLocationName
+            $config = Get-AzCustomLocation -ResourceGroupName $env.resourceGroup -Name $env.clusterLocationName1
+            $config.Name | Should -Be $env.clusterLocationName1
         } | Should -Not -Throw
     }
 
     It 'Get1' {
         {
-            $config = Get-AzCustomLocationEnabledResourceType -ResourceGroupName $env.resourceGroup -Name $env.clusterLocationName
-            $config.Type | Should -Be "Microsoft.ExtendedLocation/customLocations/enabledResourceTypes"
+            $config = Get-AzCustomLocationEnabledResourceType -ResourceGroupName $env.resourceGroup -Name $env.clusterLocationName1
+            $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
     It 'Update' {
         {
-            $config = Update-AzCustomLocation -ResourceGroupName $env.resourceGroup -Name $env.clusterLocationName -ClusterExtensionId $env.ClusterExtensionId -HostResourceId $env.HostResourceId -DisplayName $env.clusterLocationName -Namespace arc
-            $config.Name | Should -Be $env.clusterLocationName
+            $config = Update-AzCustomLocation -ResourceGroupName $env.resourceGroup -Name $env.clusterLocationName1 -ClusterExtensionId $env.ClusterExtensionId -HostResourceId $env.HostResourceId -DisplayName $env.clusterLocationName1 -Namespace azps2
+            $config.Name | Should -Be $env.clusterLocationName1
         } | Should -Not -Throw
     }
 
@@ -67,7 +67,7 @@ Describe 'AzCustomLocation' {
 
     It 'Delete' {
         {
-            Remove-AzCustomLocation -ResourceGroupName $env.resourceGroup -Name $env.clusterLocationName
+            Remove-AzCustomLocation -ResourceGroupName $env.resourceGroup -Name $env.clusterLocationName1
         } | Should -Not -Throw
     }
 

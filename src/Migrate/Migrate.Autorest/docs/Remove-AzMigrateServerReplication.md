@@ -124,7 +124,8 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Specifies the machine object of the replicating server.
+Specifies the replcating server for which the replication needs to be disabled.
+The server object should be retrieved using the Get-AzMigrateServerReplication cmdlet.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
@@ -155,7 +156,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetObjectID
-Specifies the replcating server for which the replicatio needs to be disabled.
+Specifies the replcating server for which the replication needs to be disabled.
 The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
 
 ```yaml
@@ -180,18 +181,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IMigrationItem>`: Specifies the machine object of the replicating server.
-  - `[Location <String>]`: Resource Location
-  - `[ProviderSpecificDetail <IMigrationProviderSpecificSettings>]`: The migration provider custom settings.
-    - `InstanceType <String>`: Gets the instance type.
 
 ## RELATED LINKS
 

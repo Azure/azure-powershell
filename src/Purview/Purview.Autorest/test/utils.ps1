@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 if ($UsePreviousConfigForRecord) {
     $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
@@ -31,12 +56,12 @@ function setupEnv() {
     # For any resources you created for test, you should add it to $env here.
     Write-Debug "Create resource group for test"
     New-AzResourceGroup -Name $env.resourceGroupName -Location $env.location
-    
+
     Write-Debug "Create purview account for test"
     New-AzPurviewAccount -Name $env.accountName -ResourceGroupName $env.resourceGroupName -Location $env.location -IdentityType SystemAssigned -SkuCapacity $env.skuCapacity -SkuName $env.skuName
     New-AzPurviewAccount -Name $env.accountName1 -ResourceGroupName $env.resourceGroupName -Location $env.location -IdentityType SystemAssigned -SkuCapacity $env.skuCapacity -SkuName $env.skuName
     New-AzPurviewAccount -Name $env.accountName2 -ResourceGroupName $env.resourceGroupName -Location $env.location -IdentityType SystemAssigned -SkuCapacity $env.skuCapacity -SkuName $env.skuName
-    Set-AzPurviewDefaultAccount -AccountName $env.accountName -ResourceGroupName $env.resourceGroupName -ScopeTenantId $env.Tenant 
+    Set-AzPurviewDefaultAccount -AccountName $env.accountName -ResourceGroupName $env.resourceGroupName -ScopeTenantId $env.Tenant
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'

@@ -30,6 +30,7 @@ $ExceptionList = @()
 $SavePath = $PWD
 
 $MissReadMe = 9000
+$AutorestCSharpDetected = 9080
 $GenSdkChanged = 9090
 
 function EnsureModuleName {
@@ -47,7 +48,8 @@ function Get-NonExceptionSdkRecord{
     )
     $exceptionPaths = "$PSScriptRoot\..\..\..\tools\StaticAnalysis\Exceptions"
     $errors = @()
-    foreach($record in $records){        
+    foreach($record in $records){    
+        $needAdd = $true    
         $exceptionPath = Join-Path -Path $exceptionPaths -ChildPath (EnsureModuleName($record.Module)) -AdditionalChildPath "GeneratedSdkIssues.csv"
         if(Test-Path -Path $exceptionPath){
             $exceptionContents = Import-Csv -Path $exceptionPath
@@ -72,7 +74,7 @@ try {
         # Collect Sdk paths whose files under Generated folder change.
         $ChangedSdks = New-Object System.Collections.Generic.List[System.Object]
         foreach ($_ in $FilesChanged) {
-            $ChangedSdks.Add($_.Substring(0,$_.IndexOf('.Sdk'))+'.Sdk')
+            $ChangedSdks.Add($_.Substring(0,$_.IndexOf('.Sdk', [System.StringComparison]::OrdinalIgnoreCase))+'.Sdk')
         }
         # Remove duplicated Sdks.
         $ChangedSdks = $ChangedSdks | select -unique
@@ -84,6 +86,13 @@ try {
     Write-Host "Preparing Autorest..."
     npx autorest --reset
     foreach ($_ in $ChangedSdks) {
+        # If it is Resources.Management.Sdk, flag and will use tag for sdk generation
+        $IsResources = $false;
+        if ($_ -match "Resources.Management.Sdk")
+        {
+            $IsResources = $true;
+        }
+
         # Extract Module Name
         $ModuleName = "Az." + ($_ -split "\/|\\")[1]
 
@@ -105,12 +114,44 @@ try {
             if ([regex]::Matches($readMeContent, '\s*powershell\s*:\s*true\s*') -and [regex]::Matches($readMeContent, '\s*isSdkGenerator\s*:\s*true\s*'))
             {
                 Write-Host "Using autorest powershell v4:`nRe-generating SDK under Generated folder for $ModuleName..."
-                npx autorest
+                if ($IsResources)
+                {
+                    Write-Host "Specific generation for Resources.Management.Sdk"
+                    rm -r Generated/*
+                    npx autorest --use:@autorest/powershell@4.x --tag=package-privatelinks-2020-05
+                    npx autorest --use:@autorest/powershell@4.x --tag=package-subscriptions-2021-01
+                    npx autorest --use:@autorest/powershell@4.x --tag=package-features-2021-07
+                    npx autorest --use:@autorest/powershell@4.x --tag=package-deploymentscripts-2020-10
+                    npx autorest --use:@autorest/powershell@4.x --tag=package-resources-2021-04
+                    npx autorest --use:@autorest/powershell@4.x --tag=package-deploymentstacks-2024-03
+                    npx autorest --use:@autorest/powershell@4.x --tag=package-templatespecs-2021-05
+                }
+                else
+                {
+                    npx autorest
+                }
+            }
+            elseif ([regex]::Matches($readMeContent, '\s*csharp\s*:\s*true\s*'))
+            {
+                $ExceptionList += [GeneratedSdkIssue]@{
+                    Module = $ModuleName;
+                    Sdk = $_;
+                    Severity = 1;
+                    ProblemId = $AutorestCSharpDetected
+                    Description = "Do not support updating SDK using autorest csharp v3."
+                    Remediation = "Please update the Readme.md to generate code by autorest powershell v4."
+                }
             }
             else
             {
-                Write-Host "Using autorest csharp v3:`nRe-generating SDK under Generated folder for $ModuleName..."
-                npx autorest --use:@microsoft.azure/autorest.csharp@2.3.90 --memory=16g
+                $ExceptionList += [GeneratedSdkIssue]@{
+                    Module = $ModuleName;
+                    Sdk = $_;
+                    Severity = 1;
+                    ProblemId = $GenSdkChanged
+                    Description = "Do not find correct autorest version, please check Readme.md"
+                    Remediation = "Please determine autorest v4 in Readme file."
+                }
             }
             
             If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
@@ -148,13 +189,14 @@ try {
             }
         }
 
+
         # See if the code is completely the same as we generated
         $changes = git status ".\Generated" --porcelain
         if ($changes -ne $null){
             # Prevent EOL changes detected
             git config --global core.safecrlf false
             git config --global core.autocrlf true
-            $diff = git diff
+            $diff = git diff ".\Generated"
             if($diff -ne $null){
                 $changes = $changes.replace("  ", "`n")
                 $ExceptionList += [GeneratedSdkIssue]@{

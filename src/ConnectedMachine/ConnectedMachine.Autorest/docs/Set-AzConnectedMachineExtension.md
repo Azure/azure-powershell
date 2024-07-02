@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzConnectedMachineExtension
 
 ## SYNOPSIS
-The operation to create or update the extension.
+The operation to Create the extension.
 
 ## SYNTAX
 
@@ -18,10 +18,9 @@ Set-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGr
  -Location <String> [-SubscriptionId <String>] [-AutoUpgradeMinorVersion] [-EnableAutomaticUpgrade]
  [-ExtensionType <String>] [-ForceRerun <String>] [-InstanceViewName <String>] [-InstanceViewType <String>]
  [-InstanceViewTypeHandlerVersion <String>] [-ProtectedSetting <Hashtable>] [-Publisher <String>]
- [-Setting <Hashtable>] [-StatusCode <String>] [-StatusDisplayStatus <String>]
- [-StatusLevel <StatusLevelTypes>] [-StatusMessage <String>] [-StatusTime <DateTime>] [-Tag <Hashtable>]
- [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Setting <Hashtable>] [-StatusCode <String>] [-StatusDisplayStatus <String>] [-StatusLevel <String>]
+ [-StatusMessage <String>] [-StatusTime <DateTime>] [-Tag <Hashtable>] [-TypeHandlerVersion <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -31,8 +30,22 @@ Set-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGr
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaJsonFilePath
+```
+Set-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Set-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-The operation to create or update the extension.
+The operation to Create the extension.
 
 ## EXAMPLES
 
@@ -134,7 +147,7 @@ Describes a Machine Extension.
 To construct, see NOTES section for EXTENSIONPARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineExtension
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtension
 Parameter Sets: Update
 Aliases:
 
@@ -214,6 +227,36 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -375,7 +418,7 @@ Accept wildcard characters: False
 The level code.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support.StatusLevelTypes
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -497,51 +540,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineExtension
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtension
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineExtension
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtension
 
 ## NOTES
-
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`EXTENSIONPARAMETER <IMachineExtension>`: Describes a Machine Extension.
-  - `Location <String>`: The geo-location where the resource lives
-  - `[Tag <ITrackedResourceTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[AutoUpgradeMinorVersion <Boolean?>]`: Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-  - `[EnableAutomaticUpgrade <Boolean?>]`: Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
-  - `[ForceUpdateTag <String>]`: How the extension handler should be forced to update even if the extension configuration has not changed.
-  - `[InstanceViewName <String>]`: The machine extension name.
-  - `[InstanceViewType <String>]`: Specifies the type of the extension; an example is "CustomScriptExtension".
-  - `[InstanceViewTypeHandlerVersion <String>]`: Specifies the version of the script handler.
-  - `[MachineExtensionType <String>]`: Specifies the type of the extension; an example is "CustomScriptExtension".
-  - `[ProtectedSetting <IMachineExtensionPropertiesProtectedSettings>]`: The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
-    - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[Publisher <String>]`: The name of the extension handler publisher.
-  - `[Setting <IMachineExtensionPropertiesSettings>]`: Json formatted public settings for the extension.
-    - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[StatusCode <String>]`: The status code.
-  - `[StatusDisplayStatus <String>]`: The short localizable label for the status.
-  - `[StatusLevel <StatusLevelTypes?>]`: The level code.
-  - `[StatusMessage <String>]`: The detailed status message, including for alerts and error messages.
-  - `[StatusTime <DateTime?>]`: The time of the status.
-  - `[TypeHandlerVersion <String>]`: Specifies the version of the script handler.
-
 
 ## RELATED LINKS
 

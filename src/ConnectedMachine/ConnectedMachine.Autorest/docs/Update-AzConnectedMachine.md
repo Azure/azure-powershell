@@ -16,13 +16,13 @@ The operation to update a hybrid machine.
 ```
 Update-AzConnectedMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AgentUpgradeCorrelationId <String>] [-AgentUpgradeDesiredVersion <String>] [-AgentUpgradeEnableAutomatic]
- [-IdentityType <ResourceIdentityType>] [-LinuxConfigurationPatchSettingsAssessmentMode <AssessmentModeTypes>]
- [-LinuxConfigurationPatchSettingsPatchMode <PatchModeTypes>] [-LocationDataCity <String>]
+ [-IdentityType <String>] [-Kind <String>] [-LinuxConfigurationPatchSettingsAssessmentMode <String>]
+ [-LinuxConfigurationPatchSettingsPatchMode <String>] [-LocationDataCity <String>]
  [-LocationDataCountryOrRegion <String>] [-LocationDataDistrict <String>] [-LocationDataName <String>]
  [-ParentClusterResourceId <String>] [-PrivateLinkScopeResourceId <String>] [-Tag <Hashtable>]
- [-WindowsConfigurationPatchSettingsAssessmentMode <AssessmentModeTypes>]
- [-WindowsConfigurationPatchSettingsPatchMode <PatchModeTypes>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-WindowsConfigurationPatchSettingsAssessmentMode <String>]
+ [-WindowsConfigurationPatchSettingsPatchMode <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Update
@@ -40,14 +40,26 @@ Update-AzConnectedMachine -InputObject <IConnectedMachineIdentity> -Parameter <I
 ### UpdateViaIdentityExpanded
 ```
 Update-AzConnectedMachine -InputObject <IConnectedMachineIdentity> [-AgentUpgradeCorrelationId <String>]
- [-AgentUpgradeDesiredVersion <String>] [-AgentUpgradeEnableAutomatic] [-IdentityType <ResourceIdentityType>]
- [-LinuxConfigurationPatchSettingsAssessmentMode <AssessmentModeTypes>]
- [-LinuxConfigurationPatchSettingsPatchMode <PatchModeTypes>] [-LocationDataCity <String>]
+ [-AgentUpgradeDesiredVersion <String>] [-AgentUpgradeEnableAutomatic] [-IdentityType <String>]
+ [-Kind <String>] [-LinuxConfigurationPatchSettingsAssessmentMode <String>]
+ [-LinuxConfigurationPatchSettingsPatchMode <String>] [-LocationDataCity <String>]
  [-LocationDataCountryOrRegion <String>] [-LocationDataDistrict <String>] [-LocationDataName <String>]
  [-ParentClusterResourceId <String>] [-PrivateLinkScopeResourceId <String>] [-Tag <Hashtable>]
- [-WindowsConfigurationPatchSettingsAssessmentMode <AssessmentModeTypes>]
- [-WindowsConfigurationPatchSettingsPatchMode <PatchModeTypes>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-WindowsConfigurationPatchSettingsAssessmentMode <String>]
+ [-WindowsConfigurationPatchSettingsPatchMode <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzConnectedMachine -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzConnectedMachine -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -148,7 +160,7 @@ Accept wildcard characters: False
 The identity type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support.ResourceIdentityType
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -175,11 +187,56 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Kind
+Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LinuxConfigurationPatchSettingsAssessmentMode
 Specifies the assessment mode.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support.AssessmentModeTypes
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -194,7 +251,7 @@ Accept wildcard characters: False
 Specifies the patch mode.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support.PatchModeTypes
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -270,7 +327,7 @@ The name of the hybrid machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: MachineName
 
 Required: True
@@ -285,7 +342,7 @@ Describes a hybrid machine Update.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineUpdate
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdate
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
@@ -332,7 +389,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -347,7 +404,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -376,7 +433,7 @@ Accept wildcard characters: False
 Specifies the assessment mode.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support.AssessmentModeTypes
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -391,7 +448,7 @@ Accept wildcard characters: False
 Specifies the patch mode.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support.PatchModeTypes
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -438,58 +495,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineUpdate
-
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdate
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachine
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachine
 
 ## NOTES
-
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IConnectedMachineIdentity>`: Identity Parameter
-  - `[ExtensionName <String>]`: The name of the machine extension.
-  - `[ExtensionType <String>]`: The extensionType of the Extension being received.
-  - `[GroupName <String>]`: The name of the private link resource.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The location of the Extension being received.
-  - `[MachineName <String>]`: The name of the hybrid machine.
-  - `[Name <String>]`: The name of the hybrid machine.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
-  - `[PrivateLinkScopeId <String>]`: The id (Guid) of the Azure Arc PrivateLinkScope resource.
-  - `[Publisher <String>]`: The publisher of the Extension being received.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ScopeName <String>]`: The name of the Azure Arc PrivateLinkScope resource.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[Version <String>]`: The version of the Extension being received.
-
-`PARAMETER <IMachineUpdate>`: Describes a hybrid machine Update.
-  - `[Tag <IResourceUpdateTags>]`: Resource tags
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[AgentUpgradeCorrelationId <String>]`: The correlation ID passed in from RSM per upgrade.
-  - `[AgentUpgradeDesiredVersion <String>]`: Specifies the version info w.r.t AgentUpgrade for the machine.
-  - `[AgentUpgradeEnableAutomaticUpgrade <Boolean?>]`: Specifies if RSM should try to upgrade this machine
-  - `[IdentityType <ResourceIdentityType?>]`: The identity type.
-  - `[LinuxConfigurationPatchSettingsAssessmentMode <AssessmentModeTypes?>]`: Specifies the assessment mode.
-  - `[LinuxConfigurationPatchSettingsPatchMode <PatchModeTypes?>]`: Specifies the patch mode.
-  - `[LocationDataCity <String>]`: The city or locality where the resource is located.
-  - `[LocationDataCountryOrRegion <String>]`: The country or region where the resource is located
-  - `[LocationDataDistrict <String>]`: The district, state, or province where the resource is located.
-  - `[LocationDataName <String>]`: A canonical name for the geographic or physical location.
-  - `[ParentClusterResourceId <String>]`: The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
-  - `[PrivateLinkScopeResourceId <String>]`: The resource id of the private link scope this machine is assigned to, if any.
-  - `[WindowsConfigurationPatchSettingsAssessmentMode <AssessmentModeTypes?>]`: Specifies the assessment mode.
-  - `[WindowsConfigurationPatchSettingsPatchMode <PatchModeTypes?>]`: Specifies the patch mode.
-
 
 ## RELATED LINKS
 

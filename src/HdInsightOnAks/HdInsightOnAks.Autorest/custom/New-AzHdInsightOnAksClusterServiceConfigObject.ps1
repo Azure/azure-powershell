@@ -25,7 +25,7 @@ https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightO
 #>
 function New-AzHdInsightOnAksClusterServiceConfigObject {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfig])]
-    [CmdletBinding(DefaultParameterSetName = 'Create', PositionalBinding = $false, SupportsShouldProcess)]
+    [CmdletBinding(DefaultParameterSetName = 'Create', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'Create', Mandatory)]
         [Alias('Name')]

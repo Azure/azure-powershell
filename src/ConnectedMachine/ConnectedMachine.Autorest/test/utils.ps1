@@ -5,6 +5,30 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
 
 $env = @{}
 function setupEnv() {
@@ -13,11 +37,21 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
-    $env.ResourceGroupName = 'az-sdk-test'
-    $env.Location = 'eastus2euap'
+    $env.ResourceGroupName = 'ytongtest'
+    $env.Location = 'centraluseuap'
     $env.MachineName = 'testmachine'
-    $env.PrivateLinkScopeName = 'scope-test'
-    New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location | Out-Null
+    $env.PrivateLinkScopeName = 'myScope'
+    $env.RunCommandName = 'myRunCommand'
+    $env.Script = 'Write-Host Hello World!'
+    $env.EsuLicenseName = 'myEsuLicense'
+    $env.ResourceUri = 'subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine'
+    $env.PrivateLinkScopeUri = '/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/privateLinkScopes/myPrivateLinkScope'
+    $env.ExtensionName = 'customScript'
+    $env.ResourceGroupNameNSP = 'adrielk_test'
+    $env.PrivateLinkScopeNameNSP = 'adrielScope'
+    $env.PerimeterName = 'fd1289de-e8d3-4f76-8008-de297232dbf6.adrielScope-e1bf45b1-b9a1-4f8b-a76e-3607869aed94'
+
+    #New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location | Out-Null
 
     if ($IsMacOS) {
         throw "Tests can't run on macOS because they require the azcmagent."
@@ -55,5 +89,5 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    Remove-AzResourceGroup -Name $env.ResourceGroupName
+    #Remove-AzResourceGroup -Name $env.ResourceGroupName
 }

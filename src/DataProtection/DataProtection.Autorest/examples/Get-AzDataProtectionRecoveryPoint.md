@@ -31,3 +31,18 @@ Name                             Type
 
 This command returns a recovery point with given id.
 
+### Example 3: Get all recovery points of a given backup instance from secondary region
+```powershell
+$instance = $instance = Search-AzDataProtectionBackupInstanceInAzGraph -DatasourceType AzureDatabaseForPostgreSQL -Subscription "xxxxxxxx-xxxx-xxxxxxxxxxxx" -ResourceGroup sarath-rg -Vault sarath-vault
+$recoveryPoints = Get-AzDataProtectionRecoveryPoint -SubscriptionId "xxxxxxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName sarath-rg -VaultName sarath-vault -BackupInstanceName $instance[2].Name -UseSecondaryRegion
+```
+
+```output
+Name                            
+----                            
+aded40a562134f97b732f30d0b486fef
+aecc362b85484f4eb905bb05ef445e3e
+dc814d61a9624c36a1f9d635bc0b80f0
+```
+
+This command lists all recovery points of a given backup instance from secondary region. One of these recovery points can be used to trigger cross region restore to secondary region.

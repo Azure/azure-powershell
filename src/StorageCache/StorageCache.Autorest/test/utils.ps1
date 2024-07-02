@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 if ($UsePreviousConfigForRecord) {
     $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
@@ -24,13 +49,13 @@ function setupEnv() {
     $storageCacheTargetName = "azps-" + (RandomString -allChars $false -len 6)
     $storageCacheAmlFileSystemName = "azps-" + (RandomString -allChars $false -len 6)
     $storageCacheAmlFileSystemName2 = "azps-" + (RandomString -allChars $false -len 6)
-    
+
     $env.Add("storageCacheName", $storageCacheName)
     $env.Add("storageCacheName2", $storageCacheName2)
     $env.Add("storageCacheTargetName", $storageCacheTargetName)
     $env.Add("storageCacheAmlFileSystemName", $storageCacheAmlFileSystemName)
     $env.Add("storageCacheAmlFileSystemName2", $storageCacheAmlFileSystemName2)
-    
+
     $managementIdentityName = "azps-management-identity" # "azps-" + (RandomString -allChars $false -len 6)
     $keyVaultName = "azps-keyvault" # "azps-" + (RandomString -allChars $false -len 6)
     $keyVaultKeyName = "az-kv-0703" # "azps-" + (RandomString -allChars $false -len 6)
@@ -52,12 +77,12 @@ function setupEnv() {
     write-host "start to create test group"
     $resourceGroup = "azps_test_gp_storagecache"
     $env.Add("resourceGroup", $resourceGroup)
-    
+
     # Use mock environment, so we donnot run this cmdlet.
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
 
     # Need Create VirtualNetwork
-    # New-AzVirtualNetwork -Name azps-virtual-network -ResourceGroupName azps_test_gp_storagecache -Location eastus -AddressPrefix "10.0.0.0/16" 
+    # New-AzVirtualNetwork -Name azps-virtual-network -ResourceGroupName azps_test_gp_storagecache -Location eastus -AddressPrefix "10.0.0.0/16"
 
     # Need Create KeyVault
     # New-AzKeyVault -ResourceGroupName azps_test_gp_storagecache -VaultName azps-keyvault-0703 -Location eastus -Sku 'Premium' -EnablePurgeProtection

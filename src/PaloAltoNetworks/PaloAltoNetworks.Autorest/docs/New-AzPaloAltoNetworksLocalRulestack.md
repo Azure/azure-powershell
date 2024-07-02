@@ -14,14 +14,14 @@ Create a LocalRulestackResource
 
 ```
 New-AzPaloAltoNetworksLocalRulestack -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-AssociatedSubscription <String[]>] [-DefaultMode <DefaultMode>]
- [-Description <String>] [-IdentityType <ManagedIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-MinAppIdVersion <String>] [-PanEtag <String>] [-PanLocation <String>] [-Scope <ScopeType>]
- [-SecurityServiceAntiSpywareProfile <String>] [-SecurityServiceAntiVirusProfile <String>]
- [-SecurityServiceDnsSubscription <String>] [-SecurityServiceFileBlockingProfile <String>]
- [-SecurityServiceOutboundTrustCertificate <String>] [-SecurityServiceOutboundUnTrustCertificate <String>]
- [-SecurityServiceUrlFilteringProfile <String>] [-SecurityServiceVulnerabilityProfile <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-AssociatedSubscription <String[]>] [-DefaultMode <String>]
+ [-Description <String>] [-EnableSystemAssignedIdentity] [-MinAppIdVersion <String>] [-PanEtag <String>]
+ [-PanLocation <String>] [-Scope <String>] [-SecurityServiceAntiSpywareProfile <String>]
+ [-SecurityServiceAntiVirusProfile <String>] [-SecurityServiceDnsSubscription <String>]
+ [-SecurityServiceFileBlockingProfile <String>] [-SecurityServiceOutboundTrustCertificate <String>]
+ [-SecurityServiceOutboundUnTrustCertificate <String>] [-SecurityServiceUrlFilteringProfile <String>]
+ [-SecurityServiceVulnerabilityProfile <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +32,19 @@ Create a LocalRulestackResource
 ### Example 1: Create a LocalRulestackResource.
 ```powershell
 New-AzPaloAltoNetworksLocalRulestack -Name azps-panlr -ResourceGroupName azps_test_group_pan -Location eastus -Description "testing powershell" -DefaultMode 'NONE'
+```
+
+```output
+Name       Location ProvisioningState ResourceGroupName
+----       -------- ----------------- -----------------
+azps-panlr eastus   Succeeded         azps_test_group_pan
+```
+
+Create a LocalRulestackResource.
+
+### Example 2: Create a LocalRulestackResource.
+```powershell
+New-AzPaloAltoNetworksLocalRulestack -Name azps-panlr2 -ResourceGroupName azps_test_group_pan -Location eastus -Description "testing powershell" -DefaultMode 'NONE' -UserAssignedIdentity "/subscriptions/{subId}/resourcegroups/azps_test_group_pan/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uami"
 ```
 
 ```output
@@ -78,7 +91,7 @@ Accept wildcard characters: False
 Mode for default rules creation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.DefaultMode
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -120,26 +133,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-The type of managed identity assigned to this resource.
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.ManagedIdentityType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The identities assigned to this resource by the user.
-
-```yaml
-Type: System.Collections.Hashtable
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -260,7 +258,7 @@ Accept wildcard characters: False
 Rulestack Type
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.ScopeType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -421,6 +419,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -459,11 +473,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.ILocalRulestackResource
+### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

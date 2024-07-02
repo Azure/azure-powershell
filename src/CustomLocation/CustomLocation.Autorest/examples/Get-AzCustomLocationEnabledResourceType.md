@@ -4,9 +4,9 @@ Get-AzCustomLocationEnabledResourceType -ResourceGroupName azps_test_group -Name
 ```
 
 ```output
-Name                                                             Type
-----                                                             ----
-017e563408cfcbaad0604875fef1f0e5a36d5fefa5e81a4c1c212c5a77fbcbde Microsoft.ExtendedLocation/customLocations/enabledResourceTypes
+Name                                                             ExtensionType
+----                                                             -------------
+435b5e8926f937f7a473d48f25731707c20916dfb52a47e0401a40181cb28217 microsoft.arcdataservices
 ```
 
 Gets the list of the Enabled Resource Types.

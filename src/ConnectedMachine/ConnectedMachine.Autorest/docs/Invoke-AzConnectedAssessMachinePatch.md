@@ -37,7 +37,7 @@ Invoke-AzConnectedAssessMachinePatch -Name testMachine -ResourceGroupName az-sdk
 ```output
 AssessmentActivityId                 LastModifiedDateTime OSType  PatchServiceUsed RebootPending StartDateTime       StartedBy  Status
 --------------------                 -------------------- ------  ---------------- ------------- -------------       ---------  ------
-3e456d9e-9789-4427-b631-84c587afeade 8/2/2023 7:59:25 AM  Windows WU               False         7/28/2023 7:56:18 AM User      Succeed
+********-****-****-****-********** 8/2/2023 7:59:25 AM  Windows WU               False         7/28/2023 7:56:18 AM User      Succeed
 ```
 
 Invoke machine patches.
@@ -191,34 +191,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineAssessPatchesResult
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineAssessPatchesResult
 
 ## NOTES
-
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IConnectedMachineIdentity>`: Identity Parameter
-  - `[ExtensionName <String>]`: The name of the machine extension.
-  - `[ExtensionType <String>]`: The extensionType of the Extension being received.
-  - `[GroupName <String>]`: The name of the private link resource.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The location of the Extension being received.
-  - `[MachineName <String>]`: The name of the hybrid machine.
-  - `[Name <String>]`: The name of the hybrid machine.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
-  - `[PrivateLinkScopeId <String>]`: The id (Guid) of the Azure Arc PrivateLinkScope resource.
-  - `[Publisher <String>]`: The publisher of the Extension being received.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ScopeName <String>]`: The name of the Azure Arc PrivateLinkScope resource.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[Version <String>]`: The version of the Extension being received.
-
 
 ## RELATED LINKS
 

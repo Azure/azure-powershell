@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.TestFx
             {
                 case TestEnvironmentName.Prod:
                     Name = TestEnvironmentName.Prod;
-                    GraphUri = new Uri("https://graph.windows.net/");
+                    GraphUri = new Uri("https://graph.microsoft.com/");
                     AADAuthUri = new Uri("https://login.microsoftonline.com/");
                     IbizaPortalUri = new Uri("https://portal.azure.com/");
                     RdfePortalUri = new Uri("https://manage.windowsazure.com/");

@@ -30,6 +30,12 @@ Get-AzEventHubGeoDRConfiguration -InputObject <IEventHubIdentity> [-DefaultProfi
  [<CommonParameters>]
 ```
 
+### GetViaIdentityNamespace
+```
+Get-AzEventHubGeoDRConfiguration -Name <String> -NamespaceInputObject <IEventHubIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
 
@@ -74,7 +80,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
@@ -93,13 +98,28 @@ The Disaster Recovery configuration name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityNamespace
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NamespaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+Parameter Sets: GetViaIdentityNamespace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -158,31 +178,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IArmDisasterRecovery
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IArmDisasterRecovery
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IEventHubIdentity>`: Identity Parameter
-  - `[Alias <String>]`: The Disaster Recovery configuration name
-  - `[ApplicationGroupName <String>]`: The Application Group name 
-  - `[AuthorizationRuleName <String>]`: The authorization rule name.
-  - `[ClusterName <String>]`: The name of the Event Hubs Cluster.
-  - `[ConsumerGroupName <String>]`: The consumer group name
-  - `[EventHubName <String>]`: The Event Hub name
-  - `[Id <String>]`: Resource identity path
-  - `[NamespaceName <String>]`: The Namespace name
-  - `[PrivateEndpointConnectionName <String>]`: The PrivateEndpointConnection name
-  - `[ResourceAssociationName <String>]`: The ResourceAssociation Name
-  - `[ResourceGroupName <String>]`: Name of the resource group within the azure subscription.
-  - `[SchemaGroupName <String>]`: The Schema Group name 
-  - `[SubscriptionId <String>]`: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS
 

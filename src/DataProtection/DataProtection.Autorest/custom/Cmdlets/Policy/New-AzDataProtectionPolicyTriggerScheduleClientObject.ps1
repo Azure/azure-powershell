@@ -19,7 +19,7 @@ function New-AzDataProtectionPolicyTriggerScheduleClientObject{
     )
 
     process {
-        # DppRef: can add a TimeZone parameter to control the timezone and offset 
+        # TODO: can add a TimeZone parameter to control the timezone and offset 
 
         # Validation for Interval Type and Interval count
 

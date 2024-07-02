@@ -15,10 +15,9 @@ Updates an EventHub Namespace
 ### SetExpanded (Default)
 ```
 Set-AzEventHubNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AlternateName <String>] [-DisableLocalAuth] [-EnableAutoInflate]
- [-IdentityType <ManagedServiceIdentityType>] [-KeyVaultProperty <IKeyVaultProperties[]>]
- [-MaximumThroughputUnit <Int32>] [-MinimumTlsVersion <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
- [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>] [-Tag <Hashtable>]
+ [-AlternateName <String>] [-DisableLocalAuth] [-EnableAutoInflate] [-IdentityType <String>]
+ [-KeyVaultProperty <IKeyVaultProperties[]>] [-MaximumThroughputUnit <Int32>] [-MinimumTlsVersion <String>]
+ [-PublicNetworkAccess <String>] [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>] [-Tag <Hashtable>]
  [-UserAssignedIdentityId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -26,8 +25,8 @@ Set-AzEventHubNamespace -Name <String> -ResourceGroupName <String> [-Subscriptio
 ### SetViaIdentityExpanded
 ```
 Set-AzEventHubNamespace -InputObject <IEventHubIdentity> [-AlternateName <String>] [-DisableLocalAuth]
- [-EnableAutoInflate] [-IdentityType <ManagedServiceIdentityType>] [-KeyVaultProperty <IKeyVaultProperties[]>]
- [-MaximumThroughputUnit <Int32>] [-MinimumTlsVersion <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
+ [-EnableAutoInflate] [-IdentityType <String>] [-KeyVaultProperty <IKeyVaultProperties[]>]
+ [-MaximumThroughputUnit <Int32>] [-MinimumTlsVersion <String>] [-PublicNetworkAccess <String>]
  [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>] [-Tag <Hashtable>]
  [-UserAssignedIdentityId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -454,7 +453,7 @@ Accept wildcard characters: False
 Type of managed service identity.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -483,10 +482,9 @@ Accept wildcard characters: False
 
 ### -KeyVaultProperty
 Properties to configure Encryption
-To construct, see NOTES section for KEYVAULTPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IKeyVaultProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IKeyVaultProperties[]
 Parameter Sets: (All)
 Aliases:
 
@@ -549,7 +547,7 @@ This determines if traffic is allowed over public network.
 By default it is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.PublicNetworkAccess
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -692,39 +690,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespace
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespace
 
 ## NOTES
 
 ALIASES
 
 Set-AzEventHubNamespaceV2
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IEventHubIdentity>`: Identity parameter.
-  - `[Alias <String>]`: The Disaster Recovery configuration name
-  - `[ApplicationGroupName <String>]`: The Application Group name 
-  - `[AuthorizationRuleName <String>]`: The authorization rule name.
-  - `[ClusterName <String>]`: The name of the Event Hubs Cluster.
-  - `[ConsumerGroupName <String>]`: The consumer group name
-  - `[EventHubName <String>]`: The Event Hub name
-  - `[Id <String>]`: Resource identity path
-  - `[NamespaceName <String>]`: The Namespace name
-  - `[PrivateEndpointConnectionName <String>]`: The PrivateEndpointConnection name
-  - `[ResourceAssociationName <String>]`: The ResourceAssociation Name
-  - `[ResourceGroupName <String>]`: Name of the resource group within the azure subscription.
-  - `[SchemaGroupName <String>]`: The Schema Group name 
-  - `[SubscriptionId <String>]`: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-`KEYVAULTPROPERTY <IKeyVaultProperties[]>`: Properties to configure Encryption
-  - `[KeyName <String>]`: Name of the Key from KeyVault
-  - `[KeyVaultUri <String>]`: Uri of KeyVault
-  - `[KeyVersion <String>]`: Key Version
-  - `[UserAssignedIdentity <String>]`: ARM ID of user Identity selected for encryption
 
 ## RELATED LINKS
 

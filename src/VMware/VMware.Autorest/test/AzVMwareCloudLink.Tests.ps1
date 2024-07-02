@@ -15,7 +15,7 @@ Describe 'AzVMwareCloudLink' {
     It 'List' {
         {
             $Id2 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup2)/providers/Microsoft.AVS/privateClouds/$($env.privateCloudName2)"
-            $config = New-AzVMwareCloudLink -Name $env.rstr3 -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1 -LinkedCloud $Id2
+            $config = New-AzVMwareCloudLink -Name "cloudLink1" -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1 -LinkedCloud $Id2
             $config.Name | Should -Be "cloudLink1"
 
             $config = Get-AzVMwareCloudLink -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1
@@ -25,7 +25,7 @@ Describe 'AzVMwareCloudLink' {
 
     It 'Get' {
         {
-            $config = Get-AzVMwareCloudLink -Name $env.rstr3 -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1
+            $config = Get-AzVMwareCloudLink -Name "cloudLink1" -PrivateCloudName $env.privateCloudName1 -ResourceGroupName $env.resourceGroup1
             $config.Name | Should -Be "cloudLink1"
         } | Should -Not -Throw
     }

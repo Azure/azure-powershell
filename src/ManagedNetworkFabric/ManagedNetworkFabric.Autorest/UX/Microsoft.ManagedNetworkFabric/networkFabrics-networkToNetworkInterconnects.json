@@ -1,0 +1,95 @@
+{
+  "resourceType": "networkFabrics/networkToNetworkInterconnects",
+  "apiVersion": "2023-06-15",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric"
+  },
+  "commands": [
+    {
+      "name": "Get-AzNetworkFabricNni",
+      "description": "Implements NetworkToNetworkInterconnects GET method.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric/get-aznetworkfabricnni"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-NetworkFabricName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Implements NetworkToNetworkInterconnects GET method.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.networkToNetworkInterconnectName]"
+            },
+            {
+              "name": "-NetworkFabricName",
+              "value": "[Path.networkFabricName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzNetworkFabricNni",
+      "description": "Implements NetworkToNetworkInterconnects DELETE method.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric/remove-aznetworkfabricnni"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-NetworkFabricName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Implements NetworkToNetworkInterconnects DELETE method.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.networkToNetworkInterconnectName]"
+            },
+            {
+              "name": "-NetworkFabricName",
+              "value": "[Path.networkFabricName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

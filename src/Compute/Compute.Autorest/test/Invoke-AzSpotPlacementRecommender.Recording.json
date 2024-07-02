@@ -1,0 +1,154 @@
+{
+  "Invoke-AzSpotPlacementRecommender+[NoContext]+PostExpanded+$POST+https://management.azure.com/subscriptions/be23ca13-8eb4-4d0e-be10-b00451817956/providers/Microsoft.Compute/locations/eastus/diagnostics/spotPlacementRecommender/generate?api-version=2024-03-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/be23ca13-8eb4-4d0e-be10-b00451817956/providers/Microsoft.Compute/locations/eastus/diagnostics/spotPlacementRecommender/generate?api-version=2024-03-01-preview",
+      "Content": "{\r\n  \"desiredLocations\": [ \"eastus\", \"eastus2\", \"westus\" ],\r\n  \"desiredSizes\": [\r\n    {\r\n      \"sku\": \"Standard_D2_v3\"\r\n    },\r\n    {\r\n      \"sku\": \"Standard_D2_v2\"\r\n    },\r\n    {\r\n      \"sku\": \"Standard_D4_v3\"\r\n    }\r\n  ],\r\n  \"desiredCount\": 1\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "247" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "41003dd1-f92c-4b08-8c67-e931889d08f9" ],
+        "x-ms-correlation-request-id": [ "067ea019-22cd-450b-82ae-d2d3f23ee68e" ],
+        "api-supported-versions": [ "2021-06-01-preview, 2024-03-01-preview" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240411T071740Z:067ea019-22cd-450b-82ae-d2d3f23ee68e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 500E284CC1CA4188A51B4AE19D59FCDE Ref B: CO6AA3150218031 Ref C: 2024-04-11T07:17:38Z" ],
+        "Date": [ "Thu, 11 Apr 2024 07:17:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1099" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"desiredLocations\":[\"eastus\",\"eastus2\",\"westus\"],\"desiredSizes\":[{\"sku\":\"Standard_D2_v3\"},{\"sku\":\"Standard_D2_v2\"},{\"sku\":\"Standard_D4_v3\"}],\"desiredCount\":1,\"availabilityZones\":false,\"placementScores\":[{\"sku\":\"Standard_D2_v3\",\"region\":\"eastus\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v2\",\"region\":\"eastus\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D4_v3\",\"region\":\"eastus\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v3\",\"region\":\"eastus2\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v2\",\"region\":\"eastus2\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D4_v3\",\"region\":\"eastus2\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v3\",\"region\":\"westus\",\"score\":\"RestrictedSkuNotAvailable\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v2\",\"region\":\"westus\",\"score\":\"RestrictedSkuNotAvailable\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D4_v3\",\"region\":\"westus\",\"score\":\"RestrictedSkuNotAvailable\",\"isQuotaAvailable\":true}]}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzSpotPlacementRecommender+[NoContext]+PostExpanded+$POST+https://management.azure.com/subscriptions/be23ca13-8eb4-4d0e-be10-b00451817956/providers/Microsoft.Compute/locations/eastus/diagnostics/spotPlacementRecommender/generate?api-version=2024-03-01-preview+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/be23ca13-8eb4-4d0e-be10-b00451817956/providers/Microsoft.Compute/locations/eastus/diagnostics/spotPlacementRecommender/generate?api-version=2024-03-01-preview",
+      "Content": "{\r\n  \"desiredLocations\": [ \"eastus\", \"eastus2\", \"westus\" ],\r\n  \"desiredSizes\": [\r\n    {\r\n      \"sku\": \"Standard_D2_v3\"\r\n    },\r\n    {\r\n      \"sku\": \"Standard_D2_v2\"\r\n    },\r\n    {\r\n      \"sku\": \"Standard_D4_v3\"\r\n    }\r\n  ],\r\n  \"desiredCount\": 1,\r\n  \"availabilityZones\": true\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "277" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "3751f746-58fd-4d9d-8ce6-0cc8272b5c7b" ],
+        "x-ms-correlation-request-id": [ "11fadfa4-feef-4ea0-91b1-f4f8b711e434" ],
+        "api-supported-versions": [ "2021-06-01-preview, 2024-03-01-preview" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240411T071742Z:11fadfa4-feef-4ea0-91b1-f4f8b711e434" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 210A529DE53043BEABDE637371BFBF76 Ref B: CO6AA3150218031 Ref C: 2024-04-11T07:17:40Z" ],
+        "Date": [ "Thu, 11 Apr 2024 07:17:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3372" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"desiredLocations\":[\"eastus\",\"eastus2\",\"westus\"],\"desiredSizes\":[{\"sku\":\"Standard_D2_v3\"},{\"sku\":\"Standard_D2_v2\"},{\"sku\":\"Standard_D4_v3\"}],\"desiredCount\":1,\"availabilityZones\":true,\"placementScores\":[{\"sku\":\"Standard_D2_v3\",\"region\":\"eastus\",\"availabilityZone\":\"1\",\"score\":\"High\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v3\",\"region\":\"eastus\",\"availabilityZone\":\"2\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v3\",\"region\":\"eastus\",\"availabilityZone\":\"3\",\"score\":\"High\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v2\",\"region\":\"eastus\",\"availabilityZone\":\"1\",\"score\":\"High\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v2\",\"region\":\"eastus\",\"availabilityZone\":\"2\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v2\",\"region\":\"eastus\",\"availabilityZone\":\"3\",\"score\":\"High\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D4_v3\",\"region\":\"eastus\",\"availabilityZone\":\"1\",\"score\":\"High\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D4_v3\",\"region\":\"eastus\",\"availabilityZone\":\"2\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D4_v3\",\"region\":\"eastus\",\"availabilityZone\":\"3\",\"score\":\"High\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v3\",\"region\":\"eastus2\",\"availabilityZone\":\"1\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v3\",\"region\":\"eastus2\",\"availabilityZone\":\"2\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v3\",\"region\":\"eastus2\",\"availabilityZone\":\"3\",\"score\":\"High\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v2\",\"region\":\"eastus2\",\"availabilityZone\":\"1\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v2\",\"region\":\"eastus2\",\"availabilityZone\":\"2\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v2\",\"region\":\"eastus2\",\"availabilityZone\":\"3\",\"score\":\"High\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D4_v3\",\"region\":\"eastus2\",\"availabilityZone\":\"1\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D4_v3\",\"region\":\"eastus2\",\"availabilityZone\":\"2\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D4_v3\",\"region\":\"eastus2\",\"availabilityZone\":\"3\",\"score\":\"High\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v3\",\"region\":\"westus\",\"availabilityZone\":\"1\",\"score\":\"RestrictedSkuNotAvailable\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v3\",\"region\":\"westus\",\"availabilityZone\":\"2\",\"score\":\"RestrictedSkuNotAvailable\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v3\",\"region\":\"westus\",\"availabilityZone\":\"3\",\"score\":\"RestrictedSkuNotAvailable\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v2\",\"region\":\"westus\",\"availabilityZone\":\"1\",\"score\":\"RestrictedSkuNotAvailable\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v2\",\"region\":\"westus\",\"availabilityZone\":\"2\",\"score\":\"RestrictedSkuNotAvailable\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v2\",\"region\":\"westus\",\"availabilityZone\":\"3\",\"score\":\"RestrictedSkuNotAvailable\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D4_v3\",\"region\":\"westus\",\"availabilityZone\":\"1\",\"score\":\"RestrictedSkuNotAvailable\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D4_v3\",\"region\":\"westus\",\"availabilityZone\":\"2\",\"score\":\"RestrictedSkuNotAvailable\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D4_v3\",\"region\":\"westus\",\"availabilityZone\":\"3\",\"score\":\"RestrictedSkuNotAvailable\",\"isQuotaAvailable\":true}]}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzSpotPlacementRecommender+[NoContext]+Post+$POST+https://management.azure.com/subscriptions/be23ca13-8eb4-4d0e-be10-b00451817956/providers/Microsoft.Compute/locations/eastus/diagnostics/spotPlacementRecommender/generate?api-version=2024-03-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/be23ca13-8eb4-4d0e-be10-b00451817956/providers/Microsoft.Compute/locations/eastus/diagnostics/spotPlacementRecommender/generate?api-version=2024-03-01-preview",
+      "Content": "{\r\n  \"desiredLocations\": [ \"eastus\", \"eastus2\", \"westus\" ],\r\n  \"desiredSizes\": [\r\n    {\r\n      \"sku\": \"Standard_D2_v3\"\r\n    },\r\n    {\r\n      \"sku\": \"Standard_D2_v2\"\r\n    },\r\n    {\r\n      \"sku\": \"Standard_D4_v3\"\r\n    }\r\n  ],\r\n  \"desiredCount\": 1,\r\n  \"availabilityZones\": true\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "277" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "dd4f76a8-4f49-4e26-8373-282d2cfd3043" ],
+        "x-ms-correlation-request-id": [ "57f95cfa-19b8-4e80-814a-1df89a09cadc" ],
+        "api-supported-versions": [ "2021-06-01-preview, 2024-03-01-preview" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240411T071744Z:57f95cfa-19b8-4e80-814a-1df89a09cadc" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 60932BA3B6D64E76942B58D9591C3AEA Ref B: CO6AA3150218031 Ref C: 2024-04-11T07:17:42Z" ],
+        "Date": [ "Thu, 11 Apr 2024 07:17:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3372" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"desiredLocations\":[\"eastus\",\"eastus2\",\"westus\"],\"desiredSizes\":[{\"sku\":\"Standard_D2_v3\"},{\"sku\":\"Standard_D2_v2\"},{\"sku\":\"Standard_D4_v3\"}],\"desiredCount\":1,\"availabilityZones\":true,\"placementScores\":[{\"sku\":\"Standard_D2_v3\",\"region\":\"eastus\",\"availabilityZone\":\"1\",\"score\":\"High\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v3\",\"region\":\"eastus\",\"availabilityZone\":\"2\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v3\",\"region\":\"eastus\",\"availabilityZone\":\"3\",\"score\":\"High\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v2\",\"region\":\"eastus\",\"availabilityZone\":\"1\",\"score\":\"High\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v2\",\"region\":\"eastus\",\"availabilityZone\":\"2\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v2\",\"region\":\"eastus\",\"availabilityZone\":\"3\",\"score\":\"High\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D4_v3\",\"region\":\"eastus\",\"availabilityZone\":\"1\",\"score\":\"High\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D4_v3\",\"region\":\"eastus\",\"availabilityZone\":\"2\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D4_v3\",\"region\":\"eastus\",\"availabilityZone\":\"3\",\"score\":\"High\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v3\",\"region\":\"eastus2\",\"availabilityZone\":\"1\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v3\",\"region\":\"eastus2\",\"availabilityZone\":\"2\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v3\",\"region\":\"eastus2\",\"availabilityZone\":\"3\",\"score\":\"High\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v2\",\"region\":\"eastus2\",\"availabilityZone\":\"1\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v2\",\"region\":\"eastus2\",\"availabilityZone\":\"2\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v2\",\"region\":\"eastus2\",\"availabilityZone\":\"3\",\"score\":\"High\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D4_v3\",\"region\":\"eastus2\",\"availabilityZone\":\"1\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D4_v3\",\"region\":\"eastus2\",\"availabilityZone\":\"2\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D4_v3\",\"region\":\"eastus2\",\"availabilityZone\":\"3\",\"score\":\"High\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v3\",\"region\":\"westus\",\"availabilityZone\":\"1\",\"score\":\"RestrictedSkuNotAvailable\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v3\",\"region\":\"westus\",\"availabilityZone\":\"2\",\"score\":\"RestrictedSkuNotAvailable\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v3\",\"region\":\"westus\",\"availabilityZone\":\"3\",\"score\":\"RestrictedSkuNotAvailable\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v2\",\"region\":\"westus\",\"availabilityZone\":\"1\",\"score\":\"RestrictedSkuNotAvailable\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v2\",\"region\":\"westus\",\"availabilityZone\":\"2\",\"score\":\"RestrictedSkuNotAvailable\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v2\",\"region\":\"westus\",\"availabilityZone\":\"3\",\"score\":\"RestrictedSkuNotAvailable\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D4_v3\",\"region\":\"westus\",\"availabilityZone\":\"1\",\"score\":\"RestrictedSkuNotAvailable\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D4_v3\",\"region\":\"westus\",\"availabilityZone\":\"2\",\"score\":\"RestrictedSkuNotAvailable\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D4_v3\",\"region\":\"westus\",\"availabilityZone\":\"3\",\"score\":\"RestrictedSkuNotAvailable\",\"isQuotaAvailable\":true}]}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzSpotPlacementRecommender+[NoContext]+Post+$POST+https://management.azure.com/subscriptions/be23ca13-8eb4-4d0e-be10-b00451817956/providers/Microsoft.Compute/locations/eastus/diagnostics/spotPlacementRecommender/generate?api-version=2024-03-01-preview+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/be23ca13-8eb4-4d0e-be10-b00451817956/providers/Microsoft.Compute/locations/eastus/diagnostics/spotPlacementRecommender/generate?api-version=2024-03-01-preview",
+      "Content": "{\r\n  \"desiredLocations\": [ \"eastus\", \"eastus2\", \"westus\" ],\r\n  \"desiredSizes\": [\r\n    {\r\n      \"sku\": \"Standard_D2_v3\"\r\n    },\r\n    {\r\n      \"sku\": \"Standard_D2_v2\"\r\n    },\r\n    {\r\n      \"sku\": \"Standard_D4_v3\"\r\n    }\r\n  ],\r\n  \"desiredCount\": 1,\r\n  \"availabilityZones\": false\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "278" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "c5fb1d5b-588a-4716-8b29-58adc34b7c30" ],
+        "x-ms-correlation-request-id": [ "bf1e6828-aa8e-4eaf-a317-0371f5df06f3" ],
+        "api-supported-versions": [ "2021-06-01-preview, 2024-03-01-preview" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240411T071747Z:bf1e6828-aa8e-4eaf-a317-0371f5df06f3" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9D5E3AE06E4F4B00AC32B612D8A44022 Ref B: CO6AA3150218031 Ref C: 2024-04-11T07:17:45Z" ],
+        "Date": [ "Thu, 11 Apr 2024 07:17:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1099" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"desiredLocations\":[\"eastus\",\"eastus2\",\"westus\"],\"desiredSizes\":[{\"sku\":\"Standard_D2_v3\"},{\"sku\":\"Standard_D2_v2\"},{\"sku\":\"Standard_D4_v3\"}],\"desiredCount\":1,\"availabilityZones\":false,\"placementScores\":[{\"sku\":\"Standard_D2_v3\",\"region\":\"eastus\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v2\",\"region\":\"eastus\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D4_v3\",\"region\":\"eastus\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v3\",\"region\":\"eastus2\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v2\",\"region\":\"eastus2\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D4_v3\",\"region\":\"eastus2\",\"score\":\"DataNotFoundOrStale\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v3\",\"region\":\"westus\",\"score\":\"RestrictedSkuNotAvailable\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D2_v2\",\"region\":\"westus\",\"score\":\"RestrictedSkuNotAvailable\",\"isQuotaAvailable\":true},{\"sku\":\"Standard_D4_v3\",\"region\":\"westus\",\"score\":\"RestrictedSkuNotAvailable\",\"isQuotaAvailable\":true}]}",
+      "isContentBase64": false
+    }
+  }
+}

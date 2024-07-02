@@ -35,11 +35,9 @@ module-version: 0.1.0
 title: Alb
 subject-prefix: $(service-name)
 inlining-threshold: 100
-resourcegroup-append: true
-nested-object-to-string: true
 
 # pin the swagger version by using the commit id instead of branch name
-commit: f7c77a57cf879e3938f5084c3d0cf0611b5834e7
+commit: 1b338481329645df2d9460738cbaab6109472488
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -48,15 +46,7 @@ require:
 try-require: 
   - $(repo)/specification/servicenetworking/resource-manager/readme.powershell.md
 
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
-  # Bug: https://github.com/Azure/autorest.powershell/issues/983
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace('((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IAssociationPropertiesInternal)Property).AssociationType = value;', '((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IAssociationPropertiesInternal)Property).AssociationType = value ?? "";');
   # Fix swagger issues
   - from: swagger-document
     where: $.definitions.TrafficControllerUpdateProperties
@@ -73,7 +63,10 @@ directive:
       subject: $1
   # Remove the unexpanded parameter set
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?Expanded|JsonFilePath|JsonString)
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity.*$
     remove: true
 # Param and table formatting
   - where:

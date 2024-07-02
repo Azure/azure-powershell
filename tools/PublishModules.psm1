@@ -267,15 +267,16 @@ function Get-AllModules {
         [ValidateNotNullOrEmpty()]
         [String]$Scope,
 
+        [String]$TargetBuild,
+
         [switch]$PublishLocal,
 
         [switch]$IsNetCore
     )
     Write-Host "Getting Azure client modules"
     $clientModules = Get-ClientModules -BuildConfig $BuildConfig -Scope $Scope -PublishLocal:$PublishLocal -IsNetCore:$isNetCore
-    Write-Host " "
-    
-    if($clientModules.Length -le 2) {
+    Write-Host  "$clientModules"
+    if($clientModules.Count -le 2 -and  $TargetBuild -eq "true") {
         return @{
             ClientModules = $clientModules
         }
@@ -283,11 +284,11 @@ function Get-AllModules {
 
     Write-Host "Getting admin modules"
     $adminModules = Get-AdminModules -BuildConfig $BuildConfig -Scope $Scope
-    Write-Host " "
+    Write-Host "$adminModules"
 
     Write-Host "Getting rollup modules"
     $rollupModules = Get-RollupModules -BuildConfig $BuildConfig -Scope $Scope -IsNetCore:$isNetCore
-    Write-Host " "
+    Write-Host "$rollupModules"
 
     return @{
         ClientModules = $clientModules;
@@ -324,9 +325,17 @@ function Remove-ModuleDependencies {
 
     PROCESS {
         if (-not $KeepRequiredModules.IsPresent){
-            $regex = New-Object System.Text.RegularExpressions.Regex "RequiredModules\s*=\s*@\([^\)]+\)"
+            $regexRequiredModules = New-Object System.Text.RegularExpressions.Regex "RequiredModules\s*=\s*@\([^\)]+\)"
+            $regexModuleList = New-Object System.Text.RegularExpressions.Regex "# ModuleList = @\(\)"
             $content = (Get-Content -Path $Path) -join "`r`n"
-            $text = $regex.Replace($content, "RequiredModules = @()")
+            $requiredModulesMatch = $regexRequiredModules.Match($content)
+            if ($requiredModulesMatch.Success) {
+                $requiredModulesContent = $requiredModulesMatch.Value
+            } else {
+                $requiredModulesContent = "RequiredModules = @()"
+            }
+            $content = $regexRequiredModules.Replace($content, "RequiredModules = @()")
+            $text = $regexModuleList.Replace($content,  ($requiredModulesContent -replace "RequiredModules", "ModuleList"))
             Out-FileNoBom -File $Path -Text $text
         }
 
@@ -475,6 +484,10 @@ function Save-PackageLocally {
             # We try to download the package from the PsGallery as we are likely intending to use the existing version of the module.
             # If the module not found in psgallery, the following commnad would fail and hence publish to local repo process would fail as well
             Save-Package -Name $ModuleName -RequiredVersion $RequiredVersion -ProviderName Nuget -Path $TempRepoPath -Source https://www.powershellgallery.com/api/v2 | Out-Null
+            $NupkgFilePath = Join-Path -Path $TempRepoPath -ChildPath "$ModuleName.$RequiredVersion.nupkg"
+            $ModulePaths = $env:PSModulePath -split ';'
+            $DestinationModulePath = [System.IO.Path]::Combine($ModulePaths[0], $ModuleName, $RequiredVersion)
+            Expand-Archive -Path $NupkgFilePath -DestinationPath $DestinationModulePath -Force
             Write-Output "Downloaded the package sucessfully"
         }
     }
@@ -577,6 +590,30 @@ function Add-AllModules {
         # Add the modules to the local repository
         Add-Modules -TempRepo $TempRepo -TempRepoPath $TempRepoPath -ModulePath $modulePath -NugetExe $NugetExe
         Write-Output " "
+    }
+    Write-Output "Removing lower version Az.Accounts packages"
+    $packages = Get-ChildItem -Path "./artifacts" -Filter "Az.Accounts.*.nupkg"
+    $latestVersion = [version]"0.0.0"
+    $latestPackage = $null
+    
+    foreach ($package in $packages) {
+        $fileName = $package.Name
+        $versionString = $fileName.Replace('Az.Accounts.', '').Replace('.nupkg', '')
+        if ($versionString -match 'preview') {
+            return 
+        }
+        $version = [version]$versionString
+        
+        if ($version -gt $latestVersion) {
+            $latestVersion = $version
+            $latestPackage = $package
+        }
+    }
+    
+    foreach ($package in $packages) {
+        if ($package.FullName -ne $latestPackage.FullName) {
+            Remove-Item $package.FullName -Force
+        }
     }
     Write-Output " "
 }

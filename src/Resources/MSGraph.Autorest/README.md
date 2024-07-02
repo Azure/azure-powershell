@@ -49,7 +49,7 @@ In this directory, run AutoRest:
 ``` yaml
 version: "3.9.5"
 use-extension:
-  "@autorest/powershell": "4.0.0-dev.10"
+  "@autorest/powershell": "4.0.0-dev.12"
 
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -77,7 +77,6 @@ default-exclude-tableview-properties: false
 exclude-tableview-properties: []
 
 inlining-threshold: 200
-
 
 directive:
   - no-inline:
@@ -195,6 +194,33 @@ directive:
       property-name: Item
     set:
       property-name: Items
+
+  - where:
+      subject: serviceprincipalapproleassignment$
+      verb: New
+    hide: true
+
+  - where:
+      subject: serviceprincipalapproleassignment$
+      parameter-name: ^DeletedDateTime$
+    hide: true
+
+  - where:
+      verb: Update
+      subject: serviceprincipalapproleassignment$
+      parameter-name: ^PrincipalId$|^DisplayName$|^ResourceDisplayName$|^ResourceId$
+    hide: true
+
+  - where:
+      model-name: MicrosoftGraphAppRoleAssignment
+    set:
+      format-table:
+        properties:
+          - Id
+          - AppRoleId
+          - PrincipalDisplayName
+          - PrincipalId
+          - CreatedDateTime
 
   - where:
       subject: application$|applicationpassword$|applicationkey$|serviceprincipal$|serviceprincipalpassword$|serviceprincipalkey$|groupmember$|user$|GroupGraphRefMember$|grouprefmember$

@@ -1,0 +1,129 @@
+{
+  "New-AzStorageActionTask+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.StorageActions/storageTasks/storageactiontest2?api-version=2023-01-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.StorageActions/storageTasks/storageactiontest2?api-version=2023-01-01",
+      "Content": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  },\r\n  \"properties\": {\r\n    \"action\": {\r\n      \"if\": {\r\n        \"condition\": \"[[equals(AccessTier, \\u0027Cool\\u0027)]]\",\r\n        \"operations\": [\r\n          {\r\n            \"name\": \"SetBlobTier\",\r\n            \"parameters\": {\r\n              \"tier\": \"Hot\"\r\n            },\r\n            \"onSuccess\": \"continue\",\r\n            \"onFailure\": \"break\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"enabled\": true,\r\n    \"description\": \"test storage task 2\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "524" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.StorageActions/locations/eastus2euap/asyncoperations/443c9ec5-6d6d-44f5-903b-2df4bfb5f3c7?monitor=true\u0026api-version=2023-01-01" ],
+        "Retry-After": [ "17" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.StorageActions/locations/eastus2euap/asyncoperations/443c9ec5-6d6d-44f5-903b-2df4bfb5f3c7?monitor=true\u0026api-version=2023-01-01\u0026asynclink=true" ],
+        "x-ms-request-id": [ "443c9ec5-6d6d-44f5-903b-2df4bfb5f3c7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "99cb339c-9d50-4c92-9c93-f7238380ed79" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240506T083716Z:99cb339c-9d50-4c92-9c93-f7238380ed79" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D5F092A3DD984E17907DC67B1F85770F Ref B: MAA201060513051 Ref C: 2024-05-06T08:37:13Z" ],
+        "Date": [ "Mon, 06 May 2024 08:37:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "text/plain; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "New-AzStorageActionTask+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.StorageActions/locations/eastus2euap/asyncoperations/443c9ec5-6d6d-44f5-903b-2df4bfb5f3c7?monitor=true\u0026api-version=2023-01-01\u0026asynclink=true+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.StorageActions/locations/eastus2euap/asyncoperations/443c9ec5-6d6d-44f5-903b-2df4bfb5f3c7?monitor=true\u0026api-version=2023-01-01\u0026asynclink=true",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "49b73d91-dfc4-4e92-96dd-9c58ef0c7736" ],
+        "CommandName": [ "New-AzStorageActionTask" ],
+        "FullCommandName": [ "New-AzStorageActionTask_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.StorageAction/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "ab0a447d-34a3-47a0-8b57-fca4c07f1a6f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "036493fb-451e-423f-8fec-90b60066f476" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240506T083734Z:036493fb-451e-423f-8fec-90b60066f476" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D45BD8C041D541DD910956D78E80EFDD Ref B: MAA201060513051 Ref C: 2024-05-06T08:37:33Z" ],
+        "Date": [ "Mon, 06 May 2024 08:37:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "106" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"status\":\"Succeeded\",\"startTime\":\"2024-05-06T08:37:16.1661055Z\",\"endTime\":\"2024-05-06T08:37:16.3536076Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzStorageActionTask+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.StorageActions/locations/eastus2euap/asyncoperations/443c9ec5-6d6d-44f5-903b-2df4bfb5f3c7?monitor=true\u0026api-version=2023-01-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.StorageActions/locations/eastus2euap/asyncoperations/443c9ec5-6d6d-44f5-903b-2df4bfb5f3c7?monitor=true\u0026api-version=2023-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "49b73d91-dfc4-4e92-96dd-9c58ef0c7736" ],
+        "CommandName": [ "New-AzStorageActionTask" ],
+        "FullCommandName": [ "New-AzStorageActionTask_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.StorageAction/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "8d7aa4c1-39a1-43ee-be6c-4e1fd3809303" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "93908777-036f-405f-bcaa-870bf42e7a0b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240506T083735Z:93908777-036f-405f-bcaa-870bf42e7a0b" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C39C8B1DC5E0413CB335A47E2AE10560 Ref B: MAA201060513051 Ref C: 2024-05-06T08:37:34Z" ],
+        "Date": [ "Mon, 06 May 2024 08:37:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "617" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.StorageActions/storageTasks/storageactiontest2\",\"name\":\"storageactiontest2\",\"type\":\"Microsoft.StorageActions/storageTasks\",\"location\":\"eastus2euap\",\"identity\":{\"type\":\"None\"},\"properties\":{\"enabled\":true,\"description\":\"test storage task 2\",\"action\":{\"if\":{\"condition\":\"[[equals(AccessTier, \u0027Cool\u0027)]]\",\"operations\":[{\"name\":\"SetBlobTier\",\"parameters\":{\"tier\":\"Hot\"},\"onSuccess\":\"continue\",\"onFailure\":\"break\"}]}},\"taskVersion\":1,\"provisioningState\":\"Succeeded\",\"creationTimeInUtc\":\"2024-05-06T08:37:16.1661055Z\"}}",
+      "isContentBase64": false
+    }
+  }
+}

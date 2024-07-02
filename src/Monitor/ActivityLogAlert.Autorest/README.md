@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the ActivityLogAlert service.
 
 ---
-## Status
-[![Az.ActivityLogAlert](https://img.shields.io/powershellgallery/v/Az.ActivityLogAlert.svg?style=flat-square&label=Az.ActivityLogAlert "Az.ActivityLogAlert")](https://www.powershellgallery.com/packages/Az.ActivityLogAlert/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

@@ -1,17 +1,17 @@
 {
-  "Get-AzMarketplacePrivateStoreV1+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.Marketplace/privateStores?api-version=2021-06-01+1": {
+  "Get-AzMarketplacePrivateStoreV1+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.Marketplace/privateStores?api-version=2023-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores?api-version=2021-06-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores?api-version=2023-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "8cd64083-31a5-46cb-a322-39fae7a5f562" ],
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "f3c9a7a4-0aea-419c-8c78-c237ac717c19" ],
         "CommandName": [ "Get-AzMarketplacePrivateStoreV1" ],
         "FullCommandName": [ "Get-AzMarketplacePrivateStoreV1_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.11", "Az.Marketplace/1.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,27 +22,30 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
         "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=a3053b2a1619a6aa4b0e7e497e4fa01864cd730cd9c257837f8a0036d6c79b63;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=a3053b2a1619a6aa4b0e7e497e4fa01864cd730cd9c257837f8a0036d6c79b63;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11997" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-XSS-Protection": [ "1; mode=block" ],
-        "x-ms-version": [ "6.0.01832.0004-467b09b3" ],
-        "Set-Cookie": [ "ARRAffinity=d3888da00a6c22fd6922d241b1e1f8b74760295bc9888c172907d962f5a68055;Path=/;HttpOnly;Secure;Domain=marketplacerp.azure.com", "ARRAffinitySameSite=d3888da00a6c22fd6922d241b1e1f8b74760295bc9888c172907d962f5a68055;Path=/;HttpOnly;SameSite=None;Secure;Domain=marketplacerp.azure.com" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
+        "x-ms-version": [ "6.0.02586.90-5c77bed2" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11998" ],
-        "x-ms-request-id": [ "59edaa8a-c641-4134-b5dc-6c6fbae27e00" ],
-        "x-ms-correlation-request-id": [ "59edaa8a-c641-4134-b5dc-6c6fbae27e00" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20220124T135838Z:59edaa8a-c641-4134-b5dc-6c6fbae27e00" ],
+        "x-azure-ref": [ "20240206T121510Z-e9fr18rg4936d7qwr39u9d2ats00000002x0000000007t0h" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "a09d8b05-7983-44de-8663-a9cb4558cf47" ],
+        "x-ms-correlation-request-id": [ "a09d8b05-7983-44de-8663-a9cb4558cf47" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240206T121511Z:a09d8b05-7983-44de-8663-a9cb4558cf47" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Mon, 24 Jan 2022 13:58:37 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 80E8F05A10824BDDBA897B2EFD5C2FDD Ref B: MRS211050313051 Ref C: 2024-02-06T12:15:10Z" ],
+        "Date": [ "Tue, 06 Feb 2024 12:15:10 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "916" ],
+        "Content-Length": [ "1354" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"systemData\":{\"createdBy\":\"\",\"createdByType\":\"User\",\"createdAt\":null,\"lastModifiedBy\":\"\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-01-24T13:58:17.8941524Z\"},\"id\":\"/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"name\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"type\":\"Microsoft.Marketplace/privateStores\",\"properties\":{\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"availability\":\"enabled\",\"eTag\":\"\\\"1e00e7b2-0000-0100-0000-61eeb07a0000\\\"\",\"privateStoreName\":\"Azure\",\"tenantId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"isGov\":false,\"collectionIds\":[\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"8c7a91db-cd41-43b6-af47-2e869654126d\"],\"branding\":{\"newExperience\":\"True\"},\"notificationsSettings\":{\"recipients\":[{\"principalId\":\"48d6cb80-6b16-4f18-9ce3-3a7288080a5b\"},{\"principalId\":\"aa209d7c-8b53-412f-b960-9f64a0f47718\"}],\"sendToAllMarketplaceAdmins\":false}}}]}",
+      "Content": "{\"value\":[{\"systemData\":{\"createdBy\":\"\",\"createdByType\":\"User\",\"createdAt\":null,\"lastModifiedBy\":\"\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-02-06T12:14:38.8098396Z\"},\"id\":\"/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"name\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"type\":\"Microsoft.Marketplace/privateStores\",\"properties\":{\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"availability\":\"enabled\",\"eTag\":\"\\\"f303e052-0000-0100-0000-65c222af0000\\\"\",\"privateStoreName\":\"Azure\",\"tenantId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"isGov\":false,\"collectionIds\":[\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"d1bb102f-620f-460e-ba55-fdc3856c8fdd\",\"0740a3e6-d5b5-4e22-99be-26887e484fa1\",\"de165278-2dda-40aa-9ce4-15bf37311f49\",\"b411c744-55fd-43b4-b269-faf05d4edae2\",\"dbf8cede-24ff-42c0-b443-3f73df6996f7\",\"cf87e6eb-4ed1-44e5-b250-9eb5593b4c0e\",\"21ea54a6-df79-4dcb-babf-7860b8a82a9c\",\"ac13d584-7c4b-40a6-9d95-7dcf4b79db80\",\"73551ecc-d860-407f-9efa-049bab0468f5\",\"22dc7ebe-45b7-4aa6-8c96-a30091344cad\",\"5b98b8be-7b7f-46fe-8e97-a15ea77dda14\",\"65159e59-86c8-4442-b768-2595be217a0f\",\"d9b76d86-a3e7-4e9b-befb-3fe5a8d070a6\",\"0a4d89f3-8348-4961-9bec-a02780ab8144\",\"fdb889a1-cf3e-49f0-95b8-2bb012fa01f1\",\"fdb889a1-cf3e-49f0-95b8-2bb012fa0188\",\"8c7a91db-cd41-43b6-af47-2e869654126d\"],\"branding\":{\"newExperience\":\"True\"}}}]}",
       "isContentBase64": false
     }
   }

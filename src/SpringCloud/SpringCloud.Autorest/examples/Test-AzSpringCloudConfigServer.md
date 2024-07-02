@@ -23,4 +23,3 @@ True
 ```
 
 Check if the config server settings are valid by pipeline.
-

@@ -45,11 +45,6 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         public string PullRequestNumber { get; set; }
 
         /// <summary>
-        /// Gets or set the TargetModule, e.g. Storage
-        /// </summary>
-        public string TargetModule { get; set; }
-
-        /// <summary>
         /// Gets or set the OutputFile, store FilesChanged.txt in 'artifacts' folder
         /// </summary>
         public string OutputFile { get; set; }

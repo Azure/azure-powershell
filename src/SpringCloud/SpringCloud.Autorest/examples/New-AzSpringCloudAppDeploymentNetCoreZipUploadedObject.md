@@ -10,4 +10,3 @@ RelativePath Version NetCoreMainEntryPath RuntimeVersion
 ```
 
 Create an in-memory object for NetCoreZipUploadedUserSourceInfo.
-

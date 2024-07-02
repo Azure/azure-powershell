@@ -22,7 +22,7 @@ Gets an CDN profile with the specified profile name under the specified subscrip
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -46,7 +46,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnprofile
 #>
 function Get-AzCdnProfile {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile])]
     [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='Get', Mandatory)]

@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -56,7 +56,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnprofile
 #>
 function Update-AzFrontDoorCdnProfile {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile])]
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -85,6 +85,22 @@ function Update-AzFrontDoorCdnProfile {
         # Identity Parameter
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
+
+        [Parameter()]
+        [AllowEmptyCollection()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileScrubbingRules[]]
+        # List of log scrubbing rules applied to the Azure Front Door profile logs.
+        # To construct, see NOTES section for LOGSCRUBBINGRULE properties and create a hash table.
+        ${LogScrubbingRule},
+
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProfileScrubbingState])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProfileScrubbingState]
+        # State of the log scrubbing config.
+        # Default value is Enabled.
+        ${LogScrubbingState},
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
@@ -95,7 +111,7 @@ function Update-AzFrontDoorCdnProfile {
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfileUpdateParametersTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileUpdateParametersTags]))]
         [System.Collections.Hashtable]
         # Profile tags
         ${Tag},
@@ -183,7 +199,8 @@ function Update-AzFrontDoorCdnProfile {
         $hasIdentityUserAssignedIdentity = $PSBoundParameters.Remove('IdentityUserAssignedIdentity')
         $hasAsJob = $PSBoundParameters.Remove('AsJob')
         $hasNoWait = $PSBoundParameters.Remove('NoWait')
-        
+        $hasLogScrubbingRule = $PSBoundParameters.Remove('LogScrubbingRule')
+        $hasLogScrubbingState = $PSBoundParameters.Remove('LogScrubbingState')
 
         if ($PSCmdlet.ParameterSetName -eq 'UpdateExpanded') {
             $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile @PSBoundParameters
@@ -211,6 +228,14 @@ function Update-AzFrontDoorCdnProfile {
 
             if ($hasIdentityUserAssignedIdentity) {
                 $PSBoundParameters.Add('IdentityUserAssignedIdentity', ${IdentityUserAssignedIdentity})
+            }
+
+            if ($hasLogScrubbingRule) {
+                $PSBoundParameters.Add('LogScrubbingRule', ${LogScrubbingRule})
+            }
+
+            if ($hasLogScrubbingState) {
+                $PSBoundParameters.Add('LogScrubbingState', ${LogScrubbingState})
             }
 
             if ($hasAsJob) {

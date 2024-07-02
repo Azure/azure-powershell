@@ -244,11 +244,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.IPrefixListResource
+### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPrefixListResource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

@@ -8,24 +8,45 @@ schema: 2.0.0
 # New-AzVMwarePlacementPolicy
 
 ## SYNOPSIS
-Create or update a placement policy in a private cloud cluster
+Create a PlacementPolicy
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzVMwarePlacementPolicy -ClusterName <String> -Name <String> -PrivateCloudName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-Property <IPlacementPolicyProperties>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityClusterExpanded
+```
+New-AzVMwarePlacementPolicy -ClusterInputObject <IVMwareIdentity> -Name <String>
+ [-Property <IPlacementPolicyProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzVMwarePlacementPolicy -InputObject <IVMwareIdentity> [-Property <IPlacementPolicyProperties>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityPrivateCloudExpanded
+```
+New-AzVMwarePlacementPolicy -ClusterName <String> -Name <String> -PrivateCloudInputObject <IVMwareIdentity>
+ [-Property <IPlacementPolicyProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create or update a placement policy in a private cloud cluster
+Create a PlacementPolicy
 
 ## EXAMPLES
 
 ### Example 1: Create or update a placement policy in a private cloud cluster
 ```powershell
-$abc = New-AzVMwareVMPlacementPolicyPropertiesObject -AffinityType 'Affinity' -Type 'VmVm' -VMMember @{"test"="test"}
+$abc = New-AzVMwareVMPlacementPolicyPropertyObject -AffinityType 'Affinity' -VMMember @{"test"="test"}
 New-AzVMwarePlacementPolicy -ClusterName cluster1 -Name policy1 -PrivateCloudName cloud1 -ResourceGroupName group1 -Property $abc
 ```
 
@@ -39,7 +60,7 @@ Create or update a placement policy in a private cloud cluster
 
 ### Example 2: Create or update a placement policy in a private cloud cluster
 ```powershell
-$abc = New-AzVMwareVmHostPlacementPolicyPropertiesObject -AffinityType 'AntiAffinity' -HostMember @{"test"="test"}  -Type 'VmHost' -VMMember @{"test"="test"}
+$abc = New-AzVMwareVmHostPlacementPolicyPropertyObject -AffinityType 'AntiAffinity' -HostMember @{"test"="test"} -VMMember @{"test"="test"}
 New-AzVMwarePlacementPolicy -ClusterName cluster1 -Name policy1 -PrivateCloudName cloud1 -ResourceGroupName group1 -Property $abc
 ```
 
@@ -68,12 +89,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+Parameter Sets: CreateViaIdentityClusterExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterName
-Name of the cluster in the private cloud
+Name of the cluster
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityPrivateCloudExpanded
 Aliases:
 
 Required: True
@@ -84,7 +120,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -98,12 +135,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
-Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+Name of the placement policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityClusterExpanded, CreateViaIdentityPrivateCloudExpanded
 Aliases: PlacementPolicyName
 
 Required: True
@@ -128,12 +180,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PrivateCloudInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+Parameter Sets: CreateViaIdentityPrivateCloudExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -PrivateCloudName
 Name of the private cloud
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -144,11 +211,10 @@ Accept wildcard characters: False
 ```
 
 ### -Property
-placement policy properties
-To construct, see NOTES section for PROPERTY properties and create a hash table.
+The resource-specific properties for this resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPlacementPolicyProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicyProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -165,7 +231,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -177,10 +243,11 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -226,23 +293,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPlacementPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicy
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`PROPERTY <IPlacementPolicyProperties>`: placement policy properties
-  - `Type <PlacementPolicyType>`: placement policy type
-  - `[DisplayName <String>]`: Display name of the placement policy
-  - `[State <PlacementPolicyState?>]`: Whether the placement policy is enabled or disabled
 
 ## RELATED LINKS
 

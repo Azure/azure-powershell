@@ -16,8 +16,8 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 ### CreateExpanded (Default)
 ```
 New-AzConnectedPrivateLinkScope -ResourceGroupName <String> -ScopeName <String> -Location <String>
- [-SubscriptionId <String>] [-PublicNetworkAccess <PublicNetworkAccessType>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
@@ -37,8 +37,20 @@ New-AzConnectedPrivateLinkScope -InputObject <IConnectedMachineIdentity>
 ### CreateViaIdentityExpanded
 ```
 New-AzConnectedPrivateLinkScope -InputObject <IConnectedMachineIdentity> -Location <String>
- [-PublicNetworkAccess <PublicNetworkAccessType>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzConnectedPrivateLinkScope -ResourceGroupName <String> -ScopeName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzConnectedPrivateLinkScope -ResourceGroupName <String> -ScopeName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,6 +107,36 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 Resource location
 
@@ -115,7 +157,7 @@ An Azure Arc PrivateLinkScope definition.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IHybridComputePrivateLinkScope
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHybridComputePrivateLinkScope
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
@@ -130,7 +172,7 @@ Accept wildcard characters: False
 Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support.PublicNetworkAccessType
+Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -147,7 +189,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -162,7 +204,7 @@ The name of the Azure Arc PrivateLinkScope resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -177,7 +219,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -238,52 +280,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IHybridComputePrivateLinkScope
-
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHybridComputePrivateLinkScope
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IHybridComputePrivateLinkScope
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHybridComputePrivateLinkScope
 
 ## NOTES
-
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IConnectedMachineIdentity>`: Identity Parameter
-  - `[ExtensionName <String>]`: The name of the machine extension.
-  - `[ExtensionType <String>]`: The extensionType of the Extension being received.
-  - `[GroupName <String>]`: The name of the private link resource.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The location of the Extension being received.
-  - `[MachineName <String>]`: The name of the hybrid machine.
-  - `[Name <String>]`: The name of the hybrid machine.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
-  - `[PrivateLinkScopeId <String>]`: The id (Guid) of the Azure Arc PrivateLinkScope resource.
-  - `[Publisher <String>]`: The publisher of the Extension being received.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ScopeName <String>]`: The name of the Azure Arc PrivateLinkScope resource.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[Version <String>]`: The version of the Extension being received.
-
-`PARAMETER <IHybridComputePrivateLinkScope>`: An Azure Arc PrivateLinkScope definition.
-  - `Location <String>`: Resource location
-  - `[Tag <IPrivateLinkScopesResourceTags>]`: Resource tags
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[PublicNetworkAccess <PublicNetworkAccessType?>]`: Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-
 
 ## RELATED LINKS
 

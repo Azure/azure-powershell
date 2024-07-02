@@ -5,17 +5,42 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 function setupEnv() {
     # If you want to record a single test do the following for exmple pwsh test-module.ps1 --Record --TestName Update-AzKustoDataConnection
     # 1. comment cleanupEnv- you don't want clean up of the resource group
     # 2. run Record and create the resources
     # 3. comment all content of setupEnv, you want to reuse the resources from previous session instead of creating again
-    # 4. add the following line $env = Get-Content .\test\env.json | ConvertFrom-Json, to load the $env 
+    # 4. add the following line $env = Get-Content .\test\env.json | ConvertFrom-Json, to load the $env
     # 5. Run the recording of a specific test for exmple pwsh test-module.ps1 --Record --TestName Update-AzKustoDataConnection
 
     #$env = Get-Content .\test\env.json | ConvertFrom-Json
-    
+
     $env.subscriptionId = "e8257c73-24c5-4791-94dc-8b7901c90dbf" # Kusto_Dev_Kusto_Ilay_04_Test
     $env.location = 'East US'
     Write-Host "Setting up and connection to subcription " $env.SubscriptionId -ForegroundColor Green
@@ -103,7 +128,7 @@ function setupEnv() {
     $env.keyVaultUrl = $deploymetResult.Outputs.keyVaultUrl.value
     $env.keyVersion = $deploymetResult.Outputs.keyVersion.value
 
-    # copy $env to env.json file 
+    # copy $env to env.json file
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'

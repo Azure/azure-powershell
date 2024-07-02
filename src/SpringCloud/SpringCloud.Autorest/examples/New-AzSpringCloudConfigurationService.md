@@ -11,6 +11,3 @@ default 2022/7/13 3:26:33   *********@microsoft.com User                    2022
 ```
 
 Create the default Application Configuration Service or update the existing Application Configuration Service.
-
-
-
