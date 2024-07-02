@@ -40,5 +40,47 @@
       "Content": "{\"properties\":{\"connectivityProperties\":{\"enabled\":false,\"serviceConfigurations\":[]},\"provisioningState\":\"Succeeded\",\"arcInstanceResourceGroup\":\"pwsh-Clusteryjod-da00b8cd-822c-40c7-9fc5-a390ec81e229-Arc-Infra-RG\",\"aggregateState\":\"NotSpecified\",\"defaultExtensions\":[{\"category\":\"ProductQualityAndSupport\",\"consentTime\":\"2023-07-26T05:16:00.0977281Z\"}]},\"id\":\"/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod/arcSettings/default\",\"name\":\"default\",\"type\":\"microsoft.azurestackhci/clusters/arcsettings\"}",
       "isContentBase64": false
     }
+  },
+  "Invoke-AzStackHciConsentAndInstallDefaultExtension+[NoContext]+And+$POST+https://management.azure.com/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod/arcSettings/default/consentAndInstallDefaultExtensions?api-version=2024-04-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod/arcSettings/default/consentAndInstallDefaultExtensions?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "0a9320cc-d862-4b8a-8cfc-74b2bd7383c9" ],
+        "CommandName": [ "Invoke-AzStackHciConsentAndInstallDefaultExtension" ],
+        "FullCommandName": [ "Invoke-AzStackHciConsentAndInstallDefaultExtension_And" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.StackHCI/1.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "mise-correlation-id": [ "44c8117a-9917-4fd6-9515-0e9c0572b3e2" ],
+        "x-ms-request-id": [ "406fba5b-98b6-4c11-9956-2d07203babd2" ],
+        "x-ms-correlation-request-id": [ "536b6dc7-6f98-473f-812b-0cacce81021e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230726T051600Z:536b6dc7-6f98-473f-812b-0cacce81021e" ],
+        "Date": [ "Wed, 26 Jul 2023 05:15:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "603" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"connectivityProperties\":{\"enabled\":false,\"serviceConfigurations\":[]},\"provisioningState\":\"Succeeded\",\"arcInstanceResourceGroup\":\"pwsh-Clusteryjod-da00b8cd-822c-40c7-9fc5-a390ec81e229-Arc-Infra-RG\",\"aggregateState\":\"NotSpecified\",\"defaultExtensions\":[{\"category\":\"ProductQualityAndSupport\",\"consentTime\":\"2023-07-26T05:16:00.0977281Z\"}]},\"id\":\"/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod/arcSettings/default\",\"name\":\"default\",\"type\":\"microsoft.azurestackhci/clusters/arcsettings\"}",
+      "isContentBase64": false
+    }
   }
 }
