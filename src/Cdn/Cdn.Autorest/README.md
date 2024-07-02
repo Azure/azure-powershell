@@ -190,12 +190,6 @@ directive:
   - where:
       subject: CommitProfileMigration
     hide: true
-  # Hide classicCdn migrate command and customize
-  - where:
-      subject-prefix: FrontDoorCdn
-      subject: CdnProfileToAFD
-      verb: Move
-    hide: true
   # Hide UpgradeSku command and customize
   - where:
       subject: AFDProfileSku
@@ -272,6 +266,12 @@ directive:
       subject: CanCdnProfile
     set:
       subject: CanCdnProfileToAFD
+  # Hide classicCdn migrate command and customize, must be put after rename
+  - where:
+      subject-prefix: FrontDoorCdn
+      subject: CdnProfileToAFD
+      verb: Move
+    hide: true
   - where:
       subject: AbortProfileMigration
     set:
