@@ -18,7 +18,7 @@ Sets operating system properties during the creation of a new virtual machine or
 Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [[-ComputerName] <String>]
  [[-Credential] <PSCredential>] [[-CustomData] <String>] [-ProvisionVMAgent] [-EnableAutoUpdate]
  [[-TimeZone] <String>] [-WinRMHttp] [-PatchMode <String>] [-EnableHotpatching] [-AssessmentMode <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### WindowsWinRmHttps
@@ -27,7 +27,7 @@ Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [[-ComputerName] <St
  [[-Credential] <PSCredential>] [[-CustomData] <String>] [-ProvisionVMAgent] [-EnableAutoUpdate]
  [[-TimeZone] <String>] [-WinRMHttp] [-WinRMHttps] [-WinRMCertificateUrl] <Uri> [-PatchMode <String>]
  [-EnableHotpatching] [-AssessmentMode <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### WindowsDisableVMAgent
@@ -35,7 +35,7 @@ Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [[-ComputerName] <St
 Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [[-ComputerName] <String>]
  [[-Credential] <PSCredential>] [[-CustomData] <String>] [-DisableVMAgent] [-EnableAutoUpdate]
  [[-TimeZone] <String>] [-WinRMHttp] [-PatchMode <String>] [-EnableHotpatching] [-AssessmentMode <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### WindowsDisableVMAgentWinRmHttps
@@ -44,14 +44,14 @@ Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [[-ComputerName] <St
  [[-Credential] <PSCredential>] [[-CustomData] <String>] [-DisableVMAgent] [-EnableAutoUpdate]
  [[-TimeZone] <String>] [-WinRMHttp] [-WinRMHttps] [-WinRMCertificateUrl] <Uri> [-PatchMode <String>]
  [-EnableHotpatching] [-AssessmentMode <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Linux
 ```
 Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Linux] [[-ComputerName] <String>]
  [[-Credential] <PSCredential>] [[-CustomData] <String>] [-PatchMode <String>] [-DisablePasswordAuthentication]
- [-AssessmentMode <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-AssessmentMode <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -316,6 +316,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
