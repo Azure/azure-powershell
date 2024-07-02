@@ -41,7 +41,7 @@ steps:
           break
         }
         { $reason -in @('Manual', 'Schedule') } {
-          $targetModule = ${{ parameters.TargetModule }}
+          $targetModule = "${{ parameters.TargetModule }}"
           if ('' -eq $targetModule) {
             $notModules = @('lib', 'shared')
             $src = Join-Path "$(Build.SourcesDirectory)" 'src'
