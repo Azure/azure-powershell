@@ -1,0 +1,224 @@
+{
+  "resourceType": "organizations/serverlessRuntimes",
+  "apiVersion": "2024-05-08",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.informatica"
+  },
+  "commands": [
+    {
+      "name": "Get-AzInformaticaServerlessRuntime",
+      "description": "Get a InformaticaServerlessRuntimeResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Informatica.DataManagement/organizations/{organizationName}/serverlessRuntimes/{serverlessRuntimeName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.informatica/get-azinformaticaserverlessruntime"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-OrganizationName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a InformaticaServerlessRuntimeResource",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.serverlessRuntimeName]"
+            },
+            {
+              "name": "-OrganizationName",
+              "value": "[Path.organizationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzInformaticaServerlessRuntimeResource",
+      "description": "Returns a serverless runtime resource by ID",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Informatica.DataManagement/organizations/{organizationName}/serverlessRuntimes/{serverlessRuntimeName}/serverlessResourceById",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.informatica/invoke-azinformaticaserverlessruntimeresource"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-OrganizationName <String>",
+              "-ResourceGroupName <String>",
+              "-ServerlessRuntimeName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Returns a serverless runtime resource by ID",
+          "parameters": [
+            {
+              "name": "-OrganizationName",
+              "value": "[Path.organizationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServerlessRuntimeName",
+              "value": "[Path.serverlessRuntimeName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzInformaticaServerlessRuntime",
+      "description": "Delete a InformaticaServerlessRuntimeResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Informatica.DataManagement/organizations/{organizationName}/serverlessRuntimes/{serverlessRuntimeName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.informatica/remove-azinformaticaserverlessruntime"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-OrganizationName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a InformaticaServerlessRuntimeResource",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.serverlessRuntimeName]"
+            },
+            {
+              "name": "-OrganizationName",
+              "value": "[Path.organizationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Start-AzInformaticaServerlessRuntimeFailedServerlessRuntime",
+      "description": "Starts a failed runtime resource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Informatica.DataManagement/organizations/{organizationName}/serverlessRuntimes/{serverlessRuntimeName}/startFailedServerlessRuntime",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.informatica/start-azinformaticaserverlessruntimefailedserverlessruntime"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-OrganizationName <String>",
+              "-ResourceGroupName <String>",
+              "-ServerlessRuntimeName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Starts a failed runtime resource",
+          "parameters": [
+            {
+              "name": "-OrganizationName",
+              "value": "[Path.organizationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServerlessRuntimeName",
+              "value": "[Path.serverlessRuntimeName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Test-AzInformaticaServerlessRuntimeDependency",
+      "description": "Checks all dependencies for a serverless runtime resource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Informatica.DataManagement/organizations/{organizationName}/serverlessRuntimes/{serverlessRuntimeName}/checkDependencies",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.informatica/test-azinformaticaserverlessruntimedependency"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-OrganizationName <String>",
+              "-ResourceGroupName <String>",
+              "-ServerlessRuntimeName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Checks all dependencies for a serverless runtime resource",
+          "parameters": [
+            {
+              "name": "-OrganizationName",
+              "value": "[Path.organizationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServerlessRuntimeName",
+              "value": "[Path.serverlessRuntimeName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
