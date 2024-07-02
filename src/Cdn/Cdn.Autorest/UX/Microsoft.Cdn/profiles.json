@@ -44,12 +44,12 @@
       ]
     },
     {
-      "name": "Invoke-AzCdnCanCdnProfileToAFD",
+      "name": "Test-AzCdnProfileMigrationReadniess",
       "description": "Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/cdnCanMigrateToAfd",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.cdn/invoke-azcdncancdnprofiletoafd"
+          "url": "https://learn.microsoft.com/powershell/module/az.cdn/test-azcdnprofilemigrationreadniess"
         },
         "parameterSets": [
           {

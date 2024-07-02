@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/az.cdn/invoke-azcdncancdnprofiletoafd
+online version: https://learn.microsoft.com/powershell/module/az.cdn/test-azcdnprofilemigrationreadniess
 schema: 2.0.0
 ---
 
-# Invoke-AzCdnCanCdnProfileToAFD
+# Test-AzCdnProfileMigrationReadniess
 
 ## SYNOPSIS
 Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
@@ -14,14 +14,15 @@ Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profi
 
 ### Can (Default)
 ```
-Invoke-AzCdnCanCdnProfileToAFD -ProfileName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzCdnProfileMigrationReadniess -ProfileName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CanViaIdentity
 ```
-Invoke-AzCdnCanCdnProfileToAFD -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzCdnProfileMigrationReadniess -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +32,7 @@ Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profi
 
 ### Example 1: Check the feasibility of given profile which is going to be migrated
 ```powershell
-Invoke-AzCdnCanCdnProfileToAFD  -ProfileName cli-test-profile -ResourceGroupName cli-test-rg
+Test-AzCdnProfileMigrationReadniess  -ProfileName cli-test-profile -ResourceGroupName cli-test-rg
 ```
 
 ```output

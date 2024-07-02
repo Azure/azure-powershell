@@ -276,6 +276,12 @@ directive:
       subject: AbortProfileMigration
     set:
       subject: AbortProfileToAFDMigration
+  - where:
+      verb: Invoke
+      subject: CanCdnProfileToAFD
+    set:
+      verb: Test
+      subject: ProfileMigrationReadniess
 
   # https://github.com/Azure/autorest.powershell/issues/906
   - where:

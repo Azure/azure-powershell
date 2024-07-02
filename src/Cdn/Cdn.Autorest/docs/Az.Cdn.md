@@ -106,9 +106,6 @@ Available for Verizon Profiles.
 ### [Invoke-AzCdnAbortProfileToAFDMigration](Invoke-AzCdnAbortProfileToAFDMigration.md)
 Abort the migration to Azure Frontdoor Premium/Standard.
 
-### [Invoke-AzCdnCanCdnProfileToAFD](Invoke-AzCdnCanCdnProfileToAFD.md)
-Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
-
 ### [Invoke-AzCdnCommitProfileToAFDMigration](Invoke-AzCdnCommitProfileToAFDMigration.md)
 Commit the migrated Azure Front Door(Standard/Premium) profile..
 
@@ -455,6 +452,9 @@ This is needed for resources where name is globally unique, such as a CDN endpoi
 Check if the probe path is a valid path and the file can be accessed.
 Probe path is the path to a file hosted on the origin server to help accelerate the delivery of dynamic content via the CDN endpoint.
 This path is relative to the origin path specified in the endpoint configuration.
+
+### [Test-AzCdnProfileMigrationReadniess](Test-AzCdnProfileMigrationReadniess.md)
+Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
 
 ### [Test-AzFrontDoorCdnEndpointCustomDomain](Test-AzFrontDoorCdnEndpointCustomDomain.md)
 Validates the custom domain mapping to ensure it maps to the correct Azure Front Door endpoint in DNS.
