@@ -29,7 +29,7 @@ using System.Text.Json;
 
 namespace Microsoft.Azure.Commands.Profile
 {
-    [GenericBreakingChangeWithVersion("The output type of this command will be changed to SecureString.", "13.0.0", "2.0.0")]
+    [GenericBreakingChangeWithVersion("The Token property of the output type of this command will be changed to SecureString. Users can add the [-AsSecureString] switch to avoid the impacted of this breaking change.", "13.0.0", "4.0.0")]
     [Cmdlet(VerbsCommon.Get, AzureRMConstants.AzureRMPrefix + "AccessToken", DefaultParameterSetName = KnownResourceNameParameterSet)]
     [OutputType(typeof(PSAccessToken), typeof(PSSecureAccessToken))]
     public class GetAzureRmAccessTokenCommand : AzureRMCmdlet
