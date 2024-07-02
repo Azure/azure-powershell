@@ -41,7 +41,7 @@ This command sets RBAC permission required for an Azure File Sync cloud endpoint
 Set-AzStorageSyncCloudEndpointPermission -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myCloudEndpointName" 
 ```
 
-A cloud endpoint is an integral member of a sync group, this is an example of creating one inside of an existing sync group called "mySyncGroupName".
+A cloud endpoint permission is an integral access requirement for a sync group, this is an example of ensuring all required permissions required for existing sync group called "mySyncGroupName".
 
 ## PARAMETERS
 
