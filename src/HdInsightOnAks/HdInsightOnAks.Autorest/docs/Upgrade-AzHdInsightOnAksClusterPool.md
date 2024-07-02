@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.HdInsightOnAks
-online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/update-azhdinsightonaksclusterpool
+online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/upgrade-azhdinsightonaksclusterpool
 schema: 2.0.0
 ---
 
-# Update-AzHdInsightOnAksClusterPool
+# Upgrade-AzHdInsightOnAksClusterPool
 
 ## SYNOPSIS
 Upgrade a cluster pool.
@@ -14,41 +14,41 @@ Upgrade a cluster pool.
 
 ### UpgradeExpanded (Default)
 ```
-Update-AzHdInsightOnAksClusterPool -Name <String> -ResourceGroupName <String> -UpgradeType <String>
+Upgrade-AzHdInsightOnAksClusterPool -Name <String> -ResourceGroupName <String> -UpgradeType <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### Upgrade
 ```
-Update-AzHdInsightOnAksClusterPool -Name <String> -ResourceGroupName <String>
+Upgrade-AzHdInsightOnAksClusterPool -Name <String> -ResourceGroupName <String>
  -ClusterPoolUpgradeRequest <IClusterPoolUpgrade> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpgradeViaIdentity
 ```
-Update-AzHdInsightOnAksClusterPool -InputObject <IHdInsightOnAksIdentity>
+Upgrade-AzHdInsightOnAksClusterPool -InputObject <IHdInsightOnAksIdentity>
  -ClusterPoolUpgradeRequest <IClusterPoolUpgrade> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpgradeViaIdentityExpanded
 ```
-Update-AzHdInsightOnAksClusterPool -InputObject <IHdInsightOnAksIdentity> -UpgradeType <String>
+Upgrade-AzHdInsightOnAksClusterPool -InputObject <IHdInsightOnAksIdentity> -UpgradeType <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpgradeViaJsonFilePath
 ```
-Update-AzHdInsightOnAksClusterPool -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+Upgrade-AzHdInsightOnAksClusterPool -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpgradeViaJsonString
 ```
-Update-AzHdInsightOnAksClusterPool -Name <String> -ResourceGroupName <String> -JsonString <String>
+Upgrade-AzHdInsightOnAksClusterPool -Name <String> -ResourceGroupName <String> -JsonString <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -62,7 +62,7 @@ Upgrade a cluster pool.
 ```powershell
 $clusterResourceGroupName = "Group"
 $clusterpoolName = "your-clusterpool"
-Update-AzHdInsightOnAksClusterPool -ResourceGroupName $clusterResourceGroupName -ClusterPoolName $clusterpoolName -UpgradeType NodeOsUpgrade 
+Upgrade-AzHdInsightOnAksClusterPool -ResourceGroupName $clusterResourceGroupName -ClusterPoolName $clusterpoolName -UpgradeType NodeOsUpgrade 
 ```
 
 ```output
@@ -105,8 +105,8 @@ Upgrade a cluster pool and upgrade type is NodeOsUpgrade.
 ```powershell
 $clusterResourceGroupName = "Group"
 $clusterpoolName = "your-clusterpool"
-$upgradeObj = New-AzHdInsightOnAksClusterPoolAKSUpgradeObject -TargetAksVersion "1.27.9" -UpgradeClusterPool $true
-Update-AzHdInsightOnAksClusterPool -ResourceGroupName $clusterResourceGroupName -ClusterPoolName $clusterpoolName -ClusterPoolUpgradeRequest $upgradeObj
+$upgradeObj = New-AzHdInsightOnAksClusterPoolAksPatchVersionUpgradeObject -TargetAksVersion "1.27.9" -UpgradeClusterPool $true
+Upgrade-AzHdInsightOnAksClusterPool -ResourceGroupName $clusterResourceGroupName -ClusterPoolName $clusterpoolName -ClusterPoolUpgradeRequest $upgradeObj
 ```
 
 ```output

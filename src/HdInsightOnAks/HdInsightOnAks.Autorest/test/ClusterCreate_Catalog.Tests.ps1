@@ -36,7 +36,7 @@ Describe 'ClusterCreate_Catalog' {
 
     It "New-AzHdInsightOnAksSecretReferenceObject" {
         $referenceName = "sqlpassword";
-        $secretReference = New-AzHdInsightOnAksSecretReferenceObject -SecretName $secretName -ReferenceName $referenceName
+        $secretReference = New-AzHdInsightOnAksSecretReferenceObject -SecretName $secretName -ReferenceName $referenceName -Type Secret
 
         [Console]::WriteLine("New-AzHdInsightOnAksSecretReferenceObject done")
     }

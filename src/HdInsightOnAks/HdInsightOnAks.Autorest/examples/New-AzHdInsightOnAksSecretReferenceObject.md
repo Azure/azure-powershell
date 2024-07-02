@@ -4,11 +4,11 @@ $keyVaultResourceId="/subscriptions/00000000-0000-0000-0000-000000000000/resourc
 $secretName="{your secret name}"
 $referenceName="{your secret reference name}";
 
-$secretReference=New-AzHdInsightOnAksSecretReferenceObject -SecretName $secretName -ReferenceName $referenceName
+$secretReference=New-AzHdInsightOnAksSecretReferenceObject -SecretName $secretName -ReferenceName $referenceName -Type Secret
 ```
 
 ```output
-KeyVaultObjectName ReferenceName                Type   Version
+SecretName ReferenceName                Type   Version
 ------------------ -------------                ----   -------
 {your secret name} {your secret reference name} Secret
 ```

@@ -1,30 +1,30 @@
 ---
 external help file:
 Module Name: Az.HdInsightOnAks
-online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksClusterPoolAKSUpgradeObject
+online version: https://learn.microsoft.com/powershell/module/Az.HdInsightOnAks/new-azhdinsightonaksclusterpoolakspatchversionupgradeobject
 schema: 2.0.0
 ---
 
-# New-AzHdInsightOnAksClusterPoolAKSUpgradeObject
+# New-AzHdInsightOnAksClusterPoolAksPatchVersionUpgradeObject
 
 ## SYNOPSIS
-Create an object to hold the cluster pool upgrade parameters.
+Create an in-memory object for ClusterPoolAksPatchVersionUpgradeProperties.
 
 ## SYNTAX
 
 ```
-New-AzHdInsightOnAksClusterPoolAKSUpgradeObject [-TargetAksVersion <String>] [-UpgradeAllClusterNode <String>]
- [-UpgradeClusterPool <String>] [<CommonParameters>]
+New-AzHdInsightOnAksClusterPoolAksPatchVersionUpgradeObject [-TargetAksVersion <String>]
+ [-UpgradeAllClusterNode <Boolean>] [-UpgradeClusterPool <Boolean>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an object to hold the cluster pool upgrade parameters.
+Create an in-memory object for ClusterPoolAksPatchVersionUpgradeProperties.
 
 ## EXAMPLES
 
 ### Example 1: Create an object to hold the cluster pool upgrade parameters.
 ```powershell
-New-AzHdInsightOnAksClusterPoolAKSUpgradeObject -TargetAksVersion "1.27.9" -UpgradeClusterPool $true
+New-AzHdInsightOnAksClusterPoolAksPatchVersionUpgradeObject -TargetAksVersion "1.27.9" -UpgradeClusterPool $true
 ```
 
 ```output
@@ -60,7 +60,7 @@ whether upgrade all clusters' nodes.
 If it's true, upgradeClusterPool should be false.
 
 ```yaml
-Type: System.String
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -76,7 +76,7 @@ whether upgrade cluster pool or not.
 If it's true, upgradeAllClusterNodes should be false.
 
 ```yaml
-Type: System.String
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -94,7 +94,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolUpgrade
+### Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolAksPatchVersionUpgradeProperties
 
 ## NOTES
 

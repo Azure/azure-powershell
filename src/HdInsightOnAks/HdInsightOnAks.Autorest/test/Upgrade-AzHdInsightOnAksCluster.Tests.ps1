@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Update-AzHdInsightOnAksClusterPool'))
+if(($null -eq $TestName) -or ($TestName -contains 'Upgrade-AzHdInsightOnAksCluster'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzHdInsightOnAksClusterPool.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Upgrade-AzHdInsightOnAksCluster.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzHdInsightOnAksCluste
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzHdInsightOnAksClusterPool' {
+Describe 'Upgrade-AzHdInsightOnAksCluster' {
     It 'UpgradeExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
@@ -24,6 +24,14 @@ Describe 'Update-AzHdInsightOnAksClusterPool' {
     }
 
     It 'UpgradeViaJsonFilePath' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpgradeViaIdentityClusterpoolExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpgradeViaIdentityClusterpool' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
