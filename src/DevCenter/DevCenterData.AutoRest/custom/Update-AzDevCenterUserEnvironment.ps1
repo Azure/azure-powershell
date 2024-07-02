@@ -20,9 +20,29 @@ Partially updates an environment.
 .Description
 Partially updates an environment.
 .Example
-{{ Add code here }}
+$currentDate = Get-Date
+$dateIn8Months = $currentDate.AddMonths(8)
+
+Update-AzDevCenterUserEnvironment -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -Name "envtest" -ProjectName DevProject -ExpirationDate $dateIn8Months
 .Example
-{{ Add code here }}
+$currentDate = Get-Date
+$dateIn8Months = $currentDate.AddMonths(8)
+
+Update-AzDevCenterUserEnvironment -DevCenterName Contoso -Name "envtest" -ProjectName DevProject -ExpirationDate $dateIn8Months
+.Example
+$envInput = @{"UserId" = "me"; "ProjectName" = "DevProject"; "EnvironmentName" = "envtest" }
+$currentDate = Get-Date
+$dateIn8Months = $currentDate.AddMonths(8)
+
+Update-AzDevCenterUserEnvironment -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $envInput -ExpirationDate $dateIn8Months
+
+.Example
+$currentDate = Get-Date
+$dateIn8Months = $currentDate.AddMonths(8)
+
+$envInput = @{"UserId" = "me"; "ProjectName" = "DevProject"; "EnvironmentName" = "envtest" }
+
+Update-AzDevCenterUserEnvironment -DevCenterName Contoso -InputObject $envInput -ExpirationDate $dateIn8Months
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentUpdate

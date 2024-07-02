@@ -20,9 +20,9 @@ Delays the occurrence of an action.
 .Description
 Delays the occurrence of an action.
 .Example
-{{ Add code here }}
+Invoke-AzDevCenterUserDelayEnvironmentAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -EnvironmentName myEnvironment -ProjectName DevProject -Name "myEnvironment-Delete" -DelayTime "00:30"
 .Example
-{{ Add code here }}
+Invoke-AzDevCenterUserDelayEnvironmentAction -DevCenterName Contoso -EnvironmentName myEnvironment -UserId "me" -ProjectName DevProject -Name "myEnvironment-Delete" -DelayTime "05:15"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity

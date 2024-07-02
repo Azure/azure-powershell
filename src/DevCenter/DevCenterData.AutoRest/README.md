@@ -3,6 +3,9 @@
 This directory contains the PowerShell module for the DevCenterdata service.
 
 ---
+## Status
+[![Az.DevCenterdata](https://img.shields.io/powershellgallery/v/Az.DevCenterdata.svg?style=flat-square&label=Az.DevCenterdata "Az.DevCenterdata")](https://www.powershellgallery.com/packages/Az.DevCenterdata/)
+
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -39,7 +42,7 @@ subject-prefix: DevCenter
 endpoint-resource-id-key-name: https://devcenter.azure.com
 # For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
 use-extension:
-  "@autorest/powershell": "3.x"
+  "@autorest/powershell": "3.0.512"
 
 directive:
   - no-inline:

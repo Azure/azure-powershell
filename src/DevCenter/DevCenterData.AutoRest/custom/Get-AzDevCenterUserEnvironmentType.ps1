@@ -20,9 +20,9 @@ Get an environment type configured for a project.
 .Description
 Get an environment type configured for a project.
 .Example
-{{ Add code here }}
+Get-AzDevCenterUserEnvironmentType -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject
 .Example
-{{ Add code here }}
+Get-AzDevCenterUserEnvironmentType -DevCenterName Contoso -ProjectName DevProject
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity

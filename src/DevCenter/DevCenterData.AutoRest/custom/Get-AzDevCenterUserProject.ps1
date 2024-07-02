@@ -20,9 +20,19 @@ Gets a project.
 .Description
 Gets a project.
 .Example
-{{ Add code here }}
+Get-AzDevCenterUserProject -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject
 .Example
-{{ Add code here }}
+Get-AzDevCenterUserProject -DevCenterName Contoso -ProjectName DevProject
+.Example
+Get-AzDevCenterUserProject -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject 
+.Example
+Get-AzDevCenterUserProject -DevCenterName Contoso -ProjectName DevProject 
+.Example
+$devBoxInput = @{"ProjectName" = "DevProject";}
+Get-AzDevCenterUserProject -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $devBoxInput
+.Example
+$devBoxInput = @{"ProjectName" = "DevProject";}
+Get-AzDevCenterUserProject -DevCenterName Contoso -InputObject $devBoxInput
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity

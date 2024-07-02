@@ -1,3 +1,4 @@
+
 # ----------------------------------------------------------------------------------
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,9 +20,19 @@ Gets a pool.
 .Description
 Gets a pool.
 .Example
-{{ Add code here }}
+Get-AzDevCenterUserPool -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject
 .Example
-{{ Add code here }}
+Get-AzDevCenterUserPool -DevCenterName Contoso -ProjectName DevProject
+.Example
+Get-AzDevCenterUserPool -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -PoolName DevPool
+.Example
+Get-AzDevCenterUserPool -DevCenterName Contoso -ProjectName DevProject -PoolName DevPool
+.Example
+$devBoxInput = @{"ProjectName" = "DevProject"; "PoolName" = "DevPool" }
+Get-AzDevCenterUserPool -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $devBoxInput
+.Example
+$devBoxInput = @{"ProjectName" = "DevProject"; "PoolName" = "DevPool" }
+Get-AzDevCenterUserPool -DevCenterName Contoso -InputObject $devBoxInput
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity

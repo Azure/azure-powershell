@@ -20,9 +20,19 @@ Gets the specified catalog within the project.
 .Description
 Gets the specified catalog within the project.
 .Example
-{{ Add code here }}
+Get-AzDevCenterUserCatalog -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject
 .Example
-{{ Add code here }}
+Get-AzDevCenterUserCatalog -DevCenterName Contoso -ProjectName DevProject
+.Example
+Get-AzDevCenterUserCatalog -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -CatalogName CentralCatalog 
+.Example
+Get-AzDevCenterUserCatalog -DevCenterName Contoso -ProjectName DevProject -CatalogName CentralCatalog 
+.Example
+$catalogInput = @{"CatalogName" = "CentralCatalog"; "ProjectName" =" DevProject" }
+Get-AzDevCenterUserCatalog -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $catalogInput
+.Example
+$catalogInput = @{"CatalogName" = "CentralCatalog"; "ProjectName" = "DevProject" }
+Get-AzDevCenterUserCatalog -DevCenterName Contoso -InputObject $catalogInput 
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
