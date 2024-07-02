@@ -94,7 +94,7 @@ jobs:
       targetType: inline
       script: |
         $azPackagesDir = New-Item -Name AzPreviewPackages -Path $(DataLocation) -ItemType Directory -Force
-        $azPackagesFiles = Join-Path -Path $(Pipeline.Workspace) -ChildPath *.nupkg
+        $azPackagesFiles =  Get-ChildItem -Path "$(Pipeline.Workspace)" -Recurse -Filter "*.nupkg" 
         Move-Item -Path $azPackagesFiles -Destination $azPackagesDir
         Get-ChildItem -LiteralPath $azPackagesDir
 
