@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzStorageSyncServiceIdentity
 
 ## SYNOPSIS
-This command helps to migrate storage sync servicein a resource group to start using managed identity
+This command helps to migrate storage sync service in a resource group to start using managed identity.
 
 ## SYNTAX
 

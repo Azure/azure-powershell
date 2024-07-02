@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                     // 1. Check if any server available for migration
                     IEnumerable<StorageSyncModels.RegisteredServer> registeredServers = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.ListByStorageSyncService(resourceGroupName, resourceName);
                     var candidateServersLookup = new Dictionary<string, StorageSyncModels.RegisteredServer>(StringComparer.InvariantCultureIgnoreCase);
-                    var clusterNameServersLookup = new Dictionary<string, StorageSyncModels.RegisteredServer>(StringComparer.InvariantCultureIgnoreCase);
+                    var clusterNameServersLookup = new Dictionary<string, List<StorageSyncModels.RegisteredServer>>(StringComparer.InvariantCultureIgnoreCase);
                     foreach (var registeredServer in registeredServers)
                     {
                         // Scenario : Server is running in certificate mode
@@ -163,16 +163,24 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                             || (Guid.TryParse(registeredServer.LatestApplicationId, out Guid latestApplicationId)))
                         {
                             StorageSyncClientWrapper.VerboseLogger.Invoke($"Server :  {registeredServer.ServerName ?? registeredServer.ServerId} ({registeredServer.ServerRole})");
-                            candidateServersLookup.Add(registeredServer.Id, registeredServer);
 
-                            if(registeredServer.ServerRole == ServerRoleType.ClusterNode.ToString())
+                            if (registeredServer.ServerRole != ServerRoleType.ClusterName.ToString())
                             {
-                                var clusterNameServer = registeredServers.SingleOrDefault(s => s.ServerId == registeredServer.ClusterId);
-                                if(clusterNameServer != null)
+                                candidateServersLookup.Add(registeredServer.Id, registeredServer);
+                            }
+
+                            if (registeredServer.ServerRole == ServerRoleType.ClusterNode.ToString())
+                            {
+                                var clusterNameServer = registeredServers.SingleOrDefault(s => s.ServerId == registeredServer.ClusterId && s.ServerRole == ServerRoleType.ClusterName.ToString());
+                                if (clusterNameServer != null)
                                 {
                                     throw new PSArgumentException($"Cluster Name Server {clusterNameServer.ServerName} is not found for Cluster Node {registeredServer.ServerName}");
                                 }
-                                clusterNameServersLookup.Add(clusterNameServer.Id, registeredServer);
+                                if (!clusterNameServersLookup.ContainsKey(clusterNameServer.Id))
+                                {
+                                    clusterNameServersLookup.Add(clusterNameServer.Id, new List<RegisteredServer>());
+                                }
+                                clusterNameServersLookup[clusterNameServer.Id].Add(registeredServer);
                             }
                         }
                     }
@@ -236,20 +244,22 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                         IEnumerable<StorageSyncModels.ServerEndpoint> serverEndpoints = StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.ListBySyncGroup(resourceGroupName, resourceName, syncGroup.Name);
                         foreach (var serverEndpoint in serverEndpoints)
                         {
-                            RegisteredServer associatedServer = null;
+                            var associatedServers = new List<RegisteredServer>();
 
                             // It is expected that multiple migration script might have caused to have role assignment already in the system. We are fault tolerant to existing role assignment.
                             if (candidateServersLookup.ContainsKey(serverEndpoint.ServerResourceId))
                             {
                                 // Standalone Server scenario
-                                associatedServer = candidateServersLookup[serverEndpoint.ServerResourceId];
+                                associatedServers.Add(candidateServersLookup[serverEndpoint.ServerResourceId]);
                             }
                             else if (clusterNameServersLookup.ContainsKey(serverEndpoint.ServerResourceId))
                             {
                                 // ClusterNode Server scenario
-                                associatedServer = clusterNameServersLookup[serverEndpoint.ServerResourceId];
+                                associatedServers.AddRange(clusterNameServersLookup[serverEndpoint.ServerResourceId]);
                             }
-                            if (associatedServer != null)
+
+                            StorageSyncClientWrapper.VerboseLogger.Invoke($"ServerEndpoint {serverEndpoint.Name} has {associatedServers.Count} associated registered servers.");
+                            foreach (var associatedServer in associatedServers)
                             {
                                 if (!Guid.TryParse(associatedServer.LatestApplicationId, out Guid applicationGuid))
                                 {

@@ -296,7 +296,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 IEnumerable<StorageSyncModels.RegisteredServer> impactedRegisteredServers;
                 if (registeredServer.ServerRole == ServerRoleType.ClusterName.ToString())
                 {
-                    impactedRegisteredServers = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.ListByStorageSyncService(resourceGroupName, storageSyncServiceName);
+                    impactedRegisteredServers = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers
+                    .ListByStorageSyncService(resourceGroupName, storageSyncServiceName)
+                    .Where(s => !string.IsNullOrEmpty(s.ClusterId) && s.ClusterId.Equals(registeredServer.ServerId, StringComparison.InvariantCultureIgnoreCase));
                 }
                 else
                 {

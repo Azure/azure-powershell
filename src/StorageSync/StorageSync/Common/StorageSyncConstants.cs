@@ -214,10 +214,5 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// Get Hybrid API Version
         /// </summary>
         public const string GetHybridApiVersion = "2022-08-11-preview";
-
-        /// <summary>
-        /// Arm Resource Uri
-        /// </summary>
-        public const string ArmResourceUri = "https://management.azure.com";
     }
 }

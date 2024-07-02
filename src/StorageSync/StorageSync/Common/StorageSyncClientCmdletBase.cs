@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </exception>
         protected void ExecuteClientAction(Action action)
         {
-            WriteVerbose("Executing Client action cmdlet....");
+            WriteVerbose($"Executing {this.GetType().Name}....");
             try
             {
                 try
@@ -211,13 +211,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             catch (Exception ex)
             {
                 WriteVerbose(ex.ToString());
-                WriteVerbose(ex.StackTrace);
 
                 var innerException = ex.InnerException;
                 while (innerException != null)
                 {
                     WriteVerbose(innerException.ToString()); 
-                    WriteVerbose(innerException.StackTrace);
                     innerException = innerException.InnerException;
                 }
                 throw ex;

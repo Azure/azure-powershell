@@ -74,7 +74,7 @@ Use for troubleshooting only. This command will roll the storage sync server cer
 This command will set the Cloud Endpoint permissions in a Storage Sync Service in a resource group.
 
 ### [Set-AzStorageSyncServer](Set-AzStorageSyncServer.md)
-{{ Fill in the Synopsis }}
+This command allows for changes on the adjustable parameters of a registered server.
 
 ### [Set-AzStorageSyncServerEndpoint](Set-AzStorageSyncServerEndpoint.md)
 This command allows for changes on the adjustable parameters of a server endpoint.

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzStorageSyncCloudEndpointPermission
 
 ## SYNOPSIS
-This command creates an Azure File Sync cloud endpoint in a sync group.
+This command sets RBAC permission required for an Azure File Sync cloud endpoint in a sync group.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Set-AzStorageSyncCloudEndpointPermission [-ParentResourceId] <String> -Name <Str
 ```
 
 ## DESCRIPTION
-This command creates an Azure File Sync cloud endpoint. A cloud endpoint is a reference to an existing Azure file share. It represents the file share and defines it participation in syncing all the files part of the sync group the cloud endpoint has been created in.
+This command sets RBAC permission required for an Azure File Sync cloud endpoint in a sync group. This permission allow Azure file sync to access storage account and azure file share for performing sync operations.
 
 ## EXAMPLES
 

@@ -237,6 +237,16 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <summary>
         /// Storage Sync Service Use Identity Parameter.
         /// </summary>
-        public const string StorageSyncServiceUseIdentityParameter = "Set the topology to trigger consumption if manged identity feature on both cloud and server.";
+        public const string StorageSyncServiceUseIdentityParameter = "Set the Storage Sync Service topology to consume the Managed Identity settings if the feature is enabled on the server and in the cloud.";
+
+        /// <summary>
+        /// Storage sync service managed identity type error.
+        /// </summary>
+        public const string StorageSyncServiceManagedIdentityTypeError = "The value for AssignIdentityType is not valid, the valid value are: \"None\", \"SystemAssigned\", \"UserAssigned\", or \"SystemAssignedUserAssigned\"";
+
+        /// <summary>
+        /// Storage sync service managed identity type parameter error.
+        /// </summary>
+        public const string StorageSyncServiceIdentityParameterError = "UserAssignIdentityId should only be specified when AssignIdentityType is UserAssigned or SystemAssignedUserAssigned.";
     }
 }

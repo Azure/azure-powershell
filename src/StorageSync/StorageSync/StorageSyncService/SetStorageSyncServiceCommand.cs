@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                         if (updateParameters.Identity.Type != StorageSyncModels.ManagedServiceIdentityType.UserAssigned &&
                         updateParameters.Identity.Type != StorageSyncModels.ManagedServiceIdentityType.SystemAssignedUserAssigned)
                         {
-                            throw new ArgumentException("UserAssignIdentityId should only be specified when AssignIdentityType is UserAssigned or SystemAssignedUserAssigned.", "UserAssignIdentityId");
+                            throw new ArgumentException(HelpMessages.StorageSyncServiceIdentityParameterError, "UserAssignIdentityId");
                         }
                         updateParameters.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>
                         {
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
             {
                 return StorageSyncModels.ManagedServiceIdentityType.None;
             }
-            throw new ArgumentException("The value for AssignIdentityType is not valid, the valid value are: \"None\", \"SystemAssigned\", \"UserAssigned\", or \"SystemAssignedUserAssigned\"", "AssignIdentityType");
+            throw new ArgumentException(HelpMessages.StorageSyncServiceManagedIdentityTypeError, "AssignIdentityType");
         }
         protected struct StorageSyncServiceIdentityType
         {

@@ -25,6 +25,8 @@ using System.Linq;
 using System;
 using System.Management.Automation;
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
+using Microsoft.Azure.Commands.StorageSync.InternalObjects;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
@@ -208,24 +210,44 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                                 throw new PSArgumentException(StorageSyncResources.MissingServerResourceIdErrorMessage);
                             }
 
-                            if (!String.IsNullOrEmpty(registeredServer.ApplicationId) && Guid.TryParse(registeredServer.ApplicationId, out Guid serverIdentityGuid))
+                            // Handle cluster name server scenario where the rbac needs to be applied on all the nodes.
+                            StorageSyncClientWrapper.VerboseLogger.Invoke($"Registered Server Auth Type : {registeredServer.ActiveAuthType} with ServerRole {registeredServer.ServerRole}");
+                            IEnumerable<StorageSyncModels.RegisteredServer> impactedRegisteredServers;
+                            if (registeredServer.ServerRole == ServerRoleType.ClusterName.ToString())
                             {
-                                StorageSyncModels.CloudEndpoint cloudEndpoint = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints
-                                .ListBySyncGroup(resourceGroupName, storageSyncServiceName, parentResourceName).FirstOrDefault();
+                                impactedRegisteredServers = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers
+                                .ListByStorageSyncService(resourceGroupName, storageSyncServiceName)
+                                .Where(s => !string.IsNullOrEmpty(s.ClusterId) &&
+                                    s.ServerRole == ServerRoleType.ClusterNode.ToString() &&
+                                    s.ClusterId.Equals(registeredServer.ServerId, StringComparison.InvariantCultureIgnoreCase));
+                            }
+                            else
+                            {
+                                impactedRegisteredServers = new List<StorageSyncModels.RegisteredServer> { registeredServer };
+                            }
+                            foreach (var impactedRegisteredServer in impactedRegisteredServers)
+                            {
+                                if (!String.IsNullOrEmpty(impactedRegisteredServer.ApplicationId) &&
+                                    Guid.TryParse(impactedRegisteredServer.ApplicationId, out Guid serverIdentityGuid) &&
+                                    serverIdentityGuid != Guid.Empty)
+                                {
+                                    StorageSyncModels.CloudEndpoint cloudEndpoint = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints
+                                    .ListBySyncGroup(resourceGroupName, storageSyncServiceName, parentResourceName).FirstOrDefault();
 
-                                if (cloudEndpoint == null)
-                                {
-                                    throw new PSArgumentException(StorageSyncResources.MissingParentResourceIdErrorMessage);
-                                }
-                                var storageAccountResourceIdentifier = new ResourceIdentifier(cloudEndpoint.StorageAccountResourceId);
-                                var scope = $"{cloudEndpoint.StorageAccountResourceId}/fileServices/default/fileshares/{cloudEndpoint.AzureFileShareName}";
-                                bool success = StorageSyncClientWrapper.DeleteRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
-                                   serverIdentityGuid,
-                                   Common.StorageSyncClientWrapper.StorageFileDataPrivilegedContributorRoleDefinitionId,
-                                   scope);
-                                if (success)
-                                {
-                                    StorageSyncClientWrapper.VerboseLogger($"Role Assignment is successfully deleted");
+                                    if (cloudEndpoint == null)
+                                    {
+                                        throw new PSArgumentException(StorageSyncResources.MissingParentResourceIdErrorMessage);
+                                    }
+                                    var storageAccountResourceIdentifier = new ResourceIdentifier(cloudEndpoint.StorageAccountResourceId);
+                                    var scope = $"{cloudEndpoint.StorageAccountResourceId}/fileServices/default/fileshares/{cloudEndpoint.AzureFileShareName}";
+                                    bool success = StorageSyncClientWrapper.DeleteRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
+                                       serverIdentityGuid,
+                                       Common.StorageSyncClientWrapper.StorageFileDataPrivilegedContributorRoleDefinitionId,
+                                       scope);
+                                    if (success)
+                                    {
+                                        StorageSyncClientWrapper.VerboseLogger($"Role Assignment is successfully deleted with identity guid {serverIdentityGuid}");
+                                    }
                                 }
                             }
                         }
