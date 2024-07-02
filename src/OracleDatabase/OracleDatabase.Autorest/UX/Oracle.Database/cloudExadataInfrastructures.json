@@ -1,0 +1,123 @@
+{
+  "resourceType": "cloudExadataInfrastructures",
+  "apiVersion": "2023-09-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.oracledatabase"
+  },
+  "commands": [
+    {
+      "name": "Add-AzOracleDatabaseCloudExadataInfrastructureStorageCapacity",
+      "description": "Perform add storage capacity on exadata infra",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/cloudExadataInfrastructures/{cloudexadatainfrastructurename}/addStorageCapacity",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.oracledatabase/add-azoracledatabasecloudexadatainfrastructurestoragecapacity"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Cloudexadatainfrastructurename <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Perform add storage capacity on exadata infra",
+          "parameters": [
+            {
+              "name": "-Cloudexadatainfrastructurename",
+              "value": "[Path.cloudexadatainfrastructurename]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzOracleDatabaseCloudExadataInfrastructure",
+      "description": "Get a CloudExadataInfrastructure",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/cloudExadataInfrastructures/{cloudexadatainfrastructurename}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.oracledatabase/get-azoracledatabasecloudexadatainfrastructure"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a CloudExadataInfrastructure",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.cloudexadatainfrastructurename]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzOracleDatabaseCloudExadataInfrastructure",
+      "description": "Delete a CloudExadataInfrastructure",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/cloudExadataInfrastructures/{cloudexadatainfrastructurename}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.oracledatabase/remove-azoracledatabasecloudexadatainfrastructure"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a CloudExadataInfrastructure",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.cloudexadatainfrastructurename]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
