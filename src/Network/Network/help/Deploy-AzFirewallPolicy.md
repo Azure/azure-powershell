@@ -8,7 +8,7 @@ schema: 2.0.0
 # Deploy-AzFirewallPolicy
 
 ## SYNOPSIS
-Deploys the drafts (policy and rule collection group) associated with the azure firewall policy.
+Deploys the Azure Firewall Policy draft and all Rule Collection Group drafts associated with this Azure Firewall Policy.
 
 ## SYNTAX
 
@@ -103,7 +103,7 @@ Accept wildcard characters: True
 ```
 
 ### -InputObject
-The Firewall Policy
+The Firewall Policy.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicy

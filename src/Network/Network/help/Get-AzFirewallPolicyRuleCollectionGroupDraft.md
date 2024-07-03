@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzFirewallPolicyRuleCollectionGroup
 
 ## SYNOPSIS
-Gets an Azure Firewall Policy Rule Collection Group Draft
+Gets an Azure Firewall Policy Rule Collection Group Draft.
 
 ## SYNTAX
 
@@ -31,8 +31,7 @@ Get-AzFirewallPolicyRuleCollectionGroupDraft -ResourceId <String> [-DefaultProfi
 ```
 
 ## DESCRIPTION
-The **Get-AzFirewallPolicyRuleCollectionGroupDraft** cmdlet gets the RuleCollectionGroup draft associated with the RuleCollectionGroup mentioned, from a Firewall Policy
-
+The **Get-AzFirewallPolicyRuleCollectionGroupDraft** cmdlet gets the RuleCollectionGroup draft associated with the RuleCollectionGroup mentioned, from an Azure Firewall Policy.
 ## EXAMPLES
 
 ### Example 1
@@ -40,7 +39,7 @@ The **Get-AzFirewallPolicyRuleCollectionGroupDraft** cmdlet gets the RuleCollect
 Get-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName rg1 -FirewallPolicyObject $fp
 ```
 
-This example get the rule collection group draft associated with rule collection group rg1 in the firewall policy $fp
+This example get the rule collection group draft associated with rule collection group rg1 in the firewall policy $fp.
 
 ### Example 2
 
@@ -71,7 +70,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureFirewallPolicyName
-The Firewall policy name
+The Firewall policy name.
 
 ```yaml
 Type: System.String

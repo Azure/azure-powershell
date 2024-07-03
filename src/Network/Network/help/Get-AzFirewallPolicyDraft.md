@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzFirewallPolicyDraft
 
 ## SYNOPSIS
-Gets an Azure Firewall Policy Draft
+Gets an Azure Firewall Policy Draft.
 
 ## SYNTAX
 
@@ -29,7 +29,7 @@ Get-AzFirewallPolicyDraft -FirewallPolicyObject <PSAzureFirewallPolicy> [-Defaul
 ```
 
 ## DESCRIPTION
-The **Get-AzFirewallPolicyDraft** cmdlet gets the firewall policy draft associated with a given firewall policy in a resource group
+The **Get-AzFirewallPolicyDraft** cmdlet gets the Azure Firewall Policy draft associated with a given Azure Firewall Policy policy in a resource group.
 
 ## EXAMPLES
 
@@ -38,7 +38,7 @@ The **Get-AzFirewallPolicyDraft** cmdlet gets the firewall policy draft associat
 Get-AzFirewallPolicyDraft -AzureFirewallPolicyName firewallPolicy -ResourceGroupName TestRg
 ```
 
-This example gets a firewall policy draft associated with a policy named "firewallPolicy" in the resource group "TestRg"
+This example gets a firewall policy draft associated with a policy named "firewallPolicy" in the resource group "TestRg".
 
 ## PARAMETERS
 
