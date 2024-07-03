@@ -29,8 +29,8 @@ Get-AzRedisCacheKey -ResourceGroupName "MyResourceGroup" -Name "MyCacheKey"
 ```
 
 ```output
-PrimaryKey        : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
-SecondaryKey      : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
+PrimaryKey        : ******
+SecondaryKey      : ******
 ```
 
 This command gets the access keys named MyCacheKey.
