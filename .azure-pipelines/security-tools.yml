@@ -53,6 +53,7 @@ jobs:
       outputFormat: sarif
       scanFolder: SecurityTmp
       suppressionsFile: tools/SecurityTools/CredScanSuppressions.json
+      verboseOutput: true
   - task: PowerShell@2
     displayName: Generate a response text file for BinSkim
     inputs:
@@ -87,9 +88,13 @@ jobs:
     inputs:
       artifactName: artifacts
       targetPath: artifacts
-  - task: AdvancedSecurity-Publish@1
-    displayName: Publish Security Scan Logs
-    condition: succeededOrFailed()
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-publishsecurityanalysislogs.PublishSecurityAnalysisLogs@3
+    displayName: 'Publish Guardian Artifacts'
+    inputs:
+      ArtifactName: CodeAnalysisLogs
+      ArtifactType: Container
+      PublishProcessedResults: false
+      AllTools: true
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-postanalysis.PostAnalysis@2
     displayName: Analyze Results
     inputs:
