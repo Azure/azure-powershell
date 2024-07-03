@@ -24,6 +24,8 @@
 * Updated `Microsoft.Identity.Client.NativeInterop` to fix the WAM pop window issue in elevated mode [#24967]
 * Updated the reference of Azure PowerShell Common to 1.3.98-preview.
 * Limited promotional message to interactive scenarios only
+* In `Connect-AzAccount` add warning message to discourage username/password flow
+* In `Get-AzAccessToken` add Breaking Change Notification to Change Access Token from String to Secure String
 
 ## Version 3.0.0
 * Web Account Manager (WAM) was set the default experience of interactive login. For more details please refer to https://go.microsoft.com/fwlink/?linkid=2272007
