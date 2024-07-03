@@ -124,7 +124,7 @@ function setupEnv() {
     $adbsName = "OFakePowerShellTestAdbs"
     $env.Add("adbsName", $adbsName)
 
-    $adbsDbWorkload = "DW"
+    $adbsDbWorkload = "OLTP"
     $env.Add("adbsDbWorkload", $adbsDbWorkload)
 
     $adbsComputeCount = 2.0
@@ -136,14 +136,20 @@ function setupEnv() {
     $adbsDbVersion = "19c"
     $env.Add("adbsDbVersion", $adbsDbVersion)
 
-    $adbsDataStorageInTb = 2
-    $env.Add("adbsDataStorageInTb", $adbsDataStorageInTb)
+    $adbsDataStorageInGb = 32
+    $env.Add("adbsDataStorageInGb", $adbsDataStorageInGb)
 
-    $adbsLicenseModel = "LicenseIncluded"
+    $adbsLicenseModel = "BringYourOwnLicense"
     $env.Add("adbsLicenseModel", $adbsLicenseModel)
 
     $adbsDatabaseType = "Regular"
     $env.Add("adbsDatabaseType", $adbsDatabaseType)
+
+    $adbsCharacterSet = "AL32UTF8"
+    $env.Add("adbsCharacterSet", $adbsCharacterSet)
+
+    $adbsNCharacterSet = "AL16UTF16"
+    $env.Add("adbsNCharacterSet", $adbsNCharacterSet)
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'

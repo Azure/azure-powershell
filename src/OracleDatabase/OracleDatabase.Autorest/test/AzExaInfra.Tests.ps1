@@ -33,6 +33,14 @@ Describe 'AzExaInfra' {
             $exaInfraList.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
+    It 'UpdateExaInfra' {
+        {
+            $tagHashTable = @{'tagName'="tagValue"}
+            Update-AzOracleDatabaseCloudExadataInfrastructure -Name $env.exaInfraName -ResourceGroupName $env.resourceGroup -Tag $tagHashTable
+            $exaInfra = Get-AzOracleDatabaseCloudExadataInfrastructure -Name $env.exaInfraName -ResourceGroupName $env.resourceGroup
+            $exaInfra.Tag.Get_Item("tagName") | Should -Be "tagValue"
+        } | Should -Not -Throw
+    }
     It 'DeleteExaInfra' {
         {
             Remove-AzOracleDatabaseCloudExadataInfrastructure -NoWait -Name $env.exaInfraName -ResourceGroupName $env.resourceGroup
