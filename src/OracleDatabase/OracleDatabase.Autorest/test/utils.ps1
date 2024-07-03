@@ -80,7 +80,7 @@ function setupEnv() {
     $vmClusterName = "OFake_PowerShellTestVmCluster"
     $env.Add("vmClusterName", $vmClusterName)
 
-    $vmClusterHostName = "powershell-test"
+    $vmClusterHostName = "host"
     $env.Add("vmClusterHostName", $vmClusterHostName)
 
     $vmClusterCpuCoreCount = 4
