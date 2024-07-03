@@ -1490,5 +1490,14 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
                 return ResourceManager.GetString("UserTenantDomainNotFound", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please ensure that the provided user is found in the provided tenant domain..
+        /// </summary>
+        internal static string UsernamePasswordDiscourageWarningMessage {
+            get {
+                return ResourceManager.GetString("UsernamePasswordDiscourageWarningMessage", resourceCulture);
+            }
+        }
     }
 }
