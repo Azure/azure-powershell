@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Added a warning message in `Connect-AzAccount` to discourage the use of the username/password (a.k.a ROPC) login flow.
+* Preannounced a breaking change in `Get-AzAccessToken` to change `Token` property from `String` to `SecureString`.
 * Disable WAM when the customers login with device code flow or username password (ROPC) flow to prevent a potential issue with token cache.
 * Fixed [CVE-2024-35255](https://github.com/advisories/GHSA-m5vv-6r4h-3vj9)
 * Updated `Microsoft.Identity.Client.NativeInterop` to fix the WAM pop window issue in elevated mode [#24967]
