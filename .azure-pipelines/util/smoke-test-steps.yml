@@ -76,7 +76,8 @@ jobs:
       targetType: 'inline'
       script: |
        New-Item -Path "$(Pipeline.Workspace)" -Name "LocalRepo" -ItemType "directory"
-       Get-ChildItem -Path "$(Pipeline.Workspace)" -Recurse -Filter "*.nupkg" | ForEach-Object { Copy-Item -Path $_.FullName -Destination "$(Pipeline.Workspace)\LocalRepo\" -Force }
+       $fileList = Get-ChildItem -Path "$(Pipeline.Workspace)" -Recurse -Filter "*.nupkg" 
+       $fileList | ForEach-Object { Copy-Item -Path $_.FullName -Destination "$(Pipeline.Workspace)\LocalRepo\" -Force }
        Write-Host "List artifacts..."
        Get-ChildItem "$(Pipeline.Workspace)\\LocalRepo\\"
 
