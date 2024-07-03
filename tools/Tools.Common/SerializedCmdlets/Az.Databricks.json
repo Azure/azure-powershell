@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.Databricks",
-  "ModuleVersion": "1.7.2",
+  "ModuleVersion": "1.8.0",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -14,9 +14,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IAccessConnector",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IAccessConnector, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api30.IUserAssignedIdentities",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CreatedByType]",
@@ -28,7 +28,8 @@
               "IdentityPrincipalId": "System.String",
               "IdentityTenantId": "System.String",
               "SystemDataCreatedBy": "System.String",
-              "SystemDataLastModifiedBy": "System.String"
+              "SystemDataLastModifiedBy": "System.String",
+              "ReferedBy": "System.String[]"
             }
           },
           "ParameterSets": [
@@ -867,11 +868,11 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IOutboundEnvironmentEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IOutboundEnvironmentEndpoint, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IOutboundEnvironmentEndpoint",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IOutboundEnvironmentEndpoint, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Endpoint": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IEndpointDependency[]",
+              "Endpoint": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEndpointDependency[]",
               "Category": "System.String"
             }
           },
@@ -1156,9 +1157,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IVirtualNetworkPeering",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IVirtualNetworkPeering, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringProvisioningState]",
               "PeeringState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringState]",
@@ -1957,58 +1958,69 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IPrivateEndpointConnection[]",
-              "Authorization": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization[]",
+              "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IPrivateEndpointConnection[]",
+              "Authorization": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization[]",
               "ResourceTagValue": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IAny",
+              "ComplianceSecurityProfileComplianceStandard": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[]",
+              "AutomaticClusterUpdateValue": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue]",
+              "ComplianceSecurityProfileValue": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CreatedByType]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CreatedByType]",
-              "AmlWorkspaceIdType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "EncryptionType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "PublicIPNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
               "LoadBalancerIdType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
               "StorageAccountSkuNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "EnableNoPublicIPType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "StorageAccountNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "CustomVirtualNetworkIdType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "ResourceTagType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "CustomPublicSubnetNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "RequireInfrastructureEncryptionType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "CustomPrivateSubnetNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "NatGatewayNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "PrepareEncryptionType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "VnetAddressPrefixType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
               "LoadBalancerBackendPoolNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "PublicIPNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "EncryptionType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "ResourceTagType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "EnableNoPublicIPType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "CustomVirtualNetworkIdType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "RequireInfrastructureEncryptionType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "StorageAccountNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "CustomPrivateSubnetNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "VnetAddressPrefixType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "AmlWorkspaceIdType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "NatGatewayNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "CustomPublicSubnetNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "PrepareEncryptionType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "DefaultStorageFirewall": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall]",
+              "EnhancedSecurityMonitoringValue": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue]",
+              "AccessConnectorIdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType]",
+              "DefaultCatalogInitialType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.InitialType]",
               "EncryptionKeySource": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource]",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ProvisioningState]",
               "PublicNetworkAccess": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PublicNetworkAccess]",
               "RequiredNsgRule": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.RequiredNsgRules]",
-              "EnableNoPublicIP": "System.Nullable`1[System.Boolean]",
               "PrepareEncryption": "System.Nullable`1[System.Boolean]",
-              "RequireInfrastructureEncryption": "System.Nullable`1[System.Boolean]",
+              "IsUcEnabled": "System.Nullable`1[System.Boolean]",
+              "EnableNoPublicIP": "System.Nullable`1[System.Boolean]",
               "ManagedDiskRotationToLatestKeyVersionEnabled": "System.Nullable`1[System.Boolean]",
+              "RequireInfrastructureEncryption": "System.Nullable`1[System.Boolean]",
               "SystemDataCreatedAt": "System.Nullable`1[System.DateTime]",
-              "SystemDataLastModifiedAt": "System.Nullable`1[System.DateTime]",
               "CreatedDateTime": "System.Nullable`1[System.DateTime]",
+              "SystemDataLastModifiedAt": "System.Nullable`1[System.DateTime]",
+              "StorageAccountIdentityTenantId": "System.String",
               "Url": "System.String",
               "UpdatedByPuid": "System.String",
               "UpdatedByOid": "System.String",
+              "PublicIPNameValue": "System.String",
               "UpdatedByApplicationId": "System.String",
+              "UiDefinitionUri": "System.String",
               "SystemDataLastModifiedBy": "System.String",
               "SystemDataCreatedBy": "System.String",
+              "StorageAccountSkuNameValue": "System.String",
+              "StorageAccountNameValue": "System.String",
               "SkuName": "System.String",
               "SkuTier": "System.String",
               "StorageAccountIdentityPrincipalId": "System.String",
-              "StorageAccountIdentityTenantId": "System.String",
               "StorageAccountIdentityType": "System.String",
-              "StorageAccountNameValue": "System.String",
-              "UiDefinitionUri": "System.String",
-              "StorageAccountSkuNameValue": "System.String",
+              "AccessConnectorId": "System.String",
+              "ManagedDiskKeyVaultPropertiesKeyVersion": "System.String",
               "ManagedServicesKeyVaultPropertiesKeyVersion": "System.String",
-              "NatGatewayNameValue": "System.String",
+              "AccessConnectorUserAssignedIdentityId": "System.String",
               "AmlWorkspaceIdValue": "System.String",
               "CreatedByApplicationId": "System.String",
               "CreatedByOid": "System.String",
@@ -2016,11 +2028,12 @@
               "CustomPrivateSubnetNameValue": "System.String",
               "CustomPublicSubnetNameValue": "System.String",
               "CustomVirtualNetworkIdValue": "System.String",
+              "DefaultCatalogInitialName": "System.String",
               "DiskEncryptionSetId": "System.String",
               "EncryptionKeyName": "System.String",
               "EncryptionKeyVaultUri": "System.String",
+              "NatGatewayNameValue": "System.String",
               "EncryptionKeyVersion": "System.String",
-              "LoadBalancerBackendPoolNameValue": "System.String",
               "LoadBalancerIdValue": "System.String",
               "ManagedDiskIdentityPrincipalId": "System.String",
               "ManagedDiskIdentityTenantId": "System.String",
@@ -2028,13 +2041,12 @@
               "ManagedDiskKeySource": "System.String",
               "ManagedDiskKeyVaultPropertiesKeyName": "System.String",
               "ManagedDiskKeyVaultPropertiesKeyVaultUri": "System.String",
-              "ManagedDiskKeyVaultPropertiesKeyVersion": "System.String",
+              "VnetAddressPrefixValue": "System.String",
               "ManagedResourceGroupId": "System.String",
               "ManagedServiceKeySource": "System.String",
               "ManagedServicesKeyVaultPropertiesKeyName": "System.String",
               "ManagedServicesKeyVaultPropertiesKeyVaultUri": "System.String",
-              "VnetAddressPrefixValue": "System.String",
-              "PublicIPNameValue": "System.String",
+              "LoadBalancerBackendPoolNameValue": "System.String",
               "WorkspaceId": "System.String"
             }
           },
@@ -2880,9 +2892,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IAccessConnector",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IAccessConnector, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api30.IUserAssignedIdentities",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CreatedByType]",
@@ -2894,7 +2906,8 @@
               "IdentityPrincipalId": "System.String",
               "IdentityTenantId": "System.String",
               "SystemDataCreatedBy": "System.String",
-              "SystemDataLastModifiedBy": "System.String"
+              "SystemDataLastModifiedBy": "System.String",
+              "ReferedBy": "System.String[]"
             }
           },
           "ParameterSets": [
@@ -3320,9 +3333,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IVirtualNetworkPeering",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IVirtualNetworkPeering, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringProvisioningState]",
               "PeeringState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringState]",
@@ -3886,58 +3899,69 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IPrivateEndpointConnection[]",
-              "Authorization": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization[]",
+              "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IPrivateEndpointConnection[]",
+              "Authorization": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization[]",
               "ResourceTagValue": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IAny",
+              "ComplianceSecurityProfileComplianceStandard": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[]",
+              "AutomaticClusterUpdateValue": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue]",
+              "ComplianceSecurityProfileValue": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CreatedByType]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CreatedByType]",
-              "AmlWorkspaceIdType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "EncryptionType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "PublicIPNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
               "LoadBalancerIdType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
               "StorageAccountSkuNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "EnableNoPublicIPType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "StorageAccountNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "CustomVirtualNetworkIdType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "ResourceTagType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "CustomPublicSubnetNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "RequireInfrastructureEncryptionType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "CustomPrivateSubnetNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "NatGatewayNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "PrepareEncryptionType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "VnetAddressPrefixType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
               "LoadBalancerBackendPoolNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "PublicIPNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "EncryptionType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "ResourceTagType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "EnableNoPublicIPType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "CustomVirtualNetworkIdType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "RequireInfrastructureEncryptionType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "StorageAccountNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "CustomPrivateSubnetNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "VnetAddressPrefixType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "AmlWorkspaceIdType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "NatGatewayNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "CustomPublicSubnetNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "PrepareEncryptionType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "DefaultStorageFirewall": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall]",
+              "EnhancedSecurityMonitoringValue": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue]",
+              "AccessConnectorIdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType]",
+              "DefaultCatalogInitialType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.InitialType]",
               "EncryptionKeySource": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource]",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ProvisioningState]",
               "PublicNetworkAccess": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PublicNetworkAccess]",
               "RequiredNsgRule": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.RequiredNsgRules]",
-              "EnableNoPublicIP": "System.Nullable`1[System.Boolean]",
               "PrepareEncryption": "System.Nullable`1[System.Boolean]",
-              "RequireInfrastructureEncryption": "System.Nullable`1[System.Boolean]",
+              "IsUcEnabled": "System.Nullable`1[System.Boolean]",
+              "EnableNoPublicIP": "System.Nullable`1[System.Boolean]",
               "ManagedDiskRotationToLatestKeyVersionEnabled": "System.Nullable`1[System.Boolean]",
+              "RequireInfrastructureEncryption": "System.Nullable`1[System.Boolean]",
               "SystemDataCreatedAt": "System.Nullable`1[System.DateTime]",
-              "SystemDataLastModifiedAt": "System.Nullable`1[System.DateTime]",
               "CreatedDateTime": "System.Nullable`1[System.DateTime]",
+              "SystemDataLastModifiedAt": "System.Nullable`1[System.DateTime]",
+              "StorageAccountIdentityTenantId": "System.String",
               "Url": "System.String",
               "UpdatedByPuid": "System.String",
               "UpdatedByOid": "System.String",
+              "PublicIPNameValue": "System.String",
               "UpdatedByApplicationId": "System.String",
+              "UiDefinitionUri": "System.String",
               "SystemDataLastModifiedBy": "System.String",
               "SystemDataCreatedBy": "System.String",
+              "StorageAccountSkuNameValue": "System.String",
+              "StorageAccountNameValue": "System.String",
               "SkuName": "System.String",
               "SkuTier": "System.String",
               "StorageAccountIdentityPrincipalId": "System.String",
-              "StorageAccountIdentityTenantId": "System.String",
               "StorageAccountIdentityType": "System.String",
-              "StorageAccountNameValue": "System.String",
-              "UiDefinitionUri": "System.String",
-              "StorageAccountSkuNameValue": "System.String",
+              "AccessConnectorId": "System.String",
+              "ManagedDiskKeyVaultPropertiesKeyVersion": "System.String",
               "ManagedServicesKeyVaultPropertiesKeyVersion": "System.String",
-              "NatGatewayNameValue": "System.String",
+              "AccessConnectorUserAssignedIdentityId": "System.String",
               "AmlWorkspaceIdValue": "System.String",
               "CreatedByApplicationId": "System.String",
               "CreatedByOid": "System.String",
@@ -3945,11 +3969,12 @@
               "CustomPrivateSubnetNameValue": "System.String",
               "CustomPublicSubnetNameValue": "System.String",
               "CustomVirtualNetworkIdValue": "System.String",
+              "DefaultCatalogInitialName": "System.String",
               "DiskEncryptionSetId": "System.String",
               "EncryptionKeyName": "System.String",
               "EncryptionKeyVaultUri": "System.String",
+              "NatGatewayNameValue": "System.String",
               "EncryptionKeyVersion": "System.String",
-              "LoadBalancerBackendPoolNameValue": "System.String",
               "LoadBalancerIdValue": "System.String",
               "ManagedDiskIdentityPrincipalId": "System.String",
               "ManagedDiskIdentityTenantId": "System.String",
@@ -3957,13 +3982,12 @@
               "ManagedDiskKeySource": "System.String",
               "ManagedDiskKeyVaultPropertiesKeyName": "System.String",
               "ManagedDiskKeyVaultPropertiesKeyVaultUri": "System.String",
-              "ManagedDiskKeyVaultPropertiesKeyVersion": "System.String",
+              "VnetAddressPrefixValue": "System.String",
               "ManagedResourceGroupId": "System.String",
               "ManagedServiceKeySource": "System.String",
               "ManagedServicesKeyVaultPropertiesKeyName": "System.String",
               "ManagedServicesKeyVaultPropertiesKeyVaultUri": "System.String",
-              "VnetAddressPrefixValue": "System.String",
-              "PublicIPNameValue": "System.String",
+              "LoadBalancerBackendPoolNameValue": "System.String",
               "WorkspaceId": "System.String"
             }
           },
@@ -4033,10 +4057,10 @@
         {
           "Name": "Authorization",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization[], Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization"
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization[], Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -4311,6 +4335,79 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "EnhancedSecurityMonitoringValue",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AutomaticClusterUpdateValue",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ComplianceSecurityProfileComplianceStandard",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[], Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ComplianceSecurityProfileValue",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AccessConnectorId",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AccessConnectorIdentityType",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AccessConnectorUserAssignedIdentityId",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DefaultStorageFirewall",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "DefaultProfile",
           "AliasList": [
             "AzureRMContext",
@@ -4499,10 +4596,10 @@
               "ParameterMetadata": {
                 "Name": "Authorization",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization[], Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization[], Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4963,6 +5060,127 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "EnhancedSecurityMonitoringValue",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AutomaticClusterUpdateValue",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ComplianceSecurityProfileComplianceStandard",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[], Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ComplianceSecurityProfileValue",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AccessConnectorId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AccessConnectorIdentityType",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AccessConnectorUserAssignedIdentityId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultStorageFirewall",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzureRMContext",
@@ -5118,9 +5336,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.WorkspaceProviderAuthorization",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.WorkspaceProviderAuthorization, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.WorkspaceProviderAuthorization",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.WorkspaceProviderAuthorization, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrincipalId": "System.String",
               "RoleDefinitionId": "System.String"
@@ -5134,7 +5352,7 @@
                     "Type": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization"
               },
               {
                 "Name": "ToJson",
@@ -5158,7 +5376,7 @@
                     "Type": "System.Collections.IDictionary"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization"
               },
               {
                 "Name": "DeserializeFromPSObject",
@@ -5168,7 +5386,7 @@
                     "Type": "System.Management.Automation.PSObject"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization"
               },
               {
                 "Name": "FromJsonString",
@@ -5178,7 +5396,7 @@
                     "Type": "System.String"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization"
               },
               {
                 "Name": "ToJsonString",
@@ -6814,6 +7032,15 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "ForceDeletion",
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "DefaultProfile",
           "AliasList": [
             "AzureRMContext",
@@ -6954,6 +7181,21 @@
                   "Namespace": "System",
                   "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ForceDeletion",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7150,6 +7392,21 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "ForceDeletion",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzureRMContext",
@@ -7309,6 +7566,21 @@
         {
           "Name": "__AllParameterSets",
           "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ForceDeletion",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
             {
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
@@ -7481,9 +7753,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IAccessConnector",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IAccessConnector, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IdentityUserAssignedIdentity": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api30.IUserAssignedIdentities",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CreatedByType]",
@@ -7495,7 +7767,8 @@
               "IdentityPrincipalId": "System.String",
               "IdentityTenantId": "System.String",
               "SystemDataCreatedBy": "System.String",
-              "SystemDataLastModifiedBy": "System.String"
+              "SystemDataLastModifiedBy": "System.String",
+              "ReferedBy": "System.String[]"
             }
           },
           "ParameterSets": [
@@ -8323,9 +8596,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IVirtualNetworkPeering",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IVirtualNetworkPeering, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringProvisioningState]",
               "PeeringState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringState]",
@@ -9475,58 +9748,69 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IPrivateEndpointConnection[]",
-              "Authorization": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization[]",
+              "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IPrivateEndpointConnection[]",
+              "Authorization": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization[]",
               "ResourceTagValue": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IAny",
+              "ComplianceSecurityProfileComplianceStandard": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[]",
+              "AutomaticClusterUpdateValue": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue]",
+              "ComplianceSecurityProfileValue": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CreatedByType]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CreatedByType]",
-              "AmlWorkspaceIdType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "EncryptionType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "PublicIPNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
               "LoadBalancerIdType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
               "StorageAccountSkuNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "EnableNoPublicIPType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "StorageAccountNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "CustomVirtualNetworkIdType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "ResourceTagType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "CustomPublicSubnetNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "RequireInfrastructureEncryptionType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "CustomPrivateSubnetNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "NatGatewayNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "PrepareEncryptionType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "VnetAddressPrefixType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
               "LoadBalancerBackendPoolNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-              "PublicIPNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "EncryptionType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "ResourceTagType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "EnableNoPublicIPType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "CustomVirtualNetworkIdType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "RequireInfrastructureEncryptionType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "StorageAccountNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "CustomPrivateSubnetNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "VnetAddressPrefixType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "AmlWorkspaceIdType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "NatGatewayNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "CustomPublicSubnetNameType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "PrepareEncryptionType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
+              "DefaultStorageFirewall": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall]",
+              "EnhancedSecurityMonitoringValue": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue]",
+              "AccessConnectorIdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType]",
+              "DefaultCatalogInitialType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.InitialType]",
               "EncryptionKeySource": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource]",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ProvisioningState]",
               "PublicNetworkAccess": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PublicNetworkAccess]",
               "RequiredNsgRule": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.RequiredNsgRules]",
-              "EnableNoPublicIP": "System.Nullable`1[System.Boolean]",
               "PrepareEncryption": "System.Nullable`1[System.Boolean]",
-              "RequireInfrastructureEncryption": "System.Nullable`1[System.Boolean]",
+              "IsUcEnabled": "System.Nullable`1[System.Boolean]",
+              "EnableNoPublicIP": "System.Nullable`1[System.Boolean]",
               "ManagedDiskRotationToLatestKeyVersionEnabled": "System.Nullable`1[System.Boolean]",
+              "RequireInfrastructureEncryption": "System.Nullable`1[System.Boolean]",
               "SystemDataCreatedAt": "System.Nullable`1[System.DateTime]",
-              "SystemDataLastModifiedAt": "System.Nullable`1[System.DateTime]",
               "CreatedDateTime": "System.Nullable`1[System.DateTime]",
+              "SystemDataLastModifiedAt": "System.Nullable`1[System.DateTime]",
+              "StorageAccountIdentityTenantId": "System.String",
               "Url": "System.String",
               "UpdatedByPuid": "System.String",
               "UpdatedByOid": "System.String",
+              "PublicIPNameValue": "System.String",
               "UpdatedByApplicationId": "System.String",
+              "UiDefinitionUri": "System.String",
               "SystemDataLastModifiedBy": "System.String",
               "SystemDataCreatedBy": "System.String",
+              "StorageAccountSkuNameValue": "System.String",
+              "StorageAccountNameValue": "System.String",
               "SkuName": "System.String",
               "SkuTier": "System.String",
               "StorageAccountIdentityPrincipalId": "System.String",
-              "StorageAccountIdentityTenantId": "System.String",
               "StorageAccountIdentityType": "System.String",
-              "StorageAccountNameValue": "System.String",
-              "UiDefinitionUri": "System.String",
-              "StorageAccountSkuNameValue": "System.String",
+              "AccessConnectorId": "System.String",
+              "ManagedDiskKeyVaultPropertiesKeyVersion": "System.String",
               "ManagedServicesKeyVaultPropertiesKeyVersion": "System.String",
-              "NatGatewayNameValue": "System.String",
+              "AccessConnectorUserAssignedIdentityId": "System.String",
               "AmlWorkspaceIdValue": "System.String",
               "CreatedByApplicationId": "System.String",
               "CreatedByOid": "System.String",
@@ -9534,11 +9818,12 @@
               "CustomPrivateSubnetNameValue": "System.String",
               "CustomPublicSubnetNameValue": "System.String",
               "CustomVirtualNetworkIdValue": "System.String",
+              "DefaultCatalogInitialName": "System.String",
               "DiskEncryptionSetId": "System.String",
               "EncryptionKeyName": "System.String",
               "EncryptionKeyVaultUri": "System.String",
+              "NatGatewayNameValue": "System.String",
               "EncryptionKeyVersion": "System.String",
-              "LoadBalancerBackendPoolNameValue": "System.String",
               "LoadBalancerIdValue": "System.String",
               "ManagedDiskIdentityPrincipalId": "System.String",
               "ManagedDiskIdentityTenantId": "System.String",
@@ -9546,13 +9831,12 @@
               "ManagedDiskKeySource": "System.String",
               "ManagedDiskKeyVaultPropertiesKeyName": "System.String",
               "ManagedDiskKeyVaultPropertiesKeyVaultUri": "System.String",
-              "ManagedDiskKeyVaultPropertiesKeyVersion": "System.String",
+              "VnetAddressPrefixValue": "System.String",
               "ManagedResourceGroupId": "System.String",
               "ManagedServiceKeySource": "System.String",
               "ManagedServicesKeyVaultPropertiesKeyName": "System.String",
               "ManagedServicesKeyVaultPropertiesKeyVaultUri": "System.String",
-              "VnetAddressPrefixValue": "System.String",
-              "PublicIPNameValue": "System.String",
+              "LoadBalancerBackendPoolNameValue": "System.String",
               "WorkspaceId": "System.String"
             }
           },
@@ -9704,10 +9988,10 @@
         {
           "Name": "Authorization",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization[], Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization"
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization[], Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -9816,6 +10100,79 @@
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "EnhancedSecurityMonitoringValue",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AutomaticClusterUpdateValue",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ComplianceSecurityProfileComplianceStandard",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[], Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ComplianceSecurityProfileValue",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AccessConnectorId",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AccessConnectorIdentityType",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AccessConnectorUserAssignedIdentityId",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DefaultStorageFirewall",
+          "Type": {
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -10113,10 +10470,10 @@
               "ParameterMetadata": {
                 "Name": "Authorization",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization[], Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization[], Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -10297,6 +10654,127 @@
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EnhancedSecurityMonitoringValue",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AutomaticClusterUpdateValue",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ComplianceSecurityProfileComplianceStandard",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[], Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ComplianceSecurityProfileValue",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AccessConnectorId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AccessConnectorIdentityType",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AccessConnectorUserAssignedIdentityId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultStorageFirewall",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -10630,10 +11108,10 @@
               "ParameterMetadata": {
                 "Name": "Authorization",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization[], Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization[], Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -10814,6 +11292,127 @@
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EnhancedSecurityMonitoringValue",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AutomaticClusterUpdateValue",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ComplianceSecurityProfileComplianceStandard",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[], Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ComplianceSecurityProfileValue",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AccessConnectorId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AccessConnectorIdentityType",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AccessConnectorUserAssignedIdentityId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultStorageFirewall",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -11122,10 +11721,10 @@
               "ParameterMetadata": {
                 "Name": "Authorization",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization[], Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization[], Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -11306,6 +11905,127 @@
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EnhancedSecurityMonitoringValue",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AutomaticClusterUpdateValue",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ComplianceSecurityProfileComplianceStandard",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[], Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ComplianceSecurityProfileValue",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AccessConnectorId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AccessConnectorIdentityType",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AccessConnectorUserAssignedIdentityId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultStorageFirewall",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -11758,6 +12478,12 @@
       "Name": "System.DateTime",
       "AssemblyQualifiedName": "System.DateTime, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
     },
+    "System.String[]": {
+      "Namespace": "System",
+      "Name": "System.String[]",
+      "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "ElementType": "System.String"
+    },
     "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
@@ -11936,31 +12662,31 @@
       "Name": "System.Delegate",
       "AssemblyQualifiedName": "System.Delegate, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IEndpointDependency[]": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IEndpointDependency[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IEndpointDependency[], Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IEndpointDependency"
+    "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEndpointDependency[]": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEndpointDependency[]",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEndpointDependency[], Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEndpointDependency"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IEndpointDependency": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IEndpointDependency",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IEndpointDependency, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+    "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEndpointDependency": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEndpointDependency",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEndpointDependency, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "EndpointDetail": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IEndpointDetail[]",
+        "EndpointDetail": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEndpointDetail[]",
         "DomainName": "System.String"
       }
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IEndpointDetail[]": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IEndpointDetail[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IEndpointDetail[], Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IEndpointDetail"
+    "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEndpointDetail[]": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEndpointDetail[]",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEndpointDetail[], Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEndpointDetail"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IEndpointDetail": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IEndpointDetail",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IEndpointDetail, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+    "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEndpointDetail": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEndpointDetail",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEndpointDetail, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "IsAccessible": "System.Nullable`1[System.Boolean]",
         "Latency": "System.Nullable`1[System.Double]",
@@ -12138,22 +12864,16 @@
         }
       ]
     },
-    "System.String[]": {
-      "Namespace": "System",
-      "Name": "System.String[]",
-      "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "ElementType": "System.String"
+    "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IPrivateEndpointConnection[]": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IPrivateEndpointConnection[]",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IPrivateEndpointConnection[], Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IPrivateEndpointConnection"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IPrivateEndpointConnection[]": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IPrivateEndpointConnection[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IPrivateEndpointConnection[], Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IPrivateEndpointConnection"
-    },
-    "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IPrivateEndpointConnection": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IPrivateEndpointConnection",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IPrivateEndpointConnection, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+    "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IPrivateEndpointConnection": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IPrivateEndpointConnection",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IPrivateEndpointConnection, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PrivateLinkServiceConnectionStateStatus": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PrivateLinkServiceConnectionStatus",
         "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PrivateEndpointConnectionProvisioningState]",
@@ -12304,16 +13024,16 @@
         }
       ]
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization[]": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization[], Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization"
+    "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization[]": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization[]",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization[], Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+    "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PrincipalId": "System.String",
         "RoleDefinitionId": "System.String"
@@ -12323,6 +13043,223 @@
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IAny",
       "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IAny, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[]": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[]",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[], Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard"
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Methods": [
+        {
+          "Name": "CompleteArgument",
+          "Parameters": [
+            {
+              "Name": "commandName",
+              "Type": "System.String"
+            },
+            {
+              "Name": "parameterName",
+              "Type": "System.String"
+            },
+            {
+              "Name": "wordToComplete",
+              "Type": "System.String"
+            },
+            {
+              "Name": "commandAst",
+              "Type": "System.Management.Automation.Language.CommandAst"
+            },
+            {
+              "Name": "fakeBoundParameters",
+              "Type": "System.Collections.IDictionary"
+            }
+          ],
+          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "e",
+              "Type": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Object"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "GetType",
+          "ReturnType": "System.Type"
+        }
+      ]
+    },
+    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue"
+      ]
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Methods": [
+        {
+          "Name": "CompleteArgument",
+          "Parameters": [
+            {
+              "Name": "commandName",
+              "Type": "System.String"
+            },
+            {
+              "Name": "parameterName",
+              "Type": "System.String"
+            },
+            {
+              "Name": "wordToComplete",
+              "Type": "System.String"
+            },
+            {
+              "Name": "commandAst",
+              "Type": "System.Management.Automation.Language.CommandAst"
+            },
+            {
+              "Name": "fakeBoundParameters",
+              "Type": "System.Collections.IDictionary"
+            }
+          ],
+          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "e",
+              "Type": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Object"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "GetType",
+          "ReturnType": "System.Type"
+        }
+      ]
+    },
+    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue"
+      ]
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Methods": [
+        {
+          "Name": "CompleteArgument",
+          "Parameters": [
+            {
+              "Name": "commandName",
+              "Type": "System.String"
+            },
+            {
+              "Name": "parameterName",
+              "Type": "System.String"
+            },
+            {
+              "Name": "wordToComplete",
+              "Type": "System.String"
+            },
+            {
+              "Name": "commandAst",
+              "Type": "System.Management.Automation.Language.CommandAst"
+            },
+            {
+              "Name": "fakeBoundParameters",
+              "Type": "System.Collections.IDictionary"
+            }
+          ],
+          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "e",
+              "Type": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Object"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "GetType",
+          "ReturnType": "System.Type"
+        }
+      ]
     },
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]": {
       "Namespace": "System",
@@ -12369,6 +13306,298 @@
             {
               "Name": "e",
               "Type": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Object"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "GetType",
+          "ReturnType": "System.Type"
+        }
+      ]
+    },
+    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall"
+      ]
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Methods": [
+        {
+          "Name": "CompleteArgument",
+          "Parameters": [
+            {
+              "Name": "commandName",
+              "Type": "System.String"
+            },
+            {
+              "Name": "parameterName",
+              "Type": "System.String"
+            },
+            {
+              "Name": "wordToComplete",
+              "Type": "System.String"
+            },
+            {
+              "Name": "commandAst",
+              "Type": "System.Management.Automation.Language.CommandAst"
+            },
+            {
+              "Name": "fakeBoundParameters",
+              "Type": "System.Collections.IDictionary"
+            }
+          ],
+          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "e",
+              "Type": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Object"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "GetType",
+          "ReturnType": "System.Type"
+        }
+      ]
+    },
+    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue"
+      ]
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Methods": [
+        {
+          "Name": "CompleteArgument",
+          "Parameters": [
+            {
+              "Name": "commandName",
+              "Type": "System.String"
+            },
+            {
+              "Name": "parameterName",
+              "Type": "System.String"
+            },
+            {
+              "Name": "wordToComplete",
+              "Type": "System.String"
+            },
+            {
+              "Name": "commandAst",
+              "Type": "System.Management.Automation.Language.CommandAst"
+            },
+            {
+              "Name": "fakeBoundParameters",
+              "Type": "System.Collections.IDictionary"
+            }
+          ],
+          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "e",
+              "Type": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Object"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "GetType",
+          "ReturnType": "System.Type"
+        }
+      ]
+    },
+    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType"
+      ]
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Methods": [
+        {
+          "Name": "CompleteArgument",
+          "Parameters": [
+            {
+              "Name": "commandName",
+              "Type": "System.String"
+            },
+            {
+              "Name": "parameterName",
+              "Type": "System.String"
+            },
+            {
+              "Name": "wordToComplete",
+              "Type": "System.String"
+            },
+            {
+              "Name": "commandAst",
+              "Type": "System.Management.Automation.Language.CommandAst"
+            },
+            {
+              "Name": "fakeBoundParameters",
+              "Type": "System.Collections.IDictionary"
+            }
+          ],
+          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "e",
+              "Type": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Object"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "GetType",
+          "ReturnType": "System.Type"
+        }
+      ]
+    },
+    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.InitialType]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.InitialType]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.InitialType, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.InitialType"
+      ]
+    },
+    "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.InitialType": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.InitialType",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.InitialType, Az.Databricks.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Methods": [
+        {
+          "Name": "CompleteArgument",
+          "Parameters": [
+            {
+              "Name": "commandName",
+              "Type": "System.String"
+            },
+            {
+              "Name": "parameterName",
+              "Type": "System.String"
+            },
+            {
+              "Name": "wordToComplete",
+              "Type": "System.String"
+            },
+            {
+              "Name": "commandAst",
+              "Type": "System.Management.Automation.Language.CommandAst"
+            },
+            {
+              "Name": "fakeBoundParameters",
+              "Type": "System.Collections.IDictionary"
+            }
+          ],
+          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "e",
+              "Type": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.InitialType"
             }
           ],
           "ReturnType": "System.Boolean"
