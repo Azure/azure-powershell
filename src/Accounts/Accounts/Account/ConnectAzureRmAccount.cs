@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Commands.Profile
 
             if (ParameterSetName.Equals(UserWithCredentialParameterSet))
             {
-                WriteWarning(Resources.UsernamePasswordDiscourageWarningMessage);
+                WriteWarning(Resources.UsernamePasswordDeprecateWarningMessage);
             }
 
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Subscription)))
