@@ -16,7 +16,7 @@ Creates a configurable image object.
 New-AzImageConfig [[-Location] <String>] [-EdgeZone <String>] [[-Tag] <Hashtable>]
  [[-SourceVirtualMachineId] <String>] [[-OsDisk] <ImageOSDisk>] [-HyperVGeneration <String>]
  [-DataDisk <ImageDataDisk[]>] [-ZoneResilient] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -133,6 +133,21 @@ Required: False
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

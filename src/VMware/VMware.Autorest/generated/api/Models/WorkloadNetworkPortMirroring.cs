@@ -153,7 +153,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Destination VM Group.",
         SerializedName = @"destination",
         PossibleTypes = new [] { typeof(string) })]
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Direction of port mirroring profile.",
         SerializedName = @"direction",
         PossibleTypes = new [] { typeof(string) })]
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Display name of the port mirroring profile.",
         SerializedName = @"displayName",
         PossibleTypes = new [] { typeof(string) })]
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"NSX revision number.",
         SerializedName = @"revision",
         PossibleTypes = new [] { typeof(long) })]
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Source VM Group.",
         SerializedName = @"source",
         PossibleTypes = new [] { typeof(string) })]

@@ -20,7 +20,7 @@ Lists the supported VM skus for the specified custom location
 .Description
 Lists the supported VM skus for the specified custom location
 .Example
-Get-AzAksArcVMSku -CustomLocationResourceUri sample-cl-id
+Get-AzAksArcVMSku -CustomLocationName sample-cl-id
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVMSkuProfile
@@ -34,8 +34,22 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [System.String]
-    # The fully qualified Azure Resource Manager identifier of the custom location resource.
-    ${CustomLocationResourceUri},
+    # The name or id of the custom location.
+    ${CustomLocationName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -112,8 +126,16 @@ begin {
         }
 
         $mapping = @{
-            Get = 'Az.AksArc.private\Get-AzAksArcVMSku_Get';
-            List = 'Az.AksArc.private\Get-AzAksArcVMSku_List';
+            Get = 'Az.AksArc.custom\Get-AzAksArcVMSku';
+        }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

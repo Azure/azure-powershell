@@ -19,6 +19,13 @@
 -->
 
 ## Upcoming Release
+* Fixed `Set-AzPolicyAssignment` loses description and Display Name [#25362]
+* Fixed `New-AzPolicyAssignment` string ID value handling for parameter '-PolicyDefinition'
+* Fixed policy import issue with OP (requires serialization of null values)
+* Fixed '-Scope' parameter handling at resource instance level
+* Fixed error `Get-AzPolicySetDefinition`cannot find matched parameter '-Name' [#25334]
+* Fixed serialization issue with empty arrays in PolicyParameterObject
+* Addressed a rare case where a service principal does not have AppId
 * Introduced validation of MG scoped deployment stack during New/Set cmdlet execution.
 * Updated Remove/New stack cmdlets with warnings for management groups ActionOnUnmanage and removed DeleteResourcesAndResourceGroups as valid ActionOnUnmanage value.
 * Supported get and assign versioned policy definitions and sets

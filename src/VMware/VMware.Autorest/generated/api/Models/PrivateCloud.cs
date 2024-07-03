@@ -571,7 +571,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"The type of DNS zone to use.",
         SerializedName = @"dnsZoneType",
         PossibleTypes = new [] { typeof(string) })]
@@ -583,7 +583,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Status of customer managed encryption key",
         SerializedName = @"status",
         PossibleTypes = new [] { typeof(string) })]
@@ -666,7 +666,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Array of additional networks noncontiguous with networkBlock. Networks must be
         unique and non-overlapping across VNet in your subscription, on-premise, and
         this privateCloud networkBlock attribute. Make sure the CIDR format conforms to
@@ -704,7 +704,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"vCenter Single Sign On Identity Sources",
         SerializedName = @"identitySources",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource) })]
@@ -740,7 +740,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Connectivity to internet is enabled or disabled",
         SerializedName = @"internet",
         PossibleTypes = new [] { typeof(string) })]
@@ -763,7 +763,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"The name of the key.",
         SerializedName = @"keyName",
         PossibleTypes = new [] { typeof(string) })]
@@ -786,7 +786,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"The URL of the vault.",
         SerializedName = @"keyVaultUrl",
         PossibleTypes = new [] { typeof(string) })]
@@ -797,7 +797,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"The version of the key.",
         SerializedName = @"keyVersion",
         PossibleTypes = new [] { typeof(string) })]
@@ -820,7 +820,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"The hosts",
         SerializedName = @"hosts",
         PossibleTypes = new [] { typeof(string) })]
@@ -854,7 +854,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"The cluster size",
         SerializedName = @"clusterSize",
         PossibleTypes = new [] { typeof(int) })]
@@ -865,7 +865,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Name of the vsan datastore associated with the cluster",
         SerializedName = @"vsanDatastoreName",
         PossibleTypes = new [] { typeof(string) })]
@@ -891,7 +891,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"The block of addresses should be unique across VNet in your subscription as
         well as on-premise. Make sure the CIDR format is conformed to (A.B.C.D/X) where
         A,B,C,D are between 0 and 255, and X is between 0 and 22",
@@ -931,7 +931,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Optionally, set the NSX-T Manager password when the private cloud is created",
         SerializedName = @"nsxtPassword",
         PossibleTypes = new [] { typeof(System.Security.SecureString) })]
@@ -1086,7 +1086,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Optionally, set the vCenter admin password when the private cloud is created",
         SerializedName = @"vcenterPassword",
         PossibleTypes = new [] { typeof(System.Security.SecureString) })]

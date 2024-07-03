@@ -5,6 +5,7 @@ Describe 'PolicyDefinitionWithComplexParameters' {
 
     BeforeAll {
         $testPDWCP = Get-ResourceName
+        $testPDWNV = Get-ResourceName
         $testAssignment = Get-ResourceName
     }
 
@@ -188,13 +189,65 @@ Describe 'PolicyDefinitionWithComplexParameters' {
         $expected.parameter.excludedContainers.value | Should -Be $actual.parameter.excludedContainers.value
     }
 
+$definitionParameter = @"
+{
+    "effect": {
+        "type": "String",
+        "metadata": {
+            "displayName": "Effect",
+            "description": "'Audit' allows a non-compliant resource to be created, but flags it as non-compliant. 'Deny' blocks the resource creation. 'Disable' turns off the policy.",
+            "portalReview": true
+        },
+        "allowedValues": [
+            "audit",
+            "Audit",
+            "deny",
+            "Deny",
+            "disabled",
+            "Disabled"
+        ],
+        "defaultValue": "Deny"
+    }
+}
+"@
+
+    It 'make test definition with complex parameters including null value from a file' {
+        $actual = New-AzPolicyDefinition -Name $testPDWNV -Policy "$testFilesFolder\SamplePolicyDefinitionWithNullValue.json" -Parameter $definitionParameter
+        $actual.PolicyRule | Should -Not -BeNullOrEmpty
+        $actual.parameter | Should -Not -BeNullOrEmpty
+        $actual.parameter.effect | Should -Not -BeNullOrEmpty
+        $actual.parameter.effect.type | Should -Be 'string'
+        $actual.parameter.effect.metadata | Should -Not -BeNullOrEmpty
+        $actual.parameter.effect.metadata.displayName | Should -Be 'Effect'
+        $actual.parameter.effect.metadata.description | Should -BeLike "'Audit' allows a non-compliant*"
+        $actual.parameter.effect.metadata.portalReview | Should -Be $true
+        $actual.parameter.effect.allowedValues | Should -Be @("audit", "Audit", "deny", "Deny", "disabled", "Disabled")
+        $actual.parameter.effect.defaultValue | Should -Be "Deny"
+
+        # get it back and validate
+        $expected = Get-AzPolicyDefinition -Name $testPDWNV
+        $expected.Name | Should -Be $actual.Name
+        $expected.Id | Should -Be $actual.Id
+        $expected.Version | Should -Be $actual.Version
+        $expected.parameter | Should -Not -BeNullOrEmpty
+        $expected.parameter.effect | Should -Not -BeNullOrEmpty
+        $expected.parameter.effect.type | Should -Be $actual.parameter.effect.type
+        $expected.parameter.effect.metadata | Should -Not -BeNullOrEmpty
+        $expected.parameter.effect.metadata.displayName | Should -Be $actual.parameter.effect.metadata.displayName
+        $expected.parameter.effect.metadata.description | Should -Be $actual.parameter.effect.metadata.description
+        $expected.parameter.effect.metadata.portalReview | Should -Be $actual.parameter.effect.metadata.portalReview
+        $expected.parameter.effect.allowedValues | Should -Be $actual.parameter.effect.allowedValues
+        $expected.parameter.effect.defaultValue | Should -Be $actual.parameter.effect.defaultValue
+    }
+
     AfterAll {
         # delete the policy assignment
         $remove = Remove-AzPolicyAssignment -Name $testAssignment -PassThru
         $remove | Should -Be $true
 
-        # delete the policy definition
+        # delete the policy definitions
         $remove = Remove-AzPolicyDefinition -Name $testPDWCP -Force -PassThru
+        $remove = Remove-AzPolicyDefinition -Name $testPDWNV -Force -PassThru
         $remove | Should -Be $true
 
         Write-Host -ForegroundColor Magenta "Cleanup complete."

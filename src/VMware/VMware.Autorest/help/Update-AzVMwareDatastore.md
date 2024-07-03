@@ -15,26 +15,34 @@ Update a Datastore
 ### UpdateExpanded (Default)
 ```
 Update-AzVMwareDatastore -ClusterName <String> -Name <String> -PrivateCloudName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DiskPoolVolumeLunName <String>]
+ [-DiskPoolVolumeMountOption <String>] [-DiskPoolVolumeTargetId <String>] [-ElasticSanVolumeTargetId <String>]
+ [-NetAppVolumeId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityClusterExpanded
 ```
-Update-AzVMwareDatastore -ClusterInputObject <IVMwareIdentity> -Name <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzVMwareDatastore -ClusterInputObject <IVMwareIdentity> -Name <String>
+ [-DiskPoolVolumeLunName <String>] [-DiskPoolVolumeMountOption <String>] [-DiskPoolVolumeTargetId <String>]
+ [-ElasticSanVolumeTargetId <String>] [-NetAppVolumeId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzVMwareDatastore -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzVMwareDatastore -InputObject <IVMwareIdentity> [-DiskPoolVolumeLunName <String>]
+ [-DiskPoolVolumeMountOption <String>] [-DiskPoolVolumeTargetId <String>] [-ElasticSanVolumeTargetId <String>]
+ [-NetAppVolumeId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityPrivateCloudExpanded
 ```
 Update-AzVMwareDatastore -ClusterName <String> -Name <String> -PrivateCloudInputObject <IVMwareIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DiskPoolVolumeLunName <String>] [-DiskPoolVolumeMountOption <String>] [-DiskPoolVolumeTargetId <String>]
+ [-ElasticSanVolumeTargetId <String>] [-NetAppVolumeId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -118,6 +126,66 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DiskPoolVolumeLunName
+Name of the LUN to be used for datastore
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DiskPoolVolumeMountOption
+Mode that describes whether the LUN has to be mounted as a datastore orattached as a LUN
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DiskPoolVolumeTargetId
+Azure resource ID of the iSCSI target
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ElasticSanVolumeTargetId
+Azure resource ID of the Elastic SAN Volume
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 
@@ -142,6 +210,21 @@ Parameter Sets: UpdateExpanded, UpdateViaIdentityClusterExpanded, UpdateViaIdent
 Aliases: DatastoreName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetAppVolumeId
+Azure resource ID of the NetApp volume
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
