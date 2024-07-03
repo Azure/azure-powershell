@@ -45,15 +45,14 @@ jobs:
       script: dotnet msbuild build.proj /t:"Build;GenerateHelp" /p:"PullRequestNumber=$(System.PullRequest.PullRequestNumber);IsSecurityCheck=true"
     env:
       OCTOKITPAT: $(GithubToken)
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@3
+
+  - task: CredScan@3
     displayName: Run CredScan
     condition: in(variables['system.pullRequest.targetBranch'], 'generation', 'main')
     inputs:
-      toolMajorVersion: V2
-      outputFormat: sarif
-      scanFolder: SecurityTmp
-      suppressionsFile: tools/SecurityTools/CredScanSuppressions.json
-  
+      scanFolder: 'SecurityTmp'
+      suppressionsFile: 'tools/SecurityTools/CredScanSuppressions.json'
+
   - task: PowerShell@2
     displayName: Generate a response text file for BinSkim
     inputs:
