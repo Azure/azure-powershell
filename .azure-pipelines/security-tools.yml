@@ -82,7 +82,7 @@ jobs:
       targetArgument: $(Build.SourcesDirectory)/artifacts/Debug
       result: $(Build.SourcesDirectory)/artifacts/result/PoliCheck.xml
       optionsFTPATH: tools/SecurityTools/PoliCheckFileExtensions.xml
-  - task: PostAnalysis@2
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-postanalysis.PostAnalysis@2
     displayName: Analyze Results
     inputs:
       GdnBreakAllTools: false
