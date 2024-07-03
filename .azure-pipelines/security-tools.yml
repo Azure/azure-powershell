@@ -45,14 +45,15 @@ jobs:
       script: dotnet msbuild build.proj /t:"Build;GenerateHelp" /p:"PullRequestNumber=$(System.PullRequest.PullRequestNumber);IsSecurityCheck=true"
     env:
       OCTOKITPAT: $(GithubToken)
-
-  - task: CredScan@3
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@3
     displayName: Run CredScan
     condition: in(variables['system.pullRequest.targetBranch'], 'generation', 'main')
     inputs:
-      scanFolder: 'SecurityTmp'
-      suppressionsFile: 'tools/SecurityTools/CredScanSuppressions.json'
-
+      toolMajorVersion: V2
+      outputFormat: sarif
+      scanFolder: SecurityTmp
+      suppressionsFile: tools/SecurityTools/CredScanSuppressions.json
+      verboseOutput: true
   - task: PowerShell@2
     displayName: Generate a response text file for BinSkim
     inputs:
@@ -81,6 +82,13 @@ jobs:
       targetArgument: $(Build.SourcesDirectory)/artifacts/Debug
       result: $(Build.SourcesDirectory)/artifacts/result/PoliCheck.xml
       optionsFTPATH: tools/SecurityTools/PoliCheckFileExtensions.xml
+  - task: PostAnalysis@2
+    displayName: Analyze Results
+    inputs:
+      GdnBreakAllTools: false
+      GdnBreakGdnToolBinSkim: true
+      GdnBreakGdnToolCredScan: true
+      GdnBreakGdnToolPoliCheck: true
   - task: PublishPipelineArtifact@0
     displayName: Save artifacts
     condition: succeededOrFailed()
