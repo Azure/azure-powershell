@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzFirewallPolicyRuleCollectionGroupDraft
 
 ## SYNOPSIS
-Removes a Azure Firewall Policy Rule Collection Group draft in a Azure firewall policy
+Removes an Azure Firewall Policy Rule Collection Group draft in an Azure firewall policy.
 
 ## SYNTAX
 
@@ -49,19 +49,19 @@ The **Remove-AzFirewallPolicyRuleCollectionGroupDraft** cmdlet removes a rule co
 Remove-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName testRcGroup -FirewallPolicyObject $fp
 ```
 
-This example removes the firewall policy rule collection group draft named "testRcGroup" in the firewall policy object $fp
+This example removes the firewall policy rule collection group draft named "testRcGroup" in the firewall policy object $fp.
 
 ### Example 2
 ```powershell
 Remove-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName testRcGroup -ResourceGroupName testRg -AzureFirewallPolicyName fpName
 ```
 
-This example removes the firewall policy rule collection group draft named "testRcGroup" in the firewall named "fpName" from the resource group named "testRg"
+This example removes the firewall policy rule collection group draft named "testRcGroup" in the firewall named "fpName" from the resource group named "testRg".
 
 ## PARAMETERS
 
 ### -AsJob
-Run cmdlet in the background
+Run cmdlet in the background.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureFirewallPolicyName
-The name of the firewall policy
+The name of the firewall policy.
 
 ```yaml
 Type: System.String
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Firewall Policy Rule collection group draft object
+Firewall Policy Rule collection group draft object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyRuleCollectionGroupDraftWrapper
@@ -209,7 +209,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource Id of the Rule collection groupy
+The resource Id of the Rule collection group.
 
 ```yaml
 Type: System.String
