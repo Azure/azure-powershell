@@ -125,7 +125,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             }
             else
             {
-                StorageSyncResourceManager = new StorageSyncResourceManager(new ServerManagedIdentityProvider((m, e) => { VerboseLogger.Invoke($"[{e}] {m}"); }));
+                StorageSyncResourceManager = new StorageSyncResourceManager(new ServerManagedIdentityProvider((m, e) => 
+                {
+                }));
             }
         }
 

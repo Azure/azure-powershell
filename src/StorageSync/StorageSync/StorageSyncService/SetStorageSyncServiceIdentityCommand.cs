@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                             if (registeredServer.ServerRole == ServerRoleType.ClusterNode.ToString())
                             {
                                 var clusterNameServer = registeredServers.SingleOrDefault(s => s.ServerId == registeredServer.ClusterId && s.ServerRole == ServerRoleType.ClusterName.ToString());
-                                if (clusterNameServer != null)
+                                if (clusterNameServer == null)
                                 {
                                     throw new PSArgumentException($"Cluster Name Server {clusterNameServer.ServerName} is not found for Cluster Node {registeredServer.ServerName}");
                                 }
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                         throw new PSArgumentException("No server found which is available for migration.");
                     }
 
-                    StorageSyncClientWrapper.VerboseLogger.Invoke($"Found {candidateServersLookup.Count} servers out of {registeredServers.Count()} total servers to migrate");
+                    StorageSyncClientWrapper.VerboseLogger.Invoke($"Found {candidateServersLookup.Count} servers out of {registeredServers.Count(s => s.ServerRole != ServerRoleType.ClusterName.ToString())} total servers to migrate");
 
                     // 2. Set System Assigned managed identity to Storage Sync service
                     var updateParameters = new StorageSyncServiceUpdateParameters()
