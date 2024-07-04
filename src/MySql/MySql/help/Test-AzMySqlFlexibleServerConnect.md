@@ -16,28 +16,28 @@ Test out the connection to the database server
 ```
 Test-AzMySqlFlexibleServerConnect -Name <String> -ResourceGroupName <String> [-DatabaseName <String>]
  -AdministratorLoginPassword <SecureString> [-AdministratorUserName <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### TestAndQuery
 ```
 Test-AzMySqlFlexibleServerConnect -Name <String> -ResourceGroupName <String> [-DatabaseName <String>]
  -QueryText <String> -AdministratorLoginPassword <SecureString> [-AdministratorUserName <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### TestViaIdentityAndQuery
 ```
 Test-AzMySqlFlexibleServerConnect [-DatabaseName <String>] -QueryText <String>
  -AdministratorLoginPassword <SecureString> [-AdministratorUserName <String>] -InputObject <IMySqlIdentity>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### TestViaIdentity
 ```
 Test-AzMySqlFlexibleServerConnect [-DatabaseName <String>] -AdministratorLoginPassword <SecureString>
  [-AdministratorUserName <String>] -InputObject <IMySqlIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -190,21 +190,6 @@ Parameter Sets: Test, TestAndQuery
 Aliases: ServerName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -14,6 +14,8 @@
 
 using Commands.StorageSync.Interop.Clients;
 using Commands.StorageSync.Interop.DataObjects;
+using Commands.StorageSync.Interop.Enums;
+using Commands.StorageSync.Interop.Exceptions;
 using Commands.StorageSync.Interop.Interfaces;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common;
@@ -122,6 +124,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            StorageSyncClientWrapper.VerboseLogger.Invoke($"RegisterServerCommand.ExecuteCmdlet() called");
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
@@ -144,10 +147,37 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 
                 if (ShouldProcess(Target, ActionMessage))
                 {
-                    RegisteredServer resource = PerformServerRegistration(resourceGroupName, SubscriptionId, parentResourceName);
-                    WriteObject(resource);
+                    try
+                    {
+                        RegisteredServer resource = PerformServerRegistration(resourceGroupName, SubscriptionId, parentResourceName);
+                        WriteObject(resource);
+                    }
+                    catch(ServerRegistrationException ex)
+                    {
+                        this.StorageSyncClientWrapper.VerboseLogger.Invoke($"Registration failed with Category : {ex.Category} , ErrorCode : {ex.ExternalErrorCode} ");
+                        this.StorageSyncClientWrapper.VerboseLogger.Invoke($"Exception details : {ex}");
+                        throw;
+                    }
+                    
                 }
             });
+        }
+
+        private string m_serverMachineName;
+        protected string ServerMachineName
+        {
+            get
+            {
+                if (m_serverMachineName == null)
+                {
+                    m_serverMachineName = SystemUtility.GetMachineName();
+                    if (string.IsNullOrEmpty(m_serverMachineName))
+                    {
+                        throw new ServerRegistrationException(ServerRegistrationErrorCode.ServerNameIsNullOrEmpty);
+                    }
+                }
+                return m_serverMachineName;
+            }
         }
 
         /// <summary>
@@ -160,7 +190,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// <exception cref="PSArgumentException">AfsAgentInstallerPath</exception>
         private RegisteredServer PerformServerRegistration(string resourceGroupName, Guid subscriptionId, string storageSyncServiceName)
         {
-            using (ISyncServerRegistration syncServerRegistrationClient = new SyncServerRegistrationClient(StorageSyncClientWrapper.StorageSyncResourceManager.CreateEcsManagement()))
+            using (ISyncServerRegistration syncServerRegistrationClient = StorageSyncClientWrapper.StorageSyncResourceManager.CreateSyncServerManagement())
             {
                 if (string.IsNullOrEmpty(StorageSyncClientWrapper.AfsAgentInstallerPath))
                 {
@@ -177,6 +207,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     ManagementInteropConstants.CertificateKeyLength,
                     Path.Combine(StorageSyncClientWrapper.AfsAgentInstallerPath, StorageSyncConstants.MonitoringAgentDirectoryName),
                     StorageSyncClientWrapper.AfsAgentVersion,
+                    ServerMachineName,
                     (pResourceGroupName, pStorageSyncCerviceName, pServerRegistrationData) => CreateRegisteredResourceInCloud(pResourceGroupName, pStorageSyncCerviceName,
                             StorageSyncClientWrapper.StorageSyncResourceManager.UpdateServerRegistrationData(pServerRegistrationData)));
             }
@@ -197,7 +228,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 ClusterId = serverRegistrationData.ClusterId.ToString(),
                 ClusterName = serverRegistrationData.ClusterName,
                 AgentVersion = serverRegistrationData.AgentVersion,
-                ServerCertificate = Convert.ToBase64String(serverRegistrationData.ServerCertificate),
+                //ApplicationId = serverRegistrationData.ApplicationId.HasValue ? serverRegistrationData.ApplicationId.Value.ToString() : null,
+                ApplicationId = null,
+                ServerCertificate = serverRegistrationData.ServerCertificate != null ? Convert.ToBase64String(serverRegistrationData.ServerCertificate) : null,
                 ServerOSVersion = serverRegistrationData.ServerOSVersion,
                 ServerRole = serverRegistrationData.ServerRole.ToString(),
                 FriendlyName = SystemUtility.GetMachineName(),

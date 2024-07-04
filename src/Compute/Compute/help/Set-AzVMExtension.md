@@ -19,7 +19,7 @@ Set-AzVMExtension -Publisher <String> -ExtensionType <String> [-Settings <Hashta
  [-ProtectedSettings <Hashtable>] [-EnableAutomaticUpgrade <Boolean>] [-AsJob] [-ResourceGroupName] <String>
  [-VMName] <String> -Name <String> [-TypeHandlerVersion <String>] [-Location <String>]
  [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>] [-NoWait] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SettingString
@@ -28,7 +28,7 @@ Set-AzVMExtension -Publisher <String> -ExtensionType <String> [-SettingString <S
  [-ProtectedSettingString <String>] [-EnableAutomaticUpgrade <Boolean>] [-AsJob] [-ResourceGroupName] <String>
  [-VMName] <String> -Name <String> [-TypeHandlerVersion <String>] [-Location <String>]
  [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>] [-NoWait] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -192,21 +192,6 @@ Starts the operation and returns immediately, before the operation is completed.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
