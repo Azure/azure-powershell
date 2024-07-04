@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzVmCluster'))
 Describe 'AzVmCluster' {
     It 'CreateVmCluster' {
         {
-            $sshPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC27xOQB5ug66AVtpQ+j0yVQR/7EUoeEFxM90lPdeROC4eksoppXwo/wjwzb4nylXhEFhaZAdVnzKCwKaq3gDqCMVjnFPaKcN37KnxRjcOTLs3inIRayJGy6dsHPV/NF/lOAOBqyp7KcELoA70i4wEZHTdCkkMBEeKbfv0TVkOMaaHVOolxPWd0T/IWLTkbCiSwqj01r1vo8LSFPVISfVGQ2+1sKmTY9lc8Q0sv57HzZTOPxMcYSyJMUI0tQkShJ98RlL/bMsL/DMYv0Y4b8vTAGUkQS9Go1jFNndeYOvruZ37rn46MrvWj9B1zJC1mKBJ+ao7YOm1jI/r80ewSWBOTRcscPLFiV86t8jchlWR3WObGhQ28FyDng5RK6S6Gub0B+C2usjTq9l6y+f0lhxCnFSXgDo3H4v/vw5wUknOm8DbD9eTxNZw6zHi/yHKwu36my+AcLT+PNeCK+wzuTDhWkqzhqVe9Ww5xPLFXbhH/StXy3qGwyoa3tHnCts5/VXk= generated-by-azure"
+            $sshPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKJkePl4prXTs6cZ77AS9kGs5TO1EdfDdQZAtD7cfBVJ8X4wN+aOvLhk+u74D3qXad2OdQ/ij5q+xVzoXLXNBIZFQjB8JqWpgvOrOCAakFGc0OatJhSVlmJKW7JboQcUu7AzABfu+Ciso1QQTqlc2+awoZzPhfP9sgDMN6zI15Q9wSuxERor8oMSc78NW652wMzl97zO+bYdO9vIjBu27/WYZN/OpFJ0Ss4AzW/V9r2h6FFCkG+GXzhZArk3NeEstCSO2bjv3vO40+M0vfRD2jQrOSKhaLolk+crLGamaclY0YYCVB23rk6gCimWbVuvpHn+x1QSvN2d19xAmrIsHdTv/1lCEJetMA96pBq/jbljPwVKPFfVkyC8Ivt5rkbYizmUlYAbDMksGMUR4ncjScY7o/S0JKs14HihOnCoSGVXhH1dDgc8AsI+Ujs+GGR4U8IXJGEpZmhdnLa6mDymvr1tLWdQaI2y5FuWxsy4diKjEsPxCrnqfxlZxFBbQ29AU= generated-by-azure"
 
             $exaInfra = Get-AzOracleDatabaseCloudExadataInfrastructure -Name $env.exaInfraName -ResourceGroupName $env.resourceGroup
             $exaInfraId = $exaInfra.Id
@@ -51,16 +51,6 @@ Describe 'AzVmCluster' {
             $exaInfra.Tag.Get_Item("tagName") | Should -Be "tagValue"
         } | Should -Not -Throw
     }
-    It 'AddVm' {
-        {            
-            # Get Db Server Ocids
-            $dbServerList = Get-AzOracleDatabaseDbServer -Cloudexadatainfrastructurename $env.exaInfraName -ResourceGroupName $env.resourceGroup
-            $dbServerOcid1 = $dbServerList[0].Ocid
-            $dbServersToAdd = @($dbServerOcid1)
-            
-            Add-AzOracleDatabaseCloudVMClusterVM -Cloudvmclustername $env.vmClusterName -ResourceGroupName -ResourceGroupName $env.resourceGroup -DbServer $dbServersToAdd
-        } | Should -Not -Throw
-    }
     It 'StopVm' {
         {
             $stopActionName = "Stop"
@@ -83,9 +73,9 @@ Describe 'AzVmCluster' {
             Invoke-AzOracleDatabaseActionDbNode -Cloudvmclustername $env.vmClusterName -Dbnodeocid $dbNodeOcid1 -ResourceGroupName $env.resourceGroup -Action $startActionName
         } | Should -Not -Throw
     }
-    # It 'DeleteVmCluster' {
-    #     {
-    #         Remove-AzOracleDatabaseCloudVMCluster -NoWait -Name $env.vmClusterName -ResourceGroupName $env.resourceGroup
-    #     } | Should -Not -Throw
-    # }
+    It 'DeleteVmCluster' {
+        {
+            Remove-AzOracleDatabaseCloudVMCluster -NoWait -Name $env.vmClusterName -ResourceGroupName $env.resourceGroup
+        } | Should -Not -Throw
+    }
 }

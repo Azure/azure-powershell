@@ -53,7 +53,7 @@ function setupEnv() {
     $zone = @("2")
     $env.Add("zone", $zone)
 
-    $vnetName = "PowerShellTestVnet"
+    $vnetName = "PSTestVnet"
     $vnetId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($resourceGroup)/providers/Microsoft.Network/virtualNetworks/$($vnetName)"
     $env.Add("vnetId", $vnetId)
 
@@ -69,7 +69,7 @@ function setupEnv() {
     $exaInfraShape = "Exadata.X9M"
     $env.Add("exaInfraShape", $exaInfraShape)
 
-    $exaInfraComputeCount = 2
+    $exaInfraComputeCount = 3
     $env.Add("exaInfraComputeCount", $exaInfraComputeCount)
 
     $exaInfraStorageCount = 3
@@ -92,7 +92,7 @@ function setupEnv() {
     $vmClusterLicenseModel = "LicenseIncluded"
     $env.Add("vmClusterLicenseModel", $vmClusterLicenseModel)
 
-    $vmClusterCusterName = "TestVmClust"
+    $vmClusterCusterName = "TestVMC"
     $env.Add("vmClusterCusterName", $vmClusterCusterName)
 
     $vmClusterMemorySizeInGb = 90
