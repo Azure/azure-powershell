@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 0.2.0
 * Added trusted access parameter in Create and Register VIS.
 
 ## Version 0.1.2

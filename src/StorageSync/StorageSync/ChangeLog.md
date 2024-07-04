@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 2.2.0
 * Onboarded Service Api version 2022-09-01
 * Enabled ManagedIdentity Feature (Preview)
   
