@@ -18,8 +18,6 @@ using Commands.StorageSync.Interop.Interfaces;
 using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
 using Microsoft.Azure.Commands.StorageSync.InternalObjects;
-using Microsoft.Azure.Commands.StorageSync.Interop.Enums;
-using Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity;
 using Microsoft.Azure.Management.StorageSync.Models;
 using Newtonsoft.Json;
 using System;
@@ -39,16 +37,13 @@ namespace Commands.StorageSync.Interop.Clients
     /// <seealso cref="Commands.StorageSync.Interop.Clients.SyncServerRegistrationClientBase" />
     public class SyncServerRegistrationClient : SyncServerRegistrationClientBase
     {
-        protected readonly IServerManagedIdentityProvider ServerManagedIdentityProvider;
 
         /// <summary>
         /// Parameterzed constructor for Sync Server Registration Client
         /// </summary>
         /// <param name="ecsManagementInteropClient">The ecs management interop client.</param>
-        /// <param name="serverManagedIdentityProvider">The server managed identity provider.</param>
-        public SyncServerRegistrationClient(IEcsManagement ecsManagementInteropClient, IServerManagedIdentityProvider serverManagedIdentityProvider) : base(ecsManagementInteropClient)
+        public SyncServerRegistrationClient(IEcsManagement ecsManagementInteropClient) : base(ecsManagementInteropClient)
         {
-            this.ServerManagedIdentityProvider= serverManagedIdentityProvider;
         }
 
         /// <summary>
@@ -86,7 +81,6 @@ namespace Commands.StorageSync.Interop.Clients
         }
 
         /// <summary>
-        /// Setup for registration with certificate.
         /// This function processes the registration and perform following steps
         /// 1. EnsureSyncServerCertificate
         /// 2. GetSyncServerCertificate
@@ -101,10 +95,8 @@ namespace Commands.StorageSync.Interop.Clients
         /// <param name="certificateProviderName">Certificate Provider Name</param>
         /// <param name="certificateHashAlgorithm">Certificate Hash Algorithm</param>
         /// <param name="certificateKeyLength">Certificate Key Length</param>
-        /// <param name="applicationId">Server Identity Id</param>
         /// <param name="monitoringDataPath">Monitoring data path</param>
         /// <param name="agentVersion">Agent Version</param>
-        /// <param name="serverMachineName">Server Machine name</param>
         /// <returns>Registered Server Resource</returns>
         /// <exception cref="Commands.StorageSync.Interop.Exceptions.ServerRegistrationException">
         /// </exception>
@@ -112,54 +104,36 @@ namespace Commands.StorageSync.Interop.Clients
         /// or
         /// clusterId</exception>
         /// <exception cref="ServerRegistrationException"></exception>
-        public override ServerRegistrationData Setup(
-            Uri managementEndpointUri,
-            Guid subscriptionId,
-            string storageSyncServiceName,
-            string resourceGroupName,
-            string certificateProviderName,
-            string certificateHashAlgorithm,
-            uint certificateKeyLength,
-            Guid? applicationId,
-            string monitoringDataPath,
-            string agentVersion,
-            string serverMachineName)
+        public override ServerRegistrationData Setup(Uri managementEndpointUri, Guid subscriptionId, string storageSyncServiceName, string resourceGroupName, string certificateProviderName, string certificateHashAlgorithm, uint certificateKeyLength, string monitoringDataPath, string agentVersion)
         {
+            int hr = EcsManagementInteropClient.EnsureSyncServerCertificate(managementEndpointUri.OriginalString,
+                subscriptionId.ToString(),
+                storageSyncServiceName,
+                resourceGroupName,
+                certificateProviderName, 
+                certificateHashAlgorithm,
+                certificateKeyLength);
 
-            bool isCertificateRegistration = applicationId.GetValueOrDefault(Guid.Empty) == Guid.Empty;
-            string syncServerCertificate = default;
+            bool success = hr == 0;
 
-            int hr;
-            bool success;
-
-            //if (isCertificateRegistration)
+            if (!success)
             {
-                hr = this.EcsManagementInteropClient.EnsureSyncServerCertificate(managementEndpointUri.OriginalString,
-                    subscriptionId.ToString(),
-                    storageSyncServiceName,
-                    resourceGroupName,
-                    certificateProviderName,
-                    certificateHashAlgorithm,
-                    certificateKeyLength);
-                success = hr == 0;
+                throw new ServerRegistrationException(ServerRegistrationErrorCode.EnsureSyncServerCertificateFailed, hr, ErrorCategory.InvalidResult);
+            }
 
-                if (!success)
-                {
-                    throw new ServerRegistrationException(ServerRegistrationErrorCode.EnsureSyncServerCertificateFailed, hr, ErrorCategory.InvalidResult);
-                }
+            hr = EcsManagementInteropClient.GetSyncServerCertificate(isPrimary: true, serverCertificate: out string syncServerCertificate);
 
-                hr = this.EcsManagementInteropClient.GetSyncServerCertificate(isPrimary: true, serverCertificate: out syncServerCertificate);
-                success = hr == 0;
+            success = hr == 0;
 
-                if (!success)
-                {
-                    throw new ServerRegistrationException(ServerRegistrationErrorCode.GetSyncServerCertificateFailed, hr, ErrorCategory.InvalidResult);
-                }
+            if (!success)
+            {
+                throw new ServerRegistrationException(ServerRegistrationErrorCode.GetSyncServerCertificateFailed, hr, ErrorCategory.InvalidResult);
             }
 
             hr = EcsManagementInteropClient.GetSyncServerId(out string syncServerId);
 
-            bool hasServerGuid = Guid.TryParse(syncServerId, out Guid serverGuid);
+            Guid serverGuid = Guid.Empty;
+            bool hasServerGuid = Guid.TryParse(syncServerId, out serverGuid);
             if (!hasServerGuid)
             {
                 throw new ArgumentException(nameof(Guid.Empty));
@@ -172,17 +146,10 @@ namespace Commands.StorageSync.Interop.Clients
             }
 
             bool isInCluster;
-            try
-            {
-                isInCluster = this.EcsManagementInteropClient.IsInCluster();
-            }
-            catch (Exception)
-            {
-                throw new ServerRegistrationException(ServerRegistrationErrorCode.CheckIsInClusterFailed, hr, ErrorCategory.InvalidResult);
-            }
+            isInCluster = EcsManagementInteropClient.IsInCluster();
 
-            string clusterId = default;
-            string clusterName = default;
+            string clusterId = default(string);
+            string clusterName = default(string);
 
             if (isInCluster)
             {
@@ -207,7 +174,7 @@ namespace Commands.StorageSync.Interop.Clients
 
             string resourceId = ResourceIdFormatter.GenerateResourceId(subscriptionId, resourceGroupName, resources);
 
-            string osVersion;
+            string osVersion = null;
 
             // Get OS version using Win32_OperatingSystem WMI object
             try
@@ -237,17 +204,16 @@ namespace Commands.StorageSync.Interop.Clients
             {
                 Id = resourceId,
                 ServerId = serverGuid,
-                ServerCertificate = syncServerCertificate != null ? syncServerCertificate.ToBase64Bytes(throwException: true): null,
+                ServerCertificate = syncServerCertificate.ToBase64Bytes(true),
                 ServerRole = isInCluster ? ServerRoleType.ClusterNode : ServerRoleType.Standalone,
                 ServerOSVersion = osVersion,
-                ApplicationId = applicationId,
-                AgentVersion = agentVersion,
-                ServerMachineName = serverMachineName
+                AgentVersion = agentVersion
             };
 
             if (isInCluster)
             {
-                bool clusterGuidValue = Guid.TryParse(clusterId, out Guid clusterGuid);
+                Guid clusterGuid = Guid.Empty;
+                bool clusterGuidValue = Guid.TryParse(clusterId, out clusterGuid);
                 if (!clusterGuidValue)
                 {
                     throw new ArgumentException(nameof(clusterId));
@@ -334,29 +300,18 @@ namespace Commands.StorageSync.Interop.Clients
             {
                 monitoringConfiguration = JsonConvert.DeserializeObject<HybridMonitoringConfigurationResource>(registeredServerResource.MonitoringConfiguration);
             }
-            ServerRegistrationInformation registrationInfo = new ServerRegistrationInformation
-            {
-                ServiceEndpoint = registeredServerResource.MonitoringEndpointUri ?? registeredServerResource.ManagementEndpointUri,
-                SubscriptionId = subscriptionId,
-                ResourceGroupName = resourceGroupName,
-                StorageSyncServiceName = storageSyncServiceName,
-                StorageSyncServiceUid = storageSyncServiceUid,
-                ClusterName = registeredServerResource.ClusterName ?? string.Empty,
-                ClusterId = clusterId,
-                MonitoringConfiguration = monitoringConfiguration,
-                ResourceLocation = registeredServerResource.ResourceLocation
-            };
-
-            bool isCertificateRegistration = string.IsNullOrEmpty(registeredServerResource.ApplicationId);
-
-            if (registeredServerResource.ServerCertificate != null)
-            {
-                registrationInfo.ServerCertificate = registeredServerResource.ServerCertificate.ToBase64Bytes(); // use certificate
-            }
-            if (!string.IsNullOrEmpty(registeredServerResource.ApplicationId))
-            {
-                registrationInfo.ApplicationId = Guid.Parse(registeredServerResource.ApplicationId); // use Managed Identity ID
-            }
+            var registrationInfo = new ServerRegistrationInformation(
+                serviceEndpoint: registeredServerResource.MonitoringEndpointUri ?? registeredServerResource.ManagementEndpointUri,
+                subscriptionId: subscriptionId,
+                resourceGroupName: resourceGroupName,
+                storageSyncServiceName: storageSyncServiceName,
+                storageSyncServiceUid: storageSyncServiceUid,
+                clusterName: registeredServerResource.ClusterName ?? string.Empty,
+                clusterId: clusterId,
+                monitoringConfiguration: monitoringConfiguration,
+                serverCertificate: registeredServerResource.ServerCertificate.ToBase64Bytes(),
+                resourceLocation: registeredServerResource.ResourceLocation
+                );
  
             // We try to register monitoring agent but do not gurantee it to succeed.
             hr = EcsManagementInteropClient.RegisterMonitoringAgent(
@@ -390,21 +345,6 @@ namespace Commands.StorageSync.Interop.Clients
             {
             }
             return false;
-        }
-
-        /// <summary>
-        /// This function will get the application id of the server if identity is available.
-        /// </summary>
-        /// <returns>Application id or null.</returns>
-        public override Guid? GetApplicationIdOrNull()
-        {
-            LocalServerType localServerType = this.ServerManagedIdentityProvider.GetServerType(this.EcsManagementInteropClient);
-
-            if(localServerType != LocalServerType.HybridServer)
-            {
-                return this.ServerManagedIdentityProvider.GetServerApplicationId(localServerType, throwIfNotFound: true, validateSystemAssignedManagedIdentity: true);
-            }
-            return null;
         }
     }
 }

@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
 using Microsoft.Azure.Commands.StorageSync.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System;
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
@@ -46,12 +47,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 clusterId: source.ClusterId,
                 clusterName: source.ClusterName,
                 serverId: source.ServerId,
-                friendlyName: source.FriendlyName,
-                applicationId: source.ApplicationId,
-                identity: source.Identity,
-                latestApplicationId: source.LatestApplicationId,
-                activeAuthType: source.ActiveAuthType
-               );
+                friendlyName: source.FriendlyName);
         }
 
         /// <summary>
@@ -88,11 +84,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 ServiceLocation = source.ServiceLocation,
                 StorageSyncServiceUid = source.StorageSyncServiceUid,
                 MonitoringConfiguration = source.MonitoringConfiguration,
-                ServerName = source.ServerName,
-                ApplicationId = source.ApplicationId,
-                Identity = source.Identity,
-                LatestApplicationId = source.LatestApplicationId,
-                ActiveAuthType = source.ActiveAuthType
+                ServerName = source.ServerName
             };
         }
     }

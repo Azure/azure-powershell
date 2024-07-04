@@ -79,12 +79,6 @@
 * Modified cmdlet `Update-AzStorageMoverAgent`
    - Added parameter `-UploadLimitScheduleWeeklyRecurrence`
 * Added cmdlet `New-AzStorageMoverUploadLimitWeeklyRecurrenceObject`
-#### Az.StorageSync 2.2.0 
-* Modified cmdlet `New-AzStorageSyncService`
-   - Added parameters `-AssignIdentity`, `-UserAssignedIdentityId`, `-IdentityType`
-* Modified cmdlet `Set-AzStorageSyncService`
-   - Added parameters `-AssignIdentity`, `-UserAssignedIdentityId`, `-IdentityType`, `-UseIdentity`
-* Added cmdlet `Remove-AzStorageSyncServerEndpointPermission`, `Set-AzStorageSyncCloudEndpointPermission`, `Set-AzStorageSyncServer`, `Set-AzStorageSyncServerEndpointPermission`, `Set-AzStorageSyncServiceIdentity`
 
 ## 12.0.0 - May 2024
 #### Az.Accounts 3.0.0 

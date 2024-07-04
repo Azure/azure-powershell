@@ -49,7 +49,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
             StorageSyncConstants.StorageSyncServiceType,
             new SystemDataConverter().Convert(source.SystemData),
             source.Tags,
-            null,
             source.IncomingTrafficPolicy);
 
         /// <summary>
@@ -81,8 +80,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 Tags = source.Tags,
                 Type = resourceIdentifier.ResourceType ?? StorageSyncConstants.StorageSyncServiceType,
                 PrivateEndpointConnections = psPrivateEndpointConnections.Count > 0 ? psPrivateEndpointConnections : null,
-                SystemData = new SystemDataConverter().Convert(source.SystemData),
-                UseIdentity = source.UseIdentity
+                SystemData = new SystemDataConverter().Convert(source.SystemData)
             };
         }
     }

@@ -163,10 +163,6 @@
 * Added input parameter validation set for UploadLimitWeeklyRecurrenceObject
 * Supported Uploaded Limit Schedule
 
-#### Az.StorageSync 2.2.0
-* Onboarded Service Api version 2022-09-01
-* Enabled ManagedIdentity Feature (Preview)
-
 #### Az.Synapse 3.0.9
 * Updated Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.20.
 * Fixed the issue that Azure.Core.AccessToken is used before assigned.

@@ -125,16 +125,12 @@
 * Added input parameter validation set for UploadLimitWeeklyRecurrenceObject
 * Supported Uploaded Limit Schedule
 
-#### Az.StorageSync 2.2.0
-* Onboarded Service Api version 2022-09-01
-* Enabled ManagedIdentity Feature (Preview)
-
 #### Az.Synapse 3.0.9
 * Updated Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.20.
 * Fixed the issue that Azure.Core.AccessToken is used before assigned.
 
 ### Thanks to our community contributors
-* Felipe Andrade (@andradf), Use named parameter for appPackageUrl in CreateOrUpdateApplicationTyp… (#25113)
+* Felipe Andrade (@andradf), Use named parameter for appPackageUrl in CreateOrUpdateApplicationTypeVersion (#25113)
 * JoshK (@jkonecki42), Update New-AzADGroupOwner.md (#25080)
 
 ## 12.0.0 - May 2024
