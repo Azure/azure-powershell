@@ -275,23 +275,24 @@ directive:
     set:
       preview-announcement:
         preview-message: This is a test preview message.
-        stimated-ga-date: 2023-09-30
+        stimated-ga-date: 2024-08-30
+
   - where:
       subject: AbortProfileMigration
     set:
       subject: AbortProfileToAFDMigration
       preview-announcement:
         preview-message: This is a test preview message.
-        stimated-ga-date: 2023-09-30
+        stimated-ga-date: 2024-08-30
   - where:
       verb: Invoke
       subject: CanCdnProfileToAFD
     set:
       verb: Test
-      subject: ProfileMigrationReadniess
+      subject: ProfileMigrationCompatiability
       preview-announcement:
         preview-message: This is a test preview message.
-        stimated-ga-date: 2023-09-30
+        stimated-ga-date: 2024-08-30
 
   # https://github.com/Azure/autorest.powershell/issues/906
   - where:
