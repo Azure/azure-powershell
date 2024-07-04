@@ -337,6 +337,11 @@ namespace Microsoft.Azure.Commands.Profile
                 AzConfigReader.Instance?.UpdateConfig(ConfigKeys.EnableLoginByWam, false, ConfigScope.CurrentUser);
             }
 
+            if (ParameterSetName.Equals(UserWithCredentialParameterSet))
+            {
+                WriteWarning(Resources.UsernamePasswordDeprecateWarningMessage);
+            }
+
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Subscription)))
             {
                 if (Guid.TryParse(Subscription, out subscriptionIdGuid))

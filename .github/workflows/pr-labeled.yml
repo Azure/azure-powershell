@@ -22,4 +22,4 @@ jobs:
       shell: pwsh
       env:
         LABEL: ${{ github.event.label.name }}
-      run: .github/workflows/script/PrLabeled.ps1 -LabelName "$LABEL" -PrUrl $env:PR
+      run: .github/workflows/script/PrLabeled.ps1 -LabelName $env:LABEL -PrUrl $env:PR
