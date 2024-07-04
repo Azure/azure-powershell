@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Added a warning message in `Connect-AzAccount` to discourage the use of the username/password (a.k.a ROPC) login flow.
+* Preannounced a breaking change in `Get-AzAccessToken` to change `Token` property from `String` to `SecureString`.
 
 ## Version 3.0.1
 * Disable WAM when the customers login with device code flow or username password (ROPC) flow to prevent a potential issue with token cache.
