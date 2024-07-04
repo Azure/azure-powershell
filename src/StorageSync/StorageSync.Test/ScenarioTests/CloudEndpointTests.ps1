@@ -33,7 +33,7 @@ function Test-CloudEndpoint
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
         $AzureFileShareName = "testfs" #Get-ResourceName("fs")
         $StorageAccountName = Get-ResourceName("sa")
-        $StorageAccountTenantId = Get-TenantId
+        $StorageAccountTenantId = (Get-AzTenant).Id
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceGroupLocation | Type : ResourceGroup"
         New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation;
@@ -154,8 +154,7 @@ function Test-NewCloudEndpoint
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
         $AzureFileShareName = "testfs" #Get-StorageManagementTestResourceName
         $StorageAccountName = Get-ResourceName("sa")
-        $StorageAccountTenantId = Get-TenantId
-        Write-Verbose "StorageAccountTenantId : $StorageAccountTenantId | StorageAccountName : $StorageAccountName"
+        $StorageAccountTenantId = (Get-AzTenant).Id
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceGroupLocation | Type : ResourceGroup"
         New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation;
@@ -235,7 +234,7 @@ function Test-GetCloudEndpoint
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
         $AzureFileShareName = "testfs" #Get-StorageManagementTestResourceName
         $StorageAccountName = Get-ResourceName("sa")
-        $StorageAccountTenantId = Get-TenantId
+        $StorageAccountTenantId = (Get-AzTenant).Id
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceGroupLocation | Type : ResourceGroup"
         New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation;
@@ -322,7 +321,7 @@ function Test-GetCloudEndpoints
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
         $AzureFileShareName = "testfs" #Get-StorageManagementTestResourceName
         $StorageAccountName = Get-ResourceName("sa")
-        $StorageAccountTenantId = Get-TenantId
+        $StorageAccountTenantId = (Get-AzTenant).Id
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceGroupLocation | Type : ResourceGroup"
         New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation;
@@ -411,7 +410,7 @@ function Test-GetCloudEndpointParentObject
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
         $AzureFileShareName = "testfs" #Get-StorageManagementTestResourceName
         $StorageAccountName = Get-ResourceName("sa")
-        $StorageAccountTenantId = Get-TenantId
+        $StorageAccountTenantId = (Get-AzTenant).Id
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceGroupLocation | Type : ResourceGroup"
         New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation;
@@ -496,7 +495,7 @@ function Test-GetCloudEndpointParentResourceId
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
         $AzureFileShareName = "testfs" #Get-StorageManagementTestResourceName
         $StorageAccountName = Get-ResourceName("sa")
-        $StorageAccountTenantId = Get-TenantId
+        $StorageAccountTenantId = (Get-AzTenant).Id
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceGroupLocation | Type : ResourceGroup"
         New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation;
@@ -581,7 +580,7 @@ function Test-RemoveCloudEndpoint
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
         $AzureFileShareName = "testfs" #Get-StorageManagementTestResourceName
         $StorageAccountName = Get-ResourceName("sa")
-        $StorageAccountTenantId = Get-TenantId
+        $StorageAccountTenantId = (Get-AzTenant).Id
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceGroupLocation | Type : ResourceGroup"
         New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation;
@@ -662,7 +661,7 @@ function Test-RemoveCloudEndpointInputObject
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
         $AzureFileShareName = "testfs" #Get-StorageManagementTestResourceName
         $StorageAccountName = Get-ResourceName("sa")
-        $StorageAccountTenantId = Get-TenantId
+        $StorageAccountTenantId = (Get-AzTenant).Id
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceGroupLocation | Type : ResourceGroup"
         New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation;
@@ -736,7 +735,7 @@ function Test-RemoveCloudEndpointResourceId
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
         $AzureFileShareName = "testfs" #Get-StorageManagementTestResourceName
         $StorageAccountName = Get-ResourceName("sa")
-        $StorageAccountTenantId = Get-TenantId
+        $StorageAccountTenantId = (Get-AzTenant).Id
 
         Write-Verbose "RGName: $resourceGroupName | Loc: $resourceGroupLocation | Type : ResourceGroup"
         New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation;

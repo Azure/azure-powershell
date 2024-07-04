@@ -19,9 +19,9 @@ namespace Commands.StorageSync.Interop.DataObjects
     using System.Runtime.InteropServices;
 
     /// <summary>
-    /// Win32 Helper class
+    /// TODO : Make it internal
     /// </summary>
-    public sealed class Win32Helper
+    public class Win32Helper
     {
         /// <summary>
         /// Coes the create instance.

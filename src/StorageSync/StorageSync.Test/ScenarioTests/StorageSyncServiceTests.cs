@@ -54,16 +54,6 @@ namespace StorageSyncTests
         }
 
         /// <summary>
-        /// Defines the test method TestNewStorageSyncServiceWithIdentity.
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewStorageSyncServiceWithIdentity()
-        {
-            //TestRunner.RunTestScript("Test-NewStorageSyncServiceWithIdentity");
-        }
-
-        /// <summary>
         /// Defines the test method TestGetStorageSyncService.
         /// </summary>
         [Fact]

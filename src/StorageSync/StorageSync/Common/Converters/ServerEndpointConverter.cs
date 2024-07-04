@@ -60,7 +60,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
             PSServerEndpointHealth syncStatus = source.SyncStatus != null ? new ServerEndpointHealthConverter().Convert(source.SyncStatus) : null;
             PSServerEndpointCloudTieringStatus cloudTieringStatus = source.CloudTieringStatus != null ? new ServerEndpointCloudTieringStatusConverter().Convert(source.CloudTieringStatus) : null;
             PSServerEndpointRecallStatus recallStatus = source.RecallStatus != null ? new ServerEndpointRecallStatusConverter().Convert(source.RecallStatus) : null;
-            PSServerEndpointProvisioningStatus serverEndpointProvisioningStatus = source.ServerEndpointProvisioningStatus != null ? new ServerEndpointProvisioningStatusConverter().Convert(source.ServerEndpointProvisioningStatus) : null;
 
             var resourceIdentifier = new ResourceIdentifier(source.Id);
             return new PSServerEndpoint()
@@ -86,8 +85,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 InitialUploadPolicy = source.InitialUploadPolicy,
                 CloudTieringStatus = cloudTieringStatus,
                 RecallStatus = recallStatus,
-                ServerName = source.ServerName,
-                ServerEndpointProvisioningStatus = serverEndpointProvisioningStatus
+                ServerName = source.ServerName
             };
         }
     }

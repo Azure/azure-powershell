@@ -158,11 +158,5 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// </summary>
         /// <value>Recall status.</value>
         public PSServerEndpointRecallStatus RecallStatus { get; set; }
-
-        /// <summary>
-        /// Gets or sets server endpoint provisioning status.
-        /// </summary>
-        /// <value>Recall status.</value>
-        public PSServerEndpointProvisioningStatus ServerEndpointProvisioningStatus { get; set; }
     }
 }
