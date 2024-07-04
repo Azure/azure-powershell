@@ -72,11 +72,14 @@ function Test-AzAccountsUpgrade
 
 $useWindowsPowerShell = $PSVersionTable.PSEdition -eq "Desktop"
 
-Write-Host '--------------------Test ClientAssertion---------------------------------'
-$specialParams = "-UseFederatedToke -FederatedToken $FederatedToken"
-Test-AzAccountsUpgrade -SpecialParamString $specialParams -UseWindowsPowerShell $useWindowsPowerShell
-Write-Host 'Press any key to continue'
-$null = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if ($FederatedToken -eq $null)
+{
+    Write-Host '--------------------Test ClientAssertion---------------------------------'
+    $specialParams = "-UseFederatedToke -FederatedToken $FederatedToken"
+    Test-AzAccountsUpgrade -SpecialParamString $specialParams -UseWindowsPowerShell $useWindowsPowerShell
+    Write-Host 'Press any key to continue'
+    $null = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+}
 
 Write-Host '--------------------Test ClientSecret------------------------------------'
 Test-AzAccountsUpgrade -SpecialParamString '-UsePassword' -UseWindowsPowerShell $useWindowsPowerShell
@@ -109,6 +112,6 @@ function Run-SmokeTest
     Write-Host 'Run smoke test using the test version:'
     Invoke-PowerShellCommand -ScriptBlock $smokeTest -UseWindowsPowerShell:$useWindowsPowerShell
 }
-#Run-SmokeTest -UseWindowsPowerShell $false
+Run-SmokeTest -UseWindowsPowerShell $useWindowsPowerShell
 
 

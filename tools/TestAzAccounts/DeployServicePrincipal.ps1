@@ -28,12 +28,12 @@ Param
 $subscriptionId = (Get-AzContext).Subscription.Id
 
 $keyVaultName = if ($KeyVaultName) {$KeyVaultName} else {'LiveTestKeyVault'}
-$servicePrincipalName = if ($ServicePrincipalName) {$ServicePrincipalName} else {'AzurePowerShellAzAccountsTest'}
+$servicePrincipalName = if ($ServicePrincipalName) {$ServicePrincipalName} else {'AzAccountsTest'}
 $credentialPrefix = if ($CredentialPrefix) {$CredentialPrefix} else {'AzAccountsTest'}
 
 $certificateName = "${credentialPrefix}Certificate"
 $secretName = "${credentialPrefix}Secret"
-$federatedName = "${credentialPrefix}ADFS"
+$federatedName = "${credentialPrefix}OIDC"
 
 $password = 'pa88w0rd!'
 $subject = 'CN=AzAccountsTest'
