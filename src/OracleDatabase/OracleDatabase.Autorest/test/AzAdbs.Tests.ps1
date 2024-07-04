@@ -15,11 +15,36 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzAdbs'))
 }
 
 Describe 'AzAdbs' {
-    # TODO
     It 'CreateAdbs' {
         {
-
+            [SecureString]$adbsAdminPassword = ConvertTo-SecureString -String "PowerShellTestPass123" -AsPlainText -Force
+            $adbs = New-AzOracleDatabaseAutonomousDatabase -Name $env.adbsName -ResourceGroupName $env.resourceGroup -Location $env.location -DisplayName $env.adbsName -DbWorkload $env.adbsDbWorkload -ComputeCount $env.adbsComputeCount -ComputeModel $env.adbsComputeModel -DbVersion $env.adbsDbVersion -DataStorageSizeInGb $env.adbsDataStorageInGb -AdminPassword $adbsAdminPassword -LicenseModel $env.adbsLicenseModel -SubnetId $env.subnetId -VnetId $env.vnetId -DataBaseType $env.adbsDatabaseType -CharacterSet $env.adbsCharacterSet -NcharacterSet $env.adbsNCharacterSet
+            $adbs.Name | Should -Be $env.adbsName
         } | Should -Not -Throw
     }
-
+    It 'GetAdbs' {
+        {
+            $adbs = Get-AzOracleDatabaseAutonomousDatabase -Name $env.adbsName -ResourceGroupName $env.resourceGroup
+            $adbs.Name | Should -Be $env.adbsName
+        } | Should -Not -Throw
+    }
+    It 'ListAdbs' {
+        {
+            $adbsList = Get-AzOracleDatabaseAutonomousDatabase
+            $adbsList.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
+    }
+    It 'UpdateAdbs' {
+        {
+            $tagHashTable = @{'tagName'="tagValue"}
+            Update-AzOracleDatabaseAutonomousDatabase -Name $env.adbsName -ResourceGroupName $env.resourceGroup -Tag $tagHashTable
+            $adbs = Get-AzOracleDatabaseAutonomousDatabase -Name $env.adbsName -ResourceGroupName $env.resourceGroup
+            $adbs.Tag.Get_Item("tagName") | Should -Be "tagValue"
+        } | Should -Not -Throw
+    }
+    It 'DeleteAdbs' {
+        {
+            Remove-AzOracleDatabaseAutonomousDatabase -NoWait -Name $env.adbsName -ResourceGroupName $env.resourceGroup
+        } | Should -Not -Throw
+    }
 }

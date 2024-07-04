@@ -86,9 +86,6 @@ function setupEnv() {
     $vmClusterCpuCoreCount = 4
     $env.Add("vmClusterCpuCoreCount", $vmClusterCpuCoreCount)
 
-    $sshPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDBGTHtPeOBRuHNkW6GF0xKMFA79EuOGoCRuzsE1I9v/kUl9oElGgCpUoSLDsvRl4ZzmTBaJDgG020Qy+6SoVnQkSztGvyXxQJm5obkKhNjutheDpJ3ozQysHqWybyRt8dga7TvhTS5HXHJ2pwbFmYjlIdhxviP3qwzqpIYf0kQde1RXlnvOKyVlOfTDr6ovJ9J+fWle5mwE9ywm2anYPpIgydap3oFTaj8RoFW7G6m5kJAu2U4J9jShrp2vTOjFx8JIuy35quclPZ3UzdiMALmXIR7gA/9bwsog0nQDz6YLpz9r3PxZuo4mGEzNyj1yn5USROBcgLOVKruij53uWiT5RgZzhZSheJryNE54mFCHaaw4C3CZfI+m7DFuEXmOvqTbxlwV8/r2jNzpobtExXm4KowmFTYvVuts6jy58zZ/WSizb0oxqJI8TgO/C5mujN1D/NMibxOWLEnyncHRPm+wGUhnNpl8dnST6a1Dsf694q+OBnMWJWQPU4NR/eZ8JU= generated-by-azure"
-    $env.Add("sshPublicKey", $sshPublicKey)
-
     $vmClusterGiVersion = "19.0.0.0"
     $env.Add("vmClusterGiVersion", $vmClusterGiVersion)
 
