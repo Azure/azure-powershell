@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/az.cdn/test-azcdnprofilemigrationcompatiability
+online version: https://learn.microsoft.com/powershell/module/az.cdn/test-azcdnprofilemigrationcompatibility
 schema: 2.0.0
 ---
 
-# Test-AzCdnProfileMigrationCompatiability
+# Test-AzCdnProfileMigrationCompatibility
 
 ## SYNOPSIS
 Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
@@ -14,14 +14,14 @@ Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profi
 
 ### Can (Default)
 ```
-Test-AzCdnProfileMigrationCompatiability -ProfileName <String> -ResourceGroupName <String>
+Test-AzCdnProfileMigrationCompatibility -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CanViaIdentity
 ```
-Test-AzCdnProfileMigrationCompatiability -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+Test-AzCdnProfileMigrationCompatibility -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profi
 
 ### Example 1: Check the feasibility of given profile which is going to be migrated
 ```powershell
-Test-AzCdnProfileMigrationCompatiability  -ProfileName cli-test-profile -ResourceGroupName cli-test-rg
+Test-AzCdnProfileMigrationCompatibility  -ProfileName cli-test-profile -ResourceGroupName cli-test-rg
 ```
 
 ```output

@@ -289,7 +289,7 @@ directive:
       subject: CanCdnProfileToAFD
     set:
       verb: Test
-      subject: ProfileMigrationCompatiability
+      subject: ProfileMigrationCompatibility
       preview-announcement:
         preview-message: This is a test preview message.
         stimated-ga-date: 2024-08-30
