@@ -68,16 +68,6 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         public string PartnerServerName { get; set; }
 
         /// <summary>
-        /// Gets or sets the link type of the replication link.
-        /// </summary>
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
-            HelpMessage = "The link type of the replication link. Valid values are Geo and Standby. Update operation does not support Named")]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet("Geo", "Standby")]
-        public string LinkType { get; set; }
-
-        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
@@ -88,11 +78,11 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             if (MyInvocation.BoundParameters.ContainsKey(nameof(PartnerServerName)) && !WildcardPattern.ContainsWildcardCharacters(PartnerServerName))
             {
                 results = new List<AzureReplicationLinkModel>();
-                results.Add(ModelAdapter.GetLink(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName, this.PartnerServerName));
+                results.Add(ModelAdapter.GetLink(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName, this.PartnerServerName, true));
             }
             else
             {
-                results = ModelAdapter.ListLinks(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName);
+                results = ModelAdapter.ListLinks(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName, true);
             }
 
             return SubResourceWildcardFilter(PartnerServerName, results);

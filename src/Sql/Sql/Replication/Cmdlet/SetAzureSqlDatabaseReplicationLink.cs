@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             ValueFromPipelineByPropertyName = false,
             HelpMessage = "The link type of the replication link. Valid values are Geo and Standby. Update operation does not support Named")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("Geo", "Standby")]
+        [ValidateSet("GEO", "STANDBY")]
         public string LinkType { get; set; }
 
         /// <summary>
@@ -71,18 +71,10 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         protected override IEnumerable<AzureReplicationLinkModel> GetEntity()
         {
             ICollection<AzureReplicationLinkModel> results;
+            results = new List<AzureReplicationLinkModel>();
+            results.Add(ModelAdapter.GetLink(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName, this.LinkId, true));
 
-            if (MyInvocation.BoundParameters.ContainsKey(nameof(PartnerServerName)) && !WildcardPattern.ContainsWildcardCharacters(PartnerServerName))
-            {
-                results = new List<AzureReplicationLinkModel>();
-                results.Add(ModelAdapter.GetLink(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName, this.PartnerServerName));
-            }
-            else
-            {
-                results = ModelAdapter.ListLinks(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName);
-            }
-
-            return SubResourceWildcardFilter(PartnerServerName, results).Where(l => l.LinkId == this.LinkId);
+            return results;
         }
 
         /// <summary>
@@ -92,7 +84,15 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// <returns>The model that was passed in</returns>
         protected override IEnumerable<AzureReplicationLinkModel> ApplyUserInputToModel(IEnumerable<AzureReplicationLinkModel> model)
         {
-            return model;
+            List<AzureReplicationLinkModel> newEntity = new List<AzureReplicationLinkModel>();
+            AzureReplicationLinkModel newModel = model.First();
+            if (MyInvocation.BoundParameters.ContainsKey("LinkType"))
+            {
+                newModel.LinkType = this.LinkType;
+            }
+            newEntity.Add(newModel);
+
+            return newEntity;
         }
 
         /// <summary>
@@ -102,7 +102,9 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureReplicationLinkModel> PersistChanges(IEnumerable<AzureReplicationLinkModel> entity)
         {
-            return entity;
+            return new List<AzureReplicationLinkModel>() {
+                ModelAdapter.UpdateLinkV2(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName, this.LinkId, entity.First())
+            };
         }
     }
 }
