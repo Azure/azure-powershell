@@ -15,7 +15,7 @@ Return trial status for subscription by region
 ```
 Test-AzVMwareLocationTrialAvailability -Location <String> [-SubscriptionId <String>] [-Capacity <Int32>]
  [-Family <String>] [-Name <String>] [-Size <String>] [-Tier <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -110,21 +110,6 @@ It is typically a letter+number code
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

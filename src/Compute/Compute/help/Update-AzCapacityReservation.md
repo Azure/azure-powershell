@@ -15,7 +15,7 @@ Update the Capacity Reservation.
 ### DefaultParameter (Default)
 ```
 Update-AzCapacityReservation [-CapacityToReserve <Int32>] [-AsJob] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -23,20 +23,20 @@ Update-AzCapacityReservation [-CapacityToReserve <Int32>] [-AsJob] [-Tag <Hashta
 ```
 Update-AzCapacityReservation -ResourceGroupName <String> -ReservationGroupName <String> -Name <String>
  [-CapacityToReserve <Int32>] [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Update-AzCapacityReservation -CapacityReservation <PSCapacityReservation> [-CapacityToReserve <Int32>] [-AsJob]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIDParameterSet
 ```
 Update-AzCapacityReservation -ResourceId <String> [-CapacityToReserve <Int32>] [-AsJob] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -133,21 +133,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

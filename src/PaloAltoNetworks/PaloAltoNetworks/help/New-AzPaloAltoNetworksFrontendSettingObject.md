@@ -16,7 +16,7 @@ Create an in-memory object for FrontendSetting.
 New-AzPaloAltoNetworksFrontendSettingObject -BackendConfigurationPort <String>
  -FrontendConfigurationPort <String> -Name <String> -Protocol <String> [-Address <String>]
  [-BackendConfigurationAddress1 <String>] [-BackendConfigurationAddressResourceId <String>]
- [-FrontendConfigurationAddressResourceId <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-FrontendConfigurationAddressResourceId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -138,21 +138,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

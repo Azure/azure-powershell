@@ -18,7 +18,7 @@ New-AzVMwareDatastore -ClusterName <String> -Name <String> -PrivateCloudName <St
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DiskPoolVolumeLunName <String>]
  [-DiskPoolVolumeMountOption <String>] [-DiskPoolVolumeTargetId <String>] [-ElasticSanVolumeTargetId <String>]
  [-NetAppVolumeId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityPrivateCloudExpanded
@@ -26,7 +26,7 @@ New-AzVMwareDatastore -ClusterName <String> -Name <String> -PrivateCloudName <St
 New-AzVMwareDatastore -ClusterName <String> -Name <String> -PrivateCloudInputObject <IVMwareIdentity>
  [-DiskPoolVolumeLunName <String>] [-DiskPoolVolumeMountOption <String>] [-DiskPoolVolumeTargetId <String>]
  [-ElasticSanVolumeTargetId <String>] [-NetAppVolumeId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityClusterExpanded
@@ -34,7 +34,7 @@ New-AzVMwareDatastore -ClusterName <String> -Name <String> -PrivateCloudInputObj
 New-AzVMwareDatastore -Name <String> -ClusterInputObject <IVMwareIdentity> [-DiskPoolVolumeLunName <String>]
  [-DiskPoolVolumeMountOption <String>] [-DiskPoolVolumeTargetId <String>] [-ElasticSanVolumeTargetId <String>]
  [-NetAppVolumeId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -42,7 +42,7 @@ New-AzVMwareDatastore -Name <String> -ClusterInputObject <IVMwareIdentity> [-Dis
 New-AzVMwareDatastore -InputObject <IVMwareIdentity> [-DiskPoolVolumeLunName <String>]
  [-DiskPoolVolumeMountOption <String>] [-DiskPoolVolumeTargetId <String>] [-ElasticSanVolumeTargetId <String>]
  [-NetAppVolumeId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -270,21 +270,6 @@ Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

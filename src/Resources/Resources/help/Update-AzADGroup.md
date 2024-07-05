@@ -21,7 +21,7 @@ Update-AzADGroup -ObjectId <String> [-AdditionalProperties <Hashtable>]
  [-MembershipRuleProcessingState <String>]
  [-PermissionGrant <IMicrosoftGraphResourceSpecificPermissionGrant[]>] [-PreferredDataLocation <String>]
  [-PreferredLanguage <String>] [-SecurityEnabled] [-SecurityIdentifier <String>] [-Theme <String>]
- [-Visibility <String>] [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Visibility <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -385,21 +385,6 @@ Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

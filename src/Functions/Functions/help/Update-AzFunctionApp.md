@@ -17,7 +17,7 @@ Updates a function app.
 Update-AzFunctionApp -ResourceGroupName <String> -Name <String> [-SubscriptionId <String>] [-PlanName <String>]
  [-Force] [-ApplicationInsightsName <String>] [-ApplicationInsightsKey <String>] [-Tag <Hashtable>]
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityID <String[]>] [-DefaultProfile <PSObject>] [-NoWait]
- [-AsJob] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectInput
@@ -25,7 +25,7 @@ Update-AzFunctionApp -ResourceGroupName <String> -Name <String> [-SubscriptionId
 Update-AzFunctionApp [-PlanName <String>] [-Force] [-ApplicationInsightsName <String>]
  [-ApplicationInsightsKey <String>] [-Tag <Hashtable>] [-IdentityType <ManagedServiceIdentityType>]
  [-IdentityID <String[]>] -InputObject <ISite> [-DefaultProfile <PSObject>] [-NoWait] [-AsJob]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -227,21 +227,6 @@ The name of the service plan.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

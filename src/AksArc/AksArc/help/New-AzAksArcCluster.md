@@ -29,7 +29,7 @@ New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> [-Subscrip
  [-AutoScalerProfileScaleDownUnneededTime <String>] [-AutoScalerProfileScaleDownUnreadyTime <String>]
  [-AutoScalerProfileScaleDownUtilizationThreshold <String>] [-AutoScalerProfileScanInterval <String>]
  [-AutoScalerProfileSkipNodesWithLocalStorage <String>] [-AutoScalerProfileSkipNodesWithSystemPod <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -39,7 +39,7 @@ New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> [-Subscrip
  -MinCount <Int32> -MaxCount <Int32> -MaxPod <Int32> -CustomLocationName <String> -VnetId <String>
  -ControlPlaneIP <String> [-Location <String>] [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit]
  [-EnableAzureRbac] [-EnableAutoScaling] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -49,7 +49,7 @@ New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> [-Subscrip
  -CustomLocationName <String> -VnetId <String> -ControlPlaneIP <String> [-Location <String>]
  [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit] [-EnableAzureRbac] [-NodeLabel <Hashtable>]
  [-NodeTaint <String[]>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
@@ -58,7 +58,7 @@ New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> [-Subscrip
  -CustomLocationName <String> -VnetId <String> -ControlPlaneIP <String> [-Location <String>]
  [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit] [-EnableAzureRbac] [-NodeLabel <Hashtable>]
  [-NodeTaint <String[]>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -815,21 +815,6 @@ A CIDR notation IP Address range from which to assign pod IPs.
 Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
