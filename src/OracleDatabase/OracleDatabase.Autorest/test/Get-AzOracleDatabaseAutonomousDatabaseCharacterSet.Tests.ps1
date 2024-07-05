@@ -15,8 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzOracleDatabaseAutonomou
 }
 
 Describe 'Get-AzOracleDatabaseAutonomousDatabaseCharacterSet' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $adbsCharacterSetList = Get-AzOracleDatabaseAutonomousDatabaseCharacterSet -Location $env.location
+            $adbsCharacterSetList.CharacterSet.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 
     It 'GetViaIdentityLocation' -skip {

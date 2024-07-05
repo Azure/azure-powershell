@@ -15,8 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzOracleDatabaseDnsPrivat
 }
 
 Describe 'Get-AzOracleDatabaseDnsPrivateZone' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $dnsPrivateZoneList = Get-AzOracleDatabaseDnsPrivateZone -Location $env.location
+            $dnsPrivateZoneList.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 
     It 'Get' -skip {

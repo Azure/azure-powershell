@@ -15,8 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzOracleDatabaseGiVersion
 }
 
 Describe 'Get-AzOracleDatabaseGiVersion' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $giVersionList = Get-AzOracleDatabaseGiVersion -Location $env.location
+            $giVersionList.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 
     It 'Get' -skip {

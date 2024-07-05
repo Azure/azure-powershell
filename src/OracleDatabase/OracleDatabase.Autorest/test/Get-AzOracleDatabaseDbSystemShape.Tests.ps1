@@ -15,8 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzOracleDatabaseDbSystemS
 }
 
 Describe 'Get-AzOracleDatabaseDbSystemShape' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $dbSystemShapeList = Get-AzOracleDatabaseDbSystemShape -Location $env.location
+            $dbSystemShapeList.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 
     It 'Get' -skip {

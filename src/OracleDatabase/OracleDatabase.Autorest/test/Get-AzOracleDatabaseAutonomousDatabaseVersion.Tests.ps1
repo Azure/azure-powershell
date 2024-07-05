@@ -15,8 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzOracleDatabaseAutonomou
 }
 
 Describe 'Get-AzOracleDatabaseAutonomousDatabaseVersion' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $adbsVersionList = Get-AzOracleDatabaseAutonomousDatabaseVersion -Location $env.location
+            $adbsVersionList.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 
     It 'GetViaIdentityLocation' -skip {
