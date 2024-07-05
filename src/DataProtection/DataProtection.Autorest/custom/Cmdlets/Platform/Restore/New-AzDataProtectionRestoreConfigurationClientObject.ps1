@@ -50,7 +50,11 @@ function New-AzDataProtectionRestoreConfigurationClientObject{
         
         [Parameter(Mandatory=$false, HelpMessage='Hook reference to be executed during restore.')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.NamespacedNameResource[]]
-        ${RestoreHookReference}        
+        ${RestoreHookReference},
+
+        [Parameter(Mandatory=$false, HelpMessage='Resource modifier reference to be executed during restore.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.NamespacedNameResource]
+        ${ResourceModifierReference}
     )
 
     process {
@@ -64,6 +68,7 @@ function New-AzDataProtectionRestoreConfigurationClientObject{
         $restoreCriteria.LabelSelector = $LabelSelector
         $restoreCriteria.NamespaceMapping = $NamespaceMapping
         $restoreCriteria.RestoreHookReference = $RestoreHookReference
+        $restoreCriteria.ResourceModifierReference = $ResourceModifierReference
                 
         if($IncludeClusterScopeResource -ne $null) {
             $restoreCriteria.IncludeClusterScopeResource =  $IncludeClusterScopeResource

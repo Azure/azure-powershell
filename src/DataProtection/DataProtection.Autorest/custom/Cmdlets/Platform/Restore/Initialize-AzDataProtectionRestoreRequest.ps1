@@ -327,7 +327,7 @@
                 else{
                     $errormsg = "Please input parameter RestoreConfiguration for AKS cluster restore. Use command New-AzDataProtectionRestoreConfigurationClientObject for creating the RestoreConfiguration"
     		        throw $errormsg
-                }                
+                }
                 
                 $restoreCriteriaList += ($restoreCriteria)
             }

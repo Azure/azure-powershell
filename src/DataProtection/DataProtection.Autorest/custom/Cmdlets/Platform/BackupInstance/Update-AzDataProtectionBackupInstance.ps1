@@ -29,7 +29,15 @@ function Update-AzDataProtectionBackupInstance
 
         [Parameter(Mandatory=$false, HelpMessage='List of containers to be backed up inside the VaultStore. Use this parameter for DatasourceType AzureBlob.')]
         [System.String[]]
-        ${VaultedBackupContainer},        
+        ${VaultedBackupContainer},
+        
+        [Parameter(Mandatory=$false, HelpMessage='Resource guard operation request in the format similar to <ResourceGuard-ARMID>/dppModifyPolicy/default. Use this parameter when the operation is MUA protected.')]
+        [System.String[]]
+        ${ResourceGuardOperationRequest},
+
+        [Parameter(Mandatory=$false, HelpMessage='Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.')]
+        [System.String]
+        ${Token},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -91,7 +99,7 @@ function Update-AzDataProtectionBackupInstance
         
         if($hasPolicyId){
             $instance.Property.PolicyInfo.PolicyId = $PolicyId
-        }        
+        }
 
         $DatasourceType =  GetClientDatasourceType -ServiceDatasourceType $instance.Property.DataSourceInfo.Type 
         # $manifest = LoadManifest -DatasourceType $DatasourceType.ToString()
@@ -130,6 +138,17 @@ function Update-AzDataProtectionBackupInstance
 
         # deep validate for update-BI
         $instance.Property.ValidationType = "DeepValidation"
+
+        $hasResourceGuardOperationRequest = $PSBoundParameters.Remove("ResourceGuardOperationRequest")
+        if($hasResourceGuardOperationRequest){
+            $instance.Property.ResourceGuardOperationRequest = $ResourceGuardOperationRequest
+        }
+
+        if($PSBoundParameters.ContainsKey("Token"))
+        {            
+            $null = $PSBoundParameters.Remove("Token")
+            $null = $PSBoundParameters.Add("Token", "Bearer $Token")
+        }
 
         $null = $PSBoundParameters.Remove("BackupInstanceName")
         $null = $PSBoundParameters.Add("Name", $instance.Name)

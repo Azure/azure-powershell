@@ -17,8 +17,8 @@ New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType <Datasource
  [-ConflictPolicy <String>] [-ExcludedNamespace <String[]>] [-ExcludedResourceType <String[]>]
  [-IncludeClusterScopeResource <Boolean?>] [-IncludedNamespace <String[]>] [-IncludedResourceType <String[]>]
  [-LabelSelector <String[]>] [-NamespaceMapping <KubernetesClusterRestoreCriteriaNamespaceMappings>]
- [-PersistentVolumeRestoreMode <String>] [-RestoreHookReference <NamespacedNameResource[]>]
- [<CommonParameters>]
+ [-PersistentVolumeRestoreMode <String>] [-ResourceModifierReference <NamespacedNameResource>]
+ [-RestoreHookReference <NamespacedNameResource[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -188,6 +188,22 @@ Default value is RestoreWithVolumeData
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceModifierReference
+Resource modifier reference to be executed during restore.
+To construct, see NOTES section for RESOURCEMODIFIERREFERENCE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.NamespacedNameResource
 Parameter Sets: (All)
 Aliases:
 

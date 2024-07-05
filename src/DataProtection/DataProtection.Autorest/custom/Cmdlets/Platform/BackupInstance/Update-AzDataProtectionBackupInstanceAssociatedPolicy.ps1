@@ -26,6 +26,14 @@ function Update-AzDataProtectionBackupInstanceAssociatedPolicy
         [Parameter(Mandatory, HelpMessage='Id of the Policy to be associated with the backup instance')]
         [System.String]
         ${PolicyId},
+        
+        [Parameter(Mandatory=$false, HelpMessage='Resource guard operation request in the format similar to <ResourceGuard-ARMID>/dppModifyPolicy/default. Use this parameter when the operation is MUA protected.')]
+        [System.String[]]
+        ${ResourceGuardOperationRequest},
+
+        [Parameter(Mandatory=$false, HelpMessage='Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.')]
+        [System.String]
+        ${Token},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -84,8 +92,20 @@ function Update-AzDataProtectionBackupInstanceAssociatedPolicy
         $instance = Az.DataProtection\Get-AzDataProtectionBackupInstance @PSBoundParameters
         $instance.Property.PolicyInfo.PolicyId = $PolicyId
         $null = $PSBoundParameters.Remove("BackupInstanceName")
+
+        $hasResourceGuardOperationRequest = $PSBoundParameters.Remove("ResourceGuardOperationRequest")
+        if($hasResourceGuardOperationRequest){
+            $instance.Property.ResourceGuardOperationRequest = $ResourceGuardOperationRequest
+        }
+
         $null = $PSBoundParameters.Add("Parameter", $instance)
-        $null = $PSBoundParameters.Add("Name", $instance.Name)
+        $null = $PSBoundParameters.Add("Name", $instance.Name)        
+
+        if($PSBoundParameters.ContainsKey("Token"))
+        {            
+            $null = $PSBoundParameters.Remove("Token")
+            $null = $PSBoundParameters.Add("Token", "Bearer $Token")
+        }
 
         Az.DataProtection.Internal\New-AzDataProtectionBackupInstance  @PSBoundParameters
     }
