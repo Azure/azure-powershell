@@ -3263,7 +3263,7 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - sunilagarwal
+            - gbowerman
             - sr-msft
             - niklarin
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
