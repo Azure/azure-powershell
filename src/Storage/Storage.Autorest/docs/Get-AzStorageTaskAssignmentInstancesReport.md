@@ -44,9 +44,9 @@ Fetch the report summary of a single storage task assignment's instances
 
 ## EXAMPLES
 
-### Example 1: List the reports of all storage task assignments and instances in an account
+### Example 1: List the reports of a task assignment in an account
 ```powershell
-Get-AzStorageTaskAssignmentINstancesReport -AccountName myaccount -ResourceGroupName myresourcegroup -StorageTaskAssignmentName mytaskassignment
+Get-AzStorageTaskAssignmentInstancesReport -AccountName myaccount -ResourceGroupName myresourcegroup -StorageTaskAssignmentName mytaskassignment
 ```
 
 ```output
@@ -69,7 +69,7 @@ TaskVersion            : 1
 Type                   : Microsoft.Storage/storageAccounts/storageTaskAssignments/reports
 ```
 
-{{ Add description here }}
+This command lists the reports of task assignment "mytaskassignment".
 
 ### Example 2: List the reports of all storage task assignments and instances in an account
 ```powershell
@@ -114,7 +114,7 @@ TaskVersion            : 1
 Type                   : Microsoft.Storage/storageAccounts/reports
 ```
 
-{{ Add description here }}
+This command lists the reports of all storage task assignments and instances under storage account "myaccount".
 
 ## PARAMETERS
 

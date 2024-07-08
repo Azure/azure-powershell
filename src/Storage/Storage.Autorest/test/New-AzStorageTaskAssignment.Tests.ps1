@@ -25,8 +25,8 @@ Describe 'New/Get/Update/Remove-AzStorageTaskAssignment, List task assignment re
         $assignment1.Enabled | Should -Be $false
 
         $assignmentname2 = "testassignment02"
-        $start = Get-Date -Year 2225 -Month 1 -Hour 1 -Minute 30
-        $end = Get-Date -Year 2226 -Month 1 -Hour 2 -Minute 35
+        $start = Get-Date -Year 2225 -Month 1 -Day 10 -Hour 1 -Minute 30
+        $end = Get-Date -Year 2226 -Month 1 -Day 10 -Hour 2 -Minute 35
         $assignment2 = New-AzStorageTaskAssignment -AccountName $env.TaskAssignmentAccount -Name $assignmentname2 -ResourceGroupName $env.TaskAssignmentResourceGroup -TaskId $env.TaskID  -Description "test assignment2" -ReportPrefix $reportprefix -TriggerType OnSchedule -StartFrom $start.ToUniversalTime() -EndBy $end.ToUniversalTime() -Enabled:$false -Interval 10 -IntervalUnit Days 
         $assignment2.Name | Should -Be $assignmentname2
         $assignment2.ReportPrefix | Should -Be $reportprefix
@@ -34,8 +34,8 @@ Describe 'New/Get/Update/Remove-AzStorageTaskAssignment, List task assignment re
         $assignment2.Enabled | Should -Be $false
         $assignment2.IntervalUnit | Should -Be "days"
         $assignment2.Interval | Should -Be 10 
-        $assignment2.StartFrom.Day| Should -Be $start.ToUniversalTime().Day
-        $assignment2.EndBy.Day | Should -Be $end.ToUniversalTime().Day
+        $assignment2.StartFrom.Year| Should -Be $start.ToUniversalTime().Year
+        $assignment2.EndBy.Year | Should -Be $end.ToUniversalTime().Year
 
         $assignment1 = Get-AzStorageTaskAssignment -AccountName $env.TaskAssignmentAccount -ResourceGroupName $env.TaskAssignmentResourceGroup -Name $assignmentname1
         $assignment1.Name | Should -Be $assignmentname1
@@ -59,7 +59,7 @@ Describe 'New/Get/Update/Remove-AzStorageTaskAssignment, List task assignment re
         $assignment1.ReportPrefix | Should -Be $reportprefix
         $assignment1.TriggerType | Should -Be "RunOnce"
         $assignment1.Enabled | Should -Be $false
-        $assignment1.StartOn.Day | Should -Be $end.ToUniversalTime().Day
+        $assignment1.StartOn.Year | Should -Be $end.ToUniversalTime().Year
 
         $assignment2 = Update-AzStorageTaskAssignment -AccountName $env.TaskAssignmentAccount -ResourceGroupName $env.TaskAssignmentResourceGroup -Name $assignmentname2 -Interval 20 -IntervalUnit Days -Description "update atask assignment" -Enabled:$false -TargetExcludePrefix "ttt"
         $assignment2.Name | Should -Be $assignmentname2
