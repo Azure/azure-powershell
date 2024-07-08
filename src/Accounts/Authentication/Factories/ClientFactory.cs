@@ -76,7 +76,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     subscriptionId.SetValue(client, context.Subscription.Id);
                 }
             }
-        }
 
             return client;
         }
