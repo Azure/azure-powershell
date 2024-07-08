@@ -55,6 +55,9 @@ input-file:
   - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/StackHCI/stable/2024-04-01/arcSettings.json
   - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/StackHCI/stable/2024-04-01/clusters.json
   - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/StackHCI/stable/2024-04-01/extensions.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/StackHCI/stable/2024-04-01/deploymentSettings.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/StackHCI/stable/2024-04-01/edgeDevices.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/StackHCI/stable/2024-04-01/securitySettings.json
 
 module-version: 1.2.0
 title: StackHCI

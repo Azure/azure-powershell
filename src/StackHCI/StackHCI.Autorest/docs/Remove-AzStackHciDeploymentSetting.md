@@ -1,61 +1,64 @@
 ---
 external help file:
 Module Name: Az.StackHCI
-online version: https://learn.microsoft.com/powershell/module/az.stackhci/update-azstackhcicluster
+online version: https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhcideploymentsetting
 schema: 2.0.0
 ---
 
-# Update-AzStackHciCluster
+# Remove-AzStackHciDeploymentSetting
 
 ## SYNOPSIS
-Update an HCI cluster.
+Delete a DeploymentSetting
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### Delete (Default)
 ```
-Update-AzStackHciCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AadTenantId <String>] [-CloudManagementEndpoint <String>]
- [-DesiredPropertyDiagnosticLevel <DiagnosticLevel>]
- [-DesiredPropertyWindowsServerSubscription <WindowsServerSubscription>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzStackHciDeploymentSetting -ClusterName <String> -ResourceGroupName <String> -SName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### DeleteViaIdentity
 ```
-Update-AzStackHciCluster -InputObject <IStackHciIdentity> [-AadTenantId <String>]
- [-CloudManagementEndpoint <String>] [-DesiredPropertyDiagnosticLevel <DiagnosticLevel>]
- [-DesiredPropertyWindowsServerSubscription <WindowsServerSubscription>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzStackHciDeploymentSetting -InputObject <IStackHciIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update an HCI cluster.
+Delete a DeploymentSetting
 
 ## EXAMPLES
 
-### Example 1: 
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzStackHciCluster -ResourceGroupName test-rg -Name myCluster3 -DesiredPropertyDiagnosticLevel Enhanced -DesiredPropertyWindowsServerSubscription Disabled
+{{ Add code here }}
 ```
 
 ```output
-Location Name       Resource Group
--------- ----       -----------------
-eastus   myCluster3 test-rg
+{{ Add output here }}
 ```
 
-Updating DiagnosticLevel and WindowsServerSubscription values for a cluster.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
-### -AadTenantId
-Tenant id of cluster AAD identity.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -66,15 +69,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CloudManagementEndpoint
-Endpoint configured for management from the Azure portal
+### -ClusterName
+The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -97,75 +100,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DesiredPropertyDiagnosticLevel
-Desired level of diagnostic data emitted by the cluster.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DesiredPropertyWindowsServerSubscription
-Desired state of Windows Server Subscription.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -175,15 +116,30 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the cluster.
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: ClusterName
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -196,8 +152,23 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Delete
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SName
+Name of Deployment Setting
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: DeploymentSettingsName
 
 Required: True
 Position: Named
@@ -212,27 +183,12 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -277,7 +233,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ICluster
+### System.Boolean
 
 ## NOTES
 

@@ -1,40 +1,52 @@
 ---
 external help file:
 Module Name: Az.StackHCI
-online version: https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhcicluster
+online version: https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhcisecuritysetting
 schema: 2.0.0
 ---
 
-# Remove-AzStackHciCluster
+# New-AzStackHciSecuritySetting
 
 ## SYNOPSIS
-Delete an HCI cluster.
+Create a security setting
 
 ## SYNTAX
 
-### Delete (Default)
 ```
-Remove-AzStackHciCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzStackHciCluster -InputObject <IStackHciIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzStackHciSecuritySetting -ClusterName <String> -ResourceGroupName <String> -SName <String>
+ [-SubscriptionId <String>] [-ProvisioningState <ProvisioningState>]
+ [-SecuredCoreComplianceAssignment <ComplianceAssignmentType>]
+ [-SmbEncryptionForIntraClusterTrafficComplianceAssignment <ComplianceAssignmentType>]
+ [-WdacComplianceAssignment <ComplianceAssignmentType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete an HCI cluster.
+Create a security setting
 
 ## EXAMPLES
 
-### Example 1: 
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzStackHciCluster -ResourceGroupName test-rg -Name myCluster2
+{{ Add code here }}
 ```
 
-Removes a particular cluster.
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -47,6 +59,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClusterName
+The name of the cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -69,37 +96,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
-Parameter Sets: DeleteViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the cluster.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: ClusterName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -115,11 +111,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -ProvisioningState
+The status of the last operation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ProvisioningState
 Parameter Sets: (All)
 Aliases:
 
@@ -136,8 +132,53 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecuredCoreComplianceAssignment
+Secured Core Compliance Assignment
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ComplianceAssignmentType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SmbEncryptionForIntraClusterTrafficComplianceAssignment
+SMB encryption for intra-cluster traffic Compliance Assignment
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ComplianceAssignmentType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SName
+Name of security setting
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: SecuritySettingsName
 
 Required: True
 Position: Named
@@ -152,12 +193,27 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WdacComplianceAssignment
+WDAC Compliance Assignment
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ComplianceAssignmentType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -198,32 +254,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
-
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ISecuritySetting
 
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IStackHciIdentity>`: Identity Parameter
-  - `[ArcSettingName <String>]`: The name of the proxy resource holding details of HCI ArcSetting information.
-  - `[ClusterName <String>]`: The name of the cluster.
-  - `[DeploymentSettingsName <String>]`: Name of Deployment Setting
-  - `[EdgeDeviceName <String>]`: Name of Device
-  - `[ExtensionName <String>]`: The name of the machine extension.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ResourceUri <String>]`: The fully qualified Azure Resource manager identifier of the resource.
-  - `[SecuritySettingsName <String>]`: Name of security setting
-  - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
 
 ## RELATED LINKS
 

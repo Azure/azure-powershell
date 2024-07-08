@@ -15,19 +15,34 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzStackHciClusterLogCol
 }
 
 Describe 'Start-AzStackHciClusterLogCollection' {
-    It 'TriggerExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'TriggerExpanded' {
+        Start-AzStackHciClusterLogCollection -ClusterName $env.ClusterName -ResourceGroupName $env.ResourceGroup -FromDate "2024-08-01T17:18:19.1234567Z" -ToDate "2024-08-02T17:18:19.1234567Z"
     }
 
-    It 'Trigger' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Trigger' {
+        $logCollectionRequest = @{
+            FromDate = "2024-08-01T17:18:19.1234567Z"
+            ToDate = "2024-08-02T17:18:19.1234567Z"
+        }
+
+        Start-AzStackHciClusterLogCollection -ClusterName $env.ClusterName -ResourceGroupName $env.ResourceGroup -LogCollectionRequest $logCollectionRequest
     }
 
-    It 'TriggerViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    # It 'TriggerViaIdentityExpanded' {
 
-    It 'TriggerViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    #     $inputObject = Get-AzStackHciCluster -Name $env.ClusterName -ResourceGroupName $env.ResourceGroup
+
+    #     Start-AzStackHciClusterLogCollection -InputObject $inputObject -FromDate "2024-08-01T17:18:19.1234567Z" -ToDate "2024-08-02T17:18:19.1234567Z"
+    # }
+
+    # It 'TriggerViaIdentity' {
+    #     $inputObject = Get-AzStackHciCluster -Name $env.ClusterName -ResourceGroupName $env.ResourceGroup
+
+    #     $logCollectionRequest = @{
+    #         FromDate = "2024-08-01T17:18:19.1234567Z"
+    #         ToDate = "2024-08-02T17:18:19.1234567Z"
+    #     }
+        
+    #     Start-AzStackHciClusterLogCollection -InputObject $inputObject -LogCollectionRequest $logCollectionRequest
+    # }
 }

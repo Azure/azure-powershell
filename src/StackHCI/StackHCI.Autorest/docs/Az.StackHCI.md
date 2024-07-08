@@ -32,6 +32,12 @@ Get ArcSetting resource details of HCI Cluster.
 ### [Get-AzStackHciCluster](Get-AzStackHciCluster.md)
 Get HCI cluster.
 
+### [Get-AzStackHciDeploymentSetting](Get-AzStackHciDeploymentSetting.md)
+Get a DeploymentSetting
+
+### [Get-AzStackHciEdgeDevice](Get-AzStackHciEdgeDevice.md)
+Get a EdgeDevice
+
 ### [Get-AzStackHciExtension](Get-AzStackHciExtension.md)
 Get particular Arc Extension of HCI Cluster.
 
@@ -43,6 +49,9 @@ Gets Remote Support Access.
 
 ### [Get-AzStackHCIRemoteSupportSessionHistory](Get-AzStackHCIRemoteSupportSessionHistory.md)
 Gets Remote Support Session History Details.
+
+### [Get-AzStackHciSecuritySetting](Get-AzStackHciSecuritySetting.md)
+Get a SecuritySetting
 
 ### [Get-AzStackHCIVMAttestation](Get-AzStackHCIVMAttestation.md)
 Get-AzStackHCIVMAttestation shows a list of guests added to IMDS Attestation on a node.
@@ -62,8 +71,17 @@ Create ArcSetting for HCI cluster.
 ### [New-AzStackHciCluster](New-AzStackHciCluster.md)
 Create an HCI cluster.
 
+### [New-AzStackHciDeploymentSetting](New-AzStackHciDeploymentSetting.md)
+Create a DeploymentSetting
+
+### [New-AzStackHciEdgeDevice](New-AzStackHciEdgeDevice.md)
+Create a EdgeDevice
+
 ### [New-AzStackHciExtension](New-AzStackHciExtension.md)
 Create Extension for HCI cluster.
+
+### [New-AzStackHciSecuritySetting](New-AzStackHciSecuritySetting.md)
+Create a security setting
 
 ### [Register-AzStackHCI](Register-AzStackHCI.md)
 Register-AzStackHCI creates a Microsoft.AzureStackHCI cloud resource representing the on-premises cluster and registers the on-premises cluster with Azure.
@@ -74,11 +92,20 @@ Delete ArcSetting resource details of HCI Cluster.
 ### [Remove-AzStackHciCluster](Remove-AzStackHciCluster.md)
 Delete an HCI cluster.
 
+### [Remove-AzStackHciDeploymentSetting](Remove-AzStackHciDeploymentSetting.md)
+Delete a DeploymentSetting
+
+### [Remove-AzStackHciEdgeDevice](Remove-AzStackHciEdgeDevice.md)
+Delete a EdgeDevice
+
 ### [Remove-AzStackHciExtension](Remove-AzStackHciExtension.md)
 Delete particular Arc Extension of HCI Cluster.
 
 ### [Remove-AzStackHCIRemoteSupport](Remove-AzStackHCIRemoteSupport.md)
 Removes Remote Support.
+
+### [Remove-AzStackHciSecuritySetting](Remove-AzStackHciSecuritySetting.md)
+Delete a SecuritySetting
 
 ### [Remove-AzStackHCIVMAttestation](Remove-AzStackHCIVMAttestation.md)
 Remove-AzStackHCIVMAttestation removes guests from AzureStack HCI IMDS Attestation.
@@ -89,8 +116,20 @@ Set-AzStackHCI modifies resource properties of the Microsoft.AzureStackHCI cloud
 ### [Set-AzStackHciClusterRemoteSupport](Set-AzStackHciClusterRemoteSupport.md)
 Configure RemoteSupport on a cluster
 
+### [Set-AzStackHciDeploymentSetting](Set-AzStackHciDeploymentSetting.md)
+Create a DeploymentSetting
+
+### [Set-AzStackHciEdgeDevice](Set-AzStackHciEdgeDevice.md)
+Create a EdgeDevice
+
+### [Set-AzStackHciSecuritySetting](Set-AzStackHciSecuritySetting.md)
+Create a security setting
+
 ### [Start-AzStackHciClusterLogCollection](Start-AzStackHciClusterLogCollection.md)
 Trigger Log Collection on a cluster
+
+### [Test-AzStackHciEdgeDevice](Test-AzStackHciEdgeDevice.md)
+A long-running resource action.
 
 ### [Unregister-AzStackHCI](Unregister-AzStackHCI.md)
 Unregister-AzStackHCI deletes the Microsoft.AzureStackHCI cloud resource representing the on-premises cluster and unregisters the on-premises cluster with Azure.

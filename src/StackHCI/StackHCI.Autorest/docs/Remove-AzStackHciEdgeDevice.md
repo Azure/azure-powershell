@@ -1,74 +1,72 @@
 ---
 external help file:
 Module Name: Az.StackHCI
-online version: https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhcicluster
+online version: https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhciedgedevice
 schema: 2.0.0
 ---
 
-# Get-AzStackHciCluster
+# Remove-AzStackHciEdgeDevice
 
 ## SYNOPSIS
-Get HCI cluster.
+Delete a EdgeDevice
 
 ## SYNTAX
 
-### List (Default)
+### Delete (Default)
 ```
-Get-AzStackHciCluster [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzStackHciCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Remove-AzStackHciEdgeDevice -Name <String> -ResourceUri <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### DeleteViaIdentity
 ```
-Get-AzStackHciCluster -InputObject <IStackHciIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List1
-```
-Get-AzStackHciCluster -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Remove-AzStackHciEdgeDevice -InputObject <IStackHciIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get HCI cluster.
+Delete a EdgeDevice
 
 ## EXAMPLES
 
-### Example 1: 
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzStackHciCluster -ResourceGroupName test-rg
+{{ Add code here }}
 ```
 
 ```output
-Location   Name       Resource Group
---------   ----       -----------------
-eastus     myCluster3 test-rg
-eastus     myCluster  test-rg
-westeurope myCluster2 test-rg
+{{ Add output here }}
 ```
 
-Gets all the clusters in a RG
+{{ Add description here }}
 
-### Example 2: 
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzStackHciCluster -ResourceGroupName test-rg -ClusterName myCluster
+{{ Add code here }}
 ```
 
 ```output
-Location Name      Resource Group
--------- ----      -----------------
-eastus   myCluster test-rg
+{{ Add output here }}
 ```
 
-Gets the details of a particular cluster.
-To see the details use : "Write-Host( $cluster | Format-List | Out-String)"
+{{ Add description here }}
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -92,7 +90,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -103,12 +101,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the cluster.
+Name of Device
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
-Aliases: ClusterName
+Parameter Sets: Delete
+Aliases: EdgeDeviceName
 
 Required: True
 Position: Named
@@ -117,34 +115,78 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: System.String
-Parameter Sets: Get, List1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-The ID of the target subscription.
-The value must be an UUID.
-
-```yaml
-Type: System.String[]
-Parameter Sets: Get, List, List1
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceUri
+The fully qualified Azure Resource manager identifier of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -158,7 +200,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ICluster
+### System.Boolean
 
 ## NOTES
 

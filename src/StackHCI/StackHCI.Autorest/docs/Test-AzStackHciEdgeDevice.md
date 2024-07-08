@@ -1,62 +1,77 @@
 ---
 external help file:
 Module Name: Az.StackHCI
-online version: https://learn.microsoft.com/powershell/module/az.stackhci/update-azstackhcicluster
+online version: https://learn.microsoft.com/powershell/module/az.stackhci/test-azstackhciedgedevice
 schema: 2.0.0
 ---
 
-# Update-AzStackHciCluster
+# Test-AzStackHciEdgeDevice
 
 ## SYNOPSIS
-Update an HCI cluster.
+A long-running resource action.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### ValidateExpanded (Default)
 ```
-Update-AzStackHciCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AadTenantId <String>] [-CloudManagementEndpoint <String>]
- [-DesiredPropertyDiagnosticLevel <DiagnosticLevel>]
- [-DesiredPropertyWindowsServerSubscription <WindowsServerSubscription>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzStackHciEdgeDevice -Name <String> -ResourceUri <String> -EdgeDeviceId <String[]>
+ [-AdditionalInfo <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### Validate
 ```
-Update-AzStackHciCluster -InputObject <IStackHciIdentity> [-AadTenantId <String>]
- [-CloudManagementEndpoint <String>] [-DesiredPropertyDiagnosticLevel <DiagnosticLevel>]
- [-DesiredPropertyWindowsServerSubscription <WindowsServerSubscription>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzStackHciEdgeDevice -Name <String> -ResourceUri <String> -ValidateRequest <IValidateRequest>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ValidateViaIdentity
+```
+Test-AzStackHciEdgeDevice -InputObject <IStackHciIdentity> -ValidateRequest <IValidateRequest>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ValidateViaIdentityExpanded
+```
+Test-AzStackHciEdgeDevice -InputObject <IStackHciIdentity> -EdgeDeviceId <String[]> [-AdditionalInfo <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update an HCI cluster.
+A long-running resource action.
 
 ## EXAMPLES
 
-### Example 1: 
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzStackHciCluster -ResourceGroupName test-rg -Name myCluster3 -DesiredPropertyDiagnosticLevel Enhanced -DesiredPropertyWindowsServerSubscription Disabled
+{{ Add code here }}
 ```
 
 ```output
-Location Name       Resource Group
--------- ----       -----------------
-eastus   myCluster3 test-rg
+{{ Add output here }}
 ```
 
-Updating DiagnosticLevel and WindowsServerSubscription values for a cluster.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
-### -AadTenantId
-Tenant id of cluster AAD identity.
+### -AdditionalInfo
+Additional info required for validation.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -66,11 +81,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CloudManagementEndpoint
-Endpoint configured for management from the Azure portal
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -97,62 +112,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DesiredPropertyDiagnosticLevel
-Desired level of diagnostic data emitted by the cluster.
+### -EdgeDeviceId
+Node Ids against which, current node has to be validated.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DiagnosticLevel
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DesiredPropertyWindowsServerSubscription
-Desired state of Windows Server Subscription.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -165,7 +133,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: ValidateViaIdentity, ValidateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -176,12 +144,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the cluster.
+Name of Device
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: ClusterName
+Parameter Sets: Validate, ValidateExpanded
+Aliases: EdgeDeviceName
 
 Required: True
 Position: Named
@@ -190,43 +158,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-The ID of the target subscription.
-The value must be an UUID.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -234,6 +170,37 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceUri
+The fully qualified Azure Resource manager identifier of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: Validate, ValidateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ValidateRequest
+The validate request for Edge Device.
+To construct, see NOTES section for VALIDATEREQUEST properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IValidateRequest
+Parameter Sets: Validate, ValidateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -273,11 +240,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IValidateRequest
+
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ICluster
+### System.String
 
 ## NOTES
 
@@ -299,6 +268,10 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceUri <String>]`: The fully qualified Azure Resource manager identifier of the resource.
   - `[SecuritySettingsName <String>]`: Name of security setting
   - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
+
+`VALIDATEREQUEST <IValidateRequest>`: The validate request for Edge Device.
+  - `EdgeDeviceId <String[]>`: Node Ids against which, current node has to be validated.
+  - `[AdditionalInfo <String>]`: Additional info required for validation.
 
 ## RELATED LINKS
 

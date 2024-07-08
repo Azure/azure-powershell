@@ -15,11 +15,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzStackHciClusterRemoteSu
 }
 
 Describe 'Set-AzStackHciClusterRemoteSupport' {
-    It 'ConfigureExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ConfigureExpanded' {
+        Set-AzStackHciClusterRemoteSupport -ClusterName $env.ClusterName -ResourceGroupName $env.ResourceGroup -ExpirationTimeStamp "2024-08-01T17:18:19.1234567Z" -RemoteSupportType "Enable"
     }
 
-    It 'Configure' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Configure' {
+
+        $remoteSupportRequest = @{
+            ExpirationTimeStamp = "2024-08-01T17:18:19.1234567Z"
+            RemoteSupportType = "Enable"
+        }
+
+        Set-AzStackHciClusterRemoteSupport -ClusterName $env.ClusterName -ResourceGroupName $env.ResourceGroup -RemoteSupportRequest $remoteSupportRequest
     }
 }
