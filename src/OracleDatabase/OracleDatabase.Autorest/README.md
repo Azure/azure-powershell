@@ -27,7 +27,7 @@ For information on how to develop for `Az.OracleDatabase`, see [how-to.md](how-t
 > see https://aka.ms/autorest
 
 ```yaml
-commit: eabbc8ab2cc98dc0753ae6eebffc5b4ba5def1ec
+commit: cbbe228fd422db02b65e2748f83df5f2bcad7581
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/oracle/resource-manager/readme.md

@@ -41,27 +41,109 @@ Get a DnsPrivateZone
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Gets a list of the DNS Private Zones by location
 ```powershell
-{{ Add code here }}
+Get-AzOracleDatabaseDnsPrivateZone -Location "eastus"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                                                                      SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
+----                                                                      ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
+byui3zo3.ocidelegated.ocipstestvnet.adb.us-ashburn-1.oraclevcn.com                                                                                                                                                       
+byui3zo3.adb.us-ashburn-1.oraclevcn.com                                                                                                                                                                                  
+byui3zo3.adbapps.us-ashburn-1.oraclevcn.com                                                                                                                                                                              
+byui3zo3.ocidelegated.ocipstestvnet.adbapps.us-ashburn-1.oraclevcn.com                                                                                                                                                   
+byui3zo3.adb.us-ashburn-1.oraclecloudapps.com                                                                                                                                                                            
+byui3zo3.adb.us-ashburn-1.oraclecloud.com                                                                                                                                                                                
+ocibackupdeleg.ocipstestvnet.oraclevcn.com                                                                                                                                                                               
+ocidelegated.ocipstestvnet.oraclevcn.com                                                                                                                                                                                 
+oui8ipy0.ocidelegated.ocidarenvnet.adb.us-ashburn-1.oraclevcn.com                                                                                                                                                        
+oui8ipy0.adb.us-ashburn-1.oraclevcn.com                                                                                                                                                                                  
+oui8ipy0.adbapps.us-ashburn-1.oraclevcn.com                                                                                                                                                                              
+oui8ipy0.ocidelegated.ocidarenvnet.adbapps.us-ashburn-1.oraclevcn.com                                                                                                                                                    
+oui8ipy0.adb.us-ashburn-1.oraclecloudapps.com                                                                                                                                                                            
+oui8ipy0.adb.us-ashburn-1.oraclecloud.com                                                                                                                                                                                
+ocidelegated.ocidarenvnet.oraclevcn.com                                                                                                                                                                                  
+haisu723.ocidefault2.ocidbqavnetjun.adb.us-ashburn-1.oraclevcn.com                                                                                                                                                       
+haisu723.adb.us-ashburn-1.oraclevcn.com                                                                                                                                                                                  
+haisu723.adbapps.us-ashburn-1.oraclevcn.com                                                                                                                                                                              
+haisu723.ocidefault2.ocidbqavnetjun.adbapps.us-ashburn-1.oraclevcn.com                                                                                                                                                   
+haisu723.adb.us-ashburn-1.oraclecloudapps.com                                                                                                                                                                            
+haisu723.adb.us-ashburn-1.oraclecloud.com                                                                                                                                                                                
+wvrdwnp0.ocidefault2.ocidbqavnetjun.adb.us-ashburn-1.oraclevcn.com                                                                                                                                                       
+wvrdwnp0.adb.us-ashburn-1.oraclevcn.com                                                                                                                                                                                  
+wvrdwnp0.adbapps.us-ashburn-1.oraclevcn.com                                                                                                                                                                              
+wvrdwnp0.ocidefault2.ocidbqavnetjun.adbapps.us-ashburn-1.oraclevcn.com                                                                                                                                                   
+wvrdwnp0.adb.us-ashburn-1.oraclecloudapps.com                                                                                                                                                                            
+wvrdwnp0.adb.us-ashburn-1.oraclecloud.com                                                                                                                                                                                
+pfwukijt.ocidefault2.ocidbqavnetjun.adb.us-ashburn-1.oraclevcn.com                                                                                                                                                       
+pfwukijt.adb.us-ashburn-1.oraclevcn.com                                                                                                                                                                                  
+pfwukijt.adbapps.us-ashburn-1.oraclevcn.com                                                                                                                                                                              
+pfwukijt.ocidefault2.ocidbqavnetjun.adbapps.us-ashburn-1.oraclevcn.com                                                                                                                                                   
+pfwukijt.adb.us-ashburn-1.oraclecloudapps.com                                                                                                                                                                            
+pfwukijt.adb.us-ashburn-1.oraclecloud.com                                                                                                                                                                                
+y7sttfq6.ocidefault2.ocidbqavnetjun.adb.us-ashburn-1.oraclevcn.com                                                                                                                                                       
+y7sttfq6.adb.us-ashburn-1.oraclevcn.com                                                                                                                                                                                  
+y7sttfq6.adbapps.us-ashburn-1.oraclevcn.com                                                                                                                                                                              
+y7sttfq6.ocidefault2.ocidbqavnetjun.adbapps.us-ashburn-1.oraclevcn.com                                                                                                                                                   
+y7sttfq6.adb.us-ashburn-1.oraclecloudapps.com                                                                                                                                                                            
+y7sttfq6.adb.us-ashburn-1.oraclecloud.com                                                                                                                                                                                
+ocibackupdg1.oci0409vn.oraclevcn.com                                                                                                                                                                                     
+vifnfx8g.ocidefault2.ocidbqavnetjun.adb.us-ashburn-1.oraclevcn.com                                                                                                                                                       
+vifnfx8g.adb.us-ashburn-1.oraclevcn.com                                                                                                                                                                                  
+vifnfx8g.adbapps.us-ashburn-1.oraclevcn.com                                                                                                                                                                              
+vifnfx8g.ocidefault2.ocidbqavnetjun.adbapps.us-ashburn-1.oraclevcn.com                                                                                                                                                   
+vifnfx8g.adb.us-ashburn-1.oraclecloudapps.com                                                                                                                                                                            
+vifnfx8g.adb.us-ashburn-1.oraclecloud.com                                                                                                                                     
+
+spalimpa.new.com                                                                                                                                                                                                         
+wk2pxbuc.ocidefault2.ocidbqavnetjun.adb.us-ashburn-1.oraclevcn.com                                                                                                                                                       
+wk2pxbuc.adb.us-ashburn-1.oraclevcn.com                                                                                                                                                                                  
+wk2pxbuc.adbapps.us-ashburn-1.oraclevcn.com                                                                                                                                                                              
+wk2pxbuc.ocidefault2.ocidbqavnetjun.adbapps.us-ashburn-1.oraclevcn.com                                                                                                                                                   
+wk2pxbuc.adb.us-ashburn-1.oraclecloudapps.com                                                                                                                                                                            
+wk2pxbuc.adb.us-ashburn-1.oraclecloud.com                                                                                                                                                                                
+ocidefault2.ocidbqavnetjun.oraclevcn.com                                                                                                                                                                                 
+ocidg2.ocicomichaevn.oraclevcn.com                                                                                                                                                                                       
+hhbrpiy9.ocidefault.ocidrtestvnet0.adb.us-ashburn-1.oraclevcn.com                                                                                                                                                        
+hhbrpiy9.adb.us-ashburn-1.oraclevcn.com                                                                                                                                                                                  
+hhbrpiy9.adbapps.us-ashburn-1.oraclevcn.com                                                                                                                                                                              
+hhbrpiy9.ocidefault.ocidrtestvnet0.adbapps.us-ashburn-1.oraclevcn.com                                                                                                                                                    
+hhbrpiy9.adb.us-ashburn-1.oraclecloudapps.com                                                                                                                                                                            
+hhbrpiy9.adb.us-ashburn-1.oraclecloud.com                                                                                                                                                                                
+spalimpa.testPZ.com                                                                                                                                                                                                      
+max.test.zone.oracle.com                                                                                                                                                                                                 
+max.test.oracle.com                                                                                                                                                                                                      
+dfadf.adfdf.sdfd.dadf.dfadf.com                                                                                                                                                                                          
+rctjwxmm.ocisyde2etests.ocisyde2etestv.adb.us-ashburn-1.oraclevcn.com                                                                                                                                                    
+rctjwxmm.adb.us-ashburn-1.oraclevcn.com                                                                                                                                                                                  
+rctjwxmm.adbapps.us-ashburn-1.oraclevcn.com                                                                                                                                                                              
+rctjwxmm.ocisyde2etests.ocisyde2etestv.adbapps.us-ashburn-1.oraclevcn.com                                                                                                                                                
+rctjwxmm.adb.us-ashburn-1.oraclecloudapps.com                                                                                                                                                                            
+rctjwxmm.adb.us-ashburn-1.oraclecloud.com                                                                                                                                                                                
+ocisyde2etests.ocisyde2etestv.oraclevcn.com                                                                                                                                                                              
+ocidelegated.ocisysvereastu.oraclevcn.com                                                                                                                                                                                
+ypieowfk.ocidefault.ocidrtestvnet0.adb.us-ashburn-1.oraclevcn.com                                                                                                                                                        
+ypieowfk.adb.us-ashburn-1.oraclevcn.com                                                                                                                                                                                  
+ypieowfk.adbapps.us-ashburn-1.oraclevcn.com                                                                                                                                                                              
+ypieowfk.ocidefault.ocidrtestvnet0.adbapps.us-ashburn-1.oraclevcn.com                                                                                                                                                    
+ypieowfk.adb.us-ashburn-1.oraclecloudapps.com                                                                                                                                                                            
+ypieowfk.adb.us-ashburn-1.oraclecloud.com                                                                                                                                                                                
+ocidelegated.ociperfttestvn.oraclevcn.com                                                                                                                                                                                
+jfz7y85f.ocidefault.ocidrtestvnet0.adb.us-ashburn-1.oraclevcn.com                                                                                                                                                        
+jfz7y85f.adb.us-ashburn-1.oraclevcn.com                                                                                                                                                                                  
+jfz7y85f.adbapps.us-ashburn-1.oraclevcn.com                                                                                                                                                                              
+jfz7y85f.ocidefault.ocidrtestvnet0.adbapps.us-ashburn-1.oraclevcn.com                                                                                                                                                    
+jfz7y85f.adb.us-ashburn-1.oraclecloudapps.com                                                                                                                                                                            
+jfz7y85f.adb.us-ashburn-1.oraclecloud.com                                                                                                                                                                                
+ocisubnetaccte.ocivnetacctest.oraclevcn.com                                                                                                                                                                              
+ocidefault.ocidrtestvnet0.oraclevcn.com                                                                                                                                                                                  
+ocidelegatedsu.ocidbqaociuivn.oraclevcn.com                                                                                                                                                                              
+ocidelegated.ocidnsfwdvn.oraclevcn.com
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Gets a list of the DNS Private Zones by location.
+For more information, execute `Get-Help Get-AzOracleDatabaseDnsPrivateZone`
 
 ## PARAMETERS
 

@@ -73,27 +73,13 @@ Update a AutonomousDatabaseBackup
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Updates a Backup for an Autonomous Database resource
 ```powershell
-{{ Add code here }}
+Update-AzOracleDatabaseAutonomousDatabaseBackup -Adbbackupid "testBackupId" -Autonomousdatabasename "OFakePowerShellTestAdbs" -ResourceGroupName "PowerShellTestRg" -RetentionPeriodInDay 91
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Updates a Backup for an Autonomous Database resource.
+For more information, execute `Get-Help Update-AzOracleDatabaseAutonomousDatabaseBackup`
 
 ## PARAMETERS
 

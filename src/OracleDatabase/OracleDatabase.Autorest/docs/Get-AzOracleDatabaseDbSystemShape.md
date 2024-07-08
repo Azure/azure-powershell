@@ -41,27 +41,46 @@ Get a DbSystemShape
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Gets a list of the Database System Shapes by location
 ```powershell
-{{ Add code here }}
+Get-AzOracleDatabaseDbSystemShape -Location "eastus"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+AvailableCoreCount                : 0
+AvailableCoreCountPerNode         : 126
+AvailableDataStorageInTb          : 63
+AvailableDataStoragePerServerInTb : 
+AvailableDbNodePerNodeInGb        : 2243
+AvailableDbNodeStorageInGb        : 
+AvailableMemoryInGb               : 
+AvailableMemoryPerNodeInGb        : 1390
+CoreCountIncrement                : 
+Id                                : /subscriptions/dcb0912a-9b6f-46e3-a11b-5296913d89b5/providers/Oracle.Database/locations/eastus/dbSystemShapes/Exadata.X9M
+MaxStorageCount                   : 
+MaximumNodeCount                  : 32
+MinCoreCountPerNode               : 0
+MinDataStorageInTb                : 2
+MinDbNodeStoragePerNodeInGb       : 60
+MinMemoryPerNodeInGb              : 30
+MinStorageCount                   : 
+MinimumCoreCount                  : 0
+MinimumNodeCount                  : 2
+Name                              : Exadata.X9M
+ResourceGroupName                 : 
+RuntimeMinimumCoreCount           : 
+ShapeFamily                       : EXADATA
+SystemDataCreatedAt               : 
+SystemDataCreatedBy               : 
+SystemDataCreatedByType           : 
+SystemDataLastModifiedAt          : 
+SystemDataLastModifiedBy          : 
+SystemDataLastModifiedByType      : 
+Type                              : Oracle.Database/Locations/dbSystemShapes
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Gets a list of the Database System Shapes by location.
+For more information, execute `Get-Help Get-AzOracleDatabaseDbSystemShape`
 
 ## PARAMETERS
 

@@ -41,27 +41,20 @@ Get a GiVersion
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Gets a list of the Grid Infrastructure Versions by location
 ```powershell
-{{ Add code here }}
+Get-AzOracleDatabaseGiVersion -Location "eastus"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name     SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
+----     ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
+19.0.0.0                                                                                                                                                
+23.0.0.0                                                                                                                                                
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Gets a list of the Grid Infrastructure Versions by location.
+For more information, execute `Get-Help Get-AzOracleDatabaseGiVersion`
 
 ## PARAMETERS
 

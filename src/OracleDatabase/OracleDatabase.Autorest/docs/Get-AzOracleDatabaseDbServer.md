@@ -41,27 +41,21 @@ Get a DbServer
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Gets a list of the Database Servers for a Cloud Exadata Infrastructure resource
 ```powershell
-{{ Add code here }}
+Get-AzOracleDatabaseDbServer -Cloudexadatainfrastructurename "OFake_PowerShellTestExaInfra" -ResourceGroupName "PowerShellTestRg"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name       SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
+----       ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
+dbServer-2                                                                                                                                                PowerShellTestRg
+dbServer-3                                                                                                                                                PowerShellTestRg
+dbServer-1                                                                                                                                                PowerShellTestRg
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Gets a list of the Database Servers for a Cloud Exadata Infrastructure resource.
+For more information, execute `Get-Help Get-AzOracleDatabaseDbServer`
 
 ## PARAMETERS
 

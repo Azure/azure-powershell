@@ -57,27 +57,19 @@ Add VMs to the VM Cluster
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Adds a VM to a Cloud VM Cluster resource
 ```powershell
-{{ Add code here }}
+$resourceGroup = "PowerShellTestRg"
+
+$dbServerList = Get-AzOracleDatabaseDbServer -Cloudexadatainfrastructurename "OFake_PowerShellTestExaInfra" -ResourceGroupName $resourceGroup
+$dbServerOcid1 = $dbServerList[0].Ocid
+$dbServersToAdd = @($dbServerOcid1)
+
+Add-AzOracleDatabaseCloudVMClusterVM -Cloudvmclustername "OFake_PowerShellTestVmCluster" -ResourceGroupName $resourceGroup -DbServer $dbServersToAdd
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Adds a VM to a Cloud VM Cluster resource.
+For more information, execute `Get-Help Add-AzOracleDatabaseCloudVMClusterVM`
 
 ## PARAMETERS
 

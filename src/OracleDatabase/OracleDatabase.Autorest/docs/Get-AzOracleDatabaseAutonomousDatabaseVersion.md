@@ -41,27 +41,22 @@ Get a AutonomousDbVersion
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Gets a list of the Autonomous Database Versions by location
 ```powershell
-{{ Add code here }}
+Get-AzOracleDatabaseAutonomousDatabaseVersion -Location "eastus"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
+---- ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
+19c                                                                                                                                                 
+19c                                                                                                                                                 
+19c                                                                                                                                                 
+19c                                                                                                                                                 
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Gets a list of the Autonomous Database Versions by location.
+For more information, execute `Get-Help Get-AzOracleDatabaseAutonomousDatabaseVersion`
 
 ## PARAMETERS
 
