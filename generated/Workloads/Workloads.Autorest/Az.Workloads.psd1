@@ -1,5 +1,5 @@
 @{
-  GUID = 'ee197d70-9add-4652-9b94-eab7bc0e93e1'
+  GUID = '4e3b4879-ac64-4353-9219-5a239b80a402'
   RootModule = './Az.Workloads.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
