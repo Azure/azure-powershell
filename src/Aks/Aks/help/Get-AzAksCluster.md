@@ -35,7 +35,7 @@ List Kubernetes managed clusters.
 
 ## EXAMPLES
 
-### List all Kubernetes clusters
+### Example 1: List all Kubernetes clusters
 ```powershell
 Get-AzAksCluster
 ```
