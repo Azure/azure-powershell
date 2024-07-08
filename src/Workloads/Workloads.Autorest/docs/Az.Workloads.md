@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Workloads
-Module Guid: ee197d70-9add-4652-9b94-eab7bc0e93e1
+Module Guid: 4e3b4879-ac64-4353-9219-5a239b80a402
 Download Help Link: https://learn.microsoft.com/powershell/module/az.workloads
 Help Version: 1.0.0.0
 Locale: en-US
