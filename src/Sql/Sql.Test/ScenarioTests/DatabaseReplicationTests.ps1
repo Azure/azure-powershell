@@ -19,7 +19,7 @@
 function Test-CreateDatabaseCopy()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server "Standard"
@@ -67,7 +67,7 @@ function Test-CreateDatabaseCopy()
 function Test-CreateVcoreDatabaseCopy()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$db = Create-VcoreDatabaseForTest $rg $server 2 BasePrice
@@ -121,7 +121,7 @@ function Test-CreateVcoreDatabaseCopy()
 function Test-CreateSecondaryDatabase()
 {
 	# Setup
-    $location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+    $location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -162,7 +162,7 @@ function Test-CreateSecondaryDatabase()
 function Test-CreateNamedSecondaryDatabase()
 {
 	# Setup
-    $location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+    $location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -217,7 +217,7 @@ function Test-CreateNamedSecondaryDatabase()
 function Test-CreateNamedSecondaryDatabaseNegative()
 {
 	# Setup
-    $location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+    $location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -251,7 +251,7 @@ function Test-CreateNamedSecondaryDatabaseNegative()
 function Test-GetReplicationLink()
 {
 	# Setup
-    $location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+    $location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -269,18 +269,78 @@ function Test-GetReplicationLink()
 		$secondary = Get-AzSqlDatabaseReplicationLink -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
 		 -DatabaseName $database.DatabaseName -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName
 		Assert-NotNull $secondary.LinkId
+		Assert-NotNull $secondary.LinkType
 		Assert-AreEqual $secondary.ResourceGroupName $rg.ResourceGroupName
 		Assert-AreEqual $secondary.ServerName $server.ServerName
 		Assert-AreEqual $secondary.DatabaseName $database.DatabaseName
 		Assert-AreEqual $secondary.Role Primary
-		Assert-AreEqual $secondary.Location $location
 		Assert-AreEqual $secondary.PartnerResourceGroupName $partRg.ResourceGroupName
 		Assert-AreEqual $secondary.PartnerServerName $partServer.ServerName
 		Assert-NotNull $secondary.PartnerRole
-		Assert-AreEqual $secondary.PartnerLocation $location
 		Assert-NotNull $secondary.AllowConnections
 		Assert-NotNull $secondary.ReplicationState
 		Assert-NotNull $secondary.PercentComplete
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+		Remove-ResourceGroupForTest $partRg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests updating replication link type
+#>
+function Test-SetReplicationLink()
+{
+	# Setup
+    $location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+	$database = Create-DatabaseForTest $rg $server
+
+	$partRg = Create-ResourceGroupForTest $location
+	$partServer = Create-ServerForTest $partRg $location
+
+	try
+	{
+		# Get Secondary
+		$job = New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
+			-PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All -AsJob
+		$job | Wait-Job
+
+		$secondary = Get-AzSqlDatabaseReplicationLink -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+		 -DatabaseName $database.DatabaseName -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName
+		Assert-NotNull $secondary.LinkId
+		Assert-NotNull $secondary.LinkType
+		Assert-AreEqual $secondary.ResourceGroupName $rg.ResourceGroupName
+		Assert-AreEqual $secondary.ServerName $server.ServerName
+		Assert-AreEqual $secondary.DatabaseName $database.DatabaseName
+		Assert-AreEqual $secondary.Role Primary
+		Assert-AreEqual $secondary.LinkType GEO
+		Assert-AreEqual $secondary.PartnerResourceGroupName $partRg.ResourceGroupName
+		Assert-AreEqual $secondary.PartnerServerName $partServer.ServerName
+		Assert-NotNull $secondary.PartnerRole
+		Assert-NotNull $secondary.AllowConnections
+		Assert-NotNull $secondary.ReplicationState
+		Assert-NotNull $secondary.PercentComplete
+
+		$updatedSecondary = Set-AzSqlDatabaseReplicationLink -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+		 -DatabaseName $database.DatabaseName -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -LinkId $secondary.LinkId -LinkType STANDBY
+		Assert-NotNull $updatedSecondary.LinkId
+		Assert-NotNull $updatedSecondary.LinkType
+		Assert-AreEqual $updatedSecondary.ResourceGroupName $rg.ResourceGroupName
+		Assert-AreEqual $updatedSecondary.ServerName $server.ServerName
+		Assert-AreEqual $updatedSecondary.DatabaseName $database.DatabaseName
+		Assert-AreEqual $updatedSecondary.Role Primary
+		Assert-AreEqual $updatedSecondary.LinkType STANDBY
+		Assert-AreEqual $updatedSecondary.PartnerResourceGroupName $partRg.ResourceGroupName
+		Assert-AreEqual $updatedSecondary.PartnerServerName $partServer.ServerName
+		Assert-NotNull $updatedSecondary.PartnerRole
+		Assert-NotNull $updatedSecondary.AllowConnections
+		Assert-NotNull $updatedSecondary.ReplicationState
+		Assert-NotNull $updatedSecondary.PercentComplete
 	}
 	finally
 	{
@@ -296,7 +356,7 @@ function Test-GetReplicationLink()
 function Test-RemoveSecondaryDatabase()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -327,7 +387,7 @@ function Test-RemoveSecondaryDatabase()
 function Test-FailoverSecondaryDatabase()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
+	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
