@@ -195,9 +195,10 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                     // 2. Set System Assigned managed identity to Storage Sync service
                     var updateParameters = new StorageSyncServiceUpdateParameters()
                     {
+                        UseIdentity = storageSyncService.UseIdentity.GetValueOrDefault(false),
                         Identity = new ManagedServiceIdentity()
                         {
-                            Type = ManagedServiceIdentityType.SystemAssigned 
+                            Type = ManagedServiceIdentityType.SystemAssigned
                         }
                     };
                     storageSyncService = StorageSyncClientWrapper.StorageSyncManagementClient.StorageSyncServices.Update(resourceGroupName, resourceName, updateParameters);
