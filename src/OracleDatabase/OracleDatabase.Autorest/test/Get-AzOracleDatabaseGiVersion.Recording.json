@@ -11,7 +11,7 @@
         "CommandName": [ "Get-AzOracleDatabaseGiVersion" ],
         "FullCommandName": [ "Get-AzOracleDatabaseGiVersion_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {

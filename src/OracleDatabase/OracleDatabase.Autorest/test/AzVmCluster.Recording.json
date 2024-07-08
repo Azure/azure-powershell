@@ -11,7 +11,7 @@
         "CommandName": [ "Get-AzOracleDatabaseCloudExadataInfrastructure" ],
         "FullCommandName": [ "Get-AzOracleDatabaseCloudExadataInfrastructure_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -56,7 +56,7 @@
         "CommandName": [ "Get-AzOracleDatabaseDbServer" ],
         "FullCommandName": [ "Get-AzOracleDatabaseDbServer_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -144,7 +144,7 @@
         "CommandName": [ "New-AzOracleDatabaseCloudVMCluster" ],
         "FullCommandName": [ "New-AzOracleDatabaseCloudVMCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -188,7 +188,7 @@
         "CommandName": [ "New-AzOracleDatabaseCloudVMCluster" ],
         "FullCommandName": [ "New-AzOracleDatabaseCloudVMCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -232,7 +232,7 @@
         "CommandName": [ "New-AzOracleDatabaseCloudVMCluster" ],
         "FullCommandName": [ "New-AzOracleDatabaseCloudVMCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -276,7 +276,7 @@
         "CommandName": [ "New-AzOracleDatabaseCloudVMCluster" ],
         "FullCommandName": [ "New-AzOracleDatabaseCloudVMCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -320,7 +320,7 @@
         "CommandName": [ "New-AzOracleDatabaseCloudVMCluster" ],
         "FullCommandName": [ "New-AzOracleDatabaseCloudVMCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -364,7 +364,7 @@
         "CommandName": [ "New-AzOracleDatabaseCloudVMCluster" ],
         "FullCommandName": [ "New-AzOracleDatabaseCloudVMCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -408,7 +408,7 @@
         "CommandName": [ "New-AzOracleDatabaseCloudVMCluster" ],
         "FullCommandName": [ "New-AzOracleDatabaseCloudVMCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -452,7 +452,7 @@
         "CommandName": [ "New-AzOracleDatabaseCloudVMCluster" ],
         "FullCommandName": [ "New-AzOracleDatabaseCloudVMCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -496,7 +496,7 @@
         "CommandName": [ "New-AzOracleDatabaseCloudVMCluster" ],
         "FullCommandName": [ "New-AzOracleDatabaseCloudVMCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -540,7 +540,7 @@
         "CommandName": [ "New-AzOracleDatabaseCloudVMCluster" ],
         "FullCommandName": [ "New-AzOracleDatabaseCloudVMCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -584,7 +584,7 @@
         "CommandName": [ "New-AzOracleDatabaseCloudVMCluster" ],
         "FullCommandName": [ "New-AzOracleDatabaseCloudVMCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -628,7 +628,7 @@
         "CommandName": [ "New-AzOracleDatabaseCloudVMCluster" ],
         "FullCommandName": [ "New-AzOracleDatabaseCloudVMCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -672,7 +672,7 @@
         "CommandName": [ "New-AzOracleDatabaseCloudVMCluster" ],
         "FullCommandName": [ "New-AzOracleDatabaseCloudVMCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -716,7 +716,7 @@
         "CommandName": [ "New-AzOracleDatabaseCloudVMCluster" ],
         "FullCommandName": [ "New-AzOracleDatabaseCloudVMCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -760,7 +760,7 @@
         "CommandName": [ "New-AzOracleDatabaseCloudVMCluster" ],
         "FullCommandName": [ "New-AzOracleDatabaseCloudVMCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -804,7 +804,7 @@
         "CommandName": [ "New-AzOracleDatabaseCloudVMCluster" ],
         "FullCommandName": [ "New-AzOracleDatabaseCloudVMCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -848,7 +848,7 @@
         "CommandName": [ "New-AzOracleDatabaseCloudVMCluster" ],
         "FullCommandName": [ "New-AzOracleDatabaseCloudVMCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -892,7 +892,7 @@
         "CommandName": [ "New-AzOracleDatabaseCloudVMCluster" ],
         "FullCommandName": [ "New-AzOracleDatabaseCloudVMCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -936,7 +936,7 @@
         "CommandName": [ "New-AzOracleDatabaseCloudVMCluster" ],
         "FullCommandName": [ "New-AzOracleDatabaseCloudVMCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -980,7 +980,7 @@
         "CommandName": [ "New-AzOracleDatabaseCloudVMCluster" ],
         "FullCommandName": [ "New-AzOracleDatabaseCloudVMCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -1024,7 +1024,7 @@
         "CommandName": [ "New-AzOracleDatabaseCloudVMCluster" ],
         "FullCommandName": [ "New-AzOracleDatabaseCloudVMCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -1068,7 +1068,7 @@
         "CommandName": [ "New-AzOracleDatabaseCloudVMCluster" ],
         "FullCommandName": [ "New-AzOracleDatabaseCloudVMCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ]
       },
       "ContentHeaders": {
       }
@@ -1112,7 +1112,7 @@
         "CommandName": [ "Get-AzOracleDatabaseCloudVMCluster" ],
         "FullCommandName": [ "Get-AzOracleDatabaseCloudVMCluster_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1157,7 +1157,7 @@
         "CommandName": [ "Get-AzOracleDatabaseCloudVMCluster" ],
         "FullCommandName": [ "Get-AzOracleDatabaseCloudVMCluster_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1242,7 +1242,7 @@
         "CommandName": [ "Get-AzOracleDatabaseCloudVMCluster" ],
         "FullCommandName": [ "Get-AzOracleDatabaseCloudVMCluster_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1287,7 +1287,7 @@
         "CommandName": [ "Get-AzOracleDatabaseDbNode" ],
         "FullCommandName": [ "Get-AzOracleDatabaseDbNode_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1372,7 +1372,7 @@
         "CommandName": [ "Get-AzOracleDatabaseDbNode" ],
         "FullCommandName": [ "Get-AzOracleDatabaseDbNode_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -1457,7 +1457,7 @@
         "CommandName": [ "Remove-AzOracleDatabaseCloudVMCluster" ],
         "FullCommandName": [ "Remove-AzOracleDatabaseCloudVMCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.OracleDatabase/1.0.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
