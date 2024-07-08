@@ -1,22 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Gets a list of the Autonomous Database National Character Sets by location
 ```powershell
-{{ Add code here }}
+(Get-AzOracleDatabaseAutonomousDatabaseNationalCharacterSet -Location "eastus").CharacterSet
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+AL16UTF16
+UTF8
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Gets a list of the Autonomous Database National Character Sets by location

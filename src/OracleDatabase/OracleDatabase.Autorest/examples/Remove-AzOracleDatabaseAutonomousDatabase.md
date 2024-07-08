@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Deletes an Autonomous Database resource
 ```powershell
-{{ Add code here }}
+Remove-AzOracleDatabaseAutonomousDatabase -NoWait -Name "OFakePowerShellTestAdbs" -ResourceGroupName "PowerShellTestRg"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Target                                                                                                                  
+------                                                                                                                  
+https://management.azure.com/subscriptions/dcb0912a-9b6f-46e3-a11b-5296913d89b5/providers/Oracle.Database/locations/EASTUS/operationStatuses/e6c5d63d-1c35-427e-8183-aa8c3bb8d8cc*EB99FC0E7CF00BAC9CF0656749107E4121167A81B99F4498184E967E11671798?api-vers…
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Deletes an Autonomous Database resource

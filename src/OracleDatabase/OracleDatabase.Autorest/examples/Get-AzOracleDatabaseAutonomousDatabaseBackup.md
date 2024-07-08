@@ -1,22 +1,16 @@
-### Example 1: {{ Add title here }}
+### Example 1: Gets a list of the Autonomous Database Backups for an Autonomous Database resource
 ```powershell
-{{ Add code here }}
+Get-AzOracleDatabaseAutonomousDatabaseBackup -Autonomousdatabasename "OFakePowerShellTestAdbs" -ResourceGroupName "PowerShellTestRg"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                                   SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
+----                                   ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
+Jul 06, 2024 01:54:13 UTC                                                                                                                                                             PowerShellTestRg
+Jul 05, 2024 15:26:01 UTC                                                                                                                                                             PowerShellTestRg
+autonomousdatabasebackup20240705141147                                                                                                                                                PowerShellTestRg
+autonomousdatabasebackup20240705135809                                                                                                                                                PowerShellTestRg
+Jul 04, 2024 12:00:52 UTC                                                                                                                                                             PowerShellTestRg
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Gets a list of the Autonomous Database Backups for an Autonomous Database resource
