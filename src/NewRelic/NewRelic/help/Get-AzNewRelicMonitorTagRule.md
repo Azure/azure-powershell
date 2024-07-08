@@ -25,6 +25,12 @@ Get-AzNewRelicMonitorTagRule -MonitorName <String> -ResourceGroupName <String> -
  [<CommonParameters>]
 ```
 
+### GetViaIdentityMonitor
+```
+Get-AzNewRelicMonitorTagRule -RuleSetName <String> -MonitorInputObject <INewRelicIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzNewRelicMonitorTagRule -InputObject <INewRelicIdentity> [-DefaultProfile <PSObject>]
@@ -44,7 +50,7 @@ Get-AzNewRelicMonitorTagRule -MonitorName test-03 -ResourceGroupName ps-test
 ```output
 Name    SystemDataCreatedAt  SystemDataCreatedBy   SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName RetryAfter
 ----    -------------------  -------------------   ----------------------- ------------------------ ------------------------ ---------------------------- ----------------- ----------
-default 6/28/2023 6:03:14 AM v-jiaji@outlook.com User                    6/28/2023 6:03:14 AM     v-jiaji@outlook.com    User                         ps-test
+default 6/28/2023 6:03:14 AM user1@outlook.com User                    6/28/2023 6:03:14 AM     user1@outlook.com    User                         ps-test
 ```
 
 Get tag rule with specified monitor and resource group
@@ -69,11 +75,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentity
 Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MonitorInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentity
+Parameter Sets: GetViaIdentityMonitor
 Aliases:
 
 Required: True
@@ -119,7 +139,7 @@ Name of the TagRule
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityMonitor
 Aliases:
 
 Required: True
@@ -153,7 +173,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.ITagRule
+### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRule
 
 ## NOTES
 

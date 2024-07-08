@@ -19,9 +19,33 @@
 --->
 
 ## Upcoming Release
+
+## Version 7.8.0
+* Added new cmdlets to support Save & Commit (AzureFirewallPolicy draft)
+    - `New-AzFirewallPolicyDraft`
+    - `New-AzFirewallPolicyRuleCollectionGroupDraft`
+    - `Get-AzFirewallPolicyDraft`
+    - `Get-AzFirewallPolicyRuleCollectionGroupDraft`
+    - `Set-AzFirewallPolicyDraft`
+    - `Set-AzFirewallPolicyRuleCollectionGroupDraft`
+    - `Remove-AzFirewallPolicyDraft`
+    - `Remove-AzFirewallPolicyRuleCollectionGroupDraft`
+    - `Deploy-AzFirewallPolicy`
+* Added 'NoHealthyBackendsBehavior' to 'PSProbe', and updated corresponding cmdlets.
+    - `New-AzLoadBalancerProbeConfig`
+    - `Add-AzLoadBalancerProbeConfig`
+    - `Set-AzLoadBalancerProbeConfig`
+* Upgraded API version to `2024-01-01`
+* Updated cmdlet to add 'Premium' as a valid value for 'Sku' parameter and 'enableSessionRecording' feature for Bastion resources
+    - `New-AzBastion`
+    - `Set-AzBastion`
+* Updated cmdlet `Add-AzVirtualNetworkSubnetConfig`, `Set-AzVirtualNetworkSubnetConfig` and `New-AzVirtualNetworkSubnetConfig` to support Network Identifier for Subnet Service Endpoint.
+* Added cmdlet `Restart-AzNetworkVirtualAppliance` for allowing a restart of Network Virtual Appliance instances from the customer subscription.
+* Fixed a bug in `Update-AzNetworkVirtualApplianceConnection`
 * Updated the Azure Firewall and Azure Firewall Policy setter for their respective Private Range properties
   - Fixed a bug that prevented using /32 in private ranges on classic Azure Firewalls
   - Updated the error message to provide a suggested private range when the supplied range is not correctly masked by the host identifier
+  - Added a new Allocate function for Azure Firewall that allows allocating customer public ip address to the firewall
   - Fixed a bug that caused firewalls and policies to lose their private range property value when using their 'Get' cmdlets
 
 ## Version 7.6.0

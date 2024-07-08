@@ -1,0 +1,85 @@
+{
+  "resourceType": "monitors/monitoredSubscriptions",
+  "apiVersion": "2024-01-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.newrelic"
+  },
+  "commands": [
+    {
+      "name": "Get-AzNewRelicMonitoredSubscription",
+      "description": "List the subscriptions currently being monitored by the NewRelic monitor resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.newrelic/get-aznewrelicmonitoredsubscription"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MonitorName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "List the subscriptions currently being monitored by the NewRelic monitor resource.",
+          "parameters": [
+            {
+              "name": "-MonitorName",
+              "value": "[Path.monitorName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzNewRelicMonitoredSubscription",
+      "description": "Deletes the subscriptions that are being monitored by the NewRelic monitor resource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.newrelic/remove-aznewrelicmonitoredsubscription"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MonitorName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes the subscriptions that are being monitored by the NewRelic monitor resource",
+          "parameters": [
+            {
+              "name": "-MonitorName",
+              "value": "[Path.monitorName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

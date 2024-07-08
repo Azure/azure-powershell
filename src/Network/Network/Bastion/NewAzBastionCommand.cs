@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
     using MNM = Management.Network.Models;
 
     [Cmdlet(VerbsCommon.New,
-       ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Bastion",
+       ResourceManager.Common.AzureRMConstants.AzureRMPrefix + Constants.BastionResourceName,
        DefaultParameterSetName = BastionParameterSetNames.ByIpObject + BastionParameterSetNames.ByVNObject,
        SupportsShouldProcess = true),
        OutputType(typeof(PSBastion))]
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             Mandatory = true,
             HelpMessage = "The Bastion resource name.")]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("Microsoft.Network/bastionHosts", "ResourceGroupName")]
+        [ResourceNameCompleter(Constants.BastionResourceType, "ResourceGroupName")]
         public string Name { get; set; }
 
         [Alias("PublicIpAddressObject")]
@@ -180,10 +180,11 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             Mandatory = false,
             ValueFromPipeline = true,
             HelpMessage = "The Bastion Sku Tier")]
-        [PSArgumentCompleter(PSBastionSku.Basic, PSBastionSku.Standard)]
+        [PSArgumentCompleter(PSBastionSku.Basic, PSBastionSku.Standard, PSBastionSku.Premium)]
         [ValidateSet(
             MNM.BastionHostSkuName.Basic,
             MNM.BastionHostSkuName.Standard,
+            MNM.BastionHostSkuName.Premium,
             IgnoreCase = false)]
         public string Sku { get; set; }
 
@@ -191,7 +192,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             Mandatory = false,
             ValueFromPipeline = true,
             HelpMessage = "The Scale Units for Bastion")]
-        [DefaultValue(2)]
+        [DefaultValue(Constants.MinimumScaleUnits)]
         public int? ScaleUnit { get; set; }
 
         [Parameter(
@@ -228,6 +229,13 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             HelpMessage = "Shareable Link")]
         [DefaultValue(false)]
         public bool? EnableShareableLink { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipeline = true,
+           HelpMessage = "Session Recording")]
+        [DefaultValue(false)]
+        public bool? EnableSessionRecording { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -267,7 +275,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             PSBastion bastion = new PSBastion(this.Name, this.ResourceGroupName, this.VirtualNetwork.Location, this.Sku);
 
             #region Feature Validations
-            ValidateFeatures(bastion, this.DisableCopyPaste, this.EnableTunneling, this.EnableIpConnect, this.EnableShareableLink);
+            ValidateFeatures(bastion, this.DisableCopyPaste, this.EnableTunneling, this.EnableIpConnect, this.EnableShareableLink, this.EnableSessionRecording);
             if (this.EnableKerberos.HasValue)
             {
                 bastion.EnableKerberos = this.EnableKerberos.Value;
@@ -287,6 +295,10 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             if (this.EnableShareableLink.HasValue)
             {
                 bastion.EnableShareableLink = this.EnableShareableLink.Value;
+            }
+            if (this.EnableSessionRecording.HasValue)
+            {
+                bastion.EnableSessionRecording = this.EnableSessionRecording.Value;
             }
             #endregion
 

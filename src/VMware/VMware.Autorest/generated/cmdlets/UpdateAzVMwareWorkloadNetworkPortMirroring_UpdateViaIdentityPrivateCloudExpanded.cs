@@ -50,8 +50,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// </summary>
         private int _responseSize = 0;
 
-        /// <summary>NSX Port Mirroring update</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroringUpdate _workloadNetworkPortMirroringBody = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.WorkloadNetworkPortMirroringUpdate();
+        /// <summary>NSX Port Mirroring</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroring _workloadNetworkPortMirroringBody = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.WorkloadNetworkPortMirroring();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]

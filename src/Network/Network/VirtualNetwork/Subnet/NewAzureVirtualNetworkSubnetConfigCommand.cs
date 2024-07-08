@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -82,17 +83,15 @@ namespace Microsoft.Azure.Commands.Network
                 subnet.NatGateway.Id = this.ResourceId;
             }
 
-            if (this.ServiceEndpoint != null)
+            if (this.ServiceEndpoint != null || this.ServiceEndpointConfig != null)
             {
-                subnet.ServiceEndpoints = new List<PSServiceEndpoint>();
-                foreach (var item in this.ServiceEndpoint)
-                {
-                    var service = new PSServiceEndpoint();
-                    service.Service = item;
-                    subnet.ServiceEndpoints.Add(service);
-                }
-            }
+                AzureVirtualNetworkSubnetConfigHelper helper = new AzureVirtualNetworkSubnetConfigHelper();
+                if (helper.MultipleNetworkIdentifierExists(this.ServiceEndpointConfig))
+                    throw new ArgumentException("Multiple Service Endpoints with different Network Identifiers are not allowed");
 
+                helper.ConfigureServiceEndpoint(this.ServiceEndpoint, this.NetworkIdentifier, this.ServiceEndpointConfig, subnet);
+            }
+            
             if (this.ServiceEndpointPolicy != null)
             {
                 subnet.ServiceEndpointPolicies = this.ServiceEndpointPolicy?.ToList();

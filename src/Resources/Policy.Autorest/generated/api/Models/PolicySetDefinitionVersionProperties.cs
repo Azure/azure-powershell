@@ -28,13 +28,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         public string DisplayName { get => this._displayName; set => this._displayName = value; }
 
         /// <summary>Backing field for <see cref="Metadata" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny _metadata;
+        private Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionPropertiesMetadata _metadata;
 
         /// <summary>
         /// The policy set definition metadata. Metadata is an open ended object and is typically a collection of key value pairs.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny Metadata { get => (this._metadata = this._metadata ?? new Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Any()); set => this._metadata = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionPropertiesMetadata Metadata { get => (this._metadata = this._metadata ?? new Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.PolicySetDefinitionVersionPropertiesMetadata()); set => this._metadata = value; }
 
         /// <summary>Backing field for <see cref="Parameter" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IParameterDefinitions _parameter;
@@ -120,8 +120,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         Update = true,
         Description = @"The policy set definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.",
         SerializedName = @"metadata",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny Metadata { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionPropertiesMetadata) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionPropertiesMetadata Metadata { get; set; }
         /// <summary>
         /// The policy set definition parameters that can be used in policy definition references.
         /// </summary>
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         /// <summary>
         /// The policy set definition metadata. Metadata is an open ended object and is typically a collection of key value pairs.
         /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny Metadata { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionVersionPropertiesMetadata Metadata { get; set; }
         /// <summary>
         /// The policy set definition parameters that can be used in policy definition references.
         /// </summary>

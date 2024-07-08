@@ -132,7 +132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             }
             if (content.Contains("LeaseTime"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpServerInternal)this).LeaseTime = (int?) content.GetValueForProperty("LeaseTime",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpServerInternal)this).LeaseTime, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpServerInternal)this).LeaseTime = (long?) content.GetValueForProperty("LeaseTime",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpServerInternal)this).LeaseTime, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("DhcpType"))
             {
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             }
             if (content.Contains("LeaseTime"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpServerInternal)this).LeaseTime = (int?) content.GetValueForProperty("LeaseTime",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpServerInternal)this).LeaseTime, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpServerInternal)this).LeaseTime = (long?) content.GetValueForProperty("LeaseTime",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpServerInternal)this).LeaseTime, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             if (content.Contains("DhcpType"))
             {

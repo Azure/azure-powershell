@@ -24,7 +24,7 @@ List all the existing accounts
 
 ### Example 1: Get specific monitor account with specified location
 ```powershell
-Get-AzNewRelicAccount -Location eastus -UserEmail v-jiaji@outlook.com
+Get-AzNewRelicAccount -Location eastus -UserEmail user1@outlook.com
 ```
 
 ```output
@@ -111,7 +111,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.IAccountResource
+### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IAccountResource
 
 ## NOTES
 

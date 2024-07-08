@@ -177,7 +177,7 @@ process {
 
     # convert input/legacy policy parameter to correct set of parameters and remove
     if ($Policy) {
-        $resolved = resolvePolicyParameter -ParameterName 'Policy' -ParameterValue $Policy -Debug $writeln
+        $resolved = ResolvePolicyParameter -ParameterName 'Policy' -ParameterValue $Policy -Debug $writeln
         if ($resolved.policyRule) {
             foreach ($key in $resolved.Keys) {
 
@@ -219,7 +219,7 @@ process {
 
     # resolve [string] 'parameter' input parameter (could be a path)
     if ($Parameter) {
-        $calledParameters.Parameter = (resolvePolicyParameter -ParameterName 'Parameter' -ParameterValue $Parameter -Debug $writeln)
+        $calledParameters.Parameter = (ResolvePolicyParameter -ParameterName 'Parameter' -ParameterValue $Parameter -Debug $writeln)
     }
 
     # rename [string] 'parameter' parameter to 'parametertable' (needs to be string to construct properly)

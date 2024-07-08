@@ -24,23 +24,12 @@ New-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test
 .Example
 New-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Name azps_test_nodepool_example -Count 3
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAksArcIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPool
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IAksArcIdentity>: Identity Parameter
-  [AgentPoolName <String>]: Parameter for the name of the agent pool in the provisioned cluster.
-  [ConnectedClusterResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the connected cluster resource.
-  [CustomLocationResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the custom location resource.
-  [Id <String>]: Resource identity path
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VirtualNetworkName <String>]: Parameter for the name of the virtual network
 
 STATUSREADYREPLICA <IAgentPoolUpdateProfile[]>: .
   [Count <Int32?>]: Number of nodes in the agent pool. The default value is 1.
@@ -52,31 +41,20 @@ function New-AzAksArcNodepool {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPool])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [System.String]
     # The fully qualified Azure Resource Manager identifier of the connected cluster resource.
     ${ConnectedClusterResourceUri},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Parameter(Mandatory)]
     [Alias('AgentPoolName')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
     [System.String]
     # Parameter for the name of the agent pool in the provisioned cluster.
     ${Name},
 
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAksArcIdentity]
-    # Identity Parameter
-    ${InputObject},
-
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.Int32]
     # Number of nodes in the agent pool.
@@ -84,7 +62,6 @@ param(
     ${Count},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Whether to enable auto-scaler.
@@ -92,14 +69,12 @@ param(
     ${EnableAutoScaling},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.String]
     # ARM Id of the extended location.
     ${ExtendedLocationName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.PSArgumentCompleterAttribute("CustomLocation")]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.String]
@@ -108,28 +83,24 @@ param(
     ${ExtendedLocationType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.Int32]
     # The maximum number of nodes for auto-scaling
     ${MaxCount},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.Int32]
     # The maximum number of pods that can run on a node.
     ${MaxPod},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.Int32]
     # The minimum number of nodes for auto-scaling
     ${MinCount},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolProfileNodeLabels]))]
     [System.Collections.Hashtable]
@@ -137,7 +108,6 @@ param(
     ${NodeLabel},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.String[]]
@@ -146,7 +116,6 @@ param(
     ${NodeTaint},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.PSArgumentCompleterAttribute("CBLMariner", "Windows2019", "Windows2022")]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.String]
@@ -156,7 +125,6 @@ param(
     ${OSSku},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.PSArgumentCompleterAttribute("Windows", "Linux")]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.String]
@@ -164,14 +132,12 @@ param(
     ${OSType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.String]
     # Error messages during an agent pool operation or steady state.
     ${StatusErrorMessage},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolUpdateProfile[]]
@@ -179,7 +145,6 @@ param(
     ${StatusReadyReplica},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IAgentPoolTags]))]
     [System.Collections.Hashtable]
@@ -187,7 +152,6 @@ param(
     ${Tag},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category('Body')]
     [System.String]
     # The VM sku size of the agent pool node VMs.
@@ -276,7 +240,6 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.AksArc.private\New-AzAksArcNodepool_CreateExpanded';
-            CreateViaIdentityExpanded = 'Az.AksArc.private\New-AzAksArcNodepool_CreateViaIdentityExpanded';
             CreateViaJsonFilePath = 'Az.AksArc.private\New-AzAksArcNodepool_CreateViaJsonFilePath';
             CreateViaJsonString = 'Az.AksArc.private\New-AzAksArcNodepool_CreateViaJsonString';
         }

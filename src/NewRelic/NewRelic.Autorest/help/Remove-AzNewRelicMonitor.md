@@ -32,7 +32,7 @@ Delete a NewRelicMonitorResource
 
 ### Example 1: Delete a NewRelic Monitor Resource
 ```powershell
-Remove-AzNewRelicMonitor -Name test-03 -ResourceGroupName ps-test -UserEmail v-jiaji@outlook.com
+Remove-AzNewRelicMonitor -Name test-03 -ResourceGroupName ps-test -UserEmail user1@outlook.com
 ```
 
 Delete a NewRelic Monitor Resource
@@ -72,7 +72,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentity

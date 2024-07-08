@@ -133,6 +133,12 @@ param(
     ${PrivateCloudInputObject},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # Identifier of the other private cloud participating in the link.
+    ${LinkedCloud},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]

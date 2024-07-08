@@ -60,6 +60,53 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Retrieves the available specified Network Virtual Appliance Inbound
+        /// Security Rules Collection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of the Network Virtual Appliance.
+        /// </param>
+        /// <param name='ruleCollectionName'>
+        /// The name of security rule collection.
+        /// </param>
+        public static InboundSecurityRule Get(this IInboundSecurityRuleOperations operations, string resourceGroupName, string networkVirtualApplianceName, string ruleCollectionName)
+        {
+                return ((IInboundSecurityRuleOperations)operations).GetAsync(resourceGroupName, networkVirtualApplianceName, ruleCollectionName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the available specified Network Virtual Appliance Inbound
+        /// Security Rules Collection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of the Network Virtual Appliance.
+        /// </param>
+        /// <param name='ruleCollectionName'>
+        /// The name of security rule collection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<InboundSecurityRule> GetAsync(this IInboundSecurityRuleOperations operations, string resourceGroupName, string networkVirtualApplianceName, string ruleCollectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, ruleCollectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Creates or updates the specified Network Virtual Appliance Inbound Security
         /// Rules.
         /// </summary>
