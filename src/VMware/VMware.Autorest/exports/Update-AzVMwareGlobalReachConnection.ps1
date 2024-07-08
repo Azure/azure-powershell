@@ -133,6 +133,24 @@ param(
     ${PrivateCloudInputObject},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # Authorization key from the peer express route used for the global reachconnection
+    ${AuthorizationKey},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # The ID of the Private Cloud's ExpressRoute Circuit that is participating in theglobal reach connection
+    ${ExpressRouteId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String]
+    # Identifier of the ExpressRoute Circuit to peer with in the global reachconnection
+    ${PeerExpressRouteCircuit},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]

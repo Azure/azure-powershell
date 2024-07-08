@@ -50,5 +50,12 @@ namespace Microsoft.Azure.Commands.FrontDoor.Test.ScenarioTests.ScenarioTest
         {
             TestRunner.RunTestScript("Test-PolicyAction");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCustomBlockResponseBody()
+        {
+            TestRunner.RunTestScript("Test-CustomBlockResponseBody");
+        }
     }
 }

@@ -20,5 +20,9 @@
 ## Upcoming Release
 
 ## Version 0.1.0
+* Added cmdlets for virtual networks
+* Improved Error Checking
+* Renamed Parameters to make more consistent with Azure CLI
+* Added new cmdlet for upgrading clusters
 * First preview release for module Az.AksArc
 

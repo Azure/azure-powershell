@@ -27,7 +27,8 @@ function CreateConnectedCluster {
         [System.String] $ResourceGroupName,
         [System.String] $ClusterName, 
         [System.String] $Location,
-        [System.String[]] ${AdminGroupObjectID}
+        [System.String[]] ${AdminGroupObjectID}, 
+        [System.Management.Automation.SwitchParameter] $EnableAzureRbac
     )
 
     # Validate GUIDS
@@ -47,6 +48,11 @@ function CreateConnectedCluster {
         $AdminGroupObjectIDArr = '"' + $AdminGroupObjectIDArr + '"'
     }
 
+    $EnableAzureRbacStr = "false"
+    if ($EnableAzureRbac) {
+        $EnableAzureRbacStr = "true"
+    } 
+
     $APIVersion = "2024-01-01"
     $json = 
 @"
@@ -63,13 +69,32 @@ function CreateConnectedCluster {
             "agentAutoUpgrade": "Enabled"
         },
         "aadProfile": {
-            "enableAzureRBAC": false, 
+            "enableAzureRBAC": $EnableAzureRbacStr, 
             "adminGroupObjectIDs": [$AdminGroupObjectIDArr]
         }
     }
 }
 "@  
     $null = Invoke-AzRestMethod -Path "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Kubernetes/connectedClusters/$ClusterName/?api-version=$APIVersion" -Method PUT -payload $json
+}
+
+function UpdateConnectedCluster {
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.DoNotExportAttribute()]
+    param(
+        [System.String] $SubscriptionId,
+        [System.String] $ResourceGroupName,
+        [System.String] $ClusterName, 
+        [System.String[]] ${AdminGroupObjectID}
+    )
+
+
+    $APIVersion = "2024-01-01"
+    $ConnectedClusterResource = Invoke-AzRestMethod -Path "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Kubernetes/connectedClusters/$ClusterName/?api-version=$APIVersion" -Method GET
+
+    $Location = ($ConnectedClusterResource.Content | ConvertFrom-Json).location
+    $EnableAzureRbac = ($ConnectedClusterResource.Content | ConvertFrom-Json).properties.aadProfile.enableAzureRBAC
+
+    CreateConnectedCluster -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName -Location $Location -AdminGroupObjectID $AdminGroupObjectID -EnableAzureRbac:$EnableAzureRbac
 }
 
 function GenerateSSHKey {
@@ -82,11 +107,30 @@ function GenerateSSHKey {
     $filename = $ClusterName + "_" + $suffix
     $sshkeydir = $HOME + "\.ssh\" + $filename
 
-    ssh-keygen -b 2048 -t rsa -f $sshkeydir -q -N ''
+    if ($PSVersionTable.PSVersion.Major -eq 7) {
+        ssh-keygen -b 2048 -t rsa -f $sshkeydir -q -N ''
+    } else {
+        ssh-keygen -b 2048 -t rsa -f $sshkeydir -q -N '""'
+    }
     
     $publickeyfile = $sshkeydir + ".pub"
     $publicKey = Get-Content -Path $publickeyfile
     
     $SshPublicKeyObj.KeyData = $publicKey
     return $SshPublicKeyObj
+}
+
+function ConvertCustomLocationNameToID {
+    [Microsoft.Azure.PowerShell.Cmdlets.AksArc.DoNotExportAttribute()]
+    param(
+        [System.String] $CustomLocationName,
+        [System.String] $SubscriptionId,
+        [System.String] $ResourceGroupName
+    )
+
+    if ($CustomLocationName -match $armIDRegex) {
+        return $CustomLocationName
+    }
+
+    return "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/$CustomLocationName"
 }

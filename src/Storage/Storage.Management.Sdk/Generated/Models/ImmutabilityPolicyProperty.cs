@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="state">The ImmutabilityPolicy state of a blob container, possible values include:
         /// Locked and Unlocked.
-        /// Possible values include: 'Locked', 'Unlocked'</param>
+        /// Possible values include: &#39;Locked&#39;, &#39;Unlocked&#39;</param>
 
         /// <param name="allowProtectedAppendWrites">This property can only be changed for unlocked time-based retention
         /// policies. When enabled, new blocks can be written to an append blob while

@@ -52,6 +52,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
         public string TargetInstanceName { get; set; }
 
         /// <summary>
+        /// Gets or sets the Id of the target subscription.
+        /// </summary>
+        public string TargetSubscriptionId { get; set; }
+
+        /// <summary>
         /// Gets or sets the operation type
         /// </summary>
         public OperationMode OperationMode { get; set; }
@@ -65,7 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
         {
             var managedDatabaseResourceId = new ResourceIdentifier()
             {
-                Subscription = SubscriptionId,
+                Subscription = TargetSubscriptionId,
                 ResourceGroupName = TargetResourceGroupName,
                 ParentResource = $"managedInstances/{TargetInstanceName}",
                 ResourceType = "Microsoft.Sql/managedInstances/databases",

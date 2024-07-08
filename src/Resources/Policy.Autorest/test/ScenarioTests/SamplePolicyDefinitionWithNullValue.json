@@ -1,0 +1,43 @@
+{
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.Compute/virtualMachines"
+      },
+      {
+        "anyof": [
+          {
+            "field": "Microsoft.Compute/virtualMachines/diagnosticsProfile.bootDiagnostics.storageUri",
+            "exists": true
+          },
+          {
+            "field": "Microsoft.Compute/virtualMachines/diagnosticsProfile.bootDiagnostics.enabled",
+            "notEquals": true
+          }
+        ]
+      }
+    ]
+  },
+  "then": {
+    "effect": "[parameters('effect')]",
+    "details": {
+      "conflictEffect": "audit",
+      "roleDefinitionIds": [
+        "/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c"
+      ],
+      "operations": [
+        {
+          "operation": "addOrReplace",
+          "field": "Microsoft.Compute/virtualMachines/diagnosticsProfile.bootDiagnostics.storageUri",
+          "value": null
+        },
+        {
+          "operation": "addOrReplace",
+          "field": "Microsoft.Compute/virtualMachines/diagnosticsProfile.bootDiagnostics.enabled",
+          "value": true
+        }
+      ]
+    }
+  }
+}

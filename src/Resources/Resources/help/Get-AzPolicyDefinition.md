@@ -30,6 +30,24 @@ Get-AzPolicyDefinition [-Name <String>] -SubscriptionId <String> [-BackwardCompa
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### Version
+```
+Get-AzPolicyDefinition [-Name <String>] [-Id <String>] [-BackwardCompatible] -Version <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListVersion
+```
+Get-AzPolicyDefinition [-Name <String>] [-Id <String>] [-ListVersion] [-BackwardCompatible]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Id
+```
+Get-AzPolicyDefinition -Id <String> [-BackwardCompatible] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### Builtin
 ```
 Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Builtin]
@@ -48,14 +66,8 @@ Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>
  [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Id
-```
-Get-AzPolicyDefinition -Id <String> [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
-The **Get-AzPolicySetDefinition** cmdlet gets a collection of policy set definitions or a specific policy set definition identified by name or ID.
+The **Get-AzPolicyDefinition** cmdlet gets a collection of policy set definitions or a specific policy set definition identified by name or ID.
 
 ## EXAMPLES
 
@@ -179,8 +191,35 @@ The full Id of the policy definition to get.
 
 ```yaml
 Type: System.String
+Parameter Sets: Version, ListVersion
+Aliases: ResourceId
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
 Parameter Sets: Id
 Aliases: ResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ListVersion
+Causes cmdlet to return only custom policy definitions.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ListVersion
+Aliases:
 
 Required: True
 Position: Named
@@ -221,7 +260,7 @@ The name of the policy definition to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name, ManagementGroupName, SubscriptionId
+Parameter Sets: Name, ManagementGroupName, SubscriptionId, Version, ListVersion
 Aliases: PolicyDefinitionName
 
 Required: False
@@ -267,6 +306,21 @@ Parameter Sets: Builtin, Custom, Static
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Version
+The policy definition version in #.#.# format.
+
+```yaml
+Type: System.String
+Parameter Sets: Version
+Aliases: PolicyDefinitionVersion
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

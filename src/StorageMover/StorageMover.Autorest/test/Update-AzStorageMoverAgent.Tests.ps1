@@ -17,12 +17,29 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzStorageMoverAgent'))
 Describe 'Update-AzStorageMoverAgent' {
     It 'UpdateExpanded' {
         $updateDescription = "update agent description"
-        $agent = Update-AzStorageMoverAgent -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent -Name $env.AgentName -Description $updateDescription
+        $limit = New-AzStorageMoverUploadLimitWeeklyRecurrenceObject -Day 'Monday','Tuesday','Friday' -LimitInMbps 100 -EndTimeHour 5 -StartTimeHour 1 -StartTimeMinute 30 -EndTimeMinute 0
+        $agent = Update-AzStorageMoverAgent -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent -Name $env.AgentName -Description $updateDescription -UploadLimitScheduleWeeklyRecurrence $limit
         $agent.Name | Should -Be $env.AgentName 
         $agent.Description | Should -Be $updateDescription
+        $agent.UploadLimitScheduleWeeklyRecurrence.Day[0] | Should -Be "Monday"
+        $agent.UploadLimitScheduleWeeklyRecurrence.Day[1] | Should -Be "Tuesday"
+        $agent.UploadLimitScheduleWeeklyRecurrence.Day[2] | Should -Be "Friday"
+        $agent.UploadLimitScheduleWeeklyRecurrence.EndTimeHour | Should -Be 5 
+        $agent.UploadLimitScheduleWeeklyRecurrence.EndTimeMinute | Should -Be 0 
+        $agent.UploadLimitScheduleWeeklyRecurrence.LimitInMbps | Should -Be 100
+        $agent.UploadLimitScheduleWeeklyRecurrence.StartTimeHour | Should -Be 1 
+        $agent.UploadLimitScheduleWeeklyRecurrence.StartTimeMinute | Should -Be 30 
 
         $agent = Get-AzStorageMoverAgent -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent -Name $env.AgentName
         $agent.Name | Should -Be $env.AgentName 
         $agent.Description | Should -Be $updateDescription
+        $agent.UploadLimitScheduleWeeklyRecurrence.Day[0] | Should -Be "Monday"
+        $agent.UploadLimitScheduleWeeklyRecurrence.Day[1] | Should -Be "Tuesday"
+        $agent.UploadLimitScheduleWeeklyRecurrence.Day[2] | Should -Be "Friday"
+        $agent.UploadLimitScheduleWeeklyRecurrence.EndTimeHour | Should -Be 5 
+        $agent.UploadLimitScheduleWeeklyRecurrence.EndTimeMinute | Should -Be 0 
+        $agent.UploadLimitScheduleWeeklyRecurrence.LimitInMbps | Should -Be 100
+        $agent.UploadLimitScheduleWeeklyRecurrence.StartTimeHour | Should -Be 1 
+        $agent.UploadLimitScheduleWeeklyRecurrence.StartTimeMinute | Should -Be 30 
     }
 }

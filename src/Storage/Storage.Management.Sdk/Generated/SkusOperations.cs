@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.Storage
         public StorageManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Lists the available SKUs supported by Microsoft.Storage for given subscription.
+        /// Lists the available SKUs supported by Microsoft.Storage for given
+        /// subscription.
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.

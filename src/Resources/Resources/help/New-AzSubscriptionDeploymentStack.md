@@ -19,7 +19,8 @@ New-AzSubscriptionDeploymentStack [-Name] <String> [-Description <String>] -Loca
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScopes] [-DeploymentResourceGroupName <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-BypassStackOutOfSyncError] -TemplateFile <String> [-SkipTemplateParameterPrompt] [-QueryString <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateFileWithParameterFile
@@ -95,7 +96,8 @@ New-AzSubscriptionDeploymentStack [-Name] <String> [-Description <String>] -Loca
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScopes] [-DeploymentResourceGroupName <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-BypassStackOutOfSyncError] -TemplateUri <String> [-SkipTemplateParameterPrompt] [-QueryString <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateSpecWithParameterFile
@@ -138,7 +140,8 @@ New-AzSubscriptionDeploymentStack [-Name] <String> [-Description <String>] -Loca
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScopes] [-DeploymentResourceGroupName <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-BypassStackOutOfSyncError] -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-QueryString <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByParameterFileWithNoTemplate
@@ -148,8 +151,8 @@ New-AzSubscriptionDeploymentStack [-Name] <String> [-Description <String>] -Loca
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScopes] [-DeploymentResourceGroupName <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-BypassStackOutOfSyncError] -TemplateParameterFile <String> [-SkipTemplateParameterPrompt]
- [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -180,7 +183,7 @@ Action to take on resources that become unmanaged on deletion or update of the d
 Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStacks.PSActionOnUnmanage
 Parameter Sets: (All)
 Aliases:
-Accepted values: DetachAll, DeleteResources, DeleteResourcesAndResourceGroups, DeleteAll
+Accepted values: DetachAll, DeleteResources, DeleteAll
 
 Required: True
 Position: Named

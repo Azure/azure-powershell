@@ -192,7 +192,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Name of the LUN to be used for datastore",
         SerializedName = @"lunName",
         PossibleTypes = new [] { typeof(string) })]
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Mode that describes whether the LUN has to be mounted as a datastore or
         attached as a LUN",
         SerializedName = @"mountOption",
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Azure resource ID of the iSCSI target",
         SerializedName = @"targetId",
         PossibleTypes = new [] { typeof(string) })]
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Azure resource ID of the Elastic SAN Volume",
         SerializedName = @"targetId",
         PossibleTypes = new [] { typeof(string) })]
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Azure resource ID of the NetApp volume",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]

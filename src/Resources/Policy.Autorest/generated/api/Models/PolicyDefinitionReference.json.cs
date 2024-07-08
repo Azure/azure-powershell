@@ -78,6 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
                 return;
             }
             {_policyDefinitionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString>("policyDefinitionId"), out var __jsonPolicyDefinitionId) ? (string)__jsonPolicyDefinitionId : (string)_policyDefinitionId;}
+            {_definitionVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString>("definitionVersion"), out var __jsonDefinitionVersion) ? (string)__jsonDefinitionVersion : (string)_definitionVersion;}
             {_parameter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonObject>("parameters"), out var __jsonParameters) ? Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ParameterValues.FromJson(__jsonParameters) : _parameter;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString>("policyDefinitionReferenceId"), out var __jsonPolicyDefinitionReferenceId) ? (string)__jsonPolicyDefinitionReferenceId : (string)_id;}
             {_groupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonArray>("groupNames"), out var __jsonGroupNames) ? If( __jsonGroupNames as Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _groupName;}
@@ -104,6 +105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
                 return container;
             }
             AddIf( null != (((object)this._policyDefinitionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString(this._policyDefinitionId.ToString()) : null, "policyDefinitionId" ,container.Add );
+            AddIf( null != (((object)this._definitionVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString(this._definitionVersion.ToString()) : null, "definitionVersion" ,container.Add );
             AddIf( null != this._parameter ? (Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode) this._parameter.ToJson(null,serializationMode) : null, "parameters" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString(this._id.ToString()) : null, "policyDefinitionReferenceId" ,container.Add );
             if (null != this._groupName)

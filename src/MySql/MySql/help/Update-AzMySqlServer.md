@@ -22,7 +22,7 @@ Update-AzMySqlServer -Name <String> -ResourceGroupName <String> [-SubscriptionId
  [-MinimalTlsVersion <MinimalTlsVersionEnum>] [-BackupRetentionDay <Int32>]
  [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>] [-Tag <Hashtable>]
  [-PublicNetworkAccess <PublicNetworkAccessEnum>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -32,7 +32,7 @@ Update-AzMySqlServer -InputObject <IMySqlIdentity> [-AdministratorLoginPassword 
  [-SslEnforcement <SslEnforcementEnum>] [-MinimalTlsVersion <MinimalTlsVersionEnum>]
  [-BackupRetentionDay <Int32>] [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>] [-Tag <Hashtable>]
  [-PublicNetworkAccess <PublicNetworkAccessEnum>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -185,21 +185,6 @@ Run the command asynchronously.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

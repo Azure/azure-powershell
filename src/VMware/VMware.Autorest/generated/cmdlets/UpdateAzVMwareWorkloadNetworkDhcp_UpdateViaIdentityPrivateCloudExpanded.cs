@@ -50,8 +50,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         /// </summary>
         private int _responseSize = 0;
 
-        /// <summary>NSX DHCP update</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcpUpdate _workloadNetworkDhcpBody = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.WorkloadNetworkDhcpUpdate();
+        /// <summary>NSX DHCP</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcp _workloadNetworkDhcpBody = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.WorkloadNetworkDhcp();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]

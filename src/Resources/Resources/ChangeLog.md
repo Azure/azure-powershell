@@ -20,6 +20,35 @@
 
 ## Upcoming Release
 
+## Version 7.2.0
+* Fixed `Set-AzPolicyAssignment` loses description and Display Name [#25362]
+* Fixed `New-AzPolicyAssignment` string ID value handling for parameter '-PolicyDefinition'
+* Fixed policy import issue with OP (requires serialization of null values)
+* Fixed '-Scope' parameter handling at resource instance level
+* Fixed error `Get-AzPolicySetDefinition`cannot find matched parameter '-Name' [#25334]
+* Fixed serialization issue with empty arrays in PolicyParameterObject
+* Addressed a rare case where a service principal does not have AppId
+* Introduced validation of MG scoped deployment stack during New/Set cmdlet execution.
+* Updated Remove/New stack cmdlets with warnings for management groups ActionOnUnmanage and removed DeleteResourcesAndResourceGroups as valid ActionOnUnmanage value.
+* Supported get and assign versioned policy definitions and sets
+* Fixed syntax incompatible with windows powershell [#24971]
+* Fixed bug with `Get-AzPolicyExemption` requesting 'ParentResourcePath'
+* Supported `ServiceManagementReference` of Entra App
+    * `Get-AzADApplication`
+    * `New-AzADApplication`
+    * `Update-AzADApplication`
+* Fixed deployment stack validation error surfacing.
+* Fixed default formatting for output objects
+* Removed '-InputObject' for
+    * `Get-AzPolicyAssignment`
+    * `Get-AzPolicyDefinition`
+    * `Get-AzPolicyExemption`
+    * `Get-AzPolicySetDefinition`
+    * `New-AzPolicyAssignment`
+    * `New-AzPolicyDefinition`
+    * `New-AzPolicySetDefinition`
+* Implemented '-Version' and '-ListVersion' parameters on `Get-AzPolicyDefinition` and `Get-AzPolicySetDefinition`
+
 ## Version 7.1.0
 * Fixed deployment and deployment stack New/Set cmdlets to fail if template/parameter uri fails to downloads.
 * Deployment Stack cmdlets GA release/updates.

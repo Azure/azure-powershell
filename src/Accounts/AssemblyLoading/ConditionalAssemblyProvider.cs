@@ -42,14 +42,14 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
                 // todo: add a tool to update assembly versions after replacing the assemblies. (Can it support newly introduced assemblies?)
                 // todo: consider moving the list to a standalone config file
                 #region AssemblyList
-                CreateAssembly("netstandard2.0", "Azure.Core", "1.38.0.0"),
-                CreateAssembly("netstandard2.0", "Azure.Identity", "1.11.2.0"),
+                CreateAssembly("netstandard2.0", "Azure.Core", "1.40.0.0"),
+                CreateAssembly("netstandard2.0", "Azure.Identity", "1.12.0.0"),
                 CreateAssembly("netstandard2.0", "Azure.Identity.Broker", "1.1.0.0"),
                 CreateAssembly("netstandard2.0", "Microsoft.Bcl.AsyncInterfaces", "1.0.0.0"),
-                CreateAssembly("netstandard2.0", "Microsoft.Identity.Client", "4.60.3.0"),
-                CreateAssembly("netstandard2.0", "Microsoft.Identity.Client.Extensions.Msal", "4.60.3.0"),
-                CreateAssembly("netstandard2.0", "Microsoft.Identity.Client.Broker", "4.60.3.0"),
-                CreateAssembly("netstandard2.0", "Microsoft.Identity.Client.NativeInterop", "0.16.0.0"),
+                CreateAssembly("netstandard2.0", "Microsoft.Identity.Client", "4.61.3.0"),
+                CreateAssembly("netstandard2.0", "Microsoft.Identity.Client.Extensions.Msal", "4.61.3.0"),
+                CreateAssembly("netstandard2.0", "Microsoft.Identity.Client.Broker", "4.61.3.0"),
+                CreateAssembly("netstandard2.0", "Microsoft.Identity.Client.NativeInterop", "0.16.2.0"),
                 CreateAssembly("netstandard2.0", "Microsoft.IdentityModel.Abstractions", "6.35.0.0"),
                 CreateAssembly("netstandard2.0", "System.ClientModel", "1.0.0.0"),
                 CreateAssembly("netstandard2.0", "System.Memory.Data", "1.0.2.0"),

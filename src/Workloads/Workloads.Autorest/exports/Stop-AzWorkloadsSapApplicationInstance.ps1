@@ -23,6 +23,10 @@ Stops the SAP Application Server Instance.
 Stop-AzWorkloadsSapApplicationInstance -Name app0 -ResourceGroupName db0-vis-rg -SapVirtualInstanceName DB0
 .Example
 Stop-AzWorkloadsSapApplicationInstance -InputObject /subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/db0-vis-rg/providers/Microsoft.Workloads/sapVirtualInstances/DB0/applicationInstances/app0
+.Example
+Stop-AzWorkloadsSapApplicationInstance -Name app0 -ResourceGroupName db0-vis-rg -SapVirtualInstanceName DB0 -DeallocateVM
+.Example
+Stop-AzWorkloadsSapApplicationInstance -Name app0 -ResourceGroupName db0-vis-rg -SapVirtualInstanceName DB0 -SoftStopTimeoutSecond 300
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
