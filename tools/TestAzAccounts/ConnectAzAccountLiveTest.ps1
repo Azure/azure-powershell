@@ -34,7 +34,6 @@ param (
     [string]
     $KeyVaultName,
 
-
     [Parameter()]
     [string]
     $ServicePrincipalName,
@@ -52,7 +51,7 @@ param (
     $ClearContext
 )
 
-Write-Host "ParameterSet = $($PSCmdlet.ParameterSetName)"
+Write-Host "ConnectAzAccountLiveTest: ParameterSet = $($PSCmdlet.ParameterSetName)"
 
 $keyVaultName = if ($KeyVaultName) {$KeyVaultName} else {'LiveTestKeyVault'}
 $servicePrincipalName = if ($ServicePrincipalName) {$ServicePrincipalName} else {'AzurePowerShellAzAccountsTest'}
@@ -75,7 +74,7 @@ if ($Path -and $PfxFileName) {
         KeyVaultName      = $keyVaultName;
         CertificateName   = $certificateName;
         CertPlainPassword = $password;
-        Path              = $Path
+        Path              = Convert-Path $Path
         PfxFileName       = $PfxFileName
     }
     $pfxFile = Get-CertificateFromKeyVault @paramsCertificate
@@ -91,10 +90,6 @@ $azureProfile = $null
 if ($PSCmdlet.ParameterSetName -eq 'CertificateFile') {
     $params['CertificatePath'] = $pfxFile
     $params['CertificatePassword'] = (ConvertTo-SecureString -String $password -AsPlainText -Force)
-    if ($ClearContext.IsPresent) {
-        Clear-AzContext -Force
-    }
-    $azureProfile = Connect-AzAccount -ServicePrincipal @params
 }
 elseif ($PSCmdlet.ParameterSetName -eq 'Thumbprint') {
     if ($PSVersionTable.PSEdition -ne "Desktop" -and -not $IsWindows) {
@@ -112,29 +107,21 @@ elseif ($PSCmdlet.ParameterSetName -eq 'Thumbprint') {
         -ArgumentList @($pfxFile, $password)
     $thumbprint = $pfxCert.Thumbprint
     $params['CertificateThumbprint'] = $thumbprint
-    if ($ClearContext.IsPresent) {
-        Clear-AzContext -Force
-    }
-    $azureProfile = Connect-AzAccount -ServicePrincipal @params
 }
 elseif ($PSCmdlet.ParameterSetName -eq 'Password') {
     $secret = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name $secretName
     $credential = New-Object -TypeName 'System.Management.Automation.PSCredential' -ArgumentList $appId, $secret.SecretValue
-    if ($ClearContext.IsPresent) {
-        Clear-AzContext -Force
-    }
-    $azureProfile = Connect-AzAccount -ServicePrincipal -TenantId $tenantId -Credential $credential
+    $params['Credential'] = $credential
+    $null = $params.Remove('ApplicationId')
 }
 elseif ($PSCmdlet.ParameterSetName -eq 'FederatedToken') {
     $params['FederatedToken'] = $FederatedToken
-    if ($ClearContext.IsPresent) {
-        Clear-AzContext -Force
-    }
-    Write-Host 'Press any key to continue'
-    $void = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-    $azureProfile = Connect-AzAccount -ServicePrincipal @params
+    #Write-Host 'Press any key to continue'
+    #$void = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 }
 
-$azureProfile | Format-Table
-
-Get-AzAccessToken
+if ($ClearContext.IsPresent) {
+    Clear-AzContext -Verbose -Force
+}
+$azureProfile = Connect-AzAccount -ServicePrincipal @params
+Write-Output $azureProfile

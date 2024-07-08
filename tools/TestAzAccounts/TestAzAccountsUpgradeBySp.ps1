@@ -1,6 +1,36 @@
 [CmdletBinding()]
 param (
-    [Parameter(Mandatory = $true)]
+    [Parameter(ParameterSetName = 'CertificateFile', Mandatory = $true)]
+    [Switch]
+    $UseCertificateFile,
+
+    [Parameter(ParameterSetName = 'Thumbprint', Mandatory = $true)]
+    [Switch]
+    $UseThumbprint,
+
+    [Parameter(ParameterSetName = 'Password', Mandatory = $true)]
+    [Switch]
+    $UsePassword,
+
+    [Parameter(ParameterSetName = 'FederatedToken', Mandatory = $true)]
+    [Switch]
+    $UseFederatedToken,
+
+    [Parameter(ParameterSetName = 'CertificateFile', Mandatory = $true)]
+    [Parameter(ParameterSetName = 'Thumbprint', Mandatory = $true)]
+    [string]
+    $Path,
+
+    [Parameter(ParameterSetName = 'CertificateFile', Mandatory = $true)]
+    [Parameter(ParameterSetName = 'Thumbprint', Mandatory = $true)]
+    [string]
+    $PfxFileName,
+
+    [Parameter(ParameterSetName = 'FederatedToken', Mandatory = $true)]
+    [string]
+    $FederatedToken,
+
+    [Parameter()]
     [string]
     $AzAccountsVersionFrom,
 
@@ -8,18 +38,30 @@ param (
     [string]
     $AzAccountsVersionTo,
 
-    [Parameter(Mandatory = $true)]
-    [string]
-    $Path,
+    [Switch]
+    $RunSmokeTest,
 
-    [Parameter(Mandatory = $true)]
-    [string]
-    $PfxFileName,
-
-    [Parameter()]
-    [string]
-    $FederatedToken
+    [Switch]
+    $RunInAutomation
 )
+
+if ($AzAccountsVersionFrom)
+{
+    try 
+    {
+        $accountsFrom = [Version]$AzAccountsVersionFrom      
+    }
+    catch 
+    {
+        $accountsFrom = $null
+        Write-Warning "Invalid AzAccountsVersionFrom $AzAccountsVersionFrom"
+    }
+}
+
+if ($AzAccountsVersionTo)
+{
+    $accountsTo = [Version]$AzAccountsVersionTo
+}
 
 $module = Get-Module -Name "CertificateUtility"
 if ($null -eq $module)
@@ -27,12 +69,9 @@ if ($null -eq $module)
     Import-Module "$PSScriptRoot/CertificateUtility.psm1"
 }
 
-#$accountsVersion = Set-TestEnvironment -AzVersion $AzVersionUpgradeFrom -NugetPath $NugetPath
-#Install-AzModule -RequiredAzVersion 10.4.1 -Repository PSGallery
-#Install-Module -Name Az.Accounts -Repository PSGallery -AllowPrerelease -Scope CurrentUser -Force
-
-$importAzAccounts = "Import-Module Az.Accounts -RequiredVersion $AzAccountsVersionFrom`n"
-$getToken = "Import-Module Az.Accounts`nGet-Module -Name Az.Accounts`nGet-AzAccessToken"
+$importAzAccountsFrom = "Import-Module Az.Accounts -RequiredVersion $accountsFrom`n"
+$importAzAccountsTo = "Import-Module Az.Accounts -RequiredVersion $accountsTo`n"
+$getToken = "Get-Module -Name Az.Accounts`nGet-AzAccessToken"
 
 $baseCommand = @"
 Get-Module -Name Az.Accounts
@@ -44,6 +83,38 @@ Import-Module Az.Accounts
 Get-Module -Name Az.Accounts
 (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/main/tools/Test/SmokeTest/RmCoreSmokeTests.ps1").Content | Invoke-Expression
 "@
+
+$shortTest = @"
+Write-Host '`n'
+`$storageAccount = Get-AzStorageAccount | Select-Object -First 1
+if (`$storageAccount)
+{
+  Get-AzStorageContainer -Context `$storageAccount.Context
+  Get-AzResource -ResourceId `$storageAccount.Id
+}
+"@
+
+function Test-AzAccountsLogin
+{
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]
+        $SpecialParamString,
+
+        [Parameter(Mandatory = $true)]
+        [bool]
+        $UseWindowsPowerShell
+    )
+    $connectCommand = $baseCommand + " $($specialParamString) `n"
+
+    Write-Host 'Accquire Token Using the Test Version:'
+    $command = $importAzAccountsTo + $getToken
+    Invoke-PowerShellCommand -ScriptBlock "`{$command`}" -UseWindowsPowerShell:$UseWindowsPowerShell
+
+    Write-Host 'Connect AzAccounts Using the Test Version:'
+    $command = $connectCommand
+    Invoke-PowerShellCommand -ScriptBlock "`{$command`}" -UseWindowsPowerShell:$UseWindowsPowerShell
+}
 
 function Test-AzAccountsUpgrade
 {
@@ -57,14 +128,16 @@ function Test-AzAccountsUpgrade
         $UseWindowsPowerShell
     )
 
+    $connectCommand = $baseCommand + " $($specialParamString) `n"
+
     Write-Host 'Connect Using the previous Az.Accounts:'
-    $connectCommand = $baseCommand + " $($specialParamString) -ClearContext`n"
-    $command = $importAzAccounts + $connectCommand
+    $command = $importAzAccountsFrom + $connectCommand
     Invoke-PowerShellCommand -ScriptBlock "`{$command`}" -UseWindowsPowerShell:$UseWindowsPowerShell
-    
+
     Write-Host 'Accquire Token Using the Test Version:'
-    Invoke-PowerShellCommand -ScriptBlock "`{$getToken`}" -UseWindowsPowerShell:$UseWindowsPowerShell
-    
+    $command = $importAzAccountsTo + $getToken
+    Invoke-PowerShellCommand -ScriptBlock "`{$command`}" -UseWindowsPowerShell:$UseWindowsPowerShell
+
     Write-Host 'Connect AzAccounts Using the Test Version:'
     $command = $connectCommand
     Invoke-PowerShellCommand -ScriptBlock "`{$command`}" -UseWindowsPowerShell:$UseWindowsPowerShell
@@ -72,46 +145,76 @@ function Test-AzAccountsUpgrade
 
 $useWindowsPowerShell = $PSVersionTable.PSEdition -eq "Desktop"
 
-if ($FederatedToken -eq $null)
+if ($PSCmdlet.ParameterSetName -eq 'FederatedToken')
 {
     Write-Host '--------------------Test ClientAssertion---------------------------------'
     $specialParams = "-UseFederatedToke -FederatedToken $FederatedToken"
-    Test-AzAccountsUpgrade -SpecialParamString $specialParams -UseWindowsPowerShell $useWindowsPowerShell
-    Write-Host 'Press any key to continue'
-    $null = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+    if ($accountsFrom)
+    {
+        Test-AzAccountsUpgrade -SpecialParamString $specialParams -UseWindowsPowerShell $useWindowsPowerShell
+    }
+    else
+    {
+        Test-AzAccountsLogin -SpecialParamString $specialParams -UseWindowsPowerShell $useWindowsPowerShell
+    }
 }
 
-Write-Host '--------------------Test ClientSecret------------------------------------'
-Test-AzAccountsUpgrade -SpecialParamString '-UsePassword' -UseWindowsPowerShell $useWindowsPowerShell
-Write-Host 'Press any key to continue'
-$null = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if ($PSCmdlet.ParameterSetName -eq 'Password')
+{
+    Write-Host '--------------------Test ClientSecret------------------------------------'
+    if ($accountsFrom)
+    {
+        Test-AzAccountsUpgrade -SpecialParamString '-UsePassword' -UseWindowsPowerShell $useWindowsPowerShell
+    }
+    else
+    {
+        Test-AzAccountsLogin -SpecialParamString '-UsePassword' -UseWindowsPowerShell $useWindowsPowerShell
+    }
+}
 
-Write-Host '--------------------Test ClientCertificateFile---------------------------'
-$specialParams = "-UseCertificateFile -Path $Path -PfxFileName $PfxFileName"
-Test-AzAccountsUpgrade -SpecialParamString $specialParams -UseWindowsPowerShell $useWindowsPowerShell
-Write-Host 'Press any key to continue'
-$null = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if ($PSCmdlet.ParameterSetName -eq 'CertificateFile')
+{
+    Write-Host '--------------------Test ClientCertificateFile---------------------------'
+    $specialParams = "-UseCertificateFile -Path $Path -PfxFileName $PfxFileName"
+    if ($accountsFrom)
+    {
+        Test-AzAccountsUpgrade -SpecialParamString $specialParams -UseWindowsPowerShell $useWindowsPowerShell
+    }
+    else
+    {
+        Test-AzAccountsLogin -SpecialParamString $specialParams -UseWindowsPowerShell $useWindowsPowerShell
+    }
+}
 
-if ($useWindowsPowerShell -or $IsWindows)
+if ($PSCmdlet.ParameterSetName -eq 'Thumbprint')
 {
     Write-Host '--------------------Test ClientCertificateThumbprint---------------------'
     $specialParams = "-UseThumbprint -Path $Path -PfxFileName $PfxFileName"
-    Test-AzAccountsUpgrade -SpecialParamString $specialParams -UseWindowsPowerShell $useWindowsPowerShell
+    if ($accountsFrom)
+    {
+        Test-AzAccountsUpgrade -SpecialParamString $specialParams -UseWindowsPowerShell $useWindowsPowerShell
+    }
+    else 
+    {
+        Test-AzAccountsLogin -SpecialParamString $specialParams -UseWindowsPowerShell $useWindowsPowerShell
+    }
+}
+
+if (-not $RunInAutomation)
+{
     Write-Host 'Press any key to continue'
     $null = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 }
 
-Write-Host '--------------------Run Smoke Test----------------------------------------'
-function Run-SmokeTest
+if ($RunSmokeTest)
 {
-    param (
-        [Parameter(Mandatory = $true)]
-        [bool]
-        $UseWindowsPowerShell
-    )
+    Write-Host '--------------------Run Smoke Test----------------------------------------'
     Write-Host 'Run smoke test using the test version:'
     Invoke-PowerShellCommand -ScriptBlock $smokeTest -UseWindowsPowerShell:$useWindowsPowerShell
 }
-Run-SmokeTest -UseWindowsPowerShell $useWindowsPowerShell
-
-
+else
+{
+    Write-Host '--------------------Run Short Test----------------------------------------'
+    Write-Host 'Run the management plane and data plane cmdlets'
+    Invoke-PowerShellCommand -ScriptBlock $shortTest -UseWindowsPowerShell:$useWindowsPowerShell
+}
