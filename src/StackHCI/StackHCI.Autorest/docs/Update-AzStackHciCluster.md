@@ -299,6 +299,8 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceUri <String>]`: The fully qualified Azure Resource manager identifier of the resource.
   - `[SecuritySettingsName <String>]`: Name of security setting
   - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
+  - `[UpdateName <String>]`: The name of the Update
+  - `[UpdateRunName <String>]`: The name of the Update Run
 
 ## RELATED LINKS
 

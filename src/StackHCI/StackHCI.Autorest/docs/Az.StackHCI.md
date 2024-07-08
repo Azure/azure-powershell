@@ -53,6 +53,15 @@ Gets Remote Support Session History Details.
 ### [Get-AzStackHciSecuritySetting](Get-AzStackHciSecuritySetting.md)
 Get a SecuritySetting
 
+### [Get-AzStackHciUpdate](Get-AzStackHciUpdate.md)
+Get specified Update
+
+### [Get-AzStackHciUpdateRun](Get-AzStackHciUpdateRun.md)
+Get the Update run for a specified update
+
+### [Get-AzStackHciUpdateSummary](Get-AzStackHciUpdateSummary.md)
+Get all Update summaries under the HCI cluster
+
 ### [Get-AzStackHCIVMAttestation](Get-AzStackHCIVMAttestation.md)
 Get-AzStackHCIVMAttestation shows a list of guests added to IMDS Attestation on a node.
 
@@ -64,6 +73,9 @@ Add consent time for default extensions and initiate extensions installation
 
 ### [Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit](Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit.md)
 Extends Software Assurance Benefit to a cluster
+
+### [Invoke-AzStackHciUpdate](Invoke-AzStackHciUpdate.md)
+Apply Update
 
 ### [New-AzStackHciArcSetting](New-AzStackHciArcSetting.md)
 Create ArcSetting for HCI cluster.
@@ -107,6 +119,15 @@ Removes Remote Support.
 ### [Remove-AzStackHciSecuritySetting](Remove-AzStackHciSecuritySetting.md)
 Delete a SecuritySetting
 
+### [Remove-AzStackHciUpdate](Remove-AzStackHciUpdate.md)
+Delete specified Update
+
+### [Remove-AzStackHciUpdateRun](Remove-AzStackHciUpdateRun.md)
+Delete specified Update Run
+
+### [Remove-AzStackHciUpdateSummary](Remove-AzStackHciUpdateSummary.md)
+Delete Update Summaries
+
 ### [Remove-AzStackHCIVMAttestation](Remove-AzStackHCIVMAttestation.md)
 Remove-AzStackHCIVMAttestation removes guests from AzureStack HCI IMDS Attestation.
 
@@ -124,6 +145,15 @@ Create a EdgeDevice
 
 ### [Set-AzStackHciSecuritySetting](Set-AzStackHciSecuritySetting.md)
 Create a security setting
+
+### [Set-AzStackHciUpdate](Set-AzStackHciUpdate.md)
+Put specified Update
+
+### [Set-AzStackHciUpdateRun](Set-AzStackHciUpdateRun.md)
+Put Update runs for a specified update
+
+### [Set-AzStackHciUpdateSummary](Set-AzStackHciUpdateSummary.md)
+Put Update summaries under the HCI cluster
 
 ### [Start-AzStackHciClusterLogCollection](Start-AzStackHciClusterLogCollection.md)
 Trigger Log Collection on a cluster

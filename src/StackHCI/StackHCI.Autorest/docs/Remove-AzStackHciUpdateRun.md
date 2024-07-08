@@ -1,47 +1,32 @@
 ---
 external help file:
 Module Name: Az.StackHCI
-online version: https://learn.microsoft.com/powershell/module/az.stackhci/start-azstackhciclusterlogcollection
+online version: https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhciupdaterun
 schema: 2.0.0
 ---
 
-# Start-AzStackHciClusterLogCollection
+# Remove-AzStackHciUpdateRun
 
 ## SYNOPSIS
-Trigger Log Collection on a cluster
+Delete specified Update Run
 
 ## SYNTAX
 
-### TriggerExpanded (Default)
+### Delete (Default)
 ```
-Start-AzStackHciClusterLogCollection -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-FromDate <DateTime>] [-ToDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Trigger
-```
-Start-AzStackHciClusterLogCollection -ClusterName <String> -ResourceGroupName <String>
- -LogCollectionRequest <ILogCollectionRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzStackHciUpdateRun -ClusterName <String> -Name <String> -ResourceGroupName <String>
+ -UpdateName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### TriggerViaIdentity
+### DeleteViaIdentity
 ```
-Start-AzStackHciClusterLogCollection -InputObject <IStackHciIdentity>
- -LogCollectionRequest <ILogCollectionRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### TriggerViaIdentityExpanded
-```
-Start-AzStackHciClusterLogCollection -InputObject <IStackHciIdentity> [-FromDate <DateTime>]
- [-ToDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzStackHciUpdateRun -InputObject <IStackHciIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Trigger Log Collection on a cluster
+Delete specified Update Run
 
 ## EXAMPLES
 
@@ -89,7 +74,7 @@ The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Trigger, TriggerExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -115,12 +100,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FromDate
-From DateTimeStamp from when logs need to be connected
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.DateTime
-Parameter Sets: TriggerExpanded, TriggerViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
+Parameter Sets: DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the Update Run
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: UpdateRunName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -130,40 +146,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
-Parameter Sets: TriggerViaIdentity, TriggerViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -LogCollectionRequest
-Log Collection Request
-To construct, see NOTES section for LOGCOLLECTIONREQUEST properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ILogCollectionRequest
-Parameter Sets: Trigger, TriggerViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -183,7 +167,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Trigger, TriggerExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -199,7 +183,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Trigger, TriggerExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: False
@@ -209,15 +193,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ToDate
-To DateTimeStamp till when logs need to be connected
+### -UpdateName
+The name of the Update
 
 ```yaml
-Type: System.DateTime
-Parameter Sets: TriggerExpanded, TriggerViaIdentityExpanded
+Type: System.String
+Parameter Sets: Delete
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -260,13 +244,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ILogCollectionRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ICluster
+### System.Boolean
 
 ## NOTES
 
@@ -290,10 +272,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
   - `[UpdateName <String>]`: The name of the Update
   - `[UpdateRunName <String>]`: The name of the Update Run
-
-`LOGCOLLECTIONREQUEST <ILogCollectionRequest>`: Log Collection Request
-  - `[FromDate <DateTime?>]`: From DateTimeStamp from when logs need to be connected
-  - `[ToDate <DateTime?>]`: To DateTimeStamp till when logs need to be connected
 
 ## RELATED LINKS
 

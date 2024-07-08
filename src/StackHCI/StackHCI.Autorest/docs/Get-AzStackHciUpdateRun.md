@@ -1,47 +1,36 @@
 ---
 external help file:
 Module Name: Az.StackHCI
-online version: https://learn.microsoft.com/powershell/module/az.stackhci/start-azstackhciclusterlogcollection
+online version: https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhciupdaterun
 schema: 2.0.0
 ---
 
-# Start-AzStackHciClusterLogCollection
+# Get-AzStackHciUpdateRun
 
 ## SYNOPSIS
-Trigger Log Collection on a cluster
+Get the Update run for a specified update
 
 ## SYNTAX
 
-### TriggerExpanded (Default)
+### List (Default)
 ```
-Start-AzStackHciClusterLogCollection -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-FromDate <DateTime>] [-ToDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Trigger
-```
-Start-AzStackHciClusterLogCollection -ClusterName <String> -ResourceGroupName <String>
- -LogCollectionRequest <ILogCollectionRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzStackHciUpdateRun -ClusterName <String> -ResourceGroupName <String> -UpdateName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### TriggerViaIdentity
+### Get
 ```
-Start-AzStackHciClusterLogCollection -InputObject <IStackHciIdentity>
- -LogCollectionRequest <ILogCollectionRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Get-AzStackHciUpdateRun -ClusterName <String> -Name <String> -ResourceGroupName <String> -UpdateName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### TriggerViaIdentityExpanded
+### GetViaIdentity
 ```
-Start-AzStackHciClusterLogCollection -InputObject <IStackHciIdentity> [-FromDate <DateTime>]
- [-ToDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzStackHciUpdateRun -InputObject <IStackHciIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Trigger Log Collection on a cluster
+Get the Update run for a specified update
 
 ## EXAMPLES
 
@@ -69,27 +58,12 @@ Trigger Log Collection on a cluster
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ClusterName
 The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Trigger, TriggerExpanded
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -115,28 +89,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FromDate
-From DateTimeStamp from when logs need to be connected
-
-```yaml
-Type: System.DateTime
-Parameter Sets: TriggerExpanded, TriggerViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
-Parameter Sets: TriggerViaIdentity, TriggerViaIdentityExpanded
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -146,31 +105,15 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -LogCollectionRequest
-Log Collection Request
-To construct, see NOTES section for LOGCOLLECTIONREQUEST properties and create a hash table.
+### -Name
+The name of the Update Run
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ILogCollectionRequest
-Parameter Sets: Trigger, TriggerViaIdentity
-Aliases:
+Type: System.String
+Parameter Sets: Get
+Aliases: UpdateRunName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -183,7 +126,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Trigger, TriggerExpanded
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -198,8 +141,8 @@ The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
-Type: System.String
-Parameter Sets: Trigger, TriggerExpanded
+Type: System.String[]
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -209,46 +152,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ToDate
-To DateTimeStamp till when logs need to be connected
+### -UpdateName
+The name of the Update
 
 ```yaml
-Type: System.DateTime
-Parameter Sets: TriggerExpanded, TriggerViaIdentityExpanded
+Type: System.String
+Parameter Sets: Get, List
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -260,13 +172,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ILogCollectionRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdateRun
 
 ## NOTES
 
@@ -290,10 +200,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
   - `[UpdateName <String>]`: The name of the Update
   - `[UpdateRunName <String>]`: The name of the Update Run
-
-`LOGCOLLECTIONREQUEST <ILogCollectionRequest>`: Log Collection Request
-  - `[FromDate <DateTime?>]`: From DateTimeStamp from when logs need to be connected
-  - `[ToDate <DateTime?>]`: To DateTimeStamp till when logs need to be connected
 
 ## RELATED LINKS
 
