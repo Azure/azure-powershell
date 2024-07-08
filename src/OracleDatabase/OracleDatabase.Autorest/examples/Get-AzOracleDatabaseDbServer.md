@@ -11,4 +11,5 @@ dbServer-3                                                                      
 dbServer-1                                                                                                                                                PowerShellTestRg
 ```
 
-Gets a list of the Database Servers for a Cloud Exadata Infrastructure resource
+Gets a list of the Database Servers for a Cloud Exadata Infrastructure resource.
+For more information, execute `Get-Help Get-AzOracleDatabaseDbServer`

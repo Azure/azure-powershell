@@ -10,4 +10,5 @@ ocid1.dbnode.oc1.iad.anuwcljrnirvylqapfxspunpsxyaehha5wwz22lazevdaoiye7bh4iy2nwf
 ocid1.dbnode.oc1.iad.anuwcljrnirvylqaqm24luvmhsaaz2wtiq3ggddpsemx6gn66vff5rulsgnq                                                                                                                                                PowerShellTestRg
 ```
 
-Gets a list of the Database Nodes for a Cloud VM Cluster resource
+Gets a list of the Database Nodes for a Cloud VM Cluster resource.
+For more information, execute `Get-Help Get-AzOracleDatabaseDbNode`

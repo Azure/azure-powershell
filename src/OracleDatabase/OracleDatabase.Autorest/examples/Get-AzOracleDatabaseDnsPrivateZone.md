@@ -99,4 +99,5 @@ ocidelegatedsu.ocidbqaociuivn.oraclevcn.com
 ocidelegated.ocidnsfwdvn.oraclevcn.com
 ```
 
-Gets a list of the DNS Private Zones by location
+Gets a list of the DNS Private Zones by location.
+For more information, execute `Get-Help Get-AzOracleDatabaseDnsPrivateZone`

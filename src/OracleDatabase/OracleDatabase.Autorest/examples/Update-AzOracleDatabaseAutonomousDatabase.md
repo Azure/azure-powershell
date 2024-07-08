@@ -326,4 +326,5 @@ VnetId                                        : /subscriptions/dcb0912a-9b6f-46e
 WhitelistedIP                                 : 
 ```
 
-Updates an Autonomous Database resource
+Updates an Autonomous Database resource.
+For more information, execute `Get-Help Update-AzOracleDatabaseAutonomousDatabase`

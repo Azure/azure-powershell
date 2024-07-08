@@ -12,4 +12,5 @@ Name SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataL
 19c                                                                                                                                                 
 ```
 
-Gets a list of the Autonomous Database Versions by location
+Gets a list of the Autonomous Database Versions by location.
+For more information, execute `Get-Help Get-AzOracleDatabaseAutonomousDatabaseVersion`

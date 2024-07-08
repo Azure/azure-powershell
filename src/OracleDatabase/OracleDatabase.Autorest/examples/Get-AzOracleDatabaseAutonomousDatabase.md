@@ -348,4 +348,5 @@ VnetId                                        : /subscriptions/dcb0912a-9b6f-46e
 WhitelistedIP                                 : 
 ```
 
-Gets an Autonomous Database resource by name and resource group name
+Gets an Autonomous Database resource by name and resource group name.
+For more information, execute `Get-Help Get-AzOracleDatabaseAutonomousDatabase`

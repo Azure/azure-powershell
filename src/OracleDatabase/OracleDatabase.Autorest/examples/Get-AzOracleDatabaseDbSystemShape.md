@@ -36,4 +36,5 @@ SystemDataLastModifiedByType      :
 Type                              : Oracle.Database/Locations/dbSystemShapes
 ```
 
-Gets a list of the Database System Shapes by location
+Gets a list of the Database System Shapes by location.
+For more information, execute `Get-Help Get-AzOracleDatabaseDbSystemShape`

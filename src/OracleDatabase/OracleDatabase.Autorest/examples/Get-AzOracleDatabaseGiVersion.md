@@ -10,4 +10,5 @@ Name     SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemD
 23.0.0.0                                                                                                                                                
 ```
 
-Gets a list of the Grid Infrastructure Versions by location
+Gets a list of the Grid Infrastructure Versions by location.
+For more information, execute `Get-Help Get-AzOracleDatabaseGiVersion`

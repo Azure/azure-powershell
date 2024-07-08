@@ -103,4 +103,5 @@ VnetId                                         : /subscriptions/dcb0912a-9b6f-46
 ZoneId                                         : ocid1.dns-zone.oc1.iad.aaaaaaaah4rwrfuscditbdg7yjutywp3xpwyuqmcj2bymvb4dn47xoxmvenq
 ```
 
-Creates a Cloud VM Cluster resource
+Creates a Cloud VM Cluster resource.
+For more information, execute `Get-Help New-AzOracleDatabaseCloudVMCluster`

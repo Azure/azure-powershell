@@ -1,22 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Gets a list of the Private IP Addresses for a Cloud VM Cluster resource
 ```powershell
-{{ Add code here }}
+$subnetName = "delegated"
+$subnetId = "/subscriptions/$($subscriptionId)/resourceGroups/$($resourceGroup)/providers/Microsoft.Network/virtualNetworks/$($vnetName)/subnets/$($subnetName)"
+
+Get-AzOracleDatabaseCloudVMClusterPrivateIpaddress -Cloudvmclustername "OFake_PowerShellTestVmCluster" -ResourceGroupName "PowerShellTestRg" -SubnetId $subnetId -VnicId "vnidId"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Gets a list of the Private IP Addresses for a Cloud VM Cluster resource.
+For more information, execute `Get-Help Get-AzOracleDatabaseCloudVMClusterPrivateIpaddress`

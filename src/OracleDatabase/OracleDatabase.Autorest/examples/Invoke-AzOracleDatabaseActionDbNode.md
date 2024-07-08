@@ -98,4 +98,5 @@ Vnic2Id                      : ocid1.vnic.fake.1.1
 VnicId                       : 
 ```
 
-Start a VM in a Cloud VM Cluster resource
+Start a VM in a Cloud VM Cluster resource.
+For more information, execute `Get-Help Invoke-AzOracleDatabaseActionDbNode`

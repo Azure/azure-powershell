@@ -66,4 +66,5 @@ Type                                                      : oracle.database/clou
 Zone                                                      : {2}
 ```
 
-Updates a Cloud Exadata Infrastructure resource
+Updates a Cloud Exadata Infrastructure resource.
+For more information, execute `Get-Help Update-AzOracleDatabaseCloudExadataInfrastructure`

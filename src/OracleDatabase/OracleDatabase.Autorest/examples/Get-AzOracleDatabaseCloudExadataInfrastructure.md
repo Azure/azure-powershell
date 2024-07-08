@@ -11,7 +11,8 @@ eastus             DemoExaInfra                 05/07/2024 08:20:01 eamon.el-hom
 germanywestcentral OFake_ppratees_0216_2        16/02/2024 20:24:39 prateek.ps.sharma@oracle.com User                    06/07/2024 11:03:57      857ad006-4380-4712-ba4c-22f7c64d84e7 Application                  ObsTestingFra
 ```
 
-Gets a list of the Cloud Exadata Infrastructure resources
+Gets a list of the Cloud Exadata Infrastructure resources.
+For more information, execute `Get-Help Get-AzOracleDatabaseCloudExadataInfrastructure`
 
 ### Example 2: Gets a Cloud Exadata Infrastructure resource by name and resource group name
 ```powershell
@@ -81,4 +82,5 @@ Type                                                      : oracle.database/clou
 Zone                                                      : {2}
 ```
 
-Gets a Cloud Exadata Infrastructure resource by name
+Gets a Cloud Exadata Infrastructure resource by name.
+For more information, execute `Get-Help Get-AzOracleDatabaseCloudExadataInfrastructure`

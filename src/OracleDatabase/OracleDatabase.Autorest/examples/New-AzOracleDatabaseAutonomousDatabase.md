@@ -340,4 +340,5 @@ VnetId                                        : /subscriptions/dcb0912a-9b6f-46e
 WhitelistedIP                                 : 
 ```
 
-Creates an Autonomous Database resource
+Creates an Autonomous Database resource.
+For more information, execute `Get-Help New-AzOracleDatabaseAutonomousDatabase`

@@ -1,10 +1,7 @@
 ### Example 1: Deletes a Backup for an Autonomous Database resource
 ```powershell
-{{ Add code here }}
+Remove-AzOracleDatabaseAutonomousDatabaseBackup -Adbbackupid "testBackupId" -Autonomousdatabasename "OFakePowerShellTestAdbs" -ResourceGroupName "PowerShellTestRg"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-Deletes a Backup for an Autonomous Database resource
+Deletes a Backup for an Autonomous Database resource.
+For more information, execute `Get-Help Remove-AzOracleDatabaseAutonomousDatabaseBackup`

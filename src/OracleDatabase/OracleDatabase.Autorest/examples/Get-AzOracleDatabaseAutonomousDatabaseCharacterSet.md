@@ -114,4 +114,5 @@ ZHT32SOPS
 ZHT32TRIS
 ```
 
-Gets a list of the Autonomous Database Character Sets
+Gets a list of the Autonomous Database Character Sets by location.
+For more information, execute `Get-Help Get-AzOracleDatabaseAutonomousDatabaseCharacterSet`

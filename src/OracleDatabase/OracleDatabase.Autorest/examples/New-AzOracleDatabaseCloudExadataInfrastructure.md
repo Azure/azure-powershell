@@ -66,4 +66,5 @@ Type                                                      : oracle.database/clou
 Zone                                                      : {2}
 ```
 
-Creates a Cloud Exadata Infrastructure resource
+Creates a Cloud Exadata Infrastructure resource.
+For more information, execute `Get-Help New-AzOracleDatabaseCloudExadataInfrastructure`

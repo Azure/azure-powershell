@@ -8,4 +8,5 @@ AL16UTF16
 UTF8
 ```
 
-Gets a list of the Autonomous Database National Character Sets by location
+Gets a list of the Autonomous Database National Character Sets by location.
+For more information, execute `Get-Help Get-AzOracleDatabaseAutonomousDatabaseNationalCharacterSet`

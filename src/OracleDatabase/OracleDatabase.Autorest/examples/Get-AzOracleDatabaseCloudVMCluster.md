@@ -7,7 +7,8 @@ Get-AzOracleDatabaseCloudVMCluster
 {{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Gets a list of the Cloud VM Cluster resources
+Gets a list of the Cloud VM Cluster resources.
+For more information, execute `Get-Help Get-AzOracleDatabaseCloudVMCluster`
 
 ### Example 2: Gets a Cloud VM Cluster resource by name and resource group name
 ```powershell
@@ -93,4 +94,5 @@ VnetId                                         : /subscriptions/dcb0912a-9b6f-46
 ZoneId                                         : ocid1.dns-zone.oc1.iad.aaaaaaaah4rwrfuscditbdg7yjutywp3xpwyuqmcj2bymvb4dn47xoxmvenq
 ```
 
-Gets a Cloud VM Cluster resource by name and resource group name
+Gets a Cloud VM Cluster resource by name and resource group name.
+For more information, execute `Get-Help Get-AzOracleDatabaseCloudVMCluster`

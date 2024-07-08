@@ -58,4 +58,5 @@ ocid1.dnsview.oc1.iad.aaaaaaaa3i6q4mwhal3jjcfbv5oo3jruijf43me3u7ro46xhj7dncba2an
 ocid1.dnsview.oc1.iad.aaaaaaaa6rplfk5emrpuk5bhe7hmnhyqj5xg3zpvqwf27oowux6forjjk3wq                                                                                                                                                
 ```
 
-Gets a list of the DNS Private Views by location
+Gets a list of the DNS Private Views by location.
+For more information, execute `Get-Help Get-AzOracleDatabaseDnsPrivateView`
