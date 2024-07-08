@@ -88,6 +88,27 @@ public class MySampleCmdlet : MyBaseCmdlet
 }
 ```
 
+#### Enumerate Collection When WriteObject()
+
+When returning a collection of objects, the cmdlet should enumerate the collection. This ensures that the objects are written to the pipeline one at a time, which is the expected behavior for PowerShell cmdlets.
+
+There are two ways to accomplish this: (a) call `WriteObject()` for each object in the collection, or (b) use `WriteObject()` with the `enumerateCollection` parameter set to `true`. The `enumerateCollection` parameter is a boolean that, when true, will enumerate the collection and write each object to the pipeline.
+
+The code below shows how this should look in a cmdlet:
+
+```cs
+var resources = Client.ListResources();
+
+// option a: call WriteObject() for each object in the collection
+foreach (var resource in resources)
+{
+    WriteObject(resource);
+}
+
+// option b: use WriteObject() with the enumerateCollection parameter set to true
+WriteObject(resources, true);
+```
+
 ### `ShouldProcess`
 
 If a cmdlet makes any changes to an object on the server (_e.g._, create, delete, update, start, stop a resource), the cmdlet should implement `ShouldProcess`. This property adds the `-WhatIf` and `-Confirm` parameters to the cmdlet:
