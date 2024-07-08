@@ -16,20 +16,22 @@
     ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
     * Overview of change #1
         - Additional information about change #1
--->
+-->## 
 ## Upcoming Release
 * Supported local user ACL and list local user paging/filtering 
     - `Set-AzStorageLocalUser`
     - `Get-AzStorageLocalUser`
+    
+## Version 7.1.0
 * Fixed the issue that Azure.Core.AccessToken is used before assigned.
-    - `Set-AzStorageLocalUser`
-    - `Get-AzStorageLocalUser`
 * Supported TLS1_3 when creating and updating a storage account 
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`
 * Fixed sync copy blob issue with -AsJob is specified [#25105]
     - `Copy-AzStorageBlob`
 * Updated Storage.Management.Sdk to support API version 2023-05-01
+* Updated 2 help examples of create storage account cmdlet, with MinimumTlsVersion as TLS1_2.
+    - `New-AzStorageAccount`
 
 ## Version 7.0.0
 * Added a prompt that needs confirmation when upgrading a storage account from StorageV1 or BlobStorage to StorageV2. Can be suppressed with -Force.

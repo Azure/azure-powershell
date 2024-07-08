@@ -124,6 +124,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentityInternal)this).RuleSetName = (string) content.GetValueForProperty("RuleSetName",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentityInternal)this).RuleSetName, global::System.Convert.ToString);
             }
+            if (content.Contains("ConfigurationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentityInternal)this).ConfigurationName = (string) content.GetValueForProperty("ConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentityInternal)this).ConfigurationName, global::System.Convert.ToString);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -160,6 +164,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
             if (content.Contains("RuleSetName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentityInternal)this).RuleSetName = (string) content.GetValueForProperty("RuleSetName",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentityInternal)this).RuleSetName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConfigurationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentityInternal)this).ConfigurationName = (string) content.GetValueForProperty("ConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentityInternal)this).ConfigurationName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

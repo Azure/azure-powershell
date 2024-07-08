@@ -16,14 +16,14 @@ Create a new AppComplianceAutomation webhook or update an exiting AppComplianceA
 ```
 New-AzAcatWebhook -Name <String> -ReportName <String> -TriggerMode <String> -PayloadUrl <String>
  [-EnableSslVerification <String>] [-Disable] [-Event <String[]>] [-ContentType <String>]
- [-Secret <SecureString>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Secret <SecureString>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzAcatWebhook -Name <String> -ReportName <String> -Parameter <IWebhookResource>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -193,21 +193,6 @@ Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

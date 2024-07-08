@@ -163,7 +163,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Gateway which to connect segment to.",
         SerializedName = @"connectedGateway",
         PossibleTypes = new [] { typeof(string) })]
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Display name of the segment.",
         SerializedName = @"displayName",
         PossibleTypes = new [] { typeof(string) })]
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"NSX revision number.",
         SerializedName = @"revision",
         PossibleTypes = new [] { typeof(long) })]
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"DHCP Range assigned for subnet.",
         SerializedName = @"dhcpRanges",
         PossibleTypes = new [] { typeof(string) })]
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Gateway address.",
         SerializedName = @"gatewayAddress",
         PossibleTypes = new [] { typeof(string) })]

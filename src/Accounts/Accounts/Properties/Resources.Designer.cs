@@ -1483,6 +1483,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Authentication with a username and password at the command line is strongly discouraged. Use one of the recommended authentication methods based on your requirements. For additional information, visit https://go.microsoft.com/fwlink/?linkid=2276971..
+        /// </summary>
+        internal static string UsernamePasswordDeprecateWarningMessage {
+            get {
+                return ResourceManager.GetString("UsernamePasswordDeprecateWarningMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please ensure that the provided user is found in the provided tenant domain..
         /// </summary>
         internal static string UserTenantDomainNotFound {
