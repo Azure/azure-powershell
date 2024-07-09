@@ -18,7 +18,7 @@ New-AzVMwareCluster -Name <String> -PrivateCloudName <String> -ResourceGroupName
  [-SubscriptionId <String>] -SkuName <String> [-ClusterSize <Int32>] [-PropertiesHost <String[]>]
  [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuSize <String>] [-SkuTier <String>]
  [-VsanDatastoreName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityPrivateCloudExpanded
@@ -26,7 +26,7 @@ New-AzVMwareCluster -Name <String> -PrivateCloudName <String> -ResourceGroupName
 New-AzVMwareCluster -Name <String> -PrivateCloudInputObject <IVMwareIdentity> -SkuName <String>
  [-ClusterSize <Int32>] [-PropertiesHost <String[]>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
  [-SkuSize <String>] [-SkuTier <String>] [-VsanDatastoreName <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -34,7 +34,7 @@ New-AzVMwareCluster -Name <String> -PrivateCloudInputObject <IVMwareIdentity> -S
 New-AzVMwareCluster -InputObject <IVMwareIdentity> -SkuName <String> [-ClusterSize <Int32>]
  [-PropertiesHost <String[]>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuSize <String>]
  [-SkuTier <String>] [-VsanDatastoreName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -172,21 +172,6 @@ Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -12,6 +12,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentityInternal
     {
 
+        /// <summary>Backing field for <see cref="ConfigurationName" /> property.</summary>
+        private string _configurationName;
+
+        /// <summary>The configuration name. Only 'default' value is supported.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Origin(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PropertyOrigin.Owned)]
+        public string ConfigurationName { get => this._configurationName; set => this._configurationName = value; }
+
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
@@ -56,10 +63,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
     public partial interface INewRelicIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IJsonSerializable
     {
+        /// <summary>The configuration name. Only 'default' value is supported.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The configuration name. Only 'default' value is supported.",
+        SerializedName = @"configurationName",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("default")]
+        string ConfigurationName { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -68,6 +90,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the Monitors resource",
         SerializedName = @"monitorName",
         PossibleTypes = new [] { typeof(string) })]
@@ -76,6 +101,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -84,6 +112,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the TagRule",
         SerializedName = @"ruleSetName",
         PossibleTypes = new [] { typeof(string) })]
@@ -92,6 +123,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -101,6 +135,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
     internal partial interface INewRelicIdentityInternal
 
     {
+        /// <summary>The configuration name. Only 'default' value is supported.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("default")]
+        string ConfigurationName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>Name of the Monitors resource</summary>

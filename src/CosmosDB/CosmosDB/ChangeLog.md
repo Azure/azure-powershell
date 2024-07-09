@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.14.4
 * Fixed the issue that Azure.Core.AccessToken is used before assigned.
 
 ## Version 1.14.3

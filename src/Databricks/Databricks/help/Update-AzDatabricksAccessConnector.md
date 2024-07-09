@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDatabricksAccessConnector
 
 ## SYNOPSIS
-Updates an azure databricks accessConnector.
+Updates an Azure Databricks Access Connector.
 
 ## SYNTAX
 
@@ -29,7 +29,7 @@ Update-AzDatabricksAccessConnector -InputObject <IDatabricksIdentity>
 ```
 
 ## DESCRIPTION
-Updates an azure databricks accessConnector.
+Updates an Azure Databricks Access Connector.
 
 ## EXAMPLES
 
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the azure databricks accessConnector.
+The name of the Azure Databricks Access Connector.
 
 ```yaml
 Type: System.String
@@ -188,6 +188,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -256,7 +257,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector
+### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IAccessConnector
 
 ## NOTES
 

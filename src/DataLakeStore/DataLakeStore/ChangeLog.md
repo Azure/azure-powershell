@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.2
 * Updated signed 3rd party assembly NLog.dll to PSGallery
 
 ## Version 1.3.1

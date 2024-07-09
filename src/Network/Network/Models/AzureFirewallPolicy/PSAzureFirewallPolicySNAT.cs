@@ -13,6 +13,8 @@
 // limitations under the License.
 //
 
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
@@ -21,5 +23,23 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public IList<string> PrivateRanges { get; set; }
         public string AutoLearnPrivateRanges { get; set; }
+
+        private const string IANAPrivateRanges = "IANAPrivateRanges";
+
+        #region Private Range Validation
+        public void ValidatePrivateRange()
+        {
+            foreach (var ip in PrivateRanges)
+            {
+                if (ip.Equals(IANAPrivateRanges, StringComparison.OrdinalIgnoreCase))
+                    continue;
+
+                if (ip.Contains("/"))
+                    NetworkValidationUtils.ValidateSubnet(ip);
+                else
+                    NetworkValidationUtils.ValidateIpAddress(ip);
+            }
+        }
+        #endregion
     }
 }

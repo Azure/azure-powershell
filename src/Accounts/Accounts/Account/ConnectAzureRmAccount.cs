@@ -330,6 +330,18 @@ namespace Microsoft.Azure.Commands.Profile
             Guid subscriptionIdGuid;
             string subscriptionName = null;
             string subscriptionId = null;
+
+            //Disable WAM before the issue https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/4786 is fixed
+            if (ParameterSetName.Equals(UserParameterSet) && UseDeviceAuthentication == true || ParameterSetName.Equals(UserWithCredentialParameterSet))
+            {
+                AzConfigReader.Instance?.UpdateConfig(ConfigKeys.EnableLoginByWam, false, ConfigScope.CurrentUser);
+            }
+
+            if (ParameterSetName.Equals(UserWithCredentialParameterSet))
+            {
+                WriteWarning(Resources.UsernamePasswordDeprecateWarningMessage);
+            }
+
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Subscription)))
             {
                 if (Guid.TryParse(Subscription, out subscriptionIdGuid))
@@ -862,13 +874,13 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 if (!_qosEvent.ConfigMetrics.ContainsKey(ConfigKeys.LoginExperienceV2))
                 {
-                    _qosEvent.ConfigMetrics[ConfigKeys.LoginExperienceV2] = new ConfigMetrics(ConfigKeys.LoginExperienceV2,
+                    _qosEvent.ConfigMetrics[ConfigKeys.LoginExperienceV2] = new ConfigMetrics(ConfigKeys.LoginExperienceV2, $"Config-{ConfigKeys.LoginExperienceV2}",
                        Enum.GetName(typeof(LoginExperienceConfig), AzConfigReader.GetAzConfig(ConfigKeys.LoginExperienceV2, LoginExperienceConfig.On)));
                 }
 
                 if (!_qosEvent.ConfigMetrics.ContainsKey(ConfigKeys.EnableLoginByWam))
                 {
-                    _qosEvent.ConfigMetrics[ConfigKeys.EnableLoginByWam] = new ConfigMetrics(ConfigKeys.EnableLoginByWam,
+                    _qosEvent.ConfigMetrics[ConfigKeys.EnableLoginByWam] = new ConfigMetrics(ConfigKeys.EnableLoginByWam, $"Config-{ConfigKeys.EnableLoginByWam}",
                        AzConfigReader.GetAzConfig(ConfigKeys.EnableLoginByWam, true).ToString());
                 }
             }
