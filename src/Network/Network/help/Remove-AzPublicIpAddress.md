@@ -23,7 +23,7 @@ The **Remove-AzPublicIpAddress** cmdlet removes an Azure public IP address.
 
 ## EXAMPLES
 
-### 1: Remove a public IP address resource
+### Example 1: Remove a public IP address resource
 ```powershell
 Remove-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
 ```

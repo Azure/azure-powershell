@@ -23,7 +23,7 @@ The **Set-AzPublicIpAddress** cmdlet updates a public IP address.
 
 ## EXAMPLES
 
-### 1: Change allocation method of a public IP address
+### Example 1: Change allocation method of a public IP address
 ```powershell
 $publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
 
@@ -41,7 +41,7 @@ Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
     updated object, and modifies the allocation method to 'Static'. A public IP address gets 
     allocated immediately.
 
-### 2: Add DNS domain label of a public IP address
+### Example 2: Add DNS domain label of a public IP address
 ```powershell
 $publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
 
@@ -59,7 +59,7 @@ First command gets the public IP address resource with name $publicIPName in the
     updated object. DomainNameLabel & Fqdn are modified as expected.
     
 
-### 3: Change DNS domain label of a public IP address
+### Example 3: Change DNS domain label of a public IP address
 ```powershell
 $publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
 
