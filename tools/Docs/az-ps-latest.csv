@@ -146,7 +146,7 @@ pac144,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac145,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.SecurityInsights.3.1.2.zip;sourceType=sa]Az.SecurityInsights,3.1.2
 pac146,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.SelfHelp.0.2.0.zip;sourceType=sa]Az.SelfHelp,0.2.0
 pac147,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ServiceBus.4.0.0.zip;sourceType=sa]Az.ServiceBus,4.0.0
-pac148,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ServiceFabric.3.3.3.zip;sourceType=sa]Az.ServiceFabric,3.3.3
+pac148,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ServiceFabric.4.0.0.zip;sourceType=sa]Az.ServiceFabric,4.0.0
 pac149,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ServiceLinker.0.2.1.zip;sourceType=sa]Az.ServiceLinker,0.2.1
 pac150,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.SignalR.2.0.1.zip;sourceType=sa]Az.SignalR,2.0.1
 pac151,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Sphere.0.1.1.zip;sourceType=sa]Az.Sphere,0.1.1
