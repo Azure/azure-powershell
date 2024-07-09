@@ -14,14 +14,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
     {
 
         /// <summary>Backing field for <see cref="ExpirationAction" /> property.</summary>
-        private string _expirationAction= @"Log";
+        private string _expirationAction;
 
-        /// <summary>The SAS expiration action. Can only be Log.</summary>
+        /// <summary>
+        /// The SAS Expiration Action defines the action to be performed when sasPolicy.sasExpirationPeriod is violated. The 'Log'
+        /// action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that
+        /// do not adhere to the sas policy expiration period.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
-        public string ExpirationAction { get => this._expirationAction; }
-
-        /// <summary>Internal Acessors for ExpirationAction</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISasPolicyInternal.ExpirationAction { get => this._expirationAction; set { {_expirationAction = value;} } }
+        public string ExpirationAction { get => this._expirationAction; set => this._expirationAction = value; }
 
         /// <summary>Backing field for <see cref="SasExpirationPeriod" /> property.</summary>
         private string _sasExpirationPeriod;
@@ -40,17 +41,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
     public partial interface ISasPolicy :
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IJsonSerializable
     {
-        /// <summary>The SAS expiration action. Can only be Log.</summary>
+        /// <summary>
+        /// The SAS Expiration Action defines the action to be performed when sasPolicy.sasExpirationPeriod is violated. The 'Log'
+        /// action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that
+        /// do not adhere to the sas policy expiration period.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = true,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The SAS expiration action. Can only be Log.",
+        Description = @"The SAS Expiration Action defines the action to be performed when sasPolicy.sasExpirationPeriod is violated. The 'Log' action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that do not adhere to the sas policy expiration period.",
         SerializedName = @"expirationAction",
         PossibleTypes = new [] { typeof(string) })]
-        string ExpirationAction { get;  }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Log", "Block")]
+        string ExpirationAction { get; set; }
         /// <summary>The SAS expiration period, DD.HH:MM:SS.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = true,
@@ -68,7 +74,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
     internal partial interface ISasPolicyInternal
 
     {
-        /// <summary>The SAS expiration action. Can only be Log.</summary>
+        /// <summary>
+        /// The SAS Expiration Action defines the action to be performed when sasPolicy.sasExpirationPeriod is violated. The 'Log'
+        /// action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that
+        /// do not adhere to the sas policy expiration period.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Log", "Block")]
         string ExpirationAction { get; set; }
         /// <summary>The SAS expiration period, DD.HH:MM:SS.</summary>
         string SasExpirationPeriod { get; set; }
