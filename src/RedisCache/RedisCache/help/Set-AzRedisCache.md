@@ -16,7 +16,7 @@ Modifies an Azure Cache for Redis.
 ```
 Set-AzRedisCache [-ResourceGroupName <String>] -Name <String> [-Size <String>] [-Sku <String>]
  [-RedisConfiguration <Hashtable>] [-EnableNonSslPort <Boolean>] [-TenantSettings <Hashtable>]
- [-ShardCount <Int32>] [-MinimumTlsVersion <String>] [-RedisVersion <String>] [-UpdateChannel <String>]
+ [-ShardCount <Int32>] [-MinimumTlsVersion <String>] [-DisableAccessKeyAuthentication <Boolean>] [-RedisVersion <String>] [-UpdateChannel <String>]
  [-Tag <Hashtable>] [-IdentityType <String>] [-UserAssignedIdentity <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -592,6 +592,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DisableAccessKeyAuthentication
+Optional: Authentication to Redis through access keys is disabled when set as true. Default value is false.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: false
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
