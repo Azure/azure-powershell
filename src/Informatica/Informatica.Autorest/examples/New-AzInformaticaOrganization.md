@@ -6,7 +6,7 @@ New-AzInformaticaOrganization -Name "NewInformaticaTestResource" -ResourceGroupN
 >> -CompanyDetailCountry "India" `
 >> -CompanyDetailDomain "" `
 >> -CompanyDetailNumberOfEmployee 0 `
->> -CompanyDetailBusiness "" `
+>> -Business "" `
 >> -MarketplaceDetailMarketplaceSubscriptionId "c948d31a-c011-4b16-ce29-688c1565fc06" `
 >> -OfferDetailOfferId "prod-idmc_as_azure_native_isv_service" `
 >> -OfferDetailPlanId "prod-private_priview_plan_cdi_free" `
@@ -22,7 +22,7 @@ New-AzInformaticaOrganization -Name "NewInformaticaTestResource" -ResourceGroupN
 ```
 
 ```output
-CompanyDetailBusiness                      :
+Business                      :
 CompanyDetailCompanyName                   : Test
 CompanyDetailCountry                       : India
 CompanyDetailDomain                        :

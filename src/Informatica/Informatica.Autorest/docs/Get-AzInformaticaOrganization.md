@@ -46,7 +46,7 @@ Get a InformaticaOrganizationResource
 ```
 
 ```output
-CompanyDetailBusiness                      :
+Business                      :
 CompanyDetailCompanyName                   : Microsoft
 CompanyDetailCountry                       : India
 CompanyDetailDomain                        :

@@ -77,7 +77,7 @@ Update a InformaticaOrganizationResource
 ```
 
 ```output
-CompanyDetailBusiness                      :
+Business                      :
 CompanyDetailCompanyName                   : Test
 CompanyDetailCountry                       : India
 CompanyDetailDomain                        :

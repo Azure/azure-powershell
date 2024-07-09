@@ -15,7 +15,7 @@ Create a InformaticaOrganizationResource
 ### CreateExpanded (Default)
 ```
 New-AzInformaticaOrganization -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-CompanyDetailBusiness <String>] [-CompanyDetailCompanyName <String>]
+ [-SubscriptionId <String>] [-Business <String>] [-CompanyDetailCompanyName <String>]
  [-CompanyDetailCountry <String>] [-CompanyDetailDomain <String>] [-CompanyDetailNumberOfEmployee <Int32>]
  [-CompanyDetailOfficeAddress <String>] [-InformaticaPropertyInformaticaRegion <String>]
  [-InformaticaPropertyOrganizationId <String>] [-InformaticaPropertyOrganizationName <String>]
@@ -55,7 +55,7 @@ Create a InformaticaOrganizationResource
 >> -CompanyDetailCountry "India" `
 >> -CompanyDetailDomain "" `
 >> -CompanyDetailNumberOfEmployee 0 `
->> -CompanyDetailBusiness "" `
+>> -Business "" `
 >> -MarketplaceDetailMarketplaceSubscriptionId "c948d31a-c011-4b16-ce29-688c1565fc06" `
 >> -OfferDetailOfferId "prod-idmc_as_azure_native_isv_service" `
 >> -OfferDetailPlanId "prod-private_priview_plan_cdi_free" `
@@ -71,7 +71,7 @@ Create a InformaticaOrganizationResource
 ```
 
 ```output
-CompanyDetailBusiness                      :
+Business                      :
 CompanyDetailCompanyName                   : Test
 CompanyDetailCountry                       : India
 CompanyDetailDomain                        :
@@ -131,7 +131,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CompanyDetailBusiness
+### -Business
 Business phone number
 
 ```yaml
