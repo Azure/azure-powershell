@@ -27,25 +27,10 @@ Create a DeploymentSetting
 
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+Set-AzStackHciDeploymentSetting -ClusterName 'test-cluster' -ResourceGroupName 's-cluster-rg' -SName 'default'
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Sets the Deployment Setting
 
 ## PARAMETERS
 

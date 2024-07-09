@@ -34,27 +34,18 @@ Get all Update summaries under the HCI cluster
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1:
 ```powershell
-{{ Add code here }}
+Get-AzStackHciUpdateSummary -ClusterName 'test-cluster' -ResourceGroupName 'test-rg'
 ```
 
 ```output
-{{ Add output here }}
+Name    SystemDataCreatedAt  SystemDataCreatedBy                SystemDataCreatedByType
+----    -------------------  -------------------                -----------------------
+default 7/8/2024 10:25:44 AM 1412d89f-b8a8-4111-b4fd-e82905cbd85d       Application
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Gets the Cluster Update Summary
 
 ## PARAMETERS
 

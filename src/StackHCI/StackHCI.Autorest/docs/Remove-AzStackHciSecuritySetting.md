@@ -32,25 +32,10 @@ Delete a SecuritySetting
 
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+Remove-AzStackHciSecuritySetting -ClusterName 'test-cluster' -ResourceGroupName 'test-rg' -SName 'default'
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Removes the security setting
 
 ## PARAMETERS
 

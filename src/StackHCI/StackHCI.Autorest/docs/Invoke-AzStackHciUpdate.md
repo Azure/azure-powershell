@@ -30,27 +30,12 @@ Apply Update
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1:
 ```powershell
-{{ Add code here }}
+Invoke-AzStackHciUpdate -ClusterName 'test-cluster' -Name 'test-update' -ResourceGroupName 'test-rg'
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Invokes the Cluster Update.
 
 ## PARAMETERS
 

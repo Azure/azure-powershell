@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1:
 ```powershell
-{{ Add code here }}
+Get-AzStackHciEdgeDevice -ResourceUri "subscriptions/<subId>/resourceGroups/<test-rg>/providers/Microsoft.HybridCompute/machines/<test-node>"
 ```
 
 ```output
-{{ Add output here }}
+Kind    Name
+----    ----
+HCI     default
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Gets the Edge Device
 

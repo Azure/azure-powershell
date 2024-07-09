@@ -35,27 +35,18 @@ Get a SecuritySetting
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1:
 ```powershell
-{{ Add code here }}
+Get-AzStackHciSecuritySetting -ClusterName 'test-cluster' -ResourceGroupName 'test-rg'
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName
+----    ----------------- .....
+default test-rg
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Get Security Setting for a cluster
 
 ## PARAMETERS
 
