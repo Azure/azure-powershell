@@ -1,0 +1,97 @@
+{
+  "Remove-AzAcatWebhook+[NoContext]+Delete+$PUT+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/reports/powershell-test-report/webhooks/test-webhook-fordelete?api-version=2024-06-27+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/reports/powershell-test-report/webhooks/test-webhook-fordelete?api-version=2024-06-27",
+      "Content": "{\r\n  \"properties\": {\r\n    \"status\": \"Enabled\",\r\n    \"sendAllEvents\": \"true\",\r\n    \"events\": [ ],\r\n    \"payloadUrl\": \"https://a.b.c.com\",\r\n    \"contentType\": \"application/json\",\r\n    \"updateWebhookKey\": \"false\",\r\n    \"enableSslVerification\": \"true\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "255" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ASLBSA=0003e0d631e50fe5b18de31041272bd4dfc695db36017a24e6b4ca20c2747ec31390; Path=/; Secure; HttpOnly;", "ASLBSACORS=0003e0d631e50fe5b18de31041272bd4dfc695db36017a24e6b4ca20c2747ec31390; SameSite=none; Path=/; Secure; HttpOnly;" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Request-Context": [ "appId=cid-v1:7ecf4129-cb5b-4aab-a086-b332c76641c8" ],
+        "mise-correlation-id": [ "bbc9cb32-96f3-4b59-91ae-32b04ecf50e8" ],
+        "x-ms-request-id": [ "c2ccd0bb-449f-404a-abef-ef5ff859ac15" ],
+        "X-ms-Operation-Id": [ "930eb42c677ca377e0ddc402f51e4041" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-azure-ref": [ "20240605T063531Z-167465d8665p4g64uxrz788tys00000001p000000001avha" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-correlation-request-id": [ "6097837f-4b9e-4018-b3c7-2663fa642de0" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240605T063532Z:6097837f-4b9e-4018-b3c7-2663fa642de0" ],
+        "X-MSEdge-Ref": [ "Ref A: D500F9B9EC1F439B8FC0B0C17C60677A Ref B: MAA201060515035 Ref C: 2024-06-05T06:35:30Z" ],
+        "Date": [ "Wed, 05 Jun 2024 06:35:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "802" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/reports/powershell-test-report/webhooks/test-webhook-fordelete\",\"name\":\"test-webhook-fordelete\",\"type\":\"microsoft.appcomplianceautomation/reports/webhooks\",\"systemData\":{\"createdBy\":\"qinzhouxu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-06-05T06:35:30.9572202Z\",\"lastModifiedBy\":\"qinzhouxu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-06-05T06:35:30.9572202Z\"},\"properties\":{\"webhookId\":\"1b0a7e4c-86b1-432c-90d0-b01a1137eb16\",\"status\":\"Enabled\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"sendAllEvents\":\"true\",\"events\":[],\"payloadUrl\":\"https://a.b.c.com\",\"contentType\":\"application/json\",\"webhookKeyEnabled\":\"true\",\"enableSslVerification\":\"true\",\"deliveryStatus\":\"NotStarted\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzAcatWebhook+[NoContext]+Delete+$DELETE+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/reports/powershell-test-report/webhooks/test-webhook-fordelete?api-version=2024-06-27+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/reports/powershell-test-report/webhooks/test-webhook-fordelete?api-version=2024-06-27",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "32" ],
+        "x-ms-client-request-id": [ "9d199cae-9970-4562-9211-582d34064e07" ],
+        "CommandName": [ "Az.AppComplianceAutomation.internal\\Remove-AzAppComplianceAutomationWebhook" ],
+        "FullCommandName": [ "Remove-AzAppComplianceAutomationWebhook_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.AppComplianceAutomation/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "Set-Cookie": [ "ASLBSA=0003e0d631e50fe5b18de31041272bd4dfc695db36017a24e6b4ca20c2747ec31390; Path=/; Secure; HttpOnly;", "ASLBSACORS=0003e0d631e50fe5b18de31041272bd4dfc695db36017a24e6b4ca20c2747ec31390; SameSite=none; Path=/; Secure; HttpOnly;" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Request-Context": [ "appId=cid-v1:7ecf4129-cb5b-4aab-a086-b332c76641c8" ],
+        "mise-correlation-id": [ "7b8bca6b-ecf3-4ea9-8a69-3b04bf134b86" ],
+        "x-ms-request-id": [ "8296def1-7630-4150-a91a-84550c6e8239" ],
+        "X-ms-Operation-Id": [ "761b2aed5d4b5cf1b6e68a4a648c4e3a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-azure-ref": [ "20240605T063533Z-16d886997982gt6gh4h58q03r800000006v000000000brnt" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-correlation-request-id": [ "87434197-d122-45ad-a4c8-8093815f3a35" ],
+        "x-ms-ratelimit-remaining-tenant-deletes": [ "14999" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240605T063534Z:87434197-d122-45ad-a4c8-8093815f3a35" ],
+        "X-MSEdge-Ref": [ "Ref A: 58AEC341880E456889C73E5FB162D7B1 Ref B: MAA201060515035 Ref C: 2024-06-05T06:35:32Z" ],
+        "Date": [ "Wed, 05 Jun 2024 06:35:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  }
+}

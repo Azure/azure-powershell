@@ -25,7 +25,8 @@ New-AzADApplication -DisplayName <String> [-AddIn <IMicrosoftGraphAddIn[]>]
  [-OptionalClaim <IMicrosoftGraphOptionalClaims>]
  [-ParentalControlSetting <IMicrosoftGraphParentalControlSettings>] [-PublicClientRedirectUri <String[]>]
  [-ReplyUrls <String[]>] [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>]
- [-SignInAudience <String>] [-SPARedirectUri <String[]>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-ServiceManagementReference <String>] [-SignInAudience <String>] [-SPARedirectUri <String[]>]
+ [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
  [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>] [-Web <IMicrosoftGraphWebApplication>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -44,7 +45,8 @@ New-AzADApplication -DisplayName <String> -KeyCredentials <IMicrosoftGraphKeyCre
  [-OptionalClaim <IMicrosoftGraphOptionalClaims>]
  [-ParentalControlSetting <IMicrosoftGraphParentalControlSettings>] [-PublicClientRedirectUri <String[]>]
  [-ReplyUrls <String[]>] [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>]
- [-SignInAudience <String>] [-SPARedirectUri <String[]>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-ServiceManagementReference <String>] [-SignInAudience <String>] [-SPARedirectUri <String[]>]
+ [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
  [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>] [-Web <IMicrosoftGraphWebApplication>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -63,8 +65,9 @@ New-AzADApplication -CertValue <String> -DisplayName <String> [-AddIn <IMicrosof
  [-OptionalClaim <IMicrosoftGraphOptionalClaims>]
  [-ParentalControlSetting <IMicrosoftGraphParentalControlSettings>] [-PublicClientRedirectUri <String[]>]
  [-ReplyUrls <String[]>] [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>]
- [-SignInAudience <String>] [-SPARedirectUri <String[]>] [-StartDate <DateTime>] [-Tag <String[]>]
- [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-ServiceManagementReference <String>] [-SignInAudience <String>] [-SPARedirectUri <String[]>]
+ [-StartDate <DateTime>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>] [-Web <IMicrosoftGraphWebApplication>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -82,7 +85,8 @@ New-AzADApplication -DisplayName <String> -PasswordCredentials <IMicrosoftGraphP
  [-OptionalClaim <IMicrosoftGraphOptionalClaims>]
  [-ParentalControlSetting <IMicrosoftGraphParentalControlSettings>] [-PublicClientRedirectUri <String[]>]
  [-ReplyUrls <String[]>] [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>]
- [-SignInAudience <String>] [-SPARedirectUri <String[]>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-ServiceManagementReference <String>] [-SignInAudience <String>] [-SPARedirectUri <String[]>]
+ [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
  [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>] [-Web <IMicrosoftGraphWebApplication>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -101,8 +105,9 @@ New-AzADApplication -DisplayName <String> [-AddIn <IMicrosoftGraphAddIn[]>]
  [-OptionalClaim <IMicrosoftGraphOptionalClaims>]
  [-ParentalControlSetting <IMicrosoftGraphParentalControlSettings>] [-PublicClientRedirectUri <String[]>]
  [-ReplyUrls <String[]>] [-RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>]
- [-SignInAudience <String>] [-SPARedirectUri <String[]>] [-StartDate <DateTime>] [-Tag <String[]>]
- [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
+ [-ServiceManagementReference <String>] [-SignInAudience <String>] [-SPARedirectUri <String[]>]
+ [-StartDate <DateTime>] [-Tag <String[]>] [-TokenEncryptionKeyId <String>]
+ [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
  [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>] [-Web <IMicrosoftGraphWebApplication>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -605,6 +610,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ServiceManagementReference
+References application or service contact information from a Service or Asset Management database.
+Nullable.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SignInAudience
 Specifies the Microsoft accounts that are supported for the current application.
 Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount.
@@ -988,6 +1009,7 @@ HOMEREALMDISCOVERYPOLICY <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>: .
         - `[Id <String>]`: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
         - `[Type <String>]`: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
       - `[ResourceAppId <String>]`: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+    - `[ServiceManagementReference <String>]`: References application or service contact information from a Service or Asset Management database. Nullable.
     - `[SignInAudience <String>]`: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
     - `[Spa <IMicrosoftGraphSpaApplication>]`: spaApplication
       - `[(Any) <Object>]`: This indicates any property can be added to this object.
@@ -1249,6 +1271,7 @@ TOKENISSUANCEPOLICY <IMicrosoftGraphTokenIssuancePolicy[]>: .
         - `[Id <String>]`: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
         - `[Type <String>]`: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
       - `[ResourceAppId <String>]`: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+    - `[ServiceManagementReference <String>]`: References application or service contact information from a Service or Asset Management database. Nullable.
     - `[SignInAudience <String>]`: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
     - `[Spa <IMicrosoftGraphSpaApplication>]`: spaApplication
       - `[(Any) <Object>]`: This indicates any property can be added to this object.
@@ -1459,6 +1482,7 @@ TOKENLIFETIMEPOLICY <IMicrosoftGraphTokenLifetimePolicy[]>: The tokenLifetimePol
         - `[Id <String>]`: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
         - `[Type <String>]`: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
       - `[ResourceAppId <String>]`: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+    - `[ServiceManagementReference <String>]`: References application or service contact information from a Service or Asset Management database. Nullable.
     - `[SignInAudience <String>]`: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
     - `[Spa <IMicrosoftGraphSpaApplication>]`: spaApplication
       - `[(Any) <Object>]`: This indicates any property can be added to this object.

@@ -1,0 +1,2 @@
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Az.AppComplianceAutomation","Start-AzAcatQuickEvaluation","Start-AzAcatQuickEvaluation","1","8410","Parameter Resources of cmdlet Start-AzAcatQuickEvaluation does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."
