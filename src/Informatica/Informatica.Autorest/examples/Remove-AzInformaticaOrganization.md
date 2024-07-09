@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove Informatica Organization
 ```powershell
-{{ Add code here }}
+Remove-AzInformaticaOrganization -Name "InformaticaTestResource" -ResourceGroupName "InformaticaTestRg" `
+>> -SubscriptionId "ce37d538-dfa3-49c3-b3cd-149b4b7db48a"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Remove-AzInformaticaOrganization_Delete: Status: OK
 ```
 
-{{ Add description here }}
+Remove Informatica Organization
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
 
