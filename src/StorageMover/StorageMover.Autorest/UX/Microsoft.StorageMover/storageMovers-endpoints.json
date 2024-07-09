@@ -1,6 +1,6 @@
 {
   "resourceType": "storageMovers/endpoints",
-  "apiVersion": "2023-10-01",
+  "apiVersion": "2024-07-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.storagemover"
   },

@@ -135,7 +135,8 @@ $resourceTestCommands = @(
     @{Name = "Az.Media";                      Command = {Get-AzMediaService -ResourceGroupName $resourceGroupName}},
     @{Name = "Az.Monitor";                    Command = {Get-AzLogProfile}},
     @{Name = "Az.Network";                    Command = {Get-AzNetworkInterface}},
-    @{Name = "Az.NotificationHubs";           Command = {Get-AzNotificationHubsNamespace}},
+    # comment temporarily, add back once fixed in test tenant
+    #@{Name = "Az.NotificationHubs";           Command = {Get-AzNotificationHubsNamespace}},
     @{Name = "Az.OperationalInsights [MngmPlane]"; Command = {Get-AzOperationalInsightsWorkspace}},
     @{Name = "Az.OperationalInsights [DataPlane]"; Command = {Get-Command Invoke-AzOperationalInsightsQuery}},
     @{Name = "Az.PolicyInsights";             Command = {Get-AzPolicyEvent -Top 10}}, # without -Top service may return 400: ResponseTooLarge

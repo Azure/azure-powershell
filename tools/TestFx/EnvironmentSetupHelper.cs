@@ -19,13 +19,13 @@ using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Commands.TestFx.Mocks;
 using Microsoft.Azure.ServiceManagement.Common.Models;
-using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
@@ -525,13 +525,28 @@ namespace Microsoft.Azure.Commands.TestFx
             Collection<PSObject> output = null;
             foreach (var script in scripts)
             {
-                Console.WriteLine($"Executing test: {script}");
                 TracingInterceptor?.Information(script);
                 powershell.AddScript(script);
             }
+            
             try
             {
+                string testName = string.Join("+", scripts);
+                Console.WriteLine($"Executing test {testName}");
+
+                var watch = Stopwatch.StartNew();
                 output = powershell.Invoke();
+                watch.Stop();
+
+                if (watch.ElapsedMilliseconds < 5000)
+                {
+                    Console.WriteLine($"INFO : Test {testName} completed in {watch.ElapsedMilliseconds}ms");
+                }
+                else
+                {
+                    Console.WriteLine($"##[warning]WARNING : Test {testName} completed in {watch.ElapsedMilliseconds}ms");
+                }
+
                 if (powershell.Streams.Error.Count > 0)
                 {
                     throw new RuntimeException($"Test failed due to a non-empty error stream. First error: {PowerShellExtensions.FormatErrorRecord(powershell.Streams.Error[0])}{(powershell.Streams.Error.Count > 0 ? "Check the error stream in the test log for additional errors." : "")}");

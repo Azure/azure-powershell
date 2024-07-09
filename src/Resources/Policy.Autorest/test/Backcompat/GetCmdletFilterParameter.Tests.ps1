@@ -1,7 +1,7 @@
 # setup the Pester environment for policy backcompat tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'Backcompat-GetCmdletFilterParameter'
 
-Describe 'Backcompat-GetCmdletFilterParameter' {
+Describe 'Backcompat-GetCmdletFilterParameter' -Tag 'LiveOnly' {
 
     It 'list builtin definitions' {
         {

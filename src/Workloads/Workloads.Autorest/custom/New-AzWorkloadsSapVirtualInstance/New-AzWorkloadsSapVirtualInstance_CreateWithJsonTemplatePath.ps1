@@ -102,6 +102,12 @@ function New-AzWorkloadsSapVirtualInstance_CreateWithJsonTemplatePath {
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Body')]
+    [System.String]
+    # Managed resource Network Access Type
+    ${ManagedResourcesNetworkAccessType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
@@ -214,6 +220,11 @@ function New-AzWorkloadsSapVirtualInstance_CreateWithJsonTemplatePath {
             if($PSBoundParameters.ContainsKey('SapProduct')) {
               $bodyHashTable.properties.sapProduct = $SapProduct.ToString()
               $null = $PSBoundParameters.Remove('SapProduct');
+            }
+
+            if($PSBoundParameters.ContainsKey('ManagedResourcesNetworkAccessType')) {
+              $bodyHashTable.properties.managedResourcesNetworkAccessType = $ManagedResourcesNetworkAccessType.ToString()
+              $null = $PSBoundParameters.Remove('ManagedResourcesNetworkAccessType');
             }
 
             $bodyHashTable.properties.managedResourceGroupConfiguration = @{}
