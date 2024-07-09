@@ -178,7 +178,7 @@ namespace Commands.StorageSync.Interop.Clients
 
             // Set the registry key for ServerAuthType
             RegistryUtility.WriteValue(StorageSyncConstants.ServerAuthRegistryKeyName,
-                       StorageSyncConstants.AfsAgentRegistryKey,
+                       StorageSyncConstants.AfsRegistryKey,
                       (isCertificateRegistration ? RegisteredServerAuthType.Certificate : RegisteredServerAuthType.ManagedIdentity).ToString(),
                        RegistryValueKind.String,
                        true);

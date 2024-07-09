@@ -112,7 +112,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <summary>
         /// The afs agent registry key
         /// </summary>
-        public const string AfsAgentRegistryKey = @"SOFTWARE\Microsoft\Azure\StorageSync";
+        public const string AfsAgentRegistryKey = @"SOFTWARE\Microsoft\Azure\StorageSync\Agent";
+        /// <summary>
+        /// The afs registry key
+        /// </summary>
+        public const string AfsRegistryKey = @"SOFTWARE\Microsoft\Azure\StorageSync";
         /// <summary>
         /// The afs agent installer path registry key value name
         /// </summary>
