@@ -4,7 +4,10 @@ Get-AzOracleDatabaseCloudVMCluster
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location           Name                          SystemDataCreatedAt SystemDataCreatedBy       SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy             SystemDataLastModifiedByType ResourceGroupName
+--------           ----                          ------------------- -------------------       ----------------------- ------------------------ ------------------------             ---------------------------- -----------------
+eastus             OFake_PowerShellTestVmCluster 07/07/2024 08:52:18 jamie.c.cheung@oracle.com User                    09/07/2024 08:47:30      857ad006-4380-4712-ba4c-22f7c64d84e7 Application                  PowerShellTestRg
+germanywestcentral obsDpFraVmc                   08/07/2024 15:45:08 billy.chan@oracle.com     User                    09/07/2024 08:47:47      857ad006-4380-4712-ba4c-22f7c64d84e7 Application                  obs-dp-fra
 ```
 
 Gets a list of the Cloud VM Cluster resources.
