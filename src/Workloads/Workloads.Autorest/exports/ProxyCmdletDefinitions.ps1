@@ -7632,7 +7632,7 @@ Create an in-memory object for SapNetWeaverProviderInstanceProperties.
 .Description
 Create an in-memory object for SapNetWeaverProviderInstanceProperties.
 .Example
-New-AzWorkloadsProviderSapNetWeaverInstanceObject -SapClientId 000 -SapHostFileEntry '["10.0.82.4 l13appvm0.ams.azure.com l13appvm0","10.0.82.5 l13ascsvm.ams.azure.com l13ascsvm"]' -SapHostname 10.0.82.4 -SapInstanceNr 00 -SapPassword Password@1234 -SapSid L13 -SapUsername AMSUSER -SslPreference Disabled
+New-AzWorkloadsProviderSapNetWeaverInstanceObject -SapClientId 000 -SapHostFileEntry '["10.0.82.4 l13appvm0.ams.azure.com l13appvm0","10.0.82.5 l13ascsvm.ams.azure.com l13ascsvm"]' -SapHostname 10.0.82.4 -SapInstanceNr 00 -SapPassword "******" -SapSid L13 -SapUsername AMSUSER -SslPreference Disabled
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.SapNetWeaverProviderInstanceProperties
@@ -7795,7 +7795,7 @@ Create an in-memory object for MsSqlServerProviderInstanceProperties.
 .Description
 Create an in-memory object for MsSqlServerProviderInstanceProperties.
 .Example
-New-AzWorkloadsProviderSqlServerInstanceObject -Password 'Password@123' -Port 1433 -Username ams -Hostname 10.1.14.5 -SapSid X00 -SslPreference Disabled
+New-AzWorkloadsProviderSqlServerInstanceObject -Password ****** -Port 1433 -Username ams -Hostname 10.1.14.5 -SapSid X00 -SslPreference Disabled
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.MSSqlServerProviderInstanceProperties

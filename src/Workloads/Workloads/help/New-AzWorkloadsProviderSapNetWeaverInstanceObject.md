@@ -16,7 +16,7 @@ Create an in-memory object for SapNetWeaverProviderInstanceProperties.
 New-AzWorkloadsProviderSapNetWeaverInstanceObject [-SapClientId <String>] [-SapHostFileEntry <String[]>]
  [-SapHostname <String>] [-SapInstanceNr <String>] [-SapPassword <String>] [-SapPasswordUri <String>]
  [-SapPortNumber <String>] [-SapSid <String>] [-SapUsername <String>] [-SslCertificateUri <String>]
- [-SslPreference <SslPreference>] [<CommonParameters>]
+ [-SslPreference <SslPreference>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +26,7 @@ Create an in-memory object for SapNetWeaverProviderInstanceProperties.
 
 ### Example 1: Create SAP Netweaver Provider
 ```powershell
-New-AzWorkloadsProviderSapNetWeaverInstanceObject -SapClientId 000 -SapHostFileEntry '["10.0.82.4 l13appvm0.ams.azure.com l13appvm0","10.0.82.5 l13ascsvm.ams.azure.com l13ascsvm"]' -SapHostname 10.0.82.4 -SapInstanceNr 00 -SapPassword Password@1234 -SapSid L13 -SapUsername AMSUSER -SslPreference Disabled
+New-AzWorkloadsProviderSapNetWeaverInstanceObject -SapClientId 000 -SapHostFileEntry '["10.0.82.4 l13appvm0.ams.azure.com l13appvm0","10.0.82.5 l13ascsvm.ams.azure.com l13ascsvm"]' -SapHostname 10.0.82.4 -SapInstanceNr 00 -SapPassword "******" -SapSid L13 -SapUsername AMSUSER -SslPreference Disabled
 ```
 
 ```output
@@ -38,6 +38,21 @@ SapNetWeaver 000         {["10.0.82.4 l13appvm0.ams.azure.com l13appvm0","10.0.8
 Create SAP Netweaver Provider for an AMS instance
 
 ## PARAMETERS
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -SapClientId
 Gets or sets the SAP Client ID.
