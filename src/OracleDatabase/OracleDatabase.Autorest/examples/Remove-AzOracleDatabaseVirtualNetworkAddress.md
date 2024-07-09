@@ -1,22 +1,7 @@
-### Example 1: {{ Add title here }}
+### Example 1: Deletes a Virtual Network Address on a Cloud VM Cluster resource
 ```powershell
-{{ Add code here }}
+Remove-AzOracleDatabaseVirtualNetworkAddress -Cloudvmclustername "OFake_PowerShellTestVmCluster" -Name "virtualNetworkAddressName" -ResourceGroupName "PowerShellTestRg"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Deletes a Virtual Network Address on a Cloud VM Cluster resource.
+For more information, execute `Get-Help Remove-AzOracleDatabaseVirtualNetworkAddress`

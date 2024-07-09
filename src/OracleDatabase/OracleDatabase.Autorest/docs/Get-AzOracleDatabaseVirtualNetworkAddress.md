@@ -41,27 +41,13 @@ Get a VirtualNetworkAddress
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Gets a list of the Virtual Network Addresses in a Cloud VM Cluster resource
 ```powershell
-{{ Add code here }}
+Get-AzOracleDatabaseVirtualNetworkAddress -Cloudvmclustername "OFake_PowerShellTestVmCluster" -ResourceGroupName "PowerShellTestRg"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Gets a list of the Virtual Network Addresses in a Cloud VM Cluster resource.
+For more information, execute `Get-Help Get-AzOracleDatabaseVirtualNetworkAddress`
 
 ## PARAMETERS
 

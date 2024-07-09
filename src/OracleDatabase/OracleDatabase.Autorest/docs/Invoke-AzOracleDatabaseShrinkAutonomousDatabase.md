@@ -30,27 +30,13 @@ This operation shrinks the current allocated storage down to the current actual 
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Shrinks the current allocated storage down to the current actual used data storage on an Autonomous Database resource
 ```powershell
-{{ Add code here }}
+Invoke-AzOracleDatabaseShrinkAutonomousDatabase -Autonomousdatabasename "OFakePowerShellTestAdbs" -ResourceGroupName "PowerShellTestRg"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Shrinks the current allocated storage down to the current actual used data storage on an Autonomous Database resource.
+For more information, execute `Get-Help Invoke-AzOracleDatabaseShrinkAutonomousDatabase`
 
 ## PARAMETERS
 

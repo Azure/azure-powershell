@@ -43,13 +43,27 @@ Update a OracleSubscription
 
 ## EXAMPLES
 
-### Example 1: Updates an Oracle Subscription resource
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzOracleDatabaseOracleSubscription -PlanName "newPlanName"
+{{ Add code here }}
 ```
 
-Updates an Oracle Subscription resource.
-For more information, execute `Get-Help Update-AzOracleDatabaseOracleSubscription`
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

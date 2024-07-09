@@ -58,27 +58,15 @@ Restores an Autonomous Database based on the provided request parameters.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Restores an Autonomous Database resource
 ```powershell
-{{ Add code here }}
+$timeStampString = '01-Jul-16'
+$timeStamp = [datetime]::parseexact($timeStampString, 'dd-MMM-yy', $null)
+Restore-AzOracleDatabaseAutonomousDatabase -Name "OFakePowerShellTestAdbs" -ResourceGroupName "PowerShellTestRg" -Timestamp $timeStamp
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Restores an Autonomous Database resource.
+For more information, execute `Get-Help Restore-AzOracleDatabaseAutonomousDatabase`
 
 ## PARAMETERS
 

@@ -22,13 +22,27 @@ List Cloud Account Details
 
 ## EXAMPLES
 
-### Example 1: Gets the Cloud Account Details associated with the Oracle Subscription resource
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzOracleDatabaseOracleSubscriptionCloudAccountDetail
+{{ Add code here }}
 ```
 
-Gets the Cloud Account Details associated with the Oracle Subscription resource.
-For more information, execute `Get-Help Get-AzOracleDatabaseOracleSubscriptionCloudAccountDetail`
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

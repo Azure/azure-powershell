@@ -58,27 +58,15 @@ Generate wallet action on Autonomous Database
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Generates wallet on an Autonomous Database resource
 ```powershell
-{{ Add code here }}
+[SecureString]$password = ConvertTo-SecureString -String "PowerShellTestPass123" -AsPlainText -Force
+
+New-AzOracleDatabaseAutonomousDatabaseWallet -Autonomousdatabasename "OFakePowerShellTestAdbs" -ResourceGroupName "PowerShellTestRg" -Password $password -GenerateType "walletType" -IsRegional $true
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Generates wallet on an Autonomous Database resource.
+For more information, execute `Get-Help New-AzOracleDatabaseAutonomousDatabaseWallet`
 
 ## PARAMETERS
 

@@ -22,13 +22,27 @@ List Saas Subscription Details
 
 ## EXAMPLES
 
-### Example 1: Gets the Saas Subscription Details associated with the Oracle Subscription resource
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzOracleDatabaseOracleSubscriptionSaaSubscriptionDetail
+{{ Add code here }}
 ```
 
-Gets the Saas Subscription Details associated with the Oracle Subscription resource.
-For more information, execute `Get-Help Get-AzOracleDatabaseOracleSubscriptionSaaSubscriptionDetail`
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

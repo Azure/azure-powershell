@@ -22,13 +22,27 @@ Delete a OracleSubscription
 
 ## EXAMPLES
 
-### Example 1: Deletes the Oracle Subscription resource
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzOracleDatabaseOracleSubscription
+{{ Add code here }}
 ```
 
-Deletes the Oracle Subscription resource.
-For more information, execute `Get-Help Remove-AzOracleDatabaseOracleSubscription`
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

@@ -1,22 +1,7 @@
-### Example 1: {{ Add title here }}
+### Example 1: Switchover an Autonomous Database resource
 ```powershell
-{{ Add code here }}
+Invoke-AzOracleDatabaseSwitchoverAutonomousDatabase -Autonomousdatabasename "OFakePowerShellTestAdbs" -ResourceGroupName "PowerShellTestRg" -PeerDbId "PeerDbId"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Switchover an Autonomous Database resource.
+For more information, execute `Get-Help Invoke-AzOracleDatabaseSwitchoverAutonomousDatabase`
