@@ -163,7 +163,7 @@ DbVersion                                     : 19c
 DbWorkload                                    : OLTP
 DisplayName                                   : OFakePowerShellTestAdbs
 FailedDataRecoveryInSecond                    : 
-Id                                            : /subscriptions/dcb0912a-9b6f-46e3-a11b-5296913d89b5/resourceGroups/PowerShellTestRg/providers/Oracle.Database/autonomousDatabases/OFakePowerShellTestAdbs
+Id                                            : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/autonomousDatabases/OFakePowerShellTestAdbs
 InMemoryAreaInGb                              : 
 IsAutoScalingEnabled                          : False
 IsAutoScalingForStorageEnabled                : False
@@ -354,8 +354,8 @@ Property                                      : {
                                                   "privateEndpointLabel": "byui3zo3",
                                                   "ociUrl": "https://cloud.oracle.com/db/adbs/ocid1.autonomousdatabase.oc1.iad.anuwcljtnirvylqa7vzcwywunyc2mjnuuwov4vm626yj46caifxh4le5uoxa?region=us-ashburn-1\u0026tenant=orpsandbox3\u0026compartmentId=o
                                                 cid1.compartment.oc1..aaaaaaaazcet2jt2uowjtgxsae5uositfy2thngqgokwdifyzmyygdpckeua",
-                                                  "subnetId": "/subscriptions/dcb0912a-9b6f-46e3-a11b-5296913d89b5/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet/subnets/delegated",
-                                                  "vnetId": "/subscriptions/dcb0912a-9b6f-46e3-a11b-5296913d89b5/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet",
+                                                  "subnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet/subnets/delegated",
+                                                  "vnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet",
                                                   "timeCreated": "2024-07-05T13:44:18.2090000Z",
                                                   "timeMaintenanceBegin": "2024-07-07T09:00:00.0000000Z",
                                                   "timeMaintenanceEnd": "2024-07-07T11:00:00.0000000Z",
@@ -376,13 +376,13 @@ ScheduledOperationScheduledStartTime          :
 ScheduledOperationScheduledStopTime           : 
 ServiceConsoleUrl                             : 
 SqlWebDeveloperUrl                            : 
-SubnetId                                      : /subscriptions/dcb0912a-9b6f-46e3-a11b-5296913d89b5/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet/subnets/delegated
+SubnetId                                      : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet/subnets/delegated
 SupportedRegionsToCloneTo                     : 
 SystemDataCreatedAt                           : 05/07/2024 13:40:35
-SystemDataCreatedBy                           : jamie.c.cheung@oracle.com
+SystemDataCreatedBy                           : example@oracle.com
 SystemDataCreatedByType                       : User
 SystemDataLastModifiedAt                      : 06/07/2024 15:41:08
-SystemDataLastModifiedBy                      : jamie.c.cheung@oracle.com
+SystemDataLastModifiedBy                      : example@oracle.com
 SystemDataLastModifiedByType                  : User
 Tag                                           : {
                                                   "tagName": "tagValue"
@@ -401,7 +401,7 @@ TimeReclamationOfFreeAutonomousDatabase       :
 Type                                          : oracle.database/autonomousdatabases
 UsedDataStorageSizeInGb                       : 
 UsedDataStorageSizeInTb                       : 
-VnetId                                        : /subscriptions/dcb0912a-9b6f-46e3-a11b-5296913d89b5/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet
+VnetId                                        : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet
 WhitelistedIP                                 : 
 ```
 

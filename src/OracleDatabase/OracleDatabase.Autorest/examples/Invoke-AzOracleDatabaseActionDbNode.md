@@ -21,7 +21,7 @@ DbSystemId                   : ocid1.cloudvmcluster.oc1.iad.anuwcljrnirvylqanh37
 FaultDomain                  : 
 HostIPId                     : ocid1.privateIp.fake.1.1
 Hostname                     : host-wq5t62
-Id                           : /subscriptions/dcb0912a-9b6f-46e3-a11b-5296913d89b5/resourceGroups/PowerShellTestRg/providers/Oracle.Database/cloudVmClusters/OFake_PowerShellTestVmCluster/dbNodes/ocid1.dbnode.oc1.iad.anuwcljrnirvylqapfxspunpsxyaehha5wwz
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/cloudVmClusters/OFake_PowerShellTestVmCluster/dbNodes/ocid1.dbnode.oc1.iad.anuwcljrnirvylqapfxspunpsxyaehha5wwz
                                22lazevdaoiye7bh4iy2nwfa
 LifecycleDetail              : 
 LifecycleState               : 
@@ -73,7 +73,7 @@ DbSystemId                   : ocid1.cloudvmcluster.oc1.iad.anuwcljrnirvylqanh37
 FaultDomain                  : 
 HostIPId                     : ocid1.privateIp.fake.1.1
 Hostname                     : host-wq5t62
-Id                           : /subscriptions/dcb0912a-9b6f-46e3-a11b-5296913d89b5/resourceGroups/PowerShellTestRg/providers/Oracle.Database/cloudVmClusters/OFake_PowerShellTestVmCluster/dbNodes/ocid1.dbnode.oc1.iad.anuwcljrnirvylqapfxspunpsxyaehha5wwz
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/cloudVmClusters/OFake_PowerShellTestVmCluster/dbNodes/ocid1.dbnode.oc1.iad.anuwcljrnirvylqapfxspunpsxyaehha5wwz
                                22lazevdaoiye7bh4iy2nwfa
 LifecycleDetail              : 
 LifecycleState               : 

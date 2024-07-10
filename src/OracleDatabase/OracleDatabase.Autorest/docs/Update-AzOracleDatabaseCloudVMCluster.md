@@ -74,7 +74,7 @@ Update-AzOracleDatabaseCloudVMCluster -Name "OFake_PowerShellTestVmCluster" -Res
 
 ```output
 BackupSubnetCidr                               : 
-CloudExadataInfrastructureId                   : /subscriptions/dcb0912a-9b6f-46e3-a11b-5296913d89b5/resourceGroups/PowerShellTestRg/providers/Oracle.Database/cloudExadataInfrastructures/OFake_PowerShellTestExaInfra
+CloudExadataInfrastructureId                   : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/cloudExadataInfrastructures/OFake_PowerShellTestExaInfra
 ClusterName                                    : TestVMC
 CompartmentId                                  : ocid1.compartment.oc1..aaaaaaaazcet2jt2uowjtgxsae5uositfy2thngqgokwdifyzmyygdpckeua
 ComputeNode                                    : 
@@ -91,7 +91,7 @@ DisplayName                                    : OFake_PowerShellTestVmCluster
 Domain                                         : ocidelegated.ocipstestvnet.oraclevcn.com
 GiVersion                                      : 19.9.0.0.0
 Hostname                                       : host-wq5t6
-Id                                             : /subscriptions/dcb0912a-9b6f-46e3-a11b-5296913d89b5/resourceGroups/PowerShellTestRg/providers/Oracle.Database/cloudVmClusters/OFake_PowerShellTestVmCluster
+Id                                             : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/cloudVmClusters/OFake_PowerShellTestVmCluster
 IormConfigCacheDbPlan                          : 
 IormConfigCacheLifecycleDetail                 : 
 IormConfigCacheLifecycleState                  : 
@@ -126,13 +126,13 @@ SshPublicKey                                   : {ssh-rsa AAAAB3NzaC1yc2EAAAADAQ
                                                  N6zI15Q9wSuxERor8oMSc78NW652wMzl97zO+bYdO9vIjBu27/WYZN/OpFJ0Ss4AzW/V9r2h6FFCkG+GXzhZArk3NeEstCSO2bjv3vO40+M0vfRD2jQrOSKhaLolk+crLGamaclY0YYCVB23rk6gCimWbVuvpHn+x1QSvN2d19xAmrIsHdTv/1lCEJetMA96pBq/jbljPwV
                                                  KPFfVkyC8Ivt5rkbYizmUlYAbDMksGMUR4ncjScY7o/S0JKs14HihOnCoSGVXhH1dDgc8AsI+Ujs+GGR4U8IXJGEpZmhdnLa6mDymvr1tLWdQaI2y5FuWxsy4diKjEsPxCrnqfxlZxFBbQ29AU= generated-by-azure}
 StorageSizeInGb                                : 196608
-SubnetId                                       : /subscriptions/dcb0912a-9b6f-46e3-a11b-5296913d89b5/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet/subnets/delegated
+SubnetId                                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet/subnets/delegated
 SubnetOcid                                     : ocid1.subnet.oc1.iad.aaaaaaaatodiqebvhyea45s6nyip4d7u7zizkc6soxbmsymuo2vu4zxosxaq
 SystemDataCreatedAt                            : 04/07/2024 15:52:12
-SystemDataCreatedBy                            : jamie.c.cheung@oracle.com
+SystemDataCreatedBy                            : example@oracle.com
 SystemDataCreatedByType                        : User
 SystemDataLastModifiedAt                       : 06/07/2024 15:39:06
-SystemDataLastModifiedBy                       : jamie.c.cheung@oracle.com
+SystemDataLastModifiedBy                       : example@oracle.com
 SystemDataLastModifiedByType                   : User
 SystemVersion                                  : 
 Tag                                            : {
@@ -142,7 +142,7 @@ TimeCreated                                    : 04/07/2024 16:09:39
 TimeZone                                       : UTC
 Type                                           : oracle.database/cloudvmclusters
 VipId                                          : 
-VnetId                                         : /subscriptions/dcb0912a-9b6f-46e3-a11b-5296913d89b5/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet
+VnetId                                         : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Microsoft.Network/virtualNetworks/PSTestVnet
 ZoneId                                         : ocid1.dns-zone.oc1.iad.aaaaaaaah4rwrfuscditbdg7yjutywp3xpwyuqmcj2bymvb4dn47xoxmvenq
 ```
 

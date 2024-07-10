@@ -91,7 +91,7 @@ EstimatedPatchingTimeEstimatedDbServerPatchingTime        :
 EstimatedPatchingTimeEstimatedNetworkSwitchesPatchingTime : 
 EstimatedPatchingTimeEstimatedStorageServerPatchingTime   : 
 EstimatedPatchingTimeTotalEstimatedPatchingTime           : 
-Id                                                        : /subscriptions/dcb0912a-9b6f-46e3-a11b-5296913d89b5/resourceGroups/PowerShellTestRg/providers/Oracle.Database/cloudExadataInfrastru
+Id                                                        : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/cloudExadataInfrastru
                                                             ctures/OFake_PowerShellTestExaInfra
 LastMaintenanceRunId                                      : 
 LifecycleDetail                                           : 
@@ -126,7 +126,7 @@ Shape                                                     : Exadata.X9M
 StorageCount                                              : 3
 StorageServerVersion                                      : 21.1.0.0.0
 SystemDataCreatedAt                                       : 04/07/2024 13:20:00
-SystemDataCreatedBy                                       : jamie.c.cheung@oracle.com
+SystemDataCreatedBy                                       : example@oracle.com
 SystemDataCreatedByType                                   : User
 SystemDataLastModifiedAt                                  : 06/07/2024 08:49:18
 SystemDataLastModifiedBy                                  : 857ad006-4380-4712-ba4c-22f7c64d84e7

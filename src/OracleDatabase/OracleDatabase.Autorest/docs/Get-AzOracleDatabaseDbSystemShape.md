@@ -56,7 +56,7 @@ AvailableDbNodeStorageInGb        :
 AvailableMemoryInGb               : 
 AvailableMemoryPerNodeInGb        : 1390
 CoreCountIncrement                : 
-Id                                : /subscriptions/dcb0912a-9b6f-46e3-a11b-5296913d89b5/providers/Oracle.Database/locations/eastus/dbSystemShapes/Exadata.X9M
+Id                                : /subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/dbSystemShapes/Exadata.X9M
 MaxStorageCount                   : 
 MaximumNodeCount                  : 32
 MinCoreCountPerNode               : 0

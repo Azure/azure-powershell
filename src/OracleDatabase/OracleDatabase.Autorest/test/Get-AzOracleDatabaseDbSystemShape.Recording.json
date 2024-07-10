@@ -1,8 +1,8 @@
 {
-  "Get-AzOracleDatabaseDbSystemShape+[NoContext]+List+$GET+https://management.azure.com/subscriptions/dcb0912a-9b6f-46e3-a11b-5296913d89b5/providers/Oracle.Database/locations/eastus/dbSystemShapes?api-version=2023-09-01+1": {
+  "Get-AzOracleDatabaseDbSystemShape+[NoContext]+List+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/dbSystemShapes?api-version=2023-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/dcb0912a-9b6f-46e3-a11b-5296913d89b5/providers/Oracle.Database/locations/eastus/dbSystemShapes?api-version=2023-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/dbSystemShapes?api-version=2023-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -40,7 +40,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/dcb0912a-9b6f-46e3-a11b-5296913d89b5/providers/Oracle.Database/locations/eastus/dbSystemShapes/Exadata.X9M\",\"name\":\"Exadata.X9M\",\"type\":\"Oracle.Database/Locations/dbSystemShapes\",\"properties\":{\"shapeFamily\":\"EXADATA\",\"availableCoreCount\":0,\"minimumCoreCount\":0,\"runtimeMinimumCoreCount\":null,\"coreCountIncrement\":null,\"minStorageCount\":null,\"maxStorageCount\":null,\"availableDataStoragePerServerInTbs\":null,\"availableMemoryPerNodeInGbs\":1390,\"availableDbNodePerNodeInGbs\":2243,\"minCoreCountPerNode\":0,\"availableMemoryInGbs\":null,\"minMemoryPerNodeInGbs\":30,\"availableDbNodeStorageInGbs\":null,\"minDbNodeStoragePerNodeInGbs\":60,\"availableDataStorageInTbs\":63,\"minDataStorageInTbs\":2,\"minimumNodeCount\":2,\"maximumNodeCount\":32,\"availableCoreCountPerNode\":126}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/dbSystemShapes/Exadata.X9M\",\"name\":\"Exadata.X9M\",\"type\":\"Oracle.Database/Locations/dbSystemShapes\",\"properties\":{\"shapeFamily\":\"EXADATA\",\"availableCoreCount\":0,\"minimumCoreCount\":0,\"runtimeMinimumCoreCount\":null,\"coreCountIncrement\":null,\"minStorageCount\":null,\"maxStorageCount\":null,\"availableDataStoragePerServerInTbs\":null,\"availableMemoryPerNodeInGbs\":1390,\"availableDbNodePerNodeInGbs\":2243,\"minCoreCountPerNode\":0,\"availableMemoryInGbs\":null,\"minMemoryPerNodeInGbs\":30,\"availableDbNodeStorageInGbs\":null,\"minDbNodeStoragePerNodeInGbs\":60,\"availableDataStorageInTbs\":63,\"minDataStorageInTbs\":2,\"minimumNodeCount\":2,\"maximumNodeCount\":32,\"availableCoreCountPerNode\":126}}]}",
       "isContentBase64": false
     }
   }
