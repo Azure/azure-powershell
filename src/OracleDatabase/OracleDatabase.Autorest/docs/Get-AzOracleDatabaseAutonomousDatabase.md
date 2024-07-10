@@ -41,7 +41,7 @@ Get a AutonomousDatabase
 
 ## EXAMPLES
 
-### Example 1: Gets a list of the Autonomous Database resources
+### Example 1: Get a list of the Autonomous Database resources
 ```powershell
 Get-AzOracleDatabaseAutonomousDatabase
 ```
@@ -59,9 +59,10 @@ germanywestcentral OFakeAdbs                  23/05/2024 13:02:13 surya.prakash.
 germanywestcentral AdbsTest                   23/05/2024 15:57:33 surya.prakash.reddy.putluru@oracle.com   User                    23/05/2024 19:17:53      857ad006-4380-4712-ba4c-22f7c64d84e7 Application                  SystemVersions
 ```
 
-Gets a list of the Autonomous Database resources
+Get a list of the Autonomous Database resources.
+For more information, execute `Get-Help Get-AzOracleDatabaseAutonomousDatabase`.
 
-### Example 2: Gets an Autonomous Database resource by name and resource group name
+### Example 2: Get an Autonomous Database resource by name and resource group name
 ```powershell
 Get-AzOracleDatabaseAutonomousDatabase -Name "OFakePowerShellTestAdbs" -ResourceGroupName "PowerShellTestRg"
 ```
@@ -391,8 +392,8 @@ VnetId                                        : /subscriptions/dcb0912a-9b6f-46e
 WhitelistedIP                                 : 
 ```
 
-Gets an Autonomous Database resource by name and resource group name.
-For more information, execute `Get-Help Get-AzOracleDatabaseAutonomousDatabase`
+Get an Autonomous Database resource by name and resource group name.
+For more information, execute `Get-Help Get-AzOracleDatabaseAutonomousDatabase`.
 
 ## PARAMETERS
 

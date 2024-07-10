@@ -41,7 +41,7 @@ Get a CloudVmCluster
 
 ## EXAMPLES
 
-### Example 1: Gets a list of the Cloud VM Cluster resources
+### Example 1: Get a list of the Cloud VM Cluster resources
 ```powershell
 Get-AzOracleDatabaseCloudVMCluster
 ```
@@ -53,10 +53,10 @@ eastus             OFake_PowerShellTestVmCluster 07/07/2024 08:52:18 jamie.c.che
 germanywestcentral obsDpFraVmc                   08/07/2024 15:45:08 billy.chan@oracle.com     User                    09/07/2024 08:47:47      857ad006-4380-4712-ba4c-22f7c64d84e7 Application                  obs-dp-fra
 ```
 
-Gets a list of the Cloud VM Cluster resources.
-For more information, execute `Get-Help Get-AzOracleDatabaseCloudVMCluster`
+Get a list of the Cloud VM Cluster resources.
+For more information, execute `Get-Help Get-AzOracleDatabaseCloudVMCluster`.
 
-### Example 2: Gets a Cloud VM Cluster resource by name and resource group name
+### Example 2: Get a Cloud VM Cluster resource by name and resource group name
 ```powershell
 Get-AzOracleDatabaseCloudVMCluster -Name "OFake_PowerShellTestVmCluster" -ResourceGroupName "PowerShellTestRg"
 ```
@@ -140,8 +140,8 @@ VnetId                                         : /subscriptions/dcb0912a-9b6f-46
 ZoneId                                         : ocid1.dns-zone.oc1.iad.aaaaaaaah4rwrfuscditbdg7yjutywp3xpwyuqmcj2bymvb4dn47xoxmvenq
 ```
 
-Gets a Cloud VM Cluster resource by name and resource group name.
-For more information, execute `Get-Help Get-AzOracleDatabaseCloudVMCluster`
+Get a Cloud VM Cluster resource by name and resource group name.
+For more information, execute `Get-Help Get-AzOracleDatabaseCloudVMCluster`.
 
 ## PARAMETERS
 

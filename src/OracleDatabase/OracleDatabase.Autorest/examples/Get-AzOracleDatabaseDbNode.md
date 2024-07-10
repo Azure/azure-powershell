@@ -1,4 +1,4 @@
-### Example 1: Gets a list of the Database Nodes for a Cloud VM Cluster resource
+### Example 1: Get a list of the Database Nodes for a Cloud VM Cluster resource
 ```powershell
 Get-AzOracleDatabaseDbNode -Cloudvmclustername "OFake_PowerShellTestVmCluster" -ResourceGroupName "PowerShellTestRg"
 ```

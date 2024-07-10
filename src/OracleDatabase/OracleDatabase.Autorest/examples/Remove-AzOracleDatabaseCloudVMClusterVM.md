@@ -1,4 +1,4 @@
-### Example 1: Removes a VM from a Cloud VM Cluster resource
+### Example 1: Remove a VM from a Cloud VM Cluster resource
 ```powershell
 $resourceGroup = "PowerShellTestRg"
 
@@ -9,5 +9,5 @@ $dbServersToRemove = @($dbServerOcid1)
 Remove-AzOracleDatabaseCloudVMClusterVM -Cloudvmclustername "OFake_PowerShellTestVmCluster" -ResourceGroupName "PowerShellTestRg" -DbServer $dbServersToRemove
 ```
 
-Removes a VM from a Cloud VM Cluster resource.
-For more information, execute `Get-Help Remove-AzOracleDatabaseCloudVMClusterVM`
+Remove a VM from a Cloud VM Cluster resource.
+For more information, execute `Get-Help Remove-AzOracleDatabaseCloudVMClusterVM`.

@@ -1,4 +1,4 @@
-### Example 1: Gets a list of the Database System Shapes by location
+### Example 1: Get a list of the Database System Shapes by location
 ```powershell
 Get-AzOracleDatabaseDbSystemShape -Location "eastus"
 ```
@@ -36,5 +36,5 @@ SystemDataLastModifiedByType      :
 Type                              : Oracle.Database/Locations/dbSystemShapes
 ```
 
-Gets a list of the Database System Shapes by location.
-For more information, execute `Get-Help Get-AzOracleDatabaseDbSystemShape`
+Get a list of the Database System Shapes by location.
+For more information, execute `Get-Help Get-AzOracleDatabaseDbSystemShape`.

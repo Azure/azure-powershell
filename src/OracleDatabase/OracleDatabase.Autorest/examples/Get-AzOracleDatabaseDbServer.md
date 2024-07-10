@@ -1,4 +1,4 @@
-### Example 1: Gets a list of the Database Servers for a Cloud Exadata Infrastructure resource
+### Example 1: Get a list of the Database Servers for a Cloud Exadata Infrastructure resource
 ```powershell
 Get-AzOracleDatabaseDbServer -Cloudexadatainfrastructurename "OFake_PowerShellTestExaInfra" -ResourceGroupName "PowerShellTestRg"
 ```
@@ -11,5 +11,5 @@ dbServer-3                                                                      
 dbServer-1                                                                                                                                                PowerShellTestRg
 ```
 
-Gets a list of the Database Servers for a Cloud Exadata Infrastructure resource.
-For more information, execute `Get-Help Get-AzOracleDatabaseDbServer`
+Get a list of the Database Servers for a Cloud Exadata Infrastructure resource.
+For more information, execute `Get-Help Get-AzOracleDatabaseDbServer`.

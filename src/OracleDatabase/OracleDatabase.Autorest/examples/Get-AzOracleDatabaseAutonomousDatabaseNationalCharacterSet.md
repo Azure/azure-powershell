@@ -1,4 +1,4 @@
-### Example 1: Gets a list of the Autonomous Database National Character Sets by location
+### Example 1: Get a list of the Autonomous Database National Character Sets by location
 ```powershell
 (Get-AzOracleDatabaseAutonomousDatabaseNationalCharacterSet -Location "eastus").CharacterSet
 ```
@@ -8,5 +8,5 @@ AL16UTF16
 UTF8
 ```
 
-Gets a list of the Autonomous Database National Character Sets by location.
-For more information, execute `Get-Help Get-AzOracleDatabaseAutonomousDatabaseNationalCharacterSet`
+Get a list of the Autonomous Database National Character Sets by location.
+For more information, execute `Get-Help Get-AzOracleDatabaseAutonomousDatabaseNationalCharacterSet`.

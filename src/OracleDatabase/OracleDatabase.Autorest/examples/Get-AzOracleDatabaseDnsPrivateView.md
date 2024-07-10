@@ -1,4 +1,4 @@
-### Example 1: Gets a list of the DNS Private Views by location
+### Example 1: Get a list of the DNS Private Views by location
 ```powershell
 Get-AzOracleDatabaseDnsPrivateView -Location "eastus"
 ```
@@ -49,5 +49,5 @@ ocid1.dnsview.oc1.iad.aaaaaaaainzhp3afn4raviq24b6x3hkzzokn2cpqthig7iat2uh3zya72o
 ocid1.dnsview.oc1.iad.aaaaaaaahd6rc62hisdbgprchfc3oyt5x3vrvu6acaejhi6zxr2os6viwhbq
 ```
 
-Gets a list of the DNS Private Views by location.
-For more information, execute `Get-Help Get-AzOracleDatabaseDnsPrivateView`
+Get a list of the DNS Private Views by location.
+For more information, execute `Get-Help Get-AzOracleDatabaseDnsPrivateView`.

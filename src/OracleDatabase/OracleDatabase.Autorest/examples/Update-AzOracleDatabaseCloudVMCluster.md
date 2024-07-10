@@ -1,4 +1,4 @@
-### Example 1: Updates a Cloud VM Cluster resource
+### Example 1: Update a Cloud VM Cluster resource
 ```powershell
 $tagHashTable = @{'tagName'="tagValue"}
 Update-AzOracleDatabaseCloudVMCluster -Name "OFake_PowerShellTestVmCluster" -ResourceGroupName "PowerShellTestRg" -Tag $tagHashTable
@@ -78,5 +78,5 @@ VnetId                                         : /subscriptions/dcb0912a-9b6f-46
 ZoneId                                         : ocid1.dns-zone.oc1.iad.aaaaaaaah4rwrfuscditbdg7yjutywp3xpwyuqmcj2bymvb4dn47xoxmvenq
 ```
 
-Updates a Cloud VM Cluster resource.
-For more information, execute `Get-Help Update-AzOracleDatabaseCloudVMCluster`
+Update a Cloud VM Cluster resource.
+For more information, execute `Get-Help Update-AzOracleDatabaseCloudVMCluster`.

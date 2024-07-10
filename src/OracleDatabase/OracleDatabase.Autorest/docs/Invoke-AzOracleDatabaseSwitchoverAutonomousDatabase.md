@@ -65,7 +65,7 @@ Invoke-AzOracleDatabaseSwitchoverAutonomousDatabase -Autonomousdatabasename "OFa
 ```
 
 Switchover an Autonomous Database resource.
-For more information, execute `Get-Help Invoke-AzOracleDatabaseSwitchoverAutonomousDatabase`
+For more information, execute `Get-Help Invoke-AzOracleDatabaseSwitchoverAutonomousDatabase`.
 
 ## PARAMETERS
 

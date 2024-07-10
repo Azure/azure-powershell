@@ -47,7 +47,8 @@ Vnic2Id                      : ocid1.vnic.fake.1.1
 VnicId                       : 
 ```
 
-Stop a VM in a Cloud VM Cluster resource
+Stop a VM in a Cloud VM Cluster resource.
+For more information, execute `Get-Help Invoke-AzOracleDatabaseActionDbNode`.
 
 ### Example 2: Start a VM in a Cloud VM Cluster resource
 ```powershell
@@ -99,4 +100,4 @@ VnicId                       :
 ```
 
 Start a VM in a Cloud VM Cluster resource.
-For more information, execute `Get-Help Invoke-AzOracleDatabaseActionDbNode`
+For more information, execute `Get-Help Invoke-AzOracleDatabaseActionDbNode`.

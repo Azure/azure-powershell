@@ -1,4 +1,4 @@
-### Example 1: Updates a Cloud Exadata Infrastructure resource
+### Example 1: Update a Cloud Exadata Infrastructure resource
 ```powershell
 $tagHashTable = @{'tagName'="tagValue"}
 Update-AzOracleDatabaseCloudExadataInfrastructure -Name "OFake_PowerShellTestExaInfra" -ResourceGroupName "PowerShellTestRg" -Tag $tagHashTable
@@ -66,5 +66,5 @@ Type                                                      : oracle.database/clou
 Zone                                                      : {2}
 ```
 
-Updates a Cloud Exadata Infrastructure resource.
-For more information, execute `Get-Help Update-AzOracleDatabaseCloudExadataInfrastructure`
+Update a Cloud Exadata Infrastructure resource.
+For more information, execute `Get-Help Update-AzOracleDatabaseCloudExadataInfrastructure`.

@@ -41,7 +41,7 @@ Get a AutonomousDbVersion
 
 ## EXAMPLES
 
-### Example 1: Gets a list of the Autonomous Database Versions by location
+### Example 1: Get a list of the Autonomous Database Versions by location
 ```powershell
 Get-AzOracleDatabaseAutonomousDatabaseVersion -Location "eastus"
 ```
@@ -55,8 +55,8 @@ Name SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataL
 19c                                                                                                                                                 
 ```
 
-Gets a list of the Autonomous Database Versions by location.
-For more information, execute `Get-Help Get-AzOracleDatabaseAutonomousDatabaseVersion`
+Get a list of the Autonomous Database Versions by location.
+For more information, execute `Get-Help Get-AzOracleDatabaseAutonomousDatabaseVersion`.
 
 ## PARAMETERS
 

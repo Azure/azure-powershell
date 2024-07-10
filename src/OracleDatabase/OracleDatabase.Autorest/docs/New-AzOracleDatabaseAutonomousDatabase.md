@@ -78,7 +78,7 @@ Create a AutonomousDatabase
 
 ## EXAMPLES
 
-### Example 1: Creates an Autonomous Database resource
+### Example 1: Create an Autonomous Database resource
 ```powershell
 $subscriptionId = "dcb0912a-9b6f-46e3-a11b-5296913d89b5"
 $resourceGroup = "PowerShellTestRg"
@@ -420,8 +420,8 @@ VnetId                                        : /subscriptions/dcb0912a-9b6f-46e
 WhitelistedIP                                 : 
 ```
 
-Creates an Autonomous Database resource.
-For more information, execute `Get-Help New-AzOracleDatabaseAutonomousDatabase`
+Create an Autonomous Database resource.
+For more information, execute `Get-Help New-AzOracleDatabaseAutonomousDatabase`.
 
 ## PARAMETERS
 

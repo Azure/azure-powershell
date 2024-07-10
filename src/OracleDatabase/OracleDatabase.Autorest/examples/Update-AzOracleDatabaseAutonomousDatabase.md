@@ -1,4 +1,4 @@
-### Example 1: Updates an Autonomous Database resource
+### Example 1: Update an Autonomous Database resource
 ```powershell
 $tagHashTable = @{'tagName'="tagValue"}
 Update-AzOracleDatabaseAutonomousDatabase -Name "OFakePowerShellTestAdbs" -ResourceGroupName "PowerShellTestRg" -Tag $tagHashTable
@@ -326,5 +326,5 @@ VnetId                                        : /subscriptions/dcb0912a-9b6f-46e
 WhitelistedIP                                 : 
 ```
 
-Updates an Autonomous Database resource.
-For more information, execute `Get-Help Update-AzOracleDatabaseAutonomousDatabase`
+Update an Autonomous Database resource.
+For more information, execute `Get-Help Update-AzOracleDatabaseAutonomousDatabase`.

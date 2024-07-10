@@ -1,4 +1,4 @@
-### Example 1: Gets a list of the Autonomous Database Character Sets by location
+### Example 1: Get a list of the Autonomous Database Character Sets by location
 ```powershell
 (Get-AzOracleDatabaseAutonomousDatabaseCharacterSet -Location "eastus").CharacterSet
 ```
@@ -114,5 +114,5 @@ ZHT32SOPS
 ZHT32TRIS
 ```
 
-Gets a list of the Autonomous Database Character Sets by location.
-For more information, execute `Get-Help Get-AzOracleDatabaseAutonomousDatabaseCharacterSet`
+Get a list of the Autonomous Database Character Sets by location.
+For more information, execute `Get-Help Get-AzOracleDatabaseAutonomousDatabaseCharacterSet`.

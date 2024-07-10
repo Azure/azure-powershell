@@ -1,4 +1,4 @@
-### Example 1: Adds a VM to a Cloud VM Cluster resource
+### Example 1: Add a VM to a Cloud VM Cluster resource
 ```powershell
 $resourceGroup = "PowerShellTestRg"
 
@@ -9,5 +9,5 @@ $dbServersToAdd = @($dbServerOcid1)
 Add-AzOracleDatabaseCloudVMClusterVM -Cloudvmclustername "OFake_PowerShellTestVmCluster" -ResourceGroupName $resourceGroup -DbServer $dbServersToAdd
 ```
 
-Adds a VM to a Cloud VM Cluster resource.
-For more information, execute `Get-Help Add-AzOracleDatabaseCloudVMClusterVM`
+Add a VM to a Cloud VM Cluster resource.
+For more information, execute `Get-Help Add-AzOracleDatabaseCloudVMClusterVM`.

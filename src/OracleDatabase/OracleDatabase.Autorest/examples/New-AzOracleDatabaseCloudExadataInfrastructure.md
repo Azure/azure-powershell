@@ -1,4 +1,4 @@
-### Example 1: Creates a Cloud Exadata Infrastructure resource
+### Example 1: Create a Cloud Exadata Infrastructure resource
 ```powershell
 New-AzOracleDatabaseCloudExadataInfrastructure -Name "OFake_PowerShellTestExaInfra" -ResourceGroupName "PowerShellTestRg" -Location "eastus" -Zone @("2") -Shape "Exadata.X9M" -ComputeCount 3 -StorageCount 3 -DisplayName "OFake_PowerShellTestExaInfra"
 ```
@@ -66,5 +66,5 @@ Type                                                      : oracle.database/clou
 Zone                                                      : {2}
 ```
 
-Creates a Cloud Exadata Infrastructure resource.
-For more information, execute `Get-Help New-AzOracleDatabaseCloudExadataInfrastructure`
+Create a Cloud Exadata Infrastructure resource.
+For more information, execute `Get-Help New-AzOracleDatabaseCloudExadataInfrastructure`.

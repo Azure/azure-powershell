@@ -1,4 +1,4 @@
-### Example 1: Gets a list of the Autonomous Database Backups for an Autonomous Database resource
+### Example 1: Get a list of the Autonomous Database Backups for an Autonomous Database resource
 ```powershell
 Get-AzOracleDatabaseAutonomousDatabaseBackup -Autonomousdatabasename "OFakePowerShellTestAdbs" -ResourceGroupName "PowerShellTestRg"
 ```
@@ -13,5 +13,5 @@ autonomousdatabasebackup20240705135809                                          
 Jul 04, 2024 12:00:52 UTC                                                                                                                                                             PowerShellTestRg
 ```
 
-Gets a list of the Autonomous Database Backups for an Autonomous Database resource.
-For more information, execute `Get-Help Get-AzOracleDatabaseAutonomousDatabaseBackup`
+Get a list of the Autonomous Database Backups for an Autonomous Database resource.
+For more information, execute `Get-Help Get-AzOracleDatabaseAutonomousDatabaseBackup`.

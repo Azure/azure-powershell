@@ -1,4 +1,4 @@
-### Example 1: Gets a list of the DNS Private Zones by location
+### Example 1: Get a list of the DNS Private Zones by location
 ```powershell
 Get-AzOracleDatabaseDnsPrivateZone -Location "eastus"
 ```
@@ -99,5 +99,5 @@ ocidelegatedsu.ocidbqaociuivn.oraclevcn.com
 ocidelegated.ocidnsfwdvn.oraclevcn.com
 ```
 
-Gets a list of the DNS Private Zones by location.
-For more information, execute `Get-Help Get-AzOracleDatabaseDnsPrivateZone`
+Get a list of the DNS Private Zones by location.
+For more information, execute `Get-Help Get-AzOracleDatabaseDnsPrivateZone`.

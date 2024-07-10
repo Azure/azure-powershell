@@ -74,7 +74,7 @@ Create a CloudVmCluster
 
 ## EXAMPLES
 
-### Example 1: Creates a Cloud VM Cluster resource
+### Example 1: Create a Cloud VM Cluster resource
 ```powershell
 $subscriptionId = "dcb0912a-9b6f-46e3-a11b-5296913d89b5"
 $resourceGroup = "PowerShellTestRg"
@@ -179,8 +179,8 @@ VnetId                                         : /subscriptions/dcb0912a-9b6f-46
 ZoneId                                         : ocid1.dns-zone.oc1.iad.aaaaaaaah4rwrfuscditbdg7yjutywp3xpwyuqmcj2bymvb4dn47xoxmvenq
 ```
 
-Creates a Cloud VM Cluster resource.
-For more information, execute `Get-Help New-AzOracleDatabaseCloudVMCluster`
+Create a Cloud VM Cluster resource.
+For more information, execute `Get-Help New-AzOracleDatabaseCloudVMCluster`.
 
 ## PARAMETERS
 
