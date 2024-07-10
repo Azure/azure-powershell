@@ -11,7 +11,6 @@ Update-AzInformaticaServerlessRuntime `
     -Platform "AZURE" `
     -ApplicationType "CDI" `
     -ExecutionTimeout 3600 `
-    -ComputeUnits 4 `
     -ServerlessRuntimeConfigCdieConfigProp @(
         @{
             EngineName = "Data_Integration_Server"

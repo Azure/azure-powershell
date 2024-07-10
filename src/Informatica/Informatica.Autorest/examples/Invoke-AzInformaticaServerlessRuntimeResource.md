@@ -1,6 +1,6 @@
 ### Example 1: Get Serverless Runtime for an Informatica Organization by ID
 ```powershell
-Get-AzInformaticaOrganizationServerlessRuntime -OrganizationName "Demo-Org" -ResourceGroupName "InformaticaTestRg" -ServerlessRuntimeName "serverlessRuntimeDemo"
+Invoke-AzInformaticaServerlessRuntimeResource -OrganizationName "Demo-Org" -ResourceGroupName "InformaticaTestRg" -ServerlessRuntimeName "serverlessRuntimeDemo"
 ```
 
 ```output
