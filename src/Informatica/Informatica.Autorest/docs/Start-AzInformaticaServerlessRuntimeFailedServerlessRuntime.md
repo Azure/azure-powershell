@@ -37,27 +37,15 @@ Starts a failed runtime resource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Start Informatica Serverless Runtime Failed Serverless Runtime
 ```powershell
-{{ Add code here }}
-```
+Start-AzInformaticaServerlessRuntimeFailedServerlessRuntime -OrganizationName "Demo-Org" -ResourceGroupName "InformaticaTestRg" -ServerlessRuntimeName "serverlessRuntimeDemo"```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Start-AzInformaticaServerlessRuntimeFailedServerlessRuntime: Status: OK
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command will start an Informatica Serverless Runtime that is in a failed state.
 
 ## PARAMETERS
 

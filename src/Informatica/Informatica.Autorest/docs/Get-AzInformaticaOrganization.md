@@ -42,7 +42,7 @@ Get a InformaticaOrganizationResource
 
 ### Example 1: Get Informatica Organization Details
 ```powershell
- Get-AzInformaticaOrganization -OrganizationName packageversiontesting -ResourceGroupName almas-rg
+ Get-AzInformaticaOrganization -OrganizationName InformaticaTestResource -ResourceGroupName InformaticaTestRg
 ```
 
 ```output
@@ -52,8 +52,7 @@ CompanyDetailCountry                       : India
 CompanyDetailDomain                        :
 CompanyDetailNumberOfEmployee              : 0
 CompanyDetailOfficeAddress                 :
-Id                                         : /subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/InformaticaTestRg/providers/Informatica.DataManagement/organizations/InformaticaTestRe
-                                             source
+Id                                         : /subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/InformaticaTestRg/providers/Informatica.DataManagement/organizations/InformaticaTestResource
 InformaticaPropertyInformaticaRegion       : West-US2-Staging
 InformaticaPropertyOrganizationId          :
 InformaticaPropertyOrganizationName        :

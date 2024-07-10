@@ -1,6 +1,6 @@
 ### Example 1: Get Informatica Organization Details
 ```powershell
- Get-AzInformaticaOrganization -OrganizationName packageversiontesting -ResourceGroupName almas-rg
+ Get-AzInformaticaOrganization -OrganizationName InformaticaTestResource -ResourceGroupName InformaticaTestRg
 ```
 
 ```output
@@ -10,8 +10,7 @@ CompanyDetailCountry                       : India
 CompanyDetailDomain                        :
 CompanyDetailNumberOfEmployee              : 0
 CompanyDetailOfficeAddress                 :
-Id                                         : /subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/InformaticaTestRg/providers/Informatica.DataManagement/organizations/InformaticaTestRe
-                                             source
+Id                                         : /subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/InformaticaTestRg/providers/Informatica.DataManagement/organizations/InformaticaTestResource
 InformaticaPropertyInformaticaRegion       : West-US2-Staging
 InformaticaPropertyOrganizationId          :
 InformaticaPropertyOrganizationName        :
@@ -34,12 +33,12 @@ SystemDataCreatedByType                    : User
 SystemDataLastModifiedAt                   : 09-Jul-24 11:36:11 AM
 SystemDataLastModifiedBy                   : 1907c93c-5795-4a9c-8ad3-7798b1d72580
 SystemDataLastModifiedByType               : Application
-Tag                                        : {
-                                             }
+Tag                                        : {}
 Type                                       : informatica.datamanagement/organizations
 UserDetailEmailAddress                     : Test_Infa@mpliftrlogz20210811outlook.onmicrosoft.com
 UserDetailFirstName                        : Test
 UserDetailLastName                         : Infa
 UserDetailPhoneNumber                      : 9876543210
 ```
+
 This command will get Informatica organization details for a specific organization name and resource group

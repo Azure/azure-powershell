@@ -62,5 +62,4 @@ UserDetailPhoneNumber                      : 9876543210
 UserDetailUpn                              : Test_Infa@mpliftrlogz20210811outlook.onmicrosoft.com
 ```
 
-Create new Informatica Resource
-
+Create new Informatica Resource in the specified resource group.

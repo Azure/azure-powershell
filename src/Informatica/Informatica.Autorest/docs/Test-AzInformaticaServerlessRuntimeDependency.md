@@ -36,27 +36,16 @@ Checks all dependencies for a serverless runtime resource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Test Informatica Serverless Runtime Dependency
 ```powershell
-{{ Add code here }}
+Test-AzInformaticaServerlessRuntimeDependency -OrganizationName "Demo-Org" -ResourceGroupName "InformaticaTestRg" -ServerlessRuntimeName "serverlessRuntimeDemo"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Test-AzInformaticaServerlessRuntimeDependency: Status: OK
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command will test the Informatica Serverless Runtime dependency.
 
 ## PARAMETERS
 

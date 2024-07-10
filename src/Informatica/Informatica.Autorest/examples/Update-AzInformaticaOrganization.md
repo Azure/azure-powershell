@@ -23,7 +23,7 @@ Update-AzInformaticaOrganization -Name "InformaticaTestResource" -ResourceGroupN
 >>     }
 >>     companyDetails = @{
 >>         companyName = "TestCompany"
->>         country = "China"
+>>         country = "India"
 >>         domain = ""
 >>         business = ""
 >>         numberOfEmployees = 0
@@ -72,4 +72,4 @@ UserDetailPhoneNumber                      : 9876543210
 UserDetailUpn                              : Test_Infa@mpliftrlogz20210811outlook.onmicrosoft.com
 ```
 
-Update Informatica resource
+Update Informatica resource with the specified properties.
