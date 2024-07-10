@@ -46,7 +46,7 @@ Get a InformaticaOrganizationResource
 ```
 
 ```output
-CompanyDetailBusinessPhone                 :
+BusinessPhoneNumber                        :
 CompanyDetailCompanyName                   : Microsoft
 CompanyDetailCountry                       : India
 CompanyDetailDomain                        :
@@ -75,8 +75,7 @@ SystemDataCreatedByType                    : User
 SystemDataLastModifiedAt                   : 09-Jul-24 11:36:11 AM
 SystemDataLastModifiedBy                   : 1907c93c-5795-4a9c-8ad3-7798b1d72580
 SystemDataLastModifiedByType               : Application
-Tag                                        : {
-                                             }
+Tag                                        : {}
 Type                                       : informatica.datamanagement/organizations
 UserDetailEmailAddress                     : Test_Infa@mpliftrlogz20210811outlook.onmicrosoft.com
 UserDetailFirstName                        : Test
@@ -85,7 +84,6 @@ UserDetailPhoneNumber                      : 9876543210
 ```
 
 This command will get Informatica organization details for a specific organization name and resource group
-
 
 ## PARAMETERS
 

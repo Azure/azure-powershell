@@ -4,7 +4,7 @@
 ```
 
 ```output
-CompanyDetailBusinessPhone                 :
+BusinessPhoneNumber                        :
 CompanyDetailCompanyName                   : Microsoft
 CompanyDetailCountry                       : India
 CompanyDetailDomain                        :

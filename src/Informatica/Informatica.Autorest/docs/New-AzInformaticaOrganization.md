@@ -15,7 +15,7 @@ Create a InformaticaOrganizationResource
 ### CreateExpanded (Default)
 ```
 New-AzInformaticaOrganization -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-CompanyDetailBusinessPhone <String>] [-CompanyDetailCompanyName <String>]
+ [-SubscriptionId <String>] [-BusinessPhoneNumber <String>] [-CompanyDetailCompanyName <String>]
  [-CompanyDetailCountry <String>] [-CompanyDetailDomain <String>] [-CompanyDetailNumberOfEmployee <Int32>]
  [-CompanyDetailOfficeAddress <String>] [-InformaticaPropertyInformaticaRegion <String>]
  [-InformaticaPropertyOrganizationId <String>] [-InformaticaPropertyOrganizationName <String>]
@@ -49,11 +49,11 @@ Create a InformaticaOrganizationResource
 
 ### Example 1: Create new Informatica Resource
 ```powershell
-New-AzInformaticaOrganization -Name "NewInformaticaTestResource" -ResourceGroupName "InformaticaTestRg" -Location "westus2" -SubscriptionId "ce37d538-dfa3-49c3-b3cd-149b4b7db48a"  -CompanyDetailCompanyName "Test" -CompanyDetailCountry "India" -CompanyDetailDomain "" -CompanyDetailNumberOfEmployee 0  -CompanyDetailBusinessPhone ""  -MarketplaceDetailMarketplaceSubscriptionId "c948d31a-c011-4b16-ce29-688c1565fc06" -OfferDetailOfferId "prod-idmc_as_azure_native_isv_service" -OfferDetailPlanId "prod-private_priview_plan_cdi_free" -OfferDetailPlanName "Pay as you go" -OfferDetailPublisherId "informatica" -OfferDetailTermId "zwuaefo5ywwo" -OfferDetailTermUnit "P1Y" -UserDetailEmailAddress "Test_Infa@mpliftrlogz20210811outlook.onmicrosoft.com" -UserDetailFirstName "Test" -UserDetailLastName "Test" -UserDetailPhoneNumber "9876543210" -UserDetailUpn "Test_Infa@mpliftrlogz20210811outlook.onmicrosoft.com"
+New-AzInformaticaOrganization -Name "NewInformaticaTestResource" -ResourceGroupName "InformaticaTestRg" -Location "westus2" -SubscriptionId "ce37d538-dfa3-49c3-b3cd-149b4b7db48a"  -CompanyDetailCompanyName "Test" -CompanyDetailCountry "India" -CompanyDetailDomain "" -CompanyDetailNumberOfEmployee 0  -BusinessPhoneNumber ""  -MarketplaceDetailMarketplaceSubscriptionId "c948d31a-c011-4b16-ce29-688c1565fc06" -OfferDetailOfferId "prod-idmc_as_azure_native_isv_service" -OfferDetailPlanId "prod-private_priview_plan_cdi_free" -OfferDetailPlanName "Pay as you go" -OfferDetailPublisherId "informatica" -OfferDetailTermId "zwuaefo5ywwo" -OfferDetailTermUnit "P1Y" -UserDetailEmailAddress "Test_Infa@mpliftrlogz20210811outlook.onmicrosoft.com" -UserDetailFirstName "Test" -UserDetailLastName "Test" -UserDetailPhoneNumber "9876543210" -UserDetailUpn "Test_Infa@mpliftrlogz20210811outlook.onmicrosoft.com"
 ```
 
 ```output
-CompanyDetailBusinessPhone                 :
+BusinessPhoneNumber                        :
 CompanyDetailCompanyName                   : Test
 CompanyDetailCountry                       : India
 CompanyDetailDomain                        :
@@ -110,7 +110,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CompanyDetailBusinessPhone
+### -BusinessPhoneNumber
 Business phone number
 
 ```yaml

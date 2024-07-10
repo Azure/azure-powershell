@@ -47,7 +47,6 @@ ServerlessRuntimeConfigPropertiesCdiEConfigProps: [{"engineName": "Data_Integrat
 
 This command will get serverless metadata for an Informatica organization.
 
-
 ## PARAMETERS
 
 ### -DefaultProfile
