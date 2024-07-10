@@ -15,13 +15,15 @@ Gets a specified local user or lists all local users in a storage account.
 ### AccountName (Default)
 ```
 Get-AzStorageLocalUser [-ResourceGroupName] <String> [-StorageAccountName] <String> [-UserName <String>]
- [-MaxPageSize <Int32>] [-Filter <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-MaxPageSize <Int32>] [-Filter <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 Get-AzStorageLocalUser -StorageAccount <PSStorageAccount> [-UserName <String>] [-MaxPageSize <Int32>]
- [-Filter <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Filter <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,7 +72,7 @@ testuser2 S-1-2-0-0000000000-000000000-0000000000-0002 /dir          True       
 
 This command lists all local users in a storage account.
 
-### Example 3: List local users with a max page size and filter 
+### Example 3: List local users with a max page size and filter
 ```powershell
 Get-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -MaxPageSize 3 -Filter "startswith(name, test)"
 ```
@@ -84,6 +86,7 @@ testuser1 S-1-2-0-0000000000-000000000-0000000000-0000 /             True       
 testuser2 S-1-2-0-0000000000-000000000-0000000000-0002 /dir          True         True      False                           1001
 testuser3 S-1-2-0-0000000000-000000000-0000000000-0003 /             True         True      False                           1001   100     True
 ```
+
 This command lists local users that names start with "test", with a max page size of 3 included in the list response.
 
 ## PARAMETERS
@@ -125,6 +128,21 @@ The maximum number of local users that will be included in the list response
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

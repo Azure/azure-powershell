@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported Storage task assignment
+    - `New-AzStorageTaskAssignment`
+    - `Update-AzStorageTaskAssignment`
+    - `Get-AzStorageTaskAssignment`
+    - `Remove-AzStorageTaskAssignment`
+    - `Get-AzStorageTaskAssignmentinstancesReport`
 * Supported local user ACL and list local user paging/filtering 
     - `Set-AzStorageLocalUser`
     - `Get-AzStorageLocalUser`

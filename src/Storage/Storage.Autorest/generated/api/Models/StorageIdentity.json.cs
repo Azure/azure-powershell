@@ -88,6 +88,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {_objectReplicationPolicyId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("objectReplicationPolicyId"), out var __jsonObjectReplicationPolicyId) ? (string)__jsonObjectReplicationPolicyId : (string)_objectReplicationPolicyId;}
             {_username = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("username"), out var __jsonUsername) ? (string)__jsonUsername : (string)_username;}
             {_encryptionScopeName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("encryptionScopeName"), out var __jsonEncryptionScopeName) ? (string)__jsonEncryptionScopeName : (string)_encryptionScopeName;}
+            {_storageTaskAssignmentName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("storageTaskAssignmentName"), out var __jsonStorageTaskAssignmentName) ? (string)__jsonStorageTaskAssignmentName : (string)_storageTaskAssignmentName;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
@@ -123,6 +124,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             AddIf( null != (((object)this._objectReplicationPolicyId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._objectReplicationPolicyId.ToString()) : null, "objectReplicationPolicyId" ,container.Add );
             AddIf( null != (((object)this._username)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._username.ToString()) : null, "username" ,container.Add );
             AddIf( null != (((object)this._encryptionScopeName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._encryptionScopeName.ToString()) : null, "encryptionScopeName" ,container.Add );
+            AddIf( null != (((object)this._storageTaskAssignmentName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._storageTaskAssignmentName.ToString()) : null, "storageTaskAssignmentName" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);
             return container;
