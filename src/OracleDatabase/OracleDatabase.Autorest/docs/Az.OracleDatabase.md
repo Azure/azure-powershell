@@ -80,9 +80,6 @@ Delete a CloudVmCluster
 ### [Remove-AzOracleDatabaseCloudVMClusterVM](Remove-AzOracleDatabaseCloudVMClusterVM.md)
 Remove VMs from the VM Cluster
 
-### [Restore-AzOracleDatabaseAutonomousDatabase](Restore-AzOracleDatabaseAutonomousDatabase.md)
-Restores an Autonomous Database based on the provided request parameters.
-
 ### [Update-AzOracleDatabaseAutonomousDatabase](Update-AzOracleDatabaseAutonomousDatabase.md)
 Update a AutonomousDatabase
 
