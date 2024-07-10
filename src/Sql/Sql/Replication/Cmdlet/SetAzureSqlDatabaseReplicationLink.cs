@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = false,
-            HelpMessage = "The link type of the replication link. Valid values are Geo and Standby. Update operation does not support Named")]
+            HelpMessage = "The link type of the replication link. Valid values are GEO and STANDBY. Update operation does not support NAMED")]
         [ValidateNotNullOrEmpty]
         [ValidateSet("GEO", "STANDBY")]
         public string LinkType { get; set; }
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         }
 
         /// <summary>
-        /// No user input to apply to model
+        /// Create the model from user input
         /// </summary>
         /// <param name="model">Model retrieved from service</param>
         /// <returns>The model that was passed in</returns>
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         }
 
         /// <summary>
-        /// No changes to persist to Azure SQL Server
+        /// Update the replication link
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
         /// <returns>The input entity</returns>
