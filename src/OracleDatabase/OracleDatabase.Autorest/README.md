@@ -49,4 +49,14 @@ directive:
     - model-name: CustomerContact
   - model-cmdlet:
     - model-name: NsgCidr
+  
+  # Remove the set-* cmdlet
+  - where:
+      verb: Set
+    remove: true
+
+  # Remove APIs
+  - where:
+      subject: CloudExadataInfrastructureStorageCapacity|PrivateIpaddress|SystemVersion|VirtualNetworkAddress|ShrinkAutonomousDatabase|SwitchoverAutonomousDatabase|AutonomousDatabaseBackup|AutonomousDatabaseWallet|OracleSubscription
+    remove: true
 ```
