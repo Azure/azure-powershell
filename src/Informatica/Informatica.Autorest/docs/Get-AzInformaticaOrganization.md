@@ -46,7 +46,7 @@ Get a InformaticaOrganizationResource
 ```
 
 ```output
-Business                      :
+CompanyDetailBusinessPhone                 :
 CompanyDetailCompanyName                   : Microsoft
 CompanyDetailCountry                       : India
 CompanyDetailDomain                        :
@@ -180,4 +180,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

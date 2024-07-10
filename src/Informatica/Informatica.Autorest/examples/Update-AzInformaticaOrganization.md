@@ -31,7 +31,7 @@ Update-AzInformaticaOrganization -Name "InformaticaTestResource" -ResourceGroupN
 ```
 
 ```output
-Business                      :
+CompanyDetailBusinessPhone                 :
 CompanyDetailCompanyName                   : Test
 CompanyDetailCountry                       : India
 CompanyDetailDomain                        :
