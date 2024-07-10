@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
-    /// <summary>A paged list of datastores</summary>
+    /// <summary>The response of a Datastore list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(DatastoreListTypeConverter))]
     public partial class DatastoreList
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             return ToJsonString();
         }
     }
-    /// A paged list of datastores
+    /// The response of a Datastore list operation.
     [System.ComponentModel.TypeConverter(typeof(DatastoreListTypeConverter))]
     public partial interface IDatastoreList
 

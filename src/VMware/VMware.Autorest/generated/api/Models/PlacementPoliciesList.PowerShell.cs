@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
-    /// <summary>Represents list of placement policies</summary>
+    /// <summary>The response of a PlacementPolicy list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(PlacementPoliciesListTypeConverter))]
     public partial class PlacementPoliciesList
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             return ToJsonString();
         }
     }
-    /// Represents list of placement policies
+    /// The response of a PlacementPolicy list operation.
     [System.ComponentModel.TypeConverter(typeof(PlacementPoliciesListTypeConverter))]
     public partial interface IPlacementPoliciesList
 

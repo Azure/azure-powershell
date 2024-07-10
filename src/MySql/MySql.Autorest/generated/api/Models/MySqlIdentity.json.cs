@@ -84,6 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models
             {_locationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("locationName"), out var __jsonLocationName) ? (string)__jsonLocationName : (string)LocationName;}
             {_securityAlertPolicyName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("securityAlertPolicyName"), out var __jsonSecurityAlertPolicyName) ? (string)__jsonSecurityAlertPolicyName : (string)SecurityAlertPolicyName;}
             {_backupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("backupName"), out var __jsonBackupName) ? (string)__jsonBackupName : (string)BackupName;}
+            {_advancedThreatProtectionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("advancedThreatProtectionName"), out var __jsonAdvancedThreatProtectionName) ? (string)__jsonAdvancedThreatProtectionName : (string)AdvancedThreatProtectionName;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
             AfterFromJson(json);
         }
@@ -117,6 +118,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models
             AddIf( null != (((object)this._locationName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString(this._locationName.ToString()) : null, "locationName" ,container.Add );
             AddIf( null != (((object)this._securityAlertPolicyName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString(this._securityAlertPolicyName.ToString()) : null, "securityAlertPolicyName" ,container.Add );
             AddIf( null != (((object)this._backupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString(this._backupName.ToString()) : null, "backupName" ,container.Add );
+            AddIf( null != (((object)this._advancedThreatProtectionName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString(this._advancedThreatProtectionName.ToString()) : null, "advancedThreatProtectionName" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);
             return container;

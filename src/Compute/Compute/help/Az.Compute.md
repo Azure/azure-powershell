@@ -251,6 +251,9 @@ Grants an access to a snapshot.
 ### [Invoke-AzSpotPlacementRecommender](Invoke-AzSpotPlacementRecommender.md)
 Generates placement scores for Spot VM skus.
 
+### [Invoke-AzSpotPlacementScore](Invoke-AzSpotPlacementScore.md)
+Generates placement scores for Spot VM skus.
+
 ### [Invoke-AzVMInstallPatch](Invoke-AzVMInstallPatch.md)
 Installs patches on the VM
 

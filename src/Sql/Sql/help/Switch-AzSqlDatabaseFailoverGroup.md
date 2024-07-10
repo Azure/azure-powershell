@@ -132,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -TryPlannedBeforeForcedFailover
-Performs planned failover as first step and if it fails for any reason than forced failover with potential data loss is initiated. This will allow the failover to proceed even if a primary database is unavailable.
+Performs planned failover as first step and if it fails for any reason then forced failover with potential data loss is initiated. This will allow the failover to proceed even if a primary database is unavailable.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

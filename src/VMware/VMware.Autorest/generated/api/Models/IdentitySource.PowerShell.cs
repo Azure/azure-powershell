@@ -147,7 +147,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             }
             if (content.Contains("Password"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySourceInternal)this).Password = (string) content.GetValueForProperty("Password",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySourceInternal)this).Password, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySourceInternal)this).Password = (System.Security.SecureString) content.GetValueForProperty("Password",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySourceInternal)this).Password, (object ss) => (System.Security.SecureString)ss);
             }
             AfterDeserializeDictionary(content);
         }
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             }
             if (content.Contains("Password"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySourceInternal)this).Password = (string) content.GetValueForProperty("Password",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySourceInternal)this).Password, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySourceInternal)this).Password = (System.Security.SecureString) content.GetValueForProperty("Password",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySourceInternal)this).Password, (object ss) => (System.Security.SecureString)ss);
             }
             AfterDeserializePSObject(content);
         }

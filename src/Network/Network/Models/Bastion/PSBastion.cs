@@ -19,26 +19,23 @@ namespace Microsoft.Azure.Commands.Network.Models
     using System.ComponentModel;
     using System.Linq;
 
+    using Microsoft.Azure.Commands.Network.Bastion;
     using Microsoft.Azure.Commands.Network.Models.Bastion;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
     using Newtonsoft.Json;
 
     public class PSBastion : PSTopLevelResource
     {
-        private const string BastionSubnetName = "AzureBastionSubnet";
-        private const string BastionIpConfigurationName = "IpConf";
-        public const int MinimumScaleUnits = 2;
-        public const int MaximumScaleUnits = 50;
-
         public PSBastion()
         {
             Sku = new PSBastionSku();
-            ScaleUnit = MinimumScaleUnits;
+            ScaleUnit = Constants.MinimumScaleUnits;
             EnableKerberos = false;
             DisableCopyPaste = false;
             EnableTunneling = false;
             EnableIpConnect = false;
             EnableShareableLink = false;
+            EnableSessionRecording = false;
         }
 
         public PSBastion(string name, string rgName, string location, string sku = null)
@@ -47,12 +44,13 @@ namespace Microsoft.Azure.Commands.Network.Models
             ResourceGroupName = rgName;
             Location = location;
             Sku = new PSBastionSku(sku);
-            ScaleUnit = MinimumScaleUnits;
+            ScaleUnit = Constants.MinimumScaleUnits;
             EnableKerberos = false;
             DisableCopyPaste = false;
             EnableTunneling = false;
             EnableIpConnect = false;
             EnableShareableLink = false;
+            EnableSessionRecording = false;
         }
 
         public List<PSBastionIPConfiguration> IpConfigurations { get; set; }
@@ -89,6 +87,10 @@ namespace Microsoft.Azure.Commands.Network.Models
         [DefaultValue(false)]
         public bool? EnableShareableLink { get; set; }
 
+        [Ps1Xml(Label = "Session Recording", Target = ViewControl.List)]
+        [DefaultValue(false)]
+        public bool? EnableSessionRecording { get; set; }
+
         [JsonIgnore]
         public string IpConfigurationsText
         {
@@ -117,19 +119,19 @@ namespace Microsoft.Azure.Commands.Network.Models
             PSSubnet BastionSubnet = null;
             try
             {
-                BastionSubnet = virtualNetwork.Subnets.Single(subnet => BastionSubnetName.Equals(subnet.Name, StringComparison.OrdinalIgnoreCase));
+                BastionSubnet = virtualNetwork.Subnets.Single(subnet => Constants.BastionSubnetName.Equals(subnet.Name, StringComparison.OrdinalIgnoreCase));
             }
 
             catch (InvalidOperationException)
             {
-                throw new ArgumentException($"Virtual Network {virtualNetwork.Name} should contain a Subnet named {BastionSubnetName}");
+                throw new ArgumentException($"Virtual Network {virtualNetwork.Name} should contain a Subnet named {Constants.BastionSubnetName}");
             }
 
             IpConfigurations = new List<PSBastionIPConfiguration>
             {
                 new PSBastionIPConfiguration
                 {
-                    Name = BastionIpConfigurationName,
+                    Name = Constants.BastionIpConfigurationName,
                     PublicIpAddress = new PSResourceId { Id = publicIpAddress.Id },
                 }
             };

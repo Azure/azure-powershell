@@ -53,28 +53,20 @@ jobs:
       outputFormat: sarif
       scanFolder: SecurityTmp
       suppressionsFile: tools/SecurityTools/CredScanSuppressions.json
-
-  - task: PowerShell@2
-    displayName: Copy PDB for BinSkim
-    inputs:
-      targetType: inline
-      script: ./src/lib/pdb/CopyPdbToArtifacts.ps1
-      pwsh: true
-  
   - task: PowerShell@2
     displayName: Generate a response text file for BinSkim
     inputs:
       targetType: 'inline'
       script: |
-        New-Item $(Build.SourcesDirectory)/artifacts/MyFileList.rsp -ItemType File -Force
-        (Get-ChildItem -Path .\artifacts\Debug -Include *.dll,*.exe -Exclude msalruntime.dll,msalruntime_arm64.dll,msalruntime_x86.dll -Recurse).FullName > $(Build.SourcesDirectory)/artifacts/MyFileList.rsp
+        New-Item $(Build.SourcesDirectory)/artifacts/FilesToScan.rsp -ItemType File -Force
+        (Get-ChildItem -Path .\artifacts\Debug -Include *.dll,*.exe -Exclude msalruntime.dll,msalruntime_arm64.dll,msalruntime_x86.dll -Recurse).FullName > $(Build.SourcesDirectory)/artifacts/FilesToScan.rsp
       pwsh: true
 
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-binskim.BinSkim@3
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-binskim.BinSkim@4
     displayName: Run BinSkim
     inputs:
       InputType: 'CommandLine'
-      arguments: 'analyze @$(Build.SourcesDirectory)/artifacts/MyFileList.rsp --recurse'
+      arguments: 'analyze @$(Build.SourcesDirectory)/artifacts/FilesToScan.rsp --config default --recurse --statistics'
 
   - task: PowerShell@2
     displayName: Cleanup Build
@@ -95,4 +87,19 @@ jobs:
     inputs:
       artifactName: artifacts
       targetPath: artifacts
-...
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-publishsecurityanalysislogs.PublishSecurityAnalysisLogs@3
+    # see https://eng.ms/docs/microsoft-security/microsoft-threat-protection-mtp/cloud-and-enterprise-security-cesec/security-integration/guardian-wiki/sdl-azdo-extension/publish-security-analysis-logs
+    displayName: 'Publish Security Analysis Logs'
+    inputs:
+      ArtifactName: CodeAnalysisLogs
+      ArtifactType: Container
+      PublishProcessedResults: false
+      AllTools: true
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-postanalysis.PostAnalysis@2
+    # see https://eng.ms/docs/microsoft-security/microsoft-threat-protection-mtp/cloud-and-enterprise-security-cesec/security-integration/guardian-wiki/sdl-azdo-extension/secure-development-tools-extension-for-azure-devops#post-analysis-build-break:~:text=To%20introduce%20a%20build%20break
+    displayName: Analyze Results (may block build)
+    inputs:
+      GdnBreakAllTools: false
+      GdnBreakGdnToolBinSkim: true
+      GdnBreakGdnToolCredScan: true
+      GdnBreakGdnToolPoliCheck: true

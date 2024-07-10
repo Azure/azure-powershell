@@ -363,6 +363,13 @@ function Update-AzADApplication {
     # Supports $filter (eq, NOT, ge, le).
     # To construct, see NOTES section for REQUIREDRESOURCEACCESS properties and create a hash table.
     ${RequiredResourceAccess},
+    
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # References application or service contact information from a Service or Asset Management database.
+    # Nullable.
+    ${ServiceManagementReference},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]

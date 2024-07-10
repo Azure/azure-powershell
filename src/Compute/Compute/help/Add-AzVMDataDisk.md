@@ -17,8 +17,8 @@ Adds a data disk to a virtual machine.
 ```
 Add-AzVMDataDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>] [[-Caching] <CachingTypes>]
  [[-DiskSizeInGB] <Int32>] [-Lun] <Int32> [-CreateOption] <String> [[-SourceImageUri] <String>]
- [-DiskEncryptionSetId <String>] [-DeleteOption <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-DiskEncryptionSetId <String>] [-DeleteOption <String>] [-SourceResourceId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### VmManagedDiskParameterSetName
@@ -26,7 +26,8 @@ Add-AzVMDataDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>
 Add-AzVMDataDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-Caching] <CachingTypes>]
  [[-DiskSizeInGB] <Int32>] [-Lun] <Int32> [-CreateOption] <String> [[-ManagedDiskId] <String>]
  [[-StorageAccountType] <String>] [-DiskEncryptionSetId <String>] [-WriteAccelerator] [-DeleteOption <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SourceResourceId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -133,6 +134,10 @@ Specify this to create an empty data disk.
 Specify this option to create a virtual machine from a generalized image or disk.
 When you specify this option, you must specify the *SourceImageUri* parameter also in order to tell the Azure platform the location of the VHD to attach as a data disk.
 The *VhdUri* parameter is used as the location identifying where the data disk VHD will be stored when it is used by the virtual machine.
+- Empty. 
+This value is used when creating an empty data disk. 
+- Copy. 
+This value is used to create a data disk from a snapshot or another disk. **Restore:** This value is used to create a data disk from a disk restore point.
 
 ```yaml
 Type: System.String
@@ -261,6 +266,21 @@ Aliases: SourceImage
 
 Required: False
 Position: 7
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SourceResourceId
+ARM ID of snapshot or disk restore point from which to create a disk.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

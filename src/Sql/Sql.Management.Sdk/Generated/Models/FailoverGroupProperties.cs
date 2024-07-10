@@ -41,7 +41,10 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="databases">List of databases in the failover group.
         /// </param>
-        public FailoverGroupProperties(FailoverGroupReadWriteEndpoint readWriteEndpoint, System.Collections.Generic.IList<PartnerInfo> partnerServers, FailoverGroupReadOnlyEndpoint readOnlyEndpoint = default(FailoverGroupReadOnlyEndpoint), string replicationRole = default(string), string replicationState = default(string), System.Collections.Generic.IList<string> databases = default(System.Collections.Generic.IList<string>))
+
+        /// <param name="secondaryType">Databases secondary type on partner server.
+        /// Possible values include: &#39;Geo&#39;, &#39;Standby&#39;</param>
+        public FailoverGroupProperties(FailoverGroupReadWriteEndpoint readWriteEndpoint, System.Collections.Generic.IList<PartnerInfo> partnerServers, FailoverGroupReadOnlyEndpoint readOnlyEndpoint = default(FailoverGroupReadOnlyEndpoint), string replicationRole = default(string), string replicationState = default(string), System.Collections.Generic.IList<string> databases = default(System.Collections.Generic.IList<string>), string secondaryType = default(string))
 
         {
             this.ReadWriteEndpoint = readWriteEndpoint;
@@ -50,6 +53,7 @@ namespace Microsoft.Azure.Management.Sql.Models
             this.ReplicationState = replicationState;
             this.PartnerServers = partnerServers;
             this.Databases = databases;
+            this.SecondaryType = secondaryType;
             CustomInit();
         }
 
@@ -94,6 +98,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "databases")]
         public System.Collections.Generic.IList<string> Databases {get; set; }
+
+        /// <summary>
+        /// Gets or sets databases secondary type on partner server. Possible values include: &#39;Geo&#39;, &#39;Standby&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "secondaryType")]
+        public string SecondaryType {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -127,6 +137,7 @@ namespace Microsoft.Azure.Management.Sql.Models
                     }
                 }
             }
+
 
         }
     }

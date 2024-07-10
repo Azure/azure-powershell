@@ -14,6 +14,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
     {
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IPFilterTag Default = @"Default";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IPFilterTag ServiceTag = @"ServiceTag";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IPFilterTag XffProxy = @"XffProxy";
 
         /// <summary>the value for an instance of the <see cref="IPFilterTag" /> Enum.</summary>

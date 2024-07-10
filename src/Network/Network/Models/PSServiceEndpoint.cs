@@ -20,5 +20,9 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [JsonProperty(Order = 1)]
         public List<string> Locations { get; set; }
+
+        [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public PSResourceId NetworkIdentifier { get; set; }
     }
 }

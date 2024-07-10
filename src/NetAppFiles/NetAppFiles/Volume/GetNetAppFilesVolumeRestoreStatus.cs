@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             {
                 try
                 {
-                    var anfVolumeRestoreStatus = AzureNetAppFilesManagementClient.Backups.GetVolumeRestoreStatus(ResourceGroupName, AccountName, PoolName, Name);
+                    var anfVolumeRestoreStatus = AzureNetAppFilesManagementClient.Backups.GetVolumeLatestRestoreStatus(ResourceGroupName, AccountName, PoolName, Name);
                     WriteObject(anfVolumeRestoreStatus.ConvertToPs());
                 }
                 catch (ErrorResponseException ex)

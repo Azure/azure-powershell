@@ -25,6 +25,12 @@ Remove-AzNewRelicMonitorTagRule -InputObject <INewRelicIdentity> [-DefaultProfil
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityMonitor
+```
+Remove-AzNewRelicMonitorTagRule -MonitorInputObject <INewRelicIdentity> -RuleSetName <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Delete a TagRule
 
@@ -72,11 +78,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentity
 Parameter Sets: DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MonitorInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentity
+Parameter Sets: DeleteViaIdentityMonitor
 Aliases:
 
 Required: True
@@ -152,7 +172,7 @@ Name of the TagRule
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityMonitor
 Aliases:
 
 Required: True

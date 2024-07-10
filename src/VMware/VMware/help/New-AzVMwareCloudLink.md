@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwareCloudLink
 
 ## SYNOPSIS
-Create a cloud link in a private cloud
+Create a CloudLink
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ New-AzVMwareCloudLink -InputObject <IVMwareIdentity> [-LinkedCloud <String>] [-D
 ```
 
 ## DESCRIPTION
-Create a cloud link in a private cloud
+Create a CloudLink
 
 ## EXAMPLES
 
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the cloud link resource
+Name of the cloud link.
 
 ```yaml
 Type: System.String
@@ -159,7 +159,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateCloudName
-The name of the private cloud.
+Name of the private cloud
 
 ```yaml
 Type: System.String
@@ -191,6 +191,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

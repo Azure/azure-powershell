@@ -98,7 +98,7 @@ function Test-RaDeleteByPSRoleAssignment
     $subscription = $(Get-AzContext).Subscription
     $scope = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/PowershellTest'
 
-    $expectedMessage = "Succesfully removed role assignment for AD object 'e9da4467-12ff-4334-8179-c99abf0ffd5a' on scope '/subscriptions/" + $subscription[0].Id + "/resourceGroups/PowershellTest' with role definition 'Reader'"
+    $expectedMessage = "Successfully removed role assignment for AD object 'e9da4467-12ff-4334-8179-c99abf0ffd5a' on scope '/subscriptions/" + $subscription[0].Id + "/resourceGroups/PowershellTest' with role definition 'Reader'"
 
     # Test
     $newAssignment = New-AzRoleAssignmentWithId -ObjectId $principalId -RoleDefinitionName $definitionName -Scope $scope -RoleAssignmentId 50fd727d-d1af-44ef-9a32-2431b835605e

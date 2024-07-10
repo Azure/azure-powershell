@@ -235,7 +235,7 @@ process {
 
     # supply required parameters and remove custom parameters
     $calledParameters.Name = $resolved.Name
-    $calledParameters.Scope = $resolved.FullScope
+    $calledParameters.Scope = $resolved.Scope
     $null = $calledParameters.Remove('Id')
     $null = $calledParameters.Remove('InputObject')
 
@@ -252,6 +252,26 @@ process {
     if ($ClearExpiration) {
         $calledParameters.ExpiresOn = $null
         $null = $calledParameters.Remove('ClearExpiration')
+    }
+
+    if (!$calledParameters.DisplayName) {
+        $calledParameters.DisplayName = $existing.DisplayName
+    }
+
+    if (!$calledParameters.Description) {
+        $calledParameters.Description = $existing.Description
+    }
+
+    if (!$calledParameters.PolicyDefinitionReferenceId -and !($calledParameters.PolicyDefinitionReferenceId -is [array])) {
+        $calledParameters.PolicyDefinitionReferenceId = $existing.PolicyDefinitionReferenceId
+    }
+
+    if (!$calledParameters.Metadata) {
+        $calledParameters.Metadata = $existing.Metadata
+    }
+
+    if (!$calledParameters.AssignmentScopeValidation -and $existing.AssignmentScopeValidation) {
+        $calledParameters.AssignmentScopeValidation = $existing.AssignmentScopeValidation
     }
 
     if ($BackwardCompatible) {

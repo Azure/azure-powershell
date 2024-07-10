@@ -16,18 +16,18 @@
 
 <#
 .Synopsis
-Updates whether user publishing credentials are allowed on the site or not.
+Description for Updates whether user publishing credentials are allowed on the site or not.
 .Description
-Updates whether user publishing credentials are allowed on the site or not.
+Description for Updates whether user publishing credentials are allowed on the site or not.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingCredentialsPoliciesEntity
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICsmPublishingCredentialsPoliciesEntity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingCredentialsPoliciesEntity
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICsmPublishingCredentialsPoliciesEntity
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,7 +40,7 @@ CSMPUBLISHINGACCESSPOLICIESENTITY <ICsmPublishingCredentialsPoliciesEntity>: Pub
 https://learn.microsoft.com/powershell/module/az.functions/set-azwebappscmallowed
 #>
 function Set-AzWebAppScmAllowed {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingCredentialsPoliciesEntity])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICsmPublishingCredentialsPoliciesEntity])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -66,7 +66,7 @@ param(
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingCredentialsPoliciesEntity]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICsmPublishingCredentialsPoliciesEntity]
     # Publishing Credentials Policies parameters.
     # To construct, see NOTES section for CSMPUBLISHINGACCESSPOLICIESENTITY properties and create a hash table.
     ${CsmPublishingAccessPoliciesEntity},

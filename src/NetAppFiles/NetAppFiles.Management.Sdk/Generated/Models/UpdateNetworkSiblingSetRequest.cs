@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// set.
         /// </param>
 
-        /// <param name="networkFeatures">Network features available to the volume, some such
+        /// <param name="networkFeatures">Network features available to the volume.
         /// Possible values include: &#39;Basic&#39;, &#39;Standard&#39;, &#39;Basic_Standard&#39;,
         /// &#39;Standard_Basic&#39;</param>
         public UpdateNetworkSiblingSetRequest(string networkSiblingSetId, string subnetId, string networkSiblingSetStateId, string networkFeatures)
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public string NetworkSiblingSetStateId {get; set; }
 
         /// <summary>
-        /// Gets or sets network features available to the volume, some such Possible values include: &#39;Basic&#39;, &#39;Standard&#39;, &#39;Basic_Standard&#39;, &#39;Standard_Basic&#39;
+        /// Gets or sets network features available to the volume. Possible values include: &#39;Basic&#39;, &#39;Standard&#39;, &#39;Basic_Standard&#39;, &#39;Standard_Basic&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "networkFeatures")]
         public string NetworkFeatures {get; set; }

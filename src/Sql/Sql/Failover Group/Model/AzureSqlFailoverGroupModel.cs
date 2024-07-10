@@ -124,6 +124,11 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Model
         public string ReadOnlyFailoverPolicy { get; set; }
 
         /// <summary>
+        /// Gets or sets the databases secondary type on partner server.
+        /// </summary>
+        public string SecondaryType { get; set; }
+
+        /// <summary>
         /// Gets or sets the Id of the failover group
         /// </summary>
         public string Id { get; set; }

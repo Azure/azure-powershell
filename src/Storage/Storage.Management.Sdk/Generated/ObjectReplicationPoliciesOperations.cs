@@ -42,10 +42,13 @@ namespace Microsoft.Azure.Management.Storage
         /// List the object replication policies associated with the storage account.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -284,13 +287,20 @@ namespace Microsoft.Azure.Management.Storage
         /// Get the object replication policy of the storage account by policy ID.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='objectReplicationPolicyId'>
-        /// For the destination account, provide the value &#39;default&#39;. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
+        /// For the destination account, provide the value &#39;default&#39;. Configure the
+        /// policy on the destination account first. For the source account, provide
+        /// the value of the policy ID that is returned when you download the policy
+        /// that was defined on the destination account. The policy is downloaded as a
+        /// JSON file.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -542,16 +552,24 @@ namespace Microsoft.Azure.Management.Storage
         /// Create or update the object replication policy of the storage account.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='objectReplicationPolicyId'>
-        /// For the destination account, provide the value &#39;default&#39;. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
+        /// For the destination account, provide the value &#39;default&#39;. Configure the
+        /// policy on the destination account first. For the source account, provide
+        /// the value of the policy ID that is returned when you download the policy
+        /// that was defined on the destination account. The policy is downloaded as a
+        /// JSON file.
         /// </param>
         /// <param name='properties'>
-        /// The object replication policy set to a storage account. A unique policy ID will be created if absent.
+        /// The object replication policy set to a storage account. A unique policy ID
+        /// will be created if absent.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -812,16 +830,24 @@ namespace Microsoft.Azure.Management.Storage
 
         }
         /// <summary>
-        /// Deletes the object replication policy associated with the specified storage account.
+        /// Deletes the object replication policy associated with the specified storage
+        /// account.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
         /// </param>
         /// <param name='objectReplicationPolicyId'>
-        /// For the destination account, provide the value &#39;default&#39;. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
+        /// For the destination account, provide the value &#39;default&#39;. Configure the
+        /// policy on the destination account first. For the source account, provide
+        /// the value of the policy ID that is returned when you download the policy
+        /// that was defined on the destination account. The policy is downloaded as a
+        /// JSON file.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
-    /// <summary>A list of Virtual Machines</summary>
+    /// <summary>The response of a VirtualMachine list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(VirtualMachinesListTypeConverter))]
     public partial class VirtualMachinesList
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             AfterDeserializePSObject(content);
         }
     }
-    /// A list of Virtual Machines
+    /// The response of a VirtualMachine list operation.
     [System.ComponentModel.TypeConverter(typeof(VirtualMachinesListTypeConverter))]
     public partial interface IVirtualMachinesList
 

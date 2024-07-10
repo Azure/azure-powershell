@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.3.0
+* Enabled Microsoft entra id on SQL VM.
+
 ## Version 2.2.1
 * Introduced secrets detection feature to safeguard sensitive data.
 

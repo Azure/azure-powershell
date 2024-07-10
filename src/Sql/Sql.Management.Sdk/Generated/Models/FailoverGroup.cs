@@ -57,7 +57,10 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="databases">List of databases in the failover group.
         /// </param>
-        public FailoverGroup(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), FailoverGroupReadWriteEndpoint readWriteEndpoint = default(FailoverGroupReadWriteEndpoint), FailoverGroupReadOnlyEndpoint readOnlyEndpoint = default(FailoverGroupReadOnlyEndpoint), string replicationRole = default(string), string replicationState = default(string), System.Collections.Generic.IList<PartnerInfo> partnerServers = default(System.Collections.Generic.IList<PartnerInfo>), System.Collections.Generic.IList<string> databases = default(System.Collections.Generic.IList<string>))
+
+        /// <param name="secondaryType">Databases secondary type on partner server.
+        /// Possible values include: &#39;Geo&#39;, &#39;Standby&#39;</param>
+        public FailoverGroup(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), FailoverGroupReadWriteEndpoint readWriteEndpoint = default(FailoverGroupReadWriteEndpoint), FailoverGroupReadOnlyEndpoint readOnlyEndpoint = default(FailoverGroupReadOnlyEndpoint), string replicationRole = default(string), string replicationState = default(string), System.Collections.Generic.IList<PartnerInfo> partnerServers = default(System.Collections.Generic.IList<PartnerInfo>), System.Collections.Generic.IList<string> databases = default(System.Collections.Generic.IList<string>), string secondaryType = default(string))
 
         : base(id, name, type)
         {
@@ -69,6 +72,7 @@ namespace Microsoft.Azure.Management.Sql.Models
             this.ReplicationState = replicationState;
             this.PartnerServers = partnerServers;
             this.Databases = databases;
+            this.SecondaryType = secondaryType;
             CustomInit();
         }
 
@@ -125,6 +129,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.databases")]
         public System.Collections.Generic.IList<string> Databases {get; set; }
+
+        /// <summary>
+        /// Gets or sets databases secondary type on partner server. Possible values include: &#39;Geo&#39;, &#39;Standby&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.secondaryType")]
+        public string SecondaryType {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -152,6 +162,7 @@ namespace Microsoft.Azure.Management.Sql.Models
                     }
                 }
             }
+
 
         }
     }

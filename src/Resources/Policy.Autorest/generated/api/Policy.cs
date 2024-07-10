@@ -15344,7 +15344,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="body">The policy set definition properties.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -15398,7 +15398,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="managementGroupName">The name of the management group. The name is case insensitive.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="body">The policy set definition version properties.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -15575,7 +15575,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="managementGroupName">The name of the management group. The name is case insensitive.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="jsonString">Json string supplied to the PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroup operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -15628,7 +15628,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="managementGroupName">The name of the management group. The name is case insensitive.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="jsonString">Json string supplied to the PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroup operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -15678,7 +15678,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="managementGroupName">The name of the management group. The name is case insensitive.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="body">The policy set definition version properties.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -15856,7 +15856,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="managementGroupName">The name of the management group. The name is case insensitive.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="body">The policy set definition version properties.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -16005,7 +16005,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="jsonString">Json string supplied to the PolicySetDefinitionVersionsCreateOrUpdate operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -16057,7 +16057,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="jsonString">Json string supplied to the PolicySetDefinitionVersionsCreateOrUpdate operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -16106,7 +16106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="body">The policy set definition properties.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -16284,7 +16284,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="body">The policy set definition properties.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -16311,7 +16311,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -16358,7 +16358,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="managementGroupName">The name of the management group. The name is case insensitive.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -16521,7 +16521,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="managementGroupName">The name of the management group. The name is case insensitive.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -16660,7 +16660,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -16684,7 +16684,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -16730,7 +16730,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="managementGroupName">The name of the management group. The name is case insensitive.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -16884,7 +16884,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="managementGroupName">The name of the management group. The name is case insensitive.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -17043,7 +17043,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="managementGroupName">The name of the management group. The name is case insensitive.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -17067,7 +17067,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// This operation retrieves the built-in policy set definition version with the given name and version.
         /// </summary>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -17212,7 +17212,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// This operation retrieves the built-in policy set definition version with the given name and version.
         /// </summary>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -17368,7 +17368,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// you will get validation events back.
         /// </summary>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -17498,7 +17498,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -17655,7 +17655,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.18.5
+* Added UAMI in DynamicsCrm LinkedService
+
 ## Version 1.18.4
 * Updated ADF encryption client SDK version to 5.29.8499.2
 

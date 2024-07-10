@@ -44,17 +44,15 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 0baf811c3c76c87b3c127d098519bd97141222dd
+commit: f1546dc981fa5d164d7ecd13588520457462c22c
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/vmware/resource-manager/Microsoft.AVS/stable/2023-03-01/vmware.json
+  - $(repo)/specification/vmware/resource-manager/Microsoft.AVS/stable/2023-09-01/vmware.json
 
 module-version: 0.4.0
 title: VMware
 subject-prefix: $(service-name)
-disable-transform-identity-type: true
-flatten-userassignedidentity: false
 
 support-json-input: false
 
@@ -157,17 +155,19 @@ directive:
   - no-inline:
       - AddonProperties
       - PlacementPolicyProperties
-  - model-cmdlet:
-    - model-name: IdentitySource
   # Re-name and custom it
-  # - model-cmdlet:
-  #     - VMPlacementPolicyProperties
-  #     - VmHostPlacementPolicyProperties
-  #     - ScriptSecureStringExecutionParameter
-  #     - ScriptStringExecutionParameter
-  #     - PSCredentialExecutionParameter
-  #     - AddonSrmProperties
-  #     - AddonVrProperties
+  - model-cmdlet:
+      - model-name: VMPlacementPolicyProperties
+        cmdlet-name: New-AzVMwareVMPlacementPolicyPropertyObject
+      - model-name: VmHostPlacementPolicyProperties
+        cmdlet-name: New-AzVMwareVmHostPlacementPolicyPropertyObject
+      # - model-name: ScriptSecureStringExecutionParameter
+      # - model-name: ScriptStringExecutionParameter
+      # - model-name: PSCredentialExecutionParameter
+      # - model-name: AddonSrmProperties
+      #   cmdlet-name: New-AzVMwareAddonSrmPropertyObject
+      # - model-name: AddonVrProperties
+      #   cmdlet-name: New-AzVMwareAddonVrPropertyObject
   - where:
       verb: Get
       subject: ^PrivateCloudAdminCredentials$

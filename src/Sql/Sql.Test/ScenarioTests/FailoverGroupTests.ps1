@@ -12,7 +12,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function Handle-FailoverGroupTest($scriptBlock, $primaryLocation = "North Europe", $secondaryLocation = "West Europe", $serverVersion = "12.0", $rg = $null, $server1 = $null, $server2 = $null, $cleanup = $false)
+function Handle-FailoverGroupTest($scriptBlock, $primaryLocation = "North Europe", $secondaryLocation = "East US", $serverVersion = "12.0", $rg = $null, $server1 = $null, $server2 = $null, $cleanup = $false)
 {
 	try
 	{
@@ -442,5 +442,32 @@ function Test-FailoverGroupMultipleSecondaries()
 		$fgName = Get-FailoverGroupName
 		$fg = New-AzSqlDatabaseFailoverGroup -ResourceGroupName $primaryServer.ResourceGroupName -ServerName $primaryServer.ServerName -PartnerServerName $partnerServer.ServerName -FailoverGroupName $fgName -FailoverPolicy Automatic -GracePeriodWithDataLossHours 1 -AllowReadOnlyFailoverToPrimary Enabled -PartnerServerList $partnerServers -ReadOnlyEndpointTargetServer $partnerServer.ResourceId
 		Validate-FailoverGroup $primaryServer $server $fgName Primary Automatic 1 Enabled @() $fg -isMultiServer $true -PartnerServerList $partnerServers
+	}
+}
+
+function Test-AddRemoveDatabasesToFromFailoverGroupWithStandby()
+{
+	Handle-FailoverGroupTestWithFailoverGroup {
+		Param($fg)
+
+		$db1 = New-AzSqlDatabase $fg.ResourceGroupName $fg.ServerName -DatabaseName (Get-DatabaseName)
+
+		$newFg = $fg | Add-AzSqlDatabaseToFailoverGroup -Database $db1 -SecondaryType "Standby"
+		Assert-FailoverGroupsEqual $fg $newFg -databases @($db1) -message "after adding db1"
+		Validate-FailoverGroupWithGet $newFg -message "get after adding db1"
+
+		$newFg = $fg | Remove-AzSqlDatabaseFromFailoverGroup -Database $db1
+		Assert-FailoverGroupsEqual $fg $newFg -databases @() -message "after removing db1"
+		Validate-FailoverGroupWithGet $newFg -message "get after removing db1"
+
+		$db2 = New-AzSqlDatabase $fg.ResourceGroupName $fg.ServerName -DatabaseName (Get-DatabaseName)
+
+		$newFg = Add-AzSqlDatabaseToFailoverGroup -ResourceGroupName $fg.ResourceGroupName -ServerName $fg.ServerName -FailoverGroupName $fg.FailoverGroupName -Database @($db1, $db2) -SecondaryType "Standby"
+		Assert-FailoverGroupsEqual $fg $newFg -databases @($db1, $db2) -message "after adding both dbs"
+		Validate-FailoverGroupWithGet $newFg -message "get after adding both dbs"
+
+		$newFg = Remove-AzSqlDatabaseFromFailoverGroup -ResourceGroupName $fg.ResourceGroupName -ServerName $fg.ServerName -FailoverGroupName $fg.FailoverGroupName -Database @($db1, $db2)
+		Assert-FailoverGroupsEqual $fg $newFg -databases @() -message "after removing both dbs"
+		Validate-FailoverGroupWithGet $newFg -message "get after removing both dbs"
 	}
 }

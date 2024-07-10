@@ -17,5 +17,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public const string Field = "Field";
         public const string Unary = "Unary";
         public const string Binary = "Binary";
+        public const string NAry = "NAry";
     }
 }

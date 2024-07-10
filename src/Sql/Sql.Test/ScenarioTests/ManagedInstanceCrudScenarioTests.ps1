@@ -118,6 +118,148 @@ function Test-CreateManagedInstance
 
 <#
 	.SYNOPSIS
+	Tests creating a managed instance while using Hermes related parameters
+	.DESCRIPTION
+	SmokeTest
+#>
+function Test-CreateManagedInstance-HermesTesting
+{
+	$defaultParams = Get-DefaultManagedInstanceParametersHermesTesting
+	$credentials = Get-ServerCredential
+	$vCore = 8
+	$storageSizeInGB = 32
+
+	# Tests with SKU name specified and with true IsGeneralPurposeV2 specified
+	$managedInstanceName = "createmanagedinstance-hermestesting-he"
+	$skuName = "GP_Gen5"
+	$isGeneralPurposeV2 = $true
+	$storageIOps = 2000
+
+	$job = New-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName `
+		-Location $defaultParams.location -AdministratorCredential $credentials -SubnetId $defaultParams.subnet `
+		-StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName `
+		-IsGeneralPurposeV2 $isGeneralPurposeV2 -StorageIOps $storageIOps -AsJob
+	$job | Wait-Job
+	$managedInstance = $job.Output
+
+	Assert-AreEqual $managedInstance.ManagedInstanceName $managedInstanceName
+	Assert-AreEqual $managedInstance.Sku.Name $skuName
+	Assert-AreEqual $managedInstance.IsGeneralPurposeV2 $isGeneralPurposeV2
+	Assert-AreEqual $managedInstance.VCores $vCore
+	Assert-AreEqual $managedInstance.StorageSizeInGB $storageSizeInGB
+	Assert-AreEqual $managedInstance.StorageIOps $storageIOps
+
+	# Tests with SKU name specified and without IsGeneralPurposeV2 specified
+	$managedInstanceName = "createmanagedinstance-hermestesting-gp-noflag"
+	$skuName = "GP_Gen5"
+	$isGeneralPurposeV2 = $false
+	$storageIOps = $null
+
+	$job = New-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName `
+		-Location $defaultParams.location -AdministratorCredential $credentials -SubnetId $defaultParams.subnet `
+		-StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName -AsJob
+	$job | Wait-Job
+	$managedInstance = $job.Output
+
+	Assert-AreEqual $managedInstance.ManagedInstanceName $managedInstanceName
+	Assert-AreEqual $managedInstance.Sku.Name $skuName
+	Assert-AreEqual $managedInstance.IsGeneralPurposeV2 $isGeneralPurposeV2
+	Assert-AreEqual $managedInstance.VCores $vCore
+	Assert-AreEqual $managedInstance.StorageSizeInGB $storageSizeInGB
+	Assert-AreEqual $managedInstance.StorageIOps $storageIOps
+
+	# Tests with SKU name specified and with false IsGeneralPurposeV2 specified
+	$managedInstanceName = "createmanagedinstance-hermestesting-gp-falseflag"
+	$skuName = "GP_Gen5"
+	$isGeneralPurposeV2 = $false
+	$storageIOps = $null
+
+	$job = New-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName `
+		-Location $defaultParams.location -AdministratorCredential $credentials -SubnetId $defaultParams.subnet `
+		-StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName `
+		-IsGeneralPurposeV2 $isGeneralPurposeV2 -AsJob
+	$job | Wait-Job
+	$managedInstance = $job.Output
+
+	Assert-AreEqual $managedInstance.ManagedInstanceName $managedInstanceName
+	Assert-AreEqual $managedInstance.Sku.Name $skuName
+	Assert-AreEqual $managedInstance.IsGeneralPurposeV2 $isGeneralPurposeV2
+	Assert-AreEqual $managedInstance.VCores $vCore
+	Assert-AreEqual $managedInstance.StorageSizeInGB $storageSizeInGB
+	Assert-AreEqual $managedInstance.StorageIOps $storageIOps
+}
+
+<#
+	.SYNOPSIS
+	Tests setting a Managed Instance while using Hermes related parameters
+	.DESCRIPTION
+	SmokeTest
+#>
+function Test-SetManagedInstance-HermesTesting
+{
+	$defaultParams = Get-DefaultManagedInstanceParametersHermesTesting
+	$credentials = Get-ServerCredential
+	$managedInstanceName = "setmanagedinstance-hermestesting"
+	$vCore = 8
+
+	# Create GP MI
+	$skuName = "GP_Gen5"
+	$isGeneralPurposeV2 = $false
+	$storageSizeInGB = 32
+	$storageIOps = $null
+
+	$job = New-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName `
+		-Location $defaultParams.location -AdministratorCredential $credentials -SubnetId $defaultParams.subnet `
+		-StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName -AsJob
+	$job | Wait-Job
+	$managedInstance = $job.Output
+
+	Assert-AreEqual $managedInstance.ManagedInstanceName $managedInstanceName
+	Assert-AreEqual $managedInstance.Sku.Name $skuName
+	Assert-AreEqual $managedInstance.IsGeneralPurposeV2 $isGeneralPurposeV2
+	Assert-AreEqual $managedInstance.VCores $vCore
+	Assert-AreEqual $managedInstance.StorageSizeInGB $storageSizeInGB
+	Assert-AreEqual $managedInstance.StorageIOps $storageIOps
+
+	# Update to HE MI
+	$edition = "GeneralPurpose"
+	$computeGeneration = "Gen5"
+	$isGeneralPurposeV2 = $true
+	$storageSizeInGB = 64
+	$storageIOps = 2000
+
+	$managedInstance = Set-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName `
+		-StorageSizeInGB $storageSizeInGB -Edition $edition -ComputeGeneration $computeGeneration `
+		-IsGeneralPurposeV2 $isGeneralPurposeV2 -StorageIOps $storageIOps -Force
+
+	Assert-AreEqual $managedInstance.ManagedInstanceName $managedInstanceName
+	Assert-AreEqual $managedInstance.Sku.Name $skuName
+	Assert-AreEqual $managedInstance.IsGeneralPurposeV2 $isGeneralPurposeV2
+	Assert-AreEqual $managedInstance.VCores $vCore
+	Assert-AreEqual $managedInstance.StorageSizeInGB $storageSizeInGB
+	Assert-AreEqual $managedInstance.StorageIOps $storageIOps
+
+	# Update to GP MI
+	$edition = "GeneralPurpose"
+	$computeGeneration = "Gen5"
+	$isGeneralPurposeV2 = $false
+	$storageSizeInGB = 64
+	$storageIOps = $null
+
+	$managedInstance = Set-AzSqlInstance -ResourceGroupName $defaultParams.rg -Name $managedInstanceName `
+		-StorageSizeInGB $storageSizeInGB -Edition $edition -ComputeGeneration $computeGeneration `
+		-IsGeneralPurposeV2 $isGeneralPurposeV2 -Force
+
+	Assert-AreEqual $managedInstance.ManagedInstanceName $managedInstanceName
+	Assert-AreEqual $managedInstance.Sku.Name $skuName
+	Assert-AreEqual $managedInstance.IsGeneralPurposeV2 $isGeneralPurposeV2
+	Assert-AreEqual $managedInstance.VCores $vCore
+	Assert-AreEqual $managedInstance.StorageSizeInGB $storageSizeInGB
+	Assert-AreEqual $managedInstance.StorageIOps $storageIOps
+}
+
+<#
+	.SYNOPSIS
 	Tests setting a Managed Instance
 	.DESCRIPTION
 	SmokeTest

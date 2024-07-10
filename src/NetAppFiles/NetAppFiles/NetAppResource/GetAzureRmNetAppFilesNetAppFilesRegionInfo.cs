@@ -37,14 +37,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.N
             ParameterSetName = FieldsParameterSet,
             HelpMessage = "The location of the resource")]
         [ValidateNotNullOrEmpty]
-        [LocationCompleter("Microsoft.NetApp/locations/quotaLimits")]
+        [LocationCompleter("Microsoft.NetApp/locations/regioninfos")]
         public string Location { get; set; }
 
         public override void ExecuteCmdlet()
         {
             try
             {
-                var anfRegionInfo = AzureNetAppFilesManagementClient.NetAppResource.QueryRegionInfo(Location);
+                var anfRegionInfo = AzureNetAppFilesManagementClient.NetAppResourceRegionInfos.Get(Location);
                 WriteObject(anfRegionInfo.ConvertToPs());
             }
             catch (ErrorResponseException ex)

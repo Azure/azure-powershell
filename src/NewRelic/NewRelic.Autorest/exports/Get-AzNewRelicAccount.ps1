@@ -20,15 +20,15 @@ List all the existing accounts
 .Description
 List all the existing accounts
 .Example
-Get-AzNewRelicAccount -Location eastus -UserEmail v-jiaji@outlook.com
+Get-AzNewRelicAccount -Location eastus -UserEmail user1@outlook.com
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.IAccountResource
+Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IAccountResource
 .Link
 https://learn.microsoft.com/powershell/module/az.newrelic/get-aznewrelicaccount
 #>
 function Get-AzNewRelicAccount {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.IAccountResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IAccountResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -127,7 +127,7 @@ begin {
         $mapping = @{
             List = 'Az.NewRelic.private\Get-AzNewRelicAccount_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {

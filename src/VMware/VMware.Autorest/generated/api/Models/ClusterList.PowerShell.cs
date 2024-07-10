@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
-    /// <summary>A paged list of clusters</summary>
+    /// <summary>The response of a Cluster list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(ClusterListTypeConverter))]
     public partial class ClusterList
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             return ToJsonString();
         }
     }
-    /// A paged list of clusters
+    /// The response of a Cluster list operation.
     [System.ComponentModel.TypeConverter(typeof(ClusterListTypeConverter))]
     public partial interface IClusterList
 
