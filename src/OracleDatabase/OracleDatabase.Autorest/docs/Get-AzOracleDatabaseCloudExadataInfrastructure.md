@@ -47,11 +47,11 @@ Get-AzOracleDatabaseCloudExadataInfrastructure
 ```
 
 ```output
-Location           Name                         SystemDataCreatedAt SystemDataCreatedBy          SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy             SystemDataLastModifiedByType ResourceGroupName
---------           ----                         ------------------- -------------------          ----------------------- ------------------------ ------------------------             ---------------------------- -----------------
-eastus             OFake_PowerShellTestExaInfra 04/07/2024 13:20:00 example@oracle.com    User                    06/07/2024 11:04:06      857ad006-4380-4712-ba4c-22f7c64d84e7 Application                  PowerShellTestRg
-eastus             DemoExaInfra                 05/07/2024 08:20:01 eamon.el-homsi@oracle.com    User                    06/07/2024 11:04:07      857ad006-4380-4712-ba4c-22f7c64d84e7 Application                  SDKTestRG
-germanywestcentral OFake_ppratees_0216_2        16/02/2024 20:24:39 prateek.ps.sharma@oracle.com User                    06/07/2024 11:03:57      857ad006-4380-4712-ba4c-22f7c64d84e7 Application                  ObsTestingFra
+Location           Name                         SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy             SystemDataLastModifiedByType ResourceGroupName
+--------           ----                         ------------------- ------------------- ----------------------- ------------------------ ------------------------             ---------------------------- -----------------
+eastus             OFake_PowerShellTestExaInfra 04/07/2024 13:20:00 example@oracle.com  User                    06/07/2024 11:04:06      857ad006-4380-4712-ba4c-22f7c64d84e7 Application                  PowerShellTestRg
+eastus             DemoExaInfra                 05/07/2024 08:20:01 example@oracle.com  User                    06/07/2024 11:04:07      857ad006-4380-4712-ba4c-22f7c64d84e7 Application                  SDKTestRG
+germanywestcentral OFake_ppratees_0216_2        16/02/2024 20:24:39 example@oracle.com  User                    06/07/2024 11:03:57      857ad006-4380-4712-ba4c-22f7c64d84e7 Application                  ObsTestingFra
 ```
 
 Get a list of the Cloud Exadata Infrastructure resources.

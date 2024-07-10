@@ -8,8 +8,7 @@ Name SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataL
 ---- ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
 19c                                                                                                                                                 
 19c                                                                                                                                                 
-19c                                                                                                                                                 
-19c                                                                                                                                                 
+19c                                                                                                                                                                          
 ```
 
 Get a list of the Autonomous Database Versions by location.

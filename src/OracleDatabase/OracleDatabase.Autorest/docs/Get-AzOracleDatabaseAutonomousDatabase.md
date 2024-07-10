@@ -47,16 +47,11 @@ Get-AzOracleDatabaseAutonomousDatabase
 ```
 
 ```output
-Location           Name                       SystemDataCreatedAt SystemDataCreatedBy                      SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy             SystemDataLastModifiedByType ResourceGroupName
---------           ----                       ------------------- -------------------                      ----------------------- ------------------------ ------------------------             ---------------------------- -----------------
-eastus             ADBScli1                   05/07/2024 13:07:02 ramakrishnan.vilathur.sriniva@oracle.com User                    05/07/2024 13:15:49      857ad006-4380-4712-ba4c-22f7c64d84e7 Application                  SDKTestRG
-eastus             OFakePowerShellTestAdbs    05/07/2024 13:40:35 example@oracle.com                User                    06/07/2024 11:04:13      857ad006-4380-4712-ba4c-22f7c64d84e7 Application                  PowerShellTestRg
-germanywestcentral drTestFra                  15/04/2024 16:02:44 gregory.cowart@oracle.com                User                    06/07/2024 11:04:11      857ad006-4380-4712-ba4c-22f7c64d84e7 Application                  FRA
-germanywestcentral orppreprodadbs162          16/05/2024 18:33:16 satyam.shankar.prasad@oracle.com         User                    16/05/2024 21:47:24      857ad006-4380-4712-ba4c-22f7c64d84e7 Application                  tstpreprod16
-germanywestcentral OFakeSurya                 22/05/2024 18:48:44 surya.prakash.reddy.putluru@oracle.com   User                    22/05/2024 22:16:38      857ad006-4380-4712-ba4c-22f7c64d84e7 Application                  SystemVersions
-germanywestcentral OFakeSuryaAdbs             22/05/2024 19:11:28 surya.prakash.reddy.putluru@oracle.com   User                    22/05/2024 22:31:38      857ad006-4380-4712-ba4c-22f7c64d84e7 Application                  SystemVersions
-germanywestcentral OFakeAdbs                  23/05/2024 13:02:13 surya.prakash.reddy.putluru@oracle.com   User                    23/05/2024 16:17:52      857ad006-4380-4712-ba4c-22f7c64d84e7 Application                  SystemVersions
-germanywestcentral AdbsTest                   23/05/2024 15:57:33 surya.prakash.reddy.putluru@oracle.com   User                    23/05/2024 19:17:53      857ad006-4380-4712-ba4c-22f7c64d84e7 Application                  SystemVersions
+Location           Name                       SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy             SystemDataLastModifiedByType ResourceGroupName
+--------           ----                       ------------------- ------------------- ----------------------- ------------------------ ------------------------             ---------------------------- -----------------
+eastus             ADBScli1                   05/07/2024 13:07:02 example@oracle.com  User                    05/07/2024 13:15:49      857ad006-4380-4712-ba4c-22f7c64d84e7 Application                  SDKTestRG
+eastus             OFakePowerShellTestAdbs    05/07/2024 13:40:35 example@oracle.com  User                    06/07/2024 11:04:13      857ad006-4380-4712-ba4c-22f7c64d84e7 Application                  PowerShellTestRg
+germanywestcentral drTestFra                  15/04/2024 16:02:44 example@oracle.com  User                    06/07/2024 11:04:11      857ad006-4380-4712-ba4c-22f7c64d84e7 Application                  FRA
 ```
 
 Get a list of the Autonomous Database resources.
