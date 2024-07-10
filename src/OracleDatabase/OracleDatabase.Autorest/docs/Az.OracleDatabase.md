@@ -17,6 +17,9 @@ Add VMs to the VM Cluster
 ### [Get-AzOracleDatabaseAutonomousDatabase](Get-AzOracleDatabaseAutonomousDatabase.md)
 Get a AutonomousDatabase
 
+### [Get-AzOracleDatabaseAutonomousDatabaseBackup](Get-AzOracleDatabaseAutonomousDatabaseBackup.md)
+Get a AutonomousDatabaseBackup
+
 ### [Get-AzOracleDatabaseAutonomousDatabaseCharacterSet](Get-AzOracleDatabaseAutonomousDatabaseCharacterSet.md)
 Get a AutonomousDatabaseCharacterSet
 
@@ -53,8 +56,17 @@ Get a GiVersion
 ### [Invoke-AzOracleDatabaseActionDbNode](Invoke-AzOracleDatabaseActionDbNode.md)
 VM actions on DbNode of VM Cluster by the provided filter
 
+### [Invoke-AzOracleDatabaseShrinkAutonomousDatabase](Invoke-AzOracleDatabaseShrinkAutonomousDatabase.md)
+This operation shrinks the current allocated storage down to the current actual used data storage.
+
+### [Invoke-AzOracleDatabaseSwitchoverAutonomousDatabase](Invoke-AzOracleDatabaseSwitchoverAutonomousDatabase.md)
+Perform switchover action on Autonomous Database
+
 ### [New-AzOracleDatabaseAutonomousDatabase](New-AzOracleDatabaseAutonomousDatabase.md)
 Create a AutonomousDatabase
+
+### [New-AzOracleDatabaseAutonomousDatabaseBackup](New-AzOracleDatabaseAutonomousDatabaseBackup.md)
+Create a AutonomousDatabaseBackup
 
 ### [New-AzOracleDatabaseCloudExadataInfrastructure](New-AzOracleDatabaseCloudExadataInfrastructure.md)
 Create a CloudExadataInfrastructure
@@ -71,6 +83,9 @@ Create an in-memory object for NsgCidr.
 ### [Remove-AzOracleDatabaseAutonomousDatabase](Remove-AzOracleDatabaseAutonomousDatabase.md)
 Delete a AutonomousDatabase
 
+### [Remove-AzOracleDatabaseAutonomousDatabaseBackup](Remove-AzOracleDatabaseAutonomousDatabaseBackup.md)
+Delete a AutonomousDatabaseBackup
+
 ### [Remove-AzOracleDatabaseCloudExadataInfrastructure](Remove-AzOracleDatabaseCloudExadataInfrastructure.md)
 Delete a CloudExadataInfrastructure
 
@@ -80,8 +95,14 @@ Delete a CloudVmCluster
 ### [Remove-AzOracleDatabaseCloudVMClusterVM](Remove-AzOracleDatabaseCloudVMClusterVM.md)
 Remove VMs from the VM Cluster
 
+### [Restore-AzOracleDatabaseAutonomousDatabase](Restore-AzOracleDatabaseAutonomousDatabase.md)
+Restores an Autonomous Database based on the provided request parameters.
+
 ### [Update-AzOracleDatabaseAutonomousDatabase](Update-AzOracleDatabaseAutonomousDatabase.md)
 Update a AutonomousDatabase
+
+### [Update-AzOracleDatabaseAutonomousDatabaseBackup](Update-AzOracleDatabaseAutonomousDatabaseBackup.md)
+Update a AutonomousDatabaseBackup
 
 ### [Update-AzOracleDatabaseCloudExadataInfrastructure](Update-AzOracleDatabaseCloudExadataInfrastructure.md)
 Update a CloudExadataInfrastructure
