@@ -20,43 +20,7 @@ Get-AzOracleDatabaseCloudExadataInfrastructure -Name "OFake_PowerShellTestExaInf
 ```
 
 ```output
-ActivatedStorageCount                                     : 3
-AdditionalStorageCount                                    : 0
-AvailableStorageSizeInGb                                  : 0
-ComputeCount                                              : 3
-CpuCount                                                  : 4
-CustomerContact                                           : 
-DataStorageSizeInTb                                       : 2
-DbNodeStorageSizeInGb                                     : 938
-DbServerVersion                                           : 23.1.13.0.0.240410.1
-DisplayName                                               : OFake_PowerShellTestExaInfra
-EstimatedPatchingTimeEstimatedDbServerPatchingTime        : 
-EstimatedPatchingTimeEstimatedNetworkSwitchesPatchingTime : 
-EstimatedPatchingTimeEstimatedStorageServerPatchingTime   : 
-EstimatedPatchingTimeTotalEstimatedPatchingTime           : 
-Id                                                        : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/cloudExadataInfrastru
-                                                            ctures/OFake_PowerShellTestExaInfra
-LastMaintenanceRunId                                      : 
-LifecycleDetail                                           : 
-LifecycleState                                            : Available
-Location                                                  : eastus
-MaintenanceWindowCustomActionTimeoutInMin                 : 0
-MaintenanceWindowDaysOfWeek                               : 
-MaintenanceWindowHoursOfDay                               : 
-MaintenanceWindowIsCustomActionTimeoutEnabled             : False
-MaintenanceWindowIsMonthlyPatchingEnabled                 : 
-MaintenanceWindowLeadTimeInWeek                           : 0
-MaintenanceWindowMonth                                    : 
-MaintenanceWindowPatchingMode                             : Rolling
-MaintenanceWindowPreference                               : NoPreference
-MaintenanceWindowWeeksOfMonth                             : 
-MaxCpuCount                                               : 378
-MaxDataStorageInTb                                        : 192
-MaxDbNodeStorageSizeInGb                                  : 6729
-MaxMemoryInGb                                             : 4170
-MemorySizeInGb                                            : 90
-MonthlyDbServerVersion                                    : 
-MonthlyStorageServerVersion                               : 
+...
 Name                                                      : OFake_PowerShellTestExaInfra
 NextMaintenanceRunId                                      : 
 OciUrl                                                    : https://cloud.oracle.com/dbaas/cloudExadataInfrastructures/ocid1.cloudexadatainfrastructure.oc1.iad.anuwcljrnirvylqajp6lgcommbx5qbu
