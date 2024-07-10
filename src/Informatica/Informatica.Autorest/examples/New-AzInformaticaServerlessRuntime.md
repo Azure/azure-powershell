@@ -4,14 +4,12 @@ New-AzInformaticaServerlessRuntime `
     -OrganizationName "Demo-Org" `
     -ResourceGroupName "InformaticaTestRg" `
     -ServerlessRuntimeName "serverlessRuntimeDemo" `
-    -Location "westus2" `
     -NetworkInterfaceConfigurationVnetId "/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/InformaticaTestRg/providers/Microsoft.Network/virtualNetworks/liftr-vnet-serverless" `
     -NetworkInterfaceConfigurationSubnetId "/subscriptions/ce37d538-dfa3-49c3-b3cd-149b4b7db48a/resourceGroups/InformaticaTestRg/providers/Microsoft.Network/virtualNetworks/liftr-vnet-serverless/subnets/default" `
     -ServerlessAccountLocation "westus2" `
     -Platform "AZURE" `
     -ApplicationType "CDI" `
     -ExecutionTimeout 3600 `
-    -ComputeUnits 4 `
     -ServerlessRuntimeConfigCdieConfigProp @(
         @{
             EngineName = "Data_Integration_Server"
