@@ -330,6 +330,18 @@ namespace Microsoft.Azure.Commands.Profile
             Guid subscriptionIdGuid;
             string subscriptionName = null;
             string subscriptionId = null;
+
+            //Disable WAM before the issue https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/4786 is fixed
+            if (ParameterSetName.Equals(UserParameterSet) && UseDeviceAuthentication == true || ParameterSetName.Equals(UserWithCredentialParameterSet))
+            {
+                AzConfigReader.Instance?.UpdateConfig(ConfigKeys.EnableLoginByWam, false, ConfigScope.CurrentUser);
+            }
+
+            if (ParameterSetName.Equals(UserWithCredentialParameterSet))
+            {
+                WriteWarning(Resources.UsernamePasswordDeprecateWarningMessage);
+            }
+
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Subscription)))
             {
                 if (Guid.TryParse(Subscription, out subscriptionIdGuid))

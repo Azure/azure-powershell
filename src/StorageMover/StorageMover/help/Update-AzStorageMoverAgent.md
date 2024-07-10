@@ -17,27 +17,27 @@ Creates or updates an Agent resource.
 Update-AzStorageMoverAgent -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
  [-SubscriptionId <String>] [-Description <String>]
  [-UploadLimitScheduleWeeklyRecurrence <IUploadLimitWeeklyRecurrence[]>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Update
 ```
 Update-AzStorageMoverAgent -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
  [-SubscriptionId <String>] -Agent <IAgentUpdateParameters> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzStorageMoverAgent -InputObject <IStorageMoverIdentity> [-Description <String>]
  [-UploadLimitScheduleWeeklyRecurrence <IUploadLimitWeeklyRecurrence[]>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
 Update-AzStorageMoverAgent -InputObject <IStorageMoverIdentity> -Agent <IAgentUpdateParameters>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -165,21 +165,6 @@ Parameter Sets: UpdateExpanded, Update
 Aliases: AgentName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

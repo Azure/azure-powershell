@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFirewallPolicyRuleCollectionGroupDraft
 
 ## SYNOPSIS
-Create a new Azure Firewall Policy Rule Collection Group draft
+Create a new Azure Firewall Policy Rule Collection Group draft.
 
 ## SYNTAX
 
@@ -28,7 +28,7 @@ New-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionG
 ```
 
 ## DESCRIPTION
-The **New-AzFirewallPolicyRuleCollectionGroupDraft** cmdlet creates a rule collection group in a Azure Firewall Policy.
+The **New-AzFirewallPolicyRuleCollectionGroupDraft** cmdlet creates a Rule Collection Group draft in an Azure Firewall Policy.
 
 ## EXAMPLES
 
@@ -37,7 +37,7 @@ The **New-AzFirewallPolicyRuleCollectionGroupDraft** cmdlet creates a rule colle
 New-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName rg1 -Priority 200 -RuleCollection $filterRule1 -FirewallPolicyObject $fp
 ```
 
-This example creates a rule collection group draft associated with the a rule collection group rg1 in the firewall policy $fp
+TThis example creates a Rule Collection Group draft associated with the a Rule Collection Group rg1 in the Azure Firewall Policy $fp.
 
 ### Example 2
 
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -FirewallPolicyName
-The name of the firewall policy
+The name of the firewall policy.
 
 ```yaml
 Type: System.String
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureFirewallPolicyRuleCollectionGroupName
-The name of the Rule Group associated with the draft
+The name of the Rule Group associated with the draft.
 
 ```yaml
 Type: System.String
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -Priority
-The priority of the rule group
+The priority of the rule group.
 
 ```yaml
 Type: System.UInt32
@@ -143,7 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -RuleCollection
-The list of rules
+The list of rules.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyBaseRuleCollection[]

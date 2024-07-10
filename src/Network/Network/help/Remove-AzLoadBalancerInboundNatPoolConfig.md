@@ -23,7 +23,7 @@ The **Remove-AzLoadBalancerInboundNatPoolConfig** cmdlet removes an inbound NAT 
 
 ## EXAMPLES
 
-### 1: Remove
+### Example 1: Remove
 ```powershell
 $slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
 Remove-AzLoadBalancerInboundNatPoolConfig -Name myinboundnatpool -LoadBalancer $slb

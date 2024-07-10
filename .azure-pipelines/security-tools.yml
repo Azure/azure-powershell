@@ -53,7 +53,6 @@ jobs:
       outputFormat: sarif
       scanFolder: SecurityTmp
       suppressionsFile: tools/SecurityTools/CredScanSuppressions.json
-  
   - task: PowerShell@2
     displayName: Generate a response text file for BinSkim
     inputs:
@@ -88,3 +87,19 @@ jobs:
     inputs:
       artifactName: artifacts
       targetPath: artifacts
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-publishsecurityanalysislogs.PublishSecurityAnalysisLogs@3
+    # see https://eng.ms/docs/microsoft-security/microsoft-threat-protection-mtp/cloud-and-enterprise-security-cesec/security-integration/guardian-wiki/sdl-azdo-extension/publish-security-analysis-logs
+    displayName: 'Publish Security Analysis Logs'
+    inputs:
+      ArtifactName: CodeAnalysisLogs
+      ArtifactType: Container
+      PublishProcessedResults: false
+      AllTools: true
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-postanalysis.PostAnalysis@2
+    # see https://eng.ms/docs/microsoft-security/microsoft-threat-protection-mtp/cloud-and-enterprise-security-cesec/security-integration/guardian-wiki/sdl-azdo-extension/secure-development-tools-extension-for-azure-devops#post-analysis-build-break:~:text=To%20introduce%20a%20build%20break
+    displayName: Analyze Results (may block build)
+    inputs:
+      GdnBreakAllTools: false
+      GdnBreakGdnToolBinSkim: true
+      GdnBreakGdnToolCredScan: true
+      GdnBreakGdnToolPoliCheck: true

@@ -18,21 +18,21 @@ Update-AzNewRelicMonitorTagRule -MonitorName <String> -ResourceGroupName <String
  [-SubscriptionId <String>] [-LogRuleFilteringTag <IFilteringTag[]>] [-LogRuleSendAadLog <String>]
  [-LogRuleSendActivityLog <String>] [-LogRuleSendSubscriptionLog <String>]
  [-MetricRuleFilteringTag <IFilteringTag[]>] [-MetricRuleSendMetric <String>] [-MetricRuleUserEmail <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzNewRelicMonitorTagRule -MonitorName <String> -ResourceGroupName <String> -RuleSetName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzNewRelicMonitorTagRule -MonitorName <String> -ResourceGroupName <String> -RuleSetName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityMonitorExpanded
@@ -41,7 +41,7 @@ Update-AzNewRelicMonitorTagRule -RuleSetName <String> -MonitorInputObject <INewR
  [-LogRuleFilteringTag <IFilteringTag[]>] [-LogRuleSendAadLog <String>] [-LogRuleSendActivityLog <String>]
  [-LogRuleSendSubscriptionLog <String>] [-MetricRuleFilteringTag <IFilteringTag[]>]
  [-MetricRuleSendMetric <String>] [-MetricRuleUserEmail <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -49,7 +49,7 @@ Update-AzNewRelicMonitorTagRule -RuleSetName <String> -MonitorInputObject <INewR
 Update-AzNewRelicMonitorTagRule -InputObject <INewRelicIdentity> [-LogRuleFilteringTag <IFilteringTag[]>]
  [-LogRuleSendAadLog <String>] [-LogRuleSendActivityLog <String>] [-LogRuleSendSubscriptionLog <String>]
  [-MetricRuleFilteringTag <IFilteringTag[]>] [-MetricRuleSendMetric <String>] [-MetricRuleUserEmail <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -265,21 +265,6 @@ Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
