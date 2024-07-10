@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzOracleDatabaseNsgCidrOb
 }
 
 Describe 'New-AzOracleDatabaseNsgCidrObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        {
+            New-AzOracleDatabaseNsgCidrObject -Source "source" -DestinationPortRangeMax 0 -DestinationPortRangeMin 1
+        } | Should -Not -Throw
     }
 }

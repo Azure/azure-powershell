@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzOracleDatabaseCustomerC
 }
 
 Describe 'New-AzOracleDatabaseCustomerContactObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        {
+            New-AzOracleDatabaseCustomerContactObject -Email "example@oracle.com"
+        } | Should -Not -Throw
     }
 }

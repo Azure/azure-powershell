@@ -1,22 +1,7 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for NsgCidr
 ```powershell
-{{ Add code here }}
+New-AzOracleDatabaseNsgCidrObject -Source "source" -DestinationPortRangeMax 0 -DestinationPortRangeMin 1
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Create an in-memory object for NsgCidr.
+For more information, execute `Get-Help New-AzOracleDatabaseNsgCidrObject`.
