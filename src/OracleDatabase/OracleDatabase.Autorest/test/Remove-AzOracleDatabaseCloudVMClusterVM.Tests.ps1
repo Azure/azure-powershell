@@ -15,8 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzOracleDatabaseCloudV
 }
 
 Describe 'Remove-AzOracleDatabaseCloudVMClusterVM' {
-    It 'RemoveExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'RemoveExpanded' {
+        {
+            $dbServerList = Get-AzOracleDatabaseDbServer -Cloudexadatainfrastructurename $env.exaInfraName -ResourceGroupName $env.resourceGroup
+            $dbServerOcid1 = $dbServerList[0].Ocid
+            $dbServersToRemove = @($dbServerOcid1)
+            
+            Remove-AzOracleDatabaseCloudVMClusterVM -NoWait -Cloudvmclustername $env.vmClusterName -ResourceGroupName $env.resourceGroup -DbServer $dbServersToRemove
+        } | Should -Not -Throw
     }
 
     It 'RemoveViaJsonString' -skip {
