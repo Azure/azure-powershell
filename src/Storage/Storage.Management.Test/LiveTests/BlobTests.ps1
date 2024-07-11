@@ -102,8 +102,11 @@ Invoke-LiveTestScenario -Name "Blob basics" -Description "Test blob basic operat
     Assert-AreEqual "Hot" $b.AccessTier
     Assert-AreEqual 512 $b.Length
     $job = Copy-AzStorageBlob -SrcContainer $containerName -SrcBlob $blobName -DestContainer $containerName -DestBlob $copyBlobName1 -Context $ctx -StandardBlobTier Hot -RehydratePriority High -Force -AsJob
-    sleep 10 
     $bcopy = Receive-Job -Job $job 
+    while ($a -eq $null) {
+        sleep 10 
+        $bcopy = Receive-Job -Job $job
+    }
     Assert-AreEqual $copyBlobName1 $bcopy.Name
 
     $blobSASUri = $b | New-AzStorageBlobSASToken -Permission rt -ExpiryTime 9999-01-01 -FullUri
