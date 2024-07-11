@@ -148,6 +148,9 @@ function setupEnv() {
     $adbsNCharacterSet = "AL16UTF16"
     $env.Add("adbsNCharacterSet", $adbsNCharacterSet)
 
+    $adbsBackupId = "testId12345"
+    $env.Add("adbsBackupId", $adbsBackupId)
+
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
