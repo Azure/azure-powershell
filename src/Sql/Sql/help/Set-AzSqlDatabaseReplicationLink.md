@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.sql/set-azsqldatabasereplicationlink
 schema: 2.0.0
 ---
 
 # Set-AzSqlDatabaseReplicationLink
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates the link type of the geo-replication link
 
 ## SYNTAX
 
@@ -20,16 +20,16 @@ Set-AzSqlDatabaseReplicationLink [-DatabaseName] <String> -PartnerResourceGroupN
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The link type of a geo-replication link can be updated using **Set-AzSqlDatabaseReplicationLink** cmdlet.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Set-AzSqlDatabaseReplicationLink -DatabaseName db1 -PartnerResourceGroupName rg2 -ResourceGroupName MyResourceGroup -ServerName s1 -LinkId 00000000-0000-0000-0000-000000000000 -LinkType STANDBY
 ```
 
-{{ Add example description here }}
+Updates the link type of the geo-replication link to STANDBY
 
 ## PARAMETERS
 
