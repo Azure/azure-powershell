@@ -60,8 +60,7 @@ Restores an Autonomous Database based on the provided request parameters.
 
 ### Example 1: Restore a Backup for an Autonomous Database resource
 ```powershell
-$timeStampString = '01-Jan-24'
-$timeStamp = [datetime]::parseexact($timeStampString, 'dd-MMM-yy', $null)
+$timeStamp = Get-Date
 Restore-AzOracleDatabaseAutonomousDatabase -Name "OFakePowerShellTestAdbs" -ResourceGroupName "PowerShellTestRg" -Timestamp $timeStamp
 ```
 
