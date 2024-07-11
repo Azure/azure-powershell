@@ -753,7 +753,7 @@ Modifies the configuration of an Instance Failover Group.
 Updates the state of an Azure SQL Database recommended action.
 
 ### [Set-AzSqlDatabaseReplicationLink](Set-AzSqlDatabaseReplicationLink.md)
-{{ Fill in the Synopsis }}
+Updates the Link type of a Replication Link.
 
 ### [Set-AzSqlDatabaseSecondary](Set-AzSqlDatabaseSecondary.md)
 Switches a secondary database to be primary in order to initiate failover.
