@@ -15,8 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzOracleDatabaseSwitch
 }
 
 Describe 'Invoke-AzOracleDatabaseSwitchoverAutonomousDatabase' {
-    It 'SwitchoverExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SwitchoverExpanded' {
+        {
+            Invoke-AzOracleDatabaseSwitchoverAutonomousDatabase -Autonomousdatabasename $env.adbsName -ResourceGroupName $env.resourceGroup -PeerDbId $env.adbsBackupId
+        } | Should -Not -Throw
     }
 
     It 'SwitchoverViaJsonString' -skip {
