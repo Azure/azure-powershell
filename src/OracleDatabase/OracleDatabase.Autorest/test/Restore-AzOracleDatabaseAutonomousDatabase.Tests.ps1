@@ -15,8 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Restore-AzOracleDatabaseAuton
 }
 
 Describe 'Restore-AzOracleDatabaseAutonomousDatabase' {
-    It 'RestoreExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'RestoreExpanded' {
+        {
+            $timeStamp = Get-Date
+            Restore-AzOracleDatabaseAutonomousDatabase -NoWait -Name $env.adbsName -ResourceGroupName $env.resourceGroup -Timestamp $timeStamp
+        } | Should -Not -Throw
     }
 
     It 'RestoreViaJsonString' -skip {
