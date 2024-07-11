@@ -92,8 +92,8 @@ function setupEnv() {
     $vmClusterLicenseModel = "LicenseIncluded"
     $env.Add("vmClusterLicenseModel", $vmClusterLicenseModel)
 
-    $vmClusterCusterName = "TestVMC"
-    $env.Add("vmClusterCusterName", $vmClusterCusterName)
+    $vmClusterClusterName = "TestVMC"
+    $env.Add("vmClusterClusterName", $vmClusterClusterName)
 
     $vmClusterMemorySizeInGb = 90
     $env.Add("vmClusterMemorySizeInGb", $vmClusterMemorySizeInGb)
