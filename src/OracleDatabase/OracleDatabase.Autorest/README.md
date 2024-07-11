@@ -57,6 +57,6 @@ directive:
 
   # Remove APIs
   - where:
-      subject: CloudExadataInfrastructureStorageCapacity|PrivateIpaddress|SystemVersion|VirtualNetworkAddress|AutonomousDatabaseWallet|OracleSubscription
+      subject: CloudExadataInfrastructureStorageCapacity|PrivateIpaddress|SystemVersion|VirtualNetworkAddress|AutonomousDatabaseWallet|ShrinkAutonomousDatabase|OracleSubscription
     remove: true
 ```

@@ -56,9 +56,6 @@ Get a GiVersion
 ### [Invoke-AzOracleDatabaseActionDbNode](Invoke-AzOracleDatabaseActionDbNode.md)
 VM actions on DbNode of VM Cluster by the provided filter
 
-### [Invoke-AzOracleDatabaseShrinkAutonomousDatabase](Invoke-AzOracleDatabaseShrinkAutonomousDatabase.md)
-This operation shrinks the current allocated storage down to the current actual used data storage.
-
 ### [Invoke-AzOracleDatabaseSwitchoverAutonomousDatabase](Invoke-AzOracleDatabaseSwitchoverAutonomousDatabase.md)
 Perform switchover action on Autonomous Database
 
