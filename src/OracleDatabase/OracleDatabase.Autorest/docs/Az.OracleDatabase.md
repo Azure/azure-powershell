@@ -98,9 +98,6 @@ Restores an Autonomous Database based on the provided request parameters.
 ### [Update-AzOracleDatabaseAutonomousDatabase](Update-AzOracleDatabaseAutonomousDatabase.md)
 Update a AutonomousDatabase
 
-### [Update-AzOracleDatabaseAutonomousDatabaseBackup](Update-AzOracleDatabaseAutonomousDatabaseBackup.md)
-Update a AutonomousDatabaseBackup
-
 ### [Update-AzOracleDatabaseCloudExadataInfrastructure](Update-AzOracleDatabaseCloudExadataInfrastructure.md)
 Update a CloudExadataInfrastructure
 

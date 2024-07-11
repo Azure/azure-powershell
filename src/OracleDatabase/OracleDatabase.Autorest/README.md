@@ -59,4 +59,8 @@ directive:
   - where:
       subject: CloudExadataInfrastructureStorageCapacity|PrivateIpaddress|SystemVersion|VirtualNetworkAddress|AutonomousDatabaseWallet|ShrinkAutonomousDatabase|OracleSubscription
     remove: true
+  - where:
+      subject: AutonomousDatabaseBackUp
+      verb: Update
+    remove: true
 ```
