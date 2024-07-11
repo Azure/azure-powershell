@@ -455,6 +455,9 @@ Reverts Database Encryption Protector AKV key to Server level key
 ### [Invoke-AzSqlElasticPoolFailover](Invoke-AzSqlElasticPoolFailover.md)
 Failovers an elastic pool.
 
+### [Invoke-AzSqlInstanceExternalGovernanceStatusRefresh](Invoke-AzSqlInstanceExternalGovernanceStatusRefresh.md)
+Refreshes the value of external governance on the managed instance.
+
 ### [Invoke-AzSqlInstanceFailover](Invoke-AzSqlInstanceFailover.md)
 Failovers an Azure SQL Managed Instance.
 
