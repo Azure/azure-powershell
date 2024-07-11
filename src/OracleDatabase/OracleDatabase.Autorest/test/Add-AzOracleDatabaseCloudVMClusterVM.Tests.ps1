@@ -15,8 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Add-AzOracleDatabaseCloudVMCl
 }
 
 Describe 'Add-AzOracleDatabaseCloudVMClusterVM' {
-    It 'AddExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'AddExpanded' {
+        {
+            $dbServerList = Get-AzOracleDatabaseDbServer -Cloudexadatainfrastructurename $env.exaInfraName -ResourceGroupName $env.resourceGroup
+            # VM Cluster already contains the first 2 out of 3 VMs from the Exadata Infra
+            $dbServerOcid1 = $dbServerList[2].Ocid
+            $dbServersToAdd = @($dbServerOcid1)
+            
+            Add-AzOracleDatabaseCloudVMClusterVM -NoWait -Cloudvmclustername $env.vmClusterName -ResourceGroupName $env.resourceGroup -DbServer $dbServersToAdd
+        } | Should -Not -Throw
     }
 
     It 'AddViaJsonString' -skip {
