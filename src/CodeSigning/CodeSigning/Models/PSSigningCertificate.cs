@@ -18,5 +18,6 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
     {
         public string Thumbprint { get; set; }
         public string Subject { get; set; }
+        public string Issuer { get; set; }
     }
 }
