@@ -61,8 +61,8 @@ jobs:
         New-Item $(Build.SourcesDirectory)/artifacts/FilesToScan.rsp -ItemType File -Force
         (Get-ChildItem -Path .\artifacts\Debug -Include *.dll,*.exe -Exclude msalruntime.dll,msalruntime_arm64.dll,msalruntime_x86.dll -Recurse).FullName > $(Build.SourcesDirectory)/artifacts/FilesToScan.rsp
       pwsh: true
-  
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-binskim.BinSkim@3
+
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-binskim.BinSkim@4
     displayName: Run BinSkim
     inputs:
       InputType: 'CommandLine'
