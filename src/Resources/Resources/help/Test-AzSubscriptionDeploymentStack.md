@@ -156,7 +156,7 @@ Test-AzSubscriptionDeploymentStack [-PassThru] [-Name] <String> [-Description <S
 ```
 
 ## DESCRIPTION
-Validate a subscription scoped deployment stack.
+Validates a subscription scoped deployment stack.
 
 ## EXAMPLES
 
@@ -166,7 +166,6 @@ Test-AzSubscriptionDeploymentStack -Name MySubStack -TemplateFile myTemplate.jso
 ```
 
 Validates a subscription scoped Deployment stack named 'MySubStack' in the default subscription, with deny settings being DenyDelete and ActionOnUnmanage as DetachAll.
-```
 
 ## PARAMETERS
 
