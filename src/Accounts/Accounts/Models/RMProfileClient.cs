@@ -380,7 +380,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     WriteWarningMessage(string.Format(ProfileMessages.CannotSetDefaultContext, defaultContext.ToString()));
                 }
 
-                if (!skipValidation && !defaultSubscription.State.Equals("Enabled", StringComparison.OrdinalIgnoreCase))
+                if (!skipValidation && null != defaultSubscription.State && !defaultSubscription.State.Equals("Enabled", StringComparison.OrdinalIgnoreCase))
                 {
                     WriteWarningMessage(string.Format(
                                    ProfileMessages.SelectedSubscriptionNotActive,
