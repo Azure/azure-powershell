@@ -52,7 +52,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '3.0.1'; }, 
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '3.0.2'; }, 
                @{ModuleName = 'Az.Advisor'; RequiredVersion = '2.0.1'; }, 
                @{ModuleName = 'Az.Aks'; RequiredVersion = '6.0.3'; }, 
                @{ModuleName = 'Az.AnalysisServices'; RequiredVersion = '1.1.5'; }, 
@@ -135,7 +135,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '3.0.1'; },
                @{ModuleName = 'Az.StackHCIVM'; RequiredVersion = '1.0.4'; }, 
                @{ModuleName = 'Az.Storage'; RequiredVersion = '7.1.0'; }, 
                @{ModuleName = 'Az.StorageMover'; RequiredVersion = '1.4.0'; }, 
-               @{ModuleName = 'Az.StorageSync'; RequiredVersion = '2.1.1'; }, 
+               @{ModuleName = 'Az.StorageSync'; RequiredVersion = '2.2.0'; }, 
                @{ModuleName = 'Az.StreamAnalytics'; RequiredVersion = '2.0.1'; }, 
                @{ModuleName = 'Az.Support'; RequiredVersion = '2.0.0'; }, 
                @{ModuleName = 'Az.Synapse'; RequiredVersion = '3.0.9'; }, 
