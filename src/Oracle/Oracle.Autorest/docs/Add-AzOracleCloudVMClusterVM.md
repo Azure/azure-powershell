@@ -19,19 +19,6 @@ Add-AzOracleCloudVMClusterVM -Cloudvmclustername <String> -ResourceGroupName <St
  [<CommonParameters>]
 ```
 
-### Add
-```
-Add-AzOracleCloudVMClusterVM -Cloudvmclustername <String> -ResourceGroupName <String> -Body <IAddRemoveDbNode>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### AddViaIdentity
-```
-Add-AzOracleCloudVMClusterVM -InputObject <IOracleIdentity> -Body <IAddRemoveDbNode>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### AddViaIdentityExpanded
 ```
 Add-AzOracleCloudVMClusterVM -InputObject <IOracleIdentity> -DbServer <String[]> [-DefaultProfile <PSObject>]
@@ -88,27 +75,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Body
-Add/Remove (Virtual Machine) DbNode model
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAddRemoveDbNode
-Parameter Sets: Add, AddViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Cloudvmclustername
 CloudVmCluster name
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddExpanded, AddViaJsonFilePath, AddViaJsonString
+Parameter Sets: AddExpanded, AddViaJsonFilePath, AddViaJsonString
 Aliases:
 
 Required: True
@@ -154,7 +126,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentity
-Parameter Sets: AddViaIdentity, AddViaIdentityExpanded
+Parameter Sets: AddViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -215,7 +187,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddExpanded, AddViaJsonFilePath, AddViaJsonString
+Parameter Sets: AddExpanded, AddViaJsonFilePath, AddViaJsonString
 Aliases:
 
 Required: True
@@ -231,7 +203,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddExpanded, AddViaJsonFilePath, AddViaJsonString
+Parameter Sets: AddExpanded, AddViaJsonFilePath, AddViaJsonString
 Aliases:
 
 Required: False
@@ -276,8 +248,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAddRemoveDbNode
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentity
 

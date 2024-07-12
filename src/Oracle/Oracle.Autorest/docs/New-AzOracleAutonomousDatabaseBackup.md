@@ -20,40 +20,6 @@ New-AzOracleAutonomousDatabaseBackup -Adbbackupid <String> -Autonomousdatabasena
  [<CommonParameters>]
 ```
 
-### Create
-```
-New-AzOracleAutonomousDatabaseBackup -Adbbackupid <String> -Autonomousdatabasename <String>
- -ResourceGroupName <String> -Resource <IAutonomousDatabaseBackup> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzOracleAutonomousDatabaseBackup -InputObject <IOracleIdentity> -Resource <IAutonomousDatabaseBackup>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityAutonomousDatabase
-```
-New-AzOracleAutonomousDatabaseBackup -Adbbackupid <String> -AutonomousDatabaseInputObject <IOracleIdentity>
- -Resource <IAutonomousDatabaseBackup> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityAutonomousDatabaseExpanded
-```
-New-AzOracleAutonomousDatabaseBackup -Adbbackupid <String> -AutonomousDatabaseInputObject <IOracleIdentity>
- [-DisplayName <String>] [-RetentionPeriodInDay <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzOracleAutonomousDatabaseBackup -InputObject <IOracleIdentity> [-DisplayName <String>]
- [-RetentionPeriodInDay <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### CreateViaJsonFilePath
 ```
 New-AzOracleAutonomousDatabaseBackup -Adbbackupid <String> -Autonomousdatabasename <String>
@@ -88,7 +54,7 @@ AutonomousDatabaseBackup id
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaIdentityAutonomousDatabase, CreateViaIdentityAutonomousDatabaseExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -113,27 +79,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AutonomousDatabaseInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentity
-Parameter Sets: CreateViaIdentityAutonomousDatabase, CreateViaIdentityAutonomousDatabaseExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Autonomousdatabasename
 The database name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -165,28 +116,13 @@ The name does not have to be unique.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityAutonomousDatabaseExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -235,28 +171,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Resource
-AutonomousDatabaseBackup resource definition
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBackup
-Parameter Sets: Create, CreateViaIdentity, CreateViaIdentityAutonomousDatabase
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -271,7 +192,7 @@ Retention period, in days, for long-term backups.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityAutonomousDatabaseExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -287,7 +208,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -332,10 +253,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBackup
-
-### Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentity
 
 ## OUTPUTS
 

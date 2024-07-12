@@ -19,26 +19,6 @@ Invoke-AzOracleActionDbNode -Cloudvmclustername <String> -Dbnodeocid <String> -R
  [-WhatIf] [<CommonParameters>]
 ```
 
-### Action
-```
-Invoke-AzOracleActionDbNode -Cloudvmclustername <String> -Dbnodeocid <String> -ResourceGroupName <String>
- -Body <IDbNodeAction> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### ActionViaIdentity
-```
-Invoke-AzOracleActionDbNode -InputObject <IOracleIdentity> -Body <IDbNodeAction> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ActionViaIdentityCloudVMCluster
-```
-Invoke-AzOracleActionDbNode -CloudVMClusterInputObject <IOracleIdentity> -Dbnodeocid <String>
- -Body <IDbNodeAction> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### ActionViaIdentityCloudVMClusterExpanded
 ```
 Invoke-AzOracleActionDbNode -CloudVMClusterInputObject <IOracleIdentity> -Dbnodeocid <String> -Action <String>
@@ -206,27 +186,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Body
-DbNode action object
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeAction
-Parameter Sets: Action, ActionViaIdentity, ActionViaIdentityCloudVMCluster
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -CloudVMClusterInputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentity
-Parameter Sets: ActionViaIdentityCloudVMCluster, ActionViaIdentityCloudVMClusterExpanded
+Parameter Sets: ActionViaIdentityCloudVMClusterExpanded
 Aliases:
 
 Required: True
@@ -241,7 +206,7 @@ CloudVmCluster name
 
 ```yaml
 Type: System.String
-Parameter Sets: Action, ActionExpanded, ActionViaJsonFilePath, ActionViaJsonString
+Parameter Sets: ActionExpanded, ActionViaJsonFilePath, ActionViaJsonString
 Aliases:
 
 Required: True
@@ -256,7 +221,7 @@ DbNode OCID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Action, ActionExpanded, ActionViaIdentityCloudVMCluster, ActionViaIdentityCloudVMClusterExpanded, ActionViaJsonFilePath, ActionViaJsonString
+Parameter Sets: ActionExpanded, ActionViaIdentityCloudVMClusterExpanded, ActionViaJsonFilePath, ActionViaJsonString
 Aliases:
 
 Required: True
@@ -287,7 +252,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentity
-Parameter Sets: ActionViaIdentity, ActionViaIdentityExpanded
+Parameter Sets: ActionViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -348,7 +313,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Action, ActionExpanded, ActionViaJsonFilePath, ActionViaJsonString
+Parameter Sets: ActionExpanded, ActionViaJsonFilePath, ActionViaJsonString
 Aliases:
 
 Required: True
@@ -364,7 +329,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Action, ActionExpanded, ActionViaJsonFilePath, ActionViaJsonString
+Parameter Sets: ActionExpanded, ActionViaJsonFilePath, ActionViaJsonString
 Aliases:
 
 Required: False
@@ -409,8 +374,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDbNodeAction
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentity
 

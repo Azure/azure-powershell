@@ -19,19 +19,6 @@ Invoke-AzOracleSwitchoverAutonomousDatabase -Autonomousdatabasename <String> -Re
  [-WhatIf] [<CommonParameters>]
 ```
 
-### Switchover
-```
-Invoke-AzOracleSwitchoverAutonomousDatabase -Autonomousdatabasename <String> -ResourceGroupName <String>
- -Body <IPeerDbDetails> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### SwitchoverViaIdentity
-```
-Invoke-AzOracleSwitchoverAutonomousDatabase -InputObject <IOracleIdentity> -Body <IPeerDbDetails>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### SwitchoverViaIdentityExpanded
 ```
 Invoke-AzOracleSwitchoverAutonomousDatabase -InputObject <IOracleIdentity> [-PeerDbId <String>]
@@ -87,28 +74,13 @@ The database name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Switchover, SwitchoverExpanded, SwitchoverViaJsonFilePath, SwitchoverViaJsonString
+Parameter Sets: SwitchoverExpanded, SwitchoverViaJsonFilePath, SwitchoverViaJsonString
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Body
-PeerDb Details
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IPeerDbDetails
-Parameter Sets: Switchover, SwitchoverViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -133,7 +105,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentity
-Parameter Sets: SwitchoverViaIdentity, SwitchoverViaIdentityExpanded
+Parameter Sets: SwitchoverViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -209,7 +181,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Switchover, SwitchoverExpanded, SwitchoverViaJsonFilePath, SwitchoverViaJsonString
+Parameter Sets: SwitchoverExpanded, SwitchoverViaJsonFilePath, SwitchoverViaJsonString
 Aliases:
 
 Required: True
@@ -225,7 +197,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Switchover, SwitchoverExpanded, SwitchoverViaJsonFilePath, SwitchoverViaJsonString
+Parameter Sets: SwitchoverExpanded, SwitchoverViaJsonFilePath, SwitchoverViaJsonString
 Aliases:
 
 Required: False
@@ -272,8 +244,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IPeerDbDetails
 
 ## OUTPUTS
 

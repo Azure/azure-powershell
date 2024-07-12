@@ -23,22 +23,9 @@ Update-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> [-S
  [-LicenseModel <String>] [-LocalAdgAutoFailoverMaxDataLossLimit <Int32>] [-LongTermBackupScheduleIsDisabled]
  [-LongTermBackupScheduleRepeatCadence <String>] [-LongTermBackupScheduleRetentionPeriodInDay <Int32>]
  [-LongTermBackupScheduleTimeOfBackup <DateTime>] [-OpenMode <String>] [-PeerDbId <String>]
- [-PermissionLevel <String>] [-Role <String>] [-ScheduledOperationScheduledStartTime <String>]
- [-ScheduledOperationScheduledStopTime <String>] [-Tag <Hashtable>] [-WhitelistedIP <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String>
- -Property <IAutonomousDatabaseUpdate> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzOracleAutonomousDatabase -InputObject <IOracleIdentity> -Property <IAutonomousDatabaseUpdate>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PermissionLevel <String>] [-Role <String>] [-ScheduledStartTime <String>] [-ScheduledStopTime <String>]
+ [-Tag <Hashtable>] [-WhitelistedIP <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -52,9 +39,8 @@ Update-AzOracleAutonomousDatabase -InputObject <IOracleIdentity> [-AdminPassword
  [-LongTermBackupScheduleIsDisabled] [-LongTermBackupScheduleRepeatCadence <String>]
  [-LongTermBackupScheduleRetentionPeriodInDay <Int32>] [-LongTermBackupScheduleTimeOfBackup <DateTime>]
  [-OpenMode <String>] [-PeerDbId <String>] [-PermissionLevel <String>] [-Role <String>]
- [-ScheduledOperationScheduledStartTime <String>] [-ScheduledOperationScheduledStopTime <String>]
- [-Tag <Hashtable>] [-WhitelistedIP <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-ScheduledStartTime <String>] [-ScheduledStopTime <String>] [-Tag <Hashtable>] [-WhitelistedIP <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -344,7 +330,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -542,7 +528,7 @@ The database name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: Autonomousdatabasename
 
 Required: True
@@ -612,28 +598,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Property
-The type used for update operations of the AutonomousDatabase.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdate
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -658,7 +629,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ScheduledOperationScheduledStartTime
+### -ScheduledStartTime
 auto start time.
 value must be of ISO-8601 format HH:mm
 
@@ -674,7 +645,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ScheduledOperationScheduledStopTime
+### -ScheduledStopTime
 auto stop time.
 value must be of ISO-8601 format HH:mm
 
@@ -696,7 +667,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -774,8 +745,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseUpdate
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentity
 

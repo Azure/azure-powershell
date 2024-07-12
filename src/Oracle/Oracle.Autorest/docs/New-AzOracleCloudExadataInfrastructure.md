@@ -25,32 +25,6 @@ New-AzOracleCloudExadataInfrastructure -Name <String> -ResourceGroupName <String
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Create
-```
-New-AzOracleCloudExadataInfrastructure -Name <String> -ResourceGroupName <String>
- -Resource <ICloudExadataInfrastructure> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzOracleCloudExadataInfrastructure -InputObject <IOracleIdentity> -Resource <ICloudExadataInfrastructure>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzOracleCloudExadataInfrastructure -InputObject <IOracleIdentity> -Location <String> -Zone <String[]>
- [-ComputeCount <Int32>] [-CustomerContact <ICustomerContact[]>] [-DisplayName <String>]
- [-MaintenanceWindowCustomActionTimeoutInMin <Int32>] [-MaintenanceWindowDaysOfWeek <IDayOfWeek[]>]
- [-MaintenanceWindowHoursOfDay <Int32[]>] [-MaintenanceWindowIsCustomActionTimeoutEnabled]
- [-MaintenanceWindowIsMonthlyPatchingEnabled] [-MaintenanceWindowLeadTimeInWeek <Int32>]
- [-MaintenanceWindowMonth <IMonth[]>] [-MaintenanceWindowPatchingMode <String>]
- [-MaintenanceWindowPreference <String>] [-MaintenanceWindowWeeksOfMonth <Int32[]>] [-Shape <String>]
- [-StorageCount <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
 ### CreateViaJsonFilePath
 ```
 New-AzOracleCloudExadataInfrastructure -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
@@ -127,7 +101,7 @@ The number of compute servers for the cloud Exadata infrastructure.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -144,7 +118,7 @@ Up to 10 email addresses can be added to the customer contacts for a cloud Exada
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICustomerContact[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -175,28 +149,13 @@ The name for the Exadata infrastructure.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -235,7 +194,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -251,7 +210,7 @@ Custom action timeout is in minutes and valid value is between 15 to 120 (inclus
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -266,7 +225,7 @@ Days during the week when maintenance should be performed.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDayOfWeek[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -283,7 +242,7 @@ Valid values are - 0 - represents time slot 0:00 - 3:59 UTC - 4 - represents tim
 
 ```yaml
 Type: System.Int32[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -298,7 +257,7 @@ If true, enables the configuration of a custom action timeout (waiting period) b
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -313,7 +272,7 @@ is Monthly Patching Enabled
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -329,7 +288,7 @@ The lead time is in weeks and valid value is between 1 to 4.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -344,7 +303,7 @@ Months during the year when maintenance should be performed.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IMonth[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -359,7 +318,7 @@ Cloud Exadata infrastructure node patching method.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -374,7 +333,7 @@ The maintenance window scheduling preference.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -394,7 +353,7 @@ Note that this parameter works in conjunction with the daysOfWeek and hoursOfDay
 
 ```yaml
 Type: System.Int32[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -409,7 +368,7 @@ CloudExadataInfrastructure name
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases: Cloudexadatainfrastructurename
 
 Required: True
@@ -434,28 +393,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Resource
-CloudExadataInfrastructure resource definition
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructure
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -470,7 +414,7 @@ The model name of the cloud Exadata infrastructure resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -485,7 +429,7 @@ The number of storage servers for the cloud Exadata infrastructure.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -501,7 +445,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -516,7 +460,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -531,7 +475,7 @@ CloudExadataInfrastructure zones
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -576,10 +520,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudExadataInfrastructure
-
-### Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentity
 
 ## OUTPUTS
 

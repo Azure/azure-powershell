@@ -27,33 +27,6 @@ New-AzOracleCloudVMCluster -Name <String> -ResourceGroupName <String> -Location 
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Create
-```
-New-AzOracleCloudVMCluster -Name <String> -ResourceGroupName <String> -Resource <ICloudVMCluster>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzOracleCloudVMCluster -InputObject <IOracleIdentity> -Resource <ICloudVMCluster>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzOracleCloudVMCluster -InputObject <IOracleIdentity> -Location <String> [-BackupSubnetCidr <String>]
- [-CloudExadataInfrastructureId <String>] [-ClusterName <String>] [-CpuCoreCount <Int32>]
- [-DataCollectionOptionIsDiagnosticsEventsEnabled] [-DataCollectionOptionIsHealthMonitoringEnabled]
- [-DataCollectionOptionIsIncidentLogsEnabled] [-DataStoragePercentage <Int32>] [-DataStorageSizeInTb <Double>]
- [-DbNodeStorageSizeInGb <Int32>] [-DbServer <String[]>] [-DisplayName <String>] [-Domain <String>]
- [-GiVersion <String>] [-Hostname <String>] [-IsLocalBackupEnabled] [-IsSparseDiskgroupEnabled]
- [-LicenseModel <String>] [-MemorySizeInGb <Int32>] [-NsgCidr <INsgCidr[]>] [-OcpuCount <Single>]
- [-ScanListenerPortTcp <Int32>] [-ScanListenerPortTcpSsl <Int32>] [-SshPublicKey <String[]>]
- [-SubnetId <String>] [-SystemVersion <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-VnetId <String>]
- [-ZoneId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### CreateViaJsonFilePath
 ```
 New-AzOracleCloudVMCluster -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
@@ -165,7 +138,7 @@ Client OCI backup subnet CIDR, default is 192.168.252.0/22
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -180,7 +153,7 @@ Cloud Exadata Infrastructure ID
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -198,7 +171,7 @@ The cluster name can be no longer than 11 characters and is not case sensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -213,7 +186,7 @@ The number of CPU cores enabled on the cloud VM cluster.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -228,7 +201,7 @@ Indicates whether diagnostic collection is enabled for the VM cluster/Cloud VM c
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -243,7 +216,7 @@ Indicates whether health monitoring is enabled for the VM cluster / Cloud VM clu
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -258,7 +231,7 @@ Indicates whether incident logs and trace collection are enabled for the VM clus
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -277,7 +250,7 @@ See [Storage Configuration](/Content/Database/Concepts/exaoverview.htm#Exadata) 
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -292,7 +265,7 @@ The data disk group size to be allocated in TBs.
 
 ```yaml
 Type: System.Double
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -307,7 +280,7 @@ The local node storage to be allocated in GBs.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -322,7 +295,7 @@ The list of DB servers.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -353,7 +326,7 @@ Display Name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -368,7 +341,7 @@ The domain name for the cloud VM cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -383,7 +356,7 @@ Oracle Grid Infrastructure (GI) software version
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -398,7 +371,7 @@ The hostname for the cloud VM cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -408,28 +381,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -IsLocalBackupEnabled
 If true, database backup on local Exadata storage is configured for the cloud VM cluster.
 If false, database backup on local Exadata storage is not available in the cloud VM cluster.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -445,7 +403,7 @@ If false, sparse disk group is not created.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -491,7 +449,7 @@ The default is LICENSE_INCLUDED.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -506,7 +464,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -521,7 +479,7 @@ The memory to be allocated in GBs.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -536,7 +494,7 @@ CloudVmCluster name
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases: Cloudvmclustername
 
 Required: True
@@ -567,7 +525,7 @@ The VNET CIDRs used to provision the VM Cluster will be added by default.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.INsgCidr[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -583,7 +541,7 @@ Only 1 decimal place is allowed for the fractional part.
 
 ```yaml
 Type: System.Single
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -593,28 +551,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Resource
-CloudVmCluster resource definition
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMCluster
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -630,7 +573,7 @@ The default port is 1521.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -646,7 +589,7 @@ The default port is 2484.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -661,7 +604,7 @@ The public key portion of one or more key pairs used for SSH access to the cloud
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -676,7 +619,7 @@ Client subnet
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -692,7 +635,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -707,7 +650,7 @@ Operating system version of the image.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -722,7 +665,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -738,7 +681,7 @@ For details, see [Exadata Infrastructure Time Zones](/Content/Database/Reference
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -753,7 +696,7 @@ VNET for network connectivity
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -768,7 +711,7 @@ The OCID of the zone the cloud VM cluster is associated with.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -813,10 +756,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMCluster
-
-### Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IOracleIdentity
 
 ## OUTPUTS
 

@@ -45,11 +45,12 @@ nested-object-to-string: true
 identity-correction-for-post: true
 
 directive:
+  # Model complex objects
   - model-cmdlet:
     - model-name: CustomerContact
   - model-cmdlet:
     - model-name: NsgCidr
-  
+
   # Remove the set-* cmdlet
   - where:
       verb: Set
@@ -63,4 +64,25 @@ directive:
       subject: AutonomousDatabaseBackUp
       verb: Update
     remove: true
+
+  # Remove variants
+  - where:
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity.*$
+    remove: true
+  - where:
+      variant: ^Add$|^AddViaIdentity$|^Action$|^ActionViaIdentity$|^ActionViaIdentityCloudVMCluster$|^Switchover$|^SwitchoverViaIdentity$
+    remove: true
+
+  # Rename parameter
+  - where:  
+      parameter-name: ScheduledOperationScheduledStartTime
+    set: 
+      parameter-name: ScheduledStartTime
+  - where:  
+      parameter-name: ScheduledOperationScheduledStopTime
+    set: 
+      parameter-name: ScheduledStopTime
 ```
