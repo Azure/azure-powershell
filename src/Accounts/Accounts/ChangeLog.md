@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.0.2
 * Fixed bug handling GUID type subscription Id.
 * Added a warning message in `Connect-AzAccount` to discourage the use of the username/password (a.k.a ROPC) login flow.
 * Preannounced a breaking change in `Get-AzAccessToken` to change `Token` property from `String` to `SecureString`.
