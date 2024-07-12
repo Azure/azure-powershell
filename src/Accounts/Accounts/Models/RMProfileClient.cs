@@ -137,10 +137,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             bool shouldPopulateContextList = true,
             int maxContextPopulation = Profile.ConnectAzureRmAccountCommand.DefaultMaxContextPopulation,
             string authScope = null,
-            bool isInteractiveAuthenticationFlow = false,
             bool IsInteractiveContextSelectionEnabled = true)
         {
-            if(isInteractiveAuthenticationFlow) WriteInformationMessage($"{PSStyle.ForegroundColor.BrightYellow}{Resources.PleaseSelectAccount}{PSStyle.Reset}{System.Environment.NewLine}");
+            bool isInteractiveAuthenticationFlow = AzureAccount.AccountType.User.Equals(account.Type);
+            if (isInteractiveAuthenticationFlow) WriteInformationMessage($"{PSStyle.ForegroundColor.BrightYellow}{Resources.PleaseSelectAccount}{PSStyle.Reset}{System.Environment.NewLine}");
 
             IAzureSubscription defaultSubscription = null;
             IAzureTenant defaultTenant = null;
@@ -253,8 +253,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         true,
                         out defaultSubscription,
                         out defaultTenant,
-                        out tempSubscriptions,
-                        isInteractiveAuthenticationFlow))
+                        out tempSubscriptions))
                     {
                         account.SetOrAppendProperty(AzureAccount.Property.Tenants, new[] { defaultTenant.Id.ToString() });
 
@@ -323,7 +322,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
                         if (token != null &&
                             (defaultTenant == null || selectSubscriptionFromList) &&
-                            TryGetTenantSubscription(token, account, environment, subscriptionId, subscriptionName, false, out tempSubscription, out tempTenant, out tempSubscriptions, isInteractiveAuthenticationFlow))
+                            TryGetTenantSubscription(token, account, environment, subscriptionId, subscriptionName, false, out tempSubscription, out tempTenant, out tempSubscriptions))
                         {
                             // If no subscription found for the given token/tenant，discard tempTenant value.
                             // Continue to look for matched subscripitons until one subscription retrived by its home tenant is found.
@@ -707,9 +706,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             bool isTenantPresent,
             out IAzureSubscription subscription,
             out IAzureTenant tenant,
-            out List<AzureSubscription> subscriptions,
-            bool isInteractiveAuthentication)
+            out List<AzureSubscription> subscriptions)
         {
+            bool isInteractiveAuthentication = AzureAccount.AccountType.User.Equals(account.Type);
             subscriptions = new List<AzureSubscription>();
             subscription = null;
             if (accessToken != null)
