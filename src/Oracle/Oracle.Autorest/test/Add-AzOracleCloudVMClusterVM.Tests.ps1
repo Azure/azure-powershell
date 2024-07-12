@@ -34,15 +34,7 @@ Describe 'Add-AzOracleCloudVMClusterVM' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Add' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'AddViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'AddViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

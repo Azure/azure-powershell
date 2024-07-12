@@ -26,24 +26,4 @@ Describe 'New-AzOracleAutonomousDatabaseBackup' {
     It 'CreateViaJsonFilePath' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
-
-    It 'CreateViaIdentityAutonomousDatabaseExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentityAutonomousDatabase' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

@@ -27,23 +27,11 @@ Describe 'Invoke-AzOracleActionDbNode' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Action' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'ActionViaIdentityCloudVMClusterExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'ActionViaIdentityCloudVMCluster' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'ActionViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ActionViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

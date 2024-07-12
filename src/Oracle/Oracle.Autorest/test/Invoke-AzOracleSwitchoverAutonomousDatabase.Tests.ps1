@@ -29,15 +29,7 @@ Describe 'Invoke-AzOracleSwitchoverAutonomousDatabase' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Switchover' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'SwitchoverViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'SwitchoverViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
