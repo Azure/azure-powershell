@@ -56,14 +56,14 @@ directive:
       verb: Set
     remove: true
 
-  # Remove APIs
+  # Hide APIs
   - where:
       subject: CloudExadataInfrastructureStorageCapacity|PrivateIpaddress|SystemVersion|VirtualNetworkAddress|AutonomousDatabaseWallet|ShrinkAutonomousDatabase|OracleSubscription
-    remove: true
+    hide: true
   - where:
       subject: AutonomousDatabaseBackUp
       verb: Update
-    remove: true
+    hide: true
 
   # Remove variants
   - where:
