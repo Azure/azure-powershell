@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Removed the informational table about selected context to avoid duplicated with output table.
+* Removed the informational table about selected context to avoid duplication with output table.
 * Added a warning message in `Connect-AzAccount` to discourage the use of the username/password (a.k.a ROPC) login flow.
 * Preannounced a breaking change in `Get-AzAccessToken` to change `Token` property from `String` to `SecureString`.
 
