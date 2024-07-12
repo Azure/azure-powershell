@@ -538,7 +538,7 @@ namespace Microsoft.Azure.Commands.Profile
                     }
 
                     profileClient.WarningLog = (message) => _tasks.Enqueue(new Task(() => this.WriteWarning(message))); 
-                    profileClient.InformationLog = (message) => _tasks.Enqueue(new Task(() => WriteInteractiveInformation(message)));
+                    profileClient.InteractiveInformationLog = (message) => _tasks.Enqueue(new Task(() => WriteInteractiveInformation(message)));
                     profileClient.DebugLog = (message) => _tasks.Enqueue(new Task(() => this.WriteDebugWithTimestamp(message)));
                     profileClient.PromptAndReadLine = (message) =>
                     {

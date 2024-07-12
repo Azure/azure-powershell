@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         private IAzureTokenCache _cache;
         public Action<string> WarningLog;
         public Action<string> DebugLog;
-        public Action<string> InformationLog;
+        public Action<string> InteractiveInformationLog;
         internal Func<string, string> PromptAndReadLine;
 
         private List<AzureTenant> _queriedTenants = new List<AzureTenant>();
@@ -140,7 +140,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             bool IsInteractiveContextSelectionEnabled = true)
         {
             bool isInteractiveAuthenticationFlow = AzureAccount.AccountType.User.Equals(account.Type);
-            if (isInteractiveAuthenticationFlow) WriteInformationMessage($"{PSStyle.ForegroundColor.BrightYellow}{Resources.PleaseSelectAccount}{PSStyle.Reset}{System.Environment.NewLine}");
+            
+            WriteInteractiveInformationMessage($"{PSStyle.ForegroundColor.BrightYellow}{Resources.PleaseSelectAccount}{PSStyle.Reset}{System.Environment.NewLine}");
 
             IAzureSubscription defaultSubscription = null;
             IAzureTenant defaultTenant = null;
@@ -242,7 +243,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         throw new ArgumentNullException(string.Format($"{e.Message}{Environment.NewLine}{baseMessage} {typeMessage}"), e);
                     }
 
-                    WriteInformationMessage(Resources.RetrievingSubscription);
+                    WriteInteractiveInformationMessage(Resources.RetrievingSubscription);
                     tempSubscriptions = null;
                     if (TryGetTenantSubscription(
                         token,
@@ -266,7 +267,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         {
                             InteractiveSubscriptionSelectionHelper.SelectSubscriptionFromList(
                                 subscriptions, _queriedTenants, tenantIdOrName, tenantName, lastUsedSubscription,
-                                Prompt, WriteInformationMessage,
+                                Prompt, WriteInteractiveInformationMessage,
                                 ref defaultSubscription, ref defaultTenant);
                         }
                     }
@@ -282,7 +283,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     IAzureSubscription tempSubscription = null;
                     tempSubscriptions = null;
 
-                    WriteInformationMessage(Resources.RetrievingSubscription);
+                    WriteInteractiveInformationMessage(Resources.RetrievingSubscription);
 
                     foreach (var tenant in _queriedTenants)
                     {
@@ -349,7 +350,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     {
                         InteractiveSubscriptionSelectionHelper.SelectSubscriptionFromList(
                             subscriptions, _queriedTenants, tenantIdOrName, tenantName, lastUsedSubscription,
-                            Prompt, WriteInformationMessage,
+                            Prompt, WriteInteractiveInformationMessage,
                             ref defaultSubscription, ref defaultTenant);
                     }
                 }
@@ -880,11 +881,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 DebugLog(message);
             }
         }
-        private void WriteInformationMessage(string message)
+        private void WriteInteractiveInformationMessage(string message)
         {
-            if (InformationLog != null)
+            if (InteractiveInformationLog != null)
             {
-                InformationLog(message);
+                InteractiveInformationLog(message);
             }
         }
 
