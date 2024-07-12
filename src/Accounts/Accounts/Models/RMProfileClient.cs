@@ -11,17 +11,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
-using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.Profile.Utilities;
-using Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01.Models;
-using Microsoft.Identity.Client.NativeInterop;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Common;
 
@@ -29,10 +25,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Runtime.InteropServices;
 using System.Security;
-using System.Security.Authentication.ExtendedProtection;
-using System.Text;
 
 using AuthenticationMessages = Microsoft.Azure.Commands.Common.Authentication.Properties.Resources;
 using ProfileMessages = Microsoft.Azure.Commands.Profile.Properties.Resources;
@@ -139,7 +132,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             string authScope = null,
             bool IsInteractiveContextSelectionEnabled = true)
         {
-            bool isInteractiveAuthenticationFlow = AzureAccount.AccountType.User.Equals(account.Type);
             
             WriteInteractiveInformationMessage($"{PSStyle.ForegroundColor.BrightYellow}{Resources.PleaseSelectAccount}{PSStyle.Reset}{System.Environment.NewLine}");
 
@@ -149,7 +141,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             List<AzureSubscription> tempSubscriptions = null;
             string tenantName = null;
             
-            bool selectSubscriptionFromList = isInteractiveAuthenticationFlow && IsInteractiveContextSelectionEnabled && string.IsNullOrEmpty(subscriptionId) && string.IsNullOrEmpty(subscriptionName);
+            bool selectSubscriptionFromList = AzureAccount.AccountType.User.Equals(account.Type) &&
+                IsInteractiveContextSelectionEnabled &&
+                string.IsNullOrEmpty(subscriptionId) &&
+                string.IsNullOrEmpty(subscriptionName);
             var lastUsedSubscription = selectSubscriptionFromList ? _profile?.DefaultContext?.Subscription : null;
 
             string promptBehavior =
