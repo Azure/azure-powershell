@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.resources/Test-AzSubscriptionDeploymentStack
 schema: 2.0.0
 ---
 
 # Test-AzSubscriptionDeploymentStack
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Validates a subscription scoped deployment stack.
 
 ## SYNTAX
 
@@ -156,16 +156,17 @@ Test-AzSubscriptionDeploymentStack [-PassThru] [-Name] <String> [-Description <S
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Validate a subscription scoped deployment stack.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create a subscription scoped deployment stack MySubStack at westus location
 ```powershell
-PS C:\> {{ Add example code here }}
+Test-AzSubscriptionDeploymentStack -Name MySubStack -TemplateFile myTemplate.json -Location westus -DenySettingsMode DenyDelete -ActionOnUnmanage DetachAll
 ```
 
-{{ Add example description here }}
+Validates a subscription scoped Deployment stack named 'MySubStack' in the default subscription, with deny settings being DenyDelete and ActionOnUnmanage as DetachAll.
+```
 
 ## PARAMETERS
 

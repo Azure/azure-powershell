@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.resources/Test-AzResourceGroupDeploymentStack
 schema: 2.0.0
 ---
 
 # Test-AzResourceGroupDeploymentStack
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Validates a resource group scoped deployment stack.
 
 ## SYNTAX
 
@@ -156,16 +156,16 @@ Test-AzResourceGroupDeploymentStack [-PassThru] -Name <String> -ResourceGroupNam
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Validates a resource group scoped deployment stack.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Validates the stack MyRGStack in the Resource Group MyResourceGroup
 ```powershell
-PS C:\> {{ Add example code here }}
+Test-AzResourceGroupDeploymentStack -Name MyRGStack -ResourceGroupName MyResourceGroup -TemplateFile myTemplate.json -DenySettingsMode DenyDelete -ActionOnUnmanage DetachAll
 ```
 
-{{ Add example description here }}
+Validates a resource group scoped deployment stack named 'MyRGStack' in resource group 'MyResourceGroup,' with deny settings being DenyDelete and ActionOnUnmanage DetachAll. 
 
 ## PARAMETERS
 

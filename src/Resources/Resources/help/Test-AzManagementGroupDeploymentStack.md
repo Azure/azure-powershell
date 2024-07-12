@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.resources/Test-AzManagementGroupDeploymentStack
 schema: 2.0.0
 ---
 
 # Test-AzManagementGroupDeploymentStack
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Validates a management group scoped deployment stack.
 
 ## SYNTAX
 
@@ -169,16 +169,16 @@ Test-AzManagementGroupDeploymentStack [-PassThru] -Name <String> -ManagementGrou
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Validates a management group scoped deployment stack.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Creates a new stack MyMGStack at the MyManagementGroup management group and deploys it into the child subscription MySubId
 ```powershell
-PS C:\> {{ Add example code here }}
+Test-AzManagementGroupDeploymentStack -Name MyMGStack -ManagementGroupId MyMangementGroup -DeploymentSubscriptionId MySubId -TemplateFile myTemplate.json -Location westus -DenySettingsMode DenyDelete -ActionOnUnmanage DetachAll
 ```
 
-{{ Add example description here }}
+Create a new management group scoped deployment stack named 'MyMGStack' in management group 'MyManagementGroup,' with the scope of the underlying deployment being MySubId, deny settings being DenyDelete, and ActionOnUnmanage being DetachAll.
 
 ## PARAMETERS
 
