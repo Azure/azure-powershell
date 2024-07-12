@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 7.1.1
 * Supported Storage task assignment
     - `New-AzStorageTaskAssignment`
     - `Update-AzStorageTaskAssignment`
