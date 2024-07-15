@@ -18,7 +18,7 @@ New-AzDataBoxDiskJobDetailsObject -ContactDetail <IContactDetails> -Type <ClassD
  [-DataExportDetail <IDataExportDetails[]>] [-DataImportDetail <IDataImportDetails[]>]
  [-ExpectedDataSizeInTeraByte <Int32>] [-KeyEncryptionKey <IKeyEncryptionKey>] [-Preference <IPreferences>]
  [-ReverseShippingDetail <IReverseShippingDetails>] [-ShippingAddress <IShippingAddress>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -166,6 +166,21 @@ To construct, see NOTES section for PREFERREDDISK properties and create a hash t
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IDataBoxDiskJobDetailsPreferredDisks
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
