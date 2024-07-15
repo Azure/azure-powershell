@@ -19,7 +19,7 @@ New-AzQumuloFileSystem -Name <String> -ResourceGroupName <String> [-Subscription
  -StorageSku <StorageSku> -UserEmail <String> [-AvailabilityZone <String>] [-ClusterLoginUrl <String>]
  [-IdentityType <ManagedServiceIdentityType>] [-MarketplaceSubscriptionId <String>] [-PrivateIP <String[]>]
  [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,7 +29,7 @@ Create a file system resource
 
 ### Example 1: Create a minimum set file system resource
 ```powershell
-$password = ConvertTo-SecureString "1qaz@WSX" -AsPlainText
+$password = ConvertTo-SecureString -String $password -AsPlainText -Force
 
 New-AzQumuloFileSystem -Name qumulo01 -ResourceGroupName ps-joyer-test -DelegatedSubnetId /subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-joyer-test/providers/Microsoft.Network/virtualNetworks/eastus-ps-virtualnetwork/subnets/qumulo-vn -InitialCapacity 50 -Location eastus -MarketplaceOfferId "qumulo-saas-mpp" -MarketplacePlanId "qumulo-on-azure-v1%%gmz7xq9ge3py%%P1M" -MarketplacePublisherId qumulo1584033880660 -StorageSku Standard -UserEmail user@organization.com -AdminPassword $password
 ```
@@ -45,7 +45,7 @@ The password must contain at least 8 characters and have at least 1 letter, 1 nu
 
 ### Example 2: Create a file system resource with other settings
 ```powershell
-$password = ConvertTo-SecureString "2wsx#EDC" -AsPlainText
+$password = ConvertTo-SecureString -String $password -AsPlainText -Force
 
 New-AzQumuloFileSystem -Name qumulo02 -ResourceGroupName ps-joyer-test -AdminPassword $password -DelegatedSubnetId /subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-joyer-test/providers/Microsoft.Network/virtualNetworks/eastus-ps-virtualnetwork/subnets/qumulo-vn -InitialCapacity 50 -Location eastus -MarketplaceOfferId "qumulo-saas-mpp" -MarketplacePlanId "qumulo-on-azure-v1%%gmz7xq9ge3py%%P1M" -MarketplacePublisherId qumulo1584033880660 -StorageSku Standard -UserEmail user@organization.com -AvailabilityZone 1 -Tag @{"123"="abc"}
 ```
@@ -293,6 +293,21 @@ Private IPs of the resource
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
