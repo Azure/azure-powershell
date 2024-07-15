@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Hide client secrets in examples.
+* Fixed secrets exposure in example documentation
 
 ## Version 0.1.1
 * Introduced secrets detection feature to safeguard sensitive data.
