@@ -17,7 +17,7 @@ Use '.unassigned' or '.default' for the device group and product names to genera
 ```
 New-AzSphereDeviceCapabilityImage -DeviceName <String> -CatalogName <String> -DeviceGroupName <String>
  -ProductName <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Capability <String[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ New-AzSphereDeviceCapabilityImage -DeviceName <String> -CatalogName <String> -De
 ```
 New-AzSphereDeviceCapabilityImage -DeviceName <String> -CatalogName <String> -DeviceGroupName <String>
  -ProductName <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ New-AzSphereDeviceCapabilityImage -DeviceName <String> -CatalogName <String> -De
 ```
 New-AzSphereDeviceCapabilityImage -DeviceName <String> -CatalogName <String> -DeviceGroupName <String>
  -ProductName <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -41,20 +41,20 @@ New-AzSphereDeviceCapabilityImage -DeviceName <String> -CatalogName <String> -De
 ```
 New-AzSphereDeviceCapabilityImage -DeviceName <String> -DeviceGroupName <String>
  -ProductInputObject <ISphereIdentity> -Capability <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GenerateViaIdentityCatalogExpanded
 ```
 New-AzSphereDeviceCapabilityImage -DeviceName <String> -DeviceGroupName <String> -ProductName <String>
  -CatalogInputObject <ISphereIdentity> -Capability <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GenerateViaIdentityDeviceGroupExpanded
 ```
 New-AzSphereDeviceCapabilityImage -DeviceName <String> -DeviceGroupInputObject <ISphereIdentity>
- -Capability <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -Capability <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -66,13 +66,11 @@ Use '.unassigned' or '.default' for the device group and product names to genera
 
 ### Example 1: Generates the capability image for the device.
 ```powershell
-New-AzSphereDeviceCapabilityImage -ResourceGroupName joyer-test -CatalogName test2024 -DeviceGroupName testdevicegroup2 -ProductName product2024 -DeviceName DBB0E0CB8BD961A6129096E1E8A1375AC1FA274F030C08161B37AE3BC5A94F443BDB628CF257BC5BC810D8768C03B6F5CA301A35CD0169F56A49624255964560 -Capability 'ApplicationDevelopment' | Format-List
+New-AzSphereDeviceCapabilityImage -ResourceGroupName group-test -CatalogName test2024 -DeviceGroupName testdevicegroup2 -ProductName product2024 -DeviceName ****** -Capability 'ApplicationDevelopment' | Format-List
 ```
 
 ```output
-Image : /Vz9XAEAAADMAAAA27Dgy4vZYaYSkJbh6KE3WsH6J08DDAgWGzeuO8WpT0Q722KM8le8W8gQ2HaMA7b1yjAaNc0BafVqSWJCVZZFYAsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANFg0TQMAAABJRCQADQAAANi1KEHCq1VBmjOKHzHtZ+yYQTwYazyNRbRvoHzwyZefU0cYAJZKiVhXTEtr0FMmMLhe+JiQpbh/AQAA 
-        AERCKAAAAAAAAAAAAGZ3X2NvbmZpZwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfAAAAMyzku8X6GdcOC1Sd9Cfozpmsiny2TzmjyXK7IvOhfA1B8nwdf1GoPa6PPVNMnn15TPIFK/P5/S2TD/mQrNh0Nk=
+Image : ************
 ```
 
 This command generates the capability image for specified device.
@@ -269,6 +267,21 @@ Parameter Sets: GenerateExpanded, GenerateViaJsonString, GenerateViaJsonFilePath
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
