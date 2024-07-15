@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Hide client secrets in examples.
 
 ## Version 0.2.0
 * Added trusted access parameter in Create and Register VIS.

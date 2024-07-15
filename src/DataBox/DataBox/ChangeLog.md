@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Hide client secrets in examples.
 
 ## Version 0.3.1
 * Introduced secrets detection feature to safeguard sensitive data.
