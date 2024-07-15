@@ -18,8 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Addition of the Get-AzCodeSigningCertChain cmdlet to retrieve the certificate chain for a certificate profile.
-
+* Added `Get-AzCodeSigningCertChain` cmdlet to retrieve the certificate chain for a certificate profile.
 
 ## Version 0.1.2
 * Updated signed 3rd party assembly Polly.dll to PSGallery
