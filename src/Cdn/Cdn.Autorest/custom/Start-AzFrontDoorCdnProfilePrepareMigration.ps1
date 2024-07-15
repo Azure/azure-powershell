@@ -292,8 +292,9 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         Write-Host("Your new Front Door profile is being created. Please wait until the process has finished completely. This may take several minutes.")
         $null = $PSBoundParameters.Remove('IdentityType')
         $null = $PSBoundParameters.Remove('IdentityUserAssignedIdentity')
-        # Deal with difference between PS5 and PS7.
-        $PSBoundParameters.Add('ErrorAction', 'Stop')
+        # # Deal with difference between PS5 and PS7.
+        # No need to add this parameters here, cx may add this parameter when using this command.
+        # $PSBoundParameters.Add('ErrorAction', 'Stop')
 
         # Upgrade subcriptionId
         $PSBoundParameters['SubscriptionId'] =  $subId
@@ -339,9 +340,10 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
                     $grantAccessRetryMessage = 'Retrying to grant managed identity to key vault...'
                     $grantAccessErrorMessage = 'Granting managed identity to key vault failed.'
 
-                    $commandInfo = @{ VaultName = $vault; ObjectId = $principal; PermissionsToSecrets = 'Get'; PermissionsToCertificates = 'Get'; ErrorAction = 'Stop'}
+                    $commandInfo = @{ VaultName = $vault; ObjectId = $principal; PermissionsToSecrets = 'Get'; PermissionsToCertificates = 'Get'; ErrorAction = 'Stop'; BypassObjectIdValidation = $true}
 
                     # Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $principal -PermissionsToSecrets Get -PermissionsToCertificates Get
+                    # Adding the parameter `-BypassObjectIdValidation` to bypass the validation when using pipeline to do migration, the type of `-BypassObjectIdValidation` is 'SwitchParameter'.
                     RetryCommand -Command 'Set-AzKeyVaultAccessPolicy' -CommandArgs $commandInfo -RetryTimes 6 -SecondsDelay 20 -SuccessMessage $grantAccessSuccessMessage -RetryMessage $grantAccessRetryMessage -ErrorMessage $grantAccessErrorMessage
                 }
             }
@@ -546,7 +548,6 @@ function RetryCommand {
         try {
             & $Command @CommandArgs
             Write-Host ("{0}" -f $SuccessMessage)
-            Write-Debug ("Command [{0}] succeeded." -f $command)
             $completed = $true
             return $res
         } 
