@@ -1,5 +1,5 @@
 @{
-  GUID = '4855dcb5-d1a4-45e3-b4b2-49d37925ed0b'
+  GUID = 'fecd20b7-3c4c-4038-9f33-addfed01bb66'
   RootModule = './Az.Sphere.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
