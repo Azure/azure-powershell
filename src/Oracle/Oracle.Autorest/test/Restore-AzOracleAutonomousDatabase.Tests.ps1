@@ -21,24 +21,4 @@ Describe 'Restore-AzOracleAutonomousDatabase' {
             Restore-AzOracleAutonomousDatabase -NoWait -Name $env.adbsName -ResourceGroupName $env.resourceGroup -Timestamp $timeStamp
         } | Should -Not -Throw
     }
-
-    It 'RestoreViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'RestoreViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Restore' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'RestoreViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'RestoreViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

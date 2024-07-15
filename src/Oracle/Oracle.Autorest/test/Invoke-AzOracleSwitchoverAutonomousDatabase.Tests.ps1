@@ -20,16 +20,4 @@ Describe 'Invoke-AzOracleSwitchoverAutonomousDatabase' {
             Invoke-AzOracleSwitchoverAutonomousDatabase -Autonomousdatabasename $env.adbsName -ResourceGroupName $env.resourceGroup -PeerDbId $env.adbsBackupId
         } | Should -Not -Throw
     }
-
-    It 'SwitchoverViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'SwitchoverViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'SwitchoverViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

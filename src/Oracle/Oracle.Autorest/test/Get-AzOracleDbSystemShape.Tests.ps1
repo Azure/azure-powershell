@@ -21,16 +21,4 @@ Describe 'Get-AzOracleDbSystemShape' {
             $dbSystemShapeList.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
-
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentityLocation' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }
