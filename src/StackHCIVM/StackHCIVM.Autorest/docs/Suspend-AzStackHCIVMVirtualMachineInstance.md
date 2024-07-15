@@ -1,31 +1,24 @@
 ---
 external help file:
 Module Name: Az.StackHCIVM
-online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmlogicalnetwork
+online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/suspend-azstackhcivmvirtualmachineinstance
 schema: 2.0.0
 ---
 
-# Remove-AzStackHCIVMLogicalNetwork
+# Suspend-AzStackHCIVMVirtualMachineInstance
 
 ## SYNOPSIS
-The operation to delete a logical network.
+The operation to pause a virtual machine instance.
 
 ## SYNTAX
 
-### ByResourceId (Default)
 ```
-Remove-AzStackHCIVMLogicalNetwork -ResourceId <String> [-Force] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### Delete
-```
-Remove-AzStackHCIVMLogicalNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Force] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Suspend-AzStackHCIVMVirtualMachineInstance -ResourceUri <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to delete a logical network.
+The operation to pause a virtual machine instance.
 
 ## EXAMPLES
 
@@ -53,8 +46,8 @@ The operation to delete a logical network.
 
 ## PARAMETERS
 
-### -Force
-Forces the cmdlet to remove the virtual network without prompting for confirmation.
+### -AsJob
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -68,15 +61,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the virtual network
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: LogicalNetworkName
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -98,48 +92,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -ResourceUri
+The fully qualified Azure Resource manager identifier of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-The ARM Resource ID of the virtual network.
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-The ID of the target subscription.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: False
-Position: Named
-Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

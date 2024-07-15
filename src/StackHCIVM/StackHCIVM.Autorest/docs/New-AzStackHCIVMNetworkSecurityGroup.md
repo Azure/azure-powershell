@@ -1,50 +1,40 @@
 ---
 external help file:
 Module Name: Az.StackHCIVM
-online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmlogicalnetwork
+online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmnetworksecuritygroup
 schema: 2.0.0
 ---
 
-# Update-AzStackHCIVMLogicalNetwork
+# New-AzStackHCIVMNetworkSecurityGroup
 
 ## SYNOPSIS
-The operation to update a logical network.
+Create a network security group in the specified resource group.
 
 ## SYNTAX
 
-### ByResourceId (Default)
+### CreateExpanded (Default)
 ```
-Update-AzStackHCIVMLogicalNetwork [-ResourceId <String>] [-Tag <Hashtable>] [-NoWait] [<CommonParameters>]
-```
-
-### UpdateExpanded
-```
-Update-AzStackHCIVMLogicalNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzStackHCIVMNetworkSecurityGroup -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-CustomLocationId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### CreateViaJsonFilePath
 ```
-Update-AzStackHCIVMLogicalNetwork -InputObject <IStackHcivmIdentity> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzStackHCIVMLogicalNetwork -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+New-AzStackHCIVMNetworkSecurityGroup -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### UpdateViaJsonString
+### CreateViaJsonString
 ```
-Update-AzStackHCIVMLogicalNetwork -Name <String> -ResourceGroupName <String> -JsonString <String>
+New-AzStackHCIVMNetworkSecurityGroup -Name <String> -ResourceGroupName <String> -JsonString <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to update a logical network.
+Create a network security group in the specified resource group.
 
 ## EXAMPLES
 
@@ -77,7 +67,22 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomLocationId
+The name of the extended location.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -93,7 +98,7 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
@@ -103,27 +108,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity
-Parameter Sets: UpdateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -JsonFilePath
-Path of Json file supplied to the Update operation
+Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonFilePath
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -134,11 +124,26 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-Json string supplied to the Update operation
+Json string supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonString
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+The geo-location where the resource lives
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -149,12 +154,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the logical network
+Name of the network security group
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
-Aliases: LogicalNetworkName
+Parameter Sets: (All)
+Aliases: NetworkSecurityGroupName
 
 Required: True
 Position: Named
@@ -184,25 +189,10 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-The ARM Resource ID of the virtual network.
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -215,7 +205,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -226,11 +216,11 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: ByResourceId, UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -276,11 +266,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetwork
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkSecurityGroup
 
 ## NOTES
 

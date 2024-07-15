@@ -1,50 +1,46 @@
 ---
 external help file:
 Module Name: Az.StackHCIVM
-online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmlogicalnetwork
+online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmnetworksecuritygrouptag
 schema: 2.0.0
 ---
 
-# Update-AzStackHCIVMLogicalNetwork
+# Update-AzStackHCIVMNetworkSecurityGroupTag
 
 ## SYNOPSIS
-The operation to update a logical network.
+Update a network security group tags.
 
 ## SYNTAX
 
-### ByResourceId (Default)
+### UpdateExpanded (Default)
 ```
-Update-AzStackHCIVMLogicalNetwork [-ResourceId <String>] [-Tag <Hashtable>] [-NoWait] [<CommonParameters>]
-```
-
-### UpdateExpanded
-```
-Update-AzStackHCIVMLogicalNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzStackHCIVMNetworkSecurityGroupTag -NetworkSecurityGroupName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzStackHCIVMLogicalNetwork -InputObject <IStackHcivmIdentity> [-Tag <Hashtable>]
+Update-AzStackHCIVMNetworkSecurityGroupTag -InputObject <IStackHcivmIdentity> [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
-Update-AzStackHCIVMLogicalNetwork -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzStackHCIVMNetworkSecurityGroupTag -NetworkSecurityGroupName <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
-Update-AzStackHCIVMLogicalNetwork -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzStackHCIVMNetworkSecurityGroupTag -NetworkSecurityGroupName <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to update a logical network.
+Update a network security group tags.
 
 ## EXAMPLES
 
@@ -77,7 +73,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -93,7 +89,7 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
@@ -148,13 +144,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the logical network
+### -NetworkSecurityGroupName
+Name of the network security group
 
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
-Aliases: LogicalNetworkName
+Aliases:
 
 Required: True
 Position: Named
@@ -194,21 +190,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The ARM Resource ID of the virtual network.
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
@@ -226,11 +207,11 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: ByResourceId, UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -280,7 +261,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetwork
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkSecurityGroup
 
 ## NOTES
 

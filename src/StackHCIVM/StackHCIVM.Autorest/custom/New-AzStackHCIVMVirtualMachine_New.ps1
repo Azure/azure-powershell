@@ -551,7 +551,7 @@ function New-AzStackHCIVMVirtualMachine {
     }
     if (-not $ProvisionVMConfigAgent){
       $null = $PSBoundParameters.Remove("WindowConfigurationProvisionVMConfigAgent")
-      $PSBoundParameters.Add("WindowConfigurationProvisionVMConfigAgent", $true)
+      $PSBoundParameters.Add("WindowConfigurationProvisionVMConfigAgent", $false)
     }
     $null = $PSBoundParameters.Remove("ProvisionVMAgent")
     $null = $PSBoundParameters.Remove("ProvisionVMConfigAgent")
@@ -675,7 +675,7 @@ function New-AzStackHCIVMVirtualMachine {
   if ($EnableTpm.IsPresent){
     $PSBoundParameters.Add('EnableTpm', $EnableTpm)
   }
-  if($SecureBootEnabled.IsPresent){
+  IF($SecureBootEnabled.IsPresent){
     $PSBoundParameters.Add('SecureBootEnabled', $SecureBootEnabled)
   }
   $null = $PSBoundParameters.Remove("Name")
@@ -688,7 +688,6 @@ function New-AzStackHCIVMVirtualMachine {
   $null = $PSBoundParameters.Remove("Location") 
   $null = $PSBoundParameters.Remove("OSType")
   $null = $PSBoundParameters.Remove("IdentityType")
- 
   try{
     Az.StackHCIVM.internal\New-AzStackHCIVMVirtualMachine -ErrorAction Stop @PSBoundParameters 
   } catch {

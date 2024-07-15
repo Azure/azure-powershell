@@ -1,31 +1,31 @@
 ---
 external help file:
 Module Name: Az.StackHCIVM
-online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmlogicalnetwork
+online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/pause-azstackhcivmvirtualmachine
 schema: 2.0.0
 ---
 
-# Remove-AzStackHCIVMLogicalNetwork
+# Pause-AzStackHCIVMVirtualMachine
 
 ## SYNOPSIS
-The operation to delete a logical network.
+The operation to start a virtual machine instance.
 
 ## SYNTAX
 
 ### ByResourceId (Default)
 ```
-Remove-AzStackHCIVMLogicalNetwork -ResourceId <String> [-Force] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Pause-AzStackHCIVMVirtualMachine -ResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Delete
+### ByName
 ```
-Remove-AzStackHCIVMLogicalNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Force] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Pause-AzStackHCIVMVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to delete a logical network.
+The operation to start a virtual machine instance.
 
 ## EXAMPLES
 
@@ -53,8 +53,8 @@ The operation to delete a logical network.
 
 ## PARAMETERS
 
-### -Force
-Forces the cmdlet to remove the virtual network without prompting for confirmation.
+### -AsJob
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -68,13 +68,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
-Name of the virtual network
+Name of the virtual machine
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: LogicalNetworkName
+Parameter Sets: ByName
+Aliases: VirtualMachineName
 
 Required: True
 Position: Named
@@ -104,7 +119,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: ByName
 Aliases:
 
 Required: True
@@ -115,7 +130,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The ARM Resource ID of the virtual network.
+The ARM Resource ID of the virtual machine.
 
 ```yaml
 Type: System.String
@@ -134,10 +149,10 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: ByName
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
@@ -182,7 +197,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance
 
 ## NOTES
 

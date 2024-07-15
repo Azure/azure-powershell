@@ -29,12 +29,27 @@ The operation to delete a network interface.
 
 ## EXAMPLES
 
-### Example 1: Remove a network interface.
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzStackHCIVMLogicalNetwork -Name  "testNic" -ResourceGroupName "test-rg"
+{{ Add code here }}
 ```
 
-This command removes the network interface from the specified resource group.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

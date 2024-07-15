@@ -20,13 +20,13 @@ The operation to update a storage path.
 The operation to update a storage path.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVStorageContainers
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVStorageContainer
 
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmstoragepath
 #>
 function Update-AzStackHCIVMStoragePath_ByResourceId {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainer])]
 [CmdletBinding(PositionalBinding=$false)]
 
 param(

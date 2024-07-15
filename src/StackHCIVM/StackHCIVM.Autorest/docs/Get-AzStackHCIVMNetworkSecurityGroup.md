@@ -1,70 +1,61 @@
 ---
 external help file:
 Module Name: Az.StackHCIVM
-online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmvirtualharddisk
+online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmnetworksecuritygroup
 schema: 2.0.0
 ---
 
-# Get-AzStackHCIVMVirtualHardDisk
+# Get-AzStackHCIVMNetworkSecurityGroup
 
 ## SYNOPSIS
-Gets a virtual hard disk
+Gets the specified network security group.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzStackHCIVMVirtualHardDisk [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ByResourceId
-```
-Get-AzStackHCIVMVirtualHardDisk [-ResourceId <String>] [-DefaultProfile <PSObject>] [-NoWait]
+Get-AzStackHCIVMNetworkSecurityGroup [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzStackHCIVMVirtualHardDisk -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzStackHCIVMNetworkSecurityGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzStackHCIVMVirtualHardDisk -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzStackHCIVMNetworkSecurityGroup -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets a virtual hard disk
+Gets the specified network security group.
 
 ## EXAMPLES
 
-### Example 1: Get a Virtual Hard Disk
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzStackHCIVMVirtualHardDisk -Name  "testVhd" -ResourceGroupName "test-rg"
+{{ Add code here }}
 ```
 
 ```output
-Name            ResourceGroupName
-----            -----------------
-testVhd       test-rg
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command gets a specific virtual hard disk in the specified resource group.
+{{ Add description here }}
 
-### Example 2: List all Virtual Hard Disks in a Resource Group
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzStackHCIVMVirtualHardDisk -ResourceGroupName "test-rg"
+{{ Add code here }}
 ```
 
 ```output
-Name            ResourceGroupName
-----            -----------------
-testVhd       test-rg
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command lists all virtual hard disks in the specified resource group.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -85,29 +76,14 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the virtual hard disk
+Name of the network security group
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: VirtualHardDiskName
+Aliases: NetworkSecurityGroupName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ByResourceId
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -130,28 +106,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The ARM ID of the virtual hard disk.
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -168,7 +129,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisk
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkSecurityGroup
 
 ## NOTES
 
