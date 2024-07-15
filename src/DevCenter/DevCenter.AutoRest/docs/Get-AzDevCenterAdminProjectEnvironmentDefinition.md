@@ -36,27 +36,27 @@ Gets an environment definition from the catalog.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List environment definitions in a project catalog
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminProjectEnvironmentDefinition -ProjectName DevProject -CatalogName CentralCatalog -ResourceGroupName testRg
 ```
 
-```output
-{{ Add output here }}
-```
+This command lists the environment definitions in a project catalog.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a project environment definition 
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminProjectEnvironmentDefinition -ProjectName DevProject -CatalogName CentralCatalog -ResourceGroupName testRg -Name envDefName
 ```
 
-```output
-{{ Add output here }}
+This command gets the project environment definition "envDefName".
+
+### Example 3: Get a project environment definition using InputObject
+```powershell
+$environmentDefinition = @{"ResourceGroupName" = "testRg"; "ProjectName" = "DevProject"; "CatalogName" = "CentralCatalog"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"; "EnvironmentDefinitionName"="envDefName"}
+$environmentDefinition = Get-AzDevCenterAdminProjectEnvironmentDefinition -InputObject $environmentDefinition
 ```
 
-{{ Add description here }}
+This command gets the project environment definition "envDefName" using InputObject.
 
 ## PARAMETERS
 

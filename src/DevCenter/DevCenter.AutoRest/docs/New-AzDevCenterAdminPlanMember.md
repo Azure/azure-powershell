@@ -31,19 +31,22 @@ Creates or updates a devcenter plan member resource
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: Create an plan member
 ```powershell
-{{ Add code here }}
+$tags = @{"dev" ="test"}
+New-AzDevCenterAdminPlanMember -PlanName ContosoPlan -MemberName d702f662-b3f2-4796-9e8c-13c22378ced3 -ResourceGroupName testRg -Tag $tags -MemberId d702f662-b3f2-4796-9e8c-13c22378ced3 -MemberType User
 ```
 
+This command creates an plan member named "d702f662-b3f2-4796-9e8c-13c22378ced3" in the plan "ContosoPlan".
 
-
-### -------------------------- EXAMPLE 2 --------------------------
+### Example 2: Create an plan member using InputObject
 ```powershell
-{{ Add code here }}
+$tags = @{"dev" ="test"}
+$planMember = @{"ResourceGroupName" = "testRg"; "PlanName" = "ContosoPlan"; "MemberName" = "d702f662-b3f2-4796-9e8c-13c22378ced3"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+New-AzDevCenterAdminPlanMember -InputObject $planMember -Tag $tags -MemberId d702f662-b3f2-4796-9e8c-13c22378ced3 -MemberType User
 ```
 
-
+This command creates an plan member named "d702f662-b3f2-4796-9e8c-13c22378ced3" in the plan "ContosoPlan".
 
 ## PARAMETERS
 

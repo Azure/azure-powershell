@@ -47,27 +47,21 @@ Partially updates a project catalog.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a project catalog
 ```powershell
-{{ Add code here }}
+Update-AzDevCenterAdminProjectCatalog -ProjectName DevProject -Name CentralCatalog -ResourceGroupName testRg -GitHubPath "testpath" -GitHubSecretIdentifier "https://contosokv.vault.azure.net/secrets/CentralRepoPat"
 ```
 
-```output
-{{ Add output here }}
-```
+This command updates a catalog named "CentralCatalog" in the project "DevProject".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Update a project catalog using InputObject
 ```powershell
-{{ Add code here }}
+$catalogInput = Get-AzDevCenterAdminProjectCatalog -ProjectName DevProject -Name CentralCatalog -ResourceGroupName testRg
+
+Update-AzDevCenterAdminProjectCatalog -InputObject $catalogInput -GitHubPath "testpath" -GitHubSecretIdentifier "https://contosokv.vault.azure.net/secrets/CentralRepoPat"
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command updates a catalog named "CentralCatalog" in the project "DevProject".
 
 ## PARAMETERS
 

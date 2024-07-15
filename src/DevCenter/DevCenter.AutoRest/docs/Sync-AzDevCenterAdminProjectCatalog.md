@@ -30,27 +30,20 @@ Syncs templates for a template source.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Sync a project catalog
 ```powershell
-{{ Add code here }}
+Sync-AzDevCenterAdminProjectCatalog -ProjectName DevProject -Name CentralCatalog -ResourceGroupName testRg
 ```
 
-```output
-{{ Add output here }}
-```
+This command syncs the project catalog named "CentralCatalog".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Sync a project catalog using InputObject
 ```powershell
-{{ Add code here }}
+$catalog = @{"ResourceGroupName" = "testRg"; "ProjectName" = "DevProject"; "CatalogName" = "CentralCatalog"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+Sync-AzDevCenterAdminProjectCatalog -InputObject $catalog
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command syncs the project catalog named "CentralCatalog".
 
 ## PARAMETERS
 

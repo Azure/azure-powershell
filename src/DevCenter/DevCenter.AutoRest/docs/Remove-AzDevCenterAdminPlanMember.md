@@ -30,27 +30,20 @@ Deletes a devcenter plan member
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Deletes an plan member
 ```powershell
-{{ Add code here }}
+Remove-AzDevCenterAdminPlanMember -ResourceGroupName testRg -PlanName ContosoPlan -MemberName d702f662-b3f2-4796-9e8c-13c22378ced3
 ```
 
-```output
-{{ Add output here }}
-```
+This command deletes the plan member d702f662-b3f2-4796-9e8c-13c22378ced3 in the plan "ContosoPlan".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Deletes an plan member using InputObject
 ```powershell
-{{ Add code here }}
+$planMember = Get-AzDevCenterAdminPlanMember -ResourceGroupName testRg -PlanName ContosoPlan -MemberName d702f662-b3f2-4796-9e8c-13c22378ced3
+Remove-AzDevCenterAdminPlanMember -InputObject $planMember
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command deletes the plan member "d702f662-b3f2-4796-9e8c-13c22378ced3" in the plan "ContosoPlan".
 
 ## PARAMETERS
 

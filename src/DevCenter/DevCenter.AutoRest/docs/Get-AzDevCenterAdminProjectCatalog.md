@@ -35,27 +35,27 @@ Gets an associated project catalog.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List project catalogs in a project
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminProjectCatalog -ProjectName DevProject -ResourceGroupName testRg
 ```
 
-```output
-{{ Add output here }}
-```
+This command lists the catalogs in the project "DevProject" under the resource group "testRg".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a project catalog
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminProjectCatalog -ProjectName DevProject -CatalogName CentralCatalog -ResourceGroupName testRg
 ```
 
-```output
-{{ Add output here }}
+This command gets the catalog named "CentralCatalog" in the project "DevProject" under the resource group "testRg".
+
+### Example 3: Get a project catalog using InputObject
+```powershell
+$catalog = @{"ResourceGroupName" = "testRg"; "ProjectName" = "DevProject"; "CatalogName" = "CentralCatalog"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+$catalog = Get-AzDevCenterAdminProjectCatalog -InputObject $catalog
 ```
 
-{{ Add description here }}
+This command gets the catalog named "CentralCatalog" in the project "DevProject" under the resource group "testRg".
 
 ## PARAMETERS
 

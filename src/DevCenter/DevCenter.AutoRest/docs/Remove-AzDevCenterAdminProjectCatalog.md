@@ -30,27 +30,20 @@ Deletes a project catalog resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a project catalog
 ```powershell
-{{ Add code here }}
+Remove-AzDevCenterAdminProjectCatalog -ProjectName DevProject -Name CentralCatalog -ResourceGroupName testRg
 ```
 
-```output
-{{ Add output here }}
-```
+This command deletes the catalog named "CentralCatalog" in the project "DevProject".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove a project catalog using InputObject
 ```powershell
-{{ Add code here }}
+$catalog = Get-AzDevCenterAdminProjectCatalog -ProjectName DevProject -Name CentralCatalog -ResourceGroupName testRg
+Remove-AzDevCenterAdminProjectCatalog -InputObject $catalog
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command deletes the catalog named "CentralCatalog" in the project "DevProject".
 
 ## PARAMETERS
 

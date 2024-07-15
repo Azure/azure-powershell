@@ -29,27 +29,20 @@ Gets applicable inherited settings for this project.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get inherited settings for a project
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminProjectInheritedSetting -ProjectName DevProject -ResourceGroupName testRg
 ```
 
-```output
-{{ Add output here }}
-```
+This command gets the inherited settings for the project "DevProject" under the resource group "testRg".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get inherited settings for a project using InputObject
 ```powershell
-{{ Add code here }}
+$project = @{"ResourceGroupName" = "testRg"; "ProjectName" = "DevProject"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+$inheritedSettings = Get-AzDevCenterAdminProjectInheritedSetting -InputObject $project
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command gets the inherited settings for the project "DevProject" under the resource group "testRg".
 
 ## PARAMETERS
 

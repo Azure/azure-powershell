@@ -30,27 +30,24 @@ Partially updates a devcenter plan.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a plan member
 ```powershell
-{{ Add code here }}
+$tags = @{"dev" = "test" }
+
+Update-AzDevCenterAdminPlanMember -PlanName ContosoPlan -MemberName d702f662-b3f2-4796-9e8c-13c22378ced3 -ResourceGroupName testRg -Tag $tags
 ```
 
-```output
-{{ Add output here }}
-```
+This command updates a plan member named "d702f662-b3f2-4796-9e8c-13c22378ced3" in the plan "ContosoPlan".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Update a plan member using InputObject
 ```powershell
-{{ Add code here }}
+$planMember = @{"ResourceGroupName" = "testRg"; "PlanName" = "ContosoPlan"; "MemberName" = "d702f662-b3f2-4796-9e8c-13c22378ced3"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+$tags = @{"dev" = "test" }
+
+Update-AzDevCenterAdminPlanMember -InputObject $planMember -Tag $tags
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command updates a plan member named "d702f662-b3f2-4796-9e8c-13c22378ced3" in the plan "ContosoPlan".
 
 ## PARAMETERS
 

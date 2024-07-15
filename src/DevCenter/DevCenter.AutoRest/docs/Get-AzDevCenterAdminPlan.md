@@ -39,27 +39,34 @@ Gets a devcenter plan.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List plans in a subscription
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminPlan
 ```
 
-```output
-{{ Add output here }}
-```
+This command lists the plans in the current subscription.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: List plans in a resource group
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminPlan -ResourceGroupName testRg
 ```
 
-```output
-{{ Add output here }}
+This command lists the plans under the resource group "testRg".
+
+### Example 3: Get a plan
+```powershell
+Get-AzDevCenterAdminPlan -ResourceGroupName testRg -Name ContosoPlan
 ```
 
-{{ Add description here }}
+This command gets the plan named "ContosoPlan" under the resource group "testRg".
+
+### Example 4: Get a plan using InputObject
+```powershell
+$plan = @{"ResourceGroupName" = "testRg"; "PlanName" = "ContosoPlan"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+Get-AzDevCenterAdminPlan -InputObject $plan
+```
+
+This command gets the plan named "ContosoPlan" under the resource group "testRg".
 
 ## PARAMETERS
 

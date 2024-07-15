@@ -3,6 +3,9 @@
 This directory contains the PowerShell module for the DevCenter service.
 
 ---
+## Status
+[![Az.DevCenter](https://img.shields.io/powershellgallery/v/Az.DevCenter.svg?style=flat-square&label=Az.DevCenter "Az.DevCenter")](https://www.powershellgallery.com/packages/Az.DevCenter/)
+
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -38,7 +41,7 @@ input-file:
   - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2024-05-01-preview/vdi.json
 # For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
 use-extension:
-  "@autorest/powershell": "3.x"
+  "@autorest/powershell": "3.0.512"
 
 directive:
   - from: swagger-document

@@ -30,27 +30,20 @@ Connects a project catalog to enable syncing.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Connect a project catalog
 ```powershell
-{{ Add code here }}
+Connect-AzDevCenterAdminProjectCatalog -ProjectName DevProject -CatalogName CentralCatalog -ResourceGroupName testRg
 ```
 
-```output
-{{ Add output here }}
-```
+This command connects the project catalog named "CentralCatalog" in the project "DevProject" under the resource group "testRg".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Connect a project catalog using InputObject
 ```powershell
-{{ Add code here }}
+$catalog = @{"ResourceGroupName" = "testRg"; "ProjectName" = "DevProject"; "CatalogName" = "CentralCatalog"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+$catalog = Connect-AzDevCenterAdminProjectCatalog -InputObject $catalog
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command connects the project catalog named "CentralCatalog" in the project "DevProject" under the resource group "testRg".
 
 ## PARAMETERS
 

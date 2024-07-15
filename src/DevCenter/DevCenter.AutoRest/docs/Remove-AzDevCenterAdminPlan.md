@@ -29,27 +29,21 @@ Deletes a devcenter plan
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a plan
 ```powershell
-{{ Add code here }}
+Remove-AzDevCenterAdminPlan -Name ContosoPlan -ResourceGroupName testRg
 ```
 
-```output
-{{ Add output here }}
-```
+This command deletes the plan "ContosoPlan" in the resource group "testRg".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a plan using InputObject
 ```powershell
-{{ Add code here }}
+$plan = Get-AzDevCenterAdminPlan -ResourceGroupName testRg -Name ContosoPlan
+
+Remove-AzDevCenterAdminPlan -InputObject $plan
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command deletes the plan "ContosoPlan" in the resource group "testRg".
 
 ## PARAMETERS
 

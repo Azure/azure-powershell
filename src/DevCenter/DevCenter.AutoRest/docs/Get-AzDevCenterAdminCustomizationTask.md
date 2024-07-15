@@ -36,27 +36,27 @@ Gets a Task from the catalog
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List customization tasks in a catalog
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminCustomizationTask -CatalogName CentralCatalog -DevCenterName Contoso -ResourceGroupName testRg
 ```
 
-```output
-{{ Add output here }}
-```
+This command lists the customization tasks in the catalog named "CentralCatalog" under the dev center "Contoso".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a customization task in a catalog
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminCustomizationTask -CatalogName CentralCatalog -DevCenterName Contoso -ResourceGroupName testRg -TaskName SampleTask
 ```
 
-```output
-{{ Add output here }}
+This command gets the customization task "SampleTask" in the catalog named "CentralCatalog" under the dev center "Contoso".
+
+### Example 3: Get a customization task in a catalog using InputObject
+```powershell
+$customizationTask = @{"ResourceGroupName" = "testRg"; "DevCenterName" = "Contoso"; "CatalogName" = "CentralCatalog"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"; "TaskName" = "SampleTask"}
+$customizationTask = Get-AzDevCenterAdminCustomizationTask -InputObject $customizationTask
 ```
 
-{{ Add description here }}
+This command gets the customization task "SampleTask" in the catalog named "CentralCatalog" under the dev center "Contoso".
 
 ## PARAMETERS
 

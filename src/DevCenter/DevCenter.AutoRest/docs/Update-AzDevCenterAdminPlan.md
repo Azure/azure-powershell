@@ -31,27 +31,20 @@ Partially updates a devcenter plan.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a plan
 ```powershell
-{{ Add code here }}
+Update-AzDevCenterAdminPlan -Name ContosoPlan -ResourceGroupName testRg -SkuName CCOG_Standard
 ```
 
-```output
-{{ Add output here }}
-```
+This command updates a plan named "ContosoPlan" in the resource group "testRg".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 3: Update a plan using InputObject
 ```powershell
-{{ Add code here }}
+$plan = @{"ResourceGroupName" = "testRg"; "PlanName" = "ContosoPlan"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+Update-AzDevCenterAdminPlan -InputObject $plan -SkuName CCOG_Standard
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command updates a plan named "ContosoPlan" in the resource group "testRg".
 
 ## PARAMETERS
 
