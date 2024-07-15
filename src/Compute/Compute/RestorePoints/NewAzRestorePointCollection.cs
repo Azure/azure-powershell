@@ -67,7 +67,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipeline = true,
             ParameterSetName = "RestorePointCollectionId")]
-        public string VmId { get; set; }
+        [Alias("VmId")]
+        public string SourceId { get; set; }
 
         [Parameter(
             Position = 3,
@@ -99,7 +100,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         string resourceGroup = this.ResourceGroupName;
                         string restorePointCollectionName = this.Name;
-                        string vmId = this.VmId;
+                        string vmId = this.SourceId;
                         RestorePointCollection restorePointCollection;
                         if (this.IsParameterBound(c => c.Location))
                         {
