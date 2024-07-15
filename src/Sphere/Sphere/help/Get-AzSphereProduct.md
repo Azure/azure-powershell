@@ -16,26 +16,26 @@ Get a Product.
 ### List (Default)
 ```
 Get-AzSphereProduct -CatalogName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzSphereProduct -CatalogName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentityCatalog
 ```
 Get-AzSphereProduct -Name <String> -CatalogInputObject <ISphereIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzSphereProduct -InputObject <ISphereIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,29 +46,29 @@ Get a Product.
 
 ### Example 1: List with specified catalog by resource group
 ```powershell
-Get-AzSphereProduct -ResourceGroupName joyer-test -CatalogName test2024
+Get-AzSphereProduct -ResourceGroupName group-test -CatalogName test2024
 ```
 
 ```output
 Name        SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
 ----        ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
-product2024                                                                                                                                                joyer-test
-product0207                                                                                                                                                joyer-test
+product2024                                                                                                                                                group-test
+product0207                                                                                                                                                group-test
 ```
 
 This command gets list of product with specified catalog by resource group.
 
 ### Example 2: Get product with specified catalog and resource group
 ```powershell
-Get-AzSphereProduct -ResourceGroupName joyer-test -CatalogName test2024 -Name product2024
+Get-AzSphereProduct -ResourceGroupName group-test -CatalogName test2024 -Name product2024
 ```
 
 ```output
 Description                  : 222
-Id                           : /subscriptions/d1cd48f9-b94b-4645-9632-634b440db393/resourceGroups/joyer-test/providers/Microsoft.AzureSphere/catalogs/test2024/products/product2024
+Id                           : /subscriptions/11111111-2222-3333-4444-123456789103/resourceGroups/group-test/providers/Microsoft.AzureSphere/catalogs/test2024/products/product2024
 Name                         : product2024
 ProvisioningState            : Succeeded
-ResourceGroupName            : joyer-test
+ResourceGroupName            : group-test
 SystemDataCreatedAt          : 
 SystemDataCreatedBy          : 
 SystemDataCreatedByType      : 
@@ -152,6 +152,21 @@ Parameter Sets: Get, GetViaIdentityCatalog
 Aliases: ProductName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
