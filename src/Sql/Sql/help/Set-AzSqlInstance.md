@@ -61,7 +61,7 @@ The **Set-AzSqlInstance** cmdlet modifies properties of an Azure SQL Managed ins
 
 ### Example 1: Set existing instance using new values for -AdministratorPassword, -LicenseType, -StorageSizeInGB, -VCore and -Edition
 ```powershell
-$InstancePassword = "Newpassword1234"
+$InstancePassword = <Password>
 $SecureString = ConvertTo-SecureString $InstancePassword -AsPlainText -Force
 Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -AdministratorPassword $SecureString -LicenseType LicenseIncluded -StorageSizeInGB 1024 -VCore 16 -Edition BusinessCritical
 ```
@@ -142,7 +142,7 @@ This command changes existing instance to GPv2 by setting new values for -Editio
 
 ### Example 4: Set existing instance using new values for -AdministratorPassword, -LicenseType, -StorageSizeInGB and -VCore for an instance within an instance pool
 ```powershell
-$InstancePassword = "Newpassword1234"
+$InstancePassword = <Password>
 $SecureString = ConvertTo-SecureString $InstancePassword -AsPlainText -Force
 Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -AdministratorPassword $SecureString -LicenseType LicenseIncluded -StorageSizeInGB 1024 -VCore 2 -InstancePoolName instancePool0
 ```
