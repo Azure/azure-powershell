@@ -15,21 +15,21 @@ Create a Catalog
 ### CreateExpanded (Default)
 ```
 New-AzSphereCatalog -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzSphereCatalog -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzSphereCatalog -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -40,15 +40,15 @@ Create a Catalog
 
 ### Example 1: Example 1: Create a catalog
 ```powershell
-New-AzSphereCatalog -name test2024 -ResourceGroupName joyer-test -Location global
+New-AzSphereCatalog -name test2024 -ResourceGroupName group-test -Location global
 ```
 
 ```output
-Id                           : /subscriptions/d1cd48f9-b94b-4645-9632-634b440db393/resourceGroups/joyer-test/providers/Microsoft.AzureSphere/catalogs/test2024
+Id                           : /subscriptions/11111111-2222-3333-4444-123456789103/resourceGroups/group-test/providers/Microsoft.AzureSphere/catalogs/test2024
 Location                     : global
 Name                         : test2024
 ProvisioningState            : Succeeded
-ResourceGroupName            : joyer-test
+ResourceGroupName            : group-test
 RetryAfter                   : 
 SystemDataCreatedAt          : 
 SystemDataCreatedBy          : 
@@ -58,7 +58,7 @@ SystemDataLastModifiedBy     :
 SystemDataLastModifiedByType : 
 Tag                          : {
                                }
-TenantId                     : 7de8a199-bb33-4eda-9600-583103317243
+TenantId                     : 11111111-2222-3333-4444-123456789123
 Type                         : microsoft.azuresphere/catalogs
 ```
 
@@ -164,6 +164,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

@@ -15,20 +15,20 @@ Retrieves cert chain.
 ### Retrieve (Default)
 ```
 Get-AzSphereCertificateCertChain -CatalogName <String> -ResourceGroupName <String> -SerialNumber <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### RetrieveViaIdentityCatalog
 ```
 Get-AzSphereCertificateCertChain -SerialNumber <String> -CatalogInputObject <ISphereIdentity>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RetrieveViaIdentity
 ```
 Get-AzSphereCertificateCertChain -InputObject <ISphereIdentity> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +38,7 @@ Retrieves cert chain.
 
 ### Example 1: Get a certificate cert chain
 ```powershell
-Get-AzSphereCertificateCertChain -CatalogName test2024 -ResourceGroupName joyer-test -SerialNumber 'serial number'
+Get-AzSphereCertificateCertChain -CatalogName test2024 -ResourceGroupName group-test -SerialNumber 'serial number'
 ```
 
 ```output
@@ -109,6 +109,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
