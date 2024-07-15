@@ -34,8 +34,8 @@ PrimaryConnectionString   : Endpoint=sb://contosonamespace.servicebus.windows.ne
                             cessKey;SharedAccessKey=VUhKcGJXRnllVU52Ym01bFkzUnBiMjVUZEhKcGJtYz0=
 SecondaryConnectionString : Endpoint=sb://contosonamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAc
                             cessKey;SharedAccessKey=VTJWamIyNWtZWEo1UTI5dWJtVmpkR2x2YmxOMGNtbHV=
-PrimaryKey                : VUhKcGJXRnllVU52Ym01bFkzUnBiMjVUZEhKcGJtYz0=
-SecondaryKey              : VTJWamIyNWtZWEo1UTI5dWJtVmpkR2x2YmxOMGNtbHV=
+PrimaryKey                : V******z0=
+SecondaryKey              : V******HV=
 KeyName                   : RootManageSharedAccessKey
 ```
 

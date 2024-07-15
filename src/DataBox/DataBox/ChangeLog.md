@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed secrets exposure in example documentation
 
 ## Version 0.3.1
 * Introduced secrets detection feature to safeguard sensitive data.
