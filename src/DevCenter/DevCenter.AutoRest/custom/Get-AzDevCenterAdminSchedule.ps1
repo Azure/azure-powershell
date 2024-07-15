@@ -27,7 +27,7 @@ Gets a schedule resource.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ISchedule
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ISchedule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -38,106 +38,111 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EncryptionSetName <String>]: The name of the devcenter encryption set.
+  [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
+  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
+  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
   [SubscriptionId <String>]: The ID of the target subscription.
+  [TaskName <String>]: The name of the Task.
   [VersionName <String>]: The version of the image.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminschedule
 #>
 function Get-AzDevCenterAdminSchedule {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ISchedule])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.ISchedule])]
   [CmdletBinding(DefaultParameterSetName = 'GetWithDefault', PositionalBinding = $false)]
   param(
-    [Parameter(ParameterSetName = 'GetWithDefault', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-    [System.String]
-    # Name of the pool.
-    ${PoolName},
-
-    [Parameter(ParameterSetName = 'GetWithDefault', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-    [System.String]
-    # The name of the project.
-    ${ProjectName},
-
-    [Parameter(ParameterSetName = 'GetWithDefault', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName = 'GetWithDefault')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName = 'GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
+      [Parameter(ParameterSetName = 'GetWithDefault', Mandatory)]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+      [System.String]
+      # Name of the pool.
+      ${PoolName},
+  
+      [Parameter(ParameterSetName = 'GetWithDefault', Mandatory)]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+      [System.String]
+      # The name of the project.
+      ${ProjectName},
+  
+      [Parameter(ParameterSetName = 'GetWithDefault', Mandatory)]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+      [System.String]
+      # The name of the resource group.
+      # The name is case insensitive.
+      ${ResourceGroupName},
+  
+      [Parameter(ParameterSetName = 'GetWithDefault')]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+      [System.String[]]
+      # The ID of the target subscription.
+      ${SubscriptionId},
+  
+      [Parameter(ParameterSetName = 'GetViaIdentity', Mandatory, ValueFromPipeline)]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
+      # Identity Parameter
+      # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+      ${InputObject},
+  
+      [Parameter()]
+      [Alias('AzureRMContext', 'AzureCredential')]
+      [ValidateNotNull()]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
+      [System.Management.Automation.PSObject]
+      # The DefaultProfile parameter is not functional.
+      # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+      ${DefaultProfile},
+  
+      [Parameter(DontShow)]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+      [System.Management.Automation.SwitchParameter]
+      # Wait for .NET debugger to attach
+      ${Break},
+  
+      [Parameter(DontShow)]
+      [ValidateNotNull()]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+      # SendAsync Pipeline Steps to be appended to the front of the pipeline
+      ${HttpPipelineAppend},
+  
+      [Parameter(DontShow)]
+      [ValidateNotNull()]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+      # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+      ${HttpPipelinePrepend},
+  
+      [Parameter(DontShow)]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+      [System.Uri]
+      # The URI for the proxy server to use
+      ${Proxy},
+  
+      [Parameter(DontShow)]
+      [ValidateNotNull()]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+      [System.Management.Automation.PSCredential]
+      # Credentials for a proxy server to use for the remote call
+      ${ProxyCredential},
+  
+      [Parameter(DontShow)]
+      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+      [System.Management.Automation.SwitchParameter]
+      # Use the default credentials for the proxy
+      ${ProxyUseDefaultCredentials}
   )
 
   #Customization to remove "List"

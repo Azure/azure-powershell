@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the DevCenter service.
 
 ---
-## Status
-[![Az.DevCenter](https://img.shields.io/powershellgallery/v/Az.DevCenter.svg?style=flat-square&label=Az.DevCenter "Az.DevCenter")](https://www.powershellgallery.com/packages/Az.DevCenter/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -31,14 +28,14 @@ For information on how to develop for `Az.DevCenter`, see [how-to.md](how-to.md)
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: b5e14f2fcc1e0de74c4dcf1d6e518f9faf743417
+commit: 490e7fec728b018ff3ab103a6e1cb09644452ccf
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2023-10-01-preview/commonDefinitions.json
-  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2023-10-01-preview/devcenter.json
-  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2023-10-01-preview/vdi.json
+  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2024-05-01-preview/commonDefinitions.json
+  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2024-05-01-preview/devcenter.json
+  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2024-05-01-preview/vdi.json
 # For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
 use-extension:
   "@autorest/powershell": "3.x"
@@ -46,6 +43,12 @@ use-extension:
 directive:
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/sync"].post.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. Successfully initiated sync."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/sync"].post.responses
     transform: >
       $['200'] = {
         "description": "OK. Successfully initiated sync."
@@ -71,6 +74,18 @@ directive:
         "description": "OK. The request has succeeded.",
         "schema": {"$ref": "#/definitions/Catalog"}
       }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/environmentDefinitions/{environmentDefinitionName}"].get.operationId
+    transform: >-
+      return "ProjectEnvironmentDefinitions_Get"
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/environmentDefinitions"].get.operationId
+    transform: >-
+      return "ProjectEnvironmentDefinitions_List"
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/environmentDefinitions/{environmentDefinitionName}/getErrorDetails"].post.operationId
+    transform: >-
+      return "ProjectEnvironmentDefinitions_GetErrorDetails"
   - where:
       parameter-name: Top
     hide: true
@@ -169,6 +184,11 @@ directive:
       subject: ExecuteCheckNameAvailability
       variant: ^Execute$|^ExecuteViaIdentity$
     remove: true
+  - where:
+      verb: Invoke
+      subject: ExecuteCheckScopedNameAvailability
+      variant: ^Execute$|^ExecuteViaIdentity$
+    remove: true
 # Set required parameters    
   - where:
       verb: New
@@ -187,14 +207,10 @@ directive:
     hide: true
   - where:
       verb: New
-      subject: ^AttachedNetwork$|^Catalog$|^DevBoxDefinition$|^Gallery$|^NetworkConnection$|^Pool$|^Project$|^ProjectEnvironmentType$
+      subject: ^AttachedNetwork$|^Catalog$|^DevBoxDefinition$|^Gallery$|^NetworkConnection$|^Pool$|^Project$|^ProjectEnvironmentType$|^ProjectCatalog$|^Plan$|^PlanMember$
     hide: true
   - where:
-      subject: ^CatalogDevBoxDefinition$|^CatalogDevBoxDefinitionErrorDetail$|^CustomizationTask|^CustomizationTaskErrorDetail$
-    hide: true
-  - where:
-      verb: Connect
-      subject: Catalog
+      subject: ^CatalogDevBoxDefinition$|^CatalogDevBoxDefinitionErrorDetail$|^EncryptionSet$
     hide: true
   - where:
       subject: OperationStatuses
