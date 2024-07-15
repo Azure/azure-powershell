@@ -52,7 +52,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '3.0.1'; }, 
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '3.0.2'; }, 
             @{ModuleName = 'Az.ADDomainServices'; RequiredVersion = '0.2.1'; }, 
             @{ModuleName = 'Az.Advisor'; RequiredVersion = '2.0.1'; }, 
             @{ModuleName = 'Az.Aks'; RequiredVersion = '6.0.3'; }, 
@@ -138,6 +138,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '3.0.1'; },
             @{ModuleName = 'Az.HPCCache'; RequiredVersion = '0.1.2'; }, 
             @{ModuleName = 'Az.ImageBuilder'; RequiredVersion = '0.4.1'; }, 
             @{ModuleName = 'Az.ImportExport'; RequiredVersion = '0.2.1'; }, 
+            @{ModuleName = 'Az.Informatica'; RequiredVersion = '0.1.0'; }, 
             @{ModuleName = 'Az.IotCentral'; RequiredVersion = '0.10.1'; }, 
             @{ModuleName = 'Az.IotHub'; RequiredVersion = '2.7.6'; }, 
             @{ModuleName = 'Az.KeyVault'; RequiredVersion = '6.0.1'; }, 
