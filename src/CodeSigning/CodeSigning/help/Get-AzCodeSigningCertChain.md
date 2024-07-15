@@ -19,7 +19,6 @@ Get-AzCodeSigningCertChain [-AccountName] <String> [-ProfileName] <String> -Endp
 -MetadataFilePath <String> 
 ```
 
-
 ## DESCRIPTION
 The **Get-AzCodeSigningCertChain** cmdlet retrieves Azure CodeSigning Cert Chain.
 Use this cmdlet to retrieve Azure CodeSigning Cert Chain.
@@ -56,7 +55,7 @@ Thumbprint                               Subject
 F40042E2E5F7E8EF8189FED15519AECE4        CN=Microsoft Identity Verification Root Certificate Authority 2020, O=Microso
 8E750F459DAF9A79D6370DB747AD22268        CN=Microsoft ID Verified Code Signing PCA 2021, O=Microsoft Corporation, C=US
 8BC0201379A2A31BA36EDD20223865C19        CN=Microsoft ID Verified CS EOC CA 02, O=Microsoft Corporation, C=US
-1248C3FB98958560D5A73A75DEF9F624B        CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=WA, C=US```
+1248C3FB98958560D5A73A75DEF9F624B        CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=WA, C=US
 ```
 
 This command retrieves a certificate chain that is currently in use for signing by the metadata configuration.
