@@ -1,5 +1,5 @@
 @{
-  GUID = 'f9fae843-9c26-4513-9442-17f4379802bf'
+  GUID = '82d0a9fb-f77b-43e9-9339-dc451bcb06fd'
   RootModule = './Az.Cdn.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
