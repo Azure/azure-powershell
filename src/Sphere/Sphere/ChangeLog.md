@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* Fixed secrets explosion in example docs
 ## Version 0.1.1
 * Fixed the placeholder in psd1 file.
 
