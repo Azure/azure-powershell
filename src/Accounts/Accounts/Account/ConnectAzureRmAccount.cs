@@ -538,7 +538,7 @@ namespace Microsoft.Azure.Commands.Profile
                     }
 
                     profileClient.WarningLog = (message) => _tasks.Enqueue(new Task(() => this.WriteWarning(message))); 
-                    profileClient.InformationLog = (message) => _tasks.Enqueue(new Task(() => WriteInteractiveInformation(message)));
+                    profileClient.InteractiveInformationLog = (message) => _tasks.Enqueue(new Task(() => WriteInteractiveInformation(message)));
                     profileClient.DebugLog = (message) => _tasks.Enqueue(new Task(() => this.WriteDebugWithTimestamp(message)));
                     profileClient.PromptAndReadLine = (message) =>
                     {
@@ -561,7 +561,6 @@ namespace Microsoft.Azure.Commands.Profile
                         shouldPopulateContextList,
                         MaxContextPopulation,
                         resourceId,
-                        IsInteractiveAuthenticationFlow(),
                         IsInteractiveContextSelectionEnabled()));
                     task.Start();
                     while (!task.IsCompleted)
@@ -614,11 +613,6 @@ namespace Microsoft.Azure.Commands.Profile
             return AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out IConfigManager configManager) ? configManager.GetConfigValue<LoginExperienceConfig>(ConfigKeys.LoginExperienceV2).Equals(LoginExperienceConfig.On) : true;
         }
 
-        private bool IsInteractiveAuthenticationFlow()
-        {
-            return ParameterSetName.Equals(UserParameterSet);
-        }
-
         private bool IsPopUpInteractiveAuthenticationFlow()
         {
             return ParameterSetName.Equals(UserParameterSet) && UseDeviceAuthentication.IsPresent == false;
@@ -634,7 +628,7 @@ namespace Microsoft.Azure.Commands.Profile
 
         private void WriteInteractiveInformation(string message)
         {
-            if (IsInteractiveAuthenticationFlow())
+            if (ParameterSetName.Equals(UserParameterSet))
             {
                 this.WriteInformation(message, false);
             }

@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Removed the informational table about selected context to avoid duplication with output table.
 
 ## Version 3.0.2
 * Fixed bug handling GUID type subscription Id.
