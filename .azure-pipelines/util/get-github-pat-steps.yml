@@ -1,10 +1,14 @@
 steps:
-- task: AzurePowerShell@5
+- checkout: self
+  persistCredentials: true
+- task: PowerShell@2
+  displayName: Get GitHub Token
   inputs:
-    azureSubscription: '$(AzureSubscription)'
-    ScriptType: 'InlineScript'
-    Inline: |
-      $GithubToken = Get-AzKeyVaultSecret -VaultName $(GithubPATKeyVaultName) -Name $(GithubPATKeyVaultAccount) -AsPlainText
-      Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$GithubToken"
-    azurePowerShellVersion: 'LatestVersion'
-  displayName: Get Github PAT from Key Vault
+    targetType: 'inline'
+    script: |
+      $httpConfigs = (git config --get-regexp "http" )
+      $authConfig = $httpConfigs | Where-Object {$_ -like "*AUTHORIZATION*"}
+      $token = ($authConfig -split ' ')[-1]
+      $ghToken = ([System.Text.Encoding]::ASCII.GetString([System.Convert]::FromBase64String($token)) -split ':')[1]
+      Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$ghToken"
+
