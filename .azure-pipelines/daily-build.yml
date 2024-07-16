@@ -1,6 +1,7 @@
 # Please don't use ADO UI defined scheduled triggers because it takes precedence over YAML scheduled triggers.
 # https://docs.microsoft.com/en-us/azure/devops/pipelines/process/scheduled-triggers
 variables:
+  Codeql.Enabled: false
   today: $(Get-Date -Format yyyyMMddhhmmss)
 
 schedules:
