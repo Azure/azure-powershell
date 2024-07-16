@@ -103,7 +103,7 @@ Invoke-LiveTestScenario -Name "Blob basics" -Description "Test blob basic operat
     Assert-AreEqual 512 $b.Length
     $job = Copy-AzStorageBlob -SrcContainer $containerName -SrcBlob $blobName -DestContainer $containerName -DestBlob $copyBlobName1 -Context $ctx -StandardBlobTier Hot -RehydratePriority High -Force -AsJob
     $bcopy = Receive-Job -Job $job 
-    while ($a -eq $null) {
+    while ($bcopy -eq $null) {
         sleep 10 
         $bcopy = Receive-Job -Job $job
     }
