@@ -1,7 +1,7 @@
 ---
-external help file: Az.ConnectedMachine-help.xml
-Module Name: Az.ConnectedMachine
-online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/new-azconnectedmachineextension
+external help file: Az.ConnectedGateway-help.xml
+Module Name: Az.ConnectedGateway
+online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/new-azconnectedgateway
 schema: 2.0.0
 ---
 
