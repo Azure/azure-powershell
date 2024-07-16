@@ -28,13 +28,13 @@ For information on how to develop for `Az.KubernetesRuntime`, see [how-to.md](ho
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: commitId
+commit: 2608e811fafd18657b224a0d59e1c3924a534adb
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
-#   - $(repo)/specification/xxx/resource-manager/readme.md
+  - $(repo)/specification/kubernetesruntime/resource-manager/readme.md
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
-  - (this-folder)/../../../../swagger-pr/specification/kubernetesruntime/resource-manager/readme.md
+  # - (this-folder)/../../../../swagger-pr/specification/kubernetesruntime/resource-manager/readme.md
 
 try-require: 
   - $(repo)/specification/kubernetesruntime/resource-manager/readme.powershell.md
