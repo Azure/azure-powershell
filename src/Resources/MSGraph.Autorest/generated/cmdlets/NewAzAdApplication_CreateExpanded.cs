@@ -463,6 +463,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphRequiredResourceAccess[] RequiredResourceAccess { get => _body.RequiredResourceAccess ?? null /* arrayOf */; set => _body.RequiredResourceAccess = value; }
 
         /// <summary>
+        /// References application or service contact information from a Service or Asset Management database. Nullable.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "References application or service contact information from a Service or Asset Management database. Nullable.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"References application or service contact information from a Service or Asset Management database. Nullable.",
+        SerializedName = @"serviceManagementReference",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ServiceManagementReference { get => _body.ServiceManagementReference ?? null; set => _body.ServiceManagementReference = value; }
+
+        /// <summary>
         /// Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs,
         /// AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
         /// </summary>

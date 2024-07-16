@@ -19,6 +19,13 @@
 -->
 
 ## Upcoming Release
+* Supported get and assign versioned policy definitions and sets
+* Fixed syntax incompatible with windows powershell [#24971]
+* Fixed bug with `Get-AzPolicyExemption` requesting 'ParentResourcePath'
+* Supported `ServiceManagementReference` of Entra App
+    * `Get-AzADApplication`
+    * `New-AzADApplication`
+    * `Update-AzADApplication`
 * Fixed deployment stack validation error surfacing.
 * Fixed default formatting for output objects
 * Removed '-InputObject' for
