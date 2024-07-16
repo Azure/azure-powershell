@@ -23,7 +23,7 @@ jobs:
         $commitMessagePatternToIgnore += "^Migrate\s\w+\sfrom\sgeneration\sto\smain"
         $commitMessagePatternToIgnore += "^Move\s\w+\sto\smain"
         foreach ($pattern in $commitMessagePatternToIgnore) {
-            if ($commitMessage -match $ignoreCommitPattern) {
+            if ($commitMessage -match $pattern) {
                 Write-Host -ForegroundColor DarkGreen "Commit: [$commitMessage], is for gen2main, skip this run ..."
                 return
             }
