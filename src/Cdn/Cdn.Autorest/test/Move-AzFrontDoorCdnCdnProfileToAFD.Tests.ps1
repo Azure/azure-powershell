@@ -14,13 +14,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Move-AzFrontDoorCdnCdnProfile
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+# Playback only
 Describe 'Move-AzFrontDoorCdnCdnProfileToAFD' {
     It 'MigrateExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Migrate' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Migrate' {
+        $subId = $env.SubscriptionId
+        $map1 = New-AzCdnMigrationEndpointMappingObject -MigratedFrom maxtestendpointcli-test-profile1.azureedge.net -MigratedTo maxtestendpointcli-test-profile2
+        Move-AzCdnProfileToAFD -Subscription $subId -ProfileName cli-test-profile -ResourceGroupName cli-test-rg -SkuName Premium_AzureFrontDoor -MigrationEndpointMapping @($map1)
     }
 
     It 'MigrateViaIdentityExpanded' -skip {

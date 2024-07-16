@@ -14,9 +14,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzCdnProfileMigrationCom
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+# Playback only
 Describe 'Test-AzCdnProfileMigrationCompatibility' {
-    It 'Can' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Can' {
+        $subId = $env.SubscriptionId
+        Test-AzCdnProfileMigrationCompatibility -Subscription $subId -ProfileName cli-test-profile -ResourceGroupName cli-test-rg
     }
 
     It 'CanViaIdentity' -skip {
