@@ -2,59 +2,63 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CodeSigning.dll-Help.xml
 Module Name: Az.CodeSigning
 ms.assetid: 846F781C-73A3-4BBE-ABD9-897371109FBE
-online version: https://learn.microsoft.com/powershell/module/az.codesigning/invoke-azcodesigningcipolicysigning
+online version: https://learn.microsoft.com/powershell/module/az.codesigning/get-azcodesigningcertchain
 schema: 2.0.0
 ---
 
-# Invoke-AzCodeSigningCIPolicySigning
+# Get-AzCodeSigningCertChain
 
 ## SYNOPSIS
-Invoke CI Policy signing to Azure.CodeSigning
+Retrieve Azure.CodeSigning Certificate Chain
 
 ## SYNTAX
 
 ### InteractiveSubmit (Default)
 ```
-Invoke-AzCodeSigningCIPolicySigning [-AccountName] <String> [-ProfileName] <String> -EndpointUrl <String> 
+Get-AzCodeSigningCertChain [-AccountName] <String> [-ProfileName] <String> -EndpointUrl <String> 
 -MetadataFilePath <String> 
--Path <String> -Destination <String> -TimeStamperUrl <String> 
 ```
-
 
 ## DESCRIPTION
-The **Invoke-AzCodeSigningCIPolicySigning** cmdlet signs the CI Policy bin file.
-Use this cmdlet to sign a CI Policy bin file.
+The **Get-AzCodeSigningCertChain** cmdlet retrieves Azure CodeSigning Cert Chain.
+Use this cmdlet to retrieve Azure CodeSigning Cert Chain.
 There are two sets of parameters. One set uses AccountName, ProfileName, and EndpointUrl. 
 Another set uses MetadataFilePath.
-Path is the original unsigned CI Policy file path.
-Destination is the signing CI Policy file path, which includes file name.
-TimeStamperUrl is optional, but it's strongly recommended to do TimeStamping along with Signing. 
-
+Destination is the downloaded cert chain file path, which incldues the file name and extension .der.
 ## EXAMPLES
 
-### Example 1: Sign a CI Policy .bin file by account and profile name
-
+### Example 1: Retrieve a cert chain by account and profile name
 ```powershell
-Invoke-AzCodeSigningCIPolicySigning -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net' -Path 'c:\cisigning\contosocipolicy.bin' -Destination 'c:\cisigning\signed_contosocipolicy.bin' -TimeStamperUrl 'http://timestamp.acs.microsoft.com'
+Get-AzCodeSigningCertChain -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net' -Destination 'c:\acs\certchain.der'
 ```
 
 ```output
-CI Policy is successfully signed. c:\cisigning\signed_contosocipolicy.bin
+Thumbprint                               Subject
+----------                               -------
+F40042E2E5F7E8EF8189FED15519AECE4        CN=Microsoft Identity Verification Root Certificate Authority 2020, O=Microso
+8E750F459DAF9A79D6370DB747AD22268        CN=Microsoft ID Verified Code Signing PCA 2021, O=Microsoft Corporation, C=US
+8BC0201379A2A31BA36EDD20223865C19        CN=Microsoft ID Verified CS EOC CA 02, O=Microsoft Corporation, C=US
+1248C3FB98958560D5A73A75DEF9F624B        CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=WA, C=US
 ```
 
-This command signs a CI policy by account and profile, it also timestamps the signature using the timestamp url provided.
+This command retrieves a certificate chain that is currently in use for signing by the account and profile.
 
-### Example 2: Sign a CI Policy .bin file by metadata file configuration
+### Example 2: Retrieve a cert chain using the metadata file path configuration
 
 ```powershell
-Invoke-AzCodeSigningCIPolicySigning  -MetadataFilePath 'c:\cisigning\metadata_input.json' -Path 'c:\cisigning\contosocipolicy.bin' -Destination 'c:\cisigning\signed_contosocipolicy.bin' -TimeStamperUrl 'http://timestamp.acs.microsoft.com'
+Get-AzCodeSigningCertChain -MetadataFilePath 'c:\cisigning\metadata_input.json' -Destination 'c:\acs\certchain.der'
 ```
 
 ```output
-CI Policy is successfully signed. c:\cisigning\signed_contosocipolicy.bin
+Thumbprint                               Subject
+----------                               -------
+F40042E2E5F7E8EF8189FED15519AECE4        CN=Microsoft Identity Verification Root Certificate Authority 2020, O=Microso
+8E750F459DAF9A79D6370DB747AD22268        CN=Microsoft ID Verified Code Signing PCA 2021, O=Microsoft Corporation, C=US
+8BC0201379A2A31BA36EDD20223865C19        CN=Microsoft ID Verified CS EOC CA 02, O=Microsoft Corporation, C=US
+1248C3FB98958560D5A73A75DEF9F624B        CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=WA, C=US
 ```
 
-This command signs a CI policy by the metadata configuration, it also timestamps the signature using the timestamp url provided.
+This command retrieves a certificate chain that is currently in use for signing by the metadata configuration.
 
 ## PARAMETERS
 
@@ -119,22 +123,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Path
-Specifies the original unsigned CI policy file path. The CI policy file extension is .bin, not xml. 
-
-```yaml
-Type: System.String
-Parameter Sets: ByAccountProfileNameParameterSet, ByMetadataFileParameterSet
-
-Required: True
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Destination
-Specifies the signed CI policy file path. The signed CI policy file extension is .bin. 
+Specifies the downloaed cert chain file path. 
 
 ```yaml
 Type: System.String
@@ -146,22 +136,6 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-
-### -TimeStamperUrl
-Specifies Azure CodeSigning TimeStamper Url used to sign CI policy. The format is Url, recommended timestamper is http://timestamp.acs.microsoft.com.
-
-```yaml
-Type: System.String
-Parameter Sets: ByAccountProfileNameParameterSet, ByMetadataFileParameterSet
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
@@ -192,4 +166,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzCodeSigningRootCert](./Get-AzCodeSigningRootCert.md)
 
-[Get-AzCodeSigningCertChain](./Get-AzCodeSigningCertChain.md)
+[Invoke-AzCodeSigningCIPolicySigning](./Invoke-AzCodeSigningCIPolicySigning.md)
