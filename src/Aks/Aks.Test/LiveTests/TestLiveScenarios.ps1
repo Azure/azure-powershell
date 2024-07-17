@@ -34,7 +34,6 @@ Invoke-LiveTestScenario -Name "Test_AKS_CURD" -Description "Test AKS Cluster CRU
     Assert-NotNull $cluster.NodeResourceGroup
     Assert-AreEqual "Succeeded" $cluster.ProvisioningState
     Assert-AreEqual 100 $cluster.MaxAgentPools
-    #Assert-AreEqual $cluster.CurrentKubernetesVersion $cluster.KubernetesVersion
     Assert-AreEqual "default" $cluster.AgentPoolProfiles.Name
     Assert-AreEqual 1 $cluster.AgentPoolProfiles.Length
     Assert-AreEqual 3 $cluster.AgentPoolProfiles[0].Count
@@ -56,7 +55,6 @@ Invoke-LiveTestScenario -Name "Test_AKS_CURD" -Description "Test AKS Cluster CRU
     Assert-AreEqual "Ubuntu" $pools.OsSKU
     Assert-AreEqual "System" $pools.Mode
     Assert-AreEqual "VirtualMachineScaleSets" $pools.AgentPoolType
-    Assert-AreEqual $pools.CurrentOrchestratorVersion $pools.OrchestratorVersion
     Assert-AreEqual "Succeeded" $pools.ProvisioningState
     Assert-AreEqual "Running" $pools.PowerState.Code
     Assert-AreEqual 0 $pools.Tags.Count

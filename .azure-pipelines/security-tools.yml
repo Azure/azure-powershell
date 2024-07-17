@@ -47,7 +47,6 @@ jobs:
       OCTOKITPAT: $(GithubToken)
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@3
     displayName: Run CredScan
-    condition: in(variables['system.pullRequest.targetBranch'], 'generation', 'main')
     inputs:
       toolMajorVersion: V2
       outputFormat: sarif
