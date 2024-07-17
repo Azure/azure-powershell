@@ -29,7 +29,7 @@ jobs:
             }
         }
         $commitId = '${{ github.event.head_commit.id }}'
-        $commitIdShort = $commitId.Subsctring(0,5)
+        $commitIdShort = $commitId.Substring(0,5)
 
         git config user.email "65331932+azure-powershell-bot@users.noreply.github.com";
         git config user.name "azure-powershell-bot";
