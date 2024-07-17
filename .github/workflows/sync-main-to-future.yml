@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pull-requests: write
     steps:
     - uses: actions/checkout@v4
       with:
@@ -42,5 +43,5 @@ jobs:
 
         git fetch origin yabo/sync-main-to-future
         git cherry-pick $commitId --strategy-option theirs
-        git push origin head
+        git push origin $branchName
         gh pr create -B $branchName -H yabo/test-temp-branch --title $commitMessage --body $prInfo
