@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.0.1
 * Fixed an issue during merging certificate process. [#24323]
 
 ## Version 6.0.0

@@ -43,5 +43,24 @@ namespace StorageSyncTests
             TestRunner.RunTestScript("Test-ServerEndpoint");
         }
 
+        /// <summary>
+        /// Defines the test method ServerEndpointWithIdentityMigration.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerEndpointWithIdentityMigration()
+        {
+            TestRunner.RunTestScript("Test-ServerEndpointWithIdentityMigration");
+        }
+
+        /// <summary>
+        /// Defines the test method ServerEndpoint After Identity Migration.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerEndpointAfterIdentityMigration()
+        {
+            TestRunner.RunTestScript("Test-ServerEndpointAfterIdentityMigration");
+        }
     }
 }

@@ -330,6 +330,18 @@ namespace Microsoft.Azure.Commands.Profile
             Guid subscriptionIdGuid;
             string subscriptionName = null;
             string subscriptionId = null;
+
+            //Disable WAM before the issue https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/4786 is fixed
+            if (ParameterSetName.Equals(UserParameterSet) && UseDeviceAuthentication == true || ParameterSetName.Equals(UserWithCredentialParameterSet))
+            {
+                AzConfigReader.Instance?.UpdateConfig(ConfigKeys.EnableLoginByWam, false, ConfigScope.CurrentUser);
+            }
+
+            if (ParameterSetName.Equals(UserWithCredentialParameterSet))
+            {
+                WriteWarning(Resources.UsernamePasswordDeprecateWarningMessage);
+            }
+
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Subscription)))
             {
                 if (Guid.TryParse(Subscription, out subscriptionIdGuid))
@@ -526,7 +538,7 @@ namespace Microsoft.Azure.Commands.Profile
                     }
 
                     profileClient.WarningLog = (message) => _tasks.Enqueue(new Task(() => this.WriteWarning(message))); 
-                    profileClient.InformationLog = (message) => _tasks.Enqueue(new Task(() => WriteInteractiveInformation(message)));
+                    profileClient.InteractiveInformationLog = (message) => _tasks.Enqueue(new Task(() => WriteInteractiveInformation(message)));
                     profileClient.DebugLog = (message) => _tasks.Enqueue(new Task(() => this.WriteDebugWithTimestamp(message)));
                     profileClient.PromptAndReadLine = (message) =>
                     {
@@ -549,7 +561,6 @@ namespace Microsoft.Azure.Commands.Profile
                         shouldPopulateContextList,
                         MaxContextPopulation,
                         resourceId,
-                        IsInteractiveAuthenticationFlow(),
                         IsInteractiveContextSelectionEnabled()));
                     task.Start();
                     while (!task.IsCompleted)
@@ -602,11 +613,6 @@ namespace Microsoft.Azure.Commands.Profile
             return AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out IConfigManager configManager) ? configManager.GetConfigValue<LoginExperienceConfig>(ConfigKeys.LoginExperienceV2).Equals(LoginExperienceConfig.On) : true;
         }
 
-        private bool IsInteractiveAuthenticationFlow()
-        {
-            return ParameterSetName.Equals(UserParameterSet);
-        }
-
         private bool IsPopUpInteractiveAuthenticationFlow()
         {
             return ParameterSetName.Equals(UserParameterSet) && UseDeviceAuthentication.IsPresent == false;
@@ -622,7 +628,7 @@ namespace Microsoft.Azure.Commands.Profile
 
         private void WriteInteractiveInformation(string message)
         {
-            if (IsInteractiveAuthenticationFlow())
+            if (ParameterSetName.Equals(UserParameterSet))
             {
                 this.WriteInformation(message, false);
             }

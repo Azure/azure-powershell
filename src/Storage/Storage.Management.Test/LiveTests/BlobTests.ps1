@@ -102,7 +102,7 @@ Invoke-LiveTestScenario -Name "Blob basics" -Description "Test blob basic operat
     Assert-AreEqual "Hot" $b.AccessTier
     Assert-AreEqual 512 $b.Length
     $job = Copy-AzStorageBlob -SrcContainer $containerName -SrcBlob $blobName -DestContainer $containerName -DestBlob $copyBlobName1 -Context $ctx -StandardBlobTier Hot -RehydratePriority High -Force -AsJob
-    sleep 10 
+    Wait-Job $job
     $bcopy = Receive-Job -Job $job 
     Assert-AreEqual $copyBlobName1 $bcopy.Name
 

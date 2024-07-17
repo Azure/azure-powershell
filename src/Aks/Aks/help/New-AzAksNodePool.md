@@ -45,19 +45,19 @@ Create a new node pool in specified cluster.
 
 ## EXAMPLES
 
-### Create a node pool with default parameters
+### Example 1: Create a node pool with default parameters
 ```powershell
 New-AzAksNodePool -ResourceGroupName myResouceGroup -ClusterName myCluster -Name mydefault
 ```
 
-### Create Windows Server container on an AKS
+### Example 2: Create Windows Server container on an AKS
 ```powershell
 $cred = ConvertTo-SecureString -AsPlainText "Password!!123" -Force
 New-AzAksCluster -ResourceGroupName myResourceGroup -Name myCluster -WindowsProfileAdminUserName azureuser -WindowsProfileAdminUserPassword $cred -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets
 New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myCluster -Name win1 -OsType Windows -VmSetType VirtualMachineScaleSets
 ```
 
-### Create a node pool with LinuxOSConfig and KubeletConfig.
+### Example 3: Create a node pool with LinuxOSConfig and KubeletConfig.
 When you create an AKS node pool, you can specify the kubelet and OS configurations. The type of `LinuxOSConfig` and `KubeletConfig` must be `Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig` and `Microsoft.Azure.Management.ContainerService.Models.KubeletConfig` respectively.
 
 

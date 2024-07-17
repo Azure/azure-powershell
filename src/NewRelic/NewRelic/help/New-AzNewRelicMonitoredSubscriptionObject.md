@@ -16,7 +16,7 @@ Create an in-memory object for MonitoredSubscription.
 New-AzNewRelicMonitoredSubscriptionObject [-Error <String>] [-LogRuleFilteringTag <IFilteringTag[]>]
  [-LogRuleSendAadLog <String>] [-LogRuleSendActivityLog <String>] [-LogRuleSendSubscriptionLog <String>]
  [-MetricRuleFilteringTag <IFilteringTag[]>] [-MetricRuleSendMetric <String>] [-MetricRuleUserEmail <String>]
- [-Status <String>] [-SubscriptionId <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-Status <String>] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -172,21 +172,6 @@ User Email.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

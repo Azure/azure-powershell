@@ -1,3 +1,85 @@
+## 12.1.0 - July 2024
+#### Az.Compute 8.1.0 
+* Modified cmdlet `Add-AzVMDataDisk`
+   - Added parameter `-SourceResourceId`
+* Modified cmdlet `Update-AzDiskEncryptionSet`
+   - Added parameter `-IdentityType`
+* Removed cmdlet `Invoke-AzSpotPlacementRecommender`
+* Added cmdlet `Invoke-AzSpotPlacementScore`
+#### Az.Databricks 1.8.0 
+* Modified cmdlet `New-AzDatabricksWorkspace`
+   - Added parameters `-EnhancedSecurityMonitoringValue`, `-AutomaticClusterUpdateValue`, `-ComplianceSecurityProfileComplianceStandard`, `-ComplianceSecurityProfileValue`, `-AccessConnectorId`, `-AccessConnectorIdentityType`, `-AccessConnectorUserAssignedIdentityId`, `-DefaultStorageFirewall`
+* Modified cmdlet `Remove-AzDatabricksWorkspace`
+   - Added parameter `-ForceDeletion`
+* Modified cmdlet `Update-AzDatabricksWorkspace`
+   - Added parameters `-EnhancedSecurityMonitoringValue`, `-AutomaticClusterUpdateValue`, `-ComplianceSecurityProfileComplianceStandard`, `-ComplianceSecurityProfileValue`, `-AccessConnectorId`, `-AccessConnectorIdentityType`, `-AccessConnectorUserAssignedIdentityId`, `-DefaultStorageFirewall`
+#### Az.Functions 4.1.0 
+* Modified cmdlet `New-AzFunctionApp`
+   - Removed parameters `-DockerImageName`, `-DockerRegistryCredential`
+   - Added parameters `-Environment`, `-Image`, `-RegistryCredential`, `-WorkloadProfileName`, `-ResourceCpu`, `-ResourceMemory`, `-ScaleMaxReplica`, `-ScaleMinReplica`, `-RegistryServer`
+#### Az.Network 7.8.0 
+* Modified cmdlet `Add-AzLoadBalancerProbeConfig`
+   - Added parameter `-NoHealthyBackendsBehavior`
+* Modified cmdlet `Add-AzVirtualNetworkSubnetConfig`
+   - Added parameters `-NetworkIdentifier`, `-ServiceEndpointConfig`
+* Modified cmdlet `New-AzBastion`
+   - Added parameter `-EnableSessionRecording`
+* Modified cmdlet `New-AzLoadBalancerProbeConfig`
+   - Added parameter `-NoHealthyBackendsBehavior`
+* Modified cmdlet `New-AzVirtualNetworkSubnetConfig`
+   - Added parameters `-NetworkIdentifier`, `-ServiceEndpointConfig`
+* Modified cmdlet `Set-AzBastion`
+   - Added parameter `-EnableSessionRecording`
+* Modified cmdlet `Set-AzLoadBalancerProbeConfig`
+   - Added parameter `-NoHealthyBackendsBehavior`
+* Modified cmdlet `Set-AzVirtualNetworkSubnetConfig`
+   - Added parameters `-NetworkIdentifier`, `-ServiceEndpointConfig`
+* Added cmdlet `Deploy-AzFirewallPolicy`, `Get-AzFirewallPolicyDraft`, `Get-AzFirewallPolicyRuleCollectionGroupDraft`, `New-AzFirewallPolicyDraft`, `New-AzFirewallPolicyRuleCollectionGroupDraft`, `Remove-AzFirewallPolicyDraft`, `Remove-AzFirewallPolicyRuleCollectionGroupDraft`, `Restart-AzNetworkVirtualAppliance`, `Set-AzFirewallPolicyDraft`, `Set-AzFirewallPolicyRuleCollectionGroupDraft`
+#### Az.Resources 7.2.0 
+* Modified cmdlet `Get-AzPolicyAssignment`
+   - Removed parameter `-InputObject`
+* Modified cmdlet `Get-AzPolicyDefinition`
+   - Removed parameter `-InputObject`
+   - Added parameters `-ListVersion`, `-Version`
+* Modified cmdlet `Get-AzPolicyExemption`
+   - Removed parameter `-InputObject`
+* Modified cmdlet `Get-AzPolicySetDefinition`
+   - Removed parameter `-InputObject`
+   - Added parameters `-ListVersion`, `-Version`
+* Modified cmdlet `New-AzADApplication`
+   - Added parameter `-ServiceManagementReference`
+* Modified cmdlet `New-AzPolicyAssignment`
+   - Added parameter `-DefinitionVersion`
+* Modified cmdlet `New-AzPolicyDefinition`
+   - Removed parameter `-InputObject`
+* Modified cmdlet `New-AzPolicySetDefinition`
+   - Removed parameter `-InputObject`
+* Modified cmdlet `Update-AzADApplication`
+   - Added parameter `-ServiceManagementReference`
+#### Az.Sql 5.1.0 
+* Modified cmdlet `Add-AzSqlDatabaseToFailoverGroup`
+   - Added parameter `-SecondaryType`
+* Modified cmdlet `Complete-AzSqlInstanceDatabaseCopy`
+   - Added parameter `-TargetSubscriptionId`
+* Modified cmdlet `Complete-AzSqlInstanceDatabaseMove`
+   - Added parameter `-TargetSubscriptionId`
+* Modified cmdlet `Copy-AzSqlInstanceDatabase`
+   - Added parameter `-TargetSubscriptionId`
+* Modified cmdlet `Move-AzSqlInstanceDatabase`
+   - Added parameter `-TargetSubscriptionId`
+* Modified cmdlet `Stop-AzSqlInstanceDatabaseCopy`
+   - Added parameter `-TargetSubscriptionId`
+* Modified cmdlet `Stop-AzSqlInstanceDatabaseMove`
+   - Added parameter `-TargetSubscriptionId`
+#### Az.SqlVirtualMachine 2.3.0 
+* Modified cmdlet `Update-AzSqlVM`
+   - Added parameters `-ManagedIdentityClientId`, `-IdentityType`
+* Added cmdlet `Assert-AzSqlVMEntraAuth`
+#### Az.StorageMover 1.4.0 
+* Modified cmdlet `Update-AzStorageMoverAgent`
+   - Added parameter `-UploadLimitScheduleWeeklyRecurrence`
+* Added cmdlet `New-AzStorageMoverUploadLimitWeeklyRecurrenceObject`
+
 ## 12.0.0 - May 2024
 #### Az.Accounts 3.0.0 
 * Modified cmdlet `Clear-AzConfig`
@@ -795,5 +877,6 @@
    - Changed the type of parameter `-Status` from `Status` to `String`
    - Output type changed from ``PSSupportTicket`` to ``ISupportTicketDetails``
 * Added cmdlet `Get-AzSupportChatTranscript`, `Get-AzSupportChatTranscriptsNoSubscription`, `Get-AzSupportCommunication`, `Get-AzSupportCommunicationsNoSubscription`, `Get-AzSupportFile`, `Get-AzSupportFilesNoSubscription`, `Get-AzSupportFileWorkspace`, `Get-AzSupportFileWorkspacesNoSubscription`, `Get-AzSupportOperation`, `Get-AzSupportTicketsNoSubscription`, `New-AzSupportCommunication`, `New-AzSupportCommunicationsNoSubscription`, `New-AzSupportFileAndUpload`, `New-AzSupportFileAndUploadNoSubscription`, `New-AzSupportFileWorkspace`, `New-AzSupportFileWorkspacesNoSubscription`, `New-AzSupportTicketsNoSubscription`, `Test-AzSupportCommunicationNameAvailability`, `Test-AzSupportCommunicationsNoSubscriptionNameAvailability`, `Test-AzSupportTicketNameAvailability`, `Test-AzSupportTicketsNoSubscriptionNameAvailability`, `Update-AzSupportTicketsNoSubscription`
+
 
 
