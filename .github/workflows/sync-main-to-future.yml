@@ -40,7 +40,7 @@ jobs:
         $prInfo = "Sync commit [$commitMessage ($commitId)] from main branch to future branch .."
         Write-Host -ForegroundColor DarkGreen $prInfo
 
-        git fetch origin main
+        git fetch origin yabo/sync-main-to-future
         git cherry-pick $commitId --strategy-option theirs
         git push origin head
         gh pr create -B $branchName -H future --title $commitMessage --body $prInfo
