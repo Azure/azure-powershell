@@ -1,9 +1,9 @@
 {
-  "Update-AzCdnOriginGroup+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-a97e/providers/Microsoft.Cdn/profiles/p-ps6875/endpoints/ps-20240501-domain010/originGroups/originGroup1?api-version=2024-05-01-preview+1": {
+  "Update-AzCdnOriginGroup+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/p-f06tdh/endpoints/ps-20240501-domain010/originGroups/originGroup1?api-version=2024-05-01-preview+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-a97e/providers/Microsoft.Cdn/profiles/p-ps6875/endpoints/ps-20240501-domain010/originGroups/originGroup1?api-version=2024-05-01-preview",
-      "Content": "{\r\n  \"properties\": {\r\n    \"healthProbeSettings\": {\r\n      \"probePath\": \"/health.aspx\",\r\n      \"probeRequestType\": \"GET\",\r\n      \"probeProtocol\": \"Https\",\r\n      \"probeIntervalInSeconds\": 240\r\n    },\r\n    \"origins\": [\r\n      {\r\n        \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-a97e/providers/Microsoft.Cdn/profiles/p-ps6875/endpoints/ps-20240501-domain010/origins/origin1\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/p-f06tdh/endpoints/ps-20240501-domain010/originGroups/originGroup1?api-version=2024-05-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"healthProbeSettings\": {\r\n      \"probePath\": \"/health.aspx\",\r\n      \"probeRequestType\": \"GET\",\r\n      \"probeProtocol\": \"Https\",\r\n      \"probeIntervalInSeconds\": 240\r\n    },\r\n    \"origins\": [\r\n      {\r\n        \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/p-f06tdh/endpoints/ps-20240501-domain010/origins/origin1\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -18,34 +18,34 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "eea0a491-5a66-4edf-9e8d-4bcee9f2ed08" ],
-        "x-ms-client-request-id": [ "62260e0b-13da-4865-b69a-6b475e77cb34" ],
+        "x-ms-request-id": [ "bd7dbf42-bd4f-48b9-948e-780dd16b80d7" ],
+        "x-ms-client-request-id": [ "7fba61b5-3761-4fd3-9210-0348abc3d8b4" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "7246f7e1-9af9-498a-8597-1508e14ad4bb" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240715T092740Z:7246f7e1-9af9-498a-8597-1508e14ad4bb" ],
+        "x-ms-correlation-request-id": [ "83d0019e-a5dc-429a-ad63-d7f03391307a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240716T113845Z:83d0019e-a5dc-429a-ad63-d7f03391307a" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 6CEFA6E7F6D64F4F8C5844F28FD75291 Ref B: MAA201060515053 Ref C: 2024-07-15T09:27:38Z" ],
-        "Date": [ "Mon, 15 Jul 2024 09:27:39 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: DC690B133BDB43DA8BDA3D9D47781318 Ref B: MAA201060513027 Ref C: 2024-07-16T11:38:43Z" ],
+        "Date": [ "Tue, 16 Jul 2024 11:38:44 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "771" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-a97e/providers/Microsoft.Cdn/profiles/p-ps6875/endpoints/ps-20240501-domain010/origingroups/originGroup1\",\"type\":\"Microsoft.Cdn/profiles/endpoints/origingroups\",\"name\":\"originGroup1\",\"properties\":{\"healthProbeSettings\":{\"probePath\":\"/health.aspx\",\"probeRequestType\":\"GET\",\"probeProtocol\":\"Https\",\"probeIntervalInSeconds\":240},\"responseBasedOriginErrorDetectionSettings\":null,\"trafficRestorationTimeToHealedOrNewEndpointsInMinutes\":null,\"origins\":[{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-a97e/providers/Microsoft.Cdn/profiles/p-ps6875/endpoints/ps-20240501-domain010/origins/origin1\"}],\"resourceState\":\"Active\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/p-f06tdh/endpoints/ps-20240501-domain010/origingroups/originGroup1\",\"type\":\"Microsoft.Cdn/profiles/endpoints/origingroups\",\"name\":\"originGroup1\",\"properties\":{\"healthProbeSettings\":{\"probePath\":\"/health.aspx\",\"probeRequestType\":\"GET\",\"probeProtocol\":\"Https\",\"probeIntervalInSeconds\":240},\"responseBasedOriginErrorDetectionSettings\":null,\"trafficRestorationTimeToHealedOrNewEndpointsInMinutes\":null,\"origins\":[{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/p-f06tdh/endpoints/ps-20240501-domain010/origins/origin1\"}],\"resourceState\":\"Active\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Update-AzCdnOriginGroup+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-a97e/providers/Microsoft.Cdn/profiles/p-ps6875/endpoints/ps-20240501-domain010/originGroups/originGroup1?api-version=2024-05-01-preview+2": {
+  "Update-AzCdnOriginGroup+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/p-f06tdh/endpoints/ps-20240501-domain010/originGroups/originGroup1?api-version=2024-05-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-a97e/providers/Microsoft.Cdn/profiles/p-ps6875/endpoints/ps-20240501-domain010/originGroups/originGroup1?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/p-f06tdh/endpoints/ps-20240501-domain010/originGroups/originGroup1?api-version=2024-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "702" ],
-        "x-ms-client-request-id": [ "11c074e5-64d1-4ef5-8d82-223f64cf059e" ],
+        "x-ms-unique-id": [ "866" ],
+        "x-ms-client-request-id": [ "7b061f32-09ee-4f92-9af8-1b391e576f07" ],
         "CommandName": [ "Get-AzCdnOriginGroup" ],
         "FullCommandName": [ "Get-AzCdnOriginGroup_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -61,22 +61,22 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "2771701b-7c7d-4c18-ae97-eeb4a602eb4b" ],
-        "x-ms-client-request-id": [ "11c074e5-64d1-4ef5-8d82-223f64cf059e" ],
+        "x-ms-request-id": [ "96f648ca-047c-4781-b56e-d565901d4c38" ],
+        "x-ms-client-request-id": [ "7b061f32-09ee-4f92-9af8-1b391e576f07" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-correlation-request-id": [ "14b458e0-4f13-4485-bc5d-5a3e9f1578d3" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240715T092741Z:14b458e0-4f13-4485-bc5d-5a3e9f1578d3" ],
+        "x-ms-correlation-request-id": [ "82fdbe3f-eb82-462a-8a71-dfe3c883d944" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240716T113846Z:82fdbe3f-eb82-462a-8a71-dfe3c883d944" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 4A49865E94134697B45E7FC6D23C261C Ref B: MAA201060515053 Ref C: 2024-07-15T09:27:40Z" ],
-        "Date": [ "Mon, 15 Jul 2024 09:27:41 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3181687B0B44408BA5D79080039F80FC Ref B: MAA201060513027 Ref C: 2024-07-16T11:38:45Z" ],
+        "Date": [ "Tue, 16 Jul 2024 11:38:45 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "771" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-a97e/providers/Microsoft.Cdn/profiles/p-ps6875/endpoints/ps-20240501-domain010/origingroups/originGroup1\",\"type\":\"Microsoft.Cdn/profiles/endpoints/origingroups\",\"name\":\"originGroup1\",\"properties\":{\"healthProbeSettings\":{\"probePath\":\"/health.aspx\",\"probeRequestType\":\"GET\",\"probeProtocol\":\"Https\",\"probeIntervalInSeconds\":240},\"responseBasedOriginErrorDetectionSettings\":null,\"trafficRestorationTimeToHealedOrNewEndpointsInMinutes\":null,\"origins\":[{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-a97e/providers/Microsoft.Cdn/profiles/p-ps6875/endpoints/ps-20240501-domain010/origins/origin1\"}],\"resourceState\":\"Active\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/p-f06tdh/endpoints/ps-20240501-domain010/origingroups/originGroup1\",\"type\":\"Microsoft.Cdn/profiles/endpoints/origingroups\",\"name\":\"originGroup1\",\"properties\":{\"healthProbeSettings\":{\"probePath\":\"/health.aspx\",\"probeRequestType\":\"GET\",\"probeProtocol\":\"Https\",\"probeIntervalInSeconds\":240},\"responseBasedOriginErrorDetectionSettings\":null,\"trafficRestorationTimeToHealedOrNewEndpointsInMinutes\":null,\"origins\":[{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-tq0b/providers/Microsoft.Cdn/profiles/p-f06tdh/endpoints/ps-20240501-domain010/origins/origin1\"}],\"resourceState\":\"Active\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   }

@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "156" ],
-        "x-ms-client-request-id": [ "fd0eb5bf-933d-4bdb-9f14-bd5334d873ee" ],
+        "x-ms-unique-id": [ "153" ],
+        "x-ms-client-request-id": [ "3615712f-054f-4681-8248-5fc5e1e3154e" ],
         "CommandName": [ "Get-AzCdnSubscriptionResourceUsage" ],
         "FullCommandName": [ "Get-AzCdnSubscriptionResourceUsage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,15 +23,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "60297123-0c49-49c3-824f-e1566f4433f7" ],
-        "x-ms-client-request-id": [ "fd0eb5bf-933d-4bdb-9f14-bd5334d873ee" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "7c9bd9e2-83d7-440d-975f-b1bdd8ba2554" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240715T073928Z:7c9bd9e2-83d7-440d-975f-b1bdd8ba2554" ],
+        "x-ms-request-id": [ "1aebdc6b-0e15-4a49-a2ae-94824679db52" ],
+        "x-ms-client-request-id": [ "3615712f-054f-4681-8248-5fc5e1e3154e" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "3eff7436-b7fb-4678-8db4-4f444a842f01" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240716T091722Z:3eff7436-b7fb-4678-8db4-4f444a842f01" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: B289485F66E84C708353FB0965E283BA Ref B: MAA201060515053 Ref C: 2024-07-15T07:39:27Z" ],
-        "Date": [ "Mon, 15 Jul 2024 07:39:28 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: E56EDA2EAB4B4013BA001685AA417661 Ref B: MAA201060513027 Ref C: 2024-07-16T09:17:21Z" ],
+        "Date": [ "Tue, 16 Jul 2024 09:17:22 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "158" ],
