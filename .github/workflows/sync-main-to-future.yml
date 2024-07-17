@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: 'future'
+        ref: 'yabo/test-temp-branch'
     - name: sync main
       shell: pwsh
       run: |
@@ -43,4 +43,4 @@ jobs:
         git fetch origin yabo/sync-main-to-future
         git cherry-pick $commitId --strategy-option theirs
         git push origin head
-        gh pr create -B $branchName -H future --title $commitMessage --body $prInfo
+        gh pr create -B $branchName -H yabo/test-temp-branch --title $commitMessage --body $prInfo
