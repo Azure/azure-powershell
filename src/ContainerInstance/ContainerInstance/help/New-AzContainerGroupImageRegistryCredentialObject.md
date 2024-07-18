@@ -24,7 +24,7 @@ Create a in-memory object for ImageRegistryCredential
 
 ### Example 1: Set up an image registry credential to create a container group
 ```powershell
-$pwd = ConvertTo-SecureString -String $passwordString -AsPlainText -Force
+$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 New-AzContainerGroupImageRegistryCredentialObject -Server "myserver.com" -Username "username" -Password $pwd
 ```
 

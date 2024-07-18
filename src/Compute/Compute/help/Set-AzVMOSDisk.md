@@ -135,7 +135,7 @@ $vmSize = "Standard_DC2as_v5";
 $identityType = "SystemAssigned";
 $secureEncryptGuestState = "DiskWithVMGuestState";
 $vmSecurityType = "ConfidentialVM";
-$securePassword = ConvertTo-SecureString -String $passwordString -AsPlainText -Force; 
+$securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force; 
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
 # Create Key Vault

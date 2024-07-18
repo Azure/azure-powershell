@@ -27,7 +27,7 @@ Create an in-memory object for Volume.
 
 ### Example 1: Create a Azure File volume
 ```powershell
-$pwd = ConvertTo-SecureString -String $passwordString -AsPlainText -Force
+$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 New-AzContainerGroupVolumeObject -Name "myvolume" -AzureFileShareName "myshare" -AzureFileStorageAccountName "username" -AzureFileStorageAccountKey $pwd
 ```
 

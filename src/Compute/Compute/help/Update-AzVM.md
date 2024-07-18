@@ -75,7 +75,7 @@ $vCPUsCore1 = 1;
 $vCPUsAvailable1 = 1;
 $vmSize = 'Standard_D4s_v4';
 
-$securePassword = ConvertTo-SecureString -String $passwordString -AsPlainText -Force;
+$securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force;
 $user = "user";
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Size $vmSize -vCPUCountPerCore $vCPUsCoreInitial -vCPUCountAvailable $vCPUsAvailableInitial;

@@ -58,7 +58,7 @@ The second command sets the SecurityType enum to "TrustedLaunch".
     # New VMSS Parameters
     $vmssName = 'vmss' + $rgname
     $adminUsername = <User Name>
-    $adminPassword = ConvertTo-SecureString -String $passwordString -AsPlainText -Force
+    $adminPassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 
     $imgRef = New-Object -TypeName 'Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImage'
     $imgRef.PublisherName = $PublisherName
@@ -105,7 +105,7 @@ The second command sets the SecurityType enum to "TrustedLaunch".
     $vmSize = "Standard_DC2as_v5"
     $vmssSize = "Standard_DC2as_v5"
 
-    $securePassword = ConvertTo-SecureString -String $passwordString -AsPlainText -Force
+    $securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
     $username = <User Name>
     $vmCred = New-Object System.Management.Automation.PSCredential ($username, $securePassword)
 
@@ -239,7 +239,7 @@ The second command sets the SecurityType enum to "TrustedLaunch".
     $vmName = "v" + $rgname;
     $vmSize = "Standard_DC2as_v5";
     $vmssSize = "Standard_DC2as_v5";
-    $securePassword = ConvertTo-SecureString -String $passwordString -AsPlainText -Force; 
+    $securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force; 
     $username = <Username>;
     $vmCred = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
     $imagePublisher = "MicrosoftWindowsServer";
