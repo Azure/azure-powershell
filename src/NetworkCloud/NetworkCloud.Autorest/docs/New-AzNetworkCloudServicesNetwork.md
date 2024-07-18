@@ -272,18 +272,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`ADDITIONALEGRESSENDPOINT <IEgressEndpoint[]>`: The list of egress endpoints. This allows for connection from a Hybrid AKS cluster to the specified endpoint.
-  - `Category <String>`: The descriptive category name of endpoints accessible by the AKS agent node. For example, azure-resource-management, API server, etc. The platform egress endpoints provided by default will use the category 'default'.
-  - `Endpoint <IEndpointDependency[]>`: The list of endpoint dependencies.
-    - `DomainName <String>`: The domain name of the dependency.
-    - `[Port <Int64?>]`: The port of this endpoint.
-
 ## RELATED LINKS
 
