@@ -8,7 +8,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.PowerShell.Automation.Sdk</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Automation.Management.Sdk</AssemblyName>
     <RootNamespace>Microsoft.Azure.Management.Automation</RootNamespace>
     <NoWarn>$(NoWarn);CS0108;CS1573</NoWarn>
   </PropertyGroup>
