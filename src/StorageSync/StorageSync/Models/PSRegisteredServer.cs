@@ -166,5 +166,25 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// </summary>
         /// <value>The FQDN of the server.</value>
         public string ServerName { get; internal set; }
+
+        /// <summary>
+        /// Gets the Application Id.
+        /// </summary>
+        public string ApplicationId{ get; internal set; }
+
+        /// <summary>
+        /// Identity of the server
+        /// </summary>
+        public bool? Identity { get; internal set; }
+
+        /// <summary>
+        /// Latst Application Id
+        /// </summary>
+        public string LatestApplicationId { get; internal set; }
+
+        /// <summary>
+        /// Active Auth type.
+        /// </summary>
+        public string ActiveAuthType { get; internal set; }
     }
 }

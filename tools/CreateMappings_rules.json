@@ -899,5 +899,9 @@
   {
     "module": "AppComplianceAutomation",
     "alias": "AppComplianceAutomation"
+  },
+  {
+    "module": "Informatica",
+    "alias": "Informatica"
   }
 ]
